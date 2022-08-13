@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="E:\MyApplication\app\src\main\assets"/><source path="E:\MyApplication\app\build\generated\assets\shaders\zhushou360\release"/></dataSet><dataSet config="zhushou360"><source path="E:\MyApplication\app\src\zhushou360\assets"/></dataSet><dataSet config="release"><source path="E:\MyApplication\app\src\release\assets"/></dataSet><dataSet config="zhushou360Release"><source path="E:\MyApplication\app\src\zhushou360Release\assets"/></dataSet></merger>

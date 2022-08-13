@@ -1,0 +1,9 @@
+# Referenced at E:\MyApplication\app\build\intermediates\manifests\full\wandoujia\release\AndroidManifest.xml:20
+-keep class cn.zeppin.shebaoxiong.LaunchActivity { <init>(...); }
+
+# Referenced at E:\MyApplication\app\build\intermediates\manifests\full\wandoujia\release\AndroidManifest.xml:27
+-keep class cn.zeppin.shebaoxiong.MainActivity { <init>(...); }
+
+# Referenced at E:\MyApplication\app\src\main\res\layout\activity_main.xml:10
+-keep class cn.zeppin.shebaoxiong.TopBar { <init>(...); }
+

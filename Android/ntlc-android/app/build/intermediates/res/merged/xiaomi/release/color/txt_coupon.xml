@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--按钮不可用时-->
+    <item android:color="@color/alpha_40_232323" android:state_enabled="false"></item>
+    <!--按钮可用状态-->
+    <item android:color="@color/alpha_80_232323" android:state_enabled="true"></item>
+
+</selector>

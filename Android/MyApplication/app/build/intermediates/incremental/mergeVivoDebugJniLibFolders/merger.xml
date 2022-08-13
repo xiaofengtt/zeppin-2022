@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="E:\MyApplication\app\src\main\jniLibs"/></dataSet><dataSet config="vivo"><source path="E:\MyApplication\app\src\vivo\jniLibs"/></dataSet><dataSet config="debug"><source path="E:\MyApplication\app\src\debug\jniLibs"/></dataSet><dataSet config="vivoDebug"><source path="E:\MyApplication\app\src\vivoDebug\jniLibs"/></dataSet></merger>

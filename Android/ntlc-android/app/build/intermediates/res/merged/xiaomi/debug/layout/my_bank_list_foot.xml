@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/list_bg"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_add"
+        style="@style/LayoutStyleRadius2"
+        android:layout_marginBottom="@dimen/y50"
+        android:layout_marginTop="0dp"
+        android:drawableLeft="@drawable/icon_add"
+        android:drawablePadding="@dimen/x17"
+        android:gravity="left"
+        android:paddingBottom="@dimen/y53"
+        android:paddingLeft="@dimen/x50"
+        android:paddingTop="@dimen/y53"
+        android:text="添加银行卡"
+        android:textColor="@color/color_4990E2"
+        android:textSize="@dimen/text_16"/>
+</LinearLayout>

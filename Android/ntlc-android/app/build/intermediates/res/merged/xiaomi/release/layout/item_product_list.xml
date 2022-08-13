@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--<android.support.v7.widget.CardView-->
+<!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_marginBottom="8dp"-->
+<!--android:layout_marginLeft="@dimen/x15"-->
+<!--android:layout_marginRight="@dimen/x15"-->
+<!--android:background="@drawable/bg_empty_layout"-->
+<!--app:cardCornerRadius="@dimen/x15"-->
+<!--app:cardElevation="0dp">-->
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/y25"
+    android:layout_marginLeft="@dimen/x15"
+    android:layout_marginRight="@dimen/x15"
+    android:background="@drawable/bg_empty_layout"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/x24"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x30"
+        android:paddingTop="@dimen/x27">
+
+        <ImageView
+            android:id="@+id/iv_bankIcon"
+            android:layout_width="@dimen/y65"
+            android:layout_height="@dimen/y65"
+            android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/tv_productName"
+            style="@style/TextLimitsStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:textColor="#181818"
+            android:textSize="@dimen/text_17"
+            android:typeface="normal"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:background="@color/line_B2B2B2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:paddingBottom="@dimen/y45"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x100"
+        android:paddingTop="@dimen/y20">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/product_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_F4333C"
+                android:textSize="@dimen/text_28"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="预期年化利率"
+                android:textColor="@color/color_909090"
+                android:textSize="@dimen/text_12"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tv_minInvestAmount"
+                style="@style/TextLimitsStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:textColor="@color/color_90_2B2B2B"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y10"
+                android:gravity="center"
+                android:text="起购金额"
+                android:textColor="@color/color_909090"
+                android:textSize="@dimen/text_12"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_term"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:textColor="@color/color_90_080808"
+                android:textSize="@dimen/text_22"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y10"
+                android:gravity="right"
+                android:text="产品期限"
+                android:textColor="@color/color_909090"
+                android:textSize="@dimen/text_12"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:background="@color/line_B2B2B2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/x30"
+        android:paddingLeft="@dimen/x30"
+        android:paddingTop="@dimen/x30">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="认购截止："
+            android:textColor="@color/color_909090"
+            android:textSize="@dimen/text_12"/>
+
+        <TextView
+            android:id="@+id/tv_collectEndTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:text="--"
+            android:textColor="@color/color_909090"
+            android:textSize="@dimen/text_12"/>
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/product_expired_bg"
+            android:paddingBottom="@dimen/x10"
+            android:paddingLeft="@dimen/x20"
+            android:paddingRight="@dimen/x20"
+            android:paddingTop="@dimen/x10"
+            android:text="过期"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_10"/>
+    </LinearLayout>
+</LinearLayout>
+    <!--</LinearLayout>-->
+    <!--</android.support.v7.widget.CardView>-->

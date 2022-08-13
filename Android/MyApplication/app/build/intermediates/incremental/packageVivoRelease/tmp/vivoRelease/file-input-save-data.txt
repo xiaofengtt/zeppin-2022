@@ -1,0 +1,7 @@
+#Internal package file, do not edit.
+#Wed Sep 12 16:15:59 CST 2018
+0.baseType=DIRECTORY
+0.base=E\:\\MyApplication\\app\\build\\intermediates\\transforms\\dexMerger\\vivo\\release\\0
+0.path=classes.dex
+0.set=DEX
+count=1

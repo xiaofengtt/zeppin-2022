@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_bg"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.user.activity.CertificationActivity">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <TextView
+        style="@style/LayoutStyleRadius4"
+        android:drawableLeft="@drawable/icon_notice"
+        android:drawablePadding="@dimen/x15"
+        android:gravity="left"
+        android:text="请绑定持卡人本人银行卡"
+        android:textColor="@color/alpha_80_black"
+        android:textSize="@dimen/text_16"/>
+
+
+    <LinearLayout
+        style="@style/LayoutStyleRadius2"
+        android:layout_marginTop="@dimen/y30">
+
+        <LinearLayout
+            style="@style/LayoutStyle"
+            android:layout_height="@dimen/y160"
+            android:background="@color/transparent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_cardholder"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="持卡人"
+                android:textColor="@color/alpha_80_black"
+                android:textSize="@dimen/text_16"/>
+
+            <cn.zeppin.product.ntb.widget.ClearEditText
+                android:id="@+id/cet_cardholder"
+                style="@style/common_editText_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x80"
+                android:hint="请输入持卡人姓名"
+                android:inputType="text"
+                android:textSize="@dimen/text_16"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LayoutStyle"
+            android:layout_height="@dimen/y160"
+            android:background="@drawable/shape_border_top"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_bankcard"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:text="银行卡号"
+                android:textColor="@color/alpha_80_black"
+                android:textSize="@dimen/text_16"/>
+
+            <cn.zeppin.product.ntb.widget.ClearEditText
+                android:id="@+id/cet_bankcard"
+                style="@style/common_editText_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x40"
+                android:layout_toRightOf="@id/tv_bankcard"
+                android:hint="请输入银行卡号"
+                android:inputType="number"
+                android:maxLength="26"
+                android:textSize="@dimen/text_16"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_selectBankCard"
+            style="@style/LayoutStyle"
+            android:layout_height="@dimen/y160"
+            android:background="@drawable/shape_border_top"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="选择银行"
+                android:textColor="@color/alpha_80_black"
+                android:textSize="@dimen/text_16"/>
+
+            <ImageView
+                android:id="@+id/iv_bankIcon"
+                android:layout_width="@dimen/x65"
+                android:layout_height="@dimen/x65"
+                android:layout_marginLeft="@dimen/x50"/>
+
+            <TextView
+                android:id="@+id/tv_bankName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x15"
+                android:layout_marginRight="@dimen/x30"
+                android:drawablePadding="@dimen/x15"
+                android:textColor="@color/alpha_80_black"
+                android:textSize="@dimen/text_16"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/icon_arrow"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/y15"
+        android:paddingLeft="@dimen/x30"
+        android:paddingTop="@dimen/y35"
+        android:text="请输入该银行卡预留手机号："
+        android:textColor="@color/alpha_70_black"
+        android:textSize="@dimen/text_14"/>
+
+    <LinearLayout
+        style="@style/LayoutStyleRadius2"
+        android:layout_height="@dimen/y160"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/x25"
+        android:paddingRight="@dimen/x25">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="手机号"
+            android:textColor="@color/alpha_80_black"
+            android:textSize="@dimen/text_16"/>
+
+        <cn.zeppin.product.ntb.widget.ClearEditText
+            android:id="@+id/cet_phone"
+            style="@style/common_editText_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x40"
+            android:hint="请输入银行预留手机号"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textSize="@dimen/text_16"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_next"
+        style="@style/ButtonStyle1"
+        android:layout_margin="@dimen/y110"
+        android:text="下一步"/>
+
+
+</LinearLayout>

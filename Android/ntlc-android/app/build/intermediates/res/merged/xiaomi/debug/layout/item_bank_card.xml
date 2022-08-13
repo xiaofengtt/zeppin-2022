@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    android:id="@+id/cv_bank"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/y630"
+                                    android:layout_marginBottom="@dimen/y40"
+                                    android:layout_marginLeft="@dimen/x25"
+                                    android:layout_marginRight="@dimen/x25"
+                                    android:layout_marginTop="@dimen/y30"
+                                    app:cardCornerRadius="@dimen/x45"
+                                    app:cardElevation="@dimen/x20">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingBottom="@dimen/x70"
+        android:paddingLeft="@dimen/x50"
+        android:paddingRight="@dimen/x50"
+        android:paddingTop="@dimen/x70">
+
+        <ImageView
+            android:id="@+id/iv_bankIcon"
+            android:layout_width="@dimen/y94"
+            android:layout_height="@dimen/y94"/>
+
+        <TextView
+            android:id="@+id/tv_bankName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_18"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="储蓄卡"
+            android:textColor="@color/alpha_80_white"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_bankIconBig"
+        android:layout_width="@dimen/x500"
+        android:layout_height="@dimen/x670"
+        android:layout_gravity="right"
+        android:layout_marginRight="-20dp"
+        android:layout_marginTop="@dimen/y30"
+        android:adjustViewBounds="true"
+        android:alpha="0.2"
+        android:scaleType="fitEnd"/>
+
+    <TextView
+        android:id="@+id/tv_bankcard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/x60"
+        android:layout_marginTop="@dimen/y380"
+        android:fontFamily="sans-serif"
+        android:text="**** **** **** 0000"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_26"/>
+
+</android.support.v7.widget.CardView>

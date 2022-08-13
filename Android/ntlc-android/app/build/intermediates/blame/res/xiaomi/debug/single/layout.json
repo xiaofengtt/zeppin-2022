@@ -1,0 +1,654 @@
+[
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_trading_record.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_trading_record.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/support_simple_spinner_dropdown_item.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_add_bank.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_add_bank.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/design_layout_tab_icon.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_layout_tab_icon.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/fragment_coupon_list_item.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/fragment_coupon_list_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/design_navigation_item_subheader.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_certification.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_certification.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/include_toolbar.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/include_toolbar.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_search.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_search.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_about.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_about.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_action_menu_item_layout.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_set_pwd.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_set_pwd.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/notification_template_lines_media.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_template_lines_media.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/fragment_hold.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/fragment_hold.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/layout_tab_left.xml",
+        "source": "/Users/zeppin/.android/build-cache/ca1a61d34b0fda226d77d2841d1c4174c366503e/output/res/layout/layout_tab_left.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/select_dialog_item_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/select_dialog_item_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/dialog_loading.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/bundles/default/res/layout/dialog_loading.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/quick_view_load_more.xml",
+        "source": "/Users/zeppin/.android/build-cache/bf85b58b933628b304470ab5759a4d6d4b93dd43/output/res/layout/quick_view_load_more.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/dialog_binding.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/dialog_binding.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_activity_chooser_view.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_certification_yes.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_certification_yes.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_login.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_login.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_message_item.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_message_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/item_bank_list.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/item_bank_list.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/view_refresh_header_stickiness.xml",
+        "source": "/Users/zeppin/.android/build-cache/a5bc539f6e3be08d9be57e8d1e45d95d474a1a14/output/res/layout/view_refresh_header_stickiness.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/design_menu_item_action_area.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/design_navigation_item.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_navigation_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_list_menu_item_layout.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/item_buy_history.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/item_buy_history.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/design_navigation_item_separator.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/toast_custom_center.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/bundles/default/res/layout/toast_custom_center.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/layout_tag_term.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/layout_tag_term.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_dialog_title_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_popup_menu_item_layout.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_register.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_register.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/loading_header_pull_view.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/loading_header_pull_view.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_alert_dialog_title_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/fragment_hold_item2.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/fragment_hold_item2.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_certification_no.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_certification_no.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/item_trading_record_head.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/item_trading_record_head.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/cube_ptr_simple_loading.xml",
+        "source": "/Users/zeppin/.android/build-cache/3d87235c5c8306bb014ef07dde577b34fc123bdf/output/res/layout/cube_ptr_simple_loading.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/design_bottom_sheet_dialog.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_recharge_success.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_recharge_success.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_bank_detail.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_bank_detail.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/design_navigation_item_header.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_navigation_item_header.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/notification_action_tombstone.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_list_menu_item_icon.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_pay_success.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_pay_success.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/item_trading_record.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/item_trading_record.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_gesture_login.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_gesture_login.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_safe.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_safe.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/notification_template_icon_group.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/include_bank_detail_content.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/include_bank_detail_content.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_popup_menu_header_item_layout.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/toast_custom.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/bundles/default/res/layout/toast_custom.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/layout_not_logged_in.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/bundles/default/res/layout/layout_not_logged_in.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/notification_template_part_time.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/fragment_user.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/fragment_user.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_splash.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_splash.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_message.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_message.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/layout_tab.xml",
+        "source": "/Users/zeppin/.android/build-cache/ca1a61d34b0fda226d77d2841d1c4174c366503e/output/res/layout/layout_tab.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/layout_tag_txt.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/layout_tag_txt.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_list_menu_item_checkbox.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_create_gesture.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_create_gesture.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/umeng_socialize_share.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/bundles/default/res/layout/umeng_socialize_share.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_main.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_recharge.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_recharge.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_forgot_password.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_forgot_password.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/layout_empty2.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/bundles/default/res/layout/layout_empty2.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_alert_dialog_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_screen_simple_overlay_action_mode.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_action_mode_bar.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_alipay.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_alipay.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/downloading_layout.xml",
+        "source": "/Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/res/layout/downloading_layout.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/crop__layout_done_cancel.xml",
+        "source": "/Users/zeppin/.android/build-cache/c13b7d571c02e9a1943d87526e8e8d0fd9a45b51/output/res/layout/crop__layout_done_cancel.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_action_bar_title_item.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_trading_record_detail.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_trading_record_detail.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_pdf.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_pdf.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_recharge2.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_recharge2.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/item_finance_tab.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/item_finance_tab.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/view_refresh_header_meituan.xml",
+        "source": "/Users/zeppin/.android/build-cache/a5bc539f6e3be08d9be57e8d1e45d95d474a1a14/output/res/layout/view_refresh_header_meituan.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/item_gift_coupon.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/item_gift_coupon.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/select_dialog_multichoice_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/notification_template_media_custom.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_template_media_custom.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_action_bar_up_container.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_screen_content_include.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_screen_content_include.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_expanded_menu_layout.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/item_tab_login.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/item_tab_login.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/layout_wifi_off.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/bundles/default/res/layout/layout_wifi_off.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_screen_simple.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_screen_simple.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/version_update_dialog.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/version_update_dialog.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/fragment_phone.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/fragment_phone.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_version_dialog.xml",
+        "source": "/Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/res/layout/activity_version_dialog.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/dialog_banklist_item.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/dialog_banklist_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/design_layout_snackbar.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_layout_snackbar.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_jump.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_jump.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/design_navigation_menu_item.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/version_update_download.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/version_update_download.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/dialog_sendsms.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/dialog_sendsms.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/design_layout_snackbar_include.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_alipay_bind.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_alipay_bind.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_web.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_web.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_gift.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_gift.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_my_bank_detail.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_my_bank_detail.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/include_nav_main.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/include_nav_main.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/notification_action.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_action.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/design_bottom_navigation_item.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_bottom_navigation_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/fragment_coupon_list.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/fragment_coupon_list.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/layout_tab_top.xml",
+        "source": "/Users/zeppin/.android/build-cache/ca1a61d34b0fda226d77d2841d1c4174c366503e/output/res/layout/layout_tab_top.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_search_view.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_search_view.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/item_product_list.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/item_product_list.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/item_bank_card.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/item_bank_card.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_reset_password.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_reset_password.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_set_gesture.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_set_gesture.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_select_dialog_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_withdrawal_apply.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_withdrawal_apply.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/layout_tab_segment.xml",
+        "source": "/Users/zeppin/.android/build-cache/ca1a61d34b0fda226d77d2841d1c4174c366503e/output/res/layout/layout_tab_segment.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/layout_tab_bottom.xml",
+        "source": "/Users/zeppin/.android/build-cache/ca1a61d34b0fda226d77d2841d1c4174c366503e/output/res/layout/layout_tab_bottom.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_bank.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_bank.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_alert_dialog_button_bar_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/dialog_banklist_item_foot.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/dialog_banklist_item_foot.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/cube_ptr_classic_default_header.xml",
+        "source": "/Users/zeppin/.android/build-cache/3d87235c5c8306bb014ef07dde577b34fc123bdf/output/res/layout/cube_ptr_classic_default_header.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/design_layout_tab_text.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_layout_tab_text.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_edit_pwd.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_edit_pwd.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_product_buy.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_product_buy.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/item_bank.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/item_bank.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/dialog_prompt.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/dialog_prompt.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/design_navigation_menu.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_navigation_menu.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/design_text_input_password_icon.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_text_input_password_icon.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_finance_detail.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_finance_detail.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/include_filtration.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/include_filtration.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/socialize_share_menu_item.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/bundles/default/res/layout/socialize_share_menu_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_action_mode_close_item_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/fragment_finance.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/fragment_finance.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/view_refresh_header_normal.xml",
+        "source": "/Users/zeppin/.android/build-cache/a5bc539f6e3be08d9be57e8d1e45d95d474a1a14/output/res/layout/view_refresh_header_normal.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/fragment_bank.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/fragment_bank.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/dialog_banklist.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/dialog_banklist.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/layout_empty.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/bundles/default/res/layout/layout_empty.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/view_normal_refresh_footer.xml",
+        "source": "/Users/zeppin/.android/build-cache/a5bc539f6e3be08d9be57e8d1e45d95d474a1a14/output/res/layout/view_normal_refresh_footer.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_withdrawal.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_withdrawal.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_advertisement.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_advertisement.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/fragment_hold_item1.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/fragment_hold_item1.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/notification_template_media.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_template_media.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/notification_template_part_chronometer.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_screen_toolbar.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_list_menu_item_radio.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_coupon.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_coupon.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/umeng_socialize_oauth_dialog.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/bundles/default/res/layout/umeng_socialize_oauth_dialog.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/view_refresh_header.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/bundles/default/res/layout/view_refresh_header.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_action_bar_view_list_nav_layout.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/view_refresh_header_mooc_style.xml",
+        "source": "/Users/zeppin/.android/build-cache/a5bc539f6e3be08d9be57e8d1e45d95d474a1a14/output/res/layout/view_refresh_header_mooc_style.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_bank_detail_all.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_bank_detail_all.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/banner.xml",
+        "source": "/Users/zeppin/.android/build-cache/423a05a5a29e57c0ab632e59aacc7b4dfeb34ed0/output/res/layout/banner.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/item_tab.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/item_tab.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/fragment_account.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/fragment_account.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_search_dropdown_item_icons_2line.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/abc_action_menu_layout.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/layout_tab_right.xml",
+        "source": "/Users/zeppin/.android/build-cache/ca1a61d34b0fda226d77d2841d1c4174c366503e/output/res/layout/layout_tab_right.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/crop__activity_crop.xml",
+        "source": "/Users/zeppin/.android/build-cache/c13b7d571c02e9a1943d87526e8e8d0fd9a45b51/output/res/layout/crop__activity_crop.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/activity_my_bank_list.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/activity_my_bank_list.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/select_dialog_singlechoice_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/res/merged/xiaomi/debug/layout/my_bank_list_foot.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/res/layout/my_bank_list_foot.xml"
+    }
+]

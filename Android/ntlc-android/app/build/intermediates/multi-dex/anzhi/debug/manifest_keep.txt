@@ -1,0 +1,2 @@
+# Referenced at E:\svntest2\Android\ntlc-android\app\build\intermediates\manifests\full\anzhi\debug\AndroidManifest.xml:35
+-keep class cn.zeppin.product.ntb.app.AppApplication { <init>(...); }

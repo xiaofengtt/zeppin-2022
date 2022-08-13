@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_registerView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.user.activity.LoginActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y289"
+        android:src="@drawable/login_logo"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/x60"
+        android:paddingRight="@dimen/x60"
+        tools:context="cn.zeppin.product.ntb.ui.user.fragment.PhoneFragment">
+
+
+        <cn.zeppin.product.ntb.widget.ClearEditText
+            android:id="@+id/et_phone"
+            style="@style/login_editText_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y120"
+            android:hint="请输入手机号"
+            android:inputType="phone"
+            android:maxLength="11"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y60"
+            android:background="@drawable/et_login_bg"
+            android:orientation="horizontal">
+
+            <cn.zeppin.product.ntb.widget.ClearEditText
+                android:id="@+id/et_code"
+                style="@style/login_editText_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请输入验证码"
+                android:inputType="number"
+                android:maxLength="6"/>
+
+            <TextView
+                android:id="@+id/tv_getCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_code"
+                android:fontFamily="sans-serif"
+                android:paddingBottom="@dimen/y15"
+                android:paddingLeft="@dimen/x30"
+                android:paddingRight="@dimen/x30"
+                android:paddingTop="@dimen/y15"
+                android:text="获取验证码"
+                android:textColor="@color/txt_code"
+                android:textSize="@dimen/text_15"/>
+        </LinearLayout>
+
+
+        <cn.zeppin.product.ntb.widget.ClearEditText
+            android:id="@+id/et_password"
+            style="@style/login_editText_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y60"
+            android:hint="请输入8-20位字母数字组合密码"
+            android:inputType="textPassword"/>
+
+        <TextView
+            android:id="@+id/tv_warn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/y30"
+            android:layout_marginTop="@dimen/y30"
+            android:background="#1AD09637"
+            android:gravity="center"
+            android:paddingBottom="@dimen/x30"
+            android:paddingTop="@dimen/x30"
+            android:textColor="@color/color_D09637"
+            android:textSize="@dimen/text_14"
+            android:visibility="invisible"/>
+
+        <Button
+            android:id="@+id/btn_register"
+            style="@style/ButtonStyle3"
+            android:text="注册"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y80"
+            android:layout_marginLeft="@dimen/x48"
+            android:layout_marginTop="@dimen/y25"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cb_purAgreement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="true"
+                android:drawableLeft="@drawable/selector_confirm"
+                android:drawablePadding="@dimen/x15"
+                android:text="已经阅读并同意"
+                android:textColor="#959595"
+                android:textSize="@dimen/text_12"/>
+
+            <TextView
+                android:id="@+id/tv_agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="《牛投理财用户服务协议》"
+                android:textColor="@color/color_548BCC"
+                android:textSize="@dimen/text_12"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y3"
+        android:background="@color/line_20_B0B0B0"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom|center_horizontal"
+        android:paddingBottom="@dimen/y30"
+        android:paddingTop="@dimen/y30">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已有账户?"
+            android:textColor="#CC949494"
+            android:textSize="@dimen/text_17"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="toLoginActivity"
+            android:padding="@dimen/x10"
+            android:text=" 立即登录"
+            android:textColor="@color/color_4990E2"
+            android:textSize="@dimen/text_17"/>
+    </LinearLayout>
+</LinearLayout>

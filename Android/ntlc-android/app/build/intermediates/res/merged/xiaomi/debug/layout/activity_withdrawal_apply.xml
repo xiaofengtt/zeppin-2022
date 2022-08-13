@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_bg"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.finance.activity.WithdrawalApplyActivity">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <LinearLayout
+        style="@style/LayoutStyleRadius2"
+        android:layout_marginTop="@dimen/y25">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y120"
+            android:text="提现申请已提交！"
+            android:textColor="#2C2C2C"
+            android:textSize="@dimen/text_18"/>
+
+        <TextView
+            android:id="@+id/tv_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y10"
+            android:fontFamily="sans-serif"
+            android:textColor="#662C2C2C"
+            android:textSize="@dimen/text_14"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/y70"
+            android:layout_marginTop="@dimen/y50"
+            android:src="@drawable/withdrawal_apply"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/LayoutStyleRadius2"
+        android:layout_marginTop="@dimen/y30">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/x40"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:paddingTop="@dimen/x40">
+
+            <TextView
+                android:id="@+id/tv_bankcardType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="储蓄卡"
+                android:textColor="@color/alpha_80_black"
+                android:textSize="@dimen/text_16"/>
+
+            <TextView
+                android:id="@+id/tv_bankName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif"
+                android:gravity="right"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/ContentLayoutStyle">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="提现金额"
+                android:textColor="@color/alpha_80_black"
+                android:textSize="@dimen/text_16"/>
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif"
+                android:gravity="right"
+                android:textColor="@color/alpha_70_black"
+                android:textSize="@dimen/text_16"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y130"
+        android:layout_margin="@dimen/x109"
+        android:background="@drawable/btn_buy_bg"
+        android:text="确定"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_16"/>
+</LinearLayout>

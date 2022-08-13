@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_bg"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.user.activity.TradingRecordDetailActivity">
+
+
+    <include layout="@layout/include_toolbar"/>
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            style="@style/LayoutStyleRadius3"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/x25"
+            android:paddingRight="@dimen/x25">
+
+            <TextView
+                android:id="@+id/tv_tradingType"
+                android:layout_width="@dimen/x70"
+                android:layout_height="@dimen/x70"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_12"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_typeCN"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x25"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif"
+                android:textSize="@dimen/text_16"/>
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_75A540"
+                android:textSize="@dimen/text_16"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LayoutStyleRadius"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x15"
+            android:layout_marginTop="@dimen/y25"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_orderType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:paddingBottom="@dimen/x40"
+                android:paddingLeft="@dimen/x30"
+                android:paddingRight="@dimen/x30"
+                android:paddingTop="@dimen/x40"
+                android:text="交易方式"
+                android:textColor="@color/alpha_60_black"/>
+
+
+            <TextView
+                android:id="@+id/tv_status"
+                style="@style/ContentLayoutStyle"
+                android:fontFamily="sans-serif"
+                android:text="交易状态"
+                android:textColor="@color/alpha_60_black"/>
+
+
+            <TextView
+                android:id="@+id/tv_accountBalance"
+                style="@style/ContentLayoutStyle"
+                android:fontFamily="sans-serif"
+                android:text="本次余额"
+                android:textColor="@color/alpha_60_black"/>
+
+            <TextView
+                android:id="@+id/tv_type"
+                style="@style/ContentLayoutStyle"
+                android:fontFamily="sans-serif"
+                android:text="类型"
+                android:textColor="@color/alpha_60_black"/>
+
+            <TextView
+                android:id="@+id/tv_orderNum"
+                style="@style/ContentLayoutStyle"
+                android:fontFamily="sans-serif"
+                android:text="订单号"
+                android:textColor="@color/alpha_60_black"/>
+
+            <TextView
+                android:id="@+id/tv_createTime"
+                style="@style/ContentLayoutStyle"
+                android:fontFamily="sans-serif"
+                android:text="交易时间"
+                android:textColor="@color/alpha_60_black"/>
+
+            <TextView
+                android:id="@+id/tv_remark"
+                style="@style/ContentLayoutStyle"
+                android:fontFamily="sans-serif"
+                android:text="备注"
+                android:textColor="@color/alpha_60_black"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

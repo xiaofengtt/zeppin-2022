@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/incremental/mergeXiaomiDebugAndroidTestResources/merged.dir/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 45,
+                    "endOffset": 96
+                },
+                "from": {
+                    "file": "/Users/zeppin/.android/build-cache/0c49aec82f338bfbe8d74f59df9255e7f1fd2ac8/output/res/values/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 229,
+                        "endColumn": 45,
+                        "endOffset": 270
+                    }
+                }
+            }
+        ]
+    }
+]

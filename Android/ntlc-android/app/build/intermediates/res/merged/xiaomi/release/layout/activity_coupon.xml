@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_bg"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.user.activity.CouponActivity">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/coupon_tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x15"
+        android:layout_marginRight="@dimen/x15"
+        android:layout_marginTop="@dimen/y23"
+        android:background="@drawable/bg_empty_layout"
+        android:paddingBottom="@dimen/y40"
+        android:paddingTop="@dimen/y40"
+        app:tl_iconVisible="false"
+        app:tl_indicator_color="@color/color_0069E5"
+        app:tl_indicator_corner_radius="0dp"
+        app:tl_indicator_height="@dimen/y6"
+        app:tl_indicator_margin_bottom="@dimen/y5"
+        app:tl_indicator_width="@dimen/x85"
+        app:tl_tab_space_equal="true"
+        app:tl_textSelectColor="@color/color_0069E5"
+        app:tl_textUnselectColor="@color/alpha_50_black"
+        app:tl_textsize="@dimen/text_16"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/coupon_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/y25">
+
+    </android.support.v4.view.ViewPager>
+</LinearLayout>

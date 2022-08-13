@@ -1,0 +1,4 @@
+#Wed Sep 12 10:38:16 CST 2018
+base.0=E\:\\MyApplication\\app\\build\\intermediates\\transforms\\dexMerger\\vivo\\debug\\79
+path.0=classes.dex
+renamed.0=classes.dex

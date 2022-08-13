@@ -1,0 +1,795 @@
+-- Merging decision tree log ---
+meta-data#UMENG_CHANNEL
+INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:44:9-46:53
+	android:value
+		INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:46:13-51
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:45:13-41
+manifest
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:2:1-300:12
+INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:2:1-300:12
+INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:2:1-300:12
+INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:2:1-300:12
+MERGED from [:library] E:\svntest2\Android\ntlc-android\library\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-17:12
+MERGED from [com.android.support:multidex:1.0.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\multidex-1.0.2.aar\6eba07eaed86936dee4832590c2b2774\AndroidManifest.xml:17:1-22:12
+MERGED from [:lockpattern] E:\svntest2\Android\ntlc-android\lockpattern\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-17:12
+MERGED from [com.android.support:design:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\d6044a10ad4d7835e454e3dbc86d94fe\AndroidManifest.xml:17:1-31:12
+MERGED from [com.zhy:flowlayout-lib:1.0.3] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\flowlayout-lib-1.0.3.aar\3ad06b81709584fa1c2e04d52f6e7c77\AndroidManifest.xml:2:1-12:12
+MERGED from [com.lidong.pdf:android_pdf:1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\android_pdf-1.0.1.aar\fd3e9bedf720d6632c9d87325ca1013c\AndroidManifest.xml:2:1-17:12
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:2:1-46:12
+MERGED from [com.kyleduo.switchbutton:library:1.4.5] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.4.5.aar\bb6e89e09ad2ae060382c8441081b988\AndroidManifest.xml:2:1-12:12
+MERGED from [jameson.io.library:library:0.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-0.0.1.aar\bcf9540b9ac1d094f006a1f1dd877596\AndroidManifest.xml:2:1-21:12
+MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\39424c4026e03a486c68083900942f69\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\b6f33a3e9b9151a4ad9c1d4538e82918\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\2f8fbd68b668e0d4ee43d6bebd0b3b01\AndroidManifest.xml:17:1-28:12
+MERGED from [com.commit451:PhotoView:1.2.4] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\PhotoView-1.2.4.aar\9b363b1b606781335086da74df3ac186\AndroidManifest.xml:2:1-12:12
+MERGED from [com.android.support:transition:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\01d4d8070ba65038ef09d90ff80800d3\AndroidManifest.xml:17:1-28:12
+MERGED from [com.facebook.fresco:fresco:0.12.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\fresco-0.12.0.aar\3faa0226a6f411124062d4f1beecedbd\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:drawee:0.12.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\drawee-0.12.0.aar\6949a137b3cf3ba9848a0108c0d3b96f\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline:0.12.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\imagepipeline-0.12.0.aar\cc3c65551c14d29f89563c9942dec3cc\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-base:0.12.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\imagepipeline-base-0.12.0.aar\341f2760c5ee6ebb4b576f5fbd304c60\AndroidManifest.xml:2:1-9:12
+MERGED from [com.android.support:support-v4:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\dde9bf12e249a31124cacefa4e72332a\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\b5c79d604a4d70cb795d7337c8880dfe\AndroidManifest.xml:2:1-11:12
+MERGED from [com.gavin.com.library:stickyDecoration:1.1.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\stickyDecoration-1.1.2.aar\5a5441e316bd05a063dc0b9a9cad3b70\AndroidManifest.xml:2:1-17:12
+MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\646cb09598cc41a5753bb9a60ce382dd\AndroidManifest.xml:17:1-28:12
+MERGED from [com.soundcloud.android:android-crop:1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\android-crop-1.0.1.aar\530b0b0713d11316a0b3953a4657c901\AndroidManifest.xml:2:1-10:12
+MERGED from [top.zibin:Luban:1.0.9] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\Luban-1.0.9.aar\6015d4823bd8863b8d249a5d30c39bea\AndroidManifest.xml:2:1-11:12
+MERGED from [in.srain.cube:ultra-ptr:1.0.11] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\ultra-ptr-1.0.11.aar\37aa883ab2a20e12fa516b2f21b8dcb9\AndroidManifest.xml:2:1-13:12
+MERGED from [com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\FlycoTabLayout_Lib-2.1.2.aar\89b20d01253ccf66b530149a6df3462b\AndroidManifest.xml:2:1-12:12
+MERGED from [io.realm:realm-android-library:3.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\realm-android-library-3.0.0.aar\c02a3f7b52ae28fc9b34042c458c2819\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\260aa8fca9ed2791b686757dc509df83\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\1f538d3a58d094f6e0367e2230134fb0\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\95056f6795a3fd4595760bb22d507c67\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\0224c5f91254ebb26c3dbe1760cc6afb\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\aed691091b65460335ec3de20a3ca4d2\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\05b6492f0f7ef8250d114530be23bbe8\AndroidManifest.xml:17:1-31:12
+MERGED from [io.reactivex:rxandroid:1.2.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\rxandroid-1.2.1.aar\00daf7b4fa3df9cf54892583ac5ecefc\AndroidManifest.xml:15:1-21:12
+MERGED from [com.orhanobut:logger:1.13] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\logger-1.13.aar\739f96a644e6a76cb82139a24a49562c\AndroidManifest.xml:2:1-8:12
+MERGED from [com.youth.banner:banner:1.4.9] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\banner-1.4.9.aar\25633ce08545e180bfa26d58064138c8\AndroidManifest.xml:2:1-11:12
+MERGED from [cn.bingoogolapple:bga-refreshlayout:1.1.7] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\bga-refreshlayout-1.1.7.aar\d6e34752fb3bec5a0a9b342faca77c91\AndroidManifest.xml:2:1-10:12
+MERGED from [com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.9] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\BaseRecyclerViewAdapterHelper-2.9.9.aar\01bc0ac1b20df8ab5fc241087d7d9d76\AndroidManifest.xml:2:1-11:12
+MERGED from [com.facebook.fresco:fbcore:0.12.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\fbcore-0.12.0.aar\10706d6a4803c842203780da55072c1f\AndroidManifest.xml:2:1-9:12
+MERGED from [com.getkeepsafe.relinker:relinker:1.2.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\relinker-1.2.2.aar\eb65327ec3bf8a725a979fb8ef7ba78f\AndroidManifest.xml:2:1-9:12
+INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:2:1-300:12
+INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:2:1-300:12
+INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:2:1-300:12
+	package
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:4:11-42
+		INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+		INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:2:1-300:12
+		INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:3:11-57
+	android:versionCode
+		INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:2:1-300:12
+		INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.MANAGE_DOCUMENTS
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:6:5-74
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:6:22-72
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:8:5-78
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:8:22-76
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:9:5-75
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:9:22-73
+uses-permission#android.permission.READ_LOGS
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:12:5-67
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:12:22-65
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:13:5-80
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:13:22-78
+uses-permission#android.permission.SET_DEBUG_APP
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:14:5-71
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:14:22-69
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:15:5-70
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:15:22-68
+uses-permission#android.permission.USE_CREDENTIALS
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:16:5-73
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:16:22-71
+uses-permission#android.permission.MANAGE_ACCOUNTS
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:17:5-73
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:17:22-71
+uses-permission#android.permission.INTERNET
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:18:5-66
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:11:5-67
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:11:5-67
+MERGED from [jameson.io.library:library:0.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-0.0.1.aar\bcf9540b9ac1d094f006a1f1dd877596\AndroidManifest.xml:11:5-67
+MERGED from [jameson.io.library:library:0.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-0.0.1.aar\bcf9540b9ac1d094f006a1f1dd877596\AndroidManifest.xml:11:5-67
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:18:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:19:5-78
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:19:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:20:5-75
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:20:22-73
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:21:5-78
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:21:22-76
+uses-permission#android.permission.CALL_PHONE
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:22:5-68
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:22:22-66
+uses-permission#andorid.permission.CHANGE_CONFIGURATION
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:23:5-78
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:23:22-76
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:24:5-79
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:13:5-80
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:13:5-80
+MERGED from [jameson.io.library:library:0.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-0.0.1.aar\bcf9540b9ac1d094f006a1f1dd877596\AndroidManifest.xml:12:5-80
+MERGED from [jameson.io.library:library:0.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-0.0.1.aar\bcf9540b9ac1d094f006a1f1dd877596\AndroidManifest.xml:12:5-80
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:24:22-77
+uses-permission#android.permission.WAKE_LOCK
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:25:5-67
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:25:22-65
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:26:5-80
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:12:5-81
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:12:5-81
+MERGED from [jameson.io.library:library:0.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-0.0.1.aar\bcf9540b9ac1d094f006a1f1dd877596\AndroidManifest.xml:13:5-81
+MERGED from [jameson.io.library:library:0.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-0.0.1.aar\bcf9540b9ac1d094f006a1f1dd877596\AndroidManifest.xml:13:5-81
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:26:22-78
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:27:5-83
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:27:22-81
+application
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:30:5-298:19
+MERGED from [:library] E:\svntest2\Android\ntlc-android\library\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-15:19
+MERGED from [:library] E:\svntest2\Android\ntlc-android\library\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-15:19
+MERGED from [:lockpattern] E:\svntest2\Android\ntlc-android\lockpattern\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-15:19
+MERGED from [:lockpattern] E:\svntest2\Android\ntlc-android\lockpattern\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-15:19
+MERGED from [com.android.support:design:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\d6044a10ad4d7835e454e3dbc86d94fe\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:design:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\d6044a10ad4d7835e454e3dbc86d94fe\AndroidManifest.xml:25:5-29:19
+MERGED from [com.lidong.pdf:android_pdf:1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\android_pdf-1.0.1.aar\fd3e9bedf720d6632c9d87325ca1013c\AndroidManifest.xml:11:5-15:19
+MERGED from [com.lidong.pdf:android_pdf:1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\android_pdf-1.0.1.aar\fd3e9bedf720d6632c9d87325ca1013c\AndroidManifest.xml:11:5-15:19
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:17:5-44:19
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:17:5-44:19
+MERGED from [jameson.io.library:library:0.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-0.0.1.aar\bcf9540b9ac1d094f006a1f1dd877596\AndroidManifest.xml:15:5-19:19
+MERGED from [jameson.io.library:library:0.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-0.0.1.aar\bcf9540b9ac1d094f006a1f1dd877596\AndroidManifest.xml:15:5-19:19
+MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\39424c4026e03a486c68083900942f69\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\39424c4026e03a486c68083900942f69\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\b6f33a3e9b9151a4ad9c1d4538e82918\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\b6f33a3e9b9151a4ad9c1d4538e82918\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\2f8fbd68b668e0d4ee43d6bebd0b3b01\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\2f8fbd68b668e0d4ee43d6bebd0b3b01\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\01d4d8070ba65038ef09d90ff80800d3\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\01d4d8070ba65038ef09d90ff80800d3\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\dde9bf12e249a31124cacefa4e72332a\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\dde9bf12e249a31124cacefa4e72332a\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\b5c79d604a4d70cb795d7337c8880dfe\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\b5c79d604a4d70cb795d7337c8880dfe\AndroidManifest.xml:9:5-20
+MERGED from [com.gavin.com.library:stickyDecoration:1.1.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\stickyDecoration-1.1.2.aar\5a5441e316bd05a063dc0b9a9cad3b70\AndroidManifest.xml:11:5-15:19
+MERGED from [com.gavin.com.library:stickyDecoration:1.1.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\stickyDecoration-1.1.2.aar\5a5441e316bd05a063dc0b9a9cad3b70\AndroidManifest.xml:11:5-15:19
+MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\646cb09598cc41a5753bb9a60ce382dd\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\646cb09598cc41a5753bb9a60ce382dd\AndroidManifest.xml:22:5-26:19
+MERGED from [in.srain.cube:ultra-ptr:1.0.11] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\ultra-ptr-1.0.11.aar\37aa883ab2a20e12fa516b2f21b8dcb9\AndroidManifest.xml:11:5-20
+MERGED from [in.srain.cube:ultra-ptr:1.0.11] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\ultra-ptr-1.0.11.aar\37aa883ab2a20e12fa516b2f21b8dcb9\AndroidManifest.xml:11:5-20
+MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\260aa8fca9ed2791b686757dc509df83\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\260aa8fca9ed2791b686757dc509df83\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\1f538d3a58d094f6e0367e2230134fb0\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\1f538d3a58d094f6e0367e2230134fb0\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\95056f6795a3fd4595760bb22d507c67\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\95056f6795a3fd4595760bb22d507c67\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\0224c5f91254ebb26c3dbe1760cc6afb\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\0224c5f91254ebb26c3dbe1760cc6afb\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\aed691091b65460335ec3de20a3ca4d2\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\aed691091b65460335ec3de20a3ca4d2\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\05b6492f0f7ef8250d114530be23bbe8\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\05b6492f0f7ef8250d114530be23bbe8\AndroidManifest.xml:25:5-29:19
+	android:screenOrientation
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:35:9-45
+	android:supportsRtl
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:36:9-35
+	android:label
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:34:9-41
+		REJECTED from [:library] E:\svntest2\Android\ntlc-android\library\build\intermediates\manifests\full\debug\AndroidManifest.xml:13:9-41
+		REJECTED from [:lockpattern] E:\svntest2\Android\ntlc-android\lockpattern\build\intermediates\manifests\full\debug\AndroidManifest.xml:13:9-41
+		REJECTED from [com.lidong.pdf:android_pdf:1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\android_pdf-1.0.1.aar\fd3e9bedf720d6632c9d87325ca1013c\AndroidManifest.xml:13:9-41
+		REJECTED from [jameson.io.library:library:0.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-0.0.1.aar\bcf9540b9ac1d094f006a1f1dd877596\AndroidManifest.xml:17:9-41
+		REJECTED from [com.gavin.com.library:stickyDecoration:1.1.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\stickyDecoration-1.1.2.aar\5a5441e316bd05a063dc0b9a9cad3b70\AndroidManifest.xml:13:9-41
+	android:icon
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:33:9-43
+	android:allowBackup
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:32:9-35
+		REJECTED from [:library] E:\svntest2\Android\ntlc-android\library\build\intermediates\manifests\full\debug\AndroidManifest.xml:12:9-35
+		REJECTED from [:lockpattern] E:\svntest2\Android\ntlc-android\lockpattern\build\intermediates\manifests\full\debug\AndroidManifest.xml:12:9-35
+		REJECTED from [com.lidong.pdf:android_pdf:1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\android_pdf-1.0.1.aar\fd3e9bedf720d6632c9d87325ca1013c\AndroidManifest.xml:12:9-35
+		REJECTED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:18:9-35
+		REJECTED from [jameson.io.library:library:0.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-0.0.1.aar\bcf9540b9ac1d094f006a1f1dd877596\AndroidManifest.xml:16:9-35
+		REJECTED from [com.gavin.com.library:stickyDecoration:1.1.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\stickyDecoration-1.1.2.aar\5a5441e316bd05a063dc0b9a9cad3b70\AndroidManifest.xml:12:9-35
+	android:theme
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:37:9-40
+	tools:replace
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:38:9-98
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:31:9-43
+meta-data#UMENG_APPKEY
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:41:9-43:55
+	android:value
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:43:13-53
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:42:13-40
+activity#cn.zeppin.product.ntb.ui.main.activity.SplashActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:48:9-57:20
+	android:configChanges
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:50:13-74
+	android:theme
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:51:13-46
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:49:13-60
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:52:13-56:29
+action#android.intent.action.MAIN
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:53:17-68
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:53:25-66
+category#android.intent.category.LAUNCHER
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:55:17-76
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:55:27-74
+activity#cn.zeppin.product.ntb.ui.main.activity.MainActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:58:9-61:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:60:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:59:13-58
+activity#cn.zeppin.product.ntb.ui.bank.activity.BankDetailActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:62:9-65:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:64:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:63:13-64
+activity#cn.zeppin.product.ntb.ui.bank.activity.BankDetailAllActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:66:9-69:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:68:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:67:13-67
+activity#cn.zeppin.product.ntb.ui.bank.activity.ProductBuyActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:70:9-73:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:72:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:71:13-64
+activity#cn.zeppin.product.ntb.ui.bank.activity.SearchActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:74:9-77:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:76:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:75:13-60
+activity#cn.zeppin.product.ntb.ui.user.activity.LoginActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:78:9-82:20
+	android:windowSoftInputMode
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:81:13-73
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:80:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:79:13-59
+activity#cn.zeppin.product.ntb.ui.user.activity.RegisterActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:83:9-86:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:85:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:84:13-62
+activity#cn.zeppin.product.ntb.ui.user.activity.ResetPwdActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:87:9-90:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:89:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:88:13-62
+activity#cn.zeppin.product.ntb.ui.user.activity.CertificationActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:91:9-94:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:93:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:92:13-67
+activity#cn.zeppin.product.ntb.ui.user.activity.CertificationNoActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:95:9-98:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:97:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:96:13-69
+activity#cn.zeppin.product.ntb.ui.user.activity.CertificationYesActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:99:9-102:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:101:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:100:13-70
+activity#cn.zeppin.product.ntb.ui.user.activity.MyBankListActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:103:9-106:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:105:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:104:13-64
+activity#cn.zeppin.product.ntb.ui.user.activity.AddBankActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:107:9-110:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:109:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:108:13-61
+activity#cn.zeppin.product.ntb.ui.user.activity.MyBankDetailActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:111:9-114:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:113:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:112:13-66
+activity#cn.zeppin.product.ntb.permission.HelpActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:115:9-117:39
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:117:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:116:13-52
+activity#cn.zeppin.product.ntb.ui.user.activity.BankActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:118:9-121:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:120:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:119:13-58
+activity#cn.zeppin.product.ntb.ui.user.activity.TradingRecordActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:122:9-125:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:124:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:123:13-67
+activity#cn.zeppin.product.ntb.ui.finance.activity.RechargeActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:126:9-131:20
+	android:launchMode
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:129:13-44
+	android:windowSoftInputMode
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:130:13-73
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:128:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:127:13-65
+activity#cn.zeppin.product.ntb.ui.bank.activity.PaySuccessActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:132:9-135:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:134:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:133:13-64
+activity#cn.zeppin.product.ntb.ui.finance.activity.FinanceDetailActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:136:9-139:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:138:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:137:13-70
+activity#cn.zeppin.product.ntb.ui.main.activity.WebActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:140:9-143:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:142:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:141:13-57
+activity#cn.zeppin.product.ntb.ui.finance.activity.WithdrawalActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:144:9-148:20
+	android:windowSoftInputMode
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:147:13-73
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:146:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:145:13-67
+activity#cn.zeppin.product.ntb.ui.finance.activity.RechargeSuccessActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:149:9-152:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:151:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:150:13-72
+activity#cn.zeppin.product.ntb.ui.finance.activity.WithdrawalApplyActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:153:9-156:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:155:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:154:13-72
+activity#cn.zeppin.product.ntb.ui.user.activity.TradingRecordDetailActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:157:9-160:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:159:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:158:13-73
+activity#cn.zeppin.product.ntb.ui.main.activity.PdfViewActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:161:9-164:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:163:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:162:13-61
+activity#cn.zeppin.product.ntb.ui.user.activity.AboutActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:165:9-168:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:167:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:166:13-59
+activity#cn.zeppin.product.ntb.ui.user.activity.ForgotPasswordActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:169:9-172:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:171:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:170:13-68
+activity#cn.zeppin.product.ntb.pay.AlipayActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:173:9-176:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:175:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:174:13-47
+activity#cn.zeppin.product.ntb.ui.finance.activity.Recharge2Activity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:177:9-180:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:179:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:178:13-66
+activity#cn.zeppin.product.ntb.ui.user.activity.AlipayBindActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:181:9-184:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:183:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:182:13-64
+activity#cn.zeppin.product.ntb.ui.user.activity.CustomVersionDialogActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:185:9-189:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:187:13-37
+	android:theme
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:188:13-68
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:186:13-73
+activity#cn.zeppin.product.ntb.wxapi.WXEntryActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:195:9-200:74
+	android:screenOrientation
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:199:13-49
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:198:13-36
+	android:configChanges
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:197:13-74
+	android:theme
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:200:13-72
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:196:13-50
+activity#com.umeng.qq.tencent.AuthActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:203:9-215:20
+	android:launchMode
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:205:13-44
+	android:noHistory
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:206:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:204:13-61
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:tencent1104620628
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:207:13-214:29
+action#android.intent.action.VIEW
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:208:17-68
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:208:25-66
+category#android.intent.category.DEFAULT
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:210:17-75
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:210:27-73
+category#android.intent.category.BROWSABLE
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:211:17-77
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:211:27-75
+data
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:213:17-59
+	android:scheme
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:213:23-57
+activity#com.umeng.qq.tencent.AssistActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:216:9-220:74
+	android:screenOrientation
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:219:13-49
+	android:configChanges
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:218:13-74
+	android:theme
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:220:13-72
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:217:13-63
+activity#com.umeng.socialize.editorpage.ShareActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:223:9-225:48
+	android:excludeFromRecents
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:225:13-46
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:224:13-72
+activity#cn.zeppin.product.ntb.WBShareActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:226:9-235:20
+	android:screenOrientation
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:229:13-49
+	android:configChanges
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:228:13-63
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:227:13-44
+intent-filter#action:name:com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY+category:name:android.intent.category.DEFAULT
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:230:13-234:29
+action#com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:231:17-91
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:231:25-89
+activity#cn.zeppin.product.ntb.ui.user.activity.CouponActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:236:9-239:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:238:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:237:13-60
+activity#cn.zeppin.product.ntb.ui.user.activity.MessageActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:240:9-243:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:242:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:241:13-61
+activity#cn.zeppin.product.ntb.ui.main.activity.JumpActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:244:9-248:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:246:13-37
+	android:theme
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:247:13-68
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:245:13-58
+activity#cn.zeppin.product.ntb.ui.user.activity.SetPwdActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:249:9-252:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:251:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:250:13-60
+activity#cn.zeppin.product.ntb.ui.user.activity.EditPwdActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:253:9-256:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:255:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:254:13-61
+activity#cn.zeppin.product.ntb.ui.main.activity.GiftActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:257:9-261:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:259:13-37
+	android:theme
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:260:13-68
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:258:13-58
+activity#cn.zeppin.product.ntb.ui.user.activity.SafeActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:262:9-265:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:264:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:263:13-58
+activity#cn.zeppin.product.ntb.ui.user.activity.CreateGestureActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:266:9-270:20
+	android:launchMode
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:268:13-43
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:269:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:267:13-67
+activity#cn.zeppin.product.ntb.ui.user.activity.GestureLoginActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:271:9-274:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:273:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:272:13-66
+activity#cn.zeppin.product.ntb.ui.user.activity.SetGestureActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:275:9-278:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:277:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:276:13-64
+activity#cn.zeppin.product.ntb.ui.main.activity.AdvertisementActivity
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:279:9-283:20
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:281:13-37
+	android:theme
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:282:13-46
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:280:13-67
+service#cn.zeppin.product.ntb.service.ApkDownloadService
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:285:9-288:38
+	android:enabled
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:287:13-35
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:288:13-36
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:286:13-55
+service#cn.zeppin.product.ntb.service.AlarmService
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:289:9-293:19
+	android:enabled
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:291:13-35
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:292:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:290:13-49
+receiver#cn.zeppin.product.ntb.receiver.AlarmReceiver
+ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:295:9-297:49
+	android:exported
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:297:13-37
+	android:name
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml:296:13-51
+uses-sdk
+INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+MERGED from [:library] E:\svntest2\Android\ntlc-android\library\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:library] E:\svntest2\Android\ntlc-android\library\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:multidex:1.0.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\multidex-1.0.2.aar\6eba07eaed86936dee4832590c2b2774\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:multidex:1.0.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\multidex-1.0.2.aar\6eba07eaed86936dee4832590c2b2774\AndroidManifest.xml:20:5-43
+MERGED from [:lockpattern] E:\svntest2\Android\ntlc-android\lockpattern\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:lockpattern] E:\svntest2\Android\ntlc-android\lockpattern\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\d6044a10ad4d7835e454e3dbc86d94fe\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:design:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\d6044a10ad4d7835e454e3dbc86d94fe\AndroidManifest.xml:21:5-23:62
+MERGED from [com.zhy:flowlayout-lib:1.0.3] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\flowlayout-lib-1.0.3.aar\3ad06b81709584fa1c2e04d52f6e7c77\AndroidManifest.xml:8:5-10:41
+MERGED from [com.zhy:flowlayout-lib:1.0.3] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\flowlayout-lib-1.0.3.aar\3ad06b81709584fa1c2e04d52f6e7c77\AndroidManifest.xml:8:5-10:41
+MERGED from [com.lidong.pdf:android_pdf:1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\android_pdf-1.0.1.aar\fd3e9bedf720d6632c9d87325ca1013c\AndroidManifest.xml:7:5-9:41
+MERGED from [com.lidong.pdf:android_pdf:1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\android_pdf-1.0.1.aar\fd3e9bedf720d6632c9d87325ca1013c\AndroidManifest.xml:7:5-9:41
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:7:5-9:41
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:7:5-9:41
+MERGED from [com.kyleduo.switchbutton:library:1.4.5] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.4.5.aar\bb6e89e09ad2ae060382c8441081b988\AndroidManifest.xml:8:5-10:41
+MERGED from [com.kyleduo.switchbutton:library:1.4.5] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.4.5.aar\bb6e89e09ad2ae060382c8441081b988\AndroidManifest.xml:8:5-10:41
+MERGED from [jameson.io.library:library:0.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-0.0.1.aar\bcf9540b9ac1d094f006a1f1dd877596\AndroidManifest.xml:7:5-9:41
+MERGED from [jameson.io.library:library:0.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-0.0.1.aar\bcf9540b9ac1d094f006a1f1dd877596\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\39424c4026e03a486c68083900942f69\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\39424c4026e03a486c68083900942f69\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\b6f33a3e9b9151a4ad9c1d4538e82918\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\b6f33a3e9b9151a4ad9c1d4538e82918\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\2f8fbd68b668e0d4ee43d6bebd0b3b01\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\2f8fbd68b668e0d4ee43d6bebd0b3b01\AndroidManifest.xml:20:5-43
+MERGED from [com.commit451:PhotoView:1.2.4] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\PhotoView-1.2.4.aar\9b363b1b606781335086da74df3ac186\AndroidManifest.xml:8:5-10:41
+MERGED from [com.commit451:PhotoView:1.2.4] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\PhotoView-1.2.4.aar\9b363b1b606781335086da74df3ac186\AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.support:transition:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\01d4d8070ba65038ef09d90ff80800d3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\01d4d8070ba65038ef09d90ff80800d3\AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.fresco:fresco:0.12.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\fresco-0.12.0.aar\3faa0226a6f411124062d4f1beecedbd\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:0.12.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\fresco-0.12.0.aar\3faa0226a6f411124062d4f1beecedbd\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:0.12.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\drawee-0.12.0.aar\6949a137b3cf3ba9848a0108c0d3b96f\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:0.12.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\drawee-0.12.0.aar\6949a137b3cf3ba9848a0108c0d3b96f\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:0.12.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\imagepipeline-0.12.0.aar\cc3c65551c14d29f89563c9942dec3cc\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:0.12.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\imagepipeline-0.12.0.aar\cc3c65551c14d29f89563c9942dec3cc\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:0.12.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\imagepipeline-base-0.12.0.aar\341f2760c5ee6ebb4b576f5fbd304c60\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:0.12.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\imagepipeline-base-0.12.0.aar\341f2760c5ee6ebb4b576f5fbd304c60\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-v4:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\dde9bf12e249a31124cacefa4e72332a\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\dde9bf12e249a31124cacefa4e72332a\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\b5c79d604a4d70cb795d7337c8880dfe\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\b5c79d604a4d70cb795d7337c8880dfe\AndroidManifest.xml:5:5-7:41
+MERGED from [com.gavin.com.library:stickyDecoration:1.1.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\stickyDecoration-1.1.2.aar\5a5441e316bd05a063dc0b9a9cad3b70\AndroidManifest.xml:7:5-9:41
+MERGED from [com.gavin.com.library:stickyDecoration:1.1.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\stickyDecoration-1.1.2.aar\5a5441e316bd05a063dc0b9a9cad3b70\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\646cb09598cc41a5753bb9a60ce382dd\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\646cb09598cc41a5753bb9a60ce382dd\AndroidManifest.xml:20:5-43
+MERGED from [com.soundcloud.android:android-crop:1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\android-crop-1.0.1.aar\530b0b0713d11316a0b3953a4657c901\AndroidManifest.xml:6:5-8:41
+MERGED from [com.soundcloud.android:android-crop:1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\android-crop-1.0.1.aar\530b0b0713d11316a0b3953a4657c901\AndroidManifest.xml:6:5-8:41
+MERGED from [top.zibin:Luban:1.0.9] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\Luban-1.0.9.aar\6015d4823bd8863b8d249a5d30c39bea\AndroidManifest.xml:7:5-9:41
+MERGED from [top.zibin:Luban:1.0.9] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\Luban-1.0.9.aar\6015d4823bd8863b8d249a5d30c39bea\AndroidManifest.xml:7:5-9:41
+MERGED from [in.srain.cube:ultra-ptr:1.0.11] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\ultra-ptr-1.0.11.aar\37aa883ab2a20e12fa516b2f21b8dcb9\AndroidManifest.xml:7:5-9:41
+MERGED from [in.srain.cube:ultra-ptr:1.0.11] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\ultra-ptr-1.0.11.aar\37aa883ab2a20e12fa516b2f21b8dcb9\AndroidManifest.xml:7:5-9:41
+MERGED from [com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\FlycoTabLayout_Lib-2.1.2.aar\89b20d01253ccf66b530149a6df3462b\AndroidManifest.xml:8:5-10:41
+MERGED from [com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\FlycoTabLayout_Lib-2.1.2.aar\89b20d01253ccf66b530149a6df3462b\AndroidManifest.xml:8:5-10:41
+MERGED from [io.realm:realm-android-library:3.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\realm-android-library-3.0.0.aar\c02a3f7b52ae28fc9b34042c458c2819\AndroidManifest.xml:7:5-9:41
+MERGED from [io.realm:realm-android-library:3.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\realm-android-library-3.0.0.aar\c02a3f7b52ae28fc9b34042c458c2819\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\260aa8fca9ed2791b686757dc509df83\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\260aa8fca9ed2791b686757dc509df83\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\1f538d3a58d094f6e0367e2230134fb0\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\1f538d3a58d094f6e0367e2230134fb0\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\95056f6795a3fd4595760bb22d507c67\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\95056f6795a3fd4595760bb22d507c67\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\0224c5f91254ebb26c3dbe1760cc6afb\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\0224c5f91254ebb26c3dbe1760cc6afb\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\aed691091b65460335ec3de20a3ca4d2\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\aed691091b65460335ec3de20a3ca4d2\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\05b6492f0f7ef8250d114530be23bbe8\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\05b6492f0f7ef8250d114530be23bbe8\AndroidManifest.xml:21:5-23:58
+MERGED from [io.reactivex:rxandroid:1.2.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\rxandroid-1.2.1.aar\00daf7b4fa3df9cf54892583ac5ecefc\AndroidManifest.xml:19:5-43
+MERGED from [io.reactivex:rxandroid:1.2.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\rxandroid-1.2.1.aar\00daf7b4fa3df9cf54892583ac5ecefc\AndroidManifest.xml:19:5-43
+MERGED from [com.orhanobut:logger:1.13] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\logger-1.13.aar\739f96a644e6a76cb82139a24a49562c\AndroidManifest.xml:6:5-43
+MERGED from [com.orhanobut:logger:1.13] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\logger-1.13.aar\739f96a644e6a76cb82139a24a49562c\AndroidManifest.xml:6:5-43
+MERGED from [com.youth.banner:banner:1.4.9] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\banner-1.4.9.aar\25633ce08545e180bfa26d58064138c8\AndroidManifest.xml:7:5-9:41
+MERGED from [com.youth.banner:banner:1.4.9] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\banner-1.4.9.aar\25633ce08545e180bfa26d58064138c8\AndroidManifest.xml:7:5-9:41
+MERGED from [cn.bingoogolapple:bga-refreshlayout:1.1.7] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\bga-refreshlayout-1.1.7.aar\d6e34752fb3bec5a0a9b342faca77c91\AndroidManifest.xml:6:5-8:41
+MERGED from [cn.bingoogolapple:bga-refreshlayout:1.1.7] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\bga-refreshlayout-1.1.7.aar\d6e34752fb3bec5a0a9b342faca77c91\AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.9] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\BaseRecyclerViewAdapterHelper-2.9.9.aar\01bc0ac1b20df8ab5fc241087d7d9d76\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.9] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\BaseRecyclerViewAdapterHelper-2.9.9.aar\01bc0ac1b20df8ab5fc241087d7d9d76\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.fresco:fbcore:0.12.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\fbcore-0.12.0.aar\10706d6a4803c842203780da55072c1f\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:0.12.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\fbcore-0.12.0.aar\10706d6a4803c842203780da55072c1f\AndroidManifest.xml:5:5-7:41
+MERGED from [com.getkeepsafe.relinker:relinker:1.2.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\relinker-1.2.2.aar\eb65327ec3bf8a725a979fb8ef7ba78f\AndroidManifest.xml:7:5-43
+MERGED from [com.getkeepsafe.relinker:relinker:1.2.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\relinker-1.2.2.aar\eb65327ec3bf8a725a979fb8ef7ba78f\AndroidManifest.xml:7:5-43
+INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\d6044a10ad4d7835e454e3dbc86d94fe\AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+		INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+		ADDED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+		INJECTED from E:\svntest2\Android\ntlc-android\app\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\d6044a10ad4d7835e454e3dbc86d94fe\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\39424c4026e03a486c68083900942f69\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.4.0.aar\39424c4026e03a486c68083900942f69\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\b6f33a3e9b9151a4ad9c1d4538e82918\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.4.0.aar\b6f33a3e9b9151a4ad9c1d4538e82918\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\2f8fbd68b668e0d4ee43d6bebd0b3b01\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.4.0.aar\2f8fbd68b668e0d4ee43d6bebd0b3b01\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\01d4d8070ba65038ef09d90ff80800d3\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\transition-25.4.0.aar\01d4d8070ba65038ef09d90ff80800d3\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-v4:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\dde9bf12e249a31124cacefa4e72332a\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-v4:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-25.4.0.aar\dde9bf12e249a31124cacefa4e72332a\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\646cb09598cc41a5753bb9a60ce382dd\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.4.0.aar\646cb09598cc41a5753bb9a60ce382dd\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\260aa8fca9ed2791b686757dc509df83\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:cardview-v7:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\cardview-v7-25.4.0.aar\260aa8fca9ed2791b686757dc509df83\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\1f538d3a58d094f6e0367e2230134fb0\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-25.4.0.aar\1f538d3a58d094f6e0367e2230134fb0\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\95056f6795a3fd4595760bb22d507c67\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.4.0.aar\95056f6795a3fd4595760bb22d507c67\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\0224c5f91254ebb26c3dbe1760cc6afb\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.4.0.aar\0224c5f91254ebb26c3dbe1760cc6afb\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\aed691091b65460335ec3de20a3ca4d2\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.4.0.aar\aed691091b65460335ec3de20a3ca4d2\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\05b6492f0f7ef8250d114530be23bbe8\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-25.4.0.aar\05b6492f0f7ef8250d114530be23bbe8\AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:design:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\d6044a10ad4d7835e454e3dbc86d94fe\AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:design:25.4.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-25.4.0.aar\d6044a10ad4d7835e454e3dbc86d94fe\AndroidManifest.xml:27:13-51
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:14:5-75
+	android:name
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:14:22-72
+uses-permission#android.permission.VIBRATE
+ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:15:5-66
+	android:name
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:15:22-63
+activity#com.allenliu.versionchecklib.core.VersionDialogActivity
+ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:20:9-23:71
+	android:launchMode
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:22:13-44
+	android:theme
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:23:13-68
+	android:name
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:21:13-83
+provider#com.allenliu.versionchecklib.core.VersionFileProvider
+ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:25:9-33:20
+	android:grantUriPermissions
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:29:13-47
+	android:authorities
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:27:13-67
+	android:exported
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:28:13-37
+	android:name
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:26:13-81
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:30:13-32:70
+	android:resource
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:32:17-67
+	android:name
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:31:17-67
+activity#com.allenliu.versionchecklib.core.PermissionDialogActivity
+ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:35:9-38:71
+	android:launchMode
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:37:13-44
+	android:theme
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:38:13-68
+	android:name
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:36:13-86
+service#com.allenliu.versionchecklib.core.MyService
+ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:40:9-43:39
+	android:enabled
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:42:13-35
+	android:exported
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:43:13-36
+	android:name
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\library-1.8.2.aar\9df189f54c6e2d7adf9127ecc23ce007\AndroidManifest.xml:41:13-71

@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.zeppin.product.ntb"
+    android:versionCode="7"
+    android:versionName="2.1.5_test_debug" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="28" />
+
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
+    <!-- <uses-permission android:name="android.permission.READ_PHONE_STATE"/> -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <!-- QQ,微信,微信朋友圈,新浪微博分享需要用到的权限 -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="andorid.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 写入SD卡权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 在SD卡中创建和删除文件的权限 -->
+    <application
+        android:name="cn.zeppin.product.ntb.app.AppApplication"
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+
+        <!-- 友盟统计 -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5a128a9ab27b0a5c5100008b" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="anzhi" />
+
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.main.activity.SplashActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/StartTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.main.activity.MainActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.bank.activity.BankDetailActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.bank.activity.BankDetailAllActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.bank.activity.ProductBuyActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.bank.activity.SearchActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.RegisterActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.ResetPwdActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.CertificationActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.CertificationNoActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.CertificationYesActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.MyBankListActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.AddBankActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.MyBankDetailActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.permission.HelpActivity"
+            android:exported="false" />
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.BankActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.TradingRecordActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.finance.activity.RechargeActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.bank.activity.PaySuccessActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.finance.activity.FinanceDetailActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.main.activity.WebActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.finance.activity.WithdrawalActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.finance.activity.RechargeSuccessActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.finance.activity.WithdrawalApplyActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.TradingRecordDetailActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.main.activity.PdfViewActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.AboutActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.ForgotPasswordActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.pay.AlipayActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.finance.activity.Recharge2Activity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.AlipayBindActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.CustomVersionDialogActivity"
+            android:exported="false"
+            android:theme="@style/versionCheckLibvtransparentTheme" >
+        </activity>
+
+        <!-- 友盟 -->
+
+
+        <!-- 微信分享类 -->
+        <activity
+            android:name="cn.zeppin.product.ntb.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- qq： -->
+        <activity
+            android:name="com.umeng.qq.tencent.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1104620628" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.umeng.qq.tencent.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- 分享编辑页：android:theme="@style/Theme.UMDefault" -->
+        <activity
+            android:name="com.umeng.socialize.editorpage.ShareActivity"
+            android:excludeFromRecents="true" />
+        <activity
+            android:name="cn.zeppin.product.ntb.WBShareActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.CouponActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.MessageActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.main.activity.JumpActivity"
+            android:exported="false"
+            android:theme="@style/versionCheckLibvtransparentTheme" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.SetPwdActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.EditPwdActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.main.activity.GiftActivity"
+            android:exported="false"
+            android:theme="@style/versionCheckLibvtransparentTheme" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.SafeActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.CreateGestureActivity"
+            android:exported="false"
+            android:launchMode="singleTop" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.GestureLoginActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.user.activity.SetGestureActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name="cn.zeppin.product.ntb.ui.main.activity.AdvertisementActivity"
+            android:exported="false"
+            android:theme="@style/StartTheme" >
+        </activity>
+
+        <service
+            android:name="cn.zeppin.product.ntb.service.ApkDownloadService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="cn.zeppin.product.ntb.service.AlarmService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+
+        <receiver
+            android:name="cn.zeppin.product.ntb.receiver.AlarmReceiver"
+            android:exported="false" />
+
+        <meta-data
+            android:name="android.support.VERSION"
+            android:value="25.4.0" />
+
+        <activity
+            android:name="com.allenliu.versionchecklib.core.VersionDialogActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/versionCheckLibvtransparentTheme" />
+
+        <provider
+            android:name="com.allenliu.versionchecklib.core.VersionFileProvider"
+            android:authorities="cn.zeppin.product.ntb.versionProvider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/versionchecklib_file_paths" />
+        </provider>
+
+        <activity
+            android:name="com.allenliu.versionchecklib.core.PermissionDialogActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/versionCheckLibvtransparentTheme" />
+
+        <service
+            android:name="com.allenliu.versionchecklib.core.MyService"
+            android:enabled="true"
+            android:exported="true" />
+    </application>
+
+</manifest>

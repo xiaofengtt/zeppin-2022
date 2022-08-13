@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_bg"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.user.activity.MyBankDetailActivity">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x15"
+            android:background="@drawable/bg_white_radius">
+
+            <include layout="@layout/item_bank_card"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x15"
+            android:layout_marginTop="@dimen/y30"
+            android:background="@drawable/bg_white_radius"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/x60">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/y40"
+                android:text="银行支付限额"
+                android:textColor="@color/alpha_70_black"
+                android:textSize="@dimen/text_18"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x30"
+                android:layout_marginBottom="@dimen/x30">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icon_limit_single"
+                    android:drawablePadding="@dimen/x20"
+                    android:text="单笔限额"
+                    android:textColor="@color/alpha_70_black"
+                    android:textSize="@dimen/text_16"/>
+
+                <TextView
+                    android:id="@+id/tv_singleLimit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:fontFamily="sans-serif"
+                    android:text="0000"
+                    android:textColor="@color/alpha_80_black"
+                    android:textSize="@dimen/text_16"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x30"
+                android:layout_marginBottom="@dimen/x30">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icon_limit_daily"
+                    android:drawablePadding="@dimen/x20"
+                    android:text="每日限额"
+                    android:textColor="@color/alpha_70_black"
+                    android:textSize="@dimen/text_16"/>
+
+                <TextView
+                    android:id="@+id/tv_dailyLimit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:fontFamily="sans-serif"
+                    android:text="0000"
+                    android:textColor="@color/alpha_80_black"
+                    android:textSize="@dimen/text_16"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_unbind"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y144"
+            android:layout_marginBottom="@dimen/y50"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x15"
+            android:layout_marginTop="@dimen/y30"
+            android:background="@drawable/selector_layout_bg"
+            android:text="解除绑定"
+            android:textColor="@color/color_0069E5"/>
+    </LinearLayout>
+</LinearLayout>

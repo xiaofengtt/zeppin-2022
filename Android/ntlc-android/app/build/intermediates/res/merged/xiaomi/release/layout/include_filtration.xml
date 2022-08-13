@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_bankFilter"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/x15"
+    android:layout_marginRight="@dimen/x15"
+    android:background="@drawable/bg_white_radius"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/y40"
+        android:text="请选择筛选条件"
+        android:textColor="@color/color_5A5A5A"
+        android:textSize="@dimen/text_16"/>
+
+    <android.support.v4.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bank_nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/y80">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/y50">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/x30"
+                android:text="银行"
+                android:textColor="@color/alpha_80_black"
+                android:textSize="@dimen/text_15"/>
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/bank_flowLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="@dimen/x10"
+                android:paddingRight="@dimen/x10"
+                app:max_select="-1"
+                >
+            </com.zhy.view.flowlayout.TagFlowLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/x30"
+                android:text="产品期限"
+                android:textColor="@color/alpha_80_black"
+                android:textSize="@dimen/text_15"/>
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/term_flowLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="@dimen/x10"
+                android:paddingRight="@dimen/x10"
+                app:max_select="-1"
+                >
+            </com.zhy.view.flowlayout.TagFlowLayout>
+
+        </LinearLayout>
+        <!--</ScrollView>-->
+
+
+        <!--<LinearLayout-->
+        <!--android:id="@+id/ll_bottom"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/y140"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:background="@drawable/shape_border_top"-->
+        <!--android:paddingTop="@dimen/y3">-->
+
+        <!--<Button-->
+        <!--style="@style/FilterButtonStyle"-->
+        <!--android:background="@drawable/btn_reset_bg"-->
+        <!--android:text="重置"-->
+        <!--android:textColor="@color/filtration_normal"/>-->
+
+        <!--<Button-->
+        <!--android:id="@+id/button"-->
+        <!--style="@style/FilterButtonStyle"-->
+        <!--android:background="@drawable/btn_submit_bg"-->
+        <!--android:text="提交"-->
+        <!--android:textColor="@color/white"/>-->
+        <!--</LinearLayout>-->
+        <!--</RelativeLayout>-->
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

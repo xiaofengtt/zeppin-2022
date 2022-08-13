@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="E:\MyApplication\app\src\main\jniLibs"/></dataSet><dataSet config="xiaomi"><source path="E:\MyApplication\app\src\xiaomi\jniLibs"/></dataSet><dataSet config="release"><source path="E:\MyApplication\app\src\release\jniLibs"/></dataSet><dataSet config="xiaomiRelease"><source path="E:\MyApplication\app\src\xiaomiRelease\jniLibs"/></dataSet></merger>

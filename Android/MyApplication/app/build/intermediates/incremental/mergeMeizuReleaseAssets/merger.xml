@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="E:\MyApplication\app\src\main\assets"/><source path="E:\MyApplication\app\build\generated\assets\shaders\meizu\release"/></dataSet><dataSet config="meizu"><source path="E:\MyApplication\app\src\meizu\assets"/></dataSet><dataSet config="release"><source path="E:\MyApplication\app\src\release\assets"/></dataSet><dataSet config="meizuRelease"><source path="E:\MyApplication\app\src\meizuRelease\assets"/></dataSet></merger>

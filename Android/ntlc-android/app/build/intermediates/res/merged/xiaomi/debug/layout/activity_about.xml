@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_bg"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.user.activity.AboutActivity">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <LinearLayout
+        style="@style/LayoutStyleRadius3"
+        android:layout_marginTop="@dimen/y30"
+        android:paddingBottom="@dimen/y80"
+        android:paddingTop="@dimen/y70">
+
+        <ImageView
+            android:layout_width="@dimen/y330"
+            android:layout_height="@dimen/y330"
+            android:src="@drawable/zeppin_weixin_code"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关注牛投理财官方微信"
+            android:textColor="#363636"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y45"
+            android:fontFamily="sans-serif"
+            android:text="牛投理财致力于让每一个家庭财富增值，是一家专业面向家庭理财的服务平台，系北京知鹏汇仁科技有限公司（Zeppin）旗下产品，公司于2013年成立，注册资本1000万。牛投理财借助自身渠道优势，精挑细选市场上低风险、高收益特征的理财产品，为每个家庭财富管理提供优质服务。"
+            android:textColor="@color/alpha_80_black"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/LayoutStyleRadius3"
+        android:layout_marginTop="@dimen/y25"
+        android:gravity="left"
+        android:paddingBottom="@dimen/y80"
+        android:paddingTop="@dimen/y70">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/y35"
+            android:text="客服联系方式"
+            android:textColor="#4F4F4F"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/mobile"
+            android:drawablePadding="@dimen/x15"
+            android:fontFamily="sans-serif"
+            android:text="010-62226659"
+            android:textColor="@color/alpha_80_black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/y17"
+            android:drawableLeft="@drawable/message"
+            android:drawablePadding="@dimen/x15"
+            android:fontFamily="sans-serif"
+            android:text="server@niutoulicai.com"
+            android:textColor="@color/alpha_80_black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y17"
+            android:drawableLeft="@drawable/position"
+            android:drawablePadding="@dimen/x15"
+            android:fontFamily="sans-serif"
+            android:text="北京市海淀区学院南路学院派"
+            android:textColor="@color/alpha_80_black"/>
+
+    </LinearLayout>
+</LinearLayout>

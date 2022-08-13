@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical"
+              tools:context="cn.zeppin.product.ntb.ui.user.fragment.PhoneFragment">
+
+
+    <cn.zeppin.product.ntb.widget.ClearEditText
+        android:id="@+id/et_phone"
+        style="@style/login_editText_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x60"
+        android:layout_marginRight="@dimen/x60"
+        android:layout_marginTop="@dimen/y60"
+        android:hint="请输入手机号"
+        android:inputType="phone"
+        android:maxLength="11"/>
+
+    <cn.zeppin.product.ntb.widget.ClearEditText
+        android:id="@+id/et_password"
+        style="@style/login_editText_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x60"
+        android:layout_marginRight="@dimen/x60"
+        android:layout_marginTop="@dimen/y60"
+        android:hint="请输入密码"
+        android:inputType="textPassword"/>
+
+    <TextView
+        android:id="@+id/tv_warn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/y30"
+        android:layout_marginLeft="@dimen/x60"
+        android:layout_marginRight="@dimen/x60"
+        android:layout_marginTop="@dimen/y30"
+        android:background="#1AD09637"
+        android:gravity="center"
+        android:paddingBottom="@dimen/x30"
+        android:paddingTop="@dimen/x30"
+        android:textColor="@color/color_D09637"
+        android:textSize="@dimen/text_14"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/ButtonStyle3"
+        android:layout_marginLeft="@dimen/x108"
+        android:layout_marginRight="@dimen/x108"
+        android:text="登录"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80"
+        android:layout_marginTop="@dimen/y55"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/x50"
+        android:paddingRight="@dimen/x50">
+
+        <CheckBox
+            android:id="@+id/cb_purAgreement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="true"
+            android:drawableLeft="@drawable/icon_confirm_selected"
+            android:drawablePadding="@dimen/x15"
+            android:text="登录即视为同意"
+            android:textColor="#959595"
+            android:textSize="@dimen/text_12"/>
+
+        <TextView
+            android:id="@+id/tv_agreement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="《牛投理财用户服务协议》"
+            android:textColor="@color/color_548BCC"
+            android:textSize="@dimen/text_12"/>
+
+        <TextView
+            android:id="@+id/tv_forgetPwd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="忘记密码?"
+            android:textColor="@color/color_548BCC"
+            android:textSize="@dimen/text_12"/>
+    </LinearLayout>
+</LinearLayout>

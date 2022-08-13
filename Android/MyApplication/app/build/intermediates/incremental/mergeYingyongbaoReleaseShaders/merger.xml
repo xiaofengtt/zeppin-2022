@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="E:\MyApplication\app\src\main\shaders"/></dataSet><dataSet config="yingyongbao"><source path="E:\MyApplication\app\src\yingyongbao\shaders"/></dataSet><dataSet config="release"><source path="E:\MyApplication\app\src\release\shaders"/></dataSet><dataSet config="yingyongbaoRelease"><source path="E:\MyApplication\app\src\yingyongbaoRelease\shaders"/></dataSet></merger>

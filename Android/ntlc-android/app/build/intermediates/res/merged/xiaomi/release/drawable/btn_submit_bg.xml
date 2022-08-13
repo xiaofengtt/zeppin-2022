@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 点击时效果 -->
+    <item android:drawable="@color/color_0159c1" android:state_pressed="true"></item>
+    <!--按钮可用状态-->
+    <item android:drawable="@color/color_0069E5" android:state_enabled="true"></item>
+    <item android:drawable="@color/color_D0D0D0" android:state_enabled="false"></item>
+
+</selector>

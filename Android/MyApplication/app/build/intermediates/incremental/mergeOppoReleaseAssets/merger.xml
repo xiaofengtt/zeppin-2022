@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="E:\MyApplication\app\src\main\assets"/><source path="E:\MyApplication\app\build\generated\assets\shaders\oppo\release"/></dataSet><dataSet config="oppo"><source path="E:\MyApplication\app\src\oppo\assets"/></dataSet><dataSet config="release"><source path="E:\MyApplication\app\src\release\assets"/></dataSet><dataSet config="oppoRelease"><source path="E:\MyApplication\app\src\oppoRelease\assets"/></dataSet></merger>

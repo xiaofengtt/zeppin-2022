@@ -1,0 +1,4 @@
+#Wed Sep 12 17:06:41 CST 2018
+base.0=E\:\\MyApplication\\app\\build\\intermediates\\transforms\\dexMerger\\oppo\\release\\0
+path.0=classes.dex
+renamed.0=classes.dex

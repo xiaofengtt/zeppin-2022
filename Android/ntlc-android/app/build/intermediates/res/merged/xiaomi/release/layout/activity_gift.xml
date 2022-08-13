@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/alpha_50_black">
+
+    <LinearLayout
+        android:layout_width="@dimen/y750"
+        android:layout_height="@dimen/y1180"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/y60">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/y30"
+            android:text="恭喜您获得了"
+            android:textColor="#fa4b37"
+            android:textSize="@dimen/text_18"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/gift_recyclerView"
+            android:name="cn.zeppin.product.ntb.ui.positions.fragment.HoldFragment"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y570"
+            android:paddingBottom="@dimen/y20"
+            android:layout_marginLeft="@dimen/x50"
+            android:layout_marginRight="@dimen/x50"
+            android:fadeScrollbars="false"
+            android:paddingRight="@dimen/x10"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbarThumbVertical="@drawable/gift_thumb"
+            android:scrollbarTrackVertical="@drawable/gift_track"
+            android:scrollbars="vertical"
+            android:scrollbarSize="@dimen/y10"
+            app:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/item_gift_coupon"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_bg_gift"
+        android:layout_width="@dimen/y1020"
+        android:layout_height="@dimen/y1270"
+        android:layout_gravity="center"
+        android:src="@drawable/gift_share_before">
+
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1200"
+        android:layout_gravity="center"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/y30">
+
+        <TextView
+            android:id="@+id/tv_receive"
+            style="@style/ButtomGift"
+            android:layout_marginBottom="@dimen/y70"
+            android:text="立即领取"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_share"
+            style="@style/ButtomGift"
+            android:layout_marginBottom="@dimen/y35"
+            android:text="分享额外得2元现金"/>
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            style="@style/ButtomGift"
+            android:layout_marginBottom="@dimen/y35"
+            android:text="不分享，直接领取"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:letterSpacing="0.1"
+            android:lineSpacingExtra="@dimen/y10"
+            android:text="优惠券可在“我的优惠券”中查看\n现金红包可在“我的账户余额”中查看"
+            android:textColor="#901c18"
+            android:textSize="@dimen/text_12"/>
+    </LinearLayout>
+</FrameLayout>

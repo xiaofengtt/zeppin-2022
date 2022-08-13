@@ -1,0 +1,45 @@
+-- Merging decision tree log ---
+manifest
+ADDED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml:1:1-11:12
+INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml:1:1-11:12
+INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml:1:1-11:12
+INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml:1:1-11:12
+INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml:1:1-11:12
+INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml:1:1-11:12
+INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml:1:1-11:12
+	package
+		ADDED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml:2:5-35
+		INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml
+		INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml
+		ADDED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml:1:1-11:12
+		INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml
+		ADDED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml:1:1-11:12
+		INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml:1:11-69
+application
+ADDED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml:4:5-9:19
+	android:supportsRtl
+		ADDED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml:7:9-35
+	android:label
+		ADDED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml:6:9-41
+	android:allowBackup
+		ADDED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml:5:9-35
+uses-sdk
+INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml
+INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml
+INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml
+INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml
+		ADDED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml
+		INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml
+		ADDED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml
+		INJECTED from E:\svntest2\Android\ntlc-android\lockpattern\src\main\AndroidManifest.xml

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="E:\MyApplication\app\src\main\assets"/><source path="E:\MyApplication\app\build\generated\assets\shaders\vivo\debug"/></dataSet><dataSet config="vivo"><source path="E:\MyApplication\app\src\vivo\assets"/></dataSet><dataSet config="debug"><source path="E:\MyApplication\app\src\debug\assets"/></dataSet><dataSet config="vivoDebug"><source path="E:\MyApplication\app\src\vivoDebug\assets"/></dataSet></merger>

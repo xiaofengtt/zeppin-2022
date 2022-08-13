@@ -1,0 +1,1 @@
+[{"outputType":{"type":"INSTANT_RUN_MERGED_MANIFESTS"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":7,"versionName":"2.1.5_test_debug","enabled":true,"outputFile":"appnt-2.1.5_test-20181120-debug.apk.apk","fullName":"anzhiDebug","baseName":"anzhi-debug"},"path":"AndroidManifest.xml","properties":{"packageId":"cn.zeppin.product.ntb","split":"","minSdkVersion":"16"}}]
