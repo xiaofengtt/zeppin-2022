@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+              android:paddingBottom="@dimen/x40"
+              android:paddingLeft="@dimen/x20"
+              android:paddingRight="@dimen/x20"
+              android:paddingTop="@dimen/x40">
+
+
+    <ImageView
+        android:id="@+id/iv_bankIcon"
+        android:layout_width="@dimen/x70"
+        android:layout_height="@dimen/x70"/>
+
+    <TextView
+        android:id="@+id/tv_bankName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x20"
+        android:textColor="@color/alpha_80_black"
+        android:textSize="@dimen/text_16"/>
+
+    <TextView
+        android:id="@+id/tv_bankContent"
+        android:layout_width="0dp"
+        android:visibility="invisible"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"
+        android:fontFamily="sans-serif"
+        android:gravity="right"
+        android:textColor="@color/alpha_20_black"
+        android:textSize="@dimen/text_12"/>
+
+    <ImageView
+        android:id="@+id/iv_selected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/icon_banklist_selected"
+        android:visibility="invisible"/>
+</LinearLayout>

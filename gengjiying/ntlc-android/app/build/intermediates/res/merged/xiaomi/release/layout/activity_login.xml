@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_loginView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.user.activity.LoginActivity">
+
+    <ImageView
+        android:id="@+id/ivLog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y100"
+        android:paddingTop="@dimen/y189"
+        android:src="@drawable/login_logo"/>
+
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:layout_marginBottom="@dimen/x40"
+        android:layout_marginLeft="@dimen/x80"
+        android:layout_marginRight="@dimen/x80"
+        android:layout_marginTop="@dimen/y120"
+        app:tabIndicatorColor="@color/transparent"
+        app:tabMode="fixed"/>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </android.support.v4.view.ViewPager>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y3"
+            android:background="@color/line_20_B0B0B0"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="@dimen/y30"
+            android:paddingTop="@dimen/y30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="没有账户?"
+                android:textColor="#CC949494"
+                android:textSize="@dimen/text_17"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="toRegisterActivity"
+                android:padding="@dimen/x10"
+                android:text=" 立即注册"
+                android:textColor="@color/color_4990E2"
+                android:textSize="@dimen/text_17"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

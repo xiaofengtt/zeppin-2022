@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_bg"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.bank.activity.PaySuccessActivity">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x15"
+        android:layout_marginRight="@dimen/x15"
+        android:layout_marginTop="@dimen/y25"
+        android:background="@drawable/bg_white_radius"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/y120">
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="充值成功！"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/text_18"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y10"
+            android:text="恭喜你！"
+            android:textColor="@color/color_9D9D9D"
+            android:textSize="@dimen/text_14"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y45"
+            android:src="@drawable/recharge_success"/>
+
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/ButtonStyle2_Small"
+            android:layout_gravity="center_horizontal|bottom"
+            android:text="去投资"/>
+    </LinearLayout>
+</LinearLayout>

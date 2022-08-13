@@ -1,0 +1,290 @@
+[
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/view_refresh_header.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/src/main/res/layout/view_refresh_header.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/notification_template_icon_group.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/design_navigation_item.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_navigation_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/notification_action.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_action.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/view_refresh_header_normal.xml",
+        "source": "/Users/zeppin/.android/build-cache/a5bc539f6e3be08d9be57e8d1e45d95d474a1a14/output/res/layout/view_refresh_header_normal.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/design_navigation_item_header.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_navigation_item_header.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/banner.xml",
+        "source": "/Users/zeppin/.android/build-cache/423a05a5a29e57c0ab632e59aacc7b4dfeb34ed0/output/res/layout/banner.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/view_normal_refresh_footer.xml",
+        "source": "/Users/zeppin/.android/build-cache/a5bc539f6e3be08d9be57e8d1e45d95d474a1a14/output/res/layout/view_normal_refresh_footer.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/dialog_loading.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/src/main/res/layout/dialog_loading.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/design_layout_tab_text.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_layout_tab_text.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/socialize_share_menu_item.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/src/main/res/layout/socialize_share_menu_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/layout_wifi_off.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/src/main/res/layout/layout_wifi_off.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/design_bottom_navigation_item.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_bottom_navigation_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/design_bottom_sheet_dialog.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/view_refresh_header_meituan.xml",
+        "source": "/Users/zeppin/.android/build-cache/a5bc539f6e3be08d9be57e8d1e45d95d474a1a14/output/res/layout/view_refresh_header_meituan.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/view_refresh_header_stickiness.xml",
+        "source": "/Users/zeppin/.android/build-cache/a5bc539f6e3be08d9be57e8d1e45d95d474a1a14/output/res/layout/view_refresh_header_stickiness.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/notification_action_tombstone.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/notification_template_custom_big.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/notification_template_media_custom.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_template_media_custom.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_screen_simple.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/layout_empty2.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/src/main/res/layout/layout_empty2.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_alert_dialog_title_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_layout_snackbar.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/umeng_socialize_oauth_dialog.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/src/main/res/layout/umeng_socialize_oauth_dialog.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_layout_tab_icon.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/notification_template_lines_media.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_template_lines_media.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/notification_template_media.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/toast_custom_center.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/src/main/res/layout/toast_custom_center.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/view_refresh_header_mooc_style.xml",
+        "source": "/Users/zeppin/.android/build-cache/a5bc539f6e3be08d9be57e8d1e45d95d474a1a14/output/res/layout/view_refresh_header_mooc_style.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/layout_empty.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/src/main/res/layout/layout_empty.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/select_dialog_item_material.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/quick_view_load_more.xml",
+        "source": "/Users/zeppin/.android/build-cache/bf85b58b933628b304470ab5759a4d6d4b93dd43/output/res/layout/quick_view_load_more.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/design_text_input_password_icon.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_text_input_password_icon.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/toast_custom.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/src/main/res/layout/toast_custom.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/layout_not_logged_in.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/src/main/res/layout/layout_not_logged_in.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_screen_content_include.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/umeng_socialize_share.xml",
+        "source": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/src/main/res/layout/umeng_socialize_share.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
+        "source": "/Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/res/layout/design_navigation_menu.xml"
+    },
+    {
+        "merged": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
+        "source": "/Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/res/layout/abc_search_view.xml"
+    }
+]

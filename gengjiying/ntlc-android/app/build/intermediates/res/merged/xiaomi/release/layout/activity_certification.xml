@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_bg">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="cn.zeppin.product.ntb.ui.user.activity.CertificationActivity">
+
+        <include layout="@layout/include_toolbar"/>
+
+        <TextView
+            style="@style/LayoutStyleRadius4"
+            android:layout_marginTop="@dimen/y25"
+            android:drawableLeft="@drawable/icon_notice"
+            android:drawablePadding="@dimen/x15"
+            android:gravity="left"
+            android:text="温馨提示：实名认证一旦成功将不能修改"
+            android:textColor="@color/alpha_80_black"
+            android:textSize="@dimen/text_16"/>
+
+        <LinearLayout
+            style="@style/LayoutStyleRadius2"
+            android:layout_marginTop="@dimen/y30">
+
+            <LinearLayout
+                style="@style/LayoutStyle"
+                android:layout_height="@dimen/y160"
+                android:background="@color/transparent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="姓名"
+                    android:textColor="@color/alpha_80_black"
+                    android:textSize="@dimen/text_16"/>
+
+                <cn.zeppin.product.ntb.widget.ClearEditText
+                    android:id="@+id/cet_name"
+                    style="@style/common_editText_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x80"
+                    android:layout_toRightOf="@id/tv_username"
+                    android:hint="请填写真实的姓名"
+                    android:inputType="text"
+                    android:textSize="@dimen/text_16"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LayoutStyle"
+                android:layout_height="@dimen/y160"
+                android:background="@drawable/shape_border_top">
+
+                <TextView
+                    android:id="@+id/tv_idCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="身份证"
+                    android:textColor="@color/alpha_80_black"
+                    android:textSize="@dimen/text_16"/>
+
+                <cn.zeppin.product.ntb.widget.ClearEditText
+                    android:id="@+id/cet_idCard"
+                    style="@style/common_editText_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x35"
+                    android:layout_toRightOf="@id/tv_idCard"
+                    android:hint="请输入18位身份证号码"
+                    android:maxLength="18"
+                    android:textSize="@dimen/text_16"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LayoutStyleRadius2"
+            android:layout_marginBottom="@dimen/y15"
+            android:layout_marginTop="@dimen/y30"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/y50"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/y45"
+                android:paddingLeft="@dimen/y25"
+                android:paddingTop="@dimen/y45"
+                android:text="请分别上传身份证正面和背面照片"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y375"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_marginRight="@dimen/x20"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_idCardFront"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_certification"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/y40">
+
+                    <TextView
+                        android:id="@+id/tv_front"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/x30"
+                        android:drawableTop="@drawable/idcard_front"
+                        android:gravity="center"
+                        android:text="上传身份证正面"
+                        android:textColor="@color/color_C3C3C3"/>
+
+                    <ImageView
+                        android:id="@+id/img_front"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_idCardReverse"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/x20"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_certification"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/y40">
+
+                    <TextView
+                        android:id="@+id/tv_reverse"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/x30"
+                        android:drawableTop="@drawable/idcard_reverse"
+                        android:gravity="center"
+                        android:text="上传身份证反面"
+                        android:textColor="@color/color_C3C3C3"/>
+
+                    <ImageView
+                        android:id="@+id/img_reverse"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/x25"
+                android:paddingTop="@dimen/y40"
+                android:text="注释：上传的身份证必须真实清晰才能通过审核"
+                android:textColor="@color/alpha_40_black"
+                android:textSize="@dimen/text_14"/>
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/ButtonStyle1"
+            android:text="提交认证"/>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

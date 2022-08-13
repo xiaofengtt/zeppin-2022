@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/transparent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="@dimen/x800"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_radius"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/y80"
+        android:paddingTop="@dimen/y80">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/version_update"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/y40"
+            android:layout_marginTop="@dimen/y30"
+            android:text="升级到新版本"
+            android:textColor="@color/color_232323"
+            android:textSize="@dimen/text_18"/>
+
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1px"-->
+        <!--android:background="@color/line_20_979797"></View>-->
+
+        <TextView
+            android:id="@+id/tv_des"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/y80"
+            android:paddingLeft="@dimen/x60"
+            android:paddingRight="@dimen/x60"
+            android:textColor="@color/alpha_60_black"
+            android:textSize="@dimen/text_16"/>
+
+        <Button
+            android:id="@+id/btn_update"
+            style="@style/ButtonStyle2_Small"
+            android:layout_margin="0dp"
+            android:background="@drawable/btn_login_bg_small"
+            android:paddingLeft="@dimen/x60"
+            android:paddingRight="@dimen/x60"
+            android:text="立即升级"/>
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/y2"-->
+        <!--android:background="@color/line_20_979797"></View>-->
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/y135"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_cancel"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:gravity="center"-->
+        <!--android:text="取消"-->
+        <!--android:textColor="@color/color_50_7B7B7B"-->
+        <!--android:textSize="15sp"/>-->
+
+        <!--<View-->
+        <!--android:layout_width="@dimen/y2"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/line_20_979797"/>-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_update"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:gravity="center"-->
+        <!--android:text="立即升级"-->
+        <!--android:textColor="@color/color_D09637"-->
+        <!--android:textSize="15sp"/>-->
+        <!--</LinearLayout>-->
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y80"
+        android:padding="@dimen/x30"
+        android:src="@drawable/icon_delete_white"/>
+</LinearLayout>

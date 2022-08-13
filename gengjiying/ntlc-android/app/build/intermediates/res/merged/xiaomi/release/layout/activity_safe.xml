@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_bg"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.user.activity.SafeActivity">
+
+    <include layout="@layout/include_toolbar"/>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_gesture"
+        style="@style/LayoutStyleRadius2"
+        android:onClick="openCreateGestureActivity"
+        android:paddingBottom="@dimen/x40"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x30"
+        android:paddingTop="@dimen/x40">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/y15"
+            android:text="手势密码"
+            android:textColor="@color/alpha_80_black"
+            android:textSize="@dimen/text_16"/>
+
+        <TextView
+            style="@style/TxtArrow"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        style="@style/LayoutStyleRadius2"
+        android:layout_marginTop="@dimen/y25">
+
+        <RelativeLayout
+            android:id="@+id/rl_setPwd"
+            style="@style/ContentLayoutStyle"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/y15"
+                android:text="设置密码"
+                android:textColor="@color/alpha_80_black"
+                android:textSize="@dimen/text_16"/>
+
+            <TextView style="@style/TxtArrow"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_editPwd"
+            style="@style/ContentLayoutStyle"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/y15"
+                android:text="登录密码"
+                android:textColor="@color/alpha_80_black"
+                android:textSize="@dimen/text_16"/>
+
+            <TextView style="@style/TxtArrow"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

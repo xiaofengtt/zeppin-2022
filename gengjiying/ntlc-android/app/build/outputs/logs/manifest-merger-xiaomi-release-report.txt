@@ -1,0 +1,660 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:2:1-299:12
+	package
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:4:11-42
+		INJECTED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:3:11-57
+	xmlns:android
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.MANAGE_DOCUMENTS
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:6:5-74
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:6:22-72
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:7:5-74
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:14:5-75
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:7:22-72
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:8:5-78
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:8:22-76
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:9:5-75
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:9:22-73
+uses-permission#android.permission.READ_LOGS
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:12:5-67
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:12:22-65
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:13:5-80
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:13:22-78
+uses-permission#android.permission.SET_DEBUG_APP
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:14:5-71
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:14:22-69
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:15:5-70
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:15:22-68
+uses-permission#android.permission.USE_CREDENTIALS
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:16:5-73
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:16:22-71
+uses-permission#android.permission.MANAGE_ACCOUNTS
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:17:5-73
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:17:22-71
+uses-permission#android.permission.INTERNET
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:18:5-66
+MERGED from [jameson.io.library:library:0.0.1] /Users/zeppin/.android/build-cache/9ac91d9564800e2155e7f91f96a1421ca901a21e/output/AndroidManifest.xml:11:5-67
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:11:5-67
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:18:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:19:5-78
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:19:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:20:5-75
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:20:22-73
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:21:5-78
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:21:22-76
+uses-permission#android.permission.CALL_PHONE
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:22:5-68
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:22:22-66
+uses-permission#andorid.permission.CHANGE_CONFIGURATION
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:23:5-78
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:23:22-76
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:24:5-79
+MERGED from [jameson.io.library:library:0.0.1] /Users/zeppin/.android/build-cache/9ac91d9564800e2155e7f91f96a1421ca901a21e/output/AndroidManifest.xml:12:5-80
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:13:5-80
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:24:22-77
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:25:5-67
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:25:22-65
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:26:5-80
+MERGED from [jameson.io.library:library:0.0.1] /Users/zeppin/.android/build-cache/9ac91d9564800e2155e7f91f96a1421ca901a21e/output/AndroidManifest.xml:13:5-81
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:12:5-81
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:26:22-78
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:27:5-83
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:27:22-81
+application
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:30:5-297:19
+MERGED from [ntbAndroid:library:unspecified] /Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/bundles/default/AndroidManifest.xml:11:5-15:19
+MERGED from [com.android.support:cardview-v7:25.3.1] /Users/zeppin/.android/build-cache/ff97c6ecc04babfd98c0d01e82561ec593c72c49/output/AndroidManifest.xml:26:5-20
+MERGED from [jameson.io.library:library:0.0.1] /Users/zeppin/.android/build-cache/9ac91d9564800e2155e7f91f96a1421ca901a21e/output/AndroidManifest.xml:15:5-19:19
+MERGED from [ntbAndroid:lockpattern:unspecified] /Users/zeppin/Desktop/workspace/android/ntbAndroid/lockpattern/build/intermediates/bundles/default/AndroidManifest.xml:11:5-15:19
+MERGED from [com.android.support:design:25.3.1] /Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:transition:25.3.1] /Users/zeppin/.android/build-cache/dbc32a2bd245852dc9d67c742320b416f2aacc2e/output/AndroidManifest.xml:26:5-20
+MERGED from [com.gavin.com.library:stickyDecoration:1.1.2] /Users/zeppin/.android/build-cache/873002980e141a0c22536978eb0c0b35889cd129/output/AndroidManifest.xml:11:5-15:19
+MERGED from [com.lidong.pdf:android_pdf:1.0.1] /Users/zeppin/.android/build-cache/373b8741ca4c641aa1ad9ec776f7876f66457b90/output/AndroidManifest.xml:11:5-15:19
+MERGED from [in.srain.cube:ultra-ptr:1.0.11] /Users/zeppin/.android/build-cache/3d87235c5c8306bb014ef07dde577b34fc123bdf/output/AndroidManifest.xml:11:5-20
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:17:5-44:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/zeppin/.android/build-cache/6cee529270f012b25ac6da0e8d4f9b65c95d13f3/output/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v4:25.3.1] /Users/zeppin/.android/build-cache/c17b25e832672b55283b3458c66e6d502eef940a/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] /Users/zeppin/.android/build-cache/6248460a24950eb73e16a10ca18c6f094b18c248/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/zeppin/.android/build-cache/1f882a47cbb3842caf1f1ad826dd09ca364145be/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] /Users/zeppin/.android/build-cache/450008315fed1982fcc8db51bc47b51071f16fc4/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] /Users/zeppin/.android/build-cache/a3d38fd4dacd0c589d365b9eaddc83b2446c2e36/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /Users/zeppin/.android/build-cache/82c77de26e28db5dc40f029de5dd154dd0898072/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /Users/zeppin/.android/build-cache/325a7ea1a3cbed54bbcedb0ccdcd730f2bed943e/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-compat:25.3.1] /Users/zeppin/.android/build-cache/7176fb550eda71936e1de297f8d49314ca5e546e/output/AndroidManifest.xml:29:5-20
+	android:screenOrientation
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:35:9-45
+	android:label
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:34:9-41
+		REJECTED from [ntbAndroid:library:unspecified] /Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/bundles/default/AndroidManifest.xml:13:9-41
+		REJECTED from [jameson.io.library:library:0.0.1] /Users/zeppin/.android/build-cache/9ac91d9564800e2155e7f91f96a1421ca901a21e/output/AndroidManifest.xml:17:9-41
+		REJECTED from [ntbAndroid:lockpattern:unspecified] /Users/zeppin/Desktop/workspace/android/ntbAndroid/lockpattern/build/intermediates/bundles/default/AndroidManifest.xml:13:9-41
+		REJECTED from [com.gavin.com.library:stickyDecoration:1.1.2] /Users/zeppin/.android/build-cache/873002980e141a0c22536978eb0c0b35889cd129/output/AndroidManifest.xml:13:9-41
+		REJECTED from [com.lidong.pdf:android_pdf:1.0.1] /Users/zeppin/.android/build-cache/373b8741ca4c641aa1ad9ec776f7876f66457b90/output/AndroidManifest.xml:13:9-41
+	android:supportsRtl
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:36:9-35
+	android:allowBackup
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:32:9-35
+		REJECTED from [ntbAndroid:library:unspecified] /Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/bundles/default/AndroidManifest.xml:12:9-35
+		REJECTED from [jameson.io.library:library:0.0.1] /Users/zeppin/.android/build-cache/9ac91d9564800e2155e7f91f96a1421ca901a21e/output/AndroidManifest.xml:16:9-35
+		REJECTED from [ntbAndroid:lockpattern:unspecified] /Users/zeppin/Desktop/workspace/android/ntbAndroid/lockpattern/build/intermediates/bundles/default/AndroidManifest.xml:12:9-35
+		REJECTED from [com.gavin.com.library:stickyDecoration:1.1.2] /Users/zeppin/.android/build-cache/873002980e141a0c22536978eb0c0b35889cd129/output/AndroidManifest.xml:12:9-35
+		REJECTED from [com.lidong.pdf:android_pdf:1.0.1] /Users/zeppin/.android/build-cache/373b8741ca4c641aa1ad9ec776f7876f66457b90/output/AndroidManifest.xml:12:9-35
+		REJECTED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:18:9-35
+	android:icon
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:33:9-43
+	android:theme
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:37:9-40
+	tools:replace
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:38:9-98
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:31:9-43
+meta-data#UMENG_APPKEY
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:41:9-43:55
+	android:value
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:43:13-53
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:42:13-40
+meta-data#UMENG_CHANNEL
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:44:9-46:53
+	android:value
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:46:13-51
+		INJECTED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:45:13-41
+activity#cn.zeppin.product.ntb.ui.main.activity.SplashActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:48:9-57:20
+	android:configChanges
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:50:13-74
+	android:theme
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:51:13-46
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:49:13-60
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:52:13-56:29
+action#android.intent.action.MAIN
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:53:17-68
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:53:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:55:17-76
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:55:27-74
+activity#cn.zeppin.product.ntb.ui.main.activity.MainActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:58:9-61:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:60:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:59:13-58
+activity#cn.zeppin.product.ntb.ui.bank.activity.BankDetailActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:62:9-65:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:64:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:63:13-64
+activity#cn.zeppin.product.ntb.ui.bank.activity.BankDetailAllActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:66:9-69:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:68:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:67:13-67
+activity#cn.zeppin.product.ntb.ui.bank.activity.ProductBuyActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:70:9-73:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:72:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:71:13-64
+activity#cn.zeppin.product.ntb.ui.bank.activity.SearchActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:74:9-77:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:76:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:75:13-60
+activity#cn.zeppin.product.ntb.ui.user.activity.LoginActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:78:9-82:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:80:13-37
+	android:windowSoftInputMode
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:81:13-73
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:79:13-59
+activity#cn.zeppin.product.ntb.ui.user.activity.RegisterActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:83:9-86:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:85:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:84:13-62
+activity#cn.zeppin.product.ntb.ui.user.activity.ResetPwdActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:87:9-90:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:89:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:88:13-62
+activity#cn.zeppin.product.ntb.ui.user.activity.CertificationActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:91:9-94:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:93:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:92:13-67
+activity#cn.zeppin.product.ntb.ui.user.activity.CertificationNoActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:95:9-98:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:97:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:96:13-69
+activity#cn.zeppin.product.ntb.ui.user.activity.CertificationYesActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:99:9-102:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:101:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:100:13-70
+activity#cn.zeppin.product.ntb.ui.user.activity.MyBankListActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:103:9-106:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:105:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:104:13-64
+activity#cn.zeppin.product.ntb.ui.user.activity.AddBankActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:107:9-110:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:109:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:108:13-61
+activity#cn.zeppin.product.ntb.ui.user.activity.MyBankDetailActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:111:9-114:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:113:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:112:13-66
+activity#cn.zeppin.product.ntb.permission.HelpActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:115:9-117:39
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:117:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:116:13-52
+activity#cn.zeppin.product.ntb.ui.user.activity.BankActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:118:9-121:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:120:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:119:13-58
+activity#cn.zeppin.product.ntb.ui.user.activity.TradingRecordActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:122:9-125:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:124:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:123:13-67
+activity#cn.zeppin.product.ntb.ui.finance.activity.RechargeActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:126:9-131:20
+	android:launchMode
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:129:13-44
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:128:13-37
+	android:windowSoftInputMode
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:130:13-73
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:127:13-65
+activity#cn.zeppin.product.ntb.ui.bank.activity.PaySuccessActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:132:9-135:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:134:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:133:13-64
+activity#cn.zeppin.product.ntb.ui.finance.activity.FinanceDetailActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:136:9-139:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:138:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:137:13-70
+activity#cn.zeppin.product.ntb.ui.main.activity.WebActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:140:9-143:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:142:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:141:13-57
+activity#cn.zeppin.product.ntb.ui.finance.activity.WithdrawalActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:144:9-148:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:146:13-37
+	android:windowSoftInputMode
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:147:13-73
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:145:13-67
+activity#cn.zeppin.product.ntb.ui.finance.activity.RechargeSuccessActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:149:9-152:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:151:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:150:13-72
+activity#cn.zeppin.product.ntb.ui.finance.activity.WithdrawalApplyActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:153:9-156:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:155:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:154:13-72
+activity#cn.zeppin.product.ntb.ui.user.activity.TradingRecordDetailActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:157:9-160:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:159:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:158:13-73
+activity#cn.zeppin.product.ntb.ui.main.activity.PdfViewActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:161:9-164:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:163:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:162:13-61
+activity#cn.zeppin.product.ntb.ui.user.activity.AboutActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:165:9-168:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:167:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:166:13-59
+activity#cn.zeppin.product.ntb.ui.user.activity.ForgotPasswordActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:169:9-172:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:171:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:170:13-68
+activity#cn.zeppin.product.ntb.pay.AlipayActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:173:9-176:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:175:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:174:13-47
+activity#cn.zeppin.product.ntb.ui.finance.activity.Recharge2Activity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:177:9-180:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:179:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:178:13-66
+activity#cn.zeppin.product.ntb.ui.user.activity.AlipayBindActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:181:9-184:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:183:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:182:13-64
+activity#cn.zeppin.product.ntb.ui.user.activity.CustomVersionDialogActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:185:9-189:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:187:13-37
+	android:theme
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:188:13-68
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:186:13-73
+activity#cn.zeppin.product.ntb.wxapi.WXEntryActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:195:9-200:74
+	android:screenOrientation
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:199:13-49
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:198:13-36
+	android:configChanges
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:197:13-74
+	android:theme
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:200:13-72
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:196:13-50
+activity#com.umeng.qq.tencent.AuthActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:203:9-215:20
+	android:launchMode
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:205:13-44
+	android:noHistory
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:206:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:204:13-61
+intent-filter#android.intent.action.VIEW+android.intent.category.BROWSABLE+android.intent.category.DEFAULT
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:207:13-214:29
+action#android.intent.action.VIEW
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:208:17-68
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:208:25-66
+category#android.intent.category.DEFAULT
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:210:17-75
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:210:27-73
+category#android.intent.category.BROWSABLE
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:211:17-77
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:211:27-75
+data
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:213:17-59
+	android:scheme
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:213:23-57
+activity#com.umeng.qq.tencent.AssistActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:216:9-220:74
+	android:screenOrientation
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:219:13-49
+	android:configChanges
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:218:13-74
+	android:theme
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:220:13-72
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:217:13-63
+activity#com.umeng.socialize.editorpage.ShareActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:223:9-225:48
+	android:excludeFromRecents
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:225:13-46
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:224:13-72
+activity#cn.zeppin.product.ntb.WBShareActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:226:9-235:20
+	android:screenOrientation
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:229:13-49
+	android:configChanges
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:228:13-63
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:227:13-44
+intent-filter#android.intent.category.DEFAULT+com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:230:13-234:29
+action#com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:231:17-91
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:231:25-89
+activity#cn.zeppin.product.ntb.ui.user.activity.CouponActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:236:9-239:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:238:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:237:13-60
+activity#cn.zeppin.product.ntb.ui.user.activity.MessageActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:240:9-243:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:242:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:241:13-61
+activity#cn.zeppin.product.ntb.ui.main.activity.JumpActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:244:9-248:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:246:13-37
+	android:theme
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:247:13-68
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:245:13-58
+activity#cn.zeppin.product.ntb.ui.user.activity.SetPwdActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:249:9-252:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:251:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:250:13-60
+activity#cn.zeppin.product.ntb.ui.user.activity.EditPwdActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:253:9-256:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:255:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:254:13-61
+activity#cn.zeppin.product.ntb.ui.main.activity.GiftActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:257:9-261:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:259:13-37
+	android:theme
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:260:13-68
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:258:13-58
+activity#cn.zeppin.product.ntb.ui.user.activity.SafeActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:262:9-265:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:264:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:263:13-58
+activity#cn.zeppin.product.ntb.ui.user.activity.CreateGestureActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:266:9-269:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:268:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:267:13-67
+activity#cn.zeppin.product.ntb.ui.user.activity.GestureLoginActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:270:9-273:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:272:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:271:13-66
+activity#cn.zeppin.product.ntb.ui.user.activity.SetGestureActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:274:9-277:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:276:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:275:13-64
+activity#cn.zeppin.product.ntb.ui.main.activity.AdvertisementActivity
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:278:9-282:20
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:280:13-37
+	android:theme
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:281:13-46
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:279:13-67
+service#cn.zeppin.product.ntb.service.ApkDownloadService
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:284:9-287:38
+	android:enabled
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:286:13-35
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:287:13-36
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:285:13-55
+service#cn.zeppin.product.ntb.service.AlarmService
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:288:9-292:19
+	android:enabled
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:290:13-35
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:291:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:289:13-49
+receiver#cn.zeppin.product.ntb.receiver.AlarmReceiver
+ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:294:9-296:49
+	android:exported
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:296:13-37
+	android:name
+		ADDED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml:295:13-51
+uses-sdk
+INJECTED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [io.realm:realm-android-library:3.0.0] /Users/zeppin/.android/build-cache/b17e752fcd213946d4d7281aa3893f69293cb8f5/output/AndroidManifest.xml:7:5-9:41
+MERGED from [com.getkeepsafe.relinker:relinker:1.2.2] /Users/zeppin/.android/build-cache/15efa2f1d310f6a4e3db65029483dc9d3f9b24c7/output/AndroidManifest.xml:7:5-43
+MERGED from [ntbAndroid:library:unspecified] /Users/zeppin/Desktop/workspace/android/ntbAndroid/library/build/intermediates/bundles/default/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:cardview-v7:25.3.1] /Users/zeppin/.android/build-cache/ff97c6ecc04babfd98c0d01e82561ec593c72c49/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:multidex:1.0.1] /Users/zeppin/.android/build-cache/6efbf9e7087f42049ba56bbde5a999ad09890d33/output/AndroidManifest.xml:18:5-42
+MERGED from [com.commit451:PhotoView:1.2.4] /Users/zeppin/.android/build-cache/0677f31cdd5b3724e262077b643a07b693780170/output/AndroidManifest.xml:8:5-10:41
+MERGED from [com.orhanobut:logger:1.13] /Users/zeppin/.android/build-cache/8c426de30fbefec8bc1afd46bf382ec377ee133f/output/AndroidManifest.xml:6:5-43
+MERGED from [com.youth.banner:banner:1.4.9] /Users/zeppin/.android/build-cache/423a05a5a29e57c0ab632e59aacc7b4dfeb34ed0/output/AndroidManifest.xml:7:5-9:41
+MERGED from [cn.bingoogolapple:bga-refreshlayout:1.1.7] /Users/zeppin/.android/build-cache/a5bc539f6e3be08d9be57e8d1e45d95d474a1a14/output/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.9] /Users/zeppin/.android/build-cache/bf85b58b933628b304470ab5759a4d6d4b93dd43/output/AndroidManifest.xml:7:5-9:41
+MERGED from [jameson.io.library:library:0.0.1] /Users/zeppin/.android/build-cache/9ac91d9564800e2155e7f91f96a1421ca901a21e/output/AndroidManifest.xml:7:5-9:41
+MERGED from [ntbAndroid:lockpattern:unspecified] /Users/zeppin/Desktop/workspace/android/ntbAndroid/lockpattern/build/intermediates/bundles/default/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:25.3.1] /Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:transition:25.3.1] /Users/zeppin/.android/build-cache/dbc32a2bd245852dc9d67c742320b416f2aacc2e/output/AndroidManifest.xml:20:5-44
+MERGED from [com.zhy:flowlayout-lib:1.0.3] /Users/zeppin/.android/build-cache/2ba78db87deb24ac51e1802487c61036b20e735a/output/AndroidManifest.xml:8:5-10:41
+MERGED from [com.soundcloud.android:android-crop:1.0.1] /Users/zeppin/.android/build-cache/c13b7d571c02e9a1943d87526e8e8d0fd9a45b51/output/AndroidManifest.xml:6:5-8:41
+MERGED from [top.zibin:Luban:1.0.9] /Users/zeppin/.android/build-cache/170b87f0cab4ee831a1f86168dfcda4122b8fd51/output/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.fresco:fresco:0.12.0] /Users/zeppin/.android/build-cache/b80a20170808c7f03c6bd05889e26e4a5aa166cf/output/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:0.12.0] /Users/zeppin/.android/build-cache/d62bf33ff9611baa4cc9b4d9fcd8799bf099b729/output/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:0.12.0] /Users/zeppin/.android/build-cache/cd732b3c948d6276fce71cc612485c3ace352df5/output/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:0.12.0] /Users/zeppin/.android/build-cache/4066c647d46c8b3a09b170234621eef79b93bcc2/output/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:0.12.0] /Users/zeppin/.android/build-cache/fa7c486563dd811551a245e0d1d4b4413cbb9231/output/AndroidManifest.xml:5:5-7:41
+MERGED from [com.gavin.com.library:stickyDecoration:1.1.2] /Users/zeppin/.android/build-cache/873002980e141a0c22536978eb0c0b35889cd129/output/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:recyclerview-v7:25.3.1] /Users/zeppin/.android/build-cache/93a05d42a31c457795fda67b2242244cb85f23df/output/AndroidManifest.xml:20:5-43
+MERGED from [com.lidong.pdf:android_pdf:1.0.1] /Users/zeppin/.android/build-cache/373b8741ca4c641aa1ad9ec776f7876f66457b90/output/AndroidManifest.xml:7:5-9:41
+MERGED from [io.reactivex:rxandroid:1.2.1] /Users/zeppin/.android/build-cache/2c5b17e2bb9c11fbb0fc7fd8a876688a9c5f2aa0/output/AndroidManifest.xml:19:5-43
+MERGED from [in.srain.cube:ultra-ptr:1.0.11] /Users/zeppin/.android/build-cache/3d87235c5c8306bb014ef07dde577b34fc123bdf/output/AndroidManifest.xml:7:5-9:41
+MERGED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/zeppin/.android/build-cache/6cee529270f012b25ac6da0e8d4f9b65c95d13f3/output/AndroidManifest.xml:5:5-7:41
+MERGED from [com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2] /Users/zeppin/.android/build-cache/ca1a61d34b0fda226d77d2841d1c4174c366503e/output/AndroidManifest.xml:8:5-10:41
+MERGED from [com.kyleduo.switchbutton:library:1.4.5] /Users/zeppin/.android/build-cache/f7a661e0b7346276fce4280cb59bfa5930b14957/output/AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:25.3.1] /Users/zeppin/.android/build-cache/c17b25e832672b55283b3458c66e6d502eef940a/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] /Users/zeppin/.android/build-cache/6248460a24950eb73e16a10ca18c6f094b18c248/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/zeppin/.android/build-cache/1f882a47cbb3842caf1f1ad826dd09ca364145be/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] /Users/zeppin/.android/build-cache/450008315fed1982fcc8db51bc47b51071f16fc4/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] /Users/zeppin/.android/build-cache/a3d38fd4dacd0c589d365b9eaddc83b2446c2e36/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /Users/zeppin/.android/build-cache/82c77de26e28db5dc40f029de5dd154dd0898072/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /Users/zeppin/.android/build-cache/325a7ea1a3cbed54bbcedb0ccdcd730f2bed943e/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-compat:25.3.1] /Users/zeppin/.android/build-cache/7176fb550eda71936e1de297f8d49314ca5e546e/output/AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:25.3.1] /Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:cardview-v7:25.3.1] /Users/zeppin/.android/build-cache/ff97c6ecc04babfd98c0d01e82561ec593c72c49/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:design:25.3.1] /Users/zeppin/.android/build-cache/887a66f4921e8005222b6b2928f7beed1f26dbba/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:transition:25.3.1] /Users/zeppin/.android/build-cache/dbc32a2bd245852dc9d67c742320b416f2aacc2e/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:recyclerview-v7:25.3.1] /Users/zeppin/.android/build-cache/93a05d42a31c457795fda67b2242244cb85f23df/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/zeppin/.android/build-cache/e877c3aff78dab20ce7d475dd2609599bfe600b1/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-v4:25.3.1] /Users/zeppin/.android/build-cache/c17b25e832672b55283b3458c66e6d502eef940a/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] /Users/zeppin/.android/build-cache/6248460a24950eb73e16a10ca18c6f094b18c248/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/zeppin/.android/build-cache/1f882a47cbb3842caf1f1ad826dd09ca364145be/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] /Users/zeppin/.android/build-cache/450008315fed1982fcc8db51bc47b51071f16fc4/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] /Users/zeppin/.android/build-cache/a3d38fd4dacd0c589d365b9eaddc83b2446c2e36/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /Users/zeppin/.android/build-cache/82c77de26e28db5dc40f029de5dd154dd0898072/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /Users/zeppin/.android/build-cache/325a7ea1a3cbed54bbcedb0ccdcd730f2bed943e/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-compat:25.3.1] /Users/zeppin/.android/build-cache/7176fb550eda71936e1de297f8d49314ca5e546e/output/AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:cardview-v7:25.3.1] /Users/zeppin/.android/build-cache/ff97c6ecc04babfd98c0d01e82561ec593c72c49/output/AndroidManifest.xml:24:9-31
+	android:name
+		ADDED from [com.android.support:cardview-v7:25.3.1] /Users/zeppin/.android/build-cache/ff97c6ecc04babfd98c0d01e82561ec593c72c49/output/AndroidManifest.xml:23:9-47
+uses-permission#android.permission.VIBRATE
+ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:15:5-66
+	android:name
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:15:22-63
+activity#com.allenliu.versionchecklib.core.VersionDialogActivity
+ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:20:9-23:71
+	android:launchMode
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:22:13-44
+	android:theme
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:23:13-68
+	android:name
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:21:13-83
+provider#com.allenliu.versionchecklib.core.VersionFileProvider
+ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:25:9-33:20
+	android:authorities
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:27:13-67
+	android:grantUriPermissions
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:29:13-47
+	android:exported
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:28:13-37
+	android:name
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:26:13-81
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:30:13-32:70
+	android:resource
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:32:17-67
+	android:name
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:31:17-67
+activity#com.allenliu.versionchecklib.core.PermissionDialogActivity
+ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:35:9-38:71
+	android:launchMode
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:37:13-44
+	android:theme
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:38:13-68
+	android:name
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:36:13-86
+service#com.allenliu.versionchecklib.core.MyService
+ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:40:9-43:39
+	android:enabled
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:42:13-35
+	android:exported
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:43:13-36
+	android:name
+		ADDED from [com.allenliu.versionchecklib:library:1.8.2] /Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/AndroidManifest.xml:41:13-71

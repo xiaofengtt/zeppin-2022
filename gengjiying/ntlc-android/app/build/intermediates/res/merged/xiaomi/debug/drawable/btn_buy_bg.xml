@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 点击时效果 -->
+    <item android:drawable="@drawable/btn_pressed_bg" android:state_pressed="true"></item>
+    <!--按钮不可用时-->
+    <item android:drawable="@drawable/btn_buy_enable_false" android:state_enabled="false"></item>
+    <!--按钮可用状态-->
+    <item android:drawable="@drawable/btn_buy_bg_enable_true" android:state_enabled="true"></item>
+
+
+</selector>

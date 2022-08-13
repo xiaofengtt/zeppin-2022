@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_bg"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.user.activity.AlipayBindActivity">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/x20"
+        android:layout_marginLeft="@dimen/x15"
+        android:layout_marginRight="@dimen/x15"
+        android:layout_marginTop="@dimen/x20"
+        android:background="@drawable/bg_white_radius"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_top_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_alipay_binding"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/y95"
+            android:paddingTop="@dimen/y120">
+
+            <ImageView
+                android:id="@+id/iv_bind_bg"
+                android:layout_width="@dimen/y690"
+                android:layout_height="@dimen/y444"
+                android:background="@drawable/alipay_binding"/>
+
+            <TextView
+                android:id="@+id/tv_bind_des"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y40"
+                android:text="当前已绑定！"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_20"/>
+
+
+            <TextView
+                android:id="@+id/tv_alipay_nickName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/y30"
+                android:layout_marginTop="@dimen/y10"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_14"/>
+
+            <FrameLayout
+                android:id="@+id/fl_alipay_head_bg"
+                android:layout_width="@dimen/y200"
+                android:layout_height="@dimen/y137"
+                android:background="@drawable/aipay_binding_headbg">
+
+                <cn.zeppin.product.ntb.widget.SelectableRoundedImageView
+                    android:id="@+id/iv_alipay_head"
+                    android:layout_width="@dimen/x90"
+                    android:layout_height="@dimen/x90"
+                    android:layout_gravity="center_horizontal"
+                    android:scaleType="centerCrop"
+                    app:sriv_left_bottom_corner_radius="@dimen/x160"
+                    app:sriv_left_top_corner_radius="@dimen/x160"
+                    app:sriv_right_bottom_corner_radius="@dimen/x160"
+                    app:sriv_right_top_corner_radius="@dimen/x160"/>
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_bind"
+            style="@style/ButtonStyle2"
+            android:layout_marginLeft="@dimen/x110"
+            android:layout_marginRight="@dimen/x110"
+            android:layout_marginTop="@dimen/y197"
+            android:text="重新绑定"/>
+    </LinearLayout>
+</LinearLayout>

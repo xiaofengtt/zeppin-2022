@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/build/intermediates/incremental/mergeXiaomiDebugResources/merged.dir/values-w820dp-v13/values-w820dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "/Users/zeppin/.android/build-cache/2109431071eece82517fb22b41e92dca2ac13bcc/output/res/values-w820dp-v13/values-w820dp-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 57,
+                        "endOffset": 108
+                    }
+                }
+            }
+        ]
+    }
+]

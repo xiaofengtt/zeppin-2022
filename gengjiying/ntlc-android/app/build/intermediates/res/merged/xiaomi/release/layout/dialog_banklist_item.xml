@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/ll_item"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="@dimen/y2"
+              android:background="@color/white"
+              android:gravity="center_vertical"
+              android:paddingLeft="@dimen/x40"
+              android:paddingRight="@dimen/x30">
+
+    <ImageView
+        android:id="@+id/iv_bankIcon"
+        android:layout_width="@dimen/x60"
+        android:layout_height="@dimen/x60"
+        android:src="@mipmap/ic_launcher"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/y165"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/y37"
+        android:paddingTop="@dimen/y37">
+
+        <TextView
+            android:id="@+id/tv_bankName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="XXX银行"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16"/>
+
+        <LinearLayout
+            android:id="@+id/ll_bankLimit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y10"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="单笔限额"
+                android:textColor="@color/alpha_40_black"
+                android:textSize="@dimen/text_12"/>
+
+            <TextView
+                android:id="@+id/tv_singleLimit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/color_E1C08B"
+                android:textSize="@dimen/text_12"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="，每日限额"
+                android:textColor="@color/alpha_40_black"
+                android:textSize="@dimen/text_12"/>
+
+            <TextView
+                android:id="@+id/tv_dailyLimit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@color/color_E1C08B"
+                android:textSize="@dimen/text_12"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_selected"
+        android:layout_width="@dimen/y48"
+        android:layout_height="@dimen/y48"
+        android:src="@drawable/icon_confirm_selected"
+        android:visibility="gone"/>
+
+</LinearLayout>

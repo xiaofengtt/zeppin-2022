@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/main/shaders"/></dataSet><dataSet config="xiaomi"><source path="/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/xiaomi/shaders"/></dataSet><dataSet config="debug"><source path="/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/debug/shaders"/></dataSet><dataSet config="xiaomiDebug"><source path="/Users/zeppin/Desktop/workspace/android/ntbAndroid/app/src/xiaomiDebug/shaders"/></dataSet></merger>

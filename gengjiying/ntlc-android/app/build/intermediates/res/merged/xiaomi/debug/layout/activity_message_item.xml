@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/x15"
+    android:layout_marginRight="@dimen/x15"
+    android:layout_marginTop="@dimen/y25"
+    android:background="@drawable/bg_white_radius"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.user.activity.MessageActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/y40"
+        android:paddingLeft="@dimen/x40"
+        android:paddingRight="@dimen/x30"
+        android:paddingTop="@dimen/y40">
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/TextLimitsStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_weight="1"
+            android:textSize="@dimen/text_16"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:gravity="right"
+            android:textColor="@color/alpha_30_black"
+            android:textSize="@dimen/text_12"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y3"
+        android:background="@color/line_10_979797"/>
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="3dp"
+        android:paddingBottom="@dimen/y58"
+        android:paddingLeft="@dimen/x40"
+        android:paddingRight="@dimen/x30"
+        android:paddingTop="@dimen/y58"
+        android:textSize="@dimen/text_14"/>
+</LinearLayout>

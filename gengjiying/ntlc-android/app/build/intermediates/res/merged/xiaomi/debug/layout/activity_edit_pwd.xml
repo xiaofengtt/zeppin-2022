@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_bg"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.user.activity.SetPwdActivity">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <LinearLayout
+        style="@style/LayoutStyleRadius2"
+        android:layout_marginTop="@dimen/y30">
+
+        <LinearLayout
+            style="@style/LayoutStyle"
+            android:layout_height="@dimen/y160"
+            android:background="@color/transparent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:minWidth="@dimen/y240"
+                android:text="原密码"
+                android:textColor="@color/alpha_80_black"
+                android:textSize="@dimen/text_16"/>
+
+            <cn.zeppin.product.ntb.widget.ClearEditText
+                android:id="@+id/cet_oldPwd"
+                style="@style/common_editText_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_username"
+                android:hint="请输入原密码"
+                android:inputType="textPassword"
+                android:textSize="@dimen/text_16"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LayoutStyle"
+            android:layout_height="@dimen/y160"
+            android:background="@drawable/shape_border_top"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:minWidth="@dimen/y240"
+                android:text="新密码"
+                android:textColor="@color/alpha_80_black"
+                android:textSize="@dimen/text_16"/>
+
+            <cn.zeppin.product.ntb.widget.ClearEditText
+                android:id="@+id/cet_newPwd"
+                style="@style/common_editText_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_username"
+                android:hint="请输入8-20位字母数字组合密码"
+                android:inputType="textPassword"
+                android:textSize="@dimen/text_16"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LayoutStyle"
+            android:layout_height="@dimen/y160"
+            android:background="@drawable/shape_border_top">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minWidth="@dimen/y240"
+                android:text="确认密码"
+                android:textColor="@color/alpha_80_black"
+                android:textSize="@dimen/text_16"/>
+
+            <cn.zeppin.product.ntb.widget.ClearEditText
+                android:id="@+id/cet_confirmPwd"
+                style="@style/common_editText_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_idCard"
+                android:hint="请输入确认密码"
+                android:inputType="textPassword"
+                android:maxLength="18"
+                android:textSize="@dimen/text_16"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_save"
+        style="@style/ButtonStyle3"
+        android:layout_marginLeft="@dimen/x110"
+        android:layout_marginRight="@dimen/x110"
+        android:layout_marginTop="@dimen/y83"
+        android:text="保存"/>
+</LinearLayout>

@@ -1,0 +1,429 @@
+# view res/layout/design_bottom_navigation_item.xml #generated:26
+-keep class android.support.design.internal.BaselineLayout { <init>(...); }
+
+# view res/layout/design_navigation_item.xml #generated:17
+-keep class android.support.design.internal.NavigationMenuItemView { <init>(...); }
+
+# view res/layout/design_navigation_menu.xml #generated:17
+-keep class android.support.design.internal.NavigationMenuView { <init>(...); }
+
+# view res/layout/design_layout_snackbar_include.xml #generated:18
+-keep class android.support.design.internal.SnackbarContentLayout { <init>(...); }
+
+# view res/layout/fragment_bank.xml #generated:25
+# view res/layout/fragment_finance.xml #generated:24
+-keep class android.support.design.widget.AppBarLayout { <init>(...); }
+
+# view res/layout/design_text_input_password_icon.xml #generated:18
+-keep class android.support.design.widget.CheckableImageButton { <init>(...); }
+
+# view res/layout/fragment_bank.xml #generated:31
+# view res/layout/fragment_finance.xml #generated:31
+-keep class android.support.design.widget.CollapsingToolbarLayout { <init>(...); }
+
+# view res/layout/design_bottom_sheet_dialog.xml #generated:17
+# view res/layout/fragment_bank.xml #generated:16
+# view res/layout/fragment_finance.xml #generated:15
+-keep class android.support.design.widget.CoordinatorLayout { <init>(...); }
+
+# view res/layout/design_layout_snackbar.xml #generated:18
+# view sw600dp-v13/res/layout-sw600dp-v13/design_layout_snackbar.xml #generated:18
+-keep class android.support.design.widget.Snackbar$SnackbarLayout { <init>(...); }
+
+# view res/layout/activity_login.xml #generated:24
+# view res/layout/activity_search.xml #generated:44
+# view res/layout/fragment_bank.xml #generated:120
+-keep class android.support.design.widget.TabLayout { <init>(...); }
+
+# view res/layout/activity_coupon.xml #generated:35
+# view res/layout/activity_login.xml #generated:36
+# view res/layout/fragment_finance.xml #generated:247
+-keep class android.support.v4.view.ViewPager { <init>(...); }
+
+# view res/layout/downloading_layout.xml #generated:7
+# view res/layout/version_update_download.xml #generated:9
+-keep class android.support.v4.widget.ContentLoadingProgressBar { <init>(...); }
+
+# view res/layout/abc_alert_dialog_material.xml #generated:41
+# view res/layout/activity_bank_detail.xml #generated:12
+# view res/layout/activity_bank_detail_all.xml #generated:12
+# view res/layout/activity_certification.xml #generated:2
+# view res/layout/include_filtration.xml #generated:24
+-keep class android.support.v4.widget.NestedScrollView { <init>(...); }
+
+# view res/layout/abc_alert_dialog_button_bar_material.xml #generated:43
+# view res/layout/abc_alert_dialog_material.xml #generated:52
+# view res/layout/abc_alert_dialog_material.xml #generated:66
+# view res/layout/abc_alert_dialog_title_material.xml #generated:56
+-keep class android.support.v4.widget.Space { <init>(...); }
+
+# view res/layout/abc_select_dialog_material.xml #generated:23
+-keep class android.support.v7.app.AlertController$RecycleListView { <init>(...); }
+
+# view res/layout/abc_action_menu_item_layout.xml #generated:17
+-keep class android.support.v7.view.menu.ActionMenuItemView { <init>(...); }
+
+# view res/layout/abc_expanded_menu_layout.xml #generated:17
+-keep class android.support.v7.view.menu.ExpandedMenuView { <init>(...); }
+
+# view res/layout/abc_list_menu_item_layout.xml #generated:17
+# view res/layout/abc_popup_menu_item_layout.xml #generated:17
+-keep class android.support.v7.view.menu.ListMenuItemView { <init>(...); }
+
+# view res/layout/abc_screen_toolbar.xml #generated:27
+-keep class android.support.v7.widget.ActionBarContainer { <init>(...); }
+
+# view res/layout/abc_action_mode_bar.xml #generated:19
+# view res/layout/abc_screen_toolbar.xml #generated:43
+-keep class android.support.v7.widget.ActionBarContextView { <init>(...); }
+
+# view res/layout/abc_screen_toolbar.xml #generated:17
+-keep class android.support.v7.widget.ActionBarOverlayLayout { <init>(...); }
+
+# view res/layout/abc_action_menu_layout.xml #generated:17
+-keep class android.support.v7.widget.ActionMenuView { <init>(...); }
+
+# view res/layout/abc_activity_chooser_view.xml #generated:19
+-keep class android.support.v7.widget.ActivityChooserView$InnerLayout { <init>(...); }
+
+# view res/layout/abc_alert_dialog_material.xml #generated:18
+-keep class android.support.v7.widget.AlertDialogLayout { <init>(...); }
+
+# view res/layout/abc_alert_dialog_button_bar_material.xml #generated:26
+-keep class android.support.v7.widget.ButtonBarLayout { <init>(...); }
+
+# view res/layout/fragment_hold_item2.xml #generated:11
+# view res/layout/item_bank_card.xml #generated:2
+-keep class android.support.v7.widget.CardView { <init>(...); }
+
+# view res/layout/abc_screen_content_include.xml #generated:19
+-keep class android.support.v7.widget.ContentFrameLayout { <init>(...); }
+
+# view res/layout/abc_alert_dialog_title_material.xml #generated:45
+-keep class android.support.v7.widget.DialogTitle { <init>(...); }
+
+# view res/layout/abc_screen_simple_overlay_action_mode.xml #generated:23
+-keep class android.support.v7.widget.FitWindowsFrameLayout { <init>(...); }
+
+# view res/layout/abc_dialog_title_material.xml #generated:22
+# view res/layout/abc_screen_simple.xml #generated:17
+-keep class android.support.v7.widget.FitWindowsLinearLayout { <init>(...); }
+
+# view res/layout/activity_bank.xml #generated:23
+# view res/layout/activity_finance_detail.xml #generated:149
+# view res/layout/activity_gift.xml #generated:27
+# view res/layout/activity_message.xml #generated:20
+# view res/layout/activity_my_bank_list.xml #generated:13
+# view res/layout/activity_search.xml #generated:61
+# view res/layout/activity_trading_record.xml #generated:14
+# view res/layout/dialog_banklist.xml #generated:47
+# view res/layout/fragment_bank.xml #generated:137
+# view res/layout/fragment_coupon_list.xml #generated:9
+# view res/layout/fragment_hold.xml #generated:3
+-keep class android.support.v7.widget.RecyclerView { <init>(...); }
+
+# view res/layout/abc_search_view.xml #generated:75
+-keep class android.support.v7.widget.SearchView$SearchAutoComplete { <init>(...); }
+
+# view res/layout/abc_screen_toolbar.xml #generated:36
+# view res/layout/fragment_bank.xml #generated:58
+# view res/layout/fragment_finance.xml #generated:164
+# view res/layout/fragment_user.xml #generated:32
+# view res/layout/include_toolbar.xml #generated:3
+-keep class android.support.v7.widget.Toolbar { <init>(...); }
+
+# view res/layout/abc_screen_simple.xml #generated:25
+# view res/layout/abc_screen_simple_overlay_action_mode.xml #generated:32
+-keep class android.support.v7.widget.ViewStubCompat { <init>(...); }
+
+# view res/layout/view_refresh_header_meituan.xml #generated:8
+-keep class cn.bingoogolapple.refreshlayout.BGAMeiTuanRefreshView { <init>(...); }
+
+# view res/layout/view_refresh_header_mooc_style.xml #generated:8
+-keep class cn.bingoogolapple.refreshlayout.BGAMoocStyleRefreshView { <init>(...); }
+
+# view res/layout/activity_message.xml #generated:14
+# view res/layout/activity_search.xml #generated:55
+# view res/layout/fragment_bank.xml #generated:130
+-keep class cn.bingoogolapple.refreshlayout.BGARefreshLayout { <init>(...); }
+
+# view res/layout/view_refresh_header_stickiness.xml #generated:8
+-keep class cn.bingoogolapple.refreshlayout.BGAStickinessRefreshView { <init>(...); }
+
+# view AndroidManifest.xml #generated:234
+-keep class cn.zeppin.product.ntb.WBShareActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:39
+-keep class cn.zeppin.product.ntb.app.AppApplication { <init>(...); }
+
+# view AndroidManifest.xml #generated:181
+-keep class cn.zeppin.product.ntb.pay.AlipayActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:123
+-keep class cn.zeppin.product.ntb.permission.HelpActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:302
+-keep class cn.zeppin.product.ntb.receiver.AlarmReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:296
+-keep class cn.zeppin.product.ntb.service.AlarmService { <init>(...); }
+
+# view AndroidManifest.xml #generated:292
+-keep class cn.zeppin.product.ntb.service.ApkDownloadService { <init>(...); }
+
+# view AndroidManifest.xml #generated:70
+-keep class cn.zeppin.product.ntb.ui.bank.activity.BankDetailActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:74
+-keep class cn.zeppin.product.ntb.ui.bank.activity.BankDetailAllActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:140
+-keep class cn.zeppin.product.ntb.ui.bank.activity.PaySuccessActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:78
+-keep class cn.zeppin.product.ntb.ui.bank.activity.ProductBuyActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:82
+-keep class cn.zeppin.product.ntb.ui.bank.activity.SearchActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:144
+-keep class cn.zeppin.product.ntb.ui.finance.activity.FinanceDetailActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:185
+-keep class cn.zeppin.product.ntb.ui.finance.activity.Recharge2Activity { <init>(...); }
+
+# view AndroidManifest.xml #generated:134
+-keep class cn.zeppin.product.ntb.ui.finance.activity.RechargeActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:157
+-keep class cn.zeppin.product.ntb.ui.finance.activity.RechargeSuccessActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:152
+-keep class cn.zeppin.product.ntb.ui.finance.activity.WithdrawalActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:161
+-keep class cn.zeppin.product.ntb.ui.finance.activity.WithdrawalApplyActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:286
+-keep class cn.zeppin.product.ntb.ui.main.activity.AdvertisementActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:265
+-keep class cn.zeppin.product.ntb.ui.main.activity.GiftActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:252
+-keep class cn.zeppin.product.ntb.ui.main.activity.JumpActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:66
+-keep class cn.zeppin.product.ntb.ui.main.activity.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:169
+-keep class cn.zeppin.product.ntb.ui.main.activity.PdfViewActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:56
+-keep class cn.zeppin.product.ntb.ui.main.activity.SplashActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:148
+-keep class cn.zeppin.product.ntb.ui.main.activity.WebActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:173
+-keep class cn.zeppin.product.ntb.ui.user.activity.AboutActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:115
+-keep class cn.zeppin.product.ntb.ui.user.activity.AddBankActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:189
+-keep class cn.zeppin.product.ntb.ui.user.activity.AlipayBindActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:126
+-keep class cn.zeppin.product.ntb.ui.user.activity.BankActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:99
+-keep class cn.zeppin.product.ntb.ui.user.activity.CertificationActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:103
+-keep class cn.zeppin.product.ntb.ui.user.activity.CertificationNoActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:107
+-keep class cn.zeppin.product.ntb.ui.user.activity.CertificationYesActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:244
+-keep class cn.zeppin.product.ntb.ui.user.activity.CouponActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:274
+-keep class cn.zeppin.product.ntb.ui.user.activity.CreateGestureActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:193
+-keep class cn.zeppin.product.ntb.ui.user.activity.CustomVersionDialogActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:261
+-keep class cn.zeppin.product.ntb.ui.user.activity.EditPwdActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:177
+-keep class cn.zeppin.product.ntb.ui.user.activity.ForgotPasswordActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:278
+-keep class cn.zeppin.product.ntb.ui.user.activity.GestureLoginActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:86
+-keep class cn.zeppin.product.ntb.ui.user.activity.LoginActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:248
+-keep class cn.zeppin.product.ntb.ui.user.activity.MessageActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:119
+-keep class cn.zeppin.product.ntb.ui.user.activity.MyBankDetailActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:111
+-keep class cn.zeppin.product.ntb.ui.user.activity.MyBankListActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:91
+-keep class cn.zeppin.product.ntb.ui.user.activity.RegisterActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:95
+-keep class cn.zeppin.product.ntb.ui.user.activity.ResetPwdActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:270
+-keep class cn.zeppin.product.ntb.ui.user.activity.SafeActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:282
+-keep class cn.zeppin.product.ntb.ui.user.activity.SetGestureActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:257
+-keep class cn.zeppin.product.ntb.ui.user.activity.SetPwdActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:130
+-keep class cn.zeppin.product.ntb.ui.user.activity.TradingRecordActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:165
+-keep class cn.zeppin.product.ntb.ui.user.activity.TradingRecordDetailActivity { <init>(...); }
+
+# view res/layout/activity_add_bank.xml #generated:147
+# view res/layout/activity_add_bank.xml #generated:43
+# view res/layout/activity_add_bank.xml #generated:70
+# view res/layout/activity_certification.xml #generated:47
+# view res/layout/activity_certification.xml #generated:73
+# view res/layout/activity_edit_pwd.xml #generated:32
+# view res/layout/activity_edit_pwd.xml #generated:58
+# view res/layout/activity_edit_pwd.xml #generated:83
+# view res/layout/activity_forgot_password.xml #generated:21
+# view res/layout/activity_forgot_password.xml #generated:38
+# view res/layout/activity_product_buy.xml #generated:173
+# view res/layout/activity_recharge.xml #generated:239
+# view res/layout/activity_recharge2.xml #generated:250
+# view res/layout/activity_register.xml #generated:30
+# view res/layout/activity_register.xml #generated:47
+# view res/layout/activity_register.xml #generated:74
+# view res/layout/activity_reset_password.xml #generated:12
+# view res/layout/activity_reset_password.xml #generated:23
+# view res/layout/activity_search.xml #generated:25
+# view res/layout/activity_set_pwd.xml #generated:43
+# view res/layout/activity_set_pwd.xml #generated:68
+# view res/layout/activity_withdrawal.xml #generated:152
+# view res/layout/dialog_sendsms.xml #generated:41
+# view res/layout/fragment_account.xml #generated:10
+# view res/layout/fragment_account.xml #generated:22
+# view res/layout/fragment_phone.xml #generated:12
+# view res/layout/fragment_phone.xml #generated:29
+-keep class cn.zeppin.product.ntb.widget.ClearEditText { <init>(...); }
+
+# view res/layout/activity_alipay_bind.xml #generated:65
+# view res/layout/activity_gesture_login.xml #generated:9
+# view res/layout/fragment_user.xml #generated:72
+-keep class cn.zeppin.product.ntb.widget.SelectableRoundedImageView { <init>(...); }
+
+# view res/layout/activity_product_buy.xml #generated:76
+# view res/layout/fragment_hold_item1.xml #generated:88
+-keep class cn.zeppin.product.ntb.widget.TextViewBorder { <init>(...); }
+
+# view AndroidManifest.xml #generated:203
+-keep class cn.zeppin.product.ntb.wxapi.WXEntryActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:326
+-keep class com.allenliu.versionchecklib.core.MyService { <init>(...); }
+
+# view AndroidManifest.xml #generated:321
+-keep class com.allenliu.versionchecklib.core.PermissionDialogActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:306
+-keep class com.allenliu.versionchecklib.core.VersionDialogActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:311
+-keep class com.allenliu.versionchecklib.core.VersionFileProvider { <init>(...); }
+
+# view res/layout/activity_coupon.xml #generated:14
+# view res/layout/fragment_finance.xml #generated:225
+-keep class com.flyco.tablayout.SlidingTabLayout { <init>(...); }
+
+# view res/layout/layout_tab.xml #generated:17
+# view res/layout/layout_tab_bottom.xml #generated:30
+# view res/layout/layout_tab_left.xml #generated:29
+# view res/layout/layout_tab_right.xml #generated:30
+# view res/layout/layout_tab_segment.xml #generated:24
+# view res/layout/layout_tab_top.xml #generated:29
+-keep class com.flyco.tablayout.widget.MsgView { <init>(...); }
+
+# view res/layout/activity_set_gesture.xml #generated:33
+-keep class com.kyleduo.switchbutton.SwitchButton { <init>(...); }
+
+# view res/layout/activity_pdf.xml #generated:13
+-keep class com.lidong.pdf.PDFView { <init>(...); }
+
+# view res/layout/crop__activity_crop.xml #generated:12
+-keep class com.soundcloud.android.crop.CropImageView { <init>(...); }
+
+# view res/layout/activity_create_gesture.xml #generated:19
+-keep class com.star.lockpattern.widget.LockPatternIndicator { <init>(...); }
+
+# view res/layout/activity_create_gesture.xml #generated:36
+# view res/layout/activity_gesture_login.xml #generated:50
+-keep class com.star.lockpattern.widget.LockPatternView { <init>(...); }
+
+# view AndroidManifest.xml #generated:224
+-keep class com.umeng.qq.tencent.AssistActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:211
+-keep class com.umeng.qq.tencent.AuthActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:231
+-keep class com.umeng.socialize.editorpage.ShareActivity { <init>(...); }
+
+# view res/layout/socialize_share_menu_item.xml #generated:8
+-keep class com.umeng.socialize.shareboard.SocializeImageView { <init>(...); }
+
+# view res/layout/fragment_bank.xml #generated:39
+-keep class com.youth.banner.Banner { <init>(...); }
+
+# view res/layout/banner.xml #generated:9
+-keep class com.youth.banner.view.BannerViewPager { <init>(...); }
+
+# view res/layout/include_filtration.xml #generated:49
+# view res/layout/include_filtration.xml #generated:68
+-keep class com.zhy.view.flowlayout.TagFlowLayout { <init>(...); }
+
+# view res/layout/fragment_bank.xml #generated:2
+# view res/layout/fragment_finance.xml #generated:2
+-keep class in.srain.cube.views.ptr.PtrClassicFrameLayout { <init>(...); }
+
+# onClick res/layout/umeng_socialize_oauth_dialog.xml #generated:23
+# onClick res/layout/umeng_socialize_share.xml #generated:24
+# onClick sw550dp-large-v13/res/layout-sw550dp-large-v13/umeng_socialize_oauth_dialog.xml #generated:21
+-keepclassmembers class * { *** onCancel(...); }
+
+# onClick res/layout/activity_safe.xml #generated:14
+-keepclassmembers class * { *** openCreateGestureActivity(...); }
+
+# onClick res/layout/activity_certification_no.xml #generated:46
+-keepclassmembers class * { *** reCertification(...); }
+
+# onClick res/layout/activity_create_gesture.xml #generated:54
+-keepclassmembers class * { *** resetLockPattern(...); }
+
+# onClick res/layout/activity_create_gesture.xml #generated:74
+-keepclassmembers class * { *** skip(...); }
+
+# onClick res/layout/activity_register.xml #generated:152
+-keepclassmembers class * { *** toLoginActivity(...); }
+
+# onClick res/layout/activity_login.xml #generated:68
+-keepclassmembers class * { *** toRegisterActivity(...); }
+

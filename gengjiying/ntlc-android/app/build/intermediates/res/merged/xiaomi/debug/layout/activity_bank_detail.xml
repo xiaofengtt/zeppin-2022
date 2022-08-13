@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.bank.activity.BankDetailActivity">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <include layout="@layout/include_bank_detail_content"/>
+    </android.support.v4.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/btn_buy"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y130"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/btn_submit_bg"
+        android:text="购买"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_16"
+        android:visibility="gone"/>
+</LinearLayout>

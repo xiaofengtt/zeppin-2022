@@ -1,0 +1,44 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/coupon_recyclerView"
+        android:name="cn.zeppin.product.ntb.ui.positions.fragment.HoldFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/list_bg"
+        app:layoutManager="LinearLayoutManager"
+        tools:context="cn.zeppin.product.ntb.ui.finance.fragment.HoldFragment"
+        tools:listitem="@layout/fragment_coupon_list_item"/>
+
+    <LinearLayout
+        android:id="@+id/ll_unUse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_border_top_white"
+        android:gravity="center"
+        android:paddingBottom="@dimen/y35"
+        android:paddingTop="@dimen/y40"
+        android:visibility="gone">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_coupon_unuse"
+            android:paddingBottom="@dimen/y20"
+            android:paddingLeft="@dimen/x50"
+            android:paddingRight="@dimen/x50"
+            android:paddingTop="@dimen/y20"
+            android:text="不使用优惠券"
+            android:textColor="@color/color_4990E2"
+            android:textSize="@dimen/text_16"/>
+    </LinearLayout>
+</LinearLayout>
