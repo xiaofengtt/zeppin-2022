@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="entity.statistics" extends="platform-default" namespace="/entity/statistics">
+		<action name="prBzzStatistics_*" method="{1}" class="prBzzStatisticsAction">
+		<result name="stu">/entity/manager/statistics/stat_student.jsp</result>
+		<result name="res">/entity/manager/statistics/stat_resource.jsp</result>
+		<result name="ele">/entity/manager/statistics/stat_elective.jsp</result>
+		<result name="pro">/entity/manager/statistics/stat_progress.jsp</result>
+		</action>
+		<action name="statisticsByYearAction_*" method="{1}" class="statisticsByYearAction">
+		</action>
+		<action name="statisticsByYearProvinceAction_*" method="{1}" class="statisticsByYearProvinceAction">
+		</action>
+		<action name="statisticsByYearNJswAction_*" method="{1}" class="statisticsByYearNJswAction">
+		</action>
+		<action name="statisticsByYearJswAction_*" method="{1}" class="statisticsByYearJswAction">
+		</action>
+		<action name="statisticsByYearProvinceNJswAction_*" method="{1}" class="statisticsByYearProvinceNJswAction">
+		</action>
+		<action name="statisticsByYearProvinceJswAction_*" method="{1}" class="statisticsByYearProvinceJswAction">
+		</action>
+		<action name="statisticsByYearJswTrainingTypeAction_*" method="{1}" class="statisticsByYearJswTrainingTypeAction">
+		</action>
+		<action name="statisticsByYearProvinceJswTrainingTypeAction_*" method="{1}" class="statisticsByYearProvinceJswTrainingTypeAction">
+		</action>
+	</package>
+</struts>

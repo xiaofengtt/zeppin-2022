@@ -1,0 +1,64 @@
+/*basic reset*/
+* {margin: 0; padding: 0;}
+html {
+    height: 100%;
+    /*Image only BG fallback*/
+    background-image: url(../images/index/background-bg1.png);
+    background-repeat: repeat-x;
+    background-position: center top;
+}
+*:before,
+*:after {
+    -webkit-box-sizing: initial;
+    -moz-box-sizing: initial;
+    box-sizing: initial;
+}
+body {
+    font-family: "Hiragino Sans GB", "Microsoft YaHei",
+    "WenQuanYi Micro Hei", sans-serif;;
+    background-color: initial;
+}
+.logo{
+    height: 40px;
+    margin-top: 5px;
+}
+.navItem{
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    color: black !important;
+}
+.navItem:focus,
+.navItem:hover{
+    color: #b81c22 !important;
+    text-decoration: none !important;
+/*     background-color: #e8f3fb !important; */
+	border-bottom:2px solid #b81c22;
+}
+.navItem.light{
+    color: #b81c22 !important;
+    text-decoration: none !important;
+/*     background-color: #e8f3fb !important; */
+	border-bottom:2px solid #b81c22;
+}
+.nav>li>a{
+	padding:15px 0 10px 0;
+	margin:0 15px;
+}
+.navTitle{
+    font-size: 14px;
+    font-weight: bold;
+
+}
+.navbar-default{
+    background-color: white;
+}
+/*footer section*/
+.footer{
+    color: white;
+    background-color: #b81c22;
+    font-size: 12px;
+    padding: 10px 0;
+}
+.footer p{
+    margin: 0;
+}

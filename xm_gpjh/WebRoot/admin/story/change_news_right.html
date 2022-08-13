@@ -1,0 +1,171 @@
+
+
+
+
+
+
+
+
+<script language="javascript">
+	function doComit() {
+	/*
+		var check = window.document.getElementsByName("listMultiAction");
+		c = 0;
+		for(i =0 ;i<check.length;i++){
+			if(check[i].checked == 'true'){
+				c = 1;
+				break;
+			}
+		}
+		if(c == 0){
+			alert("请至少选择一项");
+			return false;
+		}
+		*/
+		if(confirm("您确定要为这位管理员更改这些新闻类型的权限吗？")){
+		    document.forms["user-form"].action = "/sso/admin/infoOper_updateInfoUserRight.action";
+		    document.forms["user-form"].submit();
+		}
+	}
+</script>
+
+<script language="JavaScript">
+	function listSelect(listId) {
+	var form = document.forms[listId + '-form'];
+	for (var i = 0 ; i < form.elements.length; i++) {
+		if ((form.elements[i].type == 'checkbox') && (form.elements[i].name == 'listMultiAction')) {
+			if (!(form.elements[i].value == 'DISABLED' || form.elements[i].disabled)) {
+				form.elements[i].checked = form.listSelectAll.checked;
+			}
+		}
+	}
+	return true;
+}
+</script>
+<html>
+<head>
+<link href="/admin/css.css" rel="stylesheet" type="text/css">
+<title>新闻权限管理</title>
+</head>
+
+<body>
+
+
+<form name='user-form' action='' method='post' class='nomargin'
+	onsubmit="">
+	<input type="hidden" name="id" value="402880d91c3ff392011c4002e5190001">
+	<input type="hidden" name="name" value="总站管理员">
+	<input type="hidden" name="type" value="admin">
+	
+<table cellPadding=2 cellSpacing=1  border="0" bgcolor=#3F6C61 align=center width="100%">
+
+
+<tr > 
+    <td colspan="10"  align="left" bgcolor="#D4E4EB" class="zhengwen"><div align="left"><font color="red">新闻类型列表</font> &nbsp;&nbsp;
+    
+										父类型： 根目录
+										
+										<a href="/sso/admin/infoOper_showNewsTypeAdd.action?parent_id=0&id=402880d91c3ff392011c4002e5190001&name=总站管理员&type=admin">添加新类型</a>
+
+    
+    </div></td>
+  </tr>
+  
+  <tr> 
+    <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen" ><div align="center">类型名称(点击进入子类型)</div></td>
+    <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen" ><div align="center">活动状态</div></td>
+    <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen">类型介绍</td>
+     <td  align="left" width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center">类型标签</div></td>
+    <td  align="left" width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center">										
+    	<input type='checkbox' class='checkbox' name='listSelectAll'
+											value='true' onClick="listSelect('user')"></div></td>
+  </tr>
+  
+  
+			 <tr> 
+			  <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen" ><div align="center"><a href="/sso/admin/infoOper_getChangeNewsRight.action?parent_id=1000&id=402880d91c3ff392011c4002e5190001&name=总站管理员&type=admin">总站通知</a></div></td>
+			  <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen" ><div align="center">活动</div></td>
+			  <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen">通知</td>
+			   <td  align="left" width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center">总站通知</div></td>
+			  <td  align="left" width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center">
+			  							<a href="/sso/admin/infoOper_showEdit.action?newsTypeId=1000&parent_id=0&id=402880d91c3ff392011c4002e5190001&name=总站管理员&type=admin">修改</a>&nbsp;&nbsp;
+										<input type='checkbox' class='checkbox' name='listMultiAction'
+											value='1000' checked>
+										<input type="hidden" name="page_news_type_ids" value="1000">											
+											</div></td>
+			</tr>
+  
+
+			 <tr> 
+			  <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen" ><div align="center"><a href="/sso/admin/infoOper_getChangeNewsRight.action?parent_id=802&id=402880d91c3ff392011c4002e5190001&name=总站管理员&type=admin">各地校外学习中心</a></div></td>
+			  <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen" ><div align="center">活动</div></td>
+			  <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen">略 </td>
+			   <td  align="left" width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center">uu</div></td>
+			  <td  align="left" width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center">
+			  							<a href="/sso/admin/infoOper_showEdit.action?newsTypeId=802&parent_id=0&id=402880d91c3ff392011c4002e5190001&name=总站管理员&type=admin">修改</a>&nbsp;&nbsp;
+										<input type='checkbox' class='checkbox' name='listMultiAction'
+											value='802' >
+										<input type="hidden" name="page_news_type_ids" value="802">											
+											</div></td>
+			</tr>
+  
+
+			 <tr> 
+			  <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen" ><div align="center"><a href="/sso/admin/infoOper_getChangeNewsRight.action?parent_id=720&id=402880d91c3ff392011c4002e5190001&name=总站管理员&type=admin">招生专栏</a></div></td>
+			  <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen" ><div align="center">不活动</div></td>
+			  <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen">略</td>
+			   <td  align="left" width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center"></div></td>
+			  <td  align="left" width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center">
+			  							<a href="/sso/admin/infoOper_showEdit.action?newsTypeId=720&parent_id=0&id=402880d91c3ff392011c4002e5190001&name=总站管理员&type=admin">修改</a>&nbsp;&nbsp;
+										<input type='checkbox' class='checkbox' name='listMultiAction'
+											value='720' checked>
+										<input type="hidden" name="page_news_type_ids" value="720">											
+											</div></td>
+			</tr>
+  
+
+			 <tr> 
+			  <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen" ><div align="center"><a href="/sso/admin/infoOper_getChangeNewsRight.action?parent_id=721&id=402880d91c3ff392011c4002e5190001&name=总站管理员&type=admin">教学专栏</a></div></td>
+			  <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen" ><div align="center">不活动</div></td>
+			  <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen">略</td>
+			   <td  align="left" width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center"></div></td>
+			  <td  align="left" width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center">
+			  							<a href="/sso/admin/infoOper_showEdit.action?newsTypeId=721&parent_id=0&id=402880d91c3ff392011c4002e5190001&name=总站管理员&type=admin">修改</a>&nbsp;&nbsp;
+										<input type='checkbox' class='checkbox' name='listMultiAction'
+											value='721' checked>
+										<input type="hidden" name="page_news_type_ids" value="721">											
+											</div></td>
+			</tr>
+  
+
+			 <tr> 
+			  <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen" ><div align="center"><a href="/sso/admin/infoOper_getChangeNewsRight.action?parent_id=701&id=402880d91c3ff392011c4002e5190001&name=总站管理员&type=admin">统考专区</a></div></td>
+			  <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen" ><div align="center">不活动</div></td>
+			  <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen">略</td>
+			   <td  align="left" width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center"></div></td>
+			  <td  align="left" width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center">
+			  							<a href="/sso/admin/infoOper_showEdit.action?newsTypeId=701&parent_id=0&id=402880d91c3ff392011c4002e5190001&name=总站管理员&type=admin">修改</a>&nbsp;&nbsp;
+										<input type='checkbox' class='checkbox' name='listMultiAction'
+											value='701' checked>
+										<input type="hidden" name="page_news_type_ids" value="701">											
+											</div></td>
+			</tr>
+  
+
+			 <tr> 
+			  <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen" colspan="9">
+			  		<div align="center">
+			  			<input type="button" name="bt" value="提交" OnClick="javascript:doComit()">
+			  			
+			  			<input type="button" name="return" value="返回管理员列表" 
+			  			 Onclick="javascript:window.navigate('/sso/admin/managerOper_showManagerList.action')">
+					</div>
+			  </td>
+			</tr>
+
+
+
+</table>
+</form>
+</body>
+</html>

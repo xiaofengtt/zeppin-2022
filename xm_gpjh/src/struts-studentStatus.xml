@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="entity.studentStatus" extends="platform-default" namespace="/entity/studentStatus">
+		
+
+		<action name="peRegisterStudent_*" method="{1}" class="peRegisterStudentAction">
+		</action>
+		<action name="prRecPriPay_*" method="{1}" class="prRecPriPayAction">
+		</action>
+		<action name="prRecPriPayApply_*" method="{1}" class="prRecPriPayApplyAction">
+		</action>
+		<action name="derateFeeApply_*" method="{1}" class="derateFeeApplyAction">
+	   		<result name="turnto">/entity/manager/studentStatus/fee_derate_apply.jsp</result>
+		</action>
+		<action name="peNoRegisterStudent_*" method="{1}" class="peNoRegisterStudentAction">
+		</action>
+		<action name="peStudentInfo_*" method="{1}" class="peStudentInfoAction">
+			<result name="edit">/entity/manager/studentStatus/student_info_edit.jsp</result>
+			<result name="printxjs">/entity/manager/studentStatus/student_printxjs.jsp</result>
+			<result name="pdfStuCard">/entity/manager/studentStatus/print_stuCard_pdf.jsp</result>
+			<result name="pdfbyzs">/entity/manager/studentStatus/print_stuCard_pdf.jsp</result>
+		</action>
+		<action name="peStudentInfoPrint_*" method="{1}" class="peStudentInfoPrintAction">
+		</action>
+		<action name="prStudentGoodApply_*" method="{1}" class="prStudentGoodApplyAction">
+			<result name="viewNote">/entity/manager/studentStatus/view_note.jsp</result>
+		</action>
+		<action name="studentGoodApplyPrint_*" method="{1}" class="studentGoodApplyPrintAction">
+			<result name="print_good_apply">/entity/manager/studentStatus/print_good_apply.jsp</result>
+		</action>		
+		<action name="prStudentOffence_*" method="{1}" class="prStudentOffenceAction">
+		</action>
+		<action name="prStudentOffenceAdd_*" method="{1}" class="prStudentOffenceAddAction">
+		</action>
+		<action name="prStuChangeableMajor_*" method="{1}" class="prStuChangeableMajorAction">
+		</action>		
+		<action name="peStudentStatus_*" method="{1}" class="peStudentStatusAction">
+			<result name="turntoDropoutSearch">/entity/manager/studentStatus/dropout_search.jsp</result>
+			<result name="turntoDropoutChange">/entity/manager/studentStatus/dropout_operate.jsp</result>
+			<result name="turntoExpelSearch">/entity/manager/studentStatus/expel_search.jsp</result>
+			<result name="turntoExpelChange">/entity/manager/studentStatus/expel_operate.jsp</result>
+		</action>
+		<action name="peStudentExpel_*" method="{1}" class="peStudentExpelAction">
+		</action>
+		<action name="peGraduate_*" method="{1}" class="peGraduateAction">
+		</action>
+		<action name="peCanGraduate_*" method="{1}" class="peCanGraduateAction">
+		</action>
+		<action name="prApplyGraduate_*" method="{1}" class="prApplyGraduateAction">
+		</action>
+		<action name="peGraduateStat_*" method="{1}" class="peGraduateStatAction">
+			<result name="graduateStat">/entity/manager/studentStatus/graduate_stat.jsp</result>
+		</action>		
+		<action name="peGraduatedStudent_*" method="{1}" class="peGraduatedStudentAction">
+		</action>
+		<action name="peStudentPhoto_*" method="{1}" class="peStudentPhotoAction">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">application/x-zip-compressed</param>
+		    	<param name="maximumSize">5242880</param>
+		    </interceptor-ref>
+		    <interceptor-ref name="defaultStack"></interceptor-ref>
+		     <result name="input">
+		        /WEB-INF/template/entity/manager/recruit/photoInf.jsp
+		    </result>		    		
+			<result name="showphotos">/entity/manager/studentStatus/showphotos.jsp</result>
+			<result name="photosupload">/entity/manager/studentStatus/graduatedphotos_upload.jsp</result>
+		</action>
+		<action name="peCanApplyDegree_*" method="{1}" class="peCanApplyDegreeAction">
+		</action>
+		<action name="peApplyDegree_*" method="{1}" class="peApplyDegreeAction">
+		</action>
+		<action name="peStudentDegree_*" method="{1}" class="peStudentDegreeAction">
+		</action>
+		<action name="peStudentCourse_*" method="{1}" class="peStudentCourseAction">
+		</action>
+		<action name="peStudentStudyCount_*" method="{1}" class="peStudentStudyCountAction">
+			<result name="studetinfo">/entity/manager/studentStatus/showstudetinfo.jsp</result>
+		</action>
+		<action name="prStudentDegree_*" method="{1}" class="prStudentDegreeAction">
+		</action>
+		<action name="derateFeeStat_*" method="{1}" class="derateFeeStatAction">
+			<result name="derateFeeStat">/entity/manager/studentStatus/derate_fee_stat.jsp</result>
+		</action>		
+		<action name="prStudentOnStatus_*" method="{1}" class="prStudentOnStatusAction">
+		</action>
+		
+		<!-- zhangyu begin -->	
+		<action name="studentStatus_*" method="{1}" class="studentStatusAction">
+		</action>		
+		<action name="peChangeSite_*" method="{1}" class="peChangeSiteAction">
+			<result name="turntoSearch">/entity/manager/studentStatus/changeSite_search.jsp</result>
+			<result name="turntochange">/entity/manager/studentStatus/changeSite_operate.jsp</result>
+			<result name="detail">/entity/manager/studentStatus/changeReson.jsp</result>
+		</action>
+		<action name="peChangeType_*" method="{1}" class="peChangeTypeAction">
+			<result name="turntoSearch">/entity/manager/studentStatus/changeType_search.jsp</result>
+			<result name="turntochange">/entity/manager/studentStatus/changeType_operate.jsp</result>
+			<result name="detail">/entity/manager/studentStatus/changeReson.jsp</result>
+		</action>
+		<action name="peChangeMajor_*" method="{1}" class="peChangeMajorAction">
+			<result name="turntoSearch">/entity/manager/studentStatus/changeMajor_search.jsp</result>
+			<result name="turntochange">/entity/manager/studentStatus/changeMajor_operate.jsp</result>
+			<result name="detail">/entity/manager/studentStatus/changeReson.jsp</result>
+		</action>
+		<action name="peYearReport_*" method="{1}" class="peYearReportAction">
+		</action>
+		<action name="simulateStudentLogin_*" method="{1}" class="simulateStudentLoginAction">
+		</action>
+		<action name="peChangeApply_*" method="{1}" class="peChangeApplyAction">
+			<result name="detail">/entity/manager/studentStatus/changeStatusApplyReason.jsp</result>
+		</action>
+		<!-- zhangyu end -->
+	</package>
+
+</struts>

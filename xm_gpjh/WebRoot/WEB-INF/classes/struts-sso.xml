@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+
+	<package name="sso" extends="struts-default" namespace="/sso">
+		<global-results>
+			
+			<result name="error" type="freemarker">
+				/test/error.jsp
+			</result>
+			<result name="grid">/test/grid.jsp</result>
+		    <result name="json">/test/json.jsp</result>
+		    <result name="gridjs">/test/gridjs.jsp</result>
+		    <result name="excel">/test/export.xls</result>
+		    <result name="input">/entity/manager/pub/turnToLogin.jsp </result>
+		</global-results>
+		
+		<action name="login_*" method="{1}" class="ssoLoginAction">
+			<result name="back">
+				/first.jsp
+			</result>
+			<result name="pwd">
+				/web/help/get_pwd.jsp
+			</result>
+			<result name="information">
+				/WEB-INF/template/sso/loginErrMessage.jsp
+			</result>
+			<result name="firstlogin">/entity/bzz-students/student_firstlogin.jsp</result>
+			<result name="success">/WEB-INF/template/sso/loginSuccess.jsp</result>
+			<result name="checkLogin">/web/bzz_index/checkLoginMsg.jsp</result>
+			<result name="exit" type="redirect">/entity/first/firstInfoNews_toIndex.action</result>
+			
+		</action>
+		<action name="interaction_*" method="{1}" class="interactionAction">
+			<result name="show_index" type="redirect">/entity/function/teacher/index.jsp</result>
+			<result name="show_stuindex" type="redirect">/entity/function/student/index.jsp</result>
+			<result name="listjson" type="freemarker">/WEB-INF/template/entity/pub/json.ftl</result>
+			<result name="KJLL">/entity/function/coursewareList.jsp </result>
+		</action>
+		<action name="bzzinteraction_*" method="{1}" class="bzzinteractionAction">
+			<result name="show_index">/entity/function/teacher/index.jsp</result>
+			<result name="show_stuindex" type="redirect">/entity/function/student/index.jsp</result>
+			<result name="listjson" type="freemarker">/WEB-INF/template/entity/pub/json.ftl</result>
+			<result name="KJLL">/entity/function/coursewareList.jsp </result>
+		</action>
+		
+		<action name="managerMenu_*" method="{1}" class="managerMenuAction">
+			<result name="menu">/entity/manager/pub/tree/user/menu.jsp</result>
+			<result name="topMenu">/entity/manager/pub/tree/user/top_menu.jsp</result>
+		</action>
+	</package>
+	
+	<package name="admin" extends="struts-default" namespace="/sso/admin">
+	<interceptors>
+			<interceptor name="adminInterceptor" class="com.whaty.platform.sso.web.interceptor.AdminInterceptor"></interceptor>
+			<interceptor-stack name="adminStack">				
+				<interceptor-ref name="adminInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="adminStack"></default-interceptor-ref>
+		<global-results>
+			<result name="ssoException" type="freemarker">
+				/WEB-INF/template/sso/pub/ssoExceptionMessage.ftl
+			</result>
+			<result name="grid">/test/grid.jsp</result>
+		    <result name="json">/test/json.jsp</result>
+		    <result name="gridjs">/test/gridjs.jsp</result>
+		    <result name="excel">/test/export.xls</result>
+		     <result name="input">/entity/manager/pub/turnToLogin.jsp </result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="ssoException"
+				exception="com.whaty.platform.sso.exception.SsoException">
+			</exception-mapping>
+		</global-exception-mappings>
+		<action name="whatyLog4j_*" method="{1}" class="whatyLog4jAction">
+		</action>
+		<action name="pricatetory_*" method="{1}" class="pePriCategoryManageAction">
+		</action>
+		<action name="priority_*" method="{1}" class="pePriorityManageAction">
+		</action>
+		<action name="pePriRole_*" method="{1}" class="pePriRoleAction">
+		</action>
+		<action name="pePriRoleUser_*" method="{1}" class="pePriRoleUserAction">
+		</action>
+		<action name="prPriRole_*" method="{1}" class="prPriRoleAction">
+		</action>
+		<action name="pePriCategoryView_*" method="{1}" class="pePriCategoryViewAction">
+		</action>
+		<action name="peManager_*" method="{1}" class="peManagerAction">
+		</action>
+		<action name="peSitemanager_*" method="{1}" class="peSitemanagerAction">
+		</action>
+		<action name="peEnterprisemanager_*" method="{1}" class="peEnterpriseManagerAction">
+		</action>	
+		<action name="managerRangeRight_*" method="{1}" class="managerRangeRightAction">
+			<result name="show_range_right">/admin/change_range_right_new.jsp</result>
+			<result name="show_update_range_right" type="redirect">managerRangeRight_showRangeRight.action?managerId=${managerId}&amp;managerType=${managerType}</result>
+		</action>
+		<!-- 日志 -->
+		<action name="log4j_*" method="{1}" class="whatyUserLog4jAction">
+		</action>
+		
+		<!-- <action name="priedutype_*" method="{1}" class="prPriEdutypeManageAction">
+		</action>
+		<action name="prigrade_*" method="{1}" class="prPriGradeManageAction">
+		</action>
+		<action name="primajor_*" method="{1}" class="prPriMajorManageAction">
+		</action>
+		<action name="prisite_*" method="{1}" class="prPriSiteManageAction">
+		</action>  -->
+		<action name="admin_*" method="{1}" class="adminLoginAction">
+			<result name ="login" type="redirect">/admin/index_gpjh.html</result>
+			<result name ="in" type="redirect">/admin/admin_index.jsp</result>
+		</action>
+		<!--  <action name="rolesso_*" method="{1}" class="rolesSsoUserManageAction">
+		</action>
+		<action name="changepriority_*" method="{1}" class="changePriorityManageAction">
+			<result name="change_group_right">/admin/change_group_right.jsp</result>
+			<result name="show_change_right">changepriority_showPage.action</result>
+		</action>
+		<action name="managerOper_*" method="{1}" class="managerPriorityManageAction">
+			<result name="manager_list" >/admin/right_admin_new.jsp</result>
+			<result name="change_admin_group_new" type="redirect">/admin/change_admin_group_new.jsp</result>
+			<result name="update_admin_group" type="redirect">managerOper_showManagerList.action</result>
+			<result name="add_superadmin" >/admin/add_superadmin.jsp</result>
+			<result name="edit_superadmin" >/admin/edit_superadmin_new.jsp</result>
+			<result name="change_range_right" >/admin/change_range_right_new.jsp</result>
+			<result name="mobile_batch" >/admin/mobile_batch.jsp</result>
+			<result name="admin_excel_new" >/admin/admin_excel_new.jsp</result>
+			<result name="show_range_right" type="redirect">managerOper_showRangeRight.action?managerId=${managerId}</result>
+			<result name="show_manager_list" type="redirect">managerOper_showRangeRight.action?managerId=${managerId}</result>
+		</action>
+		
+		<action name="siteManagerOper_*" method="{1}" class="siteManagerPriorityManageAction">
+			<result name="showright_site_admin">/admin/right_site_admin.jsp</result>
+			<result name="right_site_admin" type="redirect">siteManagerOper_showManagerList.action</result>
+			<result name="add_admin">/admin/add_admin.jsp</result>
+			<result name="edit_siteadmin">/admin/edit_siteadmin.jsp</result>
+			<result name="mobile_batch" >/admin/mobile_batch_site.jsp</result>
+			<result name="siteadmin_excel_new">/admin/siteadmin_excel_new.jsp</result>
+			<result name="submanager_list">/admin/site_submanager.jsp</result>
+			<result name="change_range_right" >/admin/change_site_range_right_new.jsp</result>
+			<result name="change_site_group_new">/admin/change_site_group_new.jsp</result>
+			<result name="show_submanager_list" type="redirect">siteManagerOper_showSubManagerList.action?siteId=${siteId}</result>
+			<result name="show_change_right" type="redirect">changepriority_showPage.action?roleId=${roleId}&amp;roleName=${roleName}</result>
+			<result name="show_range_right" type="redirect">siteManagerOper_showRangeRight.action?managerId=${managerId}&amp;siteId=${siteId}</result>
+		</action>
+		
+		<action name="teacherStudentManagerOper_*" method="{1}" class="teacherStuPriorityManageAction">
+			<result name="showright">/admin/showright_teacher_stu.jsp</result>
+			<result name="show_teacher" type="redirect">teacherStudentManagerOper_showTeacherList.action?loginId=${loginId}</result>
+			<result name="show_student" type="redirect">teacherStudentManagerOper_showStudentList.action?loginId=${loginId}&amp;type=stu</result>
+			<result name="change_teacher_group">/admin/change_teacher_group.jsp</result>
+			<result name="change_student_group">/admin/change_student_group.jsp</result>
+		</action>
+		
+		<action name="ssoOper_*" method="{1}" class="ssoUserManageAction">
+			<result name="change_pwd">/entity/manager/pwd/change_pwd_new.jsp</result>
+			<result name="change_sub_pwd">/entity/submanager/pwd/change_pwd.jsp</result>
+		</action>
+		
+		<action name="infoOper_*" method="{1}" class="newsPriporityManageAction">
+			<result name="change_news_right">/admin/change_news_right.jsp</result>
+			<result name="showpage" type="redirect">infoOper_getChangeNewsRight.action?id=${id}&amp;name=${name}&amp;type=${type}&amp;parent_id=${parent_id}</result>
+			<result name="info_type_add">/entity/manager/info/info_type_add.jsp</result>
+			<result name="info_type_edit">/entity/manager/info/info_type_edit.jsp</result>
+		</action> -->
+		
+		
+	</package>
+	<package name="whatyForum" extends="struts-default" namespace="/sso/forum">
+		<global-results>
+			<result name="platFormException" type="freemarker">
+				/WEB-INF/template/sso/pub/otherException.ftl
+			</result>
+			<result name="error" type="freemarker">
+				/test/error.jsp
+			</result>
+			<result name="grid">/test/grid.jsp</result>
+		    <result name="json">/test/json.jsp</result>
+		    <result name="gridjs">/test/gridjs.jsp</result>
+		    <result name="excel">/test/export.xls</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="platFormException"
+				exception="com.whaty.platform.sso.exception.PlatFormException">
+			</exception-mapping>
+		</global-exception-mappings>
+		
+		<action name="forum_*" method="{1}" class="forumAction">
+			<result name="forumpath">/entity/manager/info/forum_manager.jsp</result>
+			<result name="publicforum">/entity/manager/info/public_forum.jsp</result>
+			<result name="dayi">/entity/manager/info/dayi_room.jsp</result>
+		</action>
+		
+	
+	
+	</package>
+	
+	<package name="score" extends="struts-default" namespace="/score">		
+		<action name="scoreinputlogin_*" method="{1}" class="scoreInputLoginAction">
+			<result name ="login">/score/first.jsp</result>
+			<result name ="input">/score/scoreinput.jsp</result>
+		</action>
+	</package>
+	<package name="scoreinput" extends="struts-default" namespace="/score/input">
+		<interceptors>
+			<interceptor name="sessionOutceptor" class="com.whaty.platform.sso.web.interceptor.SessionOutInterceptorforScoreInput"></interceptor>
+			
+			<interceptor-stack name="interceptorStack">
+				<interceptor-ref name="sessionOutceptor"></interceptor-ref>				
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="interceptorStack"></default-interceptor-ref>
+		<global-results>
+			<result name="error" type="freemarker">
+				/test/error.jsp
+			</result>
+			<result name="grid">/test/grid.jsp</result>
+		    <result name="json">/test/json.jsp</result>
+		    <result name="gridjs">/test/gridjs.jsp</result>
+		    <result name="excel">/test/export.xls</result>
+		    <result name="login">/score/turntologin.jsp</result>
+		</global-results>
+		<action name="scoreinput_*" method="{1}" class="scoreInputAction">
+			<result name ="input">/score/score_input.jsp</result>
+			<result name ="inputedit">/score/score_inputedit.jsp</result>
+			<result name ="ajax">/score/ajax/ajaxstulist.jsp</result>
+			<result name ="msg">/score/ajax/ajaxmsg.jsp</result>
+		</action>
+	</package>
+	<package name="managebasic" extends="platform-default" namespace="/manage/basic">
+	</package>
+
+</struts>

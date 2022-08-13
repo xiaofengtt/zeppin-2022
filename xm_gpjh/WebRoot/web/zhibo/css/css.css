@@ -1,0 +1,74 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: #e0e0e0;
+}
+.main_bor {
+	border: 1px solid #CCCCCC;
+}
+
+.main_bg {
+	background-image: url(../images/sp1_05.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height: 370px;
+}
+.title {
+	font-size: 14px;
+	font-weight: bold;
+	text-indent: 40px;
+}
+.trbor {
+	background-image: url(../images/sp_17.jpg);
+	background-repeat: no-repeat;
+	background-position: bottom;
+}
+.trbor td {
+	font-size: 12px;
+	line-height: 24px;
+	padding: 2;
+}
+.spbg {
+	background-image: url(../images/spbg.jpg);
+}
+.title2 {
+	font-size: 14px;
+	font-weight: bold;
+	color: #000000;
+}
+.spbox {
+	background-color: #CCCCCC;
+	margin-top: 18px;
+	height: 288px;
+}
+.jishu td {
+	font-family: "黑体";
+	font-size: 24px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+.diaocha {
+	font-size: 13px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-indent: 20px;
+}
+.title3 {
+	font-size: 14px;
+	font-weight: bold;
+	color: #666666;
+	padding: 5px;
+}
+
+.footer {
+	font-size: 12px;
+	color: #666666;
+	line-height: 24px;
+	text-align: center;
+}
+.diaocha_con {
+	font-size: 12px;
+	color: #999999;
+	padding-left: 15px;
+	line-height: 24px;
+}

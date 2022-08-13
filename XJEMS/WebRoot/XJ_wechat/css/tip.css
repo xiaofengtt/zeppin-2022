@@ -1,0 +1,156 @@
+
+body {
+	background: #00B55E;
+	width:100%;
+	padding-bottom:10px;
+}
+
+header {
+	width: 95%;
+	background: #FFFFFF url(../img/ic_titlebackground.png) no-repeat;
+	background-size: 100% 90px;
+	margin: 0 auto;
+	margin-top: 25px;
+	padding: 28px 20px 22px 20px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+}
+
+header p {
+	font-size: 18px;
+	letter-spacing: 2px;
+}
+
+main {
+	width: 95%;
+	margin: 0 auto;
+	margin-top: 5px;
+	background: #FFFFFF;
+	padding: 20px 10px 20px 10px;
+	min-height:350px;
+}
+main .title{
+	margin-bottom:10px;
+}
+/*main p {
+	font-size: 16px;
+	color: #282828;
+	letter-spacing: 2px;
+}
+
+main ul {
+	margin-top: 30px;
+}
+
+main li {
+	letter-spacing: 2px;
+	opacity: 0.8;
+	margin-bottom: 10px;
+}
+
+main li i {
+	font-style: normal;
+	display: inline-block;
+	height: 15px;
+	width: 15px;
+	text-align: center;
+	text-indent: 2px;
+	line-height: 15px;
+	background: #0BC66C;
+	-webkit-border-radius: 50%;
+	color: #FFFFFF;
+}*/
+
+main .tel {
+	margin-top: 30px;
+}
+
+main .tel p:nth-child(1), main p:nth-child(2) {
+	font-size: 14px;
+}
+
+main .wel {
+	opacity: 0.8;
+}
+
+footer {
+	background: #FFFFFF;
+	padding: 20px 10px 20px 10px;
+	width: 95%;
+	margin: 0 auto;
+	text-align: center;
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+}
+
+footer #item{
+	text-align: center;
+	border:1px solid #E0615F;
+	padding:3px 9px;
+	margin-bottom:10px;
+	background: #FFFFFF;
+	color:#E0615F;
+	display: inline-block;
+	width:120px;
+	-webkit-border-radius:5px;
+}
+.color{
+	color:#FFFFFF !important;
+	background:#E0615F !important;
+}
+footer input {
+	letter-spacing: 2px;
+	color: #FFFFFF;
+	display: inline-block;
+	background: #0BC66C;
+	padding: 12px 0 12px 0;
+	width: 90%;
+	-webkit-border-radius: 5px;
+	font-size: 16px;
+	border:none;
+}
+footer #cancel{
+	display:block;
+	margin:0 auto;
+	margin-top:15px;
+	color:#FFFFFF;
+	border:1px solid #0BC66C;
+	border-radius:25px;
+	background:#0BC66C;
+	-webkit-border-radius:25px;
+	width:30%;
+}
+footer .error {
+	color: red;
+}
+
+.remind {
+	font-size: 16px;
+	color:#FFFFFF;
+	padding:20px 30px 0px 30px;
+	text-align: center;
+}
+.warning{
+	font-size:16px;
+	color:#FFFFFF;
+	margin-top:20px;
+	text-align: center;
+}
+
+/*监考责任书*/
+#invigilationContract{
+	width:100%;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+/*infomation*/
+#information{
+	margin-bottom:20px;
+	width:100%;
+}
+
+#invigilationNotice{
+	width:100%;
+	margin-top:20px;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>所获证书</title>
+    <link rel="stylesheet" href="../css/lib/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/lib/normalize.css"/>
+    <link rel="stylesheet" href="../css/lib/font-awesome.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/components/uploadfile.css"/>
+    <link rel="stylesheet" href="../css/components/uploadfile.custom.css"/>
+
+    <link rel="stylesheet" href="../css/certificate.css"/>
+
+</head>
+<body>
+<div id="header"></div>
+
+<div class="main container">
+    <ul class="nav nav-pills">
+        <li role="presentation"><a href="personal.html">个人主页</a></li>
+        <li role="presentation"><a href="trainingRecord.html">培训记录</a></li>
+        <li role="presentation"><a href="IndeRegistEntrance.html">自主报名</a></li>
+        <li role="presentation" class="active"><a href="certificate.html">所获证书</a></li>
+        <li role="presentation"><a href="selectCourse.html">学前测评</a></li>
+        <li role="presentation"><a href="evaluation.html">学后评价</a></li>
+    </ul>
+    <hr class="navBottom"/>
+     <div class="certificateList hide" ng-app="certificateDirective" ng-controller="certificateController">
+	     <div class="row" ng-if="totalcount!=0" ng-repeat="x in funds">
+	     		<div class="hide"><span ng-bind="x.ttrId"></span></div>
+		        <div class="certificateEle clearfix">
+		            <div class="col-sm-2 text-center timeline" style="min-height:190px;background: url(../images/certificate/version_line.png) repeat-y center center;">
+		                <p><i class="fa fa-map-marker" style="font-size: 20px;color: #2b78b8"></i></p>
+		                <img src="../images/certificate/calendar.png" style="margin-top: 30px;" alt=""/>
+		            </div>
+		            <div class="col-sm-7">
+		                <hr style="margin-right: -15px;border-top: 2px solid #eee;"/>
+		                <h4><span ng-bind="x.project"></span>-<span style="font-size: 16px" ng-bind="x.subject"></span></h4>
+		                <p><i class="fa fa-clock-o" style="margin-right: 5px;background-color: #5fb752;color: #fff;width: 21px;height: 21px;text-align: center;line-height: 21px;"></i>证书获得时间：&nbsp;<span ng-bind="x.time" style="color: #5fb752;" class="getTime">2015-05-12</span></p>
+		                <br/>
+		                <p>承训单位: <span ng-bind="x.trainingCollege">新疆师范大学</span></p>
+		                <p>证书编号: <span ng-bind="x.certificate">gp65140326001</span></p>
+		            </div>
+		            <div class="col-sm-3 text-center" style="margin-left: -100px" ng-if="x.imageURL==''">
+		                <hr style="margin-left: -15px;border-top: 2px solid #eee;"/>
+		                <img src="../images/certificate/defaultPic.png" width="275px" height="180px" style="margin-top: 20px;margin-bottom: 20px;" alt=""/>
+		                <p>您还没有上传证书照片 <a data-toggle="modal" data-ttrId="{{x.ttrId}}" data-target="#certificateModel" href="" onclick="upload(this);">点击上传</a></p>
+		            </div>
+		            <div class="col-sm-3 text-center"  style="margin-left: -100px" ng-if="x.imageURL!=''">
+		                <hr style="margin-left: -15px;border-top: 2px solid #eee;"/>
+		                <img ng-src="{{x.imageURL}}"  style="margin-top: 20px;margin-bottom: 20px;max-height: 180px;max-width: 275px" alt=""/>
+		                 <p>需要修改？ <a data-toggle="modal" data-ttrId="{{x.ttrId}}" data-target="#certificateModel" href="" onclick="upload(this);">点击上传</a></p>
+		            </div>
+		        </div>
+		    
+	     </div>
+	     <div class="row" ng-if="totalcount==0">
+	     		<div class="text-center">
+	                <h4>暂无获得的证书信息</h4>
+	            </div>
+		    
+	     </div>
+	</div>
+<!--     <div class="certificateList"> -->
+<!--         <div class="certificateEle clearfix"> -->
+<!--             <div class="col-sm-2 text-center timeline" style="min-height:190px;background: url(../images/certificate/version_line.png) repeat-y center center;"> -->
+<!--                 <p><i class="fa fa-map-marker" style="font-size: 20px;color: #2b78b8"></i></p> -->
+<!--                 <img src="../images/certificate/calendar.png" style="margin-top: 30px;" alt=""/> -->
+<!--             </div> -->
+<!--             <div class="col-sm-7"> -->
+<!--                 <hr style="margin-right: -15px;border-top: 2px solid #eee;"/> -->
+<!--                 <h3>农村中小学教师教学技能提升培训项目</h3> -->
+<!--                 <p><i class="fa fa-clock-o" style="margin-right: 5px;background-color: #5fb752;color: #fff;width: 21px;height: 21px;text-align: center;line-height: 21px;"></i>证书获得时间：&nbsp;<span style="color: #5fb752;" class="getTime">2015-05-12</span></p> -->
+<!--                 <br/> -->
+<!--                 <p>承训单位: <span>新疆师范大学</span></p> -->
+<!--                 <p>证书编号: <span>gp65140326001</span></p> -->
+<!--             </div> -->
+<!--             <div class="col-sm-3 text-center"> -->
+<!--                 <hr style="margin-left: -15px;border-top: 2px solid #eee;"/> -->
+<!--                 <img src="../images/certificate/defaultPic.png"  style="margin-top: 20px;margin-bottom: 20px;" alt=""/> -->
+<!--                 <p>您还没有上传证书照片 <a data-toggle="modal" data-target="#certificateModel" href="">点击上传</a></p> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </div> -->
+
+</div>
+
+<div class="modal fade" role="dialog" id="certificateModel" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">上传证书</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div id="previewupload">上传</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="saveButton" class="btn btn-primary">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div id="footer"></div>
+ <script src="../js/lib/jquery-2.1.4.js"></script>
+ <script src="../js/lib/angular.js"></script>
+ <script src="../js/lib/bootstrap.js"></script>
+ <script src="../js/upload/jquery.uploadfile.min.js"></script>
+ <script src="../js/certificate.js"></script>
+ 
+</body>
+</html>

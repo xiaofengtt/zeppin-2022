@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="entity.workspaceStudent" extends="struts-default" namespace="/entity/workspaceStudent">
+		<interceptors>
+			<interceptor name="userPriorityInterceptor" class="com.whaty.platform.sso.web.interceptor.UserPriorityInterceptor"></interceptor>
+			<interceptor name="userLoginInterceptor" class="com.whaty.platform.sso.web.interceptor.UserLoginInterceptor"></interceptor>
+			
+			<interceptor-stack name="interceptorStack">
+				<interceptor-ref name="userLoginInterceptor"></interceptor-ref>
+				<interceptor-ref name="userPriorityInterceptor"></interceptor-ref>
+				
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="interceptorStack"></default-interceptor-ref>
+		<global-results>
+			<result name="grid">/test/grid.jsp</result>
+		    <result name="json">/test/json.jsp</result>
+		    <result name="gridjs">/test/gridjs.jsp</result>
+		    <result name="excel">/test/export.jsp</result>
+		    <result name="error">/test/error.jsp</result>
+		    <result name="msg">/test/msg.jsp</result>
+		    <result name="input">/entity/manager/pub/turnToLogin.jsp </result>
+		</global-results>
+
+		<action name="prTchStuPaperTitleSelect_*" method="{1}" class="prTchStuPaperTitleSelectManageAction">
+		</action>
+		
+		<!-- zhangyu begin -->
+		<action name="peLearntCourseScore_*" method="{1}" class="peLearntCourseScoreAction">
+		</action>
+		<action name="studentLogin_*" method="{1}" class="studentLoginAction">
+			<result name="toLeftMenu">/entity/student/menu.jsp</result>
+		</action>
+		<action name="studentDraftA_*" method="{1}" class="studentDraftAAction">
+			<param name="savePath">/incoming/paper/draftA</param>
+			<result name="toUpload">/entity/student/paper_draftA.jsp</result>
+			<result name="operateResult">/entity/student/operateresult.jsp</result>
+			<result name="toDownloadTeacherPiGai">/entity/teacher/downloadDraftAPiGai.jsp</result>
+			<result name="toDownloadDraftA">/entity/teacher/downloadDraftA.jsp</result>
+		</action>
+		<action name="studentFinal_*" method="{1}" class="studentFinalAction">
+			<param name="savePath">/incoming/paper/final</param>
+			<result name="toUpload">/entity/student/paper_final.jsp</result>
+			<result name="operateResult">/entity/student/operateresult.jsp</result>
+			<result name="toDownloadFinal">/entity/teacher/downloadFinal.jsp</result>
+		</action>
+		<action name="studentElective_*" method="{1}" class="studentElectiveAction">
+			<result name="main">/entity/student/studentElective.jsp</result>
+			<result name="operateResult">/entity/student/operateresult.jsp</result>
+			<result name="toProgram">/entity/student/teach_plan_list.jsp</result>
+		</action>
+		<action name="studentFee_*" method="{1}" class="studentFeeAction">
+			<result name="toDetail">/entity/student/studentFeeDetail.jsp</result>
+		</action>
+		<!-- zhangyu end -->
+		<action name="apply_*" method="{1}" class="applyAction">
+			<result name="graduate_apply">/entity/student/apply/graduate_apply.jsp</result>
+			<result name="message">/test/msg.jsp</result>
+			<result name="applyMenu">/entity/student/apply_menu.jsp</result>
+			<result name="toPaperReapply">/entity/student/apply/paper_reapply.jsp</result>
+			<result name="toDegreeEnglish">/entity/student/apply/degree_english_exam_apply.jsp</result>
+		</action>
+		<action name="applyExcellent_*" method="{1}" class="applyExcellentAction">
+			<result name="excellent_apply">/entity/student/apply/excellent_apply.jsp</result>		
+		</action>
+		<action name="mainCourseScoreChangeApply_*" method="{1}" class="mainCourseScoreChangeApplyAction">
+			<result name="toApply">/entity/student/apply/maincourse_score_change_apply.jsp</result>		
+		</action>			
+		<action name="examScoreChangeApply_*" method="{1}" class="examScoreChangeApplyAction">
+			<result name="toApply">/entity/student/apply/exam_score_change_apply.jsp</result>		
+		</action>		
+		<action name="prExamReserver_*" method="{1}" class="prExamReserverAction">
+			<result name="examCourseList">/entity/student/exam_reserver_course.jsp</result>
+			<result name="examReserverMenu">/entity/student/exam_reserver_menu.jsp</result>
+		</action>		
+		<action name="prExamReserverView_*" method="{1}" class="prExamReserverViewAction">
+			<result name="viewExamCourseList">/entity/student/exam_reserver_view.jsp</result>		
+		</action>			
+		<action name="mainCourseReserverView_*" method="{1}" class="mainCourseReserverViewAction">
+			<result name="viewMainCourse">/entity/student/main_course_view.jsp</result>
+		</action>			
+		<action name="peLearningCourseScore_*" method="{1}" class="peLearningCourseScoreAction">
+			<result name="oldCourseScore">/entity/student/old_course_score.jsp</result>
+			<result name="otherCourseScore">/entity/student/otherCourseScore.jsp</result>
+			<result name="scoreMenu">/entity/student/exam_score_menu.jsp</result>
+		</action>	
+		<action name="prExamDetail_*" method="{1}" class="prExamDetailAction">
+			<result name="examDetail">/entity/student/exam_detail.jsp</result>
+		</action>		
+		<action name="mainCourseReserver_*" method="{1}" class="mainCourseReserverAction">
+			<result name="reserver">/entity/student/maincourse_reserver.jsp</result>
+		</action>	
+		<action name="stuPeBulletinView_*" method="{1}" class="stuPeBulletinViewAction">
+			<result name="studentindex">/entity/bzz-students/student_announce.jsp</result>
+			<result name="info">/web/news/student_bulletin_detail.jsp</result>
+			<result name="allPebulletins">/entity/bzz-students/student_pebulletinList.jsp</result>
+			<result name="detailcourse">/entity/bzz-students/student_courseList.jsp</result>
+		</action>						
+		<action name="examAvoid_*" method="{1}" class="examAvoidAction">
+			<result name="avoidExam">/entity/student/apply/exam_course_avoid.jsp</result>
+		</action>				
+		<action name="uniteExamAvoid_*" method="{1}" class="uniteExamAvoidAction">
+			<result name="menu">/entity/student/apply/recruit_no_exam.jsp</result>
+			<result name="avoidComputer">/entity/student/apply/avoid_computer.jsp</result>
+			<result name="avoidEnglishB">/entity/student/apply/avoid_englishB.jsp</result>
+			<result name="avoidEnglishA">/entity/student/apply/avoid_englishA.jsp</result>
+		</action>	
+		<!-- gaoyuan begin -->
+		<action name="bzzstudent_*" method="{1}" class="bzzstudentAction">
+			<result name="voteList">/entity/bzz-students/student_vote.jsp</result>
+			<result name="back">/first.jsp</result>
+		</action>
+		<!-- gaoyuan end -->	
+		
+		<!-- 课程评估 -->
+		<action name="bzzAssess_*" method="{1}" class="bzzAssessAction">
+			<result name="toAssess">/entity/bzz-students/student_assess.jsp</result>
+			<result name="todetailAssessing">/entity/bzz-students/student_detailassess.jsp</result>
+			<result name="Assessing">/entity/bzz-students/student_message.jsp</result>
+			<result name="updateAssess">/entity/bzz-students/student_message.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,53 @@
+.navbar{
+    background-color: #b81c22;
+    color: white;
+}
+.navbar-header{
+    padding-top: 10px;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #d3d3d4;
+    background-color: transparent;
+    text-decoration: none;
+}
+p.header_buttons a:hover{
+    background-color: #9bd7d5;
+}
+
+/*container*/
+.blogMain{
+    margin-bottom: 10px;
+    padding: 0;
+}
+.pws_tab_single{
+    width: 100%;
+}
+.trainListInfo{
+    list-style: none;
+}
+.regisListInfo{
+    list-style: none;
+}
+.funds{
+    width: 90px;
+    height: 50px;
+    background-color: #b81c22;
+    color: #fff;
+}
+
+/*footer section*/
+.footer{
+    color: white;
+    background-color: #b81c22;
+    font-size: 12px;
+    padding: 10px 0;
+    bottom: 0;
+    width: 100%;
+}
+.footer p{
+    margin: 0;
+}

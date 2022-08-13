@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>修改头像</title>
+    <link rel="stylesheet" href="../css/lib/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/lib/normalize.css"/>
+    <link rel="stylesheet" href="../css/lib/font-awesome.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+
+    <link rel="stylesheet" href="../css/userInformation.css"/>
+</head>
+<body>
+<div id="header"></div>
+
+<div class="main container">
+    <ul class="nav nav-pills">
+        <li role="presentation"><a href="personal.html">个人主页</a></li>
+        <li role="presentation"><a href="trainingRecord.html">培训记录</a></li>
+        <li role="presentation"><a href="IndeRegistEntrance.html">自主报名</a></li>
+        <li role="presentation"><a href="certificate.html">所获证书</a></li>
+        <li role="presentation"><a href="selectCourse.html">学前测评</a></li>
+        <li role="presentation"><a href="evaluation.html">学后评价</a></li>
+<!--         <li role="presentation"><a href="teacherEduAdvance.html">学历提升申请记录</a></li> -->
+    </ul>
+    <hr/>
+    <div class="row subnav">
+        <div class="avatarBox">
+            <img id="bigAvatar" class="img-responsive"/>
+        </div>
+        <div class="name"><span id="userName"></span>老师</div>
+        <br/>
+        <div class="modify">
+            <a href="userInformation.html">修改个人信息</a>
+            <a href="resetPhone.html">修改手机</a>
+            <a href="resetPassword.html">修改密码</a>
+            <a class="active" href="resetAvatar.html">修改头像</a>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div style="min-width:632px;margin: 0 auto;text-align:center">
+            <h1 style="text-align:center">头像上传编辑器</h1>
+            <div>
+                <p id="swfContainer">
+                    本组件需要安装Flash Player后才可使用，请从<a href="http://www.adobe.com/go/getflashplayer">这里</a>下载安装。
+                </p>
+            </div>
+            <button type="button" id="upload" style="display:none;margin-top:8px;">swf外定义的上传按钮，点击可执行上传保存操作</button>
+        </div>
+    </div>
+</div>
+
+<div id="footer"></div>
+
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script src="../js/lib/bootstrap.js"></script>
+<script src="../js/components/fullAvatarEditor.js"></script>
+<script src="../js/components/swfobject.js"></script>
+<script src="../js/resetAvatar.js"></script>
+
+</body>
+</html>

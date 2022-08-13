@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="entity.recruit" extends="platform-default" namespace="/entity/recruit">
+
+		
+		<action name="peRecruitplan_*" method="{1}" class="peRecruitplanAction">
+	    </action>
+	    <action name="prRecPlanMajorEdutype_*" method="{1}" class="prRecPlanMajorEdutypeAction">
+	    </action>
+	    <action name="recruitJianzhang_*" method="{1}" class="recruitJianzhangAction">
+	    	<result name="detail">/entity/manager/recruit/viewDetail.jsp</result>
+	    </action>
+	    <action name="setCreditA_*" method="{1}" class="setCreditAAction">
+	    </action>
+	    <action name="setCreditB_*" method="{1}" class="setCreditBAction">
+	    </action>
+	    <action name="peRecStudentCheck_*" method="{1}" class="peRecStudentCheckAction">
+	    </action>
+	    <action name="peRecStudentTeacherCheck_*" method="{1}" class="peRecStudentTeacherCheckAction">
+	    </action>
+	    <action name="peRecStudentNoexamCheck_*" method="{1}" class="peRecStudentNoexamCheckAction">
+	    </action>
+	    <action name="xueliCheck_*" method="{1}" class="xueliCheckAction">
+	    </action>
+	    
+	    
+	   <!-- zhangyu begin --> 
+	    <action name="addPeRecStudentSingle_*" method="{1}" class="addPeRecStudentAction">
+			<interceptor-ref name="fileUpload">
+		    	<param name="maximumSize">102400</param>
+		    </interceptor-ref>
+		    <interceptor-ref name="defaultStack"></interceptor-ref>			    
+	    	<param name="savePath">/incoming/photo</param>
+	    	<result name="singleAdd">/entity/manager/recruit/baoming.jsp</result>
+	    	<result name="edit">/entity/manager/recruit/baoming_edit.jsp</result>	    	
+	    	<result name="batch">/entity/manager/recruit/baoming_batch.jsp</result>	
+		     <result name="input">
+		        /WEB-INF/template/entity/manager/recruit/photoInf.jsp
+		    </result>	    	    	
+	    </action>	   
+	    <action name="addPeRecStudent_*" method="{1}" class="addPeRecStudentAction">			    
+	    	<param name="savePath">/incoming/photo</param>
+	    	<result name="singleAdd">/entity/manager/recruit/baoming.jsp</result>
+	    	<result name="edit">/entity/manager/recruit/baoming_edit.jsp</result>	    	
+	    	<result name="batch">/entity/manager/recruit/baoming_batch.jsp</result>	    	    	
+	    </action>
+		<action name="recStudentPhoto_*" method="{1}" class="peRecStudentPhotoManageAction">
+			<interceptor-ref name="fileUpload">
+		    	<param name="maximumSize">102400</param>
+		    </interceptor-ref>
+		    <interceptor-ref name="defaultStack"></interceptor-ref>		
+		    <param name="savePath">/incoming/photo</param>
+		    <result name="infomation">
+		        /WEB-INF/template/entity/manager/recruit/photoInf.jsp
+		    </result>
+		    <result name="photo">
+		        /WEB-INF/template/entity/manager/recruit/photoUpload.jsp
+		    </result>
+		     <result name="input">
+		        /WEB-INF/template/entity/manager/recruit/photoInf.jsp
+		    </result>
+		</action>
+		<action name="recStudentPhotos_*" method="{1}" class="peRecStudentPhotoManageAction">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">application/x-zip-compressed</param>
+		    	<param name="maximumSize">5242880</param>
+		    </interceptor-ref>
+		    <interceptor-ref name="defaultStack"></interceptor-ref>
+		    <param name="savePath">/incoming/photo</param>
+		    <result name="infomation">
+		        /WEB-INF/template/entity/manager/recruit/photoInf.jsp
+		    </result>
+		    <result name="photos">
+		        /WEB-INF/template/entity/manager/recruit/photosUpload.jsp
+		    </result>
+		     <result name="input">
+		        /WEB-INF/template/entity/manager/recruit/photoInf.jsp
+		    </result>
+		</action>		
+		<action name="examcourseset_*" method="{1}" class="examcoursesetAction">
+	    </action>
+	    <action name="eduTypeMajorExamSet_*" method="{1}" class="eduTypeMajorExamSetAction">
+	    </action>
+	    <action name="eduExamTimeSet_*" method="{1}" class="eduExamTimeSetAction">
+	    </action>
+	    <action name="examstucourse_*" method="{1}" class="examstucourseAction">
+	    	<result name="result">/entity/manager/recruit/recruit_autoallotcourse.jsp</result>	    
+	    </action>
+	    <action name="examstuticket_*" method="{1}" class="examstuticketAction">
+	    </action>
+	   	<action name="examinvigilator_*" method="{1}" class="examinvigilatorAction">
+	    </action>
+	   	<action name="peRecRoom_*" method="{1}" class="peRecRoomAction">
+	    </action>	    
+	  	<action name="examStuRoom_*" method="{1}" class="examStuRoomAction">
+	  		<result name="print">/entity/manager/recruit/recruit_examNo_print.jsp</result>
+	    </action>
+	    <action name="examfenpeistat_*" method="{1}" class="examfenpeistatAction">
+	    	<result name="stat">/entity/manager/recruit/examFenPei_turntoStat.jsp</result>
+	    </action>
+	    <action name="examresultcalculate_*" method="{1}" class="examresultcalculateAction">
+	    	<result name="turnToConditionSet">/entity/manager/recruit/luqu_conditionSet.jsp</result>
+	    </action>
+	    <action name="examachievement_*" method="{1}" class="examAchievementAction">
+	    	<result name="batch">/entity/manager/recruit/exam_result_batch.jsp</result>
+	    	
+	    </action>
+	   	<action name="recruitManageExam_*" method="{1}" class="recruitManageExamAction">
+	  	    	<result name="turnToConditionSet">/entity/manager/recruit/exam_recruit_conditionSet.jsp</result>	
+	    </action>
+	    <action name="recruitManageNoExam_*" method="{1}" class="recruitManageNoExamAction">
+	    </action>
+	    <action name="recruitManage_*" method="{1}" class="recruitManageAction"> 
+	   		 <result name="print">/entity/manager/recruit/print_admission.jsp</result>	
+	    </action>
+	    <action name="recruitNotification_*" method="{1}" class="recruitNotificationAction">
+	    </action>
+	    <action name="baomingStat_*" method="{1}" class="baomingStatAction">
+	    </action>
+	    <action name="recruitScoreStat_*" method="{1}" class="recruitScoreStatAction">
+	    </action>	    
+	    <action name="recruitStatus_*" method="{1}" class="recruitStatusAction">
+	    </action>
+	    <action name="recruitNoExamStat_*" method="{1}" class="recruitNoExamStatAction">
+	    </action>
+	    <action name="examScoreSearch_*" method="{1}" class="examScoreSearchAction">
+	    </action>
+	    <action name="baomingStu_*" method="{1}" class="baomingStuAction">
+	    </action>
+	    <action name="recruitStu_*" method="{1}" class="recruitStuAction">
+	    	<result name="viewDetail">/entity/manager/recruit/test3.jsp</result>
+	    </action>
+	    <action name="prExistSite_*" method="{1}" class="prExistSiteAction">
+	    </action>
+	    <action name="prAddSite_*" method="{1}" class="prAddSiteAction">
+	    </action>
+	    <action name="prStuMultiMajor_*" method="{1}" class="prStuMultiMajorAction">
+	    </action>
+	   	<action name="examInspector_*" method="{1}" class="examInspectorAction">
+	    </action>
+		<!-- zhangyu end -->
+		<!-- zhaoyuxiao begin -->
+		<action name="peTrainingPlanManage_*" method="{1}" class="peTrainingPlanManage">
+		</action>
+		<action name="prTrainingPlanCourseIn_*" method="{1}" class="prTrainingPlanCourseIn">
+		</action>
+		<action name="prTrainingPlanCourseOut_*" method="{1}" class="prTrainingPlanCourseOut">
+		</action>
+		<action name="peFeeManageAction_*" method="{1}" class="peFeeManageAction">
+		</action>
+		<action name="peFeeViewAction_*" method="{1}" class="peFeeViewAction">
+		</action>
+		<action name="peFeeViewDetailAction_*" method="{1}" class="peFeeViewDetailAction">
+		</action>
+		<action name="peFeeStaticAction_*" method="{1}" class="peFeeStaticAction">
+		</action>
+		<action name="peFeeViewAllTraineeAction_*" method="{1}" class="peFeeViewAllTraineeAction">
+		</action>
+		<action name="beanForceDelAction_*" method="{1}" class="beanForceDelAction"></action>
+		<!-- zhaoyuxiao end -->
+		<!-- jiangwanhong begin -->
+		<action name="peTraineeReg_*" method="{1}" class="peTraineeRegAction">
+			<result name="upload">/web/bzz_index/login/reg_photo_up.jsp</result>
+			<result name="view">/web/bzz_index/login/photo_view.jsp</result>
+		</action>
+		<action name="studyRecord_*" method="{1}" class="studyRecordAction">
+			<result name="view_study_record">/training/student/course/courseware/scorm12/myCourseStatus.jsp</result>
+		</action>
+		<!-- jiangwanhong end -->
+	</package>
+</struts>

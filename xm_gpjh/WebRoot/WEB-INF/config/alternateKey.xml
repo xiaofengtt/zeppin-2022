@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+   <alternateKey name="TCHR_TRAINING1.AK_PE_UNIT_NAME">
+        <table>单位</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+      <alternateKey name="TCHR_TRAINING1.AK_PE_UNIT_CODE">
+        <table>单位</table>
+        <columns>
+        <column>CODE</column>
+        </columns>
+   </alternateKey>
+   <!-- PE_SUBJECT -->
+    <alternateKey name="TCHR_TRAINING1.AK_PE_SUBJECT_NAME">
+        <table>学科</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="TCHR_TRAINING1.AK_PE_SUBJECT_CODE">
+        <table>学科</table>
+        <columns>
+        <column>CODE</column>
+        </columns>
+   </alternateKey>
+    <alternateKey name="TCHR_TRAINING1.AK_PE_PROVINCE_NAME">
+        <table>省份</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="TCHR_TRAINING1.AK_PE_PROVINCE_CODE">
+        <table>省份</table>
+        <columns>
+        <column>CODE</column>
+        </columns>
+   </alternateKey>
+      <alternateKey name="TCHR_TRAINING1.AK_KEY_1_SSO_US">
+        <table>用户</table>
+        <columns>
+        <column>登录名</column>
+        </columns>
+   </alternateKey>
+   <!-- pe_pro_applyno -->
+   <alternateKey name="TCHR_TRAINING1.AK_PE_PRO_APPLYNO_NAME">
+        <table>培训项目</table>
+        <columns>
+        <column>NAME</column>
+        </columns>
+   </alternateKey>
+   <alternateKey name="TCHR_TRAINING1.AK_PE_PRO_APPLYNO_CODE_YEAR">
+        <table>培训项目</table>
+        <columns>
+        <column>CODE</column>
+         <column>年度</column>
+        </columns>
+   </alternateKey>
+  
+
+</root>

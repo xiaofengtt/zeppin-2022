@@ -1,0 +1,117 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>topbar</title>
+<link href="../css/admincss.css" rel="stylesheet" type="text/css">
+
+<style type="text/css">
+<!--
+.STYLE1 {font-family: "宋体"}
+-->
+</style>
+</head>
+
+<body leftmargin="0" topmargin="0" bottommargin="0">
+<table width="100%" height="96" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="62" width="100%">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
+      <tr>
+        <td   height="62" align="left"><img src="../images/images/g_01.jpg" width="209" height="62"></td>
+        <td width="655" height="62"><img src="../images/images/g_02.jpg" width="655" height="62"></td>
+        <td width="160" height="62" style="background-image:url(../images/images/g_03.jpg); background-repeat:no-repeat;">
+		<table width="70%" border="0" cellspacing="0" cellpadding="0"   style="margin-top:35px; " align="right">
+          <tr>
+            <td valign="bottom">
+			<table width="72" height="19" border="0" cellpadding="0" cellspacing="0" style="margin-top:1px; margin-left:28px">
+                  <tr>
+
+                    <td  background="../images/images/quit.gif" class="topButtonText" onMouseUp="if(confirm('确定退出平台？'))top.logout()">注销退出</td>
+
+                  </tr>
+              </table>
+			</td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="34" width="100%" style="background-image:url(../images/images/g_04.jpg); background-repeat:repeat-x;">
+	<table width="100%"  border="0" cellspacing="0" cellpadding="0" style="padding-top:3px;">
+      <tr>
+        <td width="31%" class="topTimes" id="topTimeBox"><script language=JavaScript>
+<!--
+var d=new initArray("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
+var today=new Date();
+var date;
+function initArray()
+{
+	this.length=initArray.arguments.length;
+	for(var i=0;i<this.length;i++)
+	{
+		this[i+1]=initArray.arguments[i];
+	}
+}
+date = today.getYear()+"年"+(today.getMonth()+1)+"月"+today.getDate()+"日 "+d[today.getDay()+1];
+function showtime()
+{
+	if (!document.layers&&!document.all)
+	return;
+	var mydate=new Date();
+	var hours=mydate.getHours();
+	var minutes=mydate.getMinutes();
+	var dn=" AM";
+	if (hours>12){
+	dn=" PM";
+	hours=hours-12;
+	}
+	if (hours==0)
+	hours=12;
+	if (minutes<=9)
+	minutes="0"+minutes;
+	//change font size here to your desire           
+	myclock="  "+hours+":"+minutes+dn;
+	if (document.layers)
+	{
+		document.layers.liveclock.document.write(myclock);
+		document.layers.liveclock.document.close();
+	}
+	else if (document.all)
+	{
+		document.getElementById("topTimeBox").innerText = date+myclock;
+	}
+}
+showtime();
+setInterval("showtime()",5000);
+//-->           
+          </script></td>
+        <td width="46%" align="left">
+		<table width="82%" border="0" cellspacing="0" cellpadding="0" >
+          <tr>
+            <td width="21%" class="menuTitle">信息检索:</td>
+            <td width="57%">
+			<label>
+              <input type="text" name="textfield" class="info">
+            </label></td>
+            <td width="22%"> <img src="../images/images/g_07.jpg" width="48" height="19"></td>
+          </tr>
+        </table></td>
+        <td width="23%" align="center" ><table width="70%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="44%" class="menuTitle" >显示方式:</td>
+            <td width="56%"><table width="60" height="22" border="0" cellpadding="0" cellspacing="0">
+              <tr align="center"> 
+                <td><img src="../images/images/g_12.jpg" alt="两分工作区" width="19" height="16" class="modelImgNormal" onClick="top.modelB(this)"></td>
+                <td><img src="../images/images/g_14.jpg" alt="三分工作区" width="19" height="16" class="modelImgNormal" onClick="top.modelA(this)" onLoad="top.registerObj(this)"></td>
+              </tr>
+            </table></td>
+          </tr>
+        </table>		</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

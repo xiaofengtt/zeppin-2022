@@ -1,0 +1,62 @@
+body {
+	font-size: 12px;
+	color: #000000;
+}
+td {
+	font-size: 12px;
+	color: #000000;
+}
+.input {
+	border: 1px solid #F5F4F2;
+	font-size: 12px;
+	line-height: 20px;
+	background-color: #F5F4F2;
+	display: inline;
+}
+.scr {
+	SCROLLBAR-FACE-COLOR: #F5F4F2;
+	SCROLLBAR-HIGHLIGHT-COLOR: #F5F4F2;
+	SCROLLBAR-SHADOW-COLOR: #F5F4F2;
+	SCROLLBAR-3DLIGHT-COLOR: #F5F4F2;
+	SCROLLBAR-ARROW-COLOR: #000000;
+	SCROLLBAR-TRACK-COLOR: #F5F4F2;
+	SCROLLBAR-DARKSHADOW-COLOR: #F5F4F2;
+	font-size: 12px;
+	line-height: 20px;
+	background-color: #F5F4F2;
+	border: 1px none #F5F4F2;
+
+}
+.tb {
+	font-size: 12px;
+	border: 1px solid #2998A5;
+}
+.tb2 {
+	font-size: 12px;
+	border: 1px solid #2B798A;
+}
+a:link {
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+}
+a:hover {
+	font-size: 12px;
+	color: #CE9622;
+	text-decoration: none;
+}
+a:visited {
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+}
+a:active {
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+}
+.t1 {
+	font-size: 12px;
+	color: #FF6600;
+	text-decoration: none;
+}

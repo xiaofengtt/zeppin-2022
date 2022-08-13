@@ -1,0 +1,39 @@
+.ex_sBT{
+	margin:0px;
+	padding:0px;
+	border:0px solid #333;
+	background-image:url(../images/extend/btBG.gif);
+	width:75px;
+	height:21px;
+}
+.ex_bBT{
+	margin:0px;
+	padding:0px;
+	border:0px solid #333;
+	background-image:url(../images/extend/btBBG.gif);
+	width:145px;
+	height:21px;
+}
+
+.addItem{
+	background-image:url(../images/extend/add.gif) !important;
+}
+
+.remove{
+	background-image:url(../images/extend/drop.gif) !important;
+}
+
+.selfDef{
+	background-image:url(../images/extend/selfDef.gif) !important;
+}
+
+.swich{
+	background-image:url(../images/extend/swich.gif) !important;
+}
+
+.excelModel{
+	background-image:url(../images/extend/excel.png) !important;
+}
+.updateItem{
+	background-image:url(../images/default/dd/drop-yes.gif) !important;
+}

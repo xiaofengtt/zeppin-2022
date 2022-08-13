@@ -1,0 +1,34 @@
+{
+    "Records": [
+        {
+            "name": "人教版-初中数学七年级（上）", 
+            "version": "1", 
+            "id": 1, 
+            "versionNum": "1", 
+            "grade": "1",
+			"subject": "1",
+			"status": "1"
+           
+        }, 
+        {
+            "name": "人教版-初中数学七年级（下）", 
+            "version": "1", 
+            "id": 2, 
+            "versionNum": "1", 
+            "grade": "1",
+			"subject": "1",
+			"status": "1"
+        },
+        {
+            "name": "苏教版-初中数学七年级（下）", 
+            "version": "1", 
+            "id": 3, 
+            "versionNum": "1", 
+            "grade": "1",
+			"subject": "1",
+			"status": "1"
+        }
+    ], 
+    "Result": "OK", 
+    "TotalRecordCount": 3
+}

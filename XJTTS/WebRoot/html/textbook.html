@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>教材版本管理 - 果实网</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../css/bootstrap.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/app.css">	
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../css/metro/blue/jtable.css" rel="stylesheet" type="text/css" >
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/jquery.jtable.js"></script>
+<script src="../js/jquery.jtable.zh-CN.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/bootstrap-paginator.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/url.min.js"></script>
+<script src="../js/app.js"></script> 
+<script src="../js/moment.js"></script> 
+<script src="../js/zh-cn.js"></script>
+<script>
+$(function(){
+	moment.lang('zh-cn');
+    function timedUpdate () {
+       update();
+       setTimeout(timedUpdate, 1000);
+   }
+   function update(){
+         $('#datafomate').html(moment().format('LL, h:mm:ss a'));
+      }  
+	timedUpdate()
+	//$('#datafomate').html(moment().format('YYYY MMMM Do, h:mm:ss a'));
+	//添加
+	var method = (url('?method')) ? url('?method') : '';
+	if(method == 'add') {
+		var listurl = 'textbook/list-new.json';
+	}else {
+		var listurl = 'textbook/list.json';
+	}
+	$('#listurl').val(listurl);
+})
+</script>
+ 
+</head>
+<body>
+<input type="hidden" id="listurl" value="">
+<!--Header-part-->
+<div class="navbar" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo" title="网络、移动学习测评移动云资源平台" ><img src="../img/logo-jy.png" height="41"></a>
+    </div>
+	<p class="logout"><span>欢迎超级管理员 &nbsp;&nbsp;<strong>荣景峰</strong>&nbsp;&nbsp;</span> <span id="datafomate"></span> &nbsp;|&nbsp;  <a href="../login_modifyPassword.action" data-fancybox-type="iframe" class="text text-modifyPasswd cboxElement">修改密码</a> &nbsp;|&nbsp;  <a href="login.html">退出</a> </p>
+	
+  </div>
+</div>
+<!--close-Header-part--> 
+
+<div id="container" class="container-fluid">
+
+	<div class="row">
+		<div class="sidebar">
+			<div class=" nav-sidebar">
+				<ul class="nav ">
+			
+					<li class="active"><a href="#"><span>账号权限管理</span> </a>
+											<ul class="nav">
+					
+													<li >  <a href="editor.html"> 果实网编辑管理
+													</a></li>
+					
+													<li ><a href="operate.html"> 果实运营管理者管理
+													</a></li>
+					
+													<li><a href="corp.html"> 果实网合作方编辑管理
+													</a></li>
+					
+								
+					
+											</ul></li>
+										<li class="active"><a href="#"><span> 基础数据管理</span> </a>
+											<ul class="nav">
+					
+													<li><a href="knowledgeType.html"> 知识类型管理
+													</a></li>
+					
+													<li ><a href="grade.html"> 学段管理
+													</a></li>
+													<li  ><a href="subject.html"> 学科管理
+													</a></li>
+													<li class="cur"><a href="textbook.html"> 教材版本管理
+													</a></li>
+													<li><a href="questionType.html"> 题型管理
+													</a></li>
+													<li ><a href="knowledgePoint.html"> 知识点管理
+													</a></li>
+					
+											</ul></li>
+				
+						<li class="active"><a href="#"><span> 测评资源管理</span> </a>
+							<ul class="nav">
+					
+									<li><a href="../paper/paper_list.action?type=3"> 试卷管理
+									</a></li>
+					
+							</ul></li>
+
+			
+
+				</ul>
+			</div>
+			<div class="js-nav-shadow bottom"><img src="../img/round-shadow-bottom.png" style="top: auto; bottom: 0px;"></div>
+		</div> <!--end sidebar-->
+		
+		
+		<div class="main">
+
+			<div class="tablewrap">
+
+				<div class="cui-menu">
+					<button class="btn btn-primary btn-create" type="button">
+						+ 添加教材
+					</button>
+				</div>
+				<div id="KemuTableContainer"></div>
+
+
+				<script type="text/javascript">
+					$(document)
+							.ready(
+									function() {
+										$('#KemuTableContainer')
+												.jtable(
+														{
+															title : '教材版本管理',
+															messages : zhCN, //Lozalize
+															paging : true, //Enable paging
+															pageSize : 10, //Set page size (default: 10)
+															pageSizes : [ 10, 20, 30, 40, 50 ],
+															sorting : true, //Enable sorting
+															defaultSorting : 'id ASC', //Set default sorting
+															dialogShowEffect : 'drop',
+															addRecordButton : $('.btn-create'),
+															actions : {
+																listAction :  $('#listurl').val(),
+																updateAction : 'textbook/update.json',
+																deleteAction :'textbook/delete.json',
+																createAction : 'textbook/add.json'
+															},
+															fields : {
+																id : {
+																	title : 'ID',
+																	key : true,
+																	width:'5%'
+																},
+																name : {
+																	title : '教材名称',
+																	
+																	width : '20%',
+																	visibility : 'fixed'
+																},
+																version : {
+																	title : '教材版本',
+																	options : {
+																		'1' : '人教版',
+																		'2' : '苏教版'
+												
+																		
+																	}
+																},
+																versionNum: {
+																	title : '版次',
+																	options : {
+																		'1' : '2014版',
+																		'2' : '2013版',
+																		'3' : '2012版'
+
+																	}
+																	
+																},
+																grade: {
+																	title : '学段',
+																	options : {
+																		'1' : '初中一年级（七年级）上',
+																		'2' : '初中一年级（七年级）下'
+																		
+
+																	}
+																	
+																},
+																subject: {
+																	title : '学科',
+																	options : {
+																		'1' : '初中数学',
+																		'2' : '初中英语',
+																		'2' : '初中语文'
+																		
+
+																	}
+																	
+																},
+																status : {
+																	title : '状态',
+																	options : {
+																		'1' : '正常',
+																		'2' : '停用'
+																		
+																	}
+																	
+																}
+																
+																
+														
+														
+															},
+															columnResizable : false,
+															deleteConfirmation: function(data) {
+															  data.deleteConfirmMessage = '确定要删除这行数据?';
+															},
+															recordAdded : function(event,data) {
+																
+																	window.location.href = 	window.location.href + '?method=add';
+	
+															}
+															
+														});
+
+										$('#KemuTableContainer').jtable('load');
+									});
+				</script>
+
+			</div>
+		</div>
+		
+		
+	</div> <!--end row-->
+	
+</div>	<!--end container-->
+
+<div class="bs-footer">
+  <div>
+	  <p>Copyright © 2014 中国教育电视台 京ICP证101020号.     <a target="_blank" href="http://www.xjedu.gov.cn/">联系我们</a> &nbsp;|&nbsp;Power by <a href="http://www.zeppin.cn" target="_blank">http://www.zeppin.cn</a> </p>
+
+  </div>
+</div>
+
+</body>
+</html>
+		

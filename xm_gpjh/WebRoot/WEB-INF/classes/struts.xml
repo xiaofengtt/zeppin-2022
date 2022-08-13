@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	
+	
+	<package name="platform-default" extends="struts-default" namespace="/">
+		<interceptors>
+			<interceptor name="userPriorityInterceptor" class="com.whaty.platform.sso.web.interceptor.UserPriorityInterceptor"></interceptor>
+			<interceptor name="userLoginInterceptor" class="com.whaty.platform.sso.web.interceptor.UserLoginInterceptor"></interceptor>
+			
+			<interceptor-stack name="interceptorStack">
+				<interceptor-ref name="userLoginInterceptor"></interceptor-ref>
+				<interceptor-ref name="userPriorityInterceptor"></interceptor-ref>
+				
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="interceptorStack"></default-interceptor-ref>
+		<global-results>
+			<result name="grid">/test/grid.jsp</result>
+		    <result name="json">/test/json.jsp</result>
+		    <result name="gridjs">/test/gridjs.jsp</result>
+		    <result name="excel">/test/export.jsp</result>
+		    <result name="error">/test/error.jsp</result>
+		    <result name="msg">/test/msg.jsp</result>
+		    <result name="note">/test/note.jsp</result>
+		    <result name="interactionMsg">/test/interactionMsg.jsp</result>
+		    <result name="input">/entity/manager/pub/turnToLogin.jsp </result>
+		</global-results>
+		
+	</package>	
+	<include file="struts-sso.xml"/>
+	<include file="struts-test.xml"/>
+	<include file="struts-information.xml"/>
+	<include file="struts-basic.xml"/>
+	<include file="struts-first.xml"/>
+	<include file="struts-programApply.xml"/>
+	<include file="struts-implementation.xml"/>
+	<include file="struts-workspaceStudent.xml"/>
+	<!-- 
+	<include file="struts-recruit.xml"/>
+	<include file="struts-exam.xml"/>
+	<include file="struts-teaching.xml"/>
+	<include file="struts-fee.xml"/>
+	<include file="struts-publicCourse.xml"/>
+	<include file="struts-studentStatus.xml"/>
+	<include file="struts-workspaceTeacher.xml"/>
+	<include file="struts-statistics.xml"/>
+	<include file="struts-study.xml"/>
+	<include file="struts-studyZone.xml"/>
+ -->
+</struts>

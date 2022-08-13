@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="/entity/student/images/layout.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+.STYLE1 {color: #FF0000}
+-->
+</style>
+</head>
+
+<body>
+<div id="main_content">
+	<div class="content_title">您当前的位置是：学生的工作室 > 在学课程</div>
+  <div class="student_cntent_k">
+    	<div class="k_cc">
+    		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr class="table_bg1">
+    <td>课程编码</td>
+    <td>课程名称</td>
+    <td>学分</td>
+    <td>开始学习</td>
+    <td>课程类别</td>
+    <td>所属学期</td>
+	<td>通过</td>
+	<td>辅导教师</td>
+  </tr>
+ 
+  
+  	
+		<tr class="table_bg2">
+	
+	
+		<td>005&nbsp;</td>
+		<td><a href='/entity/student/story/物理课.htm' target="_new">物理&nbsp;</a></td>
+		<td>1.0&nbsp;</td>
+		<td><div class="study_bt" onmouseover="this.className='study_bt_M'" onmouseout="this.className='study_bt'"><a onclick="javascript:alert('开始学习')">开始学习</a></div></td>
+		<td>选修课&nbsp;</td>
+		<td>reacol学期&nbsp;</td>
+		<td>成绩未录入</td>
+		<td>a/a&nbsp;</td>
+	</tr>
+  
+  	
+	
+		<tr>
+	
+		<td>111&nbsp;</td>
+		<td><a href='/entity/student/story/物理课.htm' target="_new">毕业论文&nbsp;</a></td>
+		<td>1.0&nbsp;</td>
+		<td><div class="study_bt" onmouseover="this.className='study_bt_M'" onmouseout="this.className='study_bt'"><a onclick="javascript:alert('开始学习')">开始学习</a></div></td>
+		<td>选修课&nbsp;</td>
+		<td>reacol学期&nbsp;</td>
+		<td>成绩未录入</td>
+		<td>论文教师1&nbsp;</td>
+	</tr>
+  
+ 
+  <tr class="table_bg1">
+   <td colspan="8">
+   		
+
+<script language="javascript">
+			function pageGuarding()
+			{
+				var xPage = document.jump.pageNo.value;
+				var maxPage = document.jump.maxPage.value;
+
+				var isError = false;
+				
+				for (var i=0;i<xPage.length;i++)
+				{
+					var k = xPage.charAt(i);
+					if ((k<'0') || (k>'9'))
+					{
+						isError=true;
+						break;
+					}
+				}
+				if ((xPage=="0")||(xPage=="")||parseInt(xPage,10)>parseInt(maxPage,10)|| parseInt(xPage,10)<1)
+				{
+					
+					isError=true;
+				}
+
+				if (isError)
+				{
+					alert("输入页数错误，该页无法跳转！");
+					document.jump.pageNo.vaule="";
+					document.jump.pageNo.focus();
+					document.jump.pageNo.select();
+					return false;
+				}
+				else
+					return true;
+			}
+</script>
+
+<table border="0" cellpadding="2" cellspacing="1" align="center" width=100%>
+	<tr>
+	<form name="jump" method="post" action="/entity/student/studentstudio_getlearncourse.action?coursetype=0" onsubmit="return pageGuarding()">
+		<td align=center width=40% style="font-family: Tahoma,Georgia;font-size: 9pt;"> 
+		
+			
+		
+		
+		</td>
+		<td align="center" width=20% style="font-family: Tahoma,Georgia;font-size: 9pt;"> 
+         共1页 &nbsp;&nbsp;第1页&nbsp;&nbsp;&nbsp; 
+		</td>
+		<td align="center" width=20% style="font-family: Tahoma,Georgia;font-size: 9pt;">
+			跳转到第<input  type="text" name="pageNo" type="text" size="3" maxlength="5">页
+			<input type=hidden name=maxPage value="1" >
+	    </td>
+	    <td align="center">
+			<input name=Submit type=image src="/entity/images/go1.gif" width="40" height="20" border=0>
+		</td>
+	</form>
+		
+	<form name="setsize" method="post" action="/entity/student/studentstudio_getlearncourse.action?isLimit=1&coursetype=0">
+		<td align=center width=25% style="font-family: Tahoma,Georgia;font-size: 9pt;">
+    	每页
+			<select name="limit" onChange="document.setsize.submit()">
+				<option value="10" selected >10</option>
+				<option value="20"  >20</option>
+				<option value="30"  >30</option>
+				<option value="50"  >50</option>
+				<option value="100"  >100</option>
+			</select>
+    	条
+		</td>
+	</form>
+	</tr>
+</table>
+
+   </td>
+  </tr>
+</table>
+<br/>
+<div align="center"><a href="/entity/student/story/studied_course.html" target=_self  >[已修课程查询]</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/entity/student/story/no_study_course.html" target=_self  >[未修课程查询]</a></div>
+    </div>
+        <p>&nbsp;</p>
+        <p class="STYLE1">备注：</p>
+        <p class="STYLE1">在学课程：已选、未通过课程；</p>
+        <p class="STYLE1">已修课程：已选、并通过的课程，及免修免考课程；</p>
+        <p class="STYLE1">未修课程：教学计划中未选课程（不含免修免考）；</p>
+  </div>
+</div>
+</body>
+</html>

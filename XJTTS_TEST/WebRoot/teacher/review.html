@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>审核中...</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../css/bootstrap.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/app.css">	
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../css/metro/blue/jtable.css" rel="stylesheet" type="text/css" >
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/jquery.jtable.js"></script>
+<script src="../js/jquery.jtable.zh-CN.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/bootstrap-paginator.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/url.min.js"></script>
+<script src="../js/app.js"></script> 
+</head>
+<body>
+<div>
+
+	<div class="tablewrap"  style="margin-left: 50px;margin-right: 50px">
+
+		<div id="ProjectTableContainer"></div>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#ProjectTableContainer')
+						.jtable(
+								{
+									title : '<div>教师您好<br>您的信息正在审核中,审核期为一个工作日...<br>(若有问题请联系本学校管理员,联系方式如下)</div>',
+									messages : zhCN, //Lozalize
+									paging : true, //Enable paging
+									pageSize : 10, //Set page size (default: 10)
+									sorting : true, //Enable sorting
+// 									defaultSorting : 'id ASC', //Set default sorting
+									dialogShowEffect : 'drop',
+
+									actions : {
+										listAction : '../teacher/trg_review.action',
+									},
+									fields : {
+										name : {
+											title : '姓名',
+											width : '10%',
+											inputClass : 'test',
+											visibility : 'fixed'
+										},
+										organization : {
+											title : '工作单位',
+											width : '13%',
+											list : true
+										},
+										department : {
+											title : '工作部门',
+											width : '13%',
+											list : true
+										},
+										jobDuty : {
+											title : '工作职务',
+											width : '11%',
+											list : true
+										},
+										phone : {
+											title : '办公电话',
+											width : '5%',
+											list : true
+										},
+										mobile : {
+											title : '手机',
+											width : '5%',
+											list : true
+										},
+									},
+									columnResizable : false,
+								});
+
+						$('#ProjectTableContainer').jtable('load');
+			});
+		</script>
+
+
+
+
+
+	</div>
+</div>
+</body>
+</html>

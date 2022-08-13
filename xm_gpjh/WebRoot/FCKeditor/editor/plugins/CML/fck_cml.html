@@ -1,0 +1,96 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2008 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * Image Properties dialog window.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Equation Input</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="fck_mathml/css.css" rel="stylesheet" type="text/css">
+		<meta name="robots" content="noindex, nofollow" />
+		<script src="../../dialog/common/fck_dialog_common.js"
+			type="text/javascript"></script>
+		<script type="text/javascript">
+
+var dialog		= window.parent ;
+var oEditor		= dialog.InnerDialogLoaded() ;
+var FCK			= oEditor.FCK ;
+var FCKLang		= oEditor.FCKLang ;
+var FCKConfig	= oEditor.FCKConfig ;
+var FCKDebug	= oEditor.FCKDebug ;
+var FCKTools	= oEditor.FCKTools ;
+	
+		
+document.write( FCKTools.GetStyleHtml( GetCommonDialogCss() ) ) ;
+	function Help() 
+	{
+		alert("帮助：编辑好化学分子式点击满意后可以用鼠标将该该分子式插入您需要插入的区域。"); 
+	}
+
+	function replace(string,text,by) 
+	{
+		// Replaces text with by in string
+			var str = new String(string);
+	    	var strLength = str.length, txtLength = text.length;
+	    	if ((strLength == 0) || (txtLength == 0)) return string;
+	    	var i = string.indexOf(text);
+	    	if ((!i) && (text != string.substring(0,txtLength))) return string;
+	    	if (i == -1) return string;
+	
+	    	var newstr = string.substring(0,i) + by;
+	
+	    	if (i+txtLength < strLength)
+	        	newstr += replace(string.substring(i+txtLength,strLength),text,by);
+	    	return newstr;
+	}
+
+
+	function do_Insert() 
+	{
+	
+	  
+	  	DisplayHTML="<APPLET archive=\""+FCKConfig.BasePath+"plugins/CML/whatyCML.jar\"  CODE=\"StructureEditorApplet\" width=500 height=350>";
+	  	DisplayHTML+="<PARAM name=\"molContent\" value=\""+replace(document.MOL.getMolDescription(),"\r\n","|")+"\">";
+	  	DisplayHTML+="<PARAM name=\"maximizeScreen\" value=\"yes\">";
+	  	DisplayHTML+="<PARAM name=\"FloatButtonInvisable\" value=\"yes\">";
+	  	DisplayHTML+="<PARAM name=\"backgroundColor\" value=\"#FFFFFF\">";
+	  	DisplayHTML+="</APPLET>";
+	  	oEditor.FCK.InsertHtml(DisplayHTML);
+	  	dialog.Cancel() ;
+	}
+		</script>
+	</head>
+	<body topmargin="0" leftmargin="0" rightmargin="0">
+		<center>
+			<form name="myform">
+				<APPLET NAME="MOL" CODE="StructureEditorApplet.class"
+					archive="whatyCML.jar" width=500 height=350>
+				</APPLET>
+				<p>
+					<input type=button value="插入" onclick="do_Insert()">
+					<input type=button value="帮助" onclick="Help()">
+				</p>
+			</form>
+			<small>Copyright &copy; 2001 by Whaty.All rights reserved.</small>
+		</center>
+	</body>
+</html>

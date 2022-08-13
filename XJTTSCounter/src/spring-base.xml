@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- 按年统计 -->
+	<bean id="countTeacherYearDao" class="cn.zeppin.dao.impl.CountTeacherYearDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="countTeacherYearService" class="cn.zeppin.service.impl.CountTeacherYearServiceImpl">
+		<property name="countTeacherYearDao" ref="countTeacherYearDao"></property>
+	</bean>
+
+</beans>

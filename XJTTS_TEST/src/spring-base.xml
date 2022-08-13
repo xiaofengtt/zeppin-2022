@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- dao and service -->
+
+	<!-- 地区 -->
+	<bean id="areaDao" class="cn.zeppin.dao.impl.AreaDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="areaService" class="cn.zeppin.service.impl.AreaServiceImpl">
+		<property name="areaDao" ref="areaDao"></property>
+	</bean>
+
+	<!-- 组织架构级别 -->
+	<bean id="organizationLevelDao" class="cn.zeppin.dao.impl.OrganizationLevelDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="organizaionLevelService" class="cn.zeppin.service.impl.OrganizationLevelServiceImpl">
+		<property name="organizationLevelDao" ref="organizationLevelDao"></property>
+	</bean>
+	
+	<!-- 项目级别 -->
+	<bean id="projectLevelDao" class="cn.zeppin.dao.impl.ProjectLevelDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="projectLevelService" class="cn.zeppin.service.impl.ProjectLevelServiceImpl">
+		<property name="projectLevelDao" ref="projectLevelDao"></property>
+	</bean>
+
+	<!-- 学段 -->
+	<bean id="gradeDao" class="cn.zeppin.dao.impl.GradeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="gradeService" class="cn.zeppin.service.impl.GradeServiceImpl">
+		<property name="gradeDao" ref="gradeDao"></property>
+	</bean>
+
+	<!-- 项目类型 -->
+	<bean id="projectTypeDao" class="cn.zeppin.dao.impl.ProjectTypeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="projectTypeService" class="cn.zeppin.service.impl.ProjectTypeServiceImpl">
+		<property name="projectTypeDao" ref="projectTypeDao"></property>
+	</bean>
+
+	<!-- 培训科目 -->
+	<bean id="trainingSubjectDao" class="cn.zeppin.dao.impl.TrainingSubjectDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="trainingSubjectService" class="cn.zeppin.service.impl.TrainingSubjectServiceImpl">
+		<property name="trainingSubjectDao" ref="trainingSubjectDao"></property>
+	</bean>
+	
+	<bean id="projectSubjectRangeDao" class="cn.zeppin.dao.impl.ProjectSubjectRangeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="projectSubjectRangeService" class="cn.zeppin.service.impl.ProjectSubjectRangeServiceImpl">
+		<property name="projectSubjectRangeDao" ref="projectSubjectRangeDao"></property>
+		<property name="baseDao" ref="projectSubjectRangeDao"></property>
+	</bean>
+
+	<!-- 组织架构 -->
+	<bean id="organizaionDao" class="cn.zeppin.dao.impl.OrganizationDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="organizationService" class="cn.zeppin.service.impl.OrganizationServiceImpl">
+		<property name="organizationDao" ref="organizaionDao"></property>
+	</bean>
+
+	<!-- 项目管理员 -->
+	<bean id="projectAdminDao" class="cn.zeppin.dao.impl.ProjectAdminDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="projectAdminService" class="cn.zeppin.service.impl.ProjectAdminServiceImpl">
+		<property name="projectAdminDao" ref="projectAdminDao"></property>
+	</bean>
+
+	<!-- 民族 -->
+	<bean id="ethnicDao" class="cn.zeppin.dao.impl.EthnicDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="ethnicService" class="cn.zeppin.service.impl.EthnicServiceImpl">
+		<property name="ethnicDao" ref="ethnicDao"></property>
+	</bean>
+
+	<!-- 登陆 -->
+	<bean id="sysUserDao" class="cn.zeppin.dao.impl.SysUserDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="sysUserService" class="cn.zeppin.service.impl.SysUserServiceImpl">
+		<property name="sysUserDao" ref="sysUserDao"></property>
+	</bean>
+
+	<!-- 功能类别 -->
+	<bean id="funCategoryDao" class="cn.zeppin.dao.impl.FunCategoryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="funCategoryService" class="cn.zeppin.service.impl.FunCategoryServiceImpl">
+		<property name="funCategoryDao" ref="funCategoryDao"></property>
+	</bean>
+
+	<bean id="orgaCateMapDao" class="cn.zeppin.dao.impl.OrgaCateMapDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="orgaCateMapService" class="cn.zeppin.service.impl.OrgaCateMapServiceImpl">
+		<property name="orgaCategoryDao" ref="orgaCateMapDao"></property>
+	</bean>
+
+	<!-- 承训单位 -->
+	<bean id="trainingCollegeDao" class="cn.zeppin.dao.impl.TrainingCollegeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="trainingCollegeService" class="cn.zeppin.service.impl.TrainingCollegeServiceImpl">
+		<property name="trainingCollegeDao" ref="trainingCollegeDao"></property>
+	</bean>
+
+	<!-- 承训单位管理员 -->
+	<bean id="trainingAdminDao" class="cn.zeppin.dao.impl.TrainingAdminDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="trainingAdminService" class="cn.zeppin.service.impl.TrainingAdminServiceImpl">
+		<property name="trainingAdminDao" ref="trainingAdminDao"></property>
+	</bean>
+
+	<!-- 承训管理员权限 -->
+	<bean id="trainingAdminAuthorityDao" class="cn.zeppin.dao.impl.TrainingAdminAuthorityDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="trainingAdminAuthorityService" class="cn.zeppin.service.impl.TrainingAdminAuthorityServiceImpl">
+		<property name="trainingAdminAuthorityDao" ref="trainingAdminAuthorityDao"></property>
+	</bean>
+
+	<!-- 项目管理员与项目类型 -->
+	<bean id="projectAdminRightDao" class="cn.zeppin.dao.impl.ProjectAdminRightDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="projectAdminRightService" class="cn.zeppin.service.impl.ProjectAdminRightServiceImpl">
+		<property name="projectAdminRightDao" ref="projectAdminRightDao"></property>
+	</bean>
+
+	<!-- 文档类型 -->
+	<bean id="documentDao" class="cn.zeppin.dao.impl.DocumentDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="documentService" class="cn.zeppin.service.impl.DocumentServiceImpl">
+		<property name="documentDao" ref="documentDao"></property>
+	</bean>
+
+	<!-- 问卷 -->
+	<bean id="answerDao" class="cn.zeppin.dao.impl.AnswerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="answerService" class="cn.zeppin.service.impl.AnswerServiceImpl">
+		<property name="baseDao" ref="answerDao"></property>
+		<property name="answerDao" ref="answerDao"></property>
+	</bean>
+
+	<bean id="questionDao" class="cn.zeppin.dao.impl.QuestionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="questionService" class="cn.zeppin.service.impl.QuestionServiceImpl">
+		<property name="baseDao" ref="questionDao"></property>
+		<property name="questionDao" ref="questionDao"></property>
+	</bean>
+
+	<bean id="psqDao" class="cn.zeppin.dao.impl.PsqDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="psqService" class="cn.zeppin.service.impl.PsqServiceImpl">
+		<property name="baseDao" ref="psqDao"></property>
+		<property name="psqDao" ref="psqDao"></property>
+	</bean>
+
+	<bean id="submitDao" class="cn.zeppin.dao.impl.SubmitDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="submitService" class="cn.zeppin.service.impl.SubmitServiceImpl">
+		<property name="baseDao" ref="submitDao"></property>
+		<property name="submitDao" ref="submitDao"></property>
+	</bean>
+
+	<bean id="resultDao" class="cn.zeppin.dao.impl.ResultDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="resultService" class="cn.zeppin.service.impl.ResultServiceImpl">
+		<property name="baseDao" ref="resultDao"></property>
+		<property name="resultDao" ref="resultDao"></property>
+	</bean>
+
+
+	<!-- 项目基本信息 -->
+	<bean id="projectDao" class="cn.zeppin.dao.impl.ProjectDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="projectService" class="cn.zeppin.service.impl.ProjectServiceImpl">
+		<property name="projectDao" ref="projectDao"></property>
+		<property name="projectTypeDao" ref="projectTypeDao"></property>
+	</bean>
+
+	<!-- 项目申报 -->
+	<bean id="projectApplyDao" class="cn.zeppin.dao.impl.ProjectApplyDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="projectApplyService" class="cn.zeppin.service.impl.ProjectApplyServiceImpl">
+		<property name="projectApplyDao" ref="projectApplyDao"></property>
+	</bean>
+
+	<!-- 任务下达 -->
+	<bean id="assignTeacherTaskDao" class="cn.zeppin.dao.impl.AssignTeacherTaskDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="assignTeacherTaskService" class="cn.zeppin.service.impl.AssignTeacherTaskServiceImpl">
+		<property name="assignTeacherTaskDao" ref="assignTeacherTaskDao"></property>
+	</bean>
+
+	<!-- 学员报送 -->
+	<bean id="teacherTrainingRecordsDao" class="cn.zeppin.dao.impl.TeacherTrainingRecordsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="teacherTrainingRecordsService"
+		class="cn.zeppin.service.impl.TeacherTrainingRecordsServiceImpl">
+		<property name="teacherTrainingRecordsDao" ref="teacherTrainingRecordsDao"></property>
+	</bean>
+
+	<!-- 审核记录 -->
+	<bean id="assignTeacherCheckDao" class="cn.zeppin.dao.impl.AssignTeacherCheckDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="assignTeacherCheckService" class="cn.zeppin.service.impl.AssignTeacherCheckServiceImpl">
+		<property name="assignTeacherCheckDao" ref="assignTeacherCheckDao"></property>
+	</bean>
+	
+	<!-- action -->
+	<bean id="area" class="cn.zeppin.action.base.AreaAction">
+		<property name="areaService" ref="areaService"></property>
+	</bean>
+
+	<!-- organizatonLevel -->
+	<bean id="organizationLevel" class="cn.zeppin.action.base.OrganizationLevelAction">
+		<property name="orgainzationLevelService" ref="organizaionLevelService"></property>
+	</bean>
+	<!--组织架构 Action -->
+	<bean id="baseOrganization" class="cn.zeppin.action.base.OrganizationAction">
+		<property name="iOrganizationService" ref="organizationService"></property>
+	</bean>
+	<!-- project level -->
+	<bean id="projectLevel" class="cn.zeppin.action.base.ProjectLevelAction">
+		<property name="projectLevelService" ref="projectLevelService"></property>
+	</bean>
+	<!-- 评审专家管理 -->
+	<bean id="projectExpertDao" class="cn.zeppin.dao.impl.ProjectExpertDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="projectExpertService" class="cn.zeppin.service.impl.ProjectExpertServiceImpl">
+		<property name="projectExpertDao" ref="projectExpertDao"></property>
+	</bean>
+	
+	<!-- 学员管理 -->
+	<bean id="teacherDao" class="cn.zeppin.dao.impl.TeacherDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="teacherService" class="cn.zeppin.service.impl.TeacherServiceImpl">
+		<property name="teacherDao" ref="teacherDao"></property>
+	</bean>
+	<!--教学学段 -->
+	<bean id="teachingGradeDao" class="cn.zeppin.dao.impl.TeachingGradeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="teachingGradeService" class="cn.zeppin.service.impl.TeachingGradeServiceImpl ">
+		<property name="teachingGradeDao" ref="teachingGradeDao"></property>
+	</bean>
+	<!--教学科目 -->
+	<bean id="teachingSubjectDao" class="cn.zeppin.dao.impl.TeachingSubjectDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="teachingSubjectService" class="cn.zeppin.service.impl.TeachingSubjectServiceImpl">
+		<property name="teachingSubjectDao" ref="teachingSubjectDao"></property>
+	</bean>
+	<!-- 教学语言 -->
+	<bean id="teachingLanguageDao" class="cn.zeppin.dao.impl.TeachingLanguageDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="teachingLanguageService" class="cn.zeppin.service.impl.TeachingLanguageServiceImpl">
+		<property name="teachingLanguageDao" ref="teachingLanguageDao"></property>
+	</bean>
+	<!-- 职务 -->
+	<bean id="jobDutyDao" class="cn.zeppin.dao.impl.JobDutyDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="jobDutyService" class="cn.zeppin.service.impl.JobDutyServiceImpl">
+		<property name="jobDutyDao" ref="jobDutyDao"></property>
+	</bean>
+	<!--职称 -->
+	<bean id="jobTitleDao" class="cn.zeppin.dao.impl.JobTitleDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="jobTitleService" class="cn.zeppin.service.impl.JobTitleServiceImpl">
+		<property name="jobTitleDao" ref="jobTitleDao"></property>
+	</bean>
+	<!--学历 -->
+	<bean id="eductionBackgroundDao" class="cn.zeppin.dao.impl.EductionBackgroundDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="eductionBackgroundService" class="cn.zeppin.service.impl.EductionBackgroundServiceImpl">
+		<property name="eductionBackgroundDao" ref="eductionBackgroundDao"></property>
+	</bean>
+	<!--政治面貌 -->
+	<bean id="politicsDao" class="cn.zeppin.dao.impl.PoliticsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="politicsService" class="cn.zeppin.service.impl.PoliticsServiceImpl">
+		<property name="politicsDao" ref="politicsDao"></property>
+	</bean>
+	<!--汉语言水平 -->
+	<bean id="chineseLanguageLevelDao" class="cn.zeppin.dao.impl.ChineseLanguageLevelDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="chineseLanguageLevelService" class="cn.zeppin.service.impl.ChineseLanguageLevelServiceImpl">
+		<property name="chineseLanguageLevelDao" ref="chineseLanguageLevelDao"></property>
+	</bean>
+
+	<!--语言 -->
+	<bean id="languageDao" class="cn.zeppin.dao.impl.LanguageDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="languageService" class="cn.zeppin.service.impl.LanguageServiceImpl">
+		<property name="languageDao" ref="languageDao"></property>
+	</bean>
+
+	<!-- 学科 -->
+	<bean id="subjectDao" class="cn.zeppin.dao.impl.SubjectDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="subjectService" class="cn.zeppin.service.impl.SubjectServiceImpl">
+		<property name="subjectDao" ref="subjectDao"></property>
+	</bean>
+
+	<!--高校编码信息 -->
+	<bean id="universityInfoDao" class="cn.zeppin.dao.impl.UniversityInfoDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="UniversityInfoService" class="cn.zeppin.service.impl.UniversityInfoServiceImp">
+		<property name="baseDao" ref="universityInfoDao"></property>
+	</bean>
+	<bean id="universityInfo" class="cn.zeppin.action.base.UniversityInfoAction">
+		<property name="iUniversityInfoService" ref="UniversityInfoService"></property>
+	</bean>
+	<!--文件上传  -->
+    <bean id="fileUpload" class="cn.zeppin.action.base.fileUploadAction">
+    </bean>
+    
+    <!--项目指定承训单位  -->
+    
+    <bean id="projectCollegeRangeDao" class="cn.zeppin.dao.impl.ProjectCollegeRangeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="projectCollegeRangeService" class="cn.zeppin.service.impl.ProjectCollegeRangeServiceImpl">
+		<property name="baseDao" ref="projectCollegeRangeDao"></property>
+		<property name="iprojectCollegeRangeDao"  ref="projectCollegeRangeDao"></property>
+	</bean>
+	
+	<!--项目指定评审专家  -->
+    
+    <bean id="projectApplyExpertDao" class="cn.zeppin.dao.impl.ProjectApplyExpertDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="projectApplyExpertService" class="cn.zeppin.service.impl.ProjectApplyExpertServiceImpl">
+		<property name="baseDao" ref="projectApplyExpertDao"></property>
+		<property name="projectApplyExpertDao"  ref="projectApplyExpertDao"></property>
+	</bean>
+	
+	<!-- 教师登录信息 -->
+	
+	<bean id="hsdTestDao" class="cn.zeppin.dao.impl.HsdtestDaoImpl" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="hsdTestScoreDao" class="cn.zeppin.dao.impl.HsdtestscoreDaoImpl" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="hsdTestScoreService" class="cn.zeppin.service.impl.HsdtestscoreServiceImpl" >
+		<property name="baseDao" ref="hsdTestScoreDao" ></property>
+		<property name="hsdTestScoreDao" ref="hsdTestScoreDao"></property>
+	</bean>
+	
+	<bean id="hsdTestService" class="cn.zeppin.service.impl.HsdtestServiceImpl" >
+		<property name="baseDao" ref="hsdTestDao" ></property>
+		<property name="hsdTestDao" ref="hsdTestDao"></property>
+	</bean>
+	
+	<!-- 教师信息审核 -->
+	<bean id="teacherReviewRecordsDao" class="cn.zeppin.dao.impl.TeacherReviewRecordsDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="teacherReviewRecordsService"
+		class="cn.zeppin.service.impl.TeacherReviewRecordsServiceImpl">
+		<property name="teacherReviewRecordsDao" ref="teacherReviewRecordsDao"></property>
+	</bean>
+	
+	<!-- 教师手机验证 -->
+	<bean id="teacherMobileCodeDao" class="cn.zeppin.dao.impl.TeacherMobileCodeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="teacherMobileCodeService" class="cn.zeppin.service.impl.TeacherMobileCodeServiceImpl">
+		<property name="iTeacherMobileCodeDao" ref="teacherMobileCodeDao"></property>
+	</bean>
+	
+	<!-- 学员替换 -->
+	<bean id="teacherTrainingReplaceDao" class="cn.zeppin.dao.impl.TeacherTrainingReplaceDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="teacherTrainingReplaceService" class="cn.zeppin.service.impl.TeacherTrainingReplaceServiceImpl">
+		<property name="iTeacherTrainingReplaceDao" ref="teacherTrainingReplaceDao"></property>
+	</bean>
+	
+	<!-- 教师培训证书 -->
+	<bean id="teacherTrainingCertificateDao" class="cn.zeppin.dao.impl.TeacherTrainingCertificateDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="teacherTrainingCertificateService" class="cn.zeppin.service.impl.TeacherTrainingCertificateServiceImpl">
+		<property name="iTeacherTrainingCertificateDao" ref="teacherTrainingCertificateDao"></property>
+	</bean>
+	
+	<!-- 第三方培训平台对接模块 -->
+<!-- 	<bean id="trainingCollegeTokenDao" class="cn.zeppin.train.dao.impl.TrainingCollegeTokenDaoImpl"> -->
+<!-- 		<property name="sessionFactiory" ref="sessionFaction"></property> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="trainingCollegeTokenService" class="cn.zeppin.train.service.impl.TrainingCollegeTokenServiceImpl"> -->
+<!-- 		<property name="trainingCollegeTokenDao" ref="trainingCollegeTokenDao"></property> -->
+<!-- 	</bean> -->
+</beans>

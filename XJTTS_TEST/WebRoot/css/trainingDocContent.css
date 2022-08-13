@@ -1,0 +1,16 @@
+.main{
+    background-color: #fff;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 30px 10px;
+    min-height: 500px;
+    margin-bottom: 30px;
+}
+.content-title{
+    margin: 40px 15px;
+}
+.content-head .text-left{
+    padding-left: 15px;
+}
+.content-body{
+    min-height: 300px;
+}

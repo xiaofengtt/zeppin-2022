@@ -1,0 +1,14 @@
+<math>
+  <mrow>
+    <munder>
+      <mrow>
+        <mi>lim</mi>
+      </mrow>
+      <mrow>
+        <mi>x</mi>
+        <mo>&rarr;</mo>
+        <mi>&infin;</mi>
+      </mrow>
+    </munder>
+  </mrow>
+</math>

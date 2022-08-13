@@ -1,0 +1,27 @@
+<math>
+  <apply>
+    <divide/>
+    <apply>
+      <root/>
+      <apply>
+        <times/>
+        <apply>
+          <minus/>
+          <apply>
+            <power/>
+            <ci>b</ci>
+            <cn>2</cn>
+          </apply>
+          <cn>4</cn>
+        </apply>
+        <ci>ac</ci>
+      </apply>
+    </apply>
+    <apply>
+      <times/>
+      <cn>2</cn>
+      <ci>a</ci>
+    </apply>
+  </apply>
+</math>
+

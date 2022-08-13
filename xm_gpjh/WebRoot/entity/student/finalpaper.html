@@ -1,0 +1,88 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/entity/manager/css/admincss.css" rel="stylesheet" type="text/css"/>
+<title>论文开题报告修改</title>
+<script>
+function validate(){
+ var obj =document.getElementById('paper');
+	  if(obj.value==null || obj.value ==''){
+	  	alert('上传文件不能为空！');
+	  	this.focus()
+	  	return false;
+	  }
+	  var length = obj.value.length;
+	  var charindex = obj.value.lastIndexOf(".");
+	  var ExtentName = obj.value.substring(charindex,charindex+4);
+	  if(!(ExtentName == ".doc" )){
+	  	alert('文件格式不正确！');
+	  	this.focus()
+	  	return false;
+	  }
+	  return true;
+}
+</script>
+</head>
+<!-- JavaScript functions -->
+<body>
+<!--内容区-->
+
+<div id="main_content">
+    <div class="content_title">论文终稿提交</div>
+    <div class="cntent_k">
+   	  <div class="k_cc">
+   	  <form action="" enctype="multipart/form-data" method="post" onsubmit="return validate();">
+	  	<table width="80%" border="0" cellpadding="0" cellspacing="0" align="center">
+         <input type="hidden" name="paperId" value="402880911cfa8f3d011cfa9638e70001" id="paperId"/>
+         <input type="hidden" name="step" value="3" id="step"/>
+		 	<tr>
+			<td align="center" valign="top" class="postFormBox"  colspan="2">
+			
+			</td>
+			</tr>
+            <tr>
+            <td valign="top" class="postFormBox"> 学生姓名：</td>
+			<td valign="top" class="postFormBox">stu1</td>
+            </tr>
+            <tr>
+             <td   valign="top" class="postFormBox"> 论文：</td>
+			 <td   valign="top" class="postFormBox">test</td>
+            </tr>
+            
+            <tr>
+            <td   valign="top" class="postFormBox"> 指导教师：<br/></td>
+			<td   valign="top" class="postFormBox">t001/t001</td>
+            </tr>
+            <tr>
+            <td   valign="top" class="postFormBox"> 终稿截止日期：<br/></td>
+			<td   valign="top" class="postFormBox">2008-10-25</td>
+            </tr>
+            <tr>
+    <td class="tdLabel"><label for="paper" class="label">请上传终稿附件：:</label></td>
+    <td
+><input type="file" name="paper" value="" id="paper"/></td>
+</tr>
+
+		    <tr>
+				<td   valign="top" class="postFormBox">&nbsp;</td>
+				<td   valign="top" class="postFormBox">&nbsp;</td>
+		    </tr>
+          <tr>
+    <td colspan="2"><div align="center"><input type="submit" id="" value="提交"/>
+</div></td>
+</tr>
+
+        </table>
+		
+</form>
+	  </div>
+    </div>
+</div>
+<div class="clear"></div>
+<!-- JavaScript onload -->
+
+</body>
+</html>

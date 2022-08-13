@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证邮箱连接</title>
+    <script src="../js/lib/jquery-2.1.4.js"></script>
+</head>
+<body>
+<script>
+    function getUrlParam(name) {
+        var url = window.location.href;
+        var paraString = url.substring(url.indexOf("?")+1,url.length).split("&");
+        var paraObj = {}
+        var i = 0;
+        var j;
+        for (i = 0; j = paraString[i]; i++){
+            paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length);
+        }
+
+        var returnValue = paraObj[name.toLowerCase()];
+        if(typeof(returnValue)=="undefined"){
+            return "";
+        }else{
+            return returnValue;
+        }
+    };
+    $.ajax({
+        url:"tlg_checkEmail.action",
+        method: "POST",
+        data:{
+            checkId:getUrlParam("checkId"),
+            userID:getUrlParam("userID")
+        },
+        success:function(data){
+            if(data.Result=="ERROR"){
+                $("body").html("<h2 class='text-center'>链接已经失效</h2>");
+            }
+            else{
+                window.location.href="modifyPassword.html";
+            }
+        }
+    })
+</script>
+</body>
+</html>

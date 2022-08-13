@@ -1,0 +1,388 @@
+body {
+	background: #E8E8E8;
+	width: 100%;
+}
+select{
+	color:#999999;
+}
+main {
+	width: 100%;
+}
+
+main .sbm {
+	width: 100%;
+	position: relative;
+	background: #FFFFFF;
+	padding: 0 10px 0 10px;
+}
+
+main .sbm p {
+	padding: 30px 0px 30px 0px;
+	width: 100%;
+	text-indent: 10px;
+}
+main .sbm #up_head{
+	position: absolute;
+	right:0;
+	top:0;
+	width:100%;
+	height:100%;
+}
+
+.img_bd{
+	position: absolute;
+	width:45px;
+	top:18px;
+	right:20px;
+	height:45px;;
+	overflow: hidden;
+}
+
+main .sbm #up_head img {
+	display: block;
+	margin:0 auto;
+	max-width:100%;
+}
+
+main .sbm #up_head input {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	overflow: hidden;
+}
+
+main #teachers_msg {
+	width: 100%;
+}
+
+main #teachers_msg .main_top {
+	width: 100%;
+	background: #FFFFFF;
+	padding: 0 10px 0 10px;
+	position: relative;
+}
+
+main .logo {
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 5;
+}
+
+main #teachers_msg ul {
+	width: 100%;
+}
+
+main #teachers_msg ul li {
+	width: 100%;
+	padding: 15px 0 15px 0;
+	font-size: 15px;
+	color: #696969;
+	position: relative;
+	padding-left: 10px;
+}
+
+main #teachers_msg ul li input {
+	position: absolute;
+	right: 0;
+	text-align: right;
+	width: 60%;
+	padding-right:10px;
+}
+
+main #teachers_msg ul li #inschooltime{
+	right:10px;
+	height:18px;
+	direction: rtl;
+	padding-right:0;
+	display: inline-block;
+	background:#FFFFFF;
+	z-index: 1000;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
+main #teachers_msg ul li #code {
+	position: absolute;
+	right: 105px;
+	text-align: right;
+	width: 60%;
+}
+.woman, .man {
+	display: inline-block;
+	width: 60px;
+	height: 25px;
+	margin-left: 13px;
+	text-align: right;
+	position: absolute;
+	top: 12px;
+}
+
+.woman {
+	right: 84px;
+}
+
+.man {
+	right: 10px;
+}
+
+.code {
+	right: 75px;
+	border: none;
+	text-align: right;
+	width: auto;
+	position: absolute;
+	background: none;
+	top: 16px;
+	margin: 0;
+}
+#sendCode{
+	top:17px;
+}
+#time{
+	position: absolute;
+	border:none;
+	text-align: right;
+	right:10px;
+	width:auto;
+	top:17px;
+	font-size:12px;
+	color:#00C56A;
+	display:none;
+}
+.nation {
+	border: none;
+	text-align: center;
+	width: auto;
+	padding: 0 4%;
+	position: absolute;
+	right: 0;
+	background: none;
+	top: 14px;
+}
+
+.nation option {
+	text-align: center;
+}
+
+.right {
+	position: absolute;
+	right: 0;
+	top: 16px;
+}
+
+.msg_num {
+	text-align: right;
+	position: absolute;
+	right: 10px;
+	color: #00C56A;
+	font-size: 12px;
+}
+
+.status {
+	border: none;
+/* 	text-align: center; */
+	width: auto;
+	padding: 0 4%;
+	position: absolute;
+	right: 0;
+	background: none;
+	top: 14px;
+	margin: 0;
+	direction: rtl;
+}
+
+.status option {
+	direction: ltr;
+}
+
+.main_center {
+	position: relative;
+	width: 100%;
+	margin-top: 6px;
+	background: #FFFFFF;
+	padding: 0 10px 0 10px;
+}
+
+
+
+/* .main_center .status {
+    border: none;
+    text-align: center; 
+    width: auto;
+    padding: 0 4%;
+    position: absolute;
+    right: 0;
+    background: none;
+    top: 14px;
+} */
+main .main_center ul li:nth-child(14) {
+	display: inline-block;
+	width: 50%;
+	position: relative;
+}
+
+main .main_center ul li:nth-child(15) {
+	display: inline-block;
+	padding-left: 0;
+	width: 48%;
+	position: relative;
+}
+
+main .main_center ul li:nth-child(14) img {
+	width: 45px;
+	height: 25px;
+	position: absolute;
+	right: 20%;
+	top: 23%;
+}
+
+main .main_center ul li:nth-child(15) img {
+	width: 45px;
+	height: 25px;
+	position: absolute;
+	right: 10%;
+	top: 23%;
+}
+
+main .main_bottom {
+	width: 100%;
+	padding: 8px 10px 8px 10px;
+	background: #FFFFFF;
+	margin-top: 8px;
+	position: relative;
+}
+
+main .main_bottom label {
+	display: inline-block;
+	height: 50px;
+	float: left;
+	line-height: 50px;
+	margin-left: 10px;
+	color:#696969;
+}
+
+main .main_bottom textarea {
+	resize: none;
+	border: none;
+	background: #EBEBEB;
+	height: 50px;
+	width: 80%;
+	display: inline-block;
+	margin-left: 18px;
+	padding:5px 10px 5px 10px
+}
+
+main .inner_box .check {
+	font-size: 12px;
+	cursor: pointer;
+	border: 1px solid #E0615F;
+	color: #E0615F;
+	background-color: white;
+	border-radius: rgb(255, 255, 255);
+	-webkit-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-moz-border-radius: 5px;
+	padding: 0.5px 11px 0.5px 11px;
+	display: inline-block;
+	margin-top: 10px;
+	text-align: center;
+}
+/* main .inner_box input[type="checkbox"]{
+    display: none;
+} */
+main .inner_box input:focus {
+	outline: none;
+}
+
+main .inner_box label {
+	display: block;
+	font-size: 17px;
+	color: #2B2B2B;
+	text-indent: 0px;
+}
+
+footer {
+	margin-top: 10px;
+	text-align: center;
+	padding: 0px 10px 8px 10px;
+}
+
+footer input {
+	display: inline-block;
+	width: 90%;
+	height: 40px;
+	letter-spacing: 2px;
+	color: #FFFFFF;
+	background: #00C569;
+	-webkit-border-radius: 5px;
+}
+
+
+/*学工号提示信息*/
+.warn{
+	font-size:12px;
+	color:#E0615F;
+	position: absolute;
+	bottom:1px;
+}
+
+/*上传头像提示信息*/
+main .sbm .warn{
+	font-size:12px;
+	color:#E0615F;
+	position: absolute;
+	bottom:15px;
+	padding:0;
+	width:auto;
+}
+
+/*身份证*/
+.card_box{
+	width:100%;
+	position:relative;
+	padding:10px 10px 10px 10px;
+	background:#FFFFFF;
+	min-height:250px;
+}
+
+.card_box #card_form{
+	min-height:100px;
+	width:100%;
+}
+
+.card_box .card_title{
+	color:#E0615F;
+	text-align:center;
+	font-size:16px;
+	position: absolute;
+	left:0;
+	right:0;
+	top:40%;
+}
+.card_box #card_file{
+	display: inline-block;
+	width:100%;
+	height:100%;
+	opacity: 0;
+	top:0;
+	left:0;
+	position: absolute;
+	z-index: 10000;
+}
+.card_box #card_img{
+	position: absolute;
+	text-align: center;
+	max-width:90%;
+	height:87%;
+	left:0;
+	right:0;
+	margin:auto;
+	display:inline-block;
+	z-index: 9999;
+}

@@ -1,0 +1,15 @@
+SMAP
+_bulletin_0detail__jsp.java
+JSP
+*S JSP
+*F
++ 1 bulletin_detail.jsp
+entity/manager/information/bulletin_detail.jsp
+*L
+1#1:35
+27#1,2:36,10
+28#1,2:55,2
+29#1:59,8
+29#1:66,2
+40#1:68
+*E

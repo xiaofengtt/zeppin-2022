@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>学历提升申请记录</title>
+    <link rel="stylesheet" href="../css/lib/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/lib/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="../css/lib/normalize.css"/>
+    <link rel="stylesheet" href="../css/lib/font-awesome.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/trainingRecord.css"/>
+    <link rel="stylesheet" href="../css/teacherEduAdvance.css"/>
+    <script src="../js/lib/jquery-2.1.4.js"></script>
+    <script src="../js/layer-v2.2/layer/layer.js"></script>
+    <script src="../js/lib/bootstrap.js"></script>
+    <script src="../js/lib/angular.js"></script>
+    <script src="../js/teacherEduAdvance.js"></script>
+</head>
+<body ng-app="trainingRecordDirective" ng-controller="trainingRecordController">
+<div id="header"></div>
+<div class="main container">
+    <ul class="nav nav-pills">
+        <li role="presentation"><a href="personal.html">个人主页</a></li>
+        <li role="presentation"><a href="trainingRecord.html">培训记录</a></li>
+        <li role="presentation"><a href="IndeRegistEntrance.html">自主报名</a></li>
+        <li role="presentation"><a href="certificate.html">所获证书</a></li>
+        <li role="presentation"><a href="selectCourse.html">学前测评</a></li>
+        <li role="presentation"><a href="evaluation.html">学后评价</a></li>
+<!--         <li role="presentation" class="active"><a href="teacherEduAdvance.html">学历提升申请记录</a></li> -->
+    </ul>
+    <hr class="navBottom"/>
+    <div class="panel panel-default text-center">
+        <div class="panel-body">
+            <span>
+                您当前共有&nbsp;<span class="recordCount" ng-bind="totalRecordCount">0</span>&nbsp;次学历提升申请记录，
+                审核通过的有&nbsp;<span class="recordCount" ng-bind="onTrainCount">0</span>&nbsp;次，
+                审核未通过的有&nbsp;<span class="recordCount" ng-bind="endCount">0</span>&nbsp;次
+            </span>
+            <a class="active" href="teacherEduAdvanceAdd.html" target="_blank">申请学历提升</a>
+        </div>
+    </div>
+    <h3 class="text-center" ng-if="result == 0 ">暂无学历提升申请记录</h3>
+    <div class="trainList" ng-repeat="x in records">
+        <div class="row" ng-if="x.status=='未审核'">
+            <hr/>
+			<div class="techInfoTextTitle">
+				<span class="title">学历提升申请记录{{x.index}}</span>
+				<a class="save btn registBtn" href="teacherEduAdvanceEdit.html?id={{x.id}}" target="_blank" style="margin-top:0px;margin-bottom:10px;float:right;margin-right:10px;">编辑</a></h4>
+		        <a class="save btn registBtn revoke" href="javascript:" name="{{x.id}}" onclick="revoke()" style="margin-top:0px;margin-bottom:10px;float:right;margin-right:10px;">撤销</a></h4>
+				
+			</div>
+	        
+			<div style="position:relative;">
+	            <div class="col-xs-6 centerContent">
+	                <span class="trainSubject" ng-bind="x.subjectName"></span>
+	                <ul class="trainListInfo list-unstyled">
+	                	<li><span class="time">进修学校:&nbsp;&nbsp;<span ng-bind="x.graduation"></span></span></li>
+	                	<li><span class="time">进修专业:&nbsp;&nbsp;<span ng-bind="x.major"></span></span></li>
+	                	<li><span class="time">进修时间:&nbsp;&nbsp;由<span ng-bind="x.starttime"></span>至<span ng-bind="x.endtime"></span></span></li>
+	                </ul>
+	            </div>
+	            <div class="col-xs-6 rightContent">
+	                <ul class="trainListInfo list-unstyled">
+	                    <li><span class="time">毕业证书编号:&nbsp;&nbsp;<span ng-bind="x.certificate"></span></span></li>
+	                    <li><span class="time">提升学历:&nbsp;&nbsp;由<span ng-bind="x.odlEducationBackground"></span>申请提升到<span ng-bind="x.educationBackground"></span></span></li>
+	                    <li><span class="time">提交时间:&nbsp;&nbsp;<span ng-bind="x.createtime"></span></span></li>
+	                </ul>
+	            </div>
+	            
+	            <div style="clear:both;"></div>
+	            <div class="uncheck statusDiv"></div>
+            </div>
+            <div class="col-xs-12 rightContent">
+	                <a onclick="moreInfo(this);" href="javascript:">查看更多</a><br/><br/>
+	                
+	                <div class="moreInfo hide">
+		                <p class="trainAllHours">认证资料:</p>
+		                <div class="brand-waterfall" style="position:relative;">
+			                
+<!-- 		                	<img alt="" src="..{{xx.path}}" style="max-width:30%;border:1px solid #ccc;vertical-align:top;" ng-repeat="xx in x.eivdence"> -->
+		                	<div class='item' ng-repeat="xx in x.eivdence"><img src='..{{xx.path}}' alt='图片列表' class='img'></div>
+			               
+		                </div>
+	                	<div style="clear:both;"></div>
+	                </div>
+	        </div>
+        </div>
+        <div class="row" ng-if="x.status=='初审通过'">
+            <hr/>
+			<div class="techInfoTextTitle">
+				<span class="title">学历提升申请记录{{x.index}}</span>			
+			</div>
+	        
+			<div style="position:relative;">
+	            <div class="col-xs-6 centerContent">
+	                <span class="trainSubject" ng-bind="x.subjectName"></span>
+	                <ul class="trainListInfo list-unstyled">
+	                	<li><span class="time">进修学校:&nbsp;&nbsp;<span ng-bind="x.graduation"></span></span></li>
+	                	<li><span class="time">进修专业:&nbsp;&nbsp;<span ng-bind="x.major"></span></span></li>
+	                	<li><span class="time">进修时间:&nbsp;&nbsp;由<span ng-bind="x.starttime"></span>至<span ng-bind="x.endtime"></span></span></li>
+	                </ul>
+	            </div>
+	            <div class="col-xs-6 rightContent">
+	                <ul class="trainListInfo list-unstyled">
+	                    <li><span class="time">毕业证书编号:&nbsp;&nbsp;<span ng-bind="x.certificate"></span></span></li>
+	                    <li><span class="time">提升学历:&nbsp;&nbsp;由<span ng-bind="x.odlEducationBackground"></span>申请提升到<span ng-bind="x.educationBackground"></span></span></li>
+	                    <li><span class="time">提交时间:&nbsp;&nbsp;<span ng-bind="x.createtime"></span></span></li>
+	                </ul>
+	            </div>
+	            
+	            <div style="clear:both;"></div>
+	            <div class="Preliminary statusDiv"></div>
+            </div>
+            <div class="col-xs-12 rightContent">
+	                <a onclick="moreInfo(this);" href="javascript:">查看更多</a><br/><br/>
+	                
+	                <div class="moreInfo hide">
+		                <p class="trainAllHours">认证资料:</p>
+		                <div class="brand-waterfall" style="position:relative;">
+			                
+<!-- 		                	<img alt="" src="..{{xx.path}}" style="max-width:30%;border:1px solid #ccc;vertical-align:top;" ng-repeat="xx in x.eivdence"> -->
+		                	<div class='item' ng-repeat="xx in x.eivdence"><img src='..{{xx.path}}' alt='图片列表' class='img'></div>
+			               
+		                </div>
+	                	<div style="clear:both;"></div>
+	                </div>
+	        </div>
+        </div>
+        <div class="row" ng-if="x.status=='终审通过'">
+            <hr/>
+			<div class="techInfoTextTitle">
+				<span class="title">学历提升申请记录{{x.index}}</span>				
+			</div>
+	        
+			<div style="position:relative;">
+	            <div class="col-xs-6 centerContent">
+	                <span class="trainSubject" ng-bind="x.subjectName"></span>
+	                <ul class="trainListInfo list-unstyled">
+	                	<li><span class="time">进修学校:&nbsp;&nbsp;<span ng-bind="x.graduation"></span></span></li>
+	                	<li><span class="time">进修专业:&nbsp;&nbsp;<span ng-bind="x.major"></span></span></li>
+	                	<li><span class="time">进修时间:&nbsp;&nbsp;由<span ng-bind="x.starttime"></span>至<span ng-bind="x.endtime"></span></span></li>
+	                </ul>
+	            </div>
+	            <div class="col-xs-6 rightContent">
+	                <ul class="trainListInfo list-unstyled">
+	                    <li><span class="time">毕业证书编号:&nbsp;&nbsp;<span ng-bind="x.certificate"></span></span></li>
+	                    <li><span class="time">提升学历:&nbsp;&nbsp;由<span ng-bind="x.odlEducationBackground"></span>申请提升到<span ng-bind="x.educationBackground"></span></span></li>
+	                    <li><span class="time">提交时间:&nbsp;&nbsp;<span ng-bind="x.createtime"></span></span></li>
+	                </ul>
+	            </div>
+	            
+	            <div style="clear:both;"></div>
+	            <div class="Finaljudgment statusDiv"></div>
+            </div>
+            <div class="col-xs-12 rightContent">
+	                <a onclick="moreInfo(this);" href="javascript:">查看更多</a><br/><br/>
+	                
+	                <div class="moreInfo hide">
+		                <p class="trainAllHours">认证资料:</p>
+		                <div class="brand-waterfall" style="position:relative;">
+			                
+<!-- 		                	<img alt="" src="..{{xx.path}}" style="max-width:30%;border:1px solid #ccc;vertical-align:top;" ng-repeat="xx in x.eivdence"> -->
+		                	<div class='item' ng-repeat="xx in x.eivdence"><img src='..{{xx.path}}' alt='图片列表' class='img'></div>
+			               
+		                </div>
+	                	<div style="clear:both;"></div>
+	                </div>
+	        </div>
+        </div>
+        <div class="row" ng-if="x.status=='未通过'">
+            <hr/>
+			<div class="techInfoTextTitle">
+				<span class="title">学历提升申请记录{{x.index}}</span>
+				<a class="save btn registBtn" href="teacherEduAdvanceEdit.html?id={{x.id}}" target="_blank" style="margin-top:0px;margin-bottom:10px;float:right;margin-right:20px;">编辑</a></h4>				
+			</div>
+	        
+			<div style="position:relative;">
+	            <div class="col-xs-6 centerContent">
+	                <span class="trainSubject" ng-bind="x.subjectName"></span>
+	                <ul class="trainListInfo list-unstyled">
+	                	<li><span class="time">进修学校:&nbsp;&nbsp;<span ng-bind="x.graduation"></span></span></li>
+	                	<li><span class="time">进修专业:&nbsp;&nbsp;<span ng-bind="x.major"></span></span></li>
+	                	<li><span class="time">进修时间:&nbsp;&nbsp;由<span ng-bind="x.starttime"></span>至<span ng-bind="x.endtime"></span></span></li>
+	                </ul>
+	            </div>
+	            <div class="col-xs-6 rightContent">
+	                <ul class="trainListInfo list-unstyled">
+	                    <li><span class="time">毕业证书编号:&nbsp;&nbsp;<span ng-bind="x.certificate"></span></span></li>
+	                    <li><span class="time">提升学历:&nbsp;&nbsp;由<span ng-bind="x.odlEducationBackground"></span>申请提升到<span ng-bind="x.educationBackground"></span></span></li>
+	                    <li><span class="time">提交时间:&nbsp;&nbsp;<span ng-bind="x.createtime"></span></span></li>
+	                </ul>
+	            </div>
+	            
+	            <div style="clear:both;"></div>
+	            <div class="Notthrough statusDiv"></div>
+            </div>
+            <div class="col-xs-12 rightContent">
+	                <a onclick="moreInfo(this);" href="javascript:">查看更多</a><br/><br/>
+	                
+	                <div class="moreInfo hide">
+		                <p class="trainAllHours">认证资料:</p>
+		                <div style="clear:both;"></div>
+		                <div class="brand-waterfall" style="position:relative;">
+			                
+<!-- 		                	<img alt="" src="..{{xx.path}}" style="max-width:30%;border:1px solid #ccc;vertical-align:top;" ng-repeat="xx in x.eivdence"> -->
+		                	<div class='item' ng-repeat="xx in x.eivdence"><img src='..{{xx.path}}' alt='图片列表' class='img'></div>
+			               
+		                </div>
+	                	<div style="clear:both;"></div>
+	                </div>
+	        </div>
+        </div>
+        <div class="row" ng-if="x.status=='已撤销'">
+            <hr/>
+			<div class="techInfoTextTitle">
+				<span class="title">学历提升申请记录{{x.index}}</span>
+				<a class="save btn registBtn" href="teacherEduAdvanceEdit.html?id={{x.id}}" target="_blank" style="margin-top:0px;margin-bottom:10px;float:right;margin-right:20px;">编辑</a></h4>				
+			</div>
+	        
+			<div style="position:relative;">
+	            <div class="col-xs-6 centerContent">
+	                <span class="trainSubject" ng-bind="x.subjectName"></span>
+	                <ul class="trainListInfo list-unstyled">
+	                	<li><span class="time">进修学校:&nbsp;&nbsp;<span ng-bind="x.graduation"></span></span></li>
+	                	<li><span class="time">进修专业:&nbsp;&nbsp;<span ng-bind="x.major"></span></span></li>
+	                	<li><span class="time">进修时间:&nbsp;&nbsp;由<span ng-bind="x.starttime"></span>至<span ng-bind="x.endtime"></span></span></li>
+	                </ul>
+	            </div>
+	            <div class="col-xs-6 rightContent">
+	                <ul class="trainListInfo list-unstyled">
+	                    <li><span class="time">毕业证书编号:&nbsp;&nbsp;<span ng-bind="x.certificate"></span></span></li>
+	                    <li><span class="time">提升学历:&nbsp;&nbsp;由<span ng-bind="x.odlEducationBackground"></span>申请提升到<span ng-bind="x.educationBackground"></span></span></li>
+	                    <li><span class="time">提交时间:&nbsp;&nbsp;<span ng-bind="x.createtime"></span></span></li>
+	                </ul>
+	            </div>
+	            
+	            <div style="clear:both;"></div>
+	            <div class="Revoke statusDiv"></div>
+            </div>
+            <div class="col-xs-12 rightContent">
+	                <a onclick="moreInfo(this);" href="javascript:">查看更多</a><br/><br/>
+	                
+	                <div class="moreInfo hide">
+		                <p class="trainAllHours">认证资料:</p>
+		                <div class="brand-waterfall" style="position:relative;">
+			                
+<!-- 		                	<img alt="" src="..{{xx.path}}" style="max-width:30%;border:1px solid #ccc;vertical-align:top;" ng-repeat="xx in x.eivdence"> -->
+		                	<div class='item' ng-repeat="xx in x.eivdence"><img src='..{{xx.path}}' alt='图片列表' class='img'></div>
+			               
+		                </div>
+	                	<div style="clear:both;"></div>
+	                </div>
+	        </div>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+</body>
+</html>

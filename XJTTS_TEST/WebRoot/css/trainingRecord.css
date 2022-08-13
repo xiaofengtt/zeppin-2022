@@ -1,0 +1,90 @@
+.row{
+    margin: 0;
+}
+.fa{
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    line-height: 18px !important;
+    color: #fff;
+}
+#fa-registedIng{
+    color: #e95a6f !important;
+}
+#fa-registedEnd{
+    color: #8b8b8c;
+}
+.fa-map-markerIng{
+    background-color: #5fa776;
+}
+.fa-homeIng{
+    background-color: #a6d4ae;
+}
+.fa-wrenchIng{
+    background-color: #d9e483;
+}
+.fa-file-text-oIng{
+    background-color: #ded572;
+}
+.fa-registedIng{
+    background-color: white;
+    color: #e95a6f;
+}
+.fa-map-markerEnd{
+    background-color: #8b8b8c;
+}
+.fa-homeEnd{
+    background-color: #8b8b8c;
+}
+.fa-wrenchEnd{
+    background-color: #8b8b8c;
+}
+.fa-file-text-oEnd{
+    background-color: #8b8b8c;
+}
+.fa-registedEnd{
+    background-color: white;
+    color: #e95a6f;
+}
+.panel{
+    background-color: #fafafa;
+    margin-top: 40px;
+}
+.recordCount{
+    color:#5fb752;
+    font-weight: bold;
+}
+.leftContent{
+    padding: 20px;
+    background-color: #fafafa;
+}
+.trainDate{
+    font-size: 22px;
+    font-weight: bold;
+}
+.trainYear{
+    font-size: 12px;
+}
+.trainStatus{
+    font-size: 12px;
+}
+.trainSubject{
+    font-size: 20px;
+}
+.training{
+    color: #e95a6f;
+}
+.trainEnd{
+    color: #8b8b8c;
+}
+.time{
+    line-height: 30px;
+}
+.registBtn{
+    font-size: 14px;
+    background: #449be2;
+    color: #fff;
+    width: 80px;
+    height: 35px;
+    margin-top: 30px;
+}

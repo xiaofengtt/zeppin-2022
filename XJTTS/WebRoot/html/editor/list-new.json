@@ -1,0 +1,33 @@
+{
+    "Records": [
+        {
+            "account": "liuxinzhi@guoshi.com", 
+            "corpname": "\u679c\u5b9e\u7f51-\u5218\u946b\u829d", 
+            "id": 1, 
+            "jiaose": "2", 
+            "phone": "13911996950", 
+            "sex": "2", 
+            "title": "\u679c\u5b9e\u7f51\u7f16\u8f91"
+        }, 
+        {
+            "account": "tianchunfang@guoshi.com", 
+            "corpname": "\u679c\u5b9e\u7f51-\u7530\u6625\u82b3", 
+            "id": 2, 
+            "jiaose": "2", 
+            "phone": "18618287312", 
+            "sex": "2", 
+            "title": "\u679c\u5b9e\u7f51\u7f16\u8f91"
+        }, 
+        {
+            "account": "rongjingfeng@guoshi.com", 
+            "corpname": "\u679c\u5b9e\u7f51-\u8363\u666f\u5cf0", 
+            "id": 3, 
+            "jiaose": "3", 
+            "phone": "18611920344", 
+            "sex": "1", 
+            "title": "\u679c\u5b9e\u7f51\u7f16\u8f91"
+        }
+    ], 
+    "Result": "OK", 
+    "TotalRecordCount": 3
+}

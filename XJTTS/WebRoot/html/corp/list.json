@@ -1,0 +1,24 @@
+{
+    "Records": [
+        {
+            "account": "qinlong@guoshi.com", 
+            "corpname": "中科金财-秦龙", 
+            "id": 1, 
+            "jiaose": "4", 
+            "phone": "18701376560", 
+            "sex": "2", 
+            "title": "技术支持经理"
+        },
+        {
+            "account": "jiangfei@guoshi.com", 
+            "corpname": "中科金财-蒋飞", 
+            "id": 2, 
+            "jiaose": "4", 
+            "phone": "18701376560", 
+            "sex": "2", 
+            "title": "技术支持经理"
+        }
+    ], 
+    "Result": "OK", 
+    "TotalRecordCount": 2
+}

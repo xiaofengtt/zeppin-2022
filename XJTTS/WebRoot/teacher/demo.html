@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo</title>
+	<link rel="stylesheet" href="../css/app.css">
+	<link rel="stylesheet" href="../css/hsdstyle.css">
+	<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css">
+	<link href="../css/metro/blue/jtable.css" rel="stylesheet"
+		  type="text/css">
+	<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+	<script src="../js/jquery-1.9.1.min.js"></script>
+	<script src="../js/jquery-ui.js"></script>
+	<script src="../js/jquery.jtable.js"></script>
+	<script src="../js/jquery.jtable.zh-CN.js"></script>
+	<script src="../js/jquery.colorbox.js"></script>
+	<script src="../js/bootstrap-paginator.min.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="../js/url.min.js"></script>
+	<script src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/Chart.js"></script>
+	<script src="../js/excanvas.js" type="text/javascript"></script>
+
+	<script src="../js/iframe.js"></script>
+	<script src="../js/jsrender.min.js"></script>
+	<script src="../js/underscore-min.js"></script>
+	<link rel="stylesheet" href="../css/ui-dialog.css">
+	<script src="../js/dialog-min.js"></script>
+
+</head>
+<body>
+<div class="wraper_block">
+	<div class="wraper">
+		<div class="wraperin">
+			<div class="middcontent">
+				<div class="simple_detail">
+					<div class="cont" style="padding-top: 20px; "
+						 id="result_div">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+									<td colspan="13">
+										<table width="100%" cellspacing="0" cellpadding="0">
+											<tbody>
+												<tr>
+												<td>
+													<table width="100%" cellspacing="0" cellpadding="0">
+														<tbody>
+														<tr>
+															<td colspan="3">
+																<div style="width: 100px; margin-left: 16px;">
+																	&nbsp;&nbsp;
+																	<h2>能力自评</h2>
+																</div>
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<table width="200" border="1" cellspacing="0"
+																	   cellpadding="0" style="margin-left: 25px;">
+																	<tbody>
+																	<tr style="background-color: #4f81bd;">
+																		<td style="width: 100px;"></td>
+																		<td style="width: 50px;">&nbsp;&nbsp;I</td>
+																		<td style="width: 50px;">&nbsp;&nbsp;II</td>
+																	</tr>
+																	<tr>
+																		<td style="background: #e4e4e4;">技术素养</td>
+																		<td id="nl1"></td>
+																		<td id="nl6"></td>
+																	</tr>
+																	<tr>
+																		<td style="background: #e4e4e4;">计划与准备</td>
+																		<td id="nl2"></td>
+																		<td id="nl7"></td>
+																	</tr>
+																	<tr>
+																		<td style="background: #e4e4e4;">组织与管理</td>
+																		<td id="nl3"></td>
+																		<td id="nl8"></td>
+																	</tr>
+																	<tr>
+																		<td style="background: #e4e4e4;">评估与诊断</td>
+																		<td id="nl4"></td>
+																		<td id="nl9"></td>
+																	</tr>
+																	<tr>
+																		<td style="background: #e4e4e4;">学习与发展</td>
+																		<td id="nl5"></td>
+																		<td id="nl10"></td>
+																	</tr>
+																	</tbody>
+																</table> <br>
+																<div style="margin-left: 25px;">
+																	注：I代表应用信息技术优化课堂<br> 教学，II代表应用信息技术转变学<br>
+																	习方式；红色区域代表不合格，<br> 黄色区域代表合格；绿色区域代<br> 表优秀。
+																</div>
+															</td>
+															<td style="padding-bottom: 70px;"><canvas
+																	id="canvas_1" height="300" width="300"
+																	style="margin-left: -50px;"></canvas> <br>
+																I，应用信息技术优化课堂教学</td>
+															<td style="padding-bottom: 70px;"><canvas
+																	id="canvas_2" height="300" width="300"
+																	style="margin-left: -30px;"></canvas> <br>
+																II，应用信息技术转变学习方式</td>
+														</tr>
+														</tbody>
+													</table>
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(function() {
+
+		var rc = ["T1信息技术引发的教育教学变革", "T2多媒体教学环境认知与常用设备使用", "T3学科资源检索与获取", "T4素材的处理与加工", "T5多媒体课件制作", "T6学科软件的使用", "T7信息道德与信息安全", "T8简易多媒体教学环境下的学科教学", "T9交互多媒体环境下的学科教学", "T10学科教学资源支持下的课程教学", "T11技术支持的课堂导入", "T12技术支持的课堂讲授", "T13技术支持的学生技能训练与指导", "T14技术支持的总结与复习", "T15技术支持的教学评价", "T16教学空间的构建与管理", "T17网络教学平台的应用", "T18适用于移动设备的软件应用", "T19网络教学环境中的自主合作探究学习", "T20移动学习环境中的自主合作探究学习", "T21技术支持的探究学习任务设计", "T22技术支持的学习小组的组织与管理", "T23技术支持的学习过程监控", "T24技术支持的学习评价", "T25中小学教师信息技术应用能力标准解读", "T26教师工作坊与教师专业发展", "T27网络研修社区与教师专业发展"];
+		function getRandom(n) {
+			return Math.floor(Math.random() * n + 1)
+		}
+
+		function hsdTests(id) {
+
+			$.getJSON('../teacher/hsdTest_getHsdTestInfo.action?id='+id, function(data) {
+
+				if (data.status == 'OK') {
+
+					var f_data = [];
+					var s_data = [];
+
+					var score = data.score.split(",");
+					var jhyzb1 = parseFloat(score[1]); //1计划与准备
+					var zzygl1 = parseFloat(score[2]); //1组织与管理
+					var pgyzd1 = parseFloat(score[3]);//1评估与诊断
+					var jssy1 = parseFloat(score[0]);  //1技术素养
+					var xxyfz1 = parseFloat(score[4]);//1学习与发展
+
+					var jhyzb2 = parseFloat(score[6]); //2计划与准备
+					var zzygl2 = parseFloat(score[7]); //2组织与管理
+					var pgyzd2 = parseFloat(score[8]); //2评估与诊断
+					var jssy2 = parseFloat(score[5]);   //2技术素养
+					var xxyfz2 = parseFloat(score[9]); //2学习与发展
+
+
+					var s = "<table border='1'><tr style='background-color:#5b9bd5; text-align:center;'><td style='width:200px;'>类别</td><td style='width:400px;'>I.应用信息技术优化课堂教学</td><td style='text-align:center; width:400px;'>II.应用信息技术转变学习方式</td></tr>";
+					var result = [];
+					var rec = data.recommend.split(',');
+					var f_data = [];
+					var s_data = [];
+					var n = 0;
+					for (var i = 0; i < rc.length; i++) {
+						for (var j = 0; j < rec.length; j++) {
+							if (rc[i] == rec[j]) {
+								result[n] = rc[i];
+								n++;
+							}
+						}
+					}
+					var js1 = ["T1信息技术引发的教育教学变革;T1", "T2多媒体教学环境认知与常用设备使用;T2", "T3学科资源检索与获取;T3", "T4素材的处理与加工;T4", "T5多媒体课件制作;T5", "T6学科软件的使用;T6", "T7信息道德与信息安全;T7"];
+					var js2 = ["T16教学空间的构建与管理;T16", "T17网络教学平台的应用;T17", "T18适用于移动设备的软件应用;T18"];
+					var zh1 = ["T8简易多媒体教学环境下的学科教学;T8", "T9交互多媒体环境下的学科教学;T9", "T10学科教学资源支持下的课程教学;T10"];
+					var zh2 = ["T19网络教学环境中的自主合作探究学习;T19", "T20移动学习环境中的自主合作探究学习;T20"];
+					var zt1 = ["T11技术支持的课堂导入;T11", "T12技术支持的课堂讲授;T12", "T13技术支持的学生技能训练与指导;T13", "T14技术支持的总结与复习;T14", "T15技术支持的教学评价;T15"];
+					var zt2 = ["T21技术支持的探究学习任务设计;T21", "T22技术支持的学习小组的组织与管理;T22", "T23技术支持的学习过程监控;T23", "T24技术支持的学习评价;T24"];
+					var jszt = ["T25中小学教师信息技术应用能力标准解读;T25", "T26教师工作坊与教师专业发展;T26", "T27网络研修社区与教师专业发展;T27"];
+
+					var fm1 = ["T1信息技术引发的教育教学变革", "T2多媒体教学环境认知与常用设备使用", "T3学科资源检索与获取", "T4素材的处理与加工", "T5多媒体课件制作", "T6学科软件的使用", "T7信息道德与信息安全", "T8简易多媒体教学环境下的学科教学", "T9交互多媒体环境下的学科教学", "T10学科教学资源支持下的课程教学", "T11技术支持的课堂导入", "T12技术支持的课堂讲授", "T13技术支持的学生技能训练与指导", "T14技术支持的总结与复习", "T15技术支持的教学评价"];
+					var fm2 = ["T16教学空间的构建与管理", "T17网络教学平台的应用", "T18适用于移动设备的软件应用", "T19网络教学环境中的自主合作探究学习", "T20移动学习环境中的自主合作探究学习", "T21技术支持的探究学习任务设计", "T22技术支持的学习小组的组织与管理", "T23技术支持的学习过程监控", "T24技术支持的学习评价"];
+					var fm3 = ["T25中小学教师信息技术应用能力标准解读", "T26教师工作坊与教师专业发展", "T27网络研修社区与教师专业发展"];
+					var nf1 = 0;
+					for (var i = 0; i < result.length; i++) {
+						for (var j = 0; j < fm1.length; j++) {
+							if (result[i] == fm1[j]) {
+								nf1++;
+							}
+						}
+					}
+					var nf2 = 0;
+					for (var i = 0; i < result.length; i++) {
+						for (var j = 0; j < fm2.length; j++) {
+							if (result[i] == fm2[j]) {
+								nf2++;
+							}
+						}
+					}
+					var nf3 = 0;
+					for (var i = 0; i < result.length; i++) {
+						for (var j = 0; j < fm3.length; j++) {
+							if (result[i] == fm3[j]) {
+								nf3++;
+							}
+						}
+					}
+
+					var str1 = "";
+					var str2 = "";
+					var jn1 = 0;
+					for (var i = 0; i < result.length; i++) {
+						for (var j = 0; j < js1.length; j++) {
+							if (result[i] == js1[j].split(';')[0]) {
+								jn1++;
+								str1 = str1 + js1[j] + ",";
+							}
+						}
+					}
+					str1 = str1.substring(0, str1.length - 1);
+
+
+					var jn2 = 0;
+					for (var i = 0; i < result.length; i++) {
+						for (var j = 0; j < js2.length; j++) {
+							if (result[i] == js2[j].split(';')[0]) {
+								jn2++;
+								str2 = str2 + js2[j] + ",";
+							}
+						}
+					}
+					str2 = str2.substring(0, str2.length - 1);
+					var j1 = jn1 > jn2 ? jn1 : jn2;
+					for (var i = 0; i < j1; i++) {
+						if (i == 0) {
+							s = s + "<tr><td rowspan=" + j1 + " style='text-align:center;'>技术素养类</td>";
+						}
+						else {
+							s = s + "<tr>";
+						}
+						if (jn1 > jn2) {
+							s = s + "<td><a style='color:blue;' href=../HSDTesting/resource/" + str1.split(',')[i].split(';')[1] + ".docx>" + str1.split(',')[i].split(';')[0] + "</a></td>";
+							if (i < jn2) {
+								s = s + "<td><a style='color:blue;' href=../HSDTesting/resource/" + str2.split(',')[i].split(';')[1] + ".docx>" + str2.split(',')[i].split(';')[0] + "</a></td></tr>";
+							}
+							else {
+								s = s + "<td></td></tr>";
+							}
+						}
+						else {
+							if (i < jn1) {
+								s = s + "<td><a style='color:blue;' href=../HSDTesting/resource/" + str1.split(',')[i].split(';')[1] + ".docx>" + str1.split(',')[i].split(';')[0] + "</a></td>";
+							}
+							else {
+								s = s + "<td></td>";
+							}
+							s = s + "<td><a style='color:blue;' href=../HSDTesting/resource/" + str2.split(',')[i].split(';')[1] + ".docx>" + str2.split(',')[i].split(';')[0] + "</a></td></tr>";
+						}
+					}
+
+					var str3 = "";
+					var str4 = "";
+					var jn3 = 0;
+					for (var i = 0; i < result.length; i++) {
+						for (var j = 0; j < zh1.length; j++) {
+							if (result[i] == zh1[j].split(';')[0]) {
+								jn3++;
+								str3 = str3 + zh1[j] + ",";
+							}
+						}
+					}
+					str3 = str3.substring(0, str3.length - 1);
+
+					var jn4 = 0;
+					for (var i = 0; i < result.length; i++) {
+						for (var j = 0; j < zh2.length; j++) {
+							if (result[i] == zh2[j].split(';')[0]) {
+								jn4++;
+								str4 = str4 + zh2[j] + ",";
+							}
+						}
+					}
+					str4 = str4.substring(0, str4.length - 1);
+
+					var j2 = jn3 > jn4 ? jn3 : jn4;
+					for (var i = 0; i < j2; i++) {
+						if (i == 0) {
+							s = s + "<tr><td rowspan=" + j2 + " style='text-align:center;'>综合类</td>";
+						}
+						else {
+							s = s + "<tr>";
+						}
+						if (jn3 > jn4) {
+							s = s + "<td><a style='color:blue;' href=../HSDTesting/resource/" + str3.split(',')[i].split(';')[1] + ".docx>" + str3.split(',')[i].split(';')[0] + "</a></td>";
+							if (i < jn4) {
+								s = s + "<td><a style='color:blue;' href=../HSDTesting/resource/" + str4.split(',')[i].split(';')[1] + ".docx>" + str4.split(',')[i].split(';')[0] + "</a></td></tr>";
+							}
+							else {
+								s = s + "<td></td></tr>";
+							}
+						}
+						else {
+							if (i < jn3) {
+								s = s + "<td><a style='color:blue;' href=../HSDTesting/resource/" + str3.split(',')[i].split(';')[1] + ".docx>" + str3.split(',')[i].split(';')[0] + "</a></td>";
+							}
+							else {
+								s = s + "<td></td>";
+							}
+							s = s + "<td><a style='color:blue;' href=../HSDTesting/resource/" + str4.split(',')[i].split(';')[1] + ".docx>" + str4.split(',')[i].split(';')[0] + "</a></td></tr>";
+						}
+					}
+
+
+					var str5 = "";
+					var str6 = "";
+					var jn5 = 0;
+					for (var i = 0; i < result.length; i++) {
+						for (var j = 0; j < zt1.length; j++) {
+							if (result[i] == zt1[j].split(';')[0]) {
+								jn5++;
+								str5 = str5 + zt1[j] + ",";
+							}
+						}
+					}
+					str5 = str5.substring(0, str5.length - 1);
+
+					var jn6 = 0;
+					for (var i = 0; i < result.length; i++) {
+						for (var j = 0; j < zt2.length; j++) {
+							if (result[i] == zt2[j].split(';')[0]) {
+								jn6++;
+								str6 = str6 + zt2[j] + ",";
+							}
+						}
+					}
+					str6 = str6.substring(0, str6.length - 1);
+
+					var j3 = jn5 > jn6 ? jn5 : jn6;
+					for (var i = 0; i < j3; i++) {
+						if (i == 0) {
+							s = s + "<tr><td rowspan=" + j3 + " style='text-align:center;'>专题类</td>";
+						}
+						else {
+							s = s + "<tr>";
+						}
+						if (jn5 > jn6) {
+							s = s + "<td><a style='color:blue;' href=../HSDTesting/resource/" + str5.split(',')[i].split(';')[1] + ".docx>" + str5.split(',')[i].split(';')[0] + "</a></td>";
+							if (i < jn6) {
+								s = s + "<td><a style='color:blue;' href=../HSDTesting/resource/" + str6.split(',')[i].split(';')[1] + ".docx>" + str6.split(',')[i].split(';')[0] + "</a></td></tr>";
+							}
+							else {
+								s = s + "<td></td></tr>";
+							}
+						}
+						else {
+							if (i < jn5) {
+								s = s + "<td><a style='color:blue;' href=../HSDTesting/resource/" + str5.split(',')[i].split(';')[1] + ".docx>" + str5.split(',')[i].split(';')[0] + "</a></td>";
+							}
+							else {
+								s = s + "<td></td>";
+							}
+							s = s + "<td><a style='color:blue;' href=../HSDTesting/resource/" + str6.split(',')[i].split(';')[1] + ".docx>" + str6.split(',')[i].split(';')[0] + "</a></td></tr>";
+						}
+					}
+
+					var str7 = "";
+					for (var i = 0; i < result.length; i++) {
+						for (var j = 0; j < jszt.length; j++) {
+							if (result[i] == jszt[j].split(';')[0]) {
+								str7 = str7 + jszt[j] + ",";
+							}
+						}
+					}
+					str7 = str7.substring(0, str7.length - 1);
+					for (var i = 0; i < str7.split(',').length; i++) {
+						if (i == 0) {
+							s = s + "<tr><td rowspan=" + str7.split(',').length + " style='text-align:center;'>教师专业发展</td>";
+						}
+						else {
+							s = s + "<tr>";
+						}
+						s = s + "<td colspan=2><a style='color:blue;' href=../HSDTesting/resource/" + str7.split(',')[i].split(';')[1] + ".docx>" + str7.split(',')[i].split(';')[0] + "</a></td>";
+					}
+
+
+					s = s + "</table>";
+					$("#tres").html(s);
+
+
+					var str = [jssy1, jhyzb1, zzygl1, pgyzd1, xxyfz1, jssy2, jhyzb2, zzygl2, pgyzd2, xxyfz2];
+					f_data[0] = jhyzb1;
+					f_data[1] = zzygl1;
+					f_data[2] = pgyzd1;
+					f_data[4] = jssy1;
+					f_data[3] = xxyfz1;
+					s_data[0] = jhyzb2;
+					s_data[1] = zzygl2;
+					s_data[2] = pgyzd2;
+					s_data[4] = jssy2;
+					s_data[3] = xxyfz2;
+
+					for (var i = 1; i <= str.length; i++) {
+						if (str[i - 1] <= 0.4) {
+							document.getElementById("td" + i).style.background = "#ff0000";
+							document.getElementById("td" + i).innerHTML = "待提高";
+							document.getElementById("nl" + i).style.background = "#ff0000";
+						}
+						else if (str[i - 1] >= 0.8) {
+							document.getElementById("td" + i).style.background = "#00ff00";
+							document.getElementById("td" + i).innerHTML = "优秀";
+							document.getElementById("nl" + i).style.background = "#00ff00";
+						}
+						else {
+							document.getElementById("td" + i).style.background = "#ffff00";
+							document.getElementById("td" + i).innerHTML = "合格";
+							document.getElementById("nl" + i).style.background = "#ffff00";
+						}
+					}
+
+					//雷达图
+					var radarChartData_1 = {
+						labels: ["I计划与准备", "I组织与管理", "I评估与诊断", "I学习与发展", "I技术素养"],
+						datasets: [
+							{
+								label: "",
+								fillColor: "rgba(0,102,0,0.2)",
+								strokeColor: "#006600",
+								pointColor: "#006600",
+								pointStrokeColor: "#006600",
+								pointHighlightFill: "#006600",
+								pointHighlightStroke: "#006600",
+								data: f_data
+
+							}
+						]
+					};
+
+					var radarChartData_2 = {
+						labels: ["II计划与准备", "II组织与管理", "II评估与诊断", "II学习与发展", "II技术素养"],
+						datasets: [
+							{
+								label: "",
+								fillColor: "rgba(0,51,225,0.2)",
+								strokeColor: "#0033FF",
+								pointColor: "#0033FF",
+								pointStrokeColor: "#0033FF",
+								pointHighlightFill: "#0033FF",
+								pointHighlightStroke: "#0033FF",
+								data: s_data
+
+							}
+						]
+					};
+
+					//雷达图
+					var myRadar = new Chart(document.getElementById("canvas_1").getContext("2d")).Radar(radarChartData_1, {
+						animation: false,
+
+						//Boolean - 是否显示出每个点线表
+						scaleShowLine: true,
+
+						//Boolean - 是否显示角线的雷达
+						angleShowLineOut: true,
+
+						//Boolean - Whether to show labels on the scale
+						scaleShowLabels: true,
+
+						// Boolean - 是否显示标尺上的标签
+						scaleBeginAtZero: true,
+
+						//String - 角线的颜色
+						angleLineColor: "rgba(0,0,0,0.3)",
+
+						scaleLineColor: "rgba(0,0,0,0.3)",
+
+						//Number - 像素宽度的线角
+						angleLineWidth: 1,
+
+						//String - 标签
+						pointLabelFontFamily: "'Arial'",
+
+						//String - 点标签的字体重量
+
+						pointLabelFontStyle: "normal",
+
+						//Number - 在像素点标签的字体大小
+						pointLabelFontSize: 10,
+
+						//String - 点颜色标签
+						pointLabelFontColor: "#000000",
+
+						//Boolean - Whether to show a dot for each point
+						pointDot: true,
+
+						//Number - 每个像素点半径
+						pointDotRadius: 3,
+
+						//Number - 点点像素宽度
+						pointDotStrokeWidth: 1,
+
+						//Number - 大量额外添加到半径为迎合命中检测外画点
+						pointHitDetectionRadius: 20,
+
+						//Boolean - 是否要显示一个中风的数据集
+						datasetStroke: false,
+
+						//Number - 数据集笔划像素宽度
+						datasetStrokeWidth: 2,
+
+						//Boolean - 是否有一种颜色填充数据集
+						datasetFill: true,
+						//onAnimationComplete: function () { alert("OK")},
+						scaleOverride: true,
+						scaleSteps: 5,
+						// Number - The value jump in the hard coded scale
+						scaleStepWidth: 0.2,
+						// Number - The scale starting value
+						scaleStartValue: 0
+					});
+					var myRadar_2 = new Chart(document.getElementById("canvas_2").getContext("2d")).Radar(radarChartData_2, {
+						animation: false,
+
+						//Boolean - 是否显示出每个点线表
+						scaleShowLine: true,
+
+						//Boolean - 是否显示角线的雷达
+						angleShowLineOut: true,
+
+						//Boolean - Whether to show labels on the scale
+						scaleShowLabels: true,
+
+						// Boolean - 是否显示标尺上的标签
+						scaleBeginAtZero: true,
+
+						//String - 角线的颜色
+						angleLineColor: "rgba(0,0,0,0.3)",
+
+						scaleLineColor: "rgba(0,0,0,0.3)",
+
+						//Number - 像素宽度的线角
+						angleLineWidth: 1,
+
+						//String - 标签
+						pointLabelFontFamily: "'Arial'",
+
+						//String - 点标签的字体重量
+
+						pointLabelFontStyle: "normal",
+
+						//Number - 在像素点标签的字体大小
+						pointLabelFontSize: 10,
+
+						//String - 点颜色标签
+						pointLabelFontColor: "#000000",
+
+						//Boolean - Whether to show a dot for each point
+						pointDot: true,
+
+						//Number - 每个像素点半径
+						pointDotRadius: 3,
+
+						//Number - 点点像素宽度
+						pointDotStrokeWidth: 1,
+
+						//Number - 大量额外添加到半径为迎合命中检测外画点
+						pointHitDetectionRadius: 20,
+
+						//Boolean - 是否要显示一个中风的数据集
+						datasetStroke: false,
+
+						//Number - 数据集笔划像素宽度
+						datasetStrokeWidth: 2,
+
+						//Boolean - 是否有一种颜色填充数据集
+						datasetFill: true,
+						scaleOverride: true,
+						scaleSteps: 5,
+						// Number - The value jump in the hard coded scale
+						scaleStepWidth: 0.2,
+						// Number - The scale starting value
+						scaleStartValue: 0
+					});
+
+				}
+				else{
+
+				}
+
+			});
+
+		}
+
+		var id = url('?id');
+		hsdTests(id);
+
+	});
+
+	function showlist() {
+
+		if ($("#tr_xx").css("display") == "none") {
+			$("#tr_xx").show(1000);
+		}
+		else {
+			$("#tr_xx").hide(1000);
+		}
+	}
+
+</script>
+</body>
+</html>

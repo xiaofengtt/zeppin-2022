@@ -1,0 +1,40 @@
+body {
+	SCROLLBAR-FACE-COLOR: #FFFFFF;
+	SCROLLBAR-HIGHLIGHT-COLOR: #FFFFFF;
+	SCROLLBAR-SHADOW-COLOR: #3E5DA0;
+	SCROLLBAR-3DLIGHT-COLOR: #A9C1E5;
+	SCROLLBAR-ARROW-COLOR: #A9C1E5;
+	SCROLLBAR-TRACK-COLOR: #ffffff;
+	SCROLLBAR-DARKSHADOW-COLOR: #A9C1E5
+	font-size;
+	color: #000000;
+: 12px;
+	font-style: normal;
+	color: #000000;
+}
+.a {
+	font-size: 12px;
+	font-style: normal;
+	color: #000000;
+}
+td {
+	font-size: 12px;
+	font-style: normal;
+	color: #000000;
+	line-height: 16px;
+}
+.b {
+	font-size: 12px;
+	color: #999999;
+}
+A:link { COLOR: 
+#666666; TEXT-DECORATION: none } 
+A:visited { COLOR: #000000; TEXT-DECORATION: 
+none } 
+A:active { COLOR: #000000; TEXT-DECORATION: underline } 
+A:hover { COLOR: #000000; TEXT-DECORATION: underline } 
+DIV { FONT-SIZE: 9pt } 
+.input {
+	font-size: 12px;
+	border: 1px dotted #3C8AC3;
+}

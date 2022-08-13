@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>问卷列表</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/bootstrap.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/app.css">
+<link href="../css/que/NewDefault.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!--[if lt IE 8]>
+	<div class="browserhappy"><div class="inn">新疆教师培训信息化管理系统，是北京知鹏汇仁科技有限公司(<a href="http://www.zeppin.cn">zeppin.cn</a>)基于最新web技术为新疆开发的一套系统，您的浏览器无法完全支持我们的页面，建议<a href="http://browsehappy.com/">升级您的浏览器</a>，以获得良好体验的最新版本!</div></div>
+	<div class="browserhappyoverlay"></div>
+<![endif]-->
+<!--Header-part-->
+<div class="navbar" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo" title="新疆维吾尔自治区 教师培训信息化管理系统" ><img src="../img/logo.png" height="41"></a>
+    </div>
+	<p class="logout"><span>欢迎&#33258;&#27835;&#21306;&#25945;&#32946;&#21381;&#31649;&#29702;&#21592; &nbsp;&nbsp;<strong>&#29579;&#25196;</strong>&nbsp;&nbsp;</span> 2014&#24180;06&#26376;05&#26085; &#26143;&#26399;&#22235; &nbsp;|&nbsp;  <a href="../login_modifyPassword.action" data-fancybox-type="iframe" class="text text-modifyPasswd">修改密码</a> &nbsp;|&nbsp;  <a href="../login_logout.action">退出</a> </p>	
+	
+  </div>
+</div>
+
+<div id="container" class="container-fluid">
+
+	<div class="row">
+		<!--sidebar-menu-->
+		<div class="sidebar">
+			<div class=" nav-sidebar">
+				<ul class="nav ">
+			
+				
+							<li class="active"><a href="#"><span> &#36134;&#21495;&#31649;&#29702;</span> </a>
+								<ul class="nav">
+							
+										<li  ><a href="projectAdmin_initPage.action"> &#39033;&#30446;&#31649;&#29702;&#21592;&#31649;&#29702;
+										</a></li>
+							
+										<li  ><a href="trainingAdmin_initPage.action"> &#25215;&#35757;&#21333;&#20301;&#31649;&#29702;&#21592;&#31649;&#29702;
+										</a></li>
+							
+								</ul></li>
+				
+				
+
+			
+				
+							<li class="active"><a href="#"><span> &#39033;&#30446;&#31649;&#29702;</span> </a>
+								<ul class="nav">
+							
+										<li class="cur" ><a href="projectBase_initPage.action"> &#39033;&#30446;&#20449;&#24687;&#31649;&#29702;
+										</a></li>
+							
+										<li  ><a href="projectApply_initPage.action"> &#39033;&#30446;&#30003;&#25253;&#32467;&#26524;&#30417;&#23457;
+										</a></li>
+							
+								</ul></li>
+				
+				
+
+			
+				
+							<li class="active"><a href="#"><span> &#23398;&#21592;&#31649;&#29702;</span> </a>
+								<ul class="nav">
+							
+										<li  ><a href="teacherManage_initPage.action"> &#23398;&#21592;&#22522;&#26412;&#20449;&#24687;&#31649;&#29702;
+										</a></li>
+							
+										<li  ><a href="assignTeacherTask_initPage.action"> &#23398;&#21592;&#21517;&#39069;&#20998;&#37197;&#31649;&#29702;
+										</a></li>
+							
+										<li  ><a href="ttRecord_initReortAsstPage.action"> &#23398;&#21592;&#25253;&#36865;&#31649;&#29702;
+										</a></li>
+							
+										<li  ><a href="ttRecord_initAduPage.action"> &#23398;&#21592;&#23457;&#26680;&#31649;&#29702;
+										</a></li>
+							
+								</ul></li>
+				
+				
+
+			
+
+				</ul>
+			</div>
+			<div class="js-nav-shadow bottom"><img src="../img/round-shadow-bottom.png" style="top: auto; bottom: 0px;"></div>
+		</div>
+		
+		
+		<div class="main">
+			<div class="listwrap">
+				<div class="list_bar">我的问卷</div>
+				<div class="cui-menu2">
+					<a href="../admin/teacherManage_addInit.action?opt=add" data-fancybox-type="iframe" class="btn btn-primary btn-create cboxElement">
+						+ 设计新问卷 </a>
+						<a href="../admin/teacherManage_addInit.action?opt=search&amp;first=true" data-fancybox-type="iframe" class="btn btn-primary btn-search cboxElement">
+						 <b>登录码列表</b> </a>
+				</div>
+				<div id="stuff" class="list-content clearfix">
+					<div id="" class="list-item">
+						<div class="list-item-hd">
+							<table class="table table-bordered">
+								<tbody>
+									<tr>
+										<td class="text-primary" width="100">ID: 2586378</td>
+										<td width="auto"><a href="#">“国培计划”——中西部农村骨干教师短期集中培训项目...</a></td>
+										
+										<td width="80px" style="text-align:center;" class="text-success text-center">运行中</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div class="list-item-bd clearfix">
+							
+							<div class="list-item-col list-5-1">
+								<ul>
+									<li>
+	
+	
+									<a class="view" onclick="alert('试卷在运行中或者已经提交过不能进行编辑！')" title="试卷在运行中或者已经提交过不能进行编辑！" href="javascript:void(0)"><span class="spanLeftTxt">设计问卷</span></a>
+	
+									</li>
+									
+									<li><a href="report_summary.action?pid=2586405" target="_blank" id="ctl01_ContentPlaceHolder1_grvwActivity_ctl02_hrefReport" class="report" title="答卷统计分析"  value="2586405">
+										<span class="spanLeftTxt">分析&amp;下载</span></a>
+									</li>
+									
+	
+								</ul>
+							</div>
+							<div class="list-item-col ">
+								<p>2013年新疆农村幼儿园教师远程培训</p>
+								<p>2013年新疆农村幼儿园教师远程培训</p>
+							
+							</div>
+								<div class="list-item-col list-5-05" style="float:right;width:90px;">
+									<ul >
+																				
+										<li>
+	
+	
+										<a onclick="return confirm('状态设为“停止”后将不能投票，是否继续？');" id="ctl01_ContentPlaceHolder1_grvwActivity_ctl02_btnChangeStatus" title="此问卷正在草稿状态，点击发布问卷" class="pause link-444" href="javascript:change_status(2586405,3)">停止</a>
+	
+	
+											<!-- <a onclick="return confirm('状态设为“停止”后将不能填写，是否继续？');" id="ctl01_ContentPlaceHolder1_grvwActivity_ctl02_btnChangeStatus" title="此问卷正在运行，点击停止答卷回收" class="pause link-444" href="javascript:__doPostBack('ctl01$ContentPlaceHolder1$grvwActivity$ctl02$btnChangeStatus','')">停止</a> -->
+										</li>
+										<li>
+										<a onclick="return confirm('试卷删除后后将不能恢复，是否继续？');" id="ctl01_ContentPlaceHolder1_grvwActivity_ctl02_btnChangeStatus" title="此试卷删除后将不可恢复！" class="delete link-444" href="javascript:change_status(2586405,0)">删除</a>										
+										</li>
+									</ul>
+								</div>
+						
+
+						</div>
+					</div>
+					
+					
+					<div id="" class="list-item">
+						<div class="list-item-hd">
+							<table class="table table-bordered">
+								<tbody>
+									<tr>
+										<td class="text-primary"  width="100">ID: 2586378</td>
+										<td width="auto"><a href="#">“国培计划”——中西部农村骨干教师短期集中培训项目...</a> </td>
+										
+										<td width="80px" style="text-align:center;" class=" text-center">草稿</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div class="list-item-bd clearfix">
+							
+							<div class="list-item-col list-5-1">
+								<ul>
+									<li>
+	
+	
+									<a class="view" onclick="alert('试卷在运行中或者已经提交过不能进行编辑！')" title="试卷在运行中或者已经提交过不能进行编辑！" href="javascript:void(0)"><span class="spanLeftTxt">设计问卷</span></a>
+	
+									</li>
+									
+									<li><a href="report_summary.action?pid=2586405" target="_blank" id="ctl01_ContentPlaceHolder1_grvwActivity_ctl02_hrefReport" class="report" title="答卷统计分析"  value="2586405">
+										<span class="spanLeftTxt">分析&amp;下载</span></a>
+									</li>
+									
+	
+								</ul>
+							</div>
+							<div class="list-item-col ">
+								<p>2013年新疆农村幼儿园教师远程培训</p>
+								<p>2013年新疆农村幼儿园教师远程培训</p>
+							
+							</div>
+								<div class="list-item-col list-5-05" style="float:right;width:90px;">
+									<ul >
+																				
+										<li>
+	
+	
+										<a onclick="return confirm('状态设为“停止”后将不能投票，是否继续？');" id="ctl01_ContentPlaceHolder1_grvwActivity_ctl02_btnChangeStatus" title="此问卷正在草稿状态，点击发布问卷" class="run link-444" href="javascript:change_status(2586405,3)">运行</a>
+	
+	
+											<!-- <a onclick="return confirm('状态设为“停止”后将不能填写，是否继续？');" id="ctl01_ContentPlaceHolder1_grvwActivity_ctl02_btnChangeStatus" title="此问卷正在运行，点击停止答卷回收" class="pause link-444" href="javascript:__doPostBack('ctl01$ContentPlaceHolder1$grvwActivity$ctl02$btnChangeStatus','')">停止</a> -->
+										</li>
+										<li>
+										<a onclick="return confirm('试卷删除后后将不能恢复，是否继续？');" id="ctl01_ContentPlaceHolder1_grvwActivity_ctl02_btnChangeStatus" title="此试卷删除后将不可恢复！" class="delete link-444" href="javascript:change_status(2586405,0)">删除</a>										
+										</li>
+									</ul>
+								</div>
+						
+
+						</div>
+					</div>
+					
+				</div>
+				<!--end list-content clearfix-->
+				
+				<div id="pagination" style="float:right;" class="pagination"><ul><li><a title="Go to first page">首页</a></li><li><a title="Go to previous page">&lt;&lt;</a></li><li class="active"><a title="Current page is 1">1</a></li><li><a title="Go to next page">&gt;&gt;</a></li><li><a title="Go to last page">末页</a></li></ul></div>
+				
+			</div><!--end listwrap-->
+			
+		</div><!--end main-->
+	</div>
+</div>	
+		
+<div class="bs-footer">
+  <div>
+	  <p>Copyright © 2014 新疆维吾尔自治区教育厅.     <a target="_blank" href="http://www.xjedu.gov.cn/">联系我们</a> &nbsp;|&nbsp;Power by <a href="http://www.zeppin.cn" target="_blank">http://www.zeppin.cn</a> </p>
+
+  </div>
+</div>		
+
+</body></html>

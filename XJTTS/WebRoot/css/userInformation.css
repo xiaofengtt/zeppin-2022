@@ -1,0 +1,99 @@
+.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9{
+    padding-left: 0;
+    padding-right: 0;
+}
+.col-xs-3,
+.col-xs-4 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+label{
+    line-height: 34px;
+}
+.row{
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+.avatarBox{
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin:0 30px 10px 0;
+}
+.name{
+    font-size: 18px;
+}
+.modify{
+    float: left;
+}
+.modify > a{
+    color: #5f5d5d;
+    font-size: 14px;
+    margin-right: 20px;
+}
+.modify > .active{
+    color: #f6ae45;
+}
+.date{
+    float: right;
+}
+.title{
+    font-size: 22px;
+    color: #332c2b;
+}
+.nameBox,.emailBox{
+    margin-bottom: 15px;
+}
+.icon{
+    width: 19px;
+    margin-top: -1px;
+}
+.edit{
+    width: 90px;
+    height: 30px;
+    background-color: #b6b6b7;
+    color: #fff;
+    padding: 0;
+    padding-top: 4px !important;
+}
+.save{
+    width: 90px;
+    height: 30px;
+    background-color: #449be2;
+    color: #fff;
+    margin-left: -15px;
+    padding-top:4px !important;
+}
+.save:hover,
+.save:focus {
+    color: #fff !important;
+    background-color: #2b78b8;
+}
+.form-group{
+    display: flex;
+}
+.errorInfo{
+    display: none;
+    color: #b81c22;
+    float: left;
+    font-size: 12px;
+}
+.select2-container{
+    padding: 0 !important;
+}
+#s2id_organization{
+    width: 100%;
+}
+.select2-container .select2-choice {
+    width: 100%;
+}
+.droplist{
+    padding: 0;
+}
+.basicInfo > .col-xs-5 >div,
+.techInfoText > .col-xs-5 > div{
+    margin-bottom: 15px;
+}
+.techInfoTextTitle, .basicInfoTitle {
+    margin-bottom: 20px;
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+
+	<package name="teacher" extends="main" namespace="/teacher">
+
+		<action name="tlg_*" class="thLogin" method="{1}">
+		</action>
+		<action name="trg_*" class="thRegister" method="{1}">
+		</action>
+		<action name="tinfo_*" class="thInfo" method="{1}">
+		</action>
+		<action name="trainInfo_*" class="trainInfo" method="{1}">
+		</action>
+		<action name="autoenro_*" class="autonomousEnrollment" method="{1}">
+		</action>
+		
+		<action name="hsdTest_*" class="hsdTestScore" method="{1}">
+		</action>
+		<action name="trainingHsd_*" class="trainingHsd" method="{1}">
+		</action>
+	
+		<action name="trainRecords_*" class="trainRecords" method="{1}">
+		</action>
+		<action name="teacherSpace_*" class="teacherSpace" method="{1}">
+		</action>
+		<action name="teacherCertificate_*" class="teacherCertificate" method="{1}"></action>
+	</package>
+
+</struts>

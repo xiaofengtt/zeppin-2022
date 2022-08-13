@@ -1,0 +1,74 @@
+﻿<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<title>extjs 日期时间</title>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css"/>
+    <link rel="stylesheet" type="text/css" href="datetime.css"></link>
+
+	<script type="text/javascript" src="../../adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="../../ext-all.js"></script>
+    <script type="text/javascript" src="Datetime.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+	Ext.onReady(function(){
+
+		Ext.QuickTips.init();
+
+		// turn on validation errors beside the field globally
+		Ext.form.Field.prototype.msgTarget = 'side';
+
+		var simple = new Ext.FormPanel({
+			labelWidth: 75, // label settings here cascade unless overridden
+	//        frame:true,
+			title: 'Simple Form',
+			width: 350,
+			defaults: {width: 230},
+			defaultType: 'textfield',
+
+			items: [{
+					fieldLabel: 'First Name',
+					name: 'first',
+					allowBlank:false
+				},{
+					fieldLabel: 'Last Name',
+					name: 'last'
+				},{
+					fieldLabel: 'Company',
+					name: 'company'
+				}, {
+					fieldLabel: 'Email',
+					name: 'email',
+					vtype:'email'
+				}, new Ext.form.TimeField({
+					fieldLabel: 'Time',
+					name: 'time',
+					minValue: '8:00am',
+					maxValue: '6:00pm'
+				}),
+				new Ext.form.DateField({
+					fieldLabel: '日期时间',
+					name: 'planbegintime',
+					format:'Y-m-d H:i',
+					menu:new DatetimeMenu()
+				})
+				],
+
+			buttons: [{
+				text: 'Save'
+			},{
+				text: 'Cancel'
+			}]
+		});
+
+		simple.render('form-ct');
+
+	 
+	});
+	</script>
+	<div id="form-ct" style="padding-top:3px;padding-left:3px;"></div>
+</body>
+</html>

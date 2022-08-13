@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+	http://www.springframework.org/schema/task 
+	http://www.springframework.org/schema/task/spring-task-3.1.xsd">
+
+
+	<!-- class="org.apache.commons.dbcp.BasicDataSource" <beans xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" 
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd" 
+		xmlns:tx="http://www.springframework.org/schema/tx"> -->
+
+	 <bean id="dataSource" class="cn.zeppin.base.ProxoolDataSource">
+	    <property name="driver">
+	        <value>com.mysql.jdbc.Driver</value>
+	    </property>
+	    <property name="driverUrl">
+<!-- 	        <value>jdbc:mysql://192.168.1.113:3306/xjtts</value> -->
+<!-- 	         <value>jdbc:mysql://localhost:3306/xjttss</value> -->
+			<value>jdbc:mysql://localhost:3306/xjtts?zeroDateTimeBehavior=convertToNull</value>
+	    </property>
+	    <property name="user" value="root"></property>
+		<property name="password" value=""></property>
+	    <property name="alias" value="xjtts" />
+	    
+	     <!-- 保留线程处于睡眠状态的最长时间--> 
+	    <property name="houseKeepingSleepTime" value="90000" />
+	    <!-- 连接池中可用的连接数量 -->
+	    <property name="prototypeCount" value="100" />
+	    <!-- 最大连接数，默认为15 -->  
+	    <property name="maximumConnectionCount" value="5000" />
+	    <!-- 最小连接数，默认为5 -->  
+	    <property name="minimumConnectionCount" value="200" />
+	    <!-- 检测到某个线程的活动时间大于这个数值.它将会杀掉这个线程 -->  
+	    <property name="maximumActiveTime" value="600000" />
+	    <!-- 一次性可建立的最大连接数 -->  
+	    <property name="simultaneousBuildThrottle" value="100" />
+	    <!-- 最大连接生命周期 ,默认为4小时-->  
+	    <property name="maximumConnectionLifetime" value="14400000" />
+	    <!-- 验证数据库的状态语句 -->  
+	    <property name="houseKeepingTestSql" value="select 1" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+			</props>
+		</property>
+		<property name="annotatedClasses">
+			<list>
+				<value>cn.zeppin.entity.ProjectApplyExpert</value>
+				<value>cn.zeppin.entity.Document</value>
+				<value>cn.zeppin.entity.JobDuty</value>
+				<value>cn.zeppin.entity.TeachingLanguage</value>
+				<value>cn.zeppin.entity.JobTitle</value>
+				<value>cn.zeppin.entity.ProjectApply</value>
+				<value>cn.zeppin.entity.ProjectType</value>
+				<value>cn.zeppin.entity.Psq</value>
+				<value>cn.zeppin.entity.Project</value>
+				<value>cn.zeppin.entity.ProjectAdmin</value>
+				<value>cn.zeppin.entity.TeachingSubject</value>
+				<value>cn.zeppin.entity.Grade</value>
+				<value>cn.zeppin.entity.Subject</value>
+				<value>cn.zeppin.entity.Language</value>
+				<value>cn.zeppin.entity.FunCategory</value>
+				<value>cn.zeppin.entity.AssignTeacherTask</value>
+				<value>cn.zeppin.entity.ProjectAdminRight</value>
+				<value>cn.zeppin.entity.Politics</value>
+				<value>cn.zeppin.entity.OrganizationLevel</value>
+				<value>cn.zeppin.entity.ChineseLanguageLevel</value>
+				<value>cn.zeppin.entity.SysUserRight</value>
+				<value>cn.zeppin.entity.TrainingAdmin</value>
+				<value>cn.zeppin.entity.TeachingGrade</value>
+				<value>cn.zeppin.entity.EductionBackground</value>
+				<value>cn.zeppin.entity.Organization</value>
+				<value>cn.zeppin.entity.Area</value>
+				<value>cn.zeppin.entity.TrainingCollege</value>
+				<value>cn.zeppin.entity.OrgaCateMap</value>
+				<value>cn.zeppin.entity.Teacher</value>
+				<value>cn.zeppin.entity.TrainingSubject</value>
+				<value>cn.zeppin.entity.Ethnic</value>
+				<value>cn.zeppin.entity.ProjectExpert</value>
+				<value>cn.zeppin.entity.ProjectLevel</value>
+				<value>cn.zeppin.entity.SysUser</value>
+				<value>cn.zeppin.entity.TeacherTrainingRecords</value>
+				<value>cn.zeppin.entity.AssignTeacherCheck</value>
+				<value>cn.zeppin.entity.UniversityInfo</value>
+				<value>cn.zeppin.entity.ProjectSubjectRange</value>
+				<value>cn.zeppin.entity.ProjectCollegeRange</value>
+				<value>cn.zeppin.entity.Result</value>
+				<value>cn.zeppin.entity.Answer</value>
+				<value>cn.zeppin.entity.Question</value>
+				<value>cn.zeppin.entity.Submit</value>
+				<value>cn.zeppin.entity.Teachexpert</value>
+				<value>cn.zeppin.entity.Hsdtestscore</value>
+				<value>cn.zeppin.entity.Hsdtest</value>
+				<value>cn.zeppin.entity.TeacherReviewRecords</value>
+				<value>cn.zeppin.entity.TeacherMobileCode</value>
+				<value>cn.zeppin.entity.TrainingAdminAuthority</value>
+				<value>cn.zeppin.entity.TeacherTrainingReplace</value>
+				<value>cn.zeppin.entity.TeacherTrainingCertificate</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->
+	<tx:advice id="baseServiceAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" propagation="REQUIRED" /><!--之前是NOT_SUPPORT -->
+			<tx:method name="find*" read-only="true" propagation="REQUIRED" /><!--之前是NOT_SUPPORT -->
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<!--默认其他方法都是REQUIRED -->
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="productServiceMethods"
+			expression="execution(public * cn.zeppin.service*.*(..)) or execution(public * cn.zeppin.train.service*.*(..))" />
+		<aop:advisor advice-ref="baseServiceAdvice" pointcut-ref="productServiceMethods" />
+	</aop:config>
+
+	<import resource="spring-base.xml" />
+
+	<import resource="spring-admin.xml" />
+	
+	<import resource="spring-paper.xml" />
+	
+	<import resource="spring-teacher.xml" />
+	
+	<import resource="spring-train.xml"/>
+
+</beans>

@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<!--head -->
+	<bean id="adminHead" class="cn.zeppin.action.admin.HeadAction"
+		scope="prototype">
+		<property name="iOrganizationService" ref="organizationService"></property>
+		<property name="iTrainingAdminService" ref="trainingAdminService"></property>
+	</bean>
+	<bean id="adminLeft" class="cn.zeppin.action.admin.LeftAction"
+		scope="prototype">
+		<property name="iOrgaCateMapService" ref="orgaCateMapService"></property>
+		<property name="iFunCategoryService" ref="funCategoryService"></property>
+		<property name="iOrganizationLevel" ref="organizaionLevelService"></property>
+		<property name="iTrainingAdminService" ref="trainingAdminService"></property>
+	</bean>
+
+	<bean id="projectType" class="cn.zeppin.action.admin.ProjectTypeAction"
+		scope="prototype">
+
+		<property name="areaService" ref="areaService"></property>
+		<property name="projectLevelService" ref="projectLevelService"></property>
+		<property name="projectTypeService" ref="projectTypeService"></property>
+
+	</bean>
+
+	<bean id="trainingSubject" class="cn.zeppin.action.admin.TrainingSubjectAction"
+		scope="prototype">
+
+		<property name="trainingSubjectService" ref="trainingSubjectService"></property>
+
+	</bean>
+
+	<bean id="organization" class="cn.zeppin.action.admin.OrganizationAction"
+		scope="prototype">
+		<property name="iArea" ref="areaService"></property>
+		<property name="iOrganization" ref="organizationService"></property>
+		<property name="iOrganizationLevel" ref="organizaionLevelService"></property>
+		<property name="iProjectAdmin" ref="projectAdminService"></property>
+		<property name="iGrade" ref="gradeService"></property>
+		<property name="iTeacherService" ref="teacherService"></property>
+		<property name="teacherAdjustService" ref="teacherAdjustService"></property>
+	</bean>
+
+	<bean id="log" class="cn.zeppin.action.admin.LogAction" scope="prototype">
+		<property name="iLogService" ref="logService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iProjectExpertService" ref="projectExpertService"></property>
+		<property name="iTrainingAdminService" ref="trainingAdminService"></property>
+		<property name="iTeacherService" ref="teacherService"></property>
+	</bean>
+
+	<bean id="grade" class="cn.zeppin.action.admin.GradeAction" scope="prototype">
+		<property name="iGradeService" ref="gradeService"></property>
+	</bean>
+
+	<bean id="subject" class="cn.zeppin.action.admin.SubjectAction"
+		scope="prototype">
+		<property name="iSubjectService" ref="subjectService"></property>
+	</bean>
+
+	<bean id="jobTitle" class="cn.zeppin.action.admin.JobTitleAction"
+		scope="prototype">
+		<property name="iJobTitleService" ref="jobTitleService"></property>
+	</bean>
+
+	<bean id="jobDuty" class="cn.zeppin.action.admin.JobDutyAction"
+		scope="prototype">
+		<property name="iJobDutyService" ref="jobDutyService"></property>
+	</bean>
+
+	<bean id="projectAdmin" class="cn.zeppin.action.admin.ProjectAdminAction"
+		scope="prototype">
+		<property name="iAreaService" ref="areaService"></property>
+		<property name="iEthnicService" ref="ethnicService"></property>
+		<property name="iOragnizationService" ref="organizationService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+	</bean>
+
+	<bean id="projectAdm" class="cn.zeppin.action.admin.ProjectAdmOptAction"
+		scope="prototype">
+		<property name="iAreaService" ref="areaService"></property>
+		<property name="iEthnicService" ref="ethnicService"></property>
+		<property name="iOragnizationService" ref="organizationService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iProjectTypeService" ref="projectTypeService"></property>
+		<property name="iProjectAdminRightService" ref="projectAdminRightService"></property>
+	</bean>
+
+	<bean id="projectExpertManage" class="cn.zeppin.action.admin.ProjectExpertManageAction"
+		scope="prototype">
+		<property name="iProjectExpertService" ref="projectExpertService"></property>
+	</bean>
+
+	<bean id="projectExpertMana" class="cn.zeppin.action.admin.ProjectExpertManaOptAction"
+		scope="prototype">
+		<property name="iProjectExpertService" ref="projectExpertService"></property>
+		<property name="iAreaService" ref="areaService"></property>
+		<property name="iEthnicService" ref="ethnicService"></property>
+		<property name="iPoliticsService" ref="politicsService"></property>
+		<property name="iEductionBackgroundService" ref="eductionBackgroundService"></property>
+	</bean>
+
+	<bean id="specialist" class="cn.zeppin.action.admin.SpecialistAction"
+		scope="prototype">
+		<property name="iSpecialistService" ref="specialistService"></property>
+		<property name="iAreaService" ref="areaService"></property>
+		<property name="iEthnicService" ref="ethnicService"></property>
+		<property name="iPoliticsService" ref="politicsService"></property>
+		<property name="iEductionBackgroundService" ref="eductionBackgroundService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+	</bean>
+
+	<bean id="projectReview" class="cn.zeppin.action.admin.ProjectReviewAction"
+		scope="prototype">
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iProjectApplyService" ref="projectApplyService"></property>
+		<property name="iProjectApplyExpertService" ref="projectApplyExpertService"></property>
+		<property name="iProjectApplyEvaluateService" ref="projectApplyEvaluateService"></property>
+	</bean>
+
+
+	<bean id="loginAction" class="cn.zeppin.action.sso.LoginAction"
+		scope="prototype">
+		<property name="iSysUserService" ref="sysUserService"></property>
+		<property name="iOrganization" ref="organizationService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iProjectExpertService" ref="projectExpertService"></property>
+		<property name="iTrainingAdminService" ref="trainingAdminService"></property>
+		<property name="iTeacherTrainingRecordsService" ref="teacherTrainingRecordsService"></property>
+		<property name="iSubmitService" ref="submitService"></property>
+		<property name="iTeacherMobileCodeService" ref="teacherMobileCodeService"></property>
+	</bean>
+
+	<bean id="userInfoAction" class="cn.zeppin.action.admin.UserInfoAction"
+		scope="prototype">
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iProjectExpertService" ref="projectExpertService"></property>
+		<property name="iAreaService" ref="areaService"></property>
+		<property name="iOragnizationService" ref="organizationService"></property>
+		<property name="iEthnicService" ref="ethnicService"></property>
+		<property name="iPoliticsService" ref="politicsService"></property>
+		<property name="iEductionBackgroundService" ref="eductionBackgroundService"></property>
+	</bean>
+
+	<bean id="trainingCollege" class="cn.zeppin.action.admin.TrainingCollegeAction"
+		scope="prototype">
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iProjectLevel" ref="projectLevelService"></property>
+		<property name="iArea" ref="areaService"></property>
+		<property name="iTrainingAdmin" ref="trainingAdminService"></property>
+		<property name="iProject" ref="projectService"></property>
+	</bean>
+
+	<bean id="trainingAdmin" class="cn.zeppin.action.admin.TrainingAdminAction"
+		scope="prototype">
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iArea" ref="areaService"></property>
+		<property name="iTrainingAdmin" ref="trainingAdminService"></property>
+		<property name="iEthnicService" ref="ethnicService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+	</bean>
+
+	<bean id="trainingAdmOpt" class="cn.zeppin.action.admin.TrainingAdminOptAction"
+		scope="prototype">
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iArea" ref="areaService"></property>
+		<property name="iTrainingAdmin" ref="trainingAdminService"></property>
+		<property name="iEthnicService" ref="ethnicService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		<property name="iTrainingAdminAuthorityService" ref="trainingAdminAuthorityService"></property>
+	</bean>
+
+	<bean id="trainingStudentOpt" class="cn.zeppin.action.admin.trainingStudentAction"
+		scope="prototype">
+		<property name="iOrganization" ref="organizationService"></property>
+		<property name="iProjectApplyService" ref="projectApplyService"></property>
+		<property name="iProjectCycleService" ref="projectCycleService"></property>
+		<property name="iTrainingAdminService" ref="trainingAdminService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iTeacherTrainingRecordsService" ref="teacherTrainingRecordsService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		<property name="iTeachingGradeService" ref="teachingGradeService"></property>
+		<property name="iTeachingLanguageService" ref="teachingLanguageService"></property>
+		<property name="iTeachingSubjectService" ref="teachingSubjectService"></property>
+		<property name="iAreaService" ref="areaService"></property>
+		<property name="iTeacherService" ref="teacherService"></property>
+		<property name="iAssignTeacherCheckService" ref="assignTeacherCheckService"></property>
+		<property name="iHsdTestService" ref="hsdTestService"></property>
+		<property name="iTeacherTrainingReversalService" ref="teacherTrainingReversalService"></property>
+		<property name="iPsqService" ref="psqService"></property>
+	</bean>
+
+	<bean id="trainingUnitProjectApply" class="cn.zeppin.action.admin.trainingUnitProjectApplyAction"
+		scope="prototype">
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iProjectTypeService" ref="projectTypeService"></property>
+		<property name="iAreaService" ref="areaService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		<property name="iProjectApplyService" ref="projectApplyService"></property>
+		<property name="iProjectApplyWorkReportService" ref="projectApplyWorkReportService"></property>
+		<property name="iTrainingAdminService" ref="trainingAdminService"></property>
+		<property name="iDocumentService" ref="documentService"></property>
+		<property name="iProjectCollegeRangeService" ref="projectCollegeRangeService"></property>
+		<property name="iProjectSubjectRangeService" ref="projectSubjectRangeService"></property>
+		<property name="identifyClasshoursService" ref="identifyClasshoursService"></property>
+		<property name="identifyClasshoursSubjectService" ref="identifyClasshoursSubjectService"></property>
+		<property name="identifyClasshoursSubjectYearService" ref="identifyClasshoursSubjectYearService"></property>
+		<property name="identifyClasshoursProjectYearService" ref="identifyClasshoursProjectYearService"></property>
+		<property name="identifyStudyhourService" ref="identifyStudyhourService"></property>
+	</bean>
+
+	<bean id="projectBaseInfo" class="cn.zeppin.action.admin.ProjectBaseInfoAction"
+		scope="prototype">
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iProjectTypeService" ref="projectTypeService"></property>
+		<property name="iAreaService" ref="areaService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iProjectApplyService" ref="projectApplyService"></property>
+		<property name="iProjectGroupService" ref="projectGroupService"></property>
+	</bean>
+
+
+
+	<bean id="projectBaseInfoOpt" class="cn.zeppin.action.admin.ProjectBaseInfoOptAction"
+		scope="prototype">
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iProjectTypeService" ref="projectTypeService"></property>
+		<property name="iDocumentService" ref="documentService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		<property name="iProjectSubjectRangeService" ref="projectSubjectRangeService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iProjectCollegeRangeService" ref="projectCollegeRangeService"></property>
+		<property name="iOrganizationService" ref="organizationService"></property>
+		<property name="iProjectCycleService" ref="projectCycleService"></property>
+	</bean>
+	<bean id="teacherManage" class="cn.zeppin.action.admin.TeacherManageAction"
+		scope="prototype">
+		<property name="iAreaService" ref="areaService"></property>
+		<property name="iTeacherService" ref="teacherService"></property>
+		<property name="iTeachingGradeService" ref="teachingGradeService"></property>
+		<property name="iTeachingLanguageService" ref="teachingLanguageService"></property>
+		<property name="iTeachingSubjectService" ref="teachingSubjectService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iOrganizationService" ref="organizationService"></property>
+		<property name="iEthnicService" ref="ethnicService"></property>
+		<property name="iJobDutyService" ref="jobDutyService"></property>
+		<property name="iJobTitleService" ref="jobTitleService"></property>
+		<property name="iEductionBackgroundService" ref="eductionBackgroundService"></property>
+		<property name="iPoliticsService" ref="politicsService"></property>
+		<property name="iChineseLanguageLevelService" ref="chineseLanguageLevelService"></property>
+		<property name="iLanguageService" ref="languageService"></property>
+		<property name="iSubjectService" ref="subjectService"></property>
+		<property name="iGradeService" ref="gradeService"></property>
+		<property name="teacherAdjustService" ref="teacherAdjustService"></property>
+		<property name="teacherCertificateService" ref="teacherCertificateService"></property>
+	</bean>
+
+	<bean id="projectApply" class="cn.zeppin.action.admin.ProjectApplyInfoAction"
+		scope="prototype">
+		<property name="iProjectApplyService" ref="projectApplyService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iProjectTypeService" ref="projectTypeService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		<property name="iAreaService" ref="areaService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iTrainingAdminService" ref="trainingAdminService"></property>
+		<property name="iProjectExpertService" ref="projectExpertService"></property>
+	</bean>
+
+	<bean id="projectApplyOpt" class="cn.zeppin.action.admin.ProjectApplyInfoOptAction"
+		scope="prototype">
+		<property name="iProjectApplyService" ref="projectApplyService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iProjectTypeService" ref="projectTypeService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		<property name="iAssignTeacherTaskService" ref="assignTeacherTaskService"></property>
+		<property name="iOragnizationService" ref="organizationService"></property>
+		<property name="iTeacherTrainingRecordsService" ref="teacherTrainingRecordsService"></property>
+		<property name="iProjectExpertService" ref="projectExpertService"></property>
+		<property name="iProjectApplyExpertService" ref="projectApplyExpertService"></property>
+		<property name="iProjectApplyEvaluateService" ref="projectApplyEvaluateService"></property>
+		<property name="identifyClasshoursService" ref="identifyClasshoursService"></property>
+		<property name="identifyClasshoursSubjectService" ref="identifyClasshoursSubjectService"></property>
+		<property name="identifyClasshoursSubjectYearService" ref="identifyClasshoursSubjectYearService"></property>
+		<property name="identifyClasshoursProjectYearService" ref="identifyClasshoursProjectYearService"></property>
+		<property name="identifyStudyhourService" ref="identifyStudyhourService"></property>
+	</bean>
+
+	<bean id="assignTeacherTask" class="cn.zeppin.action.admin.AssignTeacherTaskAction"
+		scope="prototype">
+		<property name="iAssignTeacherTaskService" ref="assignTeacherTaskService"></property>
+		<property name="iOrganization" ref="organizationService"></property>
+		<property name="iProjectApplyService" ref="projectApplyService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iProjectGroupService" ref="projectGroupService"></property>
+	</bean>
+	<bean id="assignTeacherTaskOpt" class="cn.zeppin.action.admin.AssignTeacherTaskOptAction"
+		scope="prototype">
+		<property name="iAssignTeacherTaskService" ref="assignTeacherTaskService"></property>
+		<property name="iOrganization" ref="organizationService"></property>
+		<property name="iProjectApplyService" ref="projectApplyService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+	</bean>
+
+	<bean id="teacherTrainingRecord" class="cn.zeppin.action.admin.TeacherTrainingRecordsAction"
+		scope="prototype">
+
+		<property name="iTeacherTrainingRecords" ref="teacherTrainingRecordsService"></property>
+
+		<property name="iOrganization" ref="organizationService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+
+		<property name="iProjectApplyService" ref="projectApplyService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iProjectTypeService" ref="projectTypeService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iAssignTeacherTaskService" ref="assignTeacherTaskService"></property>
+
+		<property name="iTeacherService" ref="teacherService"></property>
+		<property name="iAreaService" ref="areaService"></property>
+		<property name="iLanguageService" ref="languageService"></property>
+		<property name="iSubjectService" ref="subjectService"></property>
+		<property name="iGradeService" ref="gradeService"></property>
+
+		<property name="iTeachingGradeService" ref="teachingGradeService"></property>
+		<property name="iTeachingLanguageService" ref="teachingLanguageService"></property>
+		<property name="iTeachingSubjectService" ref="teachingSubjectService"></property>
+
+		<property name="iEthnicService" ref="ethnicService"></property>
+		<property name="iJobDutyService" ref="jobDutyService"></property>
+		<property name="iJobTitleService" ref="jobTitleService"></property>
+
+		<property name="iEductionBackgroundService" ref="eductionBackgroundService"></property>
+		<property name="iPoliticsService" ref="politicsService"></property>
+		<property name="iChineseLanguageLevelService" ref="chineseLanguageLevelService"></property>
+
+		<property name="iAssignTeacherCheckService" ref="assignTeacherCheckService"></property>
+		<property name="iTrainingAdminService" ref="trainingAdminService"></property>
+		<property name="iTeacherTrainingReplaceService" ref="teacherTrainingReplaceService"></property>
+
+		<property name="iProjectGroupService" ref="projectGroupService"></property>
+		<property name="identifyClasshoursService" ref="identifyClasshoursService"></property>
+		<property name="identifyClasshoursSubjectService" ref="identifyClasshoursSubjectService"></property>
+		
+		<property name="iProjectCycleService" ref="projectCycleService"></property>
+	</bean>
+
+	<bean id="otherTrainingRecords" class="cn.zeppin.action.admin.OtherTrainingRecordsAction"
+		scope="prototype">
+		<property name="iOtherTrainingRecordsService" ref="otherTrainingRecordsService"></property>
+		<property name="iProjectTypeService" ref="projectTypeService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iTeacherService" ref="teacherService"></property>
+	</bean>
+
+	<bean id="teacherExamRecords" class="cn.zeppin.action.admin.TeacherExamRecordsAction"
+		scope="prototype">
+		<property name="iTeacherExamRecordsService" ref="teacherExamRecordsService"></property>
+		<property name="iTeacherService" ref="teacherService"></property>
+	</bean>
+	
+	<bean id="teacherInfo" class="cn.zeppin.action.admin.TeacherInfoReviewAction"
+		scope="prototype">
+		<property name="iAreaService" ref="areaService"></property>
+		<property name="iTeacherService" ref="teacherService"></property>
+		<property name="iTeachingGradeService" ref="teachingGradeService"></property>
+		<property name="iTeachingLanguageService" ref="teachingLanguageService"></property>
+		<property name="iTeachingSubjectService" ref="teachingSubjectService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iOrganizationService" ref="organizationService"></property>
+		<property name="iEthnicService" ref="ethnicService"></property>
+		<property name="iJobDutyService" ref="jobDutyService"></property>
+		<property name="iJobTitleService" ref="jobTitleService"></property>
+		<property name="iEductionBackgroundService" ref="eductionBackgroundService"></property>
+		<property name="iPoliticsService" ref="politicsService"></property>
+		<property name="iChineseLanguageLevelService" ref="chineseLanguageLevelService"></property>
+		<property name="iLanguageService" ref="languageService"></property>
+		<property name="iSubjectService" ref="subjectService"></property>
+		<property name="iGradeService" ref="gradeService"></property>
+		<property name="iTeacherReviewRecordsService" ref="teacherReviewRecordsService"></property>
+		<property name="iTeacherMobileCodeService" ref="teacherMobileCodeService"></property>
+	</bean>
+
+	<bean id="logHelper" class="cn.zeppin.action.base.LogHelper"
+		scope="prototype">
+		<property name="iLogService" ref="logService"></property>
+	</bean>
+	<!-- 站内信 -->
+	<bean id="mail" class="cn.zeppin.action.admin.MailAction" scope="prototype">
+		<property name="mailConnectionService" ref="mailConnectionService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iTrainingAdmin" ref="trainingAdminService"></property>
+		<property name="iProjectExpertService" ref="projectExpertService"></property>
+		<property name="iOragnizationService" ref="organizationService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+	</bean>
+	<bean id="newmail" class="cn.zeppin.action.admin.NewMailAction" scope="prototype">
+		<property name="mailConnectionService" ref="mailConnectionService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iTrainingAdmin" ref="trainingAdminService"></property>
+		<property name="iProjectExpertService" ref="projectExpertService"></property>
+		<property name="iOragnizationService" ref="organizationService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="mailInformationService" ref="mailInformationService"></property>
+		<property name="serviceApplyReplyService" ref="serviceApplyReplyService"></property>
+		<property name="mailAttachmentService" ref="mailAttachmentService"></property>
+		<property name="iDocumentService" ref="documentService"></property>
+		<property name="iTeacherTrainingRecords" ref="teacherTrainingRecordsService"></property>
+		<property name="iTeacherService" ref="teacherService"></property>
+	</bean>
+
+	<bean id="document" class="cn.zeppin.action.admin.DocumentAction"
+		scope="prototype">
+		<property name="iProjectApplyService" ref="projectApplyService"></property>
+		<property name="iDocumentService" ref="documentService"></property>
+		<property name="mailInformationService" ref="mailInformationService"></property>
+		<property name="iProjectApplyWorkReportService" ref="projectApplyWorkReportService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iTeacherTrainingRecordsService" ref="teacherTrainingRecordsService"></property>
+		<property name="iTeachingGradeService" ref="teachingGradeService"></property>
+		<property name="iTeachingLanguageService" ref="teachingLanguageService"></property>
+		<property name="iTeachingSubjectService" ref="teachingSubjectService"></property>
+	</bean>
+
+	<bean id="teacherTrainingAssigned" class="cn.zeppin.action.admin.TeacherTrainingAssignedAction"
+		scope="prototype">
+		<property name="teacherTrainingAssignedService" ref="teacherTrainingAssignedService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		<property name="iTeacherService" ref="teacherService"></property>
+		<property name="iProjectSubjectRangeService" ref="projectSubjectRangeService"></property>
+		<property name="iTeacherTrainingRecords" ref="teacherTrainingRecordsService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iOrganization" ref="organizationService"></property>
+		<property name="iProjectApplyService" ref="projectApplyService"></property>
+		<property name="iTeachingGradeService" ref="teachingGradeService"></property>
+		<property name="iTeachingLanguageService" ref="teachingLanguageService"></property>
+		<property name="iTeachingSubjectService" ref="teachingSubjectService"></property>
+	</bean>
+
+	<bean id="teacherAdjust" class="cn.zeppin.action.admin.TeacherAdjustAction"
+		scope="prototype">
+		<property name="teacherAdjustService" ref="teacherAdjustService"></property>
+		<property name="iTeacherService" ref="teacherService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iOrganization" ref="organizationService"></property>
+	</bean>
+
+	<!-- 首页 -->
+	<bean id="adminMain" class="cn.zeppin.action.admin.MainAction"
+		scope="prototype">
+		<property name="iProjectTypeService" ref="projectTypeService"></property>
+		<property name="iProjectApplyService" ref="projectApplyService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iTrainingAdminService" ref="trainingAdminService"></property>
+		<property name="iTeacherTrainingRecords" ref="teacherTrainingRecordsService"></property>
+		<property name="iAssignTeacherTaskService" ref="assignTeacherTaskService"></property>
+		<property name="mailInformationService" ref="mailInformationService"></property>
+		<property name="iServiceApplyService" ref="serviceApplyService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iTrainingAdmin" ref="trainingAdminService"></property>
+		<property name="mailConnectionService" ref="mailConnectionService"></property>
+		<property name="iOrganization" ref="organizationService"></property>
+		<property name="iTeacherTrainingRecordsService" ref="teacherTrainingRecordsService"></property>
+		<property name="iTeacherEduAdvanceService" ref="teacherEduAdvanceService"></property>
+		<property name="iTeacherTrainingReplaceService" ref="teacherTrainingReplaceService"></property>
+	</bean>
+
+	<!-- 下级申请 -->
+	<bean id="serviceApply" class="cn.zeppin.action.admin.ServiceApplyInfoAction"
+		scope="prototype">
+		<property name="iServiceApplyService" ref="serviceApplyService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+	</bean>
+
+	<!-- 项目周期 -->
+	<bean id="projectCycle" class="cn.zeppin.action.admin.ProjectCycleAction"
+		scope="prototype">
+		<property name="projectCycleService" ref="projectCycleService"></property>
+	</bean>
+
+	<!-- 培训学时配置 -->
+	<bean id="identifyClasshours" class="cn.zeppin.action.admin.IdentifyClasshoursAction"
+		scope="prototype">
+		<property name="identifyClasshoursService" ref="identifyClasshoursService"></property>
+		<property name="identifyClasshoursSubjectService" ref="identifyClasshoursSubjectService"></property>
+		<property name="projectTypeService" ref="projectTypeService"></property>
+		<property name="projectCycleService" ref="projectCycleService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		<property name="identifyClasshoursSubjectYearService" ref="identifyClasshoursSubjectYearService"></property>
+		<property name="identifyClasshoursProjectYearService" ref="identifyClasshoursProjectYearService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+	</bean>
+	<bean id="identifyStudyhour" class="cn.zeppin.action.admin.IdentifyStudyhourAction"
+		scope="prototype">
+		<property name="projectTypeService" ref="projectTypeService"></property>
+		<property name="projectCycleService" ref="projectCycleService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="identifyStudyhourService" ref="identifyStudyhourService"></property>
+	</bean>
+	
+	<bean id="teacherTrainingResult" class="cn.zeppin.action.admin.TeacherTrainingResultAction"
+		scope="prototype">
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		<property name="iTeacherService" ref="teacherService"></property>
+		<property name="iProjectSubjectRangeService" ref="projectSubjectRangeService"></property>
+		<property name="iTeacherTrainingRecords" ref="teacherTrainingRecordsService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iOrganization" ref="organizationService"></property>
+		<property name="iProjectApplyService" ref="projectApplyService"></property>
+		<property name="iTeachingGradeService" ref="teachingGradeService"></property>
+		<property name="iTeachingLanguageService" ref="teachingLanguageService"></property>
+		<property name="iTeachingSubjectService" ref="teachingSubjectService"></property>
+		<property name="iJobDutyService" ref="jobDutyService"></property>
+		<property name="iJobTitleService" ref="jobTitleService"></property>
+		<property name="iChineseLanguageLevelService" ref="chineseLanguageLevelService"></property>
+		<property name="iAreaService" ref="areaService"></property>
+		<property name="iAssignTeacherCheckService" ref="assignTeacherCheckService"></property>
+		<property name="iAssignTeacherTaskService" ref="assignTeacherTaskService"></property>
+	</bean>
+	<!-- 学员档案 -->
+	<bean id="personalFile" class="cn.zeppin.action.admin.PersonalFileAction"
+		scope="prototype">
+		<property name="iTeacherService" ref="teacherService"></property>
+		<property name="iAreaService" ref="areaService"></property>
+		<property name="iTeachingLanguageService" ref="teachingLanguageService"></property>
+		<property name="iTeachingGradeService" ref="teachingGradeService"></property>
+		<property name="iTeachingSubjectService" ref="teachingSubjectService"></property>
+		<property name="iTeacherTrainingRecordsService" ref="teacherTrainingRecordsService"></property>
+		<property name="iProjectApplyService" ref="projectApplyService"></property>
+		<property name="projectCycleService" ref="projectCycleService"></property>
+		<property name="iTeacherEduAdvanceService" ref="teacherEduAdvanceService"></property>
+	</bean>
+
+	<!-- 教师学历提升认定 -->
+	<bean id="teacherEduAdvance" class="cn.zeppin.action.admin.TeacherEduAdvanceAction"
+		scope="prototype">
+		<property name="iTeacherService" ref="teacherService"></property>
+		<property name="iProjectAdminService" ref="projectAdminService"></property>
+		<property name="iEductionBackgroundService" ref="eductionBackgroundService"></property>
+		<property name="iDocumentService" ref="documentService"></property>
+		<property name="iTeacherEduAdvanceService" ref="teacherEduAdvanceService"></property>
+		<property name="iTeacherEduAdvanceAduService" ref="teacherEduAdvanceAduService"></property>
+		<property name="ITeacherEduEvidenceService" ref="teacherEduEvidenceService"></property>
+		<property name="iOrganization" ref="organizationService"></property>
+	</bean>
+
+	<!-- 培训统计 -->
+	<bean id="countTraining" class="cn.zeppin.action.admin.CountTrainingAction" scope="prototype">
+		<property name="iCountTeacherYearService" ref="countTeacherYearService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iOrganization" ref="organizationService"></property>
+		<property name="projectTypeService" ref="projectTypeService"></property>
+	</bean>
+
+	<!-- 教师基本信息统计 -->
+	<bean id="countTeacher" class="cn.zeppin.action.admin.CountTeacherAction" scope="prototype">
+		<property name="iCountTeacherService" ref="countTeacherService"></property>
+	</bean>
+	
+	<!-- 筛查器 -->
+	<bean id="teacherSignupSizer" class="cn.zeppin.action.admin.TeacherSignupSizerAction" scope="prototype">
+		<property name="teacherSignupSizerService" ref="teacherSignupSizerService"></property>
+		
+		<property name="iLanguageService" ref="languageService"></property>
+		<property name="iSubjectService" ref="subjectService"></property>
+		<property name="iGradeService" ref="gradeService"></property>
+		<property name="iJobTitleService" ref="jobTitleService"></property>
+		<property name="iEthnicService" ref="ethnicService"></property>
+		<property name="iPoliticsService" ref="politicsService"></property>
+		
+		<property name="projectLevelService" ref="projectLevelService"></property>
+		<property name="projectTypeService" ref="projectTypeService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		
+		<property name="iTeacherTrainingRecords" ref="teacherTrainingRecordsService"></property>
+		<property name="iProjectApplyService" ref="projectApplyService"></property>
+		<property name="iTeacherService" ref="teacherService"></property>
+		<property name="teacherTrainingAssignedService" ref="teacherTrainingAssignedService"></property>
+		<property name="iProjectSubjectRangeService" ref="projectSubjectRangeService"></property>
+	</bean>
+</beans>

@@ -1,0 +1,10 @@
+#eivdence img{width:100%;}
+.nobg{background:#fff !important;}
+.btn{width:90px;height:30px;padding-top:4px !important;}
+.submit:hover{color:#fff !important;}
+a.closeBtn{/* background:url(../img/close-x.png) center center no-repeat; */width:50px;height:50px;position:absolute;top:0;right:-50px;cursor:pointer;text-align:center;}
+a.resubmit{width:90px;margin:0 0 10px 0px;}
+.ajax-file-upload{height:30px !important;z-index:1 !important;}
+.ajax-upload-dragdrop{width:100% !important;}
+.btn-default:hover{color:#333 !important;}
+

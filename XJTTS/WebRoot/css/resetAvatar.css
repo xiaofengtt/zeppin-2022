@@ -1,0 +1,49 @@
+.main{
+    padding: 0 50px 50px 50px;
+    background-color: #fff;
+}
+.row{
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+.subnav{
+    padding: 0;
+    margin-top: 40px;
+}
+.avatarBox{
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin:0 30px 10px 0;
+}
+.name{
+    font-size: 15px;
+}
+.modify{
+    float: left;
+}
+.modify > a{
+    color: #5f5d5d;
+    font-size: 13px;
+    margin-right: 20px;
+}
+.modify > .active{
+    color: #f6ae45;
+}
+.date{
+    float: right;
+}
+.content{
+    background-color: #fefefe;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+}
+.title{
+    font-size: 18px;
+    height: 50px;
+    padding-top: 20px;
+}
+.form-horizontal{
+    margin-top: 50px;
+}

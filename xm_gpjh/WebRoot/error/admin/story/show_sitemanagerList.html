@@ -1,0 +1,144 @@
+
+
+
+
+
+
+
+<html>
+<head>
+
+<link href="/admin/css.css" rel="stylesheet" type="text/css">
+<title>权限组管理</title>
+</head>
+
+<body>
+
+
+<script language=javascript>			
+		function del(url)
+		{
+		if(confirm("你确实要删除吗?"))
+		{
+			window.location=url;
+		}
+		
+		}
+</script>
+
+
+
+<table cellPadding=2 cellSpacing=1  border="0" bgcolor=#3F6C61 align=center width="100%">
+
+
+<tr > 
+    <td colspan="7"  align="left" bgcolor="#D4E4EB" class="zhengwen"><div align="left"><font color="red">分站管理员列表</font> &nbsp;&nbsp;<a href="/sso/admin/managerOper_showManagerList.action">总站管理员列表</a>&nbsp;&nbsp;<a href="/admin/mobile_batch_site.jsp">批量导入移动电话号码</a>&nbsp;&nbsp;<a href="/sso/admin/siteManagerOper_export.action" target="_blank">批量导出分站管理员</a></div></td>
+  	<td colspan="2" align="right" bgcolor="#D4E4EB" class="zhengwen"><div align="center" bgcolor="#D4E4EB" class="zhengwen"><a href="/sso/admin/siteManagerOper_showManagerInfo.action">添加分站管理员</a> &nbsp;&nbsp;<!-- <a href="add_admin.jsp">添加分站管理员</a>-->  &nbsp;&nbsp;<a href="/sso/admin/managerOper_showManagerList.action">返回</a></div>
+  </tr>
+  
+  <tr> 
+    <!--td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen" ><div align="center">管理员ID</div></td-->
+    <td  align="left"  width="10%" bgcolor="#D4E4EB" class="zhengwen" ><div align="center">登录ID</div></td>
+    <td  align="center"  width="10%" bgcolor="#D4E4EB" class="zhengwen">管理员姓名</td>
+    <td  align="center"  width="10%" bgcolor="#D4E4EB" class="zhengwen">管理员编号</td>
+    <td  align="center"  width="10%" bgcolor="#D4E4EB" class="zhengwen">管理员类型</td>
+
+      <td  align="left"  width="10%"  bgcolor="#D4E4EB" class="zhengwen"><div align="center">权限组</div></td>
+    <td  align="left" width="20%" bgcolor="#D4E4EB" class="zhengwen"><div align="center">所属站点</div></td>
+    <!-- 
+    <td  align="left"    width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center">上次登陆时间</div></td>
+    <td  align="left"  width="10%"  bgcolor="#D4E4EB" class="zhengwen"><div align="center">上次登陆IP</div></td>
+    <td  align="left"   width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center">登陆次数</div></td>
+    -->
+    <td  align="left"  width="10%"  bgcolor="#D4E4EB" class="zhengwen"><div align="center">状态</div></td>
+    <!-- td  align="left"  width="10%"  bgcolor="#D4E4EB" class="zhengwen"><div align="center">分站新闻管理权限</div></td-->    
+    <td  align="left"   width="20%" bgcolor="#D4E4EB" class="zhengwen"><div align="center">操作</div></td>
+    
+  </tr>
+  
+  
+  <tr> 
+    <!--td align="center"  width="10%"  height="21" bgcolor="#D4E4EB" class="zhengwen">402880d91c407903011c408eba660010</td-->
+     <td align="center"  width="10%"  height="21" bgcolor="#D4E4EB" class="zhengwen">3333</td>
+    <td align="center"  width="10%"  bgcolor="#D4E4EB" class="zhengwen">分站test1</td>
+    <td align="center"  width="10%"  bgcolor="#D4E4EB" class="zhengwen">333</td>
+    <td align="center"  width="10%"" bgcolor="#D4E4EB" class="zhengwen">分站管理员</td>
+
+     <td  align="left"   width="10%"  bgcolor="#D4E4EB" class="zhengwen"><div align="center">分站管理员</div></td>
+   <td align="center"   width="10%" bgcolor="#D4E4EB" class="zhengwen">test</td>
+   
+    <td  align="left"   width="10%"  bgcolor="#D4E4EB" class="zhengwen"><div align="center">有效</div></td>
+    
+    <!-- td  align="left"   width="10%"  bgcolor="#D4E4EB" class="zhengwen"><div align="center">
+    		<a href="javascript:window.navigate('site_news_managerexe.jsp?admin_id=3333&site_id=402880d91c1df158011c20dd637200fe')">赋权</a>
+    		<a href="javascript:window.navigate('site_news_manager_delexe.jsp?admin_id=3333&site_id=402880d91c1df158011c20dd637200fe')">取消</a>
+	   	</div></td-->    
+    <td  align="left"   width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center"> 
+    <a href="/sso/admin/siteManagerOper_changeAdminGroup.action?managerId=402880d91c407903011c408eba660010">设定权限分组</a>
+    <a href="/sso/admin/siteManagerOper_showRangeRight.action?managerId=402880d91c407903011c408eba660010">设定权限范围</a>
+     <br><a href="/sso/admin/siteManagerOper_showEditManager.action?managerId=402880d91c407903011c408eba660010"> 信息修改</a> &nbsp;&nbsp;<a href="javascript:del('/sso/admin/siteManagerOper_deleteInfo.action?managerId=402880d91c407903011c408eba660010')">删除</a>
+     &nbsp;&nbsp;
+
+     </div></td>
+  </tr>
+  
+
+  <tr> 
+    <!--td align="center"  width="10%"  height="21" bgcolor="#D4E4EB" class="zhengwen">402880d91c3ff392011c4005feec0004</td-->
+     <td align="center"  width="10%"  height="21" bgcolor="#D4E4EB" class="zhengwen">1111</td>
+    <td align="center"  width="10%"  bgcolor="#D4E4EB" class="zhengwen">分站2</td>
+    <td align="center"  width="10%"  bgcolor="#D4E4EB" class="zhengwen">222</td>
+    <td align="center"  width="10%"" bgcolor="#D4E4EB" class="zhengwen">分站管理员</td>
+
+     <td  align="left"   width="10%"  bgcolor="#D4E4EB" class="zhengwen"><div align="center">分站管理员</div></td>
+   <td align="center"   width="10%" bgcolor="#D4E4EB" class="zhengwen">why</td>
+   
+    <td  align="left"   width="10%"  bgcolor="#D4E4EB" class="zhengwen"><div align="center">有效</div></td>
+    
+    <!-- td  align="left"   width="10%"  bgcolor="#D4E4EB" class="zhengwen"><div align="center">
+    		<a href="javascript:window.navigate('site_news_managerexe.jsp?admin_id=1111&site_id=402880d91c1df158011c20d4101e00f9')">赋权</a>
+    		<a href="javascript:window.navigate('site_news_manager_delexe.jsp?admin_id=1111&site_id=402880d91c1df158011c20d4101e00f9')">取消</a>
+	   	</div></td-->    
+    <td  align="left"   width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center"> 
+    <a href="/sso/admin/siteManagerOper_changeAdminGroup.action?managerId=402880d91c3ff392011c4005feec0004">设定权限分组</a>
+    <a href="/sso/admin/siteManagerOper_showRangeRight.action?managerId=402880d91c3ff392011c4005feec0004">设定权限范围</a>
+     <br><a href="/sso/admin/siteManagerOper_showEditManager.action?managerId=402880d91c3ff392011c4005feec0004"> 信息修改</a> &nbsp;&nbsp;<a href="javascript:del('/sso/admin/siteManagerOper_deleteInfo.action?managerId=402880d91c3ff392011c4005feec0004')">删除</a>
+     &nbsp;&nbsp;
+
+     </div></td>
+  </tr>
+  
+
+  <tr> 
+    <!--td align="center"  width="10%"  height="21" bgcolor="#D4E4EB" class="zhengwen">402880d91c3ff392011c40052c590002</td-->
+     <td align="center"  width="10%"  height="21" bgcolor="#D4E4EB" class="zhengwen">0000</td>
+    <td align="center"  width="10%"  bgcolor="#D4E4EB" class="zhengwen">分站1</td>
+    <td align="center"  width="10%"  bgcolor="#D4E4EB" class="zhengwen">111</td>
+    <td align="center"  width="10%"" bgcolor="#D4E4EB" class="zhengwen">分站管理员</td>
+
+     <td  align="left"   width="10%"  bgcolor="#D4E4EB" class="zhengwen"><div align="center">分站管理员</div></td>
+   <td align="center"   width="10%" bgcolor="#D4E4EB" class="zhengwen">why</td>
+   
+    <td  align="left"   width="10%"  bgcolor="#D4E4EB" class="zhengwen"><div align="center">有效</div></td>
+    
+    <!-- td  align="left"   width="10%"  bgcolor="#D4E4EB" class="zhengwen"><div align="center">
+    		<a href="javascript:window.navigate('site_news_managerexe.jsp?admin_id=0000&site_id=402880d91c1df158011c20d4101e00f9')">赋权</a>
+    		<a href="javascript:window.navigate('site_news_manager_delexe.jsp?admin_id=0000&site_id=402880d91c1df158011c20d4101e00f9')">取消</a>
+	   	</div></td-->    
+    <td  align="left"   width="10%" bgcolor="#D4E4EB" class="zhengwen"><div align="center"> 
+    <a href="/sso/admin/siteManagerOper_changeAdminGroup.action?managerId=402880d91c3ff392011c40052c590002">设定权限分组</a>
+    <a href="/sso/admin/siteManagerOper_showRangeRight.action?managerId=402880d91c3ff392011c40052c590002">设定权限范围</a>
+     <br><a href="/sso/admin/siteManagerOper_showEditManager.action?managerId=402880d91c3ff392011c40052c590002"> 信息修改</a> &nbsp;&nbsp;<a href="javascript:del('/sso/admin/siteManagerOper_deleteInfo.action?managerId=402880d91c3ff392011c40052c590002')">删除</a>
+     &nbsp;&nbsp;
+
+     </div></td>
+  </tr>
+  
+
+
+
+</table>
+<br>
+<!-- div align="center" bgcolor="#D4E4EB" class="zhengwen"><a href="add_admin.jsp">添加分站管理员</a> &nbsp;&nbsp;<a href="add_admin.jsp">添加分站管理员</a>  &nbsp;&nbsp;<a href="right_main.jsp">返回</a></div-->
+</body>
+</html>

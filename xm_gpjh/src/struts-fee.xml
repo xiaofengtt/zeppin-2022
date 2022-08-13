@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="entity.fee" extends="platform-default" namespace="/entity/fee">
+		
+		<action name="prFeeDetailIn_*" method="{1}" class="prFeeDetailInAction">
+			<result name="batch">/entity/manager/fee/fee_bath_enter.jsp</result>
+			<result name="addone">/entity/manager/fee/fee_add_one.jsp</result>
+	    </action>
+		<action name="prFeeDetailForTakeIn_*" method="{1}" class="prFeeDetailForTakeInAction">
+	    </action>
+	    <action name="peFeeBathCheck_*" method="{1}" class="peFeeBathCheckAction">
+	    </action>
+	    <action name="prFeeDetailReduce_*" method="{1}" class="prFeeDetailReduceAction">
+	    	<result name="addone">/entity/manager/fee/fee_reduce_addone.jsp</result>
+	    	<result name="batch">/entity/manager/fee/fee_reduce_batch_enter.jsp</result>
+	    </action>
+	    <action name="teacherReduceDetail_*" method="{1}" class="teacherReduceDetailAction">
+	    </action>	    	    
+	    <action name="teacherReduce_*" method="{1}" class="teacherReduceAction">
+	    </action>	    
+	    <action name="prFeeDetailReturn_*" method="{1}" class="prFeeDetailReturnAction">
+	    	<result name="batch">/entity/manager/fee/fee_return_batch_enter.jsp</result>
+	    </action>
+	    <action name="prFeeDetailSpecial_*" method="{1}" class="prFeeDetailSpecialAction">
+	    	<result name="addone">/entity/manager/fee/fee_special_addone.jsp</result>
+	    </action>
+	    <action name="peFeeBathQuery_*" method="{1}" class="peFeeBathQueryAction">
+	    </action>
+	    <action name="feeTotalCount_*" method="{1}" class="feeTotalCountAction">
+			<result name="stat">/entity/manager/fee/stat/feeTotalCount_turntoStat.jsp</result>
+		</action>
+		<action name="studentAccount_*" method="{1}" class="studentAccountAction">
+			<result name="search">/entity/manager/fee/stat/studentAccountSearch.jsp</result>
+		</action>
+		<action name="prFeeDetailByStudent_*" method="{1}" class="prFeeDetailByStudentAction">
+	    </action>
+	    <action name="peFeeFencheng_*" method="{1}" class="peFeeFenchengAction">
+	    </action>
+	    <action name="peFeeDetailForReciept_*" method="{1}" class="peFeeDetailForRecieptAction">
+	    	<result name="batch">/entity/manager/fee/fee_check_batch_enter.jsp</result>
+	    </action>
+	    <action name="peFeePiCi_*" method="{1}" class="peFeePiCiAction">
+	    </action>
+	    <action name="prFeeDetailPici_*" method="{1}" class="prFeeDetailPiciAction">
+	    </action>
+	    <action name="listStudentForFeeSet_*" method="{1}" class="listStudentForFeeSetAction">
+	    </action>
+	    <action name="stuFeeStandardSet_*" method="{1}" class="stuFeeStandardSetAction">
+	    </action>
+	    <action name="recExamFee_*" method="{1}" class="recExamFeeAction">
+	    </action>	    
+	    <action name="feeStandardManager_*" method="{1}" class="feeStandardManagerAction">
+	    </action>
+	    <action name="feeRefund_*" method="{1}" class="FeeRefundAction">
+	    	<result name="turntorefund">/entity/manager/fee/turntorefund.jsp</result>
+	    </action>
+	</package>
+</struts>

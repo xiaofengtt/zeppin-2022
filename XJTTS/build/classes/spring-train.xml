@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"> -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<!-- 第三方培训平台对接模块 -->
+<!-- 	<bean id="trainingCollegeTokenDao" class="cn.zeppin.train.dao.impl.TrainingCollegeTokenDaoImpl"> -->
+<!-- 		<property name="sessionFactory" ref="sessionFactory"></property> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="trainingCollegeTokenService" class="cn.zeppin.train.service.impl.TrainingCollegeTokenServiceImpl"> -->
+<!-- 		<property name="trainingCollegeTokenDao" ref="trainingCollegeTokenDao"></property> -->
+<!-- 	</bean> -->
+	<bean id="trainingUnit" class="cn.zeppin.train.action.TrainUnitAction" scope="prototype">
+		<property name="iProjectApplyService" ref="projectApplyService"></property>
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iProjectTypeService" ref="projectTypeService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+<!-- 		<property name="iTrainingCollegeTokenService" ref="trainingCollegeTokenService"></property> -->
+		<property name="iTeacherTrainingRecordsService" ref="teacherTrainingRecordsService"></property>
+		<property name="iTeacherService" ref="teacherService"></property>
+		<property name="iAreaService" ref="areaService"></property>
+		<property name="iTeachingGradeService" ref="teachingGradeService"></property>
+		<property name="iTeachingLanguageService" ref="teachingLanguageService"></property>
+		<property name="iTeachingSubjectService" ref="teachingSubjectService"></property>
+		<property name="iHsdTestService" ref="hsdTestService"></property>
+	</bean>
+	
+</beans>

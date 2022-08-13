@@ -1,0 +1,93 @@
+@charset "UTF-8";
+.main_header {
+    overflow: hidden;
+    height: 85px;
+    transition:all 0.4s ease-out;
+}
+
+.main_header div {
+    margin-top: 15px;
+}
+
+.main_header span {
+    opacity: 0.69;
+    filter: alpha(opacity=69);
+    font-size: 14px;
+    color: #000000;
+}
+
+.main_header a {
+    display: inline-block;
+    padding:4px 11px 4px 11px;
+    text-align: center;
+    margin-right: 4px;
+    font-size: 13px;
+    color: #9B9B9B;
+    border-radius: 5px;
+    background: #FFFFFF;
+    outline: none;
+    font-weight:normal;
+}
+
+.main_header a.lighting {
+    background-color: #E0615F;
+    color: #FFFFFF;
+}
+
+.main_header .color {
+    background-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+.main .more {
+    margin-top: 30px;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    font-size: 12px;
+    color: #E0615F;
+    width:130px;
+    position:relative;
+    width:100%;
+}
+
+.main .more p {
+    position: relative;
+}
+.main .more p span{
+	cursor: pointer;
+}
+
+.main .more .iconfont {
+    opacity: 0.6;
+    filter: alpha(opacity=80);
+    vertical-align: sub;
+	margin-left:3px;
+}
+
+.main .more p #download{
+	font-size:14px;
+	padding:4px 13px 4px 13px;
+	background:#FFFFFF;
+	color:#E0615F;
+	border:1px solid #E0615F;
+	display: inline-block;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	-ms-border-radius:5px;
+	margin-right:6px;
+	vertical-align: text-bottom;
+	-webkit-transition: all 0.3s linear;
+	-moz-transition: all 0.3s linear;
+	-ms-transition: all 0.3s linear;
+	-o-transition: all 0.3s linear;
+	transition: all 0.3s linear;
+	position: absolute;
+	right:0;
+	bottom:0;
+}
+
+.main .more p #download:hover{
+	color:#FFFFFF;
+	background: #E0615F;
+}

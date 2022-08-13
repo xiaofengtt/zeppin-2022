@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>新疆师范大学考务管理系统</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/jquery-1.11.1.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<!-- <script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script> -->
+
+<!--link rel="stylesheet" href="css/animate.css"-->
+<style>
+
+#content{margin:19px 0 22px 0;background: #FFFFFF;}
+#content .contentInner{width:970px; margin:0 auto;}
+#content .contentLeft{float:left;height:500px;width:429px;margin:111px 0 178px auto;position:relative;}
+#content .contentLeft img{width:100%;height:100%;}
+#content .contentLeft div{position:absolute;bottom:64px;text-align:center;font-size: 20px;color: #FFFFFF;width:100%;line-height:36px;}
+#content .contentRight{float:left;width:541px;margin:111px 0 178px auto;height:500px;background: #FFEFEF;}
+#content .contentRight h1{font-size: 24px;color: #030303;text-align:center;margin-top:77px;margin-bottom:44px;}
+.input-icon input{padding-top:14px;padding-bottom:11px;padding-left:49px !important;line-height:23px;font-size:18px;
+	height:auto;border-radius:5px !important;color: #2B2B2B !important;width:265px;margin-left:110px;}
+#loginname{letter-spacing:-1px;}
+#password{color:#575757 !important;letter-spacing:7px;}
+.chknumber input{font-size: 16px;color: rgba(0,0,0,0.5);line-height:22px;height:50px;border-radius:5px !important;margin-right:6px;}
+#loginBut{margin:30px 0 18px 0;width:322px;font-size: 20px;color: #FFFFFF;height:50px;background: #E0615F;border-radius: 5px !important;
+	margin-left:110px;display:inline-block;}
+.copyright{text-align:center;-webkit-text-size-adjust:none; font-size:12px;color:rgba(255,255,255,0.45);line-height:13px;-webkit-transform: scale(0.75);}
+.copyright p{margin-bottom:3px;height:20px;white-space:nowrap;}
+.input-icon i{width:19px;height:19px;margin:16px 0 15px 122px;}
+.input-icon i.user{background:url(../img/userLogin.png) 100% 100% no-repeat;}
+.input-icon i.lock{background:url(../img/lockLogin.png) 100% 100% no-repeat;}
+.chknumber input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+color: rgba(0,0,0,0.3);
+}
+.chknumber input:-moz-placeholder, textarea:-moz-placeholder {
+color: rgba(0,0,0,0.3);
+}
+.chknumber input::-moz-placeholder, textarea::-moz-placeholder {
+color: rgba(0,0,0,0.3);
+}
+.chknumber input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+color: rgba(0,0,0,0.3);
+} 
+
+
+
+</style>
+</head>
+<body class="login">
+	<div id="header">
+		<p class="headerTopLeft">新疆师范大学考务管理系统</p>
+		<div class="headerTopCenter">
+			<a class="WeChat">微信公众号</a>
+			<a class="helpCenter">帮助中心</a>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div id="content">
+		<div class="contentInner">
+			<div class="contentLeft">
+				<img src="../img/loginBg.png" alt="封面图"/>
+				<div>
+					<p>再长的路</p>
+					<p>一步步也能走完</p>
+					<p>再短的路</p>
+					<p>不迈开双脚也无法到达</p>
+				</div>
+			</div>
+			<div class="contentRight">
+				<form id="login-form" method="post">
+					<div class="alert alert-danger display-hide" style="display:none;" id="login_error">
+						<button class="close" data-close="alert"></button>
+						<span>
+							 输入您的用户名和密码
+						</span>
+					</div>
+					<h1>管理员登录</h1>
+					<div class="form-group">
+						<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+						<div class="input-icon">
+							<i class="fa user"></i>
+							<input name="loginname" id="loginname" size="25" value="" class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="用户名" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-icon">
+							<i class="fa lock"></i>
+							<input name="password" id="password" size="25" value="" class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="密码" />
+						</div>
+					</div>
+				
+					<div class="chknumber form-group" style="text-align:left;">
+						<input class="form-control placeholder-no-fix" style="width:147px;display:inline-block;padding:0 0 0 11px;margin:0 0 0 110px;"
+						 name="authcode" type="text" maxlength="5" placeholder="验证码"> 
+						<img style="vertical-align:middle;cursor:pointer;height:50px;border-radius:5px !important;display:inline-block;width:154px;margin-left: 3px;"
+						 onclick="replace(this);"
+						 src="../admin/ssoAuthImg" id="kaptchaImage">  
+					</div>
+					<div >
+						<button id="loginBut" type="submit" class="btn">登录</button>
+					</div>
+				</form>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div id="footer">
+		<p>copyright&nbsp;&nbsp;2017&nbsp;&nbsp;新疆师范大学版权所有&nbsp;新备ICP&nbsp;10003677号-3</p>
+	</div>
+	<script type="text/javascript"> 
+// 		$youziku.load(".contentTopLeft,h1,p", "c6da775181ca42f7a7c023bb366de971", "PingFangSC_R");
+// 		$youziku.draw(); 
+	</script>
+	<script>
+	$(function(){
+		
+		$('#login-form').submit(function(){
+			var th = this;
+			var ss = $(th).serializeArray();
+			$(":submit,:input", th).attr("disabled", true);
+			$.post('../admin/ssoLogin' ,ss,function(r){
+				if(r.Status == 'success') {
+					$.cookie('islogin','true',{ expires: 1, path: '/' });
+					$.cookie('loginname',r.Records.name+'###'+r.Records['role.name'],{ expires: 1, path: '/' });
+					$.cookie('photo',r.Records.photo,{ expires: 1, path: '/' });
+					//console.log(r.Records['role.name'])
+					window.location.href = window.location.href.replace('login.html','main.jsp');
+					
+				}else {
+					$('#login_error').show().find('span').html(r.Message);
+					$(":submit,:input", th).attr("disabled", false);
+				}
+			})
+			return false;
+		})
+		
+	})
+	
+	function replace(e){
+		var timestamp = Date.parse(new Date());
+		var random = Math.ceil(Math.random()*100);
+		e.src='../admin/ssoAuthImg?timestr='+timestamp+random;
+	}
+	</script>
+
+	<!--end-main-container-part-->
+
+
+</body>
+</html>
+

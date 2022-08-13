@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+	http://www.springframework.org/schema/task 
+	http://www.springframework.org/schema/task/spring-task-3.1.xsd">
+
+
+	<!-- class="org.apache.commons.dbcp.BasicDataSource" <beans xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" 
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd" 
+		xmlns:tx="http://www.springframework.org/schema/tx"> -->
+
+	<bean id="dataSource" class="cn.zeppin.base.ProxoolDataSource">
+		<property name="driver">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="driverUrl">
+			<!-- <value>jdbc:mysql://192.168.1.113:3306/xjtts</value> -->
+<!-- 			<value>jdbc:mysql://localhost:3306/xjttss?zeroDateTimeBehavior=convertToNull</value> -->
+			<!-- <value>jdbc:mysql://192.168.1.120:19150/xjtts_mc?zeroDateTimeBehavior=convertToNull</value> -->
+			<!-- <value>jdbc:mysql://10.10.193.20:3306/xjtts?zeroDateTimeBehavior=convertToNull</value> -->
+			<value>jdbc:mysql://192.168.1.120:3306/xjttss?zeroDateTimeBehavior=convertToNull</value>
+		</property>
+		<property name="user" value="root"></property>
+		<property name="password" value=""></property>
+		<property name="alias" value="xjttss" />
+
+		<!-- 保留线程处于睡眠状态的最长时间 -->
+		<property name="houseKeepingSleepTime" value="90000" />
+		<!-- 连接池中可用的连接数量 -->
+		<property name="prototypeCount" value="100" />
+		<!-- 最大连接数，默认为15 -->
+		<property name="maximumConnectionCount" value="5000" />
+		<!-- 最小连接数，默认为5 -->
+		<property name="minimumConnectionCount" value="200" />
+		<!-- 检测到某个线程的活动时间大于这个数值.它将会杀掉这个线程 -->
+		<property name="maximumActiveTime" value="1800000" />
+		<!-- 一次性可建立的最大连接数 -->
+		<property name="simultaneousBuildThrottle" value="100" />
+		<!-- 最大连接生命周期 ,默认为4小时 -->
+		<property name="maximumConnectionLifetime" value="14400000" />
+		<!-- 验证数据库的状态语句 -->
+		<property name="houseKeepingTestSql" value="select 1" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+			</props>
+		</property>
+		<property name="annotatedClasses">
+			<list>
+				<value>cn.zeppin.entity.ProjectApplyExpert</value>
+				<value>cn.zeppin.entity.ProjectApplyEvaluate</value>
+				<value>cn.zeppin.entity.ProjectApplyWorkReport</value>
+				<value>cn.zeppin.entity.Document</value>
+				<value>cn.zeppin.entity.JobDuty</value>
+				<value>cn.zeppin.entity.TeachingLanguage</value>
+				<value>cn.zeppin.entity.JobTitle</value>
+				<value>cn.zeppin.entity.ProjectApply</value>
+				<value>cn.zeppin.entity.ProjectType</value>
+				<value>cn.zeppin.entity.Psq</value>
+				<value>cn.zeppin.entity.Project</value>
+				<value>cn.zeppin.entity.ProjectAdmin</value>
+				<value>cn.zeppin.entity.TeachingSubject</value>
+				<value>cn.zeppin.entity.Grade</value>
+				<value>cn.zeppin.entity.Subject</value>
+				<value>cn.zeppin.entity.Language</value>
+				<value>cn.zeppin.entity.FunCategory</value>
+				<value>cn.zeppin.entity.AssignTeacherTask</value>
+				<value>cn.zeppin.entity.ProjectAdminRight</value>
+				<value>cn.zeppin.entity.Politics</value>
+				<value>cn.zeppin.entity.OrganizationLevel</value>
+				<value>cn.zeppin.entity.ChineseLanguageLevel</value>
+				<value>cn.zeppin.entity.SysUserRight</value>
+				<value>cn.zeppin.entity.TrainingAdmin</value>
+				<value>cn.zeppin.entity.TeachingGrade</value>
+				<value>cn.zeppin.entity.EductionBackground</value>
+				<value>cn.zeppin.entity.Organization</value>
+				<value>cn.zeppin.entity.Area</value>
+				<value>cn.zeppin.entity.TrainingCollege</value>
+				<value>cn.zeppin.entity.OrgaCateMap</value>
+				<value>cn.zeppin.entity.Teacher</value>
+				<value>cn.zeppin.entity.TrainingSubject</value>
+				<value>cn.zeppin.entity.Ethnic</value>
+				<value>cn.zeppin.entity.ProjectExpert</value>
+				<value>cn.zeppin.entity.ProjectLevel</value>
+				<value>cn.zeppin.entity.SysUser</value>
+				<value>cn.zeppin.entity.TeacherTrainingRecords</value>
+				<value>cn.zeppin.entity.OtherTrainingRecords</value>
+				<value>cn.zeppin.entity.AssignTeacherCheck</value>
+				<value>cn.zeppin.entity.UniversityInfo</value>
+				<value>cn.zeppin.entity.ProjectSubjectRange</value>
+				<value>cn.zeppin.entity.ProjectCollegeRange</value>
+				<value>cn.zeppin.entity.Result</value>
+				<value>cn.zeppin.entity.Answer</value>
+				<value>cn.zeppin.entity.Question</value>
+				<value>cn.zeppin.entity.Submit</value>
+				<value>cn.zeppin.entity.Teachexpert</value>
+				<value>cn.zeppin.entity.TeacherReviewRecords</value>
+				<value>cn.zeppin.entity.TeacherMobileCode</value>
+				<value>cn.zeppin.entity.TrainingAdminAuthority</value>
+				<value>cn.zeppin.entity.TeacherTrainingReplace</value>
+				<value>cn.zeppin.entity.TeacherTrainingCertificate</value>
+				<value>cn.zeppin.entity.TeacherTrainingReversal</value>
+				<value>cn.zeppin.entity.ProjectGroup</value>
+				<value>cn.zeppin.entity.Specialist</value>
+				<value>cn.zeppin.entity.TeacherTrainingAssigned</value>
+				<value>cn.zeppin.entity.TeacherAdjust</value>
+				<value>cn.zeppin.entity.ServiceApply</value>
+				<value>cn.zeppin.entity.ProjectCycle</value>
+				<value>cn.zeppin.entity.IdentifyClasshours</value>
+				<value>cn.zeppin.entity.IdentifyClasshoursSubject</value>
+				<value>cn.zeppin.entity.TeacherEduAdvance</value>
+				<value>cn.zeppin.entity.TeacherEduAdvanceAdu</value>
+				<value>cn.zeppin.entity.TeacherEduEvidence</value>
+				<value>cn.zeppin.entity.CountTeacherYear</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	 <bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">  
+        <property name="transactionManager" ref="transactionManager" />  
+        <!-- 配置事务属性 -->  
+        <property name="transactionAttributes">  
+            <props>  
+                <prop key="get*" >PROPAGATION_REQUIRED,readOnly</prop>  
+                <prop key="find*" >PROPAGATION_REQUIRED,readOnly</prop> 
+                <prop key="search*" >PROPAGATION_REQUIRED,readOnly</prop> 
+                <prop key="is*" >PROPAGATION_REQUIRED,readOnly</prop> 
+                <prop key="add*" >PROPAGATION_REQUIRED</prop> 
+                <prop key="save*" >PROPAGATION_REQUIRED</prop>
+                <prop key="create*" >PROPAGATION_REQUIRED</prop>
+                <prop key="update*" >PROPAGATION_REQUIRED</prop>
+                <prop key="modify*" >PROPAGATION_REQUIRED</prop>
+                <prop key="delete*" >PROPAGATION_REQUIRED</prop>
+                <prop key="remove*" >PROPAGATION_REQUIRED</prop>
+                <prop key="select*" >PROPAGATION_REQUIRED</prop>
+                <prop key="calculate*" >PROPAGATION_REQUIRED</prop>
+            </props>  
+        </property>  
+    </bean>
+	
+	<bean id="transactionAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">     
+       <property name="beanNames">     
+           <list>     
+               <value>*Service*</value>  
+           </list>     
+       </property>     
+       
+       <property name="interceptorNames">     
+           <list>     
+           	  <value>transactionInterceptor</value> 
+           </list>     
+       </property>     
+   </bean> 
+
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
+
+	<import resource="spring-base.xml" />
+
+	
+	<context:component-scan base-package="cn.zeppin.action"/> 
+	<task:annotation-driven />
+</beans>

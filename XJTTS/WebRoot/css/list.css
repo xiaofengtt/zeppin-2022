@@ -1,0 +1,42 @@
+@CHARSET "UTF-8";
+*{margin:0 auto;padding:0;}
+a{text-decoration:none;}
+ul{list-style:none;}
+.clear{clear:both;}
+.mainbg {
+    background-image: url(../images/index/background-bg1.png);
+    background-repeat: repeat-x;
+    background-position: center top;
+}
+.bg-white {
+    background-color: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top:20px;
+}
+.col-md-10{padding:0 73px;padding-bottom:50px;}
+.col-md-10 p.title{line-height:100px;font-size:20px;color:#666;}
+.subbody{font-size:12px;color:#999;line-height:20px;margin-bottom:10px;padding-bottom:0px;float:left;width:auto;}
+.subbody a{color:#999;margin-right:5px;}
+.subbody span{margin-left:5px;}
+.totalArticle{float:right;color:#888;font-size:12px;}
+hr{border:none;border-bottom:1px solid #ccc;margin-top:0;}
+ul.articleList{padding:20px 0;}
+ul.articleList li{list-style-position:outside;margin-bottom:15px;}
+ul.articleList li span{float:left !important;display:block;padding-left:0;color:#666;font-size:14px;}
+ul.articleList li span.col-md-2{text-align:right;color:#999;line-height:40px;}
+ul.articleList li span.col-md-9 a{color:#666;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:40px;width:100%;font-size:15px;}
+ul.articleList li span.col-md-9 a:hover{color:#666;}
+ul.articleList li span.eye{background: url(../images/eye.png) center left no-repeat;background-size:auto 50%;padding-left:25px;text-align:left;}
+ul.articleList li span.col-md-9{padding-left:0px !important;}
+ul.articleList li span.col-md-9 b{font-weight:normal;width:30px;text-align:right;display:inline-block;margin-right:5px;}
+
+.pageing{color:#999;font-size:12px;}
+.pageing a{color:#999;margin:0 5px;cursor:pointer;}
+.pageing .leftPage{float:left;}
+.pageing .rightPage{float:right;}
+.sidebar span a{cursor:pointer;}
+.searchList{margin-bottom:20px;}
+.searchList li{background:url(../images/list-style.png) left 15px no-repeat;padding-left:10px;}
+.searchList li span{text-align:left;}

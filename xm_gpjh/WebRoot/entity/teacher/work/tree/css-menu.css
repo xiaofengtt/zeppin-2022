@@ -1,0 +1,73 @@
+/* CSS Document */
+
+
+.button01
+  {margin-bottom:2px;}
+.font01{
+  padding:5px 0 0 52px; 
+  color:#0D2F4F;
+  font-size:12px; ]
+  font:"宋体";
+  cursor:pointer;
+   }
+.font02{
+  padding:5px 0 0 63px; 
+  color:#0D2F4F;
+  font-size:12px; ]
+  font:"宋体";
+  cursor:pointer;
+   }
+.font03{
+  padding:5px 0 0 80px; 
+  color:#0D2F4F;
+  font-size:12px; ]
+  font:"宋体";
+  cursor:pointer;
+   }
+   
+.menuAOver{
+	width:179px;
+	height:29px;
+    background-image:url(../../images/t_over.jpg);
+	text-align:center;
+	padding-top:0px;
+	vertical-align:bottom;
+	margin-bottom:2px;
+	cursor:pointer;
+	
+	
+}
+.menuAOn{
+	width:179px;
+	height:29px;
+    background-image:url(../../images/t_over.jpg);
+	text-align:center;
+	padding-top:0px;
+	vertical-align:bottom;
+	margin-bottom:2px;
+	cursor:pointer;
+	
+}   
+.menuA{
+	width:179px;
+	height:29px;
+    background-image:url(../../images/t_on.jpg);
+	text-align:center;
+	padding-top:0px;
+    vertical-align:baseline;
+	cursor:pointer;
+	margin-bottom:2px;
+	float:left; }  
+
+.zjmenu031{
+	font: 12px "宋体";
+	line-height:14px;
+	color:#000;
+	letter-spacing: 0.5em;
+	text-align:center;
+	padding-top:6px;
+	
+	}   
+   
+   
+   

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="admin" extends="main" namespace="/admin">
+
+		<action name="head_*" class="adminHead" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/head.jsp</result>
+		</action>
+		<action name="left_*" class="adminLeft" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/left.jsp</result>
+		</action>
+		<action name="projectType_*" class="projectType" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/projectType.jsp</result>
+		</action>
+		<action name="trainingSubject_*" class="trainingSubject"
+			method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/trainingSubject.jsp</result>
+		</action>
+
+		<action name="grade_*" class="grade" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/grade.jsp</result>
+		</action>
+		
+		<action name="subject_*" class="subject" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/subject.jsp</result>
+		</action>
+
+		<action name="jobTitle_*" class="jobTitle" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/jobTitle.jsp</result>
+		</action>
+
+		<action name="jobDuty_*" class="jobDuty" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/jobDuty.jsp</result>
+		</action>
+
+		<action name="organization_*" class="organization" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/organization.jsp</result>
+			<result name="search">/admin/organizationSearch.jsp</result>
+		</action>
+
+		<action name="projectAdmin_*" class="projectAdmin" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/projectAdmin.jsp</result>
+			<result name="authority">/admin/projectAdminAuthority.jsp</result>
+		</action>
+		
+	
+		<action name="projectAdm_*" class="projectAdm" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/projectAdminOptIframe.jsp</result>
+		</action>
+
+		<action name="projectExpertManage_*" class="projectExpertManage" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/projectExpertManage.jsp</result>
+			<result name="expertinit">/admin/projectExpertManageToExp.jsp</result>
+		</action>
+		
+		<action name="projectExpertMana_*" class="projectExpertMana" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/projectExpertOptIframe.jsp</result>
+		</action>
+		
+		<action name="projectReview_*" class="projectReview" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/projectReview.jsp</result>
+		</action>
+		
+		<action name="trainingCollege_*" class="trainingCollege"
+			method="{1}">
+
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/trainingCollege.jsp</result>
+
+		</action>
+
+		<action name="trainingAdmin_*" class="trainingAdmin" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/trainingAdmin.jsp</result>
+			<result name="authority">/admin/trainingAdminAuthority.jsp</result>
+		</action>
+
+		<action name="trainingAdmOpt_*" class="trainingAdmOpt" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/trainingAdminOptIframe.jsp</result>
+		</action>
+        
+        <action name="trainingStudentOpt_*" class="trainingStudentOpt" method="{1}">
+        <interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/trainingStudent.jsp</result>
+			<result name="registInit">/admin/trainingStudentRegist.jsp</result>
+			<result name="scoreInit">/admin/trainingStudentScore.jsp</result>
+			<result name="completeInit">/admin/trainingStudentComplete.jsp</result>
+			<result name="inputInit">/admin/trainingStudentScoreInput.jsp</result>
+			<result name="confirm">/admin/wait3.jsp</result>
+			<result name="authority">/admin/trainingAuthorityOptiframe.jsp</result>
+			<result name="changeSubjectInit">/admin/trainingStudentChangeSubject.jsp</result>
+			<result name="changeTeacherSubjectInit">/admin/trainingStuChangeSubjectIframe.jsp</result>
+        </action>
+        
+        <action name="trainingUnitProjectApply_*" class="trainingUnitProjectApply" method="{1}">
+      <interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/trainingUnitProjectApply.jsp</result>
+			<result name="historyInit">/admin/trainingUnitProjectApplyHistory.jsp</result>
+			<result name="projectApply">/admin/trainingUnitProjectApplyOptIframe.jsp</result>
+			
+        </action>
+        
+		<action name="projectBase_*" class="projectBaseInfo" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/projectBaseInfo.jsp</result>
+			<result name="projectResult">/admin/projectResultOptIframe.jsp</result>
+			<result name="presult">/admin/assignTeacherTaskView.jsp</result>
+		</action>
+
+		<action name="projectBaseOpt_*" class="projectBaseInfoOpt"
+			method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/projectBaseInfoOptiframe.jsp</result>
+			<result name="authority">/admin/projectAuthorityOptiframe.jsp</result>			
+		</action>
+		<action name="teacherManage_*" class="teacherManage" method="{1}">
+			 <interceptor-ref name="adminFilter"></interceptor-ref> 
+			<result name="init">/admin/teacherBaseInfo.jsp</result>
+			<result name="addInit">/admin/teacherBaseInfoOptiframe.jsp</result>
+			<result name="search">/admin/teacherSearch.jsp</result>
+		</action>
+
+		<action name="projectApply_*" class="projectApply" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/projectApplyInfo.jsp</result>
+		</action>
+		
+		<action name="projectApplyOpt_*" class="projectApplyOpt"
+			method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/projectApplyInfoOptiframe.jsp</result>
+			<result name="initPass">/admin/projectApplyInfoOptPassiframe.jsp</result>
+			<result name="initExpert">/admin/projectApplyInfoOptExpertiframe.jsp</result>
+		</action>
+
+		<action name="assignTeacherTask_*" class="assignTeacherTask"
+			method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/assignTeacherTask.jsp</result>
+			<result name="presult">/admin/assignTeacherTaskResult.jsp</result>
+		</action>
+
+		<action name="assignTeacherTaskOpt_*" class="assignTeacherTaskOpt"
+			method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/assignTeacherTaskAddOptiframe.jsp</result>
+			<result name="view">/admin/assignTeacherTaskViewOptIframe.jsp
+			</result>
+			<result name="allot">/admin/assignTeacherTaskAllotOptiframe.jsp
+			</result>
+			<result name="edit">/admin/assignTeacherTaskEditOptiframe.jsp
+			</result>
+		</action>
+
+		<action name="ttRecord_*" class="teacherTrainingRecord" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="adu">/admin/ttRecordsAdu.jsp</result>
+			<result name="assPage">/admin/ttRecordsFristReport.jsp</result>
+			<result name="report">/admin/ttRecordsReport.jsp</result>
+			<result name="mark">/admin/teacherMark.jsp</result>
+			<result name="presult">/admin/ttRecordsResult.jsp</result>
+			<result name="teacherinfo">/admin/ttRecordsTeacherInfo.jsp</result>
+			<result name="enrollReview">/admin/wait2.jsp</result>
+			<result name="replaceInit">/admin/ttRecordsReplaceInfoIframe.jsp</result>
+			<result name="replaceAdu">/admin/ttRecordsReplaceAdu.jsp</result>
+			<result name="reviewReplace">/admin/ttRecordsReviewReplaceIframe.jsp</result>
+		</action>
+		<action name="teacherInfo_*" class="teacherInfo" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="init">/admin/wait.jsp</result>
+			<result name="addInit">/admin/teacherInfoIframe.jsp</result>
+		</action>
+	</package>
+</struts>

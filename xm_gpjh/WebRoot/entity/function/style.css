@@ -1,0 +1,156 @@
+BODY {
+	FONT-SIZE: 12px
+}
+BR {
+	FONT-SIZE: 12px
+}
+P {
+	FONT-SIZE: 12px
+}
+TR {
+	FONT-SIZE: 12px
+}
+TD {
+	FONT-SIZE: 12px
+}
+INPUT.smart {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; BACKGROUND-COLOR: white
+}
+TEXTAREA.smart {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; BACKGROUND-COLOR: white
+}
+.newsTitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 25px; COLOR: #000066
+}
+.newsSource {
+	FONT-SIZE: 9pt
+}
+.newsMedia {
+	COLOR: #980922
+}
+BODY {
+	FONT: 12px "Verdana", "Arial", "ËÎÌå"; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #ffffff; SCROLLBAR-3DLIGHT-COLOR: #acd2fc; SCROLLBAR-ARROW-COLOR: #ffffff; SCROLLBAR-TRACK-COLOR: #acd2fc; SCROLLBAR-DARKSHADOW-COLOR: #00b0ea; SCROLLBAR-BASE-COLOR: #64a0e7
+}
+A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+HR {
+	COLOR: #7dbaff; HEIGHT: 2px
+}
+TEXTAREA {
+	BORDER-RIGHT: #9ecaff 1px solid; BORDER-TOP: #9ecaff 1px solid; FONT-SIZE: 9pt; BACKGROUND: #eaf3ff; BORDER-LEFT: #9ecaff 1px solid; COLOR: #003333; BORDER-BOTTOM: #9ecaff 1px solid
+}
+INPUT {
+	BORDER-RIGHT: #9ecaff 1px solid; BORDER-TOP: #9ecaff 1px solid; FONT-SIZE: 9pt; BACKGROUND: #eaf3ff; BORDER-LEFT: #9ecaff 1px solid; COLOR: #003333; BORDER-BOTTOM: #9ecaff 1px solid
+}
+SELECT {
+	BORDER-RIGHT: #9ecaff 1px solid; BORDER-TOP: #9ecaff 1px solid; FONT-SIZE: 9pt; BACKGROUND: #eaf3ff; BORDER-LEFT: #9ecaff 1px solid; COLOR: #003333; BORDER-BOTTOM: #9ecaff 1px solid
+}
+.white {
+	COLOR: #ffffff
+}
+TABLE.tableline {
+	BORDER-RIGHT: #619de4 thin solid; BORDER-TOP: #619de4 thin solid; BORDER-LEFT: #619de4 thin solid; BORDER-BOTTOM: #619de4 thin solid
+}
+TD.top {
+	BACKGROUND-IMAGE: url(/whatymanager/work/firstpage/images/log2.jpg); HEIGHT: 120px
+}
+TABLE.topmenubgc {
+	BACKGROUND: #64a0e7
+}
+.topmenu {
+	COLOR: #000000
+}
+.cur1 {
+	CURSOR: help; COLOR: #000000
+}
+TABLE.2left {
+	BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #000000
+}
+TD.menutop {
+	BACKGROUND-IMAGE: url(/whatymanager/firstpage/images/login_n_1.gif); COLOR: #ffffff
+}
+UNKNOWN {
+	×ó±ß×î¶¥²¿Í¼Æ¬: 
+}
+TD.menuback {
+	BACKGROUND-IMAGE: url(/whatymanager/firstpage/images/an1.gif); COLOR: #000000; HEIGHT: 25px
+}
+TD.leftmenuimg {
+	BACKGROUND-IMAGE: url(/whatymanager/firstpage/images/left.gif); HEIGHT: 130px; widht: 129px
+}
+TD.lmenutitle {
+	BACKGROUND-IMAGE: url(/whatymanager/firstpage/images/title.gif); COLOR: #000000; HEIGHT: 25px; widht: 129px
+}
+TABLE.main {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; BACKGROUND: #acd2fc; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none
+}
+TD.leftback {
+	BACKGROUND-IMAGE: url(/whatymanager/firstpage/images/leftback.gif)
+}
+TD.rmenutitle {
+	FONT-SIZE: 14px; BACKGROUND-IMAGE: url(/whatymanager/firstpage/images/title-right.gif); COLOR: #000000; HEIGHT: 26px; widht: 129px
+}
+TD.rightback {
+	BACKGROUND-IMAGE: url(/whatymanager/firstpage/images/rightline.gif); COLOR: #000000; HEIGHT: 150px; widht: 129px
+}
+TD.rightfoot {
+	BACKGROUND-IMAGE: url(/whatymanager/firstpage/images/login_2.jpg); COLOR: #000000; HEIGHT: 10px
+}
+TD.leftidle {
+	BACKGROUND: #ffffff
+}
+TABLE.mainback {
+	BACKGROUND: #ffffff
+}
+TR.mainup1 {
+	BACKGROUND: #acd2fc; COLOR: #000000; HEIGHT: 20px
+}
+TD.mainup {
+	FONT-SIZE: 14px; BACKGROUND: #acd2fc; COLOR: #000000; HEIGHT: 23px; TEXT-DECORATION: none
+}
+TR.maindownmenu {
+	BACKGROUND: #64a0e7; COLOR: #ffffff
+}
+TR.maindown {
+	BACKGROUND: #d8eaff; COLOR: #000000
+}
+TABLE.border {
+	bordercolor: 000000 1px
+}
+TABLE.dark {
+	bordercolorlight: 94B3D6; bordercolordark: #FFFFFF
+}
+TD.mainleft {
+	BACKGROUND: #64a0e7; COLOR: #ffffff
+}
+TD.mainright {
+	BACKGROUND: #acd2fc; COLOR: #000000
+}
+.botcolor {
+	BORDER-RIGHT: #619ee5 thin double; BORDER-TOP: #619ee5 thin double; BACKGROUND: #acd2fc; BORDER-LEFT: #619ee5 thin double; COLOR: #000000; BORDER-BOTTOM: #619ee5 thin double
+}
+TR.color2 {
+	BACKGROUND: #acd2fc; bordercolorlight: #003399; bordercolordark: #FFFFFF
+}
+TD.color1 {
+	BACKGROUND: #acd2fc; COLOR: #000000
+}
+TABLE.mangertopback {
+	BACKGROUND-IMAGE: url(/whatymanager/firstpage/images/mangertopback.gif)
+}
+BODY.manger {
+	BACKGROUND: #64a0e7
+}
+TABLE.open21 {
+	BACKGROUND: #acd2fc; COLOR: #000000; widht: 129px
+}
+BODY.openwin {
+	BACKGROUND-IMAGE: url(/whatymanager/firstpage/images/openback.jpg); COLOR: #000000; widht: 129px
+}
+TD {
+	FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+SELECT {
+	FONT-SIZE: 12px; TEXT-DECORATION: none
+}

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="entity.basic" extends="platform-default" namespace="/entity/basic">
+		<action name="peSite_*" method="{1}" class="peSiteAction">
+		</action>
+		
+		<action name="peGrade_*" method="{1}" class="peGradeAction">
+		</action>
+		
+		<action name="peSemester_*" method="{1}" class="peSemesterAction">
+		</action>  
+				
+		<action name="peMajor_*" method="{1}" class="peMajorAction">
+		</action>
+		
+		<action name="peEdutype_*" method="{1}" class="peEdutypeAction">
+		</action>
+		
+		<action name="peDetail_*" method="{1}" class="peDetailAction">
+			<result name="viewDetail">/entity/manager/Enterprise/penterprise_info.jsp</result>
+			<result name="viewPeDetail">/entity/manager/Enterprise/penterprise_info.jsp</result>
+			<result name="stuinfo">/entity/manager/studentStatus/studen_info.jsp</result>
+		</action>
+		
+		<action name="peSiteManager_*" method="{1}" class="peSiteManagerAction">
+		</action>
+		<action name="siteManager_*" method="{1}" class="siteManagerAction">
+		</action>	
+		<action name="peEnterprise_*" method="{1}" class="peEnterpriseAction">
+			<param name="savePath">/incoming/Excel</param>
+			<result name="batch">/entity/manager/Enterprise/peEnterprise_batch_register.jsp</result>
+		</action>
+		<action name="peSubEnterprise_*" method="{1}" class="peSubEnterpriseAction">
+		</action>
+		<action name="peBzzBatch_*" method="{1}" class="peBzzBatchAction">
+		</action>	
+		<action name="peBzzStudent_*" method="{1}" class="peBzzStudentAction">
+			<param name="savePath">/incoming/Excel</param>
+			<result name="batch">/entity/manager/studentStatus/student_batch_register.jsp</result>
+			<result name="uploadStudent_result">/entity/manager/studentStatus/operate_result.jsp</result>
+		</action>
+		<action name="peEnterprisemanager_*" method="{1}" class="peEnterpriseManagerAction">
+		</action>
+		<action name="enterpriseManager_*" method="{1}" class="enterpriseManagerAction">
+		</action>
+		
+	<!-- jiangwanhong start -->
+		<action name="peTrainingClass_*" method="{1}" class="peTrainingClassAction"></action>
+		<action name="peTraineeView_*" method="{1}" class="peTraineeViewAction"></action>
+		<action name="peManager_*" method="{1}" class="peManagerAction">
+			<result name="reset">/web/bzz_index/login/input_password.jsp</result>
+			<result name="dispatch">/entity/basic/peManager.action</result>
+		</action>
+		<action name="peTeacher_*" method="{1}" class="peTeacherAction"></action>
+		<action name="peTrainee_*" method="{1}" class="peTraineeAction">
+			<result name="upload">/web/bzz_index/login/photo_upload.jsp</result>
+			<result name="view">/web/bzz_index/login/photo_view.jsp</result>
+		</action>
+	<!-- jiangwanhong end -->		
+	<!-- zhaoyuxiao begin -->
+		<action name="messageBoardAction_*" method="{1}" class="messageBoardAction">
+			<result name="messageList">/entity/message/message_view.jsp</result>
+			<result name="quesDetail">/entity/message/message_detail.jsp</result>
+			<result name="modifyPage">/entity/message/message_modify.jsp</result>
+			<result name="editResu">/entity/message/message_editResu.jsp</result>
+			<result name="quesSucc">/entity/message/message_quesSucc.jsp</result>
+			<result name="edit_ans">/entity/message/message_modifyAns.jsp</result>
+		</action>
+		<action name="peUnitAction_*" method="{1}" class="peUnitAction"/>
+		<action name="peProvinceAction_*" method="{1}" class="peProvinceAction"/>
+		<action name="cityAction_*" method="{1}" class="cityAction"/>
+		<action name="countyAction_*" method="{1}" class="countyAction"/>
+		
+		<action name="folkAction_*" method="{1}" class="folkAction"/>
+		<action name="educationAction_*" method="{1}" class="educationAction"/>
+		<action name="jobTitleAction_*" method="{1}" class="jobTitleAction"/>
+		<action name="mainTeachingGradeAction_*" method="{1}" class="mainTeachingGradeAction"/>
+		<action name="mainTeachingSubjectAction_*" method="{1}" class="mainTeachingSubjectAction"/>
+		<action name="unitAttributeAction_*" method="{1}" class="unitAttributeAction"/>
+		<action name="unitTypeAction_*" method="{1}" class="unitTypeAction"/>
+		
+		<action name="peSubjectAction_*" method="{1}" class="peSubjectAction"/>
+		<action name="peManagersAction_*" method="{1}" class="peManagersAction"/>
+		<action name="peTrainingExpertsAction_*" method="{1}" class="peTrainingExpertsAction">
+			<result name="epedit">/entity/manager/training_expert/expertinfo_edit.jsp</result>
+			<result name="saveEdit">/entity/manager/training_expert/expertinfo_edit.jsp</result>
+			<result name="preAddExpert">/entity/manager/training_expert/expertinfo_add.jsp</result>
+			<result name="addSuccess">/entity/manager/training_expert/expertinfo_add.jsp</result>
+			<result name="browseDetail">/entity/manager/training_expert/expertdetail.jsp</result>
+		</action>
+		<action name="peTrainingExpertsSearchAction_*" method="{1}" class="peTrainingExpertsSearchAction">
+			<result name="search_trainexp">/entity/manager/training_expert/search_input.jsp</result>
+			<result name="error">/entity/manager/training_expert/search_input.jsp</result>
+			<result name="search_result">/entity/manager/training_expert/search_output.jsp</result>
+			<result name="detail">/entity/manager/training_expert/expertdetail.jsp</result>
+			<result name="firstLogin" type="redirect">/entity/basic/userInfoEditAction_toEdit.action</result>
+			<result name="gridjs">/entity/manager/training_expert/gridjs.jsp</result>
+		</action>
+		<action name="peValuaExpertAction_*" method="{1}" class="peValuaExpertAction">
+			<result name="initDataPreAdd">/entity/manager/valuation_expert/valuationExpert_add.jsp</result>
+			<result name="addValuaExpert">/entity/manager/valuation_expert/valuationExpert_add.jsp</result>
+			<result name="editValuaExpert">/entity/manager/valuation_expert/valuationExpert_edit.jsp</result>
+			<result name="browseDetail">/entity/manager/valuation_expert/valuaExpertDetail.jsp</result>
+		</action>
+		<action name="peTraineeAction_*" method="{1}" class="peTraineeAction">
+			<result name="browseDetail">/entity/manager/trainee/traineeDetail.jsp</result>
+		</action>
+		<action name="peTraineeInTheWorkAction_*" method="{1}" class="peTraineeInTheWorkAction">
+		</action>
+		<action name="peTraineeInTrainingAction_*" method="{1}" class="peTraineeInTrainingAction">
+		</action>
+		<action name="userInfoEditAction_*" method="{1}" class="userInfoEditAction">
+			<result name="toEdit">/entity/manager/userinfo/userinfo_edit.jsp</result>
+			<result name="toView">/entity/manager/userinfo/userinfo_view.jsp</result>
+			<result name="toEditPw">/entity/manager/manager_modiPass.jsp</result>
+		</action>
+		<action name="peWorkplaceAction_*" method="{1}" class="peWorkplaceAction">
+		</action>
+		
+		<action name="peProApplyPriManager_*" method="{1}" class="peProApplyPriManager">
+		</action>
+		<action name="prSsoProAction_*" method="{1}" class="prSsoProAction">
+		</action>
+		<action name="peTraineeAduAction_*" method="{1}" class="peTraineeAduAction">
+		</action>
+	<!-- zhaoyuxiao end -->
+	</package>
+</struts>

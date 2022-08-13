@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>个人信息修改</title>
+<link href="../../manager/css/admincss.css" rel="stylesheet" type="text/css"/>
+<link href="../images/layout.css" rel="stylesheet" type="text/css" />
+</head>
+<script type="text/javascript">
+	function checkEmail()
+	{
+		if(document.getElementById('email').value==''){
+			return true;
+		}
+		var email=document.getElementById('email').value;
+		var pattern= /^([a-z.A-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+		if(!pattern.test(email))
+		{
+			alert("邮箱格式不正确！\n请重新输入");
+			return false;
+		}
+		return true;
+	}
+	
+	function checkMobilePhone()
+	{
+		if(document.getElementById('mobilephone').value.length==0){
+			return true;
+		}
+		var myMobile_no=document.getElementById('mobilephone').value;
+		var myreg=/^(((13[0-9]{1})|159|(15[0-9]{1}))+\d{8})$/;
+		if(!myreg.test(myMobile_no))
+		{
+			alert("手机号码不合法！\n请重新输入");
+			return false;
+		}
+		
+		return true;
+	}
+</script>
+<body>
+<div id="main_content">
+	<div class="content_title">您当前的位置是：学生Nick的工作室 &gt;&gt;修改个人信息</div>
+    <div class="student_cntent_k">
+    	<div class="k_cc">
+    	<form method="post" action="/entity/student/story/student_info.html">
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			  <tr>
+			      <td height="28" colspan="2" align="center" valign="middle" class="14title2"><div align="center">个人信息修改                            </div></td>
+			  </tr>
+				  <tr>
+				  <td colspan="2" ><table width="80%" border="0" align="center" cellpadding="0" cellspacing="0">
+	                             <tr valign="middle"> 
+	                               <td width="242"  height="30" align="left"><div align="left"><span class="name">所属学习中心：</span></div></td>
+	                               <td width="420" class="12texthei"><div align="left">
+	                                 why&nbsp;
+	                                 </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td width="242"  height="30" align="left"><div align="left"><span class="name">所属年级：</span></div></td>
+	                               <td class="12texthei"><div align="left">
+	                                 why2008年春&nbsp;
+	                                 </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td width="242"  height="30" align="left"><div align="left"><span class="name">所属层次：</span></div></td>
+	                               <td class="12texthei"><div align="left">
+	                                 专升本&nbsp;
+	                                 </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td width="242"  height="30" align="left"><div align="left"><span class="name">所属专业：</span></div></td>
+	                               <td class="12texthei"><div align="left">
+	                                 why专业&nbsp;
+	                                 </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td width="242"  height="30" align="left"><div align="left"><span class="name">学&nbsp;&nbsp;&nbsp;&nbsp;号：</span></div></td>
+	                               <td class="12texthei"><div align="left">
+	                                 000037&nbsp;
+	                                 </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td height="30" align="left"><div align="left"><span class="name">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</span></div></td>
+	                               <td class="12texthei"><div align="left">
+	                                 fz二3&nbsp;
+	                                 </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td height="30" align="left"><div align="left"><span class="name">性&nbsp;&nbsp;&nbsp;&nbsp;别：</span></div></td>
+	                               <td class="12texthei"><div align="left">
+	                                 男&nbsp;
+	                                 </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td height="30" align="left"><div align="left"><span class="name">民&nbsp;&nbsp;&nbsp;&nbsp;族：</span></div></td>
+	                               <td class="12texthei"><div align="left">
+	                                 &nbsp;
+	                                 </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td height="30" align="left"><div align="left"><span class="name">出生日期：</span></div></td>
+	                               <td class="12texthei"><div align="left">
+	                                 &nbsp;
+	                                 </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td height="30" align="left"><div align="left"><span class="name">政治面貌：</span></div></td>
+	                               <td class="12texthei"><div align="left">
+	                                 &nbsp;
+	                                 </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td height="30" align="left"><div align="left"><span class="name">文化程度：</span></div></td>
+	                               <td class="12texthei"><div align="left">
+	                                 &nbsp;
+	                                 </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td height="30" align="left"><div align="left"><span class="name">证件类型：</span></div></td>
+	                               <td class="12texthei"><div align="left">
+	                                 军(警)官证&nbsp;
+	                                 </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td height="30" align="left"><div align="left"><span class="name">证件号码：</span></div></td>
+	                               <td class="12texthei"><div align="left">
+	                                 3&nbsp;
+	                                 </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td height="30" align="left"><div align="left"><span class="name">通信地址：</span></div></td>
+	                               <td class="12texthei">
+	                               	
+                               		   <div align="left">
+	                               		  <input type="text" name="student.address" value="" maxlength="40"/>&nbsp; </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td height="30" align="left"><div align="left"><span class="name">邮政编码：</span></div></td>
+	                               <td class="12texthei">
+	                               	
+                               		   <div align="left">
+	                               		  <input type="text" name="student.zipAddress" value="101212" maxlength="10"/>&nbsp; </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td height="30" align="left"><div align="left"><span class="name">工作单位：</span></div></td>
+	                               <td class="12texthei">
+	                               	
+                               		   <div align="left">
+	                               		  <input type="text" name="student.workPlace" value="" maxlength="30"/>&nbsp; </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                             <tr valign="middle"> 
+	                               <td height="30" align="left"><div align="left"><span class="name">移动电话：</span></div></td>
+	                               <td class="12texthei">
+	                               	
+                               		   <div align="left">
+	                               		  <input type="text" name="student.mobilephone" value="13641325588" maxlength="11" id="mobilephone"  onblur="checkMobilePhone()" />&nbsp; </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td height="30" align="left"><div align="left"><span class="name">固定电话：</span></div></td>
+	                               <td class="12texthei">
+	                               	
+                               		   <div align="left">
+	                               		  <input type="text" name="student.phone" value="56644891" maxlength="20" />&nbsp; </div></td>
+	                             </tr>
+	                             <tr valign="middle"> 
+	                               <td height="30" align="left"><div align="left"><span class="name"> 
+	                                 电子邮件：</span></div></td>
+	                               <td class="12texthei">
+	                               	
+                               		   <div align="left">
+	                               		  <input type="text" name="student.email" id="email" value="ee@dd.com" maxlength="50" onblur="checkEmail()"/>&nbsp; </div></td>
+	                             </tr>
+	                           </table></td>
+				  </tr>
+				  <tr>
+                        <td colspan="2" height="8" align= "center"><input type="submit" name="submit" value="提交"/></td>
+			      </tr>
+			</table>
+		</form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

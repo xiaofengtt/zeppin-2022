@@ -1,0 +1,1 @@
+<%@ page language="java" pageEncoding="UTF-8"%><%@ taglib prefix="s" uri="/WEB-INF/struts-tags.tld" %><s:property value="getMsg()" escape="false"/>

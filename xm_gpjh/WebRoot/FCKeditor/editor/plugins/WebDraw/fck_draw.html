@@ -1,0 +1,83 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2008 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * Image Properties dialog window.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Equation Input</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="fck_mathml/css.css" rel="stylesheet" type="text/css">
+		<meta name="robots" content="noindex, nofollow" />
+		<script src="../../dialog/common/fck_dialog_common.js"
+			type="text/javascript"></script>
+		<script type="text/javascript">
+
+var dialog		= window.parent ;
+var oEditor		= dialog.InnerDialogLoaded() ;
+var FCK			= oEditor.FCK ;
+var FCKLang		= oEditor.FCKLang ;
+var FCKConfig	= oEditor.FCKConfig ;
+var FCKDebug	= oEditor.FCKDebug ;
+var FCKTools	= oEditor.FCKTools ;
+	
+		
+document.write( FCKTools.GetStyleHtml( GetCommonDialogCss() ) ) ;
+	function Help()
+	{
+		alert("帮助：绘图完毕后点击插入即可 "); 
+	}
+	
+	function do_paint()
+	{
+		width=document.popup.getWidth();
+		height=document.popup.getHeight();
+		
+		DisplayHTML="<applet archive=\"" + FCKConfig.BasePath + "/plugins/WebDraw/webdraw.jar\"  code=\"webdraw.ViewDraw.class\" WIDTH="+width+" HEIGHT="+height+">";
+		DisplayHTML+="<param name=draw value="+document.popup.getDrawString()+">";
+		DisplayHTML+="<param name=image value=image>";
+		DisplayHTML+="<param name=color value=white>";
+		DisplayHTML+="</applet>";
+				
+			oEditor.FCK.InsertHtml(DisplayHTML);
+	  	dialog.Cancel() ;
+	}
+	
+		</script>
+	</head>
+	<body topmargin="0" leftmargin="0" rightmargin="0">
+		<center>
+			<form name="myform">
+				<applet id=popup name=popup archive="webdraw.jar" code="webdraw.EditDraw"
+					WIDTH=550 HEIGHT=430>
+					<param name=draw value=draw />
+					<param name=image value=image />
+					<param name=port value=3140>
+				</applet>
+				<input type=button value="插入" onclick="do_paint()">
+				<input type=button value="帮助" onclick="Help()">
+
+			</form>
+		</center>
+	</body>
+
+
+</html>

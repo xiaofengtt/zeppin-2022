@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="xm_gpjh"
+  id="myeclipse.1268199095750"
+  context-root="/gpjh"
+  j2ee-spec="5.0"
+  archive="xm_gpjh.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

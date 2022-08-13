@@ -1,0 +1,142 @@
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	font-size: 12px;
+	line-height: 25px;
+	color: #343434;
+	font-family: "ËÎÌו";
+}
+.font{
+	font-size: 12px;
+	color:#343434;
+	text-decoration: none;
+}
+
+.baizi {
+	font-size: 12px;
+	color:#ffffff;
+	text-decoration: none;
+	line-height: 24px;
+}
+.bai {
+	font-size: 12px;
+	color:#ffffff;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 24px;
+}
+.bai:link {
+	font-size: 14px;
+	color:#ffffff;
+	text-decoration: none;
+	font-weight: bold;
+}
+.bai:hover {
+	COLOR:#c0a366; 
+	TEXT-DECORATION: none
+	
+}
+.bai:visited {
+	COLOR:#ffffff;
+	TEXT-DECORATION: none
+	
+}
+
+.hei {
+	font-size: 14px;
+	color:#000;
+	text-decoration: none;
+	font-weight: bold;
+}
+.menuzi:link {
+	font-size: 12px;
+	color:#922c09;
+	text-decoration: none;
+	font-weight: bold;
+}
+.menuzi:visited {
+	COLOR:#922c09;
+	 TEXT-DECORATION: none;
+	font-weight: bold;
+}
+
+.menuzi:hover {
+	COLOR:#000000; 
+	TEXT-DECORATION: none;
+	font-weight: bold;
+}
+
+
+.titlezi {
+	font-size: 14px;
+	color:#7c2b0f;
+	text-decoration: none;
+	font-weight: bold;
+	text-align: center;
+}
+.yellowzi {
+	font-size: 12px;
+	color:#ffd200;
+	text-decoration: none;
+	font-weight: bold;
+	text-align: center;
+}
+.xuxian {
+	border-bottom-style: none;
+	border-right-color: #D5D0C8;
+	border-right-width: 1px;
+	border-right-style: dashed;
+}
+
+.biankuang {
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #d8d8d8;
+	border-bottom-color: #d8d8d8;
+	border-left-color: #d8d8d8;
+	font-size: 12px;
+	line-height: 25px;
+	color: #343434;
+}
+
+
+
+.picxian {
+	margin: 1px;
+	padding: 1px;
+	border: 1px solid #DFDFDF;
+}
+
+
+
+
+.cd_1-off{
+	width:205px;
+	height:26px;
+	font-size:12px;
+	color:#AA1E05;
+	padding:4px 5px 0px 20px;
+	margin:0px 0px 2px 0px;
+	cursor:pointer;
+	background-image: url(../images/leftmenubg2.jpg);
+}
+.cd_1-on{
+width:205px;
+height:26px;
+font-size:12px;
+color:#AA1E05;
+padding:4px 5px 0px 20px;
+margin:0px 0px 2px 0px;
+cursor:pointer;
+background-image: url(../images/leftmenubg1.jpg);
+}

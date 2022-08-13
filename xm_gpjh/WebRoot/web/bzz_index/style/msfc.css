@@ -1,0 +1,129 @@
+.ms_title {
+	font-size: 14px;
+	font-weight: bold;
+	color: #074373;
+	text-align: center;
+}
+.ms_title1 {
+	font-size: 16px;
+	font-weight: bold;
+	color: #074373;
+	text-align: center;
+}
+.msfc_title {
+	background-image: url(../msfc/images/msfc_15.jpg);
+	background-repeat: repeat-x;
+	background-position: center;
+}
+.ms_title_t {
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+}
+.ms_title_t1 {
+	font-size: 14px;
+	font-weight: bold;
+	color: #ff6600;
+}
+.msfc_left_t {
+	font-size: 12px;
+	font-weight: normal;
+	color: #333333;
+	line-height: 24px;
+}
+
+.list_box {
+	background-image: url(../msfc/images/msfc_33.jpg);
+	background-repeat: repeat-x;
+	margin-bottom: 10px;
+	background-position: bottom;
+}
+.list_box td {
+	font-size: 12px;
+	color: #333333;
+	line-height: 24px;
+}
+.msfc_name {
+	font-size: 12px;
+	font-weight: bold;
+	color: #CC0000;
+	background-image: url(../msfc/images/msfc_24.jpg);
+	display: block;
+	background-repeat: no-repeat;
+	margin: 0px;
+	padding: 0px;
+	background-position: left 5px;
+	text-indent: 20px;
+}
+.msfc_name1 {
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+	display: block;
+	background-repeat: no-repeat;
+	margin: 0px;
+	padding: 0px;
+	background-position: left 5px;
+	text-indent: 20px;
+}
+.page {
+	float: left;
+	height: 20px;
+	padding-top:10px;
+	padding-bottom:10px;
+	margin-top:5px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #d38a00;
+	font-size: 12px;
+	color: #333333;
+}
+.page a,.page a:link,.page a:visited{
+font-size:12px;
+color:#333333;
+text-decoration:none;
+}
+.page a:hover{
+font-size:12px;
+color:#B91E00;
+text-decoration:none;
+}
+.page .in_text {
+	width: 30px;
+	height: 20px;
+	font-size: 12px;
+}
+/*以下时三级页*/
+#pic{
+border:1px solid #cacaca;
+float:left;
+margin:0 15px 5px 0px;
+}
+#pic img{
+margin:2px;
+}
+.text_news h5{
+font-size:14px;
+color:#0048b3;
+text-align:left;
+}
+.text_news p{
+text-indent:24px;
+line-height:24px;
+}
+#author{
+background:url(../msfc/images/msfc_pic_11.jpg) repeat-x;
+height:21px;
+width:80px;
+color:#fff;
+font-size:16px;
+text-align:center;
+line-height:21px;}
+#zw{
+background:#bbbbbb;
+height:21px;
+line-height:21px;
+padding:0 15px;
+color:#fff;
+font-size:14px;
+}

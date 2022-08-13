@@ -1,0 +1,21 @@
+{
+    "Records": [
+        {
+			"id": 1, 
+            "name": "1", 
+            "level": "3", 
+            "status": "1"
+            
+        }, 
+        {
+			"id": 2, 
+            "name": "2", 
+            "level": "3", 
+            "status": "1"
+            
+        }
+      
+    ], 
+    "Result": "OK", 
+    "TotalRecordCount": 3
+}

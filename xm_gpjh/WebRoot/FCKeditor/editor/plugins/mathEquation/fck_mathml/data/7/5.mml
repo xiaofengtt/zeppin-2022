@@ -1,0 +1,14 @@
+<math>
+  <apply>
+    <divide/>
+    <apply>
+      <factorial/>
+      <ci>n</ci>
+    </apply>
+    <apply>
+      <factorial/>
+      <ci>r</ci>
+    </apply>
+  </apply>
+</math>
+

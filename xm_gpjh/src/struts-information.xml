@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="entity.information" extends="platform-default" namespace="/entity/information">
+		<global-results>
+			<result name="ajax" >/WEB-INF/template/entity/pub/ajaxcheck.jsp</result>
+			<result name="smsdetail">/entity/manager/information/sms/sms_detail.jsp</result>
+			<result name="emaildetail">/entity/manager/information/sms/email_detail.jsp</result>
+		</global-results>
+		<!--longyinsong-->
+		<action name="peEnterprisesInfoPrint_*" method="{1}" class="peEnterprisesInfoPrintAction">
+			<result name ="managerInfo">/entity/manager/information/infoprint/printlist_manager.jsp</result>
+		</action>
+		
+		<action name="peBzzStudentInfoPrint_*" method="{1}" class="peBzzStudentInfoPrintAction">
+			<result name="studentinfo">/entity/manager/information/infoprint/printlist_student.jsp</result>
+		</action>
+		<!-- longyinsong end -->
+
+		<action name="peBulletinView_*" method="{1}" class="peBulletinViewAction">
+			<result name="detail">/entity/manager/information/bulletin_detail.jsp</result>
+		</action>
+		<action name="pePolicyView_*" method="{1}" class="pePolicyViewAction">
+			<result name="detail">/entity/manager/information/policy_detail.jsp</result>
+		</action>
+		<action name="pePolicy_*" method="{1}" class="pePolicyAction">
+			<result name="show_add_notice">/entity/manager/info/info_policies_add.jsp</result>
+			<result name="show_edit_notice">/entity/manager/info/info_policies_update.jsp</result>
+			<result name="message">/test/msg.jsp</result>
+		</action>
+		<action name="peDocumentView_*" method="{1}" class="peDocumentViewAction">
+			<result name="detail">/entity/manager/information/document_detail.jsp</result>
+		</action>
+		<action name="peInfoNews_*" method="{1}" class="peInfoNewsAction">
+			<result name="detail">/entity/manager/information/infoNews_detail.jsp</result>
+			<result name="newList">/entity/manager/info/news_add.jsp</result>
+			<result name="addNews">/entity/manager/info/infomessage.jsp</result>
+			<result name="modifyNews">/entity/manager/info/news_update.jsp</result>
+		</action>		
+		<action name="peBulletin_*" method="{1}" class="peBulletinAction">
+			<result name="show_add_notice">/entity/manager/info/info_news_add.jsp</result>
+			<result name="show_edit_notice">/entity/manager/info/info_news_update.jsp</result>
+			<result name="message">/test/msg.jsp</result>
+		</action>
+		<action name="peDocumentOutbox_*" method="{1}" class="peDocumentOutboxAction">
+			<result name="editnew">/entity/manager/information/new_document_.jsp</result>
+		</action>
+		<action name="peDocument_*" method="{1}" class="peDocumentAction">
+			<result name="editnew">/entity/manager/information/new_document_.jsp</result>
+		</action>
+		<action name="peSystemSmsPoint_*" method="{1}" class="peSystemSmsPointAction">
+		</action>
+		<action name="peSmsCheck_*" method="{1}" class="peSmsCheckAction">
+		</action>
+		<action name="peSms_*" method="{1}" class="peSmsAction">
+		</action>
+		<action name="peSmsStatistic_*" method="{1}" class="peSmsStatisticAction">
+			<result name="selectTime">/entity/manager/information/sms/smsTimeStat.jsp</result>
+		</action>
+		<action name="teacherPhoneView_*" method="{1}" class="teacherPhoneViewAction">
+		</action>
+		<action name="studentPhoneView_*" method="{1}" class="studentPhoneViewAction">
+		</action>
+		<action name="managerPhoneView_*" method="{1}" class="managerPhoneViewAction">
+		</action>
+		<action name="siteManagerPhoneView_*" method="{1}" class="siteManagerPhoneViewAction">
+		</action>
+		<action name="personalInfo_*" method="{1}" class="personalInfoAction">
+			<result name="info_detail">/entity/manager/information/info_detail.jsp</result>
+			<result name="info_view">/entity/information/personalInfo_viewInfo.action</result>
+			<result name="edit_manager_Info">/entity/manager/information/edit_manager_info.jsp</result>
+			<result name="edit_sitemanager_Info">/entity/manager/information/edit_sitemanager_info.jsp</result>
+			<result name="pwd">/entity/manager/information/input_password.jsp</result>
+		</action>
+		<action name="peVotePaperInit_*" method="{1}" class="peVotePaperInitAction"></action>
+		<action name="peVotePaper_*" method="{1}" class="peVotePaperAction">
+			<result name="addVotePaper">/entity/manager/information/vote/votepaper_add.jsp</result>
+			<result name="detail">/entity/manager/information/vote/votepaper_info.jsp</result>
+			<result name="voteQuestion">/entity/manager/information/vote/votequestion_manage.jsp</result>
+			<result name="editVotePaper">/entity/manager/information/vote/votepaper_edit.jsp</result>
+			<result name="searchToVotePaper">/entity/manager/information/vote/search_to_VotePaper.jsp</result>
+		</action>	
+		<action name="prVoteQuestion_*" method="{1}" class="prVoteQuestionAction">
+			<result name="addQuestion">/entity/manager/information/vote/votequestion_add.jsp</result>
+			<result name="editQuestion">/entity/manager/information/vote/votequestion_edit.jsp</result>
+		</action>	
+		<action name="prVoteSuggest_*" method="{1}" class="prVoteSuggestAction">
+			<result name="view">/entity/manager/information/vote/votesuggest_info.jsp</result>
+		</action>				
+		<action name="prSmsSendStatus_*" method="{1}" class="prSmsSendStatusAction">
+		</action>
+		<action name="prVoteRecord_*" method="{1}" class="prVoteRecordAction">
+			<result name="searchToVotePaper">/entity/manager/information/vote/search_to_VoteRecord.jsp</result>
+		</action>
+		
+		
+		<!-- jiangwanhong begin -->
+		
+		<action name="inProgress_*" method="{1}" class="inProgressAction">
+			<result name="construct">/entity/manager/information/inprogress.jsp</result>
+			<result name="print">/entity/manager/information/print.jsp</result>
+		</action>
+		
+		<!-- jiangwanhong begin -->
+		
+		<action name="peVotePaperList_*" method="{1}" class="peVotePaperActionList">
+		</action>
+		<!-- 调查问卷前5名最受欢迎教师和专题 -->	
+		<action name="peVoteTeacherResult_*" method="{1}" class="peVoteTeacherResult">
+		</action>	
+		
+		<action name="infoDownload_*" method="{1}" class="infoDownloadAction">
+			<result name="infodown">/entity/manager/information/info_download.jsp</result>
+		</action>
+		<!-- zhaoyuxiao begin -->
+		<action name="peSmsInfoAction_*" method="{1}" class="peSmsInfoAction">
+		</action>
+		<action name="peSmsSystemPointAction_*" method="{1}" class="peSmsSystemPointAction">
+		</action>
+		<action name="peSmsInfoManageAction_*" method="{1}" class="peSmsInfoManageAction">
+		</action>
+		<action name="smsNewAction_*" method="{1}" class="smsNewAction">
+			<result name="newSms">/entity/manager/sms/new_sms.jsp</result>
+			<result name="manager_list">/entity/manager/sms/manager_list.jsp</result>
+			<result name="sendResult">/entity/manager/sms/sms_send.jsp</result>
+		</action>
+		<action name="smsStatisticsAction_*" method="{1}" class="smsStatisticsAction">
+		</action>
+		<!-- zhaoyuxiao end -->
+		
+		<!-- lipengfei begin -->
+		<!-- 会议管理 start -->
+		<action name="peMeeting_*" method="{1}" class="peMeetingAction">
+			<result name="show_add_meeting">/entity/manager/info/info_meeting_add.jsp</result>
+			<result name="show_edit_meeting">/entity/manager/info/info_meeting_update.jsp</result>
+			<result name="assin_unit_to_receipt">/entity/manager/info/assin_unit_to_receipt.jsp</result>
+			<result name="assin_unit_to_upload">/entity/manager/info/assin_unit_to_upload.jsp</result>
+			<result name="add_receipt">/entity/manager/info/add_receipt.jsp</result>
+			<result name="view_attent_meeting_person">/entity/manager/info/view_attent_meeting_person.jsp</result>
+			<result name="view_assinedUnit_toReceipt">/entity/manager/info/view_assinedUnit_toReceipt.jsp</result>
+			<result name="view_assinedUnit_toUpload">/entity/manager/info/view_assinedUnit_toUpload.jsp</result>
+			<result name="view_meeting_detail">/entity/manager/info/view_meeting_detail.jsp</result>
+			<result name="msg">/test/msg.jsp</result>
+		</action>
+		<action name="peMeetingResource_*" method="{1}" class="peMeetingResourceAction">
+			<param name="filePath">/incoming/meetFile/</param>
+			<result name="upload_meeting_resource">/entity/manager/info/upload_meeting_resource.jsp</result>
+		</action>
+		<action name="prMeetPerson_*" method="{1}" class="prMeetPersonAction">
+		</action>
+		<!-- 会议管理 end -->
+		<!-- 任务管理 start -->
+		
+		<action name="peJob_*" method="{1}" class="peJobAction">
+			<result name="viewJob">/entity/manager/info/view_job_detail.jsp</result>
+			<result name="show_add_job">/entity/manager/info/add_job.jsp</result>
+		</action>
+			<action name="prJobUnit_*" method="{1}" class="prJobUnitAction">
+			<result name="show_add_job">/entity/manager/info/add_job.jsp</result>
+		</action>
+		<action name="prJobUnitInit_*" method="{1}" class="prJobUnitInitAction">
+			<result name="upload_job_resource">/entity/manager/info/upload_job_resource.jsp</result>
+			<result name="view_Reply">/entity/manager/info/reply_note.jsp</result>
+		</action>	
+		<!-- 任务管理lipengfei end -->
+		
+		<!-- 邮件与短信 管理 侯学龙 -->
+		<action name="noteAction_*" method="{1}" class="noteAction">
+			<result name="sendMailPage">/entity/manager/info/sendEmail.jsp</result>
+			<param name="savePath">/incoming/emailFiles/</param>
+		</action>
+		<!-- 学员短信与邮件管理 -->
+		<action name="msg4PeTrainee_*" method="{1}" class="msg4PeTraineeAction">
+			<result name="sendMailPage">/entity/manager/info/sendEmail.jsp</result>
+			<param name="savePath">/incoming/emailFiles/</param>
+		</action>
+		<!-- 评审专家 短信与邮件管理 -->
+		<action name="msg4PeValueExpert_*" method="{1}" class="msg4PevalueExpertAction">
+			<result name="sendMailPage">/entity/manager/info/sendEmail.jsp</result>
+			<param name="savePath">/incoming/emailFiles/</param>
+		</action>
+		
+		<!--联系人短信查询 韩高升 -->
+		<action name="msg4PeManagerSearch_*" method="{1}" class="msg4PeManagerSearchAction">
+		</action>
+		<!-- 学员短信查询 韩高升 -->
+		<action name="msg4PeTraineeSearch_*" method="{1}" class="msg4PeTraineeSearchAction">
+		</action>
+		<!-- 评审专家短信查询 韩高升-->
+		<action name="msg4PeValueExpertSearch_*" method="{1}" class="msg4PeValueExpertSearchAction">
+		</action>
+		<!--联系人邮件查询 韩高升 -->
+		<action name="email4PeManagerSearch_*" method="{1}" class="email4PeManagerSearchAction">
+		</action>
+		<!-- 学员邮件查询 韩高升 -->
+		<action name="email4PeTraineeSearch_*" method="{1}" class="email4PeTraineeSearchAction">
+		</action>
+		<!-- 评审专家邮件查询 韩高升-->
+		<action name="email4PeValueExpertSearch_*" method="{1}" class="email4PeValueExpertSearchAction">
+		</action>
+	</package>
+</struts>

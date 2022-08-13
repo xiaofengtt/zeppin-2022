@@ -1,0 +1,125 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>教学计划</title>
+<link href="/entity/student/images/layout.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+.STYLE1 {color: #FF0000}
+-->
+</style>
+</head>
+
+<body>
+<div id="main_content">
+	<div class="content_title">教学计划</div>
+<div class="student_cntent_k">
+    	<div class="k_cc">
+<table width="100%" border="0" align="center" cellpadding="5" cellspacing="0" >
+	<tr> 
+      <td height="17" class="td"><font color="#000000">---教学计划课程列表</font>		
+	  </td>
+    </tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr class="table_bg1"> 
+		<td height=25px  align=center >课程编号</td>
+		<td height=25px  align=center >课程名称</td>
+        <td height=25px  align=center >课程类别</td>
+        <td height=25px  align=center >学分</td>
+        <td height=25px align=center >所属学期</td>
+        <td height=25px  align=center >操作</td>
+</tr>
+
+  <tr class="table_bg1">
+    <td colspan="6">
+    <table border="0" align="right" cellpadding="0" cellspacing="5">
+      <tr>
+        
+
+<script language="javascript">
+			function pageGuarding()
+			{
+				var xPage = document.jump.pageNo.value;
+				var maxPage = document.jump.maxPage.value;
+
+				var isError = false;
+				
+				for (var i=0;i<xPage.length;i++)
+				{
+					var k = xPage.charAt(i);
+					if ((k<'0') || (k>'9'))
+					{
+						isError=true;
+						break;
+					}
+				}
+				if ((xPage=="0")||(xPage=="")||parseInt(xPage,10)>parseInt(maxPage,10)|| parseInt(xPage,10)<1)
+				{
+					
+					isError=true;
+				}
+
+				if (isError)
+				{
+					alert("输入页数错误，该页无法跳转！");
+					document.jump.pageNo.vaule="";
+					document.jump.pageNo.focus();
+					document.jump.pageNo.select();
+					return false;
+				}
+				else
+					return true;
+			}
+</script>
+
+<table border="0" cellpadding="2" cellspacing="1" align="center" width=100%>
+	<tr>
+	<form name="jump" method="post" action="/entity/student/studentstudio_getTeachPlan.action" onsubmit="return pageGuarding()">
+		<td align=center width=40% style="font-family: Tahoma,Georgia;font-size: 9pt;"> 
+		
+			
+		
+		
+		</td>
+		<td align="center" width=20% style="font-family: Tahoma,Georgia;font-size: 9pt;"> 
+         共1页 &nbsp;&nbsp;第1页&nbsp;&nbsp;&nbsp; 
+		</td>
+		<td align="center" width=20% style="font-family: Tahoma,Georgia;font-size: 9pt;">
+			跳转到第<input  type="text" name="pageNo" type="text" size="3" maxlength="5">页
+			<input type=hidden name=maxPage value="1" >
+	    </td>
+	    <td align="center">
+			<input name=Submit type=image src="/entity/images/go1.gif" width="40" height="20" border=0>
+		</td>
+	</form>
+		
+	<form name="setsize" method="post" action="/entity/student/studentstudio_getTeachPlan.action?isLimit=1">
+		<td align=center width=25% style="font-family: Tahoma,Georgia;font-size: 9pt;">
+    	每页
+			<select name="limit" onChange="document.setsize.submit()">
+				<option value="10" selected >10</option>
+				<option value="20"  >20</option>
+				<option value="30"  >30</option>
+				<option value="50"  >50</option>
+				<option value="100"  >100</option>
+			</select>
+    	条
+		</td>
+	</form>
+	</tr>
+</table>
+
+      </tr>
+    </table></td>
+    </tr>
+</table>
+</table>
+    </div>
+    </div>
+</div>
+</body>
+</html>

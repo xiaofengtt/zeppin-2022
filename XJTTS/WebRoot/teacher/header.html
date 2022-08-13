@@ -1,0 +1,96 @@
+<style>
+    .avatarBar{
+        position: absolute;
+        right: 62px;
+        width: 80px;
+        top: 58px;
+        -moz-transition: all 0.5s ease-in;
+        -webkit-transition: all 0.5s ease-in;
+        -o-transition: all 0.5s ease-in;
+        transition: all 0.5s ease-in;
+    }
+    .open .avatarBar{
+        display: none;
+    }
+</style>
+<!-- Static navbar -->
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="">
+            <div class="nav navbar-header  uni-logo col-lg-6">
+                <a href="index.html"><img src="../images/logo.png" class="img-responsive" style="margin-top: 10px;height: 40px;" alt="新疆教师信息服务平台"/></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <img id="userAvatar" class="img-rounded avatar" alt=""/>
+                            &nbsp;个人信息<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu userInfoDropdown">
+                            <li><a href="userInformation.html"><i class="fa fa-user userInfoIcon"></i>&nbsp;&nbsp;修改信息</a></li>
+                            <li><a href="resetPhone.html"><i class="fa fa-mobile userInfoIcon" style="font-size: 25px;"></i>&nbsp;&nbsp;修改手机</a></li>
+                            <li><a href="resetPassword.html"><i class="fa fa-lock userInfoIcon"></i>&nbsp;&nbsp;修改密码</a></li>
+                            <li><a href="mailListForTeacher.html"><i class="fa fa-envelope userInfoIcon"></i>&nbsp;&nbsp;我的消息</a></li>
+                            <li><a onclick="exit(); return false;"><i class="fa fa-power-off userInfoIcon"></i>&nbsp;&nbsp;退出</a></li>
+                        </ul>
+                        <img id="avatarBar" class="img-rounded avatarBar" src="../images/avatarBottom.png" alt=""/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var today = new Date();
+    var Day = today.getDay();
+    var Month = today.getMonth()+1;
+    switch(Day)
+    {
+        case 0:
+            Day = "Sunday";break;
+        case 1:
+            Day = "Monday";break;
+        case 2:
+            Day = "Tuesday";break;
+        case 3:
+            Day = "Wednesday";break;
+        case 4:
+            Day = "Thursday";break;
+        case 5:
+            Day = "Friday";break;
+        case 6:
+            Day = "Saturday";break;
+    }
+//    date.innerText = today.getFullYear() + "/" + Month + "/" +today.getDate();
+//    week.innerText = Day;
+    $.ajax({
+        type: "post",
+        url: "../teacher/tinfo_getHeadImg.action",
+        success: function (data) {
+            if(data.Result == "FAILED")window.location.href="login.html";
+            if(data.Result == "OK"){
+                if(data.Records.headImgPath == '0'){
+                    $("#userAvatar").attr("src","../images/userInfomation/default.png");
+                }
+                else{
+                    $("#userAvatar").attr("src",data.Records.headImgPath);
+                }
+            }
+            else{
+                console.log(data);
+            }
+        }
+    })
+    function exit(){
+        $.ajax({
+            url:'../teacher/tlg_logout.action',
+            method:'post',
+            success:function(data){
+                if(data.Result == "OK"){
+                    window.location.href="login.html";
+                }
+            }
+        })
+    }
+</script>

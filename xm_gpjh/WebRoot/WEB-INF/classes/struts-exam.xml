@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="entity.exam" extends="platform-default" namespace="/entity/exam">
+		
+		<action name="maincourseStat_*" method="{1}" class="maincourseStatAction">
+		</action>
+		<action name="peFinalExam_*" method="{1}" class="peFinalExamAction">
+		</action>
+		<action name="peFinalExamApply_*" method="{1}" class="peFinalExamApplyAction">
+		</action>
+		<action name="finalExamNoBooking_*" method="{1}" class="finalExamNoBookingAction">
+		</action>		
+		<action name="prFinalExamApplyCount_*" method="{1}" class="prFinalExamApplyCountAction">
+		</action>
+		<action name="peExamno_*" method="{1}" class="peExamnoAction">
+		</action>
+		<action name="prExamPaperCount_*" method="{1}" class="prExamPaperCountAction">
+		</action>
+		<action name="peMainCourseTime_*" method="{1}" class="peMainCourseTimeAction">
+		</action>
+		<action name="peMainCourseExamRoom_*" method="{1}" class="peMainCourseExamRoomAction">
+		</action>
+		<action name="finalExamPrint_*" method="{1}" class="finalExamPrintAction">
+				<result name="signIn">/entity/manager/exam/exam_sign_in_print.jsp</result>
+				<result name="seatNo">/entity/manager/exam/exam_seat_no_print.jsp</result>
+				<result name="drawPrint">/entity/manager/exam/exam_drawing_print.jsp</result>
+		</action>
+		<action name="examPaperStat_*" method="{1}" class="examPaperStatAction">
+		</action>		
+		<!-- zhangyu  begin -->
+		
+		<action name="examBooking_*" method="{1}" class="examBookingAction">
+		</action>
+		<!-- zhangyu  end -->
+		<action name="peMainCourseScoreRecheck_*" method="{1}" class="mainCourseScoreRecheckAction">
+		</action>		
+		<action name="examScoreReCheck_*" method="{1}" class="examScoreReCheckAction">
+		</action>			
+		<action name="workScoreReCheck_*" method="{1}" class="workScoreReCheckAction">
+		</action>			
+		<action name="normalScoreReCheck_*" method="{1}" class="normalScoreReCheckAction">
+		</action>			
+		<action name="examAvoidApply_*" method="{1}" class="examAvoidApplyAction">
+		</action>			
+		<action name="computerAvoidApply_*" method="{1}" class="computerAvoidApplyAction">
+		</action>		
+		<action name="englishBAvoidApply_*" method="{1}" class="englishBAvoidApplyAction">
+		</action>		
+		<action name="englishAAvoidApply_*" method="{1}" class="englishAAvoidApplyAction">
+		</action>
+		<action name="peSiteLine_*" method="{1}" class="peSiteLineAction">
+		</action>		
+		<action name="peExamPatrol_*" method="{1}" class="peExamPatrolAction">
+		</action>
+		<action name="peExamPatrolManage_*" method="{1}" class="peExamPatrolManageAction">
+		</action>
+		<action name="examInfoSearch_*" method="{1}" class="examInfoSearchAction">
+		</action>
+		<action name="peExamRoom_*" method="{1}" class="peExamRoomAction">
+		</action>
+		<action name="prExamBooking_*" method="{1}" class="prExamBookingAction">
+		</action>
+		<action name="examScore_*" method="{1}" class="examScoreAction">
+		</action>
+		<action name="examScoreApplayManage_*" method="{1}" class="examScoreApplayManageAction">
+		</action>
+		<action name="peExamMaincourseNo_*" method="{1}" class="peExamMaincourseNoAction">
+		</action>
+		<action name="examMaincourseSet_*" method="{1}" class="examMaincourseSetAction">
+		</action>
+		<action name="prExamOpenMaincourse_*" method="{1}" class="prExamOpenMaincourseAction">
+		</action>
+		<action name="peExamMaincourseRoom_*" method="{1}" class="peExamMaincourseRoomAction">
+		</action>
+		<action name="maincourseExamBooking_*" method="{1}" class="maincourseExamBookingAction">
+		</action>
+		<action name="maincourseElectivecourse_*" method="{1}" class="maincourseElectivecourseAction">
+		</action>
+		<action name="maincourseElectiveManage_*" method="{1}" class="maincourseElectiveManageAction">
+		</action>
+		<action name="maincourseScoreManage_*" method="{1}" class="maincourseScoreManageAction">
+		</action>
+		
+		<action name="examscoreexportinputdata_*" method="{1}" class="examScoreExportInputDataAction">
+		</action>
+		<action name="prexamscoreinputuser_*" method="{1}" class="prExamScoreInputUserAcion">
+			<result name="careatinputusers">/entity/manager/exam/exam_creatInputUsers.jsp</result>
+			<result name="edit">/entity/manager/exam/exam_score_inputuser_edit.jsp</result>
+			<result name="setinputstatus">/entity/manager/exam/exam_score_inputuser_pri.jsp</result>			
+		</action>
+		<action name="examscoreinputstatistic_*" method="{1}" class="examScoreInputStatisticAction">
+		</action>
+		<action name="examscoreinput_*" method="{1}" class="examScoreInputAction">
+		</action>
+	</package>
+</struts>

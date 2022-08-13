@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<title>我的资料</title>
+		<link rel="stylesheet" href="./css/base.css">
+		<link rel="stylesheet" href="./css/myMessage.css">
+		<meta name="format-detection" content="telephone=no" />
+
+		<script id="queboxTpl" type="text/template">
+			{{if checkStatus==1}}
+				<div class="top_bar">审核中...</div>
+			{{else checkStatus==0}}
+				<div class="top_bar">
+					审核未通过!
+					<p>
+						原因：{{:checkReason}}
+					</p>
+				</div>
+				
+			{{else status == 0}}
+				{{if disableType == 0}}
+					<div class="top_bar">
+						您已被永久停用！
+						<p>
+							原因：{{:reason}}
+						</p>
+					</div>
+				{{else disableType == 2}}
+					<div class="top_bar">
+						您已被停用！截止日期：{{:releaseTime}}
+						<p>
+							原因：{{:reason}}
+						</p>
+					</div>
+				{{/if}}
+			{{/if}}
+			
+				
+
+
+			<header>
+				<div>
+					<div class="img_bd"><img src="{{:photo.sourcePath}}"></div> <span {{if sex=='1' }}class="man_head" {{else}}class="woman_head" {{/if}}>{{:name}}</span> <span>{{:intgral}}积分</span>
+				</div>
+				<a href="editTeacher.html?id={{:id}}">修改资料</a>
+			</header>
+			<main>
+				<div class="main_top">
+					<img src="./img/ic_green.png" class="logo">
+					<ul>
+						<li class="b_t">身份证号<span>{{:idcard}}</span></li>
+						<li class="b_t">交通银行卡号<span>{{:bankCard}}</span></li>
+						<li class="b_t">学工号<span>{{:sid}}</span></li>
+						<li class="b_t">民族<span>{{:ethnic}}</span></li>
+						<li class="b_t">手机号<span>{{:mobile}}</span></li>
+					</ul>
+				</div>
+
+				<div class="main_center">
+					<img src="./img/ic_bule.png" class="logo">
+					<ul>
+						<li class="b_t">身份类别 <span>{{if type=='1'}}考务组{{/if}}{{if type=='2'}}研究生{{/if}}{{if type=='3'}}教工{{/if}}</span>
+						</li>
+	                    {{if type =='2'}}
+						  <li class="b_t">专业 <span>{{:studyMajor}}</span></li>
+						  <li class="b_t">年级 <span>{{:studyGrade}}</span></li>
+						{{else}}
+						  <li class="b_t">职务 <span>{{:jobDuty}}</span></li>
+						  <li class="b_t">所学专业<span>{{:major}}</span></li>
+						{{/if}}
+						<li class="b_t">所在部门 <span>{{:organization}}</span>
+						</li>
+
+						<li class="b_t">入校时间 <span>{{:inschooltime}}</span>
+						</li>
+						<li class="b_t">监考校区 <span>{{:invigilateCampusCN}}</span>
+						</li>
+						<!--<li class="b_t">监考类型 <span>{{:invigilateTypeCN}}</span>
+						</li>-->
+
+						<li class="b_t b_r_1 isChiefExaminer">主考经验{{if isChiefExaminer=='1'}} <img src="./img/ic_yes.png">{{/if}}{{if isChiefExaminer=='0'}}<img src="./img/ic_nothing.png">{{/if}}
+						</li>
+						<li class="b_t isMixedExaminer">混合监考经验{{if isMixedExaminer=='1'}}<img src="./img/ic_yes.png">{{/if}}{{if isMixedExaminer=='0'}}<img src="./img/ic_nothing.png">{{/if}}
+						</li>
+					</ul>
+				</div>
+
+				<div class="main_bottom">
+					<img src="./img/ic_green.png" class="logo"> <span class="title">特长</span>
+					<span class="text"> {{:specialty}}</span>
+				</div>
+		</script>
+	</head>
+
+	<body>
+		<!-- <header>
+		<div>
+			<img src="./img/userBig.png"> <span>张三</span> <span>124积分</span>
+		</div>
+		<a href="">修改资料</a>
+	</header>
+	<main>
+	<div class="main_top">
+		<img src="./img/ic_green.png" class="logo">
+		<ul>
+			<li class="b_b">身份证号<span>42061919909998642</span></li>
+			<li class="b_b">民族<span>汉</span></li>
+			<li class="b_b">所学专业<span>信息电子传播</span></li>
+			<li>手机号<span>18760824967</span></li>
+		</ul>
+	</div>
+
+	<div class="main_center">
+		<img src="./img/ic_bule.png" class="logo">
+		<ul>
+			<li class="b_b">身份类别 <span>考务组</span>
+			</li>
+
+			<li class="b_b">所在部门 <span>教务处</span>
+			</li>
+
+			<li class="b_b">入校时间 <span>2006/09/01</span>
+			</li>
+
+			<li class="b_r">主考经验 <img src="./img/ic_yes.png">
+			</li>
+			<li>混合监考经验 <img src="./img/ic_nothing.png">
+			</li>
+		</ul>
+	</div>
+
+	<div class="main_bottom">
+		<img src="./img/ic_green.png" class="logo"> <span class="title">特长</span>
+		<span class="text"> 善于言辞，专业课扎实，作风优良，是一个负责任的老师。 </span>
+	</div> -->
+		<div id="queboxCnt"></div>
+		</main>
+		<script src="../js/jquery-1.11.1.js"></script>
+		<script src="../js/jquery.cookie.js"></script>
+		<script src="../js/jquery-ui.js"></script>
+		<script src="../js/url.min.js"></script>
+		<script src="../js/jquery.colorbox.js"></script>
+		<script type="text/javascript" src="../js/jsrender.min.js"></script>
+		<script type="text/javascript" src="../js/query.js"></script>
+		<script src="../js/paging.js"></script>
+	</body>
+
+</html>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var code = url('?code') == null ? '' : url('?code');
+		
+		$.ajax({
+			type:"get",
+			url:"../weixin/weixinGetInfo?code="+code,
+			async:true,
+			success:function(r){
+				if (r.Status == 'unlogin') {
+
+					window.location.href =r.Records;
+					//window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2a3df3ca05c5be3f&redirect_uri=http://df3c45ab.ngrok.io/XJEMS/XJ_wechat/login.html?pagename=myMessage&response_type=code&scope=snsapi_userinfo&state=xj#wechat_redirect';
+
+					/* window.location.href='login.html?pagename=myMessage'; */
+				}else if (r.Status == 'success') {
+					var template = $.templates('#queboxTpl');
+					var html = template.render(r.Records);
+					$('#queboxCnt').html(html);
+				}
+			}
+		});
+	})
+</script>

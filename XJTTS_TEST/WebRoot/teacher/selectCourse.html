@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>学前测评</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/lib/normalize.css"/>
+    <link rel="stylesheet" href="../css/lib/font-awesome.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+
+    <link href="../css/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="../css/metro/blue/jtable.css" rel="stylesheet" type="text/css">
+    <link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../css/ui-dialog.css">
+
+    <link rel="stylesheet" href="../css/selectCourse.css"/>
+
+
+</head>
+<body>
+<div id="header"></div>
+
+<div class="main container">
+    <ul class="nav nav-pills">
+        <li role="presentation"><a href="personal.html">个人主页</a></li>
+        <li role="presentation"><a href="trainingRecord.html">培训记录</a></li>
+        <li role="presentation"><a href="IndeRegistEntrance.html">自主报名</a></li>
+        <li role="presentation"><a href="certificate.html">所获证书</a></li>
+        <li role="presentation" class="active"><a href="selectCourse.html">学前测评</a></li>
+        <li role="presentation"><a href="evaluation.html">学后评价</a></li>
+    </ul>
+	<hr class="navBottom"/>
+    <div class="panel panel-default text-center">
+        <div class="panel-body">
+            <span>中小学教师信息技术应用能力自评</span>
+            <a target="_blank" href="../HSDTesting/index.html">去测评</a>
+        </div>
+    </div>
+
+        <div id="list-content" class="list-content clearfix"></div>
+
+        <script id="ttRecordAduTpl" type="text/x-jsrender">
+
+				<div id="hsd_{{:id}}" class="panel panel-info">
+
+
+				<div class="panel-heading">
+                    <span class="panel-title col-sm-3"><span class="text-primary">ID号：</span><span class="text-danger">{{:id}}</span></span>
+                    <span class="panel-title col-sm-3"><span class="text-primary">年份：</span><span class="text-danger">{{:year}}</span></span>
+                    <span class="panel-title col-sm-5"><span class="text-primary">时间：</span><span class="text-danger">{{:createtime}}</span></span>
+                    <span class="panel-title"><a target="_blank" href="../teacher/HsdTestInfo.jsp?id={{:id}}">详细</a></span>
+                </div>
+
+				<table width="100%" cellspacing="0" cellpadding="0">
+					<tbody>
+						<tr>
+							<td>
+								<table width="200" border="1" cellspacing="0" cellpadding="0"
+									style="margin-left: 25px;">
+									<tbody>
+										<tr style="background-color: #4f81bd;">
+											<td style="width: 100px;"></td>
+											<td style="width: 50px;">&nbsp;&nbsp;I</td>
+											<td style="width: 50px;">&nbsp;&nbsp;II</td>
+										</tr>
+										<tr>
+											<td style="background: #e4e4e4;">技术素养</td>
+											<td id="nl1_{{:id}}"></td>
+											<td id="nl6_{{:id}}"></td>
+										</tr>
+										<tr>
+											<td style="background: #e4e4e4;">计划与准备</td>
+											<td id="nl2_{{:id}}"></td>
+											<td id="nl7_{{:id}}"></td>
+										</tr>
+										<tr>
+											<td style="background: #e4e4e4;">组织与管理</td>
+											<td id="nl3_{{:id}}"></td>
+											<td id="nl8_{{:id}}"></td>
+										</tr>
+										<tr>
+											<td style="background: #e4e4e4;">评估与诊断</td>
+											<td id="nl4_{{:id}}"></td>
+											<td id="nl9_{{:id}}"></td>
+										</tr>
+										<tr>
+											<td style="background: #e4e4e4;">学习与发展</td>
+											<td id="nl5_{{:id}}"></td>
+											<td id="nl10_{{:id}}"></td>
+										</tr>
+									</tbody>
+								</table> <br>
+								<div style="margin-left: 25px;">
+									注：I代表应用信息技术优化课堂<br> 教学，II代表应用信息技术转变学<br>
+									习方式；红色区域代表不合格，<br> 黄色区域代表合格；绿色区域代<br> 表优秀。
+								</div>
+							</td>
+							<td style="padding-bottom: 10px;"><canvas id="canvas1_{{:id}}"
+									height="250" width="300" style="margin-left: -50px;"></canvas>
+								<br> I，应用信息技术优化课堂教学</td>
+							<td style="padding-bottom: 10px;"><canvas id="canvas2_{{:id}}"
+									height="250" width="300" style="margin-left: -30px;"></canvas>
+								<br> II，应用信息技术转变学习方式</td>
+						</tr>
+					</tbody>
+				</table>
+
+				</div>
+
+			</script>
+
+        <div id="pagination" style="float: right;" class="pull-right"></div>
+
+
+
+
+
+
+
+
+</div>
+<div id="footer"></div>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script src="../js/lib/bootstrap.js"></script>
+
+<script src="../js/jsrender.min.js"></script>
+<script src="../js/underscore-min.js"></script>
+
+<script src="../js/dialog-min.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/jquery.jtable.js"></script>
+<script src="../js/jquery.jtable.zh-CN.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/Chart.js"></script>
+<script src="../js/excanvas.js"></script>
+<script src="../js/bootstrap-paginator.min.js"></script>
+
+<script src="../js/selectCourse.js"></script>
+</body>
+</html>

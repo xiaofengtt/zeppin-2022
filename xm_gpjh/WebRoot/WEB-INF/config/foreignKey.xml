@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+
+	<foreignKey name="TCHR_TRAINING1.FK_PR_PROGR_RE4">
+		<parentTable>PE_VALUA_EXPER</parentTable>
+		<childTable>PR_PRO_EXPERT</childTable>
+		<childTableNote>评审专家-培训项目-关系</childTableNote>
+	</foreignKey>
+	<foreignKey name="TCHR_TRAINING1.FK_PE_JOB_MANAGER">
+		<parentTable>PE_MANAGER</parentTable>
+		<childTable>PE_JOB</childTable>
+		<childTableNote>任务表</childTableNote>
+	</foreignKey>
+	<foreignKey name="TCHR_TRAINING1.FK_PE_JOB_PRI">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PE_JOB</childTable>
+		<childTableNote>任务表</childTableNote>
+	</foreignKey>
+	<foreignKey name="TCHR_TRAINING1.FK_PR_MEET_R_PE1">
+		<parentTable>ENUM_CONST</parentTable>
+		<childTable>PR_MEET_PERSON</childTable>
+		<childTableNote>会议-参会人员-关系</childTableNote>
+	</foreignKey>
+
+</root>

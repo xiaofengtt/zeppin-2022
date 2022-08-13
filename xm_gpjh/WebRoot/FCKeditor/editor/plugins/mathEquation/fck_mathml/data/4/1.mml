@@ -1,0 +1,31 @@
+<math>
+  <mrow>
+    <mstyle displaystyle='true'>
+      <mrow>
+        <munderover>
+          <mrow>
+            <mo>&#x222A;</mo>
+          </mrow>
+          <mrow>
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mrow>
+            <mi>n</mi>
+          </mrow>
+        </munderover>
+      </mrow>
+      <mrow>
+        <msub>
+          <mrow>
+            <mi>X</mi>
+          </mrow>
+          <mrow>
+            <mi>i</mi>
+          </mrow>
+        </msub>
+      </mrow>
+    </mstyle>
+  </mrow>
+</math>

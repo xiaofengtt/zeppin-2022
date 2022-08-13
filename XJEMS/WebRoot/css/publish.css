@@ -1,0 +1,339 @@
+@charset "UTF-8";
+input[type=number]{
+	-moz-appearance:textfield; 
+}
+.main .main_content {
+    width: 800px;
+    min-width: 0;
+    margin-top:0;
+}
+
+.main .main_content .box {
+    margin-bottom: 10px;
+    height:94px;
+    position: relative;
+}
+.main .main_content .box1 {
+    margin-bottom: 42px;
+}
+.main .main_content .warning{
+	font-size:12px;
+	color:#E0615F;
+	display: none;
+	position: absolute;
+	left:0;
+	bottom:0;
+}
+
+.main .main_content .time_num .time .time_bd {
+    margin-bottom: 0;
+}
+.time_num .time:nth-child(1){
+    margin-right:41px;
+}
+.time_num .time:nth-child(2){
+    margin-right:64px;
+}
+.main .main_content .time_num .time {
+    margin-bottom: 0;
+}
+
+.main .main_content div label {
+    font-size: 16px;
+    color: #2B2B2B;
+    display: block;
+}
+
+.main .main_content div span {
+    margin: 0 13px 0 13px;
+    font-size: 14px;
+}
+
+.main div input {
+    margin-top: 7px;
+    border: 1px solid #C1C1C1;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    font-size: 14px;
+	padding-left:10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+    display: inline-block;
+    height: 40px;
+    width: 100%;
+}
+
+.time_bd {
+    width: 220px;
+    height: 64px;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 0;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+.main .main_content div.time i {
+    position: absolute;
+    right: 6px;
+    top: 10px;
+}
+
+.main .main_content .time input {
+    margin-top: 0;
+}
+.main .main_content .time .exam_status{
+	height: 41px;
+	width:100%;
+	margin-top:7px;
+	border:1px solid #C1C1C1;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-size:14px;
+	background:url(../img/sj.png)no-repeat;
+	background-position:96% 7px;
+	padding-left:10px;
+}
+
+.main .main_content div input:focus {
+    outline: none;
+}
+.select_msg{
+	width: 220px;
+    height: 35px;
+    margin-top: 7px;
+    display: inline-block;
+    border: 1px solid #C1C1C1;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    background: url(../img/sj.png)no-repeat;
+    background-position: 96% 5px;
+    padding-left:10px;
+}
+
+textarea {
+
+    resize: none;
+    margin-top: 7px;
+    border: 1px solid #C1C1C1;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    font-size: 14px;
+
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.main .main_content div input#name {
+    width: 100%;
+}
+
+.bottom_margin {
+    margin-bottom: 7px;
+}
+
+.time_num {
+    position: relative;
+}
+
+.time {
+    display: inline-block;
+}
+.status{
+	position:absolute;
+	top:0;
+	right:0;
+}
+.num {
+    width:220px;
+    margin-left:23px;
+    display: inline-block;
+    position: absolute !important;
+    top:0;
+    right:0;
+}
+
+.info {
+    width: 100%;
+}
+
+.statement {
+    width: 100%;
+}
+
+.sub input {
+    display: inline-block;
+    height: 40px;
+    text-align: center;
+    margin-right: 50px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.sub .sub_publish {
+    background: #E0615F;
+    width: 150px;
+    text-indent:0;
+    border:none;
+    cursor: pointer;
+    padding-left:0;
+}
+.sub .back{
+    background: #CFCFCF;
+    width: 150px;
+    text-indent:0;
+    cursor: pointer;
+    padding-left:0;
+}
+.edui-default .edui-editor-bottomContainer{
+    display:none;
+}
+
+
+/*弹出框样式*/
+
+.modal {
+	background:#FFFFFF;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-ms-border-radius: 5px;
+	position: fixed;
+	width:400px;
+	height:200px;
+	left:50%;
+	top:50%;
+	margin-left:-200px;
+	margin-top:-100px;
+	display:none;
+	text-align: center;
+	-webkit-box-shadow: 0 0 10px 0px rgba(56,81,76,0.6);
+	-moz-box-shadow: 0 0 10px 0px rgba(56,81,76,0.6);
+	box-shadow: 0 0 10px 0px rgba(56,81,76,0.6);
+	z-index:1000;
+
+}
+.modal p{
+	font-size:18px;
+	text-align: left;
+	height:56px;
+	line-height: 56px;
+	text-indent:20px;
+	border-bottom: 1px solid #C1C1C1;
+}
+.modal span{
+	text-align: left;
+	text-indent:20px;
+	color:#E0615F;
+	display: block;
+	height:66px;
+	line-height:66px;
+	border-bottom: 1px solid #C1C1C1;
+}
+.modal .button_g{
+	margin-top:16px;
+	text-align: left;
+	text-indent:20px;
+}
+.modal .button_g input:nth-of-type(1){
+	display: inline-block;
+	width:120px;
+	height:28px;
+	outline:none;
+	border:1px solid #C1C1C1;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-right:40px;
+	font-size:12px;
+}
+.modal .button_g input:nth-of-type(2){
+	display: inline-block;
+	width:50px;
+	height:30px;
+	font-size:16px;
+	background:#E0615F;
+	color:#FFFFFF;
+	border:1px solid #E0615F;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-moz-border-radius: 5px;
+	cursor: pointer;
+	margin-right: 10px;
+}
+
+.modal .button_g input:nth-of-type(3){
+	font-size:16px;
+	width:65px;
+	height:30px;
+	border:1px solid #eee;
+	background:#eee;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-moz-border-radius: 5px;
+	cursor: pointer;
+}
+
+/*简单的提示框*/
+#modal{
+	background:#FFFFFF;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-ms-border-radius: 5px;
+	position: fixed;
+	width:400px;
+	height:100px;
+	left:50%;
+	top:50%;
+	margin-left:-200px;
+	margin-top:-100px;
+	display:none;
+	text-align: center;
+	-webkit-box-shadow: 0 0 10px 0px rgba(56,81,76,0.6);
+	-moz-box-shadow: 0 0 10px 0px rgba(56,81,76,0.6);
+	box-shadow: 0 0 10px 0px rgba(56,81,76,0.6);
+	z-index:1000;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+#modal p{
+	font-size:18px;
+	text-align: center;
+	margin-bottom:20px;
+}
+
+#modal .button_g input:nth-of-type(1){
+	display: inline-block;
+	width:50px;
+	height:30px;
+	font-size:16px;
+	background:#E0615F;
+	color:#FFFFFF;
+	border:1px solid #E0615F;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-moz-border-radius: 5px;
+	cursor: pointer;
+}

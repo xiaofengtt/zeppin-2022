@@ -1,0 +1,2 @@
+需要把whatyMathutil.jar拷贝到resin支持的lib目录下
+里面有bean需要调用

@@ -1,0 +1,23 @@
+{
+    "Records": [
+        {
+			"id": 1, 
+            "name": "有理数", 
+			"grade": "2",
+            "level": "2", 
+            "status": "1"
+            
+        }, 
+        {
+			"id": 2, 
+            "name": "整式", 
+			"grade": "2",
+            "level": "2", 
+            "status": "1"
+            
+        }
+       
+    ], 
+    "Result": "OK", 
+    "TotalRecordCount": 2
+}

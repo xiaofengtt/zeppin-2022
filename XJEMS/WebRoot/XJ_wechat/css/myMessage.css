@@ -1,0 +1,224 @@
+body {
+    background: #E8E8E8;
+}
+
+.top_bar{
+	font-size:16px;
+	width:100%;
+	color:#FFFFFF;
+	background:#E0615F;
+	padding:6px 9%;
+	text-align: left;
+}
+.top_bar p{
+	text-align: left;
+}
+
+header {
+    padding: 25px 10px 20px 15px;
+    background: url(../img/ic_backgroungd.png)no-repeat;
+    background-size: 100% 100px;
+    position:relative;
+}
+header .img_bd{
+	width: 50px;
+    height: 50px;
+    display: inline-block;
+    -webkit-border-radius: 50%;
+    overflow: hidden;
+}
+header img {
+	max-width:100%;
+	display: block;
+	margin:0 auto;
+}
+
+header div:nth-child(1) {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+header div span {
+    color: #ffffff;
+}
+
+header div:nth-child(1) span:nth-of-type(1) {
+    font-size: 16px;
+    display: inline-block;
+    background-size: 10px;
+    letter-spacing: 2px;
+    background-position: 100% 45%;
+    position: absolute;
+    padding-right:10px;
+    left: 60px;
+    top: 6px;
+}
+
+header div:nth-child(1) span:nth-of-type(2) {
+    letter-spacing: 1px;
+    font-weight: 400;
+    position: absolute;
+    left: 60px;
+    top: 26px;
+}
+.woman_head{
+	background: url(../img/ic_woman.png)no-repeat;
+}
+.man_head{
+	background: url(../img/ic_man.png)no-repeat;
+}
+header a {
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 35px;
+    line-height: 30px;
+    text-align: center;
+    width: 85px;
+    height: 30px;
+    -webkit-border-radius: 15px;
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+main {
+    width: 100%;
+}
+
+main .main_top {
+    margin-top: 10px;
+    width: 100%;
+    position: relative;
+    background: #FFFFFF;
+}
+
+main .main_top .logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+}
+
+main .main_top ul {
+    width: 100%;
+    padding: 0 10px 0 10px;
+}
+
+main .main_top ul li {
+    width: 100%;
+    padding: 15px 0 15px 0;
+    font-size: 15px;
+    color: #696969;
+    position: relative;
+    text-indent:10px;
+}
+
+main .main_top ul li span {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    color: #000000;
+}
+
+main .main_center {
+    position: relative;
+    background: #FFFFFF;
+    margin-top: 10px;
+    width: 100%;
+}
+
+main .main_center .logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+}
+
+main .main_center ul {
+    width: 100%;
+    padding: 0 10px 0 10px;
+}
+
+main .main_center ul li {
+    width: 100%;
+    padding: 15px 0 15px 0;
+    font-size: 15px;
+    color: #696969;
+    position: relative;
+    text-indent:10px;
+}
+
+main .main_center ul li span {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    color: #000000;
+}
+
+main .main_center ul .isChiefExaminer {
+    display: inline-block;
+    width: 50%;
+    position: relative;
+}
+
+main .main_center ul .isMixedExaminer {
+    display: inline-block;
+    padding-left: 0;
+    width: 48%;
+    position: relative;
+}
+
+main .main_center ul .isChiefExaminer img {
+    width: 45px;
+    height: 25px;
+    position: absolute;
+    right: 20%;
+    top: 23%;
+}
+
+main .main_center ul .isMixedExaminer img{
+    width: 45px;
+    height: 25px;
+    position: absolute;
+    right: 10%;
+    top: 23%;
+}
+
+.main_bottom{
+    margin-top:10px;
+    width:100%;
+    padding: 30px 10px 35px 10px;
+    position: relative;
+    background:#FFFFFF;
+}
+.main_bottom .logo{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 12px;
+    height: 12px;
+}
+.main_bottom .title{
+    display: inline-block;
+    height:80px;
+    width: 50px;
+    text-indent:10px;
+    color: #696969;
+    border-right:1px solid #eee; 
+}
+.main_bottom .text{
+    width:72%;
+    height:80px;
+    display: inline-block;
+    position: absolute;
+    left:75px;
+    top:30px;
+    letter-spacing: 2px;
+}
+
+

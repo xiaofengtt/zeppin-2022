@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="entity.studyZone" extends="struts-default" namespace="/entity/studyZone">
+		<interceptors>
+			<interceptor name="userPriorityInterceptor" class="com.whaty.platform.sso.web.interceptor.UserPriorityInterceptor"></interceptor>
+			<interceptor name="userLoginInterceptor" class="com.whaty.platform.sso.web.interceptor.UserLoginInterceptor"></interceptor>
+			
+			<interceptor-stack name="interceptorStack">
+				<interceptor-ref name="userLoginInterceptor"></interceptor-ref>
+				<interceptor-ref name="userPriorityInterceptor"></interceptor-ref>
+				
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="interceptorStack"></default-interceptor-ref>
+		<global-results>
+			<result name="grid">/test/grid.jsp</result>
+		    <result name="json">/test/json.jsp</result>
+		    <result name="gridjs">/test/gridjs.jsp</result>
+		    <result name="excel">/test/export.jsp</result>
+		    <result name="error">/test/error.jsp</result>
+		    <result name="msg">/test/msg.jsp</result>
+		    <result name="input">/entity/manager/pub/turnToLogin.jsp </result>
+		</global-results>
+		
+		<!-- jiangwanhong begin -->
+		
+		<action name="courseResources_*" method="{1}" class="courseResourcesAction">
+			<result name="show_index">/entity/function/teacher/index.jsp</result>
+			<result name="show_stuindex">/entity/function/student/index.jsp</result>
+			<result name="show_question">/entity/function/answer/index.jsp</result>
+			<result name="course_ware_list">/entity/function/student/coursware_list.jsp</result>
+			
+			<result name="show_iframe">/entity/function/kcjj/coursenote_list.jsp</result>
+			<result name="ziliao_list">/entity/function/kczl/homeworkpaper_list.jsp</result>
+			<result name="view">/entity/function/kczl/homeworkpaper_info.jsp</result>
+			<result name="edit">/entity/function/kczl/homeworkpaper_edit.jsp</result>
+			<result name="compute">/entity/function/student/computetime.jsp</result>
+			
+			<result name="online_test">/entity/function/testpaper/onlinetestcourse_list.jsp</result>
+			<result name="test_edit">/entity/function/testpaper/onlinetestcourse_edit.jsp</result>
+			<result name="test_view">/entity/function/testpaper/onlinetestcourse_info.jsp</result>
+			<result name="testpaper_list">/entity/function/testpaper/testpaper_list.jsp</result>
+			<result name="testpaper_view">/entity/function/testpaper/testpaper_info1.jsp</result>
+			<result name="testpaper_edit">/entity/function/testpaper/testpaper_edit.jsp</result>
+			<result name="testpaperpolicy_list">/entity/function/testpaper/testpaperpolicy_list.jsp</result>
+			<result name="paper_question_edit">/entity/function/testpaper/testpaper_edit1_bypolicy.jsp</result>
+			<result name="paper_question_item_add">/entity/function/testpaper/testpaper_edit2_bypolicy.jsp</result>
+			<result name="preview_testpaper_top">/entity/function/testpaper/preview_testpaper_top.jsp</result>
+			<result name="preview_question">/entity/function/testpaper/preview_question_info.jsp</result>
+			<result name="preview_testpaper_left">/entity/function/testpaper/menu/user/preview_menu.jsp</result>
+			<result name="single_info">/entity/function/testpaper/single_info.jsp</result>
+			<result name="multi_info">/entity/function/testpaper/multi_info.jsp</result>
+			<result name="judge_info">/entity/function/testpaper/judge_info.jsp</result>
+			<result name="blank_info">/entity/function/testpaper/blank_info.jsp</result>
+			<result name="answer_info">/entity/function/testpaper/answer_info.jsp</result>
+			<result name="comprehension_info">/entity/function/testpaper/comprehension_info.jsp</result>
+			<result name="paperReslut">/entity/function/testpaper/testpaper_result.jsp</result>
+			<result name="paperOver">/entity/function/testpaper/testpaper_end.jsp</result>
+			<result name="view_history_teacher">/entity/function/testpaper/testhistory_list.jsp</result>
+			<result name="testhistory_check">/entity/function/testpaper/testhistory_check.jsp</result>
+			<result name="view_history_info">/entity/function/testpaper/testhistory_info.jsp</result>
+			
+			<result name="lore_list">/entity/function/lore/lore_dir_list.jsp</result>
+			<result name="lore_dir_edit">/entity/function/lore/lore_dir_edit.jsp</result>
+			<result name="view_lore_info">/entity/function/lore/lore_info.jsp</result>
+			<result name="lore_edit">/entity/function/lore/lore_edit.jsp</result>
+			<result name="to_lore">/entity/function/lore/lore_store_question.jsp</result>
+			<result name="to_lore_save">/entity/function/lore/lore_store_question_save.jsp</result>
+			<result name="to_question_add">/entity/function/lore/store_question_frame.jsp</result>
+		    <result name="to_question_add_next">/entity/function/lore/${url}</result>
+			<result name="view_question">/entity/function/lore/store_question_info.jsp</result>
+			<result name="view_yuedu_question">/entity/function/lore/store_question_comprehension_info.jsp</result>
+			<result name="edit_single_question">/entity/function/lore/store_question_single_edit.jsp</result>
+			<result name="edit_multi_question">/entity/function/lore/store_question_multi_edit.jsp</result>
+			<result name="edit_judge_question">/entity/function/lore/store_question_judge_edit.jsp</result>
+			<result name="edit_blank_question">/entity/function/lore/store_question_blank_edit.jsp</result>
+			<result name="edit_answer_question">/entity/function/lore/store_question_answer_edit.jsp</result>
+			<result name="edit_comprehension_question">/entity/function/lore/store_question_comprehension_edit.jsp</result>
+			<result name="to_comprehension_add">/entity/function/lore/store_question_comprehension_branch.jsp</result>
+			<result name="comprehension_add_single">/entity/function/lore/store_question_comprehension_single_addexe.jsp</result>
+			<result name="comprehension_add_multi">/entity/function/lore/store_question_comprehension_multi_addexe.jsp</result>
+			<result name="comprehension_add_judge">/entity/function/lore/store_question_comprehension_judge_addexe.jsp</result>
+			<result name="comprehension_add_blank">/entity/function/lore/store_question_comprehension_blank_addexe.jsp</result>
+			<result name="comprehension_add_answer">/entity/function/lore/store_question_comprehension_answer_addexe.jsp</result>
+			
+			<result name="listjson" type="freemarker">/WEB-INF/template/entity/pub/json.ftl</result>
+			<result name="KJLL">/entity/function/coursewareList.jsp </result>
+			
+			<!-- zhaoyuxiao begin -->
+			<result name="addQues">/entity/function/answer/question_addq.jsp</result>
+			<result name="questReslt">/entity/function/answer/question_addResult.jsp</result>
+			<result name="questList">/entity/function/answer/index.jsp</result>
+			<result name="ques_detail">/entity/function/answer/question_detail.jsp</result>
+			<result name="editQuestion">/entity/function/answer/question_edit.jsp</result>
+			<!-- zhaoyuxiao end -->
+			<result name="showVote_list">/entity/function/vote/courseVote_list.jsp</result>
+		</action>
+		
+		<!-- jiangwanhong begin -->
+						
+	</package>
+</struts>

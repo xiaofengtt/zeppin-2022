@@ -1,0 +1,14 @@
+<math>
+  <mrow>
+   <munder>
+    <mrow>
+     <mi>lim</mi><mo>&ApplyFunction;</mo>
+    </mrow>
+    <mrow>
+     <mi>&delta;</mi><mi>x</mi><mo>&RightArrow;</mo><mn>0</mn>
+    </mrow>
+   </munder>
+   
+  </mrow>
+</math>
+

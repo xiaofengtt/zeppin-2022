@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>tableType_1</title>
+<link href="../../../css/admincss.css" rel="stylesheet" type="text/css">
+<script language="JavaScript">
+	function listSelect(listId) {
+	var form = document.forms[listId + '-form'];
+	for (var i = 0 ; i < form.elements.length; i++) {
+		if ((form.elements[i].type == 'checkbox') && (form.elements[i].name == 'listMultiAction')) {
+			if (!(form.elements[i].value == 'DISABLED' || form.elements[i].disabled)) {
+				form.elements[i].checked = form.listSelectAll.checked;
+			}
+		}
+	}
+	return true;
+}
+</script>
+</head>
+
+<body leftmargin="0" topmargin="0" class="scllbar">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td height="28"><table width="100%" height="28" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td width="12"><img src="../../../images/page_titleLeft.gif" width="12" height="28"></td>
+          <td align="right" background="../../../images/page_titleM.gif"><table height="28" border="0" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td width="112"><img src="../../../images/page_titleMidle.gif" width="112" height="28"></td>
+                <td background="../../../images/page_titleRightM.gif" class="pageTitleText">查看招生批次信息</td>
+              </tr>
+            </table></td>
+          <td width="8"><img src="../../../images/page_titleRight.gif" width="8" height="28"></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr> 
+    <td valign="top" class="pageBodyBorder">
+<!-- start:内容区域 -->
+<form name='user-form' action='' method='post' class='nomargin' onsubmit="">
+<div class="border">   
+	<!-- start:内容区－头部:项目数量、搜索、按钮 -->
+	<table width='100%' border="0" cellpadding="0" cellspacing='0'>
+    <tr>
+			<td align='left' style='white-space: nowrap;'><span style="padding-left:6px">批次数量（3）</span></td>
+			<td class='misc' style='white-space: nowrap;'>
+				<div><span class="link" help="将选定招生批次的状态设置为锁定，锁定后改批次不能招生。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/multi_deactivate.png' alt='Resources' width="20" height="20" title='Resources'>&nbsp;<a href='#'>锁定</a></span> 
+                  &nbsp;&nbsp; <span class="link" help="将选定招生批次的状态设置为活动，在其有效期内该批次可以招生。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/multi_activate.png' alt='Unlock' width="20" height="20" title='Unlock'>&nbsp;<a href='#'>解锁</a></span></div>
+			</td>
+		</tr></table>
+		
+  <table width='100%' border="0" cellpadding="0" cellspacing='0' style='margin-bottom: 5px'>
+    <tr> 
+			<td style='white-space: nowrap;'><div style="padding-left:6px"> 
+				<input type='text' name='Search' value='' size='20' maxlength='245' style='vertical-align: bottom;'>
+          		<span class="link"><img src='../../../images/buttons/search.png' alt='Search' width="20" height="20" title='Search'>&nbsp;<a href='#'>查找</a></span></div>
+			</td>
+			<td class='misc' style='white-space: nowrap;'>
+				<div><span class="link" help="将当前表格数据导出到Excel格式的表格。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/excel.png' alt='Print' width="20" height="20" title='Print'>&nbsp;<a href='#'>Excel报表</a></span><span class="link" help="打印当前表格中的信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()">&nbsp;&nbsp;<img src='../../../images/buttons/contenttools.png' alt='Print' width="20" height="20" title='Print'>&nbsp;<a href='#'>打印</a></span> 
+                  &nbsp;&nbsp; <span class="link" help="从数据库中删除选定用户的所有数据。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/multi_delete.png' alt='Delete' width="20" height="20" title='Delete'>&nbsp;<a href='#'>删除</a></span> 
+                </div>
+			</td>
+		  </tr>
+		</table>
+		<!-- end:内容区－头部：项目数量、搜索、按钮 -->
+		<!-- start:内容区－列表区域 -->
+		
+          <table width='98%' align="center" cellpadding='1' cellspacing='0' class='list'>
+            <tr> 
+              <th width='20' style='white-space: nowrap;'><div style='display:block; width: 20px;'> 
+                  <span class="link linkdisabled"><a href='#' title="详细信息">F</a></span></div></th>
+              <th width='20' style='white-space: nowrap;'><div style='display:block; width: 20px;'> 
+                  <span class="link"><a href='#' title="状态设置">A</a></span></div></th>
+              <th width='20' style='white-space: nowrap;'> <div style='display:block; width: 20px;'> 
+                  <span class="link linkdisabled"><a href='#' title="编辑">E</a></span></div></th>
+              <th width='20' style='white-space: nowrap;'> <div style='display:block; width: 20px;'> 
+                  <span class="link linkdisabled"><a href='#' title="删除">D</a></span></div></th>
+              <th width='30%' style='white-space: nowrap;'> <span class="link">批次名称</span> 
+              </th>
+              <th width='20%'> <span class="link">报名开始时间</span> </th>
+              <th width='20%' style='white-space: nowrap;'><span class="link">报名结束时间</span> 
+              </th>
+              <th width='30%' style='white-space: nowrap;'> <span class="link">考试时间</span></th>
+              <th width='0' class='select'><input type='checkbox' class='checkbox' name='listSelectAll' value='true'  onClick="listSelect('user')"> 
+              </th>
+            </tr>
+            <tr class='oddrowbg'> 
+              <td style='text-align: center; '><span class="link" title='详细信息' help="显示这个批次的详细信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()" onclick="openPage('showUserInfo.jsp')"><img src='../../../images/buttons/csv.png' alt='详细信息' width="20" height="20" title='详细信息'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='解锁' help="将该批次的状态设为活动。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/active.png' alt='解锁' width="20" height="20" title='解锁'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='编辑' help="编辑此招生批次的信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><a href="pici_edit.htm"><img src='../../../images/buttons/edit.png' alt='编辑' width="20" height="20" title='编辑' border=0></a></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='删除' help="从数据库删除此批次。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/delete.png' alt='删除' width="20" height="20" title='删除'></span> 
+              </td>
+              <td style='white-space: nowrap;'><span class="link"><a href='#' onClick="window.showModalDialog('pici_info.htm','','dialogWidth=350px;dialogHeight=330px')">2007春季招生批次</a></span></td>
+              <td style='white-space: nowrap;'>2007-3-1</td>
+              <td> 2007-4-1</td>
+              <td> 2007-4-4 至 2007-4-6</td>
+              <td class='select' align='center'> <input type='checkbox' class='checkbox' name='listMultiAction' value='61'> 
+              </td>
+            </tr>
+            <tr class='evenrowbg'> 
+              <td style='text-align: center; '> <span class="link" title='详细信息' help="显示这个用户的详细信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()" onclick="openWin('winShowUserInfo.jsp',500,360,'yes')"><img src='../../../images/buttons/csv.png' alt='详细信息' width="20" height="20" title='详细信息'></span> 
+              </td>
+              <td style='text-align: center; '> <span class="link" title='锁定' help="将改用户的状态设为锁定。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/inactive.png' alt='锁定' width="20" height="20" title='锁定'></span> 
+              </td>
+              <td style='text-align: center; '> <span class="link" title='详细信息' help="编辑此用户的个人信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/edit.png' alt='详细信息' width="20" height="20" title='详细信息'></span> 
+              </td>
+              <td style='text-align: center; '> <span class="link" title='删除' help="从数据库删除此用户帐户。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/delete.png' alt='删除' width="20" height="20" title='删除'></span> 
+              </td>
+              <td style='white-space: nowrap;'><span class="link">2006秋季招生批次</span> 
+              </td>
+              <td style='white-space: nowrap;'>2006-8-20</td>
+              <td> 2006-9-10</td>
+              <td> 2006-9-15 至 2006-9-18</td>
+              <td class='select' align='center'> <input type='checkbox' class='checkbox' name='listMultiAction' value='4'></td>
+            </tr>
+            
+            <tr class='oddrowbg'> 
+              <td style='text-align: center; '><span class="link" title='详细信息' help="显示这个用户的详细信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()" onclick="openWin('winShowUserInfo.jsp',500,360,'yes')"><img src='../../../images/buttons/csv.png' alt='详细信息' width="20" height="20" title='详细信息'></span></td>
+              <td style='text-align: center; '><span class="link" title='锁定' help="将改用户的状态设为锁定。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/inactive.png' alt='锁定' width="20" height="20" title='锁定'></span></td>
+              <td style='text-align: center; '><span class="link" title='详细信息' help="编辑此用户的个人信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/edit.png' alt='详细信息' width="20" height="20" title='详细信息'></span></td>
+              <td style='text-align: center; '><span class="link" title='删除' help="从数据库删除此用户帐户。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/delete.png' alt='删除' width="20" height="20" title='删除'></span></td>
+              <td style='white-space: nowrap;'>2006春季招生批次</td>
+              <td style='white-space: nowrap;'>2006-3-1</td>
+              <td>2006-4-1</td>
+              <td>2006-4-5 至 2006-4-8</td>
+              <td align='center'><input type='checkbox' class='checkbox' name='listMultiAction' value='4'></td>
+            </tr>
+          </table>
+  <!-- end:内容区－列表区域 -->
+</div>
+</form>
+<!-- 内容区域结束 -->
+	</td>
+  </tr>
+  <tr> 
+    <td height="48" align="center" class="pageBottomBorder"> 
+      <table width="98%" height="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="4"><img src="../../../images/page_bottomSlip.gif" width="100%" height="2"></td>
+        </tr>
+        <tr>
+          <td valign="middle"> 
+            <!-- start:内容区－分页 -->
+            <table width='100%' align="center" cellpadding='1' cellspacing='0'>
+              <tr> 
+                <th width="46" align="center" style='white-space: nowrap;padding-top:8px;'>&nbsp;分&nbsp;页：</th>
+                <th width='30%' style='color:#666666;white-space: nowrap;'>第 1/6 
+                  页&nbsp;&nbsp;&nbsp;每页 
+                  <select name="select">
+                    <option>10 条</option>
+                    <option>20 条</option>
+                    <option>30 条</option>
+                    <option>50 条</option>
+                  </select>
+					</th>
+                <th width='46%' style='white-space: nowrap;'> 
+                  <table width="70%" height="22" border="0" cellpadding="0" cellspacing="0">
+            <tr align="center"> 
+                      <td><a href="#" title="首页" class="button"><span unselectable="on" class="norm"  style="width:46px;height:15px;padding-top:3px" onmouseover="className='over'" onmouseout="className='norm'" onmousedown="className='push'" onmouseup="className='over'"><span class="text">首页</span></span></a></td>
+              <td><a href="#" title="上一页" class="button"><span unselectable="on" class="norm"  style="width:46px;height:15px;padding-top:3px" onmouseover="className='over'" onmouseout="className='norm'" onmousedown="className='push'" onmouseup="className='over'"><span class="text">上一页</span></span></a></td>
+              <td><a href="#" title="下一页" class="button"><span unselectable="on" class="norm"  style="width:46px;height:15px;padding-top:3px" onmouseover="className='over'" onmouseout="className='norm'" onmousedown="className='push'" onmouseup="className='over'"><span class="text">下一页</span></span></a></td>
+              <td><a href="#" title="末页" class="button"><span unselectable="on" class="norm"  style="width:46px;height:15px;padding-top:3px" onmouseover="className='over'" onmouseout="className='norm'" onmousedown="className='push'" onmouseup="className='over'"><span class="text">末页</span></span></a></td>
+            </tr>
+          </table></th>
+        <th width='24%' style='color:#666666;white-space: nowrap;'>跳转到第
+<input name="textfield" type="text" size="4" style="height:16px">
+          页</th>
+        <th width='0' style='white-space: nowrap;'><a href="#" onclick="javascript:alert('jump')" class="button"><span unselectable="on" class="norm"  style="width:20px;padding-top:2px;padding-bottom:2px" onmouseover="className='over'" onmouseout="className='norm'" onmousedown="className='push'" onmouseup="className='over'"><img src="../../../images/buttons/pageJump.png" alt="跳转" width="20" height="18" class="button"></span></a></th>
+      </tr>
+    </table>
+	        <!-- end:内容区－分页 -->
+          </td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+</body>
+</html>

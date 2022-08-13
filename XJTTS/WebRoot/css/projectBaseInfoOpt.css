@@ -1,0 +1,31 @@
+.ifrcnt .hd h3 {
+	padding: 8px;
+	margin: 0;
+	font-size: 18px;
+	color: #111;
+	border-bottom: 2px solid #428bca;
+	font-weight: 400;
+	line-height: 42px;
+	font-family:'Microsoft Yahei';
+	font-weight:bold;
+}
+
+.ifrcnt {
+	width:100%;
+}
+
+
+.form-horizontal .control-label {
+	width: 100px;
+	color: gray;
+	font-weight: bold;
+	white-space:nowrap;
+}
+
+.form-horizontal .control-group {margin-bottom:30px;}
+
+.container{padding-left:0;}
+
+
+
+

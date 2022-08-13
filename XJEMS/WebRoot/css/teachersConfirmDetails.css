@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+.main .back_confirm {
+    width: auto;
+
+}
+
+.main .back_confirm i {
+    display: inline-block;
+    width:14px;
+    height:14px;
+    position:relative;
+    
+}
+.main .back_confirm i img{
+    position: absolute;
+    top:2px;
+}
+.main .back_confirm a {
+    font-size: 14px;
+    color: #E0615F;
+}
+
+.title {
+    font-size: 18px;
+    color: #2B2B2B;
+    margin-top: 24px;
+}
+
+.teacher_msg {
+    margin-top: 35px;
+    font-size: 22px;
+}
+
+.teacher_msg li {
+    margin-bottom: 30px;
+    font-size:14px;
+}

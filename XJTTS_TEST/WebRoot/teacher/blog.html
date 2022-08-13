@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog</title>
+    <link rel="stylesheet" href="../css/lib/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/lib/normalize.css"/>
+    <link rel="stylesheet" href="../css/lib/font-awesome.css"/>
+    <link rel="stylesheet" href="../css/components/jquery.pwstabs-1.2.1.min.css"/>
+
+    <link rel="stylesheet" href="../css/blog.css"/>
+</head>
+<body>
+<!-- Static navbar -->
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="nav navbar-header  uni-logo col-md-3">
+                <span>新疆教师培训信息服务平台</span>
+                <br/>
+                <span>个人空间</span>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="" class="navTitle">修改个人密码</a></li>
+                    <li><a href="" class="navTitle">修改手机</a></li>
+                    <li><a href="" class="navTitle">修改密码</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container  blogMain">
+
+    <div class="tabset0">
+        <div data-pws-tab="tab1" data-pws-tab-name="个人主页"></div>
+
+        <div data-pws-tab="tab2" data-pws-tab-name="培训记录">
+            <div class="text-center">
+                <p>您当前共有<span>10</span>次培训记录，培训进行中的有<span>2</span>次，培训结束的有<span>8</span>次</p>
+            </div>
+            <hr/>
+            <div class="col-xs-2 text-center">
+                <span>5/12</span><br/>
+                <span>2015发布时间</span>
+                <img src="" alt="进行中"/>
+            </div>
+            <div class="col-xs-6">
+                <span>农村中小学教师教学技能提升培训项目</span>
+                <br/>
+                <span><i class="fa fa-check-square"></i>已报道</span>
+                <br/><br/><br/><br/>
+                <span>开始时间:2015-06-20</span><br/>
+                <span>结束时间:2015-7-12</span>
+            </div>
+            <div class="col-xs-3">
+                <ul class="trainListInfo">
+                    <li><i class="fa fa-map-marker"></i>&nbsp;&nbsp;新疆师范大学教育学院</li>
+                    <li><i class="fa fa-home"></i>&nbsp;&nbsp;新疆师范大学</li>
+                    <li><i class="fa fa-wrench"></i>&nbsp;&nbsp;远程培训，现场集中培训</li>
+                    <li><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;教师信息基本能力提升工程</li>
+                    <li><i class="fa fa-clock-o"></i>&nbsp;&nbsp;时长：140学识</li>
+                </ul>
+            </div>
+            <div class="col-xs-1"></div>
+        </div>
+
+        <div id="signupEntry" data-pws-tab="tab3" data-pws-tab-name="自主报名"  ng-app="signupListDirective" ng-controller="signupListController">
+
+            <div class="text-center">
+                <p>您当前共有<span>10</span>个报名项目，已报名的有<span>2</span>次，未报名的有 <span>8</span> 次</p>
+            </div>
+            <div class="row" ng-if="funds.length>0" ng-repeat="x in funds">
+                <hr/>
+                <div class="col-sm-2 text-center">
+                    <div class="row funds">
+
+                            ￥{{ x.funds }}
+
+                    </div>
+                    <br/>
+                    <span class="deadline">{{ x.deadline }}</span>
+                    <br/>
+                    <span class="deadlineInfo">报名截止日期</span>
+                </div>
+                <div class="col-sm-5">
+                    <span>{{ x.trainSubject }}</span>
+                    <br/>
+                    <span><i class="fa fa-check-square"></i>{{ x.isSignup }}</span>
+                    <br/><br/>
+                    <span>开始时间：{{ x.startTime }}</span><br/>
+                    <span>结束时间：{{ x.endTime }}</span><br/>
+                    <span>名额：{{ x.approveNumber }}</span>
+                    <span>已报名：{{ x.isSignupCount }}</span>
+                </div>
+                <div class="col-sm-3">
+                    <ul class="regisListInfo">
+                        <li><i class="fa fa-map-marker"></i>&nbsp;&nbsp;{{ x.trainAdd }}</li>
+                        <li><i class="fa fa-home"></i>&nbsp;&nbsp;{{ x.trainCollege }}</li>
+                        <li><i class="fa fa-wrench"></i>&nbsp;&nbsp;{{ x.trainType }}</li>
+                        <li><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;{{ x.projectName }}</li>
+                        <li><i class="fa fa-clock-o"></i>&nbsp;&nbsp;时长：{{ x.trainClassHour }}学时</li>
+                    </ul>
+                </div>
+                <div class="col-sm-1 text-center">
+                    <button class="btn btn-primary" onclick="registerBtn(ele)">报名</button>
+                    <input type="text" ng-model="x.projectApplyId" style="display: none;" />
+                </div>
+            </div>
+            
+        </div>
+        <div data-pws-tab="tab4" data-pws-tab-name="所获证书"></div>
+        <div data-pws-tab="tab5" data-pws-tab-name="学前选课"></div>
+        <div data-pws-tab="tab6" data-pws-tab-name="学后评价">
+            <div class="text-center">
+                <p>您当前共有<span>10</span>个学后评价，已经评价的有<span>2</span>次，未评价的有 <span>8</span> 次</p>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="col-xs-3 text-center">
+                    编号
+                </div>
+                <div class="col-xs-9">
+                    <span>国培计划-新疆农村中小学教师远程培训团队置换脱产研修</span>
+                    <a href="">新疆师范大学培训</a>
+                    <br/>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <br/>
+                    <span class="text-left">培训项目：教师信息基本能力提升工程</span>
+                    <span class="text-right" style="float: right;margin-right: 20px;">2015/6/20 09:45</span>
+                </div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="col-xs-3 text-center">
+                    编号
+                </div>
+                <div class="col-xs-9">
+                    <span>国培计划-新疆农村中小学教师远程培训团队置换脱产研修</span>
+                    <a href="">新疆师范大学培训</a>
+                    <br/>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <button class="btn">评价</button>
+                    <br/>
+                    <span class="text-left">培训项目：教师信息基本能力提升工程</span>
+                    <span class="text-right" style="float: right;margin-right: 20px;">2015/6/20 09:45</span>
+                </div>
+            </div>
+        </div>
+    </div><!-- tabset0 -->
+
+</div><!-- content -->
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-center">主办方：新疆维吾尔自治区教育厅&nbsp;&nbsp;承办方：新疆师范大学&nbsp;&nbsp;新疆维吾尔自治区教育发展中心</p>
+        <p class="text-center">新ICP备05003757号|Powered by <a href="http://www.zeppin.cn">www.zeppin.cn</a></p>
+    </div>
+</footer>
+
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script src="../js/lib/angular.js"></script>
+<script src="../js/lib/bootstrap.js"></script>
+<script src="../js/components/jquery.pwstabs-1.2.1.min.js"></script>
+<script src="../js/blog.js"></script>
+</body>
+</html>

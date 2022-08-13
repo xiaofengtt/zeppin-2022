@@ -1,0 +1,16 @@
+<math>
+  <mrow>
+    <mrow>
+      <mfrac>
+        <mrow>
+          <mo>&DifferentialD;</mo>
+          <mi>y</mi>
+        </mrow>
+        <mrow>
+          <mo>&DifferentialD;</mo>
+          <mi>x</mi>
+        </mrow>
+      </mfrac>
+    </mrow>
+  </mrow>
+</math>

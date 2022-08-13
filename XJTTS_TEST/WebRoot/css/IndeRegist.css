@@ -1,0 +1,90 @@
+.fa{
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    line-height: 18px !important;
+    color: #fff;
+}
+.fa-map-marker{
+    background-color: #5fa776;
+}
+.fa-home{
+    background-color: #a6d4ae;
+}
+.fa-wrench{
+    background-color: #449be2;
+}
+.fa-file-text-o{
+    background-color: #449be2;
+}
+.fa-clock-o{
+    background-color: #aad27d;
+}
+.list-unstyled{
+    margin-bottom: 0;
+}
+.list-unstyled >li{
+    line-height: 25px;
+}
+.funds{
+    width: 90px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 15px;
+    background-color: #b81c22;
+    color: #fff;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.deadline{
+    font-size: 13px;
+}
+.deadlineInfo{
+    font-size: 13px;
+    color: #8b8b8c;
+}
+.trainSubject{
+    font-size: 20px;
+    line-height: 30px;
+}
+.isSignup{
+    color: #ec6b5b;
+}
+.registBtn{
+    font-size: 14px;
+    background: #449be2;
+    color: #fff;
+    width: 80px;
+    height: 35px;
+    margin-top: 30px;
+}
+.registBtn:hover,
+.registBtn:focus,
+.registBtn.active{
+    color: #fff !important;
+    background: #2b78b8;
+}
+.confirmBtn{
+    font-size: 13px;
+    background-color: #00BFDD;
+    color:#fff !important;
+}
+.confirmBtn:hover,
+.confirmBtn:focus,
+.confirmBtn.active{
+    color: #fff;
+}
+.regisListInfo > li{
+    line-height: 23px;
+}
+.time,.count{
+    line-height: 25px;
+}
+.registCount{
+    color:#5fb752;
+    font-weight: bold;
+}
+.dl-horizontal{
+    margin-right: 120px;
+}

@@ -1,0 +1,7 @@
+.nobg{background:#fff !important;}
+input[type=file]{height:30px !important;}
+.ajax-file-upload{height:30px !important;z-index:1 !important;}
+.btn{width:90px;height:30px;padding-top:4px !important;}
+.submit:hover{color:#fff !important;}
+.submit:focus{color:#fff !important;}
+.ajax-upload-dragdrop{width:100% !important;}

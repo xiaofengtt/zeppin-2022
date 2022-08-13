@@ -1,0 +1,341 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>tableType_1</title>
+<link href="../../../css/admincss.css" rel="stylesheet" type="text/css">
+<script language=javascript src="../../../js/filter.js"></script>
+<script language="JavaScript">
+	var inputvalue1 = "";
+	var inputvalue2 = "";
+	var inputvalue3 = "";
+	function listSelect(listId) {
+	var form = document.forms[listId + '-form'];
+	for (var i = 0 ; i < form.elements.length; i++) {
+		if ((form.elements[i].type == 'checkbox') && (form.elements[i].name == 'listMultiAction')) {
+			if (!(form.elements[i].value == 'DISABLED' || form.elements[i].disabled)) {
+				form.elements[i].checked = form.listSelectAll.checked;
+			}
+		}
+	}
+	return true;
+}
+</script>
+</head>
+
+<body leftmargin="0" topmargin="0" class="scllbar">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td height="28"><table width="100%" height="28" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td width="12"><img src="../../../images/page_titleLeft.gif" width="12" height="28"></td>
+          <td align="right" background="../../../images/page_titleM.gif"><table height="28" border="0" cellpadding="0" cellspacing="0">
+              <tr> 
+                <td width="112"><img src="../../../images/page_titleMidle.gif" width="112" height="28"></td>
+                <td background="../../../images/page_titleRightM.gif" class="pageTitleText">查看考场分布</td>
+              </tr>
+            </table></td>
+          <td width="8"><img src="../../../images/page_titleRight.gif" width="8" height="28"></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr> 
+    <td valign="top" class="pageBodyBorder">
+<!-- start:内容区域 -->
+
+<div class="border">   
+	<!-- start:内容区－头部:项目数量、搜索、按钮 -->
+	<table width='100%' border="0" cellpadding="0" cellspacing='0'>
+    <tr>
+			<td align='left' style='white-space: nowrap;'><span style="padding-left:6px">当前招生批次：<font color=red>2007春招生批次</font></span></td>
+			<td class='misc' style='white-space: nowrap;'>
+				<div><span class="link" help="将当前表格数据导出到Excel格式的表格。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/excel.png' alt='Print' width="20" height="20" title='Print'>&nbsp;<a href='#'>Excel报表</a></span><span class="link" help="打印当前表格中的信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()">&nbsp;&nbsp;<img src='../../../images/buttons/contenttools.png' alt='Print' width="20" height="20" title='Print'>&nbsp;<a href='#'>打印</a></span> 
+                </div>
+			</td>
+		</tr></table>
+		<form name=search action=_self method=post>
+  <table width='100%' border="0" cellpadding="0" cellspacing='0' style='margin-bottom: 5px'>
+    <tr> 
+			<td style='white-space: nowrap;'><div style="padding-left:6px"> 
+				选择站点&nbsp;
+				<select name=site>
+				</select>
+				<select name=site_id style="display:none;">
+					<option>(0001)华南师范大学青岛学习中心</option>
+					<option>(0002)济南学习中心</option>
+					<option>(0003)直属学习中心</option>
+				</select>
+				<input name="box1" size = 10 value="输入关键字..." onpropertyChange=pp(document.search.box1,document.search.site,document.search.site_id,inputvalue1) onfocus="javascript:if(this.value == '输入关键字...') this.value='';">
+				选择层次&nbsp;
+				<select name=edutype>
+				</select>
+				<select name=edu_type_id  style="display:none;">
+					<option>(01)网络秋专升本</option>
+					<option>(02)网络春本科</option>
+					<option>(03)函授专升本</option>
+				</select>
+				<input name="box3" size = 10 value="输入关键字..." onpropertyChange=pp(document.search.box3,document.search.edutype,document.search.edu_type_id,inputvalue3) onfocus="javascript:if(this.value == '输入关键字...') this.value='';">
+			</div>
+			</td>
+			</tr>
+		  
+		   <tr> 
+			<td style='white-space: nowrap;'><div style="padding-left:6px"> 
+
+				选择专业&nbsp;
+				<select name=major>
+				</select>
+				<select name=major_id style="display:none;">
+					<option>(01)石油工程(采油)(石油与天然气开采)</option>
+					<option>(02)资源勘查工程</option>
+					<option>(03)化学工程与工艺(石油化工生产技术)</option>
+				</select>
+				<input name="box2" size = 10 value="输入关键字..." onpropertyChange=pp(document.search.box2,document.search.major,document.search.major_id,inputvalue2) onfocus="javascript:if(this.value == '输入关键字...') this.value='';">
+          		<span class="link"><img src='../../../images/buttons/search.png' alt='Search' width="20" height="20" title='Search'>&nbsp;<a href='#'>查找</a></span></div>
+			</td>
+		  </tr>
+		  
+		</table>
+	</form>
+		<!-- end:内容区－头部：项目数量、搜索、按钮 -->
+		<!-- start:内容区－列表区域 -->
+		<form name='user-form' action='' method='post' class='nomargin' onsubmit="">
+          <table width='98%' align="center" cellpadding='1' cellspacing='0' class='list'>
+            <tr> 
+              <!--th width='20' style='white-space: nowrap;'><div style='display:block; width: 20px;'> 
+                  <span class="link linkdisabled"><a href='#' title="详细信息">F</a></span></div></th>
+              <th width='20' style='white-space: nowrap;'><div style='display:block; width: 20px;'> 
+                  <span class="link"><a href='#' title="状态设置">A</a></span></div></th>
+              <th width='20' style='white-space: nowrap;'> <div style='display:block; width: 20px;'> 
+                  <span class="link linkdisabled"><a href='#' title="编辑">E</a></span></div></th>
+              <th width='20' style='white-space: nowrap;'> <div style='display:block; width: 20px;'> 
+                  <span class="link linkdisabled"><a href='#' title="删除">D</a></span></div></th-->
+              <th width='40%' style='white-space: nowrap;'> <span class="link">站点</span> 
+              </th>
+              <th width='30%'> <span class="link">专业</span> </th>
+              <th width='10%' style='white-space: nowrap;'><span class="link">层次</span> 
+              </th>
+              <th width='10%' style='white-space: nowrap;'> <span class="link">考场号</span></th>
+              <th width='10%' style='white-space: nowrap;'> <span class="link">详单</span></th> 
+              </th>
+            </tr>
+            <tr class='oddrowbg'> 
+              <!--td style='text-align: center; '><span class="link" title='详细信息' help="显示这个批次的详细信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()" onclick="openPage('showUserInfo.jsp')"><img src='../../../images/buttons/csv.png' alt='详细信息' width="20" height="20" title='详细信息'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='审核' help="审核通过该招生计划。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/active.png' alt='审核' width="20" height="20" title='审核'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='编辑' help="编辑此招生批次的信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><a href="pici_edit.htm"><img src='../../../images/buttons/edit.png' alt='编辑' width="20" height="20" title='编辑' border=0></a></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='删除' help="从数据库删除此批次。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/delete.png' alt='删除' width="20" height="20" title='删除'></span> 
+              </td-->
+              <td style='white-space: nowrap;'><span class="link">华南师范大学青岛学习中心</span></td>
+              <td style='white-space: nowrap;'>计算机技术与应用</td>
+              <td> 高起本</td>
+              <td align=center> 1</td>
+              <td class='select' align='center'> <span class="link"><a href="examroom_info.htm" target=_blank>详单</a></span>
+              </td>
+            </tr>
+            <tr class='oddrowbg'> 
+              <!--td style='text-align: center; '><span class="link" title='详细信息' help="显示这个批次的详细信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()" onclick="openPage('showUserInfo.jsp')"><img src='../../../images/buttons/csv.png' alt='详细信息' width="20" height="20" title='详细信息'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='审核' help="审核通过该招生计划。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/active.png' alt='审核' width="20" height="20" title='审核'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='编辑' help="编辑此招生批次的信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><a href="pici_edit.htm"><img src='../../../images/buttons/edit.png' alt='编辑' width="20" height="20" title='编辑' border=0></a></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='删除' help="从数据库删除此批次。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/delete.png' alt='删除' width="20" height="20" title='删除'></span> 
+              </td-->
+              <td style='white-space: nowrap;'><span class="link">华南师范大学青岛学习中心</span></td>
+              <td style='white-space: nowrap;'>石油工程(采油)(石油与天然气开采)</td>
+              <td> 高起本</td>
+              <td> 2</td>
+              <td class='select' align='center'> <span class="link"><a href="examroom_info.htm" target=_blank>详单</a></span>
+              </td>
+            </tr>
+            <tr class='oddrowbg'> 
+              <!--td style='text-align: center; '><span class="link" title='详细信息' help="显示这个批次的详细信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()" onclick="openPage('showUserInfo.jsp')"><img src='../../../images/buttons/csv.png' alt='详细信息' width="20" height="20" title='详细信息'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='审核' help="审核通过该招生计划。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/active.png' alt='审核' width="20" height="20" title='审核'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='编辑' help="编辑此招生批次的信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><a href="pici_edit.htm"><img src='../../../images/buttons/edit.png' alt='编辑' width="20" height="20" title='编辑' border=0></a></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='删除' help="从数据库删除此批次。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/delete.png' alt='删除' width="20" height="20" title='删除'></span> 
+              </td-->
+              <td style='white-space: nowrap;'><span class="link">华南师范大学青岛学习中心</span></td>
+              <td style='white-space: nowrap;'>石油工程(采油)(石油与天然气开采)</td>
+              <td> 高起本</td>
+              <td> 3</td>
+              <td class='select' align='center'> <span class="link"><a href="examroom_info.htm" target=_blank>详单</a></span>
+              </td>
+            </tr>
+            <tr class='oddrowbg'> 
+              <!--td style='text-align: center; '><span class="link" title='详细信息' help="显示这个批次的详细信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()" onclick="openPage('showUserInfo.jsp')"><img src='../../../images/buttons/csv.png' alt='详细信息' width="20" height="20" title='详细信息'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='审核' help="审核通过该招生计划。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/active.png' alt='审核' width="20" height="20" title='审核'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='编辑' help="编辑此招生批次的信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><a href="pici_edit.htm"><img src='../../../images/buttons/edit.png' alt='编辑' width="20" height="20" title='编辑' border=0></a></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='删除' help="从数据库删除此批次。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/delete.png' alt='删除' width="20" height="20" title='删除'></span> 
+              </td-->
+              <td style='white-space: nowrap;'><span class="link">华南师范大学青岛学习中心</span></td>
+              <td style='white-space: nowrap;'>石油工程(采油)(石油与天然气开采)</td>
+              <td> 高起本</td>
+              <td> 4</td>
+              <td class='select' align='center'> <span class="link"><a href="examroom_info.htm" target=_blank>详单</a></span>
+              </td>
+            </tr>
+            <tr class='oddrowbg'> 
+              <!--td style='text-align: center; '><span class="link" title='详细信息' help="显示这个批次的详细信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()" onclick="openPage('showUserInfo.jsp')"><img src='../../../images/buttons/csv.png' alt='详细信息' width="20" height="20" title='详细信息'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='审核' help="审核通过该招生计划。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/active.png' alt='审核' width="20" height="20" title='审核'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='编辑' help="编辑此招生批次的信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><a href="pici_edit.htm"><img src='../../../images/buttons/edit.png' alt='编辑' width="20" height="20" title='编辑' border=0></a></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='删除' help="从数据库删除此批次。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/delete.png' alt='删除' width="20" height="20" title='删除'></span> 
+              </td-->
+              <td style='white-space: nowrap;'><span class="link">华南师范大学青岛学习中心</span></td>
+              <td style='white-space: nowrap;'>石油工程(采油)(石油与天然气开采)</td>
+              <td> 高起本</td>
+              <td> 5</td>
+              <td class='select' align='center'> <span class="link"><a href="examroom_info.htm" target=_blank>详单</a></span>
+              </td>
+            </tr>
+            <tr class='oddrowbg'> 
+              <!--td style='text-align: center; '><span class="link" title='详细信息' help="显示这个批次的详细信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()" onclick="openPage('showUserInfo.jsp')"><img src='../../../images/buttons/csv.png' alt='详细信息' width="20" height="20" title='详细信息'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='审核' help="审核通过该招生计划。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/active.png' alt='审核' width="20" height="20" title='审核'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='编辑' help="编辑此招生批次的信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><a href="pici_edit.htm"><img src='../../../images/buttons/edit.png' alt='编辑' width="20" height="20" title='编辑' border=0></a></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='删除' help="从数据库删除此批次。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/delete.png' alt='删除' width="20" height="20" title='删除'></span> 
+              </td-->
+              <td style='white-space: nowrap;'><span class="link">华南师范大学青岛学习中心</span></td>
+              <td style='white-space: nowrap;'>石油工程(采油)(石油与天然气开采)</td>
+              <td> 高起本</td>
+              <td> 6</td>
+              <td class='select' align='center'> <span class="link"><a href="examroom_info.htm" target=_blank>详单</a></span>
+              </td>
+            </tr>
+            <tr class='oddrowbg'> 
+              <!--td style='text-align: center; '><span class="link" title='详细信息' help="显示这个批次的详细信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()" onclick="openPage('showUserInfo.jsp')"><img src='../../../images/buttons/csv.png' alt='详细信息' width="20" height="20" title='详细信息'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='审核' help="审核通过该招生计划。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/active.png' alt='审核' width="20" height="20" title='审核'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='编辑' help="编辑此招生批次的信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><a href="pici_edit.htm"><img src='../../../images/buttons/edit.png' alt='编辑' width="20" height="20" title='编辑' border=0></a></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='删除' help="从数据库删除此批次。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/delete.png' alt='删除' width="20" height="20" title='删除'></span> 
+              </td-->
+              <td style='white-space: nowrap;'><span class="link">华南师范大学青岛学习中心</span></td>
+              <td style='white-space: nowrap;'>石油工程(采油)(石油与天然气开采)</td>
+              <td> 高起本</td>
+              <td> 7</td>
+              <td class='select' align='center'> <span class="link"><a href="examroom_info.htm" target=_blank>详单</a></span>
+              </td>
+            </tr>
+            <tr class='oddrowbg'> 
+              <!--td style='text-align: center; '><span class="link" title='详细信息' help="显示这个批次的详细信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()" onclick="openPage('showUserInfo.jsp')"><img src='../../../images/buttons/csv.png' alt='详细信息' width="20" height="20" title='详细信息'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='审核' help="审核通过该招生计划。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/active.png' alt='审核' width="20" height="20" title='审核'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='编辑' help="编辑此招生批次的信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><a href="pici_edit.htm"><img src='../../../images/buttons/edit.png' alt='编辑' width="20" height="20" title='编辑' border=0></a></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='删除' help="从数据库删除此批次。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/delete.png' alt='删除' width="20" height="20" title='删除'></span> 
+              </td-->
+              <td style='white-space: nowrap;'><span class="link">华南师范大学青岛学习中心</span></td>
+              <td style='white-space: nowrap;'>石油工程(采油)(石油与天然气开采)</td>
+              <td> 高起本</td>
+              <td> 8</td>
+              <td class='select' align='center'> <span class="link"><a href="examroom_info.htm" target=_blank>详单</a></span>
+              </td>
+            </tr>
+            <tr class='oddrowbg'> 
+              <!--td style='text-align: center; '><span class="link" title='详细信息' help="显示这个批次的详细信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()" onclick="openPage('showUserInfo.jsp')"><img src='../../../images/buttons/csv.png' alt='详细信息' width="20" height="20" title='详细信息'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='审核' help="审核通过该招生计划。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/active.png' alt='审核' width="20" height="20" title='审核'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='编辑' help="编辑此招生批次的信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><a href="pici_edit.htm"><img src='../../../images/buttons/edit.png' alt='编辑' width="20" height="20" title='编辑' border=0></a></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='删除' help="从数据库删除此批次。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/delete.png' alt='删除' width="20" height="20" title='删除'></span> 
+              </td-->
+              <td style='white-space: nowrap;'><span class="link">华南师范大学青岛学习中心</span></td>
+              <td style='white-space: nowrap;'>石油工程(采油)(石油与天然气开采)</td>
+              <td> 高起本</td>
+              <td> 9</td>
+              <td class='select' align='center'> <span class="link"><a href="examroom_info.htm" target=_blank>详单</a></span>
+              </td>
+            </tr>
+            <tr class='oddrowbg'> 
+              <!--td style='text-align: center; '><span class="link" title='详细信息' help="显示这个批次的详细信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()" onclick="openPage('showUserInfo.jsp')"><img src='../../../images/buttons/csv.png' alt='详细信息' width="20" height="20" title='详细信息'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='审核' help="审核通过该招生计划。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/active.png' alt='审核' width="20" height="20" title='审核'></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='编辑' help="编辑此招生批次的信息。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><a href="pici_edit.htm"><img src='../../../images/buttons/edit.png' alt='编辑' width="20" height="20" title='编辑' border=0></a></span> 
+              </td>
+              <td style='text-align: center; '><span class="link" title='删除' help="从数据库删除此批次。" onMouseOver="top.showHelpInfo(this.help)" onMouseOut="top.showHelpInfo()"><img src='../../../images/buttons/delete.png' alt='删除' width="20" height="20" title='删除'></span> 
+              </td-->
+              <td style='white-space: nowrap;'><span class="link">华南师范大学青岛学习中心</span></td>
+              <td style='white-space: nowrap;'>石油工程(采油)(石油与天然气开采)</td>
+              <td> 高起本</td>
+              <td> 10</td>
+              <td class='select' align='center'> <span class="link"><a href="examroom_info.htm" target=_blank>详单</a></span>
+              </td>
+            </tr>
+            
+          </table>
+  <!-- end:内容区－列表区域 -->
+</div>
+</form>
+<!-- 内容区域结束 -->
+	</td>
+  </tr>
+  <tr> 
+    <td height="48" align="center" class="pageBottomBorder"> 
+      <table width="98%" height="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="4"><img src="../../../images/page_bottomSlip.gif" width="100%" height="2"></td>
+        </tr>
+        <tr>
+          <td valign="middle"> 
+            <!-- start:内容区－分页 -->
+            <table width='100%' align="center" cellpadding='1' cellspacing='0'>
+              <tr> 
+                <th width="46" align="center" style='white-space: nowrap;padding-top:8px;'>&nbsp;分&nbsp;页：</th>
+                <th width='30%' style='color:#666666;white-space: nowrap;'>第 1/6 
+                  页&nbsp;&nbsp;&nbsp;每页 
+                  <select name="select">
+                    <option>10 条</option>
+                    <option>20 条</option>
+                    <option>30 条</option>
+                    <option>50 条</option>
+                  </select>
+					</th>
+                <th width='46%' style='white-space: nowrap;'> 
+                  <table width="70%" height="22" border="0" cellpadding="0" cellspacing="0">
+            <tr align="center"> 
+                      <td><a href="#" title="首页" class="button"><span unselectable="on" class="norm"  style="width:46px;height:15px;padding-top:3px" onmouseover="className='over'" onmouseout="className='norm'" onmousedown="className='push'" onmouseup="className='over'"><span class="text">首页</span></span></a></td>
+              <td><a href="#" title="上一页" class="button"><span unselectable="on" class="norm"  style="width:46px;height:15px;padding-top:3px" onmouseover="className='over'" onmouseout="className='norm'" onmousedown="className='push'" onmouseup="className='over'"><span class="text">上一页</span></span></a></td>
+              <td><a href="#" title="下一页" class="button"><span unselectable="on" class="norm"  style="width:46px;height:15px;padding-top:3px" onmouseover="className='over'" onmouseout="className='norm'" onmousedown="className='push'" onmouseup="className='over'"><span class="text">下一页</span></span></a></td>
+              <td><a href="#" title="末页" class="button"><span unselectable="on" class="norm"  style="width:46px;height:15px;padding-top:3px" onmouseover="className='over'" onmouseout="className='norm'" onmousedown="className='push'" onmouseup="className='over'"><span class="text">末页</span></span></a></td>
+            </tr>
+          </table></th>
+        <th width='24%' style='color:#666666;white-space: nowrap;'>跳转到第
+<input name="textfield" type="text" size="4" style="height:16px">
+          页</th>
+        <th width='0' style='white-space: nowrap;'><a href="#" onclick="javascript:alert('jump')" class="button"><span unselectable="on" class="norm"  style="width:20px;padding-top:2px;padding-bottom:2px" onmouseover="className='over'" onmouseout="className='norm'" onmousedown="className='push'" onmouseup="className='over'"><img src="../../../images/buttons/pageJump.png" alt="跳转" width="20" height="18" class="button"></span></a></th>
+      </tr>
+    </table>
+	        <!-- end:内容区－分页 -->
+          </td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<script>
+   	copyvalue(document.search.site,document.search.site_id);
+   	copyvalue(document.search.major,document.search.major_id);
+   	copyvalue(document.search.edutype,document.search.edu_type_id);
+   	inputvalue1 = document.search.box1.value;
+   	inputvalue2 = document.search.box2.value;
+   	inputvalue3 = document.search.box3.value;
+   </script>
+</body>
+</html>

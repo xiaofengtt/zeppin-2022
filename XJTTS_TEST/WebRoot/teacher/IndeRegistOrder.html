@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>自主报名</title>
+    <link rel="stylesheet" href="../css/lib/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/lib/normalize.css"/>
+    <link rel="stylesheet" href="../css/lib/font-awesome.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/components/sweetalert.css"/>
+    <link rel="stylesheet" href="../css/IndeRegistOrder.css"/>
+</head>
+<body>
+<div id="header"></div>
+
+<div class="main container">
+    <ul class="nav nav-pills">
+        <li role="presentation"><a href="personal.html">个人主页</a></li>
+        <li role="presentation"><a href="trainingRecord.html">培训记录</a></li>
+        <li role="presentation" class="active"><a href="IndeRegistEntrance.html">自主报名</a></li>
+        <li role="presentation"><a href="certificate.html">所获证书</a></li>
+        <li role="presentation"><a href="selectCourse.html">学前测评</a></li>
+        <li role="presentation"><a href="evaluation.html">学后评价</a></li>
+    </ul>
+    <hr class="navBottom"/>
+
+    <div class="col-sm-12 orderForm">
+        <div class="col-sm-4 text-center">
+            <img src="../images/IndeRegist/RegistrationFee.png" class="registFee" alt=""/>
+            <h2 class="registFeeText">￥<span id="registFeeText"></span></h2>
+        </div>
+        <div class="col-sm-8">
+            <span id="orderDate" class="orderDate">2015-08-03</span>
+            <h4 class="nameInfo"><span id="idName" class="name"></span>,请确认报名信息</h4>
+            <div class="col-sm-8 tableInfo">
+                <h5 id="teacherIdCard">2342342315</h5>
+                <div class="col-sm-4 subject">
+                    <span class="subjectTitle">所报项目</span><br/>
+                    <span id="subjectName" class="subjectName">初中数学</span>
+                </div>
+                <div class="col-sm-8 company">
+                    <span class="companyTitle">承训单位</span><br/>
+                    <span id="companyName" class="companyName">新疆师范大学</span>
+                </div>
+                <h4 id="project" class="project">xxxx项目</h4>
+            </div>
+            <div class="col-sm-10 buttonBar">
+                <button class="btn confirm">确认报名</button>
+                <button onclick="goBack()" class="btn cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script src="../js/lib/angular.js"></script>
+<script src="../js/lib/bootstrap.js"></script>
+<script src="../js/components/sweetalert.min.js"></script>
+<script src="../js/IndeRegistOrder.js"></script>
+</body>
+</html>

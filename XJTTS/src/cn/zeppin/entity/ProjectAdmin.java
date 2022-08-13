@@ -1,0 +1,435 @@
+package cn.zeppin.entity;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
+import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+/**
+ * ProjectAdmin entity. @author MyEclipse Persistence Tools
+ */
+@Entity
+@Table(name = "project_admin", uniqueConstraints = {
+	@UniqueConstraint(columnNames = "IDCARD"),
+	@UniqueConstraint(columnNames = "EMAIL"),
+	@UniqueConstraint(columnNames = "MOBILE") })
+public class ProjectAdmin implements java.io.Serializable
+{
+
+    // Fields
+
+    private Integer id;
+    private Politics politics;
+    private Area area;
+    private Organization organization;
+    private Ethnic ethnic;
+    private String name;
+    private String idcard;
+    private String mobile;
+    private String email;
+    private String password;
+    private Short sex;
+    private String department;
+    private Short level;
+    private Boolean createuser;
+    private Boolean restrictRight;
+    private String phone;
+    private String fax;
+    private String jobDuty;
+    private String address;
+    private String postcode;
+    private Short status;
+    private String remark;
+    private Integer creator;
+    private Timestamp creattime;
+    private Set<ProjectAdminRight> projectAdminRights = new HashSet<ProjectAdminRight>(
+	    0);
+
+//    private Boolean projectAdminOrg;
+//    private Set<ProjectAdminOrg> projectAdminOrgs = new HashSet<ProjectAdminOrg>(0);
+    // Constructors
+
+    /** default constructor */
+    public ProjectAdmin()
+    {
+    }
+
+    /** minimal constructor */
+    public ProjectAdmin(Area area, Organization organization, String name,
+	    String mobile, String email, String password, Short sex,
+	    Short level, Boolean createuser, Boolean restrictRight,
+	    String phone, Short status, Timestamp creattime)
+    {
+	this.area = area;
+	this.organization = organization;
+	this.name = name;
+	this.mobile = mobile;
+	this.email = email;
+	this.password = password;
+	this.sex = sex;
+	this.level = level;
+	this.createuser = createuser;
+	this.restrictRight = restrictRight;
+	this.phone = phone;
+	this.status = status;
+	this.creattime = creattime;
+    }
+
+    /** full constructor */
+    public ProjectAdmin(Politics politics, Area area,
+	    Organization organization, Ethnic ethnic, String name,
+	    String idcard, String mobile, String email, String password,
+	    Short sex, String department, Short level, Boolean createuser,
+	    Boolean restrictRight, String phone, String fax, String jobDuty,
+	    String address, String postcode, Short status, String remark,
+	    Integer creator, Timestamp creattime,
+	    Set<ProjectAdminRight> projectAdminRights)
+    {
+	this.politics = politics;
+	this.area = area;
+	this.organization = organization;
+	this.ethnic = ethnic;
+	this.name = name;
+	this.idcard = idcard;
+	this.mobile = mobile;
+	this.email = email;
+	this.password = password;
+	this.sex = sex;
+	this.department = department;
+	this.level = level;
+	this.createuser = createuser;
+	this.restrictRight = restrictRight;
+	this.phone = phone;
+	this.fax = fax;
+	this.jobDuty = jobDuty;
+	this.address = address;
+	this.postcode = postcode;
+	this.status = status;
+	this.remark = remark;
+	this.creator = creator;
+	this.creattime = creattime;
+	this.projectAdminRights = projectAdminRights;
+    }
+
+    // Property accessors
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "ID", unique = true, nullable = false)
+    public Integer getId()
+    {
+	return this.id;
+    }
+
+    public void setId(Integer id)
+    {
+	this.id = id;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "POLITICS")
+    public Politics getPolitics()
+    {
+	return this.politics;
+    }
+
+    public void setPolitics(Politics politics)
+    {
+	this.politics = politics;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "AREA", nullable = false)
+    public Area getArea()
+    {
+	return this.area;
+    }
+
+    public void setArea(Area area)
+    {
+	this.area = area;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ORGANIZATION", nullable = false)
+    public Organization getOrganization()
+    {
+	return this.organization;
+    }
+
+    public void setOrganization(Organization organization)
+    {
+	this.organization = organization;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "NATIONALLY")
+    public Ethnic getEthnic()
+    {
+	return this.ethnic;
+    }
+
+    public void setEthnic(Ethnic ethnic)
+    {
+	this.ethnic = ethnic;
+    }
+
+    @Column(name = "NAME", nullable = false, length = 50)
+    public String getName()
+    {
+	return this.name;
+    }
+
+    public void setName(String name)
+    {
+	this.name = name;
+    }
+
+    @Column(name = "IDCARD", unique = true, length = 20)
+    public String getIdcard()
+    {
+	return this.idcard;
+    }
+
+    public void setIdcard(String idcard)
+    {
+	this.idcard = idcard;
+    }
+
+    @Column(name = "MOBILE", unique = true, nullable = false, length = 20)
+    public String getMobile()
+    {
+	return this.mobile;
+    }
+
+    public void setMobile(String mobile)
+    {
+	this.mobile = mobile;
+    }
+
+    @Column(name = "EMAIL", unique = true, nullable = false, length = 50)
+    public String getEmail()
+    {
+	return this.email;
+    }
+
+    public void setEmail(String email)
+    {
+	this.email = email;
+    }
+
+    @Column(name = "PASSWORD", nullable = false, length = 20)
+    public String getPassword()
+    {
+	return this.password;
+    }
+
+    public void setPassword(String password)
+    {
+	this.password = password;
+    }
+
+    @Column(name = "SEX", nullable = false)
+    public Short getSex()
+    {
+	return this.sex;
+    }
+
+    public void setSex(Short sex)
+    {
+	this.sex = sex;
+    }
+
+    @Column(name = "DEPARTMENT", length = 100)
+    public String getDepartment()
+    {
+	return this.department;
+    }
+
+    public void setDepartment(String department)
+    {
+	this.department = department;
+    }
+
+    @Column(name = "LEVEL", nullable = false)
+    public Short getLevel()
+    {
+	return this.level;
+    }
+
+    public void setLevel(Short level)
+    {
+	this.level = level;
+    }
+
+    @Column(name = "CREATEUSER", nullable = false)
+    public Boolean getCreateuser()
+    {
+	return this.createuser;
+    }
+
+    public void setCreateuser(Boolean createuser)
+    {
+	this.createuser = createuser;
+    }
+
+    @Column(name = "RESTRICT_RIGHT", nullable = false)
+    public Boolean getRestrictRight()
+    {
+	return this.restrictRight;
+    }
+
+    public void setRestrictRight(Boolean restrictRight)
+    {
+	this.restrictRight = restrictRight;
+    }
+
+    @Column(name = "PHONE", nullable = false, length = 20)
+    public String getPhone()
+    {
+	return this.phone;
+    }
+
+    public void setPhone(String phone)
+    {
+	this.phone = phone;
+    }
+
+    @Column(name = "FAX", length = 20)
+    public String getFax()
+    {
+	return this.fax;
+    }
+
+    public void setFax(String fax)
+    {
+	this.fax = fax;
+    }
+
+    @Column(name = "JOB_DUTY", length = 20)
+    public String getJobDuty()
+    {
+	return this.jobDuty;
+    }
+
+    public void setJobDuty(String jobDuty)
+    {
+	this.jobDuty = jobDuty;
+    }
+
+    @Column(name = "ADDRESS", length = 200)
+    public String getAddress()
+    {
+	return this.address;
+    }
+
+    public void setAddress(String address)
+    {
+	this.address = address;
+    }
+
+    @Column(name = "POSTCODE", length = 10)
+    public String getPostcode()
+    {
+	return this.postcode;
+    }
+
+    public void setPostcode(String postcode)
+    {
+	this.postcode = postcode;
+    }
+
+    @Column(name = "STATUS", nullable = false)
+    public Short getStatus()
+    {
+	return this.status;
+    }
+
+    public void setStatus(Short status)
+    {
+	this.status = status;
+    }
+
+    @Column(name = "REMARK", length = 200)
+    public String getRemark()
+    {
+	return this.remark;
+    }
+
+    public void setRemark(String remark)
+    {
+	this.remark = remark;
+    }
+
+    @Column(name = "CREATOR")
+    public Integer getCreator()
+    {
+	return this.creator;
+    }
+
+    public void setCreator(Integer creator)
+    {
+	this.creator = creator;
+    }
+
+    @Column(name = "CREATTIME", nullable = false, length = 19)
+    public Timestamp getCreattime()
+    {
+	return this.creattime;
+    }
+
+    public void setCreattime(Timestamp creattime)
+    {
+	this.creattime = creattime;
+    }
+
+    @OneToMany(
+	    cascade = CascadeType.ALL,
+	    fetch = FetchType.EAGER,
+	    mappedBy = "projectAdmin")
+    public Set<ProjectAdminRight> getProjectAdminRights()
+    {
+	return this.projectAdminRights;
+    }
+
+    public void setProjectAdminRights(Set<ProjectAdminRight> projectAdminRights)
+    {
+	this.projectAdminRights = projectAdminRights;
+    }
+
+
+//    @Column(name = "PROJECT_ADMIN_ORG")
+//    public Boolean getProjectAdminOrg() {
+//		return projectAdminOrg;
+//	}
+//    
+//
+//	public void setProjectAdminOrg(Boolean projectAdminOrg) {
+//		this.projectAdminOrg = projectAdminOrg;
+//	}
+//	
+//	@OneToMany(
+//		    cascade = CascadeType.ALL,
+//		    fetch = FetchType.EAGER,
+//		    mappedBy = "projectAdmin")
+//	public Set<ProjectAdminOrg> getProjectAdminOrgs() {
+//		return projectAdminOrgs;
+//	}
+//	
+//
+//	public void setProjectAdminOrgs(Set<ProjectAdminOrg> projectAdminOrgs) {
+//		this.projectAdminOrgs = projectAdminOrgs;
+//	}
+}

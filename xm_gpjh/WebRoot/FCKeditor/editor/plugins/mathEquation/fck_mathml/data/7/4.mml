@@ -1,0 +1,19 @@
+<math>
+  <apply>
+    <root/>
+    <apply>
+      <plus/>
+      <apply>
+        <power/>
+        <ci>a</ci>
+        <cn>2</cn>
+      </apply>
+      <apply>
+        <power/>
+        <ci>b</ci>
+        <cn>2</cn>
+      </apply>
+    </apply>
+  </apply>
+</math>
+

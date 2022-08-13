@@ -1,0 +1,27 @@
+/* CSS Document */
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	 font-size:12px; 
+	 color:#000;
+}
+a{ font-size:12px; text-decoration:none; color:#000000}
+.down{ font-size:12px; font-family:simsun; color:#fff;}
+.downde{ font-size:12px; font-family:simsun; color:#3D5945;}
+
+.blue{ color:#004DB2; font-size:14px; font-weight:bold; font-family:simsun;}
+.greens{ color:#008001; font-size:14px;font-weight:bold; font-family:simsun;}
+.cen{ color:#4C4C4C; font-family:simsun; font-size:12px; line-height:20px;}
+.lmright{ color:#1D68A3; font-family:simsun; font-size:12px;}
+.logo{ color:#000; font-family:'ºÚÌå';font-weight:bold; font-family:simsun; font-size:28px;}
+.indextopleft{ color:#A66900; font-size:12px; font-family:simsun; font-weight:bold}
+.indextopright{ color:#004DB2; font-size:12px; font-family:simsun; }
+.indexcen{ color:#1F4A82; font-family:simsun; font-size:12px;}
+.indexhui{ color:#747474; font-family:simsun; font-size:12px;}
+.indextex{ text-decoration:underline}
+.indexhuihu{ color:#4B4B4B; font-family:simsun; font-size:12px; line-height:20px;}
+.indexyellow{ color:#FF7E00; font-family:simsun; font-size:12px;}
+.inputs{width:186px; height:18px; border: solid 1px #E3E3EB;font-size:12px; font-family:simsun;}
+.selects{ width:145px; height:20px; border: solid 1px #E3E3EB; font-size:12px; font-family:simsun; background:#fff}

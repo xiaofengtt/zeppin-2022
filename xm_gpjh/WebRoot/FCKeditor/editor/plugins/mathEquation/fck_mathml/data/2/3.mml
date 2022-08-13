@@ -1,0 +1,24 @@
+<math>
+  <mrow>
+   <mstyle displaystyle='true'>
+    <munderover>
+     <mo>&sum;</mo>
+     <mrow>
+      <mi>i</mi><mo>=</mo><mn>1</mn>
+     </mrow>
+     <mi>n</mi>
+    </munderover>
+    <mrow>
+     <msub>
+      <mi>X</mi>
+      <mi>i</mi>
+     </msub>
+     <msub>
+      <mi>Y</mi>
+      <mi>i</mi>
+     </msub>
+     
+    </mrow>
+   </mstyle>
+  </mrow>
+</math>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>培训档案</title>
+<link rel="stylesheet" href="../css/iframe.css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/url.min.js"></script>
+<script type="text/javascript" src="../js/layer-v2.2/layer/layer.js"></script>
+<script src="../js/jsrender.min.js"></script>
+<script src="../js/highcharts.js"></script>
+<script src="../js/data.js"></script>
+<script src="../js/teacherArchives.js"></script>
+<link rel="stylesheet" href="../css/bootstrap.css">
+<style type="text/css">
+	*{margin: 0 auto;padding: 0;}
+	.clear{clear: both !important;display: block;}
+	h3{margin-top: 20px;}
+	h4{margin: 30px 0 20px 0;}
+	.buttonDiv{margin-top: 40px;}
+	.buttonDiv a{width: 18%;text-align: center;display: block;float: left;cursor: pointer;border: 1px solid #4489ce;border-radius:4px;padding: 5px 10px;margin: 5px 15px;font-size: 14px;margin-left: 0px;box-sizing:border-box;}
+	.buttonDiv a b{font-weight: normal;display: block;}
+	.buttonDiv a:hover{text-decoration: none;background: #4489ce; border-color:#4489ce;color: #ffffff;}
+	.buttonDiv a.light{background: #4489ce; border-color:#4489ce;color: #ffffff;}
+	.Record{margin:30px 20px;}
+	.Record .recordDiv{position: relative;min-height: 20px;float: left;padding-left:24px;width:80%;}
+	.Record .recordDiv div{float: left;color: #333;font-size: 14px;}
+	.Record .recordDiv .line{position: absolute;top:11px;width:2px;height:100%;background:#4489ce;left:-2px;}
+	.Record .recordDiv .icon{width: 37px;background: url(../img/icon-1.png) center no-repeat;position: absolute;left: -9px;height:20px;}
+	.Record .recordDiv:hover .icon{background: url(../img/icon-2.png) center no-repeat;width:28px;left:-9px;}
+	.Record .recordDiv .infomation a{color: #333;line-height: 20px;}
+	.Record .recordDivs .data{float: left;padding:8px 15px 8px 0px;text-align:right;line-height:20px;}
+	.Record .recordDiv .contentDiv{background:#fff;color:#fff;width:100%;padding:8px 9px;border-radius:4px;margin-left:-4px;}
+	.Record .recordDiv:hover .contentDiv{background:#4489ce;color:#fff;cursor:pointer;}
+	.Record .recordDiv:hover .infomation a{color:#fff;text-decoration: none;}
+	.Record .recordDiv:hover .result{color:#fff;}
+	.Record .recordDiv .infomation {width: 80%;}
+	.Record .recordDiv .result{width: 20%;text-align: right;}
+	.table1{margin-bottom:0px;border-bottom:0px;margin-top: 20px;}
+	.table1 tr.lastChild td{border-bottom:0px;}
+	td.portraitTd{text-align: center;vertical-align: middle !important;border-width: 3px !important;}
+	#list-content{max-width:1100px;}
+	.train{padding:20px 50px;}
+	.train ul{padding:20px;}
+	.train ul li{float:left;width:48%;line-height:30px;font-size:14px;color:#333333;margin-right:10px;}
+	.Norecord{color:#b8b8b8;font-size:24px;text-align:center;line-height:120px;height:120px;}
+	#highChar{margin-top:60px;}
+	.portraitTd{overflow:hidden;height:210px;}
+	.portraitTd img{max-width:100%;max-height:210px;}
+</style>
+</head>
+<body>
+<div class="main">
+	<div class="listwrap">
+
+		</div>
+		<div id="list-content" class="list-content clearfix">
+		<h2 class="text-center">教师培训档案</h2>
+			<table class="table table-bordered table1">
+				<tr>
+					<td width="16.21%" class="text-right">姓名：</td>
+					<td width="28.74%" class="text-center" id="teacherName"></td>
+					<td width="16.21%" class="text-right">联系电话：</td>
+					<td width="22.99%" class="text-center" id="teacherMobile"></td>
+					<td rowspan="6" width="15.74%" class="portraitTd" id="teacherHeadPic">
+						<img src="../img/women.png" alt="头像">
+					</td>
+				</tr>
+				<tr>
+					<td width="16.21%" class="text-right">性别：</td>
+					<td width="28.74%" class="text-center" id="teacherSex"></td>
+					<td width="16.21%" class="text-right">民族：</td>
+					<td width="22.99%" class="text-center" id="teacherFolk"></td>
+				</tr>
+				<tr>
+					<td width="16.21%" class="text-right">身份证号：</td>
+					<td width="28.74%" class="text-center" id="teacherIdcard"></td>
+					<td width="16.21%" class="text-right">政治面貌：</td>
+					<td width="22.99%" class="text-center" id="teacherPolice"></td>
+				</tr>
+				<tr>
+					<td width="16.21%" class="text-right">教龄：</td>
+					<td width="28.74%" class="text-center" id="teacherTeachAge"></td>
+					<td width="16.21%" class="text-right">主要教学学科：</td>
+					<td width="22.99%" class="text-center" id="teacherMainTeachSubject"></td>
+				</tr>
+				<tr>
+					<td width="16.21%" class="text-right">教师状态：</td>
+					<td width="28.74%" class="text-center" id="teacherStatus"></td>
+					<td width="16.21%" class="text-right">主要教学学段：</td>
+					<td width="22.99%" class="text-center" id="teacherMainTeachGrade"></td>
+				</tr>
+				<tr class="lastChild">
+					<td width="16.21%" class="text-right">编制：</td>
+					<td width="28.74%" class="text-center" id="teacherAuthorize"></td>
+					<td width="16.21%" class="text-right">主要教学语言：</td>
+					<td width="22.99%" class="text-center" id="teacherMainTeachLanguage"></td>
+				</tr>
+			</table>
+			<table class="table table-bordered table2">
+				<tr>
+					<td width="16.21%" class="text-right">职称：</td>
+					<td width="28.74%" class="text-center"  id="teacherJobTitle"></td>
+					<td width="16.21%" class="text-right">最高学历：</td>
+					<td width="38.73%" class="text-center"  id="teacherBackground"></td>
+				</tr>
+				<tr>
+					<td width="16.21%" class="text-right">职务：</td>
+					<td width="28.74%" class="text-center" id="teacherJobDuty"></td>
+					<td width="16.21%" class="text-right">汉语言水平：</td>
+					<td width="38.73%" class="text-center"  id="teacherChineselevel"></td>
+				</tr>
+				<tr>
+					<td width="16.21%" class="text-right">所在学校：</td>
+					<td width="28.74%" class="text-center" id="teacherOrganization"></td>
+					<td width="16.21%" class="text-right">是否双语教学：</td>
+					<td width="38.73%" class="text-center" id="teacherIsMultiLanguage"></td>
+				</tr>
+			</table>
+			<div class="buttonDiv" id="projectCycle">
+			</div>
+
+			<h3 style="margin-top: 30px;">培新记录</h3>
+			<div class="Record">
+				
+			</div>
+			<div class="Records">
+				
+			</div>
+
+			<h3>认定学时</h3>
+			<h4 class="text-center">教师学时认定情况</h4>
+			<table class="table table-bordered table3 text-center">
+				<thead id="studyhoursStatusTitle">
+					<tr>
+			            <th></th>
+			            <th>认定标准</th>
+			            <th>已完成学时</th>
+			            <th>完成情况</th>
+			        </tr>
+		        </thead>
+		        <tbody id="studyhoursStatus">
+		        
+		        </tbody>
+			</table>
+			<table class="table table-bordered text-center" id="datatable" style="display: none;">
+				<thead id="studyhoursTitle">
+			        <tr>
+			            <th></th>
+			            <th>认定标准</th>
+			            <th>已完成学时</th>
+			        </tr>
+			    </thead>
+			    <tbody id="studyhours">
+			    </tbody>
+			</table>
+			<div id="highChar"></div>	
+		</div>
+	</div>
+
+</body>
+</html>
+

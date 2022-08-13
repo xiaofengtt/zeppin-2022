@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>问卷报表</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/bootstrap.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/app.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/highcharts.js"></script>
+<script src="../js/data.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 8]>
+	<div class="browserhappy"><div class="inn">新疆教师培训信息化管理系统，是北京知鹏汇仁科技有限公司(<a href="http://www.zeppin.cn">zeppin.cn</a>)基于最新web技术为新疆开发的一套系统，您的浏览器无法完全支持我们的页面，建议<a href="http://browsehappy.com/">升级您的浏览器</a>，以获得良好体验的最新版本!</div></div>
+	<div class="browserhappyoverlay"></div>
+<![endif]-->
+<!--Header-part-->
+<div class="navbar" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo" title="新疆维吾尔自治区 教师培训信息化管理系统" ><img src="../img/logo.png" height="41"></a>
+    </div>
+	<p class="logout"><span>欢迎&#33258;&#27835;&#21306;&#25945;&#32946;&#21381;&#31649;&#29702;&#21592; &nbsp;&nbsp;<strong>&#29579;&#25196;</strong>&nbsp;&nbsp;</span> 2014&#24180;06&#26376;05&#26085; &#26143;&#26399;&#22235; &nbsp;|&nbsp;  <a href="../login_modifyPassword.action" data-fancybox-type="iframe" class="text text-modifyPasswd">修改密码</a> &nbsp;|&nbsp;  <a href="../login_logout.action">退出</a> </p>	
+	
+  </div>
+</div>
+
+<div id="container" class="container-fluid">
+
+	<div class="row">
+		<!--sidebar-menu-->
+		<div class="sidebar">
+			<div class=" nav-sidebar">
+				<ul class="nav ">
+			
+				
+							<li class="active"><a href="#"><span> &#36134;&#21495;&#31649;&#29702;</span> </a>
+								<ul class="nav">
+							
+										<li  ><a href="projectAdmin_initPage.action"> &#39033;&#30446;&#31649;&#29702;&#21592;&#31649;&#29702;
+										</a></li>
+							
+										<li  ><a href="trainingAdmin_initPage.action"> &#25215;&#35757;&#21333;&#20301;&#31649;&#29702;&#21592;&#31649;&#29702;
+										</a></li>
+							
+								</ul></li>
+				
+				
+
+			
+				
+							<li class="active"><a href="#"><span> &#39033;&#30446;&#31649;&#29702;</span> </a>
+								<ul class="nav">
+							
+										<li class="cur" ><a href="projectBase_initPage.action"> &#39033;&#30446;&#20449;&#24687;&#31649;&#29702;
+										</a></li>
+							
+										<li  ><a href="projectApply_initPage.action"> &#39033;&#30446;&#30003;&#25253;&#32467;&#26524;&#30417;&#23457;
+										</a></li>
+							
+								</ul></li>
+				
+				
+
+			
+				
+							<li class="active"><a href="#"><span> &#23398;&#21592;&#31649;&#29702;</span> </a>
+								<ul class="nav">
+							
+										<li  ><a href="teacherManage_initPage.action"> &#23398;&#21592;&#22522;&#26412;&#20449;&#24687;&#31649;&#29702;
+										</a></li>
+							
+										<li  ><a href="assignTeacherTask_initPage.action"> &#23398;&#21592;&#21517;&#39069;&#20998;&#37197;&#31649;&#29702;
+										</a></li>
+							
+										<li  ><a href="ttRecord_initReortAsstPage.action"> &#23398;&#21592;&#25253;&#36865;&#31649;&#29702;
+										</a></li>
+							
+										<li  ><a href="ttRecord_initAduPage.action"> &#23398;&#21592;&#23457;&#26680;&#31649;&#29702;
+										</a></li>
+							
+								</ul></li>
+				
+				
+
+			
+
+				</ul>
+			</div>
+			<div class="js-nav-shadow bottom"><img src="../img/round-shadow-bottom.png" style="top: auto; bottom: 0px;"></div>
+		</div>
+		
+		
+		<div class="main">
+			<div class="listwrap">
+				
+				
+				<div class="list-content clearfix" >
+					<div class="list_title" style="margin-top:10px">共有3815人次参与了此问卷</div>
+					<div class="survey_result_qs">
+						<div class="no-result" style="display: none;">
+					      <p class="no-result-tip">
+					        请至少显示一道问题以查看结果分析
+					      </p>
+					    </div>
+						<div class="result-content">
+							<h2 class="question-title"><b>1</b>请问，您居住的地区是？</h2>
+							<div class="chart-content">
+								<div class="chart-table">
+									
+									<table id="datatable" style="margin-left:20px;" class="table table-bordered table-hover">
+									    <thead>
+									      <tr>
+	   									    <th class="option">选项</th>
+	   									    <th class="option-data">选择人数</th>
+									      </tr>
+									    </thead>
+									  <tbody>
+  
+									  <tr>
+									    <td class="tl">北京</td>
+									    <td class="tr">10</td>
+									  </tr>
+  
+									  <tr>
+									    <td class="tl">上海</td>
+									    <td class="tr">20</td>
+									  </tr>
+  
+									  <tr>
+									    <td class="tl">天津</td>
+									    <td class="tr">10</td>
+									  </tr>
+  
+									  <tr>
+									    <td class="tl">广州</td>
+									    <td class="tr">40</td>
+									  </tr>
+  
+									  <tr>
+									    <td class="tl">其他省市</td>
+									    <td class="tr">5</td>
+									  </tr>
+									  <tr>
+									    <td class="tl">北京</td>
+									    <td class="tr">10</td>
+									  </tr>
+  
+									  <tr>
+									    <td class="tl">上海</td>
+									    <td class="tr">20</td>
+									  </tr>
+  
+									  <tr>
+									    <td class="tl">天津</td>
+									    <td class="tr">10</td>
+									  </tr>
+  
+									
+  
+									  
+									</tbody></table>
+									
+									
+								</div>
+								<div class="clearfix">
+									<div class="chart-column  col-md-6" style="height:300px;"></div>
+									<div class="chart-pie  col-md-6" style="height:300px;"></div>
+								</div>
+							</div>
+						</div><!--end result-content-->
+						
+						
+						
+					</div>
+					
+				</div>
+				<script>
+				$(function () {
+					
+					
+					
+				    $('.chart-column').highcharts({
+				        data: {
+				            table: document.getElementById('datatable')
+				        },
+					    legend: {
+					               enabled: false
+					           },
+				        chart: {
+				            type: 'column'
+				        },
+				        title: {
+				            text: ''
+				        },
+				        yAxis: {
+				            allowDecimals: false,
+				            title: {
+				                text: '选择人数',
+								 style: {"fontSize":"12px","color":'#5691f0'}
+				            }
+				        }
+				    });
+					
+				    $('.chart-pie').highcharts({
+				        data: {
+				            table: document.getElementById('datatable')
+				        },
+				        chart: {
+				            type: 'pie'
+				        },
+						
+					    title: {
+			               text: '选择人数',
+			               align: 'center',
+			               verticalAlign: 'middle',
+			               y: 5,
+						   style: {"fontSize":"16px","color":'#5691f0'}
+			           },
+				        yAxis: {
+				            allowDecimals: false,
+				            title: {
+				                text: '选择人数'
+				            }
+				        },
+					    series: [{
+				                   name: 'Browsers',
+								   title: 'ddd',
+				                   innerSize: '50%',
+				                   showInLegend:false,
+								  dataLabels: {distance: -40,style: {fontWeight: "bold",color: "#fff",textShadow: "0px 1px 2px gray"}}
+				                   
+				               }]
+				    });
+				});
+				</script>
+				<!--end list-content clearfix-->
+				
+				
+			</div><!--end listwrap-->
+			
+		</div><!--end main-->
+	</div>
+</div>	
+		
+<div class="bs-footer">
+  <div>
+	  <p>Copyright © 2014 新疆维吾尔自治区教育厅.     <a target="_blank" href="http://www.xjedu.gov.cn/">联系我们</a> &nbsp;|&nbsp;Power by <a href="http://www.zeppin.cn" target="_blank">http://www.zeppin.cn</a> </p>
+
+  </div>
+</div>		
+
+</body></html>

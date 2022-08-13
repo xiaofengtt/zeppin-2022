@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="entity.teaching" extends="platform-default" namespace="/entity/teaching">
+		
+	<global-results>
+			
+			<result name="error" type="freemarker">
+				/test/error.jsp
+			</result>
+			<result name="grid">/test/grid.jsp</result>
+		    <result name="json">/test/json.jsp</result>
+		    <result name="gridjs">/test/gridjs.jsp</result>
+		    <result name="excel">/test/export.xls</result>
+		    <result name="input">/entity/manager/pub/turnToLogin.jsp </result>
+		    <result name="messageCenter">
+				/entity/function/onlinehomeworkpaper/MessageCenter.jsp
+			</result>
+		</global-results>
+		
+		
+		<action name="peCourseManager_*" method="{1}" class="peCourseManagerAction">
+			<result name="batch">/entity/manager/teaching/course_bath_enter.jsp</result>
+			<result name="uploadCourse_result">/entity/manager/teaching/operate_result.jsp</result>
+	    </action>
+	    
+	    
+	    
+	    <!-- longyinsong begin-->
+	    <action name="prBzzTchOpenCourse_*" method="{1}" class="prBzzTchOpenCourseAction">
+	    	<result name="front">/entity/manager/teaching/course_type_select.jsp</result>
+	    </action>
+	    <action name="prBzzTchOpenCourseReady_*" method="{1}" class="prBzzTchOpenCourseReadyAction">
+	    </action>
+	    <action name="prBzzTchOpenCourseDetail_*" method="{1}" class="prBzzTchOpenCourseDetailAction">
+	    	<result name="resultinfo">/entity/manager/teaching/resultInfo.jsp</result>
+	    </action>
+	    <action name="peBzzZhiBoRoom_*" method="{1}" class="peBzzZhiBoRoomAction"></action>
+	    <action name="prBzzTchSelectCourses_*" method="{1}" class="prBzzTchSelectCoursesAction">
+	    	<result name="ajaxsubmit">/entity/manager/teaching/infomessage.jsp</result>
+	    </action>
+	    <action name="pebzzManagerAssess_*" method="{1}" class="pebzzManagerAssessAction">
+	    	<result name="toAssess">/entity/manager/teaching/managerAssess.jsp</result>
+	    	<result name="todetailAssessing">/entity/manager/teaching/managerAssess_detail.jsp</result>
+	    	<result name="Assessing">/entity/manager/teaching/managerAssess_result.jsp</result>
+	    	<result name="updateAssess">/entity/manager/teaching/managerAssess_result.jsp</result>
+	    </action>
+	    <action name="pebzzAssessRusts_*" method="{1}" class="pebzzAssessRustsAction">
+	    	<result name="toReviwes">/entity/manager/teaching/managerAssessRuslt.jsp</result>
+	    </action>
+	    <!-- longyinsong end -->
+	    
+	    <!-- gaoyuan begin -->
+    	<action name="peBzzCourseManager_*" method="{1}" class="peBzzCourseManagerAction">
+		<result name="batch">/entity/manager/teaching/course_bath_enter.jsp</result>
+		<result name="uploadCourse_result">/entity/manager/teaching/operate_result.jsp</result>
+	    </action>
+	    <!-- gaoyuan end -->
+	    <action name="courseBookHis_*" method="{1}" class="courseBookHisAction">
+	    </action>
+	    <action name="courseCoursewareHis_*" method="{1}" class="courseCoursewareHisAction">
+	    </action>
+	    
+	    <action name="peTeaPlan_*" method="{1}" class="peTeachPlanManagerAction">
+			<result name="totransplant">/entity/manager/teaching/teachplantransplant.jsp</result>
+			<result name="batch">/entity/manager/teaching/propram_batch_enter.jsp</result>
+	    </action>
+	    <action name="teachPlanInfo_*" method="{1}" class="teachPlanInfoAction">
+	    </action>
+	    <action name="teachPlanInfoCourse_*" method="{1}" class="teachPlanInfoCourseAction">
+	    </action>
+	    
+	    <action name="teacher_*" method="{1}" class="peTeacherManagerAction">
+	    </action>
+	    <action name="teacherCourse_*" method="{1}" class="teacherCourseAction">
+	    </action>
+	    <action name="syllabus_*" method="{1}" class="peSyllabusManagerAction">
+	   	 <result name="batch">/entity/manager/teaching/syllabus_upload.jsp</result>
+	    </action>
+	    <action name="countcoursecoefficient_*" method="{1}" class="peCountCourseCoefficientAction"></action>
+	    <action name="countcoursereward_*" method="{1}" class="prCountCourseRewardAction">
+	   	 <result name="detail">/entity/manager/teaching/countcourserewarddetail.jsp</result>
+	   	 <result name="turnto">/entity/manager/teaching/countcourserewardturnto.jsp</result>
+	    </action>
+	    <action name="countcheckofworkfee_*" method="{1}" class="prCountCheckofWorkFeeAction">
+	   	 <result name="detail">/entity/manager/teaching/countcheckofworkfeedetail.jsp</result>
+	   	 <result name="turnto">/entity/manager/teaching/countcheckofworkfeeturnto.jsp</result>
+	    </action>
+	    
+	    <!-- libing -->
+	    <action name="prTchCourseBook_*" method="{1}" class="prTchCourseBookAction">
+	    </action>
+	    <action name="courseware_*" method="{1}" class="courseWareAction">
+	    </action>
+	    <action name="teachingMaterialsManager_*" method="{1}" class="teachingMaterialsManagerAction">
+	   	 <result name="batch">/entity/manager/teaching/materials_bath_enter.jsp</result>
+	   	 <result name="uploadBook_result">/entity/manager/teaching/operate_result.jsp</result>
+	    </action>
+	    <!-- gaoyuan begin -->
+	      <action name="bzzcourseware_*" method="{1}" class="bzzcourseWareAction">
+	    </action>
+	    <!-- gaoyuan end -->
+	    
+	    
+	    <!-- zhangyu begin -->
+	    <action name="usualScoreView_*" method="{1}" class="usualScoreViewAction">
+	    </action>
+	    <action name="homeworkScoreView_*" method="{1}" class="homeworkScoreViewAction">
+	    </action>
+	    <action name="examScoreView_*" method="{1}" class="examScoreViewAction">
+	    </action>
+	    <action name="scorePercentSet_*" method="{1}" class="scorePercentSetAction">
+	    </action>
+	    <action name="unitExamScore_*" method="{1}" class="unitExamScoreAction">
+	    </action>
+	    <action name="degreeEnglishScore_*" method="{1}" class="degreeEnglishScoreAction">
+	    </action>
+	    <action name="paperTime_*" method="{1}" class="paperTimeAction">
+	    </action>
+	    <action name="studentTopic_*" method="{1}" class="studentTopicAction">
+	    </action>
+	    <action name="studentNoSelect_*" method="{1}" class="studentNoSelectAction">
+	    </action>
+	    <action name="teacherTopic_*" method="{1}" class="teacherTopicAction">
+	    </action>
+	    <action name="replyListSelect_*" method="{1}" class="replyListSelectAction">
+	    </action>
+	    <action name="replyListView_*" method="{1}" class="replyListViewAction">
+	    </action>
+	    <action name="replyTimeSet_*" method="{1}" class="replyTimeSetAction">
+	    </action>
+	    <action name="paperScoreSearch_*" method="{1}" class="paperScoreSearchAction">
+	    </action>
+	    <action name="replyScoreSearch_*" method="{1}" class="replyScoreSearchAction">
+	    </action>
+	    <action name="finalScore_*" method="{1}" class="finalScoreAction">
+	    </action>
+	    <action name="paperShenqingStat_*" method="{1}" class="paperShenqingStatAction">
+	    </action>
+	    <action name="paperProcess_*" method="{1}" class="paperProcessAction">
+	    </action>
+	    <action name="paperScoreStat_*" method="{1}" class="paperScoreStatAction">
+	    	  <result name="paperScoreStat">/entity/manager/teaching/paper_score_stat.jsp</result>
+	    </action>
+	    <action name="peStuElective_*" method="{1}" class="peStuElectiveAction">
+	    </action>
+	    <action name="peStuElectiveCourses_*" method="{1}" class="peStuElectiveCoursesAction">
+	    </action>
+	    <action name="peStuBeginCourse_*" method="{1}" class="peStuBeginCourseAction">
+	    </action>
+	    <action name="scoreSearch_*" method="{1}" class="scoreSearchAction">
+	    </action>
+	    <action name="prTchProgramCourse_*" method="{1}" class="prTchProgramCourseAction">
+	    </action>
+	    <action name="prTchCourseTeacher_*" method="{1}" class="prTchCourseTeacherAction">
+	    </action>
+	    <action name="prTchOpencourse_*" method="{1}" class="prTchOpencourseAction">
+	    </action>
+	    <action name="opencourseTimes_*" method="{1}" class="opencourseTimesAction">
+	    </action>
+	    <action name="paperReapplyAudit_*" method="{1}" class="paperReapplyAuditAction">
+	    </action>
+	    <action name="degreeEnglishAudit_*" method="{1}" class="degreeEnglishAuditAction">
+	    </action>
+	    <action name="courseHomework_*" method="{1}" class="courseHomeworkAction">
+	    </action>
+	    <!-- zhangyu end -->
+	    
+	    <action name="electiveTimeManage_*" method="{1}" class="electiveTimeManageAction">
+	    </action>
+	    <action name="elelctiveManage_*" method="{1}" class="elelctiveManageAction">
+	    	<result name="turntoSearch">/entity/manager/teaching/electiveForStudent_search.jsp</result>
+	    </action>
+	    <action name="peTchRejoinRoom_*" method="{1}" class="peTchRejoinRoomAction">
+	    </action>		    
+	    <action name="peTchRejoinSection_*" method="{1}" class="peTchRejoinSectionAction">
+	    </action>	    	    
+	    <action name="paperProcessTeacher_*" method="{1}" class="paperProcessTeacherAction">
+	    </action>	    
+	    <action name="paperProcessInfo_*" method="{1}" class="paperProcessInfoAction">
+	    </action>
+	    <action name="paperProcessStuInfo_*" method="{1}" class="paperProcessStuInfoAction">
+	    </action>	    
+	    <action name="electiveInfoManage_*" method="{1}" class="electiveInfoManageAction">
+	    </action>
+	    <action name="electiveStat_*" method="{1}" class="electiveStatAction">
+	    </action>
+	    <action name="unElectiveStuList_*" method="{1}" class="unElectiveStuListAction">
+	    </action>
+	    <action name="courseOrderStat_*" method="{1}" class="courseOrderStatAction">
+	    </action>
+	    <action name="manualConfirmCourse_*" method="{1}" class="manualConfirmCourseAction">
+	    </action>
+	    <action name="batchConfirmCourse_*" method="{1}" class="batchConfirmCourseAction">
+	    	<result name="result">/entity/manager/teaching/batchOpenCourseExe.jsp</result>
+	    </action>
+	    <action name="confirmedCourseStat_*" method="{1}" class="confirmedCourseStatAction">
+	    </action>
+	    <action name="confirmedCourseInfo_*" method="{1}" class="confirmedCourseInfoAction">
+	    </action>
+	    <action name="teachingStat_*" method="{1}" class="teachingStatAction">
+	    </action>
+	    <action name="homeWorkStat_*" method="{1}" class="homeWorkStatAction">
+	    </action>
+	    <action name="paperTeacher_*" method="{1}" class="paperTeacherAction">
+	    </action>
+	    <action name="paperTeacherAdd_*" method="{1}" class="paperTeacherAddAction">
+	    </action>
+	    <action name="printScore_*" method="{1}" class="printScoreAction">
+	    	<result name="printscorebatch">/entity/manager/teaching/print_score_report_batch.jsp</result>		    
+	    </action>
+	    <!-- zhaoyuxiao begin -->
+	    <action name="peTchCourseAction_*" method="{1}" class="peTchCourseAction">
+	    </action>
+	    <action name="prTchCourseTeacherInAction_*" method="{1}" class="prTchCourseTeacherInAction">
+	    </action>
+	    <action name="prTchCourseTeacherOutAction_*" method="{1}" class="prTchCourseTeacherOutAction">
+	    </action>
+	    <action name="peTchCoursewareAction_*" method="{1}" class="peTchCoursewareAction">
+	    	<result name="toimport">/entity/manager/course/courseware/scorm12/import.jsp</result>
+	    </action>
+	    <action name="peTchCoursewareSingleCourseAction_*" method="{1}" class="peTchCoursewareSingleCourseAction"></action>
+	    <!-- zhaoyuxiao end -->
+	</package>
+</struts>

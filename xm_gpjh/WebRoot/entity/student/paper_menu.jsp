@@ -1,0 +1,473 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/WEB-INF/struts-tags.tld" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="images/layout.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+*{
+	margin:0px;
+	padding:0px;
+	}
+body{
+	font-family:"宋体";
+	font-size:12px;
+	background-color:#dfecf0;
+	color:#000000;
+	}
+a{
+	text-decoration:none;
+	color:#000000;
+}
+.clear{
+	clear:both;
+	}
+.font_y{
+	color:#deff00;
+	font-weight:bold;
+	}
+.left{
+	float:left;
+	}
+.right{
+	float:right;
+	}
+/*头部*/
+#banner{
+	width:100%;
+	height:73px;
+	background-image:url(banner_bg_02.jpg);
+	background-repeat:repeat-x;
+	}
+#logo{
+	height:73px;
+	width:385px;
+	float:left;
+	background-image:url(student_logo_01.jpg);
+	}
+#banner_right{
+	height:73px;
+	width:414px;
+	background-image:url(student_logo_R_03.jpg);
+	float:right;
+	}
+#nav{
+	width:100%;
+	height:36px;
+	background-image:url(nav_bg_12.jpg);
+	color:#d0edff;
+	}
+#nav .text{
+	float:left;
+	padding:12px 0px 0px 15px;
+	}
+#nav .inp{
+	float:left;
+	padding:8px 0px 0px 10px;
+	}
+#nav .inp input{
+	height:15px;
+	width:150px;
+	}
+#nav .bt{
+	float:left;
+	padding:8px 0 0 10px;
+	}
+.botton{
+	height:22px;
+	width:60px;
+	background-image:url(nav_bt_18.jpg);
+	color:#FFFFFF;
+	cursor:pointer;
+	text-align:center;
+	line-height:22px;
+	}
+#nav_right{
+	float:right;
+	width:200px;
+	}
+.mode{
+	padding:7px 0 0 10px;
+	float:left;
+	}
+/*left_menu*/
+#left_menu{
+	width:207px;
+	float:left;
+	}
+.menu_bg{
+	background-color:#add2f2;
+	float:left;
+	width:199px;
+	height:100%;
+	padding:4px;
+	}
+.menu_content{
+	width:187px;
+	height:100%;
+	border-left:solid #278abe 1px;
+	border-bottom:solid #278abe 1px;
+	border-right:solid #278abe 1px;
+	background-color:#dfecf0;
+	padding:5px 0px 5px 10px;
+	margin-bottom:10px;
+	}
+.student_menu_content{
+	width:197px;
+	height:400px;
+	border-left:solid #278abe 1px;
+	border-bottom:solid #278abe 1px;
+	border-right:solid #278abe 1px;
+	background-color:#dfecf0;
+	padding:10px 0px 5px 0px;
+	}
+.menu_Rb{
+	width:6px;
+	background-color:#278abe;
+	float:right;
+	height:605px;
+	}
+.R_tab{
+	background-image:url(b_tab_37.jpg);
+	height:84px;
+	width:6px;
+	margin-top:100px;
+	cursor:pointer;
+	}
+.menu_title{
+	background-image:url(menu_title_33.jpg);
+	height:22px;
+	width:149px;
+	color:#fffefe;
+	font-weight:bold;
+	padding:12px 0px 0px 50px;
+	}
+.student_menu_bt{
+	background-image:url(menu_bt_07.gif);
+	width:167px;
+	height:19px;
+	margin:5px auto 0 auto;
+	text-align:center;
+	padding-top:8px;
+	cursor:pointer;
+	}
+.student_menu_bt_M{
+	background-image:url(menu_bt_M_07.gif);
+	width:167px;
+	height:19px;
+	margin:5px auto 0 auto;
+	text-align:center;
+	padding-top:8px;
+	cursor:pointer;
+	}
+.menu_tz{
+	background-image:url(menu_51.jpg);
+	height:20px;
+	width:137px;
+	padding:14px 0 0 25px;
+	cursor:pointer;
+	}
+.menu_noclick{
+	background-image:url(menu_m_58.jpg);
+	height:20px;
+	width:137px;
+	padding:14px 0 0 25px;
+	cursor:pointer;
+	}
+.menu_click{
+	background-image:url(menu_58.jpg);
+	height:20px;
+	width:137px;
+	padding:14px 0 0 25px;
+	cursor:pointer;
+	}
+.menu_2_content{
+	width:162px;
+	}
+.menu_2_dq{
+	background-image:url(menu1_62.jpg);
+	height:17px;
+	width:122px;
+	margin-top:5px;
+	padding:7px 0 0 40px;
+	cursor:pointer;
+	}
+.menu_2_bc{
+	background-image:url(menu_2_62.jpg);
+	height:17px;
+	width:122px;
+	margin-top:5px;
+	padding:7px 0 0 40px;
+	cursor:pointer;
+	}
+/*内容区*/
+#main_content{
+	background-color:#dfecf0;
+	float:none!important;
+	float:left;
+	}
+#tab_bg{
+	background-image:url(big_menu_bg_03.jpg);
+	background-repeat:repeat-x;
+	height:91px;
+	padding:18px 20px 0 20px
+	}
+.admin_tab{
+	height:31px;
+	margin-right:2px;
+	float:left;
+	}
+.tab_dc_L{
+	height:31px;
+	background-image:url(tab_b_39.jpg);
+	width:18px;
+	float:left;
+	cursor:pointer;
+	}
+.tab_dc_Mid{
+	height:21px;
+	background-image:url(tab_b_40.jpg);
+	background-repeat:repeat-x;
+	float:left;
+	color:#0b538e;
+	cursor:pointer;
+	padding:10px 10px 0px 10px;
+	}
+.tab_dc_R{
+	height:31px;
+	background-image:url(tab_b_42.jpg);
+	width:5px;
+	float:left;
+	cursor:pointer;
+	}
+.tab_ndc_L{
+	height:31px;
+	background-image:url(tab_b_44.jpg);
+	width:5px;
+	float:left;
+	cursor:pointer;
+	}
+.tab_ndc_Mid{
+	height:21px;
+	background-image:url(tab_b_45.jpg);
+	background-repeat:repeat-x;
+	float:left;
+	color:#4b7ca3;
+	cursor:pointer;
+	padding:10px 10px 0px 10px;
+	}
+.tab_ndc_R{
+	height:31px;
+	background-image:url(tab_b_47.jpg);
+	width:5px;
+	float:left;
+	cursor:pointer;
+	}
+.content_title{
+	background-image:url(content_title_bg_55.jpg);
+	height:27px;
+	background-repeat:repeat-x;
+	border:solid #8bbedc 1px;
+	margin:10px 5px 0px 5px;
+	color:#034983;
+	line-height:27px;
+	padding-left:10px;
+	}
+.cntent_k{
+	background-color:#e3f1f6;
+	padding:10px;
+	border-left:solid #8bbedc 1px;
+	border-bottom:solid #8bbedc 1px;
+	border-right:solid #8bbedc 1px;
+	margin:0px 5px 0px 5px;
+	height:480px;
+	}
+.student_cntent_k{
+	background-color:#e3f1f6;
+	padding:10px;
+	border-left:solid #8bbedc 1px;
+	border-bottom:solid #8bbedc 1px;
+	border-right:solid #8bbedc 1px;
+	margin:0px 5px 0px 5px;
+	height:430px;
+	}
+.k_cc{
+	width:95%;
+	margin:0 auto;
+	}
+.k_cc ul li{
+	list-style-type:none;
+	margin-bottom:5px;
+	}
+.k_cc ul li input{
+	height:15px;
+	width:40%;
+	border:solid #a2b3be 1px;
+	}
+.content_bt{
+	background-image:url(bt_bg_65.jpg);
+	background-repeat:repeat-x;
+	border:solid #a6c1d9 1px;
+	text-align:center;
+	height:15px;
+	color:#004176;
+	padding-top:3px;
+	width:70px;
+	margin-right:10px;
+	margin-top:15px;
+	float:left;
+	cursor:pointer;
+	}
+#footer{
+	background-image:url(footer_bg_72.jpg);
+	background-repeat:repeat-x;
+	height:25px;
+	width:100%;
+	color:#FFFFFF;
+	text-align:center;
+	padding-top:13px;
+	}
+.k_cc table{
+	border-top:solid #afbec6 1px;
+	border-left:solid #afbec6 1px;
+	}
+.k_cc table td{
+	border-bottom:solid #afbec6 1px;
+	border-right:solid #afbec6 1px;
+	text-align:center;
+	height:25px;
+	line-height:25px;
+	}
+.table_bg1{
+	background-color:#cfe1ef;
+	color:#02498c;
+	}
+.table_bg2{
+	background-color:#dfe7ed;
+	}
+.study_bt{
+	background-image:url(xbt_07.jpg);
+	height:15px;
+	width:85px;
+	cursor:pointer;
+	line-height:12px;
+	padding-top:4px;
+	margin:0 auto;
+	}
+.study_bt_M{
+	background-image:url(xbt_M_13.jpg);
+	height:15px;
+	width:85px;
+	cursor:pointer;
+	line-height:12px;
+	padding-top:4px;
+	margin:0 auto;
+	}
+.page_bt{
+	background-image:url(page_bt_17.jpg);
+	height:14px;
+	width:48px;
+	cursor:pointer;
+	text-align:center;
+	line-height:12px;
+	padding-top:4px;
+	margin:0 auto;
+	}
+.table_bg1 table,.table_bg1 table td{
+	border:none;
+	text-align:center;
+	}
+.go{
+	background-image:url(go_20.jpg);
+	width:21px;
+	height:16px;
+	cursor:pointer;
+	margin-right:50px;
+	}
+/*课程*/
+#lesson_title{
+	background-image:url(lesson_title_03.jpg);
+	width:199px;
+	height:18px;
+	text-align:center;
+	color:#000;
+	padding-top:10px;
+	}
+.big_bt{
+	width:87px;
+	height:80px;
+	float:left;
+	margin-right:10px;
+	background-image:url(big_bt_06.jpg);
+	cursor:pointer;
+	}
+.big_bt_M{
+	width:87px;
+	height:80px;
+	float:left;
+	margin-right:10px;
+	background-image:url(big_bt_M_06.jpg);
+	cursor:pointer;
+	}
+.ico{
+	padding-left:24px;
+	padding-top:10px;
+	}
+.ico_text{
+	text-align:center;
+	padding-top:7px;
+	}
+</style>
+</head>
+
+<body>
+<div id="main_content">
+	<div class="content_title">您当前的位置是：学生<s:property value="prTchStuPaper.peStudent.trueName"/>的工作室 &gt; 毕业论文</div>
+    <div class="student_cntent_k">
+   	  <div class="k_cc">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  
+	<tr>
+	    <td height="25px"  align="center" class="table_bg1" >论文题目</td>
+	    <td height="25px"  align="center" class="table_bg1" >开题报告</td>
+	    <td height="25px"  align="center" class="table_bg1" >论文初稿</td>
+	    <td height="25px"  align="center" class="table_bg1" >论文终稿</td>
+	    <td height="25px"  align="center" class="table_bg1" >论文成绩</td>
+	    <td height="25px"  align="center" class="table_bg1" >指导教师</td>
+	    <td height="25px"  align="center" class="table_bg1" >论文留言板</td>
+	</tr>
+	<tr>
+    	<td width="20%" height=25px  align=center ><s:property value="prTchStuPaper.prTchPaperTitle.title"/> </td>
+    	<td height=25px  align=center ><a href="/entity/workspaceStudent/studentSyllabus_toUpload.action">查看</a> </td>
+   		<td height=25px  align=center ><a href="/entity/workspaceStudent/studentDraftA_toUpload.action">查看</a> </td>
+    	<td height=25px  align=center ><a href="/entity/workspaceStudent/studentFinal_toUpload.action">查看</a> </td>
+    	<td height=25px  align=center ><s:property value="prTchStuPaper.finalScore"/> </td>
+    	<td height=25px  align=center ><s:property value="prTchStuPaper.prTchPaperTitle.peTeacher.trueName"/> </td>
+    	<td height=25px  align=center >进入论文留言板</td>
+  	  </tr>
+	
+	<tr class="table_bg1">
+    	<td colspan="7">
+    		<table border="0" align="right" cellpadding="0" cellspacing="5">
+      			<tr>
+       				<td><div class="page_bt"></div></td>
+        			<td><div class="page_bt"></div></td>
+       				<td></td>
+        			<td></td>
+			        <td></td>
+        			<td></td>
+        			<td><div class="go"></div></td>
+      			</tr>
+    		</table>
+    	</td>
+    </tr>
+	</table>
+    
+   	</div>
+  </div>
+</div>
+</body>
+</html>

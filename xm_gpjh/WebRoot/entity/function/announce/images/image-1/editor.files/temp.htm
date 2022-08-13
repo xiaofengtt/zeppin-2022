@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0044)http://xueli.upol.cn/M4/WhatyEditor/temp.jsp -->
+<HTML><HEAD><TITLE>editor</TITLE><LINK href="css/FORUM.CSS" type=text/css 
+rel=stylesheet>
+<META http-equiv=Content-Type content="text/html; charset=GBK">
+<SCRIPT language=JavaScript>
+<!--
+	function load() 
+	{ 
+		parent.parent.parent.setLoaded();
+		document.body.focus();
+		
+	}
+	
+function selectWord() {
+    var oSource = window.event.srcElement ;
+    if (!oSource.isTextEdit) 
+        oSource = window.event.srcElement.parentTextEdit;
+    if (oSource != null) {
+        var oTextRange = oSource.createTextRange();
+        oTextRange.moveToElementText(window.event.srcElement);
+        oTextRange.collapse();
+        oTextRange.expand("word");
+        oTextRange.select();
+    }
+}
+
+function checkSelection (evt) {
+alert("Hello");
+}
+
+//document.captureEvents(event.MOUSEDOWN);
+//document.onmousedown = checkSelection;
+-->
+</SCRIPT>
+
+<META content="MSHTML 6.00.2900.3086" name=GENERATOR></HEAD>
+<BODY onload=load()></BODY></HTML>

@@ -1,0 +1,22 @@
+.title{
+    font-size: 17px;
+    color: #f08519;
+    display: block;
+}
+.box{
+    background-color: #fafafa;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #efefef;
+    min-height: 245px;
+}
+img{
+    margin-bottom: 10px;
+}
+.row > span{
+    line-height: 30px;
+}
+.regisLink, .regisLink:hover{
+    color: #00BFDD;
+    line-height: 30px;
+}

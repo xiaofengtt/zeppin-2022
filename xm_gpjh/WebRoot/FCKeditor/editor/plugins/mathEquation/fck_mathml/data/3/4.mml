@@ -1,0 +1,28 @@
+<math>
+  <mrow>
+    <mrow>
+      <mo>(</mo>
+      <mrow>
+        <mtable>
+          <mtr>
+            <mtd>
+              <mn>1</mn>
+            </mtd>
+            <mtd>
+              <mn>0</mn>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mn>0</mn>
+            </mtd>
+            <mtd>
+              <mn>1</mn>
+            </mtd>
+          </mtr>
+        </mtable>
+      </mrow>
+      <mo>)</mo>
+    </mrow>
+  </mrow>
+</math>

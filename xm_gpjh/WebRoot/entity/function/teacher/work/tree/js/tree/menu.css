@@ -1,0 +1,125 @@
+/* CSS Document */
+body.scllbar{
+	SCROLLBAR-FACE-COLOR:#8BB8C7;
+	SCROLLBAR-HIGHLIGHT-COLOR: #8BB8C7;
+	SCROLLBAR-SHADOW-COLOR: #8BB8C7;
+	SCROLLBAR-3DLIGHT-COLOR: #F4F9F9;
+	SCROLLBAR-BASE-COLOR: #dfdfdf;
+	SCROLLBAR-ARROW-COLOR: #ffffff;
+	SCROLLBAR-TRACK-COLOR:#DFF2F2;
+	SCROLLBAR-DARKSHADOW-COLOR: #F5FDFE;
+}
+.menu-bg {
+	border: 1px solid #B5C1E8;
+	background-image: url(../../../../images/help_bt13.gif);
+	background-repeat: repeat-x;
+}
+
+body {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 4px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	font-size: 12px;
+}
+.borderoff,.borderon {
+	font-size: 12px;
+	border-style: solid;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	background-color: menu
+}
+.borderoff {
+	border-color: #808080 #FFFFFF #FFFFFF #808080;
+}
+.meau_hu {
+	font-size: 12px;
+	color: 696969;
+	text-decoration: none;
+	background-image: url(../../../../images/help_bt14.gif);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+.meau_hu1 {
+	font-size: 12px;
+	color: 696969;
+	text-decoration: none;
+}
+
+
+.borderon {
+	border-color: #FFFFFF #808080 #808080 #FFFFFF;
+}
+.menu1,.menu2,.menu3,.menu4 {
+	font-size: 9pt;
+	background-repeat: no-repeat;
+	height: 12px;
+	left: 16px;
+	padding-left: 16px;
+	cursor: hand;
+}
+.menu1 {
+	background-image: url(folder1.gif);
+}
+.menu2 {
+	background-image: url(folder2.gif);
+}
+.menu3 {
+	background-image: url(folder3.gif);
+}
+.menu4{
+	background-image: url(folder4.gif);
+}
+.list{
+	height: 14px;
+	font-size: 9pt;
+	padding-left: 20px;
+	background-image: url(list.gif);
+	background-repeat: repeat-y;
+}
+.list1{
+	height: 14px;
+	font-size: 9pt;
+	padding-left: 20px;
+}
+.file,.file1 {
+	font-size: 9pt;
+	background-repeat: no-repeat;
+	height: 16px;
+	cursor: hand;
+	padding-left: 10px;
+}
+.file{
+	background-image: url(file.gif);
+}
+.file1 {
+	background-image: url(file1.gif);
+}
+a {
+	font-size: 9pt;
+	text-decoration: none;
+}
+a:link {
+	color: #696969;
+}
+a:visited {
+	color: #696969;
+}
+a:hover {
+	color: #006699;
+}
+a:active {
+	color: #000000;
+}
+.item {
+	height:22px;
+	/*
+	border:1px solid #ffffff;*/
+	padding-top:3px;
+}

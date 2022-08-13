@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="entity.programApply" extends="platform-default" namespace="/entity/programApply">
+		
+		<action name="peProApplyno_*" method="{1}" class="peProApplynoAction">
+			<param name="filePath">/incoming/model/</param>
+		</action>
+		<action name="prProgramUnit_*" method="{1}" class="prProgramUnitAction">
+		</action>
+		<action name="peProApply_*" method="{1}" class="peProApplyAction">
+		</action>
+		<action name="peProApplynoView_*" method="{1}" class="peProApplynoViewAction">
+		</action>
+		<action name="peProApplyBook_*" method="{1}" class="peProApplyBookAction">
+	    	<param name="savePath">/incoming/project</param>
+			<result name="write_Book">/entity/manager/programApply/peProApplyBook.jsp</result>
+		</action>
+		<action name="distributeExpert_*" method="{1}" class="distributeExpertAction">
+		</action>
+		<action name="searchExpertForDistribute_*" method="{1}" class="searchExpertForDistributeAction">
+		</action>
+		<action name="projectFirstTrial_*" method="{1}" class="projectFirstTrialAction">
+		</action>
+		<action name="projectFinalJudgment_*" method="{1}" class="projectFinalJudgmentAction">
+		</action>
+		<action name="viewFirstTrialOpinion_*" method="{1}" class="viewFirstTrialOpinionAction">
+			<result name="manager_check">/entity/manager/programApply/manager_check.jsp</result>
+			<result name="note_detail">/entity/manager/programApply/first_note.jsp </result>
+		</action>
+		<action name="peProApplyView_*" method="{1}" class="peProApplyViewAction">
+		</action>
+		<action name="viewFinalJudgmentOpinion_*" method="{1}" class="viewFinalJudgmentOpinionAction">
+			<result name="manager_check">/entity/manager/programApply/manager_check_final.jsp</result>
+			<result name="note_detail">/entity/manager/programApply/final_note.jsp </result>
+		</action>
+		<action name="managerJudgmentAction_*" method="{1}" class="managerJudgmentAction"></action>
+		
+		<action name="projectJudgmentReport_*" method="{1}" class="projectJudgmentReportAction"></action>
+	</package>
+
+</struts>

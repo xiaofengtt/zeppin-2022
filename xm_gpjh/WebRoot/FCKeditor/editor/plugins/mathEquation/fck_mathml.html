@@ -1,0 +1,217 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2008 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * Image Properties dialog window.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Equation Input</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="fck_mathml/css.css" rel="stylesheet" type="text/css">
+	<meta name="robots" content="noindex, nofollow" />
+	<meta HTTP-EQUIV="pragma" CONTENT="no-cache" />  
+	<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate" /> 
+	<script src="../../dialog/common/fck_dialog_common.js" type="text/javascript"></script>
+	<script src="fck_mathml/fck_mathml.js" type="text/javascript"></script>
+		<script type="text/javascript">
+document.write( FCKTools.GetStyleHtml( GetCommonDialogCss() ) ) ;
+
+var dialog	= window.parent ;
+var oEditor = dialog.InnerDialogLoaded() ;
+
+// Get the selected image (if available).
+var oImage = dialog.Selection.GetSelectedElement() ;
+
+var mathURL ="";
+if ( oImage && oImage.tagName != 'IMG' && !( oImage.tagName == 'INPUT' && oImage.type == 'image' ) )
+	oImage = null ;
+
+// get user agent
+var agent = navigator.userAgent.toLowerCase();
+
+// check operating system type
+var isWindows = ((agent.indexOf("win")!=-1) || (agent.indexOf("16bit")!=-1));
+var isMac = (agent.indexOf("mac")!=-1);
+var isMacClassic = (isMac && !hasJavaPlugin());
+var isMacOSX = (isMac && !isMacClassic);
+var isMoz =  agent.indexOf("gecko") > 0 || agent.indexOf("firefox");
+var isIE= agent.indexOf("msie")>0;
+
+
+window.onload = function ()
+{
+	// First of all, translate the dialog box texts
+	oEditor.FCKLanguageManager.TranslatePage(document) ;
+
+	//dialog.SetAutoSize( true ) ;
+	
+		// Load the selected element information (if any).
+	//LoadSelection() ;
+	
+	
+}
+
+function getImageMathPath()
+{
+
+	if ( ! oImage ) return ;
+
+	var sUrl = oImage.getAttribute( '_fcksavedurl' ) ;
+	
+	if ( sUrl == null )
+		sUrl = GetAttribute( oImage, 'src', '' ) ;
+    mathURL=sUrl;
+    return mathURL;
+
+}
+
+// check if Java plug-in is installed
+function hasJavaPlugin() {
+ 		for (var i = 0; i < navigator.plugins.length; i++) {
+  			if (navigator.plugins[i].name.indexOf("Java Plug-in") > -1) {
+  			  return true;
+  			}
+ 		} 
+		return false;		
+}  
+
+function getappletHTML()
+{
+
+var appletHTML="";
+
+// dynamically determine jar file to use
+if(isIE) {
+//	var jarFile ="FCKeditor/editor/plugins/mathEquation/fck_mathml/lib/WhatyMath.jar"; 
+	var jarFile =oEditor.FCKConfig.BasePath +"plugins/mathEquation/fck_mathml/lib/WhatyMath.jar"; 
+} else if(isMacClassic || isMoz){
+	var jarFile = "fck_mathml/lib/WhatyMath.jar";
+}
+
+
+// write out beginning applet tag
+
+//appletHTML=appletHTML+"<applet name=\"popup\" code=\"WhatyMath.InputControl\" width=\"754\" height=\"200\" MAYSCRIPT >";
+appletHTML=appletHTML+"<applet name=\"popup\" code=\"WhatyMath.InputControl\" width=\"742\" height=\"200\" MAYSCRIPT  archive=\""+jarFile+"\">";
+// if Mac OS 9 or earlier is used omit cabbase tag
+if(!isMacClassic) {
+
+//appletHTML=appletHTML+"<param name=\"cabbase\" value=\"WhatyMath.cab\">";
+appletHTML=appletHTML+"<param name=\"namespace\" value=\"WhatyMath\">";
+appletHTML=appletHTML+"<PARAM NAME=\"useslibrary\" VALUE=\"Whaty Math Input\">";
+appletHTML=appletHTML+"<PARAM NAME=\"useslibrarycodebase\" VALUE=\"fck_mathml/lib/WhatyMath.cab\">";
+appletHTML=appletHTML+"<PARAM NAME=\"useslibraryversion\" VALUE=\"2,0,0,9\">";
+}  
+
+//	<!-- begin applet parameters -->
+appletHTML=appletHTML+"<PARAM NAME=\"src\" VALUE=\""+getImageMathPath()+"\">";
+appletHTML=appletHTML+"<PARAM NAME=\"color\" VALUE=\"#FFFF00\">";
+appletHTML=appletHTML+"<param name=\"background\" value=\"white\">";
+appletHTML=appletHTML+"<param name=\"foreground\" value=\"black\">";
+
+
+//	<!-- end applet parameters -->
+appletHTML=appletHTML+"</applet>";
+
+
+return appletHTML;
+}
+
+function doInsert( iurl ,iwidth,iheight)
+{
+  var sUrl=iurl.replace(/'/g, "\\'" ) 
+  oEditor.FCKUndo.SaveUndoStep() ;
+
+	var oImg = oEditor.FCK.InsertElement( 'img' ) ;
+	oImg.src = sUrl ;
+	oImg.setAttribute( '_fcksavedurl', sUrl ) ;
+	oImg.setAttribute( 'alt', 'WhatyMathML' ) ;
+	oImg.setAttribute( 'width', iwidth) ;
+	oImg.setAttribute( 'height', iheight) ;
+	dialog.Cancel() ;
+}
+
+		</script>
+</head>
+<body scroll="no" style="overflow: hidden">
+<TABLE WIDTH="750" height="100%" BORDER=0 align="center" vlign="top" CELLPADDING=0 CELLSPACING=0>
+  <TR> 
+    <TD COLSPAN=20 valign="top" bgcolor="F5F5ED">
+<table width="100%" border="0" align="center" cellspacing="0" cellpadding="0">
+   <tr><td width="751" height="220" valign="top" align="center" bgcolor="#F5F5ED"> 
+<div id="templatePanel" name="templatePanel">   
+</div>
+</td>
+</tr>
+      </table>
+      <div align="left"> 
+   <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tb2">
+        
+          <tr> 
+            <td height="124">&nbsp;</td>
+            <td  vlign="top"><table width="100%" border="0" height="200"  cellpadding="0" cellspacing="0" class="tb">
+                <tr> 
+<td valign="top" align="center" >
+<div id="inputcontrol" align="left" style="visibility:visible">
+</div>
+
+
+</td>
+                </tr>
+              </table>
+              <div align="center" vlign="top">
+              <form name="controler" id="controler" METHOD="POST"  target="hidderIframe" action="fck_mathml/insertMath.jsp" align="center" vlign="top">
+                <input name=MathML type=hidden value="">
+		<input name=width type=hidden value="20">
+		<input name=height type=hidden value="20">
+		<input name=imgtype type=hidden value="gif">
+		<input name=size type=hidden value="28">
+		<input name=image type=hidden value="">
+                <input type=submit  onclick="do_mml()" width=73 height=19 name="Submit" value="确　定">
+                <input type=button  onclick="clear_mml()" width=73 height=19 name="Clear" value="清　空">
+                <input type=button  onclick="vier_input()" width=73 height=19 name="bview" value="预　览">
+                </form></div></td>
+            </tr>
+        </table>
+      </div>
+      </TD>
+  </TR>
+</TABLE>
+<div id="viewcontrol" align="left" style="position:absolute;top:234px;left:30px;width:762;height:200;visibility:hidden;overflow: auto"> 
+<applet name="eq2" archive="fck_mathml/lib/WhatyMath.jar"  code="WhatyMath.ViewerControl" width="742" height="200">
+<param name="namespace" value="WhatyMath">
+<PARAM NAME=useslibrary VALUE="Whaty Math Input">
+<PARAM NAME=useslibrarycodebase VALUE="fck_mathml/lib/WhatyMath.cab">
+<PARAM NAME=useslibraryversion VALUE="2,0,0,9">
+<param name="controls" value="true"/>
+<param name="color" value="#ffffff"/>
+<param name="align" value="left"/>
+<param name="valign" value="top"/>
+<PARAM NAME=eq VALUE="<math>  <mrow>    <mi></mi>  </mrow></math>">
+</applet>
+</div>
+<iframe id="hidderIframe" name="hidderIframe" src="about:blank" style="visibility:hidden"></iframe>
+<script>
+templatePanel.innerHTML=getstrTable(0,0);
+inputcontrol.innerHTML=getappletHTML();
+</script>
+</body>
+</html>

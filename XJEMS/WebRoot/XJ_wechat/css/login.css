@@ -1,0 +1,106 @@
+*{
+	font-family: "微软雅黑";
+}
+body{
+	background:#62d177;
+	width:100%;
+}
+header{	
+	width:100%;
+    background: url(../img/ic_backgroungd.png)no-repeat;
+    background-size:100% 100%;
+    height:160px;    
+    padding-top:55px;
+}
+header .title{
+	text-align: center;
+	font-size:24px;
+	color:#FFFFFF;
+}
+main{
+	width:100%;
+	padding-left:16px;
+	padding-right:16px;
+}
+main .login{
+	width:100%;
+	padding:50px 25px 40px 25px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background:#FFFFFF;
+}
+#login-form{
+	width:100%
+}
+#mobile{
+	width:100%;
+}
+#login-form div{
+	width:100%;
+	border:1px solid #C0C0C0;
+	height:50px;
+	padding:15px 0 15px 10px;
+	position: relative;
+}
+
+#login-form div:nth-child(1){
+	border-bottom: none;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+#login-form div:nth-child(2){
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+#code{
+	width:70%;
+}
+::-webkit-input-placeholder{
+	color:#C0C0C0;
+}
+#login-form #test{
+	color:#00DB79;
+	font-size:12px;
+	position: absolute;
+	right:10px;
+	top:18px;
+	vertical-align: text-bottom;
+	text-align: right;
+}
+#login-form #reaction{
+	color:#00DB79;
+	font-size:12px;
+	position: absolute;
+	right:10px;
+	top:18px;
+	vertical-align: text-bottom;
+	text-align: right;
+	display:none;
+}
+#login{
+	width:100%;
+	padding:10px 0 10px 0;
+	background:#00DB79;
+	display: inline-block;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-top:40px;
+	text-align: center;
+	color:#FFFFFF;
+	border:none;
+}
+.bottom{
+	margin-top:45px;
+	text-align: center;
+	width:100%;
+}
+.bottom span{
+	color:#C0C0C0;
+	font-size:12px;
+}
+.bottom a{
+	color:#00DB79;
+	font-size:12px;
+}

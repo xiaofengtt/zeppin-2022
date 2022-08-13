@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+		<package name="entity.combo" extends="struts-default" namespace="/entity/first">
+	
+		<action name="firstPageCombo_*" method="{1}" class="generateComboAction">
+			<result name="json">/test/json.jsp</result>
+		</action>
+		<action name="firstRegister_*" method="{1}" class="firstRegister">
+			<interceptor-ref name="fileUpload">
+		    	<param name="maximumSize">102400</param>
+		    </interceptor-ref>
+		    <interceptor-ref name="defaultStack"></interceptor-ref>			
+			<param name="savePath">/incoming/photo</param>
+			<result name="success">/WEB-INF/web/registration/registration_success.jsp</result>
+			<result name="fail">/WEB-INF/web/registration/registration_fail.jsp</result>
+			<result name="ajaxcheck" >/WEB-INF/template/entity/pub/ajaxcheck.jsp</result>			
+		     <result name="input">/WEB-INF/template/entity/manager/recruit/photoInf.jsp</result>	
+			<result name="add">/WEB-INF/web/registration/registration.jsp</result>		
+			<result name="result">/WEB-INF/web/information/result.jsp</result>							    		
+		</action>	
+		<action name="firstBulletin_*" method="{1}" class="firstBulletinAction">
+			<result name="bulletin">/web/news/bulletin_detail1.jsp</result>
+			<result name="allbulletin">/web/news/bulletin_list.jsp</result>
+			<result name="toBulletinList">/web/news/bulletinmain.jsp</result>
+		</action>
+					
+		<action name="firstInfoNews_*" method="{1}" class="firstInfoNewsAction">
+			<result name="left">/web/left-end.jsp</result>
+			<result name="infoNews">/web/news/new.jsp</result>
+			<result name="infoDetail">/web/news/infoDetail.jsp</result>
+			<result name="Bulletin">/web/news/bulletin_detail1.jsp</result>
+			<result name="newsList">/web/news/news.jsp</result>
+			<result name="newstest">/web/news/main.jsp</result>
+			<result name="allnews">/web/news/news_list.jsp</result>
+			<result name="jianzhang">/web/news/jianzhang.jsp</result>
+			<result name="index">/web/bzz_index/login/index.jsp</result>
+			<result name="tmplogin">/tmplogin/login.jsp</result>
+		</action>
+		<action name="firstPeVotePaper_*" method="{1}" class="firstPeVotePaperAction">
+			<result name="voteList">/web/vote/vote_list.jsp</result>
+			<result name="vote">/web/vote/vote.jsp</result>
+			<result name="result">/web/vote/result.jsp</result>
+			<result name="voteResult">/web/vote/vote_result.jsp</result>			 
+			<result name="suggest">/web/vote/vote_suggest.jsp</result>	
+			<result name="back">/first.jsp</result>
+		</action>			
+		<action name="firstStudentInfo_*" method="{1}" class="firstStudentInfoAction">
+			<result name="infoList">/WEB-INF/web/information/infoList.jsp</result>
+			<result name="information">/WEB-INF/web/information/infoDetail.jsp</result>			
+			<result name="edit">/WEB-INF/web/information/info_edit.jsp</result>					
+			<result name="result">/WEB-INF/web/information/result.jsp</result>		
+	  		<result name="print">/entity/manager/recruit/recruit_examNo_print.jsp</result>							
+		</action>
+		<action name="pageDispatch_*" method="{1}" class="pageDispatchAction">
+			<result name="index">/web/bzz_index/login/news.jsp</result>
+			<result name="regist">/web/bzz_index/login/reg.jsp</result>
+			<result name="show">/web/bzz_index/login/newsshow.jsp</result>
+		</action>
+		<action name="userRegist_*" method="{1}" class="userRegistAction">
+			<result name="regist">/web/bzz_index/login/reg.jsp</result>
+		</action>
+		<!-- zhaoyuxiao begin -->
+		<action name="userQueryTrainExpertAction_*" method="{1}" class="userQueryTrainExpertAction">
+			<result name="initData">/entity/query_expert/query.jsp</result>
+			<result name="queryResult">/entity/query_expert/queryResult.jsp</result>
+		</action>
+		<!-- zhaoyuxiao end -->
+		<action name="userQueryCertificateNo_*" method="{1}" class="userQueryCertificateNoAction">
+			<result name="user_query">/entity/query_expert/query_certificate.jsp</result>
+			<result name="queryResult">/entity/query_expert/queryResult_certificate.jsp</result>
+		</action>
+	</package>
+</struts>

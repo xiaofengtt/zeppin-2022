@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="GBK"?>
+<manifest xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd" identifier="SingleCourseManifest">
+	<organizations default="TOC0">
+		<organization identifier="TOC0">
+			<title>北京交通大学网络与继续教育学院</title>
+			<item identifier="A" isvisible="true">
+				<title>企业物流管理</title>
+				<item identifier="A1" identifierref="R_A1" isvisible="true">
+					<title>第一章　企业物流概述</title>
+					<item identifier="A1001" identifierref="R_A1001" isvisible="true">
+						<title>知识点一　企业物流的内涵和特征</title>
+					</item>
+					<item identifier="A1002" identifierref="R_A1002" isvisible="true">
+						<title>知识点二　企业物流的分类</title>
+					</item>
+					<item identifier="A1003" identifierref="R_A1003" isvisible="true">
+						<title>知识点三　企业物流的重要性</title>
+					</item>
+					<item identifier="A1004" identifierref="R_A1004" isvisible="true">
+						<title>知识点四　企业物流功能和作业目标</title>
+					</item>
+					<item identifier="A1005" identifierref="R_A1005" isvisible="true">
+						<title>知识点五　企业物流管理的概念与内容</title>
+					</item>
+				</item>
+				<item identifier="A2" identifierref="R_A2" isvisible="true">
+					<title>第二章　企业物流战略</title>
+					<item identifier="A2001" identifierref="R_A2001" isvisible="true">
+						<title>知识点一　企业物流战略的涵义、特征、地位和目标</title>
+					</item>
+					<item identifier="A2002" identifierref="R_A2002" isvisible="true">
+						<title>知识点二　企业物流战略的内容与框架</title>
+					</item>
+					<item identifier="A2003" identifierref="R_A2003" isvisible="true">
+						<title>知识点三　企业物流的环境因素分析和资源评价</title>
+					</item>
+					<item identifier="A2004" identifierref="R_A2004" isvisible="true">
+						<title>知识点四　基于时间的物流战略</title>
+					</item>
+					<item identifier="A2005" identifierref="R_A2005" isvisible="true">
+						<title>知识点五　物流战略的选择</title>
+					</item>
+					<item identifier="A2006" identifierref="R_A2006" isvisible="true">
+						<title>知识点六　工业企业物流发展战略</title>
+					</item>
+				</item>
+				<item identifier="A3" identifierref="R_A3" isvisible="true">
+					<title>第三章　企业物流组织</title>
+					<item identifier="A3001" identifierref="R_A3001" isvisible="true">
+						<title>知识点一　企业物流组织的发展与构成</title>
+					</item>
+					<item identifier="A3002" identifierref="R_A3002" isvisible="true">
+						<title>知识点二　企业物流组织结构的类型</title>
+					</item>
+					<item identifier="A3003" identifierref="R_A3003" isvisible="true">
+						<title>知识点三　企业物流组织的设计</title>
+					</item>
+				</item>
+				<item identifier="A4" identifierref="R_A4" isvisible="true">
+					<title>第四章　企业物流外包</title>
+					<item identifier="A4001" identifierref="R_A4001" isvisible="true">
+						<title>知识点一　企业物流业务外包的含义与原因</title>
+					</item>
+					<item identifier="A4002" identifierref="R_A4002" isvisible="true">
+						<title>知识点二　企业物流业务外包的形式</title>
+					</item>
+					<item identifier="A4003" identifierref="R_A4003" isvisible="true">
+						<title>知识点三　企业物流业务外包决策</title>
+					</item>
+					<item identifier="A4004" identifierref="R_A4004" isvisible="true">
+						<title>知识点四　企业物流业务外包的运作</title>
+					</item>
+					<item identifier="A4005" identifierref="R_A4005" isvisible="true">
+						<title>知识点五　第三方物流的内涵与中外发展情况</title>
+					</item>
+					<item identifier="A4006" identifierref="R_A4006" isvisible="true">
+						<title>知识点六　第三方物流的运作特点及第四方物流</title>
+					</item>
+				</item>
+				<item identifier="A5" identifierref="R_A5" isvisible="true">
+					<title>第五章　企业供应物流管理</title>
+					<item identifier="A5001" identifierref="R_A5001" isvisible="true">
+						<title>知识点一　预备知识</title>
+					</item>
+					<item identifier="A5002" identifierref="R_A5002" isvisible="true">
+						<title>知识点二　供应物流管理概述</title>
+					</item>
+					<item identifier="A5003" identifierref="R_A5003" isvisible="true">
+						<title>知识点三　供应物流管理在企业中的地位</title>
+					</item>
+					<item identifier="A5004" identifierref="R_A5004" isvisible="true">
+						<title>知识点四　供应计划管理</title>
+					</item>
+					<item identifier="A5005" identifierref="R_A5005" isvisible="true">
+						<title>知识点五　采购管理</title>
+					</item>
+					<item identifier="A5006" identifierref="R_A5006" isvisible="true">
+						<title>知识点六　供料管理</title>
+					</item>
+				</item>
+				<item identifier="A6" identifierref="R_A6" isvisible="true">
+					<title>第六章　企业生产物流基本原理</title>
+					<item identifier="A6001" identifierref="R_A6001" isvisible="true">
+						<title>知识点一　生产物流的含义及类型</title>
+					</item>
+					<item identifier="A6002" identifierref="R_A6002" isvisible="true">
+						<title>知识点二　企业生产物流的组织</title>
+					</item>
+					<item identifier="A6003" identifierref="R_A6003" isvisible="true">
+						<title>知识点三　基于企业生产战略与系统设计框架下的生产物流分析</title>
+					</item>
+					<item identifier="A6004" identifierref="R_A6004" isvisible="true">
+						<title>知识点四　不同生产类型生产物流的分析</title>
+					</item>
+					<item identifier="A6005" identifierref="R_A6005" isvisible="true">
+						<title>知识点五　现代企业生产物流管理所面临的挑战</title>
+					</item>
+				</item>
+				<item identifier="A7" identifierref="R_A7" isvisible="true">
+					<title>第七章　企业生产物流的计划与控制</title>
+					<item identifier="A7001" identifierref="R_A7001" isvisible="true">
+						<title>知识点一　基于ERP的生产物流计划与控制</title>
+					</item>
+					<item identifier="A7002" identifierref="R_A7002" isvisible="true">
+						<title>知识点二　基于JIT的生产物流运营方式</title>
+					</item>
+					<item identifier="A7003" identifierref="R_A7003" isvisible="true">
+						<title>知识点三　基于TOC的生产物流运营方式</title>
+					</item>
+					<item identifier="A7004" identifierref="R_A7004" isvisible="true">
+						<title>知识点四　其它类型的企业物流控制</title>
+					</item>
+				</item>
+				<item identifier="A8" identifierref="R_A8" isvisible="true">
+					<title>第八章　企业库存控制</title>
+					<item identifier="A8001" identifierref="R_A8001" isvisible="true">
+						<title>知识点一　何为库存</title>
+					</item>
+					<item identifier="A8002" identifierref="R_A8002" isvisible="true">
+						<title>知识点二　库存成本分析</title>
+					</item>
+					<item identifier="A8003" identifierref="R_A8003" isvisible="true">
+						<title>知识点三　库存控制与管理方法</title>
+					</item>
+					<item identifier="A8004" identifierref="R_A8004" isvisible="true">
+						<title>知识点四　定量订货模型</title>
+					</item>
+					<item identifier="A8005" identifierref="R_A8005" isvisible="true">
+						<title>知识点五　定期订货控制系统</title>
+					</item>
+					<item identifier="A8006" identifierref="R_A8006" isvisible="true">
+						<title>知识点六　ABC分类法</title>
+					</item>
+					<item identifier="A8007" identifierref="R_A8007" isvisible="true">
+						<title>知识点七　零库存管理</title>
+					</item>
+				</item>
+				<item identifier="A9" identifierref="R_A9" isvisible="true">
+					<title>第九章　销售物流</title>
+					<item identifier="A9001" identifierref="R_A9001" isvisible="true">
+						<title>知识点一　销售物流的功能</title>
+					</item>
+					<item identifier="A9002" identifierref="R_A9002" isvisible="true">
+						<title>知识点二　企业销售物流组织结构形式</title>
+					</item>
+					<item identifier="A9003" identifierref="R_A9003" isvisible="true">
+						<title>知识点三　销售物流的组织内容</title>
+					</item>
+					<item identifier="A9004" identifierref="R_A9004" isvisible="true">
+						<title>知识点四　电子商务背景下的销售物流</title>
+					</item>
+					<item identifier="A9005" identifierref="R_A9005" isvisible="true">
+						<title>知识点五　销售物流管理的目标与形式</title>
+					</item>
+					<item identifier="A9006" identifierref="R_A9006" isvisible="true">
+						<title>知识点六　销售物流管理的做法</title>
+					</item>
+					<item identifier="A9007" identifierref="R_A9007" isvisible="true">
+						<title>知识点七　销售物流管理的新特点</title>
+					</item>
+				</item>
+				<item identifier="A10" identifierref="R_A10" isvisible="true">
+					<title>第十章　企业物流的绩效与标杆管理</title>
+					<item identifier="A10001" identifierref="R_A10001" isvisible="true">
+						<title>知识点一　绩效指标</title>
+					</item>
+					<item identifier="A10002" identifierref="R_A10002" isvisible="true">
+						<title>知识点二　常见的绩效指标计算</title>
+					</item>
+					<item identifier="A10003" identifierref="R_A10003" isvisible="true">
+						<title>知识点三　标杆管理概述</title>
+					</item>
+					<item identifier="A10004" identifierref="R_A10004" isvisible="true">
+						<title>知识点四　标杆管理流程与供应链标杆管理</title>
+					</item>
+					<item identifier="A10005" identifierref="R_A10005" isvisible="true">
+						<title>知识点五　通过变革改善企业物流绩效</title>
+					</item>
+				</item>
+				<item identifier="A11" identifierref="R_A11" isvisible="true">
+					<title>第十一章　企业物流的发展趋势</title>
+					<item identifier="A11001" identifierref="R_A11001" isvisible="true">
+						<title>知识点一　企业物流管理面临的挑战</title>
+					</item>
+					<item identifier="A11002" identifierref="R_A11002" isvisible="true">
+						<title>知识点二　企业物流现代化管理技术</title>
+					</item>
+					<item identifier="A11003" identifierref="R_A11003" isvisible="true">
+						<title>知识点三　我国企业物流发展的趋势</title>
+					</item>
+				</item>
+			</item>
+		</organization>
+	</organizations>
+	<resources>
+		<resource identifier="R_A1" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=1">
+			<file href="lljx/frame.html?scoID=1"/>
+		</resource>
+			<resource identifier="R_A1001" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=1001">
+				<file href="lljx/frame.html?scoID=1001"/>
+			</resource>
+			<resource identifier="R_A1002" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=1002">
+				<file href="lljx/frame.html?scoID=1002"/>
+			</resource>
+			<resource identifier="R_A1003" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=1003">
+				<file href="lljx/frame.html?scoID=1003"/>
+			</resource>
+			<resource identifier="R_A1004" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=1004">
+				<file href="lljx/frame.html?scoID=1004"/>
+			</resource>
+			<resource identifier="R_A1005" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=1005">
+				<file href="lljx/frame.html?scoID=1005"/>
+			</resource>
+			
+		<resource identifier="R_A2" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=2">
+			<file href="lljx/frame.html?scoID=2"/>
+		</resource>
+			<resource identifier="R_A2001" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=2001">
+				<file href="lljx/frame.html?scoID=2001"/>
+			</resource>
+			<resource identifier="R_A2002" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=2002">
+				<file href="lljx/frame.html?scoID=2002"/>
+			</resource>
+			<resource identifier="R_A2003" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=2003">
+				<file href="lljx/frame.html?scoID=2003"/>
+			</resource>
+			<resource identifier="R_A2004" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=2004">
+				<file href="lljx/frame.html?scoID=2004"/>
+			</resource>
+			<resource identifier="R_A2005" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=2005">
+				<file href="lljx/frame.html?scoID=2005"/>
+			</resource>
+			<resource identifier="R_A2006" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=2006">
+				<file href="lljx/frame.html?scoID=2006"/>
+			</resource>
+			
+		<resource identifier="R_A3" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=3">
+			<file href="lljx/frame.html?scoID=3"/>
+		</resource>
+			<resource identifier="R_A3001" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=3001">
+				<file href="lljx/frame.html?scoID=3001"/>
+			</resource>
+			<resource identifier="R_A3002" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=3002">
+				<file href="lljx/frame.html?scoID=3002"/>
+			</resource>
+			<resource identifier="R_A3003" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=3003">
+				<file href="lljx/frame.html?scoID=3003"/>
+			</resource>
+			
+		<resource identifier="R_A4" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=4">
+			<file href="lljx/frame.html?scoID=4"/>
+		</resource>
+			<resource identifier="R_A4001" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=4001">
+				<file href="lljx/frame.html?scoID=4001"/>
+			</resource>
+			<resource identifier="R_A4002" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=4002">
+				<file href="lljx/frame.html?scoID=4002"/>
+			</resource>
+			<resource identifier="R_A4003" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=4003">
+				<file href="lljx/frame.html?scoID=4003"/>
+			</resource>
+			<resource identifier="R_A4004" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=4004">
+				<file href="lljx/frame.html?scoID=4004"/>
+			</resource>
+			<resource identifier="R_A4005" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=4005">
+				<file href="lljx/frame.html?scoID=4005"/>
+			</resource>
+			<resource identifier="R_A4006" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=4006">
+				<file href="lljx/frame.html?scoID=4006"/>
+			</resource>
+			
+		<resource identifier="R_A5" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=5">
+			<file href="lljx/frame.html?scoID=5"/>
+		</resource>
+			<resource identifier="R_A5001" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=5001">
+				<file href="lljx/frame.html?scoID=5001"/>
+			</resource>
+			<resource identifier="R_A5002" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=5002">
+				<file href="lljx/frame.html?scoID=5002"/>
+			</resource>
+			<resource identifier="R_A5003" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=5003">
+				<file href="lljx/frame.html?scoID=5003"/>
+			</resource>
+			<resource identifier="R_A5004" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=5004">
+				<file href="lljx/frame.html?scoID=5004"/>
+			</resource>
+			<resource identifier="R_A5005" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=5005">
+				<file href="lljx/frame.html?scoID=5005"/>
+			</resource>
+			<resource identifier="R_A5006" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=5006">
+				<file href="lljx/frame.html?scoID=5006"/>
+			</resource>
+			
+		<resource identifier="R_A6" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=6">
+			<file href="lljx/frame.html?scoID=6"/>
+		</resource>
+			<resource identifier="R_A6001" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=6001">
+				<file href="lljx/frame.html?scoID=6001"/>
+			</resource>
+			<resource identifier="R_A6002" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=6002">
+				<file href="lljx/frame.html?scoID=6002"/>
+			</resource>
+			<resource identifier="R_A6003" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=6003">
+				<file href="lljx/frame.html?scoID=6003"/>
+			</resource>
+			<resource identifier="R_A6004" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=6004">
+				<file href="lljx/frame.html?scoID=6004"/>
+			</resource>
+			<resource identifier="R_A6005" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=6005">
+				<file href="lljx/frame.html?scoID=6005"/>
+			</resource>
+			
+		<resource identifier="R_A7" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=7">
+			<file href="lljx/frame.html?scoID=7"/>
+		</resource>
+			<resource identifier="R_A7001" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=7001">
+				<file href="lljx/frame.html?scoID=7001"/>
+			</resource>
+			<resource identifier="R_A7002" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=7002">
+				<file href="lljx/frame.html?scoID=7002"/>
+			</resource>
+			<resource identifier="R_A7003" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=7003">
+				<file href="lljx/frame.html?scoID=7003"/>
+			</resource>
+			<resource identifier="R_A7004" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=7004">
+				<file href="lljx/frame.html?scoID=7004"/>
+			</resource>
+			
+		<resource identifier="R_A7" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=7">
+			<file href="lljx/frame.html?scoID=7"/>
+		</resource>
+			<resource identifier="R_A7001" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=7001">
+				<file href="lljx/frame.html?scoID=7001"/>
+			</resource>
+			<resource identifier="R_A7002" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=7002">
+				<file href="lljx/frame.html?scoID=7002"/>
+			</resource>
+			<resource identifier="R_A7003" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=7003">
+				<file href="lljx/frame.html?scoID=7003"/>
+			</resource>
+			<resource identifier="R_A7004" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=7004">
+				<file href="lljx/frame.html?scoID=7004"/>
+			</resource>
+
+		<resource identifier="R_A8" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=8">
+			<file href="lljx/frame.html?scoID=8"/>
+		</resource>
+			<resource identifier="R_A8001" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=8001">
+				<file href="lljx/frame.html?scoID=8001"/>
+			</resource>
+			<resource identifier="R_A8002" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=8002">
+				<file href="lljx/frame.html?scoID=8002"/>
+			</resource>
+			<resource identifier="R_A8003" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=8003">
+				<file href="lljx/frame.html?scoID=8003"/>
+			</resource>
+			<resource identifier="R_A8004" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=8004">
+				<file href="lljx/frame.html?scoID=8004"/>
+			</resource>
+			<resource identifier="R_A8005" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=8005">
+				<file href="lljx/frame.html?scoID=8005"/>
+			</resource>
+			<resource identifier="R_A8006" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=8006">
+				<file href="lljx/frame.html?scoID=8006"/>
+			</resource>
+			<resource identifier="R_A8007" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=8007">
+				<file href="lljx/frame.html?scoID=8007"/>
+			</resource>
+
+		<resource identifier="R_A9" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=9">
+			<file href="lljx/frame.html?scoID=9"/>
+		</resource>
+			<resource identifier="R_A9001" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=9001">
+				<file href="lljx/frame.html?scoID=9001"/>
+			</resource>
+			<resource identifier="R_A9002" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=9002">
+				<file href="lljx/frame.html?scoID=9002"/>
+			</resource>
+			<resource identifier="R_A9003" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=9003">
+				<file href="lljx/frame.html?scoID=9003"/>
+			</resource>
+			<resource identifier="R_A9004" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=9004">
+				<file href="lljx/frame.html?scoID=9004"/>
+			</resource>
+			<resource identifier="R_A9005" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=9005">
+				<file href="lljx/frame.html?scoID=9005"/>
+			</resource>
+			<resource identifier="R_A9006" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=9006">
+				<file href="lljx/frame.html?scoID=9006"/>
+			</resource>
+			<resource identifier="R_A9007" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=9007">
+				<file href="lljx/frame.html?scoID=9007"/>
+			</resource>
+
+		<resource identifier="R_A10" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=10">
+			<file href="lljx/frame.html?scoID=10"/>
+		</resource>
+			<resource identifier="R_A10001" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=10001">
+				<file href="lljx/frame.html?scoID=10001"/>
+			</resource>
+			<resource identifier="R_A10002" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=10002">
+				<file href="lljx/frame.html?scoID=10002"/>
+			</resource>
+			<resource identifier="R_A10003" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=10003">
+				<file href="lljx/frame.html?scoID=10003"/>
+			</resource>
+			<resource identifier="R_A10004" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=10004">
+				<file href="lljx/frame.html?scoID=10004"/>
+			</resource>
+			<resource identifier="R_A10005" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=10005">
+				<file href="lljx/frame.html?scoID=10005"/>
+			</resource>
+
+		<resource identifier="R_A11" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=11">
+			<file href="lljx/frame.html?scoID=11"/>
+		</resource>
+			<resource identifier="R_A11001" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=11001">
+				<file href="lljx/frame.html?scoID=11001"/>
+			</resource>
+			<resource identifier="R_A11002" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=11002">
+				<file href="lljx/frame.html?scoID=11002"/>
+			</resource>
+			<resource identifier="R_A11003" type="webcontent" adlcp:scormtype="sco" href="lljx/frame.html?scoID=11003">
+				<file href="lljx/frame.html?scoID=11003"/>
+			</resource>
+
+	</resources>
+</manifest>

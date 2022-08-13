@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root> 
+  <setup> 
+    <setuped>no</setuped> 
+  </setup>  
+  <webApp> 
+    <webAppAbsPath>E:/eclipse/workspace/scetraining\</webAppAbsPath>  
+    <webAppUriPath>/upol/</webAppUriPath>  
+    <configAbsPath>/www/webapps/gpjh/WEB-INF/config/</configAbsPath>  
+    <configRefPath></configRefPath>  
+    <webInf> 
+      <webInfRefPath>WEB-INF\</webInfRefPath> 
+    </webInf>  
+    <IP>127.0.0.1</IP>  
+    <port>80</port>  
+    <domainName>127.0.0.1</domainName>  
+    <managepwd>whaty</managepwd> 
+  </webApp>  
+  <mail> 
+    <smtp>mx.whaty.com</smtp>  
+    <user>whaty@whaty.com</user>  
+    <password>nopass</password> 
+  </mail>  
+  <subSystems> 
+    <subSystem> 
+      <name>SSO</name>  
+      <setuped>no</setuped> 
+    </subSystem>  
+    <subSystem> 
+      <name>ENTITY</name>  
+      <setuped>no</setuped> 
+    </subSystem> 
+  </subSystems> 
+</root>

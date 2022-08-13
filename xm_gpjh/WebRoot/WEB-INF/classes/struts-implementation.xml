@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="entity.implementation" extends="platform-default" namespace="/entity/implementation">
+		<action name="materialSubmit_*" method="{1}" class="materialSubmitAction">
+		</action>
+		<action name="trainingCourseNotice_*" method="{1}" class="trainingCourseNoticeAction">
+			<result name="showFCKeditor">/entity/manager/programApply/implementation/uploadTrainingCourseNotice.jsp</result>
+			<result name="note_detail">/entity/manager/programApply/implementation/note_detail.jsp </result>
+		</action>
+		<action name="trainingCoursePlan_*" method="{1}" class="trainingCoursePlanAction">
+			<result name="upload_course">/entity/manager/programApply/implementation/uploadTrainingCoursePlan.jsp</result>
+		</action>
+		<action name="briefReport_*" method="{1}" class="briefReportAction">
+			<param name="savePath">/incoming/briefReport</param>
+		</action>
+		<action name="trainingCourseSummary_*" method="{1}" class="trainingCourseSummaryAction">
+			<param name="savePath">/incoming/summary</param>
+		</action>
+		<action name="budgetSubmit_*" method="{1}" class="budgetSubmitAction">
+			<result name="yusuan">/entity/manager/fee/fee_yusuan.jsp</result>
+		</action>
+		<action name="actualBudget_*" method="{1}" class="actualBudgetAction">
+			<result name="juesuan">/entity/manager/fee/fee_juesuan.jsp</result>
+		</action>
+
+		<action name="coursePlanView_*" method="{1}" class="coursePlanViewAction">
+			<result name="modify_course">/entity/manager/programApply/implementation/modifyTrainingCoursePlan.jsp</result>
+		</action>
+		<action name="otherMaterialView_*" method="{1}" class="otherMaterialViewAction">
+			<result name="note_detail">/entity/manager/programApply/implementation/note_detail.jsp </result>
+		</action>
+		<action name="otherMaterial_*" method="{1}" class="otherMaterialAction">
+			 <interceptor-ref name="defaultStack"></interceptor-ref>	
+			<param name="savePath">/incoming/otherMaterial</param>
+		</action>
+		<action name="briefReportView_*" method="{1}" class="briefReportViewAction">
+		</action>
+		<action name="budgetYSManage_*" method="{1}" class="budgetYSManageAction">
+			<result name="yusuan">/entity/manager/fee/fee_yusuan.jsp</result>
+			<result name="yusuan2012">/entity/manager/fee/fee_yusuan_2012.jsp</result>
+			<result name="yusuan_print">/entity/manager/fee/fee_yusuan_print.jsp</result>
+			<result name="yusuan_print_2012">/entity/manager/fee/fee_yusuan_print_2012.jsp</result>
+			<result name="showprint">/entity/manager/fee/stat/linkstatistic.jsp</result>
+		</action>
+		<action name="budgetJSManage_*" method="{1}" class="budgetJSManageAction">
+			<result name="juesuan">/entity/manager/fee/fee_juesuan.jsp</result>
+			<result name="juesuan2012">/entity/manager/fee/fee_juesuan_2012.jsp</result>
+			<result name="juesuan_print">/entity/manager/fee/fee_juesuan_print.jsp</result>
+			<result name="juesuan_print_2012">/entity/manager/fee/fee_juesuan_print_2012.jsp</result>
+			<result name="showprint">/entity/manager/fee/stat/linkstatistic.jsp</result>
+		</action>
+		<action name="showOtherMaterial_*" method="{1}" class="showOtherMaterialAction">
+		</action>
+		<action name="otherMaterialNotBySubject_*" method="{1}" class="otherMaterialNotBySubjectAction">
+		</action>
+
+	</package>
+
+</struts>

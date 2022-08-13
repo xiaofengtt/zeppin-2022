@@ -1,0 +1,23 @@
+.main{
+    background-color: #fff;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 30px 100px;
+    min-height: 500px;
+    margin-bottom: 30px;
+}
+.main-right{
+    background-color: lightpink;
+}
+.content-title{
+    margin: 40px 15px;
+}
+.content-head-left{
+    float: left;
+    padding-left: 15px;
+}
+.content-head-right{
+    padding-right: 15px;
+}
+.content-body{
+    min-height: 300px;
+}

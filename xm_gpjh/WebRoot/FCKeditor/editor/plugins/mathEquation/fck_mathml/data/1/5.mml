@@ -1,0 +1,22 @@
+<math>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <msup>
+      <mo>&PartialD;</mo>
+      <mn>2</mn>
+     </msup>
+     <mi>&Omega;</mi>
+    </mrow>
+    <mrow>
+     <mo>&PartialD;</mo><msup>
+      <mi>v</mi>
+      <mn>2</mn>
+     </msup>
+     
+    </mrow>
+   </mfrac>
+   
+  </mrow>
+</math>
+

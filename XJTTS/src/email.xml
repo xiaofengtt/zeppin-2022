@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<baseInfo>
+<user>1755870702@qq.com</user>
+<pwd>xingyuntiancai@1</pwd>
+<url>smtp.qq.com</url>
+<port>25</port>
+<title>密码重置通知邮件</title>
+<!-- <content>你好，万元大奖等你来拿，快快点击进入：http://www.wandoujia.com/apps/com.zixueku</content> -->
+<!-- <content>你好，万元大奖等你来拿，快快点击进入：http://192.168.1.69/XJTTS_TEST/teacher/tlg_checkEmail.action?checkId=</content> -->
+</baseInfo>

@@ -1,0 +1,159 @@
+-------------------------------------------pe_trainee 增加学科字段 subject--------------已更新到数据库
+-- Add/modify columns 
+alter table PE_TRAINEE add SUBJECT varchar2(255);
+-- Add comments to the columns 
+comment on column PE_TRAINEE.SUBJECT
+  is '学科';
+-------------------------------------------pe_trainee 增加省份字段 PROVINCE--------------已更新到数据库
+-- Add/modify columns 
+alter table PE_TRAINEE add PROVINCE varchar2(50);
+-- Add comments to the columns 
+comment on column PE_TRAINEE.PROVINCE
+  is '省份';
+  
+  
+  -- Create table
+create table PE_EXPERT_SEARCH_HISTORY
+(
+  ID          varchar2(50),
+  EXPERT_ID   varchar2(50),
+  SEACHER_ID  varchar2(50),
+  SEARCH_TIME date
+)
+tablespace TCHR_TRAINING1
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_EXPERT_SEARCH_HISTORY
+  add constraint PE_EXPERT_SEARCH_PK primary key (ID);
+alter table PE_EXPERT_SEARCH_HISTORY
+  add constraint FK_EXPERT_ID foreign key (EXPERT_ID)
+  references pe_train_expert (ID);
+alter table PE_EXPERT_SEARCH_HISTORY
+  add constraint FK_SEARCH_ID foreign key (SEACHER_ID)
+  references sso_user (ID);
+  
+  
+  
+  alter table PE_TRAINEE add NOTESECOND clob;
+-- Add comments to the columns 
+comment on column PE_TRAINEE.NOTESECOND
+  is '备注2';
+  
+    alter table PE_TRAINEE add ZHICHENG clob;
+-- Add comments to the columns 
+comment on column PE_TRAINEE.ZHICHENG
+  is '职称';
+  
+  alter table PE_PRO_APPLY add CLASS_IDENTIFIER varchar(15);
+-- Add comments to the columns 
+comment on column PE_PRO_APPLY.CLASS_IDENTIFIER
+  is '班级标示码';
+  
+  
+  alter table pe_trainee add CERTIFICATE_NUMBER varchar(20);
+-- Add comments to the columns 
+comment on column pe_trainee.CERTIFICATE_NUMBER
+  is '证书编号';
+  
+  ------------------zhaoyuxiao -----------------已同步到数据库-----------------
+  alter table PE_FEE_BUDGET_DETAIL modify FEE_SURVEY NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_RESEARCH NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_ARGUMENT NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_MEAL NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_ACCOMMODATION NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_TRAFFIC_STU NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_TEACH NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_TRAFFIC_EXPERT NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_MEAL_ACC_EXPERT NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_MATERIALS NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_COURSE NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_ELECTRON_COURSE NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_AREA_RENT NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_EQUIPMENT_RENT NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_APPRAISE NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_SUMMARY_APPRAISE NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_LABOUR_SERVICE NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_PUBLICITY NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_PETTY NUMBER(9,2);
+alter table PE_FEE_BUDGET_DETAIL modify FEE_NOPLAN NUMBER(9,2);
+------------------zhaoyuxiao -----------------已同步到数据库-----------------
+------------------zhaoyuxiao -----------------已同步到数据库-----------------  
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_SURVEY NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_RESEARCH NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_ARGUMENT NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_MEAL NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_ACCOMMODATION NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_TRAFFIC_STU NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_TEACH NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_TRAFFIC_EXPERT NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_MEAL_ACC_EXPERT NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_MATERIALS NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_COURSE NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_ELECTRON_COURSE NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_AREA_RENT NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_EQUIPMENT_RENT NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_APPRAISE NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_SUMMARY_APPRAISE NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_LABOUR_SERVICE NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_PUBLICITY NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_PETTY NUMBER(9,2);
+alter table PE_FEE_ACTUAL_BUDGET_DETAIL modify FEE_OTHER NUMBER(9,2);
+------------------zhaoyuxiao --------------
+  -----------------------------问卷调查部分涉及各表，改动较大--------------------------
+  pr_vote_answer :
+  		alter table pr_vote_answer drop column TRAINING_UNIT;
+  		alter table pr_vote_answer drop column answer;
+  		alter table pr_vote_answer rename column fk_trainee to class_identifier;
+  		alter table pr_vote_answer modify (class_identifier varchar2(15))
+  		alter table pr_vote_answer add answer1 number(8);
+  		alter table pr_vote_answer add answer2 number(8);
+  		alter table pr_vote_answer add answer3 number(8);
+  		alter table pr_vote_answer add answer4 number(8);
+  		alter table pr_vote_answer add answer5 number(8);
+  		alter table pr_vote_answer add answer6 number(8);
+  		alter table pr_vote_answer add answer7 number(8);
+  		alter table pr_vote_answer add answer8 number(8);
+  		alter table pr_vote_answer add answer9 number(8);
+  		alter table pr_vote_answer add answer10 number(8);
+  		alter table pr_vote_answer add answer11 number(8);
+  		alter table pr_vote_answer add answer12 number(8);
+  		alter table pr_vote_answer add answer13 number(8);
+  		alter table pr_vote_answer add answer14 number(8);
+  		alter table pr_vote_answer add answer15 number(8);
+  pr_vote_question :
+  		alter table pr_vote_question drop column ITEM_RESULT1;
+  		alter table pr_vote_question drop column ITEM_RESULT2;
+  		alter table pr_vote_question drop column ITEM_RESULT3;
+  		alter table pr_vote_question drop column ITEM_RESULT4;
+  		alter table pr_vote_question drop column ITEM_RESULT5;
+  		alter table pr_vote_question drop column ITEM_RESULT6;
+  		alter table pr_vote_question drop column ITEM_RESULT7;
+  		alter table pr_vote_question drop column ITEM_RESULT8;
+  		alter table pr_vote_question drop column ITEM_RESULT9;
+  		alter table pr_vote_question drop column ITEM_RESULT10;
+  		alter table pr_vote_question drop column ITEM_RESULT11;
+  		alter table pr_vote_question drop column ITEM_RESULT12;
+  		alter table pr_vote_question drop column ITEM_RESULT13;
+  		alter table pr_vote_question drop column ITEM_RESULT14;
+  		alter table pr_vote_question drop column ITEM_RESULT15;
+  pr_vote_record:
+  		alter table pr_vote_record rename column fk_trainee to class_identifier;
+  		alter table pr_vote_record modify (class_identifier varchar2(15))
+  pr_vote_suggest :
+  		alter table pr_vote_suggest rename column fk_trainee to class_identifier
+		alter table PR_VOTE_SUGGEST drop constraint FK_PR_VOTE_TRAINEE_SUGEEST;
+		alter table pr_vote_suggest modify (class_identifier varchar2(15));
+		comment on pr_vote_suggest.class_identifier '班级标示码'
+  ---------------------------------------------------------------------------------
+  alter table PR_VOTE_ANSWER
+  drop constraint FK_VOTE_TRAINEE;
+  
+  ---已同步到数据库-----------------    09-25
+  		
+  
+  

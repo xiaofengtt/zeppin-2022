@@ -1,0 +1,4201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0032)http://www.nltsgc.cn/HSDTesting/ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<title>中小学教师信息技术应用能力自评工具</title>
+	<link rel="stylesheet"
+		href="./js/hsdstyle.css">
+		<script type="text/javascript" src="./js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="./js/Chart.js"></script>
+		<script src="./js/excanvas.js" type="text/javascript"></script>
+		
+		
+</head>
+<body onload="area();">
+	<div class="wraper_block">
+		<div class="wraper">
+			<div class="wraperin">
+				<div class="middcontent">
+					<div class="simple_detail">
+						<h2>中小学教师信息技术应用能力自评工具_SD</h2>
+						<div class="cont" style="padding-bottom: 40px;" id="basic_div">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tbody>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td style="color: #000080; font-size: large;">
+															&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;尊敬的老师:</td>
+													</tr>
+													<tr>
+														<td style="color: #000080; font-size: large;">
+															&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您好!本工具旨在帮助您评价信息技术应用情况。内容分两部分,第一部分是基本信息，第二部分是信息技术应用状态。请您逐项阅读各项指标，按照自身实际情况选择“属实”、“不属实”或者是“不确定”。您的选择会直接影响后续培训选课的科学性和合理性，夸大或低估都会导致选课偏差，直接影响学习成效，请您务必客观自查！<br>
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您提供的信息绝对保密，请您不要有任何顾虑！
+
+														
+														</td>
+													</tr>
+													<tr>
+														<td style="color: #000080; font-size: large;">
+															&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全国中小学教师信息技术应用能力提升工程执行办公室
+														</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td><strong>1.省份</strong>&nbsp;&nbsp;&nbsp;&nbsp;<select
+															name="s_Province" id="s_Province" onchange="area();">
+																<option value="-1">请选择</option>
+																<option value="32" selected="selected">新疆维吾尔自治区</option>
+														</select></td>
+													</tr>
+													<tr>
+														<td height="10"></td>
+													</tr>
+													<tr>
+														<td><strong>2.地市</strong>&nbsp;&nbsp;&nbsp;&nbsp;<select
+															name="s_Nation" id="s_Nation"><option
+																	value="济南市">济南市</option>
+																<option value="青岛市">青岛市</option>
+																<option value="淄博市">淄博市</option>
+																<option value="枣庄市">枣庄市</option>
+																<option value="东营市">东营市</option>
+																<option value="潍坊市">潍坊市</option>
+																<option value="烟台市">烟台市</option>
+																<option value="威海市">威海市</option>
+																<option value="济宁市">济宁市</option>
+																<option value="泰安市">泰安市</option>
+																<option value="日照市">日照市</option>
+																<option value="莱芜市">莱芜市</option>
+																<option value="德州市">德州市</option>
+																<option value="临沂市">临沂市</option>
+																<option value="聊城市">聊城市</option>
+																<option value="滨州市">滨州市</option>
+																<option value="菏泽市">菏泽市</option></select></td>
+													</tr>
+													<tr>
+														<td height="10"></td>
+													</tr>
+													<tr>
+														<td>
+															<table width="100%" border="0" cellspacing="0"
+																cellpadding="0">
+																<tbody>
+																	<tr>
+																		<td><strong>3.您的性别：</strong></td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<label><input type="radio" name="r_sex" id="r_sex"
+																			value="1"> A.男 </label>
+																			<br/>
+																			<label><input type="radio"
+																				name="r_sex" id="r_sex" value="2"> B.女 </label></td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+													<tr>
+														<td height="10"></td>
+													</tr>
+													<tr>
+														<td><strong>4.您所属的年龄段：</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_old" id="r_old"
+															value="1"> A.20—30 </label></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_old" id="r_old"
+															value="2"> B.31—40 </label></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_old" id="r_old"
+															value="3"> C.41—50 </label></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_old" id="r_old"
+															value="4"> D.50以上 </label></td>
+													</tr>
+													<tr>
+														<td height="10"></td>
+													</tr>
+													<tr>
+														<td>
+															<table width="100%" border="0" cellspacing="0"
+																cellpadding="0">
+																<tbody>
+																	<tr>
+																		<td><strong>5.您任教的年级段：</strong></td>
+																	</tr>
+																	<tr>
+																		<td><label><input type="radio" name="r_grade"
+																			id="r_grade" value="1"> A.幼儿园 </label></td>
+																	</tr>
+																	<tr>
+																		<td><label><input type="radio" name="r_grade"
+																			id="r_grade" value="2"> B.小学 </label></td>
+																	</tr>
+																	<tr>
+																		<td><label><input type="radio" name="r_grade"
+																			id="r_grade" value="3"> C.初中 </label></td>
+																	</tr>
+																	<tr>
+																		<td><label><input type="radio" name="r_grade"
+																			id="r_grade" value="4"> D.高中 </label></td>
+																	</tr>
+																	<tr>
+																		<td><label><input type="radio" name="r_grade"
+																			id="r_grade" value="5"> E.其他 </label></td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+													<tr>
+														<td height="10"></td>
+													</tr>
+													<tr>
+														<td>
+															<table width="100%" border="0" cellspacing="0"
+																cellpadding="0">
+																<tbody>
+																	<tr>
+																		<td><strong>6.您任教的学科是：</strong></td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<label><input type="radio" name="r_course" id="r_course" value="1"> A. 语文</label>
+																			<label><input type="radio" name="r_course" id="r_course" value="2">B. 数学 </label>
+																			<label><input type="radio" name="r_course" id="r_course" value="3"> C. 英语 </label>
+																			<label><input type="radio" name="r_course" id="r_course" value="4"> D.物理 </label>
+																			<label><input type="radio" name="r_course" id="r_course" value="5">E.化学 </label>
+																			<label><input type="radio" name="r_course" id="r_course" value="6"> F.生物 </label>
+																			<label><input type="radio" name="r_course" id="r_course" value="7"> G.思品/政治 </label>
+																			<label><input type="radio" name="r_course" id="r_course" value="8">H. 历史 </label>
+																			<label><input type="radio" name="r_course" id="r_course" value="9"> I. 地理</label>
+																			<br>
+																			<label><input type="radio" name="r_course" id="r_course" value="10"> J. 体育 </label>
+																			<label><input type="radio" name="r_course" id="r_course"value="11"> K. 美术 </label>
+																			<label><input type="radio" name="r_course" id="r_course" value="12"> L. 音乐 </label>
+																			<label><input type="radio" name="r_course" id="r_course" value="13"> M.信息技术 </label>
+																			<label><input type="radio" name="r_course" id="r_course" value="14"> O. 综合实践 </label>
+																			<label><input type="radio" name="r_course" id="r_course" value="15">P.通用技术 </label>
+																			<label><input type="radio" name="r_course" id="r_course" value="16"> Q.幼儿园 </label>
+																			<label><input type="radio" name="r_course" id="r_course" value="17"> R.其他 </label>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+													<tr>
+														<td height="10"></td>
+													</tr>
+													<tr>
+														<td>
+															<table width="100%" border="0" cellspacing="0"
+																cellpadding="0">
+																<tbody>
+																	<tr>
+																		<td><strong>7.您的学校所在区域：</strong></td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<label><input type="radio" name="r_area" id="r_area" value="1"> A.地市级或以上城市</label>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<label><input type="radio" name="r_area" id="r_area" value="2"> B.区或县城 </label>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<label><input type="radio" name="r_area" id="r_area" value="3"> C.乡镇</label>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<label><input type="radio" name="r_area" id="r_area" value="4"> D.农村</label>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+													<tr>
+														<td height="10"></td>
+													</tr>
+													<tr>
+														<td>
+															<table width="100%" border="0" cellspacing="0"
+																cellpadding="0">
+																<tbody>
+																	<tr>
+																		<td><strong>8.您的教学经验：</strong></td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<label><input type="radio" name="r_told" id="r_told" value="1"> A.1-5年 </label>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<label><input type="radio" name="r_told" id="r_told" value="2"> B.6年—15年 </label>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<label><input type="radio" name="r_told" id="r_told" value="3"> C.16年—25年 </label>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<label><input type="radio" name="r_told" id="r_told" value="4"> D.26年—35年</label>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<label><input type="radio" name="r_told" id="r_told" value="5"> E. 36年以上</label>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+													<tr>
+														<td height="10"></td>
+													</tr>
+													<tr>
+														<td>
+															<table width="100%" border="0" cellspacing="0"
+																cellpadding="0">
+																<tbody>
+																	<tr>
+																		<td><strong>9.您现在的职称是：</strong></td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<label><input type="radio" name="r_title" id="r_title" value="1"> A. 小教（中教）高级</label>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<label><input type="radio" name="r_title" id="r_title" value="2"> B.小教（中教）一级</label>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<label><input type="radio" name="r_title" id="r_title" value="3"> C.小教（中教）二级 </label>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<label><input type="radio" name="r_title" id="r_title" value="4"> D.小教（中教）三级</label>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+													<tr>
+														<td height="10"></td>
+													</tr>
+													<tr>
+														<td>
+															<table width="100%" border="0" cellspacing="0"
+																cellpadding="0">
+																<tbody>
+																	<tr>
+																		<td><strong>10.您曾经获得的教学称号：</strong></td>
+																	</tr>
+																	<tr>
+																		<td>
+																			<label><input type="radio" name="r_tname" id="r_tname" value="1"> A.省级名师/特级教师</label>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td><label><input type="radio" name="r_tname"
+																			id="r_tname" value="2"> B.市级骨干 </label></td>
+																	</tr>
+																	<tr>
+																		<td><label><input type="radio" name="r_tname"
+																			id="r_tname" value="3"> C.区或县级骨干 </label></td>
+																	</tr>
+																	<tr>
+																		<td><label><input type="radio" name="r_tname"
+																			id="r_tname" value="4"> D.一般教师 </label></td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+													<tr>
+														<td height="10"></td>
+													</tr>
+													<tr>
+														<td>
+															<table width="100%" border="0" cellspacing="0"
+																cellpadding="0">
+																<tbody>
+																	<tr>
+																		<td><strong>11.最高学历</strong></td>
+																	</tr>
+																	<tr>
+																		<td><label><input type="radio" name="r_edu" id="r_edu"
+																			value="1"> A.硕士研究生或博士研究生 </label></td>
+																	</tr>
+																	<tr>
+																		<td><label><input type="radio" name="r_edu" id="r_edu"
+																			value="2"> B.本科 </label></td>
+																	</tr>
+																	<tr>
+																		<td><label><input type="radio" name="r_edu" id="r_edu"
+																			value="3"> C.专科 </label></td>
+																	</tr>
+																	<tr>
+																		<td><label><input type="radio" name="r_edu" id="r_edu"
+																			value="4"> D.专科以下 </label></td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+													<tr>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<p class="span2">
+								<input class="btn_b" id="bt" type="button" value="下一页">
+							</p>
+						</div>
+						<!--自评状态题开始-->
+						<div class="cont" style="padding-top: 20px; display: none"
+							id="state_div">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tbody>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>1.我的学校状态是（请选择最接近的一种状态,
+																如果存在两种以上状态的话，请选择序号高的选项）</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_1" id="r_1" value="1">（0）没有配备任何电子设备</label>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_1" id="r_1" value="2">（1）仅配备了电视机与DVD等</label>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_1" id="r_1" value="3">（2）教室里配备了基本的多媒体教学设备（如投影仪、教师机等）</label>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_1" id="r_1" value="4">（3）教室里配备了电子白板（或触控电视）</label>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_1" id="r_1" value="5">（4）学生在课堂学习过程中可以用到网络</label>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_1" id="r_1" value="6">（5）我们已经在开展移动学习（如应用电子书包、智能手机、平板等终端开展学习）</label>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>2.根据我们现在的设备状态和教学需求，我更关心下面的教学（单选）：</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_2" id="r_2" value="1">（1）多媒体环境下的教学</label>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_2" id="r_2" value="2">（2）电子白板（触控电视）环境下的教学</label>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_2" id="r_2" value="3">（3）网络环境下的教学</label>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_2" id="r_2" value="4">（4）移动环境下的教学</label>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+								</tbody>
+							</table>
+							<p class="span2">
+								<input class="btn_b" id="btn_back1" type="button" value="上一页">&nbsp;<input
+									class="btn_b" id="bt1" type="button" value="下一页">
+							</p>
+						</div>
+						<!--自评测试题开始-->
+						<!--自评测试题3开始-->
+						<div class="cont" style="padding-top: 20px; display: none"
+							id="test3_div">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tbody>
+									<tr>
+										<td><strong>3.凭我个人的能力，恐怕很难实现国家规定的课程教学目标，我很需要支持。</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label><input type="radio" name="r_3" id="r_3" value="1" onclick="document.getElementById(&#39;s_3&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_3&#39;).value=&#39;&#39;;">属实</label>
+											<label><input type="radio" name="r_3" id="r_3" value="2" onclick="document.getElementById(&#39;s_3&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_3&#39;).value=&#39;&#39;;">不属实</label>
+											<label><input type="radio" name="r_3" id="r_3" value="3" onclick="document.getElementById(&#39;s_3&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;</label>
+												<span id="s_3" style="display: none;">不确定的原因：
+													<input id="t_3" name="t_3" type="text" maxlength="400" style="width: 600px;">
+												</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!--自评测试题开始-->
+						<div class="cont" style="padding-top: 20px; display: none"
+							id="test_div">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tbody>
+									<tr>
+										<td><strong>4.我可以熟练地应用一些经典教学目标设计方法（如布鲁姆认知目标分类，加涅教学事件等）来设计教学目标和评价内容。</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label><input type="radio" name="r_4" id="r_4" value="1" onclick="document.getElementById(&#39;s_4&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_4&#39;).value=&#39;&#39;;">属实</label>
+											<label><input type="radio" name="r_4" id="r_4" value="2" onclick="document.getElementById(&#39;s_4&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_4&#39;).value=&#39;&#39;;">不属实</label>
+											<label><input type="radio" name="r_4" id="r_4" value="3" onclick="document.getElementById(&#39;s_4&#39;).style.display=&#39;inline-block&#39;;">不确定</label>
+											&nbsp;&nbsp;&nbsp;
+											<span id="s_4" style="display: none;">不确定的原因：
+												<input id="t_4" name="t_4" type="text" maxlength="400"
+															style="width: 600px;">
+											</span>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>5.我从来没有开过以信息技术应用为特点的公开课。</strong></td>
+													</tr>
+													<tr>
+														<td>
+															<label><input type="radio" name="r_5" id="r_5" value="1" onclick="document.getElementById(&#39;s_5&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_5&#39;).value=&#39;&#39;;">属实</label>
+															<label><input type="radio" name="r_5" id="r_5" value="2" onclick="document.getElementById(&#39;s_5&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_5&#39;).value=&#39;&#39;;">不属实</label>
+															<label><input type="radio" name="r_5" id="r_5" value="3" onclick="document.getElementById(&#39;s_5&#39;).style.display=&#39;inline-block&#39;;">不确定</label>
+																&nbsp;&nbsp;&nbsp;
+																<span id="s_5" style="display: none;">不确定的原因：
+																	<input id="t_5" name="t_5" type="text" maxlength="400" style="width: 600px;">
+																</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>6.在不利用信息技术的课堂教学中，我的教学质量也是受到同行认可的。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_6" id="r_6" value="1" onclick="document.getElementById(&#39;s_6&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_6&#39;).value=&#39;&#39;;">属实</label>
+															<label><input type="radio" name="r_6" id="r_6" value="2" onclick="document.getElementById(&#39;s_6&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_6&#39;).value=&#39;&#39;;">不属实</label>
+																<label><input type="radio" name="r_6" id="r_6" value="3" onclick="document.getElementById(&#39;s_6&#39;).style.display=&#39;inline-block&#39;;">不确定</label>
+															&nbsp;&nbsp;&nbsp;
+															<span id="s_6" style="display: none;">不确定的原因：
+																<input id="t_6" name="t_6" type="text" maxlength="400" style="width: 600px;">
+															</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>7.目前为止，我还不习惯利用信息技术来支持教学。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_7" id="r_7" value="1" onclick="document.getElementById(&#39;s_7&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_7&#39;).value=&#39;&#39;;">属实</label>
+															<label><input type="radio" name="r_7" id="r_7" value="2" onclick="document.getElementById(&#39;s_7&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_7&#39;).value=&#39;&#39;;">不属实</label>
+															<label><input type="radio" name="r_7" id="r_7" value="3" onclick="document.getElementById(&#39;s_7&#39;).style.display=&#39;inline-block&#39;;">不确定</label>
+																	&nbsp;&nbsp;&nbsp;
+															<span id="s_7" style="display: none;">不确定的原因：<input id="t_7" name="t_7" type="text" maxlength="400" style="width: 600px;"></span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>8.我在课堂教学中应用过信息技术手段，但经常无法得到学科专家或同行的认可。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_8" id="r_8" value="1"
+															onclick="document.getElementById(&#39;s_8&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_8&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_8" id="r_8" value="2"
+																onclick="document.getElementById(&#39;s_8&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_8&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_8" id="r_8" value="3"
+																	onclick="document.getElementById(&#39;s_8&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_8" style="display: none;">不确定的原因：<input
+																			id="t_8" name="t_8" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>9.我对于在课堂上应用信息技术的效果还缺乏信心。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_9" id="r_9" value="1"
+															onclick="document.getElementById(&#39;s_9&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_9&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_9" id="r_9" value="2"
+																onclick="document.getElementById(&#39;s_9&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_9&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_9" id="r_9" value="3"
+																	onclick="document.getElementById(&#39;s_9&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_9" style="display: none;">不确定的原因：<input
+																			id="t_9" name="t_9" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>10.在我的课堂导入环节，我经常使用数字资源（如视频、动画、演示文稿、学科工具）。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_10" id="r_10"
+															value="1"
+															onclick="document.getElementById(&#39;s_10&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_10&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_10" id="r_10" value="2"
+																onclick="document.getElementById(&#39;s_10&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_10&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_10" id="r_10" value="3"
+																	onclick="document.getElementById(&#39;s_10&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_10" style="display: none;">不确定的原因：<input
+																			id="t_10" name="t_10" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>11.一般情况下，我的课程导入是有成效的，学生能够很快进入学习状态。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_11" id="r_11"
+															value="1"
+															onclick="document.getElementById(&#39;s_11&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_11&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_11" id="r_11" value="2"
+																onclick="document.getElementById(&#39;s_11&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_11&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_11" id="r_11" value="3"
+																	onclick="document.getElementById(&#39;s_11&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_11" style="display: none;">不确定的原因：<input
+																			id="t_11" name="t_11" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>12.我知道信息技术在讲解、启发、指导、示范等教学活动所能发挥的作用和策略。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_12" id="r_12"
+															value="1"
+															onclick="document.getElementById(&#39;s_12&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_12&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_12" id="r_12" value="2"
+																onclick="document.getElementById(&#39;s_12&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_12&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_12" id="r_12" value="3"
+																	onclick="document.getElementById(&#39;s_12&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_12" style="display: none;">不确定的原因：<input
+																			id="t_12" name="t_12" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>13.我虽然在课堂中采用了一定的数字资源或学科教学工具，但没有感觉到它们对于突破教学重、难点起到很好的作用。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_13" id="r_13"
+															value="1"
+															onclick="document.getElementById(&#39;s_13&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_13&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_13" id="r_13" value="2"
+																onclick="document.getElementById(&#39;s_13&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_13&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_13" id="r_13" value="3"
+																	onclick="document.getElementById(&#39;s_13&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_13" style="display: none;">不确定的原因：<input
+																			id="t_13" name="t_13" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>14.在复习课中我常用数字资源、学科工具、知识建构工具（如概念图、思维导图）等来结构化梳理归纳学习内容。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_14" id="r_14"
+															value="1"
+															onclick="document.getElementById(&#39;s_14&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_14&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_14" id="r_14" value="2"
+																onclick="document.getElementById(&#39;s_14&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_14&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_14" id="r_14" value="3"
+																	onclick="document.getElementById(&#39;s_14&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_14" style="display: none;">不确定的原因：<input
+																			id="t_14" name="t_14" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>15.在我的课堂上，学生们还没有尝试使用过概念图、思维导图等知识建构工具。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_15" id="r_15"
+															value="1"
+															onclick="document.getElementById(&#39;s_15&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_15&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_15" id="r_15" value="2"
+																onclick="document.getElementById(&#39;s_15&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_15&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_15" id="r_15" value="3"
+																	onclick="document.getElementById(&#39;s_15&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_15" style="display: none;">不确定的原因：<input
+																			id="t_15" name="t_15" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>16.我会有意识的比对着学习目标设计评价方案，在课堂上能够很好地实施起来。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_16" id="r_16"
+															value="1"
+															onclick="document.getElementById(&#39;s_16&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_16&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_16" id="r_16" value="2"
+																onclick="document.getElementById(&#39;s_16&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_16&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_16" id="r_16" value="3"
+																	onclick="document.getElementById(&#39;s_16&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_16" style="display: none;">不确定的原因：<input
+																			id="t_16" name="t_16" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>17.针对学生的学习成果（如数字化作品等），我不知道从哪些角度去评价。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<label><input type="radio" name="r_17" id="r_17" value="1" onclick="document.getElementById(&#39;s_17&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_17&#39;).value=&#39;&#39;;">属实</label>
+															<label><input type="radio" name="r_17" id="r_17" value="2" onclick="document.getElementById(&#39;s_17&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_17&#39;).value=&#39;&#39;;">不属实</label>
+															<label><input type="radio" name="r_17" id="r_17" value="3" onclick="document.getElementById(&#39;s_17&#39;).style.display=&#39;inline-block&#39;;">不确定</label>
+															&nbsp;&nbsp;&nbsp;
+															<span id="s_17" style="display: none;">不确定的原因：
+																<input id="t_17" name="t_17" type="text" maxlength="400" style="width: 600px;">
+															</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>18.我每次都按要求做教学质量分析，但对我的教学改进帮助不大。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_18" id="r_18"
+															value="1"
+															onclick="document.getElementById(&#39;s_18&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_18&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_18" id="r_18" value="2"
+																onclick="document.getElementById(&#39;s_18&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_18&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_18" id="r_18" value="3"
+																	onclick="document.getElementById(&#39;s_18&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_18" style="display: none;">不确定的原因：<input
+																			id="t_18" name="t_18" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>19.我会用柱状图、饼图等图表来呈现数据分析结果。</strong></td>
+													</tr>
+													<tr>
+														<td>
+															<label><input type="radio" name="r_19" id="r_19" value="1" onclick="document.getElementById(&#39;s_19&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_19&#39;).value=&#39;&#39;;">属实</label>
+															<label><input type="radio" name="r_19" id="r_19" value="2" onclick="document.getElementById(&#39;s_19&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_19&#39;).value=&#39;&#39;;">不属实</label>
+															<label><input type="radio" name="r_19" id="r_19" value="3" onclick="document.getElementById(&#39;s_19&#39;).style.display=&#39;inline-block&#39;;">不确定</label>
+															&nbsp;&nbsp;&nbsp;
+															<span id="s_19" style="display: none;">不确定的原因：
+																<input id="t_19" name="t_19" type="text" maxlength="400" style="width: 600px;">
+															</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>20.我习惯使用信息化工具（如WORD, EXCEL,
+																或学校的试卷系统）来编制试卷。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_20" id="r_20"
+															value="1"
+															onclick="document.getElementById(&#39;s_20&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_20&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_20" id="r_20" value="2"
+																onclick="document.getElementById(&#39;s_20&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_20&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_20" id="r_20" value="3"
+																	onclick="document.getElementById(&#39;s_20&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_20" style="display: none;">不确定的原因：<input
+																			id="t_20" name="t_20" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>21.我没有使用过在线测试系统辅助开展学生练习和测验。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_21" id="r_21"
+															value="1"
+															onclick="document.getElementById(&#39;s_21&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_21&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_21" id="r_21" value="2"
+																onclick="document.getElementById(&#39;s_21&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_21&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_21" id="r_21" value="3"
+																	onclick="document.getElementById(&#39;s_21&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_21" style="display: none;">不确定的原因：<input
+																			id="t_21" name="t_21" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>22.我认为是否具备信息技术应用能力并不影响我对学生的培养。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_22" id="r_22"
+															value="1"
+															onclick="document.getElementById(&#39;s_22&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_22&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_22" id="r_22" value="2"
+																onclick="document.getElementById(&#39;s_22&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_22&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_22" id="r_22" value="3"
+																	onclick="document.getElementById(&#39;s_22&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_22" style="display: none;">不确定的原因：<input
+																			id="t_22" name="t_22" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>23.我喜欢学习一些信息技术新应用，以使我的日常生活更便利（如网购、网上聊天、电子购票、信息搜索等）</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_23" id="r_23"
+															value="1"
+															onclick="document.getElementById(&#39;s_23&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_23&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_23" id="r_23" value="2"
+																onclick="document.getElementById(&#39;s_23&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_23&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_23" id="r_23" value="3"
+																	onclick="document.getElementById(&#39;s_23&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_23" style="display: none;">不确定的原因：<input
+																			id="t_23" name="t_23" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>24.我始终关注着信息技术在教育教学中的应用热点。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_24" id="r_24"
+															value="1"
+															onclick="document.getElementById(&#39;s_24&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_24&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_24" id="r_24" value="2"
+																onclick="document.getElementById(&#39;s_24&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_24&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_24" id="r_24" value="3"
+																	onclick="document.getElementById(&#39;s_24&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_24" style="display: none;">不确定的原因：<input
+																			id="t_24" name="t_24" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>25.我在信息化教学中，经常需要同事（或技术维护人员）帮助我准备好设备。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_25" id="r_25"
+															value="1"
+															onclick="document.getElementById(&#39;s_25&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_25&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_25" id="r_25" value="2"
+																onclick="document.getElementById(&#39;s_25&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_25&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_25" id="r_25" value="3"
+																	onclick="document.getElementById(&#39;s_25&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_25" style="display: none;">不确定的原因：<input
+																			id="t_25" name="t_25" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>26.在上课时，我所使用的多媒体教学设备经常出状况。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_26" id="r_26"
+															value="1"
+															onclick="document.getElementById(&#39;s_26&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_26&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_26" id="r_26" value="2"
+																onclick="document.getElementById(&#39;s_26&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_26&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_26" id="r_26" value="3"
+																	onclick="document.getElementById(&#39;s_26&#39;).style.display=&#39;inline-block&#39;;">不确定</label><label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_26" style="display: none;">不确定的原因：<input
+																			id="t_26" name="t_26" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>27.在准备教案时，我习惯性地在网上查阅教学素材料和备课材料。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_27" id="r_27"
+															value="1"
+															onclick="document.getElementById(&#39;s_27&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_27&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_27" id="r_27" value="2"
+																onclick="document.getElementById(&#39;s_27&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_27&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_27" id="r_27" value="3"
+																	onclick="document.getElementById(&#39;s_27&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_27" style="display: none;">不确定的原因：<input
+																			id="t_27" name="t_27" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>28.在我自己的电脑上，我经常会因寻找某个文档而浪费时间。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_28" id="r_28"
+															value="1"
+															onclick="document.getElementById(&#39;s_28&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_28&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_28" id="r_28" value="2"
+																onclick="document.getElementById(&#39;s_28&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_28&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_28" id="r_28" value="3"
+																	onclick="document.getElementById(&#39;s_28&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_28" style="display: none;">不确定的原因：<input
+																			id="t_28" name="t_28" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>29.我知道如何下载网络上的视频、图片、音频、网页、动画等。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_29" id="r_29"
+															value="1"
+															onclick="document.getElementById(&#39;s_29&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_29&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_29" id="r_29" value="2"
+																onclick="document.getElementById(&#39;s_29&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_29&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_29" id="r_29" value="3"
+																	onclick="document.getElementById(&#39;s_29&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_29" style="display: none;">不确定的原因：<input
+																			id="t_29" name="t_29" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>30.我至少有两个青睐的学科资源网站。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_30" id="r_30"
+															value="1"
+															onclick="document.getElementById(&#39;s_30&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_30&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_30" id="r_30" value="2"
+																onclick="document.getElementById(&#39;s_30&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_30&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_30" id="r_30" value="3"
+																	onclick="document.getElementById(&#39;s_30&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_30" style="display: none;">不确定的原因：<input
+																			id="t_30" name="t_30" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>31.我现在还不会使用文字编辑软件来写教案等各类文档。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_31" id="r_31"
+															value="1"
+															onclick="document.getElementById(&#39;s_31&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_31&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_31" id="r_31" value="2"
+																onclick="document.getElementById(&#39;s_31&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_31&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_31" id="r_31" value="3"
+																	onclick="document.getElementById(&#39;s_31&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_31" style="display: none;">不确定的原因：<input
+																			id="t_31" name="t_31" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>32.我认为我当前掌握的音视频编辑软件（如Cool Edit,
+																GoldWave, Movie Maker, 会声会影等）已经够用了。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_32" id="r_32"
+															value="1"
+															onclick="document.getElementById(&#39;s_32&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_32&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_32" id="r_32" value="2"
+																onclick="document.getElementById(&#39;s_32&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_32&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_32" id="r_32" value="3"
+																	onclick="document.getElementById(&#39;s_32&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_32" style="display: none;">不确定的原因：<input
+																			id="t_32" name="t_32" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>33.我认为我当前掌握的图像或动画处理软件（如美图秀秀，Photoshop，
+																Swish, 光影魔术手， Flash, GIF A0imator等）已经够用了。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_33" id="r_33"
+															value="1"
+															onclick="document.getElementById(&#39;s_33&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_33&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_33" id="r_33" value="2"
+																onclick="document.getElementById(&#39;s_33&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_33&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_33" id="r_33" value="3"
+																	onclick="document.getElementById(&#39;s_33&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_33" style="display: none;">不确定的原因：<input
+																			id="t_33" name="t_33" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>34.为了达到同样的多媒体课件效果，我经常要比同事花更多的时间去制作。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_34" id="r_34"
+															value="1"
+															onclick="document.getElementById(&#39;s_34&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_34&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_34" id="r_34" value="2"
+																onclick="document.getElementById(&#39;s_34&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_34&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_34" id="r_34" value="3"
+																	onclick="document.getElementById(&#39;s_34&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_34" style="display: none;">不确定的原因：<input
+																			id="t_34" name="t_34" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>35.在制作多媒体课件时，我的外观美化与内容设计是同步进行的。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_35" id="r_35"
+															value="1"
+															onclick="document.getElementById(&#39;s_35&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_35&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_35" id="r_35" value="2"
+																onclick="document.getElementById(&#39;s_35&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_35&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_35" id="r_35" value="3"
+																	onclick="document.getElementById(&#39;s_35&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_35" style="display: none;">不确定的原因：<input
+																			id="t_35" name="t_35" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>36.我制作的多媒体课件，经常受到同行的青睐。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_36" id="r_36"
+															value="1"
+															onclick="document.getElementById(&#39;s_36&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_36&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_36" id="r_36" value="2"
+																onclick="document.getElementById(&#39;s_36&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_36&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_36" id="r_36" value="3"
+																	onclick="document.getElementById(&#39;s_36&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_36" style="display: none;">不确定的原因：<input
+																			id="t_36" name="t_36" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>37.我经常向同事推荐一些教学应用相关的新软件、新网站。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_37" id="r_37"
+															value="1"
+															onclick="document.getElementById(&#39;s_37&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_37&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_37" id="r_37" value="2"
+																onclick="document.getElementById(&#39;s_37&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_37&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_37" id="r_37" value="3"
+																	onclick="document.getElementById(&#39;s_37&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_37" style="display: none;">不确定的原因：<input
+																			id="t_37" name="t_37" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>38.我能熟练操作至少一种适用于我任教学科的专用工具（如几何画板、拟真实验等）、在线软件或移动APP。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_38" id="r_38"
+															value="1"
+															onclick="document.getElementById(&#39;s_38&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_38&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_38" id="r_38" value="2"
+																onclick="document.getElementById(&#39;s_38&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_38&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_38" id="r_38" value="3"
+																	onclick="document.getElementById(&#39;s_38&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_38" style="display: none;">不确定的原因：<input
+																			id="t_38" name="t_38" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>39.我不确定我上网的习惯是否符合信息安全的要求。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_39" id="r_39"
+															value="1"
+															onclick="document.getElementById(&#39;s_39&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_39&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_39" id="r_39" value="2"
+																onclick="document.getElementById(&#39;s_39&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_39&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_39" id="r_39" value="3"
+																	onclick="document.getElementById(&#39;s_39&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_39" style="display: none;">不确定的原因：<input
+																			id="t_39" name="t_39" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>40.学生作业涉及到引用他人观点、材料时，我会要求他们注意规范地注明引用材料的出处。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_40" id="r_40"
+															value="1"
+															onclick="document.getElementById(&#39;s_40&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_40&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_40" id="r_40" value="2"
+																onclick="document.getElementById(&#39;s_40&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_40&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_40" id="r_40" value="3"
+																	onclick="document.getElementById(&#39;s_40&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_40" style="display: none;">不确定的原因：<input
+																			id="t_40" name="t_40" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>41.在利用网络开展学习时，我能够运用具体的策略方法帮助学生远离不良信息和网络暴力。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_41" id="r_41"
+															value="1"
+															onclick="document.getElementById(&#39;s_41&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_41&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_41" id="r_41" value="2"
+																onclick="document.getElementById(&#39;s_41&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_41&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_41" id="r_41" value="3"
+																	onclick="document.getElementById(&#39;s_41&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_41" style="display: none;">不确定的原因：<input
+																			id="t_41" name="t_41" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>42.迄今为止，我还没有开展过探究性教学（如项目学习、问题化学习、任务驱动学习）的实践。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_42" id="r_42"
+															value="1"
+															onclick="document.getElementById(&#39;s_42&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_42&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_42" id="r_42" value="2"
+																onclick="document.getElementById(&#39;s_42&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_42&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_42" id="r_42" value="3"
+																	onclick="document.getElementById(&#39;s_42&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_42" style="display: none;">不确定的原因：<input
+																			id="t_42" name="t_42" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>43.我在设计技术资源丰富环境下的自主、合作、探究学习活动时，没有发现可参考的设计模式。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_43" id="r_43"
+															value="1"
+															onclick="document.getElementById(&#39;s_43&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_43&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_43" id="r_43" value="2"
+																onclick="document.getElementById(&#39;s_43&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_43&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_43" id="r_43" value="3"
+																	onclick="document.getElementById(&#39;s_43&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_43" style="display: none;">不确定的原因：<input
+																			id="t_43" name="t_43" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td><strong>44.在设计学生学习活动时，我经常在信息技术手段的选择上产生焦虑。</strong></td>
+									</tr>
+									<tr>
+										<td><label><input type="radio" name="r_44" id="r_44" value="1"
+											onclick="document.getElementById(&#39;s_44&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_44&#39;).value=&#39;&#39;;">属实</label><label><input
+												type="radio" name="r_44" id="r_44" value="2"
+												onclick="document.getElementById(&#39;s_44&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_44&#39;).value=&#39;&#39;;">不属实</label><label><input
+													type="radio" name="r_44" id="r_44" value="3"
+													onclick="document.getElementById(&#39;s_44&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+														id="s_44" style="display: none;">不确定的原因：<input
+															id="t_44" name="t_44" type="text" maxlength="400"
+															style="width: 600px;"></span></td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>45.我对探究性学习（如项目学习、问题化学习、任务驱动学习）的设计还是很有心得的。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_45" id="r_45"
+															value="1"
+															onclick="document.getElementById(&#39;s_45&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_45&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_45" id="r_45" value="2"
+																onclick="document.getElementById(&#39;s_45&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_45&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_45" id="r_45" value="3"
+																	onclick="document.getElementById(&#39;s_45&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_45" style="display: none;">不确定的原因：<input
+																			id="t_45" name="t_45" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>46.当学生们自主学习时，我不知道如何有效地管理他们的学习行为。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_46" id="r_46"
+															value="1"
+															onclick="document.getElementById(&#39;s_46&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_46&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_46" id="r_46" value="2"
+																onclick="document.getElementById(&#39;s_46&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_46&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_46" id="r_46" value="3"
+																	onclick="document.getElementById(&#39;s_46&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_46" style="display: none;">不确定的原因：<input
+																			id="t_46" name="t_46" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>47.我设计的探究主题往往是学生们很感兴趣的，但往往与学科教学要求有出入。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_47" id="r_47"
+															value="1"
+															onclick="document.getElementById(&#39;s_47&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_47&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_47" id="r_47" value="2"
+																onclick="document.getElementById(&#39;s_47&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_47&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_47" id="r_47" value="3"
+																	onclick="document.getElementById(&#39;s_47&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_47" style="display: none;">不确定的原因：<input
+																			id="t_47" name="t_47" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>48.在我组织的学生学习活动中，只有少部分学生可以通过我提供的过程建议与支持材料开展有效的自主探究或合作学习。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_48" id="r_48"
+															value="1"
+															onclick="document.getElementById(&#39;s_48&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_48&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_48" id="r_48" value="2"
+																onclick="document.getElementById(&#39;s_48&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_48&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_48" id="r_48" value="3"
+																	onclick="document.getElementById(&#39;s_48&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_48" style="display: none;">不确定的原因：<input
+																			id="t_48" name="t_48" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>49.我能打破教材中课时或单元的限制设计有意义的学习任务，来培养学生的综合能力。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_49" id="r_49"
+															value="1"
+															onclick="document.getElementById(&#39;s_49&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_49&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_49" id="r_49" value="2"
+																onclick="document.getElementById(&#39;s_49&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_49&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_49" id="r_49" value="3"
+																	onclick="document.getElementById(&#39;s_49&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_49" style="display: none;">不确定的原因：<input
+																			id="t_49" name="t_49" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>50.我不知道如何设计出既与课程标准相吻合，又让学生感兴趣的探究任务。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_50" id="r_50"
+															value="1"
+															onclick="document.getElementById(&#39;s_50&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_50&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_50" id="r_50" value="2"
+																onclick="document.getElementById(&#39;s_50&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_50&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_50" id="r_50" value="3"
+																	onclick="document.getElementById(&#39;s_50&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_50" style="display: none;">不确定的原因：<input
+																			id="t_50" name="t_50" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>51.我能够快速地枚举出我应用过的五个适合学生合作、探究或高级思维的技术资源（如平台、工具等）</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_51" id="r_51"
+															value="1"
+															onclick="document.getElementById(&#39;s_51&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_51&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_51" id="r_51" value="2"
+																onclick="document.getElementById(&#39;s_51&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_51&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_51" id="r_51" value="3"
+																	onclick="document.getElementById(&#39;s_51&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_51" style="display: none;">不确定的原因：<input
+																			id="t_51" name="t_51" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>52.在组织学生开展自主学习时，我一般会让学生利用网络搜索工具自主寻找资源。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_52" id="r_52"
+															value="1"
+															onclick="document.getElementById(&#39;s_52&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_52&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_52" id="r_52" value="2"
+																onclick="document.getElementById(&#39;s_52&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_52&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_52" id="r_52" value="3"
+																	onclick="document.getElementById(&#39;s_52&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_52" style="display: none;">不确定的原因：<input
+																			id="t_52" name="t_52" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>53.我有一套具体的策略和方法，可以有效提高在线合作、在线交流、在线反馈的成效。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_53" id="r_53"
+															value="1"
+															onclick="document.getElementById(&#39;s_53&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_53&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_53" id="r_53" value="2"
+																onclick="document.getElementById(&#39;s_53&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_53&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_53" id="r_53" value="3"
+																	onclick="document.getElementById(&#39;s_53&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_53" style="display: none;">不确定的原因：<input
+																			id="t_53" name="t_53" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>54.我对用信息技术（如网络交流工具、社会性软件等）支持的合作学习效果不满意，如在预设时间内很难完成学习任务，有些学生参与度不高，有些学生会偏离主题等。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_54" id="r_54"
+															value="1"
+															onclick="document.getElementById(&#39;s_54&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_54&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_54" id="r_54" value="2"
+																onclick="document.getElementById(&#39;s_54&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_54&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_54" id="r_54" value="3"
+																	onclick="document.getElementById(&#39;s_54&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_54" style="display: none;">不确定的原因：<input
+																			id="t_54" name="t_54" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>55.在学生利用技术资源开展自主学习的时候，我不知道如何及时准确地了解他们的学习进展。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_55" id="r_55"
+															value="1"
+															onclick="document.getElementById(&#39;s_55&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_55&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_55" id="r_55" value="2"
+																onclick="document.getElementById(&#39;s_55&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_55&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_55" id="r_55" value="3"
+																	onclick="document.getElementById(&#39;s_55&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_55" style="display: none;">不确定的原因：<input
+																			id="t_55" name="t_55" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>56.在学校或区域开发网络教学平台时，如果来征求我的意见，我会对学习过程监控方面的功能有明确建议。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_56" id="r_56"
+															value="1"
+															onclick="document.getElementById(&#39;s_56&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_56&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_56" id="r_56" value="2"
+																onclick="document.getElementById(&#39;s_56&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_56&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_56" id="r_56" value="3"
+																	onclick="document.getElementById(&#39;s_56&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_56" style="display: none;">不确定的原因：<input
+																			id="t_56" name="t_56" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>57.我对如何评价学生的能力发展没有清晰的思路。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_57" id="r_57"
+															value="1"
+															onclick="document.getElementById(&#39;s_57&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_57&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_57" id="r_57" value="2"
+																onclick="document.getElementById(&#39;s_57&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_57&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_57" id="r_57" value="3"
+																	onclick="document.getElementById(&#39;s_57&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_57" style="display: none;">不确定的原因：<input
+																			id="t_57" name="t_57" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>58.在探究学习中开展过程性评价，我还没有找到好的技术支撑。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_58" id="r_58"
+															value="1"
+															onclick="document.getElementById(&#39;s_58&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_58&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_58" id="r_58" value="2"
+																onclick="document.getElementById(&#39;s_58&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_58&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_58" id="r_58" value="3"
+																	onclick="document.getElementById(&#39;s_58&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_58" style="display: none;">不确定的原因：<input
+																			id="t_58" name="t_58" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>59.我虽然已经运用了自查表与量规，可是总感觉并没有达到预期的效果。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_59" id="r_59"
+															value="1"
+															onclick="document.getElementById(&#39;s_59&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_59&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_59" id="r_59" value="2"
+																onclick="document.getElementById(&#39;s_59&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_59&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_59" id="r_59" value="3"
+																	onclick="document.getElementById(&#39;s_59&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_59" style="display: none;">不确定的原因：<input
+																			id="t_59" name="t_59" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>60.我已经在教学中使用了国家或地方的教育公共服务平台.</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_60" id="r_60"
+															value="1"
+															onclick="document.getElementById(&#39;s_60&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_60&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_60" id="r_60" value="2"
+																onclick="document.getElementById(&#39;s_60&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_60&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_60" id="r_60" value="3"
+																	onclick="document.getElementById(&#39;s_60&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_60" style="display: none;">不确定的原因：<input
+																			id="t_60" name="t_60" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>61.我已经利用社会性软件（如博客、维客、播客、云盘等），设计并构建了教学空间。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_61" id="r_61"
+															value="1"
+															onclick="document.getElementById(&#39;s_61&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_61&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_61" id="r_61" value="2"
+																onclick="document.getElementById(&#39;s_61&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_61&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_61" id="r_61" value="3"
+																	onclick="document.getElementById(&#39;s_61&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_61" style="display: none;">不确定的原因：<input
+																			id="t_61" name="t_61" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>62.我不知道什么是网络教学空间，也不知道网络教学空间具体能用来干什么。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_62" id="r_62"
+															value="1"
+															onclick="document.getElementById(&#39;s_62&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_62&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_62" id="r_62" value="2"
+																onclick="document.getElementById(&#39;s_62&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_62&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_62" id="r_62" value="3"
+																	onclick="document.getElementById(&#39;s_62&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_62" style="display: none;">不确定的原因：<input
+																			id="t_62" name="t_62" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>63.我不知道怎样构建、使用与维护网络教学空间。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_63" id="r_63"
+															value="1"
+															onclick="document.getElementById(&#39;s_63&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_63&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_63" id="r_63" value="2"
+																onclick="document.getElementById(&#39;s_63&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_63&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_63" id="r_63" value="3"
+																	onclick="document.getElementById(&#39;s_63&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_63" style="display: none;">不确定的原因：<input
+																			id="t_63" name="t_63" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>64.我已经在教学中应用过课程管理平台（如在Moodle、Sakai平台中独立发布课程内容，编辑学习活动，开展课堂教学等）。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_64" id="r_64"
+															value="1"
+															onclick="document.getElementById(&#39;s_64&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_64&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_64" id="r_64" value="2"
+																onclick="document.getElementById(&#39;s_64&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_64&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_64" id="r_64" value="3"
+																	onclick="document.getElementById(&#39;s_64&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_64" style="display: none;">不确定的原因：<input
+																			id="t_64" name="t_64" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>65.我了解社会性软件（如博客、维客、播客、云盘等）的功能，并尝试使用过。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_65" id="r_65"
+															value="1"
+															onclick="document.getElementById(&#39;s_65&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_65&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_65" id="r_65" value="2"
+																onclick="document.getElementById(&#39;s_65&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_65&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_65" id="r_65" value="3"
+																	onclick="document.getElementById(&#39;s_65&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_65" style="display: none;">不确定的原因：<input
+																			id="t_65" name="t_65" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>66.我会应用网络平台（如免费的博客、维客，学校或区域的网络教学平台等）或软件支持学生的自主、合作与探究学习。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_66" id="r_66"
+															value="1"
+															onclick="document.getElementById(&#39;s_66&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_66&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_66" id="r_66" value="2"
+																onclick="document.getElementById(&#39;s_66&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_66&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_66" id="r_66" value="3"
+																	onclick="document.getElementById(&#39;s_66&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_66" style="display: none;">不确定的原因：<input
+																			id="t_66" name="t_66" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>67.我常态性地使用智能手机或平板电脑，并且家中有无线网络。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_67" id="r_67"
+															value="1"
+															onclick="document.getElementById(&#39;s_67&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_67&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_67" id="r_67" value="2"
+																onclick="document.getElementById(&#39;s_67&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_67&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_67" id="r_67" value="3"
+																	onclick="document.getElementById(&#39;s_67&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_67" style="display: none;">不确定的原因：<input
+																			id="t_67" name="t_67" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>68.我能熟练地找到并下载适用于移动设备的教学应用软件（如Box,
+																iBook Author等）。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_68" id="r_68"
+															value="1"
+															onclick="document.getElementById(&#39;s_68&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_68&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_68" id="r_68" value="2"
+																onclick="document.getElementById(&#39;s_68&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_68&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_68" id="r_68" value="3"
+																	onclick="document.getElementById(&#39;s_68&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_68" style="display: none;">不确定的原因：<input
+																			id="t_68" name="t_68" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>69.我已经使用智能手机或平板电脑来支持备课、授课或评价等教学活动。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_69" id="r_69"
+															value="1"
+															onclick="document.getElementById(&#39;s_69&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_69&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_69" id="r_69" value="2"
+																onclick="document.getElementById(&#39;s_69&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_69&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_69" id="r_69" value="3"
+																	onclick="document.getElementById(&#39;s_69&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_69" style="display: none;">不确定的原因：<input
+																			id="t_69" name="t_69" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>70.我参加过网络支持下的教师研修，但谈不上很大的收效。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_70" id="r_70"
+															value="1"
+															onclick="document.getElementById(&#39;s_70&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_70&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_70" id="r_70" value="2"
+																onclick="document.getElementById(&#39;s_70&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_70&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_70" id="r_70" value="3"
+																	onclick="document.getElementById(&#39;s_70&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_70" style="display: none;">不确定的原因：<input
+																			id="t_70" name="t_70" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>71.我清楚的了解2014年颁布的《全国中小学教师信息技术应用能力标准》的内容和含义。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_71" id="r_71"
+															value="1"
+															onclick="document.getElementById(&#39;s_71&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_71&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_71" id="r_71" value="2"
+																onclick="document.getElementById(&#39;s_71&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_71&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_71" id="r_71" value="3"
+																	onclick="document.getElementById(&#39;s_71&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_71" style="display: none;">不确定的原因：<input
+																			id="t_71" name="t_71" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>72.我虽然认同混合学习的方式，但不知道怎样才能做好线上学习与线下学习的结合。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_72" id="r_72"
+															value="1"
+															onclick="document.getElementById(&#39;s_72&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_72&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_72" id="r_72" value="2"
+																onclick="document.getElementById(&#39;s_72&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_72&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_72" id="r_72" value="3"
+																	onclick="document.getElementById(&#39;s_72&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_72" style="display: none;">不确定的原因：<input
+																			id="t_72" name="t_72" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>73.我曾经在网络环境中开展过有深度的协同备课、经验分享、课例研究、专题研讨等专业发展活动。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_73" id="r_73"
+															value="1"
+															onclick="document.getElementById(&#39;s_73&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_73&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_73" id="r_73" value="2"
+																onclick="document.getElementById(&#39;s_73&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_73&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_73" id="r_73" value="3"
+																	onclick="document.getElementById(&#39;s_73&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_73" style="display: none;">不确定的原因：<input
+																			id="t_73" name="t_73" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>74.对技术支持的教学过程中，我对学生的注意力保持状况通常是满意的。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_74" id="r_74"
+															value="1"
+															onclick="document.getElementById(&#39;s_74&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_74&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_74" id="r_74" value="2"
+																onclick="document.getElementById(&#39;s_74&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_74&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_74" id="r_74" value="3"
+																	onclick="document.getElementById(&#39;s_74&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_74" style="display: none;">不确定的原因：<input
+																			id="t_74" name="t_74" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>75.在信息化课堂上，我特别关注后排及两侧学生的视听觉效果，并及时调整师生相对位置、教室光线及设备响度及亮度等因素。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_75" id="r_75"
+															value="1"
+															onclick="document.getElementById(&#39;s_75&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_75&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_75" id="r_75" value="2"
+																onclick="document.getElementById(&#39;s_75&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_75&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_75" id="r_75" value="3"
+																	onclick="document.getElementById(&#39;s_75&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_75" style="display: none;">不确定的原因：<input
+																			id="t_75" name="t_75" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>76.技术故障通常会使我的课堂教学无法继续。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_76" id="r_76"
+															value="1"
+															onclick="document.getElementById(&#39;s_76&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_76&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_76" id="r_76" value="2"
+																onclick="document.getElementById(&#39;s_76&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_76&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_76" id="r_76" value="3"
+																	onclick="document.getElementById(&#39;s_76&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_76" style="display: none;">不确定的原因：<input
+																			id="t_76" name="t_76" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>77.在我执教的班级中，我非常清楚哪些同学具有技术专长。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_77" id="r_77"
+															value="1"
+															onclick="document.getElementById(&#39;s_77&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_77&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_77" id="r_77" value="2"
+																onclick="document.getElementById(&#39;s_77&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_77&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_77" id="r_77" value="3"
+																	onclick="document.getElementById(&#39;s_77&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_77" style="display: none;">不确定的原因：<input
+																			id="t_77" name="t_77" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>78.在我组织的探究活动中，总有一些学生参与程度不高。</strong></td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_78" id="r_78"
+															value="1"
+															onclick="document.getElementById(&#39;s_78&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_78&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_78" id="r_78" value="2"
+																onclick="document.getElementById(&#39;s_78&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_78&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_78" id="r_78" value="3"
+																	onclick="document.getElementById(&#39;s_78&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_78" style="display: none;">不确定的原因：<input
+																			id="t_78" name="t_78" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>79.开展合作、探究学习时，我会安排时间，通过示范、讲解、练习等方式培养学生必要的基础能力（如积极倾听的能力、有质量地鼓励他人的能力、清晰表达自己的能力、项目管理的能力等）。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_79" id="r_79"
+															value="1"
+															onclick="document.getElementById(&#39;s_79&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_79&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_79" id="r_79" value="2"
+																onclick="document.getElementById(&#39;s_79&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_79&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_79" id="r_79" value="3"
+																	onclick="document.getElementById(&#39;s_79&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_79" style="display: none;">不确定的原因：<input
+																			id="t_79" name="t_79" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>80.整个学习过程中，我不能保证所有的学生（或小组）都平等地获得使用硬件设备或软件资源的机会。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_80" id="r_80"
+															value="1"
+															onclick="document.getElementById(&#39;s_80&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_80&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_80" id="r_80" value="2"
+																onclick="document.getElementById(&#39;s_80&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_80&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_80" id="r_80" value="3"
+																	onclick="document.getElementById(&#39;s_80&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_80" style="display: none;">不确定的原因：<input
+																			id="t_80" name="t_80" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="10"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0"
+												cellpadding="0">
+												<tbody>
+													<tr>
+														<td><strong>81.学生使用技术过程中出现了不恰当、不文明的行为时，我能恰当处置且不影响学习进程。</strong>
+														</td>
+													</tr>
+													<tr>
+														<td><label><input type="radio" name="r_81" id="r_81"
+															value="1"
+															onclick="document.getElementById(&#39;s_81&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_81&#39;).value=&#39;&#39;;">属实</label><label><input
+																type="radio" name="r_81" id="r_81" value="2"
+																onclick="document.getElementById(&#39;s_81&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_81&#39;).value=&#39;&#39;;">不属实</label><label><input
+																	type="radio" name="r_81" id="r_81" value="3"
+																	onclick="document.getElementById(&#39;s_81&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																		id="s_81" style="display: none;">不确定的原因：<input
+																			id="t_81" name="t_81" type="text" maxlength="400"
+																			style="width: 600px;"></span></td>
+													</tr>
+													<tr>
+														<td height="10"></td>
+													</tr>
+													<tr>
+														<td>
+															<table width="100%" border="0" cellspacing="0"
+																cellpadding="0">
+																<tbody>
+																	<tr>
+																		<td><strong>82.当我在学生中发现技术能手时，我会有意识地培养他们，使他们不断提高自己的能力，并能在帮助他人中获得尊重与信心。</strong>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td><label><input type="radio" name="r_82" id="r_82"
+																			value="1"
+																			onclick="document.getElementById(&#39;s_82&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_82&#39;).value=&#39;&#39;;">属实</label><label><input
+																				type="radio" name="r_82" id="r_82" value="2"
+																				onclick="document.getElementById(&#39;s_82&#39;).style.display=&#39;none&#39;;document.getElementById(&#39;t_82&#39;).value=&#39;&#39;;">不属实</label><label><input
+																					type="radio" name="r_82" id="r_82" value="3"
+																					onclick="document.getElementById(&#39;s_82&#39;).style.display=&#39;inline-block&#39;;">不确定</label>&nbsp;&nbsp;&nbsp;<span
+																						id="s_82" style="display: none;">不确定的原因：<input
+																							id="t_82" name="t_82" type="text" maxlength="400"
+																							style="width: 600px;"></span></td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+													<tr>
+														<td height="10"></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<p class="span2">
+								<input class="btn_b" id="btn_back2" type="button" value="上一页">&nbsp;<input
+									class="btn_b" id="bt2" type="button" value="提 交">
+							</p>
+						</div>
+						<!--显示测试结果开始-->
+						<div class="cont" style="padding-top: 20px; display: none;"
+							id="result_div">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+								<tbody>
+									<tr>
+										<td colspan="13">
+											<table width="100%" cellspacing="0" cellpadding="0">
+												<tbody>
+													<tr>
+														<td
+															style="text-align: center; color: #000080; font-size: large;">
+															信息技术应用能力诊断测评报告</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td style="color: #000080; font-size: large;">
+															&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;信息技术应用能力是信息化社会教师必备专业能力，为全面提升中小学（幼儿园）教师的信息技术应用能力，促进信息技术与教育教学深度融合，教育部于2014年5月27日颁布了《中小学教师信息技术应用能力标准（试行）》，该标准根据我国中小学校信息技术实际条件的不同、师生信息技术应用情境的差异，对中小学教师在教育教学和专业发展中应用信息技术提出了基本要求和发展性要求。其中，<span
+															style="color: Green;">I. 应用信息技术优化课堂教学</span>的能力为基本要求，主要包括教师利用信息技术进行讲解、启发、示范、指导、评价等教学活动应具备的能力；<span
+															style="color: Green;">II. 应用信息技术转变学习方式</span>的能力为发展性要求，主要针对教师在学生具备网络学习环境或相应设备的条件下，利用信息技术支持学生开展自主、合作、探究等学习活动所应具有的能力。本标准根据教师的教育教学工作与学习发展主线，将信息技术应用能力区分为技术素养、计划与准备、组织与管理、评估与诊断、学习与发展五个维度。
+														</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td>
+															<h2>通过诊断测评，您的信息技术应用能力情况如下：</h2>
+														</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+													</tr>
+													<!--<tr><td>&nbsp;</td></tr>-->
+													<tr>
+														<td>
+															<table width="100%" cellspacing="0" cellpadding="0">
+																<tbody>
+																	<tr>
+																		<td colspan="3">
+																			<div style="width: 100px; margin-left: 16px;">
+																				&nbsp;&nbsp;
+																				<h2>能力自评</h2>
+																			</div>
+																		</td>
+																	</tr>
+																	<tr>
+																		<!--<td >
+               <canvas id="canvas_3"  height="260" width="260"></canvas></td>-->
+																		<td>
+																			<table width="200" border="1" cellspacing="0"
+																				cellpadding="0" style="margin-left: 25px;">
+																				<tbody>
+																					<tr style="background-color: #4f81bd;">
+																						<td style="width: 100px;"></td>
+																						<td style="width: 50px;">&nbsp;&nbsp;I</td>
+																						<td style="width: 50px;">&nbsp;&nbsp;II</td>
+																					</tr>
+																					<tr>
+																						<td style="background: #e4e4e4;">技术素养</td>
+																						<td id="nl1"></td>
+																						<td id="nl6"></td>
+																					</tr>
+																					<tr>
+																						<td style="background: #e4e4e4;">计划与准备</td>
+																						<td id="nl2"></td>
+																						<td id="nl7"></td>
+																					</tr>
+																					<tr>
+																						<td style="background: #e4e4e4;">组织与管理</td>
+																						<td id="nl3"></td>
+																						<td id="nl8"></td>
+																					</tr>
+																					<tr>
+																						<td style="background: #e4e4e4;">评估与诊断</td>
+																						<td id="nl4"></td>
+																						<td id="nl9"></td>
+																					</tr>
+																					<tr>
+																						<td style="background: #e4e4e4;">学习与发展</td>
+																						<td id="nl5"></td>
+																						<td id="nl10"></td>
+																					</tr>
+																				</tbody>
+																			</table> <br>
+																				<div style="margin-left: 25px;">
+																					注：I代表应用信息技术优化课堂<br> 教学，II代表应用信息技术转变学<br>
+																							习方式；红色区域代表不合格，<br> 黄色区域代表合格；绿色区域代<br>
+																									表优秀。 
+																				</div>
+																		</td>
+																		<td style="padding-bottom: 70px;"><canvas
+																				id="canvas_1" height="300" width="300"
+																				style="margin-left: -50px;"></canvas> <br>
+																				I，应用信息技术优化课堂教学 </td>
+																		<td style="padding-bottom: 70px;"><canvas
+																				id="canvas_2" height="300" width="300"
+																				style="margin-left: -30px;"></canvas> <br>
+																				II，应用信息技术转变学习方式 </td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td align="center">
+															<!--<input style="text-align: center; border: 3px solid yellow;" type="button" onclick="showlist(); value="查看详细解释" />-->
+															<div
+																style="text-align: center; color: Blue; width: 125px; cursor: pointer;"
+																id="bt_xx" onclick="showlist();">
+																<b>查看详细解释</b>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td><div id="tr_xx" style="display: none;">
+																<table border="1" id="t1" style="text-align: center;">
+																	<tbody>
+																		<tr style="background-color: #f3e7c9">
+																			<td style="width: 150px;"></td>
+																			<td style="width: 300px;">I.应用信息技术优化课堂教学</td>
+																			<td style="width: 70px;">水平</td>
+																			<td style="width: 300px;">II.应用信息技术转变学习方式</td>
+																			<td style="width: 70px;">水平</td>
+																		</tr>
+																		<tr>
+																			<td>技术素养</td>
+																			<td style="text-align: left;">1.
+																				理解信息技术对改进课堂教学的作用，具有主动运用信息技术优化课堂教学的意识。<br>2.了解多媒体教学环境的类型与功能，熟练操作常用设备。<br>3.了解与教学相关的通用软件及学科软件的功能及特点，并能熟练应用。<br>4.通过多种途径获取数字教育资源，掌握加工、制作和管理数字教育资源的工具与方法。<br>5.具备信息道德与信息安全意识，能够以身示范。
+
+																						
+																			</td>
+																			<td id="td1"></td>
+																			<td style="text-align: left;">1.
+																				了解信息时代对人才培养的新要求，具有主动探索和运用信息技术变革学生学习方式的意识。<br>2.
+																					掌握互联网、移动设备及其他新技术的常用操作，了解其对教育教学的支持作用。<br>3.
+																						探索并使用支持学生自主、合作、探究学习的网络教学平台等技术资源。<br>4.
+																							利用技术手段整合多方资源，实现学校、家庭、社会相连接，拓展学生的学习空间。<br>5.
+																								帮助学生建立信息道德与信息安全意识，培养良好行为习惯。 
+																			</td>
+																			<td id="td6"></td>
+																		</tr>
+																		<tr>
+																			<td>计划与准备</td>
+																			<td style="text-align: left;">
+																				1.依据课程标准、学习目标、学生特征和技术条件，选择适当的教学方法，找准运用信息技术解决教学问题的契合点。<br>2.设计有效实现学习目标的信息化教学过程。<br>3.根据教学需要，合理选择与使用技术资源。<br>4.加工制作有效支持课堂教学的数字教育资源。<br>5.确保相关设备与技术资源在课堂教学环境中正常使用。<br>6.预见信息技术应用过程中可能出现的问题，制订应对方案。
+
+																							
+																			</td>
+																			<td id="td2"></td>
+																			<td style="text-align: left;">
+																				1.依据课程标准、学习目标、学生特征和技术条件，选择适当的教学方法，确定运用信息技术培养学生综合能力的契合点。<br>2.设计有助于学生进行自主、合作、探究学习的信息化教学过程与学习活动。<br>3.合理选择与使用技术资源，为学生提供丰富的学习机会和个性化的学习体验。<br>4.设计学习指导策略与方法，促进学生的合作、交流、探索、反思与创造。<br>5.确保学生便捷、安全地访问网络和利用资源。<br>6.预见学生在信息化环境中进行自主、合作、探究学习可能遇到的问题，制订应对方案。
+
+																							
+																			</td>
+																			<td id="td7"></td>
+																		</tr>
+																		<tr>
+																			<td>组织与管理</td>
+																			<td style="text-align: left;">
+																				1.利用技术支持，改进教学方式，有效实施课堂教学。<br>2.让每个学生平等地接触技术资源，激发学生学习兴趣，保持学生学习注意力。<br>3.在信息化教学过程中，观察和收集学生的课堂反馈，对教学行为进行有效调整。<br>4.灵活处置课堂教学中因技术故障引发的意外状况。<br>5.鼓励学生参与教学过程，引导他们提升技术素养并发挥技术优势。
+
+																						
+																			</td>
+																			<td id="td3"></td>
+																			<td style="text-align: left;">
+																				1.利用技术支持，转变学习方式，有效开展学生自主、合作、探究学习。<br>2.让学生在集体、小组和个别学习中平等获得技术资源和参与学习活动的机会。<br>3.有效使用技术工具收集学生学习反馈，对学习活动进行及时指导和适当干预。<br>4.灵活处理学生在信息化环境中开展学习活动发生的意外状况。<br>5.支持学生积极探索使用新的技术资源，创造性地开展学习活动。
+
+																						
+																			</td>
+																			<td id="td8"></td>
+																		</tr>
+																		<tr>
+																			<td>评估与诊断</td>
+																			<td style="text-align: left;">
+																				1.根据学习目标科学设计并实施信息化教学评价方案。<br>2.尝试利用技术工具收集学生学习过程信息，并能整理与分析，发现教学问题，提出针对性的改进措施。<br>3.尝试利用技术工具开展测验、练习等工作，提高评价工作效率。<br>4.尝试建立学生学习电子档案，为学生综合素质评价提供支持。
+
+																					
+																			</td>
+																			<td id="td4"></td>
+																			<td style="text-align: left;">
+																				1.根据学习目标科学设计并实施信息化教学评价方案，并合理选取或加工利用评价工具。<br>2.综合利用技术手段对学情进行科学分析，为促进学生的个性化学习提供依据。<br>3.引导学生利用评价工具开展自评与互评，做好过程性和终结性评价。<br>4.利用技术手段持续收集学生学习过程及结果的关键信息，建立学生学习电子档案，为学生综合素质评价提供支持。
+
+																					
+																			</td>
+																			<td id="td9"></td>
+																		</tr>
+																		<tr>
+																			<td>学习与发展</td>
+																			<td style="text-align: left;">
+																				1.理解信息技术对教师专业发展的作用，具有主动运用信息技术促进自我反思与发展的意识。<br>2.利用教师网络研修社区，积极参与技术支持的专业发展活动，养成网络学习的习惯，不断提升教育教学能力。<br>3.利用信息技术与专家和同行建立并保持业务联系，依托学习共同体，促进自身专业成长。<br>4.掌握专业发展所需的技术手段和方法，提升信息技术环境下的自主学习能力。<br>5.有效参与信息技术支持下的校本研修，实现学用结合。
+
+																						
+																			</td>
+																			<td id="td5"></td>
+																			<td style="text-align: left;">
+																				1.理解信息技术对教师专业发展的作用，具有主动运用信息技术促进自我反思与发展的意识。<br>2.利用教师网络研修社区，积极参与技术支持的专业发展活动，养成网络学习的习惯，不断提升教育教学能力。<br>3.利用信息技术与专家和同行建立并保持业务联系，依托学习共同体，促进自身专业成长。<br>4.掌握专业发展所需的技术手段和方法，提升信息技术环境下的自主学习能力。<br>5.有效参与信息技术支持下的校本研修，实现学用结合。
+
+																						
+																			</td>
+																			<td id="td10"></td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div></td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td>
+															<div style="width: 100px; margin-left: 16px;">
+																&nbsp;&nbsp;
+																<h2>课程推荐</h2>
+															</div>
+														</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td>
+															&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;《中小学教师信息技术应用能力培训课程标准(试行)》依据能力标准对中小学教师信息技术应用能力的基本要求和发展性要求，设置“应用信息技术优化课堂教学”“应用信息技术转变学习方式”和“应用信息技术支持教师专业发展”3
+															个系列的课程，共 27 个主题，帮助教师提升信息技术素养，应用信息技术提高学科教学能力、促进专业发展。 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据您的能力自评结果，推荐课程主题如下表，您在选课时可参考此表，有针对性的选择相应课程进行学习。
+														
+														</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td id="tres"></td>
+													</tr>
+													<tr>
+														<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+													</tr>
+													<tr>
+														<td id="ts"></td>
+													</tr>
+													<tr>
+														<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+													</tr>
+													<tr>
+														<td align="right"><a
+															href="../HSDTesting/resource/nlbz.zip"
+															style="text-decoration: none;"><b
+																style="color: Blue; cursor: pointer;">下载能力标准</b></a>&nbsp;&nbsp;<a
+															href="../HSDTesting/resource/kczt.zip"
+															style="text-decoration: none;"><b
+																style="color: Blue; cursor: pointer;">下载课程主题</b></a></td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+													</tr>
+													<!--  
+													<tr>
+														<td>用“中小学教师信息技术应用能力自评工具”做完自评后，您有哪些收获、意见或建议？非常期待您的反馈信息：</td>
+													</tr>
+													<tr>
+														<td><textarea id="ta" style="width: 90%;" rows="10"></textarea></td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td align="center"><input id="Button1" type="button"
+															onclick="yijian();" value="提 交"></td>
+													</tr>
+													 -->
+													 <style>
+													 a.btn-block {
+													 	display: inline-block;
+														padding: 10px 20px;
+														margin-bottom: 0;
+														font-size: 18px;
+														font-weight: 400;
+														line-height: 1.42857143;
+														text-align: center;
+														white-space: nowrap;
+														vertical-align: middle;
+														cursor: pointer;
+														-webkit-user-select: none;
+														-moz-user-select: none;
+														-ms-user-select: none;
+														user-select: none;
+														background-image: none;
+														border: 1px solid transparent;
+														border-radius: 4px;
+														color: #fff;
+														background-color: #428bca;
+														border-color: #357ebd;
+														width:200px;
+														display:block
+													 	
+													 }
+													  a.btn-block:hover {color:#fff}
+													 </style>
+													 <tr>
+														<td align="center"><a class="btn_b btn-block" href="../teacher/selectCourse.html">返回教师信息能力检测</a></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<!--<tr><td></td></tr>    -->
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+    $(document).ready(function () {
+        //demo版使用
+        //        var strUrl = window.location.search.toString();
+        var rc = ["T1信息技术引发的教育教学变革", "T2多媒体教学环境认知与常用设备使用", "T3学科资源检索与获取", "T4素材的处理与加工", "T5多媒体课件制作", "T6学科软件的使用", "T7信息道德与信息安全", "T8简易多媒体教学环境下的学科教学", "T9交互多媒体环境下的学科教学", "T10学科教学资源支持下的课程教学", "T11技术支持的课堂导入", "T12技术支持的课堂讲授", "T13技术支持的学生技能训练与指导", "T14技术支持的总结与复习", "T15技术支持的教学评价", "T16教学空间的构建与管理", "T17网络教学平台的应用", "T18适用于移动设备的软件应用", "T19网络教学环境中的自主合作探究学习", "T20移动学习环境中的自主合作探究学习", "T21技术支持的探究学习任务设计", "T22技术支持的学习小组的组织与管理", "T23技术支持的学习过程监控", "T24技术支持的学习评价", "T25中小学教师信息技术应用能力标准解读", "T26教师工作坊与教师专业发展", "T27网络研修社区与教师专业发展"];
+        function getRandom(n) {
+            return Math.floor(Math.random() * n + 1)
+        }
+         
+        //基本信息button控制
+        $("#basic_div").show(1000);
+        
+        $("#bt").click(function () {
+
+            if ($("#s_Province").find('option:selected').text() == "请选择") {
+                alert("请选择省份");
+                $("#s_Province").focus();
+            }
+            else {
+                if ($("#s_Nation").find('option:selected').text().indexOf("请选择")>=0) {
+                    alert("请选择地市");
+                    $("#s_Nation").focus();
+                }
+                else {
+                    if ($("input[id=r_sex]:checked").length == 0) {
+                        alert("请选择您的性别");
+                        $("#r_sex").focus();
+                    }
+                    else {
+                        if ($("input[id=r_old]:checked").length == 0) {
+                            alert("请选择您所属的年龄段");
+                            $("#r_old").focus();
+                        }
+                        else {
+                            if ($("input[id=r_grade]:checked").length == 0) {
+                                alert("请选择您任教的年级段");
+                                $("#r_grade").focus();
+                            }
+                            else {
+                                if ($("input[id=r_course]:checked").length == 0) {
+                                    alert("请选择您任教的学科");
+                                    $("#r_course").focus();
+                                }
+                                else {
+                                    if ($("input[id=r_area]:checked").length == 0) {
+                                        alert("请选择您的学校所在区域");
+                                        $("#r_area").focus();
+                                    }
+                                    else {
+                                        if ($("input[id=r_told]:checked").length == 0) {
+                                            alert("请选择您的教学经验");
+                                            $("#r_told").focus();
+                                        }
+                                        else {
+                                            if ($("input[id=r_title]:checked").length == 0) {
+                                                alert("请选择您现在的职称");
+                                                $("#r_title").focus();
+                                            }
+                                            else {
+                                                if ($("input[id=r_tname]:checked").length == 0) {
+                                                    alert("请选择您曾经获得的教学称号");
+                                                    $("#r_tname").focus();
+                                                }
+                                                else {
+                                                    if ($("input[id=r_edu]:checked").length == 0) {
+                                                        alert("请选择您的最高学历");
+                                                        $("#r_edu").focus();
+                                                    }
+                                                    else {
+                                                        //以上是判断基本信息是否选择           
+                                                        $("#basic_div").hide(1000);
+                                                        $("#state_div").show(1000);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        
+        $("#btn_back1").click(function () {
+            $("#state_div").hide(1000);
+            $("#basic_div").show(1000);
+        })
+        $("#btn_back2").click(function () {
+            $("input:radio[name='r_3']").attr("checked", false);
+            document.getElementById("t_3").value = "";
+            $("#s_3").hide(0);
+            $("#test3_div").hide(1000);
+            $("#test_div").hide(1000);
+            $("#state_div").show(1000);
+        })
+        //状态题button控制
+        $("#bt1").click(function () {
+            if ($("input[id=r_1]:checked").length == 0) {
+                alert("请选择我的学校状态");
+                $("#r_1").focus();
+            }
+            else {
+                if ($("input[id=r_2]:checked").length == 0) {
+                    alert("请选择根据我们现在的设备状态和教学需求，我更关心下面的教学");
+                    $("#r_2").focus();
+                }
+                else {
+                    //以上是判断状态题是否选择 
+                    if ($("input[id=r_1]:checked").val() == 2) {
+                        $("#state_div").hide(1000);
+                        $("#test3_div").show(1000);
+                        $("#test_div").show(1000);
+                    }
+                    else {
+                        $("#state_div").hide(1000);
+                        $("#test3_div").hide(1000);
+                        $("#test_div").show(1000);
+                    }
+                }
+            }
+        });
+        
+        //测试题button控制
+        $("#bt2").click(function () {
+            var rs = true;
+            if ($("#test3_div").css("display") == "none") {
+                for (var i = 4; i < 82; i++) {
+                    if ($("input[id=r_" + i + "]:checked").length == 0) {
+                        alert("请选择第" + i + "题");
+                        $("#r_" + i).focus();
+                        rs = false;
+                        break;
+                    }
+                    else {
+                        if ($("input[name=r_" + i + "]:checked").attr("value") == "3") {
+                            if ($("input[name=t_" + i + "]").attr("value") == "" || $("input[name=t_" + i + "]").attr("value") == null || $("input[name=t_" + i + "]").attr("value") == "undefined") {
+                                alert("请输入第" + i + "题不确定的原因");
+                                $("#t_" + i).focus();
+                                rs = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (rs == true) {
+                    if (confirm("确定提交吗？")) {
+                        $("#test_div").hide(1000);
+                        $("#result_div").show(1000, ShowResult);
+
+                    }
+                    else {
+                        return;
+                    }
+                }
+            }
+            else {
+                for (var i = 3; i < 82; i++) {
+                    if ($("input[id=r_" + i + "]:checked").length == 0) {
+                        alert("请选择第" + i + "题");
+                        $("#r_" + i).focus();
+                        rs = false;
+                        break;
+                    }
+                    else {
+                        if ($("input[name=r_" + i + "]:checked").attr("value") == "3") {
+                            if ($("input[name=t_" + i + "]").attr("value") == "" || $("input[name=t_" + i + "]").attr("value") == null || $("input[name=t_" + i + "]").attr("value") == "undefined") {
+                                alert("请输入第" + i + "题不确定的原因");
+                                $("#t_" + i).focus();
+                                rs = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (rs == true) {
+                    //提交确认
+                    if (confirm("确定提交吗？")) {
+                        $("#test3_div").hide(1000);
+                        $("#test_div").hide(1000);
+                        $("#result_div").show(1000, ShowResult);
+                    }
+                    else {
+                        return;
+                    }
+                }
+                        }
+        });
+        function ShowResult() {
+            submit();
+            //测试结果计算
+            //demo版使用
+            //                var res1 = ["T1信息技术引发的教育教学变革", "T2多媒体教学环境认知与常用设备使用", "T3学科资源检索与获取", "T4素材的处理与加工", "T5多媒体课件制作", "T6学科软件的使用", "T7信息道德与信息安全", "T8简易多媒体教学环境下的学科教学", "T9交互多媒体环境下的学科教学", "T10学科教学资源支持下的课程教学", "T11技术支持的课堂导入", "T12技术支持的课堂讲授", "T13技术支持的学生技能训练与指导", "T14技术支持的总结与复习", "T15技术支持的教学评价"];
+            //                var res2 = ["T16教学空间的构建与管理", "T17网络教学平台的应用", "T18适用于移动设备的软件应用", "T19网络教学环境中的自主合作探究学习", "T20移动学习环境中的自主合作探究学习", "T21技术支持的探究学习任务设计", "T22技术支持的学习小组的组织与管理", "T23技术支持的学习过程监控", "T24技术支持的学习评价"];
+            //                var res3 = ["T25中小学教师信息技术应用能力标准解读", "T26教师工作坊与教师专业发展", "T27网络研修社区与教师专业发展"];
+            var s = "<table border='1'><tr style='background-color:#5b9bd5; text-align:center;'><td style='width:200px;'>类别</td><td style='width:400px;'>I.应用信息技术优化课堂教学</td><td style='text-align:center; width:400px;'>II.应用信息技术转变学习方式</td></tr>";
+            var result = [];
+            var rec = recommend.split(',');
+            var f_data = [];
+            var s_data = [];
+            var n = 0;
+            for (var i = 0; i < rc.length; i++) {
+                for (var j = 0; j < rec.length; j++) {
+                    if (rc[i] == rec[j]) {
+                        result[n] = rc[i];
+                        n++;
+                    }
+                }
+            }
+            var js1 = ["T1信息技术引发的教育教学变革;T1", "T2多媒体教学环境认知与常用设备使用;T2", "T3学科资源检索与获取;T3", "T4素材的处理与加工;T4", "T5多媒体课件制作;T5", "T6学科软件的使用;T6", "T7信息道德与信息安全;T7"];
+            var js2 = ["T16教学空间的构建与管理;T16", "T17网络教学平台的应用;T17", "T18适用于移动设备的软件应用;T18"];
+            var zh1 = ["T8简易多媒体教学环境下的学科教学;T8", "T9交互多媒体环境下的学科教学;T9", "T10学科教学资源支持下的课程教学;T10"];
+            var zh2 = ["T19网络教学环境中的自主合作探究学习;T19", "T20移动学习环境中的自主合作探究学习;T20"];
+            var zt1 = ["T11技术支持的课堂导入;T11", "T12技术支持的课堂讲授;T12", "T13技术支持的学生技能训练与指导;T13", "T14技术支持的总结与复习;T14", "T15技术支持的教学评价;T15"];
+            var zt2 = ["T21技术支持的探究学习任务设计;T21", "T22技术支持的学习小组的组织与管理;T22", "T23技术支持的学习过程监控;T23", "T24技术支持的学习评价;T24"];
+            var jszt = ["T25中小学教师信息技术应用能力标准解读;T25", "T26教师工作坊与教师专业发展;T26", "T27网络研修社区与教师专业发展;T27"];
+
+            var fm1 = ["T1信息技术引发的教育教学变革", "T2多媒体教学环境认知与常用设备使用", "T3学科资源检索与获取", "T4素材的处理与加工", "T5多媒体课件制作", "T6学科软件的使用", "T7信息道德与信息安全", "T8简易多媒体教学环境下的学科教学", "T9交互多媒体环境下的学科教学", "T10学科教学资源支持下的课程教学", "T11技术支持的课堂导入", "T12技术支持的课堂讲授", "T13技术支持的学生技能训练与指导", "T14技术支持的总结与复习", "T15技术支持的教学评价"];
+            var fm2 = ["T16教学空间的构建与管理", "T17网络教学平台的应用", "T18适用于移动设备的软件应用", "T19网络教学环境中的自主合作探究学习", "T20移动学习环境中的自主合作探究学习", "T21技术支持的探究学习任务设计", "T22技术支持的学习小组的组织与管理", "T23技术支持的学习过程监控", "T24技术支持的学习评价"];
+            var fm3 = ["T25中小学教师信息技术应用能力标准解读", "T26教师工作坊与教师专业发展", "T27网络研修社区与教师专业发展"];
+            var nf1 = 0;
+            for (var i = 0; i < result.length; i++) {
+                for (var j = 0; j < fm1.length; j++) {
+                    if (result[i] == fm1[j]) {
+                        nf1++;
+                    }
+                }
+            }
+            var nf2 = 0;
+            for (var i = 0; i < result.length; i++) {
+                for (var j = 0; j < fm2.length; j++) {
+                    if (result[i] == fm2[j]) {
+                        nf2++;
+                    }
+                }
+            }
+            var nf3 = 0;
+            for (var i = 0; i < result.length; i++) {
+                for (var j = 0; j < fm3.length; j++) {
+                    if (result[i] == fm3[j]) {
+                        nf3++;
+                    }
+                }
+            }
+
+            var str1 = "";
+            var str2 = "";
+            var jn1 = 0;
+            for (var i = 0; i < result.length; i++) {
+                for (var j = 0; j < js1.length; j++) {
+                    if (result[i] == js1[j].split(';')[0]) {
+                        jn1++;
+                        str1 = str1 + js1[j] + ",";
+                    }
+                }
+            }
+            str1 = str1.substring(0, str1.length - 1);
+
+
+            var jn2 = 0;
+            for (var i = 0; i < result.length; i++) {
+                for (var j = 0; j < js2.length; j++) {
+                    if (result[i] == js2[j].split(';')[0]) {
+                        jn2++;
+                        str2 = str2 + js2[j] + ",";
+                    }
+                }
+            }
+            str2 = str2.substring(0, str2.length - 1);
+            var j1 = jn1 > jn2 ? jn1 : jn2;
+            for (var i = 0; i < j1; i++) {
+                if (i == 0) {
+                    s = s + "<tr><td rowspan=" + j1 + " style='text-align:center;'>技术素养类</td>";
+                }
+                else {
+                    s = s + "<tr>";
+                }
+                if (jn1 > jn2) {
+                    s = s + "<td><a style='color:blue;' href=resource/" + str1.split(',')[i].split(';')[1] + ".docx>" + str1.split(',')[i].split(';')[0] + "</a></td>";
+                    if (i < jn2) {
+                        s = s + "<td><a style='color:blue;' href=resource/" + str2.split(',')[i].split(';')[1] + ".docx>" + str2.split(',')[i].split(';')[0] + "</a></td></tr>";
+                    }
+                    else {
+                        s = s + "<td></td></tr>";
+                    }
+                }
+                else {
+                    if (i < jn1) {
+                        s = s + "<td><a style='color:blue;' href=resource/" + str1.split(',')[i].split(';')[1] + ".docx>" + str1.split(',')[i].split(';')[0] + "</a></td>";
+                    }
+                    else {
+                        s = s + "<td></td>";
+                    }
+                    s = s + "<td><a style='color:blue;' href=resource/" + str2.split(',')[i].split(';')[1] + ".docx>" + str2.split(',')[i].split(';')[0] + "</a></td></tr>";
+                }
+            }
+
+            var str3 = "";
+            var str4 = "";
+            var jn3 = 0;
+            for (var i = 0; i < result.length; i++) {
+                for (var j = 0; j < zh1.length; j++) {
+                    if (result[i] == zh1[j].split(';')[0]) {
+                        jn3++;
+                        str3 = str3 + zh1[j] + ",";
+                    }
+                }
+            }
+            str3 = str3.substring(0, str3.length - 1);
+
+            var jn4 = 0;
+            for (var i = 0; i < result.length; i++) {
+                for (var j = 0; j < zh2.length; j++) {
+                    if (result[i] == zh2[j].split(';')[0]) {
+                        jn4++;
+                        str4 = str4 + zh2[j] + ",";
+                    }
+                }
+            }
+            str4 = str4.substring(0, str4.length - 1);
+
+            var j2 = jn3 > jn4 ? jn3 : jn4;
+            for (var i = 0; i < j2; i++) {
+                if (i == 0) {
+                    s = s + "<tr><td rowspan=" + j2 + " style='text-align:center;'>综合类</td>";
+                }
+                else {
+                    s = s + "<tr>";
+                }
+                if (jn3 > jn4) {
+                    s = s + "<td><a style='color:blue;' href=resource/" + str3.split(',')[i].split(';')[1] + ".docx>" + str3.split(',')[i].split(';')[0] + "</a></td>";
+                    if (i < jn4) {
+                        s = s + "<td><a style='color:blue;' href=resource/" + str4.split(',')[i].split(';')[1] + ".docx>" + str4.split(',')[i].split(';')[0] + "</a></td></tr>";
+                    }
+                    else {
+                        s = s + "<td></td></tr>";
+                    }
+                }
+                else {
+                    if (i < jn3) {
+                        s = s + "<td><a style='color:blue;' href=resource/" + str3.split(',')[i].split(';')[1] + ".docx>" + str3.split(',')[i].split(';')[0] + "</a></td>";
+                    }
+                    else {
+                        s = s + "<td></td>";
+                    }
+                    s = s + "<td><a style='color:blue;' href=resource/" + str4.split(',')[i].split(';')[1] + ".docx>" + str4.split(',')[i].split(';')[0] + "</a></td></tr>";
+                }
+            }
+
+
+            var str5 = "";
+            var str6 = "";
+            var jn5 = 0;
+            for (var i = 0; i < result.length; i++) {
+                for (var j = 0; j < zt1.length; j++) {
+                    if (result[i] == zt1[j].split(';')[0]) {
+                        jn5++;
+                        str5 = str5 + zt1[j] + ",";
+                    }
+                }
+            }
+            str5 = str5.substring(0, str5.length - 1);
+
+            var jn6 = 0;
+            for (var i = 0; i < result.length; i++) {
+                for (var j = 0; j < zt2.length; j++) {
+                    if (result[i] == zt2[j].split(';')[0]) {
+                        jn6++;
+                        str6 = str6 + zt2[j] + ",";
+                    }
+                }
+            }
+            str6 = str6.substring(0, str6.length - 1);
+
+            var j3 = jn5 > jn6 ? jn5 : jn6;
+            for (var i = 0; i < j3; i++) {
+                if (i == 0) {
+                    s = s + "<tr><td rowspan=" + j3 + " style='text-align:center;'>专题类</td>";
+                }
+                else {
+                    s = s + "<tr>";
+                }
+                if (jn5 > jn6) {
+                    s = s + "<td><a style='color:blue;' href=resource/" + str5.split(',')[i].split(';')[1] + ".docx>" + str5.split(',')[i].split(';')[0] + "</a></td>";
+                    if (i < jn6) {
+                        s = s + "<td><a style='color:blue;' href=resource/" + str6.split(',')[i].split(';')[1] + ".docx>" + str6.split(',')[i].split(';')[0] + "</a></td></tr>";
+                    }
+                    else {
+                        s = s + "<td></td></tr>";
+                    }
+                }
+                else {
+                    if (i < jn5) {
+                        s = s + "<td><a style='color:blue;' href=resource/" + str5.split(',')[i].split(';')[1] + ".docx>" + str5.split(',')[i].split(';')[0] + "</a></td>";
+                    }
+                    else {
+                        s = s + "<td></td>";
+                    }
+                    s = s + "<td><a style='color:blue;' href=resource/" + str6.split(',')[i].split(';')[1] + ".docx>" + str6.split(',')[i].split(';')[0] + "</a></td></tr>";
+                }
+            }
+
+            var str7 = "";
+            for (var i = 0; i < result.length; i++) {
+                for (var j = 0; j < jszt.length; j++) {
+                    if (result[i] == jszt[j].split(';')[0]) {
+                        str7 = str7 + jszt[j] + ",";
+                    }
+                }
+            }
+            str7 = str7.substring(0, str7.length - 1);
+            for (var i = 0; i < str7.split(',').length; i++) {
+                if (i == 0) {
+                    s = s + "<tr><td rowspan=" + str7.split(',').length + " style='text-align:center;'>教师专业发展</td>";
+                }
+                else {
+                    s = s + "<tr>";
+                }
+                s = s + "<td colspan=2><a style='color:blue;' href=resource/" + str7.split(',')[i].split(';')[1] + ".docx>" + str7.split(',')[i].split(';')[0] + "</a></td>";
+            }
+
+            if (nf1 > 6 && nf2 > 6) {
+                document.getElementById("ts").innerHTML = "<b>您的信息技术应用水平还有较大提升空间，建议先选学“应用信息技术优化课堂教学”下面的主题来学习。</b>";
+            }
+            else if (nf1 == 0 && nf2 == 0 && nf3 == 0) {
+                document.getElementById("ts").innerHTML = "<b>您的信息技术应用水平已经达到了相当的高度，请与本省信息技术应用能力提升工程项目办联系，会对您的情况进行电话访谈。</b>";
+            }
+            else if (nf1 < 3 && nf2 > 6) {
+                document.getElementById("ts").innerHTML = "<b>根据您当前填写的设备状态，建议您先选学“应用信息技术转变学习方式“中的综合课程，再逐步学习信息素养类课程和相关专题课程。</b>";
+            }
+
+            s = s + "</table>";
+            $("#tres").html(s);
+            //                document.getElementById("tres").innerHTML = s;
+            $("#list").html(result.join("</br>").toString());
+            f_data[0] = jhyzb1;
+            f_data[1] = zzygl1;
+            f_data[2] = pgyzd1;
+            f_data[4] = jssy1;
+            f_data[3] = xxyfz1;
+            s_data[0] = jhyzb2;
+            s_data[1] = zzygl2;
+            s_data[2] = pgyzd2;
+            s_data[4] = jssy2;
+            s_data[3] = xxyfz2;
+            //demo版使用结束，但$("#list").html()还是需要的
+            //雷达图
+            var radarChartData_1 = {
+                labels: ["I计划与准备", "I组织与管理", "I评估与诊断", "I学习与发展", "I技术素养"],
+                datasets: [
+			                    {
+			                        label: "",
+			                        fillColor: "rgba(0,102,0,0.2)",
+			                        strokeColor: "#006600",
+			                        pointColor: "#006600",
+			                        pointStrokeColor: "#006600",
+			                        pointHighlightFill: "#006600",
+			                        pointHighlightStroke: "#006600",
+			                        data: f_data
+
+			                    }
+		                    ]
+            };
+
+            var radarChartData_2 = {
+                labels: ["II计划与准备", "II组织与管理", "II评估与诊断", "II学习与发展", "II技术素养"],
+                datasets: [
+			                    {
+			                        label: "",
+			                        fillColor: "rgba(0,51,225,0.2)",
+			                        strokeColor: "#0033FF",
+			                        pointColor: "#0033FF",
+			                        pointStrokeColor: "#0033FF",
+			                        pointHighlightFill: "#0033FF",
+			                        pointHighlightStroke: "#0033FF",
+			                        data: s_data
+
+			                    }
+		                    ]
+            };
+            //红绿柱状图			               
+            var barChartData_1 = {
+                labels: ["计划与准备", "组织与管理", "评估与诊断", "技术素养", "学习与发展"],
+                datasets: [
+                                    {
+                                        label: "1",
+                                        fillColor: "rgba(225,0,225,0.5)",
+                                        strokeColor: "rgba(220,220,220,0.8)",
+                                        highlightFill: "rgba(220,220,220,0.75)",
+                                        highlightStroke: "rgba(220,220,220,1)",
+                                        data: f_data
+                                    },
+                                    {
+                                        label: "2",
+                                        fillColor: "rgba(225,0,225,0.5)",
+                                        strokeColor: "rgba(220,220,220,0.8)",
+                                        highlightFill: "rgba(220,220,220,0.75)",
+                                        highlightStroke: "rgba(220,220,220,1)",
+                                        data: s_data
+                                    }
+                                ]
+
+            };
+            //雷达图
+            var myRadar = new Chart(document.getElementById("canvas_1").getContext("2d")).Radar(radarChartData_1, {
+                animation: false,
+
+                //Boolean - 是否显示出每个点线表
+                scaleShowLine: true,
+
+                //Boolean - 是否显示角线的雷达
+                angleShowLineOut: true,
+
+                //Boolean - Whether to show labels on the scale
+                scaleShowLabels: true,
+
+                // Boolean - 是否显示标尺上的标签
+                scaleBeginAtZero: true,
+
+                //String - 角线的颜色
+                angleLineColor: "rgba(0,0,0,0.3)",
+
+                scaleLineColor: "rgba(0,0,0,0.3)",
+
+                //Number - 像素宽度的线角
+                angleLineWidth: 1,
+
+                //String - 标签
+                pointLabelFontFamily: "'Arial'",
+
+                //String - 点标签的字体重量
+
+                pointLabelFontStyle: "normal",
+
+                //Number - 在像素点标签的字体大小
+                pointLabelFontSize: 10,
+
+                //String - 点颜色标签
+                pointLabelFontColor: "#000000",
+
+                //Boolean - Whether to show a dot for each point
+                pointDot: true,
+
+                //Number - 每个像素点半径
+                pointDotRadius: 3,
+
+                //Number - 点点像素宽度
+                pointDotStrokeWidth: 1,
+
+                //Number - 大量额外添加到半径为迎合命中检测外画点
+                pointHitDetectionRadius: 20,
+
+                //Boolean - 是否要显示一个中风的数据集
+                datasetStroke: false,
+
+                //Number - 数据集笔划像素宽度
+                datasetStrokeWidth: 2,
+
+                //Boolean - 是否有一种颜色填充数据集
+                datasetFill: true,
+                //onAnimationComplete: function () { alert("OK")},
+                scaleOverride: true,
+                scaleSteps: 5,
+                // Number - The value jump in the hard coded scale
+                scaleStepWidth: 0.2,
+                // Number - The scale starting value
+                scaleStartValue: 0
+            });
+            var myRadar_2 = new Chart(document.getElementById("canvas_2").getContext("2d")).Radar(radarChartData_2, {
+                animation: false,
+
+                //Boolean - 是否显示出每个点线表
+                scaleShowLine: true,
+
+                //Boolean - 是否显示角线的雷达
+                angleShowLineOut: true,
+
+                //Boolean - Whether to show labels on the scale
+                scaleShowLabels: true,
+
+                // Boolean - 是否显示标尺上的标签
+                scaleBeginAtZero: true,
+
+                //String - 角线的颜色
+                angleLineColor: "rgba(0,0,0,0.3)",
+
+                scaleLineColor: "rgba(0,0,0,0.3)",
+
+                //Number - 像素宽度的线角
+                angleLineWidth: 1,
+
+                //String - 标签
+                pointLabelFontFamily: "'Arial'",
+
+                //String - 点标签的字体重量
+
+                pointLabelFontStyle: "normal",
+
+                //Number - 在像素点标签的字体大小
+                pointLabelFontSize: 10,
+
+                //String - 点颜色标签
+                pointLabelFontColor: "#000000",
+
+                //Boolean - Whether to show a dot for each point
+                pointDot: true,
+
+                //Number - 每个像素点半径
+                pointDotRadius: 3,
+
+                //Number - 点点像素宽度
+                pointDotStrokeWidth: 1,
+
+                //Number - 大量额外添加到半径为迎合命中检测外画点
+                pointHitDetectionRadius: 20,
+
+                //Boolean - 是否要显示一个中风的数据集
+                datasetStroke: false,
+
+                //Number - 数据集笔划像素宽度
+                datasetStrokeWidth: 2,
+
+                //Boolean - 是否有一种颜色填充数据集
+                datasetFill: true,
+                scaleOverride: true,
+                scaleSteps: 5,
+                // Number - The value jump in the hard coded scale
+                scaleStepWidth: 0.2,
+                // Number - The scale starting value
+                scaleStartValue: 0
+            });
+
+        } //正式版上可以使用结束   
+
+
+        //        }
+    });
+
+    var jhyzb1 = 0; //1计划与准备
+    var zzygl1 = 0; //1组织与管理
+    var pgyzd1 = 0;//1评估与诊断
+    var jssy1 = 0;  //1技术素养
+    var xxyfz1 = 0;//1学习与发展
+    var jhyzb2 = 0; //2计划与准备
+    var zzygl2 = 0; //2组织与管理
+    var pgyzd2 = 0; //2评估与诊断
+    var jssy2 = 0;   //2技术素养
+    var xxyfz2 = 0; //2学习与发展
+    var recommend = "T6学科软件的使用,T13技术支持的学生技能训练与指导,T25中小学教师信息技术应用能力标准解读";
+    var t2;
+    var t8 = 0;
+    var t11 = 0;
+    var t12 = 0;
+    var t14 = 0;
+    var t15 = 0;
+    var t1 = 0;
+    var s2 = 0;
+    var t3 = 0;
+    var t4 = 0;
+    var t5 = 0;
+    var t7 = 0;
+    var t19 = 0;
+    var t21 = 0;
+    var t22 = 0;
+    var t23 = 0;
+    var t24 = 0;
+    var t16 = 0;
+    var t17 = 0;
+    var t18 = 0;
+    var t26 = 0;
+    var set = 0;
+    var str_xx;
+    function submit() 
+    {
+        str_xx = $("#s_Province").val() + "," + $("#s_Nation").find("option:selected").text()  + "," + $("input[name='r_sex']:checked").attr("value") + "," + $("input[name='r_old']:checked").attr("value") + "," + $("input[name='r_grade']:checked").attr("value") + "," + $("input[name='r_course']:checked").attr("value") + "," + $("input[name='r_area']:checked").attr("value") + "," + $("input[name='r_told']:checked").attr("value") + "," + $("input[name='r_title']:checked").attr("value") + "," + $("input[name='r_tname']:checked").attr("value") + "," + $("input[name='r_edu']:checked").attr("value");
+
+        t2 = $("input[name='r_2']:checked").attr("value");
+
+        if ($("input[name='r_1']:checked").attr("value") == "1") {
+            recommend = recommend + ",T10学科教学资源支持下的课程教学";
+        }
+        if ($("input[name='r_3']:checked").attr("value") == "1") {
+            recommend = recommend + ",T10学科教学资源支持下的课程教学";
+            jhyzb1++;
+            zzygl1++;
+            pgyzd1++;
+        }
+        if ($("input[name='r_4']:checked").attr("value") == "1") {
+            t8++;
+            jhyzb1++;
+            zzygl1++;
+            pgyzd1++;
+        }
+        if ($("input[name='r_5']:checked").attr("value") == "2") {
+            t8++;
+            jhyzb1++;
+            zzygl1++;
+            pgyzd1++;
+        }
+        if ($("input[name='r_6']:checked").attr("value") == "1") {
+            t8++;
+            jhyzb1++;
+            zzygl1++;
+            pgyzd1++;
+        }
+        if ($("input[name='r_7']:checked").attr("value") == "2") {
+            t8++;
+            jhyzb1++;
+            zzygl1++;
+            pgyzd1++;
+        }
+        if ($("input[name='r_8']:checked").attr("value") == "2") {
+            t8++;
+            jhyzb1++;
+            zzygl1++;
+            pgyzd1++;
+        }
+        if ($("input[name='r_9']:checked").attr("value") == "2") {
+            t8++;
+            jhyzb1++;
+            zzygl1++;
+            pgyzd1++;
+        }
+        if (t8 < 6 && t2 == "1") {
+            recommend = recommend + ",T8简易多媒体教学环境下的学科教学";
+        }
+        if (t8 < 6 && t2 == "2") {
+            recommend = recommend + ",T9交互多媒体环境下的学科教学";
+        }
+        if ($("input[name='r_10']:checked").attr("value") == "1") {
+            t11++;
+            jhyzb1++;
+        }
+        if ($("input[name='r_11']:checked").attr("value") == "1") {
+            t11++;
+            jhyzb1++;
+        }
+        if (t11 == 0) {
+            recommend = recommend + ",T11技术支持的课堂导入";
+        }
+        if ($("input[name='r_12']:checked").attr("value") == "1") {
+            t12++;
+            jhyzb1++;
+        }
+        if ($("input[name='r_13']:checked").attr("value") == "2") {
+            t12++;
+            jhyzb1++;
+        }
+        if (t12 < 2) {
+            recommend = recommend + ",T12技术支持的课堂讲授";
+        }
+        if ($("input[name='r_14']:checked").attr("value") == "1") {
+            t14++;
+            jhyzb1++;
+        }
+        if ($("input[name='r_15']:checked").attr("value") == "2") {
+            t14++;
+            jhyzb1++;
+        }
+        if (t14 < 2) {
+            recommend = recommend + ",T14技术支持的总结与复习";
+        }
+        if ($("input[name='r_16']:checked").attr("value") == "1") {
+            t15++;
+            pgyzd1++;
+        }
+        if ($("input[name='r_17']:checked").attr("value") == "2") {
+            t15++;
+            pgyzd1++;
+        }
+        if ($("input[name='r_18']:checked").attr("value") == "2") {
+            t15++;
+            pgyzd1++;
+        }
+        if ($("input[name='r_19']:checked").attr("value") == "1") {
+            t15++;
+            pgyzd1++;
+        }
+        if ($("input[name='r_20']:checked").attr("value") == "1") {
+            t15++;
+            pgyzd1++;
+        }
+        if ($("input[name='r_21']:checked").attr("value") == "2") {
+            t15++;
+            pgyzd1++;
+        }
+        if (t15 < 4) {
+            recommend = recommend + ",T15技术支持的教学评价";
+        }
+        if ($("input[name='r_22']:checked").attr("value") == "2") {
+            t1++;
+            jssy1++;
+        }
+        if ($("input[name='r_23']:checked").attr("value") == "1") {
+            t1++;
+            jssy1++;
+        }
+        if ($("input[name='r_24']:checked").attr("value") == "1") {
+            t1++;
+            jssy1++;
+        }
+        if (t1 < 3) {
+            recommend = recommend + ",T1信息技术引发的教育教学变革";
+        }
+        if ($("input[name='r_25']:checked").attr("value") == "2") {
+            s2++;
+            jssy1++;
+        }
+        if ($("input[name='r_26']:checked").attr("value") == "2") {
+            s2++;
+            jssy1++;
+        }
+        if (s2 < 2) {
+            recommend = recommend + ",T2多媒体教学环境认知与常用设备使用";
+        }
+        if ($("input[name='r_27']:checked").attr("value") == "1") {
+            t3++;
+            jssy1++;
+        }
+        if ($("input[name='r_28']:checked").attr("value") == "2") {
+            t3++;
+            jssy1++;
+        }
+        if ($("input[name='r_29']:checked").attr("value") == "1") {
+            t3++;
+            jssy1++;
+        }
+        if ($("input[name='r_30']:checked").attr("value") == "1") {
+            t3++;
+            jssy1++;
+        }
+        if (t3 < 3) {
+            recommend = recommend + ",T3学科资源检索与获取";
+        }
+        if ($("input[name='r_31']:checked").attr("value") == "2") {
+            t4++;
+            jssy1++;
+        }
+        if ($("input[name='r_32']:checked").attr("value") == "1") {
+            t4++;
+            jssy1++;
+        }
+        if ($("input[name='r_33']:checked").attr("value") == "1") {
+            t4++;
+            jssy1++;
+        }
+        if (t4 < 3) {
+            recommend = recommend + ",T4素材的处理与加工";
+        }
+        if ($("input[name='r_34']:checked").attr("value") == "2") {
+            t5++;
+            jssy1++;
+        }
+        if ($("input[name='r_35']:checked").attr("value") == "2") {
+            t5++;
+            jssy1++;
+        }
+        if ($("input[name='r_36']:checked").attr("value") == "1") {
+            t5++;
+            jssy1++;
+        }
+        if (t5 < 3) {
+            recommend = recommend + ",T5多媒体课件制作";
+        }
+        if ($("input[name='r_37']:checked").attr("value") == "1") {
+            jssy1++;
+        }
+        if ($("input[name='r_38']:checked").attr("value") == "1") {
+            jssy1++;
+        }
+        if ($("input[name='r_39']:checked").attr("value") == "2") {
+            t7++;
+            jssy1++;
+        }
+        if ($("input[name='r_40']:checked").attr("value") == "1") {
+            t7++;
+            jssy1++;
+        }
+        if ($("input[name='r_41']:checked").attr("value") == "1") {
+            t7++;
+            jssy1++;
+        }
+        if (t7 < 3) {
+            recommend = recommend + ",T7信息道德与信息安全";
+        }
+        if ($("input[name='r_42']:checked").attr("value") == "2") {
+            jhyzb2++;
+            zzygl2++;
+            pgyzd2++;
+        }
+        if ($("input[name='r_43']:checked").attr("value") == "2") {
+            jhyzb2++;
+            zzygl2++;
+            pgyzd2++;
+        }
+        if ($("input[name='r_44']:checked").attr("value") == "1") {
+            t19++;
+            jhyzb2++;
+            zzygl2++;
+            pgyzd2++;
+        }
+        if ($("input[name='r_45']:checked").attr("value") == "1") {
+            t19++;
+            jhyzb2++;
+            zzygl2++;
+            pgyzd2++;
+        }
+        if ($("input[name='r_46']:checked").attr("value") == "2") {
+            t19++;
+            jhyzb2++;
+            zzygl2++;
+            pgyzd2++;
+        }
+        if ($("input[name='r_47']:checked").attr("value") == "2") {
+            t19++;
+            jhyzb2++;
+            zzygl2++;
+            pgyzd2++;
+        }
+        if ($("input[name='r_48']:checked").attr("value") == "2") {
+            t19++;
+            jhyzb2++;
+            zzygl2++;
+            pgyzd2++;
+        }
+        if ($("input[name='r_42']:checked").attr("value") != "2" && $("input[name='r_43']:checked").attr("value") != "2") {
+            recommend = recommend + ",T19网络教学环境中的自主合作探究学习,T20移动学习环境中的自主合作探究学习";
+        }
+        else if (($("input[name='r_42']:checked").attr("value") == "2" || $("input[name='r_43']:checked").attr("value") == "2") && t19 < 5 && t2 == "3") {
+            recommend = recommend + ",T19网络教学环境中的自主合作探究学习";
+        }
+        else if (($("input[name='r_42']:checked").attr("value") == "2" || $("input[name='r_43']:checked").attr("value") == "2") && t19 < 5 && t2 == "4") {
+            recommend = recommend + ",T20移动学习环境中的自主合作探究学习";
+        }
+        else if (($("input[name='r_42']:checked").attr("value") == "2" || $("input[name='r_43']:checked").attr("value") == "2") && t19 < 5) {
+            recommend = recommend + ",T19网络教学环境中的自主合作探究学习,T20移动学习环境中的自主合作探究学习";
+        }
+        if ($("input[name='r_49']:checked").attr("value") == "1") {
+            t21++;
+            jhyzb2++;
+        }
+        if ($("input[name='r_50']:checked").attr("value") == "2") {
+            t21++;
+            jhyzb2++;
+        }
+        if ($("input[name='r_51']:checked").attr("value") == "1") {
+            t21++;
+            jhyzb2++;
+        }
+        if ($("input[name='r_52']:checked").attr("value") == "1") {
+            t21++;
+            jhyzb2++;
+        }
+        if (t21 < 4) {
+            recommend = recommend + ",T21技术支持的探究学习任务设计";
+        }
+        if ($("input[name='r_53']:checked").attr("value") == "1") {
+            t22++;
+            zzygl2++;
+        }
+        if ($("input[name='r_54']:checked").attr("value") == "2") {
+            t22++;
+            zzygl2++;
+        }
+        if (t22 < 2) {
+            recommend = recommend + ",T22技术支持的学习小组的组织与管理";
+        }
+        if ($("input[name='r_55']:checked").attr("value") == "2") {
+            t23++;
+            t24++;
+            pgyzd2++;
+        }
+        if ($("input[name='r_56']:checked").attr("value") == "1") {
+            t23++;
+            pgyzd2++;
+        }
+        if (t23 < 2) {
+            recommend = recommend + ",T23技术支持的学习过程监控";
+        }
+        if ($("input[name='r_57']:checked").attr("value") == "2") {
+            t24++;
+            pgyzd2++;
+        }
+        if ($("input[name='r_58']:checked").attr("value") == "2") {
+            t24++;
+            pgyzd2++;
+        }
+        if ($("input[name='r_59']:checked").attr("value") == "2") {
+            t24++;
+            pgyzd2++;
+        }
+        if (t24 < 4) {
+            recommend = recommend + ",T24技术支持的学习评价";
+        }
+        if ($("input[name='r_60']:checked").attr("value") == "1") {
+            jssy2++;
+        }
+        if ($("input[name='r_61']:checked").attr("value") == "1") {
+            t16++;
+            jssy2++;
+        }
+        if ($("input[name='r_62']:checked").attr("value") == "2") {
+            t16++;
+            jssy2++;
+        }
+        if ($("input[name='r_63']:checked").attr("value") == "2") {
+            t16++;
+            jssy2++;
+        }
+        if ($("input[name='r_60']:checked").attr("value") == "2") {
+            recommend = recommend + ",T16教学空间的构建与管理";
+        }
+        else if ($("input[name='r_60']:checked").attr("value") == "1" && t16 < 2) {
+            recommend = recommend + ",T16教学空间的构建与管理";
+        }
+        if ($("input[name='r_64']:checked").attr("value") == "1") {
+            t17++;
+            jssy2++;
+        }
+        if ($("input[name='r_65']:checked").attr("value") == "1") {
+            t17++;
+            jssy2++;
+        }
+        if ($("input[name='r_66']:checked").attr("value") == "1") {
+            t17++;
+            jssy2++;
+        }
+        if (t17 < 3) {
+            recommend = recommend + ",T17网络教学平台的应用";
+        }
+        if ($("input[name='r_67']:checked").attr("value") == "1") {
+            t18++;
+            jssy2++;
+        }
+        if ($("input[name='r_68']:checked").attr("value") == "1") {
+            t18++;
+            jssy2++;
+        }
+        if ($("input[name='r_69']:checked").attr("value") == "1") {
+            t18++;
+            jssy2++;
+        }
+        if (t18 < 3) {
+            recommend = recommend + ",T18适用于移动设备的软件应用";
+        }
+        if ($("input[name='r_70']:checked").attr("value") == "2") {
+            t26++;
+            xxyfz1++;
+            xxyfz2++;
+        }
+        if ($("input[name='r_71']:checked").attr("value") == "1") {
+            t26++;
+            xxyfz1++;
+            xxyfz2++;
+        }
+        if ($("input[name='r_72']:checked").attr("value") == "2") {
+            t26++;
+            xxyfz1++;
+            xxyfz2++;
+        }
+        if ($("input[name='r_73']:checked").attr("value") == "1") {
+            t26++;
+            xxyfz1++;
+            xxyfz2++;
+        }
+//        if ($("input[name='r_71']:checked").attr("value") != "1") {
+//            recommend = recommend + ",T25中小学教师信息技术应用能力标准解读";
+//        }
+        if (t26 < 4) {
+            recommend = recommend + ",T26教师工作坊与教师专业发展,T27网络研修社区与教师专业发展";
+        }
+        if ($("input[name='r_74']:checked").attr("value") == "1") {
+            zzygl1++;
+        }
+        if ($("input[name='r_75']:checked").attr("value") == "1") {
+            zzygl1++;
+        }
+        if ($("input[name='r_76']:checked").attr("value") == "2") {
+            zzygl1++;
+        }
+        if ($("input[name='r_77']:checked").attr("value") == "1") {
+            zzygl1++;
+        }
+        if ($("input[name='r_78']:checked").attr("value") == "2") {
+            zzygl2++;
+        }
+        if ($("input[name='r_79']:checked").attr("value") == "1") {
+            zzygl2++;
+        }
+        if ($("input[name='r_80']:checked").attr("value") == "2") {
+            zzygl2++;
+        }
+        if ($("input[name='r_81']:checked").attr("value") == "1") {
+            zzygl2++;
+        }
+        if ($("input[name='r_82']:checked").attr("value") == "1") {
+            zzygl2++;
+        }
+
+        jhyzb1 = fomatFloat(jhyzb1 / 13, 1);
+        zzygl1 = fomatFloat(zzygl1 / 11, 1);
+        pgyzd1 = fomatFloat(pgyzd1 / 13, 1);
+        jssy1 = fomatFloat(jssy1 / 20, 1);
+        xxyfz1 = fomatFloat(xxyfz1 / 4, 1);
+        jhyzb2 = fomatFloat(jhyzb2 / 11, 1);
+        zzygl2 = fomatFloat(zzygl2 / 14, 1);
+        pgyzd2 = fomatFloat(pgyzd2 / 12, 1);
+        jssy2 = fomatFloat(jssy2 / 10, 1);
+        xxyfz2 = fomatFloat(xxyfz2 / 4, 1);
+        var rule = [jhyzb1, zzygl1, pgyzd1, jssy1, xxyfz1, jhyzb2, zzygl2, pgyzd2, jssy2, xxyfz2];
+        var str = [jssy1, jhyzb1, zzygl1, pgyzd1, xxyfz1, jssy2, jhyzb2, zzygl2, pgyzd2, xxyfz2];
+        set = Math.max.apply(null, rule);
+        set = set * 10;
+        set = parseInt(set / 2);
+        set++;
+        for (var i = 1; i <= str.length; i++) {
+            if (str[i - 1] <= 0.4) {
+                document.getElementById("td" + i).style.background = "#ff0000";
+                document.getElementById("td" + i).innerHTML = "待提高";
+                document.getElementById("nl" + i).style.background = "#ff0000";
+            }
+            else if (str[i - 1] >= 0.8) {
+                document.getElementById("td" + i).style.background = "#00ff00";
+                document.getElementById("td" + i).innerHTML = "优秀";
+                document.getElementById("nl" + i).style.background = "#00ff00";
+            }
+            else {
+                document.getElementById("td" + i).style.background = "#ffff00";
+                document.getElementById("td" + i).innerHTML = "合格";
+                document.getElementById("nl" + i).style.background = "#ffff00";
+            }
+        }
+        scoresub();
+    }
+    function fomatFloat(src, pos) {
+        return Math.round(src * Math.pow(10, pos)) / Math.pow(10, pos);
+    }
+   // $("#tr_xx").slideDown(0);
+       
+
+    function scoresub() {
+        var asw = "";
+        var reason = ",,";
+        for (var i = 3; i <= 82; i++) {
+            reason = reason + document.getElementById("t_" + i).value + ",";
+        }
+        for (var i = 1; i <= 82; i++) {
+            if (i == 3) {
+                if ($("input[name=r_" + i + "]:checked").attr("value") == "undefined" || $("input[name=r_" + i + "]:checked").attr("value") == null || $("input[name=r_" + i + "]:checked").attr("value") == "") {
+                    asw = asw + "0,";
+                }
+                else {
+                    asw = asw + $("input[name=r_" + i + "]:checked").attr("value") + ",";
+                }
+            }
+            else {
+                asw = asw + $("input[name=r_" + i + "]:checked").attr("value") + ",";
+            }
+        }
+        var score = jssy1 + "," + jhyzb1 + "," + zzygl1 + "," + pgyzd1 + "," + xxyfz1 + "," + jssy2 + "," + jhyzb2 + "," + zzygl2 + "," + pgyzd2 + "," + xxyfz2;
+
+        $.ajax({
+            type: "POST",
+            url: "../teacher/hsdTest_addHsdTest",
+            data: "asw=" + asw + "&score=" + score + "&st=" + str_xx + "&reason=" + reason + "&recommend=" + recommend + "",
+            cache: false,
+            async: false
+        });
+    }
+
+    function area() {
+        var st = "";
+        if (document.getElementById("s_Province").value == "-1") {
+            document.getElementById("s_Nation").innerHTML = "<option value=-1>请选择</option>";
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "../base/area_getArea.action?cityId="+document.getElementById("s_Province").value,
+                cache: false,
+                async: false,
+                success: function (results) {
+                    var resultData = results;
+                    for (var i = 0; i < resultData.Options.length; i++) {
+                        st = st + "<option value=" + resultData.Options[i].DisplayText + ">" + resultData.Options[i].DisplayText + "</option>";
+                    }
+                    $("#s_Nation").html(st);
+                },
+                error: function (err, status) {
+                    systemErrors(err, status)
+                }
+            });
+        }
+    }
+
+    function checkResult(result) {
+        var newData = $.parseJSON(result.d);
+        if (newData != null && newData[0] != undefined && newData[0].error != undefined && newData[0].error != "") {
+            errors(newData[0].error, newData[0].errorAction);
+        } else {
+            return newData;
+        }
+    }
+
+    function showlist() {
+
+        if ($("#tr_xx").css("display") == "none") {
+            $("#tr_xx").show(1000);
+        }
+        else {
+            $("#tr_xx").hide(1000);
+        }
+    }
+</script>
+
+</body>
+</html>

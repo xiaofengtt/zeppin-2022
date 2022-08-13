@@ -1,0 +1,44 @@
+.repeat{
+    height: 120px;
+}
+.well{
+    font-size: 16px;
+    background-color: #fefefe !important;
+    height: 90px;
+    line-height: 50px;
+    padding-left: 90px !important;
+}
+.well:hover{
+    background-color: #f7f7f7 !important;
+}
+.well>span {
+    height: 50px;
+    overflow: hidden;
+}
+.listMark{
+    height: 90px;
+    position: relative;
+    top: -113px;
+    left: -4px;
+}
+.number{
+    position: relative;
+    top: -133px;
+    left: -80px;
+    font-size: 19px;
+    color: #fff;
+}
+.enter{
+    float: right;
+    background: #449be2;
+    color: #fff;
+    width: 80px;
+    height: 35px;
+    margin-top: 7px;
+}
+.enter:hover,
+.enter:focus,
+.enter:visited {
+    color: #fff !important;
+    background: #2b78b8;
+}

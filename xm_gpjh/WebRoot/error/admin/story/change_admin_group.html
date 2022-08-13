@@ -1,0 +1,180 @@
+
+
+
+<//%@ page import="com.whaty.platform.entity.BasicRightManage"%>
+<//%@ page import="java.io.File,com.whaty.platform.entity.*,com.whaty.platform.entity.right.*,com.whaty.platform.entity.user.Manager" %>
+
+
+
+
+
+<html>
+<head>
+<link href="/admin/css.css" rel="stylesheet" type="text/css">
+<title>权限管理</title>
+</head>
+<body>
+<script language=javascript>
+
+function unselectall(index)
+{
+	temp = "document.inputgroupright.modelgroup" + index;
+	modelgroup = eval(temp);
+	temp = "document.inputgroupright.checkgroup" + index;
+	checkgroup = eval(temp);
+
+    if(modelgroup.checked)
+    {
+		modelgroup.checked = modelgroup.checked & 0;
+    }
+    else
+    {
+    	var checkall = 1;
+		var i = 0;
+	
+	    while (i < checkgroup.length)
+	    {
+			if(!checkgroup[i].checked)
+			{
+				checkall = 0;
+				break;
+			}
+			i++;
+	    }
+	    
+	    if(checkall != 0)
+	    	modelgroup.checked = modelgroup.checked | 1;
+    }
+}
+function selectall(index)
+{
+	temp = "document.inputgroupright.modelgroup" + index;
+	modelgroup = eval(temp);
+	temp = "document.inputgroupright.checkgroup" + index;
+	checkgroup = eval(temp);
+
+	if(checkgroup == null)
+	{
+		return;
+	}
+
+	if(1 < checkgroup.length)
+	{
+		var i = 0;
+	    while (i < checkgroup.length)
+	    {
+			checkgroup[i].checked = modelgroup.checked;
+			i++;
+	    }
+    }
+    else
+    	checkgroup.checked = modelgroup.checked;
+}
+function disright(aa)
+{
+	
+}
+
+</script>
+
+<script language=javascript>			
+		function del(url)
+		{
+		if(confirm("你确实要删除吗?"))
+		{
+			window.location=url;
+		}
+		
+		}
+</script>
+
+
+
+
+
+
+<form name="inputgroupright" method="post" action="show_managerList.html">
+
+<input type="hidden" name="managerId" value="402880d91c3ff392011c4002e5190001">
+
+
+<table cellPadding=2 cellSpacing=1  border="0" bgcolor=#3F6C61 align=center width="100%">
+
+
+<tr>
+	<td bgcolor="#D4E4EB" class="zhengwen" colspan="2" align="center">为管理员：总站管理员 设置权限组 </td>
+	
+</tr>
+
+
+<tr>
+	<td bgcolor="#D4E4EB" class="zhengwen" width="20%">李卫新测试</td>
+	
+	<td bgcolor="#D4E4EB" class="zhengwen"><input type="radio" name="admin_id" value="402880c31bf7916a011bf793d3760001"   ></td>
+</tr>
+
+
+<tr>
+	<td bgcolor="#D4E4EB" class="zhengwen" width="20%">教务管理</td>
+	
+	<td bgcolor="#D4E4EB" class="zhengwen"><input type="radio" name="admin_id" value="402880c31b7940f7011b794292cb0001"   ></td>
+</tr>
+
+
+<tr>
+	<td bgcolor="#D4E4EB" class="zhengwen" width="20%">分站管理员</td>
+	
+	<td bgcolor="#D4E4EB" class="zhengwen"><input type="radio" name="admin_id" value="4028826a1be7f330011be810d1f30002"   ></td>
+</tr>
+
+
+<tr>
+	<td bgcolor="#D4E4EB" class="zhengwen" width="20%">基础管理</td>
+	
+	<td bgcolor="#D4E4EB" class="zhengwen"><input type="radio" name="admin_id" value="001"   ></td>
+</tr>
+
+
+<tr>
+	<td bgcolor="#D4E4EB" class="zhengwen" width="20%">超级管理员</td>
+	
+	<td bgcolor="#D4E4EB" class="zhengwen"><input type="radio" name="admin_id" value="402880c31be3dbc7011be3fcf5300001"   checked ></td>
+</tr>
+
+
+<tr>
+	<td bgcolor="#D4E4EB" class="zhengwen" width="20%">教师</td>
+	
+	<td bgcolor="#D4E4EB" class="zhengwen"><input type="radio" name="admin_id" value="4028821a1be4c785011be4ce7c040001"   ></td>
+</tr>
+
+
+<tr>
+	<td bgcolor="#D4E4EB" class="zhengwen" width="20%">招生管理</td>
+	
+	<td bgcolor="#D4E4EB" class="zhengwen"><input type="radio" name="admin_id" value="4028809c1b92fc32011b92fe5a7e0001"   ></td>
+</tr>
+
+
+<tr>
+	<td bgcolor="#D4E4EB" class="zhengwen" width="20%">学生</td>
+	
+	<td bgcolor="#D4E4EB" class="zhengwen"><input type="radio" name="admin_id" value="402880c31bd53369011bd560e5800002"   ></td>
+</tr>
+
+
+<tr>
+	<td bgcolor="#D4E4EB" class="zhengwen" width="20%">张利斌的角色</td>
+	
+	<td bgcolor="#D4E4EB" class="zhengwen"><input type="radio" name="admin_id" value="402880d91bee87d0011beec0397b0354"   ></td>
+</tr>
+
+
+</table>
+
+<br>
+<div align="center" bgcolor="#D4E4EB" class="zhengwen"><a href="#" onclick="javascript:document.inputgroupright.submit();">确定</a> &nbsp;&nbsp;<a href="javascript:history.back();">返回</a></div>
+
+<form>
+</body>
+</html>

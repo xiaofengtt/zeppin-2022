@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>学后评价</title>
+    <link rel="stylesheet" href="../css/lib/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/lib/normalize.css"/>
+    <link rel="stylesheet" href="../css/lib/font-awesome.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/evaluation.css"/>
+</head>
+<body ng-app="evaluation" ng-controller="evaluationCtrl">
+<div id="header"></div>
+<div class="main container">
+    <ul class="nav nav-pills">
+        <li role="presentation"><a href="personal.html">个人主页</a></li>
+        <li role="presentation"><a href="trainingRecord.html">培训记录</a></li>
+        <li role="presentation"><a href="IndeRegistEntrance.html">自主报名</a></li>
+        <li role="presentation"><a href="certificate.html">所获证书</a></li>
+        <li role="presentation"><a href="selectCourse.html">学前测评</a></li>
+        <li role="presentation" class="active"><a href="evaluation.html">学后评价</a></li>
+<!--         <li role="presentation"><a href="teacherEduAdvance.html">学历提升申请记录</a></li> -->
+    </ul>
+    <hr class="navBottom"/>
+    <div class="panel panel-default text-center">
+        <div class="panel-body">
+            <span>
+                您当前共有&nbsp;<span id="allEvaluation" ng-bind="" class="evaluationCount"></span>&nbsp;个学后评价，
+                已经评价的有&nbsp;<span id="hasEvaluation" ng-bind="" class="evaluationCount"></span>&nbsp;次，
+                未评价的有&nbsp;<span id="noEvaluation" ng-bind="" class="evaluationCount"></span>&nbsp;次
+            </span>
+        </div>
+    </div>
+    <h3 class="text-center hide noEvaluation">暂无可评价内容</h3>
+    <div class="row evaluationList hide" ng-repeat="x in records">
+        <hr/>
+        <div class="col-xs-3 text-center">
+            <div class="number" ng-bind="$index+1">
+                1
+            </div>
+            <h6>编号</h6>
+        </div>
+        <div class="col-xs-9">
+            <h4>
+                <span ng-bind="x.projectName"></span>&nbsp;&nbsp;
+                <span class="trainingLink" ng-bind="x.trainingCollege"></span>
+            </h4>
+            <div class="store col-xs-12">
+                <i class="fa fa-star" ng-if="x.starCount >= 1"></i>
+                <i class="fa fa-star" ng-if="x.starCount >= 2"></i>
+                <i class="fa fa-star" ng-if="x.starCount >= 3"></i>
+                <i class="fa fa-star" ng-if="x.starCount >= 4"></i>
+                <i class="fa fa-star" ng-if="x.starCount == 5"></i>
+
+                <i class="fa fa-star-half-o" ng-if="x.starCount !== ''"></i>
+
+                <i class="fa fa-star-o" ng-if="x.starCount <= 4"></i>
+                <i class="fa fa-star-o" ng-if="x.starCount <= 3"></i>
+                <i class="fa fa-star-o" ng-if="x.starCount <= 2"></i>
+                <i class="fa fa-star-o" ng-if="x.starCount <= 1"></i>
+                <i class="fa fa-star-o" ng-if="x.starCount == 0"></i>
+                <a target="_blank" style="float: right;margin-right: 15px;" href="../paper/paper_choosePaper.action?id={{x.id}}" class="btn evaluationBtn" data-val="{{x.id}}" ng-if="x.isRecords == 0">评价</a>
+                <p ng-if="x.isRecords == 1" class="pull-right" style="margin-right: 15px;">已评价</p>
+            </div>
+            <div>
+                <span class="project">培训学科：<span ng-bind="x.subjectName"></span></span>
+                <span class="" style="font-size:12px;float: right;margin-right: 15px;color: #A7A7A7;" ng-bind="x.createTime"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script src="../js/lib/bootstrap.js"></script>
+<script src="../js/lib/angular.js"></script>
+<script src="../js/evaluation.js"></script>
+</body>
+</html>

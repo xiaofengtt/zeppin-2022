@@ -1,0 +1,16 @@
+
+.ux-MultiSelect-icon {
+	width: 16px;
+	height: 16px;
+	float: left;
+	background-position: -1px -1px ! important;
+	background-repeat: no-repeat ! important;
+}
+
+.ux-MultiSelect-icon-checked {
+	background: transparent url(./images/default/menu/checked.gif);
+}
+
+.ux-MultiSelect-icon-unchecked {
+	background: transparent url(./images/default/menu/unchecked.gif);
+}

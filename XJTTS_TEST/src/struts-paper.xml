@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+
+	<package name="paper" extends="main" namespace="/paper">
+
+		<action name="paper_*" class="paper" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			
+			<result name="edit">/paper/paper_edit.jsp</result>
+			<result name="list">/paper/paper_list.jsp</result>
+			<result name="listteacher">/paper/paper_listteacher.jsp</result>
+			<result name="listexpert">/paper/paper_listexpert.jsp</result>
+			<result name="add" type="redirect">../paper/paper_edit.action?curid=${paperID}&amp;type=${psqtype}
+			</result>
+			<result name="paper" type="redirect">/paper/paper_view.action?pid=${projectid}&amp;sid=${subjectid}&amp;tc=${trainingCollege}&amp;type=${type}&amp;valuator=${valuator}&amp;id=${psq}
+			</result>
+			<result name="view">paper_view.jsp</result>
+			<result name="novote">/paper/paper_unstart.jsp</result>
+			<result name="okvote">/paper/que-suc.html</result>
+			<result name="userlist">/paper/paper_userlist.jsp</result>
+		</action>
+
+		<action name="report_*" class="report" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="data">/paper/report_data.jsp</result>
+			<result name="paper">/paper/report_paper.jsp</result>
+			<result name="summary">/paper/report_summary.jsp</result>
+			<result name="contrast">/paper/report_contrast.jsp</result>
+			<result name="manyilv">/paper/report_manyilv.jsp</result>
+			<result name="detail">/paper/report_detail.jsp</result>
+		</action>
+		
+		<action name="reportExpert_*" class="reportExpert" method="{1}">
+			<interceptor-ref name="adminFilter"></interceptor-ref>
+			<result name="data">/paper/reportExpert_data.jsp</result>
+			<result name="summary">/paper/reportExpert_summary.jsp</result>
+			<result name="manyilv">/paper/reportExpert_manyilv.jsp</result>
+			<result name="detail">/paper/reportExpert_detail.jsp</result>
+		</action>
+
+
+	</package>
+
+</struts>

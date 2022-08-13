@@ -1,0 +1,1086 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="enumConstAction"
+		class="com.whaty.platform.entity.web.action.EnumConstAction"
+		scope="prototype" autowire="byName" />
+	<bean id="systemVariablesAction"
+		class="com.whaty.platform.entity.web.action.SystemVariablesAction"
+		scope="prototype" autowire="byName" />
+	<bean id="myListAction"
+		class="com.whaty.platform.entity.web.action.MyListAction"
+		scope="prototype" autowire="byName" />
+	<bean id="ssoLoginAction"
+		class="com.whaty.platform.sso.web.action.SsoLogin" scope="prototype"
+		autowire="byName">
+	</bean>
+	<bean id="systemApplayAction"
+		class="com.whaty.platform.entity.web.action.SystemApplayAction"
+		scope="prototype" autowire="byName" />
+	<bean id="managerMenuAction"
+		class="com.whaty.platform.sso.web.action.ManagerMenuAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="whatyLog4jAction"
+		class="com.whaty.platform.sso.web.action.admin.WhatyLog4jAction"
+		scope="prototype" autowire="byName" />
+
+	<bean id="inProgressAction"
+		class="com.whaty.platform.entity.web.action.information.InProgressAction"
+		scope="prototype" autowire="byName" />
+
+	<!-- zyy begin -->
+	<!-- 平台及信息操作 begin -->
+	<bean id="personalInfoAction"
+		class="com.whaty.platform.entity.web.action.information.PersonalInfoAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peBulletinViewAction"
+		class="com.whaty.platform.entity.web.action.information.PeBulletinViewAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peDocumentViewAction"
+		class="com.whaty.platform.entity.web.action.information.PeDocumentViewAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peInfoNewsAction"
+		class="com.whaty.platform.entity.web.action.information.PeInfoNewsAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peBulletinAction"
+		class="com.whaty.platform.entity.web.action.information.PeBulletinAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peDocumentOutboxAction"
+		class="com.whaty.platform.entity.web.action.information.PeDocumentOutboxAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peDocumentAction"
+		class="com.whaty.platform.entity.web.action.information.PeDocumentAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peSystemSmsPointAction"
+		class="com.whaty.platform.entity.web.action.information.sms.PeSystemSmsPointAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peSmsCheckAction"
+		class="com.whaty.platform.entity.web.action.information.sms.PeSmsCheckAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peSmsAction"
+		class="com.whaty.platform.entity.web.action.information.sms.PeSmsAction"
+		scope="prototype" autowire="byName" />
+	<bean id="prSmsSendStatusAction"
+		class="com.whaty.platform.entity.web.action.information.sms.PrSmsSendStatusAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peSmsStatisticAction"
+		class="com.whaty.platform.entity.web.action.information.sms.PeSmsStatisticAction"
+		scope="prototype" autowire="byName" />
+	<bean id="teacherPhoneViewAction"
+		class="com.whaty.platform.entity.web.action.information.sms.TeacherPhoneViewAction"
+		scope="prototype" autowire="byName" />
+	<bean id="studentPhoneViewAction"
+		class="com.whaty.platform.entity.web.action.information.sms.StudentPhoneViewAction"
+		scope="prototype" autowire="byName" />
+	<bean id="managerPhoneViewAction"
+		class="com.whaty.platform.entity.web.action.information.sms.ManagerPhoneViewAction"
+		scope="prototype" autowire="byName" />
+	<bean id="siteManagerPhoneViewAction"
+		class="com.whaty.platform.entity.web.action.information.sms.SiteManagerPhoneViewAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peVotePaperInitAction"
+		class="com.whaty.platform.entity.web.action.information.vote.PeVotePaperInitAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peVotePaperAction"
+		class="com.whaty.platform.entity.web.action.information.vote.PeVotePaperAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peVotePaperActionList"
+		class="com.whaty.platform.entity.web.action.information.vote.PeVotePaperListAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peVoteTeacherResult"
+		class="com.whaty.platform.entity.web.action.information.vote.PeVoteTeacherResultAction"
+		scope="prototype" autowire="byName" />
+	<bean id="prVoteQuestionAction"
+		class="com.whaty.platform.entity.web.action.information.vote.PrVoteQuestionAction"
+		scope="prototype" autowire="byName" />
+	<bean id="prVoteSuggestAction"
+		class="com.whaty.platform.entity.web.action.information.vote.PrVoteSuggestAction"
+		scope="prototype" autowire="byName" />
+	<bean id="interactionAction"
+		class="com.whaty.platform.sso.web.action.InteractionAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<!-- lipengfei begin -->
+	<bean id="peMeetingAction"
+		class="com.whaty.platform.entity.web.action.information.PeMeetingAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="peMeetingResourceAction"
+		class="com.whaty.platform.entity.web.action.information.PeMeetingResourceAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="prMeetPersonAction"
+		class="com.whaty.platform.entity.web.action.information.PrMeetPersonAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="peJobAction"
+		class="com.whaty.platform.entity.web.action.information.PeJobAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="prJobUnitAction"
+		class="com.whaty.platform.entity.web.action.information.PrJobUnitAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="prJobUnitInitAction"
+		class="com.whaty.platform.entity.web.action.information.PrJobUnitInitAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	
+	<!-- lipengfei end -->
+	<!-- gaoyuan begin -->
+	<bean id="bzzinteractionAction"
+		class="com.whaty.platform.sso.web.action.BzzInteractionAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<!-- gaoyuan end -->
+	
+	<!-- jiangwanhong begin -->
+	<bean id="courseResourcesAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.CourseResourcesAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<!-- jiangwanhong end -->
+	
+	<!-- 平台及信息操作 begin -->
+
+	<!-- 基础数据管理 begin -->
+	<bean id="peSiteAction"
+		class="com.whaty.platform.entity.web.action.basic.PeSiteAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peGradeAction"
+		class="com.whaty.platform.entity.web.action.basic.PeGradeAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peSemesterAction"
+		class="com.whaty.platform.entity.web.action.basic.PeSemesterAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peMajorAction"
+		class="com.whaty.platform.entity.web.action.basic.PeMajorAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peEdutypeAction"
+		class="com.whaty.platform.entity.web.action.basic.PeEdutypeAction"
+		scope="prototype" autowire="byName" />
+	<bean id="siteManagerAction"
+		class="com.whaty.platform.entity.web.action.basic.SiteManagerAction"
+		scope="prototype" autowire="byName" />
+	<!-- zhangyu begin -->
+	<bean id="peSiteManagerAction"
+		class="com.whaty.platform.entity.web.action.basic.PeSiteManagerAction"
+		scope="prototype" autowire="byName" />
+	<!-- zhangyu end -->
+	<!-- gaoyuan begin -->
+	<bean id="peEnterpriseAction"
+		class="com.whaty.platform.entity.web.action.basic.PeEnterpriseAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peSubEnterpriseAction"
+		class="com.whaty.platform.entity.web.action.basic.PeSubEnterpriseAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peBzzBatchAction"
+		class="com.whaty.platform.entity.web.action.basic.PeBzzBatchAction"
+		scope="prototype" autowire="byName" />
+	<bean id="enterpriseManagerAction"
+		class="com.whaty.platform.entity.web.action.basic.EnterpriseManagerAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peBzzStudentAction"
+		class="com.whaty.platform.entity.web.action.basic.PeBzzStudentAction"
+		scope="prototype" autowire="byName" />
+	<!-- gaoyuan end -->
+	
+	<!-- jiangwanhong start -->
+	<bean id="peTrainingClassAction"
+		class="com.whaty.platform.entity.web.action.basic.PeTrainingClassAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peManagerAction"
+		class="com.whaty.platform.entity.web.action.basic.PeManagerAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peTeacherAction"
+		class="com.whaty.platform.entity.web.action.basic.PeTeacherAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peTraineeAction"
+		class="com.whaty.platform.entity.web.action.basic.PeTraineeAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peTraineeInTheWorkAction"
+		class="com.whaty.platform.entity.web.action.basic.PeTraineeInTheWorkAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peTraineeInTrainingAction"
+		class="com.whaty.platform.entity.web.action.basic.PeTraineeInTrainingAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peTraineeViewAction"
+		class="com.whaty.platform.entity.web.action.basic.PeTraineeViewAction"
+		scope="prototype" autowire="byName" />
+	<bean id="studyRecordAction"
+		class="com.whaty.platform.entity.web.action.basic.StudyRecordAction"
+		scope="prototype" autowire="byName" />
+	<!-- jiangwanhong start -->
+	<!-- 基础数据管理 end -->
+	
+	<!-- 项目申报 begin -->
+	<bean id="peProApplynoAction"
+		class="com.whaty.platform.entity.web.action.programApply.PeProApplynoAction"
+		scope="prototype" autowire="byName" />
+	<bean id="prProgramUnitAction"
+		class="com.whaty.platform.entity.web.action.programApply.PrProgramUnitAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peProApplyAction"
+		class="com.whaty.platform.entity.web.action.programApply.PeProApplyAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peProApplynoViewAction"
+		class="com.whaty.platform.entity.web.action.programApply.PeProApplynoViewAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peProApplyBookAction"
+		class="com.whaty.platform.entity.web.action.programApply.PeProApplyBookAction"
+		scope="prototype" autowire="byName" />
+		<!--项目评审报表  -->
+	<bean id="projectJudgmentReportAction"
+		class="com.whaty.platform.entity.web.action.programApply.PeProJudgmentReportAction"
+		scope="prototype" autowire="byName" />
+			
+		<!-- 专家评审 -->
+	<bean id="distributeExpertAction"
+		class="com.whaty.platform.entity.web.action.programApply.DistributeExpertAction"
+		scope="prototype" autowire="byName" />
+	<bean id="searchExpertForDistributeAction"
+		class="com.whaty.platform.entity.web.action.programApply.SearchExpertForDistributeAction"
+		scope="prototype" autowire="byName" />
+	<bean id="projectFirstTrialAction"
+		class="com.whaty.platform.entity.web.action.programApply.ProjectFirstTrialAction"
+		scope="prototype" autowire="byName" />
+	<bean id="projectFinalJudgmentAction"
+		class="com.whaty.platform.entity.web.action.programApply.ProjectFinalJudgmentAction"
+		scope="prototype" autowire="byName" />
+	<bean id="viewFirstTrialOpinionAction"
+		class="com.whaty.platform.entity.web.action.programApply.ViewFirstTrialOpinionAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peProApplyViewAction"
+		class="com.whaty.platform.entity.web.action.programApply.PeProApplyViewAction"
+		scope="prototype" autowire="byName" />
+	<bean id="viewFinalJudgmentOpinionAction"
+		class="com.whaty.platform.entity.web.action.programApply.ViewFinalJudgmentOpinionAction"
+		scope="prototype" autowire="byName" />
+	<bean id="managerJudgmentAction"
+		class="com.whaty.platform.entity.web.action.programApply.ManagerJudgmentAction"
+		scope="prototype" autowire="byName" />
+	<!-- 项目申报 end -->
+	<!-- 项目实施 begin -->
+	<bean id="materialSubmitAction"
+		class="com.whaty.platform.entity.web.action.implementation.MaterialSubmitAction"
+		scope="prototype" autowire="byName" />
+	<bean id="trainingCourseNoticeAction"
+		class="com.whaty.platform.entity.web.action.implementation.TrainingCourseNoticeAction"
+		scope="prototype" autowire="byName" />
+	<bean id="trainingCoursePlanAction"
+		class="com.whaty.platform.entity.web.action.implementation.TrainingCoursePlanAction"
+		scope="prototype" autowire="byName" />
+	<bean id="briefReportAction"
+		class="com.whaty.platform.entity.web.action.implementation.BriefReportAction"
+		scope="prototype" autowire="byName" />
+	<bean id="trainingCourseSummaryAction"
+		class="com.whaty.platform.entity.web.action.implementation.TrainingCourseSummaryAction"
+		scope="prototype" autowire="byName" />
+	<bean id="budgetSubmitAction"
+		class="com.whaty.platform.entity.web.action.implementation.BudgetSubmitAction"
+		scope="prototype" autowire="byName" />
+	<bean id="actualBudgetAction"
+		class="com.whaty.platform.entity.web.action.implementation.ActualBudgetAction"
+		scope="prototype" autowire="byName" />
+	<bean id="budgetYSManageAction"
+		class="com.whaty.platform.entity.web.action.implementation.BudgetYSManageAction"
+		scope="prototype" autowire="byName" />
+	<bean id="budgetJSManageAction"
+		class="com.whaty.platform.entity.web.action.implementation.BudgetJSManageAction"
+		scope="prototype" autowire="byName" />
+	<bean id="coursePlanViewAction"
+		class="com.whaty.platform.entity.web.action.implementation.CoursePlanViewAction"
+		scope="prototype" autowire="byName" />
+	<bean id="otherMaterialViewAction"
+		class="com.whaty.platform.entity.web.action.implementation.OtherMaterialViewAction"
+		scope="prototype" autowire="byName" />
+	<bean id="otherMaterialAction"
+		class="com.whaty.platform.entity.web.action.implementation.OtherMaterialAction"
+		scope="prototype" autowire="byName" />
+	<bean id="briefReportViewAction"
+		class="com.whaty.platform.entity.web.action.implementation.BriefReportViewAction"
+		scope="prototype" autowire="byName" />
+	<bean id="showOtherMaterialAction"
+		class="com.whaty.platform.entity.web.action.implementation.ShowOtherMaterialAction"
+		scope="prototype" autowire="byName" />
+	<bean id="otherMaterialNotBySubjectAction"
+		class="com.whaty.platform.entity.web.action.implementation.OtherMaterialNotBySubjectAction"
+		scope="prototype" autowire="byName" />
+	<!-- 项目实施 end -->
+	
+	
+	<!-- 招生管理 begin -->
+	<bean id="peSmsInfoAction"
+		class="com.whaty.platform.entity.web.action.sms.PeSmsInfoAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="peSmsSystemPointAction"
+		class="com.whaty.platform.entity.web.action.sms.PeSmsSystemPointAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="peSmsInfoManageAction"
+		class="com.whaty.platform.entity.web.action.sms.PeSmsInfoManageAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="smsNewAction"
+		class="com.whaty.platform.entity.web.action.sms.SmsNewAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="smsStatisticsAction"
+		class="com.whaty.platform.entity.web.action.sms.SmsStatisticsAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="statisticsByYearAction"
+		class="com.whaty.platform.entity.web.action.statistics.StatisticsByYearAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="statisticsByYearProvinceAction"
+		class="com.whaty.platform.entity.web.action.statistics.StatisticsByYearProvinceAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="statisticsByYearNJswAction"
+		class="com.whaty.platform.entity.web.action.statistics.StatisticsByYearNJswAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="statisticsByYearJswAction"
+		class="com.whaty.platform.entity.web.action.statistics.StatisticsByYearJswAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="statisticsByYearProvinceNJswAction"
+		class="com.whaty.platform.entity.web.action.statistics.StatisticsByYearProvinceNJswAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="statisticsByYearProvinceJswAction"
+		class="com.whaty.platform.entity.web.action.statistics.StatisticsByYearProvinceJswAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="statisticsByYearJswTrainingTypeAction"
+		class="com.whaty.platform.entity.web.action.statistics.StatisticsByYearJswTrainingTypeAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="statisticsByYearProvinceJswTrainingTypeAction"
+		class="com.whaty.platform.entity.web.action.statistics.StatisticsByYearProvinceJswTrainingTypeAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="messageBoardAction"
+		class="com.whaty.platform.entity.web.action.recruit.baoming.MessageBoardAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="peQuestionsAction"
+		class="com.whaty.platform.entity.web.action.study.PeQuestionsAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="beanForceDelAction"
+		class="com.whaty.platform.entity.web.action.basic.BeanForceDelAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="peTchCoursewareSingleCourseAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.PeTchCoursewareSingleCourseAction"
+		scope="prototype" autowire="byName"/>
+	<!-- zhaoyuxiao end -->
+	<!-- zhangyu end -->
+	<!-- jiangwanhong begin -->
+	<bean id="peTraineeRegAction"
+		class="com.whaty.platform.entity.web.action.recruit.baoming.PeTraineeRegAction"
+		scope="prototype" autowire="byName"/>
+	<!-- jiangwanhong end -->
+	<!-- 招生管理 end -->
+	<!-- zyy end -->
+	<!-- chenzichu begin -->
+
+	<!-- 考务管理 begin -->
+	<bean id="maincourseStatAction"
+		class="com.whaty.platform.entity.web.action.exam.mainCourse.MaincourseStatAction"
+		scope="prototype" autowire="byName" />
+	<bean id="mainCourseScoreRecheckAction"
+		class="com.whaty.platform.entity.web.action.exam.mainCourse.MainCourseScoreRecheckAction"
+		scope="prototype" autowire="byName" />
+	<bean id="examScoreReCheckAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.ExamScoreReCheckAction"
+		scope="prototype" autowire="byName" />
+	<bean id="workScoreReCheckAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.WorkScoreReCheckAction"
+		scope="prototype" autowire="byName" />
+	<bean id="normalScoreReCheckAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.NormalScoreReCheckAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peFinalExamAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.PeFinalExamAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peFinalExamApplyAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.PeFinalExamApplyAction"
+		scope="prototype" autowire="byName" />
+	<bean id="finalExamNoBookingAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.FinalExamNoBookingAction"
+		scope="prototype" autowire="byName" />
+	<bean id="prFinalExamApplyCountAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.PrFinalExamApplyCountAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peExamnoAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.PeExamnoAction"
+		scope="prototype" autowire="byName" />
+	<bean id="prExamPaperCountAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.PrExamPaperCountAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peMainCourseTimeAction"
+		class="com.whaty.platform.entity.web.action.exam.mainCourse.PeMainCourseTimeAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peMainCourseExamRoomAction"
+		class="com.whaty.platform.entity.web.action.exam.mainCourse.PeMainCourseExamRoomAction"
+		scope="prototype" autowire="byName" />
+	<bean id="finalExamPrintAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.FinalExamPrintAction"
+		scope="prototype" autowire="byName" />
+	<bean id="examPaperStatAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.ExamPaperStatAction"
+		scope="prototype" autowire="byName" />
+	<!-- zhangyu begin -->
+
+	<bean id="examBookingAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.ExamBookingAction"
+		scope="prototype" autowire="byName" />
+	<!-- zhangyu end -->
+	<bean id="examAvoidApplyAction"
+		class="com.whaty.platform.entity.web.action.exam.ExamAvoidApplyAction"
+		scope="prototype" autowire="byName" />
+	<bean id="computerAvoidApplyAction"
+		class="com.whaty.platform.entity.web.action.exam.ComputerAvoidApplyAction"
+		scope="prototype" autowire="byName" />
+	<bean id="englishBAvoidApplyAction"
+		class="com.whaty.platform.entity.web.action.exam.EnglishBAvoidApplyAction"
+		scope="prototype" autowire="byName" />
+	<bean id="englishAAvoidApplyAction"
+		class="com.whaty.platform.entity.web.action.exam.EnglishAAvoidApplyAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peExamPatrolAction"
+		class="com.whaty.platform.entity.web.action.exam.PeExamPatrolAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peSiteLineAction"
+		class="com.whaty.platform.entity.web.action.exam.PeSiteLineAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peExamPatrolManageAction"
+		class="com.whaty.platform.entity.web.action.exam.PeExamPatrolManageAction"
+		scope="prototype" autowire="byName" />
+	<bean id="examInfoSearchAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.ExamInfoSearchAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peExamRoomAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.PeExamRoomAction"
+		scope="prototype" autowire="byName" />
+	<bean id="prExamBookingAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.PrExamBookingAction"
+		scope="prototype" autowire="byName" />
+	<bean id="examScoreAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.ExamScoreAction"
+		scope="prototype" autowire="byName" />
+	<bean id="examScoreApplayManageAction"
+		class="com.whaty.platform.entity.web.action.exam.finalExam.ExamScoreApplayManageAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peExamMaincourseNoAction"
+		class="com.whaty.platform.entity.web.action.exam.mainCourse.PeExamMaincourseNoAction"
+		scope="prototype" autowire="byName" />
+	<bean id="examMaincourseSetAction"
+		class="com.whaty.platform.entity.web.action.exam.mainCourse.ExamMaincourseSetAction"
+		scope="prototype" autowire="byName" />
+	<bean id="prExamOpenMaincourseAction"
+		class="com.whaty.platform.entity.web.action.exam.mainCourse.PrExamOpenMaincourseAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peExamMaincourseRoomAction"
+		class="com.whaty.platform.entity.web.action.exam.mainCourse.PeExamMaincourseRoomAction"
+		scope="prototype" autowire="byName" />
+	<bean id="maincourseExamBookingAction"
+		class="com.whaty.platform.entity.web.action.exam.mainCourse.MaincourseExamBookingAction"
+		scope="prototype" autowire="byName" />
+	<bean id="maincourseElectivecourseAction"
+		class="com.whaty.platform.entity.web.action.exam.mainCourse.MaincourseElectivecourseAction"
+		scope="prototype" autowire="byName" />
+	<bean id="maincourseElectiveManageAction"
+		class="com.whaty.platform.entity.web.action.exam.mainCourse.MaincourseElectiveManageAction"
+		scope="prototype" autowire="byName" />
+	<bean id="maincourseScoreManageAction"
+		class="com.whaty.platform.entity.web.action.exam.mainCourse.MaincourseScoreManageAction"
+		scope="prototype" autowire="byName" />
+	<!-- jxk -->
+	<bean id="examScoreExportInputDataAction"
+		class="com.whaty.platform.entity.web.action.exam.inputScore.ExamScoreExportInputDataAction"
+		scope="prototype" autowire="byName" />
+	<bean id="prExamScoreInputUserAcion"
+		class="com.whaty.platform.entity.web.action.exam.inputScore.PrExamScoreInputUserAcion"
+		scope="prototype" autowire="byName" />
+	<bean id="examScoreInputStatisticAction"
+		class="com.whaty.platform.entity.web.action.exam.inputScore.ExamScoreInputStatisticAction"
+		scope="prototype" autowire="byName" />
+	<bean id="examScoreInputAction"
+		class="com.whaty.platform.entity.web.action.exam.inputScore.ExamScoreInputAction"
+		scope="prototype" autowire="byName" />
+
+	<bean id="scoreInputLoginAction"
+		class="com.whaty.platform.entity.web.action.exam.inputScore.scoreinputlogin.ScoreInputLoginAction"
+		scope="prototype" autowire="byName" />
+	<bean id="scoreInputAction"
+		class="com.whaty.platform.entity.web.action.exam.inputScore.scoreinputlogin.ScoreInputAction"
+		scope="prototype" autowire="byName" />
+	<!-- 考务管理 end -->
+
+	<!-- 学生工作室 begin -->
+	<bean id="prTchStuPaperTitleSelectManageAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.PrTchStuPaperTitleSelectManageAction"
+		scope="prototype" autowire="byName" />
+	<bean id="applyAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.ApplyAction"
+		scope="prototype" autowire="byName" />
+	<!-- 学生工作室 end -->
+
+	<!-- chenzichu end -->
+
+	<!-- gaoyuan begin -->
+	<bean id="peBzzCourseManagerAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.PeBzzCourseManagerAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="bzzcourseWareAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.BzzCoursewareManagerAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<!-- gaoyuan end -->
+	<bean id="courseBookHisAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.CourseBookHisAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="courseCoursewareHisAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.CourseCoursewareHisAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="peTeachPlanManagerAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.PeTeaPlanManagerAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="teachPlanInfoAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.TeaPlanInfoAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="teachPlanInfoCourseAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.TeaPlanInfoCourseInfoAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="peTeacherManagerAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.PeTeacherManagerAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="teacherCourseAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.TeacherCourseAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="prTchOpencourseAction"
+		class="com.whaty.platform.entity.web.action.teaching.elective.PrTchOpenCourseAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="opencourseTimesAction"
+		class="com.whaty.platform.entity.web.action.teaching.elective.OpencourseTimesAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<!-- libing begin -->
+	<bean id="prTchCourseBookAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.PrTchCourseBookAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="courseWareAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.CoursewareManagerAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="teachingMaterialsManagerAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.TeachingMaterialsManagerAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="paperProcessInfoAction"
+		class=" com.whaty.platform.entity.web.action.teaching.paper.PaperProcessInfoAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="paperProcessStuInfoAction"
+		class=" com.whaty.platform.entity.web.action.teaching.paper.PaperProcessStuInfoAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="paperProcessTeacherAction"
+		class=" com.whaty.platform.entity.web.action.teaching.paper.PaperProcessTeacherAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<!-- libing end -->
+	<bean id="peSyllabusManagerAction"
+		class="com.whaty.platform.entity.web.action.teaching.process.PeSyllabusManagerAction"
+		scope="prototype" autowire="byName" />
+	<bean id="prCountCourseRewardAction"
+		class="com.whaty.platform.entity.web.action.teaching.process.PrCountCourseRewardAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peCountCourseCoefficientAction"
+		class="com.whaty.platform.entity.web.action.teaching.process.PeCountCourseCoefficientAction"
+		scope="prototype" autowire="byName" />
+	<bean id="prCountCheckofWorkFeeAction"
+		class="com.whaty.platform.entity.web.action.teaching.process.PrCountCheckofWorkFeeAction"
+		scope="prototype" autowire="byName" />
+
+	<!-- longyinsong start-->
+	<bean id="peEnterprisesInfoPrintAction" class="com.whaty.platform.entity.web.action.information.infoprint.PeEnterprisesInfoPrintAction"
+		scope="prototype" autowire="byName" />
+	
+		<bean id="peBzzStudentInfoPrintAction" class="com.whaty.platform.entity.web.action.information.infoprint.PeBzzStudentInfoPrintAction"
+		scope="prototype" autowire="byName" />
+	
+	<bean id="prBzzTchOpenCourseAction"
+		class="com.whaty.platform.entity.web.action.teaching.elective.PrBzzTchOpenCourseAction"
+		scope="prototype" autowire="byName" />
+
+	<bean id="prBzzTchOpenCourseReadyAction"
+		class="com.whaty.platform.entity.web.action.teaching.elective.PrBzzTchOpenCourseReadyAction"
+		scope="prototype" autowire="byName" />
+
+	<bean id="prBzzTchOpenCourseDetailAction"
+		class="com.whaty.platform.entity.web.action.teaching.elective.PrBzzTchOpenCourseDetailAction"
+		scope="prototype" autowire="byName" />
+	<bean id="prBzzTchSelectCoursesAction"
+		class="com.whaty.platform.entity.web.action.teaching.elective.PrBzzTchSelectCoursesAction"
+		scope="prototype" autowire="byName" />
+
+	<bean id="pebzzManagerAssessAction"
+		class="com.whaty.platform.entity.web.action.basic.PebzzManagerAssessAction"
+		scope="prototype" autowire="byName" />
+	<bean id="pebzzAssessRustsAction"
+		class="com.whaty.platform.entity.web.action.basic.PebzzAssessRustsAction"
+		scope="prototype" autowire="byName" />
+
+	<bean id="peDetailAction"
+		class="com.whaty.platform.entity.web.action.basic.PeDetailAction"
+		scope="prototype" autowire="byName" />
+
+	<!-- longyinsong end-->
+
+	<!-- zhangyu begin -->
+
+	<bean id="usualScoreViewAction"
+		class="com.whaty.platform.entity.web.action.teaching.result.UsualScoreAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="homeworkScoreViewAction"
+		class="com.whaty.platform.entity.web.action.teaching.result.HomeworkScoreAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="examScoreViewAction"
+		class="com.whaty.platform.entity.web.action.teaching.result.ExamScoreAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="scorePercentSetAction"
+		class="com.whaty.platform.entity.web.action.teaching.result.ScorePercentSetAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="unitExamScoreAction"
+		class="com.whaty.platform.entity.web.action.teaching.result.UnitExamScoreAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="degreeEnglishScoreAction"
+		class="com.whaty.platform.entity.web.action.teaching.result.DegreeEnglishScoreAvtion"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="paperTimeAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.PaperTimeSetAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="teacherTopicAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.TeacherTopicAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="studentTopicAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.StudentTopicAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="studentNoSelectAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.StudentNoSelectAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="replyListSelectAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.ReplyListSelectAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="peTchRejoinRoomAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.PeTchRejoinRoomAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="peTchRejoinSectionAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.PeTchRejoinSectionAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="replyListViewAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.ReplyListViewAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="replyTimeSetAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.ReplyTimeSetAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="paperScoreSearchAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.PaperScoreSearchAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="replyScoreSearchAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.ReplyScoreAction"
+		scope="prototype" autowire="byName" />
+	<bean id="finalScoreAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.FinalScoreAction"
+		scope="prototype" autowire="byName" />
+	<bean id="paperShenqingStatAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.PaperShenqingStatAction"
+		scope="prototype" autowire="byName" />
+	<bean id="paperProcessAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.PaperProcessAction"
+		scope="prototype" autowire="byName" />
+	<bean id="paperScoreStatAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.PaperScoreStatAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peStuElectiveAction"
+		class="com.whaty.platform.entity.web.action.teaching.elective.PeStuElectiveAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peStuElectiveCoursesAction"
+		class="com.whaty.platform.entity.web.action.teaching.elective.PeStuElectiveCoursesAction"
+		scope="prototype" autowire="byName" />
+	<bean id="peStuBeginCourseAction"
+		class="com.whaty.platform.entity.web.action.teaching.elective.PeStuBeginCourseAction"
+		scope="prototype" autowire="byName" />
+	<bean id="scoreSearchAction"
+		class="com.whaty.platform.entity.web.action.teaching.result.ScoreSearchAction"
+		scope="prototype" autowire="byName" />
+	<bean id="prTchProgramCourseAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.PrTchProgramCourseAction"
+		scope="prototype" autowire="byName" />
+	<bean id="prTchCourseTeacherAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.PrTchCourseTeacherAction"
+		scope="prototype" autowire="byName" />
+	<bean id="paperReapplyAuditAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.PaperReapplyAuditAction"
+		scope="prototype" autowire="byName" />
+	<bean id="degreeEnglishAuditAction"
+		class="com.whaty.platform.entity.web.action.teaching.result.DegreeEnglishAuditAction"
+		scope="prototype" autowire="byName" />
+	<bean id="courseHomeworkAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.CourseHomeworkAction"
+		scope="prototype" autowire="byName" />
+	<!-- zhangyu end -->
+
+	<bean id="paperTeacherAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.PaperTeacherAction"
+		scope="prototype" autowire="byName" />
+	<bean id="paperTeacherAddAction"
+		class="com.whaty.platform.entity.web.action.teaching.paper.PaperTeacherAddAction"
+		scope="prototype" autowire="byName" />
+	<bean id="printScoreAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.PrintScoreAction"
+		scope="prototype" autowire="byName" />
+	<!-- 教学教务管理 end-->
+	<!-- jinxikun end -->
+
+	<!-- zhangqunfang begin -->
+	<!-- zhangqunfang end -->
+
+	<!-- zyy begin -->
+	<!-- sso begin -->
+	<bean id="adminLoginAction"
+		class="com.whaty.platform.sso.web.action.admin.AdminLoginAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="pePriCategoryManageAction"
+		class="com.whaty.platform.sso.web.action.admin.PePriCategoryManageAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="pePriorityManageAction"
+		class="com.whaty.platform.sso.web.action.admin.PePriorityManageAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="pePriRoleAction"
+		class="com.whaty.platform.sso.web.action.admin.PePriRoleAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="pePriRoleUserAction"
+		class="com.whaty.platform.sso.web.action.admin.PePriRoleUserAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="prPriRoleAction"
+		class="com.whaty.platform.sso.web.action.admin.PrPriRoleAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="pePriCategoryViewAction"
+		class="com.whaty.platform.sso.web.action.admin.PePriCategoryViewAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="peSitemanagerAction"
+		class="com.whaty.platform.sso.web.action.admin.PeSiteManagerAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="managerRangeRightAction"
+		class="com.whaty.platform.sso.web.action.admin.ManagerRangeRightAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="forumAction"
+		class="com.whaty.platform.sso.web.action.ForumAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="whatyUserLog4jAction"
+		class="com.whaty.platform.sso.web.action.admin.WhatyUserLog4jAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="peEnterpriseManagerAction"
+		class="com.whaty.platform.sso.web.action.admin.PeEnterpriseManagerAction"
+		scope="prototype" autowire="byName">
+	</bean>
+
+	<!-- sso end -->
+	<!-- zyy end -->
+
+	<!-- libing begin -->
+	<!-- 前台 begin -->
+	<bean id="generateComboAction"
+		class="com.whaty.platform.entity.web.action.first.GenerateComboAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="firstRegister"
+		class="com.whaty.platform.entity.web.action.first.FirstPageStudentRegisterAction"
+		scope="prototype" autowire="byName">
+	</bean>
+
+	<bean id="firstBulletinAction"
+		class="com.whaty.platform.entity.web.action.first.FirstBulletinAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="firstInfoNewsAction"
+		class="com.whaty.platform.entity.web.action.first.FirstInfoNewsAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="firstPeVotePaperAction"
+		class="com.whaty.platform.entity.web.action.first.FirstPeVotePaperAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="firstStudentInfoAction"
+		class="com.whaty.platform.entity.web.action.first.FirstStudentInfoAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="pageDispatchAction"
+		class="com.whaty.platform.entity.web.action.first.PageDispatchAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="userRegistAction"
+		class="com.whaty.platform.entity.web.action.first.UserRegistAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<!-- 前台 end -->
+	<!-- libing end -->
+
+	<!-- zhangyu begin -->
+	<!-- 学生工作室 begin -->
+	<bean id="peLearntCourseScoreAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.PeLearntCourseScoreAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="studentLoginAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.StudentLogin"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="studentAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.StudentAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="studentDraftAAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.StudentDraftAAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="studentFinalAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.StudentFinalAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="examScoreChangeApplyAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.ExamScoreChangeApplyAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="mainCourseScoreChangeApplyAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.MainCourseScoreChangeApplyAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="applyExcellentAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.ApplyExcellentAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="prExamReserverAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.PrExamReserverAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="prExamReserverViewAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.PrExamReserverViewAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="mainCourseReserverViewAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.MainCourseReserverViewAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="peLearningCourseScoreAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.PeLearningCourseScoreAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="stuPeBulletinViewAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.StuPeBulletinViewAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="prExamDetailAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.PrExamDetailAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="mainCourseReserverAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.MainCourseReserverAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="examAvoidAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.ExamAvoidAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="uniteExamAvoidAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.UniteExamAvoidAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="studentElectiveAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.ElectiveAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="studentFeeAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.StudentFeeAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<!-- gaoyuan begin -->
+	<bean id="bzzstudentAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.BzzStudentAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<!-- gaoyuan end -->
+	<!-- 学生工作室 end -->
+	<!-- zhangyu end -->
+	<!-- zyy begin -->
+	<!-- 公选课平台 begin -->
+	<bean id="articleAction"
+		class="com.whaty.platform.entity.web.action.publicCourse.ArticleAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="publicCourseAction"
+		class="com.whaty.platform.entity.web.action.publicCourse.PublicCourseAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="studentManageAction"
+		class="com.whaty.platform.entity.web.action.publicCourse.StudentManageAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="enrolStatAction"
+		class="com.whaty.platform.entity.web.action.publicCourse.EnrolStatAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="bookingSeatAction"
+		class="com.whaty.platform.entity.web.action.publicCourse.BookingSeatAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="scoreManageAction"
+		class="com.whaty.platform.entity.web.action.publicCourse.ScoreManageAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="examManageAction"
+		class="com.whaty.platform.entity.web.action.publicCourse.ExamManageAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<!-- 公选课平台 end -->
+	<!-- zyy end -->
+
+	<!-- 课程评估 -->
+	<bean id="bzzAssessAction"
+		class="com.whaty.platform.entity.web.action.workspaceStudent.BzzAssessAction"
+		scope="prototype" autowire="byName" />
+
+	<!-- 直播课堂 -->
+	<bean id="peBzzZhiBoRoomAction"
+		class="com.whaty.platform.entity.web.action.teaching.basicInfo.PeBzzZhiBoRoomAction"
+		scope="prototype" autowire="byName" />
+	<!-- 直播课堂 end -->
+
+	<!-- gaoyuan begin -->
+	<bean id="prBzzStatisticsAction"
+		class="com.whaty.platform.entity.web.action.statistics.PrBzzStatisticsAction">
+	</bean>
+	<bean id="prBzzStudyAction"
+		class="com.whaty.platform.entity.web.action.study.PrBzzStudyAction">
+	</bean>
+	
+	<bean id="infoDownloadAction"
+		class="com.whaty.platform.entity.web.action.information.InfoDownloadAction">
+	</bean>
+	<!-- gaoyuan end -->
+	<bean id="couseWareStudyAction"
+		class="com.whaty.platform.entity.web.action.study.CouseWareStudyAction"
+		scope="prototype" autowire="byName" />
+		<!-- lipengfei begin -->
+		<bean id="peInfoModifyAction"
+		class="com.whaty.platform.entity.web.action.basic.PeInfoModifyAction"
+		scope="prototype" autowire="byName" />
+		<!-- lipengfei end -->
+	<!-- zhaoyuxiao begin -->
+	<bean id="peUnitAction" class="com.whaty.platform.entity.web.action.basic.PeUnitAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="peProvinceAction" class="com.whaty.platform.entity.web.action.basic.PeProvinceAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="cityAction" class="com.whaty.platform.entity.web.action.basic.CityAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="countyAction" class="com.whaty.platform.entity.web.action.basic.CountyAction"
+		scope="prototype" autowire="byName"/>
+		
+	<bean id="folkAction" class="com.whaty.platform.entity.web.action.basic.FolkAction"
+		scope="prototype" autowire="byName"/>		
+	<bean id="educationAction" class="com.whaty.platform.entity.web.action.basic.EducationAction"
+		scope="prototype" autowire="byName"/>	
+	<bean id="jobTitleAction" class="com.whaty.platform.entity.web.action.basic.JobTitleAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="mainTeachingGradeAction" class="com.whaty.platform.entity.web.action.basic.MainTeachingGradeAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="mainTeachingSubjectAction" class="com.whaty.platform.entity.web.action.basic.MainTeachingSubjectAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="unitAttributeAction" class="com.whaty.platform.entity.web.action.basic.UnitAttributeAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="unitTypeAction" class="com.whaty.platform.entity.web.action.basic.UnitTypeAction"
+		scope="prototype" autowire="byName"/>
+		
+	<bean id="peSubjectAction" class="com.whaty.platform.entity.web.action.basic.PeSubjectAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="peManagersAction" class="com.whaty.platform.entity.web.action.basic.PeManagersAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="peTrainingExpertsAction" class="com.whaty.platform.entity.web.action.basic.PeTrainingExpertsAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="peValuaExpertAction" class="com.whaty.platform.entity.web.action.basic.PeValuaExpertAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="peTrainingExpertsSearchAction" class="com.whaty.platform.entity.web.action.basic.PeTrainingExpertsSearchAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="userInfoEditAction" class="com.whaty.platform.entity.web.action.basic.UserInfoEditAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="userQueryTrainExpertAction" class="com.whaty.platform.entity.web.action.first.UserQueryTrainExpertAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="peWorkplaceAction" class="com.whaty.platform.entity.web.action.basic.PeWorkplaceAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="peProApplyPriManager" class="com.whaty.platform.entity.web.action.basic.PeProApplyPriManagerAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="prSsoProAction" class="com.whaty.platform.entity.web.action.basic.PrSsoProAction"
+		scope="prototype" autowire="byName"/>
+	<!-- zhaoyuxiao begin -->
+	<bean id="userQueryCertificateNoAction" class="com.whaty.platform.entity.web.action.first.UserQueryCertificateNoAction"
+		scope="prototype" autowire="byName"/>
+	<bean id="noteAction" class="com.whaty.platform.entity.web.action.information.sms.NoteAction" scope="prototype" autowire="byName"></bean>	
+	<bean id="msg4PevalueExpertAction" class="com.whaty.platform.entity.web.action.information.sms.Msg4PevalueExpertAction" scope="prototype" autowire="byName"></bean>	
+	<bean id="msg4PeTraineeAction"
+		class="com.whaty.platform.entity.web.action.information.sms.Msg4PeTraineeAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="prVoteRecordAction"
+		class="com.whaty.platform.entity.web.action.information.vote.PrVoteRecordAction"
+		scope="prototype" autowire="byName">
+	</bean>
+	<bean id="msg4PeManagerSearchAction" class="com.whaty.platform.entity.web.action.information.sms.Msg4PeManagerSearchAction" scope="prototype" autowire="byName"></bean>
+	<bean id="msg4PeTraineeSearchAction" class="com.whaty.platform.entity.web.action.information.sms.Msg4PeTraineeSearchAction" scope="prototype" autowire="byName"></bean>
+	<bean id="msg4PeValueExpertSearchAction" class="com.whaty.platform.entity.web.action.information.sms.Msg4PevalueExpertSearchAction" scope="prototype" autowire="byName"></bean>
+	<bean id="email4PeManagerSearchAction" class="com.whaty.platform.entity.web.action.information.sms.Email4PeManagerSearchAction" scope="prototype" autowire="byName"></bean>
+	<bean id="email4PeTraineeSearchAction" class="com.whaty.platform.entity.web.action.information.sms.Email4PeTraineeSearchAction" scope="prototype" autowire="byName"></bean>
+	<bean id="email4PeValueExpertSearchAction" class="com.whaty.platform.entity.web.action.information.sms.Email4PevalueExpertSearchAction" scope="prototype" autowire="byName"></bean>
+	
+	<!-- 政策文件管理模块 -->
+	
+	<bean id="pePolicyViewAction"
+		class="com.whaty.platform.entity.web.action.information.PePolicyViewAction"
+		scope="prototype" autowire="byName" />
+	<bean id="pePolicyAction"
+		class="com.whaty.platform.entity.web.action.information.PePolicyAction"
+		scope="prototype" autowire="byName" />
+	
+	<!-- 学员替换审核 -->
+	<bean id="peTraineeAduAction"
+		class="com.whaty.platform.entity.web.action.basic.PeTraineeReplaceAduAction"
+		scope="prototype" autowire="byName" />
+</beans>

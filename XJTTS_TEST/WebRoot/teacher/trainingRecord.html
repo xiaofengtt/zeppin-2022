@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>培训记录</title>
+    <link rel="stylesheet" href="../css/lib/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/lib/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="../css/lib/normalize.css"/>
+    <link rel="stylesheet" href="../css/lib/font-awesome.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/trainingRecord.css"/>
+    <script src="../js/lib/jquery-2.1.4.js"></script>
+    <script src="../js/lib/bootstrap.js"></script>
+    <script src="../js/lib/angular.js"></script>
+    <script src="../js/trainingRecord.js"></script>
+</head>
+<body ng-app="trainingRecordDirective" ng-controller="trainingRecordController">
+<div id="header"></div>
+<div class="main container">
+    <ul class="nav nav-pills">
+        <li role="presentation"><a href="personal.html">个人主页</a></li>
+        <li role="presentation" class="active"><a href="trainingRecord.html">培训记录</a></li>
+        <li role="presentation"><a href="IndeRegistEntrance.html">自主报名</a></li>
+        <li role="presentation"><a href="certificate.html">所获证书</a></li>
+        <li role="presentation"><a href="selectCourse.html">学前测评</a></li>
+        <li role="presentation"><a href="evaluation.html">学后评价</a></li>
+    </ul>
+    <hr class="navBottom"/>
+    <div class="panel panel-default text-center">
+        <div class="panel-body">
+            <span>
+                您当前共有&nbsp;<span class="recordCount" ng-bind="totalRecordCount"></span>&nbsp;次培训记录，
+                培训进行中的有&nbsp;<span class="recordCount" ng-bind="onTrainCount"></span>&nbsp;次，
+                培训结束的有&nbsp;<span class="recordCount" ng-bind="endCount"></span>&nbsp;次
+            </span>
+        </div>
+    </div>
+    <h3 class="text-center" ng-if="result == 'EMPTY' ">暂无培训记录</h3>
+    <div class="trainList" ng-repeat="x in records">
+        <div class="row" ng-if="x.trainingStatus=='0'">
+            <hr/>
+            <div class="col-xs-2 text-center leftContent">
+                <span class="trainDate trainEnd" ng-bind="x.createDate"></span><br/>
+                <span class="trainYear"><span ng-bind="x.createYear"></span>发布时间</span>
+                <br/>
+                <img src="../images/trainingRecord/trainEnd.png" alt="学员异动"/><br/>
+                <span class="trainStatus trainEnd">&nbsp;学员异动</span>
+            </div>
+            <div class="col-xs-5 col-xs-offset-1 centerContent">
+                <span class="trainSubject" ng-bind="x.subjectName"></span>
+                <br/>
+                <span class="">&nbsp;学员异动</span>
+                <br/><br/><br/>
+                <ul class="trainListInfo list-unstyled">
+                    <li><i class="fa fa-map-marker fa-map-markerEnd"></i>&nbsp;&nbsp;<span ng-bind="x.trainingCollege"></span></li>
+                    <li><i class="fa fa-home fa-homeEnd"></i>&nbsp;&nbsp;<span ng-bind="x.trainingAddr"></span></li>
+                </ul>
+            </div>
+            <div class="col-xs-4 rightContent">
+                <span class="time">开始时间:<span ng-bind="x.trainingStart"></span></span><br/>
+                <span class="time">结束时间:<span ng-bind="x.trainingEnd"></span></span><br/><br/>
+                <ul class="trainListInfo list-unstyled">
+                    <li><i class="fa fa-wrench fa-wrenchEnd"></i>&nbsp;&nbsp;<span ng-bind="x.trainType"></span></li>
+                    <li><i class="fa fa-file-text-o fa-file-text-oEnd"></i>&nbsp;&nbsp;<span ng-bind="x.projectName"></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row" ng-if="x.trainingStatus=='1'">
+            <hr/>
+            <div  ng-show="x.trainTypeN=='2'">
+	            <div class="col-xs-2 text-center leftContent">
+	                <span class="trainDate trainEnd" ng-bind="x.createDate"></span><br/>
+	                <span class="trainYear"><span ng-bind="x.createYear"></span>发布时间</span>
+	                <br/>
+	                <img src="../images/trainingRecord/trainEnd.png" alt="未报到"/><br/>
+	                <span class="trainStatus trainEnd">&nbsp;未报到</span>
+	            </div>
+	            <div class="col-xs-4 col-xs-offset-1 centerContent">
+	                <span class="trainSubject" ng-bind="x.subjectName"></span>
+	                <br/>
+	                <span class=""><i class="fa fa-check-square fa-registed" style="color: #8b8b8c;"></i>&nbsp;未报到</span>
+	                <br/><br/><br/>
+	                <ul class="trainListInfo list-unstyled">
+	                    <li><i class="fa fa-map-marker fa-map-markerEnd"></i>&nbsp;&nbsp;<span ng-bind="x.trainingCollege"></span></li>
+	                    <li><i class="fa fa-home fa-homeEnd"></i>&nbsp;&nbsp;<span ng-bind="x.trainingAddr"></span></li>
+	                </ul>
+	            </div>
+	            <div class="col-xs-3 rightContent">
+	                <span class="time">开始时间:<span ng-bind="x.trainingStart"></span></span><br/>
+	                <span class="time">结束时间:<span ng-bind="x.trainingEnd"></span></span><br/><br/>
+	                <ul class="trainListInfo list-unstyled">
+	                    <li><i class="fa fa-wrench fa-wrenchEnd"></i>&nbsp;&nbsp;<span ng-bind="x.trainType"></span></li>
+	                    <li><i class="fa fa-file-text-o fa-file-text-oEnd"></i>&nbsp;&nbsp;<span ng-bind="x.projectName"></span></li>
+	                </ul>
+	            </div>
+	            <div class="col-sm-2 text-center" style="float: right;">
+					<h4 style="color: #5fb752;"><a class="btn registBtn" ng-if="x.trainURL==''" href="{{x.trainURL}}">去培训</a>
+<!-- 		              <a  class="btn registBtn" ng-if="x.trainURL!=''" href="{{x.trainURL}}?teacherUuid={{x.teacherUuid}}&projectId={{x.projectId}}&trainingSubjectId={{x.trainingSubjectId}}" target="_blank">去培训</a></h4> -->
+		              <a onclick="new_window = window.open();checkIsTest(this);" class="btn registBtn" ng-if="x.trainURL!=''" href="javascript:void(0);" data-id="{{x.ttrId}}" data-url="{{x.trainURL}}?teacherUuid={{x.teacherUuid}}&projectId={{x.projectId}}&trainingSubjectId={{x.trainingSubjectId}}" target="_blank">去培训</a></h4>
+	            </div>
+            </div>
+            <div  ng-show="x.trainTypeN=='1'">
+	            <div class="col-xs-2 text-center leftContent">
+	                <span class="trainDate trainEnd" ng-bind="x.createDate"></span><br/>
+	                <span class="trainYear"><span ng-bind="x.createYear"></span>发布时间</span>
+	                <br/>
+	                <img src="../images/trainingRecord/trainEnd.png" alt="未报到"/><br/>
+	                <span class="trainStatus trainEnd">&nbsp;未报到</span>
+	            </div>
+	            <div class="col-xs-5 col-xs-offset-1 centerContent">
+	                <span class="trainSubject" ng-bind="x.subjectName"></span>
+	                <br/>
+	                <span class=""><i class="fa fa-check-square fa-registed" style="color: #8b8b8c;"></i>&nbsp;未报到</span>
+	                <br/><br/><br/>
+	                <ul class="trainListInfo list-unstyled">
+	                    <li><i class="fa fa-map-marker fa-map-markerEnd"></i>&nbsp;&nbsp;<span ng-bind="x.trainingCollege"></span></li>
+	                    <li><i class="fa fa-home fa-homeEnd"></i>&nbsp;&nbsp;<span ng-bind="x.trainingAddr"></span></li>
+	                </ul>
+	            </div>
+	            <div class="col-xs-4 rightContent">
+	                <span class="time">开始时间:<span ng-bind="x.trainingStart"></span></span><br/>
+	                <span class="time">结束时间:<span ng-bind="x.trainingEnd"></span></span><br/><br/>
+	                <ul class="trainListInfo list-unstyled">
+	                    <li><i class="fa fa-wrench fa-wrenchEnd"></i>&nbsp;&nbsp;<span ng-bind="x.trainType"></span></li>
+	                    <li><i class="fa fa-file-text-o fa-file-text-oEnd"></i>&nbsp;&nbsp;<span ng-bind="x.projectName"></span></li>
+	                </ul>
+	            </div>
+
+            </div>
+        </div>
+        <div class="row" ng-if="x.trainingStatus=='2'">
+            <hr/>
+            <div  ng-show="x.trainTypeN=='2'">
+	            <div class="col-xs-2 text-center leftContent">
+	                <span class="trainDate training" ng-bind="x.createDate"></span><br/>
+	                <span class="trainYear training"><span ng-bind="x.createYear"></span>发布时间</span>
+	                <br/>
+	                <img src="../images/trainingRecord/training.png" alt="进行中"/><br/>
+	                <span class="trainStatus training">进行中</span>
+	            </div>
+	            <div class="col-xs-4 col-xs-offset-1 centerContent">
+	                <span class="trainSubject training" ng-bind="x.subjectName"></span>
+	                <br/>
+	                <span class="training"><i id="fa-registeding" class="fa fa-check-square fa-registed" style="color: #e95a6f;"></i>&nbsp;已报到</span>
+	                <br/><br/><br/>
+	                <ul class="trainListInfo list-unstyled">
+	                    <li><i class="fa fa-map-marker fa-map-markerIng"></i>&nbsp;&nbsp;<span ng-bind="x.trainingCollege"></span></li>
+	                    <li><i class="fa fa-home fa-homeIng"></i>&nbsp;&nbsp;<span ng-bind="x.trainingAddr"></span></li>
+	                </ul>
+	            </div>
+	            <div class="col-xs-3 rightContent">
+	                <span class="time">开始时间:<span ng-bind="x.trainingStart"></span></span><br/>
+	                <span class="time">结束时间:<span ng-bind="x.trainingEnd"></span></span><br/><br/>
+	                <ul class="trainListInfo list-unstyled">
+	                    <li><i class="fa fa-wrench fa-wrenchIng"></i>&nbsp;&nbsp;<span ng-bind="x.trainType"></span></li>
+	                    <li><i class="fa fa-file-text-o fa-file-text-oIng"></i>&nbsp;&nbsp;<span ng-bind="x.projectName"></span></li>
+	                </ul>
+	            </div>
+	            <div class="col-sm-2 text-center" style="float: right;">
+					<h4 style="color: #5fb752;"><a class="btn registBtn" ng-if="x.trainURL==''" href="{{x.trainURL}}">去培训</a>
+<!-- 		              <a  class="btn registBtn" ng-if="x.trainURL!=''" href="{{x.trainURL}}?teacherUuid={{x.teacherUuid}}&projectId={{x.projectId}}&trainingSubjectId={{x.trainingSubjectId}}" target="_blank">去培训</a></h4> -->
+		              <a onclick="new_window = window.open();checkIsTest(this);" class="btn registBtn" ng-if="x.trainURL!=''" href="javascript:void(0);" data-id="{{x.ttrId}}" data-url="{{x.trainURL}}?teacherUuid={{x.teacherUuid}}&projectId={{x.projectId}}&trainingSubjectId={{x.trainingSubjectId}}" target="_blank">去培训</a></h4>
+	            </div>
+	        </div>
+	        <div  ng-show="x.trainTypeN=='1'">
+	            <div class="col-xs-2 text-center leftContent">
+	                <span class="trainDate training" ng-bind="x.createDate"></span><br/>
+	                <span class="trainYear training"><span ng-bind="x.createYear"></span>发布时间</span>
+	                <br/>
+	                <img src="../images/trainingRecord/training.png" alt="进行中"/><br/>
+	                <span class="trainStatus training">进行中</span>
+	            </div>
+	            <div class="col-xs-5 col-xs-offset-1 centerContent">
+	                <span class="trainSubject training" ng-bind="x.subjectName"></span>
+	                <br/>
+	                <span class="training"><i id="fa-registeding" class="fa fa-check-square fa-registed" style="color: #e95a6f;"></i>&nbsp;已报到</span>
+	                <br/><br/><br/>
+	                <ul class="trainListInfo list-unstyled">
+	                    <li><i class="fa fa-map-marker fa-map-markerIng"></i>&nbsp;&nbsp;<span ng-bind="x.trainingCollege"></span></li>
+	                    <li><i class="fa fa-home fa-homeIng"></i>&nbsp;&nbsp;<span ng-bind="x.trainingAddr"></span></li>
+	                </ul>
+	            </div>
+	            <div class="col-xs-4 rightContent">
+	                <span class="time">开始时间:<span ng-bind="x.trainingStart"></span></span><br/>
+	                <span class="time">结束时间:<span ng-bind="x.trainingEnd"></span></span><br/><br/>
+	                <ul class="trainListInfo list-unstyled">
+	                    <li><i class="fa fa-wrench fa-wrenchIng"></i>&nbsp;&nbsp;<span ng-bind="x.trainType"></span></li>
+	                    <li><i class="fa fa-file-text-o fa-file-text-oIng"></i>&nbsp;&nbsp;<span ng-bind="x.projectName"></span></li>
+	                </ul>
+	            </div>
+	        </div>
+        </div>
+        <div class="row" ng-if="x.trainingStatus=='3'">
+            <hr/>
+            <div class="col-xs-2 text-center leftContent">
+                <img src="../images/trainingRecord/qualified.png" class="img-responsive" style="position: relative;left: -20px;top: -20px;"  alt="合格"/>
+                <span style="position: relative;left: -40px;top: -20px;">合格</span>
+                <span class="trainDate trainEnd" ng-bind="x.createDate"></span><br/>
+                <span class="trainYear"><span ng-bind="x.createYear"></span>发布时间</span>
+                <br/>
+                <img src="../images/trainingRecord/trainEnd.png" alt="已结束"/><br/>
+                <span class="trainStatus trainEnd">已结束</span>
+            </div>
+            <div class="col-xs-5 col-xs-offset-1 centerContent">
+                <span class="trainSubject" ng-bind="x.subjectName"></span>
+                <br/>
+                <span class=""><i class="fa fa-check-square fa-registed" style="color: #8b8b8c;"></i>&nbsp;已报到</span>
+                <br/><br/><br/>
+                <ul class="trainListInfo list-unstyled">
+                    <li><i class="fa fa-map-marker fa-map-markerEnd"></i>&nbsp;&nbsp;<span ng-bind="x.trainingCollege"></span></li>
+                    <li><i class="fa fa-home fa-homeEnd"></i>&nbsp;&nbsp;<span ng-bind="x.trainingAddr"></span></li>
+                </ul>
+                <span class="score" style="font-size: 18px;color: #e95a6f;"><span ng-bind="x.trainingScore"></span>分</span>&nbsp; <span style="background-color: #e95a6f;color: #fff;  border-radius: 4px;padding: 0 2px;">满分100</span><br/><br/>
+                <div class="moreInfo hide">
+                    <span class="certificateNum">证书编号:<span ng-bind="x.certificate"></span></span><br/><br/>
+                    <span class="trainGetHours">获得学时:<span ng-bind="x.trainHour"></span></span>
+                </div>
+            </div>
+            <div class="col-xs-4 rightContent">
+                <span class="time">开始时间:<span ng-bind="x.trainingStart"></span></span><br/>
+                <span class="time">结束时间:<span ng-bind="x.trainingEnd"></span></span><br/><br/>
+                <ul class="trainListInfo list-unstyled">
+                    <li><i class="fa fa-wrench fa-wrenchEnd"></i>&nbsp;&nbsp;<span ng-bind="x.trainType"></span></li>
+                    <li><i class="fa fa-file-text-o fa-file-text-oEnd"></i>&nbsp;&nbsp;<span ng-bind="x.projectName"></span></li>
+                </ul>
+                <a onclick="moreInfo(this);">查看更多</a><br/><br/>
+                <div class="moreInfo hide">
+                    <span class="trainAllHours">培训总学时:<span style="color:#e95a6f" ng-bind="x.trainingClassHour"></span>学时</span><br/><br/>
+                    <span class="trainGetNetHours">获得网络研修学时:<span ng-bind="x.trainingOnlineHour"></span></span>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-if="x.trainingStatus=='4'">
+            <hr/>
+            <div class="col-xs-2 text-center leftContent">
+                <img src="../images/trainingRecord/unqualified.png" class="img-responsive" style="position: relative;left: -20px;top: -20px;"  alt="不合格"/>
+                <span style="position: relative;left: -40px;top: -20px;">不合格</span>
+                <span class="trainDate trainEnd" ng-bind="x.createDate"></span><br/>
+                <span class="trainYear"><span ng-bind="x.createYear"></span>发布时间</span>
+                <br/>
+                <img src="../images/trainingRecord/trainEnd.png" alt="已结束"/><br/>
+                <span class="trainStatus trainEnd">已结束</span>
+            </div>
+            <div class="col-xs-5 col-xs-offset-1 centerContent">
+                <span class="trainSubject" ng-bind="x.subjectName"></span>
+                <br/>
+                <span class=""><i class="fa fa-check-square fa-registed" style="color: #8b8b8c;"></i>&nbsp;已报到</span>
+                <br/><br/><br/>
+                <ul class="trainListInfo list-unstyled">
+                    <li><i class="fa fa-map-marker fa-map-markerEnd"></i>&nbsp;&nbsp;<span ng-bind="x.trainingCollege"></span></li>
+                    <li><i class="fa fa-home fa-homeEnd"></i>&nbsp;&nbsp;<span ng-bind="x.trainingAddr"></span></li>
+                </ul>
+                <span class="score" style="font-size: 18px;color: #e95a6f;"><span ng-bind="x.trainingScore"></span>分</span>&nbsp; <span style="background-color: #e95a6f;color: #fff;  border-radius: 4px;padding: 0 2px;">满分100</span><br/><br/>
+                <div class="moreInfo hide">
+                    <span class="certificateNum">证书编号:<span ng-bind="x.certificate"></span></span><br/><br/>
+                    <span class="trainGetHours">获得学时:<span ng-bind="x.trainHour"></span></span><br/><br/>
+                    <span class="unqualifiedReason">不合格原因:<span ng-bind="x.trainingReason"></span></span>
+                </div>
+            </div>
+            <div class="col-xs-4 rightContent">
+                <span class="time">开始时间:<span ng-bind="x.trainingStart"></span></span><br/>
+                <span class="time">结束时间:<span ng-bind="x.trainingEnd"></span></span><br/><br/>
+                <ul class="trainListInfo list-unstyled">
+                    <li><i class="fa fa-wrench fa-wrenchEnd"></i>&nbsp;&nbsp;<span ng-bind="x.trainType"></span></li>
+                    <li><i class="fa fa-file-text-o fa-file-text-oEnd"></i>&nbsp;&nbsp;<span ng-bind="x.projectName"></span></li>
+                </ul>
+                <a onclick="moreInfo(this);">查看更多</a><br/><br/>
+                <div class="moreInfo hide">
+                    <span class="trainAllHours">培训总学时:<span style="color:#e95a6f" ng-bind="x.trainingClassHour"></span>学时</span><br/><br/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+</body>
+</html>

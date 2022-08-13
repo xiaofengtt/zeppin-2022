@@ -1,0 +1,138 @@
+@charset "UTF-8";
+
+.main .title {
+    font-size: 18px;
+    color: #2B2B2B;
+}
+
+
+
+
+
+.search_body {
+    display: inline-block;
+    width: 200px;
+    height: 30px;
+    position: relative;
+    border: 1px solid #A6A6A6;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.search {
+    width: 148px;
+    height: 25px;
+    margin: 4px 0 0 12px;
+    font-family: PingFangSC-Light;
+    font-size: 12px;
+    color: #C1C1C1;
+    display: inline-block;
+    border: none;
+    line-height: normal;
+    line-height: 22px\9;
+}
+
+.search:focus {
+    outline: none;
+}
+
+.search_body i {
+    position: absolute;
+    color: #B9B9B9;
+    right: 15px;
+    top: 5px;
+}
+
+.select_page {
+    position: absolute;
+    width: auto;
+    font-family: SourceSansPro-ExtraLight;
+    font-size: 16px;
+    top: 2px;
+    right: 0;
+}
+
+.select_page ul li {
+    float: left;
+    border: 1px solid #D1D1D1;
+    margin-right: 3px;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    color: #888888;
+}
+
+.select_page ul {
+    width: auto;
+}
+
+.select_page ul .page {
+    width: 85px;
+}
+
+.select_page ul .one {
+    border: 1px solid #E0615F;
+}
+
+.select_page ul .none {
+    border: none;
+}
+
+.select_page ul li a {
+    width: 100%;
+    height: 100%;
+    color: #888888;
+    display: block;
+}
+
+.select_page ul .one a {
+    color: #E0615F;
+}
+
+.select_page ul li a {
+    width: 100%;
+    height: 100%;
+    color: #888888;
+    display: block;
+}
+
+
+
+
+/*分页*/
+
+.ui-paging-container li.ui-pager:hover, .ui-paging-container li.focus{
+	background-color:#E0615F;
+}
+#select_page{
+	position: absolute;
+	bottom:0px;
+	right:3px;
+}
+
+
+/*分页样式*/
+.ui-paging-container{
+	color:#888;
+	font-size:12px;
+	
+}
+#select_page{
+	position: absolute;
+	bottom:0px;
+	right:3px;
+}
+
+.ui-paging-container li.ui-pager:hover, .ui-paging-container li.focus{
+	background-color:#E0615F;
+	color:#FFFFFF;
+}

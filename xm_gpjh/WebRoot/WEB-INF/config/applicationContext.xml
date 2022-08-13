@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="placeholderConfig"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:init.properties</value>
+		</property>
+	</bean>
+	<bean id="portalDataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close" dependency-check="none">
+		<property name="driverClass">
+			<value>${datasource.driverClassName}</value>
+		</property>
+		<property name="jdbcUrl">
+			<value>${datasource.url}</value>
+		</property>
+		<property name="user">
+			<value>${datasource.username}</value>
+		</property>
+		<property name="password">
+			<value>${datasource.password}</value>
+		</property>
+		<property name="acquireIncrement">
+			<value>${c3p0.acquireIncrement}</value>
+		</property>
+		<property name="initialPoolSize">
+			<value>${c3p0.initialPoolSize}</value>
+		</property>
+		<property name="minPoolSize">
+			<value>${c3p0.minPoolSize}</value>
+		</property>
+		<property name="maxPoolSize">
+			<value>${c3p0.maxPoolSize}</value>
+		</property>
+		<property name="maxIdleTime">
+			<value>${c3p0.maxIdleTime}</value>
+		</property>
+		<property name="idleConnectionTestPeriod">
+			<value>${c3p0.idleConnectionTestPeriod}</value>
+		</property>
+		<property name="maxStatements">
+			<value>${c3p0.maxStatements}</value>
+		</property>
+		<property name="numHelperThreads">
+			<value>${c3p0.numHelperThreads}</value>
+		</property>
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="portalDataSource" />
+		</property>
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:com/whaty/platform/entity/bean</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+				<prop key="hibernate.show_sql">
+					${hibernate.show_sql}
+				</prop>
+				<prop key="hibernate.jdbc.fetch_size">
+					${hibernate.jdbc.fetch_size}
+				</prop>
+				<prop key="hibernate.jdbc.batch_size">
+					${hibernate.jdbc.batch_size}
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="myTransactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="txProxyTemplate" abstract="true" lazy-init="true"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="create*">
+					PROPAGATION_REQUIRED,-java.lang.Exception
+				</prop>
+				<prop key="save*">
+					PROPAGATION_REQUIRED,-java.lang.Exception
+				</prop>
+				<prop key="remove*">
+					PROPAGATION_REQUIRED,-java.lang.Exception
+				</prop>
+				<prop key="update*">
+					PROPAGATION_REQUIRED,ISOLATION_READ_COMMITTED
+				</prop>
+				<prop key="del*">
+					PROPAGATION_REQUIRED,-java.lang.Exception
+				</prop>
+				<prop key="*">PROPAGATION_REQUIRED,ISOLATION_DEFAULT</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>
+					com.whaty.platform.entity.web.action.MyBaseAction
+				</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="generalDao"
+		class="com.whaty.platform.entity.dao.hibernate.GeneralHibernateDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="generalTarget"
+		class="com.whaty.platform.entity.service.imp.GeneralServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="generalService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="generalTarget" />
+		</property>
+	</bean>
+
+	<bean id="myListDao"
+		class="com.whaty.platform.entity.dao.MyListDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="myListTarget"
+		class="com.whaty.platform.entity.service.imp.MyListServiceImp">
+		<property name="myListDao">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	<bean id="myListService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="myListTarget" />
+		</property>
+	</bean>
+
+	<bean id="peMjorTarget"
+		class="com.whaty.platform.entity.service.PeMjorService">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="peMjorService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="peMjorTarget" />
+		</property>
+	</bean>
+
+	<bean id="peDocumentTarget"
+		class="com.whaty.platform.entity.service.imp.information.PeDocumentServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="peDocumentService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="peDocumentTarget" />
+		</property>
+	</bean>
+
+	<bean id="peVotePaperTarget"
+		class="com.whaty.platform.entity.service.imp.information.PeVotePaperServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="peVotePaperService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="peVotePaperTarget" />
+		</property>
+	</bean>
+
+	<bean id="studentTarget"
+		class="com.whaty.platform.entity.service.studentStatas.StudentService">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="studentService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="studentTarget" />
+		</property>
+	</bean>
+
+	<bean id="peStudentTarget"
+		class="com.whaty.platform.entity.service.imp.studentStatus.PeStudentSeriveImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="peStudentService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="peStudentTarget" />
+		</property>
+	</bean>
+
+	<bean id="studentJudgmentTarget"
+		class="com.whaty.platform.entity.service.imp.studentStatus.StudentJudgmentServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="studentJudgmentService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="studentJudgmentTarget" />
+		</property>
+	</bean>
+
+	<bean id="peChangeSiteTarget"
+		class="com.whaty.platform.entity.service.imp.studentStatus.PeChangeSiteServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="peChangeSiteService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="peChangeSiteTarget" />
+		</property>
+	</bean>
+
+	<bean id="peChangeMajorTarget"
+		class="com.whaty.platform.entity.service.imp.studentStatus.PeChangeMajorServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="peChangeMajorService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="peChangeMajorTarget" />
+		</property>
+	</bean>
+
+	<bean id="peChangeTypeTarget"
+		class="com.whaty.platform.entity.service.imp.studentStatus.PeChangeTypeServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="peChangeTypeService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="peChangeTypeTarget" />
+		</property>
+	</bean>
+
+	<bean id="prStuChangeSchoolTarget"
+		class="com.whaty.platform.entity.service.imp.studentStatus.PrStuChangeSchoolServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="prStuChangeSchoolService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="prStuChangeSchoolTarget" />
+		</property>
+	</bean>
+
+	<bean id="systemApplyTarget"
+		class="com.whaty.platform.entity.service.imp.SystemApplyServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+		<property name="myListDao">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	<bean id="systemApplyService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="systemApplyTarget" />
+		</property>
+	</bean>
+
+	<bean id="feeRefundTarget"
+		class="com.whaty.platform.entity.service.imp.fee.FeeRefundServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="feeRefundService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="feeRefundTarget" />
+		</property>
+	</bean>
+
+	<bean id="prFeeDetailReduceTarget"
+		class="com.whaty.platform.entity.service.imp.fee.PrFeeDetailReduceServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="prFeeDetailReduceService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="prFeeDetailReduceTarget" />
+		</property>
+	</bean>
+
+	<bean id="feeStandardTarget"
+		class="com.whaty.platform.entity.service.imp.fee.FeeStandardServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+
+	<bean id="feeStandardService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="feeStandardTarget" />
+		</property>
+	</bean>
+
+	<bean id="peFeeBatchTarget"
+		class="com.whaty.platform.entity.service.imp.fee.PeFeeBatchServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="peFeeBatchService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="peFeeBatchTarget" />
+		</property>
+	</bean>
+
+	<bean id="prFeeDetailSpecialTarget"
+		class="com.whaty.platform.entity.service.imp.fee.PrFeeDetailSpecialServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="prFeeDetailSpecialService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="prFeeDetailSpecialTarget" />
+		</property>
+	</bean>
+
+	<bean id="feeDetailTarget"
+		class="com.whaty.platform.entity.service.imp.fee.PrFeeDetailServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="feeDetailService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="feeDetailTarget" />
+		</property>
+	</bean>
+
+	<bean id="prFeeDetailService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="feeDetailTarget" />
+		</property>
+	</bean>
+
+	<bean id="peTchBookTarget"
+		class="com.whaty.platform.entity.service.imp.teaching.basicInfo.PeTchBookServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+		<property name="myListDao">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	<bean id="peTchBookService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="peTchBookTarget" />
+		</property>
+	</bean>
+
+	<bean id="peTchCourseTarget"
+		class="com.whaty.platform.entity.service.imp.teaching.basicInfo.PeTchCourseServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+		<property name="myListDao">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	<bean id="peTchCourseService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="peTchCourseTarget" />
+		</property>
+	</bean>
+	
+	<bean id="peTchProgramTarget"
+		class="com.whaty.platform.entity.service.imp.teaching.basicInfo.PeTchProgramServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="peTchProgramService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="peTchProgramTarget" />
+		</property>
+	</bean>
+
+	<bean id="ssoUserTarget"
+		class="com.whaty.platform.sso.service.SsoUserServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="ssoUserService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="ssoUserTarget" />
+		</property>
+	</bean>
+
+	<bean id="peTeacherServiceTarget"
+		class="com.whaty.platform.entity.service.imp.teaching.basicInfo.PeTeacherServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="peTeacherService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="peTeacherServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="electiveCancelServiceTarget"
+		class="com.whaty.platform.entity.service.imp.teaching.elective.ElectiveCancelServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+		<property name="myListDAO">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	
+	<bean id="prBzzTchSelectCoursesSerivceTarget" 
+		class="com.whaty.platform.entity.service.imp.teaching.elective.PrBzzTchSelectCoursesSerivceImpl">
+		<property name="generalDao" ref="generalDao"/>
+	</bean>
+	
+	<bean id="prBzzTchSelectCoursesSerivce" parent="txProxyTemplate">
+		<property name="target" ref="prBzzTchSelectCoursesSerivceTarget"/>
+	</bean>
+	
+	<bean id="electiveCancelService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="electiveCancelServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="studentElectiveServiceTarget"
+		class="com.whaty.platform.entity.service.imp.teaching.elective.StudentElectiveServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+		<property name="myListDAO">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	<bean id="studentElectiveService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="studentElectiveServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="manualOpenCourseServiceTarget"
+		class="com.whaty.platform.entity.service.imp.teaching.elective.ManualOpenCourseServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+		<property name="myListDao">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	<bean id="manualOpenCourseService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="manualOpenCourseServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="semesterOpenCourseServiceTarget"
+		class="com.whaty.platform.entity.service.imp.teaching.elective.SemesterOpenCourseServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+		<property name="myListDAO">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	<bean id="semesterOpenCourseService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="semesterOpenCourseServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="PrExamBookingTarget"
+		class="com.whaty.platform.entity.service.imp.exam.finalExam.PrExamBookingServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+		<property name="myListDao">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	<bean id="prExamBookingService" parent="txProxyTemplate">
+		<property name="target">
+			<ref bean="PrExamBookingTarget" />
+		</property>
+	</bean>
+
+	<bean id="prRecExamStuCourseServiceTarget"
+		class="com.whaty.platform.entity.service.imp.recruit.recExam.PrRecExamStuCourseServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="prRecExamStuCourseService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="prRecExamStuCourseServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="peManagerServiceTarget"
+		class="com.whaty.platform.sso.service.admin.PeManagerServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="peManagerService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="peManagerServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="peSitemanagerServiceTarget"
+		class="com.whaty.platform.sso.service.admin.PeSitemanagerServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="peSitemanagerService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="peSitemanagerServiceTarget" />
+		</property>
+	</bean>
+
+	<!-- gaoyuan begin -->
+	<bean id="peEnterprisemanagerServiceTarget"
+		class="com.whaty.platform.sso.service.admin.PeEnterprisemanagerServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="peEnterprisemanagerService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="peEnterprisemanagerServiceTarget" />
+		</property>
+	</bean>
+	<!-- gaoyuan end -->
+
+
+	<bean id="recruitManageServiceTarget"
+		class="com.whaty.platform.entity.service.imp.recruit.recExam.RecruitManageServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="recruitManageService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="recruitManageServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="finalScoreServiceTarget"
+		class="com.whaty.platform.entity.service.imp.teaching.paper.FinalScoreServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+		<property name="myListDAO">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	<bean id="finalScoreService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="finalScoreServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="examScoreComposeServiceTarget"
+		class="com.whaty.platform.entity.service.imp.teaching.examScore.ExamScoreComposeServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+		<property name="myListDAO">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	<bean id="examScoreComposeService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="examScoreComposeServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="examScoreBatchServiceTarget"
+		class="com.whaty.platform.entity.service.imp.teaching.examScore.ExamScoreBatchServiceImp">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+		<property name="myListDAO">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	<bean id="examScoreBatchService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="examScoreBatchServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="recruitManageMatriculatServiceTarget"
+		class="com.whaty.platform.entity.service.imp.recruit.recmanage.RecruitManageMatriculatServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="recruitManageMatriculatService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="recruitManageMatriculatServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="prPriRangeRightServiceTarget"
+		class="com.whaty.platform.sso.service.admin.PrPriRangeRightServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="prPriRangeRightService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="prPriRangeRightServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="pePriRoleServiceTarget"
+		class="com.whaty.platform.sso.service.admin.PePriRoleServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="pePriRoleService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="pePriRoleServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="prEduMajorSiteFeeLevelServiceTarget"
+		class="com.whaty.platform.entity.service.imp.basic.PrEduMajorSiteFeeLevelServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="prEduMajorSiteFeeLevelService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="prEduMajorSiteFeeLevelServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="flagActiveServiceTarget"
+		class="com.whaty.platform.entity.service.imp.basic.FlagActiveServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="flagActiveService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="flagActiveServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="prExamOpenMaincourseServiceTarget"
+		class="com.whaty.platform.entity.service.imp.exam.mainCourse.PrExamOpenMaincourseServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+		<property name="myListDao">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	<bean id="prExamOpenMaincourseService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="prExamOpenMaincourseServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="creatInputUserServiceTarget"
+		class="com.whaty.platform.entity.service.imp.exam.finalExam.CreatInputUserServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+		<property name="myListDao">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	<bean id="creatInputUserService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="creatInputUserServiceTarget" />
+		</property>
+	</bean>
+
+	<bean id="peRecStudentAddServiceTarget"
+		class="com.whaty.platform.entity.service.imp.recruit.registration.PeRecStudentAddServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	
+	<bean id="peRecStudentAddService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="peRecStudentAddServiceTarget" />
+		</property>
+	</bean>
+	<bean id="peBzzstudentbacthServiceTarget"
+		class="com.whaty.platform.entity.service.imp.basic.PeBzzstudentbacthServiceimp">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+	<bean id="peBzzstudentbacthService" parent="txProxyTemplate">
+		<property name="target" ref="peBzzstudentbacthServiceTarget" />
+	</bean>
+
+	<bean id="enterpriseBacthServiceTarget"
+		class="com.whaty.platform.entity.service.imp.basic.PeEnterpriseBacthServiceImpl">
+		<property name="generalDao" ref="generalDao" />
+	</bean>
+
+	<bean id="enterpriseBacthService" parent="txProxyTemplate">
+		<property name="target" ref="enterpriseBacthServiceTarget" />
+	</bean>
+
+	<bean id="prBzzTchOpenCourseServiceTarget"
+		class="com.whaty.platform.entity.service.imp.basic.PrBzzTchOpenCourseServiceImp">
+		<property name="generalDao" ref="generalDao"/>
+	</bean>
+	
+	<bean id="prBzzTchOpenCourseService" parent="txProxyTemplate">
+		<property name="target" ref="prBzzTchOpenCourseServiceTarget"/>
+	</bean>
+	
+	<bean id="bzzAssessServiceTarget" class="com.whaty.platform.entity.service.imp.basic.BzzAssessServiceImpl">
+		<property name="generalDao" ref="generalDao"></property>
+	</bean>
+
+	<bean id="bzzAssessService" parent="txProxyTemplate">
+		<property name="target" ref="bzzAssessServiceTarget"></property>
+	</bean>
+
+	<bean id="peSmsInfoService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="peSmsInfoServiceTarget" />
+		</property>
+	</bean>
+	<bean id="peSmsInfoServiceTarget"
+		class="com.whaty.platform.entity.service.imp.sms.PeSmsInfoServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myListDao">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	<!-- 学员管理  begin  by 侯学龙-->
+	<bean id="peTraineeService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="peTraineeServiceTarget" />
+		</property>
+	</bean>
+	<bean id="peTraineeServiceTarget"
+		class="com.whaty.platform.entity.service.imp.basic.PeTraineeServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+		<property name="myListDao">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	
+	<!-- 学员管理 end-->
+	<!-- 项目申报  begin  by 侯学龙-->
+	<bean id="programApplyService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="programApplyServiceTarget" />
+		</property>
+	</bean>
+	<bean id="programApplyServiceTarget"
+		class="com.whaty.platform.entity.service.imp.programApply.ProgramApplyServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="myListDao">
+			<ref local="myListDao" />
+		</property>
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<bean id="programImpletationService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="programImpletationServiceTarget" />
+		</property>
+	</bean>
+	<bean id="programImpletationServiceTarget"
+		class="com.whaty.platform.entity.service.imp.programApply.ProgramImpletationServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<!-- 项目申报 end -->
+	
+	<!-- 项目评审 start -->
+	<bean id="programJudgmentService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="programJudgmentServiceTarget" />
+		</property>
+	</bean>
+	<bean id="programJudgmentServiceTarget"
+		class="com.whaty.platform.entity.service.imp.programJudge.ProgramJudgmentServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+	</bean>
+	<!-- 项目评审 end -->
+	
+	<!-- 指定项目管理员 start -->
+	<bean id="peProApplyPriService" parent="txProxyTemplate"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="target">
+			<ref bean="peProApplyPriServiceTarget" />
+		</property>
+	</bean>
+	<bean id="peProApplyPriServiceTarget"
+		class="com.whaty.platform.entity.service.imp.basic.PeProApplyPriServiceImp"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="generalDao">
+			<ref local="generalDao" />
+		</property>
+		<property name="myListDao">
+			<ref local="myListDao" />
+		</property>
+	</bean>
+	<!-- 指定项目管理员 end -->
+	
+	<bean id="personalInfoService" parent="txProxyTemplate">
+		<property name="target" ref="personalInfoServiceTarget"/>
+	</bean>
+	
+	<bean id="personalInfoServiceTarget" class="com.whaty.platform.entity.service.imp.information.PersonalInfoServiceImpl">
+		<property name="generalDao" ref="generalDao"></property>
+	</bean>
+
+
+	<bean id="lobHandler" lazy-init="true"
+		class="org.springframework.jdbc.support.lob.OracleLobHandler">
+		<property name="nativeJdbcExtractor">
+			<ref bean="nativeJdbcExtractor" />
+		</property>
+	</bean>
+
+	<bean id="nativeJdbcExtractor" lazy-init="true"
+		class="org.springframework.jdbc.support.nativejdbc.SimpleNativeJdbcExtractor" />
+	
+	<!-- 定时任务 用于发送定时短信 begin-->
+	<!-- 
+	<bean id="sendMessageJob"
+		class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass">
+			<value>
+				
+				com.whaty.platform.entity.web.action.sms.SendMessageJob
+			</value>
+		</property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="generalService">
+					<ref bean="generalService" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+  	<bean id="sendMessageCronTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="sendMessageJob" />
+		</property>
+		<property name="cronExpression">
+			<value>5 0/5 * * * ?</value> 
+		</property>
+	</bean>
+	
+  	<bean id="scheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="sendMessageCronTrigger" />
+			</list>
+		</property>
+	</bean>
+	 -->
+	
+	<!-- 定时任务 用于发送定时短信 begin-->
+</beans>
+

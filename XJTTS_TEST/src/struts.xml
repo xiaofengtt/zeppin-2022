@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 配置struts相关选项 -->
+	<constant name="struts-devmode" value="false"></constant>
+	<constant name="struts-locale" value="zh-CN">constant</constant>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<constant name="struts.multipart.maxSize" value="100000000000" />
+	<constant name="struts.multipart.parser" value="myRequestParser" />
+    <bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest" name="myRequestParser" class="cn.zeppin.action.base.RequestParseWrapper" scope="default" optional="true" />
+	<package name="main" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="adminInterceptor"
+				class="cn.zeppin.interceptor.adminInterceptor"></interceptor>
+			<interceptor-stack name="adminFilter">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="adminInterceptor"></interceptor-ref>
+			</interceptor-stack>
+
+		</interceptors>
+
+
+		<global-results>
+			<result name="login">/login.jsp</result>
+			<result name="input">/login.jsp</result>
+			<result name="json">/json.jsp</result>
+		</global-results>
+
+		<action name="login_*" class="loginAction" method="{1}">
+			<result name="fail">/index.jsp</result>
+			<result name="paperfail">/paper/index.jsp</result>
+			<result name="logout" type="redirect">index.jsp</result>
+			<result name="admin" type="redirect">admin/main.jsp</result>
+			<result name="project">/index.jsp</result>
+			<result name="paper" type="redirect">/paper/paper_view.action?pid=${projectid}&amp;sid=${subjectid}&amp;tc=${trainingCollege}&amp;type=${type}&amp;valuator=${valuator}&amp;id=${psq}
+			</result>
+			<result name="paperlist">/paper/chooselist.jsp</result>
+			<result name="modifyPassword">/modifyPassword.jsp</result>
+			<!-- <result name="training" >admin/training.jsp</result> -->
+		</action>
+
+
+	</package>
+
+
+
+	<include file="struts-base.xml"></include>
+	<include file="struts-admin.xml" />
+	<include file="struts-paper.xml" />
+	<include file="struts-teacher.xml" />
+	<include file="struts-train.xml" />
+
+</struts>    

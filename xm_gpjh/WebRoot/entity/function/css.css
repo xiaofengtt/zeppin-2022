@@ -1,0 +1,325 @@
+a:link {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+}
+a:visited {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+}
+a:hover {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #0F3376;
+	text-decoration: none;
+}
+a:active {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+}
+BODY {
+ SCROLLBAR-HIGHLIGHT-COLOR: 
+ SCROLLBAR-SHADOW-COLOR: rgb(116,175,255);
+ SCROLLBAR-3DLIGHT-COLOR: rgb(255,205,93);
+ SCROLLBAR-ARROW-COLOR: rgb(202,213,219);
+ SCROLLBAR-TRACK-COLOR: rgb(255,255,255)
+}
+.table2 {
+	background: #FFFFFF;
+	height: 16px;
+}
+
+.index {
+}
+.table {
+	width: 100%;
+	border: 1px solid #999999;
+	height: 100%;
+	font: 12px "宋体";
+}
+
+
+
+.banquan {
+	font-family: "宋体";
+	font-size: 12px;
+	color: #333333;
+	padding-top:px;
+	text-decoration: none;
+}
+.Dangqiankejian {
+	font: 12px "宋体";
+	color: #333333;
+	padding-left: 12px;
+}
+
+.menu01{
+	background-image:url(images/anniu.jpg);
+	font-size:12px;
+	color:#00CCCC;
+	height:24px;
+	padding-left:24px;
+	padding-top:0.5px;
+	text-decoration:none;
+	}
+.search {
+	background: url(images/search.jpg) left top;
+}
+.menu01 a {
+	text-decoration: none;
+	color: #2F7279;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	font-style: normal;
+}
+a:hover {
+	text-decoration: none;
+	color: #000000;
+	font-style: normal;
+
+}
+.wenzi {
+	font: 12px "宋体";
+	position: static;
+	margin-top: 7px;
+	margin-left: 5px;
+	height: 100%;
+	border-right: 1px solid #5EA7B9;
+	border-bottom: 1px solid #5EA7B9;
+	border-left: 1px solid #5EA7B9;
+	border-top-style: none;
+	background: #F4F4F6;
+}
+.zhongjianwenzi {
+	font: 12px "宋体";
+	color: #000033;
+}
+.TIME {
+	font: 12px "宋体";
+	color: #333333;
+	background: url(images/time.png) no-repeat 2px 1px;
+	height: 20px;
+	text-indent: 6px;
+}
+.LeftTABLE {
+	height: 100%;
+	width: 153px;
+	position: 固定;
+	overflow: scroll;
+}
+.bianjitianoti {
+	font: bold 12px "宋体";
+	color: #000000;
+}
+
+
+
+
+.rightlayer {
+	font: normal 12px "宋体";
+	background: #F4F4F6 3px 2px;
+	overflow: visible;
+	position: relative;
+	text-decoration: none;
+	cursor: auto;
+	width: 170px;
+	border-top: none;
+	border-right: none;
+	border-bottom: none;
+	border-left: none;
+	display: inline;
+}
+
+.password {
+	font: 12px "宋体";
+	height: 18px;
+	padding-left: 20px;
+}
+.input1 {
+	font: 12px "宋体";
+	height: 16px;
+	padding-left: 5px;
+}
+.input2 {
+	height: 20px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #006699;
+	text-transform: none;
+}
+
+
+.username {
+	font: 12px "宋体";
+	background: #FFFFFF url(images/comments.png) no-repeat 2px 2px;
+	height: 19px;
+	padding-left: 12px;
+}
+.gonggaoziti {
+	color: #4A616C;
+	text-decoration: none;
+	padding-top: 2px;
+	font-family: "宋体";
+	font-size: 12px;
+}
+
+.zhuangtailan {
+	font: 12px "宋体";
+	background: url(images/1.jpg);
+	height: 22px;
+	width: 100%;
+	text-align: left;
+	padding-top: 5px;
+	padding-left: 5px;
+	border-top: 1px none #97A7AC;
+	border-right: 1px solid #97A7AC;
+	border-bottom: 1px none #97A7AC;
+	border-left: 1px solid #97A7AC;
+	color: #2D80AA;
+}
+
+.input {
+	background: url(images/search.jpg) no-repeat;
+}
+
+.username1 {
+	background: #FFFFFF url(images/user.png) no-repeat 2px 2px;
+	height: 18px;
+	font: 12px "宋体";
+	left: 14px;
+}
+
+.layer {
+	background: left top;
+	height: 350px;
+	width: 260px;
+	font-size: 12px;
+	border: 1px solid #CCCCCC;
+}
+.bottom {
+	font: 12px "宋体";
+	color: #333333;
+}
+.bottom-1 {
+	font: 12px "宋体";
+	color: #333333;
+	height: 18px;
+}
+
+
+.panel-content img {
+	padding: 0px;
+}
+.panel-title {
+	font-size: 12px;
+	font-weight: bold;
+	border-bottom: 1px dotted #CCCCCC;
+	border-top-color: #FFFFFF;
+	border-right-color: #FFFFFF;
+	border-left-color: #FFFFFF;
+}.frame {
+	background: url(images/middle.jpg);
+	height: 55px;
+	width: 100%;
+	border-top: 1px solid #8798A0;
+	border-right: 1px none #8798A0;
+	border-bottom: 1px solid #8798A0;
+	border-left: 1px none #8798A0;
+}
+.blueline {
+	font-family: "宋体";
+	background: url(images/middle-blue.jpg);
+	height: 6px;
+	width: 100%;
+	border-top: 1px none #5EA7B9;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+}
+.line {
+	font-family: "宋体";
+	border-right: 1px solid #677A81;
+	border-bottom: 1px solid #677A81;
+	border-left: 1px solid #677A81;
+	height: 100%;
+	border-top: 1px solid #677A81;
+	padding-top: 16px;
+}
+.label {
+	font: 12px "宋体";
+	height: 18px;
+}
+.space {
+	font: 12px "宋体";
+	height: 5px;
+}
+.kejianliebiao {
+	font: 12px "宋体";
+	background: #E4E9EC url(images/csv.png) no-repeat;
+	padding-left: 20px;
+	height: 20px;
+	padding-top: 4px;
+	border-top: 1px none #D2DBE0;
+	border-right: 1px solid #D2DBE0;
+	border-bottom: 1px solid #D2DBE0;
+	border-left: 1px solid #D2DBE0;
+}
+.kejianliebiao2 {
+	font: 12px "宋体";
+	background: #FFFFFF url(images/csv.png) no-repeat;
+	border-right: 1px solid #D2DBE0;
+	border-bottom: 1px solid #D2DBE0;
+	border-left: 1px solid #D2DBE0;
+	padding-left: 20px;
+	padding-top: 4px;
+}
+
+.Biaoti {
+	font: bold 12px "宋体";
+	color: #2B80A9;
+	padding-left: 10px;
+	border-right: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-bottom: 1px dotted #CCCCCC;
+}
+#Layer1 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:1;
+}
+.xian {
+	border: 1px double #598A93;
+}
+.zi_1 {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 20px;
+	color: #000000;
+	text-decoration: none;
+}
+.zi_2 {
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 22px;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+}
+.biaoti14 {
+	font-family: "宋体";
+	font-size: 14px;
+	line-height: 28px;
+	font-weight: bold;
+	color: #004284;
+	text-decoration: none;
+}

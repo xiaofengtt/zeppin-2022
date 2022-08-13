@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="entity.workspaceTeacher" extends="struts-default" namespace="/entity/workspaceTeacher">
+		<interceptors>
+			<interceptor name="userPriorityInterceptor" class="com.whaty.platform.sso.web.interceptor.UserPriorityInterceptor"></interceptor>
+			<interceptor name="userLoginInterceptor" class="com.whaty.platform.sso.web.interceptor.UserLoginInterceptor"></interceptor>
+			
+			<interceptor-stack name="interceptorStack">
+				<interceptor-ref name="userLoginInterceptor"></interceptor-ref>
+				<interceptor-ref name="userPriorityInterceptor"></interceptor-ref>
+				
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="interceptorStack"></default-interceptor-ref>
+		<global-results>
+			<result name="grid">/test/grid.jsp</result>
+		    <result name="json">/test/json.jsp</result>
+		    <result name="gridjs">/test/gridjs.jsp</result>
+		    <result name="excel">/test/export.jsp</result>
+		    <result name="error">/test/error.jsp</result>
+		    <result name="msg">/test/msg.jsp</result>
+		    <result name="interactionMsg">/test/interactionMsg.jsp</result>
+		    <result name="input">/entity/manager/pub/turnToLogin.jsp </result>
+		</global-results>
+
+		<action name="prTchPaperTitle_*" method="{1}" class="prTchPaperTitleAction">
+		</action>
+		<action name="stuPaperScore_*" method="{1}" class="stuPaperScoreAction">
+		</action>
+		<action name="prTchStuPaperSyllabus_*" method="{1}" class="prTchStuPaperSyllabusAction">
+			<param name="savePath">/incoming/paper/syllabus</param>
+			<result name="toPigai">/entity/teacher/paper_syllabus.jsp</result>
+			<result name="operateResult">/entity/teacher/operateresult.jsp</result>
+			<result name="toDownloadTeacherPiGai">/entity/teacher/downloadSyllabusPiGai.jsp</result>
+			<result name="toDownloadSyllabus">/entity/teacher/downloadSyllabus.jsp</result>
+		</action>
+		<action name="prTchStuPaperDraftA_*" method="{1}" class="prTchStuPaperDraftAAction">
+			<param name="savePath">/incoming/paper/draftA</param>
+			<result name="toPigai">/entity/teacher/paper_draftA.jsp</result>
+			<result name="operateResult">/entity/teacher/operateresult.jsp</result>
+			<result name="toDownloadTeacherPiGai">/entity/teacher/downloadDraftAPiGai.jsp</result>
+			<result name="toDownloadDraftA">/entity/teacher/downloadDraftA.jsp</result>
+		</action>
+		<action name="prTchStuPaperFinal_*" method="{1}" class="prTchStuPaperFinalAction">
+			<result name="toPigai">/entity/teacher/paper_final.jsp</result>
+			<result name="operateResult">/entity/teacher/operateresult.jsp</result>
+			<result name="toDownloadFinal">/entity/teacher/downloadFinal.jsp</result>
+		</action>
+		<action name="tchPeBulletinView_*" method="{1}" class="tchPeBulletinViewAction">
+			<result name="bulletinView">/entity/teacher/bulletin_view.jsp</result>
+			<result name="info">/entity/teacher/info_detail.jsp</result>
+		</action>						
+		<action name="teacher_*" method="{1}" class="teacherAction">
+			<result name="toLeftMenu">/entity/teacher/menu.jsp</result>
+			<result name="viewInfo">/entity/teacher/teacher_info.jsp</result>
+			<result name="toEdit">/entity/teacher/teacher_info_edit.jsp</result>
+			<result name="operateResult">/entity/teacher/operateresult.jsp</result>
+			<result name="toPassword">/entity/teacher/teacher_password_edit.jsp</result>
+			<result name="toTeachingCourses">/entity/teacher/teacher_course_list.jsp</result>
+			<result name="toPaperStep">/entity/teacher/paper_step_select.jsp</result>
+			<result name="toCourseforum">/entity/function/student/courseforum_student.jsp</result>
+		</action>
+		<action name="interactionHomework_*" method="{1}" class="interactionHomeworkAction">
+			<result name="toHomeworkList">/entity/function/uploadHomework/homeworkpaper_list_teacher.jsp</result>
+			<result name="toHomeworkList_student">/entity/function/uploadHomework/homeworkpaper_list_student.jsp</result>
+			<result name="toAdd">/entity/function/uploadHomework/homeworkpaper_add.jsp</result>
+			<result name="toHomeworkHistoryList">/entity/function/uploadHomework/homeworkhistory_list.jsp</result>
+			<result name="viewDetail">/entity/function/uploadHomework/homeworkpaper_info.jsp</result>
+			<result name="toFinishHomework">/entity/function/uploadHomework/homeworkFinish.jsp</result>
+			<result name="toModifyHomework">/entity/function/uploadHomework/homeworkModify.jsp</result>
+			<result name="toModifyHomeworkInfo">/entity/function/uploadHomework/homeworkpaper_modify.jsp</result>
+			<result name="toPigai">/entity/function/uploadHomework/homeworkpaper_pigai.jsp</result>
+			<result name="viewFinal">/entity/function/uploadHomework/homeworkpaper_final.jsp</result>
+		</action>
+		<action name="homework_*" method="{1}" class="homeworkAction">
+			<result name="success"></result>
+		</action>
+	    <action name="stuScoreStat_*" method="{1}" class="stuScoreStatAction">
+	    	<result name="scoreStat">/entity/function/stu_score_stat.jsp</result>		    
+	    </action>
+	</package>
+</struts>

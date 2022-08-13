@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+	<package name="entity.study" extends="platform-default" namespace="/entity/study">
+		<action name="prBzzStudy_*" method="{1}" class="prBzzStudyAction">
+		<result name="stu">/entity/manager/statistics/study_student.jsp</result>
+		</action>
+		<!-- zhaoyuxiao begin -->
+		<action name="peTrainingTypeApplyAction_*" method="{1}" class="peTrainingTypeApplyAction">
+		</action>
+		<action name="peEndCourseApplyAction_*" method="{1}" class="peEndCourseApplyAction">
+		</action>
+		<action name="peCertificateApply_*" method="{1}" class="peCertificateApplyAction">
+		</action>
+		<action name="peApply_*" method="{1}" class="peApplyAction">
+			<result name="showApplyList">/entity/bzz-students/trainee_LevelApply.jsp</result>
+			<result name="newApply">/entity/bzz-students/trainee_newApply.jsp</result>
+			<result name="addNewSucce">/entity/bzz-students/trainee_newApplySucc.jsp</result>
+			<result name="apply_detail">/entity/bzz-students/trainee_applyInfo.jsp</result>
+			<result name="first_conditions">/entity/bzz-students/first_conditions.jsp</result>
+			<result name="repost">/entity/bzz-students/repost.jsp</result>
+		</action>
+		<action name="peCompletion_*" method="{1}" class="peCompletionAction">
+			<result name="set_conditions">/entity/bzz-students/first_conditions.jsp</result>
+		</action>
+		<action name="peQuestionsAction_*" method="{1}" class="peQuestionsAction"></action>
+		<!-- zhaoyuxiao end -->
+		<action name="couseWareStudy_*" method="{1}" class="couseWareStudyAction">
+			<result name="courseLMSmain">/training/student/course/jumpCourseware.jsp</result>
+			<result name="courseRedirectB" type="redirect">/entity/study/couseWareStudy_LMSmain.action?navigation=${navigation}&amp;course_id=${courseware_id}</result>
+			<result name="courseRedirectA" type="redirect">/entity/study/couseWareStudy_LMSmain.action?navigation=${navigation}&amp;course_id=${courseware_id}&amp;start=begin</result>
+			<result name="LMSmainjsp">/training/student/course/courseware/scorm12/LMSMain.jsp</result>
+			<result name="MenuCode">/training/student/course/courseware/scorm12/code.jsp</result>
+			<result name="sequencingEngine">/training/student/course/courseware/scorm12/sequencingEngine.jsp</result>
+			<result name="AjaxScorm">/training/student/course/courseware/scorm12/AjaxScorm.jsp</result>
+			<result name="myCourseStatus">/training/student/course/courseware/scorm12/myCourseStatus.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,151 @@
+* {
+	padding:0px;
+	margin:0px;
+	list-style-type: none;
+}
+.clear {
+	clear: both;
+}
+a {
+	color: #000000;
+	text-decoration: none;
+}
+a:hover {
+	color: #CE0602;
+	text-decoration: none;
+}
+body {
+	background-color: #F6F6F6;
+}
+#wrap {
+	width: 1002px;
+	margin-right: auto;
+	margin-left: auto;
+	overflow: hidden;
+	background-color: #FFFFFF;
+}
+#header {
+	background-image: url(../images/zjcx_01.jpg);
+	height: 128px;
+	width: 1002px;
+}
+#main {
+	width: 1002px;
+}
+#main1 {
+	background-image: url(../images/zscx_02.jpg);
+	height: 97px;
+	width: 1002px;
+}
+#main1_b {
+	background-image: url(../images/zjcx_04.jpg);
+	height: 22px;
+	width: 1002px;
+}
+#main2 {
+	width: 1001px;
+}
+#main2_l {
+	background-image: url(../images/zjcx_05.jpg);
+	float: left;
+	height: 221px;
+	width: 185px;
+}
+#main2_2 {
+	background-image: url(../images/zjcx_06.jpg);
+	float: left;
+	height: 221px;
+	width: 642px;
+}
+#main2_3 {
+	background-image: url(../images/zjcx_07.jpg);
+	float: left;
+	height: 221px;
+	width: 173px;
+}
+#main3 {
+	background-image: url(../images/zjcx_08.jpg);
+	height: 95px;
+	width: 1002px;
+}
+#login {
+	width: 270px;
+	margin-top: 40px;
+	margin-left: 300px;
+}
+
+.loginbox {
+	width: 320px;
+	padding: 10px;
+}
+
+.login_text {
+	width: 100px;
+	font-size: 18px;
+	font-weight: bold;
+}
+#input input {
+	height: 21px;
+	width: 175px;
+}
+.loginbox select {
+	height: 21px;
+	width: 175px;
+}
+
+.login_btn {
+	display: block;
+	text-align: right;
+}
+#user {
+	margin-top: 15px;
+	margin-left: 170px;
+}
+
+.userlist {
+	width: 435px;
+	line-height: 35px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #999999;
+}
+.user_tit {
+	font-size: 16px;
+	font-weight: bold;
+}
+.user_info {
+	font-size: 12px;
+}
+#back {
+	width: 65px;
+	float: right;
+	margin-right: 100px;
+	-margin-right: 50px;
+	margin-top: 5px;
+}
+
+
+
+
+
+
+
+
+
+#bottom {
+	background-image: url(../images/index_101.jpg);
+	height: 100px;
+	width: 1002px;
+	background-repeat: no-repeat;
+	background-position: 45px center;
+	background-color: #B80000;
+	font-size: 12px;
+	color: #ffffff;
+	line-height: 24px;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	border-top-width: 2px;
+	border-top-style: solid;
+	border-top-color: #DF0000;
+}

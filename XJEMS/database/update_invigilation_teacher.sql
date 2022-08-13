@@ -1,0 +1,96 @@
+# ************************************************************
+# Sequel Pro SQL dump
+# Version 4541
+#
+# http://www.sequelpro.com/
+# https://github.com/sequelpro/sequelpro
+#
+# Host: 127.0.0.1 (MySQL 5.7.18-log)
+# Database: xjems
+# Generation Time: 2017-08-07 09:32:28 +0000
+# ************************************************************
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Dump of table invigilation_teacher
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `invigilation_teacher`;
+
+CREATE TABLE `invigilation_teacher` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(50) NOT NULL COMMENT '姓名',
+  `PINYIN` varchar(100) NOT NULL COMMENT '姓名拼音',
+  `IDCARD` varchar(20) NOT NULL COMMENT '身份证号',
+  `MOBILE` varchar(12) NOT NULL COMMENT '手机号',
+  `SEX` tinyint(4) NOT NULL COMMENT '性别1男 2女',
+  `ETHNIC` smallint(6) NOT NULL COMMENT '民族',
+  `PHOTO` int(11) DEFAULT '0' COMMENT '头像',
+  `MAJOR` varchar(20) NOT NULL COMMENT '所学专业',
+  `TYPE` smallint(6) NOT NULL DEFAULT '0' COMMENT '身份类别',
+  `ORGANIZATION` varchar(30) NOT NULL COMMENT '所在学院或部门',
+  `INSHCOOL_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '入校时间',
+  `IS_CHIEF_EXAMINER` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否有主考经验',
+  `IS_MIXED_EXAMINER` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否有混考经验',
+  `INTEGRAL` int(6) NOT NULL DEFAULT '0' COMMENT '监考累计积分（可为负数）',
+  `SPECIALTY` varchar(50) DEFAULT '' COMMENT '教师特长',
+  `STATUS` tinyint(4) NOT NULL DEFAULT '1' COMMENT '状态 1正常 0停用 -1删除',
+  `REASON` varchar(100) DEFAULT '' COMMENT '停用原因',
+  `CREATOR` int(11) NOT NULL,
+  `CREATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `CHECK_STATUS` tinyint(4) NOT NULL DEFAULT '1' COMMENT '审核状态 1未审核 0未通过 2已通过',
+  `CHECK_TIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '审核时间',
+  `CHECKER` int(11) DEFAULT '0' COMMENT '审核人',
+  `CHECK_REASON` varchar(100) DEFAULT '' COMMENT '审核不通过原因',
+  `INVIGILATE_CAMPUS` varchar(10) DEFAULT '0' COMMENT '监考校区',
+  `INVIGILATE_TYPE` varchar(10) DEFAULT '0' COMMENT '监考类型',
+  `INVIGILATE_COUNT` int(4) DEFAULT '0' COMMENT '监考次数默认0',
+  `JOB_DUTY` varchar(20) DEFAULT '' COMMENT '职务',
+  `STUDY_MAJOR` varchar(20) DEFAULT '' COMMENT '研究生所学专业',
+  `STUDY_GRADE` varchar(20) DEFAULT '' COMMENT '研究生所在年级',
+  `REMARK` varchar(100) DEFAULT '' COMMENT '备注',
+  `BANK_CARD` varchar(20) DEFAULT '' COMMENT '交通银行银行卡卡号',
+  `OPENID` varchar(64) DEFAULT '' COMMENT '微信识别唯一ID',
+  `SID` varchar(20) DEFAULT '' COMMENT '学工号',
+
+  PRIMARY KEY (`ID`),
+  KEY `FK_TEACHER_ETHNIC` (`ETHNIC`),
+  KEY `FK_TEACHER_PHOTO` (`PHOTO`),
+  KEY `FK_TEACHER_TYPE` (`TYPE`),
+  KEY `INDEX_NAME_PINYIN_IDCARD_MOBILE` (`NAME`,`PINYIN`,`IDCARD`,`MOBILE`) USING BTREE,
+  KEY `INDEX_NAME` (`NAME`) USING BTREE,
+  KEY `INDEX_IDCARD` (`IDCARD`) USING BTREE,
+  KEY `INDEX_PINYIN` (`PINYIN`) USING BTREE,
+  CONSTRAINT `FK_TEACHER_ETHNIC` FOREIGN KEY (`ETHNIC`) REFERENCES `ethnic` (`ID`),
+  CONSTRAINT `FK_TEACHER_PHOTO` FOREIGN KEY (`PHOTO`) REFERENCES `resource` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `invigilation_teacher` WRITE;
+/*!40000 ALTER TABLE `invigilation_teacher` DISABLE KEYS */;
+
+INSERT INTO `invigilation_teacher` (`ID`, `NAME`, `PINYIN`, `IDCARD`, `MOBILE`, `SEX`, `ETHNIC`, `PHOTO`, `MAJOR`, `TYPE`, `ORGANIZATION`, `INSHCOOL_TIME`, `IS_CHIEF_EXAMINER`, `IS_MIXED_EXAMINER`, `INTEGRAL`, `SPECIALTY`, `STATUS`, `REASON`, `CREATOR`, `CREATETIME`, `CHECK_STATUS`, `CHECK_TIME`, `CHECKER`, `CHECK_REASON`, `INVIGILATE_CAMPUS`, `INVIGILATE_TYPE`, `INVIGILATE_COUNT`, `JOB_DUTY`, `STUDY_MAJOR`, `STUDY_GRADE`, `REMARK`, `BANK_CARD`, `OPENID`)
+VALUES
+	(1,'张三','zhangsan','1','1',1,1,1,'1',1,'1','2017-07-27 17:56:20',1,1,1,'1',1,'1',100,'2017-07-27 17:56:20',1,'2017-07-27 17:56:20',1,'1','0','1',1,'1','1','1','','','o4TYt0pcNYiSsOl-i0d1Rx_Tkglo'),
+	(2,'李四','lisi','1','1',1,1,1,'1',1,'1','2017-07-27 17:56:20',1,1,1,'1',1,'1',100,'2017-07-27 17:56:20',1,'2017-07-27 17:56:20',1,'1','0','1',1,'1','1','1','','','微信识别唯一ID'),
+	(3,'王五','wangwu','1','1',1,1,1,'1',1,'1','2017-07-27 17:56:20',1,1,1,'1',1,'1',100,'2017-07-27 17:56:20',1,'2017-07-27 17:56:20',1,'1','0','1',1,'1','1','1','','','微信识别唯一ID'),
+	(4,'赵六','zhaoliu','1','1',1,1,1,'1',1,'1','2017-07-27 17:56:20',1,1,1,'1',1,'1',100,'2017-07-27 17:56:20',1,'2017-07-27 17:56:20',1,'1','0','1',1,'1','1','1','','','微信识别唯一ID');
+
+/*!40000 ALTER TABLE `invigilation_teacher` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,0 +1,64 @@
+.orderForm{
+    background-color: #f6f7fb;
+    padding-top: 75px;
+    padding-bottom: 80px;
+}
+.registFee{
+    width: 176px;
+    margin-top: 50px;
+}
+.registFeeText{
+    position: relative;
+    top: -150px;
+    transform: rotate(-5deg);
+    color: #fbe34b;
+}
+.orderDate{
+    color: #fff;
+    line-height: 25px;
+    background-color: #c8cac9;
+    padding: 4px 20px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+.nameInfo{
+    color: #449be2;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+.tableInfo{
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+.subject, .company{
+    padding: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f6f7fb;
+}
+.subject{
+    border-right: 2px solid #f6f7fb;
+    padding-left: 0px !important;
+}
+.subjectName, .companyName{
+    font-weight: bolder;
+}
+.project{
+    color: #449be2;
+    font-size: 16px;
+}
+.confirm, .cancel{
+    width: 120px;
+    height: 32px;
+}
+.confirm{
+    margin-left: -15px;
+    margin-right: 30px;
+    color: #fff;
+    background-color: #b71c22;
+}
+.confirm:hover, .confirm:focus{
+    background-color: #a31d24;
+    color: #fff !important;
+}

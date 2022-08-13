@@ -1,0 +1,18 @@
+SMAP
+_right_0main__jsp.java
+JSP
+*S JSP
+*F
++ 1 right_main.jsp
+admin/right_main.jsp
++ 2 priv.jsp
+admin/./pub/priv.jsp
+*L
+1#1:32
+1#2,5:33
+5#2:38
+7#2:39,2
+9#2,3:41
+3#1:44
+41#1:45
+*E

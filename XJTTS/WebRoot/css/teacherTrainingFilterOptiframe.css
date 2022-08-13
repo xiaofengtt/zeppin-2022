@@ -1,0 +1,53 @@
+.clear{clear:both;}
+.container{max-width:1150px;width:100%;padding-top:32px;}
+.basicInfo,.rangeInfo{border:1px solid #e6e6e6;margin-top:20px;}
+.title{font-size:16px;color:#333333;height:50px;line-height:50px;background:#f2f2f2;margin:0;padding-left:30px;
+		border-bottom:1px solid #e6e6e6;}
+label{width:80px;float:left;text-align:right;font-weight:normal;line-height:34px;}
+.basicInfo .group,.basicInfo .col-md-3{padding:0;margin:20px 0px 0px 0;}
+.select-group select,.select-group input{float:left;}
+.select-group-span{display:block;line-height:34px;float:left;width:34px;text-align:center;}
+.col-md-1{padding-left:0;}
+.addBtn{width:30px;height:30px;border:1px solid #d9d9d9;color:#e6e6e6;font-size:28px;text-align:center;
+		line-height:24px;display:inline-block;cursor:pointer;font-weight:lighter;}
+.addBtn:hover{color:#e6e6e6;text-decoration:none;}		
+.rangeRight{border:1px solid #e6e6e6; background:#fcfcfc;margin-top:20px;padding:10px;}		
+.mtcDiv{float:left;}
+.mtcs{padding:3px 10px 3px 10px;display:inline-block;background:#f5f5f5;border-radius:20px;margin:5px 3px;}	
+.mtcs b{color:#4489ce;font-size:14px;font-weight:normal;}	
+.mtcs span{color:#000000;font-size:20px;margin-left:10px;line-height:18px;font-weight:lighter;float:none;}
+.buttonDiv{padding:20px;}
+.buttonDiv button{margin:5px;}		
+.rangeInfo,.algorithmInfo{padding-bottom:50px;}		
+#filterTimes .col-md-6{width:49%;float:left;}
+#filterTimes .col-md-3{width:24%;margin:0;float:left;}
+label.col-md-2{padding:0;float:left;}
+
+.col-md-9{width: 75%;float:left;}
+.col-md-8{width:66.66666667%;float:left;}
+
+.col-md-2{width:16.66666667%;float:left;}
+.col-md-1{width:8.33333333%;float:left;}
+@media (max-width: 992px){
+	.col-md-7{width:auto;float:left;}
+}
+.select2-container .select2-choice{width:auto;height:28px;line-height:28px;border:none;}
+.select2-container{padding:0;}
+.companylocation{background:#fff url("../img/city_select_arrow.png") no-repeat 98% 50% !important;}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #ccc !important; 
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #ccc !important;
+}
+
+:-ms-input-placeholder{
+    color: #ccc !important;
+}
+
+::-webkit-input-placeholder{
+    color: #ccc !important;
+}
+
+

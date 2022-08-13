@@ -1,0 +1,541 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<link href="/admin/css.css" rel="stylesheet" type="text/css">
+<title>权限管理</title>
+
+</head>
+<style>
+div.menu{
+	cursor:hand;
+	position:relative;
+	float:left;
+	padding-top:4px;
+	padding-bottom:2px;
+	padding-left:12px;
+	padding-right:12px;
+	background-color:#F2F2EE;
+	border:1px solid #7C93B1;
+	white-space: nowrap;
+}
+
+div.menuDown{
+	cursor:hand;
+	position:relative;
+	float:left;
+	color:#FFFFFF;
+	padding-top:4px;
+	padding-bottom:2px;
+	padding-left:12px;
+	padding-right:12px;
+	background-color:#92B5CF;
+	border:1px solid #ffffff;
+	white-space: nowrap;
+}
+div.page{
+	position:relative;
+	top:0px;
+	width:100%;
+	height:100%;
+	padding:28 8 8 8;
+	font-size:12px;
+	background-color:#f6f6f6;
+	overflow:auto;
+	display:none;
+}
+</style>
+<script>
+var prePageID = "null";
+function setMouseOver(id)
+{
+	if(getByID(id))		getByID(id).className="menuDown";
+}
+function setMouseOut(id)
+{
+	if(getByID(id) && id.substring(4,id.length)!=prePageID.substring(4,prePageID.length))
+	{
+		getByID(id).className="menu";
+	}
+}
+function setOut(id)
+{
+	if(getByID(id))
+	{
+		getByID(id).className="menu";
+	}
+}
+function showPage(mID)
+{
+	var curPageID;
+	curPageID = mID.substring(4,mID.length);
+	if(getByID("page"+curPageID)&&getByID("page"+curPageID).style.display!="block")
+	{
+		getByID("page"+curPageID).style.display="block";
+		if(prePageID && mID!=prePageID)
+		{
+			hidePage(prePageID);
+			setOut("menu"+prePageID.substring(4,prePageID.length));
+		}
+		setMouseOver(mID);
+		prePageID = "page"+curPageID;
+	}
+}
+function hidePage(id)
+{
+	if(getByID(id))	getByID(id).style.display="none";
+}
+function getByID(id)
+{
+	if(document.getElementById(id))		return document.getElementById(id);
+	else return false;
+}
+</script>
+
+
+<script language=javascript>
+
+function unselectall(index)
+{
+	temp = "document.inputgroupright.modelgroup" + index;
+	modelgroup = eval(temp);
+	temp = "document.inputgroupright.checkgroup" + index;
+	checkgroup = eval(temp);
+
+    if(modelgroup.checked)
+    {
+		modelgroup.checked = modelgroup.checked & 0;
+    }
+    else
+    {
+    	var checkall = 1;
+		var i = 0;
+	
+	    while (i < checkgroup.length)
+	    {
+			if(!checkgroup[i].checked)
+			{
+				checkall = 0;
+				break;
+			}
+			i++;
+	    }
+	    
+	    if(checkall != 0)
+	    	modelgroup.checked = modelgroup.checked | 1;
+    }
+}
+function selectall(index)
+{
+	temp = "document.inputgroupright.modelgroup" + index;
+	modelgroup = eval(temp);
+	temp = "document.inputgroupright.checkgroup" + index;
+	checkgroup = eval(temp);
+
+	if(checkgroup == null)
+	{
+		return;
+	}
+
+	if(1 < checkgroup.length)
+	{
+		var i = 0;
+	    while (i < checkgroup.length)
+	    {
+			checkgroup[i].checked = modelgroup.checked;
+			i++;
+	    }
+    }
+    else
+    	checkgroup.checked = modelgroup.checked;
+}
+
+
+</script>
+
+
+
+
+<body topmargin="0" rightmargin="0" leftmargin="0" bottommargin="0" scroll="no">
+
+<form name="inputgroupright" method="post" action="show_range_right.html">
+<input type="hidden" name="managerId" value="402880d91c3ff392011c4002e5190001">
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="24" valign="top">
+	  <div style="position:relative;padding:4px;font-size:12px;width:100%;background-color:#cfcfcf" onselectstart="return false">
+	  
+	<div id="menu01" class="menu" onMouseOver="setMouseOver(this.id)" onMouseOut="setMouseOut(this.id)" onClick="showPage(this.id)">站点</div>
+	
+	<div id="menu02" class="menu" onMouseOver="setMouseOver(this.id)" onMouseOut="setMouseOut(this.id)" onClick="showPage(this.id)">年级</div>
+	
+	<div id="menu03" class="menu" onMouseOver="setMouseOver(this.id)" onMouseOut="setMouseOut(this.id)" onClick="showPage(this.id)">专业</div>
+	<div id="menu04" class="menu" onMouseOver="setMouseOver(this.id)" onMouseOut="setMouseOut(this.id)" onClick="showPage(this.id)">层次</div>
+	
+		
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:document.inputgroupright.submit();" >提交</a> &nbsp;&nbsp;<a href="/sso/admin/managerOper_showManagerList.action">返回</a>	
+	  </div>
+
+	</td>
+  </tr>
+  <tr>
+    <td>
+   
+    
+		<div id="page01" class="page">
+		 
+		 <table cellPadding=2 cellSpacing=1  border="0" bgcolor=#3F6C61 align=center width="100%">
+
+
+		<tr>
+			<td bgcolor="#D4E4EB" class="zhengwen" colspan="2" align="center">设置在站点范围的权限
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			全选：<input type="checkbox" name="siteAll" onclick="javascript:selectAllTag('site')"></td>
+		</tr>		
+		
+
+
+
+		<tr>
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">why</td>
+			
+			
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">
+			
+				<input type="checkbox" name="site" value="402880d91c1df158011c20d4101e00f9">why<br>
+				
+			
+			</td>
+			
+			
+		
+		</tr>
+
+
+		
+
+
+
+		<tr>
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">test</td>
+			
+			
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">
+			
+				<input type="checkbox" name="site" value="402880d91c1df158011c20dd637200fe">test<br>
+				
+			
+			</td>
+			
+			
+		
+		</tr>
+
+
+		
+		
+		
+	
+	
+	
+
+		</table>
+		
+</div>
+
+
+
+		<div id="page02" class="page">
+		 
+		 <table cellPadding=2 cellSpacing=1  border="0" bgcolor=#3F6C61 align=center width="100%">
+
+
+		<tr>
+			<td bgcolor="#D4E4EB" class="zhengwen" colspan="2" align="center">设置在年级范围的权限
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			全选：<input type="checkbox" name="gradeAll" onclick="javascript:selectAllTag('grade')"></td>
+		</tr>		
+		
+
+
+
+		<tr>
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">why2008年春</td>
+			
+			
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">
+			
+			
+				<input type="checkbox" name="grade" value="402880d91c3ff392011c400f0c1f0007"  > why2008年春<br>
+				
+			
+			</td>
+			
+			
+		</tr>
+
+
+		
+	
+
+
+
+		<tr>
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">why2008年秋</td>
+			
+			
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">
+			
+			
+				<input type="checkbox" name="grade" value="402880d91c3ff392011c4064824b0019"  > why2008年秋<br>
+				
+			
+			</td>
+			
+			
+		</tr>
+
+
+		
+	
+
+
+
+		<tr>
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">why2009年春</td>
+			
+			
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">
+			
+			
+				<input type="checkbox" name="grade" value="402880d91c3ff392011c4064d4e0001a"  > why2009年春<br>
+				
+			
+			</td>
+			
+			
+		</tr>
+
+
+		
+	
+
+
+
+		<tr>
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">why2009年秋</td>
+			
+			
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">
+			
+			
+				<input type="checkbox" name="grade" value="402880d91c3ff392011c40651842001b"  > why2009年秋<br>
+				
+			
+			</td>
+			
+			
+		</tr>
+
+
+		
+		
+		
+	
+	
+	
+
+		</table>
+		
+</div>
+
+
+
+		<div id="page03" class="page">
+		 
+		 <table cellPadding=2 cellSpacing=1  border="0" bgcolor=#3F6C61 align=center width="100%">
+
+
+		<tr>
+			<td bgcolor="#D4E4EB" class="zhengwen" colspan="2" align="center">设置在专业范围的权限
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			全选：<input type="checkbox" name="majorAll" onclick="javascript:selectAllTag('major')"></td>
+		</tr>		
+		
+
+
+
+		<tr>
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">why专业</td>
+			
+			
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">
+			
+			
+				<input type="checkbox" name="major" value="402880d91c1df158011c20d6aef400fc">why专业<br>
+				
+			
+	</td>			
+			
+			
+		</tr>
+
+
+
+
+
+		<tr>
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">计算机应用技术</td>
+			
+			
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">
+			
+			
+				<input type="checkbox" name="major" value="402880d91c1df158011c20de411100ff">计算机应用技术<br>
+				
+			
+	</td>			
+			
+			
+		</tr>
+
+
+
+
+
+		<tr>
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">专业2</td>
+			
+			
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">
+			
+			
+				<input type="checkbox" name="major" value="402880d91c5024e8011c5418d305010e">专业2<br>
+				
+			
+	</td>			
+			
+			
+		</tr>
+
+
+			
+		
+		
+		
+	
+	
+	
+
+		</table>
+		
+</div>
+
+
+
+
+		<div id="page04" class="page">
+		 
+		 <table cellPadding=2 cellSpacing=1  border="0" bgcolor=#3F6C61 align=center width="100%">
+
+
+		<tr>
+			<td bgcolor="#D4E4EB" class="zhengwen" colspan="2" align="center">设置在层次范围的权限
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			全选：<input type="checkbox" name="edutypeAll" onclick="javascript:selectAllTag('edutype')"></td>
+		</tr>		
+		
+
+
+
+		<tr>
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">专升本</td>
+			
+			
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">
+			
+			
+				<input type="checkbox" name="edutype" value="402880d91c1df158011c20d6fd3400fd" >专升本<br>
+				
+			</td>
+			
+			
+			
+		</tr>
+
+
+		
+		
+
+
+
+		<tr>
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">高起专</td>
+			
+			
+			<td bgcolor="#D4E4EB" class="zhengwen" width="35%">
+			
+			
+				<input type="checkbox" name="edutype" value="402880d91c1df158011c20ded7b30100" >高起专<br>
+				
+			</td>
+			
+			
+			
+		</tr>
+
+
+		
+		
+		
+	
+	
+	
+
+		</table>
+		
+</div>
+
+
+
+	</td>
+  </tr>
+</table>
+
+
+</form>
+</body>
+<script>
+function selectAllTag(tag)
+{
+	var tagAll = document.getElementsByName(tag+"All");
+	var tags = document.getElementsByName(tag);
+	for(i=0;i<tags.length;i++)
+	{
+		if(tagAll[0].checked)
+		{
+			if(!tags[i].checked)
+				tags[i].checked=true;
+		}
+		else
+		{
+			if(tags[i].checked)
+				tags[i].checked=false;
+		}
+	}
+}
+</script>
+</html>

@@ -1,0 +1,15 @@
+.container{width:100%;padding:15px 0;}
+table{width:100%;}
+table th,table td{background:#f2f2f2;line-height:26px;padding:12px 0;font-size:14px;color:#333333;}
+table.tableItem{margin-top:9px;color:#666666;font-size:14px;}
+table td{color:#666;background:#fff;font-size:14px;}
+table .no-border{border:none !important;}
+table th.col-md-6{border-left:none !important;}
+table td.filterState{color:#80c269;}
+table td.filterOperate a{color:#418bca;cursor:pointer;}
+table td.filterWeight{padding-left:30px;}
+table td.filterTime{padding-right:30px;}
+table td.red{color:#ff2900;}
+
+
+

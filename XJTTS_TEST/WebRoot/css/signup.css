@@ -1,0 +1,100 @@
+.main{
+    background-color: white;
+    padding: 0;
+    padding-bottom: 90px;
+    box-shadow: 0 0 5px 3px rgba(210, 207, 207, 0.4);
+    font-size: 13px;
+}
+.box{
+    margin-top: 20px;
+}
+.box2{
+    display: none;
+}
+.box3{
+    display: none;
+}
+.box4{
+    display: none;
+}
+.box5{
+    display: none;
+}
+.btn:hover,
+.btn:focus,
+.btn.focus {
+    color: #fff;
+}
+.btn{
+    width: 240px;
+    height: 40px;
+    color: #fff;
+    margin-top: 40px;
+    background-color: #b81c22;
+}
+.btn:hover{
+    color:#fff;
+    background-color: #a80000;
+}
+label{
+    font-weight: normal;
+}
+.form-control{
+    /*width: 300px;*/
+    /*height: 40px;*/
+}
+.droplist{
+    padding: 0;
+}
+.form-group{
+    display: flex;
+    margin-bottom: 15px;
+}
+.radio{
+    margin: 0;
+}
+.mainHeader{
+    margin-bottom: 80px;
+    height: 145px;
+    background-color: #fbfbfb;
+    padding-top: 40px;
+}
+.progress{
+    height: 5px;
+    background-color: #9fa0a0;
+    margin-top: -60px;
+    padding: 0;
+}
+@media (min-width: 1200px) {
+    .statusPic {
+        width: 1170px;
+    }
+}
+.statusPic{
+    z-index: 3;
+    color: #9fa0a0;
+}
+.statusIcon{
+    width:32px;
+    height: 32px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.statusText{
+    font-size: 13px;
+}
+.successStatusText{
+    color:#f6ad3c;
+}
+.errorInfo{
+    display: none;
+    color: #b81c22;
+    float: left;
+    font-size: 12px;
+}
+#s2id_organization{
+    width: 100%;
+}
+.select2-container .select2-choice {
+    width: 100%;
+}

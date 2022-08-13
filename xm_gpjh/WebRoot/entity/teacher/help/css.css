@@ -1,0 +1,20 @@
+<!--
+.v10 { font-size: 6pt; line-height:12pt }
+.v15 { font-size: 9pt; line-height:14pt }
+.v20 { font-size: 9pt; line-height:9pt }
+.v25         { font-size: 16pt; line-height: 16pt }
+a:link { font-size: 9pt; color: rgb(0,0,0); text-decoration: none }
+a:visited { font-size: 9pt; color: rgb(0,0,0); text-decoration: none }
+a:active { font-size: 9pt; color: rgb(0,0,255); text-decoration: none }
+a:hover { font-size: 9pt; color: rgb(0,0,255); text-decoration: none }
+a.b:link { font-size: 9pt; color: rgb(0,0,0); text-decoration: underline }
+a.b:visited { font-size: 9pt; color: rgb(99,99,99); text-decoration: underline }
+a.b:active { font-size: 9pt; color: rgb(255,0,0); text-decoration: underline}
+a.b:hover { font-size: 9pt; color: rgb(255,0,0); text-decoration: underline }
+a.c:link { font-size: 9pt; color: rgb(0,0,255); text-decoration: underline }
+a.c:visited { font-size: 9pt; color: rgb(0,0,160); text-decoration: underline }
+a.c:active { font-size: 9pt; color: rgb(255,0,0); text-decoration: underline }
+a.c:hover { font-size: 9pt; color: rgb(0,4,231); text-decoration: underline }
+ body{font-size=9pt; line-height:12pt}
+ TH{FONT-SIZE: 9pt; line-height:12pt}
+       TD{ FONT-SIZE: 10pt;}-->

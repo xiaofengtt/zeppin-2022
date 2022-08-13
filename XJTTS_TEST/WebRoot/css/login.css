@@ -1,0 +1,89 @@
+/*main*/
+#main{
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    background-color: #fff;
+    overflow: auto;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+}
+.form-signin{
+    background-color: #f6f6f6;
+}
+.form-signin {
+    max-width: 330px;
+    padding: 25px;
+    margin: 0;
+    margin-left: auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 12px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.form-signin .btn {
+    font-size: 13px;
+}
+
+.desHead {
+    font-size: 14px;
+    color: #6dbe78;
+}
+.desBody {
+    font-size: 14px;
+    color: black;
+}
+.slogan{
+    width: 150px;
+}
+.login {
+    background-color: #b81c22;
+    font-size: 13px;
+    color:#fff;
+    border: #b81c22;
+}
+.login:hover, .login:focus {
+    background-color: #a80000;
+    border: #a80000;
+    color:#fff;
+}
+.forgotPwd  {
+    color: #33aae2;
+    font-size: 13px;
+}
+.forgotPwd:hover {
+    color: #1187bd;
+    text-decoration: none;
+}
+.signup{
+    font-size: 13px;
+    color: black;
+    background-color: #e6e6e6;
+}
+.signup:hover{
+    background-color: #d3d3d4;
+}

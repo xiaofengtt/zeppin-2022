@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<!--多例 scope="singleton" 单例 scope="singleton" 单用户单例 scope="session" -->
+
+	<bean id="ssoUserAction" class="cn.zeppin.action.admin.SsoUserAction"
+		scope="prototype">
+		<property name="ssoUserService" ref="ssoUserService"></property>
+	</bean>
+
+	<bean id="loginAction" class="cn.zeppin.action.sso.LoginAction"
+		scope="prototype">
+		<property name="sysUserService" ref="sysUserService" />
+		<!-- <property name="ssoUserService" ref="ssoUserService"></property> -->
+		<!-- <property name="authService" ref="authService"></property> -->
+		<!-- <property name="versionService" ref="versionService"></property> -->
+		<!-- <property name="mobileCodeService" ref="mobileCodeService"></property> -->
+	</bean>
+
+	<bean id="passwordAction" class="cn.zeppin.action.admin.PasswordAction"
+		scope="prototype">
+		<property name="sysUserService" ref="sysUserService" />
+	</bean>
+	<bean id="resourceAction" class="cn.zeppin.action.admin.ResourceAction"
+		scope="prototype">
+		<property name="resourceService" ref="resourceService"></property>
+	</bean>
+
+	<bean id="rolefuncationAction" class="cn.zeppin.action.admin.NavigationAction"
+		scope="prototype">
+		<property name="roleFunctionService" ref="roleFuncationService"></property>
+	</bean>
+
+	<!-- 短信 -->
+	<bean id="sendSmsAction" class="cn.zeppin.action.sms.SendSmsAction"
+		scope="prototype">
+		<property name="invigilationTeacherService" ref="invigilationTeacherService"></property>
+		<property name="mobileCodeService" ref="mobileCodeService"></property>
+	</bean>
+
+	<!-- 考试信息 -->
+	<bean id="examInformationAction" class="cn.zeppin.action.admin.ExamInformationAction"
+		scope="prototype">
+		<property name="examInformationService" ref="examInformationService"></property>
+		<property name="invigilationTemplateService" ref="invigilationTemplateService"></property>
+		<property name="examTeacherRoomService" ref="examTeacherRoomService"></property>
+		<property name="invigilationTeacherService" ref="invigilationTeacherService"></property>
+	</bean>
+
+	<!-- 考场信息 -->
+	<bean id="examRoomAction" class="cn.zeppin.action.admin.ExamRoomAction"
+		scope="prototype">
+		<property name="examInformationService" ref="examInformationService"></property>
+		<property name="examRoomService" ref="examRoomService"></property>
+	</bean>
+
+	<!-- 教师信息 -->
+	<bean id="invigilationTeacherAction" class="cn.zeppin.action.admin.InvigilationTeacherAction"
+		scope="prototype">
+		<property name="resourceService" ref="resourceService"></property>
+		<property name="ethnicService" ref="ethnicService"></property>
+		<property name="invigilationTeacherService" ref="invigilationTeacherService"></property>
+		<property name="examTeacherRoomService" ref="examTeacherRoomService"></property>
+		<property name="sysUserService" ref="sysUserService"></property>
+	</bean>
+
+	<!-- 申报监考 -->
+	<bean id="examTeacherRecordsAction" class="cn.zeppin.action.admin.ExamTeacherRecordsAction"
+		scope="prototype">
+		<property name="invigilationTeacherService" ref="invigilationTeacherService"></property>
+		<property name="examTeacherRoomService" ref="examTeacherRoomService"></property>
+		<property name="examInformationService" ref="examInformationService"></property>
+		<property name="examRoomService" ref="examRoomService"></property>
+	</bean>
+
+	<!-- 申报监考 -->
+	<bean id="documentAction" class="cn.zeppin.action.admin.DocumentAction"
+		scope="prototype">
+		<property name="examTeacherRoomService" ref="examTeacherRoomService"></property>
+		<property name="examInformationService" ref="examInformationService"></property>
+		<property name="examRoomService" ref="examRoomService"></property>
+	</bean>
+
+	<!-- 微信 -->
+	<bean id="weixinAction" class="cn.zeppin.action.weixin.WeixinAction"
+		scope="prototype">
+		<property name="examTeacherRoomService" ref="examTeacherRoomService"></property>
+		<property name="invigilationTeacherService" ref="invigilationTeacherService"></property>
+		<property name="examRoomService" ref="examRoomService"></property>
+		<property name="examInformationService" ref="examInformationService"></property>
+		<property name="ethnicService" ref="ethnicService"></property>
+		<property name="resourceService" ref="resourceService"></property>
+		<property name="mobileCodeService" ref="mobileCodeService"></property>
+	</bean>
+	
+	<bean id="resourceForWeChatAction" class="cn.zeppin.action.weixin.ResourceAction"
+		scope="prototype">
+		<property name="resourceService" ref="resourceService"></property>
+	</bean>
+	
+</beans>

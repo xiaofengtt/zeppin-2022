@@ -1,0 +1,22 @@
+.main{
+	background: #ffffff;
+    position: relative;
+    min-width: 1017px;
+    margin: 14px 16px 10px 185px;
+    padding: 26px 62px 19px 36px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    -ms-border-radius:10px;
+    min-height:900px;
+}
+.main_content {
+    position: relative;
+    min-width: 919px;
+    width: 100%;
+    margin-top: 26px;
+}

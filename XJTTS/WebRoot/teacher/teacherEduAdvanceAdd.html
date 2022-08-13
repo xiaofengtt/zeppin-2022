@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>学历提升</title>
+    <link rel="stylesheet" href="../css/lib/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/lib/normalize.css"/>
+    <link rel="stylesheet" href="../css/lib/font-awesome.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+	<link rel="stylesheet" href="../css/uploadfile.css">
+    <link rel="stylesheet" href="../css/resetPassword.css"/>
+    <link rel="stylesheet" href="../css/datepicker3.css">
+    <link rel="stylesheet" href="../css/teacherEduAdvanceAdd.css">   
+    
+    <script src="../js/lib/jquery-2.1.4.js"></script>
+	<script src="../js/lib/bootstrap.js"></script>
+	<script src="../js/bootstrap-switch.min.js"></script>
+	<script src="../js/bootstrap-datepicker.js"></script>
+	<script src="../js/bootstrap-datepicker.zh-CN.js"></script>
+	<script src="../js/upload/jquery.uploadfile.min.js"></script>
+</head>
+<body>
+<div id="header"></div>
+<div class="main container">
+    <ul class="nav nav-pills">
+        <li role="presentation"><a href="personal.html">个人主页</a></li>
+        <li role="presentation"><a href="trainingRecord.html">培训记录</a></li>
+        <li role="presentation"><a href="IndeRegistEntrance.html">自主报名</a></li>
+        <li role="presentation"><a href="certificate.html">所获证书</a></li>
+        <li role="presentation"><a href="selectCourse.html">学前测评</a></li>
+        <li role="presentation"><a href="evaluation.html">学后评价</a></li>
+<!--         <li role="presentation" class="active"><a href="teacherEduAdvance.html">学历提升申请记录</a></li> -->
+    </ul>
+    <hr/>
+    <div class="row text-center">
+        <div class="title">请输入以下信息并提交审核</div>
+        <hr>
+        <div class="col-sm-6 col-sm-offset-3 form-horizontal">
+		        <div class="col-sm-6 col-sm-offset-3 alert alert-danger hide" role="alert">
+	                <span class="sr-only">Error:</span>
+	                <span id="errorInfo"></span>
+	            </div>
+                <div class="form-group">
+                    <label for="inputName" class="col-xs-4 control-label"><span style="color:#b81c22;">*</span> 进修学校：</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control input" id="graduation" required>
+                        <span class="errorInfo" name="box1Error" id="graduationError">请填写进修学校</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputIdCard" class="col-xs-4 control-label"><span style="color:#b81c22;">*</span>进修专业：</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control input" id="major" required>
+                        <span class="errorInfo" name="box1Error" id="majorError">请填写进修专业</span>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="inputMobile" class="col-xs-4 control-label"><span style="color:#b81c22;">*</span>开始进修时间：</label>
+                    <div class="col-xs-8">
+                       <input type="text" readonly autocomplete="off" data-provide="datepicker"
+									class="datepicker form-control nobg" id="starttime" value="">
+                        <span class="errorInfo" name="box1Error" id="starttimeError">请选择开始进修时间</span>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="inputMobile" class="col-xs-4 control-label"><span style="color:#b81c22;">*</span>结束进修时间：</label>
+                    <div class="col-xs-8">
+                        <input type="text" readonly autocomplete="off" data-provide="datepicker"
+									class="datepicker form-control nobg" id="endtime" value="">
+                        <span class="errorInfo" name="box1Error" id="endtimeError">请选择结束进修时间</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-xs-4 control-label"><span style="color:#b81c22;">*</span>毕业证书编号：</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control input" id="certificate" required>
+                        <span class="errorInfo" name="box1Error" id="certificateError">请填写毕业证书编号</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="background" class="col-xs-4 control-label"><span style="color:#b81c22;">*</span>提升到学历：</label>
+                    <div class="col-xs-8">
+                        <select id="background" class="form-control droplist">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                        <span class="errorInfo" name="box2Error" id="backgroundError">请选择最高学历</span>
+                    </div>
+                </div>
+                <div class="form-group">
+							<label class="col-xs-4 control-label"><span style="color:#b81c22;">*</span>上传认证资料：</label>
+							<div class="col-xs-8 text-left" >
+								<div id="applydoc" class="">&nbsp;上传认证资料&nbsp;&nbsp;</div>
+								
+									<script>
+										$("#applydoc").uploadFile({
+											url:"../base/fileUpload_upload.action",
+											allowedTypes:"jpg,jpeg,png",
+											maxFileSize:1024*1024*50,
+											fileName:"teachereduevidence",
+											maxFileCount : 1,
+											dragDropStr: "<span style='display:block;'><b style='font-weight:normal;color:#ccc;font-size:14px;text-align:left !important;'>(上传相关图片资料以供管理员作为审核依据，包括：毕业证书照片、结业证书照片、身份证照片等，最多6张)</b></span>",
+											extErrorStr:"文件格式不正确，请上传word文档类型的文件",
+											showDone:false,
+											showDelete : false,
+											deletelStr : '删除',
+											doneStr: "完成",
+											showAbort:false
+										});
+									</script>
+							</div>
+						</div>
+                <button class="btn submit" type="submit">提交</button>
+                <button class="btn btn1 btn-default" type="button">取消</button>
+            </div>
+    </div>
+
+</div>
+<div id="footer"></div>
+<script src="../js/addTeacherEduAdvance.js"></script>
+</body>
+</html>

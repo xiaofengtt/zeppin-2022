@@ -1,0 +1,20 @@
+/* CSS Document */
+.sign{
+color:#FF6600; 
+}
+.checkInfor{
+background-color:#C4ECFF;
+background-image:url(images/icon_info.gif);
+background-repeat:no-repeat;
+font-size:12px;
+color:#000000;
+font-family:"ËÎÌו";
+}
+.checkError{
+background-color:#FFB9A2;
+background-image:url(images/icon_warning.gif);
+background-repeat:no-repeat;
+font-size:12px;
+color:#000000;
+font-family:"ËÎÌו";
+}

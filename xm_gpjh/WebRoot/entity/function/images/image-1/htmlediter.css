@@ -1,0 +1,33 @@
+BODY {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; BACKGROUND: buttonface; MARGIN: 0px; BORDER-LEFT: 0px; CURSOR: default; BORDER-BOTTOM: 0px
+}
+#topToolBar {
+	BACKGROUND: buttonface; WIDTH: 100%
+}
+.coolButton {
+	FONT: menu
+}
+#headerTable {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BACKGROUND: window; BORDER-LEFT: black 1px solid; WIDTH: 100%; BORDER-BOTTOM: black 1px solid
+}
+.dark {
+	PADDING-RIGHT: 3px; BACKGROUND: buttonshadow; FONT: icon; WIDTH: 70px; COLOR: white; TEXT-ALIGN: right
+}
+INPUT {
+	BORDER-RIGHT: window 1px solid; BORDER-TOP: window 1px solid; FONT: icon; BORDER-LEFT: window 1px solid; WIDTH: 100%; CURSOR: hand; COLOR: buttonshadow; BORDER-BOTTOM: window 1px solid
+}
+.inputBlock {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; PADDING-BOTTOM: 1px
+}
+.toBlock {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 4px; PADDING-BOTTOM: 2px; FONT: icon; COLOR: black; PADDING-TOP: 2px
+}
+#middle {
+	BACKGROUND: buttonface; MARGIN: 0px; OVERFLOW: hidden; WIDTH: 100%; HEIGHT: 2px
+}
+#visibleText {
+	BORDER-RIGHT: buttonface 2px inset; BORDER-TOP: buttonface 2px inset; BORDER-LEFT: buttonface 2px inset; WIDTH: 100%; BORDER-BOTTOM: buttonface 2px inset; POSITION: relative; TOP: -1px; HEIGHT: 100%
+}
+#editBar TD {
+	PADDING-BOTTOM: 0px; WIDTH: 22px; PADDING-TOP: 0px; HEIGHT: 22px
+}

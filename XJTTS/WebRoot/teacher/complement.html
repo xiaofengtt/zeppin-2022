@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+<!-- 	<meta http-equiv="Refresh" content="0;url=http://127.0.0.1/XJTTS_TEST/teacher/login.html"> -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>新疆教师培训网</title>
+    <link rel="stylesheet" href="../css/lib/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/lib/normalize.css"/>
+    <link rel="stylesheet" href="../css/lib/font-awesome.css"/>
+    <link rel="stylesheet" href="../css/components/flexslider.css"/>
+    <link rel="stylesheet" href="../css/layout.css"/>
+    <link rel="stylesheet" href="../css/index.css"/>
+     <link rel="stylesheet" href="../css/select2.css"/>
+    <link rel="stylesheet" href="../css/datepicker3.css"/>
+
+    <link rel="stylesheet" href="../css/userInformation.css"/>
+</head>
+<body>
+<!--     navbar -->
+    <div class="navbar navbar-default navbar-static-top" role="navigation" style="padding-bottom: 5px;background-color: white;">
+        <div class="container" style="background-color: white;">
+            <div class="row">
+                <div class="nav navbar-header  uni-logo">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="index.html"><img src="../images/index/logo.png" class="img-responsive" alt="新疆教师培训网"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="main container" style="margin-top: 20px;">
+<!--     <ul class="nav nav-pills"> -->
+<!--         <li role="presentation"><a href="personal.html">个人主页</a></li> -->
+<!--         <li role="presentation"><a href="trainingRecord.html">培训记录</a></li> -->
+<!--         <li role="presentation"><a href="IndeRegistEntrance.html">自主报名</a></li> -->
+<!--         <li role="presentation"><a href="certificate.html">所获证书</a></li> -->
+<!--         <li role="presentation"><a href="selectCourse.html">学前测评</a></li> -->
+<!--         <li role="presentation"><a href="evaluation.html">学后评价</a></li> -->
+<!--     </ul> -->
+    <hr/>
+    <div class="row subnav">
+        <div class="avatarBox">
+            <a href="resetAvatar.html"><img id="bigAvatar" data-toggle="tooltip" data-placement="bottom" class="img-responsive"/></a>
+        </div>
+        <div class="name"><span id="userName"></span>老师</div>
+        <br/>
+        <div class="modify">
+        	<span style="font-size: 23px;color: red">请确认您的信息是否准确，以便于您的培训信息被系统正确的保存。</span><br>
+        	<span style="font-size: 23px;color: red">不准确的信息可能会影响各项评定工作的开展。</span>
+<!--             <a class="active" href="userInformation.html">修改个人信息</a> -->
+<!--             <a href="resetPhone.html">修改手机</a> -->
+<!--             <a href="resetPassword.html">修改密码</a> -->
+<!--             <a href="resetAvatar.html">修改头像</a> -->
+        </div>
+    </div>
+    <hr/>
+    <div class="row authInfo">
+        <span class="title">认证信息</span><br/><br/>
+        <div class="col-xs-5">
+            <div class="nameBox">
+                <img src="../images/userInfomation/icon1.png" class="icon" alt=""/>
+                <span id="idName" class="idName"></span>
+            </div>
+            <div class="cardIdBox">
+                <img src="../images/userInfomation/icon2.png" class="icon" alt=""/>
+                <span id="idCard" class="idCard"></span>
+            </div>
+        </div>
+        <div class="col-xs-5">
+            <div class="emailBox">
+                <img src="../images/userInfomation/icon3.png" class="icon" alt=""/>
+               	 电子邮箱：&nbsp&nbsp<input id="email" class="email" type="text"/><span style="color:#b81c22;margin-left: 10px;">*</span>
+               	 <span class="errorInfo" style="float: right;" id="inputEmailError">邮箱错误</span>
+            </div>
+            <div class="sexBox">
+            <img src="../images/userInfomation/icon2.png" class="icon" alt=""/>
+               	手机号：&nbsp&nbsp&nbsp&nbsp&nbsp<input id="mobile" class="droplist" type="text"/><span style="color:#b81c22;margin-left: 10px;">*</span>
+               	<span class="errorInfo" style="float: right;" id="inputMobileError">手机号错误</span>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row basicInfo">
+        <div class="basicInfoTitle">
+            <span class="title">基本信息</span>
+            <a style="float: right;" class="btn btn-default edit editBtn2">编辑</a>
+        </div>
+        <div class="col-xs-5">
+            <div>所在学校:&nbsp;<span id="organizationText"></span></div>
+            <div>职务: &nbsp;<span id="jobDutyText"></span></div>
+            <div>职称:&nbsp;<span id="jobTitleText"></span></div>
+            <div>民族:&nbsp;<span id="nationText"></span></div>
+        </div>
+        <div class="col-xs-5">
+            <div>最高学历:&nbsp;<span id="backgroundText"></span></div>
+            <div>政治面貌:&nbsp;<span id="politicText"></span></div>
+            <div>汉语水平:&nbsp;<span id="zhLangText"></span></div>
+            <div>所在地区:&nbsp;<span id="provinceText"></span></div>
+        </div>
+    </div>
+    <div class="row basicInfoModify hide">
+        <span class="title">基本信息</span><br/><br/>
+        <div class="col-xs-5">
+            <div class="form-group">
+                <label for="organization" class="col-xs-3 control-label">所在学校：</label>
+                <div class="col-xs-8">
+                    <label class="control-label" id="organization"></label><br/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="jobDuty" class="col-xs-3 control-label"><span style="color:#b81c22;">*</span>职务：</label>
+                <div class="col-xs-8">
+                    <select id="jobDuty" class="form-control droplist"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="jobTitle" class="col-xs-3 control-label"><span style="color:#b81c22;">*</span>职称：</label>
+                <div class="col-xs-8">
+                    <select id="jobTitle" class="form-control droplist"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="nation" class="col-xs-3 control-label"><span style="color:#b81c22;">*</span>民族：</label>
+                <div class="col-xs-8">
+                    <select id="nation" class="form-control droplist"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="nation" class="col-xs-3 control-label"><span style="color:#b81c22;">*</span>毕业院校：</label>
+                <div class="col-xs-8">
+<!--                     <select id="nation" class="form-control droplist"></select> -->
+					<input id="graduation" class="form-control droplist" type="text">
+					<span class="errorInfo" style="float: right;" id="inputGraduationError">毕业院校错误</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-5">
+            <div class="form-group">
+                <label for="background" class="col-xs-4 control-label"><span style="color:#b81c22;">*</span>最高学历：</label>
+                <div class="col-xs-8">
+                    <select id="background" class="form-control droplist"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="politic" class="col-xs-4 control-label"><span style="color:#b81c22;">*</span>政治面貌：</label>
+                <div class="col-xs-8">
+                    <select id="politic" class="form-control droplist"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="zhLang" class="col-xs-4 control-label"><span style="color:#b81c22;">*</span>汉语水平：</label>
+                <div class="col-xs-8">
+                    <select id="zhLang" class="form-control droplist"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="province" class="col-xs-4 control-label"><span style="color:#b81c22;">*</span>所在地区：</label>
+                <div class="col-xs-8">
+                    <select onchange="areacityy(this,'city')" class="form-control" name="provinceId" id="province" style="width: 40%;float: left;padding: 6px;">
+                        <option value="-1">请选择</option>
+                    </select>
+                    <select id="areacity" onchange="areacityy(this,'county')" class="form-control" name="cityId" style="width: 30%;float: left;padding: 6px;">
+                        <option value="-1">请选择</option>
+                    </select>
+                    <select id="areacounty" class="form-control" name="countyId"style="width: 30%;float: left; padding: 6px;">
+                        <option value="-1">请选择</option>
+                    </select>
+                    <span class="errorInfo" name="box2Error" id="locationError">请选择所在地区</span>
+                </div>
+
+            </div>
+            
+            <div class="form-group">
+                <label for="nation" class="col-xs-4 control-label"><span style="color:#b81c22;">*</span>所学专业：</label>
+                <div class="col-xs-8">
+<!--                     <select id="nation" class="form-control droplist"></select> -->
+					<input id="major" class="form-control droplist" type="text">
+					<span class="errorInfo" style="float: right;" id="inputMajorError">所学专业错误</span>
+                </div>
+            </div>
+        </div>
+<!--         <div class="col-xs-12"><a class="btn save saveBtn2">保存</a></div> -->
+    </div>
+    <hr/>
+    <div class="row techInfoText">
+        <div class="row techInfoTextTitle">
+            <span class="title">教学信息</span>
+            <a style="float: right" class="btn btn-default edit editBtn3">编辑</a>
+        </div>
+        <div class="col-xs-5">
+            <div>初次任教时间:&nbsp;<span id="teachingAgeText"></span></div>
+            <div>主要教学学段:&nbsp;<span id="gradeText"></span></div>
+            <div>主要教学学科:&nbsp;<span id="subjectText"></span></div>
+            <div>主要教学语言:&nbsp;<span id="languageText"></span></div>
+        </div>
+        <div class="col-xs-5">
+            <div>是否双语教学:&nbsp;<span id="bilingualText"></span></div>
+            <div>其他教学学段:&nbsp;<span id="otherGradeText"></span></div>
+            <div>其他教学学科:&nbsp;<span id="otherSubjectText"></span></div>
+            <div>其他教学语言:&nbsp;<span id="otherLanguageText"></span></div>
+        </div>
+    </div>
+    <div class="row techInfo hide">
+        <span class="title">教学信息</span><br/><br/>
+        <div class="col-xs-5">
+            <div class="form-group">
+                <label for="teachingAge" class="col-xs-4 control-label"><span style="color:#b81c22;">*</span>初次任教时间：</label>
+                <div class="col-xs-7">
+                    <input type="text" id="teachingAge" class="datepicker form-control droplist" />
+                    <span class="errorInfo" id="teachingAgeError">请选择初次任教时间</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="grade" class="col-xs-4 control-label"><span style="color:#b81c22;">*</span>主要教学学段：</label>
+                <div class="col-xs-7">
+                    <select id="grade" class="form-control droplist"></select>
+                    <span class="errorInfo" name="box3Error" id="gradeError">请选择主要教学学段</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="subject" class="col-xs-4 control-label"><span style="color:#b81c22;">*</span>主要教学学科：</label>
+                <div class="col-xs-7">
+                    <select id="subject" class="form-control droplist"></select>
+                    <span class="errorInfo" name="box3Error" id="subjectError">请选择主要教学学科</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="language" class="col-xs-4 control-label"><span style="color:#b81c22;">*</span>主要教学语言：</label>
+                <div class="col-xs-7">
+                    <select id="language" class="form-control droplist"></select>
+                    <span class="errorInfo" name="box3Error" id="languageError">请选择主要教学语言</span>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-xs-5">
+            <div class="form-group row">
+                <label class="col-xs-4 control-label"><span style="color:#b81c22;">*</span>是否双语教学：</label>
+                <div class="radio col-xs-7" style="margin: 0;">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked style="margin-top: 10px;">
+                        是
+                    </label>
+                    &nbsp;&nbsp;&nbsp;
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="0" style="margin-top: 10px;">
+                        否
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="otherGrade" class="col-xs-4 control-label">其他教学学段：</label>
+                <div id="otherGradeInput" class="col-xs-7">
+                    <select id="otherGrade" class="droplist form-control" multiple="multiple"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="otherSubject" class="col-xs-4 control-label">其他教学学科：</label>
+                <div id="otherSubjectInput" class="col-xs-7">
+                    <select id="otherSubject" class="form-control droplist" multiple="multiple"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="otherLanguage" class="col-xs-4 control-label">其他教学语言：</label>
+                <div id="otherLanguageInput" class="col-xs-7">
+                    <select id="otherLanguage" class="form-control droplist" multiple="multiple"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row col-xs-12" style="text-align: center;"><a class="btn btn-default quxiao" style="margin-right: 50px;padding:6.5px 24.5px !important">取消</a><a class="btn save saveBtn3">保存</a></div>
+    </div>
+</div>
+<div id="footer"></div>
+<!-- <script src="../js/lib/jquery-2.1.4.js"></script> -->
+<script src="../js/lib/jquery-1.11.3.min.js"></script>
+<script src="../js/lib/bootstrap.js"></script>
+<script src="../js/components/sweetalert.min.js"></script>
+<script src="../js/bootstrap-datepicker.js"></script>
+<script src="../js/bootstrap-datepicker.zh-CN.js"></script>
+<script src="../js/select2.js"></script>
+<script src="../js/select2_locale_zh-CN.js"></script>
+
+<script src="../js/complement.js"></script>
+</body>
+</html>

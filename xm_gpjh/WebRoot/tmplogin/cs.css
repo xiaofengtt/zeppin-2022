@@ -1,0 +1,55 @@
+/* CSS Document */
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-size:12px;
+	font-family:Arial;
+	color:#000000
+}
+.dwon{ font-size:13px; font-family:simsun; color:#97296D;}
+.top{ font-size:13px; font-family:simsun; color:#C40161; font-weight:bold}
+.gre{ color:#008101; font-size:13px; font-weight:bold;}
+.a.b{ color:#273598; font-size:13px; }
+.a.down{ color:#273598; font-size:13px; }
+.bb{ color:#273598; font-size:13px; }
+.hui{ color:#000; font-size:12px;}
+.blu{ color:#291CDD; font-size:12px; text-decoration:underline}
+.red{ color:#BB226E; font-size:13px; font-family:simsun}
+.fff{ color:#fff; font-size:12px;}
+
+.other3{font-size:14px; color:#505050}
+.textarea{ font-size:12px; color:#999}
+.other33title{color:red; font-size:16px; font-weight:bold}
+.other33content{color:#234787; font-size:13px;}
+.two1_error{color:#C10261; font-size:13px;}
+.title{color: #981269; font-weight: bold; font-size:12px }
+.titletop{color: #981269;font-size:12px }
+.titlecen{ font-size:12px;}
+.two4{color: #981269; font-weight: bold;}
+.two5blu{ color:#291CDD; font-size:14px; text-decoration:underline}
+.two5bh{ color:#000; font-size:14px;font-weight:bold}
+
+.two51{ color:#932065; font-size:13px; font-weight:bold}
+.two52{ color:#E90A00; font-size:13px; font-weight:bold}
+.two53{ color:#0154B3; font-size:13px; font-weight:bold}
+.two8down{ color:#616161; font-size:12px; }
+.blank{ color:#000 font-size:13px; font-weight:bold}
+a.top:link{ color:#000; font-size:12px; text-decoration:none; font-weight:normal}
+a.top:hover{ color:#000; font-size:12px; text-decoration:none; font-weight:normal}
+a.top:visited{ color:#000; font-size:12px; text-decoration:none; font-weight:normal}
+a.top:active { color:#000; font-size:12px; text-decoration:none; font-weight:normal}
+table{ color:#000; font-size:12px;}
+
+
+a.topleft:link{ color:#C20061; font-size:12px; text-decoration:none; font-weight:normal}
+a.topleft:hover{ color:#C20061; font-size:12px; text-decoration:none; font-weight:normal}
+a.topleft:visited{ color:#C20061; font-size:12px; text-decoration:none; font-weight:normal}
+a.topleft:active { color:#C20061; font-size:12px; text-decoration:none; font-weight:normal}
+
+.bothre{ border:solid 1px #CFCFCF; border-bottom:solid 1px #F3ADF3; color:#291CDD; font-size:14px; text-decoration:underline}
+.bothrew{ border:solid 1px #F3ADF3; border-bottom:solid 1px #fff; background:#F7CCF7; color:#000; font-weight:bold; font-size:14px;}
+.show{ width:100%}
+.hides{ width:100%; display:none}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>自主报名入口</title>
+    <link rel="stylesheet" href="../css/lib/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/lib/normalize.css"/>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/IndeRegistEntrance.css"/>
+    <script src="../js/lib/jquery-2.1.4.js"></script>
+    <script src="../js/lib/angular.js"></script>
+    <script src="../js/lib/bootstrap.js"></script>
+    <script src="../js/IndeRegistEntrance.js"></script>
+</head>
+<body>
+<div id="header"></div>
+
+<div class="main container">
+    <ul class="nav nav-pills">
+        <li role="presentation"><a href="personal.html">个人主页</a></li>
+        <li role="presentation"><a href="trainingRecord.html">培训记录</a></li>
+        <li role="presentation" class="active"><a href="IndeRegistEntrance.html">自主报名</a></li>
+        <li role="presentation"><a href="certificate.html">所获证书</a></li>
+        <li role="presentation"><a href="selectCourse.html">学前测评</a></li>
+        <li role="presentation"><a href="evaluation.html">学后评价</a></li>
+<!--         <li role="presentation"><a href="teacherEduAdvance.html">学历提升申请记录</a></li> -->
+    </ul>
+    <hr class="navBottom"/>
+    <div id="signupEntry" class="signupEntry"  ng-app="entrance" ng-controller="entranceController">
+        <div class="repeat" ng-repeat="x in lists">
+            <div class="well well-lg">
+                <span class="col-sm-6" ng-bind="x.projectName"></span>
+                <span class="col-sm-2" ng-bind="x.projectYear"></span>
+                <span class="col-sm-2" ng-bind="x.trainType"></span>
+
+                <button onclick="showPage(this);" value="{{x.projectId}}" class="btn enter">进入</button>
+            </div>
+            <img src="../images/IndeRegist/listMark.png" class="listMark " alt=""/>
+            <span class="number" ng-bind="$index+1"></span>
+        </div>
+        <div class="panel panel-default text-center" ng-if="status == 'ERROR'">
+            <div class="panel-body">
+                <h4 ng-bind="message"></h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+
+</body>
+</html>

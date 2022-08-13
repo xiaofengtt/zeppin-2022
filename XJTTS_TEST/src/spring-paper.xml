@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<bean id="paper" class="cn.zeppin.action.paper.PaperAction" scope="prototype">
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iAnswerService" ref="answerService"></property>
+		<property name="iQuestionService" ref="questionService"></property>
+		<property name="iPsqService" ref="psqService"></property>
+		<property name="iSubmitService" ref="submitService"></property>
+		<property name="iResultService" ref="resultService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		<property name="iTeacherTrainingRecords" ref="teacherTrainingRecordsService"></property>
+	</bean>
+
+	<bean id="report" class="cn.zeppin.action.paper.ReportAction" scope="prototype" >
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iAnswerService" ref="answerService"></property>
+		<property name="iQuestionService" ref="questionService"></property>
+		<property name="iPsqService" ref="psqService"></property>
+		<property name="iSubmitService" ref="submitService"></property>
+		<property name="iResultService" ref="resultService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		<property name="iTeacherTrainingRecords" ref="teacherTrainingRecordsService"></property>
+		
+	</bean>
+
+	<bean id="reportExpert" class="cn.zeppin.action.paper.ReportExpertAction" scope="prototype" >
+		<property name="iProjectService" ref="projectService"></property>
+		<property name="iProjectExpertService" ref="projectExpertService"></property>
+		<property name="iAnswerService" ref="answerService"></property>
+		<property name="iQuestionService" ref="questionService"></property>
+		<property name="iPsqService" ref="psqService"></property>
+		<property name="iSubmitService" ref="submitService"></property>
+		<property name="iResultService" ref="resultService"></property>
+		<property name="iTrainingCollegeService" ref="trainingCollegeService"></property>
+		<property name="iTrainingSubjectService" ref="trainingSubjectService"></property>
+		<property name="iTeacherTrainingRecords" ref="teacherTrainingRecordsService"></property>
+		
+	</bean>
+</beans>

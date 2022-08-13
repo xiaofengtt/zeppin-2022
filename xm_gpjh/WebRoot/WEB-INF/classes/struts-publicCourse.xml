@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd" >
+<struts>
+<package name="entity.publicCourse" extends="struts-default" namespace="/entity/publicCourse">
+		<global-results>
+			<result name="grid">/test/grid.jsp</result>
+		    <result name="json">/test/json.jsp</result>
+		    <result name="gridjs">/test/gridjs.jsp</result>
+		    <result name="excel">/test/export.xls</result>
+		    <result name="error">/test/error.jsp</result>
+		    <result name="msg">/test/msg.jsp</result>
+		    <result name="input">/entity/manager/pub/turnToLogin.jsp </result>
+		</global-results>
+		
+		<action name="article_*" method="{1}" class="articleAction">
+		</action>
+		<action name="publicCourse_*" method="{1}" class="publicCourseAction">
+		</action>
+		<action name="studentManage_*" method="{1}" class="studentManageAction">
+			<result name="turnToUpload">/entity/manager/publiccourse/upload_student.jsp</result>
+		</action>
+		<action name="enrolStat_*" method="{1}" class="enrolStatAction">
+		</action>
+		<action name="bookingSeat_*" method="{1}" class="bookingSeatAction">
+		</action>
+		<action name="scoreManage_*" method="{1}" class="scoreManageAction">
+			<result name="turnToUpload">/entity/manager/publiccourse/upload_score.jsp</result>
+		</action>
+		<action name="examManage_*" method="{1}" class="examManageAction">
+			<result name="turnToAutoAllotRoom">/entity/manager/publiccourse/exam_autoallotroom.jsp</result>
+		</action>
+</package>
+</struts>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<setup>
+		<setuped>yes</setuped>
+	</setup>
+
+	<webApp>
+		<Forum_Url>http://forum.zyy.zhanglibin.cn/</Forum_Url>
+		<Board>
+			<Class_Board>1</Class_Board><!--	公共版块ID -->
+			<Course_Board>2</Course_Board><!--	班级课程版块ID -->
+			<Paper_Board>3</Paper_Board> <!-- 毕业论文版块 -->
+		</Board>
+	</webApp>
+</root>

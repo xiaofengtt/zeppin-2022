@@ -1,0 +1,1 @@
+alter table PE_TRAINEE modify graduation VARCHAR2(200);

@@ -1,0 +1,54 @@
+.down {
+	FONT-SIZE: 12px; COLOR: #838383; LINE-HEIGHT: 22px; FONT-FAMILY: simsun
+}
+.indexleft {
+	FONT-SIZE: 12px; COLOR: #0765b6; LINE-HEIGHT: 22px; FONT-FAMILY: simsun
+}
+TABLE {
+	FONT-SIZE: 12px
+}
+.indextea {
+	FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: simsun
+}
+.indextea1 {
+	FONT-SIZE: 12px; COLOR: #000; FONT-FAMILY: simsun
+}
+.indexcen {
+	FONT-SIZE: 12px; COLOR: #0765b6; FONT-FAMILY: simsun
+}
+.twoleftlogo {
+	FONT-SIZE: 12px; COLOR: #0765b6; LINE-HEIGHT: 22px; FONT-FAMILY: simsun
+}
+.twocentop {
+	FONT-SIZE: 12px; COLOR: #9e9e9e; LINE-HEIGHT: 22px; FONT-FAMILY: sinsun
+}
+.twocencetop {
+	FONT-SIZE: 12px; COLOR: #04186d; FONT-FAMILY: sinsun
+}
+.twocen1 {
+	FONT-SIZE: 12px; COLOR: #377ecf; FONT-FAMILY: sinsun
+}
+.twocen {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: sinsun
+}
+.totop {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #0a6cb7; FONT-FAMILY: sinsun
+}
+.twoleft {
+	FONT-SIZE: 12px; COLOR: #003692; FONT-FAMILY: sinsun
+}
+.12texthei {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #000000; TEXT-INDENT: 24px; LINE-HEIGHT: 24px
+}
+.12content {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 24px
+}
+.14title {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #000000; LINE-HEIGHT: 30px
+}
+.16title {
+	FONT-WEIGHT: bold; FONT-SIZE: 16px; COLOR: #fff; LINE-HEIGHT: 30px
+}
+A.button {
+	CURSOR: pointer; COLOR: buttontext; TEXT-DECORATION: none
+}

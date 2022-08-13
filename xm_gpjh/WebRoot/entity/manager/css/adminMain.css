@@ -1,0 +1,638 @@
+.border{
+	border:1px solid #999999;
+	margin-top:32px;
+	margin-left:8px;
+	margin-right:12px;
+	-moz-box-sizing: border-box;
+	padding-top:8px;
+	padding-bottom:8px;
+}
+
+span.header{
+	font-weight: bold;
+	position:absolute;
+	top: -30px;
+	left: -1px;
+	font-size:9pt;
+	background-color: #efefef;
+	border:1px solid #aaaaaa;
+	padding-top: 4px;
+	padding-bottom:2px;
+	padding-left:8px;
+	padding-right:8px;
+	white-space: nowrap;
+	-moz-box-sizing: border-box;
+}
+
+.misc {
+	padding-right:16px;
+	text-align: right;
+}
+/* 浠ヤ笂鏄痗ontentbox閮ㄥ垎妗嗘灦 */
+
+
+/* ---------- list area  --------- */
+.list {
+	//border-collapse: collapse;
+}
+	 
+.list td {
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.list th { 
+  vertical-align: middle;
+  text-align: center;
+  background-color:ThreedFace; 
+  border-right: 1px solid ThreedDarkShadow; 
+  border-top: 1px solid ThreeDHighlight; 
+  border-bottom: 1px solid ThreedDarkShadow; 
+  border-left: 1px solid ThreeDHighlight; 
+} 
+
+.list th a:link, 
+.list th a:visited, 
+.list th a:active {
+  color: WindowText;
+  text-decoration: none;
+}
+
+.evenrowbg {
+	background-color: #f3f5fa;
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFFFFF;
+	height: 26px;
+}
+.winEvenrowbg {
+	width:100%;
+	padding:3px;
+	background-color: #f3f5fa;
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFFFFF;
+	height: 22px;
+}
+
+.oddrowbg {
+	background-color: #fafafa;
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFFFFF;
+	height: 26px;
+}
+.winOddrowbg {
+	width:100%;
+	padding:3px;
+	background-color: #fafafa;
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFFFFF;
+	height: 22px;
+}
+/* ---------- list area  --------- */
+
+
+/* ---------- big icon buttons  --------- */
+.bigLink {
+  width: 118px;
+  height: 68px;
+  float: left;
+  text-align: center;
+  padding-top: 16px;
+  padding-bottom: 8px;
+  padding-right: 2px;
+  padding-left: 2px;
+}
+
+.bigLink .link img {
+  width: 32px;
+  height: 32px;
+  display: inline;
+  vertical-align: middle;
+  padding-bottom: 6px;
+  padding-right: 1px;
+  padding-left: 1px;
+  text-decoration: none;
+}
+
+.help { 
+    color: InfoText; 
+    position: absolute; 
+    top: 0px; 
+    left: 0px; 
+    padding: 5px; 
+    width: 200px; 
+    border: 1px solid WindowFrame; 
+    background-color: InfoBackground; 
+    visibility: hidden; 
+    font-size: 8pt; 
+} 
+/* ---------- big icon buttons  --------- */
+/* ---------- links ------------ */
+.link,
+.link a {
+  display: inline;
+  background: none;
+  background-color: transparent;
+  vertical-align: middle;
+  cursor: hand;
+  cursor: pointer;
+  color: WindowText;
+  text-decoration: none;
+}
+
+.link:hover a,
+.link a:hover {
+  text-decoration: underline;
+  color: #000088;
+}
+
+.link:hover img,
+.link img:hover { 
+  text-decoration: none;
+}
+
+.linkdisabled {
+  color: GrayText;
+  text-decoration: none;
+  cursor: default;
+}
+
+.link img {
+  width: 20px;
+  height: 20px;
+  display: inline;
+  vertical-align: middle;
+  text-decoration: none;
+}
+
+/* ---------- links ------------ */
+
+/* ---------- add/edit ------------ */
+.xmlLabel { 
+	white-space: nowrap;
+}
+.winXmlLabel {
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFFFFF;
+	background-color:#eeeeee;
+	white-space: nowrap;
+}
+
+.xmlLabelT { 
+	color:#ff6600;
+	white-space: nowrap;
+}
+
+.xmlTd    { 
+	width: 100%; 
+	height: 22px;
+	padding: 3px;
+}
+.xmlInput { 
+	border-left :1px solid #666666;
+	border-top:1px solid #999999;
+	border-right:1px solid #333333;
+	border-bottom:1px solid #222222;
+	background-color:#fafafa;
+	margin: 0;
+	padding: 0;
+}
+.textInput {
+	height:18px;
+	padding-left:4px;
+	padding-top:2px;
+	width: 100%;
+}
+
+.dateInput{
+	height:18px;
+	padding-left:4px;
+	padding-top:2px;
+	width: 30%;
+}
+.textInputM {
+	height:80px;
+	padding-left:4px;
+	padding-top:2px;
+	width: 100%;
+}
+.selectM{
+	width:50%;
+	font-size:9pt;
+}
+.dialogbuttons {
+	margin-top:12px;
+	padding: 5px 8px 5px;
+	text-align: center;
+	background: #fafafa;
+	border-top: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+}
+input.dialogbutton {
+	color:#000000;
+	background-color:#eaeaea;
+	font-size: 9pt;
+	width: 82px;
+	height: 20px;
+	padding: 2 0 0 0px;
+	margin-left: 12px;
+	overflow: visible;
+	border: 1px solid #333333;
+}
+input.dialogbuttonOver {
+	color:#ffffff;
+	background-color:#0099ff;
+	font-size: 9pt;
+	width: 82px;
+	height: 20px;
+	padding: 2 0 0 0px;
+	margin-left: 12px;
+	overflow: visible;
+	border: 1px solid #333333;
+}
+/* ---------- add/edit ------------ */
+
+p, td, div, span {
+	font-size: 9pt;
+}
+
+body.scllbar{
+	SCROLLBAR-FACE-COLOR:#dfdfdf;
+	SCROLLBAR-HIGHLIGHT-COLOR:#dfdfdf;
+	SCROLLBAR-SHADOW-COLOR:#dfdfdf;
+	SCROLLBAR-3DLIGHT-COLOR:#dfdfdf;
+	SCROLLBAR-BASE-COLOR:#dfdfdf;
+	SCROLLBAR-ARROW-COLOR:#ffffff;
+	SCROLLBAR-TRACK-COLOR:#efefef;
+	SCROLLBAR-DARKSHADOW-COLOR:#999999;
+	cursor:default;
+}
+
+/* 鎼滅储杈撳叆妗� */
+input.search {
+	font-size:9pt;
+	color:#003366;
+	width:122;
+	padding: 0.2em 0.2em 0em 0.25em;
+	border:1px solid #C4C7CA;
+	background-color:#ffffff;
+	margin-top: 2px;
+}
+
+/* 閫夋嫨妗� */
+select.select-s{
+	width:92;
+	margin-top:-1;
+	margin-left:-1;
+	margin-bottom:-3;
+	border:1px solid #cccccc;
+	background:#fefefe;
+	font-size:9pt;
+	font-color:#666666;
+	color:#333333;
+}
+
+.orange {
+	font-size: 9pt;
+	color: #FF6600;
+	text-decoration: none;
+}
+
+.leftABg {
+	background-image: url(../images/admin_page/leftTopBg.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+
+.userName {
+	font-size: 16px;
+	color: #FF6600;
+	text-decoration: none;
+	text-align: left;
+	padding-left: 4px;
+	filter: DropShadow(Color=ffffff, OffX=1, OffY=1, Positive=135);
+	font-family: "榛戜綋", "Arial Black";
+	padding-top: 4px;
+
+}
+
+.leftStatusInfoBox {
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #B6B6B6;
+	border-bottom-color: #B6B6B6;
+	border-left-color: #D1D1D1;
+	background-image: url(../images/admin_page/leftBg2.gif);
+	background-repeat: repeat-x;
+	background-color: #FAFAFA;
+}
+
+.textOrange {
+	font-size: 9pt;
+	color: #FF6600;
+	text-decoration: none;
+	padding-left: 4px;
+
+}
+
+.textBlue {
+	font-size: 9pt;
+	color: #006699;
+	text-decoration: none;
+	padding-left: 4px;
+
+
+}
+.textRed {
+	font-size: 9pt;
+	color: #FF3300;
+	text-decoration: none;
+	padding-top: 6px;
+
+}
+
+a.td:link {
+	font-size: 9pt;
+	color: #333333;
+	text-decoration: none;
+}
+a.td:hover {
+	font-size: 9pt;
+	color: #FF6600;
+	text-decoration: none;
+}
+a.td:visited {
+	font-size: 9pt;
+	color: #003366;
+	text-decoration: none;
+}
+a.td:active {
+	font-size: 9pt;
+	color: #FF0000;
+	text-decoration: none;
+}
+
+.textGray {
+	font-size: 9pt;
+	color: #333333;
+	text-decoration: none;
+	padding-left: 4px;
+}
+
+
+.textOrangeO {
+	font-size: 9pt;
+	color: #FF6600;
+	text-decoration: none;
+}
+
+.textBlueO {
+	font-size: 9pt;
+	color: 006699;
+	text-decoration: none;
+}
+
+.textRedO {
+	font-size: 9pt;
+	color: #FF3300;
+	text-decoration: none;
+	padding-top: 2px;
+}
+
+a.orange:link {
+	font-size: 9pt;
+	color: #FF6600;
+	text-decoration: none;
+}
+a.orange:hover {
+
+	font-size: 9pt;
+	color: #FF0000;
+}
+a.orange:visited {
+	font-size: 9pt;
+	color: #990000;
+}
+
+
+a.leftStatusInfoA:link {
+	font-size: 9pt;
+	color: 585858;
+	text-decoration: none;
+	filter: DropShadow(Color=ffffff, OffX=1, OffY=1, Positive=135);
+}
+a.leftStatusInfoA:hover {
+	font-size: 9pt;
+	color: #FF6600;
+	text-decoration: none;
+}
+a.leftStatusInfoA:visited {
+	font-size: 9pt;
+	color: #182E4E;
+	text-decoration: none;
+}
+a.leftStatusInfoA:active {
+	font-size: 9pt;
+	color: #990000;
+	text-decoration: none;
+}
+.adminMenu {
+	font-size: 9pt;
+	color: #000000;
+	text-decoration: none;
+	padding-top: 4px;
+	padding-right: 4px;
+	padding-bottom: 4px;
+	padding-left: 4px;
+	height: 24px;
+}
+.adminMenuBox {
+	margin-top: 8px;
+	margin-left: 12px;
+
+}
+.helpTitleBorder {
+	font-size: 9pt;
+	color: #000000;
+	text-decoration: none;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-top-color: #B0B0B0;
+	border-right-color: #B0B0B0;
+	border-left-color: #B0B0B0;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #999999;
+
+}
+.helpBox {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #B6B6B6;
+	border-bottom-color: #B6B6B6;
+	border-left-color: #B6B6B6;
+	background-image: url(../images/admin_page/leftBg3.gif);
+	background-repeat: repeat-x;
+	background-color: #FAFAFA;
+	padding: 8px;
+	border-top-color: #EBEBEB;
+	font-size: 9pt;
+	color: #666666;
+	line-height: 152%;
+	letter-spacing: 1px;
+}
+
+.nomargin {
+	padding: 0;
+	margin: 0;
+}
+
+/*/////////// start-button /////////////*/
+/* Button - Image button in image style */
+img.button {
+	border: 0px none;
+	vertical-align: middle;
+	margin-bottom:2px;
+}
+
+/* Button - Link (href) style */
+a.button {
+	color: ButtonText;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.editorbuttonbackground {
+	border-top: 1px solid ThreeDHighlight;
+	border-left: 1px solid ThreeDHighlight;
+	border-right: 1px solid ThreeDShadow;
+	border-bottom: 1px solid ThreeDShadow;
+	padding: 1px;
+	/*background-color: ThreeDFace;*/
+	background-color: #dedede;
+}
+
+/* Button - Normal style (inactive) */
+span.split {
+	width:6px;
+	height:20px;
+	display: block;
+	border: 0px solid;
+	background-image: url('../images/admin_page/tiny_slip.gif');
+	margin-right:8px;
+}
+
+span.splitBlock {
+	width:3px;
+	height:20px;
+	display: block;
+	border: 0px solid;
+	background-image: url('../images/admin_page/tiny_slip.gif');
+	background-repeat:no-repeat;
+	margin-right:8px;
+}
+
+/* Button - normal style */
+span.norm {
+	display: block;
+	border: 0px solid;
+	color:#333333;
+	margin-right:12px;
+	padding-top:0px;
+	padding-left:2px;
+	padding-right:2px;
+	padding-bottom:0px;
+}
+
+/* Button - Hover style */
+span.over {
+	cursor:hand;
+	display: block;
+	border-top: 1px solid ThreeDHighlight;
+	border-left: 1px solid ThreeDHighlight;
+	border-bottom: 1px solid ThreeDShadow;
+	border-right: 1px solid ThreeDShadow;
+	color:#ff3300;
+	margin-right:12px;
+	padding-top:0px;
+	padding-left:1px;
+	padding-right:1px;
+	padding-bottom:0px;
+}
+
+/* Button - Push style */
+span.push {
+	cursor:hand;
+	display: block;
+	border-top: 1px solid ThreeDShadow;
+	border-left: 1px solid ThreeDShadow;
+	border-bottom: 1px solid ThreeDHighlight;
+	border-right: 1px solid ThreeDHighlight;
+	margin-right:12px;
+	margin-top:2px;
+	padding-top:0px;
+	padding-left:2px;
+	padding-right:0px;
+	padding-bottom:0px;
+}
+
+/* Button - Disabled style */
+span.disabled {
+	display: block;
+	border: 1px solid ThreeDFace;
+	color: GrayText;
+	padding-left:1px;
+	padding-right:1px;
+	background-color: #bfbfbf;
+	cursor:default;
+}
+
+/* button text style */
+span.text{
+	height:12px;
+	margin-top:2px;
+}
+.span img{
+	border:4px;
+	margin-top:12px;
+}
+/*///////// end-button ////////*/
+
+.pageMngBg {
+	background-color: #DEDBD6;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #666666;
+	height: 28px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-top-color: #EAEAEA;
+	border-right-color: #666666;
+	border-left-color: #CCCCCC;
+
+}
