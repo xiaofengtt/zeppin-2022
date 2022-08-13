@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>知识点管理</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../css/bootstrap.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/app.css">	
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../css/metro/blue/jtable.css" rel="stylesheet" type="text/css" >
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/jquery.jtable.js"></script>
+<script src="../js/jquery.jtable.zh-CN.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+
+<script src="../js/bootstrap-paginator.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/url.min.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/app.js"></script> 
+<script src="../js/moment.js"></script> 
+<script src="../js/zh-cn.js"></script>
+
+<script>
+$(function(){
+	moment.lang('zh-cn');
+    function timedUpdate () {
+       update();
+       setTimeout(timedUpdate, 1000);
+   }
+   function update(){
+          $('#datafomate').html(moment().format('YYYY-MM-DD ,a h:mm:ss'));
+      }  
+	timedUpdate()
+	//$('#datafomate').html(moment().format('YYYY MMMM Do, h:mm:ss a'));
+})
+</script>
+ 
+</head>
+<body>
+
+<!--Header-part-->
+<div class="navbar" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo" title="华莘智慧教育云资源平台" ><img src="../img/logo-jy.png" height="41"></a>
+    </div>
+	<p class="logout">欢迎<span id="loginname"></span> &nbsp;&nbsp;<span id="datafomate"></span> &nbsp;|&nbsp;  <a href="../admin/passwordEditiframe.html" data-fancybox-type="iframe" class="btn-password cboxElement">修改密码</a> &nbsp;|&nbsp;  <a href="login.html">退出</a> </p>
+	
+  </div>
+</div>
+<!--close-Header-part--> 
+
+<div id="container" class="container-fluid">
+
+	<div class="row">
+		<div class="sidebar">
+			<div class=" nav-sidebar">
+				<ul id="leftside" class="nav">
+				</ul>
+			</div>
+			<div class="js-nav-shadow bottom"><img src="../img/round-shadow-bottom.png" style="top: auto; bottom: 0px;"></div>
+		</div> <!--end sidebar-->
+		<script id="leftTpl" type="text/template">
+			{{#Records}}
+			<li class="active"><a href="#"><span>{{name}}</span> </a>
+				
+				<ul class="nav">
+					{{#data}}
+						<li {{#iscurrent}} class="cur" {{/iscurrent}}>  <a href="{{path}}">{{name}}
+						</a></li>
+					{{/data}}
+			
+				</ul>
+				
+			</li>
+			{{/Records}}
+		</script>
+		<div class="main">
+
+			<div class="tablewrap">
+
+				<div class="cui-menu">
+					<a href="../admin/knowledgeAddiframe.html"
+						data-fancybox-type="iframe" class="btn btn-primary btn-create">
+						+ 添加知识点 </a>
+					
+				</div>
+				<div class="meta_bar clearfix" style="position:absolute;top:45px;left:160px;z-index:100;border-bottom:0">
+					<dl class="clearfix">
+						<dt>学科: </dt>
+						<dd>
+							<div id="changeSubject" class="dropdown changeSubject">
+							  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								   <span class="cSname">请选择学科</span> [更换]
+								   <span class="caret"></span>
+							  </a>
+							  <div id="changeSubjectCnt" class="dropdown-menu">
+						    	
+							  </div>
+							</div>
+						</dd>
+						<script id="changeSubjectTpl" type="text/template">
+							{{#Records}}
+								<div class="dl">
+					    	 		<h4>{{name}}</h4>
+									 <p>
+									 	{{#data}}
+											<a data-id="{{id}}" data-gradeid="{{grade_id}}" href="#">{{name}}</a>
+										{{/data}}
+									 </p>
+								 </div>
+							 {{/Records}}
+						</script>
+						
+					</dl>
+					<dl class="clearfix">
+						<dt>学段: </dt>
+						<dd>
+							<div class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="cGname">请选择学段</span><span class="caret"></span></a>
+								<div class="gradeFliter dropdown-menu">
+									<div id="gradeBox" class="treelist">
+										<div id="gradeList" class="list_sub sm_icon">
+											<div id="gradeido">
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</dd>
+					</dl>
+				</div>
+				<!--搜索框-->
+				<div id="searchbox" class="searchbox" >
+					<form class="search search_form" id="searchForm" action="#" method="POST">
+						<fieldset>
+							<label for="searchheader" class="placeholder overlabel">名称</label>
+							<input autocomplete="off" id="searchheader" value="" type="text" name="q">
+							<input type="hidden" name="" value="">
+							<div class="show_dropdown">
+								<div class="dropdown" style="display: block;">
+									<ul>
+										<li><label for="type_name">按名称</label><input type="radio" id="type_name" name="stype" value="name" checked="checked">
+										</li>
+										
+									</ul>
+									<span class="bl"></span>
+									<span class="br"></span>
+								</div>
+							</div>
+							<button type="submit" id="searchBtn" class="search-button">Search</button>
+						</fieldset>
+					</form>
+			
+				</div>
+				
+				<div id="TableContainer"></div>
+
+
+				<script type="text/javascript">
+					$(document)
+							.ready(
+									function() {
+										var knowledgeid = (url('?knowledge.id') != null) ? url('?knowledge.id') : '';
+										var subjectid = (url('?subject.id') != null) ? url('?subject.id') : '';
+										var gradeid = (url('?grade.id') != null) ? url('?grade.id') : '';
+										var level = (url('?level') != null) ? '' : 1;
+										var navarr = []; 
+										$.get('knowledgeLoadKnowledgeNav?knowledge.id='+knowledgeid+'&subject.id='+subjectid+'&grade.id='+gradeid,function(r) {
+											if(r.Status =='success') {
+												for ( var i = 0, l = r.Records.length; i < l; i++ ) {
+												    var navhtml = ' &gt; <a href="../admin/knowledge.html?knowledge.id='+ r.Records[i].id+'&level='+r.Records[i].level+'&subject.id='+r.Records[i]['subject.id']+'&grade.id='+r.Records[i]['grade.id'] +'">'+ r.Records[i].name +'</a>';
+													navarr.push(navhtml);
+												}
+												var subjectName= (r.Records[0]['subject.name']!=null) ? r.Records[0]['subject.name'] :'请选择学科';
+												var gradeName= (r.Records[0]['grade.name']!=null) ? r.Records[0]['grade.name'] :'请选择学段';
+												$('.cGname').html(gradeName);
+												$('.cSname').html(subjectName);
+											}
+											
+										}).done(function(){
+											$('#TableContainer')
+												.jtable(
+														{
+															title :'<a href="../admin/knowledge.html">知识点管理</a> '+ navarr.join(''),
+															messages : zhCN, //Lozalize
+															paging : true, //Enable paging
+															pageSize : 10, //Set page size (default: 10)
+															pageSizes : [ 10, 20, 30, 40, 50 ],
+															sorting : true, //Enable sorting
+															defaultSorting : 'id ASC', //Set default sorting
+															dialogShowEffect : 'drop',
+															addRecordButton : $('.btn-create'),
+															actions : {
+																listAction : '../knowledgeList?knowledge.id='+ knowledgeid + '&level='+level,
+																
+																deleteAction :'../knowledgeDelete'
+																
+															},
+															fields : {
+																'id' : {
+																	title : '编号',
+																	key : true,
+																	width:'5%'
+																},
+																'name' : {
+																	title : '名称',
+																	width: '8%'
+																	
+																},
+																
+																'grade.name' : {
+																	title : '所属学段',
+																	
+																	width : '8%'
+																},
+																'subject.name' : {
+																	title: '所属学科',
+																	width:'10%'
+																	
+																},
+																level : {
+																	title:'层级',
+																	width:'5%'
+																	
+																	
+																},
+																status : {
+																	title:'状态',
+																	width:'5%',
+																	options : {
+																		'0':'停用',
+																		'1':'正常'
+																	}
+																	
+																},
+																addviewchild: {
+												                    title: '操作',
+												                    width: '10%',
+												                    sorting: false,
+												                    edit: false,
+												                    create: false,
+												                    display: function (data) {
+																		//if(data.record.isschool == 0) {
+																			var html ='<a href="../admin/knowledge.html?knowledge.id=' + data.record.id + '&level='+ data.record.level +'&subject.id='+data.record['subject.id']+'&grade.id='+data.record['grade.id']+'">管理下级知识点</a>';
+																			//}else {
+																			//var html = '';
+																			//}
+																		return html;
+																	}
+									
+																},
+																customedit : {
+																	title : '',
+																	width : '3%',
+																	sorting : false,
+																	edit : false,
+																	create : false,
+																	visibility : 'fixed',
+																	display : function(data) {
+																		var html = '<a class="ifrbox jtable-cmd-btn" data-fancybox-type="iframe" href="../admin/knowledgeEditiframe.html?knowledge.id='+knowledgeid+'&id=' + data.record.id + '">编辑</a>';
+																		return html;
+																	}
+																}
+																
+					
+														
+															},
+															
+															columnResizable : false,
+															deleteConfirmation: function(data) {
+															  data.deleteConfirmMessage = '确定要停用这行数据?';
+															  $('#DeleteDialogButton').html('停用');
+															},
+															formClosed : function(event,data) {
+																
+																//if(data.formType =="create" ) {
+																
+																	
+																//}
+																
+															},
+															recordsLoaded :function (data) {
+																$(".ifrbox").colorbox({
+																	iframe : true,
+																	width : "860px",
+																	height: "600px",
+																	opacity : '0.5',
+																	overlayClose : false,
+																	escKey : true
+																});
+										
+																//删除按钮改成停用
+															    $('#'+data.target.id).find('.jtable-delete-command-button').each(function(){
+																	$(this).attr('title','停用');
+																	$(this).find('span').text('停用');
+																})  
+										
+															}
+														
+															
+														});
+
+										$('#TableContainer').jtable('load');
+										
+										//搜索
+								        $('#searchForm').submit(function (e) {
+								            e.preventDefault();
+											var key = $('input[name="stype"]:checked').val(),obj = {};
+											obj[key] = $('#searchheader').val();
+								            $('#TableContainer').jtable('load', obj);
+											return false;
+								        });
+										
+									});
+								})
+									
+									$(function() {//添加按钮
+										$(".btn-create").colorbox({
+											iframe : true,
+											width : "860px",
+											height : "600px",
+											opacity : '0.5',
+											overlayClose : false,
+											escKey : true
+										});
+				
+			
+									})
+				</script>
+				<script type="text/javascript">
+				
+				var defaultOption = {
+					sid : '',
+					gid : ''
+				}
+				//知识点
+				var TreeList = {
+					treelist : '.treelist',
+					list : function(type,url,sid,gid) {
+						
+						var cUrl = '../'+url;
+						var e = $('#'+type+'ido');
+						cUrl += '?split=_&level=1';
+						cUrl += (typeof sid == 'undefined') ? '' : '&subject.id='+sid;
+						cUrl += (typeof gid == 'undefined') ? '' : '&grade.id='+gid;
+						var cHtml = '';
+						var recursiveIteration = function (object,type) {
+						    for (var property in object) {
+						        if (object.hasOwnProperty(property)) {
+						            if (typeof object[property] == "object"){
+						                recursiveIteration(object[property],type);
+						            }else{
+										emClass = (object['haschild']) ? ' class="o"' : '';
+										emClick = (object['haschild']) ? ' onclick="TreeList.changeIcon($(this))"' : '';
+										divClass = (typeof object['level'] == 'undefined') ? ' class="tSub"' : ' class="tSub'+ (parseInt(object['level']) + 1) +'"';
+										aClick = ' onclick="TreeList.getquelist(\'' + type + '\',\'' + object['id'] + '\',this)"';										
+										if(property == 'name') {
+											cHtml += '<div'+ divClass +'><em  '+ emClass + emClick +' class=""></em><a href="javascript:void(0)" '+ aClick +'>'+ object['name'] +'</a></div>';											
+										}
+						            }
+						        }
+						    }
+						}							
+						$.getJSON(cUrl,function(data) {
+							if(data.Status == 'success' && data.Records.length > 0) {
+								recursiveIteration(data,type);
+								$("#"+ type +"ido").html(cHtml);
+							}else if (data.Status == 'success' && data.Records.length == 0) {
+	   							$("#"+ type +"ido").html('<div class="no_data">暂无相关条件的数据</div>');
+	   						}               
+						});
+					},
+					changeIcon: function(e) {
+						if (e.attr('class') == 'o') {
+							e.attr('class', 'c');
+						} else {
+							e.attr('class', 'o');
+						}
+					},
+					getquelist : function(type,id,obj) {
+						$(obj).closest('.treelist').find('a').removeClass('cur');
+						$(obj).addClass('cur');
+						if(type == 'grade'){
+							defaultOption.gid = id;
+							var tx = $(obj).text();
+							$('.cGname').html(tx);
+						}else {
+							defaultOption.tcid = id;	
+						}
+						defaultOption.sid = (typeof defaultOption.sid == 'undefined') ? '' : defaultOption.sid;
+						$('#TableContainer').jtable('load', 'subject.id='+defaultOption.sid+'&grade.id='+id);
+					}
+
+				};
+				
+				
+				//获得学科列表
+				function getSubject() {
+					$.getJSON('../admin/subjectSearchAllSubject?split=_', function(r) {
+						if(r.Status == 'success' && r.Records.length > 0) {
+						    var template = $('#changeSubjectTpl').html();
+						    var html = Mustache.render(template, r);
+						    $('#changeSubjectCnt').html(html);
+							//$('.cSname').html(r.Records[0].data[0].name);
+						}else {
+							alert('服务端出错！请稍后重试！');
+						}
+					});
+				}
+				
+				//更改学科
+				function changeSubject(obj) {
+					var th = $(obj), cSname = th.closest('.changeSubject').find('.cSname'), sid = th.data('id'),gid = th.data('gradeid');
+					defaultOption.sid = sid;
+					cSname.html(th.text());						
+					TreeList.list('grade','gradeSearchAllGrade','',gid);					
+					$('.cGname').html('请选择学段');
+					$('#TableContainer').jtable('load', 'subject.id='+sid);
+				}
+				
+				$(function(){
+					function init() {
+						getSubject();
+						TreeList.list('grade','gradeSearchAllGrade');		
+						//更改学科 试题列表刷新
+						$('#changeSubjectCnt').on('click','a',function(e){
+							e.preventDefault();
+							changeSubject(this);
+						});		
+						$(".btn-password").colorbox({
+							iframe : true,
+							width : "400px",
+							height : "330px",
+							opacity : '0.5',
+							overlayClose : false,
+							escKey : true
+						});
+
+					}				
+					init();			
+				})
+					
+				</script>
+			</div>
+		</div>
+		
+		
+	</div> <!--end row-->
+	
+</div>	<!--end container-->
+
+<div class="bs-footer">
+  <div>
+	  <p>Copyright © 2015 华莘智慧教育</p>
+
+  </div>
+</div>
+
+</body>
+</html>
+		

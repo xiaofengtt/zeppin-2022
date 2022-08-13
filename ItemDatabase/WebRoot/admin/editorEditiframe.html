@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="../css/bootstrap2.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/iframe.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/url.min.js"></script>
+
+</head>
+<body>
+	<div class="ifrcnt container">
+		<div class="hd">
+			<h3>编辑平台编辑</h3>
+		</div>
+		<div class="bd">
+			<div class="alert alert-danger"
+				style="display:none;margin:0 15px 15px;"></div>
+			<form id="formsubmit" class="form-horizontal" role="form"
+				action="#"
+				method="post">
+				<input type="hidden" name="id" value="">
+				<div class="row">
+					
+					<div id="HtmlTpl" class="span10">
+					
+					
+					</div>
+				</div>
+				<script id="DataTpl" type="text/template">
+				{{#Records}}
+				<div class="clearfix">
+					<div class="control-group">
+						<label class="control-label" for="">名称</label>
+						<div class="controls">
+							<input type="text"  name="name"
+								value="{{name}}">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="">邮箱</label>
+						<div class="controls">
+							
+							<input type="text" id="" name="email"
+								value="{{email}}">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="">电话</label>
+						<div class="controls">
+							
+							<input type="text" id="" name="phone"
+								value="{{phone}}">
+						</div>
+					</div>
+			
+					<div class="control-group">
+						<label class="control-label" for="">状态</label>
+						<div class="controls">
+							<select name="status">
+								<option {{#status}}selected{{/status}} value="0">停用</option>
+								<option {{#status}}selected{{/status}} value="1">正常</option>
+							</select>
+							
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="">设置学段权限</label>
+						<div class="controls" style="padding-top:10px;">
+							<div class="restrictcnt clearfix span6" style="display:block">
+								<div class="ufcwrap" id="gradeCon">
+									
+								</div>
+								<button type="button" onclick="gradeUbtn();"
+									class="btn btn-default frbtn gradeBtn disabledbtn"
+									disabled="disabled">确认</button>
+							</div>
+							<div id="grademtr" style="padding-top:10px;clear:both">
+								{{#grades}}
+								<div class="mtc">{{grade_name}}<span onclick="delGrade($(this),'')" dataid="{{grade_id}}" class="uclose">&times;</span></div>
+								{{/grades}}
+							</div>
+							<div class="hidden" id="gradeIds">
+								{{#grades}}
+								
+								<input type="hidden" id="gradesid_{{grade_id}}"
+									name="grades" value="{{grade_id}}">
+								{{/grades}}	
+							</div>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="">设置学科权限</label>
+						<div class="controls" style="padding-top:10px;">
+							<div class="restrictcnt clearfix span6" style="display:block">
+								<div class="ufcwrap" id="subjectCon">
+									
+								</div>
+								<button type="button" onclick="subjectUbtn();"
+									class="btn btn-default frbtn subjectBtn disabledbtn"
+									disabled="disabled">确认</button>
+							</div>
+							<div id="subjectmtr" style="padding-top:10px;clear:both">
+								{{#subjects}}
+								<div class="mtc">{{subject_name}}<span onclick="delSubject($(this),'')" dataid="{{subject_id}}" class="uclose">&times;</span></div>
+								{{/subjects}}
+							</div>
+							<div class="hidden" id="subjectIds">
+								{{#subjects}}
+								<input type="hidden" id="subjectsid_{{subject_id}}"
+									name="subjects" value="{{subject_id}}">
+								{{/subjects}}
+							</div>
+						</div>
+					</div>
+						
+					
+					
+				</div>
+				{{/Records}}
+				</script>
+			
+				<div class="row actionbar">
+					<div class="offset7">
+						<button class="btn btn-primary" type="submit">确定</button>
+						<button id="colorboxcancel" onclick="parent.$.colorbox.close()"
+							class="btn btn-default" type="button">取消</button>
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<script>
+		$(function() {
+			var id = url('?id');
+ 			$('input[name="id"]').val(id);
+			
+			$.get('../admin/editorLoad?split=_&id='+url('?id'),function(r){
+				if(r.Status == 'success') {
+					
+					var st = JSON.stringify(r);
+					
+				    var template = $('#DataTpl').html();
+					
+				    var html = Mustache.render(template, $.parseJSON(st));
+				    $('#HtmlTpl').html(html);
+				}else {
+					alert('服务端出错！请稍后重试！');
+				}
+			}).done(function(){
+				
+				gradeCon();
+				subjectCon();
+			
+				$('#formsubmit').submit(function() {
+					var str = $(this).serialize();
+					$.get('../admin/editorUpdate?'+ str, function(data) {
+						var Result = data.Status;
+						var message = data.Message;
+						if (Result == "success") {
+							window.top.location.reload();
+						} else {
+							$('.alert-danger').html(message).show();
+						}
+					})
+					return false;
+				});
+			})
+			
+			
+			
+			//项目类型 helper 函数
+			$(document).on("click",function(e) {
+				if(!$(e.target).parents().is('.ufc'))
+					$('.uul').hide();
+			});
+
+		})
+		
+		
+		//学段权限
+		function gradeCon(rid,level) {
+			var cUrl = "../admin/gradeList";
+			rid = (typeof (rid) == 'undefined') ? '' : rid;
+			level = (typeof (level) == 'undefined') ? '1' : level;
+			cUrl += (rid) ? '?grade.id=' + rid : '?grade.id=&level=1';
+			$.getJSON(cUrl,function(data) {
+				if (data.Status == 'success' && data.Records.length > 0) {
+					var ufc = '<div class="ufc"><span class="usel" onclick="showul($(this))"><strong>请选择...</strong></span><ul class="uul">';
+					$.each(data.Records,
+							function(i, c) {
+								aClick = (c.haschild) ? ' onclick="gradeCon(\''
+										+ c.id
+										+ '\');resspan($(this));activeBtn(\'gradeBtn\')"'
+										: ' onclick="resspan($(this));activeBtn(\'gradeBtn\')"';
+								ufc += '<li ' + aClick
+										+ ' dataid="' + c.id
+										+ '" dataname="'
+										+ c.name + '">'
+										+ c.name + '</li>';
+							});
+				}
+				ufc += '</ul></div>';
+				$("#gradeCon").append(ufc);
+			});
+			$('.gradeBtn').prop('disabled', true).addClass('disabledbtn');
+		}
+		
+		function gradeUbtn() {
+			var id = [];
+			var names = [];
+			type = (typeof (type) == 'undefined') ? '' : type;
+			$('#gradeCon .usel').each(function() {
+				if ($(this).attr('dataname')) {
+					names.push($(this).attr('dataname'));
+					id.push($(this).attr('dataid'));
+				}
+			});
+			var lastid = id.pop();
+			aClick = ' onclick="delGrade($(this),\'' + type + '\')"';
+
+			if ($('input[name="grades"]').length > 0) {// 避免添加相同的权限
+				var rightid_array = [];
+				$('input[name="grades"]').each(function() {
+					rightid_array.push($(this).val());
+				});
+				if ($.inArray(lastid.toString(), rightid_array) > -1) {
+					alert('已存在该权限范围');
+					return;
+				}
+				
+			}
+			$('#grademtr').append(
+					'<div class="mtc">' + names.join('<span class="sn"> &gt; </span>')
+							+ '<span' + aClick + ' dataid="' + lastid
+							+ '" class="uclose">&times;</span></div>');
+			$('#gradeIds').append(
+					'<input type="hidden" id="gradesid_' + lastid
+							+ '" name="grades" value="' + lastid + '">');
+			//showform();
+			$('#gradeCon').empty();
+			gradeCon();
+		}
+		
+		// 删除
+		function delGrade(t) {
+			t.closest('.mtc').remove();
+			$('#gradesid_' + t.attr('dataid')).remove();
+		}
+		
+		//学科权限
+		function subjectCon(rid,level) {
+			var cUrl = "../admin/subjectList";
+			rid = (typeof (rid) == 'undefined') ? '' : rid;
+			level = (typeof (level) == 'undefined') ? '1' : level;
+			cUrl += (rid) ? '?subject.id=' + rid : '?subject.id=&level=1';
+			$.getJSON(cUrl,function(data) {
+				if (data.Status == 'success' && data.Records.length > 0) {
+					var ufc = '<div class="ufc"><span class="usel" onclick="showul($(this))"><strong>请选择...</strong></span><ul class="uul">';
+					$.each(data.Records,
+							function(i, c) {
+								aClick = (c.haschild) ? ' onclick="subjectCon(\''
+										+ c.id
+										+ '\');resspan($(this));"'
+										: ' onclick="resspan($(this));activeBtn(\'subjectBtn\')"';
+								ufc += '<li ' + aClick
+										+ ' dataid="' + c.id
+										+ '" dataname="'
+										+ c.name + '">'
+										+ c.name + '</li>';
+							});
+				}
+				ufc += '</ul></div>';
+				$("#subjectCon").append(ufc);
+			});
+			$('.subjectBtn').prop('disabled', true).addClass('disabledbtn');
+		}
+		
+		function subjectUbtn() {
+			var id = [];
+			var names = [];
+			type = (typeof (type) == 'undefined') ? '' : type;
+			$('#subjectCon .usel').each(function() {
+				if ($(this).attr('dataname')) {
+					names.push($(this).attr('dataname'));
+					id.push($(this).attr('dataid'));
+				}
+			});
+			var lastid = id.pop();
+			aClick = ' onclick="delSubject($(this),\'' + type + '\')"';
+
+			if ($('input[name="grades"]').length > 0) {// 避免添加相同的权限
+				var rightid_array = [];
+				$('input[name="grades"]').each(function() {
+					rightid_array.push($(this).val());
+				});
+				if ($.inArray(lastid.toString(), rightid_array) > -1) {
+					alert('已存在该权限范围');
+					return;
+				}
+				
+			}
+			$('#subjectmtr').append(
+					'<div class="mtc">' + names.join('<span class="sn"> &gt; </span>')
+							+ '<span' + aClick + ' dataid="' + lastid
+							+ '" class="uclose">&times;</span></div>');
+			$('#subjectIds').append(
+					'<input type="hidden" id="subjectsid_' + lastid
+							+ '" name="subjects" value="' + lastid + '">');
+			//showform();
+			$('#subjectCon').empty();
+			subjectCon();
+		}
+		
+		// 删除
+		function delSubject(t) {
+			t.closest('.mtc').remove();
+			$('#subjectsid_' + t.attr('dataid')).remove();
+		}
+		
+	</script>
+<body>
+</html>

@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>试题列表</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../img/m/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="../css/bootstrap.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/app.css">	
+<link rel="stylesheet" href="../css/ui-dialog.css">
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/bootstrap.js"></script>
+
+<script src="../js/url.min.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/app.js"></script> 
+<script src="../js/moment.js"></script> 
+<script src="../js/zh-cn.js"></script>
+<script src="../js/jquery.serializejson.min.js"></script>
+<script src="../js/dialog-min.js"></script>
+<script src="../js/jquery.simplePagination.js"></script>
+
+<script>
+$(function(){
+	moment.lang('zh-cn');
+    function timedUpdate () {
+       update();
+       setTimeout(timedUpdate, 1000);
+   }
+   function update(){
+          $('#datafomate').html(moment().format('YYYY-MM-DD ,a h:mm:ss'));
+      }  
+	timedUpdate()
+	//$('#datafomate').html(moment().format('YYYY MMMM Do, h:mm:ss a'));
+})
+</script>
+ 
+</head>
+<body>
+
+<!--Header-part-->
+<div class="navbar" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo" title="华莘智慧教育云资源平台" ><img src="../img/logo-jy.png" height="41"></a>
+    </div>
+	<p class="logout">欢迎<span id="loginname"></span> &nbsp;&nbsp;<span id="datafomate"></span> &nbsp;|&nbsp;  <a href="../admin/passwordEditiframe.html" data-fancybox-type="iframe" class="btn-password cboxElement">修改密码</a> &nbsp;|&nbsp;  <a href="login.html">退出</a> </p>
+	
+  </div>
+</div>
+<!--close-Header-part--> 
+
+<div id="container" class="container-fluid">
+
+	<div class="row">
+		<div class="sidebar">
+			<div class=" nav-sidebar">
+				<ul id="leftside" class="nav">
+				</ul>
+			</div>
+			<div class="js-nav-shadow bottom"><img src="../img/round-shadow-bottom.png" style="top: auto; bottom: 0px;"></div>
+		</div> <!--end sidebar-->
+		<script id="leftTpl" type="text/template">
+			{{#Records}}
+			<li class="active"><a href="#"><span>{{name}}</span> </a>
+				
+				<ul class="nav">
+					{{#data}}
+						<li {{#iscurrent}} class="cur" {{/iscurrent}}>  <a href="{{path}}">{{name}}
+						</a></li>
+					{{/data}}
+			
+				</ul>
+				
+			</li>
+			{{/Records}}
+		</script>
+		<style>
+		.main-inner {margin-right:15px;}
+		</style>
+		<div class="main">
+			<div class="main-inner">
+				<div class="meta_bar clearfix question_meta_bar">
+					<dl class="clearfix">
+						<dt>学科: </dt>
+						<dd>
+							<div id="changeSubject" class="dropdown changeSubject">
+							  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								   <span class="cSname">请选择学科</span> [更换]
+								   <span class="caret"></span>
+							  </a>
+							  <div id="changeSubjectCnt" class="dropdown-menu">
+						    	
+							  </div>
+							</div>
+						</dd>
+						<script id="changeSubjectTpl" type="text/template">
+							{{#Records}}
+								<div class="dl">
+					    	 		<h4>{{name}}</h4>
+									 <p>
+									 	{{#data}}
+											<a data-id="{{id}}" data-gradeid="{{grade_id}}" href="#">{{name}}</a>
+										{{/data}}
+									 </p>
+								 </div>
+							 {{/Records}}
+						</script>
+						
+					</dl>
+					<dl class="clearfix">
+						<dt>学段: </dt>
+						<dd>
+							<div class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="cGname">选择学段</span><span class="caret"></span></a>
+								<div class="gradeFliter dropdown-menu">
+									<div id="gradeBox" class="treelist">
+										<div id="gradeList" class="list_sub sm_icon">
+											<div id="gradeido">
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>题型: </dt>
+						<dd>
+							<div class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="cITname">选择题型</span><span class="caret"></span></a>
+								<ul id="changeItemTpyeCnt" class="dropdown-menu" role="menu"></ul>
+							</div>
+							<!--select class="dropdown--small" id="changeItemTpyeCnt"></select-->
+						</dd>
+					</dl>
+					<script id="changeItemTpyeTpl" type="text/template">
+						<li><a data-id="" href="#">全部</a></li>
+						<li class="divider"></li>
+						{{#Records}}
+							<li><a data-id="{{itemType_id}}" href="#">{{itemType_name}}</a></li>
+						 {{/Records}}
+					</script>
+					
+					<dl class="clearfix">
+						<dt>难易程度: </dt>
+						<dd>
+							<div class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="cDLname">全部</span><span class="caret"></span></a>
+								<ul id="changediffcult" class="dropdown-menu" role="menu">
+									<li><a data-id="" href="#">全部</a></li>
+									<li class="divider"></li>
+									<li><a data-id="1" href="#">非常简单</a></li>
+									<li><a data-id="2" href="#">简单</a></li>
+									<li><a data-id="3" href="#">一般</a></li>
+									<li><a data-id="4" href="#">困难</a></li>
+									<li><a data-id="5" href="#">非常困难</a></li>	
+								</ul>
+							</div>
+							
+						<!--select id="changediffcult" class="dropdown--small"  name="diffcultyLevel">
+											<option value="">全部</option>
+											<option value="1">非常简单</option>
+											<option value="2">简单</option>
+											<option value="3"></option>
+											<option value="4">困难</option>
+											<option value="5">非常困难</option>
+										</select-->
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>试题状态: </dt>
+						<dd>
+							<div class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="cSTname">全部</span><span class="caret"></span></a>
+								<ul id="changestatus" class="dropdown-menu" role="menu">
+									<li><a data-id="" href="#">全部</a></li>
+									<li class="divider"></li>
+									<li><a data-id="2" href="#">草稿</a></li>
+									<li><a data-id="1" href="#">已审核</a></li>
+									<li><a data-id="3" href="#">已发布</a></li>
+									<li><a data-id="0" href="#">已删除</a></li>
+									
+								</ul>
+							</div>
+							
+							<!--select id="changestatus" class="dropdown--small" name="status">
+								<option value="">全部</option>
+								<option value="2">草稿</option>
+								<option value="1">已审核</option>
+								<option value="3">已发布</option>
+								<option value="0">已删除</option>
+							</select-->
+						</dd>
+					</dl>
+					<a class="fr" title="重置搜索条件" style="font-size:18px;" href="../admin/itemList.html"><span class="glyphicon glyphicon-refresh"></span></a>
+					
+				</div>
+				
+				<div class="queListCnt clearfix">
+					<div class="qtree-list" >
+						<div class="qtree-hd">
+							<!-- Nav tabs -->
+							<ul class="nav nav-tabs">
+								<li  style="width:71px"><a href="#textbook" data-toggle="tab">教材同步</a></li>		
+							</ul>
+						</div>
+						<div class="qtree-bd">
+							<div class="tab-content">
+							  <div class="tab-pane active" id="knowledge">
+								<div id="knowledgeBox" class="treelist">
+									<div id="knowledgeList" class="list_sub sm_icon">
+										<div id="knowledgeido"></div>
+									</div>
+								</div>
+							  </div>
+							  <div class="tab-pane" id="textbook">
+								<div id="textbookBox" class="treelist">
+									<div id="textbookList" class="list_sub sm_icon">
+										<div id="textbookido"></div>
+									</div>
+								</div>
+							  </div>
+							  <div class="tab-pane" id="node">尽请期待</div>
+							 
+							</div>
+							
+						</div>
+					</div>
+					
+					<div class="question-list" style="position:relative">
+						
+						<!--搜索框-->
+						<div id="searchbox" class="searchbox" style="top:40px">
+							<form class="search search_form" id="searchForm" action="#" method="POST">
+								<fieldset>
+									<label for="searchheader" class="placeholder overlabel">搜一下</label>
+									<input autocomplete="off" id="searchheader" value="" type="text" name="q">
+									<input type="hidden" name="" value="">
+									<div class="show_dropdown">
+										<div class="dropdown" style="display: block;">
+											<ul>
+												<li><label for="type_content">按题干</label><input type="radio" id="stype" name="content" value="content" checked="checked">
+												</li>
+										
+											</ul>
+											<span class="bl"></span>
+											<span class="br"></span>
+										</div>
+									</div>
+									<button type="submit" id="searchBtn" class="search-button">Search</button>
+								</fieldset>
+							</form>
+			
+						</div>
+						
+						<div class="quesMeta">
+							<div class="quepager pull-right"></div>
+							<div class="quesnum">
+								该分类试题共计:<span id="TotalRecordCount"></span> 道  (今儿新增试题<span id="todayCount"></span>道) <label for="metainfo" id="metainfo-label"><input type="checkbox" id="metainfo" checked name="metainfo"> 显示标引信息</label>
+							</div>
+						</div>
+						<!-- Split button -->
+						
+						<div class="btn-group add-que">
+						  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+						    + 添加试题 <span class="caret"></span>
+						  </button>
+						  <ul id="quetypeCnt" class="dropdown-menu" role="menu"></ul>
+						  
+						  <script id="quetypeTpl" type="text/template">
+	  						{{#Records}}
+								{{#itemType_isGroup}}
+	  							 <li><a href="../admin/itemGroupAdd.html?mtype={{itemType_modelType}}&qtype={{itemType_id}}">{{itemType_name}}</a></li>
+								 {{/itemType_isGroup}}
+								 {{^itemType_isGroup}}
+								  <li><a href="../admin/itemNormalAdd.html?mtype={{itemType_modelType}}&qtype={{itemType_id}}">{{itemType_name}}</a></li>
+								 {{/itemType_isGroup}}
+	  						 {{/Records}}
+						  </script>
+						</div>
+						
+						
+						<div id="queboxCnt">
+							
+						</div>
+						
+						<div class="pull-right pagination" id="pagnationPaper"></div>
+						<script id="queboxTpl" type="text/template">
+							{{#Records}}
+							<div class="question-box" id="question-box-{{id}}" onmouseover="$(this).addClass('cur')" onmouseout="$(this).removeClass('cur')">
+								<div class="question-metainfo">
+									<dl class="clearfix">
+										<dd><b>ID：</b>{{id}}</dd>
+										<dd><b>题型：</b>{{itemType_name}} </dd>
+										<dd><b>难度：</b>{{diffcultyLevelCN}}</dd>
+										<dd><b>来源类型：</b> {{sourceTypeCN}}</dd>
+									
+									</dl>
+									<dl class="clearfix">
+									
+										<dd><b>学段：</b> {{grade_name}}</dd>
+										<dd><b>学科：</b> {{subject_name}}</dd>
+										<dd><b>知识点：</b>{{knowledge_name}} </dd>
+									
+									</dl>
+									
+									<dl class="clearfix">
+									
+										<dd><b>来源出处：</b> {{source}}</dd>
+										<dd style="float:right;color:#aaa;margin-right:10px">{{sysUser_organization_name}} ({{sysUser_name}}) 创建于 {{createtime}} </dd>
+									
+									</dl>
+									{{#textbookCapter_name}}
+									<dl class="clearfix">
+									
+										<dd><b>教材章节：</b> {{textbookCapter_name}}</dd>
+									
+									</dl>
+									{{/textbookCapter_name}}
+									
+									<div class="que-action-cnt">
+										<strong class="que-status">【 <span>{{statusName}}</span> 】</strong> 
+										<div class="que-action">
+											<a data-toggle="tooltip" data-id="{{id}}" data-status="1" data-placement="top" class="glyphicon glyphicon-ok-sign btn-status" title="审核"></a>
+											<a data-toggle="tooltip" data-id="{{id}}" data-status="3" data-placement="top" class="glyphicon glyphicon-info-sign btn-status" title="发布"></a>
+											{{#isgroup}}
+											<a data-toggle="tooltip" data-placement="top" title="编辑" href="../admin/itemGroupEdit.html?id={{id}}&mtype={{modelType}}&qtype={{itemType_id}}" class="glyphicon glyphicon-pencil" title="编辑"></a>
+											{{/isgroup}}
+											{{^isgroup}}
+											<a data-toggle="tooltip" data-placement="top" title="编辑" href="../admin/itemNormalEdit.html?id={{id}}&mtype={{modelType}}&qtype={{itemType_id}}" class="glyphicon glyphicon-pencil" title="编辑"></a>
+											{{/isgroup}}
+											<a data-toggle="tooltip" data-id="{{id}}" data-status="0" data-placement="top" title="删除" href="#" class="glyphicon glyphicon-trash btn-status" title="删除"></a>
+										</div>
+									</div>
+								
+								</div>
+								{{#isgroup}}	
+								<div class="question-bdd">
+									<div class="question-bdd-title question-bdd-title-material">
+										<span class="label label-success label-material">材料题</span>{{{material}}}
+									</div>
+									{{#data}}
+									<div class="question-bdd-inn question-bdd-inn-material">
+										
+										{{#data}}
+										<div class="question-bdd-title">
+											<span class="stemindex">{{id}}.</span>{{{stem}}}
+											
+										</div>
+										<ul class="question-bdd-options">
+											{{#options}}
+											<li class="clearfix" data-inx={{inx}}><span class="abcd"></span><div class="eeee">{{{content}}}</div></li>
+											{{/options}}
+										</ul>
+										{{#results}}
+										{{#inx}}
+										<div class="question-metainfo">
+											<dl class=" clearfix">
+												<dd><b>小题答案：</b>{{inx}}</dd>
+							 				</dl>
+										</div>
+										{{/inx}}
+										{{/results}}
+										{{/data}}
+										<div class="question-metainfo">
+											<dl class=" clearfix">
+												<dd><b>小题分值：</b>{{{defaultScore}}}</dd>
+							 				</dl>
+										</div>
+										<div class="question-metainfo">
+											<dl class=" clearfix">
+												<dd><b>试题解析：</b>{{{analysis}}}</dd>
+							 				</dl>
+										</div>
+									</div>
+									{{/data}}
+								</div>
+								
+								{{/isgroup}}
+								
+								{{^isgroup}}
+								{{#data}}
+								<div class="question-bdd">
+									<div class="question-bdd-title clearfix">
+										<span class="qbt-index">{{id}}</span> {{{stem}}}
+									</div>
+									<ul class="question-bdd-options">
+										{{#options}}
+										<li class="clearfix" data-inx={{inx}}><span class="abcd"></span><div class="eeee">{{{content}}}</div></li>
+										{{/options}}
+									</ul>
+								</div>
+								{{#results}}
+									{{#inx}}
+										<div class="question-metainfo">
+											<dl class=" clearfix">
+												<dd><b>小题答案：</b>{{inx}}</dd>
+							 				</dl>
+										</div>
+									{{/inx}}
+								{{/results}}
+								{{/data}}
+								<div class="question-metainfo">
+									<dl class=" clearfix">
+										<dd><b>试题分值：</b>{{{defaultScore}}}</dd>
+							 		</dl>
+								</div>
+								<div class="question-metainfo">
+									<dl class=" clearfix">
+										<dd><b>试题解析：</b>{{{analysis}}}</dd>
+							 		</dl>
+								</div>
+								{{/isgroup}}
+								
+								
+								
+							</div>
+							{{/Records}}
+						</script>
+					</div>
+					
+				</div>
+				
+
+
+				<script type="text/javascript">
+				
+				var defaultOption = {
+					sid : '',
+					gid : '',
+					kid : '',
+					tcid : '',
+					itid : '',
+					dlid : '',
+					stid : '',//状态
+					pagenum : ''
+				}
+				//知识点 学段 
+				var TreeList = {
+					treelist : '.treelist',
+					list : function(type,url,sid,gid) {
+						
+						var cUrl = '../'+url;
+						
+						if(type =='textbook' || type == 'textbookCapter') {
+							//cUrl = (bid == '') ? cUrl : '../textbookCapterSearch';
+						}
+						var e = $('#'+type+'ido');
+						
+						cUrl += '?split=_&level=1';
+						cUrl += (typeof sid == 'undefined') ? '' : '&subject.id='+sid;
+						cUrl += (typeof gid == 'undefined') ? '' : '&grade.id='+gid;
+						
+						var cHtml = '';
+						//if (bid)
+						
+						var recursiveIteration = function (object,type) {
+						    for (var property in object) {
+						        if (object.hasOwnProperty(property)) {
+						            if (typeof object[property] == "object"){
+						                recursiveIteration(object[property],type);
+						            }else{
+										emClass = (object['haschild']) ? ' class="o"' : '';
+										emClick = (object['haschild']) ? ' onclick="TreeList.changeIcon($(this))"' : '';
+										if(type != 'textbook') {//教材json格式不同，没有level 
+											divClass = (object['level'] == 1) ? ' data-level="1" class="tSub"' : ' data-level="'+ object['level'] +'" class="tSub'+ object['level'] +'"';
+										}else {
+											divClass = (typeof object['level'] == 'undefined') ? ' data-level="1" class="tSub"' : ' data-level="'+ object['level'] +'" class="tSub'+ (parseInt(object['level']) + 1) +'"';
+										}
+										
+										aClick = ' onclick="TreeList.getquelist(\'' + type + '\',\'' + object['id'] + '\',this)"';
+										
+										if(property == 'name') {
+											cHtml += '<div'+ divClass +'><em  '+ emClass + emClick +' class=""></em><a href="javascript:void(0)" '+ aClick +'>'+ object['name'] +'</a></div>';
+											
+										}
+										
+						               
+						            }
+						        }
+						    }
+						}
+						
+							
+						$.getJSON(cUrl,function(data) {
+							if(data.Status == 'success' && data.Records.length > 0) {
+								recursiveIteration(data,type);
+								$("#"+ type +"ido").html(cHtml);
+							}else if (data.Status == 'success' && data.Records.length == 0) {
+	   							$("#"+ type +"ido").html('<div class="no_data">暂无相关条件的数据</div>');
+	   						}
+						});
+					},
+					changeIcon: function(e) {
+						if (e.attr('class') == 'o') {
+							e.attr('class', 'c');
+						} else {
+							e.attr('class', 'o');
+						}
+					},
+					getquelist : function(type,id,obj) {
+						$(obj).closest('.treelist').find('a').removeClass('cur');
+						$(obj).addClass('cur');
+						if(type == 'knowledge') {
+							//var str = '&knowledge.id='+id;
+							defaultOption.kid = id;
+						}else if(type == 'grade'){							
+							defaultOption.gid = id;
+							var tx = $(obj).text();
+							$('.cGname').html(setName(obj));
+							
+							
+						}else {
+							defaultOption.tcid = id;
+							//var str = '&textbookCapter.id='+id;
+						}
+						var name = $(obj).text();
+						//setindexingCookie(type,id,name)
+						itemList();
+					},
+					showhide :function(e) {
+						$('.'+e).toggle();
+						
+					}
+
+				};
+				
+				
+				function setName(obj){
+					var arr = $(obj).parent().prevAll(),pl = $(obj).parent().data('level'),tl = '',strarr = [];
+					strarr.push($(obj).parent().text());
+					arr.each(function(){
+						var l = $(this).data('level');
+						if(pl > l && tl != l){
+							tl = l;
+							strarr.push($(this).text());
+						}
+					})
+					return strarr.reverse().join(' > ');
+				}
+				
+				//加载试题列表
+				function itemList(query) {
+					var page = (typeof defaultOption.pagenum == 'undefined') ? 1 : defaultOption.pagenum;
+					sid = ( typeof defaultOption.sid == 'undefined') ? '' : '&subject.id='+ defaultOption.sid;
+					gid = (typeof defaultOption.gid == 'undefined') ? '' : '&grade.id='+ defaultOption.gid;
+					kid = (typeof defaultOption.kid == 'undefined') ? '' : '&knowledge.id='+ defaultOption.kid;
+					itid = (typeof defaultOption.itid == 'undefined') ? '' : '&itemType.id='+ defaultOption.itid;
+					tcid = ( typeof defaultOption.tcid == 'undefined') ? '' : '&textbookCapter.id='+ defaultOption.tcid;
+					dlid = ( typeof defaultOption.dlid == 'undefined') ? '' : '&diffcultyLevel='+ defaultOption.dlid;
+					stid = ( typeof defaultOption.stid == 'undefined') ? '' : '&status='+ defaultOption.stid;
+					
+					
+					//itid = (typeof (itid) == 'undefined') ? '' : itid;
+					var query = (typeof (query) == 'undefined') ? '' : '&content='+query;
+					var d = dialog({
+					    title: '系统提示',
+						width : 320,
+					    content: '加载中...'
+					});
+					d.showModal();
+// 					$.getJSON('../itemList?split=_&sorts=createtime-desc'+query+sid+gid+kid+itid+tcid+dlid+stid+'&pagenum='+page, function(r) {
+					$.getJSON('../itemList?split=_&sorts=createtime-desc'+query+sid+gid+kid+itid+tcid+dlid+stid+'&pagenum='+page, function(r) {
+						
+						$('#TotalRecordCount').html(r.TotalRecordCount);
+						$('#todayCount').html(r.todayCount);
+						
+						r.PageCount && $('.quepager').html('<span style="font-weight:normal">'+ r.PageNum +'</span>/'+ r.PageCount);
+						if(r.Status == 'success' && r.Records.length > 0) {
+						    var template = $('#queboxTpl').html();
+						    var html = Mustache.render(template, r);
+						    $('#queboxCnt').html(html);
+							$('.question-box').each(function(i,v) {
+								var th = $(this),options = th.find('.question-bdd-options'),abcd = ['A','B','C','D','E','F','G','H','I','J','O','P','Q','R'];
+								options.find('li').each(function(j,v) {
+									$(this).find('.abcd').html(abcd[$(this).data('inx')-1]);	
+								})
+							
+							})
+						} else if (r.Status == 'success' && r.Records.length == 0) {
+							$('#pagnationPaper').html('');
+							$('#queboxCnt').html('<div class="no_data">该分类暂无试题</div>');
+						}
+						
+						$(".main").animate({scrollTop: 0}, 1e3);
+						
+						d.close().remove();
+						
+					}).done(function(r){//分页
+						$('#pagnationPaper').pagination({
+							currentPage : r.PageNum,
+					        items: r.TotalRecordCount,
+							edges: 3,
+					        itemsOnPage : r.PageSize,
+					        
+							onPageClick : function(pageNumber,event) {
+								defaultOption.pagenum = pageNumber;
+								//updateURLParameter(url(),'page',pageNumber);
+								itemList();
+								//window.location = updateURLParameter(url(),'page',pageNumber);
+							}
+					    });
+						
+					});
+				}
+				
+				//获得学科列表
+				function getSubject() {
+					$.getJSON('../admin/subjectSearchAllSubject?split=_', function(r) {
+						if(r.Status == 'success' && r.Records.length > 0) {
+						    var template = $('#changeSubjectTpl').html();
+						    var html = Mustache.render(template, r);
+						    $('#changeSubjectCnt').html(html);
+							//$('.cSname').html(r.Records[0].data[0].name);
+							
+							if($.cookie('questionSubjectObj')) {
+								var obj = $.parseJSON($.cookie('questionSubjectObj'));
+								initchangeSubject(obj)
+							}else {
+								var obj = {};
+								obj.sid = r.Records[0].data[0].id, obj.sname = r.Records[0].data[0].name,obj.gid = r.Records[0].data[0].grade_id;
+								$.cookie('questionSubjectObj','{"sid":"'+ obj.sid +'","sname":"'+ obj.sname +'","gid":"'+ obj.gid +'"}');
+								initchangeSubject(obj);
+							}
+							
+						}
+					}).done(function(){
+						getItemType(defaultOption.sid);
+					}).fail(function(){
+						alert('服务端出错！请稍后重试！');
+					});
+				}
+				
+				//获得题型列表
+				function getItemType(subjectid) {
+					var str = '?split=_&subject.id='+subjectid ;
+					$.getJSON('../subjectItemTypeSearch'+str, function(r) {
+						if(r.Status == 'success' && r.Records.length > 0) {
+						    var template = $('#changeItemTpyeTpl').html();
+						    var html = Mustache.render(template, r);
+						    $('#changeItemTpyeCnt').html(html);
+							$('.cITname').html('选择题型');
+							
+						    var t2 = $('#quetypeTpl').html();
+						    var h2 = Mustache.render(t2, r);
+						    $('#quetypeCnt').html(h2);
+							
+						}else if(r.Status == 'success' && r.Records.length == 0){
+							var d = dialog({
+							    title: '系统提示',
+								width : 320,
+							    content: '该学科未设置题型，点击学科管理设置题型...'
+							});
+							d.showModal();
+						}
+					}).fail(function(){
+						alert('服务端出错！请稍后重试！');
+					});
+				}
+				//更改题型
+				function changeItemType(obj) {
+					var th = $(obj),id = th.data('id');
+					defaultOption.itid = id;
+					defaultOption.pagenum = '';
+					$('.cITname').html(th.html());
+					itemList();
+				}
+				
+				//更改学科
+				function changeSubject(obj) {
+					var th = $(obj), cSname = th.closest('.changeSubject').find('.cSname'), sid = th.data('id'),gid = th.data('gradeid');
+					defaultOption.sid = sid;
+					defaultOption.kid = '';
+					defaultOption.tcid = '';
+					defaultOption.itid = '';
+					defaultOption.dlid = '';
+					defaultOption.stid = '';
+					defaultOption.pagenum = '';
+					$('.cDLname,.cSTname').html('全部');
+					
+					itemList();
+					cSname.html(th.text());	
+					
+					$.cookie('questionSubjectObj','{"sid":"'+ sid +'","sname":"'+ th.text() +'","gid":"'+ gid +'"}');
+					
+					TreeList.list('knowledge','knowledgeSearchAllKnowledge',sid,gid);
+					TreeList.list('textbook','textbookSearchAllTextbook',sid);
+					TreeList.list('grade','gradeSearchAllGrade','',gid);
+					$('.cGname').html('选择学段');
+					getItemType(defaultOption.sid);
+				}
+				
+				function initchangeSubject(obj) {//初始化 解析cookie的 值
+					defaultOption.gid = obj.gid;
+					defaultOption.sid = obj.sid;
+					if(defaultOption.gid == 'undefined'){defaultOption.gid=''}
+					itemList();
+					$('.cSname').html(obj.sname);	
+					
+					TreeList.list('knowledge','knowledgeSearchAllKnowledge',defaultOption.sid,defaultOption.gid);
+					TreeList.list('textbook','textbookSearchAllTextbook',defaultOption.sid);
+					TreeList.list('grade','gradeSearchAllGrade','',defaultOption.gid);
+					$('.cGname').html('选择学段');	
+				}
+				//设置cookie 信息
+				function setindexingCookie(type,id,name) {
+					$.cookie(type+'indexing','{"id":"'+ id +'","name":"'+ name +'"}');
+				}
+				
+				//更改难易程度
+				function changeDifLevel(obj) {
+					var th = $(obj),id = th.data('id'),name = th.text();
+					defaultOption.dlid = id;
+					$('.cDLname').html(name);	
+					//setindexingCookie('difLevel',id,name)
+					itemList();
+				}
+				
+				//更改难易程度
+				function changeStatus(obj) {
+					var th = $(obj),id = th.data('id'),name = th.text();
+					defaultOption.stid = id;
+					$('.cSTname').html(name);	
+					itemList();
+				}	
+				
+				$(function(){
+					function init() {
+						getSubject();
+						//initchangeSubject();
+						//TreeList.list('knowledge','knowledgeSearchAllKnowledge');
+						//TreeList.list('textbook','textbookSearchAllTextbook');
+						//TreeList.list('grade','gradeSearchAllGrade');
+						
+
+						//更改学科 试题列表刷新
+						$('#changeSubjectCnt').on('click','a',function(e){
+							e.preventDefault();
+							changeSubject(this);
+						});
+						//题型
+						$('#changeItemTpyeCnt').on('click','a',function(e){
+							e.preventDefault();
+							changeItemType(this);
+						});
+						//难易程度
+						$('#changediffcult').on('click','a',function(e){
+							e.preventDefault();
+							changeDifLevel(this);
+						});
+						$('#changestatus').on('click','a', function(e){
+							e.preventDefault();
+							changeStatus(this);
+						});
+						$(".btn-password").colorbox({
+							iframe : true,
+							width : "400px",
+							height : "330px",
+							opacity : '0.5',
+							overlayClose : false,
+							escKey : true
+						});
+						
+						
+						$('#metainfo').change(function(e){
+							//var ju = $('#metainfo').is(':checked');
+							$('.question-box').toggleClass('question-meta-hidden');
+							return false;
+						});
+						$('#queboxCnt').on('click','.btn-status',function(e){
+							
+							var th = $(this),
+								id = $(this).data('id'),
+								status = $(this).data('status'),
+								message = '';
+								
+							if (status == '1') {//审核通过
+								$.get('../itemChangeStatus',{'id':id,"status":status},function(r){
+									th.closest('.question-box').find('.que-status span').html(r.Message).css({'opacity':0,'position':'relative','top':'30px'}).animate({'opacity':1,'top':0});
+								})	
+							} else if(status == '3') {//发布
+								$.get('../itemChangeStatus',{'id':id,"status":status},function(r){
+									th.closest('.question-box').find('.que-status span').html(r.Message).css({'opacity':0,'position':'relative','top':'30px'}).animate({'opacity':1,'top':0});
+								})
+							}
+							else {//删除
+								var d = dialog({
+								    title: '系统提示',
+								    content: '是否删除？',
+									cancel: !0,
+									ok: function() {
+										$.get('../itemChangeStatus',{'id':id,"status":status},function(r){
+											//th.closest('.question-box').find('.que-status').html('【 '+ r.Message +' 】');
+											$('#question-box-'+id).animate({'height':'0'},function(){
+												setTimeout(function(){
+													$('#question-box-'+id).remove();
+												},300)
+											})
+										
+										})
+									}
+								});
+								d.showModal();
+							}	
+		
+							return false;
+						})
+						
+						
+						//搜索
+				        $('#searchForm').submit(function (e) {
+				            e.preventDefault();
+				            defaultOption.pagenum = '';
+							itemList($('#searchheader').val())
+							return false;
+				        });
+						
+						
+					}
+					
+					init();
+					
+					
+					
+				})
+					
+				</script>
+
+			</div>
+		</div>
+		
+		
+	</div> <!--end row-->
+	
+</div>	<!--end container-->
+
+<div class="bs-footer">
+  <div>
+	  <p>Copyright © 2015 华莘智慧教育</p>
+
+  </div>
+</div>
+
+</body>
+</html>
+		

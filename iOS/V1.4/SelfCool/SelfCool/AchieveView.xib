@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="LoadingView" id="v17-YA-0Av" customClass="AchieveView" customModule="SelfCool" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="diB-LW-j6K">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99Q-YZ-dv1">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hjo-OC-dhD">
+                            <rect key="frame" x="50" y="5.5" width="500" height="529"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" tag="801" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bRi-Mr-Pnu">
+                                    <rect key="frame" x="0.0" y="0.0" width="500" height="529"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="bRi-Mr-Pnu" secondAttribute="height" multiplier="86:91" id="qaP-PK-kG5"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="qaP-PK-kG5"/>
+                                        </mask>
+                                    </variation>
+                                </imageView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rs9-aZ-Whm">
+                                    <rect key="frame" x="499.5" y="0.0" width="0.0" height="110"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" id="7aH-QY-siN"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" tag="802" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyB-3X-CrW">
+                                    <rect key="frame" x="428.5" y="110" width="71.5" height="72"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="tyB-3X-CrW" secondAttribute="height" multiplier="1:1" id="RWq-St-1y1"/>
+                                    </constraints>
+                                    <size key="titleShadowOffset" width="0.0" height="1"/>
+                                    <state key="normal" backgroundImage="achieve_close">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted" backgroundImage="achieve_close_highlight"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="rs9-aZ-Whm" firstAttribute="height" secondItem="Hjo-OC-dhD" secondAttribute="height" multiplier="5:24" id="3ja-5f-R6E"/>
+                                <constraint firstAttribute="trailing" secondItem="rs9-aZ-Whm" secondAttribute="trailing" id="4gq-p1-7QK"/>
+                                <constraint firstAttribute="centerY" secondItem="bRi-Mr-Pnu" secondAttribute="centerY" id="AIO-wQ-oVQ"/>
+                                <constraint firstAttribute="width" secondItem="Hjo-OC-dhD" secondAttribute="height" multiplier="86:91" id="Bkf-k3-m20"/>
+                                <constraint firstItem="tyB-3X-CrW" firstAttribute="width" secondItem="Hjo-OC-dhD" secondAttribute="width" multiplier="1:7" id="CuV-pf-bpy"/>
+                                <constraint firstItem="rs9-aZ-Whm" firstAttribute="leading" secondItem="tyB-3X-CrW" secondAttribute="trailing" id="UH2-gk-Ywq"/>
+                                <constraint firstItem="rs9-aZ-Whm" firstAttribute="width" secondItem="Hjo-OC-dhD" secondAttribute="width" multiplier="1:60" id="Zfg-eg-aJV"/>
+                                <constraint firstItem="bRi-Mr-Pnu" firstAttribute="width" secondItem="Hjo-OC-dhD" secondAttribute="width" id="aIa-1m-ojH"/>
+                                <constraint firstItem="bRi-Mr-Pnu" firstAttribute="height" secondItem="Hjo-OC-dhD" secondAttribute="height" id="bUX-Jz-gVM"/>
+                                <constraint firstAttribute="centerX" secondItem="bRi-Mr-Pnu" secondAttribute="centerX" id="cl9-ji-VnW"/>
+                                <constraint firstItem="rs9-aZ-Whm" firstAttribute="top" secondItem="Hjo-OC-dhD" secondAttribute="top" id="nOT-ic-F9a"/>
+                                <constraint firstItem="tyB-3X-CrW" firstAttribute="top" secondItem="rs9-aZ-Whm" secondAttribute="bottom" id="zqF-E6-mOK"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="Zfg-eg-aJV"/>
+                                </mask>
+                            </variation>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="Hjo-OC-dhD" secondAttribute="centerX" id="9CA-sr-bUX"/>
+                        <constraint firstAttribute="width" secondItem="Hjo-OC-dhD" secondAttribute="width" multiplier="6:5" id="ORS-G4-s1j"/>
+                        <constraint firstAttribute="centerY" secondItem="Hjo-OC-dhD" secondAttribute="centerY" multiplier="10:9" id="lo8-sT-4yS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="99Q-YZ-dv1" secondAttribute="trailing" id="0uT-7I-eNA"/>
+                <constraint firstAttribute="bottom" secondItem="99Q-YZ-dv1" secondAttribute="bottom" id="HCn-bl-1fH"/>
+                <constraint firstItem="diB-LW-j6K" firstAttribute="top" secondItem="v17-YA-0Av" secondAttribute="top" id="HJx-I9-WW2"/>
+                <constraint firstAttribute="bottom" secondItem="diB-LW-j6K" secondAttribute="bottom" id="VTQ-wA-VPS"/>
+                <constraint firstAttribute="trailing" secondItem="diB-LW-j6K" secondAttribute="trailing" id="dJn-9E-CjF"/>
+                <constraint firstItem="99Q-YZ-dv1" firstAttribute="leading" secondItem="v17-YA-0Av" secondAttribute="leading" id="iQB-Fa-AzJ"/>
+                <constraint firstItem="99Q-YZ-dv1" firstAttribute="top" secondItem="v17-YA-0Av" secondAttribute="top" id="o9l-nC-QtL"/>
+                <constraint firstItem="diB-LW-j6K" firstAttribute="leading" secondItem="v17-YA-0Av" secondAttribute="leading" id="siU-Q7-Hle"/>
+            </constraints>
+            <connections>
+                <outlet property="button" destination="tyB-3X-CrW" id="vVE-9c-jhR"/>
+                <outlet property="imageView" destination="bRi-Mr-Pnu" id="rAt-ER-6W6"/>
+            </connections>
+            <point key="canvasLocation" x="434" y="329"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="achieve_close" width="94" height="97"/>
+        <image name="achieve_close_highlight" width="94" height="97"/>
+    </resources>
+</document>

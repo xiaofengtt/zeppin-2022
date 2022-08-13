@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<baseInfo>
+<uid>bjsf2</uid>
+<pwd>5880gpjh2013xitong</pwd>
+<url>http://116.213.72.20/SMSHttpService/send.aspx</url>
+
+<username>bjsf</username>
+<password>fbce59ac99d5c4df03e7ec4ceed8afd6</password>
+<address>http://www.rdsmsvip.com:3077/Platform_Http_Service/servlet/SendSms</address>
+<key>gpjh</key>
+
+<LoginName>361</LoginName>
+<spPassword>361</spPassword>
+<urlzzx>http://fegzzx.zzx9.cn:8089/templet_submit</urlzzx>
+<SPNumber>361</SPNumber>
+<SmsTempletID>36112007201746346280508</SmsTempletID>
+</baseInfo>

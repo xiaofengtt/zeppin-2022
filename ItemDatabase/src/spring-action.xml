@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="loginAction" class="cn.zeppin.action.sso.LoginAction" scope="prototype">
+		<property name="sysUserService" ref="sysUserService" />
+	</bean>
+	
+	<bean id="areaAction" class="cn.zeppin.action.admin.AreaAction"  scope="prototype">
+		<property name="areaService" ref="areaService" />
+	</bean>
+	
+	<bean id="editorAction" class="cn.zeppin.action.admin.EditorAction" scope="prototype">
+		<property name="sysUserService" ref="sysUserService" />
+		<property name="sysUserSubjectService" ref="sysUserSubjectService" />
+		<property name="sysUserGradeService" ref="sysUserGradeService" />
+		<property name="gradeService" ref="gradeService" />
+	</bean>
+
+	<bean id="managerAction" class="cn.zeppin.action.admin.ManagerAction" scope="prototype">
+		<property name="sysUserService" ref="sysUserService" />
+	</bean>
+
+	<bean id="passwordAction" class="cn.zeppin.action.admin.PasswordAction" scope="prototype">
+		<property name="sysUserService" ref="sysUserService" />
+	</bean>
+	
+	<bean id="parterAction" class="cn.zeppin.action.admin.ParterAction" scope="prototype">
+		<property name="sysUserService" ref="sysUserService" />
+		<property name="organizationService" ref="organizationService" />
+	</bean>
+
+	<bean id="gradeAction" class="cn.zeppin.action.admin.GradeAction" scope="prototype">
+		<property name="gradeService" ref="gradeService"></property>
+	</bean>
+
+
+	<bean id="resourceAction" class="cn.zeppin.action.admin.ResourceAction" scope="prototype">
+		<property name="resourceService" ref="resourceService"></property>
+	</bean>
+
+	<bean id="textbookAction" class="cn.zeppin.action.admin.TextBookAction" scope="prototype">
+		<property name="textbookService" ref="textbookService"></property>
+		<property name="gradeService" ref="gradeService"></property>
+		<property name="subjectService" ref="subjectService"></property>
+		<property name="publisherService" ref="publisherService"></property>
+		<property name="textbookCapterService" ref="textbookCapterService" />
+	</bean>
+	
+	<bean id="publisherAction" class="cn.zeppin.action.admin.PublisherAction" scope="prototype">
+		<property name="publisherService" ref="publisherService"></property>
+	</bean>
+	
+	<bean id="textbookCapterAction" class="cn.zeppin.action.admin.TextbookCapterAction" scope="prototype">
+		<property name="textbookService" ref="textbookService"></property>
+		<property name="textbookCapterService" ref="textbookCapterService"></property>
+		
+	</bean>
+	
+	<bean id="categoryAction" class="cn.zeppin.action.admin.CategoryAction" scope="prototype">
+		<property name="categoryService" ref="categoryService"></property>
+		<property name="subjectService" ref="subjectService"></property>
+	</bean>
+
+	<bean id="subjectAction" class="cn.zeppin.action.admin.SubjectAction" scope="prototype">
+		<property name="subjectService" ref="subjectService"></property>
+		<property name="categoryService" ref="categoryService"></property>
+		<property name="sysUserService" ref="sysUserService"></property>
+	</bean>
+	
+	<bean id="subjectItemTypeAction" class="cn.zeppin.action.admin.SubjectItemTypeAction" scope="prototype">
+		<property name="subjectService" ref="subjectService"></property>
+		<property name="subjectItemTypeService" ref="subjectItemTypeService"></property>
+		<property name="itemTypeService" ref="itemTypeService"></property>
+	</bean>
+
+	<bean id="knowledgeAction" class="cn.zeppin.action.admin.KnowledgeAction" scope="prototype">
+		<property name="knowledgeService" ref="knowledgeService"></property>
+		<property name="gradeService" ref="gradeService"></property>
+		<property name="subjectService" ref="subjectService"></property>
+		<property name="sysUserService" ref="sysUserService" />
+	</bean>
+
+	<bean id="organizationAction" class="cn.zeppin.action.admin.OrganizationAction" scope="prototype">
+		<property name="organizationService" ref="organizationService"></property>
+	</bean>
+
+	<bean id="organizationItemReceiveAction" class="cn.zeppin.action.admin.OrganizationItemReceiveAction" scope="prototype">
+		<property name="organizationService" ref="organizationService"></property>
+		<property name="itemService" ref="itemService"></property>
+		<property name="textbookCapterService" ref="textbookCapterService"></property>
+	</bean>
+
+
+	<bean id="rolefuncationAction" class="cn.zeppin.action.admin.NavigationAction" scope="prototype">
+		<property name="roleFunctionService" ref="roleFuncationService"></property>
+	</bean>
+
+	<bean id="itemTypeAction" class="cn.zeppin.action.admin.ItemTypeAction" scope="prototype">
+		<property name="itemTypeService" ref="itemTypeService"></property>
+		<property name="itemService" ref="itemService"></property>
+	</bean>
+	
+	<bean id="itemAction" class="cn.zeppin.action.admin.ItemAction" scope="prototype">
+		<property name="itemTypeService" ref="itemTypeService"></property>
+		<property name="itemService" ref="itemService"></property>
+		<property name="gradeService" ref="gradeService"></property>
+		<property name="subjectService" ref="subjectService"></property>
+		<property name="knowledgeService" ref="knowledgeService"></property>
+		<property name="textbookCapterService" ref="textbookCapterService"></property>
+		<property name="paperService" ref="paperService"></property>
+		<property name="testPaperSectionService" ref="testPaperSectionService"></property>
+		<property name="testPaperItemService" ref="testPaperItemService"></property>
+	</bean>
+	
+	<bean id="latexAction" class="cn.zeppin.action.latex.LatexAction" scope="prototype"></bean>
+	
+	<bean id="paperAction" class="cn.zeppin.action.admin.PaperAction" scope="prototype">
+		<property name="paperService" ref="paperService"></property>
+		<property name="gradeService" ref="gradeService"></property>
+		<property name="subjectService" ref="subjectService"></property>
+		<property name="sysUserService" ref="sysUserService"></property>
+		<property name="areaService" ref="areaService" />
+		<property name="itemTypeService" ref="itemTypeService"></property>
+		<property name="testPaperSectionService" ref="testPaperSectionService"></property>
+		<property name="testPaperItemService" ref="testPaperItemService"></property>
+		<property name="itemService" ref="itemService"></property>
+		
+	</bean>
+	
+	<bean id="testPaperSectionAction" class="cn.zeppin.action.admin.TestPaperSectionAction" scope="prototype">
+		<property name="paperService" ref="paperService"></property>
+		<property name="subjectService" ref="subjectService"></property>
+		<property name="itemTypeService" ref="itemTypeService"></property>
+		<property name="testPaperSectionService" ref="testPaperSectionService"></property>
+		<property name="testPaperItemService" ref="testPaperItemService"></property>
+	</bean>
+	
+</beans>

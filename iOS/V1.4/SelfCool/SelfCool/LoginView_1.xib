@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="loginView_1" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_2_main" translatesAutoresizingMaskIntoConstraints="NO" id="GfU-B1-PqW">
+                    <rect key="frame" x="0.0" y="182.5" width="320" height="385.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="GfU-B1-PqW" secondAttribute="height" multiplier="1080:1300" id="pw2-EG-HWZ"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_2_word" translatesAutoresizingMaskIntoConstraints="NO" id="VjQ-SX-aP6">
+                    <rect key="frame" x="0.0" y="40" width="320" height="91.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="VjQ-SX-aP6" secondAttribute="height" multiplier="1080:309" id="flv-uj-Uij"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.77647058823529413" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="GfU-B1-PqW" secondAttribute="trailing" id="RRb-vV-0Oa"/>
+                <constraint firstItem="VjQ-SX-aP6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="Xt1-i4-3Hx"/>
+                <constraint firstAttribute="bottom" secondItem="GfU-B1-PqW" secondAttribute="bottom" id="cUQ-G5-7ke"/>
+                <constraint firstItem="VjQ-SX-aP6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="naY-Sl-3Lf"/>
+                <constraint firstItem="GfU-B1-PqW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rll-B0-0AM"/>
+                <constraint firstAttribute="trailing" secondItem="VjQ-SX-aP6" secondAttribute="trailing" id="ySH-FT-WhR"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="login_2_main" width="540" height="650"/>
+        <image name="login_2_word" width="540" height="154"/>
+    </resources>
+</document>

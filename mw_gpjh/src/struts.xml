@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.multipart.saveDir" value="E:\tmp"></constant>
+	<constant name="struts.multipart.maxSize" value="1073741824"/>
+	<package name="struts2" extends="struts-default">
+
+		<action name="doExcel_*" class="doExcelAction" method="{1}">
+			<result name="forward">/vote/adminTraineeManager.jsp</result>
+		</action>
+
+		<action name="exp_*" class="expertAction" method="{1}">
+			<result name="forward">/vote/expertList.jsp</result>
+			<result name="expertforward">vote/expertScore.jsp</result>
+			<result name="ok">judgment.jsp</result>
+			<result name="forwardEx">judgmentEx.jsp</result>
+			<result name="already">expertAready.jsp</result>
+		</action>
+
+		<action name="adu_*" class="projectAduManagerAction" method="{1}">
+
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">1024*1024*1024</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+
+
+			<result name="forward">/aduUpload.jsp</result>
+		</action>
+
+		<action name="province_*" class="provinceAction" method="{1}">
+			<result name="forward">/vote/adminTraineeManager.jsp</result>
+			<result name="huizong">/report/provincehuizong.jsp</result>
+			<result name="huizongprovince">/report/provincehuizongp.jsp</result>
+			<result name="paper">/report/provincepaper.jsp</result>
+			<result name="duibi">/report/provinceduibi.jsp</result>
+			<result name="duibip">/report/provinceduibip.jsp</result>
+		</action>
+
+		<action name="trainee_*" class="traineeManagerAction" method="{1}">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">1024*1024*1024</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+
+			<result name="forward" type="redirect">/vote/adminTraineeManager.jsp
+			</result>
+			<result name="forwardjh" type="redirect">/vote/jhTraineeManager.jsp
+			</result>
+			<result name="forwardUpload">/aduTrainingUpload.jsp</result>
+			<result name="historyUpload">/aduHistoryUpload.jsp</result>
+			<result name="forwardJHUpload">/aduJhTrainingUpload.jsp</result>
+			<result name="forwardUploadOld">/aduTrainingUploadOld.jsp</result>
+		</action>
+
+		<action name="project_*" class="projectManagerAction" method="{1}">
+			<result name="forward" type="redirect">/vote/adminProjectManager.jsp
+			</result>
+		</action>
+
+		<action name="login" class="LoginAction" method="doLogin">
+			<result name="success" type="redirect">paper_view.action?id=${vid}
+			</result>
+			<result name="login">login.jsp</result>
+			<result name="edit" type="redirect">paper_list.action</result>
+			<result name="novote">paper_unstart.jsp</result>
+			<result name="psq">paper_psq.jsp</result>
+			<result name="end">paper_end.jsp</result>
+		</action>
+
+		<action name="paper_*" method="{1}" class="PaperAction">
+			<result name="edit">paper_edit.jsp</result>
+			<result name="list">paper_list.jsp</result>
+			<result name="add" type="redirect">paper_edit.action?curid=${paperID}
+			</result>
+			<result name="view">paper_view.jsp</result>
+			<result name="process">success.jsp</result>
+			<result name="cantadd">cantadd.jsp</result>
+			<result name="novote">paper_unstart.jsp</result>
+			<result name="tongzhi" type="redirect">vote/sendSms.jsp?paperId=${paperID}
+			</result>
+		</action>
+
+		<action name="report_*" method="{1}" class="ReportAction">
+			<result name="summary">report/summary.jsp</result>
+			<result name="detail">report/detail.jsp</result>
+			<result name="paper">report/paper.jsp</result>
+			<result name="huizong">report/huizong.jsp</result>
+			<result name="duibi">report/duibi.jsp</result>
+			<result name="wanchenglv">report/wanchenglv.jsp</result>
+			<result name="advice">report/advice.jsp</result>
+			<result name="manyilv">report/manyilv.jsp</result>
+		</action>
+
+
+	</package>
+
+</struts>

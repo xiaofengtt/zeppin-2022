@@ -1,0 +1,90 @@
+/**  
+ * This class is used for ...  
+ * @author suijing
+ * @version  
+ *       1.0, 2014年7月24日 下午7:01:30  
+ */
+package cn.zeppin.service.imp;
+
+import cn.zeppin.dao.api.IResourceDAO;
+import cn.zeppin.entity.Resource;
+import cn.zeppin.service.api.IResourceService;
+
+/**
+ * @author sj
+ * 
+ */
+public class ResourceService implements IResourceService
+{
+	IResourceDAO iResourceDAO;
+	
+	/**
+	 * @return the iResourceDAO
+	 */
+	public IResourceDAO getiResourceDAO()
+	{
+		return iResourceDAO;
+	}
+	
+	/**
+	 * @param iResourceDAO
+	 *            the iResourceDAO to set
+	 */
+	public void setiResourceDAO(IResourceDAO iResourceDAO)
+	{
+		this.iResourceDAO = iResourceDAO;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see cn.zeppin.service.api.IResourceService#getById(int)
+	 */
+	@Override
+	public Resource getById(int id)
+	{
+		// TODO Auto-generated method stub
+		return this.getiResourceDAO().get(id);
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * cn.zeppin.service.api.IResourceService#add(cn.zeppin.entity.Resource)
+	 */
+	@Override
+	public Resource add(Resource resource)
+	{
+		// TODO Auto-generated method stub
+		return this.getiResourceDAO().save(resource);
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * cn.zeppin.service.api.IResourceService#update(cn.zeppin.entity.Resource)
+	 */
+	@Override
+	public void update(Resource resource)
+	{
+		// TODO Auto-generated method stub
+		this.getiResourceDAO().update(resource);
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see cn.zeppin.service.api.IResourceService#delById(int)
+	 */
+	@Override
+	public void delById(int id)
+	{
+		// TODO Auto-generated method stub
+		Resource resource = this.getiResourceDAO().get(id);
+		resource.setStatus((short) 0);
+		this.getiResourceDAO().update(resource);
+	}
+	
+}

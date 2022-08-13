@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>编辑试题</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../img/m/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="../css/bootstrap.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/app.css">	
+<link rel="stylesheet" href="../css/ui-dialog.css">
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/url.min.js"></script>
+<script src="../js/jquery.iframe-post-form.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/app.js"></script> 
+
+<script src="../js/moment.js"></script> 
+<script src="../js/zh-cn.js"></script>
+
+<script src="../js/jquery.serializejson.min.js"></script>
+<script src="../js/dialog-min.js"></script>
+<script src="../js/tinymce/dropzone/lib/dropzone.js"></script>
+<script src="../js/tinymce/tinymce.min.js"></script>
+<script src="../js/tinymce/tinymce_zhcn.js"></script>
+
+<script>
+$(function(){
+	moment.lang('zh-cn');
+    function timedUpdate () {
+       update();
+       setTimeout(timedUpdate, 1000);
+   }
+   function update(){
+          $('#datafomate').html(moment().format('YYYY-MM-DD ,a h:mm:ss'));
+      }  
+	timedUpdate();
+})
+</script>
+ 
+</head>
+<body>
+
+<!--Header-part-->
+<div class="navbar" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo" title="华莘智慧教育云资源平台" ><img src="../img/logo-jy.png" height="41"></a>
+    </div>
+	<p class="logout">欢迎<span id="loginname"></span> &nbsp;&nbsp;<span id="datafomate"></span> &nbsp;|&nbsp;  <a href="../admin/passwordEditiframe.html" data-fancybox-type="iframe" class="btn-password cboxElement">修改密码</a> &nbsp;|&nbsp;  <a href="login.html">退出</a> </p>
+	
+  </div>
+</div>
+<!--close-Header-part--> 
+
+<div id="container" class="container-fluid">
+
+	<div class="row">
+		<div class="sidebar">
+			<div class=" nav-sidebar">
+				<ul id="leftside" class="nav">
+				</ul>
+			</div>
+			<div class="js-nav-shadow bottom"><img src="../img/round-shadow-bottom.png" style="top: auto; bottom: 0px;"></div>
+		</div> <!--end sidebar-->
+		<script id="leftTpl" type="text/template">
+			{{#Records}}
+			<li class="active"><a href="#"><span>{{name}}</span> </a>
+				
+				<ul class="nav">
+					{{#data}}
+						<li>  <a href="{{path}}">{{name}}
+						</a></li>
+					{{/data}}
+			
+				</ul>
+				
+			</li>
+			{{/Records}}
+		</script>
+		<div class="main" style="position:relative">
+
+			<div class="listwrap">
+
+				<div class="list_bar">编辑<span id="qqTitle"></span></div>
+				<div class="question_form">
+					<form id="questionForm" action="#" method="post" class="form-horizontal">
+						<div id="questionEditCnt">
+							
+						</div>
+						
+						<script id="changeSubjectTpl" type="text/template">
+							{{#Records}}
+								<div class="dl">
+					    	 		<h4>{{name}}</h4>
+									 <p>
+									 	{{#data}}
+											<a data-id="{{id}}" onclick="questionOpt.setinputid('subject','{{name}}','{{id}}');questionOpt.depeandbysubject('{{id}}','{{grade_id}}')" data-gradeid="{{grade_id}}" href="javascript:void(0)">{{name}}</a>
+										{{/data}}
+									 </p>
+								 </div>
+							 {{/Records}}
+						</script>
+						<script id="questionEditTpl" type="text/template">
+							{{#Records}}	
+							<div class="row clearfix">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="">学科</label>
+										<div class="col-sm-9">
+											<div id="changeSubject" class="dropdown changeSubject dropbox">
+											  <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+												   <span id="subjectName">{{subject_name}}</span>
+												   <i class="a-icon a-icon-dropdown"></i>
+											  </a>
+											  <div id="changeSubjectCnt" style="width:100%" class="dropdown-menu">
+						    					  
+											  </div>
+											  <input type="hidden" name="subject.id" value="{{subject_id}}">
+											</div>
+											
+											
+										</div>
+									
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="">知识点</label>
+										<div class="col-sm-9">
+											<div class="dropdown dropbox">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="knowledgeName">{{knowledge_name}}</span><i class="a-icon a-icon-dropdown"></i></a>
+												<div class="gradeFliter dropdown-menu">
+													<div  class="treelist">
+														<div  class="list_sub sm_icon">
+															<div id="knowledgeido">
+																
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<input type="hidden" name="knowledge.id" value="{{knowledge_id}}">
+										</div>
+										
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="">来源出处</label>
+										<div class="col-sm-9">
+											<input type="text" name="source" class="form-control" value="{{source}}">
+										</div>
+									</div>
+								</div>
+							
+								<div class="col-md-6">
+							
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="">学段</label>
+										<div class="col-sm-9">
+											<div class="dropdown dropbox">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="gradeName">{{grade_name}}</span> <i class="a-icon a-icon-dropdown"></i></a>
+												<div class="gradeFliter dropdown-menu">
+													<div id="gradeBox" class="treelist">
+														<div id="gradeList" class="list_sub sm_icon">
+															<div id="gradeido">
+												
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<input type="hidden" name="grade.id" value="{{grade_id}}">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="">难易程度</label>
+										<div class="col-sm-9">
+											<select class="form-control" name="diffcultyLevel">
+												
+												<option value="1">非常简单</option>
+												<option value="2">简单</option>
+												<option value="3">一般</option>
+												<option value="4">困难</option>
+												<option value="5">非常困难</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="">来源类型</label>
+									
+										<div class="col-sm-9">
+											<select class="form-control"  name="sourceType">
+												<option value="0">真题</option>
+												<option value="1">模拟考试题</option>
+												<option value="2">为教材配套习题</option>
+												<option value="3">个人或机构贡献</option>
+												<option value="4">其他</option>
+											</select>
+										</div>
+									</div>
+							
+								</div>
+							
+							</div>
+						
+							<div class="row clearfix">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="">教材章节</label>	
+										<div class="col-md-10">
+											<div class="dropdown dropbox">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="textbookName">{{textbookCapter_name}}</span><i class="a-icon a-icon-dropdown"></i></a>
+												<div class="gradeFliter dropdown-menu">
+													<div  class="treelist">
+														<div  class="list_sub sm_icon">
+															<div id="textbookido">
+												
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										
+											<input type="hidden"  name="textbookCapter.id" value="{{textbookCapter_id}}">
+										</div>
+									</div>
+							
+								</div>
+							
+							</div>
+						
+							
+							<div class="hr"></div>
+						
+							
+							<div class="row clearfix qustion-title">
+								<div class="col-md-12">
+							
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="">试题题干</label>
+										<div class="col-md-9">
+											{{#data}}
+											<textarea id="qustionTitle" name="stem">{{stem}}</textarea>
+											{{/data}}
+										</div>
+									</div>
+								
+							
+								</div>
+							
+							</div>
+
+							<div class="row clearfix qustion-title">
+								<div class="col-md-12">
+							
+									<div class="form-group">
+										<label class="col-sm-2 control-label" for="">试题解析</label>
+										<div class="col-md-9">
+											{{#data}}
+											<textarea id="analysis" name="analysis">{{analysis}}</textarea>
+											{{/data}}
+										</div>
+									</div>
+								
+							
+								</div>
+							
+							</div>
+							{{/Records}}
+							</script>
+							<div class="row clearfix qustion-content">
+								<div class="col-md-12">
+							
+									<div class="form-group">
+									
+										<div id="optionsCnt" class="col-md-9"></div>
+										
+										<script id="queboxTpl-1" type="text/x-template"><!--单选题-->
+										{{#Records}}
+										<label class="col-sm-2 control-label" for="">试题选项</label>
+										<table class="table table-hover js-tableoptions">
+											<thead>
+												<tr>
+													<th class="inputtype"></th>
+													<th>选项内容</th>
+													<th>分数	
+														<input type="text" value="0" name="score" title="在此可以设置题目的分数（请输入整数）" style="width:60px;text-align:center" onfocus="$(this).val('')">
+													</th>
+													<th width="100">操作</th>
+												</tr>
+											</thead>
+											
+											<tbody>
+												{{#data.options}}
+												<tr>
+													<td ><input class="radio" type="radio" name="radio"></td>
+													<td class="tl">
+														<div class="js-options">
+															<div id="options-edit-{{inx}}" data-id="{{inx}}" class="options-edit T_edit">{{{content}}}</div>
+														</div>
+													</td>
+													<td></td>
+													<td>
+														<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+														<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+														<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+														<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>
+											
+													</td>
+												</tr>
+												{{/data.options}}
+											</tbody>
+											
+										</table>
+										{{/Records}}
+										</script>
+										
+										<script id="queboxTpl-3" type="text/x-template"><!--判断题-->
+										{{#Records}}
+											<ul class="judgeOptions fl">
+												<li><label><input type="radio" data-id="1" name="radio"> <span class="qright">&radic;</span></label></li>
+												<li><label><input type="radio" data-id="2"  name="radio"> <span class="qwrong">&times;</span></label></li>
+											</ul>
+											<div class="judgeScore fl">默认分值：<input type="text" value="0"  name="score" title="在此可以设置每个选项的分数（请输入整数" style="width:60px;text-align:center"></div>
+										{{/Records}}
+										</script>
+										<script id="queboxTpl-5" type="text/x-template"><!--多选题-->
+										{{#Records}}
+										<label class="col-sm-2 control-label" for="">试题选项</label>
+										<table class="table table-hover js-tableoptions">
+											<thead>
+												<tr>
+													<th class="inputtype"></th>
+													<th>选项内容</th>
+													<th>分数	
+														<input type="text" value="0"  name="score" title="在此可以设置题目的分数（请输入整数）" style="width:60px;text-align:center" onfocus="$(this).val('')">
+													</th>
+													<th width="100">操作</th>
+												</tr>
+											</thead>
+											
+											<tbody>
+												{{#data.options}}
+												<tr>
+													<td ><input class="checkbox" type="checkbox" name="radio"></td>
+													<td class="tl">
+														<div class="js-options">
+															<div id="options-edit-{{inx}}" data-id="{{inx}}" class="options-edit T_edit">{{{content}}}</div>
+														</div>
+													</td>
+													<td></td>
+													<td>
+														<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+														<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+														<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+														<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>
+											
+													</td>
+												</tr>
+												{{/data.options}}
+											</tbody>
+											
+										</table>
+										{{/Records}}
+										</script>
+										<script id="queboxTpl-2" type="text/x-template"><!--判断题-->
+										{{#Records}}
+											<table class="table table-hover js-tableoptions">
+												<thead>
+													<tr>
+														<th>答案内容</th>
+														<th width="76">默认分值</th>
+														<th width="100">操作</th>
+													</tr>
+												</thead>
+												<tbody>
+													{{#data.results}}
+													<tr>
+														<td class="tl">
+															<div class="js-options">
+																<div id="options-edit-{{inx}}" data-id="{{inx}}" class="options-edit T_edit">{{content}}</div>													
+															</div>
+														</td>
+														<td>	
+															<input type="text" value="{{score}}"  name="score" title="在此可以设置每个选项的分数（请输入整数)" style="width:60px;text-align:center" onfocus="$(this).val('')">
+														</td>
+														<td>
+															<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+															<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+															<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+															<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>
+												
+														</td>
+													</tr>
+													{{/data.results}}
+												</tbody>
+											</table>
+										{{/Records}}
+										</script>
+										
+										<script id="queOptionsTpl-1" type="text/template"><!--单选题 选项模板-->
+											<tr>
+												<td><input type="radio" name="radio"></td>
+												<td class="tl">
+													<div class="js-options">
+														<div id="" data-id="" class="options-edit T_edit">选项</div>
+													</div>
+										
+												</td>
+												<td>	
+													<input type="text" value="0"  name="score" title="在此可以设置每个选项的分数（请输入整数" style="width:60px;text-align:center" onfocus="$(this).val('')">
+												</td>
+												<td>
+													<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+													<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+													<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+													<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>
+									
+												</td>
+											</tr>
+										</script>
+										<script id="queOptionsTpl-5" type="text/template"><!--多选题 选项模板-->
+											<tr>
+												<td><input type="checkbox" name="radio"></td>
+												<td class="tl">
+													<div class="js-options">
+														<div id="" data-id="" class="options-edit T_edit">选项</div>
+													</div>
+										
+												</td>
+												<td></td>
+												<td>
+													<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+													<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+													<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+													<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>								
+												</td>
+											</tr>
+										</script>
+										<script id="queOptionsTpl-2" type="text/template"><!--填空题 选项模板-->
+											<tr>
+												<td class="tl">
+													<div class="js-options">
+														<div id="" data-id="" class="options-edit T_edit">选项</div>
+													</div>
+											
+												</td>
+												<td>	
+													<input type="text" value="0"  name="score" title="在此可以设置每个选项的分数（请输入整数" style="width:60px;text-align:center" onfocus="$(this).val('')">
+												</td>
+												<td>
+													<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+													<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+													<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+													<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>
+										
+												</td>
+											</tr>
+										</script>
+										
+									</div>
+								
+							
+								</div>
+							
+							</div>
+							
+						
+						<div class="row clearfix" style="text-align:center">
+							<input type="button" style="width:200px" class="btn btn-primary btn-lg savebutton" id="savebutton" value="保存">
+							<a class="btn btn-default btn-lg" href="../admin/itemList.html">返回</a>
+						</div>
+											
+						
+						
+						
+					</form>	
+						
+					
+				</div>
+
+
+				
+				
+				
+
+			</div>
+		</div>
+		
+		
+	</div> <!--end row-->
+	
+</div>	<!--end container-->
+
+<div class="bs-footer">
+  <div>
+	  <p>Copyright © 2015 华莘智慧教育</p>
+
+  </div>
+</div>
+<script src="../js/editor.js"></script> 
+<script type="text/javascript">
+	$(function(){
+		questionOpt.qEditinit();
+	});
+	$(".btn-password").colorbox({
+		iframe : true,
+		width : "400px",
+		height : "330px",
+		opacity : '0.5',
+		overlayClose : false,
+		escKey : true
+	});
+</script>
+</body>
+</html>
+		

@@ -1,0 +1,1 @@
+alter table user_test_item MODIFY item_answer int(11) null;

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>添加试题</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../img/m/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="../css/bootstrap.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/app.css">	
+<link rel="stylesheet" href="../css/ui-dialog.css">
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/url.min.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/jquery.iframe-post-form.js"></script>
+
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/app.js"></script> 
+<script src="../js/moment.js"></script>
+<script src="../js/jquery.serializejson.min.js"></script>
+
+<script src="../js/dialog-min.js"></script> 
+<script src="../js/zh-cn.js"></script>
+<script src="../js/tinymce/dropzone/lib/dropzone.js"></script>
+<script src="../js/tinymce/tinymce.min.js"></script>
+<script src="../js/tinymce/tinymce_zhcn.js"></script>
+<style>
+.table tbody + tbody {
+  border-top: 0px;
+}
+</style>
+<script>
+$(function(){
+	moment.lang('zh-cn');
+    function timedUpdate () {
+       update();
+       setTimeout(timedUpdate, 1000);
+   }
+   function update(){
+          $('#datafomate').html(moment().format('YYYY-MM-DD ,a h:mm:ss'));
+      }  
+	timedUpdate()
+	
+})
+</script>
+</head>
+<body>
+
+<!--Header-part-->
+<div class="navbar" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo" title="华莘智慧教育云资源平台" ><img src="../img/logo-jy.png" height="41"></a>
+    </div>
+	<p class="logout">欢迎<span id="loginname"></span> &nbsp;&nbsp;<span id="datafomate"></span> &nbsp;|&nbsp;  <a href="../admin/passwordEditiframe.html" data-fancybox-type="iframe" class="btn-password cboxElement">修改密码</a> &nbsp;|&nbsp;  <a href="login.html">退出</a> </p>
+	
+  </div>
+</div>
+<!--close-Header-part--> 
+<div id="container" class="container-fluid">
+
+	<div class="row">
+		<div class="sidebar">
+			<div class=" nav-sidebar">
+				<ul id="leftside" class="nav">
+				</ul>
+			</div>
+			<div class="js-nav-shadow bottom"><img src="../img/round-shadow-bottom.png" style="top: auto; bottom: 0px;"></div>
+		</div> <!--end sidebar-->
+		<script id="leftTpl" type="text/template">
+			{{#Records}}
+			<li class="active"><a href="#"><span>{{name}}</span> </a>
+				
+				<ul class="nav">
+					{{#data}}
+						<li {{#iscurrent}} class="cur" {{/iscurrent}}>  <a href="{{path}}">{{name}}
+						</a></li>
+					{{/data}}
+			
+				</ul>
+				
+			</li>
+			{{/Records}}
+		</script>
+		<div class="main" style="position:relative">
+
+			<div class="listwrap" style="margin-right:15px;">
+				<div  class="list_bar">添加<span id="qqTitle"></span></div>
+				<div class="question_form">
+					<form action="#" method="post" id="questionForm" class="form-horizontal"
+                        data-bv-message="真的不能为空..."
+                        data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+                        data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+                        data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+						
+						<div class="row clearfix">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">学科</label>
+									<div class="col-sm-9">
+										<div id="changeSubject" class="dropdown changeSubject dropbox">
+										  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											   <span id="subjectName">请选择学科</span>
+											   <i class="a-icon a-icon-dropdown"></i>
+										  </a>
+										  <div id="changeSubjectCnt" style="width:100%" class="dropdown-menu">
+						    	
+										  </div>
+										  <input type="hidden" name="subject.id" required value="">
+										</div>
+										
+										<script id="changeSubjectTpl" type="text/template">
+											{{#Records}}
+												<div class="dl">
+									    	 		<h4>{{name}}</h4>
+													 <p>
+													 	{{#data}}
+															<a data-id="{{id}}" onclick="questionOpt.setinputid('subject','{{name}}','{{id}}');questionOpt.depeandbysubject('{{id}}','{{grade_id}}')" data-gradeid="{{grade_id}}" href="javascript:void(0)">{{name}}</a>
+														{{/data}}
+													 </p>
+												 </div>
+											 {{/Records}}
+										</script>
+									</div>
+									
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">知识点</label>
+									<div class="col-sm-9">
+										<div class="dropdown dropbox">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="knowledgeName">请选择知识点</span><i class="a-icon a-icon-dropdown"></i></a>
+											<div class="gradeFliter dropdown-menu">
+												<div  class="treelist">
+													<div  class="list_sub sm_icon">
+														<div id="knowledgeido">
+												
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<input type="hidden" name="knowledge.id" required value="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">来源出处</label>
+									<div class="col-sm-9">
+										<input type="text" name="source" class="form-control">
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-6">
+							
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">学段</label>
+									<div class="col-sm-9">
+										<div class="dropdown dropbox">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="gradeName">请选择学段</span> <i class="a-icon a-icon-dropdown"></i></a>
+											<div class="gradeFliter dropdown-menu">
+												<div id="gradeBox" class="treelist">
+													<div id="gradeList" class="list_sub sm_icon">
+														<div id="gradeido">
+												
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<input type="hidden" required name="grade.id" value="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">难易程度</label>
+									<div class="col-sm-9">
+										<select class="form-control" required name="diffcultyLevel">
+											<option value="">请选择...</option>
+											<option value="1">非常简单</option>
+											<option value="2">简单</option>
+											<option value="3">一般</option>
+											<option value="4">困难</option>
+											<option value="5">非常困难</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">来源类型</label>
+									<div class="col-sm-9">
+										<select class="form-control" required  name="sourceType">
+											<option value="">请选择...</option>
+											<option value="0">真题</option>
+											<option value="1">模拟考试题</option>
+											<option value="2">为教材配套习题</option>
+											<option value="3">个人或机构贡献</option>
+											<option value="4">其他</option>
+										</select>
+									</div>
+								</div>
+							
+							</div>
+							
+						</div>
+						
+						<div class="row clearfix">
+							<div class="col-md-12">
+							
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">教材章节</label>
+									<div class="col-md-10">
+										<div class="dropdown dropbox">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="textbookName">请选择教材章节</span><i class="a-icon a-icon-dropdown"></i></a>
+											<div class="gradeFliter dropdown-menu">
+												<div  class="treelist">
+													<div  class="list_sub sm_icon">
+														<div id="textbookido">
+												
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<input type="hidden" required name="textbookCapter.id" value="">
+									</div>
+								</div>
+							
+							</div>
+							
+						</div>
+						
+						
+						<div class="hr"></div>
+						
+						
+						<div class="row clearfix qustion-title">
+							<div class="col-md-12">
+							
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">试题题干</label>
+									<div class="col-md-9">
+										<textarea class="stem-textarea" id="qustionTitle" name="stem">请输入题干...</textarea>
+									</div>
+								</div>
+								
+							
+							</div>
+							
+						</div>
+						<div class="row clearfix qustion-title">
+							<div class="col-md-12">
+							
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">试题解析</label>
+									<div class="col-md-9">
+										<textarea class="stem-textarea" id="analysis" name="analysis">请输入解析...</textarea>
+									</div>
+								</div>
+								
+							
+							</div>
+							
+						</div>
+						<div class="row clearfix qustion-content">
+							<div class="col-md-12">
+							
+								<div class="form-group">
+									
+									<div id="optionsCnt">
+										
+									</div>
+									<script id="queboxTpl-1" type="text/template"><!--单选题模板-->
+										<label class="col-sm-2 control-label" for="">试题选项</label>
+										<div  class="col-md-9">
+										<table class="table table-hover js-tableoptions">
+											<thead>
+												<tr>
+													<th class="inputtype"></th>
+													<th>选项内容</th>
+													<th>分数
+														<input type="text" value="1"  name="score" title="在此可以设置题目的分数（请输入整数）" style="width:60px;text-align:center" onclick="select()">
+													</th>
+													<th width="100">操作</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td><input type="radio" name="radio"></td>
+													<td class="tl">
+														<div class="js-options">
+															<div id="options-edit-1" data-id="1" class="options-edit T_edit">选项1</div>
+														</div>
+													
+													</td>
+													<td></td>
+													<td>
+														<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+														<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+														<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+														<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>
+												
+													</td>
+												</tr>
+											
+									
+											</tbody>
+											<tbody>
+												<tr>
+													<td><input type="radio" name="radio"></td>
+													<td class="tl">
+														<div class="js-options">
+															<div id="options-edit-2" data-id="2" class="options-edit T_edit">选项2</div>
+														</div>
+													
+													</td>
+													<td></td>
+													<td>
+														<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+														<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+														<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+														<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>
+												
+													</td>
+												</tr>
+											</tbody>
+											<tbody>
+												<tr>
+													<td><input type="radio" name="radio"></td>
+													<td class="tl">
+														<div class="js-options">
+															<div id="options-edit-3" data-id="3" class="options-edit T_edit">选项3</div>
+														</div>
+													
+													</td>
+													<td></td>
+													<td>
+														<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+														<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+														<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+														<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>
+												
+													</td>
+												</tr>
+											
+									
+											</tbody>
+											<tbody>
+												<tr>
+													<td><input type="radio" name="radio"></td>
+													<td class="tl">
+														<div class="js-options">
+															<div id="options-edit-4" data-id="4" class="options-edit T_edit">选项4</div>
+														</div>
+													
+													</td>
+													<td></td>
+													<td>
+														<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+														<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+														<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+														<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>
+												
+													</td>
+												</tr>
+											
+									
+											</tbody>
+										</table>
+										</div>
+									</script>
+									
+									
+									<script id="queboxTpl-3" type="text/template"><!--判断模板-->
+										<label class="col-sm-2 control-label" for="">正确答案</label>
+										<div  class="col-md-9">
+											<ul class="judgeOptions fl">
+												<li><label><input type="radio" data-id="1" name="radio"> <span class="qright">&radic;</span></label></li>
+												<li><label><input type="radio" data-id="2" name="radio"><span class="qwrong">&times;</span></label></li>
+											</ul>
+											<div class="fl">默认分值：<input type="text" value="0" onclick="select()"  name="score" title="在此可以设置每个选项的分数（请输入整数" style="width:60px;text-align:center"></div>
+										</div>
+									</script>
+									
+									<script id="queboxTpl-2" type="text/template"><!--填空模板-->
+										<label class="col-sm-2 control-label" for="">正确答案</label>
+										<div class="col-md-9">
+										<table class="table js-tableoptions">
+											<thead>
+												<tr>
+													<th>答案内容</th>
+													<th width="76">默认分值</th>
+													<th width="100">操作</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													
+													<td class="tl">
+														<div class="js-options">
+															<div id="options-edit-1" data-id="1" class="options-edit T_edit">选项1</div>
+													
+														</div>
+													
+													</td>
+													<td>	
+														<input type="text" value="0"  name="score" title="在此可以设置每个选项的分数（请输入整数" style="width:60px;text-align:center" onclick="select()">
+													</td>
+													<td>
+														<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+														<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+														<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+														<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>
+												
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										</div>
+									</script>
+									<script id="queboxTpl-5" type="text/template"><!--多选题模板-->
+										<label class="col-sm-2 control-label" for="">试题选项</label>
+										<div  class="col-md-9">
+										<table class="table table-hover js-tableoptions">
+											<thead>
+												<tr>
+													<th class="inputtype"></th>
+													<th>选项内容</th>
+													<th>分数	
+														<input type="text" value="2"  name="score" title="在此可以设置题目的分数（请输入整数）" style="width:60px;text-align:center" onclick="select()">
+													</th>
+													<th width="100">操作</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td><input type="checkbox" name="radio"></td>
+													<td class="tl">
+														<div class="js-options">
+															<div id="options-edit-1" data-id="1" class="options-edit T_edit">选项1</div>
+														</div>
+													
+													</td>
+													<td></td>
+													<td>
+														<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+														<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+														<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+														<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>												
+													</td>
+												</tr>					
+											</tbody>
+											<tbody>
+												<tr>
+													<td><input type="checkbox" name="radio"></td>
+													<td class="tl">
+														<div class="js-options">
+															<div id="options-edit-2" data-id="2" class="options-edit T_edit">选项2</div>
+														</div>
+													
+													</td>
+													<td></td>
+													<td>
+														<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+														<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+														<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+														<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>												
+													</td>
+												</tr>																				
+											</tbody>
+											<tbody>
+												<tr>
+													<td><input type="checkbox" name="radio"></td>
+													<td class="tl">
+														<div class="js-options">
+															<div id="options-edit-3" data-id="3" class="options-edit T_edit">选项3</div>
+														</div>
+													
+													</td>
+													<td></td>
+													<td>
+														<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+														<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+														<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+														<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>												
+													</td>
+												</tr>																				
+											</tbody>
+											<tbody>
+												<tr>
+													<td><input type="checkbox" name="radio"></td>
+													<td class="tl">
+														<div class="js-options">
+															<div id="options-edit-4" data-id="4" class="options-edit T_edit">选项4</div>
+														</div>
+													
+													</td>
+													<td></td>
+													<td>
+														<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+														<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+														<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+														<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>												
+													</td>
+												</tr>																				
+											</tbody>
+										</table>
+										</div>
+									</script>
+									
+									<script id="queOptionsTpl-1" type="text/template"><!--单选题 选项模板-->
+										<tr>
+											<td><input type="radio" name="radio"></td>
+											<td class="tl">
+												<div class="js-options">
+													<div id="" data-id="" class="options-edit T_edit">选项</div>
+												</div>
+										
+											</td>
+											<td></td>
+											<td>
+												<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+												<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+												<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+												<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>									
+											</td>
+										</tr>
+									</script>
+									<script id="queOptionsTpl-2" type="text/template"><!--填空题 选项模板-->
+										<tr>
+											<td class="tl">
+												<div class="js-options">
+													<div id="" data-id="" class="options-edit T_edit">选项</div>
+												</div>
+											
+											</td>
+											<td>	
+												<input type="text" value="0"  name="score" title="在此可以设置每个选项的分数（请输入整数" style="width:60px;text-align:center" onclick="select()">
+											</td>
+											<td>
+												<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+												<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+												<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+												<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>
+										
+											</td>
+										</tr>
+									</script>
+									<script id="queOptionsTpl-5" type="text/template"><!--多选题 选项模板-->
+										<tr>
+											<td><input type="checkbox" name="radio"></td>
+											<td class="tl">
+												<div class="js-options">
+													<div id="" data-id="" class="options-edit T_edit">选项</div>
+												</div>
+										
+											</td>
+											<td></td>
+											<td>
+												<span title="增加" class="glyphicon glyphicon-plus js-plus"></span>
+												<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+												<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+												<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>								
+											</td>
+										</tr>
+									</script>
+								</div>
+								
+							</div>
+							
+						</div>
+						
+						<div class="row clearfix" style="text-align:center">
+							<a href="javascript:void(0)" title="保存" style="width:200px" class="btn btn-primary btn-lg savebutton" id="savebutton">保存</a>
+							<a class="btn btn-default btn-lg" href="../admin/itemList.html">返回</a>
+							
+							<input type="button" class="btn btn-primary btn-lg savenextbutton" id="savenextbutton"  value="继续添加下一题">
+						</div>
+												
+						
+						
+					</form>
+					
+				</div>
+				
+
+				
+			</div>
+		</div>
+		
+		
+	</div> <!--end row-->
+	
+</div>	<!--end container-->
+<div id="tinymceCnt"></div>
+
+<div class="bs-footer">
+  <div>
+	  <p>Copyright © 2015 华莘智慧教育</p>
+
+  </div>
+</div>
+<script src="../js/editor.js"></script> 
+<script type="text/javascript">
+	
+	
+	$(function(){
+		questionOpt.Addinit();
+	
+	})
+	$(".btn-password").colorbox({
+		iframe : true,
+		width : "400px",
+		height : "330px",
+		opacity : '0.5',
+		overlayClose : false,
+		escKey : true
+	});
+</script>
+
+</body>
+</html>
+		

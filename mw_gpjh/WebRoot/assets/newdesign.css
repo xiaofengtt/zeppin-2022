@@ -1,0 +1,394 @@
+﻿/********ie iframe*********/
+.zindexDiv2{
+position:absolute;
+z-index:-1;
+width:0;
+height:0;
+padding:0px; margin:0px;
+width:expression(this.nextSibling?this.nextSibling.offsetWidth:0);
+height:expression(this.nextSibling?this.nextSibling.offsetHeight:0);
+top:expression(this.nextSibling?this.nextSibling.offsetTop:0);
+left:expression(this.nextSibling?this.nextSibling.offsetLeft:0);
+/*background-color:green;在ff中将这句话放出来，你就会明白京叭、狼狗、主人的比喻*/
+}
+     
+/*设计问卷页面的菜单栏 */
+ #ss-header {
+background-image:url(http://image.sojump.com/images/Mysojump/QuestionnaireMng/Design/shadow.gif); 
+background-color:#e1f6ff;
+background-position:left bottom;
+background-repeat:repeat-x;
+padding-bottom:5px; width:100%;
+}
+#divMenu
+{ 
+width:180px;  visibility:hidden; margin:0 auto;text-align:left;
+}
+#divMenu .inn {background:#f9f9f9;border:1px solid #cacaca;}
+.divMenu-hd {background:url(../img/h2.png) no-repeat;width:180px;height:47px;}
+#divMenu ul{line-height:26px; vertical-align:bottom; padding:0px;}
+#divMenu li
+{
+list-style-type:none;  margin-left:5px;LIST-STYLE-TYPE: none; PADDING: 1px 0px; vertical-align:middle;
+}
+#divMenu LI A 
+{
+margin:0px; CURSOR: pointer; padding:0 4px 0 4px; vertical-align:middle;
+BACKGROUND-REPEAT: no-repeat;   DISPLAY:  inline-block;  
+}
+#divMenu LI span
+{
+vertical-align:middle; display:inline-block;
+}
+#divMenu LI A.menu:hover 
+{
+color:#ffffff; background-color:#3366cc; 
+}
+#topnav
+{
+     background:#dee5f2;
+     width:870px;
+    
+}
+.divMenu-cnt {position:relative;margin:0 auto;width:880px;}
+#divMenu {position:absolute;top:110px;right:-185px;}
+
+/***********覆盖q.css中的样式********************/
+.div_title_attr_question  {
+    background:none repeat scroll 0 0 #fff9dd;
+    margin-top:0px;
+}
+.div_question
+{
+    margin:10px 0 0;
+    outline:none;
+} 
+.div_title_attr_question
+{
+    border:0px;margin:0px; margin-top:10px;
+}
+.div_question_mouseover  {
+cursor:move;
+}
+.div_question_mouseovermerge
+{
+    cursor:default;
+}
+.div_question_move
+{
+    border: 2px dotted #3366ff;
+}
+/***********************题型样式***************/
+.tabQTypet
+{
+height: 165px;width: 854px; border: 1px solid  #ccc; background: #cfe7ff; 
+}
+.tabQTypet UL {
+margin:0;padding:0px;padding-left:5px; float:left;
+}
+.tabQTypet ul LI {
+display:inline; margin:6px 0 0 8px;
+ float:left; padding:4px 0 0 10px; 
+background:url(http://image.sojump.com/images/Mysojump/QuestionnaireMng/Design/qbtnbg.gif); width:76px; height:25px;
+}
+
+.tabQTypet ul li a
+{ 
+background-position: 5px 5px ; font-size: 13px; 
+font-weight: bold; margin:0px; cursor: pointer; color: #004499;
+background-repeat: no-repeat; text-decoration: none; display:inline-block; padding-left:22px;
+}
+.spanQTxt
+{
+    display:inline-block; line-height:22px;
+}
+.tabQTypet ul LI A:hover,.tabQTypet ul LI a.hover {
+COLOR: #ff6600;
+}
+.tabQTypet a{text-decoration: none;}
+.downMenu ul LI A:hover 
+{
+	background-image: url(http://image.sojump.com/images/wjx/index/rightTineliang.gif);
+	background-repeat: no-repeat;background-position : 4% 38%;
+}
+.downMenu ul li span{ text-align:left; font-weight:bold;}
+.downMenu ul li a{padding-top:5px;line-height:20px; width:84px;}
+.downMenu ul LI A:hover {padding-top:5px;line-height:20px;width:84px;}
+/*常用题型里面引用的样式*/
+#qType
+{ display:none; 
+ border: 1px solid #cccccc; background: #cfe7ff;margin-right:20px;position:absolute; padding-bottom:5px;float:left; 
+}
+#qType UL {
+FLOAT: left; margin: 0; vertical-align:bottom; line-height:20px;LIST-STYLE-TYPE: none;padding:0; width:280px;
+}
+#qType LI {
+margin-left:6px; margin-top:5px; CLEAR: none;background-color: #dff4ff; LIST-STYLE-TYPE: none;
+PADDING: 0px;  FLOAT: left; list-style-position:outside;
+}
+#qType LI A {
+text-align:center; width:62px;DISPLAY:  inline-block;   FONT-WEIGHT: bold;  padding-top:1px;FONT-SIZE: 12px;
+BORDER-RIGHT: #9ac5ff 1px solid;BORDER-left: #9ac5ff 1px solid;BORDER-top: #9ac5ff 1px solid;
+BORDER-bottom: #9ac5ff 1px solid;
+MARGIN: 0px 0px; CURSOR: pointer; COLOR: #529214;   BACKGROUND-REPEAT: no-repeat; TEXT-DECORATION: none;
+}
+/* #qType LI A:visited {
+text-align:center; width:62;  DISPLAY: inline-block;  FONT-WEIGHT: bold;  padding-top:5px;FONT-SIZE: 12px;
+MARGIN: 0px 0px; CURSOR: pointer; COLOR: #336699; height:20px; BACKGROUND-REPEAT: no-repeat; TEXT-DECORATION: none;
+}*/
+#qType LI A:hover {
+BORDER-RIGHT: #999 1px solid; BORDER-TOP: #999 1px solid; BORDER-LEFT: #999 1px solid; BORDER-BOTTOM: #999 1px solid; COLOR: #333; BACKGROUND-COLOR: #99eeff
+}
+.fLine{clear: both; color:#ffffff;
+background:#ffffff;
+height:4px;
+padding:0;
+margin-bottom:0;
+margin-top:0;
+border:0;}
+/*题目里面的操作按钮引用的样式*/
+.stuff {
+    font-size:12px;FLOAT: left; MARGIN: 0px 0px 0px 0px; WIDTH: auto;background-color: #cef4ff;height:23px; vertical-align:bottom;LIST-STYLE-TYPE: none; LINE-HEIGHT: 23px;
+}
+.stuff LI {
+    vertical-align:bottom;CLEAR: none;LIST-STYLE-TYPE: none;  padding:0px; FLOAT: left; vertical-align:middle;
+    list-style-position:outside;  height:23px;BORDER: #fff 1px solid;  text-align:center;
+}
+.stuff LI A span
+{
+    vertical-align:middle;display:inline-block;
+}
+.stuff LI A,.stuff LI A:visited  {
+    vertical-align:bottom; DISPLAY: inline-block;  MARGIN: 0px 0px; CURSOR: pointer; COLOR: #666;
+        TEXT-DECORATION: none; padding-right:6px; height:23px;  padding-left:6px;
+}
+
+.stuff LI A:hover {
+    vertical-align:bottom; COLOR: #336699; BACKGROUND-COLOR: #ccc
+}
+/********量表样式*********/
+ .likertImageTypeList li {
+cursor:pointer; margin-right:2px; float:none; display:inline-block;*display:inline;
+}
+/************排序题按钮*******************/
+.qButton li a {
+background:none;
+
+color:#666666;
+cursor:pointer;
+display:inline-block;
+height:24px;
+line-height:24px;
+margin:0;
+padding:0;
+text-decoration:none;
+width:82px;
+}
+.qButton li a:hover
+{
+    width:82px;
+}
+ .qButton LI A span
+        {
+            display:inline-block;
+        }
+/**********************选择题选项样式****************************/
+.choiceimg
+{
+    cursor:pointer;margin:0 3px 2px; vertical-align:bottom;
+}
+.choicetxt
+{
+    height:16px; margin:0 2px; font-size:12px; float:left;
+}
+.tableoption
+{
+    padding:0px;
+}
+.tableoption tr
+{
+    height:20px;
+}
+.tableoption td
+{
+    border:0px;
+}
+.tableoption input,.tableoption span,.tableoption a
+{
+    vertical-align:middle;
+}
+/*******************图标样式*****************************/
+.design-icon {
+background-image:url("http://www.sojump.com/images/Mysojump/QuestionnaireMng/Design/designqpic.gif");
+background-repeat:no-repeat;
+display: inline-block;
+overflow:hidden;
+}
+.design-radio {
+background-position:0px -79px;
+padding-right:2px;
+height:16px;
+width:16px;
+}
+.design-check
+{
+    background-position:-20px -79px;
+padding-right:2px;
+height:16px;
+width:16px;
+}
+.design-likert
+{
+    background-position:0px -158px;
+padding-right:2px;
+height:16px;
+width:24px;
+}
+.design-text {
+background-position:0px -98px;
+padding-right:6px;
+height:16px;
+width:14px;
+}
+.design-juzhen {
+background-position:-1px -239px;
+padding-right:2px;
+height:16px;
+width:16px;
+}
+.design-paixu {
+background-position:-1px -279px;
+padding-right:2px;
+height:16px;
+width:16px;
+}
+.design-ddown {
+background-position:0px -119px;
+padding-right:2px;
+height:16px;
+width:16px;
+}
+.design-sum {
+background-position:2px -261px;
+padding-right:2px;
+height:16px;
+width:16px;
+}
+.design-line {
+background-position:2px -299px;
+padding-right:2px;
+height:16px;
+width:16px;
+}
+.design-add
+{
+    background-position:0px -60px;height:17px;width:17px;
+}
+.design-minus
+{
+    background-position:-22px -60px;height:17px;width:17px;
+}
+.design-down
+{
+    background-position:-2px -2px;height:16px;width:16px; margin:0px 2px 0 0;
+}
+.design-up
+{
+    background-position:-22px -2px;height:16px;width:16px;margin:0px 2px 0 0;
+}
+.design-img
+{
+     background-position:-2px -598px;height:16px;width:16px;
+}
+.design-desc
+{
+     background-position:-22px -299px;height:16px;width:16px;
+}
+.design-page
+{background-position:-2px -298px;height:16px;width:16px;
+}
+.design-cut
+{background-position:-22px -297px;height:16px;width:16px;
+}
+.design-edit
+{
+    background-position:-2px -618px;height:16px;width:16px; margin:0 3px 0 0;
+}
+.design-copy
+{
+    background-position:-2px -141px;height:16px;width:16px; margin:0 3px 0 0;
+}
+.design-first
+{
+    background-position:-20px -20px;height:16px;width:16px;margin:0 3px 0 0;
+}
+.design-last
+{
+    background-position:0px -20px;height:16px;width:16px;margin:0 3px 0 0;
+}
+.design-date
+{
+    background-position:-20px -119px;height:16px;width:16px;
+}
+.design-preview{background-position:-20px -638px;height:16px;width:16px; margin:0 3px 0 0; vertical-align:middle;}
+.design-delete{background-position:-20px -40px;height:16px;width:16px; margin:0 3px 0 0;}
+.design-finish{background-position:-20px -598px;height:16px;width:16px; margin:0 3px 0 0; vertical-align:middle;}
+.design-save{background-position:-20px -618px;height:16px;width:16px; margin:0 3px 0 0; vertical-align:middle;}
+.design-attr{background-position:-2px -638px;height:16px;width:16px; vertical-align:middle;margin:0 3px 0 0; }
+
+.design-on3{ background-position:0 -320px; height:24px; width:24px;}
+.design-off3{ background-position:0 -346px; height:24px; width:24px;}
+.design-on4{ background-position:0 -372px; height:26px; width:26px;}
+.design-off4{ background-position:0 -402px; height:24px; width:24px;}
+
+.design-on2{ background-position:-2px -481px; height:24px; width:24px;}
+.design-off2{ background-position:0 -515px; height:24px; width:24px;}
+
+.design-on6{ background-position:0 -544px; height:24px; width:24px;}
+.design-off6{ background-position:0 -570px; height:24px; width:22px;}
+
+.design-on5{ background-position:0 -426px; height:24px; width:24px;}
+.design-off5{ background-position:0 -450px; height:24px; width:22px;}
+.design-offr{ background-position:-24px -576px; height:17px; width:16px;}
+
+input.finish 
+{	
+    padding:3px 5px;background-image: url(http://image.sojump.com/images/Mysojump/QuestionnaireMng/Design/com_button.gif); font-weight:bold;
+    margin: 0px 2px; color:#ffffff;background-repeat: repeat-x;height: 26px; border:0; width:52px; cursor:pointer;
+}
+/***********************状态栏样式*******************************/
+#status_tip 
+{
+ height:50px; 
+ background:#f04810;
+ margin:10px 0;
+ left:790px;
+ position:absolute;
+ display:none;
+ padding:5px; 
+ color:white;
+ font-size:14px;
+ font-weight:bold;
+ z-index:3000;
+}   
+#status_tip a{ color:#FFFF00;}
+#status_tip a:hover{color:#FDEADA;}
+         
+/*用于常用选项弹出层样式*/
+.flow { PADDING-RIGHT: 0px; PADDING-LEFT: 20px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px}
+.flow DIV { FONT-WEIGHT: bold; FONT-SIZE: 170%; BORDER-LEFT: #529214 2px solid; COLOR: #529214; TEXT-INDENT: -3px; LINE-HEIGHT: 202px}
+#choiceMenu UL { PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; OVERFLOW: auto; PADDING-TOP: 0px; 
+BORDER-BOTTOM: #ccc 1px dotted; LIST-STYLE-TYPE: none; HEIGHT: 202px;width:102px;LIST-STYLE-TYPE: none;} 
+#choiceMenu LI { MARGIN: 0px 0px 3px} 
+#choiceMenu LI A { BORDER-RIGHT: #dedede 1px solid;LIST-STYLE-TYPE: none; BORDER-TOP: #eee 1px solid; DISPLAY: block; FONT-WEIGHT: bold; 
+MARGIN: 0px 10px 0px 0px; BORDER-LEFT: #eee 1px solid; COLOR: #444; LINE-HEIGHT: 30px; font-size:14px; BORDER-BOTTOM: #dedede 1px solid; 
+HEIGHT: 30px; BACKGROUND-COLOR: #f5f5f5; TEXT-ALIGN: center; TEXT-DECORATION: none} 
+        
+#lbContent { BORDER-RIGHT: #efca4a 1px solid; PADDING-RIGHT: 30px; BORDER-TOP: #efca4a 1px solid; PADDING-LEFT: 30px;
+BACKGROUND: #fff;MARGIN: 15px; BORDER-LEFT: #efca4a 1px solid; PADDING-TOP: 25px; 
+BORDER-BOTTOM: #efca4a 1px solid; POSITION: relative; HEIGHT: 300px; moz-border-radius: 30px; webkit-border-radius: 30px}
+        
+#choiceText { WIDTH: 50%; TEXT-ALIGN: right}
+#choiceText TEXTAREA  { MARGIN: 0px 0px 10px; HEIGHT: 200px}
+        
+.info { CLEAR: both; DISPLAY: inline-block; MARGIN: 0px 0px 1em; line-height:20px; }

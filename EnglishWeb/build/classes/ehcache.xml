@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         updateCheck="true" monitoring="autodetect"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         dynamicConfig="true">
+ 
+    <diskStore path="java.io.tmpdir"/>
+    
+ 
+<!--1.必须要有的属性：
+ 	name: cache的名字，用来识别不同的cache，必须惟一。
+	maxElementsInMemory: 内存管理的缓存元素数量最大限值。
+	maxElementsOnDisk: 硬盘管理的缓存元素数量最大限值。默认值为0，就是没有限制。
+	eternal: 对象是否永久有效，一但设置了，timeout将不起作用。 
+	overflowToDisk: 设定是否在内存填满的时候把数据转到磁盘上。
+	2.下面是一些可选属性：
+	timeToIdleSeconds： 设定元素在过期前空闲状态的时间，只对非持久性缓存对象有效。默认值为0,值为0意味着元素可以闲置至无限长时间。
+	timeToLiveSeconds: 设定元素从创建到过期的时间。其他与timeToIdleSeconds类似。
+	diskPersistent: 设定在虚拟机重启时是否进行磁盘存储，默认为false.(我的直觉，对于安全小型应用，宜设为true)。
+	diskExpiryThreadIntervalSeconds: 访问磁盘线程活动时间。
+	diskSpoolBufferSizeMB: 存入磁盘时的缓冲区大小，默认30MB,每个缓存都有自己的缓冲区。
+	memoryStoreEvictionPolicy: 元素逐出缓存规则。共有三种，Recently Used (LRU)最近最少使用，为默认。 First In First Out (FIFO)，先进先出。Less Frequently Used(specified as LFU)最少使用
+-->
+
+	<defaultCache maxElementsInMemory="10000"
+		maxElementsOnDisk="10000" overflowToDisk="false" eternal="false"
+		timeToIdleSeconds="1000" timeToLiveSeconds="1000" diskPersistent="false"
+		diskSpoolBufferSizeMB="30" diskExpiryThreadIntervalSeconds="120"
+		memoryStoreEvictionPolicy="LRU" statistics="true">
+
+		<!-- <cacheEventListenerFactory class="net.sf.ehcache.distribution.jgroups.JGroupsCacheReplicatorFactory" 
+			properties="replicateAsynchronously=true, replicatePuts=true,replicateUpdates=true, 
+			replicateUpdatesViaCopy=false, replicateRemovals=true"/> -->
+	</defaultCache>
+	
+	<cache name="cn.zeppin.cache.EhCache" maxElementsInMemory="50000"
+		eternal="false" timeToIdleSeconds="1000" timeToLiveSeconds="1000"
+		overflowToDisk="false" diskPersistent="false"
+		memoryStoreEvictionPolicy="LRU" statistics="true" >
+	</cache>   	
+
+ 
+		 <!-- 
+	 
+		<cacheManagerPeerProviderFactory class="net.sf.ehcache.distribution.jgroups.JGroupsCacheManagerPeerProviderFactory"
+		properties="connect=TCP(start_port=7800):
+		TCPPING(initial_hosts=192.168.1.92[7800],192.168.1.9[7800];port_range=10;timeout=3000;num_initial_members=3;up_thread=true;down_thread=true):
+		VERIFY_SUSPECT(timeout=1500;down_thread=false;up_thread=false):
+		pbcast.NAKACK(down_thread=true;up_thread=true;gc_lag=100;retransmit_timeout=3000):
+		pbcast.GMS(join_timeout=5000;join_retry_timeout=2000;shun=false;
+		print_local_addr=false;down_thread=true;up_thread=true)"
+		propertySeparator="::" />
+		
+		<cache name="velcroCache" maxElementsInMemory="10000" eternal="true"
+		overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="0"
+		diskPersistent="false" diskExpiryThreadIntervalSeconds="120">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.jgroups.JGroupsCacheReplicatorFactory"
+		properties="replicateAsynchronously=true, replicatePuts=true,
+		replicateUpdates=true, replicateUpdatesViaCopy=false, replicateRemovals=true"/>
+		</cache>
+		<cache name="userCache" maxElementsInMemory="10000" eternal="true"
+		overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="0"
+		diskPersistent="false" diskExpiryThreadIntervalSeconds="120">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.jgroups.JGroupsCacheReplicatorFactory"
+		properties="replicateAsynchronously=true, replicatePuts=true,
+		replicateUpdates=true, replicateUpdatesViaCopy=false, replicateRemovals=true"/>
+		</cache>
+		<cache name="resourceCache" maxElementsInMemory="10000"
+		eternal="true" overflowToDisk="true" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" diskPersistent="false"
+		diskExpiryThreadIntervalSeconds="120">
+		<cacheEventListenerFactory class="net.sf.ehcache.distribution.jgroups.JGroupsCacheReplicatorFactory"
+		properties="replicateAsynchronously=true, replicatePuts=true,
+		replicateUpdates=true, replicateUpdatesViaCopy=false, replicateRemovals=true"/>
+		</cache>
+		  -->
+ 
+ 
+</ehcache>

@@ -1,0 +1,20 @@
+#MyEclipse Hibernate Properties
+#Tue Jul 22 17:27:23 CST 2014
+genBasicCompId=true
+sessionFactoryName=cn.zeppin.base.HibernateSessionFactory
+profile=
+daoSFId=
+jndiPath=
+detectM2M=true
+reStrategyClass=
+detectO2O=true
+springDaoFile=
+useJavaTypes=true
+keyGenerator=
+genVersionTag=true
+sessionFactoryId=
+basePersistenceClass=
+genAnnotations=true
+reSettingsFile=
+configFile=/ItemDatabase/src/hibernate.cfg.xml
+createConfigFile=true

@@ -1,0 +1,63 @@
+package com.zeppin.model;
+
+public class Folk {
+
+	public static final String FOLK_01 = "汉族";
+	public static final String FOLK_02 = "蒙古族";
+	public static final String FOLK_03 = "回族";
+	public static final String FOLK_04 = "藏族";
+	public static final String FOLK_05 = "维吾尔族";
+	public static final String FOLK_06 = "苗族";
+	public static final String FOLK_07 = "彝族";
+	public static final String FOLK_08 = "壮族";
+	public static final String FOLK_09 = "布依族";
+	public static final String FOLK_10 = "朝鲜族";
+	public static final String FOLK_11 = "满族";
+	public static final String FOLK_12 = "侗族";
+	public static final String FOLK_13 = "瑶族";
+	public static final String FOLK_14 = "白族";
+	public static final String FOLK_15 = "土家族";
+	public static final String FOLK_16 = "哈尼族";
+	public static final String FOLK_17 = "哈萨克族";
+	public static final String FOLK_18 = "傣族";
+	public static final String FOLK_19 = "黎族";
+	public static final String FOLK_20 = "僳僳族";
+	public static final String FOLK_21 = "佤族";
+	public static final String FOLK_22 = "畲族";
+	public static final String FOLK_23 = "高山族";
+	public static final String FOLK_24 = "拉祜族";
+	public static final String FOLK_25 = "水族";
+	public static final String FOLK_26 = "东乡族";
+	public static final String FOLK_27 = "纳西族";
+	public static final String FOLK_28 = "景颇族";
+	public static final String FOLK_29 = "柯尔克孜族";
+	public static final String FOLK_30 = "土族";
+	public static final String FOLK_31 = "达斡尔族";
+	public static final String FOLK_32 = "仫佬族";
+	public static final String FOLK_33 = "羌族";
+	public static final String FOLK_34 = "撒拉族";
+	public static final String FOLK_35 = "毛南族";
+	public static final String FOLK_36 = "仡佬族";
+	public static final String FOLK_37 = "锡伯族";
+	public static final String FOLK_38 = "阿昌族";
+	public static final String FOLK_39 = "普米族";
+	public static final String FOLK_40 = "塔吉克族";
+	public static final String FOLK_41 = "怒族";
+	public static final String FOLK_42 = "乌孜别克族";
+	public static final String FOLK_43 = "俄罗斯族";
+	public static final String FOLK_44 = "鄂温克族";
+	public static final String FOLK_45 = "德昂族";
+	public static final String FOLK_46 = "保安族";
+	public static final String FOLK_47 = "裕固族";
+	public static final String FOLK_48 = "京族";
+	public static final String FOLK_49 = "塔塔尔族";
+	public static final String FOLK_50 = "独龙族";
+	public static final String FOLK_51 = "鄂伦春族";
+	public static final String FOLK_52 = "赫哲族";
+	public static final String FOLK_53 = "门巴族";
+	public static final String FOLK_54 = "珞巴族";
+	public static final String FOLK_55 = "基诺族";
+	public static final String FOLK_56 = "布朗族";
+	public static final String FOLK_57 = "其他";
+	
+}
