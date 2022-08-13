@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE control SYSTEM "common-1.7-SNAPSHOT.dtd"> -->
+
+<control>
+	<action path="/front/admin/province!execute">
+		<input uid="l0001" service="provinceService" method="list" desc="获取省份列表">
+			<parameter key="id" toKey="id"/>
+			<parameter key="name" toKey="name"/>
+			<parameter key="template" toKey="template"/>
+			<parameter key="status" toKey="status"/>
+			<parameter key="pagenum" toKey="pagenum" regex="num,maxlength=6"/>
+			<parameter key="pagesize" toKey="pagesize" regex="num,maxlength=6"/>
+			<parameter key="sorts" toKey="sort"/>
+		</input>
+		
+		<input uid="l0002" service="provinceService" method="load" desc="加载省份详细信息">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+		</input>
+		
+		<input uid="l0003" service="provinceService" method="add" desc="添加省份">
+			<parameter key="name" toKey="name" regex="required"/>
+			<parameter key="template" toKey="template" regex="required,length=36"/>
+			<parameter key="status" toKey="status" regex="required"/>
+		</input>
+		
+		<input uid="l0004" service="provinceService" method="edit" desc="编辑省份">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+			<parameter key="name" toKey="name" regex="required"/>
+			<parameter key="template" toKey="template" regex="required,length=36"/>
+			<parameter key="status" toKey="status" regex="required"/>
+		</input>
+		
+		<input uid="l0005" service="provinceService" method="delete" desc="删除省份">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+		</input>
+		
+		<input uid="l0006" service="provinceService" method="templateList" desc="查询可用模板">
+		</input>
+	</action>
+</control>

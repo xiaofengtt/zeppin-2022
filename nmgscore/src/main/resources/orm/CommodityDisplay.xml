@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.CommodityDisplay">
+
+	<!-- 根据参数取vo -->
+	<select id="commodityDisplay_getListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.vo.CommodityDisplayVO">
+		select cd.id from commodity_display360 cd where 1=1
+		<if test="commodity != null and commodity != ''">
+			and cd.commodity = #{id} 
+		</if>
+	</select> 
+	
+	<!-- 根据参数取webvo -->
+	<select id="commodityDisplay_getWebListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.vo.iface.WebCommodityDisplayVO">
+		select cd.display_index as displayIndex,re.url as displayImageURL 
+		from commodity_display360 cd,resource re,commodity com 
+		where cd.display_image=re.id and cd.commodity=com.id
+		<if test="commodity != null and commodity != ''">
+			and cd.commodity = #{commodity} 
+		</if>
+		<if test="sort != null and sort != ''">
+			order by cd.${sort}
+		</if>
+	</select> 
+	
+	<!-- 加载数据 -->
+	<select id="commodityDisplay_get"  resultType="com.cmos.china.mobile.media.core.bean.CommodityDisplay">
+		select * from commodity_display360 where id=#{id}  
+	</select>
+	
+	<!-- 增加数据 -->  
+	<insert id="commodityDisplay_add" parameterType="com.cmos.china.mobile.media.core.bean.CommodityDisplay" useGeneratedKeys="true" keyProperty="id">  
+		insert into commodity_display360(id,commodity,display_index,display_image,creator,createtime) 
+		values(#{id},#{commodity},#{displayIndex},#{displayImage},#{creator},#{createtime})
+	</insert>
+	
+	<!-- 修改数据 -->
+	<update id="commodityDisplay_update" parameterType="com.cmos.china.mobile.media.core.bean.CommodityDisplay">  
+		update commodity_display360 
+		set commodity=#{commodity},display_index=#{displayIndex},display_image=#{displayImage} 
+		where id=#{id}
+	</update>
+	
+	<!-- 删除数据 -->
+	<delete id="commodityDisplay_delete" parameterType="com.cmos.china.mobile.media.core.bean.CommodityDisplay">  
+        delete from commodity_display360 where id=#{id}  
+	</delete>  
+</mapper>  

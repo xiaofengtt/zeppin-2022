@@ -1,0 +1,6 @@
+framework module LiveFramework {
+  umbrella header "LiveFramework.h"
+
+  export *
+  module * { export * }
+}

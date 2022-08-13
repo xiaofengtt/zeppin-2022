@@ -1,0 +1,23 @@
+.content{ padding-bottom:100px;}
+.content p.title{ color:#428bca; font-size:15px;font-weight:bold;margin:10px 0px;}
+hr{border-top:2px solid #adb5bb;margin:10px 0px;}
+.statusbar{font-weight:bolder;width:570px;}
+.statusbar a.filterStatus{ display:inline-block; margin:0px 10px; padding:10px 0px;color:#9c9c9c; cursor:pointer; border-bottom:2px solid #fff;}
+.statusbar a.light{color:#3ebef3;border-bottom-color:#3ebef3;}
+.statusbar a:hover{color:#3ebef3;border-bottom-color:#3ebef3;}
+.btn-edit{font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+   font-weight: bold;
+	cursor:pointer;	
+	line-height:20px;
+	height:30px;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  padding: 6px 20px; 
+  color: #fff;
+  background: #3ebef3;
+  border: none;
+  vertical-align:middle;  }

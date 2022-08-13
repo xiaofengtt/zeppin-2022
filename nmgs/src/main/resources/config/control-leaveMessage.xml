@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE control SYSTEM "common-1.7-SNAPSHOT.dtd"> -->
+
+<control>
+	<action path="/front/admin/leaveMessage!execute">
+		<input uid="o0001" service="leaveMessageService" method="list" desc="获取留言列表">
+			<parameter key="status" toKey="status"/>
+			<parameter key="content" toKey="content"/>
+			<parameter key="video" toKey="video_publish"/>
+			<parameter key="search" toKey="search"/>
+			<parameter key="pagenum" toKey="pagenum" regex="num,maxlength=6"/>
+			<parameter key="pagesize" toKey="pagesize" regex="num,maxlength=6"/>
+			<parameter key="sorts" toKey="sort"/>
+		</input>
+
+		<input uid="o0002" service="leaveMessageService" method="changeStatus" desc="修改留言状态">
+			<parameter key="id" toKey="id" regex="required"/>
+			<parameter key="status" toKey="status" regex="required"/>
+			<parameter key="usersession.id" toKey="auditor" scope="session" regex="required"/>
+		</input>
+		
+	</action>
+</control>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.UploadTemp">
+	<!-- 根据参数取列表 -->
+	<select id="uploadTemp_getListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.bean.UploadTemp">
+		select * from upload_temp where status='uploading'
+		<if test="user != null and user != ''">
+			and user = #{user} 
+		</if>
+		<if test="size != null and size != ''">
+			and size = #{size} 
+		</if>
+		order by createtime desc
+		
+		<if test="start != null and start != '' and limit != null and limit != ''">
+			limit ${start},${limit}
+		</if>
+	</select> 
+
+	<!-- 增加数据 -->  
+	<insert id="uploadTemp_add" parameterType="com.cmos.china.mobile.media.core.bean.UploadTemp" useGeneratedKeys="true" keyProperty="id">  
+		insert into upload_temp(id,name,path,complete,length,size,type,status,creator,createtime) 
+		values(#{id},#{name},#{path},#{complete},#{length},#{size},#{type},#{status},#{creator},#{createtime})  
+	</insert> 
+	
+	<!-- 修改数据 -->  
+	<insert id="uploadTemp_update" parameterType="com.cmos.china.mobile.media.core.bean.UploadTemp">  
+		update upload_temp
+		set name=#{name},path=#{path},complete=#{complete},length=#{length},size=#{size},type=#{type},status=#{status}
+		where id=#{id}
+	</insert> 
+</mapper>  

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="@dimen/y20"
+              android:background="@color/color_fff5e0">
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="@dimen/x240"
+        android:layout_height="match_parent"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x10"
+        android:textColor="@color/color_f53529"
+        android:textSize="@dimen/text_22"/>
+
+    <View
+
+        android:layout_width="@dimen/x200"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="-30dp"
+        android:layout_marginRight="-30dp"
+        android:background="@drawable/line_gift_item"
+        android:layerType="software"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/y20"
+        android:paddingLeft="@dimen/x20"
+        android:paddingRight="@dimen/x30"
+        android:paddingTop="@dimen/y20">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/y10"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_fa4b37"
+                android:textSize="@dimen/text_12"/>
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_add_cash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x15"
+                android:background="@drawable/bg_add_cash"
+                android:paddingLeft="@dimen/x15"
+                android:paddingRight="@dimen/x15"
+                android:text="+2元"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_8"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_limitPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_60_353535"
+            android:textSize="@dimen/text_9"/>
+
+        <TextView
+            android:id="@+id/tv_expiryDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_60_353535"
+            android:textSize="@dimen/text_8"/>
+    </LinearLayout>
+</LinearLayout>

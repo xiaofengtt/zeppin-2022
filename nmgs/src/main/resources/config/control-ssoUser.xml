@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE control SYSTEM "common-1.7-SNAPSHOT.dtd"> -->
+
+<control>
+	<action path="/front/web/ssoUser!execute">
+		<input uid="s0001" service="ssoUserService" method="login" desc="用户登录">
+			<parameter key="loginname" toKey="loginname" regex="required"/>
+			<parameter key="password" toKey="password" regex="required"/>
+		</input>
+		
+		<input uid="s0002" service="ssoUserService" method="verify" desc="第三方验证">
+			<parameter key="loginname" toKey="loginname"/>
+			<parameter key="token" toKey="token" regex="required"/>
+		</input>
+		
+		<input uid="s0003" service="ssoUserService" method="load" desc="加载用户详细信息">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+		</input>
+		
+		<input uid="s0004" service="ssoUserService" method="editInfomation" desc="修改用户信息">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+			<parameter key="name" toKey="name" regex="required"/>
+		</input>
+		
+		<input uid="s0005" service="ssoUserService" method="editPassword" desc="修改用户密码">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+			<parameter key="password" toKey="password" regex="required"/>
+			<parameter key="newPassword" toKey="newPassword" regex="required"/>
+		</input>
+		
+		<input uid="s0006" service="ssoUserService" method="delete" desc="停用用户">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+		</input>
+	</action>
+</control>

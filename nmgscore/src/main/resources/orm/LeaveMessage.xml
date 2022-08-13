@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.LeaveMessage">
+
+	
+	<!-- 根据参数取总数 -->
+	<select id="leaveMessage_getTotalCountByParams" parameterType="java.util.Map" resultType="int">
+		select count(*) from leavemessage where 1=1 
+		<if test="status != null and status != ''">
+			and status ${status} 
+		</if>
+		<if test="search != null and search != ''">
+			and content like "%"#{search}"%" 
+		</if>
+		<if test="sort != null and sort != ''">
+			order by ${sort} 
+		</if>
+	</select> 
+
+	
+	<!-- 根据参数取VO  select * from leavemessage where 1=1-->
+	<select id="leaveMessage_getListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.vo.LeaveMessageVO">
+		select l.id,l.content,l.status,l.creator,l.createtime,s.name,v.title from leavemessage l,sso_user s,video_publish v where l.creator=s.id and l.video_publish=v.id
+		<if test="id != null and id != ''">
+			and l.id = #{id} 
+		</if>
+		<if test="name != null and name != ''">
+			and s.name = #{name} 
+		</if>
+		<if test="title != null and title != ''">
+			and v.title = #{title} 
+		</if>
+		<if test="video_publish != null and video_publish != ''">
+			and l.video_publish = #{video_publish} 
+		</if>
+		<if test="search != null and search != ''">
+			and l.content like "%"#{search}"%" 
+		</if>
+		<if test="status != null and status != ''">
+			and l.status ${status} 
+		</if>
+		<if test="sort != null and sort != ''">
+			order by l.${sort}
+		</if>
+		<if test="start != null and start != '' and limit != null and limit != ''">
+			limit ${start},${limit}
+		</if>
+	</select>
+	 
+	<!-- 增加数据 -->  
+	<insert id="leaveMessage_add" parameterType="com.cmos.china.mobile.media.core.bean.LeaveMessage">
+		insert into leavemessage(id,video_publish,content,status,auditor,creator,createtime) 
+		values(#{id},#{video_publish},#{content},#{status},#{auditor},#{creator},#{createtime})  
+	</insert>  
+	
+	<!-- 变更状态 -->  
+	<update id="leaveMessage_changeStatus" parameterType="com.cmos.china.mobile.media.core.bean.LeaveMessage">  
+		update leavemessage 
+		set status=#{status},auditor=#{auditor} 
+		where id=#{id}  
+	</update>  
+	
+</mapper>  

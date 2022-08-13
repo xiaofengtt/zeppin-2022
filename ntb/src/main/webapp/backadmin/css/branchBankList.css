@@ -1,0 +1,12 @@
+table.branch-bank-table tr:nth-child(odd){border: 1px solid #ddd;border-bottom: 0;}
+table.branch-bank-table tr:nth-child(even){border: 1px solid #ddd;border-top: 0;}
+table.branch-bank-table tr.odd-data{background: #FFFFFF;}
+table.branch-bank-table tr.odd-address{background: #FAFAFA;}
+table.branch-bank-table tr.even-data{background: #EEF5FF;}
+table.branch-bank-table tr.even-address{background: #E2F0FF;}
+table.branch-bank-table tr.odd-data td, table.branch-bank-table tr.even-data td{padding:25px 10px !important;}
+table.branch-bank-table tr.odd-data td.nameTd, table.branch-bank-table tr.even-data td.nameTd{padding-left: 4% !important;}
+table.branch-bank-table tr.odd-address td, table.branch-bank-table tr.even-address td{padding: 10px 4% !important;background: url(../img/dark_location.png) 4% center no-repeat;}
+table.branch-bank-table tr td span{height: 25px;line-height: 25px;}
+table.branch-bank-table tr.odd-data td span, table.branch-bank-table tr.even-data td span{font-size: 18px;color: #2B2B2B;}
+table.branch-bank-table tr.odd-address td span, table.branch-bank-table tr.even-address td span{text-align: left;font-size: 16px;padding-left:30px}

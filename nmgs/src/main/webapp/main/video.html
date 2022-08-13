@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit"> 
+		<title>新媒体导购</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/video.css" />
+		<link rel="stylesheet" href="css/videoVideo.css">
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="head">
+				<div class="top-container">
+					<a class="logo" href="index.html"><img src="images/logo.png" alt="logo"></a>
+					<ul class="nav">
+						<li><a href="index.html">首页</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="videoInfo">
+				<div class="videoInfo-container">
+					<h4></h4>
+					<p class="intro"></p>
+					<div id="videoFlash"><div id="a1"></div><div class="fullDiv"></div></div>
+										
+				</div>
+				
+			</div>
+			<div id="quanping">
+				<div class="quanping-container">
+					<div id="box">
+						<div class="ZeppinVideo" style="position:relative;">
+			                <div class="ZeppinVideo_Top">
+			                	<img src="" style="position: absolute; top: 0; left: 0; width: 100%;" class="cover">
+			                </div>
+			                <div class="ZeppinVideo_Bottom">
+			                    <div class="ProgressBar"><div class='ProgressBarNode'><!-- <i class="node1 node"><p class="nodeintro nodeintro1"><img src="images/intro.png" alt="视频节点"></p></i><i class="node2 node"><p class="nodeintro nodeintro2">
+			                    	<img src="images/intro.png" alt="视频节点"></p></i><i class="node3 node"><p class="nodeintro nodeintro3">
+			                    	<img src="images/intro.png" alt="视频节点"></p></i> --></div><div class='timeBar'></div></div>
+			                    <div class="barbar"><b class="bglight"></b><span class="currentTime">00:00</span><span class="totleTime">00:00</span><p id="show"></p><p id="hide" style="display:none"></p><select class='type'  onchange='changeType(this)'><option>流畅</option><option selected='selected'>高清</option><option>超清</option></select><input min='0' max='1' step='0.1' type='range'><button></button>
+			                    		</div>
+			                </div>		                
+			            </div>
+			            
+					</div>
+				</div>
+				<div class="layerDD">
+			            	<div class="wraps">
+			            		<a class="closeDD" onclick="closeDD()"></a>
+			            		<iframe></iframe>
+
+							</div>
+			            </div>
+			</div>
+			<div class="review">
+					<div class="review-container">
+						<a href="javascript:"><h1>相关评测</h1></a>
+						<div class="clear"></div>
+					</div>
+				</div>
+			<footer>
+			<section>
+				<div class="hidden-xs">
+					<a href="http://www.10086.cn/aboutus/news/" target="_blank">新闻中心</a>
+					<span>|</span>
+					<a href="http://job.10086.cn/" target="_blank">诚聘英才</a>
+					<span>|</span>
+					<a href="http://b2b.10086.cn/" target="_blank">采购信息</a>
+					<span>|</span>
+					<a href="http://www.10086.cn/aboutus/hezuo/" target="_blank">企业合作</a>
+					<span>|</span>
+					<a href="http://www.10086.cn/web_notice/contact/" target="_blank">联系我们</a>
+					<span>|</span>
+					<a href="http://www.10086.cn/web_notice/navigation/" target="_blank">站点导航</a>
+					<span>|</span>
+					<a href="http://labs.chinamobile.com/" target="_blank">中国移动研究院</a>
+					<span>|</span>
+					<a href="http://www.bj.10086.cn/sitemap" target="_blank">网站地图</a>
+					<span>|</span>
+					<a href="http://www.10086.cn/web_notice/links/" target="_blank">友情链接</a>
+				</div>
+				<div class="hidden-xs">
+					<span>掌上营业厅：</span>
+					<a href="http://wap.10086.cn" target="_blank">wap.10086.cn</a>
+					<span> 语音自助服务：10086  短信营业厅：10086 </span>
+					<a href="http://www.10086.cn/support/channel/self_service/" target="_blank">自助终端</a>
+					<a href="http://www.10086.cn/support/channel/Entity1/">营业厅</a>
+					<a href="http://www.10086.cn/cmccclient/index.htm" target="_blank">手机营业厅下载</a>
+				</div>
+				<div class="hidden-xs">Copyright&copy;1999-2016  中国移动  版权所有</div>
+				<div class="hidden-xs">中华人民共和国增值电信业务经营许可证  经营许可证编号：A2.B1.B2-20100001</div>
+				<div class="hidden-xs">
+					<a href="https://ss.knet.cn/verifyseal.dll?sn=e130905110100423008ilb000000&pa=432059" target="_blank" class="trusted"><img src="images/trusted.jpg" alt="可信单位"></a>
+					<a href="http://www.miibeian.gov.cn/" target="_blank" class="icon">京ICP备05002571号</a>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</section>
+			<div class="clear"></div>
+		</footer>
+		</div>
+		<input name="seconds" type="text" id="seconds" value="20" size="5" maxlength="5" style="display:none;"/>
+  <input style="display:none;" type="button" name="button" id="button" value="跳转" onClick="textBoxShow();" />
+		
+		<input style="display:none;" name="newaddress" type="text" id="newaddress" value="{f-&gt;http://movie.ks.js.cn/flv/2012/02/6-1.flv}{html5-&gt;http://movie.ks.js.cn/flv/other/2014/06/20-2.mp4->video/mp4,http://www.ckplayer.com/webm/1.webm->video/webm,http://www.ckplayer.com/webm/1.ogv->video/ogg}" size="60" maxlength="300" />
+  <input style="display:none;" type="button" name="button" id="button1" value="跳转" onClick="CKobject.getObjectById('ckplayer_a1').newAddress(document.getElementById('newaddress').value);" />
+		<script type="text/javascript" src="js/jquery.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/layer-v2.2/layer/layer.js" ></script>
+		<script type="text/javascript" src="ckplayer/ckplayer.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/video.js" ></script>
+		<script type="text/javascript" src="js/VideoVideo.js" ></script>
+	</body>
+</html>

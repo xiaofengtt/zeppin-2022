@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:cache="http://www.springframework.org/schema/cache" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.2.xsd
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+    http://www.springframework.org/schema/jdbc
+    http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd
+    http://www.springframework.org/schema/cache
+    http://www.springframework.org/schema/cache/spring-cache-4.2.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util-4.2.xsd
+    http://www.springframework.org/schema/task
+	http://www.springframework.org/schema/task/spring-task-4.2.xsd">
+
+	<context:component-scan base-package="cn.zeppin.product.ntb.backadmin.dao" />
+	<context:component-scan base-package="cn.zeppin.product.ntb.backadmin.service" />
+	<context:component-scan base-package="cn.zeppin.product.ntb.backadmin.controller" />
+	<context:component-scan base-package="cn.zeppin.product.ntb.backadmin.security" />
+	<context:component-scan base-package="cn.zeppin.product.ntb.backadmin.autotask" />
+	<context:component-scan base-package="cn.zeppin.product.ntb.web" />
+	
+	<!-- 引入配置文件 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- dataSource 配置 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
+		<!-- 基本属性 url、user、password -->
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="${ds.initialSize}" />
+		<property name="minIdle" value="${ds.minIdle}" />
+		<property name="maxActive" value="${ds.maxActive}" />
+
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="${ds.maxWait}" />
+
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="${ds.timeBetweenEvictionRunsMillis}" />
+
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="${ds.minEvictableIdleTimeMillis}" />
+
+		<property name="validationQuery" value="select 1" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+
+		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+		<property name="poolPreparedStatements" value="false" />
+		<property name="maxPoolPreparedStatementPerConnectionSize" value="20" />
+
+		<!-- 配置监控统计拦截的filters -->
+		<property name="filters" value="stat" />
+	</bean>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext
+				</prop>
+
+				<!-- 拦截器方式实现缓存 <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.SingletonEhCacheRegionFactory</prop> 
+					<prop key="hibernate.cache.use_second_level_cache">false</prop> <prop key="hibernate.cache.use_query_cache">false</prop> -->
+			</props>
+		</property>
+		 <property name="packagesToScan"> 
+		 	<list> 
+				<value>cn.zeppin.product.ntb.core.entity</value> 
+				<value>cn.zeppin.product.ntb.backadmin.vo</value> 
+			</list> 
+		</property>
+		 <!--
+		<property name="annotatedClasses"> 
+			<list> 
+				<value>cn.zeppin.project.chinamobile.media.core.model.User</value> 
+			</list> 
+		</property>
+		-->
+	</bean>
+
+
+	<!-- 对dataSource 数据源进行事务管理 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<!-- 事务管理 通知 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- 对insert,update,delete 开头的方法进行事务管理,只要有异常就回滚 -->
+			<tx:method name="add*" propagation="REQUIRED" rollback-for="java.lang.Throwable" />
+			<tx:method name="save*" propagation="REQUIRED" rollback-for="java.lang.Throwable" />
+			<tx:method name="insert*" propagation="REQUIRED" rollback-for="java.lang.Throwable" />
+			<tx:method name="create*" propagation="REQUIRED" rollback-for="java.lang.Throwable" />
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="java.lang.Throwable" />
+			<tx:method name="modify*" propagation="REQUIRED" rollback-for="java.lang.Throwable" />
+			<tx:method name="delete*" propagation="REQUIRED" rollback-for="java.lang.Throwable" />
+			<tx:method name="remove*" propagation="REQUIRED" rollback-for="java.lang.Throwable" />
+			<tx:method name="calculate*" propagation="REQUIRED" rollback-for="java.lang.Throwable" />
+			<tx:method name="statistics*" propagation="REQUIRED" rollback-for="java.lang.Throwable" />
+
+			<!-- select,count开头的方法,开启只读,提高数据库访问性能 -->
+			<tx:method name="isExist*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="list*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="find*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="search*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="select*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="query*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="count*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="authentication*" propagation="SUPPORTS" read-only="true" />
+
+			<!-- 对其他方法 使用默认的事务管理 -->
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 事务 aop 配置 -->
+	<aop:config>
+		<aop:pointcut id="serviceMethods" expression="execution(* cn.zeppin.product.ntb.backadmin.service..*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods" />
+	</aop:config>
+
+	<!-- 配置使Spring采用CGLIB代理 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<!-- 启用对事务注解的支持 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<!-- 对自启动程序的标签支持 -->
+	<task:annotation-driven />
+
+	<!-- Cache配置 -->
+	<cache:annotation-driven cache-manager="cacheManager" key-generator="defaultKeyGenerator" />
+	<bean id="defaultKeyGenerator" class="cn.zeppin.product.ntb.core.cache.DefaultKeyGenerator"/>
+	
+	
+	<!-- Jedis ConnectionFactory -->
+  	
+  	<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+  		<property name="hostName" value="${redis.hostName}" />  
+        <property name="port" value="${redis.port}" />
+        <property name="poolConfig" ref="poolConfig" />
+        <property name="usePool" value="true"/>
+    </bean>
+            
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate" p:connection-factory-ref="jedisConnectionFactory" />
+ 
+    <bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
+        <constructor-arg index="0" ref="redisTemplate"></constructor-arg>
+        <!-- 缓存失效时间24小时 -->
+        <property name="defaultExpiration" value="86400"/>
+    </bean>
+    
+	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">  
+		<!-- 说明一个pool可以有多少个Jedis实例 -->
+		<property name="maxTotal" value="${redis.maxTotal}" />
+		<!-- 最大Idle-->
+		<property name="maxIdle" value="${redis.maxIdle}" />
+		<!-- 最小Idle -->
+		<property name="minIdle" value="${redis.minIdle}" />
+		<!-- 获得一个jedis实例的时候是否检查连接可用性（ping()） -->
+		<property name="testOnBorrow" value="false" />
+		<!-- return 一个jedis实例给pool时，是否检查连接可用性（ping()） -->
+		<property name="testOnReturn" value="false" />
+		<!-- idle状态监测用异步线程evict进行检查， -->
+		<property name="testWhileIdle" value="true" />
+		<!-- 一次最多evict的pool里的jedis实例个数 -->
+		<property name="numTestsPerEvictionRun" value="${redis.numTestsPerEvictionRun}" />
+		<!-- test idle 线程的时间间隔 -->
+		<property name="timeBetweenEvictionRunsMillis" value="${redis.timeBetweenEvictionRunsMillis}" />
+		<!--最大等待wait时间-->
+		<property name="maxWaitMillis" value="${redis.maxWaitMillis}" />
+			
+     </bean>  
+    
+  
+     
+     
+
+   <!-- ehCache ConnectionFactory -->
+   <!--  
+	<bean id="ehCacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:configLocation="classpath:ehcache.xml" />
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" p:cacheManager-ref="ehCacheManagerFactory" />
+	-->
+	
+</beans>

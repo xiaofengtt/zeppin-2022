@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.SsoUserLogin">
+	<!-- 根据参数取列表 -->
+	<select id="ssoUserLogin_getListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.bean.SsoUserLogin">
+		select * from sso_user_login where 1=1
+		<if test="user != null and user != ''">
+			and user = #{user} 
+		</if>
+		<if test="ip != null and ip != ''">
+			and ip = #{ip} 
+		</if>
+		<if test="time != null and time != ''">
+			and createtime between DATE_ADD(#{time} , INTERVAL -1 HOUR) and #{time} 
+		</if>
+		order by createtime desc
+		
+		<if test="start != null and start != '' and limit != null and limit != ''">
+			limit ${start},${limit}
+		</if>
+	</select> 
+
+	<!-- 增加数据 -->  
+	<insert id="ssoUserLogin_add" parameterType="com.cmos.china.mobile.media.core.bean.SsoUserLogin" useGeneratedKeys="true" keyProperty="id">  
+		insert into sso_user_login(id,user,ip,type,result,createtime) 
+		values(#{id},#{user},#{ip},#{type},#{result},#{createtime})  
+	</insert> 
+</mapper>  

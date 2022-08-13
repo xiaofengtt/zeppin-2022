@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.2.xsd
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+       http://www.springframework.org/schema/util 
+       http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+       
+    <description>apache shiro配置</description>
+   
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/views/login.jsp"/>
+        <property name="successUrl" value="/views/index.jsp"/>
+        <property name="unauthorizedUrl" value="/views/401.jsp"/>
+        <property name="filters">  
+            <map>  
+                <entry key="authc">  
+                    <bean class="cn.zeppin.product.ntb.backadmin.filter.CaptchaFormAuthenticationFilter"></bean>  
+                </entry>  
+                <entry key="roles">  
+                    <bean class="cn.zeppin.product.ntb.backadmin.filter.RoleAuthorizationFilter"></bean>  
+                </entry>
+                <entry key="perms">  
+                    <bean class="cn.zeppin.product.ntb.backadmin.filter.PermsAuthorizationFilter"></bean>  
+                </entry>    
+            </map>  
+        </property>  
+        <property name="filterChainDefinitions">
+            <value>
+                <!-- 登录，登出，验证码 ，开通-->
+				/rest/backadmin/operator/login = anon
+				/rest/backadmin/operator/logout = anon
+                /rest/backadmin/operator/kaptchaImage = anon
+                /rest/backadmin/operator/open = authc
+                
+                /rest/backadmin/operator/get = authc,perms[operator:get]
+                /rest/backadmin/operator/edit = authc,perms[operator:edit]
+                /rest/backadmin/operator/password = authc,perms[operator:password]
+                
+				<!--后台管理员 -->
+                /rest/backadmin/superAdmin/get = authc,perms[superAdmin:get]
+                /rest/backadmin/superAdmin/list = authc,perms[superAdmin:list]
+                /rest/backadmin/superAdmin/add = authc,perms[superAdmin:add]
+                /rest/backadmin/superAdmin/edit = authc,perms[superAdmin:edit]
+                /rest/backadmin/superAdmin/password = authc,perms[superAdmin:password]
+                /rest/backadmin/superAdmin/delete = authc,perms[superAdmin:delete]
+                
+				<!--后台运营用户 -->
+                /rest/backadmin/operateOperator/get = authc,perms[operateOperator:get]
+                /rest/backadmin/operateOperator/list = authc,perms[operateOperator:list]
+                /rest/backadmin/operateOperator/add = authc,perms[operateOperator:add]
+                /rest/backadmin/operateOperator/edit = authc,perms[operateOperator:edit]
+                /rest/backadmin/operateOperator/password = authc,perms[operateOperator:password]
+                /rest/backadmin/operateOperator/delete = authc,perms[operateOperator:delete]
+                
+				<!--后台财务用户 -->
+                /rest/backadmin/financeOperator/get = authc,perms[financeOperator:get]
+                /rest/backadmin/financeOperator/list = authc,perms[financeOperator:list]
+                /rest/backadmin/financeOperator/add = authc,perms[financeOperator:add]
+                /rest/backadmin/financeOperator/edit = authc,perms[financeOperator:edit]
+                /rest/backadmin/financeOperator/password = authc,perms[financeOperator:password]
+                /rest/backadmin/financeOperator/delete = authc,perms[financeOperator:delete]
+                
+				<!--前台投资者用户 -->
+                /rest/backadmin/investor/get = authc,perms[investor:get]
+                /rest/backadmin/investor/list = authc,perms[investor:list]
+                
+				<!--基金信息 -->
+                /rest/backadmin/fund/get = authc,perms[fund:get]
+                /rest/backadmin/fund/list = authc,perms[fund:list]
+                /rest/backadmin/fund/statusList = authc,perms[fund:statusList]
+                /rest/backadmin/fund/add = authc,perms[fund:add]
+                /rest/backadmin/fund/check = authc,perms[fund:check]
+                /rest/backadmin/fund/edit = authc,perms[fund:edit]
+                /rest/backadmin/fund/delete = authc,perms[fund:delete]
+                /rest/backadmin/fund/netvaluelist = authc,perms[fund:netvaluelist]
+                /rest/backadmin/fund/netvalueadd = authc,perms[fund:netvalueadd]
+                /rest/backadmin/fund/netvalueGet = authc,perms[fund:netvalueGet]
+                /rest/backadmin/fund/netvalueDelete = authc,perms[fund:netvalueDelete]
+                /rest/backadmin/fund/netvalueEdit = authc,perms[fund:netvalueEdit]
+                
+				<!--银行信息 -->
+                /rest/backadmin/bank/get = authc,perms[bank:get]
+                /rest/backadmin/bank/list = authc,perms[bank:list]
+                /rest/backadmin/bank/add = authc,perms[bank:add]
+                /rest/backadmin/bank/edit = authc,perms[bank:edit]
+                /rest/backadmin/bank/delete = authc,perms[bank:delete]
+                
+				<!--银行理财产品信息 -->
+                /rest/backadmin/bankFinancialProduct/get = authc,perms[bankFinancialProduct:get]
+                /rest/backadmin/bankFinancialProduct/list = authc,perms[bankFinancialProduct:list]
+                /rest/backadmin/bankFinancialProduct/publishList = authc,perms[bankFinancialProduct:publishList]
+                /rest/backadmin/bankFinancialProduct/statusList = authc,perms[bankFinancialProduct:statusList]
+                /rest/backadmin/bankFinancialProduct/stageList = authc,perms[bankFinancialProduct:stageList]
+                /rest/backadmin/bankFinancialProduct/add = authc,perms[bankFinancialProduct:add]
+                /rest/backadmin/bankFinancialProduct/edit = authc,perms[bankFinancialProduct:edit]
+                /rest/backadmin/bankFinancialProduct/delete = authc,perms[bankFinancialProduct:delete]
+                /rest/backadmin/bankFinancialProduct/netvaluelist = authc,perms[bankFinancialProduct:netvaluelist]
+                /rest/backadmin/bankFinancialProduct/netvalueadd = authc,perms[bankFinancialProduct:netvalueadd]
+                /rest/backadmin/bankFinancialProduct/netvalueGet = authc,perms[bankFinancialProduct:netvalueGet]
+                /rest/backadmin/bankFinancialProduct/netvalueEdit = authc,perms[bankFinancialProduct:netvalueEdit]
+                /rest/backadmin/bankFinancialProduct/operateNetvalueGet = authc,perms[bankFinancialProduct:operateNetvalueGet]
+                /rest/backadmin/bankFinancialProduct/operateGet = authc,perms[bankFinancialProduct:operateGet]
+                /rest/backadmin/bankFinancialProduct/operateEdit = authc,perms[bankFinancialProduct:operateEdit]
+                /rest/backadmin/bankFinancialProduct/operateDelete = authc,perms[bankFinancialProduct:operateDelete]
+                /rest/backadmin/bankFinancialProduct/operateList = authc,perms[bankFinancialProduct:operateList]
+                /rest/backadmin/bankFinancialProduct/operateCheckList = authc,perms[bankFinancialProduct:operateCheckList]
+                /rest/backadmin/bankFinancialProduct/operateSubmitCheck = authc,perms[bankFinancialProduct:operateSubmitCheck]
+                /rest/backadmin/bankFinancialProduct/operateCheck = authc,perms[bankFinancialProduct:operateCheck]
+                /rest/backadmin/bankFinancialProduct/operateStatusList = authc,perms[bankFinancialProduct:operateStatusList]
+                /rest/backadmin/bankFinancialProduct/operateCheckStatusList = authc,perms[bankFinancialProduct:operateCheckStatusList]
+                /rest/backadmin/bankFinancialProduct/operateTypeList = authc,perms[bankFinancialProduct:operateTypeList]
+                /rest/backadmin/bankFinancialProduct/operateCheckTypeList = authc,perms[bankFinancialProduct:operateCheckTypeList]
+                
+                <!--银行理财产品发布信息 -->
+                /rest/backadmin/bankFinancialProductPublish/get = authc,perms[bankFinancialProductPublish:get]
+                /rest/backadmin/bankFinancialProductPublish/list = authc,perms[bankFinancialProductPublish:list]
+                /rest/backadmin/bankFinancialProductPublish/statusList = authc,perms[bankFinancialProductPublish:statusList]
+                /rest/backadmin/bankFinancialProductPublish/stageList = authc,perms[bankFinancialProductPublish:stageList]
+                /rest/backadmin/bankFinancialProductPublish/add = authc,perms[bankFinancialProductPublish:add]
+                /rest/backadmin/bankFinancialProductPublish/edit = authc,perms[bankFinancialProductPublish:edit]
+                /rest/backadmin/bankFinancialProductPublish/exception = authc,perms[bankFinancialProductPublish:exception]
+                /rest/backadmin/bankFinancialProductPublish/delete = authc,perms[bankFinancialProductPublish:delete]
+                /rest/backadmin/bankFinancialProductPublish/operateGet = authc,perms[bankFinancialProductPublish:operateGet]
+                /rest/backadmin/bankFinancialProductPublish/operateEdit = authc,perms[bankFinancialProductPublish:operateEdit]
+                /rest/backadmin/bankFinancialProductPublish/operateDelete = authc,perms[bankFinancialProductPublish:operateDelete]
+                /rest/backadmin/bankFinancialProductPublish/operateList = authc,perms[bankFinancialProductPublish:operateList]
+                /rest/backadmin/bankFinancialProductPublish/operateCheckList = authc,perms[bankFinancialProductPublish:operateCheckList]
+                /rest/backadmin/bankFinancialProductPublish/operateSubmitCheck = authc,perms[bankFinancialProductPublish:operateSubmitCheck]
+                /rest/backadmin/bankFinancialProductPublish/operateCheck = authc,perms[bankFinancialProductPublish:operateCheck]
+                /rest/backadmin/bankFinancialProductPublish/operateStatusList = authc,perms[bankFinancialProductPublish:operateStatusList]
+                /rest/backadmin/bankFinancialProductPublish/operateCheckStatusList = authc,perms[bankFinancialProductPublish:operateCheckStatusList]
+                /rest/backadmin/bankFinancialProductPublish/operateTypeList = authc,perms[bankFinancialProductPublish:operateTypeList]
+                /rest/backadmin/bankFinancialProductPublish/operateCheckTypeList = authc,perms[bankFinancialProductPublish:operateCheckTypeList]
+                
+                <!--银行理财产品投资信息 -->
+                /rest/backadmin/bankFinancialProductInvest/get = authc,perms[bankFinancialProductInvest:get]
+                /rest/backadmin/bankFinancialProductInvest/list = authc,perms[bankFinancialProductInvest:list]
+                /rest/backadmin/bankFinancialProductInvest/statusList = authc,perms[bankFinancialProductInvest:statusList]
+                /rest/backadmin/bankFinancialProductInvest/stageList = authc,perms[bankFinancialProductInvest:stageList]
+                /rest/backadmin/bankFinancialProductInvest/add = authc,perms[bankFinancialProductInvest:add]
+                /rest/backadmin/bankFinancialProductInvest/check = authc,perms[bankFinancialProductInvest:check]
+                /rest/backadmin/bankFinancialProductInvest/redeem = authc,perms[bankFinancialProductInvest:redeem]
+                /rest/backadmin/bankFinancialProductInvest/edit = authc,perms[bankFinancialProductInvest:edit]
+                /rest/backadmin/bankFinancialProductInvest/delete = authc,perms[bankFinancialProductInvest:delete]
+                /rest/backadmin/bankFinancialProductInvest/operateGet = authc,perms[bankFinancialProductInvest:operateGet]
+                /rest/backadmin/bankFinancialProductInvest/operateList = authc,perms[bankFinancialProductInvest:operateList]
+                /rest/backadmin/bankFinancialProductInvest/operateCheck = authc,perms[bankFinancialProductInvest:operateCheck]
+                /rest/backadmin/bankFinancialProductInvest/operateStatusList = authc,perms[bankFinancialProductInvest:operateStatusList]
+                /rest/backadmin/bankFinancialProductInvest/operateTypeList = authc,perms[bankFinancialProductInvest:operateTypeList]
+                
+				<!--支行信息 -->
+                /rest/backadmin/branchBank/get = authc,perms[branchBank:get]
+                /rest/backadmin/branchBank/list = authc,perms[branchBank:list]
+                /rest/backadmin/branchBank/add = authc,perms[branchBank:add]
+                /rest/backadmin/branchBank/edit = authc,perms[branchBank:edit]
+                /rest/backadmin/branchBank/delete = authc,perms[branchBank:delete]
+                
+				<!--主理人信息 -->
+                /rest/backadmin/manager/get = authc,perms[manager:get]
+                /rest/backadmin/manager/list = authc,perms[manager:list]
+                /rest/backadmin/manager/add = authc,perms[manager:add]
+                /rest/backadmin/manager/edit = authc,perms[manager:edit]
+                /rest/backadmin/manager/delete = authc,perms[manager:delete]
+                
+				<!--银行信息 -->
+                /rest/backadmin/bank/get = authc,perms[bank:get]
+                /rest/backadmin/bank/list = authc,perms[bank:list]
+                /rest/backadmin/bank/add = authc,perms[bank:add]
+                /rest/backadmin/bank/edit = authc,perms[bank:edit]
+                /rest/backadmin/bank/delete = authc,perms[bank:delete]
+                
+				<!--角色信息 -->
+                /rest/backadmin/role/all = authc,perms[role:all]
+                /rest/backadmin/role/get = authc,perms[role:get]
+                
+				<!--全部功能方法列表 -->
+                /rest/backadmin/controllerMethod/all = authc,perms[controllerMethod:all]
+                /rest/backadmin/controllerMethod/controllerlist = authc,perms[controllerMethod:controllerlist]
+                /rest/backadmin/controllerMethod/controllerget = authc,perms[controllerMethod:controllerget]
+                /rest/backadmin/controllerMethod/controlleradd = authc,perms[controllerMethod:controlleradd]
+                /rest/backadmin/controllerMethod/controlleredit = authc,perms[controllerMethod:controlleredit]
+                /rest/backadmin/controllerMethod/controllerdelete = authc,perms[controllerMethod:controllerdelete]
+                /rest/backadmin/controllerMethod/methodlist = authc,perms[controllerMethod:methodlist]
+                /rest/backadmin/controllerMethod/methodget = authc,perms[controllerMethod:methodget]
+                /rest/backadmin/controllerMethod/methodadd = authc,perms[controllerMethod:methodadd]
+                /rest/backadmin/controllerMethod/methodedit = authc,perms[controllerMethod:methodedit]
+                /rest/backadmin/controllerMethod/methoddelete = authc,perms[controllerMethod:methoddelete]
+                
+				<!--角色功能权限 -->
+                /rest/backadmin/roleMethod/edit = authc,perms[roleMethod:edit]
+                /rest/backadmin/roleMethod/list = authc,perms[roleMethod:list]
+                
+				<!--=角色页面权限 -->
+                /rest/backadmin/roleMenu/edit = authc,perms[roleMenu:edit]
+                /rest/backadmin/roleMenu/list = authc,perms[roleMenu:list]
+                /rest/backadmin/roleMenu/sort = authc,perms[roleMenu:sort]
+                
+				<!--页面信息 -->
+                /rest/backadmin/menu/all = authc,perms[menu:all]
+                /rest/backadmin/menu/menulist = authc,perms[menu:menulist]
+                /rest/backadmin/menu/menuget = authc,perms[menu:menuget]
+                /rest/backadmin/menu/menuadd = authc,perms[menu:menuadd]
+                /rest/backadmin/menu/menuedit = authc,perms[menu:menuedit]
+                /rest/backadmin/menu/menudelete = authc,perms[menu:menudelete]
+                
+				<!--导航信息 -->
+                /rest/backadmin/menu/list = authc
+                
+				<!--文件、图片、多媒体资源 -->
+                /rest/backadmin/resource/add = authc,perms[resource:add]
+                
+				<!--地区省份列表列表 -->
+                /rest/backadmin/area/all = authc,perms[area:all]
+                
+				<!-- test cache -->
+                /rest/backadmin/bank/test** = anon
+                /rest/backadmin/bank/evict** = anon
+                
+                <!-- 网页端REST接口-->
+                /rest/web/** = anon
+                 
+				<!--其他后台REST接口-->
+                /rest/** = authc
+                
+				<!--其他css、js、html、jsp、jpg、png、mp4等文件资源 -->
+                /** = anon
+                
+                
+            	<!-- 登录页允许访问 
+            	/rest/backadmin/operator/add = roles[管理员]
+                /rest/backadmin/operator/login = anon
+                /rest/backadmin/operator/authCode = anon
+                /rest/backadmin/operator/add = anon
+                /rest/backadmin/operator/logout = logout
+            	/rest/operator/** = authc 
+            	/backadmin/views/** = authc  -->
+            	<!-- 静态资源允许访问 
+                /app/** = anon
+                /assets/** = anon
+                
+                anon:例子/admins/**=anon 没有参数，表示可以匿名使用。 
+				authc:例如/admins/user/**=authc表示需要认证(登录)才能使用，没有参数 
+				roles：例子/admins/user/**=roles[admin],参数可以写多个，多个时必须加上引号，并且参数之间用逗号分割，当有多个参数时，例如admins/user/**=roles["admin,guest"],每个参数通过才算通过，相当于hasAllRoles()方法。 
+				perms：例子/admins/user/**=perms[user:add:*],参数可以写多个，多个时必须加上引号，并且参数之间用逗号分割，例如/admins/user/**=perms["user:add:*,user:modify:*"]，当有多个参数时必须每个参数都通过才通过，想当于isPermitedAll()方法。 
+				rest：例子/admins/user/**=rest[user],根据请求的方法，相当于/admins/user/**=perms[user:method] ,其中method为post，get，delete等。 
+				port：例子/admins/user/**=port[8081],当请求的url的端口不是8081是跳转到schemal://serverName:8081?queryString,其中schmal是协议http或https等，serverName是你访问的host,8081是url配置里port的端口，queryString是你访问的url里的？后面的参数。 
+				authcBasic：例如/admins/user/**=authcBasic没有参数表示httpBasic认证 
+				ssl:例子/admins/user/**=ssl没有参数，表示安全的url请求，协议为https 
+				user:例如/admins/user/**=user没有参数表示必须存在用户，当登入操作时不做检查  
+				logout:
+                -->
+            	
+            </value>
+        </property>
+    </bean>
+
+    <!-- 缓存管理器 使用Ehcache实现
+    <bean id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:ehcache-shiro.xml"/>
+    </bean>
+    -->
+     
+	<bean id="shiroRedisTemplate" class="org.springframework.data.redis.core.RedisTemplate" p:connection-factory-ref="jedisConnectionFactory"/>
+    
+    <bean id="redisCacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
+        <constructor-arg index="0" ref="shiroRedisTemplate"></constructor-arg>
+        <!-- 缓存失效时间3天 -->
+        <property name="defaultExpiration" value="259200"/>
+    </bean>
+    
+    <bean id="shiroCacheManager" class="cn.zeppin.product.ntb.core.cache.ShiroRedisCacheManager">
+         <property name="cacheManager" ref="redisCacheManager"/>
+    </bean>
+	 
+    <!-- 会话DAO -->
+    <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.MemorySessionDAO"/>
+
+    <!-- 会话管理器 -->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="sessionDAO" ref="sessionDAO"/>
+        <property name="cacheManager" ref="shiroCacheManager"/>
+        <property name="sessionIdCookieEnabled" value="true" />
+        <property name="sessionIdCookie.name" value="jsid"/>
+        <!-- 全局会话超时时间（单位毫秒），默认30分钟 -->
+        <property name="globalSessionTimeout" value="1800000" />
+    </bean>
+    
+
+    <!-- 安全管理器 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realms" ref="securityRealm" />
+        <!-- cacheManager,集合spring缓存工厂-->  
+        <property name="cacheManager" ref="shiroCacheManager" /> 
+        <property name="sessionManager" ref="sessionManager" />
+     
+    </bean>
+    
+      <!-- 安全管理器  -->
+    <bean id="securityRealm" class="cn.zeppin.product.ntb.backadmin.security.SecurityRealm">
+        <constructor-arg index="0" ref="shiroCacheManager"></constructor-arg>
+        <constructor-arg index="1" ref="credentialsMatcher"></constructor-arg>
+    </bean> 
+    
+    <bean id="credentialsMatcher" class="cn.zeppin.product.ntb.backadmin.security.RetryNumLimitCredentialsMatcher">  
+        <constructor-arg ref="shiroCacheManager" />
+        <property name="hashAlgorithmName" value="MD5" />  
+        <property name="storedCredentialsHexEncoded" value="true" />  
+        <property name="hashIterations" value="3" />  
+	</bean>   
+	
+
+    <!-- Shiro生命周期处理器 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+    
+    <bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">  
+        <property name="config">  
+            <bean class="com.google.code.kaptcha.util.Config">  
+                <constructor-arg>  
+                    <props>  
+                        <prop key="kaptcha.border">no</prop>  
+                        <prop key="kaptcha.border.color">105,179,90</prop>  
+                        <prop key="kaptcha.textproducer.font.color">25,25,112</prop>  
+                        <prop key="kaptcha.image.width">300</prop>  
+                        <prop key="kaptcha.textproducer.font.size">85</prop>  
+                        <prop key="kaptcha.image.height">100</prop>  
+                        <prop key="kaptcha.session.key">authCode</prop>  
+                        <prop key="kaptcha.textproducer.char.length">5</prop>  
+                        <prop key="kaptcha.textproducer.font.names">Century,Calibri,Arial,Courier</prop>   
+                        <prop key="kaptcha.textproducer.char.string">ABCDEFGHJK23456789MNPQRSTUVWXYZ</prop>
+                        <prop key="kaptcha.textproducer.char.space">3</prop>
+                    </props>  
+                </constructor-arg>  
+            </bean>  
+        </property>  
+        
+    </bean>  
+
+</beans>

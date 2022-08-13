@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>编辑视频</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="../assets/css/bootstrap2.css">
+<link rel="stylesheet" href="../assets/css/iframe.css">
+
+<link href="../assets/css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+
+<script src="../assets/plugins/jquery.js" type="text/javascript"></script>
+<script src="../assets/plugins/jquery-ui.js"></script>
+<script src="../assets/plugins/jquery.colorbox.js"></script>
+
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/plugins/url.min.js"></script>
+<script src="../assets/plugins/mustache.js"></script>
+<script src="../assets/plugins/jquery.cokie.min.js"></script>
+<style>
+	textarea{resize: none;width: 400px;height: 100px;max-width: 400px;max-height: 100px;font-size:14px;}
+	.controls input{width:400px;font-size:14px;}
+	.btn{background:#3ebef3;color:#fff;width:90px;}
+	.btn:hover{background:#3ebee9;color:#fff;}
+	.cancel{background:#e6e7ec;}
+	.offset7 button{width:90px;font-size:14px;}
+	.offset7 button[type="submit"]{background:#3ebef3;color:#fff;}
+	.offset7 button[type="submit"]:hover{background:#3ebee9;color:#fff;}
+	.offset7 button[type="button"]{background:#f1f1f1;color:#000;}
+	.offset7 button[type="button"]:hover{background:#f1f1f1;color:#000;border-color:#ccc;}
+</style>
+</head>
+<body>
+	<div class="ifrcnt container">
+		<div class="hd">
+			<h3>编辑视频</h3>
+		</div>
+		<div class="bd">
+			<div class="alert alert-danger"
+				style="display:none;margin:0 15px 15px;"></div>
+			<form id="formsubmit" class="form-horizontal" role="form"
+				action="#"
+				method="post">
+				<input type="hidden" name="id" value="">
+				<div class="row">		
+					<div id="HtmlTpl" class="span10">
+					
+					</div>
+				</div>
+				<script id="DataTpl" type="text/template">
+				{{#data}}
+				<div class="clearfix">
+					<div class="control-group">
+						<label class="control-label" for="">标题</label>
+						<div class="controls">
+							<input type="text"  name="title" value="{{title}}"><span class="write-must">*</span>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="">标签</label>
+						<div class="controls">
+							<input type="text"  name="tag" value="{{tag}}">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="">描述</label>
+						<div class="controls">
+							<textarea id="" name="context">{{context}}</textarea>
+						</div>
+					</div>
+		
+					<div class="control-group">
+						<label class="control-label" for="">来源</label>
+						<div class="controls">
+							<input type="text"  name="source" value="{{source}}">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="">版权方</label>
+						<div class="controls">
+							<input type="text"  name="copyright" value="{{copyright}}">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="">作者</label>
+						<div class="controls">
+							<input type="text"  name="author" value="{{author}}">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="">优先级</label>
+						<div class="controls">
+							<select id="sequenceSelect" name="sequence">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+							</select>
+							<span class="write-must">*</span>
+						</div>
+					</div>
+				</div>
+				{{/data}}
+				</script>
+			
+				<div class="row actionbar">
+					<div class="offset7" style="margin-left:150px;">
+						<button class="btn" type="submit">确定</button>
+						<button id="colorboxcancel" onclick="parent.$.colorbox.close()"
+							class="btn cancel" type="button">取消</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="../assets/scripts/videoEdit.js" type="text/javascript"></script>
+<body>
+</html>

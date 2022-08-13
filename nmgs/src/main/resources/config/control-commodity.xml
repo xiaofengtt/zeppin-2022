@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE control SYSTEM "common-1.7-SNAPSHOT.dtd"> -->
+
+<control>
+	<action path="/front/admin/commodity!execute">
+		<input uid="b0001" service="commodityService" method="list" desc="获取商品列表">
+			<parameter key="id" toKey="id"/>
+			<parameter key="name" toKey="name"/>
+			<parameter key="price" toKey="price"/>
+			<parameter key="originalPrice" toKey="originalPrice"/>
+			<parameter key="pagenum" toKey="pagenum" regex="num,maxlength=6"/>
+			<parameter key="pagesize" toKey="pagesize" regex="num,maxlength=6"/>
+			<parameter key="sort" toKey="sort"/>
+		</input>
+		
+		<input uid="b0002" service="commodityService" method="load" desc="加载商品详细信息">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+		</input>
+		
+		<input uid="b0003" service="commodityService" method="add" desc="添加商品">
+			<parameter key="url" toKey="url" regex="required"/>
+			<parameter key="name" toKey="name" regex="required"/>
+			<parameter key="cover" toKey="cover"/>
+			<parameter key="price" toKey="price" regex="num,required"/>
+			<parameter key="originalPrice" toKey="originalPrice" regex="num,required"/>
+			<parameter key="displays" toKey="displays"/>
+			<parameter key="usersession.id" toKey="creator" scope="session" regex="required"/>
+		</input>
+		
+		<input uid="b0004" service="commodityService" method="edit" desc="编辑商品">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+			<parameter key="url" toKey="url" regex="required"/>
+			<parameter key="name" toKey="name" regex="required"/>
+			<parameter key="cover" toKey="cover"/>
+			<parameter key="price" toKey="price" regex="num,required"/>
+			<parameter key="originalPrice" toKey="originalPrice" regex="num,required"/>
+			<parameter key="displays" toKey="displays"/>
+			<parameter key="usersession.id" toKey="creator" scope="session" regex="required"/>
+		</input>
+		
+		<input uid="b0005" service="commodityService" method="delete" desc="删除商品">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+		</input>
+		
+		<input uid="b0006" service="commodityService" method="search" desc="查询商品">
+			<parameter key="name" toKey="name"/>
+		</input>
+	</action>
+</control>

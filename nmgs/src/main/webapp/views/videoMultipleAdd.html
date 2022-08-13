@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>批量上传视频</title>
+
+<link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/themes/light.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/style-responsive.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../assets/css/uploadfile.css">
+<link rel="stylesheet" href="../assets/css/main.css" type="text/css"/>
+<link rel="stylesheet" href="../assets/css/columLists.css" type="text/css"/>
+<link rel="stylesheet" href="../assets/css/videoMultipleAdd.css" type="text/css"/>
+
+<script src="../assets/plugins/jquery.js" type="text/javascript"></script>
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="../assets/scripts/app.js" type="text/javascript"></script>
+<script src="../assets/plugins/jquery-ui.js"></script>
+<script src="../assets/plugins/jquery.colorbox.js"></script>
+<script src="../assets/plugins/url.min.js"></script>
+<script src="../assets/plugins/jquery.uploadfile.video.js"></script>
+<script src="../assets/plugins/layer-v2.2/layer/layer.js" type="text/javascript"></script>
+
+</head>
+<body style="min-width:1000px;">
+		<!--left-->
+<div class="page-container">
+    <div id="contentIframes" style="min-width:790px;">
+		<div class="page-content">
+			<div class="ifrcnt container" style="width:100%">
+				<div class="content">	
+					<p class="title">批量上传</p>
+					<hr>
+					<div id="uploadingPage">
+						<div class="alert alert-danger" style="display: none; margin: 0 15px 15px;"></div> 
+						<div class="bd" id="uploadQueue">
+							
+						</div>
+					</div>
+					<div id="finishedPage" style="display:none">
+						<table class="table table-bordered" id="finishedTable" style="margin-bottom:0px;">
+							<tr><th>文件名称</th><th>操作</th></tr>
+						</table>
+					</div>
+				</div>
+            </div>
+		</div>
+	</div>
+</div>
+<script src="../assets/scripts/videoMultipleAdd.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.Province">
+	
+	<!-- 根据参数取count -->
+	<select id="province_getCountByParams" parameterType="java.util.Map" resultType="int">
+		select count(*) from province where 1=1 
+		<if test="template != null and template != ''">
+			and template = #{template} 
+		</if>
+		<if test="status != null and status != ''">
+			and status = #{status} 
+		</if>
+		<if test="status == null or status == ''">
+			and status in('normal','stopped') 
+		</if>
+	</select> 
+	
+	<!-- 根据参数取VO -->
+	<select id="province_getListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.vo.ProvinceVO">
+		select p.id,p.name,p.template,t.name as templateName,p.status from province p ,template t where p.template=t.id
+		<if test="template != null and template != ''">
+			and p.template = #{template} 
+		</if>
+		<if test="status != null and status != ''">
+			and p.status = #{status} 
+		</if>
+		<if test="status == null or status == ''">
+			and p.status in('normal','stopped') 
+		</if>
+		<if test="sort != null and sort != ''">
+			order by p.${sort}
+		</if>
+		<if test="start != null and start != '' and limit != null and limit != ''">
+			limit ${start},${limit}
+		</if>
+	</select>  
+	
+	<!-- 加载数据 -->  
+	<select id="province_get"  resultType="com.cmos.china.mobile.media.core.bean.Province">  
+		select * from province where id=#{id}  
+	</select> 
+	 
+	<!-- 增加数据 -->  
+	<insert id="province_add" parameterType="com.cmos.china.mobile.media.core.bean.Province">
+		insert into province(id,name,template,status) 
+		values(#{id},#{name},#{template},#{status})  
+	</insert>  
+	
+	<!-- 修改数据 -->  
+	<update id="province_update" parameterType="com.cmos.china.mobile.media.core.bean.Province">  
+		update province 
+		set name=#{name},status=#{status},template=#{template}
+		where id=#{id}  
+	</update>  
+	
+	<!-- 删除数据 -->  
+	<update id="province_delete" parameterType="com.cmos.china.mobile.media.core.bean.Province">  
+		update province set status='deleted' where id=#{id}
+	</update>  
+</mapper>  

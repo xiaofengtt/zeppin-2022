@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE control SYSTEM "common-1.7-SNAPSHOT.dtd"> -->
+
+<control>
+	<action path="/front/admin/videoPublish!execute">
+		<input uid="h0001" service="videoPublishService" method="list" desc="获取视频发布列表">
+			<parameter key="id" toKey="id"/>
+			<parameter key="title" toKey="title"/>
+			<parameter key="shortTitle" toKey="shortTitle"/>
+			<parameter key="category" toKey="category"/>
+			<parameter key="status" toKey="status"/>
+			<parameter key="pagenum" toKey="pagenum" regex="num,maxlength=6"/>
+			<parameter key="pagesize" toKey="pagesize" regex="num,maxlength=6"/>
+			<parameter key="sort" toKey="sort"/>
+		</input>
+		
+		<input uid="h0002" service="videoPublishService" method="load" desc="加载视频发布信息">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+		</input>
+		
+		<input uid="h0003" service="videoPublishService" method="add" desc="添加视频发布">
+			<parameter key="title" toKey="title" regex="required"/>
+			<parameter key="video" toKey="video" regex="required,length=36"/>
+			<parameter key="category" toKey="category" regex="required,length=36"/>
+			<parameter key="cover" toKey="cover"/>
+			<parameter key="shortTitle" toKey="shortTitle"/>
+			<parameter key="sequence" toKey="sequence"  regex="required,num,maxlength=6"/>
+			<parameter key="usersession.id" toKey="creator" scope="session" regex="required"/>
+		</input>
+		
+		<input uid="h0004" service="videoPublishService" method="edit" desc="编辑视频发布">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+			<parameter key="title" toKey="title" regex="required"/>
+			<parameter key="video" toKey="video" regex="required,length=36"/>
+			<parameter key="category" toKey="category" regex="required,length=36"/>
+			<parameter key="cover" toKey="cover"/>
+			<parameter key="shortTitle" toKey="shortTitle"/>
+			<parameter key="sequence" toKey="sequence"  regex="required,num,maxlength=6"/>
+		</input>
+		
+		<input uid="h0005" service="videoPublishService" method="delete" desc="删除视频发布">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+		</input>
+		
+		<input uid="h0006" service="videoPublishService" method="changeStatus" desc="修改视频发布状态">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+			<parameter key="status" toKey="status" regex="required"/>
+		</input>
+		
+		<input uid="h0007" service="videoPublishService" method="statusList" desc="获取发布状态列表">
+			<parameter key="category" toKey="category"/>
+			<parameter key="title" toKey="title"/>
+		</input>
+	</action>
+</control>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE control SYSTEM "common-1.7-SNAPSHOT.dtd"> -->
+
+<control>
+	<action path="/front/admin/user!login">
+		<input uid="j0001" service="userService" method="login" desc="用户登录">
+			<parameter key="usersession.id" toKey="userId" scope="session"/>
+			<parameter key="usersession.name" toKey="userName" scope="session"/>
+		</input>
+	</action>
+	
+	<action path="/front/admin/user!login1">
+		<input uid="j0002" service="userService" method="login1" desc="伪用户登录">
+		</input>
+	</action>
+	
+</control>

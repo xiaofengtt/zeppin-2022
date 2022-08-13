@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_bg"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.user.activity.BankActivity">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <TextView
+        style="@style/LayoutStyleRadius4"
+        android:drawableLeft="@drawable/icon_notice"
+        android:drawablePadding="@dimen/x15"
+        android:gravity="left"
+        android:text="支持银行及限额(仅支持储蓄卡,暂不支持信用卡)"
+        android:textColor="@color/alpha_80_black"
+        android:textSize="@dimen/text_14"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/bank_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/x15"
+        android:layout_marginRight="@dimen/x15"
+        android:layout_marginTop="@dimen/y20"
+        android:background="@drawable/bg_white_radius"
+        tools:listitem="@layout/item_bank"></android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

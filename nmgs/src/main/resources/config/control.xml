@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE control SYSTEM "common-1.7-SNAPSHOT.dtd"> -->
+
+<control>
+	<include file="config/control-category.xml" />
+	<include file="config/control-component.xml" />
+	<include file="config/control-commodity.xml" />
+	<include file="config/control-leaveMessage.xml" />
+	<include file="config/control-left.xml" />
+	<include file="config/control-province.xml" />
+	<include file="config/control-provinceModule.xml" />
+	<include file="config/control-resource.xml" />
+	<include file="config/control-user.xml" />
+	<include file="config/control-videoCommodityPoint.xml" />
+	<include file="config/control-videoIframe.xml" />
+	<include file="config/control-videoinfo.xml" />
+	<include file="config/control-videoPublish.xml" />
+	<include file="config/control-webInterface.xml" />
+	<include file="config/control-ssoUser.xml" />
+</control>

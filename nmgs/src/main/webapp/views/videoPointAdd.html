@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../assets/css/bootstrap2.css">
+<link rel="stylesheet" href="../assets/css/iframe.css">
+<link rel="stylesheet" href="../assets/css/uploadfile_n.css">
+<link href="../assets/css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+
+
+<script src="../assets/plugins/jquery.js" type="text/javascript"></script>
+<script src="../assets/plugins/jquery-ui.js"></script>
+<script src="../assets/plugins/jquery.colorbox.js"></script>
+
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/plugins/url.min.js"></script>
+<script src="../assets/plugins/mustache.js"></script>
+<script src="../assets/plugins/jquery.cokie.min.js"></script>
+<script src="../assets/plugins/jquery.uploadfile.min.js"></script>
+<script src="../assets/plugins/layer-v2.2/layer/layer.js" type="text/javascript"></script>
+<style>
+	textarea{resize: none;width: 400px;height: 100px;max-width: 400px;max-height: 100px;font-size:14px;}
+	.controls input{width:400px;font-size:14px;}
+	.offset7 button{width:90px;font-size:14px;}
+	.offset7 button[type="submit"]{background:#3ebef3;color:#fff;}
+	.offset7 button[type="submit"]:hover{background:#3ebee9;color:#fff;}
+	.offset7 button[type="button"]{background:#f1f1f1;color:#000;}
+	.offset7 button[type="button"]:hover{background:#f1f1f1;color:#000;border-color:#ccc;}
+</style>
+</head>
+<body>
+	<div class="ifrcnt container">
+		<div class="hd">
+			<h3>添加关联商品</h3>
+		</div>
+		<div class="bd">
+			<div class="alert alert-danger"
+				style="display:none;margin:0 15px 15px;"></div>
+			<form id="formsubmit" class="form-horizontal" role="form" action="#" method="post">
+				<div class="row">		
+					<div id="HtmlTpl" class="span10">
+					
+					</div>
+				</div>
+				<script id="DataTpl" type="text/template">
+				{{#data}}
+				<div class="clearfix">
+					<div class="control-group">
+						<label class="control-label" for="">帧位图</label>
+						<div class="controls">
+							<img src="..{{path}}" styly="width:500px">
+							<input type="hidden"  name="iframe" value="{{id}}">
+							<input type="hidden"  name="video" value="{{video}}">
+							<input type="hidden"  name="timepoint" value="{{timepoint}}">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="">关联商品</label>
+						<div class="controls">
+							<select name="commodity" id="commoditySelect">
+							</select>
+							<span class="write-must">*</span>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="">显示时长</label>
+						<div class="controls">
+							<input name="showTime" value=''><span class="write-must">*</span>
+						</div>
+					</div>
+
+					<input type="hidden"  name="showType" value="1">
+					<div class="control-group">
+						<label class="control-label" for="">提示内容</label>
+						<div class="controls">
+							<textarea id="" name="showMessage"></textarea><span class="write-must">*</span>
+						</div>
+					</div>
+					<div class="control-group" id="uploadcon1">
+						<label class="control-label" for="">提示banner</label>
+						<div class="controls">
+							<div id="resourceId"><span>&nbsp;选择文件&nbsp;&nbsp;</span><span class="write-must">*</span>
+							</div>
+						</div>
+					</div>
+					<div id="resourceAdd"><input type="hidden" name="showBanner" value=""></div>
+				</div>
+				{{/data}}
+				</script>
+			
+				<div class="row actionbar">
+					<div class="offset7" style="margin-left:150px;">
+						<button class="btn" type="submit">确定</button>
+						<button id="colorboxcancel" onclick="parent.$.colorbox.close()"
+							class="btn" type="button">取消</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+<script src="../assets/scripts/videoPointAdd.js" type="text/javascript"></script>
+<body>
+</html>

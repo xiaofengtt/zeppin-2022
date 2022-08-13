@@ -1,0 +1,25 @@
+.main-contain .role-block{text-align:left;vertical-align: middle;margin-bottom:28px}
+.main-contain .role-block > span{font-size: 20px; color: #2B2B2B;}
+.main-contain .role-block button, .main-contain .role-block a{font-size: 16px;border-radius: 5px;}
+.main-contain .role-block .role-edit{padding: 12px 10px;background: #F5A623;color: #FFFFFF;float: right;}
+.main-contain .role-block .role-list{display:inline-block;}
+.main-contain .role-block .role-list button{padding: 12px 20px;margin-right: 45px;opacity: 0.5;color: #000;background:#fff;border: 1px solid #000;}
+.main-contain .role-block .role-list .role-selected{background: #4D9CFF;color: #FFF;opacity: 1;border: 1px solid transparent;}
+.main-contain .menu-table{width: 100%;margin-top: 36px;}
+.main-contain .menu-table:hover{border:0.5px solid #D4D4D4;}
+.main-contain .menu-table .menu-table-head{background: #EEF5FF;height: 80px;}
+.main-contain .menu-table .menu-table-head td{width:50%}
+.main-contain .menu-table .menu-table-head a{padding:15px 30px 15px 55px;margin-right:24px;float:right;font-size: 18px;border-radius: 5px;}
+.main-contain .menu-table .menu-table-head a.sortup{background: #FFFFFF url(../img/sort_parent_up.png) 30px center no-repeat;color: #F5A623;}
+.main-contain .menu-table .menu-table-head a.sortdown{background: #FFFFFF url(../img/sort_parent_down.png) 30px center no-repeat;color: #4D9CFE;}
+.main-contain .menu-table .menu-table-head a.sortup-disable{background: #FFFFFF url(../img/sort_parent_up_disable.png) 30px center no-repeat;color: #959595;}
+.main-contain .menu-table .menu-table-head a.sortdown-disable{background: #FFFFFF url(../img/sort_parent_down_disable.png) 30px center no-repeat;color: #959595;}
+.main-contain .menu-table .menu-table-head .menu-table-left{padding-left:50px;font-size: 22px;color: #4D9CFE;}
+.main-contain .menu-table .menu-table-row{height:70px;border-bottom:0.5px solid #D4D4D4;}
+.main-contain .menu-table .menu-table-row a{padding:18px;float:right;}
+.main-contain .menu-table .menu-table-row a.sortup{margin-right:40px;background: #FFFFFF url(../img/sort_children_up.png) no-repeat;}
+.main-contain .menu-table .menu-table-row a.sortdown{margin-right:30px;background: #FFFFFF url(../img/sort_children_down.png) no-repeat;}
+.main-contain .menu-table .menu-table-row a.sortup-disable{background: #FFFFFF url(../img/sort_children_up_disable.png) no-repeat;}
+.main-contain .menu-table .menu-table-row a.sortdown-disable{background: #FFFFFF url(../img/sort_children_down_disable.png) no-repeat;}
+.main-contain .menu-table .menu-table-row .menu-table-left{padding-left:30px;font-size: 20px;color: #565656;}
+.main-contain .sort{margin: auto 30px;}

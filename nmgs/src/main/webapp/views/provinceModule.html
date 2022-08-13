@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>模板管理</title>
+
+<link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/themes/light.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/style-responsive.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../assets/css/ui-dialog.css">
+<link rel="stylesheet" href="../assets/css/main.css" type="text/css"/>
+<link rel="stylesheet" href="../assets/css/columLists.css" type="text/css"/>
+
+<script src="../assets/plugins/jquery.js" type="text/javascript"></script>
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="../assets/scripts/app.js" type="text/javascript"></script>
+<script src="../assets/plugins/jquery-ui.js"></script>
+<script src="../assets/plugins/url.min.js"></script>
+<script src="../assets/plugins/jquery.colorbox.js"></script>
+<script src="../assets/plugins/dialog-min.js"></script>
+<script src="../assets/plugins/jsrender.min.js"></script>
+<script src="../assets/plugins/underscore-min.js"></script>
+<script src="../web/js/layer-v2.2/layer/layer.js"></script>
+<script src="../web/js/circlr.min.js"></script>
+<style type="text/css">
+.title-inline{display:inline ;padding-right:10px}
+.secondary{display:inline-block;font-size:14px;line-height:36px;}
+.moduleName{font-size:20px;line-height:34px;margin-bottom:10px;text-align:center;display:none;}
+button.btn{ margin-top:5px;}
+a.btn{ margin-top:5px;}
+.btn{ border:none;}
+.content{ padding-bottom:100px;}
+.content p.title{ color:#428bca; font-size:15px;font-weight:bold;margin:10px 0px;}
+hr{border-top:2px solid #adb5bb;margin:10px 0px;}
+b.playB{width: 36px;height: 36px;left: 50%;display: block;z-index: 5;top: 50%; margin-left: -18px;margin-top: -18px;background: url(../assets/img/play_Big.png) no-repeat;position: absolute;background-size:contain;}
+table td{padding:2px !important; vertical-align:middle !important;}
+table th{white-space:nowrap;background:#f7f7f9 !important;}
+table.table{margin-top:0;border-bottom:1px solid #ccc;}
+.list-item thead{background:#f7f7f9;font-size:16px;border-bottom:none !important;}
+.list-item{margin-bottom:30px;}
+.list-item tbody tr{border-bottom:1px solid #ccc;}
+.list-item tbody tr img{padding:10px;box-sizing: border-box;}
+.moduleTitle{font-size:16px;line-height:48px;color:#888;}
+.btn-add{display:inline-block;float:right;color:#fff !important;font-size:14px;padding-right:3px;margin-top:5px;background:#3ebef3;height:32px;padding:0 23px;line-height:32px;border-radius:3px;}
+.btn-add:hover{color:#fff;background:#3ebee9;text-decoration:none;}
+.btn-edit{color:#3ebef3;white-space:nowrap; }
+.btn-edit:hover{text-decoration: underline;color:#3ebef3;}
+.btn-remove{color:#3ebef3;white-space:nowrap; }
+.btn-remove:hover{text-decoration: underline;color:#3ebef3;}
+</style>
+
+<script id="queboxTpl" type="text/template">
+		<div class="list-item" style="font-size:14px;position:relative;">
+			<span class="moduleTitle">模块名称：{{:name}}</span> 
+			<a class="btn-edit btn-add" href="../views/provinceModuleAdd.html?province={{:province}}&module={{:id}}">添加内容</a>
+			<table id={{:id}} class="table table-bordered" style="margin-bottom:0px;" >
+				<thead><tr>
+					<th style="width:150px">图片</th>
+					<th style="width:15%">标题</th>
+					<th style="width:25%">内容</th>
+					<th style="width:20%">链接地址</th>
+					<th style="width:5%">优先级</th>
+					<th style="width:10%">状态</th>
+					<th></th>
+				<tr></thead>
+				<tbody>
+					{{for datas}}
+						<tr>
+							<td><image src="..{{:imageUrl}}" style="width:100%"></td>
+							<td>{{:title}}</td>
+							<td>{{:content}}</td>
+							<td style="color:#888;">{{:url}}</td>
+							<td>{{:priority}}</td>
+							<td>{{:status}}</td>
+							<td>
+								<a class="btn-edit" href="../views/provinceModuleEdit.html?id={{:id}}">编辑</a>
+								<a class="btn-remove" onclick="deleteProvinceModule(this)" data-id="{{:id}}">删除</a>
+							</td>
+						</tr>
+					 {{/for}}
+				</tbody>
+			</table>
+		</div>
+</script>
+
+</head>
+<body style="min-width:1000px;">
+<div class="page-container">
+    <div id="contentIframes" style="min-width:790px;">
+    	<div class="page-container">
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+					<!--content-->
+						<div class="content">							
+							<p class="title title-inline" style="margin-right:20px">模块管理</p>
+							<hr>
+							<p class="secondary">选择地区：</p>
+							<select class="form-control title-inline" style="width:150px;" id="provinceSelect" onchange="changeProvince(this)"></select><span class="tips" style='color:#f00;font-size:14px;text-align:left;line-height:36px;padding-left:5px;'>请选择接入地区</span>
+							<div class="moduleName"><span id="templateName"></span></div>
+							<div id="queboxCnt"></div>
+					<!--content end-->
+
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+		<!--left end-->
+	</div>
+    </div>
+</div>
+<script src="../assets/scripts/provinceModule.js" type="text/javascript"></script>
+</body>
+</html>

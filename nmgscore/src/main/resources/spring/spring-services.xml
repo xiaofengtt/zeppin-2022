@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="baseService" class="com.cmos.china.mobile.media.core.service.impl.BaseServiceImpl" abstract="true">
+		<property name="baseDao" ref="baseDao"/>
+	</bean>
+	
+	<bean id="categoryService" class="com.cmos.china.mobile.media.core.service.impl.CategoryServiceImpl" parent="baseService"/>
+	<bean id="componentService" class="com.cmos.china.mobile.media.core.service.impl.ComponentServiceImpl" parent="baseService"/>
+	<bean id="commodityService" class="com.cmos.china.mobile.media.core.service.impl.CommodityServiceImpl" parent="baseService"/>
+	<bean id="leftService" class="com.cmos.china.mobile.media.core.service.impl.LeftServiceImpl" parent="baseService"/>
+	<bean id="provinceService" class="com.cmos.china.mobile.media.core.service.impl.ProvinceServiceImpl" parent="baseService"/>
+	<bean id="provinceModuleService" class="com.cmos.china.mobile.media.core.service.impl.ProvinceModuleServiceImpl" parent="baseService"/>
+	<bean id="resourceService" class="com.cmos.china.mobile.media.core.service.impl.ResourceServiceImpl" parent="baseService"/>
+	<bean id="userService" class="com.cmos.china.mobile.media.core.service.impl.UserServiceImpl" parent="baseService"/>
+	<bean id="ssoUserService" class="com.cmos.china.mobile.media.core.service.impl.SsoUserServiceImpl" parent="baseService"/>
+	<bean id="videoCommodityPointService" class="com.cmos.china.mobile.media.core.service.impl.VideoCommodityPointServiceImpl" parent="baseService"/>
+	<bean id="videoIframeService" class="com.cmos.china.mobile.media.core.service.impl.VideoIframeServiceImpl" parent="baseService"/>
+	<bean id="videoinfoService" class="com.cmos.china.mobile.media.core.service.impl.VideoinfoServiceImpl" parent="baseService"/>
+	<bean id="videoPublishService" class="com.cmos.china.mobile.media.core.service.impl.VideoPublishServiceImpl" parent="baseService"/>
+	<bean id="webInterfaceService" class="com.cmos.china.mobile.media.core.service.impl.WebInterfaceServiceImpl" parent="baseService"/>
+	<bean id="leaveMessageService" class="com.cmos.china.mobile.media.core.service.impl.LeaveMessageServiceImpl" parent="baseService"/>
+</beans>

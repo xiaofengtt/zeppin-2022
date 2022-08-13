@@ -1,0 +1,40 @@
+@charset "utf-8";
+/*科e互联特效基本框架CSS*/
+body, ul, dl, dd, dt, ol, li, p, h1, h2, h3, h4, h5, h6, textarea, form, select, fieldset, table, td, div, input {margin:0;padding:0;-webkit-text-size-adjust: none}
+h1, h2, h3, h4, h5, h6{font-size:12px;font-weight:normal}
+body>div{margin:0 auto}
+div {text-align:left}
+a img {border:0}
+/* 效果CSS开始 */
+address, cite, code, em, th, i { font-weight: normal; font-style: normal; }
+label { vertical-align: middle }
+.inputEle { vertical-align: middle; }
+input { vertical-align: middle; }
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+.under_line { text-decoration: underline; }
+html, body { height: 100%; }
+#bg { width: 100%; height: 100%; position: absolute; left: 0; top: 0; filter:alpha(opacity:30);
+opacity: 0.3; background: black; z-index: 1; }
+#photo { /*width: 502px; height: 502px;*/ background: #fff; position: relative; margin: 0px auto; }
+#bigphoto { /*width: 500px; height: 500px;*/ display: none; position: relative; overflow: hidden; }
+/*#imgBig { position: absolute; left: 50%; top: 50%; width: 800px; height: 800px; margin-left: -400px; margin-top: -400px; }*/
+#smallphoto { /*width: 500px; height: 500px;*/ margin: 0 auto; background: #fff; }
+/* #prog { width: 324px; height: 40px; position: absolute; z-index: 2; top: 50%; left: 50%; margin: -20px 0 0 -162px; font-family: arial; font-size: 12px; color: #fff; text-align: center; } */
+/* #prog span { font-family: "宋体"; } */
+/* #bar { width: 126px; height: 22px; background: url(../images/loading.gif) no-repeat center top; overflow: hidden; position: absolute; bottom: 0px; left: 99px; } */
+#box360 { width: 50px; height: 50px; position: absolute; right: 0px; top: 20px; }
+#box360 a { background: url(../images/360_flash.png) no-repeat left top; width: 50px; height: 50px; display: block; }
+#box360 a.active { background: url(../images/360_flash.png) no-repeat left top; width: 50px; height: 50px; display: block; }
+#loading { width: 500px; height: 500px; text-align: center; position: absolute; z-index: 2; left: 0px; top: 0px; opacity: 0.5; filter: alpha(opacity=50); background: #fff url(../images/loading2.gif) 50% 50% no-repeat; }
+#loading img { margin: 240px auto; }
+body, td, th { font-family: \5B8B\4F53, san-serif; }
+#img{width:50%;display:block;margin:0 auto;}
+#smallphoto{width:50%;}
+#photo{background:#fff;}
+#smallphoto img{width:100%}
+#prog{font-size:0;}
+
+/* 效果CSS结束 */

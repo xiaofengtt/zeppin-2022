@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ckplayer>
+	<share_html>
+	{embed src="贵站网址，在ckplayer/share.xml里修改/ckplayer/ckplayer.swf" flashvars="[$share]" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" allowFullscreen="true" type="application/x-shockwave-flash"}{/embed}
+	</share_html>
+	<share_flash>
+	贵站网址/ckplayer/ckplayer.swf?[$share]
+	</share_flash>
+	<share_flashvars>
+	f,my_url,my_pic,a
+	</share_flashvars>
+	<share_path>ckplayer/share/</share_path><!--分享图片的文件夹地址-->
+	<share_replace>
+	</share_replace>
+	<share_permit>0</share_permit><!--是否有视听许可证,默认0没有，1是有-->
+	<share_uuid>
+	c25cf02c-1705-412d-bd4b-77a10b380f08
+	</share_uuid>
+</ckplayer>

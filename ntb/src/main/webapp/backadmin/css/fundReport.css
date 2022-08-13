@@ -1,0 +1,19 @@
+.main-contain{padding: 0;}
+.main-contain .title-big{background: #EEF5FF;color: #424242;font-size: 20px;height:60px;line-height: 60px;padding: 0 20px;}
+.main-contain .title-big span.common-rating{width: 85px;height: 16px;background: url(../img/Shape.png);display: inline-block;margin: 0 35px;}
+.main-contain .title-big span.common-rating .rate-stars{width: 90%;height: 16px;background: url(../img/Shape-active.png);display: inline-block;float: left;}
+.main-contain .title-big select{float: right;width: 135px; height: 35px;margin:12px 0px;}
+.main-contain .chart-title{padding: 16px;opacity: 0.3;font-size: 14px;color: #000000;}
+.main-contain .trend > div{padding:10px 20px}
+.main-contain div.title{background: #F7FAFF;height: 75px;line-height: 75px;font-size: 22px;color: #2B2B2B;padding: 0 20px;}
+
+.main-contain .addNew{float: right;margin:15px;}
+.main-contain .submitButton{float: right;margin:15px;float:right;background:#4D9CFF;font-weight: lighter;}
+.main-contain .submitButton{width: 120px;height: 45px;display: inline-block;border-radius: 5px;color: #ffffff;line-height: 45px;font-size: 16px;cursor: pointer;text-align:center;border:0;}
+.main-contain .submitButton:hover{background-color: #4a95f2;}
+.main-contain .list-content{margin: 0;}
+.main-contain .list-content table{border:0}
+.main-contain .list-content table th{background: #f2f2f2;height: 45px; line-height: 45px;font-size: 18px;color: #2B2B2B;border: 0;padding: 0 20px;font-weight: normal;}
+.main-contain .list-content table td{height: 55px; line-height: 55px;font-size: 18px;color: #2B2B2B;border:0;padding: 0 20px;}
+.main-contain .list-content table tr:nth-child(odd){background:#FFFFFF !important;}
+.main-contain .list-content table tr:nth-child(even){background:#F7FAFF !important;}

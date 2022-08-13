@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.VideoCommodityPoint">
+
+	<!-- 根据参数取count -->
+	<select id="videoCommodityPoint_getCountByParams" parameterType="java.util.Map" resultType="int">
+		select count(*) from video_commodity_point where 1=1 
+		<if test="video != null and video != ''">
+			and video = #{video} 
+		</if>
+	</select> 
+	
+	<!-- 根据参数取vo -->
+	<select id="videoCommodityPoint_getListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.vo.VideoPointVO">
+		select vcp.id, vcp.video, vcp.iframe, vcp.show_message as showMessage, vi.path as iframePath, vcp.show_banner as showBanner, r.url as showBannerUrl, vcp.commodity, c.name as commodityName, vcp.timepoint, vcp.creator, su.name as creatorName , vcp.show_time as showtime, vcp.createtime  
+		from video_commodity_point vcp, video_iframe vi,commodity c, sys_user su, resource r 
+		where vcp.iframe=vi.id and vcp.commodity=c.id and vcp.creator=su.id and vcp.show_banner=r.id and vcp.status='normal'
+		<if test="id != null and id != ''">
+			and vcp.id = #{id} 
+		</if>
+		<if test="video != null and video != ''">
+			and vcp.video = #{video} 
+		</if>
+		<if test="sort != null and sort != ''">
+			order by vcp.${sort}
+		</if>
+		<if test="start != null and start != '' and limit != null and limit != ''">
+			limit ${start},${limit}
+		</if>
+	</select> 
+	
+	<!-- 根据参数取webvo -->
+	<select id="videoCommodityPoint_getWebListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.vo.iface.WebVideoPointVO">
+		select vcp.timepoint as timepoint,vcp.show_message as showMessage,vcp.show_banner as showBanner, vcp.commodity, vcp.show_time as showtime, c.cover as commodityCover 
+		from video_commodity_point vcp,commodity c 
+		where vcp.commodity=c.id and vcp.status='normal' 
+		<if test="id != null and id != ''">
+			and vcp.id = #{id} 
+		</if>
+		<if test="video != null and video != ''">
+			and vcp.video = #{video} 
+		</if>
+		order by vcp.timepoint desc
+	</select> 
+	
+	<!-- 加载数据 -->  
+	<select id="videoCommodityPoint_get"  resultType="com.cmos.china.mobile.media.core.bean.VideoCommodityPoint">  
+		select * from video_commodity_point where id=#{id}  
+	</select>  
+	
+	<!-- 增加数据 -->  
+	<insert id="videoCommodityPoint_add" parameterType="com.cmos.china.mobile.media.core.bean.VideoCommodityPoint" useGeneratedKeys="true" keyProperty="id">  
+		insert into video_commodity_point(id,video,timepoint,iframe,commodity,show_type,show_message,show_position,show_gif,show_banner,status,creator,createtime,show_time) 
+		values(#{id},#{video},#{timepoint},#{iframe},#{commodity},#{showType},#{showMessage},#{showPosition},#{showGif},#{showBanner},#{status},#{creator},#{createtime},#{showtime})  
+	</insert>  
+	
+	<!-- 修改数据 -->  
+	<update id="videoCommodityPoint_update" parameterType="com.cmos.china.mobile.media.core.bean.VideoCommodityPoint">  
+		update video_commodity_point 
+		set video=#{video},timepoint=#{timepoint},iframe=#{iframe},commodity=#{commodity},show_type=#{showType},show_message=#{showMessage},show_position=#{showPosition},show_gif=#{showGif},show_banner=#{showBanner},status=#{status},show_time=#{showtime} 
+		where id=#{id}  
+	</update>  
+	
+	<!-- 删除数据 -->  
+	<update id="videoCommodityPoint_delete" parameterType="com.cmos.china.mobile.media.core.bean.VideoCommodityPoint">  
+		update video_commodity_point set status='deleted' where id=#{id}
+	</update>  
+</mapper>  

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">  
+<html>  
+	<head>  
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">  
+	<title></title>  
+	<script src="../assets/plugins/jquery.js" type="text/javascript"></script>
+	<script>  
+	
+	function  handleFiles(files){
+		if(files.length){
+			var file = files[0];  
+			var reader = new FileReader();  
+			reader.onload = function(){
+				//document.getElementById("filecontent").innerHTML = this.result;
+				/* $.post('../front/admin/resource!execute?uid=d0003', 'file='+this.result, function(data) {
+					if (data.status == "success") {
+						alert("success");
+					} else {
+						alert("fail");
+					}
+				}) */
+				
+				var xhr = new XMLHttpRequest();
+				var bindata =  'file='+encodeURIComponent(this.result);
+				xhr.open("POST", "../front/admin/resource!execute?uid=d0003");
+				xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				/* xmlHttp.onreadystatechange = function (){
+					if (xmlHttp.readyState == 4) {
+						if (xmlHttp.status == 200) {
+							var str=xmlHttp.response;
+							xmlHttp.abort();
+						}
+					}
+				} */
+				xhr.send(bindata);
+			};
+			reader.readAsBinaryString(file.slice(0, 2*1024*1024));  
+		}  
+	}  
+	</script>
+	</head>  
+	<body>
+		<input type="file" id="file" onchange="handleFiles(this.files)"/>
+		<div id="filecontent"></div>  
+	</body>  
+</html>  

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.SsoUser">
+	<!-- 根据账号获取数据 -->  
+	<select id="ssoUser_getByPhone"  resultType="com.cmos.china.mobile.media.core.bean.SsoUser">  
+		select * from sso_user where phone=#{id}  
+	</select>
+	
+	<!-- 根据token获取数据 -->  
+	<select id="ssoUser_getByToken"  resultType="com.cmos.china.mobile.media.core.bean.SsoUser">  
+		select * from sso_user where phone=#{phone} and token=#{token}  
+	</select>
+
+	<!-- 加载数据 -->  
+	<select id="ssoUser_get"  resultType="com.cmos.china.mobile.media.core.bean.SsoUser">  
+		select * from sso_user where id=#{id}  
+	</select>  
+	
+	<!-- 增加数据 -->  
+	<insert id="ssoUser_add" parameterType="com.cmos.china.mobile.media.core.bean.SsoUser" useGeneratedKeys="true" keyProperty="id">  
+		insert into sso_user(id,name,status,phone,token,freeze_time,createtime) 
+		values(#{id},#{name},#{status},#{phone},#{token},#{freezeTime},#{createtime})  
+	</insert> 
+	 
+	<!-- 修改数据 -->  
+	<update id="ssoUser_update" parameterType="com.cmos.china.mobile.media.core.bean.SsoUser">  
+		update sso_user 
+		set name=#{name},phone=#{phone},status=#{status},phone=#{phone},token=#{token},freeze_time=#{freezeTime} 
+		where id=#{id}  
+	</update>  
+	
+	<!-- 删除数据 -->  
+	<update id="ssoUser_delete" parameterType="com.cmos.china.mobile.media.core.bean.SsoUser">  
+		update sso_user set status='deleted' where id=#{id}
+	</update>  
+</mapper>  

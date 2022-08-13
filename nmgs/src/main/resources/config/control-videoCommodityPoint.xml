@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE control SYSTEM "common-1.7-SNAPSHOT.dtd"> -->
+
+<control>
+	<action path="/front/admin/videoCommodityPoint!execute">
+		<input uid="e0001" service="videoCommodityPointService" method="list" desc="获取视频节点列表">
+			<parameter key="video" toKey="video"/>
+			<parameter key="sort" toKey="sort"/>
+		</input>
+		
+		<input uid="e0002" service="videoCommodityPointService" method="load" desc="加载视频节点信息">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+		</input>
+		
+		<input uid="e0003" service="videoCommodityPointService" method="loadVO" desc="加载视频节点信息(VO)">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+		</input>
+		
+		<input uid="e0004" service="videoCommodityPointService" method="add" desc="添加视频节点">
+			<parameter key="video" toKey="video" regex="required,length=36"/>
+			<parameter key="showType" toKey="showType" regex="required"/>
+			<parameter key="timepoint" toKey="timepoint" regex="required"/>
+			<parameter key="iframe" toKey="iframe" regex="required,length=36"/>
+			<parameter key="commodity" toKey="commodity" regex="required,length=36"/>
+			<parameter key="showBanner" toKey="showBanner" regex="required,length=36"/>
+			<parameter key="showMessage" toKey="showMessage" regex="required"/>
+			<parameter key="showTime" toKey="showTime" regex="required,num"/>
+			<parameter key="usersession.id" toKey="creator" scope="session" regex="required"/>
+		</input>
+		
+		<input uid="e0005" service="videoCommodityPointService" method="edit" desc="编辑视频节点">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+			<parameter key="commodity" toKey="commodity" regex="required,length=36"/>
+			<parameter key="showType" toKey="showType" regex="required"/>
+			<parameter key="showBanner" toKey="showBanner" regex="required,length=36"/>
+			<parameter key="showMessage" toKey="showMessage" regex="required"/>
+			<parameter key="showTime" toKey="showTime" regex="required,num"/>
+		</input>
+		
+		<input uid="e0006" service="videoCommodityPointService" method="delete" desc="删除视频节点">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+		</input>
+	</action>
+</control>

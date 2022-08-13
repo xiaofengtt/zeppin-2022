@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/y25"
+    android:background="@color/list_bg"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/x15"
+    android:paddingRight="@dimen/x15"
+    android:paddingTop="@dimen/x10">
+
+    <LinearLayout
+        style="@style/LayoutStyleRadius"
+        android:background="@drawable/bg_empty_layout"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/y2"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/y38"
+            android:paddingLeft="@dimen/x22"
+            android:paddingRight="@dimen/x22"
+            android:paddingTop="@dimen/x38">
+
+            <ImageView
+                android:id="@+id/iv_bankIcon"
+                android:layout_width="@dimen/x130"
+                android:layout_height="@dimen/x130"
+                android:background="@drawable/detail_img_bg"
+                android:padding="@dimen/x15"
+                android:src="@mipmap/ic_launcher"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/x15"
+                    android:text="--"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_18"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_name"
+                    android:layout_marginTop="@dimen/y10">
+
+                    <TextView
+                        android:id="@+id/tv_bankName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--"
+                        android:textColor="@color/alpha_50_black"
+                        android:textSize="@dimen/text_14"/>
+
+                    <TextView
+                        android:id="@+id/tv_scode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/alpha_50_black"
+                        android:textSize="@dimen/text_14"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y3"
+            android:background="@color/line_C2C2C2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y50">
+
+            <TextView
+                android:id="@+id/tv_TARRate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="--"
+                android:textColor="@color/color_E6413F"
+                android:textSize="@dimen/text_30"/>
+
+            <TextView
+                android:id="@+id/tv_term"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="--"
+                android:textColor="@color/alpha_90_black"
+                android:textSize="@dimen/text_30"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="预期年化利率"
+                android:textColor="@color/color_7D7D7D"
+                android:textSize="@dimen/text_12"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="产品期限"
+                android:textColor="@color/color_7D7D7D"
+                android:textSize="@dimen/text_12"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_totalRaise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:paddingBottom="@dimen/y10"
+            android:paddingTop="@dimen/x60"
+            android:textColor="@color/color_646464"
+            android:textSize="@dimen/text_12"/>
+
+        <SeekBar
+            android:id="@+id/seekBar_balance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/product_progress_seek"
+            android:maxHeight="@dimen/x6"
+            android:minHeight="@dimen/x6"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:progressDrawable="@drawable/product_progress_seek"
+            android:thumb="@null"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/x45"
+            android:paddingLeft="@dimen/x50"
+            android:paddingRight="@dimen/x10"
+            android:paddingTop="@dimen/x40">
+
+            <TextView
+                android:id="@+id/tv_riskLevel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/icon_risk_level"
+                android:drawablePadding="@dimen/x15"
+                android:text="--"
+                android:textColor="@color/color_565656"
+                android:textSize="@dimen/text_14"/>
+
+            <TextView
+                android:id="@+id/tv_guaranteeStatusCN"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/icon_guarantee_status"
+                android:drawablePadding="@dimen/x15"
+                android:paddingLeft="@dimen/x50"
+                android:text="--"
+                android:textColor="@color/color_565656"
+                android:textSize="@dimen/text_14"/>
+
+            <TextView
+                android:id="@+id/tv_minInvestAmountNum"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="--元起购"
+                android:textColor="@color/color_565656"
+                android:textSize="@dimen/text_14"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        style="@style/LayoutStyleRadius"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/y40"
+        android:paddingTop="@dimen/y40">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:text="理财周期"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y3"
+            android:layout_marginBottom="@dimen/y35"
+            android:layout_marginTop="@dimen/y35"
+            android:background="@color/line_C2C2C2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/y30"
+            android:layout_marginTop="@dimen/y30"
+            android:gravity="center">
+
+            <TextView
+                style="@style/LabelTextStyle"
+                android:text="申购起始"
+                android:textColor="@color/alpha_75_black"/>
+
+            <TextView
+                style="@style/LabelTextStyle"
+                android:text="申购结束"
+                android:textColor="@color/alpha_75_black"/>
+
+            <TextView
+                style="@style/LabelTextStyle"
+                android:text="产品起息"
+                android:textColor="@color/alpha_75_black"/>
+
+            <TextView
+                style="@style/LabelTextStyle"
+                android:text="产品到期"
+                android:textColor="@color/alpha_75_black"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/view_start_left"
+                android:layout_width="@dimen/x75"
+                android:layout_height="@dimen/x6"
+                android:background="@color/line_50_C2C2C2"/>
+
+            <ImageView
+                android:id="@+id/iv_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bar_thumb_normal"/>
+
+            <View
+                android:id="@+id/view_start_right"
+                android:layout_width="@dimen/x110"
+                android:layout_height="@dimen/x6"
+                android:background="@color/line_50_C2C2C2"/>
+
+            <View
+                android:id="@+id/view_end_left"
+                android:layout_width="@dimen/x110"
+                android:layout_height="@dimen/x6"
+                android:background="@color/line_50_C2C2C2"/>
+
+            <ImageView
+                android:id="@+id/iv_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bar_thumb_normal"/>
+
+            <View
+                android:id="@+id/view_end_right"
+                android:layout_width="@dimen/x110"
+                android:layout_height="@dimen/x6"
+                android:background="@color/line_50_C2C2C2"/>
+
+            <View
+                android:id="@+id/view_value_left"
+                android:layout_width="@dimen/x110"
+                android:layout_height="@dimen/x6"
+                android:background="@color/line_50_C2C2C2"/>
+
+            <ImageView
+                android:id="@+id/iv_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bar_thumb_normal"/>
+
+            <View
+                android:id="@+id/view_value_right"
+                android:layout_width="@dimen/x110"
+                android:layout_height="@dimen/x6"
+                android:background="@color/line_50_C2C2C2"/>
+
+            <View
+                android:id="@+id/view_maturity_left"
+                android:layout_width="@dimen/x110"
+                android:layout_height="@dimen/x6"
+                android:background="@color/line_50_C2C2C2"/>
+
+            <ImageView
+                android:id="@+id/iv_maturity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bar_thumb_normal"/>
+
+            <View
+                android:id="@+id/view_maturity_right"
+                android:layout_width="@dimen/x75"
+                android:layout_height="@dimen/x6"
+                android:background="@color/line_50_C2C2C2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/y25"
+            android:layout_marginTop="@dimen/y20"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_start_date"
+                style="@style/LabelTextStyle"
+                android:text="--"
+                android:textColor="@color/alpha_50_black"
+                android:textSize="@dimen/text_13"/>
+
+            <TextView
+                android:id="@+id/tv_end_date"
+                style="@style/LabelTextStyle"
+                android:text="--"
+                android:textColor="@color/alpha_50_black"
+                android:textSize="@dimen/text_13"/>
+
+            <TextView
+                android:id="@+id/tv_value_date"
+                style="@style/LabelTextStyle"
+                android:text="--"
+                android:textColor="@color/alpha_50_black"
+                android:textSize="@dimen/text_13"/>
+
+            <TextView
+                android:id="@+id/tv_maturity_date"
+                style="@style/LabelTextStyle"
+                android:text="--"
+                android:textColor="@color/alpha_50_black"
+                android:textSize="@dimen/text_13"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        style="@style/LayoutStyleRadius"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/y40"
+        android:paddingTop="@dimen/y40">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="基本信息"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/circle_rmb"
+                android:padding="@dimen/x10"
+                android:src="@drawable/icon_rmb"/>
+
+            <TextView
+                android:id="@+id/tv_currencyType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x10"
+                android:textColor="@color/alpha_40_black"
+                android:textSize="@dimen/text_14"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y3"
+            android:layout_marginBottom="@dimen/y35"
+            android:layout_marginTop="@dimen/y35"
+            android:background="@color/line_C2C2C2"/>
+
+        <TextView
+            android:id="@+id/tv_type"
+            style="@style/ProductInfoTxt"
+            android:layout_marginTop="@dimen/y10"
+            android:text="收益类型"/>
+
+        <TextView
+            android:id="@+id/tv_riskLevelCN"
+            style="@style/ProductInfoTxt"
+            android:text="风险等级"/>
+
+        <TextView
+            android:id="@+id/tv_totalAmount"
+            style="@style/ProductInfoTxt"
+            android:text="计划募集"/>
+
+        <TextView
+            android:id="@+id/tv_minInvestAmount"
+            style="@style/ProductInfoTxt"
+            android:text="起购金额"/>
+
+        <TextView
+            android:id="@+id/tv_minInvestAmountAdd"
+            style="@style/ProductInfoTxt"
+            android:text="递增金额"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rl_document"
+        style="@style/LayoutStyleRadius"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/y20"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/y40"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x30"
+        android:paddingTop="@dimen/y40">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:text="产品说明书"
+            android:textColor="@color/alpha_80_black"
+            android:textSize="@dimen/text_16"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/icon_arrow"/>
+    </LinearLayout>
+
+</LinearLayout>
