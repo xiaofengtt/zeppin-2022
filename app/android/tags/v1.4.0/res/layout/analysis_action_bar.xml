@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/actionBarSize"
+    android:background="@color/white" >
+
+    <!-- 包含返回按钮和中间文字的 action bar -->
+    <!-- 最左端的返回按钮 -->
+    
+     <ImageButton
+        android:id="@+id/action_bar_left_go_back_button"
+        style="@style/ActionBarLeftButtonStyle"
+        android:background="@drawable/action_bar_button_background2"
+        android:src="@drawable/back_icon2"  />
+
+    <!-- action bar 中间显示的按钮 -->
+
+    <com.makeramen.segmented.SegmentedRadioGroup
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:id="@+id/segment_text"
+		android:layout_centerInParent="true"
+		android:checkedButton="@+id/button_one">
+		<RadioButton android:id="@id/button_one"
+			android:minWidth="50dip"
+			android:minHeight="33dip"
+			android:text="全题"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:button="@null"
+			android:gravity="center"
+			android:textColor="@color/radio_colors" />
+		
+		<RadioButton android:id="@+id/button_three"
+			android:minWidth="50dip"
+			android:minHeight="33dip"
+			android:text="错题"
+			android:button="@null"
+			android:gravity="center"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:textColor="@color/radio_colors" />
+	</com.makeramen.segmented.SegmentedRadioGroup>
+</RelativeLayout>

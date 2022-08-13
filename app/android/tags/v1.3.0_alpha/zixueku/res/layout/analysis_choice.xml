@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/analysisbackground"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <!-- 禁止ScrollView内的控件改变之后自动滚动 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <include layout="@layout/question_title2" />
+
+                <TextView
+                    android:id="@+id/choice_content"
+                    style="@style/ExerciseContentTextStyle"
+                    android:focusable="false" />
+
+                <com.zixueku.widget.CustomListView
+                    android:id="@+id/choice_list_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:divider="@color/transparent"
+                    android:listSelector="@color/transparent"
+                    android:paddingBottom="20dp" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/AnalysisLayoutStyle" >
+
+                <include layout="@layout/analysis_answer_layout" />
+
+                <include layout="@layout/analysis_test_num_layout" />
+
+                <TextView
+                    android:id="@+id/choise_analysis"
+                    style="@style/AnalysisTextStyle" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

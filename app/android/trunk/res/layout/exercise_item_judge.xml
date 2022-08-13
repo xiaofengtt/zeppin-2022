@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ExerciseItemOptionLayoutStyle"
+    android:orientation="horizontal" >
+
+    <FrameLayout style="@style/ExerciseItemOptionButtonLayoutStyle" >
+
+        <RadioButton
+            android:id="@+id/judge_radio_button"
+            style="@style/ExerciseItemOptionButtonStyle"
+            android:drawableLeft="@drawable/exercise_radio_style" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/exercise_judge_item_content"
+        style="@style/ExerciseItemOptionTextStyle" />
+
+</LinearLayout>

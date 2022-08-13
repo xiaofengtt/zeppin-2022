@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd 
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd" >
+
+ 	<bean id="dataSource" class="cn.zeppin.base.ProxoolDataSource">
+	    <property name="driver">
+	        <value>com.mysql.jdbc.Driver</value>
+	    </property>
+	    <property name="driverUrl">
+	        <value>jdbc:mysql://192.168.1.9:3306/cetv</value>
+	    </property>
+	    <property name="user" value="root" />
+	    <property name="password" value="zeppin" />
+	    <property name="alias" value="cetv" />
+	    
+	     <!-- 保留线程处于睡眠状态的最长时间--> 
+	    <property name="houseKeepingSleepTime" value="90000" />
+	    <!-- 连接池中可用的连接数量 -->
+	    <property name="prototypeCount" value="10" />
+	    <!-- 最大连接数，默认为15 -->  
+	    <property name="maximumConnectionCount" value="15" />
+	    <!-- 最小连接数，默认为5 -->  
+	    <property name="minimumConnectionCount" value="5" />
+	    <!-- 检测到某个线程的活动时间大于这个数值.它将会杀掉这个线程 -->  
+	    <property name="maximumActiveTime" value="60000" />
+	    <!-- 一次性可建立的最大连接数 -->  
+	    <property name="simultaneousBuildThrottle" value="5" />
+	    <!-- 最大连接生命周期 ,默认为4小时-->  
+	    <property name="maximumConnectionLifetime" value="14400000" />
+	    <!-- 验证数据库的状态语句 -->  
+	    <property name="houseKeepingTestSql" value="select 1" />
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource"><ref bean="dataSource" /></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+				
+			<!-- 拦截器方式实现缓存
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.SingletonEhCacheRegionFactory</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+			-->	
+			</props>
+		</property>
+		
+		<property name="annotatedClasses">
+			<list>
+				<value>cn.zeppin.entity.Area</value>
+				<value>cn.zeppin.entity.Grade</value>
+				<value>cn.zeppin.entity.Test</value>
+				<value>cn.zeppin.entity.TestPaperAnswer</value>
+				<value>cn.zeppin.entity.Item</value>
+				<value>cn.zeppin.entity.TestPaperItem</value>
+				<value>cn.zeppin.entity.Textbook</value>
+				<value>cn.zeppin.entity.ItemAnswer</value>
+				<value>cn.zeppin.entity.SysUser</value>
+				<value>cn.zeppin.entity.SysUserGrade</value>
+				<value>cn.zeppin.entity.SysUserSubject</value>
+				<value>cn.zeppin.entity.RoleFuncation</value>
+				<value>cn.zeppin.entity.TestPaper</value>
+				<value>cn.zeppin.entity.Funcation</value>
+				<value>cn.zeppin.entity.Material</value>
+				<value>cn.zeppin.entity.Organization</value>
+				<value>cn.zeppin.entity.Paper</value>
+				<value>cn.zeppin.entity.ItemType</value>
+				<value>cn.zeppin.entity.TextbookCapter</value>
+				<value>cn.zeppin.entity.TestPaperSection</value>
+				<value>cn.zeppin.entity.Subject</value>
+				<value>cn.zeppin.entity.SubjectItemType</value>
+				<value>cn.zeppin.entity.Category</value>
+				<value>cn.zeppin.entity.Knowledge</value>
+				<value>cn.zeppin.entity.Role</value>
+				<value>cn.zeppin.entity.Resource</value>
+				<value>cn.zeppin.entity.StrategyType</value>
+				<value>cn.zeppin.entity.Strategy</value>
+				<value>cn.zeppin.entity.User</value>
+				<value>cn.zeppin.entity.UserAccessLog</value>
+				<value>cn.zeppin.entity.UserCategory</value>
+				<value>cn.zeppin.entity.UserKnowledgeDegree</value>
+				<value>cn.zeppin.entity.UserRank</value>
+				<value>cn.zeppin.entity.UserTest</value>
+				<value>cn.zeppin.entity.UserTestItem</value>
+				<value>cn.zeppin.entity.UserTextbook</value>
+				<value>cn.zeppin.entity.UserTextbookcapterDegree</value>
+				<value>cn.zeppin.entity.Medal</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!--
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:advice id="baseServiceAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" propagation="REQUIRED" />
+			<tx:method name="find*" read-only="true" propagation="REQUIRED" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="create*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="modify*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	PROPAGATION_REQUIRED：支持当前事务，如果当前没有事务，就新建一个事务。
+		PROPAGATION_SUPPORTS：支持当前事务，如果当前没有事务，就以非事务方式执行。 
+		PROPAGATION_MANDATORY：支持当前事务，如果当前没有事务，就抛出异常。 
+		PROPAGATION_REQUIRES_NEW：新建事务，如果当前存在事务，把当前事务挂起。
+ 		PROPAGATION_NOT_SUPPORTED：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。 
+		PROPAGATION_NEVER：以非事务方式执行，如果当前存在事务，则抛出异常。 
+		PROPAGATION_NESTED：支持当前事务，如果当前事务存在，则执行一个嵌套事务，如果当前没有事务，就新建一个事务。
+	 -->
+	 <bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">  
+        <property name="transactionManager" ref="transactionManager" />  
+        <!-- 配置事务属性 -->  
+        <property name="transactionAttributes">  
+            <props>  
+                <prop key="get*" >PROPAGATION_REQUIRED,readOnly</prop>  
+                <prop key="find*" >PROPAGATION_REQUIRED,readOnly</prop> 
+                <prop key="search*" >PROPAGATION_REQUIRED,readOnly</prop> 
+                <prop key="is*" >PROPAGATION_REQUIRED,readOnly</prop> 
+                <prop key="add*" >PROPAGATION_REQUIRED</prop> 
+                <prop key="save*" >PROPAGATION_REQUIRED</prop>
+                <prop key="create*" >PROPAGATION_REQUIRED</prop>
+                <prop key="update*" >PROPAGATION_REQUIRED</prop>
+                <prop key="modify*" >PROPAGATION_REQUIRED</prop>
+                <prop key="delete*" >PROPAGATION_REQUIRED</prop>
+                <prop key="remove*" >PROPAGATION_REQUIRED</prop>
+            </props>  
+        </property>  
+    </bean>
+	
+	<import resource="spring-cache.xml" />
+	<import resource="spring-dao.xml" />
+	<import resource="spring-service.xml" />
+	<import resource="spring-action.xml" />
+	
+	<bean id="transactionAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">     
+       <property name="beanNames">     
+           <list>     
+               <value>*Service*</value>  
+           </list>     
+       </property>     
+       
+       <property name="interceptorNames">     
+           <list>     
+           	  <value>transactionInterceptor</value> 
+           </list>     
+       </property>     
+   </bean>   
+
+  	<bean id="cacheAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">     
+       <property name="beanNames">     
+           <list>     
+               <value>*DAO*</value>   
+           </list>     
+       </property>     
+       
+       <property name="interceptorNames">     
+           <list> 
+	          <value>methodCachePointCut</value>   
+	          <value>methodCachePointCutAdvice</value>   
+           </list>     
+       </property>     
+   </bean>   
+   	
+  <!-- 
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="productServiceMethods" expression="execution(public * cn.zeppin.service*.*(..))" />
+		<aop:advisor advice-ref="baseServiceAdvice" pointcut-ref="productServiceMethods" />
+	</aop:config>
+	 
+    <aop:config proxy-target-class="true">
+		<aop:pointcut id="methodCachePointCut" expression="execution(public * cn.zeppin.service*.*(..))" />
+		<aop:advisor advice-ref="methodCacheInterceptor" pointcut-ref="methodCachePointCut" />
+	</aop:config>
+	
+    <aop:config proxy-target-class="true">
+		<aop:pointcut id="methodCachePointCutAdvice" expression="execution(public * cn.zeppin.service*.*(..))" />
+		<aop:advisor advice-ref="methodCacheAfterAdvice" pointcut-ref="methodCachePointCutAdvice" />
+	</aop:config>	
+	-->
+</beans>

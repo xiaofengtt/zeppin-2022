@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/action_bar" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp" >
+
+        <com.zixueku.customview.LineEditText
+            android:id="@+id/et_phone"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="44dp"
+            android:layout_marginRight="44dp"
+            android:layout_marginTop="5dp"
+            android:background="@null"
+            android:hint="手机号"
+            android:inputType="numberSigned"
+            android:paddingLeft="30dp"
+            android:singleLine="true"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/et_phone"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="22dp"
+            android:src="@drawable/phone_grey_icon" />
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btn_user_select"
+        android:text="下一步"
+        android:textColor="@android:color/white"
+        android:textSize="17sp" />
+
+</LinearLayout>

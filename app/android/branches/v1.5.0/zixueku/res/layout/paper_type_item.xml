@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 只有垂直的linearlayout属性里面的内部组件靠左靠右才有效，同理，水平的linearlayout属性里面的内部组件靠上靠下才有效，否则无效 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.zixueku"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingBottom="15dp"
+    android:paddingLeft="15dp"
+    android:paddingTop="15dp" >
+
+    <!-- 科目图标 -->
+
+    <ImageView
+        android:id="@+id/prepare_type_item_img"
+        android:layout_width="55dp"
+        android:layout_height="55dp" />
+
+    <!-- 科目名称 -->
+
+    <TextView
+        android:id="@+id/prepare_type_item_name"
+        style="@style/s5"
+        android:paddingLeft="15dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical" >
+
+        <ImageView
+            android:id="@+id/right_icon"
+            android:layout_width="8dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/right_icon" />
+
+        <TextView
+            android:id="@+id/paper_type_itme_count"
+            style="@style/s6"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/right_icon" />
+    </RelativeLayout>
+
+   
+
+</LinearLayout>

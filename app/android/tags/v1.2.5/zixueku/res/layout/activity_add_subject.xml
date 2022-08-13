@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.zixueku"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/add_subject_action_bar" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/head_image_height"
+        android:layout_gravity="top"
+        android:scaleType="centerCrop"
+        android:src="@drawable/head_teacher" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp" >
+
+        <com.astuetz.PagerSlidingTabStrip
+            android:id="@+id/add_subject_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/white"
+            android:textSize="@dimen/s6"
+            android:textStyle="normal"
+            app:pstsIndicatorColor="@color/indicatorcolor"
+            app:pstsShouldExpand="true" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/add_subject_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/add_subject_tabs" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+             <!--   <Button
+                    android:id="@+id/select_all"
+                    style="@style/AddSubjectBottomButtonStyle"
+                    android:background="@drawable/white_button_img"
+                    android:text="@string/select_all" /> -->
+
+                <Button
+                    android:id="@+id/add_subject_complete"
+                    style="@style/AddSubjectBottomButtonStyle"
+                    android:background="@drawable/green_button_img"
+                    android:text="@string/complete"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

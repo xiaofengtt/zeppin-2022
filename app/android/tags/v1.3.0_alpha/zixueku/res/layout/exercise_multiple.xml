@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:paddingBottom="40dp" >
+
+                <include layout="@layout/question_title2" />
+
+                <TextView
+                    android:id="@+id/exercise_multiple_content"
+                    style="@style/ExerciseContentTextStyle" />
+
+                <com.zixueku.widget.CustomListView
+                    android:id="@+id/exercise_multiple_list_view"
+                    style="@style/ExerciseListViewStyle" />
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/multiple_next_item_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/grey"
+            android:text="@string/next_item"
+            android:textColor="@color/black"
+            android:textSize="@dimen/s4"
+            android:textStyle="bold"
+            android:visibility="visible" />
+    </FrameLayout>
+
+</LinearLayout>

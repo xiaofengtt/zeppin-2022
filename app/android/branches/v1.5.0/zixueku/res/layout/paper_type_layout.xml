@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/notic_no_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:text="该科目下无试卷！"
+        android:textColor="@color/dimgrey"
+        android:textSize="@dimen/s5"
+        android:visibility="gone" />
+
+    <!-- 试卷 -->
+
+    <com.zixueku.widget.CustomListView
+        android:id="@+id/paper_type_item_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/line"
+        android:dividerHeight="0.7dp"
+        android:listSelector="@color/grey" />
+
+</LinearLayout>

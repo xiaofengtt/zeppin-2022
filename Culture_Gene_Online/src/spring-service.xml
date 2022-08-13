@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<bean id="categoryService" class="cn.zeppin.service.imp.CategoryService">
+		<property name="categoryDAO" ref="categoryDAO" />
+	</bean>
+	
+	<bean id="keywordService" class="cn.zeppin.service.imp.KeywordService">
+		<property name="keywordDAO" ref="keywordDAO" />
+	</bean>
+	
+	<bean id="nationalService" class="cn.zeppin.service.imp.NationalService">
+		<property name="nationalDAO" ref="nationalDAO" />
+	</bean>
+	
+	<bean id="resourceService" class="cn.zeppin.service.imp.ResourceService">
+		<property name="resourceDAO" ref="resourceDAO"></property>
+	</bean>
+	
+	<bean id="resourceTagService" class="cn.zeppin.service.imp.ResourceTagService">
+		<property name="resourceTagDAO" ref="resourceTagDAO"></property>
+	</bean>
+	
+	<bean id="resourceCustomTagService" class="cn.zeppin.service.imp.ResourceCustomTagService">
+		<property name="resourceCustomTagDAO" ref="resourceCustomTagDAO"></property>
+	</bean>
+	
+	<bean id="userService" class="cn.zeppin.service.imp.UserService">
+		<property name="userDAO" ref="userDAO" />
+	</bean>
+
+	<bean id="roleFuncationService" class="cn.zeppin.service.imp.RoleFunctionService">
+		<property name="roleFunctionDAO" ref="roleFuncationDAO"></property>
+	</bean>
+	
+	<bean id="roleService" class="cn.zeppin.service.imp.RoleService">
+		<property name="roleDAO" ref="roleDAO"></property>
+	</bean>
+	
+	<bean id="userLoveResourceService" class="cn.zeppin.service.imp.UserLoveResourceService">
+		<property name="userLoveResourceDAO" ref="userLoveResourceDAO"></property>
+	</bean>
+	
+	<bean id="userDownloadResourceService" class="cn.zeppin.service.imp.UserDownloadResourceService">
+		<property name="userDownloadResourceDAO" ref="userDownloadResourceDAO"></property>
+	</bean>
+</beans>

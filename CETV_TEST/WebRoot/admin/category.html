@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>知识类型管理</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../css/bootstrap.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/app.css">	
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../css/metro/blue/jtable.css" rel="stylesheet" type="text/css" >
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/jquery.jtable.js"></script>
+<script src="../js/jquery.jtable.zh-CN.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+
+<script src="../js/bootstrap-paginator.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/url.min.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/app.js"></script> 
+<script src="../js/moment.js"></script> 
+<script src="../js/zh-cn.js"></script>
+
+<script>
+$(function(){
+	moment.lang('zh-cn');
+    function timedUpdate () {
+       update();
+       setTimeout(timedUpdate, 1000);
+   }
+   function update(){
+         $('#datafomate').html(moment().format('YYYY-MM-DD ,a h:mm:ss'));
+      }  
+	timedUpdate()
+	//$('#datafomate').html(moment().format('YYYY MMMM Do, h:mm:ss a'));
+})
+</script>
+ 
+</head>
+<body>
+
+<!--Header-part-->
+<div class="navbar" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo" title="网络、移动学习测评移动云资源平台" ><img src="../img/logo-jy.png" height="41"></a>
+    </div>
+	<p class="logout">欢迎<span id="loginname"></span> &nbsp;&nbsp;<span id="datafomate"></span> &nbsp;|&nbsp;  <a href="../admin/passwordEditiframe.html" data-fancybox-type="iframe" class="btn-password cboxElement">修改密码</a> &nbsp;|&nbsp;  <a href="login.html">退出</a> </p>
+	
+  </div>
+</div>
+<!--close-Header-part--> 
+
+<div id="container" class="container-fluid">
+
+	<div class="row">
+		<div class="sidebar">
+			<div class=" nav-sidebar">
+				<ul id="leftside" class="nav">
+				</ul>
+			</div>
+			<div class="js-nav-shadow bottom"><img src="../img/round-shadow-bottom.png" style="top: auto; bottom: 0px;"></div>
+		</div> <!--end sidebar-->
+		<script id="leftTpl" type="text/template">
+			{{#Records}}
+			<li class="active"><a href="#"><span>{{name}}</span> </a>
+				
+				<ul class="nav">
+					{{#data}}
+						<li {{#iscurrent}} class="cur" {{/iscurrent}}> <a  href="{{path}}">{{name}}
+						</a></li>
+					{{/data}}
+			
+				</ul>
+				
+			</li>
+			{{/Records}}
+		</script>
+		<div class="main">
+
+			<div class="tablewrap">
+
+				<div class="cui-menu">
+					<button class="btn btn-primary btn-create" type="button">
+						+ 添加知识类型
+					</button>
+				</div>
+				
+				<!--搜索框-->
+				<div id="searchbox" class="searchbox">
+					<form class="search search_form" id="searchForm" action="#" method="POST">
+						<fieldset>
+							<label for="searchheader" class="placeholder overlabel">名称</label>
+							<input autocomplete="off" id="searchheader" value="" type="text" name="q">
+							<input type="hidden" name="" value="">
+							<div class="show_dropdown">
+								<div class="dropdown" style="display: block;">
+									<ul>
+										<li><label for="type_name">按名称</label><input type="radio" id="type_name" name="stype" value="name" checked="checked">
+										</li>
+										
+									</ul>
+									<span class="bl"></span>
+									<span class="br"></span>
+								</div>
+							</div>
+							<button type="submit" id="searchBtn" class="search-button">Search</button>
+						</fieldset>
+					</form>
+			
+				</div>
+				
+				<div id="TableContainer"></div>
+
+
+				<script type="text/javascript">
+					
+					$(document).ready(
+						function() {
+							var pid = (url('?category.id') != null) ? url('?category.id') : '';
+							var level = (url('?level') != null) ? '' : 1;
+							var navarr = []; 
+							$.get('categoryLoadCategoryNav?category.id='+pid,function(r) {
+								if(r.Status =='success') {
+									for ( var i = 0, l = r.Records.length; i < l; i++ ) {
+									    var navhtml = ' &gt; <a href="../admin/category.html?category.id='+ r.Records[i].id +'">'+ r.Records[i].name +'</a>';
+										navarr.push(navhtml);
+							
+									}
+									
+								}
+								
+							}).done(function(){
+								$('#TableContainer')
+											.jtable(
+													{
+														title : '<a href="../admin/category.html">知识类型管理</a> '+ navarr.join(''),
+														messages : zhCN, //Lozalize
+														paging : true, //Enable paging
+														pageSize : 10, //Set page size (default: 10)
+														pageSizes : [ 10, 20, 30, 40, 50 ],
+														sorting : true, //Enable sorting
+														defaultSorting : 'id ASC', //Set default sorting
+														dialogShowEffect : 'drop',
+														addRecordButton : $('.btn-create'),
+														actions : {
+															listAction : '../admin/categoryList?category.id='+ pid + '&level='+level,
+															updateAction : '../admin/categoryUpdate',
+															deleteAction :'../admin/categoryDelete',
+															createAction : '../admin/categoryAdd?category.id='+pid
+														},
+														fields : {
+															id : {
+																title : '编号',
+																key : true,
+																width:'5%'
+															},
+															name : {
+																title : '名称',
+																width: '8%'
+														
+															},
+															level : {
+																title : '级别',
+																width : '8%',
+																edit: false,
+																create: false
+															},
+															addviewchild: {
+											                    title: '操作',
+											                    width: '10%',
+											                    sorting: false,
+											                    edit: false,
+											                    create: false,
+											                    display: function (data) {
+																	//if(data.record.isschool == 0) {
+																		var html ='<a href="../admin/category.html?category.id=' + data.record.id + '&level='+ data.record.level +'">管理下级分类</a>';
+																		//}else {
+																		//var html = '';
+																		//}
+																	return html;
+																}
+						
+															}
+		
+											
+														},
+												
+														columnResizable : false,
+														deleteConfirmation: function(data) {
+														  data.deleteConfirmMessage = '确定要停用这行数据?';
+														},
+														formClosed : function(event,data) {
+													
+															//if(data.formType =="create" ) {
+													
+														
+															//}
+													
+														},
+														recordsLoaded :function (data) {
+														//删除按钮改成停用
+														    $('#'+data.target.id).find('.jtable-delete-command-button').each(function(){
+																$(this).attr('title','停用');
+																$(this).find('span').text('停用');
+															})  
+									
+														}
+												
+													});
+
+									$('#TableContainer').jtable('load');
+									
+									//搜索
+							        $('#searchForm').submit(function (e) {
+							            e.preventDefault();
+										var key = $('input[name="stype"]:checked').val(),obj = {};
+										obj[key] = $('#searchheader').val();
+										
+							            $('#TableContainer').jtable('load', obj);
+										return false;
+							        });
+									$(".btn-password").colorbox({
+										iframe : true,
+										width : "400px",
+										height : "330px",
+										opacity : '0.5',
+										overlayClose : false,
+										escKey : true
+									});
+									
+								});
+								
+							})
+							
+							
+							
+				</script>
+
+			</div>
+		</div>
+		
+		
+	</div> <!--end row-->
+	
+</div>	<!--end container-->
+
+<div class="bs-footer">
+  <div>
+	  <p>Copyright © 2014 中国教育电视台 京ICP证101020号.     <a target="_blank" href="http://www.guoshi.com/">联系我们</a></p>
+
+  </div>
+</div>
+
+</body>
+</html>
+		

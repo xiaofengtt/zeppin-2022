@@ -1,0 +1,45 @@
+﻿body {
+  /*background-color: #fff;*/
+/*   padding-bottom: 0.3rem; */
+  min-height: 6.5rem;
+  overflow: auto;
+}
+
+#circlr {
+  cursor: move;
+  margin: 0 auto;
+  min-height: 100px;
+  position: relative;
+}
+
+#circlr #loader {
+  background: url(../images/loading-0.gif) center center no-repeat;
+  bottom: 0;
+  display: none;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.shoppers{ width: 100%; padding: 0 0.3rem; background: rgba(255,255,255,0.85);}
+.shoppers .shoppersLeft{ width:100%;}
+.shoppers .shoppersLeft h1{ font-size: 0.3rem; color: #000000; line-height: 0.48rem;}
+.shoppers .shoppersLeft p{ color: #666666; font-size: 0.24rem; line-height: 0.36rem;}
+.shoppers p.money{ width: 40%; font-size: 0.20rem; color: #666666; float: left; line-height: 0.9rem;}
+.shoppers p.money span{color: #f19149; font-size: 0.34rem;}
+.shoppers p.money img{ width: 50%; margin-top: -0.15rem;}
+.shoppers a.goBuy{ background-color: #f19149; border-radius: 0.08rem; display: block; float: right; text-align: center; width: 20%; height: 0.5rem; font-size: 0.3rem; color: #FFFFFF; width: 2.0rem; height: 0.7rem; margin-right: 0.2rem; line-height: 0.7rem; margin-top: 0.1rem;} 
+
+a.closebtn{ position: absolute; padding: 0.05rem; z-index: 999;}
+a.closebtn img{ width: 100%;}
+p.leftAndright{ width: 40%; padding-top: 0.5rem; margin: 0 auto;}
+p.leftAndright img{ width: 100%;}
+
+
+
+
+
+
+
+

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>资源量统计</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../css/bootstrap.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/app.css">	
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../css/metro/blue/jtable.css" rel="stylesheet" type="text/css" >
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/jquery.jtable.js"></script>
+<script src="../js/jquery.jtable.zh-CN.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+
+<script src="../js/bootstrap.js"></script>
+<script src="../js/url.min.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/app.js"></script> 
+<script src="../js/moment.js"></script> 
+<script src="../js/zh-cn.js"></script>
+<script src="../js/highcharts.js"></script>
+<script>
+$(function(){
+	moment.lang('zh-cn');
+    function timedUpdate () {
+       update();
+       setTimeout(timedUpdate, 1000);
+   }
+   function update(){
+          $('#datafomate').html(moment().format('YYYY-MM-DD ,a h:mm:ss'));
+      }  
+	timedUpdate()
+	//$('#datafomate').html(moment().format('YYYY MMMM Do, h:mm:ss a'));
+})
+
+</script>
+ <style>
+#knowledgeido > div:hover {background:#e8eaef;}
+</style>
+</head>
+<body>
+
+<!--Header-part-->
+<div class="navbar" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo" title="网络、移动学习测评移动云资源平台" ><img src="../img/logo-jy.png" height="41"></a>
+    </div>
+	<p class="logout">欢迎<span id="loginname"></span> &nbsp;&nbsp;<span id="datafomate"></span> &nbsp;|&nbsp;  <a href="../admin/passwordEditiframe.html" data-fancybox-type="iframe" class="btn-password cboxElement">修改密码</a> &nbsp;|&nbsp;  <a href="login.html">退出</a> </p>
+	
+  </div>
+</div>
+<!--close-Header-part--> 
+
+<div id="container" class="container-fluid">
+
+	<div class="row">
+		<div class="sidebar">
+			<div class=" nav-sidebar">
+				<ul id="leftside" class="nav">
+				</ul>
+			</div>
+			<div class="js-nav-shadow bottom"><img src="../img/round-shadow-bottom.png" style="top: auto; bottom: 0px;"></div>
+		</div> <!--end sidebar-->
+		<script id="leftTpl" type="text/template">
+			{{#Records}}
+			<li class="active"><a href="#"><span>{{name}}</span> </a>
+				
+				<ul class="nav">
+					{{#data}}
+						<li {{#iscurrent}} class="cur" {{/iscurrent}}>  <a href="{{path}}">{{name}}
+						</a></li>
+					{{/data}}
+			
+				</ul>
+				
+			</li>
+			{{/Records}}
+		</script>
+		<div class="main">
+
+			<div class="tablewrap chartwrap clearfix">
+				
+				
+				<div class="rows clearfix" style="height:400px" >
+					<div id="ChartContainer"  class="col-md-6">
+						
+					</div>
+					<div id="ChartContainer2" class="col-md-6">
+						
+					</div>
+					
+				</div>
+				<div class="chart-grid ">
+					<div class="chart-hd">
+						登录用户学段分布统计
+					</div>
+					<div id="TableContainer" style="margin:0 20px 20px"></div>
+							
+				</div>
+				<div class="chart-grid ">
+					<div class="chart-hd">
+						学科兴趣分布统计
+					</div>
+					<div id="ChartContainer1"></div>
+							
+				</div>
+				<div class="chart-grid ">
+					<div style="margin:0 20px" id="TableContainer1"></div>
+							
+				</div>
+			
+				<div class="chart-grid">
+					<div class="chart-hd">知识点正确率统计</div>
+					<div id="knowledgeBox" class="treelist" style="margin:0 20px">
+						<div id="knowledgeList" class="list_sub sm_icon">
+							<div class="meta_bar clearfix">
+												
+								<dl class="clearfix">
+									<dt>学科: </dt>
+									<dd>
+										<div id="changeSubject" class="dropdown changeSubject">
+										  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											   <span class="cSname">请选择学科</span> [更换]
+											   <span class="caret"></span>
+										  </a>
+										  <div id="changeSubjectCnt" class="dropdown-menu">
+									    	
+										  </div>
+										</div>
+									</dd>														
+								</dl>				
+							</div>
+							<div id="knowledgeido" class="count_ido" ></div>
+						</div>
+					</div>
+					
+				</div>
+						
+			
+				<script type="text/javascript">
+				$(document).ready(
+					function() {	
+					var	cName=[];
+					var cDayCount=[];
+					var cTotalCount=[];
+					var colorsA = [ "#F4629A", "#63D3C2", "#BB6EDB", "#FFE632","#FFC800","#9F8CE2" , "#FF4A51", "#9BCA3E", "#FF953E", "#78D5F9", "#6777E5", "#FF775C", "#6FD165", "#8D50D3"];
+					
+					$.get('../admin/countSearchUserGrade',function(r) {
+						for ( var i = 0, l = r.Records.length; i < l; i++ ) {
+							var str = [];
+							cName.push(r.Records[i].name);
+							cDayCount.push({y:r.Records[i].daycount,color: colorsA[i]});	
+							cTotalCount.push({y:r.Records[i].totalcount,color: colorsA[i+1]});	
+						}
+						 $('#ChartContainer').highcharts({
+							 chart: {
+						            type: 'column',
+						            margin: [ 50, 50, 100, 80]
+						        },
+						        title: {
+						            text: '历史累积登陆用户学段分布',
+						            style : {
+										"fontSize" : "18px",
+										
+										"fontColor" : '#6c75dc'
+									}
+						        },
+						        xAxis: {
+						            categories: cName,
+						            labels: {
+						                align: 'center',
+						                style: {
+						                    fontSize: '13px',
+						                    fontWeight: 'bold',
+						                    fontFamily: 'Verdana, sans-serif'
+						                }
+						            }
+						        },
+						        yAxis: {
+						            min: 0,
+						            title: {
+						                text: '登陆人数'
+						            }
+						        },
+						        legend: {
+						            enabled: false
+						        },
+						        tooltip: {
+						            pointFormat: '登陆人数: <b>{point.y}</b>',
+						        },
+						        series: [{
+						            name: 'Population',
+						            data: cTotalCount,
+						            dataLabels: {
+						                enabled: true,
+						                color: '#333',
+						                style: {
+						                    fontSize: '13px',
+						                    fontWeight:'bold',
+						                    fontFamily: 'Verdana, sans-serif'
+						                  
+						                }
+						            }
+						        }]
+						    });
+						 $('#ChartContainer2').highcharts({
+							 chart: {
+						            type: 'column',
+						            margin: [ 50, 50, 100, 80]
+						        },
+						        title: {
+						            text: '本日登陆用户学段分布',
+						            style : {
+										"fontSize" : "18px"
+										
+									}
+						        },
+						        xAxis: {
+						            categories: cName,
+						            labels: {
+						                align: 'center',
+						                style: {
+						                    fontSize: '13px',
+						                    fontWeight: 'bold',
+						                    fontFamily: 'Verdana, sans-serif'
+						                }
+						            }
+						        },
+						        yAxis: {
+						            min: 0,
+						            title: {
+						                text: '登陆人数'
+						            }
+						        },
+						        legend: {
+						            enabled: false
+						        },
+						        tooltip: {
+						            pointFormat: '登陆人数: <b>{point.y}</b>',
+						        },
+						        series: [{
+						            name: 'Population',
+						            data: cDayCount,
+						            dataLabels: {
+						                enabled: true,
+						                color: '#333',
+						                style: {
+						                    fontSize: '13px',
+						                    fontFamily: 'Verdana, sans-serif',
+						                    textShadow: '0 0 1px black'
+						                }
+						            }
+						        }]
+						    });
+							$('#TableContainer').jtable(
+									{
+										messages : zhCN, //Lozalize
+										paging : false, //Enable paging
+										sorting : false, //Enable sorting
+										defaultSorting : 'id ASC', //Set default sorting
+										dialogShowEffect : 'drop',
+										actions : {
+											listAction : '../countSearchUserGrade',
+										},
+										fields : {
+											id : {
+												title : '编号',
+												key : true,
+												width:'15%'
+											},
+											
+											name : {
+												title : '名称',	
+												width : '35%'
+											},
+											daycount : {
+												title : '本日登陆',	
+												width : '20%'
+											},
+											totalcount : {
+												title : '历史累计',	
+												width : '20%'
+											}
+									
+									
+										},
+										columnResizable : false											
+								});
+								$('#TableContainer').jtable('load');
+								$("table").css("margin-top","0px"); 
+						})
+					});
+					$(document).ready(
+						function() {
+							$('#TableContainer1').jtable(
+							{
+								messages : zhCN, //Lozalize
+								paging : false, //Enable paging
+								sorting : false, //Enable sorting
+								defaultSorting : 'id ASC', //Set default sorting
+								dialogShowEffect : 'drop',
+								actions : {
+									listAction : '../countSearchUserSubject',
+								},
+								fields : {
+									id : {
+										title : '编号',
+										key : true,
+										width:'5%'
+									},
+									
+									name : {
+										title : '学科名称',	
+										width : '15%'
+									},
+									count : {
+										title : '测评次数'
+									}
+								},
+								columnResizable : false									
+							});
+					$('#TableContainer1').jtable('load');
+					$("table").css("margin-top","0px");
+					var	piedata=[];
+					$.get('../admin/countSearchUserSubject',function(r) {
+						for ( var i = 0, l = r.Records.length; i < l; i++ ) {
+							var str = [];
+							str.push(r.Records[i].name);
+							str.push(r.Records[i].count);						   
+							piedata.push(str);
+						}
+						 $('#ChartContainer1').highcharts({
+						        chart: {
+						            type: 'pie',
+						            options3d: {
+						                enabled: true,
+						                alpha: 45,
+						                beta: 0
+						            }
+						        },
+						        title: false,
+						        tooltip: {
+						            pointFormat: '{series.name}:<b>{point.percentage:.1f}%</b>'
+						        },
+						        colors : ["#5691F0","#FFC800", "#FF4A51", "#9BCA3E", "#FF953E", "#78D5F9", "#F4629A", "#63D3C2", "#BB6EDB", "#FFE632", "#6777E5", "#FF775C", "#6FD165", "#8D50D3"],
+						        plotOptions: {
+						            pie: {
+						                allowPointSelect: true,
+						                cursor: 'pointer',
+						                depth: 35,
+						                dataLabels: {
+						                    enabled: true,
+						                    format: '{point.name}{point.percentage:.1f}%'
+						                }
+						            }
+						        },
+						        series: [{
+						            type: 'pie',
+						            name: '测评次数占',
+						            data: piedata
+						        }]
+						    });
+					})				   
+				});
+				</script>
+				<script id="changeSubjectTpl" type="text/template">
+					{{#Records}}
+						<div class="dl">
+					    	<h4>{{name}}</h4>
+							<p>
+								{{#data}}
+									<a data-id="{{id}}" data-gradeid="{{grade_id}}" href="#">{{name}}</a>
+								{{/data}}
+							</p>
+						</div>
+					{{/Records}}
+				</script>				
+				<script type="text/javascript">				
+				var defaultOption = {
+					sid : ''
+				}
+
+				var TreeList = {
+					treelist : '.treelist',
+					list : function(url,sid) {						
+						var cUrl = '../'+url;					
+						cUrl += '?split=_&level=1';
+						cUrl += (typeof sid == 'undefined') ? '' : '&subject.id='+sid;						
+						var cHtml = '';
+						var recursiveIteration = function (object) {
+						    for (var property in object) {
+						        if (object.hasOwnProperty(property)) {
+						            if (typeof object[property] == "object"){
+						                recursiveIteration(object[property]);
+						            }else{	
+						            	emClass = (object['haschild']) ? ' class="o"' : '';
+										emClick = (object['haschild']) ? ' onclick="TreeList.changeIcon($(this))"' : '';
+										divClass = (object['level'] == 1) ? ' class="tSub"' : ' class="tSub'+ object['level'] +'"';
+										aClick = ' onclick="TreeList.getquelist(\'knowledge\',\'' + object['id'] + '\',this)"';										
+										if(property == 'name') {
+											cHtml += '<div style="border-bottom:1px solid #ddd;font-size:13px"><div style="float:right;padding-right:50px">正确率：'+object['rate'] +'</div><div'+ divClass +' style="margin-left:10px"><em  '+ emClass + emClick +' class=""></em><a '+ aClick +'>'+ object['name']+'</a></div></div>';										
+										}        
+						            }
+						        }
+						    }
+						}
+										
+						$.getJSON(cUrl,function(data) {
+							if(data.Status == 'success' && data.Records.length > 0) {
+								recursiveIteration(data);
+								$("#knowledgeido").html(cHtml);
+							}else if (data.Status == 'success' && data.Records.length == 0) {
+	   							$("#knowledgeido").html('<div class="no_data">该学科尚未添加知识点</div>');
+	   						}
+						});
+					},
+					getquelist : function(id,obj) {
+						$(obj).closest('.treelist').find('a').removeClass('cur');
+						$(obj).addClass('cur');
+						defaultOption.kid = id;
+						var name = $(obj).text();
+					},
+					changeIcon: function(e) {
+						if (e.attr('class') == 'o') {
+							e.attr('class', 'c');
+						} else {
+							e.attr('class', 'o');
+						}
+					},
+					showhide :function(e) {
+						$('.'+e).toggle();
+					},
+
+				};
+				
+				//获得学科列表
+				function getSubject() {
+					$.getJSON('../admin/subjectSearchAllSubject?split=_', function(r) {
+						if(r.Status == 'success' && r.Records.length > 0) {
+						    var template = $('#changeSubjectTpl').html();
+						    var html = Mustache.render(template, r);
+						    $('#changeSubjectCnt').html(html);
+							if($.cookie('questionSubjectObj')) {
+								var obj = $.parseJSON($.cookie('questionSubjectObj'));
+								initchangeSubject(obj)
+							}else {
+								var obj = {};
+								obj.sid = r.Records[0].data[0].id, obj.sname = r.Records[0].data[0].name;
+								$.cookie('questionSubjectObj','{"sid":"'+ obj.sid +'","sname":"'+ obj.sname +'"}');
+								initchangeSubject(obj);
+							}							
+						}else {
+							alert('服务端出错！请稍后重试！');
+						}
+					});
+				}
+				
+				//更改学科
+				function changeSubject(obj) {
+					var th = $(obj), cSname = th.closest('.changeSubject').find('.cSname'), sid = th.data('id');
+					defaultOption.sid = sid;
+					cSname.html(th.text());						
+					$.cookie('questionSubjectObj','{"sid":"'+ sid +'","sname":"'+ th.text() +'"}');
+					TreeList.list('countSearchUserKnowledge',sid);
+				}
+				
+				function initchangeSubject(obj) {//初始化 解析cookie的 值
+					defaultOption.sid = obj.sid;
+					$('.cSname').html(obj.sname);						
+					TreeList.list('countSearchUserKnowledge',defaultOption.sid);
+				}
+				//设置cookie 信息
+				function setindexingCookie(id,name) {
+					$.cookie('knowledgeindexing','{"id":"'+ id +'","name":"'+ name +'"}');
+				}				
+
+				$(function(){
+					function init() {
+						getSubject();
+						//更改学科 试题列表刷新
+						$('#changeSubjectCnt').on('click','a',function(e){
+							e.preventDefault();
+							changeSubject(this);
+						});
+						$(".btn-password").colorbox({
+							iframe : true,
+							width : "400px",
+							height : "330px",
+							opacity : '0.5',
+							overlayClose : false,
+							escKey : true
+						})
+					}					
+					init();		
+				})					
+				</script>	
+		    </div>
+		</div>
+		
+		
+	</div> <!--end row-->
+	
+</div>	<!--end container-->
+
+<div class="bs-footer">
+  <div>
+	  <p>Copyright © 2014 中国教育电视台 京ICP证101020号.     <a target="_blank" href="http://www.guoshi.com/">联系我们</a></p>
+
+  </div>
+</div>
+
+</body>
+</html>
+		

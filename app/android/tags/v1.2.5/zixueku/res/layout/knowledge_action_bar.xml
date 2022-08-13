@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/actionBarSize"
+    android:background="@color/white" >
+
+    <!-- 最左端的返回按钮 -->
+    
+    <ImageButton
+        android:id="@+id/knowledge_action_bar_left_go_back_button"
+        style="@style/ActionBarLeftButtonStyle"
+        android:background="@drawable/action_bar_button_background"
+        android:src="@drawable/list_icon"  />
+
+    <TextView
+        android:id="@+id/knowledge_action_bar_center_text"
+        style="@style/ActionBarCenterTextStyle"
+        android:layout_centerInParent="true" />
+   
+</RelativeLayout>

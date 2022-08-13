@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/analysisbackground" >
+
+    <!-- 禁止ScrollView内的控件改变之后自动滚动 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <com.zixueku.widget.CustomWebView
+                    android:id="@+id/judge_content"
+                    style="@style/WebViewStyle" />
+
+                <include layout="@layout/question_title2" />
+            </FrameLayout>
+
+            <com.zixueku.widget.CustomListView
+                android:id="@+id/judge_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:divider="@color/transparent"
+                android:listSelector="@color/transparent"
+                android:paddingBottom="20dp" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/AnalysisLayoutStyle" >
+
+            <include layout="@layout/analysis_answer_layout_judge" />
+
+            <include layout="@layout/analysis_test_num_layout" />
+
+            <TextView
+                android:id="@+id/judge_analysis"
+                style="@style/AnalysisTextStyle" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

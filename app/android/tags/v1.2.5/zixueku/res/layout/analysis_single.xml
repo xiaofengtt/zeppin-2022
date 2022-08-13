@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/analysisbackground"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical" >
+
+            <!-- 禁止ScrollView内的控件改变之后自动滚动 -->
+
+            <LinearLayout
+                android:id="@+id/analysis_bar"
+                style="@style/ExerciseTipLayoutStyle"
+                android:background="@color/white" >
+
+                <TextView
+                    android:id="@+id/single_type_name"
+                    style="@style/ExerciseTypeNameTextStyle" />
+                
+                <View
+                    style="@style/ExerciseTipSplitLine" />
+
+                <TextView
+                    android:id="@+id/single_source_name"
+                    style="@style/ExerciseSourceNameTextStyle" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/exercise_single_content_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white" >
+
+                <TextView
+                    android:id="@+id/exercise_single_content"
+                    style="@style/ExerciseContentTextStyle"
+                    android:focusable="false" />
+            </LinearLayout>
+
+            <com.zixueku.widget.CustomListView
+                android:id="@+id/exercise_single_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:divider="@color/transparent"
+                android:listSelector="@color/transparent"
+                android:paddingBottom="20dp" />
+           
+
+            <LinearLayout style="@style/AnalysisLayoutStyle" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/AnalysisTextStyle"
+                        android:text="正确答案:" />
+
+                    <TextView
+                        android:id="@+id/right_answer"
+                        style="@style/AnalysisTextStyle" />
+                </LinearLayout>
+
+                <org.sufficientlysecure.htmltextview.HtmlTextView
+                    android:id="@+id/single_analysis"
+                    style="@style/AnalysisTextStyle" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

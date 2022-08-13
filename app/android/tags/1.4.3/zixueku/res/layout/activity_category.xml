@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/category_action_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/green"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:src="@drawable/category_image" />
+
+        <TextView
+            style="@style/s4"
+            android:paddingTop="15dp"
+            android:text="请选择您的考试科目"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/teacher_layout"
+            style="@style/categoryItemLayoutStyle" >
+
+            <ImageView
+                android:id="@+id/teacher_icon"
+                style="@style/categoryItemImageViewStyle"
+                android:src="@drawable/teacher_icon" />
+
+            <TextView
+                style="@style/s5"
+                android:text="教师资格" />
+
+            <TextView
+                style="@style/s7"
+                android:paddingTop="2dp"
+                android:text="做互联网时代的新教师"
+                android:textColor="@color/dimgrey" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/security_layout"
+            style="@style/categoryItemLayoutStyle" >
+
+            <ImageView
+                style="@style/categoryItemImageViewStyle"
+                android:src="@drawable/security_image" />
+
+            <TextView
+                style="@style/s5"
+                android:text="证券从业" />
+
+            <TextView
+                style="@style/s7"
+                android:paddingTop="2dp"
+                android:text="爬上互联网金融台风口"
+                android:textColor="@color/dimgrey" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 第二行 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/psychology_layout"
+            style="@style/categoryItemLayoutStyle" >
+
+            <ImageView
+                style="@style/categoryItemImageViewStyle"
+                android:src="@drawable/psychology_image" />
+
+            <TextView
+                style="@style/s5"
+                android:text="心理咨询" />
+
+            <TextView
+                style="@style/s7"
+                android:paddingTop="2dp"
+                android:text="治愈心灵的自由职业者 "
+                android:textColor="@color/dimgrey" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/category_background"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                style="@style/categoryItemImageViewStyle"
+                android:src="@drawable/tour_image" />
+
+            <TextView
+                style="@style/s5"
+                android:text="导游资格"
+                android:textColor="@color/dimgrey" />
+
+            <TextView
+                style="@style/s7"
+                android:paddingTop="2dp"
+                android:text="更多考试陆续上线"
+                android:textColor="@color/dimgrey" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

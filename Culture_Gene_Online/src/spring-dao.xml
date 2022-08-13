@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="categoryDAO" class="cn.zeppin.dao.imp.CategoryDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="funcationDAO" class="cn.zeppin.dao.imp.FuncationDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="keywordDAO" class="cn.zeppin.dao.imp.KeywordDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="nationalDAO" class="cn.zeppin.dao.imp.NationalDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="resourceDAO" class="cn.zeppin.dao.imp.ResourceDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="resourceTagDAO" class="cn.zeppin.dao.imp.ResourceTagDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="resourceCustomTagDAO" class="cn.zeppin.dao.imp.ResourceCustomTagDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="roleDAO" class="cn.zeppin.dao.imp.RoleDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="roleFuncationDAO" class="cn.zeppin.dao.imp.RoleFuncationDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="userDAO" class="cn.zeppin.dao.imp.UserDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="userDownloadResourceDAO" class="cn.zeppin.dao.imp.UserDownloadResourceDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="userLoveResourceDAO" class="cn.zeppin.dao.imp.UserLoveResourceDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+</beans>

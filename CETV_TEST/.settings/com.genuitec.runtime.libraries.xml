@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project adv-config="true">
+  <add-on id="web.struts2.rest"/>
+  <add-on id="spring.web"/>
+  <add-on id="hibernate.extra"/>
+  <disabled-container path="com.genuitec.runtime.library/com.genuitec.spring.security_3.1"/>
+  <disabled-container path="com.genuitec.runtime.library/com.genuitec.spring.webflow_2.3"/>
+  <container path="com.genuitec.runtime.library/com.genuitec.struts_2.1">
+    <disable name="struts2-rest-plugin-2.2.1.jar" type="jar"/>
+    <disable name="xpp3_min-1.1.3.4.O.jar" type="jar"/>
+    <disable name="xstream-1.2.2.jar" type="jar"/>
+  </container>
+  <container path="com.genuitec.runtime.library/com.genuitec.hibernate_4.1">
+    <disable name="slf4j-api-1.6.1.jar" type="jar"/>
+    <disable name="c3p0-0.9.1.jar" type="jar"/>
+    <disable name="ehcache-core-2.4.3.jar" type="jar"/>
+    <disable name="hibernate-c3p0-4.1.4.Final.jar" type="jar"/>
+    <disable name="proxool-0.8.3.jar" type="jar"/>
+  </container>
+  <container path="com.genuitec.runtime.library/com.genuitec.spring_3.1">
+    <disable name="commons-fileupload-1.2.jar" type="jar"/>
+    <disable name="c3p0-0.9.1.2.jar" type="jar"/>
+    <disable name="commons-dbcp-1.4.jar" type="jar"/>
+  </container>
+  <container path="com.genuitec.runtime.library/com.genuitec.jaxrs_jersey_2.0">
+    <disable name="cglib-2.2.0-b21.jar" type="jar"/>
+  </container>
+</project>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 与服务器交互基本信息设置 -->
+    <string name="net_error">网络连接错误</string>
+    <string name="server_down">服务器连接超时</string>
+    <string name="no_internet">暂无网络</string>
+    <string name="HelloWord">hello</string>
+
+    <string name="AuthUser">ssoAuthUser.action</string>
+
+    <!-- http://localhost:8080/SelfCool/categoryList?level=1 -->
+    <string name="CategoryList">categoryList?level=1</string>
+    <string name="CategoryLoadSubjects">categoryLoadSubjects</string>
+
+    <!-- http://192.168.1.109:8080/SelfCool/userSubjectAdd?user.id=?&subject.id=?&subject.id=?… -->
+    <string name="UserSubjectAdd">userSubjectAdd</string>
+
+    <!-- http://192.168.1.109:8080/SelfCool/userSubjectList?user.id=? -->
+    <string name="UserSubjectList">userSubjectList</string>
+
+    <!-- http://192.168.1.130:8080/SelfCool/knowledgeTreeForUser?subject.id=31&user.id=1 -->
+    <string name="KnowledgeSearchAll">knowledgeTreeForUser</string>
+
+    <!-- http://localhost:8080/SelfCool/userTestSelectItems?subject.id=26&user.id=1&knowledge.id=70 -->
+    <string name="UserTestSelectItems">userTestSelectItems</string>
+    <string name="UserTestSubmitAutoPaper">userTestSubmitAutoPaper</string>
+
+    <!-- userSubjectDelete?uid=1&&subject.id=1 -->
+    <string name="UserSubjectDelete">userSubjectDelete</string>
+
+    <!-- http://localhost:8080/SelfCool/userSubjectItemTypeList?user.id=1&subject.id=28&isStandard=0 -->
+    <string name="UserSubjectItemTypeList">userSubjectItemTypeList</string>
+    <!-- http://localhost:8080/SelfCool/userTestItemList?user.id=1&subject.id=28&itemType.id=25 -->
+    <string name="UserTestItemList">userTestItemList</string>
+    <string name="UserTestMasterItem">userTestMasterItem</string>
+
+    <!-- http://localhost:8080/SelfCool/userWrongBookItemList?user.id=1&subject.id=28&version=1.2.5 -->
+    <string name="UserWrongBookItemList">userWrongBookItemList</string>
+
+    <!-- version,user.id,item.id,item.blankInx(题目列表接口返回) -->
+    <string name="UserWrongBookDeleteItem">userWrongBookDeleteItem</string>
+    <string name="UserWrongBookSubmitItem">userWrongBookSubmitItem</string>
+    <string name="UserUpdate">ssoUserUpdate</string>
+    <string name="SmssendSms">smssendSms</string>
+    
+    <!-- 版本更新检测 -->
+    <string name="VersionVerify">ssoVersionVerify</string>
+    <string name="ActivityGetList">activityGetList</string>
+    
+    <!-- 试卷 -->
+    <!-- http://localhost:8080/SelfCool/userTestSelectPaperType?subject.id=29 -->
+    <string name="UserTestSelectPaperType">userTestSelectPaperType</string>
+    
+    <string name="UserTestPaperList">userTestPaperList</string>
+</resources>

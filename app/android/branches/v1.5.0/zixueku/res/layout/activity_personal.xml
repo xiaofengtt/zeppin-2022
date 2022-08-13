@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activity.PersonalActivity" >
+
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_title_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/action_bar" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/rl_change_psw"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/personal_item_height" >
+
+                <LinearLayout style="@style/PersonalLinearLayoutStyle" >
+
+                    <ImageView
+                        style="@style/PersonalIconStyle"
+                        android:src="@drawable/user_psw" />
+
+                    <TextView
+                        android:id="@+id/user_name"
+                        style="@style/PersonalTextStyle"
+                        android:text="修改密码" />
+                </LinearLayout>
+
+                <ImageView style="@style/PersonalRightIconStyle" />
+            </RelativeLayout>
+
+            <View style="@style/PsersonHorizontalLine" />
+
+            <RelativeLayout
+                android:id="@+id/rl_about"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/personal_item_height" >
+
+                <LinearLayout style="@style/PersonalLinearLayoutStyle" >
+
+                    <ImageView
+                        style="@style/PersonalIconStyle"
+                        android:src="@drawable/user_about" />
+
+                    <TextView
+                        style="@style/PersonalTextStyle"
+                        android:text="关于自学酷" />
+                </LinearLayout>
+
+                <ImageView style="@style/PersonalRightIconStyle" />
+            </RelativeLayout>
+
+            <View style="@style/PsersonHorizontalLine" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/personal_exit"
+        style="@style/LongGreyButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/quit" />
+
+</RelativeLayout>

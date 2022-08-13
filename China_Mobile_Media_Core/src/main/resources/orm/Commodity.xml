@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.Commodity">
+
+	<!-- 根据参数取count -->
+	<select id="commodity_getCountByParams" parameterType="java.util.Map" resultType="int">
+		select count(*) from commodity com,sys_user su where com.creator=su.id
+		<if test="id != null and id != ''">
+			and com.id = #{id} 
+		</if>
+		<if test="name != null and name != ''">
+			and com.name like "%"#{name}"%" 
+		</if>
+		<if test="price != null and price != ''">
+			and com.price = #{level} 
+		</if>
+		<if test="originalPrice != null and originalPrice != ''">
+			and com.original_price = #{originalPrice} 
+		</if>
+		<if test="status != null and status != ''">
+			and com.status = #{status} 
+		</if>
+	</select> 
+	
+	<!-- 根据参数取vo -->
+	<select id="commodity_getListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.vo.CommodityVO">
+		select com.id as id,com.name as name,com.cover as cover,com.price as price,com.original_price as originalPrice,su.name as creator,com.createtime as createtime 
+		from commodity com,sys_user su 
+		where com.creator=su.id
+		<if test="id != null and id != ''">
+			and com.id = #{id} 
+		</if>
+		<if test="name != null and name != ''">
+			and com.name like "%"#{name}"%" 
+		</if>
+		<if test="price != null and price != ''">
+			and com.price = #{level} 
+		</if>
+		<if test="originalPrice != null and originalPrice != ''">
+			and com.original_price = #{originalPrice} 
+		</if>
+		<if test="status != null and status != ''">
+			and com.status = #{status} 
+		</if>
+		<if test="sort != null and sort != ''">
+			order by com.${sort}
+		</if>
+		<if test="start != null and start != '' and limit != null and limit != ''">
+			limit ${start},${limit}
+		</if>
+	</select> 
+	
+	<!-- 加载数据 -->  
+	<select id="commodity_get"  resultType="com.cmos.china.mobile.media.core.bean.Commodity">  
+		select * from commodity where id=#{id}  
+	</select> 
+	 
+	<!-- 增加数据 -->  
+	<insert id="commodity_add" parameterType="com.cmos.china.mobile.media.core.bean.Commodity" useGeneratedKeys="true" keyProperty="id">  
+		insert into commodity(id,url,name,cover,price,original_price,status,creator,createtime) 
+		values(#{id},#{url},#{name},#{cover},#{price},#{originalPrice},#{status},#{creator},#{createtime})  
+	</insert>  
+	
+	<!-- 修改数据 -->  
+	<update id="commodity_update" parameterType="com.cmos.china.mobile.media.core.bean.Commodity">  
+		update commodity 
+		set name=#{name},url=#{url},name=#{name},cover=#{cover},price=#{price},original_price=#{originalPrice},status=#{status}
+		where id=#{id}  
+	</update>  
+	
+	<!-- 删除数据 -->  
+	<update id="commodity_delete" parameterType="com.cmos.china.mobile.media.core.bean.Commodity">  
+		update commodity set status='deleted' where id=#{id}
+	</update>  
+</mapper>  

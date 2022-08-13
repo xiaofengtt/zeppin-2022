@@ -1,0 +1,46 @@
+
+#content{ background-color: #FFFFFF;}
+#content .content_inner{ width: 100%; /*max-width: 750px;*/ padding: 0 0.25rem;}
+#content .content_inner .list{}
+#content .content_inner .list h1{ color: #333333; font-size: 0.38rem; float: left; line-height: 0.8rem; padding-right: 0.15rem; font-weight: bold;}
+#content .content_inner .list h1:active{color:#35a5ee;}
+#content .content_inner .list h2{ color: #888888; font-size: 0.30rem;float: left; line-height: 0.85rem; padding: 0 0.15rem;font-weight: normal;}
+#content .content_inner .list h2:active{color:#35a5ee;}
+#content .content_inner .list h3{ color: #888888; font-size: 0.30rem;float: right; line-height: 0.85rem; padding: 0 0.15rem;font-weight: normal;}
+#content .content_inner .list h3:active{color:#35a5ee;}
+#content .content_inner img.banner{ width: 100%; position: relative;height:4.2rem;}
+#content .content_inner p.bannerInfo{ position: absolute; font-size: 0.38rem; color: #ffffff; line-height: 0.8rem; padding-left: 0.1rem; margin-top: -0.8rem;background:url(../images/videoPPPP.png) no-repeat;background-size:100% 100%;height:0.8rem;width:7.0rem;}
+#content .content_inner div.video{ width: 100%; border-bottom: 1px solid #dddddd; padding: 0.2rem 0;}
+#content .content_inner div.video img{ display: inline-block; float: left; width: 35.7143%;height:1.8rem;}
+#content .content_inner div.video p{ display: inline-block; color: #333333; font-size: 0.32rem;line-height: 0.6rem; width: 64.2857%; padding:0 0.2rem; letter-spacing: 0; padding-top: 0.1rem;}
+#content .content_inner div.video_review{ width: 50%;float: left; padding-bottom: 0.2rem;}
+#content .content_inner div.video_reviewleft{ padding-right: 0.1rem; }
+#content .content_inner div.video_reviewright{ padding-left: 0.1rem; }
+#content .content_inner div.video_review img{ width: 100%; height:2.25rem;}
+#content .content_inner div.video_review p{ font-size: 0.30rem; color: #333333; line-height: 0.48rem;padding:0 0.05rem;white-space:nowrap;overflow: hidden;text-overflow:ellipsis;}
+#content .content_inner hr{border:none;border-bottom: 1px solid #cccccc;}
+#content .content_inner .Business{ width: 100%;}
+#content .content_inner .Business img{ width: 7rem;height:2.9rem; padding-bottom: 0.33rem;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

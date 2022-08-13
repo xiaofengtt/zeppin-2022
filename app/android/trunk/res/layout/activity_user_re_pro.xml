@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/action_bar" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="52dp" >
+
+        <com.zixueku.customview.LineEditText
+            android:id="@+id/et_pro"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="44dp"
+            android:layout_marginRight="44dp"
+            android:layout_marginTop="5dp"
+            android:background="@null"
+            android:hint="职业名"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:id="@+id/text_delete_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/et_pro"
+            android:layout_marginTop="22dp"
+            android:src="@drawable/user_edit_delete" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btn_user_select"
+        android:text="提交"
+        android:textColor="@android:color/white"
+        android:textSize="17sp" />
+
+</LinearLayout>

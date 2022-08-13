@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE control SYSTEM "common-1.7-SNAPSHOT.dtd"> -->
+
+<control>
+	<action path="/front/admin/category!execute">
+		<input uid="a0001" service="categoryService" method="list" desc="获取栏目列表">
+			<parameter key="id" toKey="id"/>
+			<parameter key="name" toKey="name"/>
+			<parameter key="level" toKey="level"/>
+			<parameter key="parent" toKey="parent"/>
+			<parameter key="status" toKey="status"/>
+			<parameter key="scode" toKey="scode"/>
+			<parameter key="pagenum" toKey="pagenum" regex="num,maxlength=6"/>
+			<parameter key="pagesize" toKey="pagesize" regex="num,maxlength=6"/>
+			<parameter key="sort" toKey="sort"/>
+		</input>
+		
+		<input uid="a0002" service="categoryService" method="load" desc="加载栏目详细信息">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+		</input>
+		
+		<input uid="a0003" service="categoryService" method="add" desc="添加栏目">
+			<parameter key="name" toKey="name" regex="required"/>
+			<parameter key="parent" toKey="parent"/>
+			<parameter key="status" toKey="status" regex="required"/>
+			<parameter key="usersession.id" toKey="creator" scope="session" regex="required"/>
+		</input>
+		
+		<input uid="a0004" service="categoryService" method="edit" desc="编辑栏目">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+			<parameter key="name" toKey="name" regex="required"/>
+			<parameter key="status" toKey="status" regex="required"/>
+		</input>
+		
+		<input uid="a0005" service="categoryService" method="delete" desc="删除栏目">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+		</input>
+		
+		<input uid="a0006" service="categoryService" method="loadNav" desc="加载栏目路径">
+			<parameter key="parent" toKey="parent" regex="required,length=36"/>
+		</input>
+	</action>
+</control>

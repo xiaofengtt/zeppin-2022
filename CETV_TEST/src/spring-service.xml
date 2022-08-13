@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+	<bean id="areaService" class="cn.zeppin.service.imp.AreaService">
+		<property name="areaDAO" ref="areaDAO" />
+	</bean>
+
+	<bean id="sysUserService" class="cn.zeppin.service.imp.SysUserService">
+		<property name="sysUserDAO" ref="sysUserDAO" />
+		<property name="sysUserGradeDAO" ref="sysUserGradeDAO" />
+		<property name="sysUserSubjectDAO" ref="sysUserSubjectDAO" />
+	</bean>
+
+	<bean id="sysUserSubjectService" class="cn.zeppin.service.imp.SysUserSubjectService">
+		<property name="sysUserSubjectDAO" ref="sysUserSubjectDAO" />
+	</bean>
+
+	<bean id="sysUserGradeService" class="cn.zeppin.service.imp.SysUserGradeService">
+		<property name="sysUserGradeDAO" ref="sysUserGradeDAO" />
+	</bean>
+
+	<bean id="gradeService" class="cn.zeppin.service.imp.GradeService">
+		<property name="gradeDAO" ref="gradeDAO" />
+	</bean>
+
+	<bean id="resourceService" class="cn.zeppin.service.imp.ResourceService">
+		<property name="iResourceDAO" ref="resourceDAO"></property>
+	</bean>
+
+	<bean id="textbookService" class="cn.zeppin.service.imp.TextBookService">
+		<property name="textbookDAO" ref="textbookDAO"></property>
+	</bean>
+	<bean id="textbookCapterService" class="cn.zeppin.service.imp.TextbookCapterService">
+		<property name="textbookCapterDAO" ref="textbookCapterDAO"></property>
+	</bean>
+	<bean id="categoryService" class="cn.zeppin.service.imp.CategoryService">
+		<property name="categoryDAO" ref="categoryDAO"></property>
+	</bean>
+
+	<bean id="subjectService" class="cn.zeppin.service.imp.SubjectService">
+		<property name="subjectDAO" ref="subjectDAO"></property>
+		<property name="subjectItemTypeDAO" ref="subjectItemTypeDAO"></property>
+	</bean>
+
+	<bean id="subjectItemTypeService" class="cn.zeppin.service.imp.SubjectItemTypeService">
+		<property name="subjectItemTypeDAO" ref="subjectItemTypeDAO"></property>
+	</bean>
+
+
+	<bean id="knowledgeService" class="cn.zeppin.service.imp.KnowledgeService">
+		<property name="knowledgeDAO" ref="knowledgeDAO"></property>
+	</bean>
+
+	<bean id="organizationService" class="cn.zeppin.service.imp.OrganizationService">
+		<property name="organizationDAO" ref="organizationDAO"></property>
+	</bean>
+
+	<bean id="roleFuncationService" class="cn.zeppin.service.imp.RoleFunctionService">
+		<property name="roleFunctionDAO" ref="roleFuncationDAO"></property>
+	</bean>
+
+	<bean id="itemService" class="cn.zeppin.service.imp.ItemService">
+		<property name="itemDAO" ref="itemDAO"></property>
+		<property name="itemAnswerDAO" ref="itemAnswerDAO"></property>
+	</bean>
+
+	<bean id="itemTypeService" class="cn.zeppin.service.imp.ItemTypeService">
+		<property name="itemTypeDAO" ref="itemTypeDAO"></property>
+		<property name="subjectItemTypeDAO" ref="subjectItemTypeDAO"></property>
+	</bean>
+
+	<bean id="strategyTypeService" class="cn.zeppin.service.imp.StrategyTypeService" >
+		<property name="strategyTypeDAO" ref="strategyTypeDAO" />
+	</bean>	
+
+	<bean id="strategyService" class="cn.zeppin.service.imp.StrategyService" >
+		<property name="strategyDAO" ref="strategyDAO" />
+	</bean>	
+	
+	<bean id="materialService" class="cn.zeppin.service.imp.MaterialService">
+		<property name="materialDAO" ref="materialDAO"></property>
+	</bean>
+	
+	<bean id="paperService" class="cn.zeppin.service.imp.PaperService">
+		<property name="paperDAO" ref="paperDAO"></property>
+		<property name="testPaperSectionDAO" ref="testPaperSectionDAO"></property>
+	</bean>
+	
+	<bean id="testPaperSectionService" class="cn.zeppin.service.imp.TestPaperSectionService">
+		<property name="testPaperSectionDAO" ref="testPaperSectionDAO"></property>
+	</bean>
+	
+	<bean id="testPaperItemService" class="cn.zeppin.service.imp.TestPaperItemService">
+		<property name="testPaperItemDAO" ref="testPaperItemDAO"></property>
+	</bean>
+	
+	<!-- 前端用户行为 -->
+	<bean id="userService" class="cn.zeppin.service.imp.UserService" >
+		<property name="userDAO" ref="userDAO"></property>
+	</bean>
+	
+	<bean id="userAccessLogService" class="cn.zeppin.service.imp.UserAccessLogService" >
+		<property name="userAccessLogDAO" ref="userAccessLogDAO"></property>
+	</bean>
+	
+	<bean id="userTextbookService" class="cn.zeppin.service.imp.UserTextbookService">
+		<property name="userTextbookDAO" ref="userTextbookDAO" />
+	</bean>
+	
+	<bean id="userKnowledgeDegreeService" class="cn.zeppin.service.imp.UserKnowledgeDegreeService">
+		<property name="userKnowledgeDegreeDAO" ref="userKnowledgeDegreeDAO"></property>
+	</bean>
+	
+	<bean id="userTestService" class="cn.zeppin.service.imp.UserTestService">
+		<property name="userTestDAO" ref="userTestDAO"></property>
+	</bean>
+	
+	<bean id="userRankService" class="cn.zeppin.service.imp.UserRankService">
+		<property name="userRankDAO" ref="userRankDAO"></property>
+	</bean>
+	
+	<bean id="userTestItemService" class="cn.zeppin.service.imp.UserTestItemService">
+		<property name="userTestItemDAO" ref="userTestItemDAO"></property>
+	</bean>
+	
+	<bean id="userTextbookcapterDegreeService" class="cn.zeppin.service.imp.UserTextbookcapterDegreeService">
+		<property name="userTextbookcapterDegreeDAO" ref="userTextbookcapterDegreeDAO"></property>
+	</bean>
+	
+	<bean id="medalService" class="cn.zeppin.service.imp.MedalService">
+		<property name="medalDAO" ref="medalDAO"></property>
+	</bean>
+	
+</beans>

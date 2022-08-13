@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>章节管理</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../css/bootstrap2.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+	
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../css/metro/blue/jtable.css" rel="stylesheet" type="text/css" >
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/jquery.jtable.js"></script>
+<script src="../js/jquery.jtable.zh-CN.js"></script>
+
+<script src="../js/url.min.js"></script>
+<script src="../js/mustache.js"></script> 
+
+
+</head>
+<body>
+
+
+
+<div  class="ifrcnt container">
+
+	<div class="">
+		
+		<div class="">
+			
+			<div class="bd">
+			<div class="tablewrap"  style="position:relative">
+				<div class="cui-menu" style="position: absolute;top: 50px;left: 0;z-index: 2;">
+					<button class="btn btn-primary btn-create" type="button">
+						+ 添加章节
+					</button>
+				</div>
+				<div id="TableContainer"></div>
+
+
+				<script type="text/javascript">
+					
+					$(document)
+							.ready(
+									function() {
+										var textbookid = (url('?textbook.id') != null) ? url('?textbook.id') : '';
+										var capterid = (url('?textbookCapter.id') != null) ? url('?textbookCapter.id') : '';
+										var level = (url('?level') == null) ? '' : 1; 
+										var listurl = (url('?level') != null) ? '../textbookCapterSearch?textbook.id='+ textbookid + '&level='+level : '../textbookCapterSearch?textbookCapter.id='+capterid ;
+										var navarr = []; 
+										$.get('textbookCapterLoadCapterNav?textbookCapter.id='+capterid,function(r) {
+											if(r.Status =='success') {
+												for ( var i = 0, l = r.Records.length; i < l; i++ ) {
+												    var navhtml = ' &gt; <a href="../admin/textbookCapteriframe.html?textbookCapter.id='+ r.Records[i].id+'&textbook.id='+textbookid+'">'+ r.Records[i].name +'</a>';
+													navarr.push(navhtml);
+										
+												}
+												
+											}
+											
+										}).done(function(){
+											$('#TableContainer').jtable(
+												{
+													title : '<a href="../admin/textbookCapteriframe.html?textbook.id='+textbookid +'&level=1">章节管理</a> '+ navarr.join(''),
+													messages : zhCN, //Lozalize
+													paging : true, //Enable paging
+													pageSize : 10, //Set page size (default: 10)
+													pageSizes : [ 10, 20, 30, 40, 50 ],
+													sorting : true, //Enable sorting
+													defaultSorting : 'id ASC', //Set default sorting
+													dialogShowEffect : 'drop',
+													addRecordButton : $('.btn-create'),
+													actions : {
+														listAction : listurl,
+														updateAction : '../textbookCapterUpdate',
+														deleteAction :'../textbookCapterDelete',
+														createAction : '../textbookCapterAdd?textbookCapter.id='+capterid
+													},
+													fields : {
+														id : {
+															title : '编号',
+															key : true,
+															width:'5%'
+														},
+														number : {
+															title : '章节序号',
+															width: '8%'
+													
+														},
+														name : {
+															title : '章节名',
+															width : '8%'
+													
+														},
+														'textbook.id' : {
+															type: 'hidden',
+															defaultValue: textbookid
+													
+														},
+														addviewchild: {
+										                    title: '操作',
+										                    width: '10%',
+										                    sorting: false,
+										                    edit: false,
+										                    create: false,
+										                    display: function (data) {
+																//if(data.record.isschool == 0) {
+																	var html ='<a href="../admin/textbookCapteriframe.html?textbookCapter.id=' + data.record.id +'&textbook.id='+ textbookid +'">管理下级章节</a>';
+																	//}else {
+																	//var html = '';
+																	//}
+																return html;
+															}
+					
+														}
+	
+										
+													},
+											
+													columnResizable : false,
+													deleteConfirmation: function(data) {
+													  data.deleteConfirmMessage = '确定要删除这行数据?';
+													},
+													formClosed : function(event,data) {
+												
+														//if(data.formType =="create" ) {
+												
+													
+														//}
+												
+													}
+											
+												});
+												
+
+											$('#TableContainer').jtable('load');
+									});
+									})
+				</script>
+
+			</div>
+		</div>
+		</div>
+		
+		
+	</div> <!--end row-->
+	
+</div>	<!--end container-->
+
+</body>
+</html>
+		

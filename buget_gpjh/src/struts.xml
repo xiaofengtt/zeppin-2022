@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="struts2" extends="struts-default">
+
+		<action name="budget_*" class="peBudgetmpAction" method="{1}">
+			<result name="yusuan">fee_yusuan.jsp</result>
+			<result name="ok">msg.jsp</result>
+			<result name="yusuan_print">fee_yusuan_print.jsp</result>
+			<result name="actual_pdf">pdfshow.jsp</result>
+		</action>
+		
+		<action name="actual_*" class="peActualBudgetAction" method="{1}">
+			<result name="actual">fee_actual.jsp</result>
+			<result name="ok">msg.jsp</result>
+			<result name="actual_print">fee_actual_print.jsp</result>
+			<result name="actual_pdf">pdfshow.jsp</result>
+		</action>
+		
+		<action name="actualnew_*" class="peActualBudgetNewAction" method="{1}">
+			<result name="actual">fee_actual_new.jsp</result>
+			<result name="ok">msg.jsp</result>
+			<result name="actual_print">fee_actual_print_new.jsp</result>
+			<result name="actual_pdf">pdfshow.jsp</result>
+		</action>
+
+		<action name="budgetnew_*" class="peBudgetmpNewAction" method="{1}">
+			<result name="yusuan">fee_yusuan_new.jsp</result>
+			<result name="ok">msg.jsp</result>
+			<result name="yusuan_print">fee_yusuan_print_new.jsp</result>
+			<result name="actual_pdf">pdfshow.jsp</result>
+		</action>
+		
+		<action name="actualnewtwo_*" class="peActualBudgetNewTwoAction" method="{1}">
+			<result name="actual">fee_actual_new2.jsp</result>
+			<result name="ok">msg.jsp</result>
+			<result name="actual_print">fee_actual_print_new2.jsp</result>
+			<result name="actual_pdf">pdfshow.jsp</result>
+		</action>
+
+		<action name="budgetnewtwo_*" class="peBudgetmpNewTwoAction" method="{1}">
+			<result name="yusuan">fee_yusuan_new2.jsp</result>
+			<result name="ok">msg.jsp</result>
+			<result name="yusuan_print">fee_yusuan_print_new2.jsp</result>
+			<result name="actual_pdf">pdfshow.jsp</result>
+		</action>
+
+	</package>
+
+</struts>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <!-- <include layout="@layout/action_bar" /> -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <GridView
+            android:id="@+id/activity_hand_paper_gridView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="45dp"
+            android:horizontalSpacing="5dp"
+            android:listSelector="@color/transparent"
+            android:numColumns="5"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="35dp" >
+        </GridView>
+
+        <Button
+            android:id="@+id/hand_paper_submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@drawable/green_button_background"
+            android:text="@string/submit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/s4" />
+    </FrameLayout>
+
+</LinearLayout>

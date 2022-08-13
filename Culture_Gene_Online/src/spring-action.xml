@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="specialistAction" class="cn.zeppin.action.admin.SpecialistAction" scope="prototype">
+		<property name="userService" ref="userService" />
+	</bean>
+
+	<bean id="userManageAction" class="cn.zeppin.action.admin.UserManageAction" scope="prototype">
+		<property name="userService" ref="userService" />
+	</bean>
+
+	<bean id="nationalAction" class="cn.zeppin.action.admin.NationalAction" scope="prototype">
+		<property name="nationalService" ref="nationalService" />
+	</bean>
+
+	<bean id="categoryAction" class="cn.zeppin.action.admin.CategoryAction" scope="prototype">
+		<property name="categoryService" ref="categoryService" />
+	</bean>
+
+	<bean id="loginAction" class="cn.zeppin.action.sso.LoginAction" scope="prototype">
+		<property name="userService" ref="userService" />
+	</bean>
+
+	<bean id="userAction" class="cn.zeppin.action.web.UserAction" scope="prototype">
+		<property name="userService" ref="userService" />
+		<property name="roleService" ref="roleService"/>
+	</bean>
+
+	<bean id="webAction" class="cn.zeppin.action.web.WebAction" scope="prototype">
+		<property name="resourceService" ref="resourceService" />
+		<property name="nationalService" ref="nationalService" />
+		<property name="categoryService" ref="categoryService" />
+		<property name="keywordService" ref="keywordService" />
+		<property name="userLoveResourceService" ref="userLoveResourceService" />
+		<property name="userDownloadResourceService" ref="userDownloadResourceService" />
+	</bean>
+
+	<bean id="resourceAction" class="cn.zeppin.action.admin.ResourceAction" scope="prototype">
+		<property name="resourceService" ref="resourceService" />
+		<property name="resourceTagService" ref="resourceTagService" />
+		<property name="resourceCustomTagService" ref="resourceCustomTagService" />
+		<property name="nationalService" ref="nationalService" />
+		<property name="categoryService" ref="categoryService" />
+	</bean>
+
+	<bean id="rolefuncationAction" class="cn.zeppin.action.admin.NavigationAction" scope="prototype">
+		<property name="roleFunctionService" ref="roleFuncationService"/>
+	</bean>
+
+	<bean id="latexAction" class="cn.zeppin.action.latex.LatexAction" scope="prototype"></bean>
+	
+</beans>

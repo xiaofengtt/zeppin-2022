@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true"><shape android:shape="rectangle">
+            <!-- 填充色 -->
+            <solid android:color="#F7F7F7" />
+            <stroke android:width="0.5dp" android:color="@color/dimgrey"></stroke>
+        </shape></item>
+    <item android:state_pressed="false"><shape android:shape="rectangle">
+            <!-- 填充色 -->
+            <solid android:color="@android:color/white" />
+        </shape></item>
+
+</selector>

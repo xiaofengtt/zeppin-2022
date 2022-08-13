@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="2dp"
+    android:orientation="horizontal" >
+
+    <TextView
+        style="@style/AnalysisTextStyle"
+        android:text="答案解析:" />
+
+    <TextView
+        android:id="@+id/testItemCorrectCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:background="@drawable/test_num_background"
+        android:gravity="center"
+        android:text="做对2次"
+        android:textSize="@dimen/s8" />
+
+    <TextView
+        android:id="@+id/testItemWrongCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/test_num_background"
+        android:gravity="center"
+        android:text="做错2次"
+        android:textSize="@dimen/s8" />
+
+</LinearLayout>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res/com.zixueku"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/material_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <!-- 禁止ScrollView内的控件改变之后自动滚动 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <include layout="@layout/question_title2" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <org.sufficientlysecure.htmltextview.HtmlTextView
+                        android:id="@+id/material_content"
+                        style="@style/ExerciseContentTextStyle" />
+                </ScrollView>
+            </LinearLayout>
+
+            <com.ms.square.android.expandabletextview.ExpandableTextView
+                android:id="@+id/expand_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:paddingTop="20dp"
+                expandableTextView:animAlphaStart="1"
+                expandableTextView:maxCollapsedLines="0" >
+
+                <Button
+                    android:id="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|bottom"
+                    android:layout_marginLeft="15dp"
+                    android:background="@android:color/transparent"
+                    android:drawablePadding="2dip"
+                    android:drawableRight="@drawable/analysis_icon"
+                    android:text="查看解析"
+                    android:textSize="@dimen/s5" />
+
+                <TextView
+                    android:id="@id/analysis_title"
+                    style="@style/AnalysisTextStyle"
+                    android:layout_marginLeft="15dp"
+                    android:text="答案解析:"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@id/expandable_text"
+                    style="@style/AnalysisTextStyle"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp" />
+            </com.ms.square.android.expandabletextview.ExpandableTextView>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.shamanland.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/un_master_icon"
+        app:floatingActionButtonColor="@android:color/transparent"
+        app:floatingActionButtonShadow="false" />
+
+</RelativeLayout>

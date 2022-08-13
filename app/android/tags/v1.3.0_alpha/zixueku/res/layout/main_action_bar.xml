@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.zixueku"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/actionBarSize"
+    android:background="@color/white" >
+
+    <ImageButton
+        android:id="@+id/action_bar_infor"
+        android:layout_width="20dp"
+        android:layout_height="23dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/action_bar_left_right_margin"
+        android:background="@color/transparent"
+        android:scaleType="fitXY"
+        android:src="@drawable/infor_icon"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/main_dfv"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="31dp"
+        android:layout_marginTop="7dp"
+        android:src="@drawable/rect_circle_remind_"
+        android:visibility="invisible" />
+
+    <TextView
+        style="@style/ActionBarCenterTextStyle"
+        android:layout_centerInParent="true"
+        android:text="@string/preparing" />
+
+    <ImageButton
+        android:id="@+id/main_action_bar_add"
+        style="@style/ActionBarRightTextStyle"
+        android:background="@drawable/action_bar_button_background"
+        android:src="@drawable/add_icon2" />
+
+
+</RelativeLayout>

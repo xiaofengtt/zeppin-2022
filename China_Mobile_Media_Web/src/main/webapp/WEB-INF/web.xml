@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>China_Mobile_Media_Web</display-name>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring/spring-*.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- 启用Spring的scope='request' -->
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ForceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>control</filter-name>
+		<filter-class>com.cmos.chinamobile.media.filter.IControlRequestFilter</filter-class>
+		<init-param>
+			<param-name>controlRequestImpl</param-name>
+			<param-value>com.cmos.chinamobile.media.control.impl.ControlRequestImpl</param-value>
+		</init-param>
+		<init-param>
+			<param-name>controlFilePath</param-name>
+			<param-value>config/control.xml</param-value>
+		</init-param>
+		<init-param><!-- Internationalization config -->
+			<param-name>locale</param-name>
+			<param-value>zh_CN</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>control</filter-name>
+		<url-pattern>/front/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/front/*</url-pattern>
+	</filter-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	
+	<security-constraint>  
+	  	<web-resource-collection>
+			<web-resource-name>China_Mobile_Media_Web</web-resource-name>
+			<url-pattern>/*</url-pattern>
+			<http-method>TRACE</http-method>
+		</web-resource-collection>
+	 	
+	 	<web-resource-collection>
+			<web-resource-name>China_Mobile_Media_Web</web-resource-name>
+			<url-pattern>/front/web/*</url-pattern>
+			<http-method>PUT</http-method>
+			<http-method>DELETE</http-method>
+		</web-resource-collection>
+	 	
+		<auth-constraint>
+	        <role-name></role-name>
+		</auth-constraint>
+	 
+		<user-data-constraint>
+	        <transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+ 
+	</security-constraint>
+     
+	<login-config>
+	    <auth-method>BASIC</auth-method>
+	</login-config>
+	<error-page>
+		<error-code>400</error-code>
+		<location>/views/404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>401</error-code>
+		<location>/views/401.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/views/404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/views/500.jsp</location>
+	</error-page>
+</web-app>

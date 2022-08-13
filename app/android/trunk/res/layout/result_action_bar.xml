@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/actionBarSize"
+    android:background="@color/white" >
+
+    <!-- 包含返回按钮和中间文字的 action bar -->
+    <!-- 最左端的返回按钮 -->
+
+    <ImageButton
+        android:id="@+id/action_bar_left_go_back_button"
+        style="@style/ActionBarLeftButtonStyle"
+        android:background="@drawable/action_bar_button_background"
+        android:src="@drawable/back_icon2" />
+
+    <!-- action bar 中间显示的文字 -->
+
+    <TextView
+        android:id="@+id/action_bar_center_text"
+        style="@style/ActionBarCenterTextStyle" />
+
+</RelativeLayout>

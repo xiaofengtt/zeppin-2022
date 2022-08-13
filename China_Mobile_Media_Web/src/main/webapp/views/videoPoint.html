@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>关联商品</title>
+<link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/themes/light.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/style-responsive.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../assets/css/columLists.css" type="text/css"/>
+<link rel="stylesheet" href="../assets/css/main.css" type="text/css"/>
+<link rel="stylesheet" href="../assets/css/connectionGoods.css" type="text/css"/>
+
+<script src="../assets/plugins/jquery-2.2.4.min.js" type="text/javascript"></script>
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../assets/scripts/app.js" type="text/javascript"></script>
+<script src="../assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../app/js/index.js"></script>
+<script type="text/javascript" src="../assets/scripts/main.js"></script>
+<script src="../assets/scripts/connectionGoods.js" type="text/javascript"></script>
+<script src="../assets/plugins/url.min.js"></script>
+<script src="../assets/plugins/jquery.colorbox.js"></script>
+<script src="../assets/scripts/videoPoint.js" type="text/javascript"></script>
+<script src="../assets/scripts/index_bg.js" type="text/javascript"></script>
+</head>
+<body>
+
+</body>
+<div class="header navbar navbar-inverse navbar-fixed-top">
+            <!-- BEGIN TOP NAVIGATION BAR -->
+            <div class="header-inner">
+                <!-- BEGIN LOGO -->
+                <a class="navbar-brand" href="javascript:;">
+                    <img src="../assets/img/logoBG.png" alt="logo" class="img-responsive" />
+                </a>
+                <!-- END LOGO -->
+
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <ul class="nav navbar-nav pull-right">
+                		<li><a href="javascript:">欢迎&nbsp;&nbsp;<span id="loginname">秦龙</span>！</a></li>
+                		<li><a href="javascript:"><span id="datafomate">2016年4月27日&nbsp;&nbsp;星期三</span></a></li>
+                		<li><a onclick="logout()" href="../front/admin/user!logout?uid=u0002">退出</a></li>
+                    <!-- END USER LOGIN DROPDOWN -->
+                </ul>
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
+            <!-- END TOP NAVIGATION BAR -->
+        </div>
+<div class="page-container">
+	<div class="page-sidebar-wrapper" style="width:210px;float:left;">
+        <div class="page-sidebar navbar-collapse" style="width:100%;">
+            <!-- BEGIN SIDEBAR MENU -->
+            <ul class="page-sidebar-menu nav" id="page-sidebar-menu">
+                <li class="sidebar-toggler-wrapper">
+                    <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                    <div class="sidebar-toggler hidden-phone"></div>
+                    <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                </li>
+
+                <li class="leftli">
+                    <a href="javascript:;">
+                        <i class="fa fa-gears icon-home icon-black"></i><span class="title"> 资源管理 </span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="javascript:" onclick="gotoUrl('../views/categoryList.html');">栏目管理</a>
+                        </li>
+                        <li>
+                            <a href="javascript:" onclick="gotoUrl('../views/videoList.html');">视频管理</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" onclick="gotoUrl('../views/commodityList.html');">商品管理</a>
+                          </li>
+                      </ul>
+                  </li>
+
+				<li class="leftli">
+                      <a href="javascript:;">
+                          <i class="fa fa-user icon-home icon-black"></i><span class="title"> 发布管理 </span>
+                    </a>
+                    <ul class="sub-menu categoryList">
+                        <li><a href="javascript:;" onclick="gotoUrl('../views/videoPublishList.html?parent=062b6a49-5332-430a-a91d-1faf040a1c07');">新品发布</a></li>
+
+                    </ul>
+                </li>
+
+            </ul>
+            <!-- END SIDEBAR MENU -->
+        </div>
+    </div>
+    <div id="contentIframes" style="float:left;">
+			<div class="page-container">
+            <!-- BEGIN SIDEBAR -->
+            <!-- END SIDEBAR -->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                <a href="../views/videoList.html" class="linkAddress">&nbsp;资源列表&nbsp;</a>><a class="linkAddress">&nbsp;关联商品</a>
+            <div id="contents">           
+			<div class="content_inners">
+				
+				<!--视频内容部分-->
+				<div class="videoContent">
+					<p class="videoTitle"  id="videoTitle"></p>
+					<div class="ZeppinVideo" style="position:relative;">
+		                <div class="ZeppinVideo_Top" id="ZeppinVideo_Top">
+		                
+		                </div>
+		                <div class="ZeppinVideo_Bottom">
+		                    <div class="Progress">
+		                   		<div class='progressQQ' id="progressPoint"></div>
+		                   		<div class='timeBar'></div>
+		                   	</div>
+		                    <div class="kongzhianniu">
+		                    	<b class="bgligh"></b>
+		                    	<button></button>
+		                    	<input min="0" max="1" step="0.1" type="range">
+		                    	<p></p>
+		                    </div>
+		                </div>
+		            </div>					
+				</div>
+				
+				<!--视频内容部分结束-->
+
+				<!--视频节点图片-->
+				<div class="picbox">
+					<ul class="picbox_inner">
+						<li><img id="iframeImg_1" src="" name="" alt="视频节点"><span id="iframeSpan_1" name=""></span></li>
+						<li><img id="iframeImg_2" src="" name="" alt="视频节点"><span id="iframeSpan_2" name=""></span></li>
+						<li><img id="iframeImg_3" src="" name="" alt="视频节点"><span id="iframeSpan_3" name=""></span></li>
+						<li><img id="iframeImg_4" src="" name="" alt="视频节点"><span id="iframeSpan_4" name=""></span></li>
+						<li><img id="iframeImg_5" src="" name="" alt="视频节点"><span id="iframeSpan_5" name=""></span></li>
+						<li><img id="iframeImg_6" src="" name="" alt="视频节点"><span id="iframeSpan_6" name=""></span></li>
+					</ul>
+				</div>			
+				<!--视频节点图片结束-->
+				<a class="btn btn-default btn-create"  id="addButton" onclick="videoPointAdd()" href="">添加视频点位</a>
+				<!--商品关联信息列表-->
+				<p class="listTitle">商品关联信息列表</p>
+				<table class="table" id="pointTable">
+
+				</table>
+				<!--商品关联信息列表结束-->
+			</div>			
+		</div>
+		</div>
+		</div>
+	</div>
+	</div>
+	<footer>
+		<p style="margin-bottom:0px;">Copyright&copy;2016&nbsp;中移在线服务有限公司&nbsp;版权所有 备案许可证号：豫ICP备15016518号</p>
+	</footer>
+</div>
+	
+            <!--left end-->
+</html>

@@ -1,0 +1,100 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res/com.zixueku"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/main_action_bar" />
+
+    <!-- 用户信息设置 -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/head_image_height"
+        android:background="@drawable/user_background" >
+
+        <LinearLayout
+            android:id="@+id/personal_infor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:clickable="true"
+            android:descendantFocusability="blocksDescendants"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <!-- 用户头像 -->
+
+            <com.zixueku.widget.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/user_icon"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/user_icon"
+                app:border_color="#afffffff"
+                app:border_width="1.5dp" />
+            
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/s5" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- 用户关注的考试信息 -->
+
+    <com.zixueku.widget.AbScrollView
+        android:id="@+id/no_focus_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="70dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="15dp"
+                android:text="@string/no_focus"
+                android:textSize="@dimen/s5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/no_focus_add1"
+                android:textColor="@color/dimgrey"
+                android:textSize="@dimen/s8" />
+        </LinearLayout>
+    </com.zixueku.widget.AbScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <com.baoyz.swipemenulistview.SwipeMenuListView
+            android:id="@+id/prepare_exams_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/line"
+            android:dividerHeight="0.7dp"
+            android:listSelector="@color/grey" />
+
+        <View style="@style/HorizontalLine" />
+    </LinearLayout>
+
+</LinearLayout>

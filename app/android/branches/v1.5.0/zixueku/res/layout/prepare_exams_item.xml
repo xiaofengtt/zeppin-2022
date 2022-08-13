@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 只有垂直的linearlayout属性里面的内部组件靠左靠右才有效，同理，水平的linearlayout属性里面的内部组件靠上靠下才有效，否则无效 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.zixueku"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal"
+    android:paddingBottom="17dp"
+    android:paddingLeft="15dp"
+    android:paddingTop="17dp" >
+
+    <!-- 科目图标 -->
+
+    <ImageView
+        android:id="@+id/prepare_exams_item_img"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/teacher_certificate_icon" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="20dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <!-- 科目名称 -->
+
+            <TextView
+                android:id="@+id/prepare_exams_item_name"
+                style="@style/s5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp" >
+
+            <!-- 复习进度 -->
+
+            <FrameLayout
+                android:layout_width="170dp"
+                android:layout_height="9dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/progressbar_rect" >
+
+                <com.daimajia.numberprogressbar.NumberProgressBar
+                    android:id="@+id/prepare_exams_item_progress_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    app:max="100"
+                    app:progress_reached_bar_height="2dp"
+                    app:progress_reached_color="@color/darkgreen"
+                    app:progress_text_visibility="invisible"
+                    app:progress_unreached_bar_height="1dp"
+                    app:progress_unreached_color="@color/dimgrey" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/prepare_exams_item_progress_bar_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:textSize="@dimen/s8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingRight="14dp" >
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/right_icon" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <!-- 距下次考试剩余天数 -->
+
+            <TextView
+                style="@style/s8"
+                android:text="@string/prepare_exams_remain_days_title"
+                android:textColor="@color/dimgrey" />
+
+            <TextView
+                android:id="@+id/prepare_exams_remain_days"
+                style="@style/s8"
+                android:textColor="@color/dimgrey" />
+
+            <TextView
+                style="@style/s8"
+                android:text="@string/day"
+                android:textColor="@color/dimgrey" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

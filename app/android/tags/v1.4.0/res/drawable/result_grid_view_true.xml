@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 答题卡正确的题 图标 -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:state_enabled="true" >
+        <shape android:shape="oval">
+
+            <!-- 填充色 -->
+            <solid android:color="#c5e7f7" />
+
+            <size android:height="@dimen/hand_paper_button_size" android:width="@dimen/hand_paper_button_size" />
+        </shape>
+    </item>
+    
+        <item android:state_focused="true"  >
+        <shape android:shape="oval">
+
+            <!-- 填充色 -->
+            <solid android:color="#c5e7f7" />
+
+            <size android:height="@dimen/hand_paper_button_size" android:width="@dimen/hand_paper_button_size" />
+        </shape>
+    </item>
+    
+         <item android:state_hovered="true" >
+        <shape android:shape="oval">
+
+            <!-- 填充色 -->
+            <solid android:color="#c5e7f7" />
+
+            <size android:height="@dimen/hand_paper_button_size" android:width="@dimen/hand_paper_button_size" />
+        </shape>
+    </item>
+    
+    <item>
+        <shape android:shape="oval" >
+            <!-- 填充颜色 -->
+            <solid android:color="@color/blue"></solid>
+
+            <size android:height="@dimen/hand_paper_button_size" android:width="@dimen/hand_paper_button_size" />
+        </shape></item>
+        
+    
+</selector>

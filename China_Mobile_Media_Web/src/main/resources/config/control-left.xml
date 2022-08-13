@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE control SYSTEM "common-1.7-SNAPSHOT.dtd"> -->
+
+<control>
+	<action path="/front/admin/left!execute">
+		<input uid="c0001" service="leftService" method="list" desc="获取左侧列表">
+			
+		</input>
+	</action>
+</control>

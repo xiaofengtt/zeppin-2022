@@ -1,0 +1,96 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_background" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ImageView style="@style/LoginLogoStyle" >
+        </ImageView>
+
+        <TextView style="@style/LoginAppNameStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/loginTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="140dip"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <View style="@style/LoginLineStyle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quickLogin"
+            android:textColor="@color/black"
+            android:textSize="@dimen/s5" />
+
+        <View style="@style/LoginLineStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/login_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dip"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <!-- qq登录外观设置 -->
+
+        <RelativeLayout style="@style/LoginItemLayoutStyle" >
+
+            <ImageButton
+                android:id="@+id/login_item_image_QQ"
+                style="@style/LoginImageStyle"
+                android:src="@drawable/qq_selector" />
+
+            <TextView
+                style="@style/LoginTextStyle"
+                android:layout_below="@id/login_item_image_QQ"
+                android:text="@string/qq" />
+        </RelativeLayout>
+
+        <!-- 新浪微博登录外观设置 -->
+
+        <RelativeLayout style="@style/LoginItemLayoutStyle" >
+
+            <ImageButton
+                android:id="@+id/login_item_image_WEIBO"
+                style="@style/LoginImageStyle"
+                android:src="@drawable/weibo_selector" />
+
+            <TextView
+                style="@style/LoginTextStyle"
+                android:layout_below="@id/login_item_image_WEIBO"
+                android:text="@string/weibo" />
+        </RelativeLayout>
+
+        <!-- 微信登录外观设置 -->
+
+        <RelativeLayout style="@style/LoginItemLayoutStyle" >
+
+            <ImageButton
+                android:id="@+id/login_item_image_WEIXIN"
+                style="@style/LoginImageStyle"
+                android:src="@drawable/weixin_selector" />
+
+            <TextView
+                style="@style/LoginTextStyle"
+                android:layout_below="@id/login_item_image_WEIXIN"
+                android:text="@string/weixin" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

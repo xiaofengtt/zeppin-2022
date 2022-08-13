@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ExerciseItemOptionLayoutStyle"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal" >
+
+    <FrameLayout style="@style/ExerciseItemOptionButtonLayoutStyle" >
+
+        <CheckBox
+            android:id="@+id/exercise_multiple_item_check_box"
+            style="@style/ExerciseItemOptionButtonStyle"
+            android:drawableLeft="@drawable/exercise_check_box_style" />
+
+        <TextView
+            android:id="@+id/exercise_multiple_item_title"
+            style="@style/ExerciseItemOptionButtonTextStyle" />
+    </FrameLayout>
+
+    <org.sufficientlysecure.htmltextview.HtmlTextView
+        android:id="@+id/exercise_multiple_item_content"
+        style="@style/ExerciseItemOptionTextStyle" />
+
+</LinearLayout>

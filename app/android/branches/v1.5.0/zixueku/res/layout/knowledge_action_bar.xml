@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/actionBarSize"
+    android:background="@color/white" >
+
+    <!-- 最左端的返回按钮 -->
+    
+    <ImageButton
+        android:id="@+id/action_bar_left_go_back_button"
+        style="@style/ActionBarLeftButtonStyle"
+        android:background="@drawable/action_bar_button_background"
+        android:src="@drawable/list_icon"  />
+
+    <TextView
+        android:id="@+id/action_bar_center_text"
+        style="@style/ActionBarCenterTextStyle"
+        android:layout_centerInParent="true" />
+    
+    <ImageButton
+        android:id="@+id/more_icon"
+        android:layout_width="48dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@color/transparent"
+        android:paddingLeft="@dimen/action_bar_left_right_margin"
+        android:paddingRight="@dimen/action_bar_left_right_margin"
+        android:scaleType="centerInside"
+        android:src="@drawable/wrong_book_img" />
+   
+</RelativeLayout>

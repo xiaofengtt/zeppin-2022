@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 白色 -->
+    <color name="white">#ffffff</color>
+
+    <!-- 象牙色 -->
+    <color name="ivory">#fffff0</color>
+
+    <!-- 亮黄色 -->
+    <color name="lightyellow">#ffffe0</color>
+
+    <!-- 黄色 -->
+    <color name="yellow">#ffff00</color>
+
+    <!-- 雪白色 -->
+    <color name="snow">#fffafa</color>
+
+    <!-- 亮灰色 -->
+    <!-- <color name="lightgrey">#6a6a6a</color> -->
+    <color name="page_back">#fff2f2f2</color>
+    <color name="logo_text_color">#ff7f7f7f</color>
+    <color name="login_with_other_plat_text_color">#ff383838</color>
+    <color name="dialog_white_bg">#fbfbfb</color>
+    <color name="black_overlay">#66000000</color>
+    <!-- 透明色 -->
+    <color name="transparent">#00000000</color>
+    <!-- 黑色 -->
+    <color name="black">#000000</color>
+    <!-- 西红柿色 -->
+    <color name="tomato">#ff6347</color>
+
+    <!-- 红色 -->
+    <color name="red">#FF6363</color>
+    <color name="darkred">#c62742</color>
+    <color name="dark">#FF222222</color>
+    <color name="light">#FFEEEEEE</color>
+    <color name="index_background">#78c178</color>
+
+    <!-- 绿色按钮颜色值78c178 -->
+    <color name="green">#47b751</color>
+    <color name="darkgreen">#00903d</color>
+    <color name="lightgreen">#ecfeee</color>
+
+    <!-- 灰色 -->
+    <color name="grey">#f0f0f0</color>
+    <color name="analysisbackground">#f7f7f7</color>
+    <!-- 暗灰色 -->
+    <color name="dimgrey">#c9caca</color>
+    <color name="lightgrey">#efefef</color>
+    <color name="buttongrey">#b4b4b4</color>
+    <color name="blue">#20aee5</color>
+    <!-- 亮蓝色 -->
+    <color name="lightblue">#9fd9f6</color>
+
+    <!-- 深蓝色 -->
+    <color name="darkblue">#22a3d6</color>
+
+    <!-- 复习进度条颜色 -->
+    <color name="progress_bar_color">#4fd25e</color>
+    <!-- 复习进度条背景色 -->
+    <color name="progress_bar_background1">#d8ccce</color>
+
+    <!-- 学科主页进度条颜色 -->
+    <color name="progress_bar_color2">#22cc83</color>
+    <!-- 学科主页进度条背景色 -->
+    <color name="progress_bar_background2">#c8c8c8</color>
+    <color name="orange">#ffa200</color>
+
+    <!-- 指示器颜色 -->
+    <color name="indicatorcolor">#bcbbbb</color>
+
+    <!-- 答题报告中 错题解析按钮颜色 -->
+    <color name="background_tab_pressed">#6633B5E5</color>
+    <!-- 花白色 -->
+    <color name="floralwhite">#FFFAF0</color>
+
+    <!-- 所有线的颜色 -->
+    <color name="line">#d7d7d8</color>
+
+    <!-- 答题中 选项卡中的已查看按钮背景颜色 -->
+    <color name="had_see">#727171</color>
+    <color name="had_see_press">#727171</color>
+    <!-- 未查看按钮颜色 -->
+    <color name="un_see">#d3d3d4</color>
+    <color name="un_see_press">#9fa0a0</color>
+    <!-- 未查看按钮颜色 -->
+    <color name="master">#f3993e</color>
+    <color name="master_press">#ee7800</color>
+    <!-- showWebViewImageBackgroundColor -->
+    <color name="show_webView_image_background_color">#80000000</color>
+ <!-- User-home -->
+    <color name="title_background">#47b751</color>
+    <color name="title_text">#fefefe</color>
+    <color name="user_text_nike">#8b8b8c</color>
+    <color name="user_color">#3c3a38</color>
+    <color name="user_line">#e5e7e6</color>
+    <color name="app_name_color">#74cf56</color>
+    <color name="about_text">#747474</color>
+    <!-- User-login -->
+    <color name="login_fot">#5bafdc</color>
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ExerciseItemOptionLayoutStyle"
+    android:orientation="horizontal" >
+    <FrameLayout style="@style/ExerciseItemOptionButtonLayoutStyle" >
+
+        <RadioButton
+            android:id="@+id/exercise_single_item_radio_button"
+            style="@style/ExerciseItemOptionButtonStyle"
+            android:drawableLeft="@drawable/exercise_radio_style" />
+
+        <TextView
+            android:id="@+id/exercise_single_item_title"
+            style="@style/ExerciseItemOptionButtonTextStyle" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/exercise_single_item_content"
+        style="@style/ExerciseItemOptionTextStyle" />
+</LinearLayout>

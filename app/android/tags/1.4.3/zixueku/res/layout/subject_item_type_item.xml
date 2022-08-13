@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.zixueku"
+    android:layout_width="match_parent"
+    android:layout_height="85dp"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/subject_item_type_background" >
+
+        <TextView
+            android:id="@+id/subject_item_name"
+            style="@style/s6"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="30dp" />
+
+        <TextView
+            android:id="@+id/subject_item_count"
+            style="@style/s8"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="30dp" />
+
+        <TextView
+            android:id="@+id/separator"
+            style="@style/s8"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/subject_item_count"
+            android:text="/" />
+
+        <TextView
+            android:id="@+id/subject_finish_count"
+            style="@style/s8"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/separator" />
+
+        <com.daimajia.numberprogressbar.NumberProgressBar
+            android:id="@+id/subject_item_type_progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:progress_reached_bar_height="2dp"
+            app:progress_reached_color="@color/darkgreen"
+            app:progress_text_visibility="invisible"
+            app:progress_unreached_bar_height="1dp"
+            app:progress_unreached_color="@color/dimgrey" />
+    </RelativeLayout>
+
+</LinearLayout>

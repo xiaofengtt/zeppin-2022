@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="../css/bootstrap2.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/iframe.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/url.min.js"></script>
+
+<script src="../js/tinymce/dropzone/lib/dropzone.js"></script>
+<script src="../js/tinymce/tinymce.min.js"></script>
+<script src="../js/tinymce/tinymce_zhcn.js"></script>
+
+</head>
+<body>
+	<div class="ifrcnt container" style="width:960px;">
+		<div class="hd">
+			<h3>编辑学习策略</h3>
+		</div>
+		<div class="bd">
+			<div class="alert alert-danger"
+				style="display:none;margin:0 15px 15px;"></div>
+			<form id="formsubmit" class="form-horizontal" role="form"
+				action="#"
+				method="post">
+				<input type="hidden" name="" value="">
+				<div class="clearfix">
+					<div id="HtmlTpl">
+						
+						
+					</div>
+					<script id="DataTpl" type="text/template">
+						{{#Records}}
+                        <input type="hidden" name="id" value="{{id}}">
+						<div class="span5">
+							<div class="control-group">
+								<label class="control-label" for="">所属学段</label>
+								<div class="controls">
+									<input class="readonly" type="text" id="" name="grade.name" readonly="readonly"
+										value="{{grade_name}}">
+								</div>
+							</div>	
+							<div class="control-group">
+								<label class="control-label" for="">知识点名称</label>
+								<div class="controls">
+									<input class="readonly" type="text" id="" name="name" readonly="readonly"
+										value="{{name}}">
+								</div>
+							</div>				
+						</div>
+						<div class="span5">
+							<div class="control-group">
+								<label class="control-label" for="">所属学科</label>
+								<div class="controls">
+									<input class="readonly" type="text" id="" name="subject.name" readonly="readonly"
+										value="{{subject_name}}">
+								</div>
+							</div>
+						</div>
+						<div class="span10">
+							<div class="control-group">
+								<label class="control-label" for="">学习目标</label>
+								<div class="controls">
+									<textarea  style="resize:none;width:600px" rows="8" name="target" cols="40" id="" >{{target}}</textarea>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="">学习重点</label>
+								<div class="controls">
+									<textarea  style="resize:none;width:600px" rows="8" name="point" cols="40" id="" >{{point}}</textarea>
+								</div>
+							</div>		
+						</div>					
+						{{/Records}}
+					</script>
+
+				</div>
+
+				<div class="row actionbar">
+					<div class="offset7">
+						<button class="btn btn-primary" type="submit">确定</button>
+						<button id="colorboxcancel" onclick="parent.$.colorbox.close()"
+							class="btn btn-default" type="button">取消</button>
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<script>
+		$(function() {
+			var id = url('?knowledge.id');
+			//var pid = (url('?knowledge.id') != null) ? url('?knowledge.id') : '';
+			$.getJSON('../strategyList?split=_&id='+id, function(r) {
+				if(r.Status == 'success' && r.Records.length > 0) {
+					var st = JSON.stringify(r);
+					//st = st.replace(/[\.]/g, "_");
+					
+				    var template = $('#DataTpl').html();
+				    var html = Mustache.render(template, $.parseJSON(st));
+				    $('#HtmlTpl').html(html);
+				}else {
+					alert('服务端出错！请稍后重试！');
+				}
+			}).done(function(){
+				tinymce.init({
+				    selector: 'textarea',
+					//theme: "modern",
+				    plugins: [
+				        "autoresize autolink link gkpatch gkimage lists fullscreen paste advlist table charmap nonbreaking zpformula",
+				    ],
+				    toolbar: "bold italic underline strikethrough subscript superscript  nonbreaking | link  gkimage charmap | zpformula table  bullist numlist | removeformat | ",
+					menubar : !1,
+					statusbar : !1,
+					toolbar_items_size: "normal",
+					strikethrough: {inline: 'del'},
+					//object_resizing: !1,
+					autoscroll: !0,
+					width: 565,
+					height: 38,
+					//submit_form_selector: "DefaultForm",
+					image_upload_url: "../resourceAdd?type=1",
+					image_panel_width: 200,
+					target_list: !1,
+					atFunc: null
+				});
+				
+			})
+			
+			
+			
+			$('#formsubmit').submit(
+				function() {
+					event.preventDefault();
+					tinyMCE.triggerSave();
+					var str = $(this).serialize();
+					$.get('../strategyUpdate?'+ str, function(data) {
+						if (data.Status == "success") {
+							window.top.location.reload(true);
+						} else {
+							$('.alert-danger').html(data.Message).show();
+						}
+					})
+					return false;
+			});
+			
+			
+			//项目类型 helper 函数
+			$(document).on("click",function(e) {
+				if(!$(e.target).parents().is('.ufc'))
+					$('.uul').hide();
+			});
+
+		})
+		
+		$(function() {
+			
+
+		})
+		
+	</script>
+<body>
+</html>

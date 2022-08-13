@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <RelativeLayout
+                android:id="@+id/rl_title"
+                android:layout_width="fill_parent"
+                android:layout_height="130dp"
+                android:background="@color/title_background"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/go_back"
+                    android:layout_width="60dp"
+                    android:layout_height="?android:attr/actionBarSize"
+                    android:background="@drawable/action_bar_button_background3"
+                    android:clickable="true"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="15dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/back_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/user_info"
+                    android:textColor="@color/title_text"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+            <com.zixueku.widget.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/user_icon"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="75dp"
+                android:src="@drawable/user_icon"
+                app:border_color="#afffffff"
+                app:border_width="1.5dp" />
+
+            <ImageView
+                android:id="@+id/iv_title_camera"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_alignLeft="@+id/user_icon"
+                android:layout_alignTop="@+id/user_icon"
+                android:layout_marginLeft="45dp"
+                android:clickable="true"
+                android:src="@drawable/title_camera" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/rl_nike_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/personal_item_height" >
+
+                <LinearLayout style="@style/PersonalLinearLayoutStyle" >
+
+                    <ImageView
+                        style="@style/PersonalIconStyle"
+                        android:src="@drawable/user_nickname" />
+
+                    <TextView
+                        style="@style/PersonalTextStyle"
+                        android:text="昵称" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/PersonalRightLinearLayoutStyle" >
+
+                    <TextView
+                        android:id="@+id/tv_user_name"
+                        style="@style/PersonalRightTextStyle" />
+
+                    <ImageView style="@style/PersonalRightIconStyle" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View style="@style/PsersonHorizontalLine" />
+
+            <RelativeLayout
+                android:id="@+id/rl_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/personal_item_height" >
+
+                <LinearLayout style="@style/PersonalLinearLayoutStyle" >
+
+                    <ImageView
+                        style="@style/PersonalIconStyle"
+                        android:src="@drawable/user_phone_number" />
+
+                    <TextView
+                        style="@style/PersonalTextStyle"
+                        android:text="手机" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/PersonalRightLinearLayoutStyle" >
+
+                    <TextView
+                        android:id="@+id/tv_user_number"
+                        style="@style/PersonalRightTextStyle" />
+
+                    <ImageView style="@style/PersonalRightIconStyle" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View style="@style/PsersonHorizontalLine" />
+
+            <RelativeLayout
+                android:id="@+id/rl_age"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/personal_item_height" >
+
+                <LinearLayout style="@style/PersonalLinearLayoutStyle" >
+
+                    <ImageView
+                        style="@style/PersonalIconStyle"
+                        android:src="@drawable/user_age" />
+
+                    <TextView
+                        style="@style/PersonalTextStyle"
+                        android:text="年龄" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/PersonalRightLinearLayoutStyle" >
+
+                    <TextView
+                        android:id="@+id/tv_user_age"
+                        style="@style/PersonalRightTextStyle" />
+
+                    <ImageView style="@style/PersonalRightIconStyle" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View style="@style/PsersonHorizontalLine" />
+
+            <RelativeLayout
+                android:id="@+id/rl_profession"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/personal_item_height" >
+
+                <LinearLayout style="@style/PersonalLinearLayoutStyle" >
+
+                    <ImageView
+                        style="@style/PersonalIconStyle"
+                        android:src="@drawable/user_profession" />
+
+                    <TextView
+                        style="@style/PersonalTextStyle"
+                        android:text="职业" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/PersonalRightLinearLayoutStyle" >
+
+                    <TextView
+                        android:id="@+id/tv_user_pro"
+                        style="@style/PersonalRightTextStyle" />
+
+                    <ImageView style="@style/PersonalRightIconStyle" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View style="@style/PsersonHorizontalLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/personal_item_height" >
+
+                <LinearLayout style="@style/PersonalLinearLayoutStyle" >
+
+                    <ImageView
+                        style="@style/PersonalIconStyle"
+                        android:src="@drawable/user_gender" />
+
+                    <TextView
+                        style="@style/PersonalTextStyle"
+                        android:text="性别" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/PersonalRightLinearLayoutStyle" >
+
+                    <com.makeramen.segmented.SegmentedRadioGroup
+                        android:id="@+id/gender_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="30dp"
+                        android:orientation="horizontal" >
+
+                        <RadioButton
+                            android:id="@+id/boy"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:minHeight="30dip"
+                            android:minWidth="40dip"
+                            android:text="男"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/radio_colors" />
+
+                        <RadioButton
+                            android:id="@+id/gril"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:minHeight="30dip"
+                            android:minWidth="40dip"
+                            android:text="女"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/radio_colors" />
+                    </com.makeramen.segmented.SegmentedRadioGroup>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View style="@style/PsersonHorizontalLine" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_wheel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/rl_ok"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" >
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:text="完成"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/line" />
+
+        <com.zixueku.customview.WheelView
+            android:id="@+id/wheel_view_wv"
+            android:layout_width="fill_parent"
+            android:layout_height="170dp" />
+    </LinearLayout>
+
+</RelativeLayout>

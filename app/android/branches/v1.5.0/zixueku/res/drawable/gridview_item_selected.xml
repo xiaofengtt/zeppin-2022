@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <shape android:shape="oval">
+            <!-- 填充色 -->
+            <solid android:color="@color/blue" />
+            <!-- 线的宽度，颜色蓝色 -->
+            <stroke android:width="2dp" android:color="@color/blue" />
+            <size android:height="@dimen/hand_paper_button_size" android:width="@dimen/hand_paper_button_size" />
+        </shape>
+    </item>
+    
+    <item>
+        <shape android:shape="oval">
+            <!-- 填充色 -->
+            <solid android:color="@color/blue" />
+            <!-- 线的宽度，颜色蓝色 -->
+            <stroke android:width="2dp" android:color="@color/blue" />
+            <size android:height="@dimen/hand_paper_button_size" android:width="@dimen/hand_paper_button_size" />
+        </shape>
+    </item>
+
+</selector>

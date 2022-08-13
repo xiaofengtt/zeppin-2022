@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom"
+        android:background="@color/white" >
+
+        <View
+            style="@style/HorizontalLine"
+            android:layout_alignParentTop="true" />
+
+        <!-- 专项训练 -->
+
+        <LinearLayout
+            android:id="@+id/knowledge_test_button_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="30dp" >
+
+            <ImageView
+                android:id="@+id/knowledge_test_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/knowledge_test_icon" />
+
+            <TextView
+                android:id="@+id/knowledge_test_text"
+                style="@style/s8"
+                android:layout_marginTop="3dp"
+                android:text="专项训练" />
+        </LinearLayout>
+        <!-- 大题特训 -->
+
+        <LinearLayout
+            android:id="@+id/subject_item_type__button_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingRight="30dp" >
+
+            <ImageView
+                android:id="@+id/special_test_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:src="@drawable/special_test_icon" />
+
+            <TextView
+                android:id="@+id/special_test_text"
+                style="@style/s8"
+                android:layout_marginTop="3dp"
+                android:text="大题特训" />
+        </LinearLayout>
+    </RelativeLayout>
+    <!-- 酷刷 -->
+
+    <ImageButton
+        android:id="@+id/cool_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:background="@null"
+        android:src="@drawable/brush_icon" />
+
+</FrameLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!-- 	<typeAliases> -->
+<!-- 		<typeAlias type="" alias="" /> -->
+<!-- 	</typeAliases> -->
+	<settings>  
+		<setting name="mapUnderscoreToCamelCase" value="true" />  
+	</settings> 
+
+	<!-- 配置映射文件 -->
+    <mappers>
+    	<mapper resource="orm/Category.xml"/>
+    	<mapper resource="orm/Commodity.xml"/>
+    	<mapper resource="orm/CommodityDisplay.xml"/>
+    	<mapper resource="orm/Resource.xml"/>
+    	<mapper resource="orm/User.xml"/>
+    	<mapper resource="orm/VideoCommodityPoint.xml"/>
+    	<mapper resource="orm/VideoIframe.xml"/>
+    	<mapper resource="orm/Videoinfo.xml"/>
+    	<mapper resource="orm/VideoPublish.xml"/>
+    </mappers>
+</configuration>

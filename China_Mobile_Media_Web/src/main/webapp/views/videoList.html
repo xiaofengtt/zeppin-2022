@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>视频列表</title>
+
+<link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/themes/light.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/style-responsive.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../assets/css/ui-dialog.css">
+<link rel="stylesheet" href="../assets/css/searchbox.css">
+<link rel="stylesheet" href="../assets/css/main.css" type="text/css"/>
+<link rel="stylesheet" href="../assets/css/simplePagination.css" type="text/css"/>
+<link rel="stylesheet" href="../assets/css/columLists.css" type="text/css"/>
+<link rel="stylesheet" href="../assets/css/videoList.css" type="text/css"/>
+
+<script src="../assets/plugins/jquery-2.2.4.min.js" type="text/javascript"></script>
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="../assets/scripts/app.js" type="text/javascript"></script>
+<script type="text/javascript" src="../app/js/index.js"></script>
+<script src="../assets/plugins/jquery-ui.js"></script>
+<script src="../assets/plugins/url.min.js"></script>
+<script src="../assets/plugins/jquery.colorbox.js"></script>
+<script src="../assets/plugins/dialog-min.js"></script>
+<script src="../assets/plugins/jquery.simplePagination.js"></script>
+<script src="../assets/plugins/jsrender.min.js"></script>
+<script src="../assets/plugins/underscore-min.js"></script>
+<script src="../web/js/layer-v2.2/layer/layer.js"></script>
+<script src="../web/js/circlr.min.js"></script>
+<script src="../assets/scripts/videoList.js" type="text/javascript"></script>
+<script src="../assets/scripts/index_bg.js" type="text/javascript"></script>
+<style type="text/css">
+button.btn{ margin-top:5px;}
+a.btn{ margin-top:5px;}
+.btn{ border:none;}
+.content{ padding-bottom:100px;}
+.content p.title{ color:#428bca; font-size:15px;font-weight:bold;margin:10px 0px;}
+hr{border-top:2px solid #adb5bb;margin:10px 0px;}
+.statusbar{ margin-top:20px;font-weight:bolder;}
+.statusbar a.filterStatus{ display:inline-block; margin:0px 15px; padding:10px 0px;color:#9c9c9c; cursor:pointer; border-bottom:2px solid #fff;}
+.statusbar a.light{color:#3ebef3;border-bottom-color:#3ebef3;}
+.statusbar a:hover{color:#3ebef3;border-bottom-color:#3ebef3;}
+b.playB{width: 64px;height: 64px;left: 50%;display: block;z-index: 5;top: 50%; margin-left: -32px;margin-top: -32px;background: url(../assets/img/play_Big.png) no-repeat;position: absolute;background-size:contain;}
+table td{padding:2px !important;}
+.search input[type="text"]{border-right:none;}
+</style>
+
+<script id="queboxTpl" type="text/template">
+		<div id="{{:id}}" class="list-item" style="font-size:14px">
+			<div class="list-item-hd">
+				<table class="table table-bordered" style="margin-bottom:0px;">
+					<tbody>
+						<tr>
+							<td width="auto" style="line-height:40px;text-align:left;padding-left:30px;"><a href="javascript:" onclick="layerVideo(this)" name="{{:id}}"><span class="text-primary" style="padding-left:30px;">标题：</span>{{:title}}</a></td> 
+							<td width="320px">
+							{{if status=='unchecked'}}
+								<a onclick="changeStatus(this)" data-id="{{:id}}" data-url="../front/admin/videoinfo!execute?uid=g0007&status=checked&id={{:id}}" class="linkbtn">审核通过</a>
+								<a href="../views/videoPoint.html?id={{:id}}" class="linkbtn">关联商品</a>
+								<a href="../views/videoEdit.html?id={{:id}}" data-fancybox-type="iframe" class="btn-edit linkbtn">编辑</a>
+								<a onclick="changeStatus(this)" data-id="{{:id}}" data-url="../front/admin/videoinfo!execute?uid=g0006&id={{:id}}" class="linkbtn">删除</a>								
+							{{else status=='checked'}}
+								<a onclick="changeStatus(this)" data-id="{{:id}}" data-url="../front/admin/videoinfo!execute?uid=g0007&status=unchecked&id={{:id}}" class="linkbtn">取消审核</a>
+								<a href="../views/videoPoint.html?id={{:id}}" class="linkbtn">关联商品</a>
+								<a onclick="changeStatus(this)" data-id="{{:id}}" data-url="../front/admin/videoinfo!execute?uid=g0006&id={{:id}}" class="linkbtn">删除</a>
+								
+							{{else status=='transcoding'}}
+								<a onclick="changeStatus(this)" data-id="{{:id}}" data-url="../front/admin/videoinfo!execute?uid=g0007&status=uploaded&id={{:id}}" class="linkbtn">重新处理</a>
+							{{else status=='failed'}}
+								<a onclick="changeStatus(this)" data-id="{{:id}}" data-url="../front/admin/videoinfo!execute?uid=g0007&status=uploaded&id={{:id}}" class="linkbtn">重新处理</a>
+								<a onclick="changeStatus(this)" data-id="{{:id}}" data-url="../front/admin/videoinfo!execute?uid=g0007&status=destroy&id={{:id}}" class="linkbtn">彻底删除</a>
+							{{else status=='deleted'}}
+								<a onclick="changeStatus(this)" data-id="{{:id}}" data-url="../front/admin/videoinfo!execute?uid=g0007&status=unchecked&id={{:id}}" class="linkbtn">恢复</a>
+								<a onclick="changeStatus(this)" data-id="{{:id}}" data-url="../front/admin/videoinfo!execute?uid=g0007&status=destroy&id={{:id}}" class="linkbtn">彻底删除</a>
+							{{/if}}
+							</td>
+						</tr>
+					</tbody>	
+				</table>
+			</div>
+				
+			<div class="list-item-bd clearfix">
+										
+				<div class="list-item-col list-5-05" style="text-align:center;vertical-align:middle;padding-left:0;position:relative;cursor: pointer;padding-top:15px;" onclick="layerVideo(this)" name="{{:id}}">
+					<b class="playB"></b>
+					<img src="../{{:thumbnail}}" style="max-width:90%;max-height:200px;">
+				</div>
+				<div class="list-item-col list-5-1" style="padding-bottom:0;">
+					<ul>
+						<li class="text-toolong" title="{{:tag}}"><span class="text-primary">标签：</span> {{:tag}}</li>
+						<li title="{{:author}}"><span class="text-primary">作者：</span> {{:author}}</li>	
+						<li class="text-toolong" title="{{:source}}"><span class="text-primary">来源：</span> {{:source}}</li>
+						
+						
+					</ul>
+				</div>
+				<div class="list-item-col list-5-1">
+					<ul>
+						<li title="{{:creatorName}}"><span class="text-primary">上传者：</span> {{:creatorName}}</li>
+						<li class="text-toolong" title="{{:copyright}}"><span class="text-primary">版权方：</span> {{:copyright}}</li>						
+					</ul>
+				</div>
+				<div class="list-item-col list-5-1">
+					<ul>
+						<li title="{{:createtimeCN}}"><span class="text-primary">上传时间：</span> {{:createtimeCN}}</li>
+						<li title="{{:timeLength}}"><span class="text-primary">播放时长：</span> {{:timeLength}}</li>					
+						
+					</ul>
+				</div>
+				<div class="list-item-col list-5-1" style="width:75%;padding:0 0 10px 10px;">
+					<ul>
+						<li class="text-toolong" title="{{:context}}" style="white-space:nowrap;overflow: hidden;text-overflow:ellipsis;"><span class="text-primary">描述：</span> {{:context}}</li>
+					</ul>
+				</div>
+				<div class="{{:status}}-color statusDiv"></div>
+			</div>
+		</div>
+</script>
+
+</head>
+<body style="min-width:1200px;">
+<!-- <iframe src="header.html" width="100%" height="55px" frameborder=0 scrolling=no></iframe> -->
+<div class="header navbar navbar-inverse navbar-fixed-top">
+            <!-- BEGIN TOP NAVIGATION BAR -->
+            <div class="header-inner">
+                <!-- BEGIN LOGO -->
+                <a class="navbar-brand" href="javascript:;">
+                    <img src="../assets/img/logoBG.png" alt="logo" class="img-responsive" />
+                </a>
+                <!-- END LOGO -->
+
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <ul class="nav navbar-nav pull-right">
+                		<li><a href="javascript:">欢迎&nbsp;&nbsp;<span id="loginname">秦龙</span>！</a></li>
+                		<li><a href="javascript:"><span id="datafomate">2016年4月27日&nbsp;&nbsp;星期三</span></a></li>
+                		<li><a onclick="logout()" href="../front/admin/user!logout?uid=u0002">退出</a></li>
+                    <!-- END USER LOGIN DROPDOWN -->
+                </ul>
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
+            <!-- END TOP NAVIGATION BAR -->
+        </div>
+<div class="page-container">
+	<div class="page-sidebar-wrapper" style="width:210px;float:left;">
+        <div class="page-sidebar navbar-collapse" style="width:100%;">
+            <!-- BEGIN SIDEBAR MENU -->
+            <ul class="page-sidebar-menu nav" id="page-sidebar-menu">
+                <li class="sidebar-toggler-wrapper">
+                    <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                    <div class="sidebar-toggler hidden-phone"></div>
+                    <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                </li>
+
+                <li class="leftli">
+                    <a href="javascript:;">
+                        <i class="fa fa-gears icon-home icon-black"></i><span class="title"> 资源管理 </span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="javascript:" onclick="gotoUrl('../views/categoryList.html');">栏目管理</a>
+                        </li>
+                        <li>
+                            <a href="javascript:" onclick="gotoUrl('../views/videoList.html');">视频管理</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" onclick="gotoUrl('../views/commodityList.html');">商品管理</a>
+                          </li>
+                      </ul>
+                  </li>
+
+				<li class="leftli">
+                      <a href="javascript:;">
+                          <i class="fa fa-user icon-home icon-black"></i><span class="title"> 发布管理 </span>
+                    </a>
+                    <ul class="sub-menu categoryList">
+                        <li><a href="javascript:;" onclick="gotoUrl('../views/videoPublishList.html?parent=062b6a49-5332-430a-a91d-1faf040a1c07');">新品发布</a></li>
+
+                    </ul>
+                </li>
+
+            </ul>
+            <!-- END SIDEBAR MENU -->
+        </div>
+    </div>
+    <div id="contentIframes" style="float:left;">
+    	<div class="page-container">
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+					<!--content-->
+						<div class="content">							
+							<p class="title">视频管理</p>
+							<hr>
+							<div class="cui-menu">
+								<a class="btn-create btn" href="../views/videoAdd.html">
+									上传视频
+								</a>
+							</div>
+							<!--搜索框-->
+							<div id="searchbox" class="searchbox" style="right:50px;top:25px">
+								<form class="search search_form" id="searchForm" action="#" method="POST">
+									<fieldset>
+										<label for="searchheader" class="placeholder overlabel">标题</label>
+										<input autocomplete="off" id="searchheader" value="" type="text" name="q">
+										<input type="hidden" name="" value="">
+										<div class="show_dropdown">
+											<div class="dropdown" style="display: block;">
+												<ul>
+													<li><label for="type_name">按标题</label><input type="radio" id="type_name" name="stype" value="title" checked="checked">
+													</li>
+												</ul>
+												<span class="bl"></span>
+												<span class="br"></span>
+											</div>
+										</div>
+										<button type="submit" id="searchBtn" class="search-button"><i class="glyphicon glyphicon-search icon-white"></i></button>
+									</fieldset>
+								</form>
+							</div>
+							<div class="statusbar">
+								<a class="filterStatus light">未审核 (<span id="status_unchecked" name="unchecked">0</span>)</a>
+								<a class="filterStatus">已审核 (<span id="status_checked" name="checked">0</span>)</a>
+								<a class="filterStatus">待处理 (<span id="status_uploaded" name="uploaded">0</span>)</a>
+								<a class="filterStatus">处理中 (<span id="status_transcoding" name="transcoding">0</span>)</a>
+								<a class="filterStatus">处理失败 (<span id="status_failed" name="failed">0</span>)</a>
+								<a class="filterStatus">已删除 (<span id="status_deleted" name="deleted">0</span>)</a>
+								<input type="hidden" id="statusChecked" value="unchecked">
+							</div>
+							<div id="queboxCnt"></div>
+							<div class="pull-right pagination  compact-theme" id="pagnationPaper"></div>
+					<!--content end-->
+
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+		<!--left end-->
+	</div>
+    </div>
+<!-- 	<iframe src="videoList.html" frameborder=0 height="" width="84%" id="contentIframe"></iframe> -->
+<!-- 	<iframe src="footer.html" frameborder=0 width="100%" height="61px"></iframe> -->
+	<footer>
+		<p style="margin-bottom:0px;">Copyright&copy;2016&nbsp;中移在线服务有限公司&nbsp;版权所有 备案许可证号：豫ICP备15016518号</p>
+	</footer>
+</div>
+</body>
+</html>

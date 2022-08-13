@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>文化基因在线资源管理平台</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+
+
+<!--link rel="stylesheet" href="css/animate.css"-->
+<style>
+#login_error {
+	background: #fff;
+	border-left: 4px solid #dd3d36;
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+	margin-bottom: 15px;
+	padding: 10px 5px;
+}
+
+.login-cnt {
+	width: 810px;
+	height: 340px;
+	position: absolute;
+	top: 50%;
+	margin-top: -170px;
+	left: 50%;
+	margin-left: -405px;
+	
+}
+
+/*body.login {
+	background: url(admin/img/login.jpg) no-repeat 50% 15%;
+}*/
+
+.logo {
+	margin-top: 110px;
+	width: 418px;
+	height: 103px;
+}
+
+.row-fluid .side {
+	width: 420px;
+}
+
+.row-fluid .main {
+	width: 370px;
+}
+
+.login-form {
+	background: #fdfdfd;
+	border: 1px solid #eee;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	*border: 1px solid #eee;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	outline: none;
+	-webkit-box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+	padding: 10px 20px;
+}
+
+.login-form h2 {
+	color: #575757;
+	font-size: 18px;
+	font-weight: 400;
+	margin: 0 0 10px 0;
+}
+
+.input-append .add-on,.input-prepend .add-on {
+	background: #dadee5;
+	padding:10px 5px;
+}
+
+.login-form .input-large {
+	width: 283px;
+	padding:10px 6px;
+}
+.btn-large {padding:9px 19px;}
+
+.fullscreen_post_bg {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background:#fff;
+}
+
+.fullscreen_post_bg:before {
+	content: '';
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: url('../img/login1.jpg');
+	background-size: 100% 100%;
+}
+
+.fullscreen_post_bg:after {
+	content: '';
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0
+}
+
+.fullscreen_post_bg img {
+	/*display:none*/
+}
+
+#footer a {
+	color: #dedede;
+}
+
+.loginbtn {
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+    background-color: #92c219;
+    *background-color: #6b9405;
+    background-image: -moz-linear-gradient(top, #92c219, #6b9405);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#92c219), to(#6b9405));
+    background-image: -webkit-linear-gradient(top, #92c219, #6b9405);
+    background-image: -o-linear-gradient(top, #92c219, #6b9405);
+    background-image: linear-gradient(to bottom, #92c219, #6b9405);
+    background-repeat: repeat-x;
+    border-color: #04c #04c #002a80;
+    border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='##92c219', endColorstr='#6b9405', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false)
+}
+
+.loginbtn:hover, .loginbtn:focus, .loginbtn:active, .loginbtn.active, .loginbtn.disabled, .loginbtn[disabled] {
+    color: #fff;
+    background-color: #6b9405;
+   
+}
+
+</style>
+</head>
+<body class="login">
+	<div id="fullscreen_post_bg" class="fullscreen_post_bg">
+		<img id="fullscreen_post_image" src="../img/login1.jpg">
+	</div>
+	<div class="login-cnt">
+		<div class="row-fluid">
+			<div class="span7 side">
+				<h1 class="logo">
+					<img src="../img/jyt.png" alt="文化基因在线资源管理平台">
+				</h1>
+			</div>
+			<div class="span5 main">
+				
+				<div style="display:none" id="login_error">
+					<strong>错误</strong>：
+					<span></span>
+					<br>
+				</div>
+				<div class="login-form">
+					<h2>系统登录</h2>
+					<form id="login-form" action="../admin/ssoLogin" method="post"
+						style="margin-bottom:0" >
+						<!--  <form action="admin/teacherManage_initPage.action" method="post" style="margin-bottom:0"> -->
+						<fieldset>
+							
+							<div class="control-group">
+								<div class="input-prepend">
+									<span class="add-on"><img src="../img/u.png" alt="" style="width:19px;" ></span> 
+									<input class="input-large" type="text" name="loginname" placeholder="用户名">
+								</div>
+
+							</div>
+							<div class="control-group">
+
+								<div class="input-prepend">
+									<span class="add-on"><img src="../img/p.png" alt=""  style="width:19px;"></span> 
+									<input class="input-large"  name="password" type="password" placeholder="密码">
+
+								</div>
+
+							</div>
+							
+							<div class="control-group">
+								<div class="controls">
+									<select name="role" class="form-control">
+										<option value="1">管理员</option>
+										<option value="2">专家</option>
+									</select>
+								</div>
+							</div>
+							
+							<div class="control-group">
+
+								<div class="controls">
+									<input class="input-medium" name="authcode" type="text" placeholder="验证码"> 
+									<img onclick="this.src='../admin/ssoAuthImg'" style="vertical-align:top;cursor:pointer;margin-top:2px;margin-left:5px;" src="../admin/ssoAuthImg">
+								</div>
+							</div>
+
+
+							<button type="submit" class="loginbtn btn btn-block btn-large btn-primary">立即登录</button>
+							<div class="control-group" style="margin-top:10px;"></div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="login-footer"
+			style="text-align:center;margin-top:100px;color:#dedede">
+			<div id="footer">
+				Copyright &copy; 2016 北京邮电大学世纪学院
+
+			</div>
+		</div>
+	</div>
+	<script>
+	$(function(){
+		
+		$('#login-form').submit(function(){
+			var th = this;
+			var ss = $(th).serializeArray();
+			$(":submit,:input", th).attr("disabled", true);
+			$.post('../admin/ssoLogin' ,ss,function(r){
+				if(r.Status == 'success') {
+					$.cookie('islogin','true',{ expires: 1, path: '/' });
+					$.cookie('loginname',r.Records.name+'###'+r.Records['role.name'],{ expires: 1, path: '/' });
+					var b = location.href;
+					
+					location.href = (b.indexOf("index") == -1) ? b + "main.html" : b.replace('index','main');
+					
+				}else {
+					$('#login_error').show().find('span').html(r.Message);
+					$(":submit,:input", th).attr("disabled", false);
+				}
+			})
+			return false;
+		})
+		
+	})
+	</script>
+
+	<!--end-main-container-part-->
+
+
+</body>
+</html>

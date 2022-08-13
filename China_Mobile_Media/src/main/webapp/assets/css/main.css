@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+body {
+  background-color: #fafafa !important;
+}
+/***
+Page header
+***/
+.header {
+  filter: none !important;
+  background-image: none !important;
+  background-color: #434343 !important;
+}
+
+ul.page-sidebar-menu > li a i{background:url(../img/row-vertical.png) center no-repeat; height:16px;}
+ul.page-sidebar-menu > li a i.fa-home{background:none;}
+ul.page-sidebar-menu > li.open a i{background:url(../img/row-cross.png) center no-repeat;}
+
+.page-sidebar-menu > li.sidebar-toggler-wrapper{padding:10px 0 20px 0;}
+
+footer{ text-align: center; position: fixed; bottom: 0; background: #fafafa; width: 100%; padding: 10px;border-top:1px solid #e2e2e2 !important;box-shadow:0 0 2px #808080;z-index:999;} 
+
+
+

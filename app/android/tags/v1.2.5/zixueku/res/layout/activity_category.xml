@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        layout="@layout/action_bar" />
+
+    <RelativeLayout
+        android:id="@+id/category_layout"
+        android:layout_width="270dp"
+        android:layout_height="290dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/category_background" >
+
+        <ImageView
+            android:id="@+id/teacher_icon"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/teacher_icon" />
+
+        <TextView
+            style="@style/s5"
+            android:layout_below="@id/teacher_icon"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="15dp"
+            android:text="教师资格" />
+
+        <Button
+            android:id="@+id/button_enter"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/catetory_button_selector"
+            android:text="进\u0020\u0020入"
+            android:textColor="@color/white"
+            android:textSize="@dimen/s5" >
+        </Button>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:text="做互联网时代的新教师"
+        android:textSize="@dimen/s5" />
+
+</RelativeLayout>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="../css/bootstrap2.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<link rel="stylesheet" href="../css/app.css">
+
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../css/metro/blue/jtable.css" rel="stylesheet" type="text/css" >
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/jquery.jtable.js"></script>
+<script src="../js/jquery.jtable.zh-CN.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+
+<script src="../js/bootstrap-paginator.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/url.min.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/app.js"></script> 
+<script src="../js/iframe.js"></script>
+<script src="../js/moment.js"></script> 
+<script src="../js/zh-cn.js"></script>
+<script src="../js/upload/jquery.uploadfile.min.js"></script>
+<style>
+	textarea{resize: none;width: 400px;height: 100px;max-width: 400px;max-height: 100px;}
+</style>
+</head>
+<body>
+	<div class="ifrcnt container">
+		<div class="hd">
+			<h3>编辑资源</h3>
+		</div>
+		<div class="bd">
+			<div class="alert alert-danger"
+				style="display:none;margin:0 15px 15px;"></div>
+			<form id="formsubmit" class="form-horizontal" role="form"
+				action="#"
+				method="post">
+				<input type="hidden" name="id" value="">
+				<div class="row">		
+					<div id="HtmlTpl" class="span10">
+					
+					</div>
+				</div>
+				<script id="DataTpl" type="text/template">
+				{{#Records}}
+				<div class="clearfix">
+					<div class="control-group">
+						<label class="control-label" for="">标题</label>
+						<div class="controls">
+							<input type="text"  name="title" value="{{title}}">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="">民族</label>
+						<div class="controls">
+							<select id="nationalSelect" name="national">
+								<option selected value="{{nationalId}}">{{nationalName}}</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="">分类</label>
+						<div class="controls">
+							<div class="companylocation">
+								<span class="clId" style="height:22px;" id="calId"
+									onclick="getCategory();changeCategorybtn($(this));">{{categoryName}}</span>
+								<div id="calListBox" class="listCate">
+									<div id="calList" class="list_sub sm_icon">
+										<div id="cabido"></div>
+									</div>
+								</div>
+							</div>
+
+							<input type="hidden" id="category" name="category" value="{{categoryId}}">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="">自定义属性</label>
+						<div class="controls">
+							属性名 <input type="text" id="newCustomTagName" style="width:90px;margin-right:10px" value="">
+							属性值 <input type="text" id="newCustomTagValue" style="width:90px;margin-right:10px" value="">
+							<button type="button" onclick="addCustomTag()" class="btn btn-primary">添加属性</button>
+							<div id="customTagsShow" style="margin-top:10px;">
+							</div>
+							<div class="hidden" id="customTagsInput">
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="">标签</label>
+						<div class="controls">
+							<input type="text" id="newTag" value=""> <button type="button" onclick="addTag()" class="btn btn-primary">添加标签</button>
+							<div id="tagsShow" style="margin-top:10px;">
+							</div>
+							<div class="hidden" id="tagsInput">
+							</div>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="">描述</label>
+						<div class="controls">
+							<textarea id="" name="comment">{{comment}}</textarea>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="">寓意</label>
+						<div class="controls">
+							<textarea id="" name="meaning">{{meaning}}</textarea>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="">来源</label>
+						<div class="controls">
+							<select id="source" name="source" onchange="changeSource(this)">
+								<option value="1">其他</option>
+									<option value="2">来自互联网</option>
+									<option value="3">现场拍照</option>
+									<option value="4">出版物扫描</option>
+							</select>
+						</div>
+					</div>	
+
+					<div class="control-group">
+						<label class="control-label" for="">是否为实物载体</label>
+						<div class="controls">
+							<select id="isObject" name="isObject">
+								<option value="0">否</option>
+								<option value="1">是</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="control-group" id="sourcePath" style="display:none">
+						<label class="control-label" id="sourceLabel" for=""></label>
+						<div class="controls">
+							<input type="text" id="" name="sourcePath" value="{{sourcePath}}">
+						</div>
+					</div>
+						
+					<div class="control-group" id="sourceTime" style="display:none">
+						<label class="control-label" for="">采集时间</label>
+						<div class="controls">
+							<input type="text" id="" name="sourceTime" value="{{sourceTime}}">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="">是否置顶</label>
+						<div class="controls">
+							<select id="eminent" name="eminent">
+								<option value="0">否</option>
+								<option value="1">是</option>
+							</select>
+						</div>
+					</div>	
+
+					<div class="control-group">
+						<label class="control-label" for="">状态</label>
+						<div class="controls">
+							<select id="status" name="status">
+								<option value="1">未审核</option>
+								<option value="2">审核通过</option>
+								<option value="3">审核不通过</option>
+								<option value="0">删除</option>
+							</select>
+						</div>
+					</div>			
+				</div>
+				{{/Records}}
+				</script>
+			
+				<div class="row actionbar">
+					<div class="offset7">
+						<button class="btn btn-primary" type="submit">确定</button>
+						<button id="colorboxcancel" onclick="parent.$.colorbox.close()"
+							class="btn btn-default" type="button">取消</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>
+		var tagIndex = 0;
+		var customTagIndex = 0;
+		function addTag(){
+			var newTag =$('#newTag').val()
+			if(newTag == ''){
+				alert('标签不能为空');
+			}else{
+				if ($('input[name="tag"]').length > 0) {// 避免添加相同的标签
+					var rightid_array = [];
+	
+					$('input[name="tag"]').each(function() {
+						rightid_array.push($(this).val());
+					});
+					
+					if ($.inArray(newTag, rightid_array) > -1) {
+						alert('已存在该标签');
+						return;
+					}
+				}
+				$('#tagsShow').append('<div class="mtc">' + newTag + ' <button type="button" data-id="' + tagIndex + '" onclick="deleteTag(this)" class="qwrong"></button></div>');
+				$('#tagsInput').append('<input type="hidden" id="tagId_' + tagIndex + '" name="tag" value="' + newTag + '">');
+				tagIndex++;
+			}
+		}
+		function addCustomTag(){
+			var newCustomTagName =$('#newCustomTagName').val();
+			var newCustomTagValue =$('#newCustomTagValue').val();
+			var newCustomTag = newCustomTagName + '_' + newCustomTagValue;
+			if(newCustomTagName == ''){
+				alert('属性名不能为空');
+			}else if(newCustomTagValue == ''){
+				alert('属性值不能为空');
+			}else{
+				if ($('input[name="customTag"]').length > 0) {// 避免添加相同的标签
+					var rightid_array = [];
+	
+					$('input[name="customTag"]').each(function() {
+						rightid_array.push($(this).val());
+					});
+					
+					if ($.inArray(newCustomTag, rightid_array) > -1) {
+						alert('已存在该标签');
+						return;
+					}
+				}
+				$('#customTagsShow').append('<div class="mtc">' + newCustomTagName +':' + newCustomTagValue + ' <button type="button" data-id="' + customTagIndex + '" onclick="deleteCustomTag(this)" class="qwrong"></button></div>');
+				$('#customTagsInput').append('<input type="hidden" id="customTagId_' + customTagIndex + '" name="customTag" value="' + newCustomTag + '">');
+				customTagIndex++;
+			}
+		}
+		function deleteTag(t){
+			$(t).parent().remove();
+			$('#tagId_' + $(t).attr('data-id')).remove();
+		}
+		function deleteCustomTag(t){
+			$(t).parent().remove();
+			$('#customTagId_' + $(t).attr('data-id')).remove();
+		}
+		
+		function changeSource(t){
+			var source = $(t).val();
+			if(source == 1){
+				$('#sourcePath').css('display','none');
+				$('#sourceTime').css('display','none');
+			}else if(source == 2){
+				$('#sourceLabel').html("链接地址");
+				$('#sourcePath').css('display','block');
+				$('#sourceTime').css('display','none');
+			}else if(source == 3){
+				$('#sourceLabel').html("采集地点");
+				$('#sourcePath').css('display','block');
+				$('#sourceTime').css('display','block');
+			}else if(source == 4){
+				$('#sourceLabel').html("出版物名称");
+				$('#sourcePath').css('display','block');
+				$('#sourceTime').css('display','none');
+			}
+		}
+		
+		function getCategory(bid,bname) {
+			var cUrl = '../categoryList?status=1'
+			bid = (typeof (bid) == 'undefined') ? '' : bid;
+			bname = (typeof (bname) == 'undefined') ? '' : bname+'>';
+			var e = (bid) ? $('#cabido' + bid) : $('#cabido');
+			cUrl += (bid) ? '&pagesize=10000&parent=' + bid : '&pagesize=10000&category=&level=1';
+			if (bid)
+				e.css('display') == 'none' ? e.show() : e.hide();
+			$.getJSON(cUrl,function(data) {
+				var cLis = '';
+				if (data.Records.length > 0) {
+					$.each(data.Records,function(i, c) {
+						emClass = (c.haschild) ? ' class="c"' : '';
+						emClick = (c.haschild) ? ' onclick="getCategory(\'' + c.id+'\',\''+bname+c.name + '\');changeIcon($(this))"' : '';
+						aClick = ' onclick="setCategory(\'' + c.id + '\', \'' +bname + c.name + '\')"';
+						cLis += '<div class="listnode" id="' + c.id + '"><em' + emClass + emClick + '></em><a href="javascript:void(0)" ' + aClick + '>'
+								+ c.name + '</a><div id="cabido' + c.id	+ '" class="cSub" style="display:none">加载中...</div></div>';
+					});
+				}
+				e.html(cLis)
+			});
+		}
+		function setCategory(id, name) {
+			$('#cabido').html('');
+			$('#calId').html(name);
+			$('#category').val(id);
+			$('.listCate').hide();
+		}
+		
+		function changeCategorybtn(e) {
+			e.next('.listCate').toggle();
+		}
+	
+		$(function() {
+			var id = url('?id');
+				$('input[name="id"]').val(id);
+			$.get('../admin/resourceLoad?id='+url('?id'),function(r){
+				if(r.Status == 'success') {
+					var st = JSON.stringify(r);
+				    var template = $('#DataTpl').html();
+				    var html = Mustache.render(template, $.parseJSON(st));
+				    $('#HtmlTpl').html(html);
+				    $('#status').val(r.Records.status);
+				    $('#source').val(r.Records.source);
+				    $('#eminent').val(r.Records.eminent);
+				    $('#isObject').val(r.Records.isObject);
+				    var source = r.Records.source;
+				    if(source == 1){
+						$('#sourcePath').css('display','none');
+						$('#sourceTime').css('display','none');
+					}else if(source == 2){
+						$('#sourceLabel').html("链接地址");
+						$('#sourcePath').css('display','block');
+						$('#sourceTime').css('display','none');
+					}else if(source == 3){
+						$('#sourceLabel').html("采集地点");
+						$('#sourcePath').css('display','block');
+						$('#sourceTime').css('display','block');
+					}else if(source == 4){
+						$('#sourceLabel').html("出版物名称");
+						$('#sourcePath').css('display','block');
+						$('#sourceTime').css('display','none');
+					}
+				    
+				    if (r.Records.tags.length > 0) {
+						$.each(r.Records.tags,function(i, c) {
+							$('#tagsShow').append('<div class="mtc">' + c.tag + ' <button type="button" data-id="' + tagIndex + '" onclick="deleteTag(this)" class="qwrong"></button></div>');
+							$('#tagsInput').append('<input type="hidden" id="tagId_' + tagIndex + '" name="tag" value="' + c.tag + '">');
+							tagIndex++;
+						});
+					}
+				    if(r.Records.customTags.length > 0){
+				    	$.each(r.Records.customTags,function(i, c) {
+							$('#customTagsShow').append('<div class="mtc">' + c.name + ':' + c.value + ' <button type="button" data-id="' + customTagIndex + '" onclick="deleteCustomTag(this)" class="qwrong"></button></div>');
+							$('#customTagsInput').append('<input type="hidden" id="customTagId_' + customTagIndex + '" name="customTag" value="' + c.name + '_' + c.value + '">');
+							customTagIndex++;
+						});
+				    }
+				}else {
+					alert('服务端出错！请稍后重试！');
+				}
+			}).done(function(){
+				$('#formsubmit').submit(function() {
+					var str = $(this).serialize();
+					$.get('../admin/resourceEdit?'+ str, function(data) {
+						var Result = data.Status;
+						var message = data.Message;
+						if (Result == "success") {
+							window.top.location.reload();
+						} else {
+							$('.alert-danger').html(message).show();
+						}
+					})
+					return false;
+				});
+				$.get('../nationalList',function(r){
+					var nationalHtml ="";
+					var nid = $('select[name="national"]').val();
+					for ( var i = 0, l = r.Records.length; i < l; i++ ) {
+						var selected = (nid == r.Records[i].id) ? ' selected' : '';
+						nationalHtml+='<option '+ selected +' value="'+r.Records[i].id+'">'+r.Records[i].name+'</option>';
+					}
+					$('#nationalSelect').html(nationalHtml);
+				});
+			})
+			
+			//项目类型 helper 函数
+			$(document).on("click",function(e) {
+				if(!$(e.target).parents().is('.ufc'))
+					$('.uul').hide();
+			});
+		})
+	</script>
+<body>
+</html>

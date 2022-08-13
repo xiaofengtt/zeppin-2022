@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="s1">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/s1</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="s2">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/s2</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="s3">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/s3</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="s4">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/s4</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="s5">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/s5</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="s6">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/s6</item>
+    </style>
+
+    <style name="s7">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/s7</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="s8">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/s8</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+</resources>

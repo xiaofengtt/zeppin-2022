@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+		<meta name="format-detection" content="telephone=no" />
+		<title>视频页</title>
+<!-- 		<link href="css/bootstrap.min.css" rel="stylesheet"> -->
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link href="css/style.css" type="text/css" rel="stylesheet" />
+		<link href="css/Video.css" type="text/css" rel="stylesheet" />
+		<link href="css/page.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="wrap">
+		<div id="header">
+			<div class="header_inner">
+				<a class="nav" onclick="nav()"><img src="images/nav.png" alt="导航"></a>
+				<a class="logo" href="index.html"><img src="images/logo.png" alt="logo"></a>
+				
+			</div>
+		</div>
+		<ul class="Index nav-list">
+					<li><a href="index.html"><i class="icon-glass icon"><img src="images/icon1.png" alt="icon"></i><label>首页</label><i class="navLiBg"><img src="images/navLiBg.png" alt="箭头"></i></a></li>
+					<!-- <li><a href="List.html"><i class="icon2 icon"><img src="images/icon2.png" alt="icon"></i><label>新机发布</label><i class="navLiBg"><img src="images/navLiBg.png" alt="箭头"></i></a></li>
+					<li class="light"><a href='List.html'><i class="icon3 icon"><img src="images/icon3.png" alt="icon"></i><label>评测</label><i class="navLiBg"><img src="images/navLiBg.png" alt="箭头"></i></a></li>
+					<li><a href="List.html"><i class="icon4 icon"><img src="images/icon4.png" alt="icon"></i><label>业务办理</label><i class="navLiBg"><img src="images/navLiBg.png" alt="箭头"></i></a></li>
+					<li><a href="List.html"><i class="icon5 icon"><img src="images/icon5.png" alt="icon"></i><label>明星Show</label><i class="navLiBg"><img src="images/navLiBg.png" alt="箭头"></i></a></li> -->
+				</ul>
+		<div id="content">
+			<div class="content_inner">
+				<!--视频开始-->
+				<div id="BuyVideo">
+					<div class="ZeppinVideo" style="position:relative;">
+		                <div class="ZeppinVideo_Top">
+		                	<img src="" style="position: absolute; top: 0; left: 0; width: 100%;" class="cover">
+		                    <!--<b onclick="ZeppinVideo_TopB(this)"></b>-->
+		                    <!-- <video id="shuangkashuangdai">
+		                        <source src="">                     
+		                        您的版本不支持该视频播放，请更换浏览器或者升级浏览器版本
+		                    </video> -->
+		                </div>
+		                <div class="playAnimate">
+		                <img src="images/360.png" style="width:100%; margin-top:0.1rem;" class="animateBg">
+		                		<!-- <p class="animate animation0">商品提示</p> -->
+		                </div>
+		                <div class="ZeppinVideo_Bottom">
+		                    <div class="Progress"><div class='progressQQ'><!-- <i class="node1 node"><p class="nodeintro nodeintro1"><img src="images/intro.png" alt="视频节点"></p></i><i class="node2 node"><p class="nodeintro nodeintro2">
+		                    	<img src="images/intro.png" alt="视频节点"></p></i><i class="node3 node"><p class="nodeintro nodeintro3">
+		                    	<img src="images/intro.png" alt="视频节点"></p></i> --></div><div class='timeBar'></div></div>
+		                    <div class="kongzhianniu"><b class="bgligh"></b><select class="type"  onchange="changeType(this)">
+		                    			<option>流畅</option>
+		                    			<option selected="selected">高清</option>
+		                    			<option>超清</option>
+		                    		</select></div>
+		                </div>		                
+		            </div>
+		            
+				</div>
+				<!--视频结束-->
+				<!--节点轮播展示-->
+				<div class="swiper-container swipe1">
+					<div class="swiper-wrapper">
+						<!-- <div class="swiper-slide"> 
+							<a href="Show.html"><img src="images/Commodity.jpg"></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="Show.html"><img src="images/Commodity.jpg"></a>
+						</div> 
+						<div class="swiper-slide"> 
+							<a href="#"><img src="images/Commodity.jpg"></a>
+						</div>
+						<div class="swiper-slide"> 
+							<a href="Show.html"><img src="images/Commodity.jpg"></a>
+						</div> -->
+					</div>
+					<div class="swiper-pagination" id="figure_pagination_1"></div>
+				</div>
+				<!--节点轮播展示结束-->
+				<!--视频介绍部分-->
+				<div class="infomation">
+					<p class="title"></p>
+					<p class="detailss"></p>
+					
+				</div>
+				<!--视频介绍部分结束-->
+				
+				<hr>
+				<!--相关评测-->
+				<div class="correlation">
+					<p class="title">相关视频</p>
+					<!-- <a href="Video.html">
+						<div class="video_review video_reviewleft">
+							<img src="images/img5.jpg" alt="评测">
+							<p>最低4000mAh 这几款长续航手机很不错</p>
+						</div>
+					</a>
+					<a href="Video.html">
+						<div class="video_review video_reviewright">
+							<img src="images/img6.jpg" alt="评测">
+							<p>1200万像素起 市售中高端拍照手机盘点</p>
+						</div>
+					</a>
+					<a href="Video.html">
+						<div class="video_review video_reviewleft">
+							<img src="images/img7.jpg" alt="评测">
+							<p>iPhone SE领衔 热门全网通金属手机推荐</p>
+						</div>
+					</a>
+					<a href="Video.html">
+						<div class="video_review video_reviewright">
+							<img src="images/img8.jpg" alt="评测">
+							<p>杨元庆自曝：Moto G4或将于6月9日亮相</p>
+						</div>
+					</a>
+					<div class="clear"></div> -->
+				</div>
+				<!--相关评测结束-->
+				
+			</div>
+		</div>
+		
+		
+		<footer>
+			<p>Copyright&copy;1999-2016&nbsp;&nbsp;中移在线服务有限公司版权所有</p>
+			<p>中华人民共和国增值电信业务经营许可证</p>
+			<p>经营许可证编号：A2.B1.B2-20100001</p>
+		</footer>
+		</div>
+		
+		
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/zepto.min.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/circlr.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script src="../assets/plugins/url.min.js"></script>
+		<script type="text/javascript" src="js/style.js"></script> 
+		<script type="text/javascript" src="js/Video.js"></script>
+	</body>
+</html>

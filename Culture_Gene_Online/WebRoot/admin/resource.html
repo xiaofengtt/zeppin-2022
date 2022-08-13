@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>素材管理</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/bootstrap.css">
+
+<link rel="stylesheet" href="../css/app.css">	
+<link rel="stylesheet" href="../css/ui-dialog.css">
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/bootstrap.js"></script>
+
+<script src="../js/url.min.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/app.js"></script> 
+<script src="../js/moment.js"></script> 
+<script src="../js/zh-cn.js"></script>
+<script src="../js/jquery.serializejson.min.js"></script>
+<script src="../js/dialog-min.js"></script>
+<script src="../js/jquery.simplePagination.js"></script>
+
+<script>
+$(function(){
+	moment.lang('zh-cn');
+    function timedUpdate () {
+       update();
+       setTimeout(timedUpdate, 1000);
+   }
+   function update(){
+          $('#datafomate').html(moment().format('YYYY-MM-DD ,a h:mm:ss'));
+      }  
+	timedUpdate()
+})
+</script>
+ <style>
+	.main-inner {margin-right:15px;}
+</style>
+</head>
+<body>
+
+<!--Header-part-->
+<div class="navbar" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo" title="文化基因在线资源管理平台" ><img src="../img/logo-jy.png" height="41"></a>
+    </div>
+	<p class="logout">欢迎<span id="loginname"></span> &nbsp;&nbsp;<span id="datafomate"></span> &nbsp;|&nbsp;  <a href="../admin/passwordEditiframe.html" data-fancybox-type="iframe" class="btn-password cboxElement">修改密码</a> &nbsp;|&nbsp;  <a href="login.html">退出</a> </p>
+	
+  </div>
+</div>
+<!--close-Header-part--> 
+
+<div id="container" class="container-fluid">
+
+	<div class="row">
+		<div class="sidebar">
+			<div class=" nav-sidebar">
+				<ul id="leftside" class="nav">
+				</ul>
+			</div>
+			<div class="js-nav-shadow bottom"><img src="../img/round-shadow-bottom.png" style="top: auto; bottom: 0px;"></div>
+		</div> <!--end sidebar-->
+		<script id="leftTpl" type="text/template">
+			{{#Records}}
+			<li class="active"><a href="#"><span>{{name}}</span> </a>
+				
+				<ul class="nav">
+					{{#data}}
+						<li {{#iscurrent}} class="cur" {{/iscurrent}}>  <a href="{{path}}">{{name}}
+						</a></li>
+					{{/data}}
+			
+				</ul>
+				
+			</li>
+			{{/Records}}
+		</script>
+		<div class="main">
+			<div class="main-inner">
+				<div class="queListCnt clearfix">
+						
+						<div class="btn-group add-que">
+							<a href="../admin/resourceAddiframe.html" data-fancybox-type="iframe" class="btn btn-primary btn-create">+ 添加素材</a>
+						  <!--搜索框-->
+							<div id="searchbox" class="searchbox" style="top:5px">
+								<form class="search search_form" id="searchForm" action="#" method="POST">
+									<fieldset>
+										<label for="searchheader" class="placeholder overlabel">标题</label>
+										<input autocomplete="off" id="searchheader" value="" type="text" name="q">
+										<input type="hidden" name="" value="">
+										<div class="show_dropdown">
+											<div class="dropdown" style="display: block;">
+												<ul>
+													<li><label for="type_name">按标题</label><input type="radio" id="type_name" name="stype" value="title" checked="checked">
+													</li>
+												</ul>
+												<span class="bl"></span>
+												<span class="br"></span>
+											</div>
+										</div>
+										<button type="submit" id="searchBtn" class="search-button">Search</button>
+									</fieldset>
+								</form>
+						
+							</div>
+						<div id="queboxCnt" style="padding-top:50px">
+							
+						</div>
+						
+						<div class="pull-right pagination" id="pagnationPaper"></div>
+						<script id="queboxTpl" type="text/template">
+							{{#Records}}
+							<div id="{{id}}" class="list-item" style="font-size:16px">
+									<div class="list-item-hd">
+										<table class="table table-bordered">
+											<tbody>
+												<tr>
+													<td width="150px"><span class="text-primary">id：</span>{{id}}</td>
+													<td width="auto"><span class="text-primary">标题：</span><a href="../admin/resourceChildren.html?level=1&parent={{id}}"><span>{{title}}</span></a>{{#eminent}}<span class="text-primary" style="color:red">(已置顶)<span>{{/eminent}}</td>
+													<td width="200px"><span class="text-primary">状态：</span><span id="status_{{id}}" class="text-danger">{{statusCN}}</span></td>
+													<td width="330px">
+														<button onclick="changeStatus(this)" data-id="{{id}}" data-url="../admin/resourceChangeStatus?status=2&id={{id}}" class="btn btn-primary">审核通过</button>
+														<button onclick="changeStatus(this)" data-id="{{id}}" data-url="../admin/resourceChangeStatus?status=3&id={{id}}" class="btn btn-primary">审核未通过</button>
+														<a href="../admin/resourceEditiframe.html?id={{id}}" data-fancybox-type="iframe" class="btn btn-primary btn-create">编辑</a>
+														<button onclick="cutImage(this)" data-id="{{id}}" data-url="../admin/resourceChangeStatus?status=4&id={{id}}" class="btn btn-primary">基因分割</button>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+				
+									<div class="list-item-bd clearfix">
+										
+										<div class="list-item-col list-5-05" style="text-align:center;vertical-align:middle;padding-left:0">
+											<img src="{{url}}" style="max-width:90%;max-height:200px;">
+										</div>
+										
+										<div class="list-item-col list-5-1">
+											<ul>
+												<li><span class="text-primary">大小：</span>{{sizeKB}}KB</li>
+												<li><span class="text-primary">格式：</span>{{type}}</li>
+												<li><span class="text-primary">分辨率：</span>{{ratio}}</li>
+				
+											</ul>
+										</div>
+										<div class="list-item-col list-5-1">
+											<ul>
+												<li><span class="text-primary">分类：</span> {{categoryName}}</li>
+												<li><span class="text-primary">来源：</span> {{sourceCN}}</li>
+												<li><span class="text-primary">上传者：</span> {{ownerName}}</li>
+											</ul>
+										</div>
+										<div class="list-item-col list-5-1">
+											<ul>
+												<li class="text-toolong" title="{{comment}}"><span class="text-primary">描述：</span> {{comment}}</li>
+												<li class="text-toolong" title="{{meaning}}"><span class="text-primary">寓意：</span> {{meaning}}</li>
+												<li><span class="text-primary">上传时间：</span> {{createtime}}</li>
+											</ul>
+										</div>
+										
+				
+									</div>
+								</div>
+							{{/Records}}
+						</script>
+					</div>
+					
+				
+
+
+				<script type="text/javascript">
+				var pagenum = '1';
+				
+				function changeStatus(t) {
+					var obj = $(t),cUrl = obj.attr('data-url');
+					$.getJSON(cUrl, function(ret) {
+						if (ret.Status == 'success') {
+							$('#status_' + obj.attr('data-id')).text(ret.Records.statusCN);
+							infotip(obj, ret.Message);
+						} else {
+							alert('失败,' + ret.Message);
+						}
+					})
+					return false;
+				}
+				
+				function cutImage(t) {
+					if(confirm('你确定要重新分割吗？此操作会覆盖之前的分割结果。')){
+						var obj = $(t),cUrl = obj.attr('data-url');
+						$.getJSON(cUrl, function(ret) {
+							if (ret.Status == 'success') {
+								$('#status_' + obj.attr('data-id')).text(ret.Records.statusCN);
+								infotip(obj, ret.Message);
+							} else {
+								alert('失败,' + ret.Message);
+							}
+						})
+					}
+					return false;
+				}
+				
+				$('#searchForm').submit(function(){
+					var key = $('input[name="stype"]:checked').val(),obj = {};
+					obj[key] = $('#searchheader').val();
+					var str = '&'+key+'='+obj[key];
+					getList(str);
+					return false;
+				});
+				
+				
+				//加载列表
+				function getList(params) {
+					if (params == undefined){
+						params = '';
+					}
+					var page = (typeof pagenum == 'undefined') ? 1 : pagenum;
+					var d = dialog({
+					    title: '系统提示',
+						width : 320,
+					    content: '加载中...'
+					});
+					d.showModal();
+					$.getJSON('../resourceList?level=1&sorts=createtime-desc'+params+'&pagenum='+page, function(r) {
+						r.PageCount && $('.quepager').html('<span style="font-weight:normal">'+ r.PageNum +'</span>/'+ r.PageCount);
+						if(r.Status == 'success' && r.Records.length > 0) {
+						    var template = $('#queboxTpl').html();
+						    var html = Mustache.render(template, r);
+						    $('#queboxCnt').html(html);
+						    
+						    $(".btn-create").colorbox({
+								iframe : true,
+								width : "860px",
+								height : "800px",
+								opacity : '0.5',
+								overlayClose : false,
+								escKey : true
+							});
+						    
+						} else if (r.Status == 'success' && r.Records.length == 0) {
+							$('#pagnationPaper').html('');
+							$('#queboxCnt').html('<div class="no_data">无搜索结果</div>');
+						}
+						
+						$(".main").animate({scrollTop: 0}, 1e3);
+						
+						d.close().remove();
+						
+					}).done(function(r){//分页
+						$('#pagnationPaper').pagination({
+							currentPage : r.PageNum,
+					        items: r.TotalRecordCount,
+							edges: 3,
+					        itemsOnPage : r.PageSize,
+					        
+							onPageClick : function(pageNumber,event) {
+								pagenum = pageNumber;
+								getList();
+							}
+					    });
+						
+					});
+				}
+				
+				
+				
+				$(function(){
+					function init() {
+						$(".btn-password").colorbox({
+							iframe : true,
+							width : "400px",
+							height : "330px",
+							opacity : '0.5',
+							overlayClose : false,
+							escKey : true
+						});
+						$(".btn-create").colorbox({
+							iframe : true,
+							width : "860px",
+							height : "800px",
+							opacity : '0.5',
+							overlayClose : false,
+							escKey : true
+						});
+						getList();
+						$('#metainfo').change(function(e){
+							$('.question-box').toggleClass('question-meta-hidden');
+							return false;
+						});
+					};
+					init();
+				})
+				</script>
+			</div>
+		</div>	
+	</div> <!--end row-->	
+</div>	<!--end container-->
+</div>
+<div class="bs-footer">
+  <div>
+	  <p>Copyright © 2016 北京邮电大学世纪学院</p>
+
+  </div>
+</div>
+
+</body>
+</html>
+		

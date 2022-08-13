@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activity.PersonalActivity" >
+
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/action_bar" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/personal_item_height" >
+
+                <LinearLayout style="@style/PersonalLinearLayoutStyle" >
+
+                    <ImageView
+                        style="@style/PersonalIconStyle"
+                        android:src="@drawable/user_name_icon" />
+
+                    <TextView
+                        android:id="@+id/user_name"
+                        style="@style/PersonalTextStyle"
+                        android:text="用户昵称" />
+                </LinearLayout>
+
+                <com.zixueku.widget.CircleImageView
+                    android:id="@+id/user_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/user_icon" />
+            </RelativeLayout>
+
+            <View style="@style/PsersonHorizontalLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/personal_item_height" >
+
+                <LinearLayout style="@style/PersonalLinearLayoutStyle" >
+
+                    <ImageView
+                        style="@style/PersonalIconStyle"
+                        android:src="@drawable/version_icon" />
+
+                    <TextView
+                        style="@style/PersonalTextStyle"
+                        android:text="版本号" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/version"
+                    style="@style/s6"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:text="1.3.0"
+                    android:textColor="@color/dimgrey" />
+            </RelativeLayout>
+
+            <View style="@style/PsersonHorizontalLine" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/personal_exit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rect_quite"
+        android:text="@string/quit"
+        android:textSize="@dimen/s4" />
+
+</RelativeLayout>

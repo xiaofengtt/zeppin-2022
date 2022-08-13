@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="../css/bootstrap2.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/iframe.js"></script>
+<script src="../js/mustache.js"></script>
+
+<script src="../js/url.min.js"></script>
+
+</head>
+<body>
+	<div class="ifrcnt container">
+		<div class="hd">
+			<h3>设置题型 > <span id="subjectname"></span></h3>
+		</div>
+		<div class="bd">
+			<div class="alert alert-danger"
+				style="display:none;margin:0 15px 15px;"></div>
+			
+			<form id="formsubmit" class="form-horizontal" role="form"
+				action="#"
+				method="post">
+				<input type="hidden" name="subject.id" value="">
+				<div class="clearfix">
+					<div id="HtmlTpl" class="span10">
+						<div class="control-group">
+							<label class="control-label" for="">选择题型</label>
+							<div class="controls taglists" id="itemTypelist">
+								
+							</div>
+							
+						</div>
+						<div class="hidden" id="itemTpyeids">
+							
+						</div>
+						
+						<div id="itemTypenames">
+							
+						</div>
+						
+					</div>	
+
+				</div>
+
+				<div class="row actionbar">
+					<div class="offset7">
+						<button class="btn btn-primary" type="submit">确定</button>
+						<button id="colorboxcancel" onclick="parent.$.colorbox.close()"
+							class="btn btn-default" type="button">取消</button>
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<style>
+	.mod {line-height:26px;border:1px solid #ddd;padding:5px 6px;margin-bottom:10px;}
+	.mod .move {float:right;height:22px;margin-top:3px;}
+	.mod .move .up,.mod .move .down {background-image: url("../img/designqpic.gif");background-repeat: no-repeat;display: inline-block;
+overflow: hidden;height: 16px;width: 16px;margin: 0px 2px 0 0;cursor:pointer;}
+	.mod .move .up {background-position: -22px -2px;}
+	.mod .move .down {background-position: -2px -2px;}
+	</style>
+	<script>
+		$(function() {
+			var id = url('?id');
+			$('input[name="subject.id"]').val(id);
+			//学科信息
+			$.get('../subjectLoad?id='+id,function(r) {
+				if(r.Status =='success') {
+					$('#subjectname').html(r.Records.name);
+				}
+			})
+			//题型列表 初始化
+			var itemTypearr = [],itemTypeNamearr = [];
+			$.get('../subjectItemTypeSearch?subject.id='+id,function(r) {
+				if(r.Status =='success') {
+					$.each(r.Records,function(i,v) {
+						itemTypearr.push(v['itemType.id']);
+						itemTypeNamearr.push(v['itemType.name']);
+					})
+				}
+			}).done(function(){
+				$.get('../itemTypeSearch',function(r) {
+					if(r.Status =='success') {
+						var arr = [],idarr = [],str = '';
+						$.each(r.Records,function(i,v) {
+							var selected = ( $.inArray(v.id,itemTypearr) > -1 ) ? 'rdact' : 'gract';
+							str = '<span class="tagbtn '+ selected +'" dataid="'+ v.id +'">'+ v.name +'</span>';
+							arr.push(str);
+							idarr.push(v.id);
+
+						})
+						
+						$.each(itemTypearr,function(i,v) {
+							if($.inArray(v,idarr) > -1) {
+								$('#itemTypenames').append('<div id="itemType_' + v + '" class="mod"><div class="move"><span class="up"></span><span class="down"></span></div><div class="c">'+ itemTypeNamearr[i] +'</div><input type="hidden" name="itemtypes" value="' + v + '"></div>');
+							}
+						})
+						
+						
+						$('#itemTypelist').html(arr.join(''));	
+					}
+				})
+				
+			})
+			
+			
+			//绑定事件
+			$('#itemTypelist').on('click','.tagbtn',function(){
+				var th = $(this), id = th.attr('dataid'),name = th.html();
+				if(th.is('.gract')) {
+					th.removeClass('gract').addClass('rdact');
+					//$('#itemTpyeids').append('');
+					$('#itemTypenames').append('<div id="itemType_' + id + '" class="mod"><div class="move"><span class="up"></span><span class="down"></span></div><div class="c">'+ name +'</div><input type="hidden" name="itemtypes" value="' + id + '"></div>');
+				}else {
+					th.removeClass('rdact').addClass('gract');
+					$('#itemType_'+id).remove();
+				}
+			})
+			//排序 上下
+			$('#itemTypenames').on('click','.up,.down',function(e){ 
+			    var $div = $(this).closest('.mod'); 
+			    if ($(e.target).is('.down')) { 
+			        $div.next('.mod').after($div); 
+			    } else {
+			        $div.prev('.mod').before($div);
+			    }
+			});
+			
+			
+			
+		
+			$('#formsubmit').submit(
+				function() {
+					var str = $(this).serialize();
+					$.get('../subjectItemTypeUpdate?'+ str, function(data) {
+						if (data.Status == "success") {
+							window.top.location.reload(true);
+						} else {
+							$('.alert-danger').html(data.Message).show();
+						}
+					})
+					return false;
+			});
+			
+			
+			//项目类型 helper 函数
+			$(document).on("click",function(e) {
+				if(!$(e.target).parents().is('.ufc'))
+					$('.uul').hide();
+			});
+
+		})
+		
+		$(function() {
+			
+
+		})
+		
+	</script>
+<body>
+</html>

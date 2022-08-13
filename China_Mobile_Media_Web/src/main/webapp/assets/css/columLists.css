@@ -1,0 +1,69 @@
+body {
+  background-color: #fafafa !important;
+}
+/***
+Page header
+***/
+
+.header .btn-navbar {
+  background-color: #434343 !important;
+}
+.header .navbar-nav .dropdown-toggle:hover,
+.header .navbar-nav .dropdown.open .dropdown-toggle {
+  background-color: #4f4f4f !important;
+}
+.header .navbar-nav li.dropdown .dropdown-toggle i {
+  color: #808080 !important;
+}
+/***
+Header Search
+***/
+
+.header .search-form .form-control{
+  color: #ccc;
+  background-color: #666666;  
+}
+
+.cui-menu{ top:80px;position: absolute;z-index:1;right:0;}
+.cui-menu .btn{ color: #fff; background:#3ebef3;float:right;margin-right:50px;height:32px;padding:0 23px;line-height:32px;font-size:14px;}
+.cui-menu .btn:hover{background:#43a7e8;color:#fff;}
+a.btn{ color: #080808; background:#ccc; margin-top:25px;}
+.content{padding:0 30px; min-height: 300px; overflow-y: auto;}
+span.delete{ margin-left: 10px;}
+table.table{ margin: 30px 0; width: 100%; border: 1px solid #ccc;border-bottom:none;}
+.clearfix{border-top:none;border-bottom:1px solid #ccc;}
+table th,td{text-align: center;}
+table th{ border-bottom: 1px solid #aaa; background-color: #ddd;}
+table tr{}
+table td{ padding: 10px 0;}
+table td input[type="checkbox"]{float: left; margin-top: 4px;}
+table td label{ margin-top: 4px; font-weight: normal;}
+table td label.disable{ color: #f00;}
+table td a{ padding: 10px; cursor: pointer; color: #000;}
+a:hover{text-decoration: none;}
+
+div.jtable-main-container table.jtable{ margin-top:70px;} 
+
+
+.search .show_dropdown{background:url(../img/row-cross.png) center no-repeat; border:1px solid #ccc; border-left:none;}
+.search .show_dropdown:hover{background:url(../img/row-cross.png) center no-repeat; border:1px solid #ccc; border-left:none;}
+
+span#i1{ display:inline-block; padding:10px; font-size:16px;}
+span#i2{ display:inline-block; padding:10px; font-size:16px;}
+span#i3{ display:inline-block; padding:10px; font-size:16px;}
+.ajax-file-upload-filename{font-size:22px;}
+.offset7{margin:30px 0 0 200px;}
+.controls input{ height:40px; width:500px;font-size:20px;}
+.controls textarea{ width:500px;height:150px; resize:none;font-size:20px;}
+.form-horizontal .control-label{ padding-top:10px;}
+.ajax-upload-dragdrop{ padding:20px;}
+.form-horizontal .control-label{ width:60px;}
+.form-horizontal .controls{ margin-left:80px;}
+
+.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td{border:none;}
+
+a.linkbtn{color:#3ebef3;font-size:14px;line-height:40px;}
+a.linkbtn:hover{text-decoration: underline;}
+a.linkbtndel{color:#f00;}
+a.linkbtndel:hover{color:#f00;}
+

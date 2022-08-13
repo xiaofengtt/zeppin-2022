@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="stylesheet" href="../css/bootstrap2.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<link rel="stylesheet" href="../css/app.css">
+
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../css/metro/blue/jtable.css" rel="stylesheet" type="text/css" >
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/jquery.jtable.js"></script>
+<script src="../js/jquery.jtable.zh-CN.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+
+<script src="../js/bootstrap-paginator.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/url.min.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/app.js"></script> 
+<script src="../js/moment.js"></script> 
+<script src="../js/zh-cn.js"></script>
+<script src="../js/upload/jquery.uploadfile.min.js"></script>
+
+<script src="../js/iframe.js"></script>
+
+</head>
+<body>
+	<div class="ifrcnt container">
+		<div class="hd">
+			<h3>添加教材</h3>
+		</div>
+		<div class="bd">
+			<div class="alert alert-danger"
+				style="display: none; margin: 0 15px 15px;"></div>
+			<form id="formsubmit" class="form-horizontal" role="form" action="#"
+				method="post">
+				<input type="hidden" name="id" value="">
+				<div class="clearfix">
+				
+					<div id="HtmlTpl" class="span10">
+						
+						<div class="control-group">
+							<label class="control-label" for="">名称</label>
+							<div class="controls">
+								<input type="text" id="" name="name" value="">
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="">出版社</label>
+							<div class="controls">
+								<input type="text" id="" name="publisher" value="">
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="">版次</label>
+							<div class="controls">
+								<input type="text" id="" name="version" value="">
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="">学段</label>
+							<div class="controls">
+
+								<div class="companylocation" style="z-index:102">
+
+									<span class="clId" style="height: 22px;" id="clId"
+										onclick="getsnode();changeGradebtn($(this));"></span>
+									<div id="clListBox" class="listSub">
+										<div id="clList" class="list_sub sm_icon">
+											<div id="bido"></div>
+										</div>
+									</div>
+
+								</div>
+
+								<input type="hidden" id="gradeid" name="grade.id" value="">
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="">学科</label>
+							<div class="controls">
+								<select id="subjectSelect" name="subject.id">
+									
+								</select>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="">状态</label>
+							<div class="controls">
+								<select name="status">
+									<option value="1">正常</option>
+									<option value="0">停用</option>
+								</select>
+
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="">封面</label>
+							<div class="controls">
+								<div id="resourceId"><span class="btn btn-primary btn-create">&nbsp;上传封面&nbsp;&nbsp;</span>
+								</div>
+								<img id="uploadImage" width="120px" >
+							</div>
+							
+						</div>
+						
+					</div>
+
+				</div>
+
+				<div class="row actionbar">
+					<div class="offset7">
+						<button class="btn btn-primary" type="submit">确定</button>
+						<button id="colorboxcancel" onclick="parent.$.colorbox.close()"
+							class="btn btn-default" type="button">取消</button>
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<script>
+	
+		$(function() {
+			$('#formsubmit').submit(function() {
+				var str = $(this).serialize();
+				$.get('../textbookAdd?' + str, function(data) {
+					if (data.Status == "success") {
+						window.top.location.reload(true);
+					} else {
+						$('.alert-danger').html(data.Message).show();
+					}
+				})
+				return false;
+			});
+
+			//项目类型 helper 函数
+			$(document).on("click", function(e) {
+				if (!$(e.target).parents().is('.ufc')) {
+					$('.uul').hide();
+				}
+				if(!$(e.target).parent().is('#bido') && !$(e.target).is('#clId') && !$(e.target).parent().is('.listnode')){
+					$('#clListBox').hide();
+				}
+				
+				
+			});
+			
+			$.get('../subjectList',function(r){
+				var subHtml ="";
+				for ( var i = 0, l = r.Records.length; i < l; i++ ) {
+					subHtml+='<option value="'+r.Records[i].id+'">'+r.Records[i].name+'</option>';
+				}
+				$('#subjectSelect').html(subHtml);
+			});
+			
+		});
+		
+		$("#resourceId").uploadFile({
+			url:"../resourceAdd?type=1",
+			allowedTypes:"jpg,png,gif,jpeg",
+			maxFileSize:1024*1024*5,
+			fileName:"applyReportBook",
+			maxFileCount : 1,
+			dragDropStr: "",
+			extErrorStr:"文件格式不正确，请上传jpg类型的图片",
+			showStatusAfterSuccess:false,
+			showDelete : true,
+			deletelStr : '删除',
+			showAbort:false,
+			onSuccess:function(files,data,xhr)
+			{
+				if($('input[name="resource.id"]').length > 0) {
+					$('input[name="resource.id"]').val(data.Records.id);
+				}else {
+					$("#resourceId").append('<input type="hidden" name="resource.id" value="' + data.Records.id + '">');
+				}
+				$('#uploadImage').attr('src',data.Records.sourcePath);
+				
+			},
+			deleteCallback: function (data, pd) {
+	         	$.get("../resourceDelete?id="+$('input[name="resource.id"]').val(),function (resp,textStatus, jqXHR) {
+	                if(resp.Status=='success')  
+						 $("#resourceId").find('input[name="resource.id"]').remove();
+					else 
+						alert(resp.Message);
+	             });
+			}
+		});
+		
+		function changeSubject(id){
+			$.get('../subjectList?status=1&grade.id='+id,function(r){
+				if(r.Status == 'success' && r.Records.length > 0 ) {
+					var str = '';
+					var sid = $('select[name="subject.id"]').val();
+					for ( var i = 0, l = r.Records.length; i < l; i++ ) {
+						var selected = (sid == r.Records[i].id) ? ' selected' : '';
+					    str += '<option '+ selected +' value="'+ r.Records[i].id +'">'+ r.Records[i].name +'</option>';
+					}
+					$('select[name="subject.id"]').html(str);
+			
+				}
+				else{
+					$('select[name="subject.id"]').html("<option>暂无学科</option>");
+				}
+			});
+		}
+		
+		
+		
+	</script>
+<body>
+</html>

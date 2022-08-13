@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE control SYSTEM "common-1.7-SNAPSHOT.dtd"> -->
+
+<control>
+	<action path="/front/admin/videoIframe!execute">
+		<input uid="f0001" service="videoIframeService" method="add" desc="添加节点">
+			<parameter key="video" toKey="video" regex="required,length=36"/>
+			<parameter key="timePoint" toKey="timePoint" regex="required"/>
+		</input>
+	</action>
+</control>

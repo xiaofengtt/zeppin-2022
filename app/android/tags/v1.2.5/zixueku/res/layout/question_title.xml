@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ExerciseTipLayoutStyle" >
+
+    <TextView
+        android:id="@+id/type_name"
+        style="@style/ExerciseTypeNameTextStyle" />
+
+    <View style="@style/ExerciseTipSplitLine" />
+
+    <TextView
+        android:id="@+id/source_from"
+        style="@style/ExerciseSourceNameTextStyle" />
+
+</LinearLayout>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit"> 
+		<title>注册页面</title>
+		<link type="text/css" href="../css/registered.css" rel="stylesheet" />
+		
+	</head>
+	<body>
+		<div id="banner">
+			<div class="banner_inner">
+				<ul class="navList">
+					<li class="light"><a href="index.html">首页</a></li>
+					<li>
+						<a>分类</a>
+						<ul class="classify">
+							
+						</ul>
+					</li>
+					
+				</ul>
+				
+				<ul class="nav">
+					<li><a href="registered.html">注册</a></li>
+					<li><a href="login.html">登录</a></li>					
+				</ul>
+				<ul class="loggedLn">
+					<li><span>hi,<span class="userName"></span>好</span></li>
+					<li class="exit logginLi"><a href="javascript:" onclick="userLogout();">退出</a></li>
+					<li class="upload logginLi light"><a href="PersonalCenter.html?i=1">上传</a></li>
+				</ul>
+				<div class="clear"></div>
+				<div class="center">
+					<div class="banner_left">
+					<h1>文化基因在线</h1>
+					<h2>国内最优质的文化基因库</h2>
+					<h3>上千万优秀设计师的首选</h3>
+					
+					</div>
+					<div class="Search">
+						<input type="text" placeholder="搜索"  class="search_input"/>
+						<a class="search">
+							<img src="../images/search.png" alt="搜索"/>
+						</a>
+						<div class="clear"></div>
+						<p class="hotSearch">热门搜索：</p>
+					</div>
+					<div class="clear"></div>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		<div id="content">
+			<div class="content_inner">
+				<h1>注册新用户</h1>
+				<a href="login.html"" class="login">已有账号？&nbsp;&nbsp;去登录<span>&nbsp;&nbsp;></span></a>
+				<br>
+				<span class="designation">*&nbsp;用户名:</span><input type="text" placeholder="用户名"  class="username"/>
+				<br>
+				<span class="designation">*&nbsp;密码:</span><input type="password" placeholder="密码"  class="password"/>
+				<br>
+				<span class="designation">*&nbsp;确认密码:</span><input type="password" placeholder="确认密码"  class="confimpassword"/><span class="prompt"></span>
+				<br>
+				<span class="designation">邮箱:</span><input type="text" placeholder="邮箱"  class="email"/>
+				<br>
+				<span class="designation">*&nbsp;手机号:</span><input type="text" placeholder="手机号"  class="phone"/>
+				<br>
+				<span class="designation">单位:</span><input type="text" placeholder="单位"  class="company"/>
+				<br>
+				<span class="designation">职位:</span><input type="text" placeholder="职位"  class="job"/>
+				<br>
+				<span class="designation">验证码:</span><input type="text" placeholder="验证码"  class="code"/>
+				<img onclick="RefreshCode('validateCode')" src="../admin/ssoAuthImg" alt="验证码" id="validateCode"  style="vertical-align:top;cursor:pointer;margin-top:15px;margin-left:5px;">
+				<br>
+				<p class="warning"></p>
+				<a onclick="submit();" class="registered">注册</a>
+
+			</div>
+		</div>
+		<div id="footer">
+			<div class="footer_inner">
+				Copyright&nbsp;&copy;2016&nbsp;北京邮电大学世纪学院&nbsp;&nbsp;Power By www.zeppin.com
+				
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+		<script src="../js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="../js/registered.js"></script>
+	</body>
+</html>

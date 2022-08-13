@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <Button
+        android:layout_width="206dp"
+        android:layout_height="50dp"
+        android:background="@drawable/photo_gallery_selector"
+        android:paddingBottom="10dip"
+        android:paddingTop="10dip"
+        android:text="亲爱的,想换美照?"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/photo_choose_dialog_paizhao"
+        android:layout_width="206dp"
+        android:layout_height="70dp"
+        android:background="@drawable/photo_camera_selector"
+        android:paddingBottom="10dip"
+        android:paddingTop="10dip"
+        android:text="拍照"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="206dp"
+        android:layout_height="1dp"
+        android:background="@color/line" />
+
+    <Button
+        android:id="@+id/photo_choose_dialog_xiangce"
+        android:layout_width="206dp"
+        android:layout_height="70dp"
+        android:background="@drawable/photo_cancel_selector"
+        android:paddingBottom="10dip"
+        android:paddingTop="10dip"
+        android:text="从相册选择"
+        android:textSize="16sp" />
+
+</LinearLayout>

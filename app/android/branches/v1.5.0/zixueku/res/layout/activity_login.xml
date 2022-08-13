@@ -1,0 +1,259 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_background" >
+
+    <include
+        android:id="@+id/action"
+        layout="@layout/action_bar" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/loginTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="140dip"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <View style="@style/LoginLineStyle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quickLogin"
+            android:textColor="@color/black"
+            android:textSize="@dimen/s5" />
+
+        <View style="@style/LoginLineStyle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/login_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dip"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <!-- qq登录外观设置 -->
+
+        <RelativeLayout style="@style/LoginItemLayoutStyle" >
+
+            <ImageButton
+                android:id="@+id/login_item_image_QQ"
+                style="@style/LoginImageStyle"
+                android:src="@drawable/qq_selector" />
+
+            <TextView
+                style="@style/LoginTextStyle"
+                android:layout_below="@id/login_item_image_QQ"
+                android:text="@string/qq" />
+        </RelativeLayout>
+
+        <!-- 新浪微博登录外观设置 -->
+
+        <RelativeLayout style="@style/LoginItemLayoutStyle" >
+
+            <ImageButton
+                android:id="@+id/login_item_image_WEIBO"
+                style="@style/LoginImageStyle"
+                android:src="@drawable/weibo_selector" />
+
+            <TextView
+                style="@style/LoginTextStyle"
+                android:layout_below="@id/login_item_image_WEIBO"
+                android:text="@string/weibo" />
+        </RelativeLayout>
+
+        <!-- 微信登录外观设置 -->
+
+        <RelativeLayout style="@style/LoginItemLayoutStyle" >
+
+            <ImageButton
+                android:id="@+id/login_item_image_WEIXIN"
+                style="@style/LoginImageStyle"
+                android:src="@drawable/weixin_selector" />
+
+            <TextView
+                style="@style/LoginTextStyle"
+                android:layout_below="@id/login_item_image_WEIXIN"
+                android:text="@string/weixin" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/icon_logo"
+        style="@style/LoginLogoStyle"
+        android:layout_width="60dp"
+        android:layout_below="@+id/action"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="0dp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_edit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/icon_logo" >
+
+        <RelativeLayout
+            android:id="@+id/rl_username"
+            android:layout_width="fill_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="10dp" >
+
+            <com.zixueku.customview.LineEditText
+                android:id="@+id/et_phone"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="44dp"
+                android:layout_marginRight="44dp"
+                android:layout_marginTop="5dp"
+                android:background="@null"
+                android:hint="手机号"
+                android:inputType="number"
+                android:paddingLeft="24dp"
+                android:singleLine="true"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/et_phone"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/phone_grey_icon" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_ca_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_username"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_marginLeft="44dp"
+                android:layout_weight="1" >
+
+                <com.zixueku.customview.LineEditText
+                    android:id="@+id/et_captcha"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="5dp"
+                    android:background="@null"
+                    android:hint="验证码"
+                    android:inputType="number"
+                    android:paddingLeft="24dp"
+                    android:singleLine="true"
+                    android:textSize="17sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/lineEditText1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="22dp"
+                    android:src="@drawable/msg_grey_icon" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_marginRight="44dp"
+                android:layout_weight="1" >
+
+                <Button
+                    android:id="@+id/btn_send_captcha"
+                    android:layout_width="fill_parent"
+                    android:layout_height="35dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="3dp"
+                    android:background="@drawable/btn_user_select"
+                    android:text="发送验证码"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_psd"
+            android:layout_width="fill_parent"
+            android:layout_height="52dp"
+            android:layout_below="@+id/rl_username" >
+
+            <com.zixueku.customview.LineEditText
+                android:id="@+id/et_psd"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="44dp"
+                android:layout_marginRight="44dp"
+                android:layout_marginTop="5dp"
+                android:background="@null"
+                android:hint="密码"
+                android:inputType="textPassword"
+                android:paddingLeft="24dp"
+                android:singleLine="true"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/et_psd"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/pwd_grey_icon" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/rl_edit"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_user_select"
+        android:text="登录"
+        android:textColor="@android:color/white"
+        android:textSize="17sp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_login"
+        android:layout_marginLeft="44dp"
+        android:layout_marginRight="44dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_ca_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="验证码登录" />
+
+        <TextView
+            android:id="@+id/tv_forget_psw"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="忘记密码？" />
+    </LinearLayout>
+
+</RelativeLayout>

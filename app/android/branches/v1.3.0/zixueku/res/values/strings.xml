@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="can_not_find_version_name">版本信息未找到</string>
+
+    <string name="app_name">自学酷</string>
+    <string name="hello_world">Hello world!!!!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="define">职业考试第一助手</string>
+
+    <!-- 提醒信息设置 -->
+    <string name="loadTitle"><strong>正在更新数据</strong></string>
+    <string name="LoadContent"><strong>请稍候……</strong></string>
+
+    <!-- 登陆信息 -->
+    <string name="weixin">微信</string>
+    <string name="weibo">微博</string>
+    <string name="quickLogin">快速登录自学酷</string>
+
+    <integer name="app_version_code">2</integer>
+
+    <string name="add">添加</string>
+    <string name="delete">删除</string>
+    <string name="back">返回</string>
+
+    <!-- 正在备考 -->
+    <string name="preparing">我的备考</string>
+    <string name="no_focus">您尚未添加任何考试</string>
+    <string name="no_focus_add1">平时不用功，考试就发懵，快点右上角添加吧！</string>
+    <string name="choose_course">选择考试</string>
+    <string name="add_course">添加备考科目</string>
+    <string name="select_all">全选</string>
+    <string name="cancel_select_all">取消全选</string>
+    <string name="complete">完成</string>
+    <string name="prepare_exams_remain_days_title">距离考试还有</string>
+    <string name="day">天</string>
+    
+    <string name="next_item">下一题</string>
+    <string name="submit">提&#160;&#160;&#160;&#160;&#160;&#160;交</string>
+    
+    <!-- 知识树 -->
+    <string name="guess_score_text">预测分</string>
+    <string name="score_text">分</string>
+    <string name="next_exams_remain_day_text">距考试</string>
+    <string name="brush_item_count_text">刷题量</string>
+    <string name="test_day_num_text">练习天数</string>
+    
+    
+
+    <!-- personal 个人信息设置 -->
+    <string name="me">个人设置</string>
+    <string name="head_icon">头像</string>
+    <string name="nickname">昵称</string>
+    <string name="school">学校</string>
+    <string name="major">专业</string>
+    <string name="collect">我的收藏</string>
+    <string name="share">我的分享</string>
+    <string name="setting">我的设置</string>
+    <string name="quit">退出登录</string>
+    <string name="prepare">开始备考</string>
+
+</resources>

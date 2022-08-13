@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 答题报告中错误题的图标 -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true"><shape android:shape="oval">
+
+            <!-- 填充色 -->
+            <solid android:color="#ffd2d7" />
+
+            <size android:height="@dimen/hand_paper_button_size" android:width="@dimen/hand_paper_button_size" />
+        </shape></item>
+    <item><shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+
+            <!-- 填充颜色 -->
+            <solid android:color="@color/red"></solid>
+
+            <size android:height="@dimen/hand_paper_button_size" android:width="@dimen/hand_paper_button_size" />
+        </shape></item>
+
+</selector>

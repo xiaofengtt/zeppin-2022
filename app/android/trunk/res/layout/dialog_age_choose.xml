@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/btn_background"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="206dp"
+        android:layout_height="50dp" >
+
+        <Button
+            android:layout_width="206dp"
+            android:layout_height="50dp"
+            android:background="@drawable/photo_gallery_selector"
+            android:padding="10dp"
+            android:text="亲爱的,年龄不妨透露一下?"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+        
+         <ImageView 
+             android:id="@+id/iv_dismis"
+             android:layout_marginRight="5dp"
+             android:layout_alignParentRight="true"
+             android:layout_alignParentTop="true"
+             android:layout_marginTop="5dp"
+             android:src="@drawable/age_dismis"
+             android:layout_width="6dp"
+             android:layout_height="6dp"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="206dp"
+        android:layout_height="1dp"
+        android:background="@color/line" />
+
+    <com.zixueku.customview.WheelView
+        android:id="@+id/wheel_view_wv"
+        android:layout_width="206dp"
+        android:layout_height="170dp" />
+
+</LinearLayout>

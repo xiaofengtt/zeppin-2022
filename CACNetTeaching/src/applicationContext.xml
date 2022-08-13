@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+	http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+    http://www.springframework.org/schema/task 
+    http://www.springframework.org/schema/task/spring-task-3.1.xsd"
+    >
+ <!-- 开启注解方式使用IOC -->
+  
+	<context:component-scan base-package="com.zeppin"></context:component-scan>
+	<context:annotation-config />
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/cac"></property>
+		<property name="user" value="root"></property>
+		<property name="password" value=""></property>
+		<!-- <property name="acquireIncrement" value="3"></property>
+		<property name="initialPoolSize" value="50"></property>
+		<property name="minPoolSize" value="50"></property>
+		<property name="maxPoolSize" value="300"></property>
+		<property name="maxIdleTime" value="600"></property>
+		<property name="idleConnectionTestPeriod" value="900"></property>
+		<property name="maxStatements" value="0"></property>
+		<property name="numHelperThreads" value="10"></property> -->
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		
+		<property name="packagesToScan">
+			<list>
+				<value>com.zeppin.entity</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.c3p0.min_size=5"></prop>
+				<prop key="hibernate.c30p.max.size=20"></prop>
+				<prop key="hibernate.c30p.timeout=1800"></prop>
+				<prop key="hibernate.c30p.statements=50"></prop>
+				<prop key="hibernate.format.sql=true"></prop>
+				<prop key="hibernate.use_sql_comments=true"></prop>
+				<prop key="hibernat.jdbc.fetch.size=20"></prop>
+				<prop key="hibernat.jdbc.batch.size=30"></prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+				<!-- <prop key="hibernate.connection.autocommit">true </prop>  -->
+			</props>
+		</property>
+		
+			
+				
+		<property name="annotatedClasses">
+			<list>
+				<value>com.zeppin.entiey.Teacher</value>
+				<value>com.zeppin.entiey.Subject</value>
+				<value>com.zeppin.entiey.DicDuty</value>
+				<value>com.zeppin.entiey.Message</value>
+				<value>com.zeppin.entiey.DicAddress</value>
+				<value>com.zeppin.entiey.Studentgrou</value>
+				<value>com.zeppin.entiey.Student</value>
+				<value>com.zeppin.entiey.CoursedesignTeacherMap</value>
+				<value>com.zeppin.entiey.Sso</value>
+				<value>com.zeppin.entiey.Classmap</value>
+				<value>com.zeppin.entiey.DicAcademy</value>
+				<value>com.zeppin.entiey.DicTechnicalTiltle</value>
+				<value>com.zeppin.entiey.Courseschedule</value>
+				<value>com.zeppin.entiey.Coursedesign</value>
+				<value>com.zeppin.entiey.Homework</value>
+				<value>com.zeppin.entiey.CourseCoursewareMap</value>
+				<value>com.zeppin.entiey.Accessory</value>
+				<value>com.zeppin.entiey.Edusystem</value>
+				<value>com.zeppin.entiey.SsoMessageMap</value>
+				<value>com.zeppin.entiey.HomeworkAccessoryMap</value>
+				<value>com.zeppin.entiey.DicMajor</value>
+				<value>com.zeppin.entiey.GroupStudenMap</value></list>
+		</property></bean>
+  
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+<bean id="txManager"
+class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+<property name="sessionFactory" ref="sessionFactory" />
+</bean>
+
+<aop:config>
+<aop:pointcut id="bussinessService"
+expression="execution(public * com.zeppin.service.*.*(..))" />
+<aop:advisor pointcut-ref="bussinessService" advice-ref="txAdvice" />
+</aop:config>
+
+<tx:advice id="txAdvice" transaction-manager="txManager">
+<tx:attributes>
+<tx:method name="select" read-only="true" />
+<tx:method name="add" propagation="REQUIRED"/>
+<tx:method name="delete" propagation="REQUIRED"/>
+<tx:method name="update" propagation="REQUIRED"/>
+ <tx:method name="get*" read-only="true" propagation="NEVER" />
+ <tx:method name="isExists*" read-only="true" propagation="NEVER" />
+ <tx:method name="*" propagation="REQUIRED" read-only="false" />
+</tx:attributes>
+</tx:advice>
+
+	
+	<!--消息操作  -->
+	<bean id="MessageDao" class="com.zeppin.daoImp.MessageDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="MessageService" class="com.zeppin.serviceImp.MessageService" >
+	<property name="imd" ref="MessageDao"></property>
+	</bean>
+	<!--消息用户表操作  -->
+	<bean id="MessageSsoDao" class="com.zeppin.daoImp.MessageSsoDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="MessageSsoService" class="com.zeppin.serviceImp.MessageSsoService" >
+	<property name="imsdD" ref="MessageSsoDao"></property>
+	</bean>
+	<!--学生作业操作  -->
+	<bean id="HomeworkAccessoryDao" class="com.zeppin.daoImp.HomeworkAccessoryMapDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="HomeworkAccessoryService" class="com.zeppin.serviceImp.HomeworkAccessoryMapService" >
+	<property name="ihamDao" ref="HomeworkAccessoryDao"></property>
+	</bean>
+    <!--布置作业操作  -->
+	<bean id="HomeworkDao" class="com.zeppin.daoImp.HomeworkDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="HomeworkService" class="com.zeppin.serviceImp.HomewrokService" >
+	<property name="ihd" ref="HomeworkDao"></property>
+	</bean>
+	<!--附件表操作  -->
+	<bean id="AccessoryDao" class="com.zeppin.daoImp.AccessoryDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="AccessroyService" class="com.zeppin.serviceImp.AccessroyService" >
+	<property name="iaDao" ref="AccessoryDao"></property>
+	</bean>
+	<!--附件课程map操作  -->
+	<bean id="AccessoryCourseMapDao" class="com.zeppin.daoImp.AccessoryCourseMapDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="AccessoryCourseMapService" class="com.zeppin.serviceImp.AccessoryCourseMapService" >
+	<property name="iacmd" ref="AccessoryCourseMapDao"></property>
+	</bean>
+	<!--课程表 操作 -->
+	<bean id="CourseScheduleDao" class="com.zeppin.daoImp.CourseScheduleDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="CourseScheduleService" class="com.zeppin.serviceImp.CourseScheduleService">
+	<property name="icsd" ref="CourseScheduleDao"></property>
+	</bean>
+	<!--学生表 操作 -->
+	<bean id="StudentDao" class="com.zeppin.daoImp.StudentDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="StudentService" class="com.zeppin.serviceImp.StudentService">
+	<property name="isd" ref="StudentDao"></property>
+	</bean>	
+	<!--学生分组 操作 -->
+	<bean id="StudentGroupDao" class="com.zeppin.daoImp.StudentGroupDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="StudentGroupService" class="com.zeppin.serviceImp.StudentGroupService">
+	<property name="isgd" ref="StudentGroupDao"></property>
+	</bean>
+	<!--学生课程计划表 操作 -->
+	<bean id="ClassMapDao" class="com.zeppin.daoImp.ClassMapDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="ClassMapervice" class="com.zeppin.serviceImp.ClassMapService">
+	<property name="icm" ref="ClassMapDao"></property>
+	</bean>
+	<!--学生入组 操作 -->
+	<bean id="SgroupMapDao" class="com.zeppin.daoImp.SgroupMapDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="SgroupMapService" class="com.zeppin.serviceImp.SgroupMapService">
+	<property name="ismdDao" ref="SgroupMapDao"></property>
+	</bean>	
+	<!--教师课程计划表 操作 -->
+	<bean id="ClassTeacherMapDao" class="com.zeppin.daoImp.ClassTeacherMapDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="ClassTeacherMapervice" class="com.zeppin.serviceImp.ClassTeacherMapService">
+	<property name="ictm" ref="ClassTeacherMapDao"></property>
+	</bean>
+	
+	<!--教师表操作  -->
+	<bean id="TeacherDao" class="com.zeppin.daoImp.TeacherDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="TeacherService" class="com.zeppin.serviceImp.TeacherService">
+	<property name="itd" ref="TeacherDao"></property>
+	</bean>
+	<!--专业操作  -->
+	<bean id="DicMajorDao" class="com.zeppin.daoImp.DicMajorDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="DicMajorService" class="com.zeppin.serviceImp.DicMajorService">
+	<property name="imd" ref="DicMajorDao"></property>
+	</bean>
+	<!--院系部门操作  -->
+	<bean id="DicAcademyDao" class="com.zeppin.daoImp.DicAcademyDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="DicAcademyService" class="com.zeppin.serviceImp.DicAcademyService">
+	<property name="iad" ref="DicAcademyDao"></property>
+	</bean>
+	<!--科目操作  -->
+	<bean id="SubjectDao" class="com.zeppin.daoImp.SubjectDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="SubjectService" class="com.zeppin.serviceImp.SubjectService">
+	<property name="isd" ref="SubjectDao"></property>
+	</bean>
+	<!--学制操作  -->
+	<bean id="EduSystemDao" class="com.zeppin.daoImp.EduSystemDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="EduSystemService" class="com.zeppin.serviceImp.EduSystemService">
+	<property name="ied" ref="EduSystemDao"></property>
+	</bean>
+	<!--职称操作  -->
+	<bean id="DicTechnicalTitleDao" class="com.zeppin.daoImp.DicTechnicalTitleDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="DicTechnicalTitleService" class="com.zeppin.serviceImp.DicTechnicalTitleService">
+	<property name="ittd" ref="DicTechnicalTitleDao"></property>
+	</bean>
+	<!--职务操作  -->
+	<bean id="DicDutyDao" class="com.zeppin.daoImp.DicDutyDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="DicDutyService" class="com.zeppin.serviceImp.DicDutyService">
+	<property name="idd" ref="DicDutyDao"></property>
+	</bean>
+	<!--sso操作  -->
+	<bean id="SsoDao" class="com.zeppin.daoImp.SsoDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="SsoService" class="com.zeppin.serviceImp.SsoService">
+	<property name="isd" ref="SsoDao"></property>
+	</bean>
+	<!--地区操作  -->
+	<bean id="AddressDao" class="com.zeppin.daoImp.AddressDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="AddressService" class="com.zeppin.serviceImp.AddressService">
+	<property name="iAddressDao" ref="AddressDao"></property>
+	</bean>
+	
+	<!--开课计划-->
+	<bean id="coursePlanDao" class="com.zeppin.daoImp.CoursePlanDao">
+	<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	<bean id="coursePlanService" class="com.zeppin.serviceImp.CoursePlanService">
+	<property name="ipd" ref="coursePlanDao"></property>
+	</bean>
+	
+	<!--loginAction  -->
+	<bean id="login" class="com.zeppin.action.LoginAction">
+	<property name="iSsoService" ref="SsoService"></property>
+	<property name="iStudentService" ref="StudentService"></property>
+	<property name="iTeachereService" ref="TeacherService"></property>
+	</bean>
+	<!--adminAction  -->
+	<bean id="admin" class="com.zeppin.action.adminAction">
+	<property name="iss" ref="StudentService"></property>
+	<property name="its" ref="TeacherService"></property>
+	<property name="ims" ref="DicMajorService"></property>
+	<property name="ias" ref="DicAcademyService"></property>
+	<property name="isubs" ref="SubjectService"></property>
+	<property name="ies" ref="EduSystemService"></property>
+	<property name="itts" ref="DicTechnicalTitleService"></property>
+	<property name="ids" ref="DicDutyService"></property>
+	<property name="issos" ref="SsoService"></property>
+	<property name="imss" ref="MessageSsoService"></property>
+	<property name="imsService" ref="MessageService"></property>
+	<property name="iSsoService" ref="SsoService"></property>
+	</bean>
+	<!--teacherAction  -->
+	<bean id="teacher" class="com.zeppin.action.teacherAction">
+	<property name="ictmService" ref="ClassTeacherMapervice"></property>
+	<property name="isgs" ref="StudentGroupService"></property>
+	<property name="icps" ref="coursePlanService"></property>
+	<property name="ics" ref="ClassMapervice"></property>
+	<property name="isms" ref="SgroupMapService"></property>
+	<property name="iss" ref="StudentService"></property>
+	<property name="ias" ref="AccessroyService"></property>
+	<property name="iacms" ref="AccessoryCourseMapService"></property>
+	<property name="ihs" ref="HomeworkService"></property>
+	<property name="ihams" ref="HomeworkAccessoryService"></property>
+	<property name="its" ref="TeacherService"></property>
+	<property name="isss" ref="SsoService"></property>
+	<property name="imss" ref="MessageSsoService"></property>
+	<property name="imsService" ref="MessageService"></property>
+	</bean>
+	
+	<bean id="teacherUpload" class="com.zeppin.action.teacherAction" scope="prototype">
+	<property name="ictmService" ref="ClassTeacherMapervice"></property>
+	<property name="isgs" ref="StudentGroupService"></property>
+	<property name="icps" ref="coursePlanService"></property>
+	<property name="ics" ref="ClassMapervice"></property>
+	<property name="isms" ref="SgroupMapService"></property>
+	<property name="iss" ref="StudentService"></property>
+	<property name="ias" ref="AccessroyService"></property>
+	<property name="iacms" ref="AccessoryCourseMapService"></property>
+	<property name="ihs" ref="HomeworkService"></property>
+	<property name="ihams" ref="HomeworkAccessoryService"></property>
+	<property name="its" ref="TeacherService"></property>
+	<property name="isss" ref="SsoService"></property>
+	<property name="imss" ref="MessageSsoService"></property>
+	<property name="imsService" ref="MessageService"></property>
+	</bean>
+	
+	<!--studentAction  -->
+	<bean id="student" class="com.zeppin.action.studentAction">
+	<property name="ics" ref="ClassMapervice"></property>
+	<property name="ictmService" ref="ClassTeacherMapervice"></property>
+	<property name="icps" ref="coursePlanService"></property>
+	<property name="iacms" ref="AccessoryCourseMapService"></property>
+	<property name="icss" ref="CourseScheduleService"></property>
+	<property name="icms" ref="ClassTeacherMapervice"></property>
+	<property name="ihs" ref="HomeworkService"></property>
+	<property name="iams" ref="HomeworkAccessoryService"></property>
+	<property name="ias" ref="AccessroyService"></property>
+	<property name="iss" ref="SsoService"></property>
+	<property name="ists" ref="StudentService"></property>
+	<property name="its" ref="TeacherService"></property>
+	<property name="imss" ref="MessageSsoService"></property>
+	<property name="imsService" ref="MessageService"></property>
+	</bean>
+	
+	<bean id="studentUpload" class="com.zeppin.action.studentAction" scope="prototype">
+	<property name="ics" ref="ClassMapervice"></property>
+	<property name="ictmService" ref="ClassTeacherMapervice"></property>
+	<property name="icps" ref="coursePlanService"></property>
+	<property name="iacms" ref="AccessoryCourseMapService"></property>
+	<property name="icss" ref="CourseScheduleService"></property>
+	<property name="icms" ref="ClassTeacherMapervice"></property>
+	<property name="ihs" ref="HomeworkService"></property>
+	<property name="iams" ref="HomeworkAccessoryService"></property>
+	<property name="ias" ref="AccessroyService"></property>
+	<property name="iss" ref="SsoService"></property>
+	<property name="ists" ref="StudentService"></property>
+	<property name="its" ref="TeacherService"></property>
+	<property name="imss" ref="MessageSsoService"></property>
+	<property name="imsService" ref="MessageService"></property>
+	</bean>
+	
+	<!--baseDateAction  -->
+	<bean id="baseData" class="com.zeppin.action.baseDataAction">
+	<property name="iadds" ref="AddressService"></property>
+	</bean>
+	
+	<bean id="course" class="com.zeppin.action.courseAction">
+	<property name="icps" ref="coursePlanService"></property>
+	<property name="ics" ref="ClassMapervice"></property>
+	<property name="icms" ref="ClassTeacherMapervice"></property>
+	<property name="icss" ref="CourseScheduleService"></property>
+	<property name="ihams" ref="HomeworkAccessoryService"></property>
+	<property name="iss" ref="StudentService"></property>
+	</bean>
+	
+</beans>

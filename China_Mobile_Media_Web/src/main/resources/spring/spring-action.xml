@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="baseAction" class="com.cmos.chinamobile.media.action.BaseAction" abstract="true">
+		<property name="controlService" ref="controlService" />
+	</bean>
+	
+	<bean id="categoryAction" class="com.cmos.chinamobile.media.action.CategoryAction" parent="baseAction" scope="prototype"/>
+	<bean id="commodityAction" class="com.cmos.chinamobile.media.action.CommodityAction" parent="baseAction" scope="prototype"/>
+	<bean id="leftAction" class="com.cmos.chinamobile.media.action.LeftAction" parent="baseAction" scope="prototype"/>
+	<bean id="resourceAction" class="com.cmos.chinamobile.media.action.ResourceAction" parent="baseAction" scope="prototype"/>
+	<bean id="userAction" class="com.cmos.chinamobile.media.action.UserAction" parent="baseAction" scope="prototype"/>
+	<bean id="videoCommodityPointAction" class="com.cmos.chinamobile.media.action.VideoCommodityPointAction" parent="baseAction" scope="prototype"/>
+	<bean id="videoIframeAction" class="com.cmos.chinamobile.media.action.VideoIframeAction" parent="baseAction" scope="prototype"/>
+	<bean id="videoinfoAction" class="com.cmos.chinamobile.media.action.VideoinfoAction" parent="baseAction" scope="prototype"/>
+	<bean id="videoPublishAction" class="com.cmos.chinamobile.media.action.VideoPublishAction" parent="baseAction" scope="prototype"/>
+	<bean id="webInterfaceAction" class="com.cmos.chinamobile.media.action.WebInterfaceAction" parent="baseAction" scope="prototype"/>
+</beans>

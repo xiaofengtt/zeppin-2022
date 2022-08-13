@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.zixueku"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="10dp" >
+
+            <!-- 第一行 -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="@dimen/knowledge_item_disclosure_img"
+                    android:layout_height="@dimen/knowledge_item_disclosure_img" >
+
+                    <ImageView
+                        android:id="@+id/knowledge_item_disclosure_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/knowledge_item_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="15dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/s5" />
+            </LinearLayout>
+
+            <!-- 第二行 -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="27dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+                    android:id="@+id/knowledge_progress_bar"
+                    android:layout_width="130dp"
+                    android:layout_height="5dp"
+                    app:rcBackgroundColor="@color/dimgrey"
+                    app:rcBackgroundPadding="0dp"
+                    app:rcBackgroundRadius="2dp"
+                    app:rcMax="100"
+                    app:rcProgressColor="@color/darkgreen" />
+
+                <TextView
+                    android:id="@+id/knowledge_finish_num"
+                    style="@style/s8"
+                    android:paddingLeft="20dp" />
+
+                <TextView
+                    style="@style/s8"
+                    android:text="/" />
+
+                <TextView
+                    android:id="@+id/knowledge_total_num"
+                    style="@style/s8" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/knowledge_item_img_btn"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|bottom"
+                android:background="@color/transparent"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/start_test_button" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/knowledge_item_bottom_line"
+        style="@style/HorizontalLine" >
+    </View>
+
+</LinearLayout>

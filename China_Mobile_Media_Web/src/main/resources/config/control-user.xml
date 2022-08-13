@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE control SYSTEM "common-1.7-SNAPSHOT.dtd"> -->
+
+<control>
+	<action path="/front/admin/user!login">
+		<input uid="u0001" service="userService" method="login" desc="登录">
+			<parameter key="username" toKey="username"/>
+			<parameter key="password" toKey="password"/>
+		</input>
+	</action>
+	
+	<action path="/front/admin/user!logout">
+		<input uid="u0002" service="userService" method="logout" desc="登出"/>
+	</action>
+</control>

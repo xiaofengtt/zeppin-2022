@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="../css/bootstrap2.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/iframe.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/url.min.js"></script>
+
+</head>
+<body>
+	<div class="ifrcnt container">
+		<div class="hd">
+			<h3>添加知识点</h3>
+		</div>
+		<div class="bd">
+			<div class="alert alert-danger"
+				style="display:none;margin:0 15px 15px;"></div>
+			<form id="formsubmit" class="form-horizontal" role="form"
+				action="#"
+				method="post">
+				<input type="hidden" name="knowledge.id" value="">
+				<div class="clearfix">
+					<div id="HtmlTpl" class="span10">
+						<div class="control-group">
+							<label class="control-label" for="">名称</label>
+							<div class="controls">
+								<input type="text" id="" name="name"
+									value="">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="">所属学段</label>
+							<div class="controls">
+								
+								<div class="companylocation">
+									<span class="clId" style="height:22px;" id="clId"
+										onclick="getsnode();changeGradebtn($(this));">请选择学段</span>
+									<div id="clListBox" class="listSub">
+										<div id="clList" class="list_sub sm_icon">
+											<div id="bido"></div>
+										</div>
+									</div>
+								</div>
+
+								<input type="hidden" id="gradeid" name="grade.id" value="">
+							</div>
+						</div>
+				
+						<div class="control-group">
+							<label class="control-label" for="">所属学科</label>
+							<div class="controls">
+								<select name="subject.id">
+									
+								</select>
+								
+							</div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+
+				<div class="row actionbar">
+					<div class="offset7">
+						<button class="btn btn-primary" type="submit">确定</button>
+						<button id="colorboxcancel" onclick="parent.$.colorbox.close()"
+							class="btn btn-default" type="button">取消</button>
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<script>
+		$(function() {
+			//var id = url('?id'); /**所属学段与学科可以不用修改
+			var topurl = window.top.location.href;
+			var knowledgeid = (url('?knowledge.id',topurl) != null) ? url('?knowledge.id',topurl) : '';
+			
+			$('input[name="knowledge.id"]').val(knowledgeid);
+			
+			if( knowledgeid!="" && typeof (knowledgeid) != 'undefined'){
+				
+				$('#clId').attr('onclick','');
+				
+				$.getJSON('../knowledgeList?id='+knowledgeid, function(r) {
+					if(r.Status == 'success' && r.Records.length > 0) {
+						$('#clId').html(r.Records[0]['grade.name']);
+						$('#gradeid').val(r.Records[0]['grade.id']);
+						var str = '<option selected value="'+ r.Records[0]['subject.id'] +'">'+ r.Records[0]['subject.name'] +'</option>';
+						$('select[name="subject.id"]').html(str);
+					}
+				});
+				
+			}
+			else
+			{
+				$.get('../subjectList?status=1',function(r){
+					if(r.Status == 'success' && r.Records.length > 0 ) {
+						var str = '';
+						var sid = $('select[name="subject.id"]').val();
+						for ( var i = 0, l = r.Records.length; i < l; i++ ) {
+							var selected = (sid == r.Records[i].id) ? ' selected' : '';
+						    str += '<option '+ selected +' value="'+ r.Records[i].id +'">'+ r.Records[i].name +'</option>';
+						}
+						$('select[name="subject.id"]').html(str);
+						
+						
+					}
+				});
+			}
+			
+			$('#formsubmit').submit(
+				function() {
+					var str = $(this).serialize();
+					$.get('../knowledgeAdd?'+ str, function(data) {
+						if (data.Status == "success") {
+							window.top.location.reload(true);
+						} else {
+							$('.alert-danger').html(data.Message).show();
+						}
+					})
+					return false;
+				});
+			
+			
+			
+			//项目类型 helper 函数
+			$(document).on("click",function(e) {
+				if(!$(e.target).parents().is('.ufc'))
+					$('.uul').hide();
+			});
+
+		});
+		
+		function changeSubject(id){
+			$.get('../subjectList?status=1&grade.id='+id,function(r){
+				if(r.Status == 'success' && r.Records.length > 0 ) {
+					var str = '';
+					var sid = $('select[name="subject.id"]').val();
+					for ( var i = 0, l = r.Records.length; i < l; i++ ) {
+						var selected = (sid == r.Records[i].id) ? ' selected' : '';
+					    str += '<option '+ selected +' value="'+ r.Records[i].id +'">'+ r.Records[i].name +'</option>';
+					}
+					$('select[name="subject.id"]').html(str);
+					
+				}
+				else{
+					$('select[name="subject.id"]').html("<option>暂无学科</option>");
+				}
+			});
+		}
+		
+	</script>
+<body>
+</html>

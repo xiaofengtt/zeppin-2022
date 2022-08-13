@@ -1,0 +1,56 @@
+1.  登录认证接口 【完成】
+2.  导航功能接口 【完成】
+3.  机构管理【排序不work】
+4.	编辑用户管理接口 【完成】
+5.  运营管理者管理接口 【完成】
+6.  合作方编辑管理  【完成】
+7.  知识类型管理 [完成]
+8.  学科管理 【排序有问题】 多表查询 字段名相同引起的bug
+10.  学段管理 【完成】
+11. 知识点管理 【完成】
+12. 题型管理 【完成】
+13. 资源管理 【完成】
+14. 教材管理  【完成】
+
+
+编辑器：
+ifarme 实现方式
+ckeditor 分析 传统编辑器
+
+bootstrap-wysihtml5   简单版本
+
+百度ueditor
+微信公众帐号
+
+
+textarea markdown 规则 
+pagedown
+
+1.编辑器 怎么加空 自定义按钮
+
+暂定tinymce 编辑器 百度数学公式编辑器
+
+tinymce 插件格式
+http://www.tinymce.com/wiki.php/Tutorials:Creating_a_plugin
+
+2.TinyMCE+Mathquill+Mathjax
+
+
+步骤：
+1.基本编辑器生成调用
+1.5 界面UI
+2.简单插件写法
+3.复杂插件写法 dropzone + tinymce 上传图片
+4.结合 百度kityformula 公式编辑器
+
+8.14 编辑器功能开发完毕
+页面逻辑实现 ： 
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ms.square.android.expandabletextview">
+    
+    <uses-sdk android:minSdkVersion="4"></uses-sdk>
+
+    <application/>
+
+</manifest>

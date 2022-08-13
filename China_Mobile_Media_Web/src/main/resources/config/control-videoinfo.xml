@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE control SYSTEM "common-1.7-SNAPSHOT.dtd"> -->
+
+<control>
+	<action path="/front/admin/videoinfo!execute">
+		<input uid="g0001" service="videoinfoService" method="list" desc="获取视频列表">
+			<parameter key="id" toKey="id"/>
+			<parameter key="title" toKey="title"/>
+			<parameter key="status" toKey="status"/>
+			<parameter key="pagenum" toKey="pagenum" regex="num,maxlength=6"/>
+			<parameter key="pagesize" toKey="pagesize" regex="num,maxlength=6"/>
+			<parameter key="sort" toKey="sort"/>
+		</input>
+		
+		<input uid="g0002" service="videoinfoService" method="load" desc="加载视频信息">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+		</input>
+		
+		<input uid="g0003" service="videoinfoService" method="loadVO" desc="加载视频信息(VO)">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+		</input>
+		
+		<input uid="g0004" service="videoinfoService" method="add" desc="添加视频">
+			<parameter key="title" toKey="title" regex="required"/>
+			<parameter key="originalVideo" toKey="originalVideo" regex="required,length=36"/>
+			<parameter key="author" toKey="author"/>
+			<parameter key="tag" toKey="tag"/>
+			<parameter key="context" toKey="context"/>
+			<parameter key="source" toKey="source"/>
+			<parameter key="copyright" toKey="copyright"/>
+			<parameter key="usersession.id" toKey="creator" scope="session" regex="required"/>
+		</input>
+		
+		<input uid="g0005" service="videoinfoService" method="edit" desc="编辑视频">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+			<parameter key="title" toKey="title" regex="required"/>
+			<parameter key="author" toKey="author"/>
+			<parameter key="tag" toKey="tag"/>
+			<parameter key="context" toKey="context"/>
+			<parameter key="source" toKey="source"/>
+			<parameter key="copyright" toKey="copyright"/>
+		</input>
+		
+		<input uid="g0006" service="videoinfoService" method="delete" desc="删除视频">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+		</input>
+		
+		<input uid="g0007" service="videoinfoService" method="changeStatus" desc="修改视频状态">
+			<parameter key="id" toKey="id" regex="required,length=36"/>
+			<parameter key="status" toKey="status" regex="required"/>
+		</input>
+		
+		<input uid="g0008" service="videoinfoService" method="statusList" desc="获取状态列表">
+		</input>
+	</action>
+</control>

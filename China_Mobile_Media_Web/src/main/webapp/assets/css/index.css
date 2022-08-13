@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+*{margin:0 auto;padding:0;}
+button.btn{ margin-top:5px;}
+a.btn{ margin-top:5px;}
+.btn{ border:none;}
+.content{ padding-bottom:100px;}
+.content p.title{ color:#428bca; font-size:15px;font-weight:bold;margin:10px 0px;}
+hr{border-top:2px solid #adb5bb;margin:10px 0px;}
+.statusbar{ margin-top:20px;font-weight:bolder;}
+.statusbar a.filterStatus{ display:inline-block; margin:0px 15px; padding:10px 0px;color:#9c9c9c; cursor:pointer; border-bottom:2px solid #fff;}
+.statusbar a.light{color:#3ebef3;border-bottom-color:#3ebef3;}
+.statusbar a:hover{color:#3ebef3;border-bottom-color:#3ebef3;}
+b.playB{width: 64px;height: 64px;left: 50%;display: block;z-index: 5;top: 50%; margin-left: -32px;margin-top: -32px;background: url(../assets/img/play_Big.png) no-repeat;position: absolute;background-size:contain;}
+table td{padding:2px !important;}
+.search input[type="text"]{border-right:none;}
+
+

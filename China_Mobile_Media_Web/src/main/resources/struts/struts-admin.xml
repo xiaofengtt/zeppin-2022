@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="admin" extends="projectstruts" namespace="/front/admin">
+		<action name="category!*" class="categoryAction" method="{1}" />
+		<action name="commodity!*" class="commodityAction" method="{1}" />
+		<action name="left!*" class="leftAction" method="{1}" />
+		<action name="resource!*" class="resourceAction" method="{1}" />
+		<action name="user!*" class="userAction" method="{1}" />
+		<action name="videoCommodityPoint!*" class="videoCommodityPointAction" method="{1}" />
+		<action name="videoIframe!*" class="videoIframeAction" method="{1}" />
+		<action name="videoinfo!*" class="videoinfoAction" method="{1}" />
+		<action name="videoPublish!*" class="videoPublishAction" method="{1}" />
+	</package>
+</struts>

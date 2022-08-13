@@ -1,0 +1,19 @@
+$(document).ready(function(){
+var init=new Object();
+init.msgInit=function(){
+	
+$('.xxxviewinfo a').click(function(){
+var obj=this;	
+var id=$(this).parent().find('input').val();
+$.post("student_delMsg.action",{id:id},function(){
+	
+ $(obj).parent().parent().parent().fadeOut("slow");
+});
+
+	
+});	
+	
+};
+
+init.msgInit();
+});

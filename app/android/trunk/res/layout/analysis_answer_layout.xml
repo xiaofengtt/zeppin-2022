@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="3dp"
+    android:orientation="horizontal" >
+
+    <TextView
+        style="@style/AnalysisTextStyle"
+        android:text="正确答案为" />
+
+    <TextView
+        android:id="@+id/right_answer"
+        style="@style/AnalysisTextStyle"
+        android:layout_marginLeft="2dp"
+        android:textColor="@color/green" />
+
+    <TextView
+        style="@style/AnalysisTextStyle"
+        android:layout_marginLeft="8dp"
+        android:text="您的答案为" />
+
+    <TextView
+        android:id="@+id/customer_answer"
+        style="@style/AnalysisTextStyle"
+        android:layout_marginLeft="2dp"
+        android:textColor="@color/red" />
+
+</LinearLayout>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zixueku"
+    android:versionCode="9"
+    android:versionName="1.4.3" >
+
+    <uses-sdk android:minSdkVersion="11" />
+
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- renren sso Permission for Unit Test -->
+    <!-- QQ、QQ空间所需权限 -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- Include following permission if you want to allow UIL to cache images on SD card -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name="com.zixueku.util.App"
+        android:allowBackup="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="54c72617fd98c571d800077e" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Umeng" >
+        </meta-data>
+
+        <activity
+            android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.zixueku.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zixueku.activity.MainActivity"
+            android:screenOrientation="portrait" />
+
+        <service
+            android:name="com.umeng.update.net.DownloadingService"
+            android:process=":DownloadingService" >
+        </service>
+
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
+        <!-- 微信分享回调 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zixueku.SplashActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name="com.zixueku.activity.PersonalActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zixueku.activity.CategoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zixueku.activity.AddSujectActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zixueku.activity.SubjectDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zixueku.activity.ExerciseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zixueku.activity.HandPaperActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zixueku.activity.ResultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zixueku.activity.AnalysisActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zixueku.activity.MaterialActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zixueku.activity.WrongBookActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zixueku.activity.ShowWebImageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ShowWebImageActivityThem" />
+        <activity
+            android:name="com.zixueku.activity.user.UserHomeActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zixueku.activity.user.ReNikeNameActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zixueku.activity.user.ReUserProActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zixueku.activity.user.ReUserBindPhoneActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zixueku.activity.user.ReUserChangeBindPhoneActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zixueku.activity.user.ReUserSendCodeActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zixueku.activity.user.ActivityUserLogin"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zixueku.activity.user.UserRegistActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zixueku.activity.user.ForPswActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zixueku.activity.user.ChangePswActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zixueku.activity.user.UserAboutActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zixueku.activity.user.UserInterActionActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.zixueku.activity.user.FeedbackActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zixueku.activity.user.QuestionnaireActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.zixueku.activity.ADDetialActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.umeng.socialize.view.ShareActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
+        <!-- ############ QQ空间和QQ SSO授权的Activity注册 ############ -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="1104620628" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+    </application>
+
+</manifest>

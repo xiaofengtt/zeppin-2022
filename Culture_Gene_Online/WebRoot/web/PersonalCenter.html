@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit"> 
+		<title>个人中心</title>
+		<link href="../css/PersonalCenter.css" type="text/css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<link rel="stylesheet" href="../css/animate.css" >
+		<link rel="stylesheet" href="../css/style.css">
+	</head>
+	<body onclick="clickHide();">
+		<div id="Logo">
+			<div class="logo_inner">
+				<div class="logoBlack">
+					<a href="index.html"></a>
+				</div>
+				<ul class="nav">
+					<li><a href="registered.html">注册</a></li>
+					<li><a href="login.html">登录</a></li>					
+				</ul>
+				<ul class="loggedLn">
+					<li><span>hi,<span class="userName"></span>好</span></li>
+					<li class="exit logginLi"><a href="javascript:" onclick="userLogout();">退出</a></li>
+					<li class="upload logginLi light"><a href="PersonalCenter.html?i=1">上传</a></li>
+				</ul>
+				<div class="clear"></div>
+			</div>
+			
+		</div>
+		
+		<div id="content">
+			<div class="content_inner"> 
+				<ul class="centerList">
+					<li class="light">个人中心</li>
+					<li>上传素材</li>
+					<li>我的收藏</li>
+					<li>我的下载</li>
+					<li>账号设置</li>
+				</ul>
+				<div class="contentList"> 
+					<div class="PersonalCenterDiv bigDiv">
+						<!--瀑布流开始 -->
+							<div class="wrapper">
+								  <div class="brand-list">
+								    <div class="brand-bd cle" id="brand-waterfall1">
+								        <!-- 循环字母模块 item -->
+								        
+								    </div>
+								  </div>
+								</div>
+						
+						<!--瀑布流结束-->
+						
+					</div>
+					<div class="UploadDiv bigDiv">
+						<!--上传素材开始-->
+						<a class="audit auditing">审核中（<span>1</span>）</a>
+						<a class="audit approved">审核通过（<span>1</span>）</a>
+						<a class="audit auditFail">审核未通过（<span>1</span>）</a>
+						<hr>
+						<!--<p class="uploadImg">
+							
+						</p>-->
+						
+						<!--<img src="images/uploadBanner.jpg" alt="展示图" class="uploadBanner" />
+						<hr>
+						<div class="infomation">
+							<span class="designation">素材总数:</span><span class="number"><span class="quantity">659821655</span><span class="unit">张</span></span>
+							<br>
+							<span class="designation">总&nbsp;下&nbsp;&nbsp;载:</span><span class="number"><span class="quantity">232323</span><span class="unit">次</span></span>
+							<br>
+							<span class="designation">下载体积: </span><span class="number"><span class="quantity">6,966</span><span class="unit">G</span></span>
+							<br>
+							<span class="designation">搜索次数:</span><span class="number"><span class="quantity">4,5656,9898</span><span class="unit">G</span></span>
+						</div>
+						<a class="collect">收藏本站</a>-->
+						
+						<form name="form" id="formsubmit" action="../admin/webResourceAdd" method="POST" enctype="multipart/form-data">
+							<div class="wrap">
+								<div class="album-old">
+									<div class="upload-btn btn-old"><input type="file" name="file" id="file"></div>
+									<div class="upload-img "></div>	
+								</div>
+								<!--<div class="album-new">
+									<div class="upload-btn btn-new"><input type="file" name="" id=""></div>
+									<div class="upload-img "></div>
+								</div>
+								<div class="wan"></div>-->
+								<div class="labelss">
+									<ul class="labels">
+										<li class="light" name="2">网络资源</li>
+										<li name="3">现场拍照</li>
+										<li name="4">出版物扫描</li>
+										<li name="1">其他</li>
+										<div class="clear"></div>
+									</ul>
+									<input value="2" type="hidden" name="source" class="sourecss">
+									<div class="labelList">
+										<div class="source photo scan other">
+											标题：<input type="text" placeholder="标题" class="title" name="title" />
+											
+											<br>
+												民族：
+											<select class="national" name="national">
+											
+											</select>
+											<br>
+												<span style="line-height:50px;display:block;float:left;">分类：</span>
+											<!-- <select class="category" name="category">
+												
+											</select> -->
+											<div class="controls">
+												<div class="companylocation" style="z-index: 1;">
+													<span class="clId" style="height: 22px;" id="calId"
+														onclick="getCategory();changeCategorybtn($(this));">
+														<input type="hidden" id="ShoworHide">	
+													</span>
+													<div id="calListBox" class="listCate">
+														<div id="calList" class="list_sub sm_icon">
+															<div id="cabido"></div>
+														</div>
+													</div>
+												</div>
+												<input type="hidden" id="category" name="category" value="">
+											</div>
+											
+											<br>
+											是否为实物载体：
+											<select class="isObject" name="isObject">
+												<option selected="selected" value="1">是</option>
+												<option value="1">否</option>
+											</select>
+											<br>
+											<label class="path" style="display:inline-block;">链接地址：</label><input type="text" placeholder="链接地址" class="linkAddress" name="sourcePath"/>
+											<br>
+											<label class="time" style="display:none">采集时间：</label><input type="text" placeholder="采集时间" class="millTime" name="sourceTime" style="display:none" />
+										</div>
+										
+									</div>
+								</div>
+								<div class="textarea">
+									<textarea placeholder="请描述图片信息，字数不超过100字" name="comment"></textarea>
+								</div>
+								<button type="submit" class="submit"></button>
+							</div>
+						</form>
+						<span class="tips">提示：支持0-20M文件快速上传<br>素材上传格式支持jpg、psd、ai、tif、png...等格式</span>
+						<div id="dialog" title="提示"></div>
+						<!--上传素材结束-->
+					</div>
+					<div class="CollectionDiv bigDiv">
+						<!--我的收藏开始-->
+						<h1>您共收藏了"<span>2</span>"张图片</h1>
+						<hr>
+						<h2>收藏类型：全部</h2>
+						<div class="wrapper">
+								  <div class="brand-list">
+								    <div class="brand-bd cle" id="brand-waterfall2">
+								        <!-- 循环字母模块 item -->
+								        
+									    
+								    </div>
+								  </div>
+								</div>
+						<!--我的收藏结束-->
+					</div>
+					<div class="DownloadDiv bigDiv">
+						<!--我的下载开始-->
+						<h1>您共下载了"<span>2</span>"张图片</h1>
+						<hr>
+						<h2>下载类型：全部</h2>
+						<div class="wrapper">
+								  <div class="brand-list">
+								    <div class="brand-bd cle" id="brand-waterfall3">
+								        <!-- 循环字母模块 item -->
+								        
+									    
+								    </div>
+								  </div>
+								</div>
+						<!--我的下载结束-->
+					</div>
+					<div class="AccountDiv bigDiv">
+						<!--账号设置开始-->
+						<h1>个人信息</h1>
+						<hr>
+						<div class="Modify">
+							<span>修改用户名：</span><input type="text" value="" class="ModifyUsername"/>
+							<br>
+							<span>修改邮箱：</span><input type="text" value="56589826@qq.com" class="ModifyMail"/>
+							<br>
+							<span>修改单位：</span><input type="text" value="" class="ModifyCompany" placeholder="单位"/>
+							<br>
+							<span>修改职位：</span><input type="text" value="" class="ModifyPosition" placeholder="职位"/>
+							<br>
+							<p class="warning"></p>
+							<a href="javascript:" onclick="Modifyinfomation()" class="save">保存</a>
+						</div>
+						<!--账号设置结束-->
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<div id="footer">
+			<div class="footer_inner">
+				Copyright&nbsp;&copy;2016&nbsp;北京邮电大学世纪学院&nbsp;&nbsp;Power By www.zeppin.com
+				
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="../js/layer-v2.2/layer/layer.js"></script>
+		<script type="text/javascript" src="../js/jquery.form.js"></script>
+		<script src="../js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="../js/PersonalCenter.js"></script>
+		<script type="text/javascript" src="../js/zepto.min.js"></script>
+		<script type="text/javascript" src="../js/iscroll-zoom.js"></script>
+		<script type="text/javascript" src="../js/script.js"></script>
+
+	</body>
+</html>

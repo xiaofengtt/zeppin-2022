@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 配置struts相关选项 -->
+	<constant name="struts-devmode" value="false"></constant>
+	<constant name="struts-locale" value="zh-CN">constant</constant>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<constant name="struts.multipart.maxSize" value="100000000000" />
+	<constant name="struts.multipart.handler" value="myRequestParser" />
+	<bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest"
+		name="myRequestParser" class="cn.zeppin.action.base.RequestParseWrapper"
+		scope="default" optional="true" />
+	<package name="main" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="adminInterceptor"
+				class="cn.zeppin.interceptor.AdminInterceptor"></interceptor>
+			<interceptor-stack name="adminFilter">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="adminInterceptor"></interceptor-ref>
+			</interceptor-stack>
+
+
+			<interceptor name="superAdminRightInterceptor"
+				class="cn.zeppin.interceptor.SuperAdminRightInterceptor"></interceptor>
+			<interceptor-stack name="superAdminFilter">
+				<interceptor-ref name="adminInterceptor"></interceptor-ref>
+				<interceptor-ref name="superAdminRightInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+
+			</interceptor-stack>
+			
+			<interceptor name="phoneInterceptor"
+				class="cn.zeppin.interceptor.PhoneInterceptor"></interceptor>
+			<interceptor-stack name="phoneFilter">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="phoneInterceptor"></interceptor-ref>
+			</interceptor-stack>
+			
+		</interceptors>
+
+		<default-interceptor-ref name="superAdminRightInterceptor" />
+
+		<global-results>
+			<result name="error">error.jsp</result>
+		</global-results>
+		<action name="web*" class="webAction" method="{1}" />
+		<action name="sso*" class="loginAction" method="{1}" />
+		<action name="specialist*" class="specialistAction" method="{1}" />
+		<action name="national*" class="nationalAction" method="{1}" />
+		<action name="category*" class="categoryAction" method="{1}" />
+		<action name="userManage*" class="userManageAction" method="{1}" />
+		<action name="resource*" class="resourceAction" method="{1}" />
+		<action name="nav*" class="rolefuncationAction" method="{1}" />
+		<action name="latex" class="latexAction" method="getLatexImg" />
+		<action name="user*" class="userAction" method="{1}" />
+	</package>
+</struts>    

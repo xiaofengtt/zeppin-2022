@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.Category">
+
+	<!-- 取子分类总数 -->
+	<select id="category_getChildCount" parameterType="java.util.Map" resultType="int">
+		select count(*) from category where parent=#{parent}
+	</select>  
+	
+	<!-- 根据参数取count -->
+	<select id="category_getCountByParams" parameterType="java.util.Map" resultType="int">
+		select count(*) from category where 1=1 
+		<if test="id != null and id != ''">
+			and id = #{id} 
+		</if>
+		<if test="level != null and level != ''">
+			and level = #{level} 
+		</if>
+		<if test="name != null and name != ''">
+			and name = #{name} 
+		</if>
+		<if test="scode != null and scode != ''">
+			and scode like "%"#{scode}"%" 
+		</if>
+		<if test="parent != null and parent != ''">
+			and parent = #{parent} 
+		</if>
+		<if test="status != null and status != ''">
+			and status = #{status} 
+		</if>
+		<if test="status == null or status == ''">
+			and status in('normal','stopped') 
+		</if>
+	</select> 
+	
+	<!-- 根据参数取vo -->
+	<select id="category_getListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.vo.CategoryVO">
+		select id,name,level,scode,parent,status from category where 1=1 
+		<if test="id != null and id != ''">
+			and id = #{id} 
+		</if>
+		<if test="level != null and level != ''">
+			and level = #{level} 
+		</if>
+		<if test="name != null and name != ''">
+			and name = #{name} 
+		</if>
+		<if test="scode != null and scode != ''">
+			and scode like "%"#{scode}"%" 
+		</if>
+		<if test="parent != null and parent != ''">
+			and parent = #{parent} 
+		</if>
+		<if test="status != null and status != ''">
+			and status = #{status} 
+		</if>
+		<if test="status == null or status == ''">
+			and status in('normal','stopped') 
+		</if>
+		<if test="sort != null and sort != ''">
+			order by ${sort}
+		</if>
+		<if test="start != null and start != '' and limit != null and limit != ''">
+			limit ${start},${limit}
+		</if>
+	</select> 
+	
+	<!-- 根据参数取webvo -->
+	<select id="category_getWebListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.vo.iface.WebCategoryVO">
+		select id,name from category where 1=1 
+		<if test="id != null and id != ''">
+			and id = #{id} 
+		</if>
+		<if test="level != null and level != ''">
+			and level = #{level} 
+		</if>
+		<if test="name != null and name != ''">
+			and name = #{name} 
+		</if>
+		<if test="scode != null and scode != ''">
+			and scode like "%"#{scode}"%" 
+		</if>
+		<if test="parent != null and parent != ''">
+			and parent = #{parent} 
+		</if>
+		<if test="status != null and status != ''">
+			and status = #{status} 
+		</if>
+		<if test="status == null or status == ''">
+			and status in('normal','stopped') 
+		</if>
+		 order by createtime asc
+	</select> 
+	
+	<!-- 加载数据 -->  
+	<select id="category_get"  resultType="com.cmos.china.mobile.media.core.bean.Category">  
+		select * from category where id=#{id}  
+	</select> 
+	 
+	<!-- 增加数据 -->  
+	<insert id="category_add" parameterType="com.cmos.china.mobile.media.core.bean.Category">
+		insert into category(id,name,level,parent,status,scode,creator,createtime) 
+		values(#{id},#{name},#{level},#{parent},#{status},#{scode},#{creator},#{createtime})  
+	</insert>  
+	
+	<!-- 修改数据 -->  
+	<update id="category_update" parameterType="com.cmos.china.mobile.media.core.bean.Category">  
+		update category 
+		set name=#{name},level=#{level},parent=#{parent},status=#{status} 
+		where id=#{id}  
+	</update>  
+	
+	<!-- 删除数据 -->  
+	<update id="category_delete" parameterType="com.cmos.china.mobile.media.core.bean.Category">  
+		update category set status='deleted' where id=#{id}
+	</update>  
+</mapper>  

@@ -1,0 +1,354 @@
+-- Create table
+create table PEBUDGETMPNEW
+(
+  id               VARCHAR2(50) not null,
+  fk_unit          VARCHAR2(50),
+  fk_pro_applyno   VARCHAR2(50),
+  training_data    VARCHAR2(200),
+  training_space   VARCHAR2(100),
+  payee_name       VARCHAR2(100),
+  opening_bank     VARCHAR2(100),
+  account_number   VARCHAR2(100),
+  countact_info    VARCHAR2(100),
+  pe_budget_detail VARCHAR2(50),
+  unit_name        VARCHAR2(100),
+  input_date       DATE,
+  projectdirector  VARCHAR2(100),
+  person_count     VARCHAR2(1000),
+  flag             NUMBER default 0
+)
+tablespace TCHR_TRAINING1
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+  -- Create table
+create table PEACTUALBUDGETNEW
+(
+  id               VARCHAR2(50) not null,
+  fk_unit          VARCHAR2(50),
+  fk_pro_applyno   VARCHAR2(50),
+  training_data    VARCHAR2(200),
+  training_space   VARCHAR2(100),
+  payee_name       VARCHAR2(100),
+  opening_bank     VARCHAR2(100),
+  account_number   VARCHAR2(100),
+  pe_budget_detail VARCHAR2(50),
+  countact_info    VARCHAR2(100),
+  unit_name        VARCHAR2(100),
+  input_date       DATE,
+  projectdirector  VARCHAR2(100),
+  person_count     VARCHAR2(1000),
+  flag             NUMBER default 0
+)
+tablespace TCHR_TRAINING1
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 128K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+ -- Create table
+create table PE_FEE_ACTUAL_BUDGET_NEWDETAIL
+(
+  id                    VARCHAR2(50) not null,
+  fee_survey            NUMBER(9,2),
+  fee_research          NUMBER(9,2),
+  fee_argument          NUMBER(9,2),
+  fee_meal              NUMBER(9,2),
+  fee_meal_expert       NUMBER(9,2),
+  fee_accommodation     NUMBER(9,2),
+  fee_traffic_stu       NUMBER(9,2),
+  fee_teach             NUMBER(9,2),
+  fee_traffic_expert    NUMBER(9,2),
+  fee_meal_acc_expert   NUMBER(9,2),
+  fee_materials         NUMBER(9,2),
+  fee_office_supplies   NUMBER(9,2),
+  fee_course            NUMBER(9,2),
+  fee_electron_course   NUMBER(9,2),
+  fee_area_rent         NUMBER(9,2),
+  fee_equipment_rent    NUMBER(9,2),
+  fee_appraise          NUMBER(9,2),
+  fee_summary_appraise  NUMBER(9,2),
+  fee_labour_service    NUMBER(9,2),
+  fee_publicity         NUMBER(9,2),
+  fee_petty             NUMBER(9,2),
+  fee_other             NUMBER(9,2),
+  note_survey           VARCHAR2(200),
+  note_research         VARCHAR2(200),
+  note_argument         VARCHAR2(200),
+  note_meal             VARCHAR2(200),
+  note_meal_expert      VARCHAR2(200),
+  note_accommodation    VARCHAR2(200),
+  note_traffic_stu      VARCHAR2(200),
+  note_teach            VARCHAR2(200),
+  note_traffic_expert   VARCHAR2(200),
+  note_meal_acc_expert  VARCHAR2(200),
+  note_materials        VARCHAR2(200),
+  note_office_supplies  VARCHAR2(200),
+  note_text_course      VARCHAR2(200),
+  note_electron_course  VARCHAR2(200),
+  note_area_rent        VARCHAR2(200),
+  note_equipment_rent   VARCHAR2(200),
+  note_appraise         VARCHAR2(200),
+  note_summary_appraise VARCHAR2(200),
+  note_labour_service   VARCHAR2(200),
+  note_publicity        VARCHAR2(200),
+  note_petty            VARCHAR2(200),
+  note_other            VARCHAR2(200)
+)
+tablespace TCHR_TRAINING1
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 320K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table PE_FEE_ACTUAL_BUDGET_NEWDETAIL
+  is '?????';
+-- Add comments to the columns 
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_survey
+  is '?????';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_research
+  is '?????';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_argument
+  is '?????';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_meal
+  is '??';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_meal_expert
+  is '??';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_accommodation
+  is '?????';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_traffic_stu
+  is '???';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_teach
+  is '???';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_traffic_expert
+  is '?????';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_meal_acc_expert
+  is '?????';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_materials
+  is '???????';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_course
+  is '??????
+????
+';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_electron_course
+  is '??????';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_area_rent
+  is '?????';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_equipment_rent
+  is '?????';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_appraise
+  is '?????';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_summary_appraise
+  is '???????';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_labour_service
+  is '???';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_publicity
+  is '???';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_petty
+  is '???';
+comment on column PE_FEE_ACTUAL_BUDGET_NEWDETAIL.fee_other
+  is '??';
+-- Create table
+create table PE_FEE_BUDGET_NEWDETAIL
+(
+  id                    VARCHAR2(50) not null,
+  fee_survey            NUMBER(9,2),
+  fee_research          NUMBER(9,2),
+  fee_argument          NUMBER(9,2),
+  fee_meal              NUMBER(9,2),
+  fee_meal_expert       NUMBER(9,2),
+  fee_accommodation     NUMBER(9,2),
+  fee_traffic_stu       NUMBER(9,2),
+  fee_teach             NUMBER(9,2),
+  fee_traffic_expert    NUMBER(9,2),
+  fee_meal_acc_expert   NUMBER(9,2),
+  fee_materials         NUMBER(9,2),
+  fee_office_supplies   NUMBER(9,2),
+  fee_course            NUMBER(9,2),
+  fee_electron_course   NUMBER(9,2),
+  fee_area_rent         NUMBER(9,2),
+  fee_equipment_rent    NUMBER(9,2),
+  fee_appraise          NUMBER(9,2),
+  fee_summary_appraise  NUMBER(9,2),
+  fee_labour_service    NUMBER(9,2),
+  fee_publicity         NUMBER(9,2),
+  fee_petty             NUMBER(9,2),
+  fee_noplan            NUMBER(9,2),
+  note_survey           VARCHAR2(200),
+  note_research         VARCHAR2(200),
+  note_argument         VARCHAR2(200),
+  note_meal             VARCHAR2(200),
+  note_meal_expert      VARCHAR2(200),
+  note_accommodation    VARCHAR2(200),
+  note_traffic_stu      VARCHAR2(200),
+  note_teach            VARCHAR2(200),
+  note_traffic_expert   VARCHAR2(200),
+  note_meal_acc_expert  VARCHAR2(200),
+  note_materials        VARCHAR2(200),
+  note_office_supplies  VARCHAR2(200),
+  note_text_course      VARCHAR2(200),
+  note_electron_course  VARCHAR2(200),
+  note_area_rent        VARCHAR2(200),
+  note_equipment_rent   VARCHAR2(200),
+  note_appraise         VARCHAR2(200),
+  note_summary_appraise VARCHAR2(200),
+  note_labour_service   VARCHAR2(200),
+  note_publicity        VARCHAR2(200),
+  note_petty            VARCHAR2(200),
+  note_noplan           VARCHAR2(200)
+)
+tablespace TCHR_TRAINING1
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 320K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table PE_FEE_BUDGET_NEWDETAIL
+  is '?????';
+-- Add comments to the columns 
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_survey
+  is '?????';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_research
+  is '?????';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_argument
+  is '?????';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_meal
+  is '??';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_meal_expert
+  is '??';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_accommodation
+  is '?????';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_traffic_stu
+  is '???';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_teach
+  is '???';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_traffic_expert
+  is '?????';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_meal_acc_expert
+  is '?????';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_materials
+  is '???????';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_course
+  is '??????
+????
+';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_electron_course
+  is '??????';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_area_rent
+  is '?????';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_equipment_rent
+  is '?????';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_appraise
+  is '?????';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_summary_appraise
+  is '???????';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_labour_service
+  is '???';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_publicity
+  is '???';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_petty
+  is '???';
+comment on column PE_FEE_BUDGET_NEWDETAIL.fee_noplan
+  is '??????';  
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PEBUDGETMPNEW
+  add constraint PK_BUDGETMPNEW primary key (ID)
+  using index 
+  tablespace GPJH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table PEBUDGETMPNEW
+  add constraint FK_BUDGETMP_APPLYNO_NEW foreign key (FK_PRO_APPLYNO)
+  references PE_PRO_APPLYNO (ID);
+alter table PEBUDGETMPNEW
+  add constraint FK_BUDGETMP_DETAIL_NEW foreign key (PE_BUDGET_DETAIL)
+  references PE_FEE_BUDGET_NEWDETAIL (ID);
+alter table PEBUDGETMPNEW
+  add constraint FK_BUDGETMP_UNIT_NEW foreign key (FK_UNIT)
+  references PE_UNIT (ID);
+  
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table PEACTUALBUDGETNEW
+  add constraint PK_ACTUAL_BUDGET_NEW primary key (ID)
+  using index 
+  tablespace GPJH
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table PEACTUALBUDGETNEW
+  add constraint FK_ACTUAL_APPLYNO_NEW foreign key (FK_PRO_APPLYNO)
+  references PE_PRO_APPLYNO (ID);
+alter table PEACTUALBUDGETNEW
+  add constraint FK_ACTUAL_NEWDETAIL foreign key (PE_BUDGET_DETAIL)
+  references PE_FEE_ACTUAL_BUDGET_NEWDETAIL (ID);
+alter table PEACTUALBUDGETNEW
+  add constraint FK_ACTUAL_UNIT_NEW foreign key (FK_UNIT)
+  references PE_UNIT (ID);
+alter table PE_FEE_ACTUAL_BUDGET_NEWDETAIL
+  add constraint PK_PE_FEEACTUALBUDGETNEWDETAIL primary key (ID)
+  using index 
+  tablespace TCHR_TRAINING1
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 128K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+  -- Create/Recreate primary, unique and foreign key constraints 
+alter table PE_FEE_BUDGET_NEWDETAIL
+  add constraint PK_PE_FEE_BUDGET_NEWDETAIL primary key (ID)
+  using index 
+  tablespace TCHR_TRAINING1
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 128K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );

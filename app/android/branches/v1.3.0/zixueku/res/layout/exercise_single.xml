@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <!-- 禁止ScrollView内的控件改变之后自动滚动 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <com.zixueku.widget.CustomWebView
+                android:id="@+id/exercise_single_content"
+                style="@style/WebViewStyle" />
+
+            <include layout="@layout/question_title2" />
+        </FrameLayout>
+
+        <com.zixueku.widget.CustomListView
+            android:id="@+id/exercise_single_list_view"
+            style="@style/ExerciseListViewStyle" />
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.VideoPublish">
+
+	<!-- 根据参数取count -->
+	<select id="videoPublish_getCountByParams" parameterType="java.util.Map" resultType="int">
+		 select count(*) from video_publish vp,category cat,resource re,sys_user su 
+		 where vp.category=cat.id and vp.cover=re.id and vp.creator=su.id 
+		<if test="id != null and id != ''">
+			and vp.id = #{id} 
+		</if>
+		<if test="title != null and title != ''">
+			and vp.title like "%"#{title}"%" 
+		</if>
+		<if test="shortTitle != null and shortTitle != ''">
+			and vp.short_title like "%"#{shortTitle}"%" 
+		</if>
+		<if test="category != null and category != ''">
+			and vp.category = #{category} 
+		</if>
+		<if test="status != null and status != ''">
+			and vp.status = #{status} 
+		</if>
+	</select> 
+	
+	<!-- 根据参数取vo -->
+	<select id="videoPublish_getListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.vo.VideoPublishVO">
+		select vp.id as id,vp.title as title,vp.short_title as shortTitle,vp.cover as cover,cat.id as category, cat.name as categoryName,su.name as creator,vp.createtime as createtime,vp.status as status 
+		from video_publish vp, category cat, sys_user su 
+		where vp.category=cat.id and vp.creator=su.id 
+		<if test="id != null and id != ''">
+			and vp.id = #{id} 
+		</if>
+		<if test="title != null and title != ''">
+			and vp.title like "%"#{title}"%" 
+		</if>
+		<if test="shortTitle != null and shortTitle != ''">
+			and vp.short_title like "%"#{shortTitle}"%" 
+		</if>
+		<if test="category != null and category != ''">
+			and vp.category = #{category} 
+		</if>
+		<if test="status != null and status != ''">
+			and vp.status = #{status} 
+		</if>
+		<if test="sort != null and sort != ''">
+			order by vp.${sort}
+		</if>
+		<if test="start != null and start != '' and limit != null and limit != ''">
+			limit ${start},${limit}
+		</if>
+	</select> 
+	
+	<!-- 按照状态分类取count -->
+	<select id="videoPublish_getStatusCount" parameterType="java.util.Map"  resultType="Map">
+		select status , count(status) from video_publish vp where 1=1
+		<if test="category != null and category != ''">
+			and vp.category = #{category} 
+		</if>
+		group by status
+	</select> 
+	
+	<!-- 根据参数取webcount -->
+	<select id="videoPublish_getWebCountByParams" parameterType="java.util.Map" resultType="int">
+		select count(*) from video_publish vp,category cat,resource re,sys_user su 
+		where vp.category=cat.id and vp.cover=re.id and vp.creator=su.id
+		<if test="id != null and id != ''">
+			and vp.id = #{id} 
+		</if>
+		<if test="title != null and title != ''">
+			and vp.title like "%"#{title}"%" 
+		</if>
+		<if test="shortTitle != null and shortTitle != ''">
+			and vp.short_title like "%"#{shortTitle}"%" 
+		</if>
+		<if test="category != null and category != ''">
+			and vp.category = #{category} 
+		</if>
+		<if test="status != null and status != ''">
+			and vp.status = #{status} 
+		</if>
+		<if test="scode != null and scode != ''">
+			and cat.scode like "%"#{scode}"%" 
+		</if>
+	</select> 
+	
+	<!-- 根据参数取webvo -->
+	<select id="videoPublish_getWebListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.vo.iface.WebVideoPublishVO">
+		select vp.video as id,vp.title as title,re.url as coverURL,vi.video as videoURL 
+		from video_publish vp,category cat,resource re,videoinfo vi 
+		where vp.category=cat.id and vp.cover=re.id and vp.video=vi.id
+		<if test="id != null and id != ''">
+			and vp.id = #{id} 
+		</if>
+		<if test="title != null and title != ''">
+			and vp.title like "%"#{title}"%" 
+		</if>
+		<if test="shortTitle != null and shortTitle != ''">
+			and vp.short_title like "%"#{shortTitle}"%" 
+		</if>
+		<if test="category != null and category != ''">
+			and vp.category = #{category} 
+		</if>
+		<if test="status != null and status != ''">
+			and vp.status = #{status} 
+		</if>
+		<if test="scode != null and scode != ''">
+			and cat.scode like "%"#{scode}"%" 
+		</if>
+		order by vp.createtime desc
+		<if test="start != null and start != '' and limit != null and limit != ''">
+			limit ${start},${limit}
+		</if>
+	</select> 
+	
+	<!-- 加载数据 -->  
+	<select id="videoPublish_get"  resultType="com.cmos.china.mobile.media.core.bean.VideoPublish">  
+		select * from video_publish where id=#{id}  
+	</select>  
+	
+	<!-- 增加数据 -->  
+	<insert id="videoPublish_add" parameterType="com.cmos.china.mobile.media.core.bean.VideoPublish" useGeneratedKeys="true" keyProperty="id">  
+		insert into video_publish(id,video,category,status,title,short_title,cover,creator,createtime) 
+		values(#{id},#{video},#{category},#{status},#{title},#{shortTitle},#{cover},#{creator},#{createtime})  
+	</insert>  
+	
+	<!-- 修改数据 -->  
+	<update id="videoPublish_update" parameterType="com.cmos.china.mobile.media.core.bean.VideoPublish">  
+		update video_publish 
+		set video=#{video},category=#{category},status=#{status},title=#{title},short_title=#{shortTitle},cover=#{cover} 
+		where id=#{id}  
+	</update>  
+	
+	<!-- 删除数据 -->  
+	<update id="videoPublish_delete" parameterType="com.cmos.china.mobile.media.core.bean.VideoPublish">  
+		update video_publish set status='deleted' where id=#{id}
+	</update>  
+</mapper>  

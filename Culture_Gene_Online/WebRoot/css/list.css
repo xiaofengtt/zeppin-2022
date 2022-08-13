@@ -1,0 +1,98 @@
+*{ margin: 0 auto; padding: 0; font-family: "宋体";}
+a{ text-decoration: none;}
+ul{ list-style: none;}
+.clear{ clear: both;}
+img{border:none;}
+body{ min-width: 1400px;}
+#banner{ background: url(../images/banner1.jpg) center no-repeat;}
+#banner .banner_inner{ width: 1300px; height: 295px;}
+#banner .banner_inner ul.navList{ float: left;}
+#banner .banner_inner ul.navList li{ float: left; padding: 16px 8px;font-size: 18px; color: #fff; cursor: pointer;}
+#banner .banner_inner ul.navList li a{}
+#banner .banner_inner ul.navList li.light{}
+#banner .banner_inner ul.navList li.light a{ color: #333333; }
+
+#banner .banner_inner ul.nav{ float: right;padding-top: 13px;}
+#banner .banner_inner ul.nav li{ float: left; border: 1px solid #fff; margin-left: 5px;}
+#banner .banner_inner ul.nav li a{ padding: 9px 11px; display: block; font-size: 14px; color: #fff;}
+#banner .banner_inner ul.nav li.light{ background-color: #ff6525; border-color: #FF6525;}
+#banner .banner_inner .loggedLn{ float: right; display:none;padding-top: 13px;}
+#banner .banner_inner .loggedLn li{ float: left; }
+#banner .banner_inner .loggedLn li span{ line-height: 34px;color: #333333;}
+#banner .banner_inner .loggedLn li span.userName{cursor:pointer;text-decoration:underline;}
+#banner .banner_inner .loggedLn li.logginLi{ border: 1px solid #f0f0f0; margin-left: 21px;}
+#banner .banner_inner .loggedLn li.logginLi a{ color: #666666; font-size: 14px; display: block; padding: 9px 11px;}
+#banner .banner_inner .loggedLn li.light{ border-color: #ff6525;}
+#banner .banner_inner .loggedLn li.light a{ background-color: #FF6525; color: #ffffff;}
+
+#banner .banner_inner ul.navList li .classify{display:none;position:absolute; padding-top:20px;}
+#banner .banner_inner ul.navList li .classify li{float:none;padding-left:0px;}
+#banner .banner_inner ul.navList li .classify li a{ color:#333;}
+
+#banner .banner_inner .banner_left{ float: left; padding-left: 200px; padding-top: 50px;}
+#banner .banner_inner .banner_left h1{ color: #ff6525; font-size: 43px; line-height: 60px;}
+#banner .banner_inner .banner_left h2{ color: #595959; font-size: 24px; line-height: 38px;}
+#banner .banner_inner .banner_left h3{ color: #595959; font-size: 18px; line-height: 38px; opacity: 0.4;}
+#banner .banner_inner .Search{width: 560px;height: 240px; margin-top: 80px; float: left; padding-left: 100px;}
+#banner .banner_inner .Search input.search_input{width: 500px;height: 38px;border-radius: 2px 0 0 2px; border: none;color: #666; padding-left: 13px; font-size: 14px; display: block;
+float: left;}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
+    color:#666;
+}
+input:-moz-placeholder, textarea:-moz-placeholder { 
+    color:#666;
+}
+input::-moz-placeholder, textarea::-moz-placeholder { 
+    color:#666;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
+    color:#666;
+}
+
+#banner .banner_inner .Search a.search{ background-color: #ff6525; padding: 8px 12px; border-radius: 0 2px 2px 0; display: block; float: left; cursor: pointer;}
+#banner .banner_inner .Search p.hotSearch{ color: #333333; font-size: 14px;line-height: 40px;}
+
+#content{ background-color: #fff;}
+#content .content_inner{ width: 1300px;}
+#content .content_inner span.title{ color: #878787;font-size: 18px;line-height: 30px; padding: 0 15px; display: block; float: left;}
+#content .content_inner hr{ border:none;border-bottom: 1px solid #e5e5e5; margin-top: 15px; float: left;}
+#content .content_inner .screen{ float: left; padding-left: 105px;}
+#content .content_inner .screen li{float: left; padding-right:100px;}
+#content .content_inner .screen li span{ color: #878787; font-size: 18px;line-height: 36px;}
+#content .content_inner .screen li a{ padding: 0 7px; font-size: 18px; color: #333333; cursor: pointer;}
+#content .content_inner .screen li a.light{ color: #ff6525;}
+#content .content_inner .hide{ float: right; width: 120px;height: 24px; line-height: 24px; font-size: 18px; color: #333333; padding:15px 33px; cursor: pointer;}
+
+.clear {clear:both; height:0; font-size:0; line-height:0; overflow:hidden;}
+.cle:after, .clearfix:after, .clear_f:after, .cle_float:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.cle, .clearfix, .clear_f, .cle_float{zoom:1}
+.fl {float:left;}
+.fr {float:right;}
+a{text-decoration:none; color:#333; -webkit-transition: color .2s;-moz-transition: color .2s;-o-transition: color .2s; -ms-transition: color .2s;transition: color .2s;}
+
+a:focus{outline:none;}
+::selection {background:#ff7d8e; color:#fff;}
+#wrapper{width: 1298px; margin: 15px auto;}
+.brand-list{width: 1290px;/* overflow: hidden; */margin-left: 10px;}
+.brand-list .brand-bd{position: relative; margin-left: 10px; margin-top: 5px;min-height:100px;}
+.brand-list .item{position: absolute; width: 252px; background-color: #f8f8f8; border: 1px solid #f8f8f8; padding: 18px; top:0; left: 40%; -webkit-transition: all 0.3s;-moz-transition: all 0.3s;-o-transition: all 0.3s;-ms-transition: all 0.3s;transition: all 0.3s; cursor: pointer;}
+.brand-list .hover{box-shadow: 0px 1px 8px rgba(200,200,200,.6);/* background-color: #fff; */border-color: #c8c8c8;}
+.brand-list .item img.img{ width: 100%;}
+
+.brand-list .additem{padding: 0; width: 240px; border: none; }
+.brand-list .item h3{font-size: 42px; color: #666; font-family: arial; font-weight: bold; line-height: .8; margin-bottom: 20px;}
+
+
+.brand-list .item .instructions{ font-size: 14px; color: #666666; line-height: 24px;}
+.brand-list .item .title{ font-size: 18px; color: #333333; line-height: 36px; padding-top: 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+#content .content_inner span.loadmore{ color: #878787;font-size: 14px;line-height: 40px; padding: 30px 45px; display: block; float: left; cursor: pointer;}
+#content .content_inner span.loadmore img{ display:block;}
+#content .content_inner span.loadmore span{ display: block; width: 100%; text-align: center;}
+#content .content_inner .national{ height:30px; padding:0 10px; font-size:20px; margin-top:5px;}
+
+
+#footer{ background-image: #fff;}
+#footer .footer_inner{ width: 1400px; text-align: center;line-height: 50px; color: #333333; font-size: 14px;}
+

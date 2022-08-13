@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activity.PersonalActivity" >
+
+    <include
+        android:id="@+id/action_bar"
+        layout="@layout/action_title_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/action_bar" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/rl_feed_back"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/personal_item_height" >
+
+                <LinearLayout style="@style/PersonalLinearLayoutStyle" >
+
+                    <ImageView
+                        style="@style/PersonalIconStyle"
+                        android:src="@drawable/user_feedback" />
+
+                    <TextView
+                        android:id="@+id/user_name"
+                        style="@style/PersonalTextStyle"
+                        android:text="意见反馈" />
+                </LinearLayout>
+
+                <ImageView style="@style/PersonalRightIconStyle" />
+            </RelativeLayout>
+
+            <View style="@style/PsersonHorizontalLine" />
+
+            <RelativeLayout
+                android:id="@+id/rl_questionnaire"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/personal_item_height" >
+
+                <LinearLayout style="@style/PersonalLinearLayoutStyle" >
+
+                    <ImageView
+                        style="@style/PersonalIconStyle"
+                        android:src="@drawable/user_questionnaire" />
+
+                    <TextView
+                        style="@style/PersonalTextStyle"
+                        android:text="学霸问卷" />
+                </LinearLayout>
+
+                <ImageView style="@style/PersonalRightIconStyle" />
+            </RelativeLayout>
+
+            <View style="@style/PsersonHorizontalLine" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/text_view_weixin_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="微信公众号：zixuecool"
+            android:textColor="@color/dimgrey"
+            android:textSize="@dimen/s6" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="官网：zixueku.com"
+            android:textColor="@color/dimgrey"
+            android:textSize="@dimen/s6" />
+    </LinearLayout>
+
+</RelativeLayout>

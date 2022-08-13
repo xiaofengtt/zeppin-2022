@@ -1,0 +1,168 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../assets/css/bootstrap2.css">
+<link rel="stylesheet" href="../assets/css/iframe.css">
+<link rel="stylesheet" href="../assets/css/uploadfile_n.css">
+<link href="../assets/css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+
+
+<script src="../assets/plugins/jquery-1.10.2.min.js"></script>
+<script src="../assets/plugins/jquery-ui.js"></script>
+<script src="../assets/plugins/jquery.colorbox.js"></script>
+
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/plugins/url.min.js"></script>
+<script src="../assets/plugins/mustache.js"></script>
+<script src="../assets/plugins/jquery.cokie.min.js"></script>
+<script src="../assets/plugins/jquery.uploadfile.min.js"></script>
+<style>
+	textarea{resize: none;width: 400px;height: 100px;max-width: 400px;max-height: 100px;font-size:18px;}
+	.controls input{width:400px;font-size:18px;}
+</style>
+</head>
+<body>
+	<div class="ifrcnt container">
+		<div class="hd">
+			<h3>添加关联商品</h3>
+		</div>
+		<div class="bd">
+			<div class="alert alert-danger"
+				style="display:none;margin:0 15px 15px;"></div>
+			<form id="formsubmit" class="form-horizontal" role="form" action="#" method="post">
+				<div class="row">		
+					<div id="HtmlTpl" class="span10">
+					
+					</div>
+				</div>
+				<script id="DataTpl" type="text/template">
+				{{#data}}
+				<div class="clearfix">
+					<div class="control-group">
+						<label class="control-label" for="">帧位图</label>
+						<div class="controls">
+							<img src="..{{path}}" styly="width:500px">
+							<input type="hidden"  name="iframe" value="{{id}}">
+							<input type="hidden"  name="video" value="{{video}}">
+							<input type="hidden"  name="timepoint" value="{{timepoint}}">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="">关联商品</label>
+						<div class="controls">
+							<select name="commodity" id="commoditySelect">
+							</select>
+						</div>
+					</div>
+					<input type="hidden"  name="showType" value="1">
+					<div class="control-group">
+						<label class="control-label" for="">提示内容</label>
+						<div class="controls">
+							<textarea id="" name="showMessage"></textarea>
+						</div>
+					</div>
+					<div class="control-group" id="uploadcon1">
+						<label class="control-label" for="">提示banner</label>
+						<div class="controls">
+							<div id="resourceId"><span>&nbsp;选择文件&nbsp;&nbsp;</span>
+							</div>
+						</div>
+					</div>
+					<div id="resourceAdd"><input type="hidden" name="showBanner" value=""></div>
+				</div>
+				{{/data}}
+				</script>
+			
+				<div class="row actionbar">
+					<div class="offset7" style="margin-left:150px;">
+						<button class="btn" type="submit">确定</button>
+						<button id="colorboxcancel" onclick="parent.$.colorbox.close()"
+							class="btn" type="button">取消</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>
+		$(function() {
+			var video = url('?video');
+			var timepoint = url('?timepoint');
+			$('input[name="video"]').val(video);
+			$.get('../rest/videoIframe/add?video='+video+'&timepoint='+timepoint,function(r){
+				if(r.status == 'success') {
+					var st = JSON.stringify(r);
+				    var template = $('#DataTpl').html();
+				    var html = Mustache.render(template, $.parseJSON(st));
+				    $('#HtmlTpl').html(html);
+				}else {
+					alert(r.message);
+				}
+			}).done(function(){
+				$.get('../rest/commodity/search?status=normal',function(r){
+					if(r.status == 'success') {
+						var commodityHtml='';
+						$.each(r.data,function(i,v){
+							commodityHtml+="<option name='video' value='"+v.id+"'>"+v.name+"</option>";
+						})
+						$('#commoditySelect').html(commodityHtml);
+					}else {
+						alert(r.message);
+					}
+				})
+				$('#formsubmit').submit(function() {
+					var str = $(this).serialize();
+					$.post('../rest/videoPoint/add?'+ str, function(data) {
+						if (data.status == "success") {
+							window.parent.getList();
+							parent.$.colorbox.close();
+						} else {
+							$('.alert-danger').html(data.message).show();
+						}
+					})
+					return false;
+				});
+				$("#resourceId").uploadFile({
+					url:"../rest/resource/add",
+					allowedTypes:"jpg,png,jpeg,bmp,tiff",
+					maxFileSize:1024*1024*1024*10,
+					fileName:"video",
+					maxFileCount : 1,
+					dragDropStr: "",
+					extErrorStr:"文件格式不正确，请上传指定类型类型的视频文件",
+					multiple:false,
+					showDelete: true,
+					showStatusAfterSuccess:true,
+					showProgress: true,
+					deletelStr : '删除',
+					showAbort:false,
+					showDone:false,
+					maxFileCountErrorStr: "文件数量过多，请先删除。",
+					onSuccess:function(files,data,xhr)
+					{
+						if($('input[name="showBanner"]').length > 0) {
+							$('input[name="showBanner"]').val(data.data.id);
+						}else {
+							$('input[name="showBanner"]').val(data.data.id);
+						}
+					},
+				});
+			})
+			
+			//项目类型 helper 函数
+			$(document).on("click",function(e) {
+				if(!$(e.target).parents().is('.ufc'))
+					$('.uul').hide();
+			});
+		})
+	</script>
+<body>
+</html>

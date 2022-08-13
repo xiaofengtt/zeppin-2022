@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>移动测评客户端</title>
+	<meta name="title">
+	<meta name="description" content="">
+	
+	<link rel="shortcut icon" id="favicon" href="favicon.png"> 
+	<meta name="author" content="Pete R.">
+	
+	<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="jquery.onepage-scroll.js"></script>
+  <link href='onepage-scroll.css' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      padding: 0;
+      text-align: center;
+      position: relative;
+      margin: 0;
+      height: 100%;
+    }
+    /*.viewing-page-1 {background:#aa597c;}
+	.viewing-page-2 {background:#fe6553;}
+	.viewing-page-3 {background:#32cea5;}
+	.viewing-page-4 {background:#51cdf2;}
+	.viewing-page-5 {background:#feda89;}*/
+    .wrapper {
+    	height: 100% !important;
+    	height: 100%;
+    	margin: 0 auto; 
+    	overflow: hidden;
+		
+    }
+    
+    a {
+      text-decoration: none;
+    }
+    
+    .main {
+      
+    }
+    
+ 
+    .main section .page_container {
+      position: relative;
+      
+      margin: 0 auto;
+      min-width: 1000px;
+      z-index: 3;
+	width: 960px;
+	height:540px;
+	
+	position: relative;
+	 
+    }
+    .main section  {
+      overflow: hidden;
+    }
+    
+  
+    
+  
+    .main section.page1 {
+      background:#aa597c;
+    }
+    
+    .main section.page2 {
+      background: #fe6553;
+    }
+    .main section.page3 {
+      background: #32cea5;
+    }
+    .main section.page4 {
+      background: #51cdf2;
+    }
+    .main section.page5 {
+      background: #feda89;
+    }
+	.app-title {position:absolute;top:18%;right:120px;}
+	.app-code {position:absolute;top:35%;right:30px;width:236px;height:486px;background:url(phone.png) no-repeat;}
+	.position div {position:absolute;}
+	.imgcnt1 .heart {top:58%;left:10px;}
+	.imgcnt1 .tree {top:52%;left:10px;}
+	.app-code img {position:absolute;top:90px;left:35px;}
+	
+	
+	</style>
+	<script>
+	  $(function(){
+	      $(".main").onepage_scroll({
+	        sectionContainer: "section",
+			easing: "ease",
+	        responsiveFallback: 600,
+	        loop: true
+	      });
+	  });
+		
+	</script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="main">
+		<section class="page1">
+			<div class="page_container">
+				<div class="imgcnt1 position">
+					<div class="heart"><img src="heart.png" alt></div>
+					<div class="tree"><img src="appm1.png" alt></div>
+				</div>
+				<div class="codecnt">
+					<h1 class="app-title"><img src="app1.png" alt></h1>
+					<div class="app-code">
+						<img src="2.png" alt>
+						<a class="enter" href="#" title="点击进入"></a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="page2">
+			<div class="page_container">
+				<div class="imgcnt2 position">
+					<div class="">
+				</div>
+				<div class="codecnt">
+					<h1 class="app-title"><img src="app1.png" alt></h1>
+					<div class="app-code">
+						<img src="2.png" alt>
+						<a class="enter" href="#" title="点击进入"></a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="page3">
+			<div class="page_container">
+
+			</div>
+		</section>
+		<section class="page4">
+			<div class="page_container">
+
+			</div>
+		</section>
+		<section class="page5">
+			<div class="page_container">
+
+			</div>
+		</section>
+	</div>
+</div>
+</body>
+</html>

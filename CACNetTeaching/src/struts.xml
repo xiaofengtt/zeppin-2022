@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 配置struts相关选项 -->
+	<constant name="struts-devmode" value="ture"></constant>
+	<constant name="struts-locale" value="zh-CN">constant</constant>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<constant name="struts.multipart.maxSize" value="100000000000" />  
+	
+	<package name="main" namespace="/" extends="struts-default">
+	<interceptors>  
+            <interceptor name="authorityacademic"  
+                class="com.zeppin.interceptor.LoginInterceptor">  
+            </interceptor>  
+            <!-- 拦截器栈academic-->  
+            <interceptor-stack name="academic">  
+                <interceptor-ref name="defaultStack" />  
+                <interceptor-ref name="authorityacademic" />  
+            </interceptor-stack>  
+            
+            <interceptor name="teacherInterceptor"  
+                class="com.zeppin.interceptor.teacherInterceptor">  
+            </interceptor>  
+            
+             <interceptor name="studentInterceptor"  
+                class="com.zeppin.interceptor.studentInterceptor">  
+            </interceptor>  
+            <!-- 拦截器栈 teacher-->  
+            <interceptor-stack name="teacher">  
+                <interceptor-ref name="defaultStack" />  
+                <interceptor-ref name="teacherInterceptor" />  
+            </interceptor-stack>  
+              <!-- 拦截器栈 student-->  
+            <interceptor-stack name="student">  
+                <interceptor-ref name="defaultStack" />  
+                <interceptor-ref name="studentInterceptor" />  
+            </interceptor-stack>  
+      
+        </interceptors>  
+        
+		<global-results>
+			<result name="login">login.jsp</result>
+			<!-- <result name="input">login.jsp</result>
+			<result name="json">json.jsp</result> -->
+		</global-results>
+		
+		<action name="admin_*" class="admin" method="{1}">
+		<result name="{1}">teacher/academicAdmin/{1}.jsp</result>
+		<interceptor-ref name="academic" />  
+		</action>
+		
+		<action name="teacher_*" class="teacher" method="{1}">
+		<result name="{1}">teacher/common/{1}.jsp</result>
+		<interceptor-ref name="teacher" />  
+		</action>
+		
+		<action name="uploadFile" class="teacherUpload" method="upload">
+			<!-- 配置 fileupload 的拦截器 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 可以支持上传的文件类型 -->
+				<!-- <param name="allowedTypes">
+					image/bmp,image/png,image/gif,image/jpeg,image/jpg,application/rar,
+				</param> -->
+				<!-- 允许后缀名为png,bmp,jpg,doc,xls的文件上传 -->	
+               <!--  <param name="allowedExtensions">
+            	png,bmp,jpg,doc,xls,rar,zip,gz
+                </param> -->
+				<!-- 设置上传文件的大小不能超过1000M -->
+				<param name="maximumSize">1024*1024*1024</param>
+			</interceptor-ref>
+			<!-- 必须配置系统默认的拦截器 -->
+			<interceptor-ref name="defaultStack" />
+			<!-- 设置上传文件的默认保存路径 -->
+			<param name="savePath">upload</param>
+			
+			
+		</action>
+		
+		<action name="student_*" class="student" method="{1}">
+		<result name="{1}">student/{1}.jsp</result>
+		<interceptor-ref name="student" />  
+		</action>
+		
+		<action name="uploadHomework" class="studentUpload" method="uploadHomework">
+			<!-- 配置 fileupload 的拦截器 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 可以支持上传的文件类型 -->
+				<!-- <param name="allowedTypes">
+					image/bmp,image/png,image/gif,image/jpeg,image/jpg,application/rar,
+				</param> -->
+				<!-- 允许后缀名为png,bmp,jpg,doc,xls的文件上传 -->	
+              <!--   <param name="allowedExtensions">
+            	png,bmp,jpg,doc,xls,rar,zip,gz
+                </param> -->
+				<!-- 设置上传文件的大小不能超过1000M -->
+				<param name="maximumSize">1024*1024*1024*1024</param>
+			</interceptor-ref>
+			<!-- 必须配置系统默认的拦截器 -->
+			<interceptor-ref name="defaultStack" />
+			<!-- 设置上传文件的默认保存路径 -->
+			<param name="savePath">upload</param>
+			
+		</action>
+		
+		
+		<action name="baseData_*" class="baseData" method="{1}">
+		<result name="{1}">baseData/{1}.jsp</result>
+		</action>
+		
+		<action name="login_*" class="login" method="{1}">
+		  <result>login.jsp</result> 
+		   <result name="student" type="redirect">student_myClassInit.action</result>
+		   <result name="academic" type="redirect">admin_studentManageInit.action</result>
+		   <result name="teacher" type="redirect">teacher_myClassInit.action</result>
+		   <result name="admin">/admin/index.jsp</result>
+		</action>
+		
+		<action name="course_*" class="course" method="{1}">
+		<result name="{1}">course/{1}.jsp</result>
+		<result name="goInit" type="redirect">course_scheduleManageInit.action</result>
+		 <interceptor-ref name="academic" />   
+	</action>
+	</package>
+
+</struts>    

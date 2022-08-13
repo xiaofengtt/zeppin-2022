@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightgrey"
+    android:orientation="vertical" >
+
+    <include layout="@layout/result_action_bar" />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/button" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+                
+                <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@color/index_background"
+            android:padding="15dp"
+            android:layout_height="125dp" >
+
+            <TextView
+                android:id="@+id/right_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:includeFontPadding="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/s1" />
+
+            <TextView
+                style="@style/s6"
+                android:layout_alignTop="@id/right_num"
+                    android:paddingTop="10dp"
+                android:text="答对"
+                android:textColor="@color/white" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/right_num"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/s6"
+                    android:text="/"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/total_num"
+                    style="@style/s6"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </RelativeLayout>
+                
+                
+
+                <LinearLayout
+                    android:id="@+id/result_grad_view_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="15dp" >
+
+                    <com.zixueku.widget.CustomGridView
+                        android:id="@+id/activity_result_gridView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="25dp"
+                        android:layout_marginTop="25dp"
+                        android:horizontalSpacing="5dp"
+                        android:listSelector="@color/transparent"
+                        android:numColumns="5"
+                        android:stretchMode="columnWidth"
+                        android:verticalSpacing="35dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical"
+                    android:padding="15dp" >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp" >
+
+                        <TextView
+                            style="@style/s5"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:text="备考进度" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/progress"
+                                style="@style/s5"
+                                android:paddingRight="15dp" />
+
+                            <ImageView
+                                android:id="@+id/progress_change_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleType="centerInside" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <View style="@style/HorizontalLine" />
+
+                    <com.zixueku.widget.CustomListView
+                        android:id="@+id/knowledge_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:dividerHeight="0dp"
+                        android:listSelector="@color/transparent" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/analysis"
+                style="@style/ResultAnalysisButtonStyle"
+                android:background="@drawable/green_button_img"
+                android:text="答案解析"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/next_test"
+                style="@style/ResultAnalysisButtonStyle"
+                android:background="@drawable/white_button_img"
+                android:text="再来一组" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

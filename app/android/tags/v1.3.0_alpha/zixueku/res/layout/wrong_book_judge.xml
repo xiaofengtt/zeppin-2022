@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <!-- 禁止ScrollView内的控件改变之后自动滚动 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <include layout="@layout/question_title2" />
+
+                <TextView
+                    android:id="@+id/judge_content"
+                    style="@style/ExerciseContentTextStyle" />
+
+                <com.zixueku.widget.CustomListView
+                    android:id="@+id/judge_list_view"
+                    style="@style/ExerciseListViewStyle" />
+            </LinearLayout>
+
+            <com.ms.square.android.expandabletextview.ExpandableTextView2
+                android:id="@+id/expand_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:paddingTop="20dp"
+                expandableTextView:animAlphaStart="1"
+                expandableTextView:maxCollapsedLines="0" >
+
+                <Button
+                    android:id="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|bottom"
+                    android:layout_marginLeft="15dp"
+                    android:background="@android:color/transparent"
+                    android:drawablePadding="2dip"
+                    android:drawableRight="@drawable/analysis_icon"
+                    android:text="查看解析"
+                    android:textSize="@dimen/s5" />
+
+                <TextView
+                    android:id="@id/analysis_title"
+                    style="@style/AnalysisTextStyle"
+                    android:layout_marginLeft="15dp"
+                    android:text="答案解析:"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@id/expandable_text"
+                    style="@style/AnalysisTextStyle"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp" />
+            </com.ms.square.android.expandabletextview.ExpandableTextView2>
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/wrong_book_float_button" />
+
+</RelativeLayout>

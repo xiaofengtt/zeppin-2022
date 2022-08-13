@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 字体大小 -->
+    <dimen name="s8">11sp</dimen>
+    <dimen name="s7">12sp</dimen>
+    <dimen name="s6">14sp</dimen>
+    <dimen name="s5">16sp</dimen>
+    <dimen name="s4">18sp</dimen>
+    <dimen name="s3">28sp</dimen>
+    <dimen name="s2">26sp</dimen>
+    <dimen name="s1">100sp</dimen>
+    <!-- 字体大小 -->
+    <dimen name="fontSize">17sp</dimen>
+
+    <dimen name="action_bar_left_right_margin">15dp</dimen>
+    <dimen name="button_radius">4dp</dimen>
+    <dimen name="head_image_height">170dp</dimen>
+    <dimen name="hand_paper_button_size">45dp</dimen>
+    
+    <dimen name="button_stroke_width">1dp</dimen>
+    <!-- 单选题按钮大小 -->
+    <dimen name="single_button">30dp</dimen>
+    <!-- 多选题按钮大小 -->
+    <dimen name="multiple_button">30dp</dimen>
+    <!-- 判断题按钮大小 -->
+    <dimen name="judge_button">30dp</dimen>
+    
+    <dimen name="material_card_button">45dp</dimen>
+    
+    <dimen name="subject_item_type_background_width">90dp</dimen>
+    <dimen name="subject_item_type_background_height">30dp</dimen>
+    <dimen name="subject_item_type_background_radius">25dp</dimen>
+    
+    
+    <dimen name="knowledge_item_disclosure_img">12dp</dimen>
+    <dimen name="button">48dp</dimen>
+    <dimen name="personal_item_height">65dp</dimen>
+    <dimen name="personal_icon_width">23dp</dimen>
+
+</resources>
