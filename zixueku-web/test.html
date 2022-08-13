@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CSS3实现的时钟式进度条效果_网页代码站(www.webdm.cn)</title>
+    <style type="text/css">
+        #cricle{width:200px;height:200px;position:relative;background:#333;overflow:hidden}
+        #cricle .left,#cricle .right,#cricle .text{width:200px;height:200px}
+        #cricle .text{position:absolute;top:0;left:0;z-index:41;color:#fff;font:26px/200px 'arial';text-align:center}
+        #cricle .mask{z-index:40}
+        #cricle .mask,#cricle .bg{width:100px;height:200px;background:#333;position:absolute;top:0}
+        #cricle .bg{background:url(http://www.webdm.cn/images/20130413/bg_green.png) no-repeat 0 0}
+        #cricle .mask,#cricle .left .bg{left:0}
+        #cricle .right{display:none}
+        #cricle .right .bg{background-position:right top;right:0}
+    </style>
+    <script src="http://www.webdm.cn/themes/script/jquery.js"></script>
+</head>
+<body>
+<div id="cricle">
+    <div class="mask"></div>
+    <div class="left">
+        <div class="bg"></div>
+    </div>
+    <div class="right">
+        <div class="bg"></div>
+    </div>
+    <div class="text"></div>
+</div>
+<script type="text/javascript">
+    var C = function(id){
+        this.box = $("#"+id);
+        this.left = this.box.find(".left");
+        this.right = this.box.find(".right");
+        this.mask = this.box.find(".mask");
+        this.text = this.box.find(".text");
+        this.d = 0;
+        this.A = null;
+        this.init();
+    }
+    C.prototype = {
+        init : function(){
+            var T = this;
+            this.A = window.setInterval(function(){T.change()},80);
+        },
+        change : function(){
+            var T = this;
+            if(this.d>180){
+                if(this.d>360){
+                    window.clearInterval(this.A);
+                    this.A = null;
+                    return;
+                }
+                this.right.show();
+                this.mask.hide();
+            }
+            this.text.text(parseInt(this.d/3.6));
+            this.left.css({
+                "-webkit-transform":"rotate("+this.d+"deg)",
+                "-moz-transform":"rotate("+this.d+"deg)"
+            })
+            this.d += 6;
+        }
+    }
+    new C("cricle");
+</script>
+<br />
+<p><a href="http://www.webdm.cn">网页代码站</a> - 最专业的网页代码下载网站 - 致力为中国站长提供有质量的网页代码！</p>
+</body>
+</html>

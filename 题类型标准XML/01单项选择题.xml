@@ -1,0 +1,10 @@
+<simplechoice>
+	<question><![CDATA[ 图文混排（html标签） ]]></question>
+	<choiceoptions>
+		<option id='A'><![CDATA[  图文混排（html标签） ]]></option>
+		<option id='B'><![CDATA[  图文混排（html标签） ]]></option>
+		<option id='C'><![CDATA[  图文混排（html标签） ]]></option>
+		<option id='D'><![CDATA[  图文混排（html标签） ]]></option>
+		<option id='E'><![CDATA[  图文混排（html标签） ]]></option>
+	</choiceoptions>
+</simplechoice>

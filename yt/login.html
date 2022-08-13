@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>项目级别设置</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+<link rel="stylesheet" href="css/matrix-style.css">
+<link rel="stylesheet" href="css/matrix-media.css">
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=coFXFwwg0P9BvNrbhIkmBDSR"></script>
+</head>
+<body class="login">
+
+<!--main-container-part-->
+
+<div id="allmap"></div>
+<script type="text/javascript">
+
+// 百度地图API功能
+var map = new BMap.Map("allmap");                        // 创建Map实例
+var point = new BMap.Point(87.68, 43.77);
+map.centerAndZoom(point, 7);     // 初始化地图,设置中心点坐标和地图级别
+//map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
+//map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
+//map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
+//map.enableScrollWheelZoom();                            //启用滚轮放大缩小
+//map.addControl(new BMap.MapTypeControl());          //添加地图类型控件
+map.setCurrentCity("新疆");          // 设置地图显示的城市 此项是必须设置的
+
+var marker = new BMap.Marker(point);  // 创建标注
+map.addOverlay(marker);              // 将标注添加到地图中
+marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+
+/*function getBoundary(){       
+    var bdary = new BMap.Boundary();
+    bdary.get("乌鲁木齐", function(rs){       //获取行政区域
+        map.clearOverlays();        //清除地图覆盖物       
+        var count = rs.boundaries.length; //行政区域的点有多少个
+        for(var i = 0; i < count; i++){
+            var ply = new BMap.Polygon(rs.boundaries[i], {strokeWeight: 2, strokeColor: "#5388aa"}); //建立多边形覆盖物
+            map.addOverlay(ply);  //添加覆盖物
+            map.setViewport(ply.getPath());    //调整视野         
+        }                
+    });   
+}
+
+setTimeout(function(){
+    getBoundary();
+}, 2000);
+*/
+</script>
+<div class="login-cnt"> 
+	<div class="row-fluid">
+  	  	<div class="span7">
+  	  		<h1>新疆维吾尔自治区<strong>教师培训信息化管理系统</strong></h1>
+  	  	</div>
+		<div class="span5">
+		  <div class="login-form">
+			  <h3>系统登录</h3>
+			  <form action="#" method="get">
+				  <fieldset>
+					  <div class="control-group">
+					      <label class="control-label" for="inputEmail">用户名</label>
+					      <div class="controls">
+					         <input class="input-block-level" type="text" placeholder="手机号/邮箱/身份证号">
+					      </div>
+					  </div>
+					  <div class="control-group">
+					      <label class="control-label" for="pwd">密码</label>
+					      <div class="controls">
+					         <input class="input-block-level" type="text" placeholder="用户名">
+					      </div>
+					  </div>
+					  <div class="control-group">
+					      <label class="control-label" for="pwd">验证码</label>
+					      <div class="controls">
+					         <input class="input-medium" type="text" placeholder="">
+							 <img style="vertical-align:top;margin-top:2px;margin-left:5px;" src="img/t2.jpg">
+					      </div>
+					  </div>
+					  <div class="control-group">
+						 <label class="checkbox" style="color:#fff">
+						   <input type="checkbox" id="inlineCheckbox1" value="option1">保存密码
+						 </label>
+						 <a class="forgetpwd" href="#">忘记密码?</a>
+					</div>
+					   
+					  <button id="submit" type="submit" class="loginbtn btn btn-block btn-large">立即登录</button>
+					  
+				  </fieldset>
+			  </form>
+		  </div>
+		</div>
+ 
+	</div>
+</div>
+
+<!--end-main-container-part-->
+
+<!--Footer-part-->
+
+<div class="login-footer" class="row-fluid">
+  <div id="footer" class="span12">Power by <a href="#">www.zeppin.cn</a> .    Copyright © 2014 新疆维吾尔自治区教育厅.     <a href="#">联系我们</a> &nbsp;|&nbsp; <a href="#">链接</a> </div>
+</div>
+
+<!--end-Footer-part-->
+</script>
+</body>
+</html>

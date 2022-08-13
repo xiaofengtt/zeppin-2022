@@ -1,0 +1,43 @@
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+user=mysql
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+
+default-storage-engine=InnoDB
+lower_case_table_names=1
+default-character-set=utf8
+character-set-server=utf8
+
+set-variable = key_buffer=256M 
+set-variable = max_allowed_packet=4M 
+set-variable = thread_stack=256K 
+set-variable = table_cache=128K
+set-variable = sort_buffer=64K 
+set-variable = net_buffer_length=2K 
+set-variable = max_connections=2000
+
+
+[mysql]
+no-auto-rehash
+# Remove the next comment character if you are not familiar with SQL
+#safe-updates
+default-character-set=utf8
+
+
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+
+
+//tomcat 
+//jvm 参数配置在bin/catalina.sh   Xmx 最大值，一般是物理内存的1/4 
+JAVA_OPTS="-Xms1024m -Xmx2048m  -XX:PermSize=128m -XX:MaxPermSize=256m"
+
+
+
+
+
+
+

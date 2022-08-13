@@ -1,0 +1,256 @@
+/*
+  自学酷 
+  2015-06-05
+*/
+body {font-family: Arial,STHeiti,'Microsoft Yahei',sans-serif}
+.container {width:962px;}
+.zxk-navbar {margin:26px 0 0;}
+
+.zxkk-navbar {border-bottom:1px solid #ececec;padding:25px 0 17px;background: #fff;margin-bottom:0;}
+
+.zxk-brand {height:55px;padding:0 2px;}
+
+.navbar {font-family:STHeiti,'Microsoft Yahei',sans-serif;}
+
+.zxk-nav>li>a {color:#e6ffe9;margin:0 20px;padding-top:18px;font-size:16px;}
+.zxk-nav>li:last-child >a{margin-right:0;padding-right:0;}
+.zxk-nav a.cur,.zxk-nav >li >a:hover {color:#fef260;background: none}
+
+.zxk-nav>li.split {padding:18px 0 15px 0;color:#8bd393;}
+
+/*二级页面导航*/
+.zxkk-nav>li>a {color:#575654;margin:0 20px;padding-top:18px;font-size:16px;}
+.zxkk-nav>li:last-child >a{margin-right:0;padding-right:0;}
+.zxkk-nav a.cur,.zxkk-nav >li >a:hover {color:#4e9a59;background: none}
+
+.zxkk-nav>li.split {padding:18px 0 15px 0;}
+
+
+.zxk-masthead {background: #43a250;padding-top:165px;margin-top:-81px;height:620px;}
+.zxk-masthead .row {position: relative;}
+.zxk-masthead .assistant {position: absolute;bottom:-63px;right:-190px;}
+.zxk-masthead .sologan {padding-left:4px;margin-top:24px;}
+
+.actions {margin-top:132px;}
+.actions .zbtn {
+  padding:15px 0 16px;width:180px;font-size:19px; border-radius: 8px;}
+.actions .btn-app {color: #32873c;
+  background-color: #fff;margin-right:34px;}
+.actions .btn-app:hover {background: #efefef}
+
+
+.actions .btn-desktop {color: #fff;
+  background-color: #43a250;
+  border-color: #fff;
+}
+
+/* 
+.actions .btn-desktop:hover {color: #32873c;
+background-color: #fff; margin-right:34px;}  
+*/
+
+
+.section {height:650px;}
+.section .container {padding:55px 0 0;font-size:17px;}
+.section .screenshot {float:left;margin-left:30px;margin-right:160px;}
+.section.zxk-even .screenshot {float:right;margin-right:30px;}
+.section.zxk-even {background: #e5f2e8}
+.section.zxk-even .container {padding:35px 0 0}
+
+.section .desc {overflow: hidden;font-size: 17px}
+.section .desc h3 {font-size:48px;margin:68px 0 30px 0;font-weight:400;}
+.section .desc p {color:#595757;line-height: 2;}
+.parent{position: relative;width: 300px;height: 500px;}
+.onesolution ul{margin:0;padding:0;list-style: none;}
+.onesolution ul li {padding-left:16px;background:url(../img/dot.png) no-repeat 0 50%;line-height: 1.8;}
+.onesolution h5 {color:#0fa8e2;margin-top:20px;}
+
+.whole{position: absolute;}
+.building{position: absolute;opacity:1;margin-left:110px;margin-top:430px;
+  -webkit-animation-name: swing;
+  -webkit-animation-duration:2s;
+  -webkit-animation-timing-function:ease;
+   -webkit-animation-delay:2s;
+  -webkit-animation-play-state:running;}
+.accounting{position: absolute;opacity: 1;margin-left:0px;margin-top:410px;
+  -webkit-animation-name: swing;
+  -webkit-animation-duration:2s;
+  -webkit-animation-timing-function:ease;
+  -webkit-animation-delay:0s;
+ /* -webkit-animation-iteration-count: infinite;*/
+  -webkit-animation-play-state:running;}
+.bond{position: absolute;opacity: 1;margin-left:220px;margin-top:410px;
+  -webkit-animation-name: swing;
+  -webkit-animation-duration:2s;
+  -webkit-animation-timing-function:ease;
+  -webkit-animation-delay:  4s;
+  -webkit-animation-play-state:running;}
+@-webkit-keyframes swing {
+  20% {
+    -webkit-transform: rotate(30deg) scale(1.1);
+    transform: rotate(30deg)
+  }
+  40% {
+    -webkit-transform: rotate(-20deg);
+    -webkit-transform: scale(0.9);
+    transform: rotate(-20deg)
+  }
+  60% {
+    -webkit-transform: rotate(10deg);
+    -webkit-transform: scale(1.1);
+    transform: rotate(10deg)
+  }
+  80% {
+    -webkit-transform: rotate(-10deg);
+    -webkit-transform: scale(0.9);
+    transform: rotate(-10deg)
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg)
+  }
+}
+.progressline .desc {margin-left:20px;}
+.progressline .desc h3 {margin-top:130px;}
+.progress-circle {margin-left:318px;margin-top:100px;}
+
+.upten .container {padding-top:65px;}
+.upten .eff {margin-top:90px;}
+.expert .desc {margin-top:113px;margin-left:20px;}
+.arrow{
+  position: absolute;
+}
+.arrow-left{
+  margin-left: 163px;
+  margin-top: 2px;
+  opacity: 0;
+  -webkit-animation-name: move-left;
+  -webkit-animation-duration: 1s;
+}
+.arrow-down{
+  margin-left: 26px;
+  margin-top: 10px;
+  opacity: 0;
+  -webkit-animation-name: move-down;
+  -webkit-animation-delay: 1s;
+  -webkit-animation-duration: 2s;
+}
+.arrow-right{
+  margin-left: 26px;
+  margin-top:320px;
+}
+
+@-webkit-keyframes move-left {
+  0%{
+    margin-left: 163px;
+  }
+ 50%{
+   opacity: 1;
+  }
+  100%{
+    margin-left: 30px;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes move-down {
+  0%{
+    margin-top: 10px;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    margin-top: 300px;
+    opacity: 0;
+  }
+}
+.upten .screenshot{margin-right:50px;margin-left:30px;}
+.findfriends .screenshot {margin-right:30px;margin-left:25px;}
+.findfriends .desc {margin-top:112px;}
+
+.footer {background: #43a250;padding:15px 0;color:#fff;font-size:13px;}
+.footer p {margin:0;}
+.footer-nav {float:left;}
+.copyright {float:right;}
+.footer-nav a {color:#fff;text-decoration: none;margin:0 10px;}
+.footer-nav a:hover {color:#fef260;}
+.green {color:#4a9d55;}
+.blue {color:#87bdd5;}
+
+
+/*二级页面*/
+.mainWrap {background: #f7f7f7;padding:25px 0 35px;}
+.main {background: #fff;width:976px;margin:0 auto;-webkit-box-shadow: 0 0 3px 3px #EEF5ED;box-shadow:0 0 3px 3px  #EEF5ED}
+.istable {height:370px;display: table;width:100%;position: relative;}
+.main .what,.main .team {display: table-cell;vertical-align: middle;padding:10px 105px;}
+.main .what {background:#d4e9cc;}
+.main .what .desc,.main .team .desc {width:460px;}
+.main .what .desc h3,.main .team .desc h3 {font-size:19px;margin-bottom:30px;font-weight:400;}
+.main .what .desc p,.main .team .desc p {font-size:15px;color:#595757;line-height: 1.6}
+
+.what .img {position: absolute;bottom:-48px;right:53px;}
+.team .img {position: absolute;top:138px;right:87px;}
+
+.main .inner {padding:25px;}
+.map {margin-bottom:35px;}
+
+.contactus {text-align: center;}
+.contactus ul {width:416px;margin:0 auto;list-style: none;line-height: 60px;font-size: 16px;color:#595757;}
+.contactus ul li {border-bottom: 1px solid #efefef;}
+.contactus ul li:last-child {border-bottom: none;}
+
+.needyou {color:#595757;}
+.needyou p {line-height: 2}
+.needyou p strong {font-weight: 400;color:#6bb36a;}
+.needyoubtn {width:200px;height:38px;background: #43a250;color:#fff;font-size:13px;line-height: 22px;margin:50px 0;}
+.needyoubtn:hover {background:#449d50;color:#fff;}
+.fs19 {font-size: 19px;}
+.fs20 {font-size: 20px;}
+.fs16 {font-size: 16px;}
+.fs21 {font-size: 21px;}
+.fs13 {font-size: 13px;}
+
+
+.schoolAmba table {text-align: center;margin: 0 auto 55px;color:#595757;font-size: 15px;}
+.schoolAmba h3 {margin:50px 0 20px;font-weight: 400}
+.ambaTable {width:530px;}
+.rewardTable {width:670px;}
+.schoolAmba table td span{display: block;margin-top: 25px}
+.schoolAmba table tr td{border-top:0;}
+
+.mailto {margin-bottom: 55px;}
+.ambanote {margin-bottom:45px;margin-top:20px;}
+.returnfor {background: url(../img/bg1.png) no-repeat 50% 50%;height:52px;line-height: 40px;color:#fff;font-size:16px;margin-bottom:20px;}
+
+#appDialog{position: absolute;width:600px;height:520px;top:50%;left:50%;margin-top:-260px;margin-left:-300px;text-align:center;}
+#webDialog {position: absolute;width:730px;height:550px;top:50%;left:50%;margin-top:-275px;margin-left:-365px;text-align:center;}
+.modal-open .modal {overflow: hidden;}
+.modal-header {border-bottom: 0;padding-bottom:0;}
+button.close {font-size: 38px;font-weight: 400;position: absolute;top:10px;right:10px;z-index: 9}
+#appDialog .modal-dialog {width:590px;}
+#webDialog .modal-dialog {width:730px;}
+.modal-content {border:1px solid #ebebeb;background: #fefefe}
+.modal-dialog h3 {font-weight: 400;font-size: 37px;margin-bottom: 24px;}
+#webDialog .modal-dialog h3 {margin-bottom: 80px;margin-top:30px;}
+.dcode span {display: block;margin-bottom: 12px;}
+.dcode  {margin-bottom: 32px;}
+.btns {margin-bottom: 25px;}
+.btns button{
+  padding: 18px 0 18px 20px;
+  width: 215px;
+  font-size: 17px;
+  border-color: #ccc;
+  margin:0 15px;}
+
+.btn-andriod {background:#43a250 url(../img/andriod.png) no-repeat 13% 50% ;color:#fff;}
+.btn-apple {background:#fefefe url(../img/apple.png) no-repeat 13% 46% ;color:#727171;}
+.btn-andriod:hover{background-color:#2f803a;color:#fff;}
+.btn-apple:hover{background-color:#f2fef3;}
+
+.dcode {font-size: 20px;}
+.wbtns .btn {width:270px;font-size: 22px;padding:30px 0 26px 36px;border-color:#ccc;margin:0 30px 40px;color:#727171;position: relative;}
+.wbtns .btn:hover {background: #f2f2f3}
+.waitingmore {margin-bottom: 40px;color:#727171;}
+
+.wbtns .btn span {display: inline-block;width:45px;height:45px;position: absolute;top:20px;left:26px;}
+.wbtns .btn em {font-size: 15px;font-style:normal;color: #e60012;position: absolute;bottom: -30px;left:90px;display: none;}

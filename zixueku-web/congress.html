@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+ <canvas height="400" width="400" id="canvas"></canvas>
+</body>
+<script src="js/canvas.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var ring = new ring(2*Math.PI/3,50);
+    ring.drawRing(ctx);
+</script>
+</html>
