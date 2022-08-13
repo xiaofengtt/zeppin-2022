@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd 
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/task
+	http://www.springframework.org/schema/task/spring-task-3.0.xsd" >
+	
+	<!-- 配置 -->
+	<bean id="dataSource" class="cn.zeppin.base.ProxoolDataSource">
+	    <property name="driver">
+	        <value>com.mysql.jdbc.Driver</value>
+	    </property>
+	    <property name="driverUrl">
+	       <value>jdbc:mysql://localhost:3306/selfcool</value> 
+<!-- 	         <value>jdbc:mysql://192.168.1.120:3306/self_cool_test1</value>  -->
+<!-- 			<value>jdbc:mysql://localhost:3306/self_cool_test</value> -->
+	    </property>
+	    <property name="user" value="root" />
+	    <!-- property name="password" value="rongjingfeng" / -->
+	    <property name="password" value="123456" />
+	    <property name="alias" value="self_cool_test" />
+	    
+	     <!-- 保留线程处于睡眠状态的最长时间--> 
+	    <property name="houseKeepingSleepTime" value="90000" />
+	    <!-- 连接池中可用的连接数量 -->
+	    <property name="prototypeCount" value="10" />
+	    <!-- 最大连接数，默认为15 -->  
+	    <property name="maximumConnectionCount" value="15" />
+	    <!-- 最小连接数，默认为5 -->  
+	    <property name="minimumConnectionCount" value="5" />
+	    <!-- 检测到某个线程的活动时间大于这个数值.它将会杀掉这个线程 -->  
+	    <property name="maximumActiveTime" value="60000" />
+	    <!-- 一次性可建立的最大连接数 -->  
+	    <property name="simultaneousBuildThrottle" value="5" />
+	    <!-- 最大连接生命周期 ,默认为4小时-->  
+	    <property name="maximumConnectionLifetime" value="14400000" />
+	    <!-- 验证数据库的状态语句 -->  
+	    <property name="houseKeepingTestSql" value="select 1" />
+	    
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource"><ref bean="dataSource" /></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
+			
+			<!-- 拦截器方式实现缓存
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.SingletonEhCacheRegionFactory</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+			-->	
+			</props>
+		</property>
+		
+		<property name="annotatedClasses">
+			<list>		    
+				<value>cn.zeppin.entity.Area</value>
+				<value>cn.zeppin.entity.Grade</value>
+				<value>cn.zeppin.entity.SysUser</value>
+				<value>cn.zeppin.entity.SysUserGrade</value>
+				<value>cn.zeppin.entity.SysUserSubject</value>
+				<value>cn.zeppin.entity.RoleFuncation</value>
+				<value>cn.zeppin.entity.Funcation</value>
+				<value>cn.zeppin.entity.Organization</value>
+				<value>cn.zeppin.entity.Subject</value>
+				<value>cn.zeppin.entity.Business</value>
+				<value>cn.zeppin.entity.BusinessCategory</value>
+				<value>cn.zeppin.entity.Category</value>
+				<value>cn.zeppin.entity.Knowledge</value>
+				<value>cn.zeppin.entity.Item</value>
+				<value>cn.zeppin.entity.ItemType</value>
+				<value>cn.zeppin.entity.ItemAnswer</value>
+				<value>cn.zeppin.entity.ItemKnowledge</value>
+				<value>cn.zeppin.entity.Textbook</value>
+				<value>cn.zeppin.entity.TextbookCapter</value>
+				<value>cn.zeppin.entity.TestPaperSection</value>
+				<value>cn.zeppin.entity.TestPaperItem</value>
+				<value>cn.zeppin.entity.Paper</value>
+				<value>cn.zeppin.entity.Material</value>
+				<value>cn.zeppin.entity.Role</value>
+				<value>cn.zeppin.entity.Resource</value>
+				<value>cn.zeppin.entity.Advert</value>
+				<value>cn.zeppin.entity.CategoryRetrieve</value>
+				<value>cn.zeppin.entity.Retrieve</value>
+				<value>cn.zeppin.entity.RetrieveType</value>
+				<value>cn.zeppin.entity.SubjectRetrieve</value>
+				<value>cn.zeppin.entity.SubjectCountdown</value>
+				<value>cn.zeppin.entity.SubjectItemType</value>
+				
+				<value>cn.zeppin.entity.Auth</value>
+				<value>cn.zeppin.entity.SsoUser</value>
+				<value>cn.zeppin.entity.SsoUserTest</value>
+				<value>cn.zeppin.entity.SsoUserTestItem</value>	
+				<value>cn.zeppin.entity.SsoUserTestItemCount</value>				
+				<value>cn.zeppin.entity.UserSubject</value>
+				<value>cn.zeppin.entity.UserKnowledge</value>
+				<value>cn.zeppin.entity.SsoKnowledgeDegree</value>
+				
+				<value>cn.zeppin.entity.Information</value>
+				
+				<value>cn.zeppin.entity.Version</value>
+				<value>cn.zeppin.entity.Task</value>
+				<value>cn.zeppin.entity.SsoTask</value>
+				
+			</list>
+		</property>
+	</bean>
+	
+	
+	<!-- 导入 dao -->
+	<import resource="spring-dao.xml" />
+	
+	<!-- 导入 task 定时任务 -->
+	<import resource="spring-task.xml" />
+	
+	<!-- 导入 service -->
+	<import resource="spring-service.xml" />
+	
+	<!-- 导入 action -->
+	<import resource="spring-action.xml" />
+	
+
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+ 
+    <bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">  
+        <property name="transactionManager" ref="transactionManager" />  
+        <!-- 配置事务属性 -->  
+        <property name="transactionAttributes">  
+            <props>  
+                <prop key="get*" >PROPAGATION_REQUIRED,readOnly</prop>  
+                <prop key="find*" >PROPAGATION_REQUIRED,readOnly</prop> 
+                <prop key="search*" >PROPAGATION_REQUIRED,readOnly</prop> 
+                <prop key="is*" >PROPAGATION_REQUIRED,readOnly</prop> 
+                <prop key="add*" >PROPAGATION_REQUIRED</prop> 
+                <prop key="save*" >PROPAGATION_REQUIRED</prop>
+                <prop key="create*" >PROPAGATION_REQUIRED</prop>
+                <prop key="update*" >PROPAGATION_REQUIRED</prop>
+                <prop key="modify*" >PROPAGATION_REQUIRED</prop>
+                <prop key="delete*" >PROPAGATION_REQUIRED</prop>
+                <prop key="remove*" >PROPAGATION_REQUIRED</prop>
+                <prop key="select*" >PROPAGATION_REQUIRED</prop>
+                <prop key="calculate*" >PROPAGATION_REQUIRED</prop>
+            </props>  
+        </property>  
+    </bean>
+	
+	<bean id="transactionAutoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">     
+       <property name="beanNames">     
+           <list>     
+               <value>*Service*</value>  
+           </list>     
+       </property>     
+       
+       <property name="interceptorNames">     
+           <list>     
+           	  <value>transactionInterceptor</value> 
+           </list>     
+       </property>     
+   </bean> 
+	
+	
+	
+	<task:annotation-driven />
+</beans>

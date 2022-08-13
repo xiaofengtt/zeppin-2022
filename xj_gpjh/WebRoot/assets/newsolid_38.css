@@ -1,0 +1,54 @@
+﻿html {background: #bddef1 url("../img/bg2.gif") repeat-x;}
+body {
+margin:0;
+}
+#jqContent {
+width:932px;
+
+margin:40px auto 0;
+}
+.que-header2 {height:233px;background:url(../img/h3.png) repeat-x;color:#fff;font-size:24px;padding:0 20px;font-family:"微软雅黑"}
+.que-header2 .inn {float:right;margin:45px 175px 0 0;text-align:right;}
+.que-header2 h1 {font-size:34px;margin-bottom:30px;}
+.que-header2 p {font-size:12px;}
+
+#headerCss {
+background: white no-repeat;
+width: 920px;
+margin: 0 auto;
+
+border: 6px solid #6099c9;
+border-bottom: none;
+}
+#mainInner {background:url(../img/squ.gif) no-repeat 95% 0;}
+#mainCss {
+background: white;
+width: 920px;
+margin: 0 auto;
+border: 6px solid #6099c9;
+border-bottom: none;
+border-top: none;
+}
+#footercss {
+width: 920px;
+margin: 0 auto;
+background: white;
+
+border: 6px solid #6099c9;
+border-top: none;
+height: 20px;
+}
+.surveyhead h1{
+color:#19a8ee;
+}
+
+input.submitbutton {
+border:1px solid #0492d6;
+background:#13a5ec;
+}
+input.submitbutton_hover
+{
+    background:#1eb0f6; color:#fff !important;
+}
+legend{display:none;}
+fieldset{border:0;}

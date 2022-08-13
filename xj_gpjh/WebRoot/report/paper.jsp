@@ -1,0 +1,273 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>每题统计</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
+
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+<link rel="stylesheet" href="css/style.css">
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      //google.setOnLoadCallback(drawChart);
+</script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<s:property value="paper.title" />
+		</div>
+		<div class="nav">
+			<ul class="clearfix">
+				<li><a
+					href="report_summary.action?pid=<s:property value="#parameters.pid"/>">原始数据</a></li>
+				<li class="cur"><a href="#">每题统计</a></li>
+				<li><a
+					href="report_huizong.action?pid=<s:property value="#parameters.pid"/>">汇总统计</a></li>
+				<li><a
+					href="report_duibi.action?pid=<s:property value="#parameters.pid"/>">对比统计</a></li>
+				<li><a
+					href="report_wanchenglv.action?pid=<s:property value="#parameters.pid"/>">完成率分析</a></li>
+
+			</ul>
+		</div>
+		<div class="fliter">
+			<form action="report_paper.action" method="get">
+				<fieldset>
+					<div class="group">
+						<span>项目名称： <select name="project" style="width:260px">
+								<option value="0">所有项目</option>
+								<s:set name="a" value="#parameters.project" />
+								<s:iterator value="projects">
+									<option value="<s:property value="id"/>"
+										<s:if test="%{id==project}">selected</s:if>>
+										<s:property value="name" />
+									</option>
+								</s:iterator>
+						</select>
+						</span> <span>承训单位： <select name="unit" style="width:260px">
+								<option value="0">所有承办单位</option>
+								<s:iterator value="units" id="unit">
+									<option value="<s:property value="id"/>"
+										<s:if test="%{id == unit}">selected</s:if>>
+										<s:property value="name" />
+									</option>
+								</s:iterator>
+						</select>
+						</span>
+					</div>
+					<div class="group" style="margin-right:20px">
+						<span>学科： <select name="subject" style="width:230px;">
+								<option value="0">所有学科</option>
+								<s:iterator value="subjects" id="subject">
+									<option value="<s:property value="id"/>"
+										<s:if test="%{id == subject}">selected</s:if>>
+										<s:property value="name" />
+									</option>
+								</s:iterator>
+						</select>
+						</span>
+					</div>
+					<input type="hidden" name="pid"
+						value="<s:property value="#parameters.pid"/>" />
+					<div class="search-btn group" style="width:200px;margin-top:30px">
+						<input type="submit" name="submit" value="筛选" style="float:left">
+						<a href="report_ProjectExcel.action?pid=<s:property value="paper.id" />" style="float:right;background:url(img/btn1.gif) no-repeat;width:70px;height:31px;line-height:31px;_line-height:30px;color:#fff;text-align:center;">导出Excel</a>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div class="content">
+			<div class="ctt_hd">
+				<s:property value="paper.name" />
+			</div>
+			<div class="ctt_bd">
+				<h1>
+					问卷名称：
+					<s:property value="paper.title" />
+				</h1>
+
+				<s:iterator value="paper.questions" id="question">
+					<s:if test="#question.type != 0">
+						<div class="section clearfix">
+							<h2>
+								第
+								<s:property value="#question.inx" />
+								题：
+								<s:property value="#question.name" />
+							</h2>
+							<div class="que_type">题型：评分选择题</div>
+							<div class="table_txt">
+								<table class="table">
+									<thead>
+										<tr>
+											<th>选项</th>
+											<th>投票数</th>
+											<th>比例</th>
+										</tr>
+									</thead>
+									<tbody>
+										<s:set name="flag" value="1" />
+										<s:iterator value="#question.answers" id="answer">
+											<s:if test="%{#flag%2 == 0}">
+												<tr class="even">
+											</s:if>
+											<s:else>
+												<tr>
+											</s:else>
+											<td class="label"><s:property value="#answer.name" /></td>
+											<s:set name="count"
+												value="answerCountMap.get(#question.id + '_' + #answer.id)[0]" />
+											<s:set name="percent"
+												value="answerCountMap.get(#question.id + '_' + #answer.id)[1]" />
+											<s:if test="#count==null">
+												<s:set name="count" value="0" />
+											</s:if>
+
+											<td><s:property value="#count" /></td>
+											<s:if test="#percent==null">
+												<td>0%</td>
+											</s:if>
+											<s:else>
+												<td><s:property value="#percent" /></td>
+											</s:else>
+											</tr>
+											<s:set name="flag" value="#flag+1" />
+										</s:iterator>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="table_img">
+								<ul class="tabnav clearfix">
+									<li class="current"><a href="#">柱状图</a></li>
+									<li><a href="#">饼状图</a></li>
+									<li><a href="#">曲线图</a></li>
+								</ul>
+
+								<div class="tabcontainer">
+									<div id="bar_<s:property value="#question.id"/>" class="tab"></div>
+									<div id="pie_<s:property value="#question.id"/>"
+										class="tab current"></div>
+									<div id="line_<s:property value="#question.id"/>" class="tab">
+										<img src="img/t3.jpg" alt>
+									</div>
+								</div>
+
+								<script language="javascript">		  
+        var data = google.visualization.arrayToDataTable([
+		  ['Task', 'Hours per Day'],
+		<s:set name="flag" value="1"/>
+		<s:iterator value="#question.answers" id="answer">
+		<s:set name="count" value="answerCountMap.get(#question.id + '_' + #answer.id)[0]"/>
+		<s:if test="#count==null"><s:set name="count" value="0"/></s:if>
+		<s:if test="#question.answers.size == #flag">
+		['<s:property value="#answer.name"/>', <s:property value="#count"/>]
+		</s:if>
+		<s:else>
+		['<s:property value="#answer.name"/>', <s:property value="#count"/>],
+		</s:else>
+		<s:set name="flag" value="#flag+1"/>
+		</s:iterator>
+        ]);
+
+        var options = {
+          title: '<s:property value="#question.name" escape="true"/>',
+          width: 500,
+          height:375,
+          chartArea:{left:100, top:30, width:400, height:300},
+          legend:{position:'right', alignment:'top'},
+          //backgroundColor:'red',
+          //is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('pie_<s:property value="#question.id"/>'));
+        chart.draw(data, options);
+        
+/* 		var data = google.visualization.arrayToDataTable([
+          ['选项', '投票数'],
+        <s:set name="flag" value="1"/>
+		<s:iterator value="#question.answers" id="answer">
+		<s:set name="count" value="answerCountMap.get(#question.id + '_' + #answer.id)[0]"/>
+		<s:if test="#count==null"><s:set name="count" value="0"/></s:if>
+		<s:if test="#question.answers.size == #flag">
+		['<s:property value="#answer.name"/>', <s:property value="#count"/>]
+		</s:if>
+		<s:else>
+		['<s:property value="#answer.name"/>', <s:property value="#count"/>],
+		</s:else>
+		<s:set name="flag" value="#flag+1"/>
+		</s:iterator>
+        ]);
+
+        var options = {
+          title: '<s:property value="#question.name"/>',
+          vAxis: {title: '选项',  titleTextStyle: {color: 'red'}}
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('bar_<s:property value="#question.id"/>'));
+        chart.draw(data, options);
+
+		var data = google.visualization.arrayToDataTable([
+          ['选项', '投票数'],
+        <s:set name="flag" value="1"/>
+		<s:iterator value="#question.answers" id="answer">
+		<s:set name="count" value="answerCountMap.get(#question.id + '_' + #answer.id)[0]"/>
+		<s:if test="#count==null"><s:set name="count" value="0"/></s:if>
+		<s:if test="#question.answers.size == #flag">
+		['<s:property value="#answer.name"/>', <s:property value="#count"/>]
+		</s:if>
+		<s:else>
+		['<s:property value="#answer.name"/>', <s:property value="#count"/>],
+		</s:else>
+		<s:set name="flag" value="#flag+1"/>
+		</s:iterator>
+        ]);
+
+        var options = {
+          title: '<s:property value="#question.name"/>',
+          //hAxis.direction : -1
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('line_<s:property value="#question.id"/>'));
+        chart.draw(data, options); */
+</script>
+							</div>
+
+						</div>
+					</s:if>
+				</s:iterator>
+				<!-- <div class="pagiation">共5页 |<a href="#"><首页</a>  < <a href="#">上一页</a> <a href="#">1</a>   2   3   4   5 下一页>  尾页>|</div> -->
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+
+	<script>
+	 $('ul.tabnav a').click(function() {
+	 		var curChildIndex = $(this).parent().prevAll().length + 1;
+	 		$(this).parent().parent().children('.current').removeClass('current');
+	 		$(this).parent().addClass('current');
+	 		$(this).parent().parent().next('.tabcontainer').children('.current').fadeOut('fast',function() {
+	 			$(this).removeClass('current');
+	 			$(this).parent().children('div:nth-child('+curChildIndex+')').fadeIn('normal',function() {
+	 				$(this).addClass('current');
+	 			});
+	 		});
+	 		return false;								
+	 	});
+	 </script>
+</body>
+</html>

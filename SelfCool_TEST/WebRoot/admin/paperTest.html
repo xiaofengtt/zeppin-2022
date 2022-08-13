@@ -1,0 +1,124 @@
+<!doctype html>
+<html ng-app="material" >
+<head>
+    <meta charset="utf-8">
+    <title>答题解析</title>
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name='apple-touch-fullscreen' content='yes'>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-title" content="学习能力">
+    <link href="../css/ratchet.css" rel="stylesheet">
+    <link href="//cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/chat.css" rel="stylesheet">
+    <link href="../css/app2.css" rel="stylesheet">
+    <!-- Include the compiled Ratchet JS -->
+    <!--script src="../js/m/ratchet.js"></script-->
+    <script src="../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/fx.js"></script>
+    <script src="../js/fx_method.js"></script>
+    <script src="../js/secltor.js"></script>
+    <script src="../js/swipe.js"></script>
+    <script src="../js/touch.js"></script>
+    <script src="../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../js/url.min.js"></script>
+    <script type="text/javascript" src="../js/angular.js"></script>
+
+</head>
+<body  >
+
+<!-- Make sure all your bars are the first things in your <body> -->
+<header class="bar bar-nav bar-nav-gs">
+	<a class="arrow" href="../admin/paperList.html">
+        <img src="../img/arrow.png">
+    </a>
+    <h1 class="dataformate title">答题解析</h1>
+</header>
+
+<div class="content">
+    <div id="questionList" class="swipe">
+        <div class="swipe-wrap"ng-controller="ChooseController"  ng-repeat="record in records">
+         <!-- 不是组合题 -->
+
+
+              <div class="slide" ng-if="record.modelType=='1'" >
+
+                    <div class="question" >
+                      <span class="qtype">{{record.itemType_name}}</span>
+                      <span>|</span>
+                      <span class="qtype">{{record.source}}</span>
+                      <p class="itemTitle">{{record.data.stem}}</p>
+                   </div>
+                <!-- 选择题 -->
+                <div class="options" >
+                    <ul class="table-view">
+                        <li  class="table-view-cell media">
+                            <a href="#">
+                                <span class="options-abc pull-left">A</span>
+                                <span class="media-body" >
+                                   {{record.data.options[0].content}}
+                                </span>
+                            </a>
+                        </li>
+                        <li  class="table-view-cell media">
+                            <a href="#">
+                                <span class="options-abc pull-left">B</span>
+                                <span class="media-body" >
+                                    {{record.data.options[1].content}}
+                                </span>
+                            </a>
+                        </li>
+                        <li  class="table-view-cell media">
+                            <a href="#">
+                                <span class="options-abc pull-left">C</span>
+                                <span class="media-body" >
+                                    {{record.data.options[2].content}}
+                                </span>
+                            </a>
+                        </li>
+                        <li  class="table-view-cell media">
+                            <a href="#">
+                                <span class="options-abc pull-left">D</span>
+                                <span class="media-body" >
+                                    {{record.data.options[3].content}}
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="explain">
+                    <div class="explainA">答案解析:</div>
+                    <div class="explainB" >{{record.analysis}}</div>
+                </div>
+               </div>
+
+            <!-- 不是组合题 -->
+            
+            <div class="slide" ng-show="record.modelType=='6'">
+
+                  <div class="question">
+                    <span class="qtype">{{record.itemType_name}}</span>
+                    <span>|</span>
+                    <span class="qtype">{{record.source}}</span>
+                    <p class="itemTitle">{{record.data.stem}}</p>
+                 </div>
+                 <div class="explain">
+                    <div class="explainA">答案解析:</div>
+                    <div class="explainB">{{record.analysis}}</div>
+                 </div>
+
+             </div>
+           </div>
+
+
+        </div>
+    </div>
+
+<script src="../js/paperTest.js"></script>
+</body>
+</html>

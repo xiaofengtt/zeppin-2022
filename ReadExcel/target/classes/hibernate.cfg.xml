@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/xjtts</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- <property name="show_sql">true</property> -->
+		<!-- format_sql -->
+		<property name="format_sql">true</property>
+		<!-- Drop and re-create the database schema on startup -->
+		<property name="hbm2ddl.auto">update</property>
+		<property name="current_session_context_class">thread</property>
+
+
+		<mapping class="entity.Answer" />
+		<mapping class="entity.Area" />
+		<mapping class="entity.AssignTeacherCheck" />
+		<mapping class="entity.AssignTeacherTask" />
+		<mapping class="entity.ChineseLanguageLevel" />
+		<mapping class="entity.Document" />
+		<mapping class="entity.EDocumentType" />
+		<mapping class="entity.EductionBackground" />
+		<mapping class="entity.Ethnic" />
+		<mapping class="entity.fileInfo" />
+		<mapping class="entity.FunCategory" />
+		<mapping class="entity.Grade" />
+		<mapping class="entity.Hsdtest" />
+		<mapping class="entity.Hsdtestscore" />
+		<mapping class="entity.JobDuty" />
+		<mapping class="entity.JobTitle" />
+		<mapping class="entity.Language" />
+		<mapping class="entity.OrgaCateMap" />
+		<mapping class="entity.Organization" />
+		<mapping class="entity.OrganizationLevel" />
+		<mapping class="entity.Politics" />
+		<mapping class="entity.Project" />
+		<mapping class="entity.ProjectAdmin" />
+		<mapping class="entity.ProjectAdminRight" />
+		<mapping class="entity.ProjectApply" />
+		<mapping class="entity.ProjectApplyExpert" />
+		<mapping class="entity.ProjectCollegeRange" />
+		<mapping class="entity.ProjectExpert" />
+		<mapping class="entity.ProjectLevel" />
+		<mapping class="entity.ProjectSubjectRange" />
+		<mapping class="entity.ProjectType" />
+		<mapping class="entity.Psq" />
+		<mapping class="entity.Question" />
+		<mapping class="entity.Result" />
+		<mapping class="entity.searchObject" />
+		<mapping class="entity.Subject" />
+		<mapping class="entity.Submit" />
+		<mapping class="entity.SysUser" />
+		<mapping class="entity.SysUserId" />
+		<mapping class="entity.SysUserRight" />
+		<mapping class="entity.Teacher" />
+		<mapping class="entity.teacherEx" />
+		<mapping class="entity.TeacherTrainingRecords" />
+		<mapping class="entity.Teachexpert" />
+		<mapping class="entity.TeachingGrade" />
+		<mapping class="entity.TeachingLanguage" />
+		<mapping class="entity.TeachingSubject" />
+		<mapping class="entity.teachingSubjectEx" />
+		<mapping class="entity.TrainingAdmin" />
+		<mapping class="entity.TrainingCollege" />
+		<mapping class="entity.TrainingStudentSub" />
+		<mapping class="entity.TrainingSubject" />
+		<mapping class="entity.UniversityInfo" />
+	</session-factory>
+</hibernate-configuration>

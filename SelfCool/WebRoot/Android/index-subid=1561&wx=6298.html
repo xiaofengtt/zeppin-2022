@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<title>2017教师资格 高端旗舰班-网校课程报名-考试吧网校</title>
+		<link type="text/css" rel="stylesheet" href="css/common.css" />
+		<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+
+	</head>
+
+	<body>
+		<article class="wrap">
+			<div class="enroll">
+				<dl>
+					<dt>教师资格 高端旗舰班</dt>
+
+					<dd>
+						<h2>套餐详情</h2>
+						<p>
+							<em>1</em>
+							<b>班型</b>教材精讲班+VIP习题特训+重点模块突击+通关必备100题+直播点题+3套内部资
+						</p>
+						<p>
+							<em>2</em>
+							<b>承诺</b>考试不过，终身免费重学
+						</p>
+					</dd>
+
+				</dl>
+			</div>
+			<form id="orderForm">
+				<input type="hidden" id="taocanID" name="taocanID" value="0" />
+				<div class="enroll">
+					<h2 class="top">选课报名</h2>
+					<ul class="hd" id="taba">
+
+					</ul>
+					<div id="tab_cona">
+						<ul class="bd" style="display: block;" id="tab_cona_1">
+							<li data-index="1">
+								<p class="curr">教师资格（中学）全科</p>
+								<span>￥1680</span>
+							</li>
+							<li data-index="2">
+								<p class="curr">教师资格（小学）全科</p>
+								<span>￥1680</span>
+							</li>
+							<li data-index="3">
+								<p class="curr">教师资格（幼儿）全科</p>
+								<span>￥1680</span>
+							</li>
+						</ul>
+
+						<p style="padding:0;position: fixed;bottom:0px;width:100%;background:none;">
+							<a href="javascript:;" id="btnOpen" style="font-size:16px;margin:0 auto;height:40px;line-height:40px;display: block;width:90%">立即报名</a>
+						</p>
+					</div>
+				</div>
+			</form>
+		</article>
+		<footer>
+			<script src="js/jquery1.10.2.js"></script>
+			<script type="text/javascript" src="js/top.js"></script>
+
+	</body>
+
+</html>
+
+<script>
+	$(document).ready(function(){
+		var data = [];
+		$("#tab_cona ul li").click(function() {
+			if($(this).hasClass("curr")) {
+				$(this).removeClass("curr");
+				data.splice(data.indexOf($(this).attr("data-index")), 1);
+				console.log(data.join(','));
+			} else {
+				$(this).addClass("curr");
+				data.push($(this).attr("data-index"));
+				console.log(data.join(','));
+			}
+		});
+
+		var upload = document.querySelector('#btnOpen');
+		upload.onclick = function(){
+			var dataSt = data.join(',');
+			console.log(dataSt);
+			window.JavascriptInterface.toPay(dataSt);
+		}
+	})
+		
+
+</script>

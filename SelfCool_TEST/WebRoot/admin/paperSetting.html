@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>试卷属性设置</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/bootstrap.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/app.css">	
+<link rel="stylesheet" href="../css/ui-dialog.css">
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/url.min.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/app.js"></script> 
+<script src="../js/editor.js"></script> 
+<script src="../js/moment.js"></script>
+<script src="../js/jquery.serializejson.min.js"></script>
+<script src="../js/dialog-min.js"></script> 
+
+<script src="../js/zh-cn.js"></script>
+<script src="../js/tinymce/dropzone/lib/dropzone.js"></script>
+<script src="../js/tinymce/tinymce.min.js"></script>
+<script src="../js/tinymce/tinymce_zhcn.js"></script>
+<script>
+$(function(){
+	moment.lang('zh-cn');
+    function timedUpdate () {
+       update();
+       setTimeout(timedUpdate, 1000);
+   }
+   function update(){
+          $('#datafomate').html(moment().format('YYYY-MM-DD ,a h:mm:ss'));
+      }  
+	timedUpdate()
+	
+})
+</script>
+ 
+</head>
+<body>
+
+<!--Header-part-->
+<div class="navbar" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo" title="网络、移动学习测评移动云资源平台" ><img src="../img/logo-jy.png" height="41"></a>
+    </div>
+	<p class="logout">欢迎<span id="loginname"></span> &nbsp;&nbsp;<span id="datafomate"></span> &nbsp;|&nbsp;  <a href="../admin/passwordEditiframe.html" data-fancybox-type="iframe" class="btn-password cboxElement" style="width:400px;height:300px">修改密码</a> &nbsp;|&nbsp;  <a href="login.html">退出</a> </p>
+	
+  </div>
+</div>
+<!--close-Header-part--> 
+<div id="container" class="container-fluid">
+
+	<div class="row">
+		<div class="sidebar">
+			<div class=" nav-sidebar">
+				<ul id="leftside" class="nav">
+				</ul>
+			</div>
+			<div class="js-nav-shadow bottom"><img src="../img/round-shadow-bottom.png" style="top: auto; bottom: 0px;"></div>
+		</div> <!--end sidebar-->
+		<script id="leftTpl" type="text/template">
+			{{#Records}}
+			<li class="active"><a href="#"><span>{{name}}</span> </a>
+				
+				<ul class="nav">
+					{{#data}}
+						<li {{#iscurrent}} class="cur" {{/iscurrent}}>  <a href="{{path}}">{{name}}
+						</a></li>
+					{{/data}}
+			
+				</ul>
+				
+			</li>
+			{{/Records}}
+		</script>
+		<div class="main" style="overflow-y:auto">
+
+			<div class="listwrap" style="margin-right:15px;">
+				<div  class="list_bar">试卷属性设置<span id="qqTitle"></span></div>
+				<div class="question_form">
+					<form action="#" method="post" id="papersettingForm" class="form-horizontal">
+						<div class="row clearfix qustion-title">
+							<div class="col-md-12">						
+								<div class="form-group">
+									
+									<label class="col-sm-2 control-label" for="">试卷名称</label>
+									<div class="col-sm-10">
+										<input type="text" name="name" class="form-control" value="">
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="row clearfix qustion-title">
+							<div class="col-md-12">						
+								<div class="form-group">
+									
+									<label class="col-sm-2 control-label" for="">试卷来源</label>
+									<div class="col-sm-10">
+										<input type="text" name="source" class="form-control" value="">
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="row clearfix">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">试卷年份</label>
+									<div class="col-sm-9">
+										<input type="text" name="year" class="form-control" value="" placeholder="年份">
+									</div>
+									
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">考试时长</label>
+									<div class="col-sm-9">
+										<input type="text" name="answerTime" class="form-control" value="" placeholder="120分钟">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">满分成绩</label>
+									<div class="col-sm-9">
+										<input type="text" name="totalScore" class="form-control" value="" placeholder="150分">
+									</div>
+								</div>
+								
+								
+								
+							</div>
+							
+							<div class="col-md-6">
+							
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">来源类型</label>
+									<div class="col-sm-9">
+										<select class="form-control"  name="type">
+											<option value="0">真题</option>
+											<option value="1">模拟试题</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">所属学科</label>
+									<div class="col-sm-9">
+										<div id="changeSubject" class="dropdown changeSubject dropbox">
+										  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											   <span id="subjectName">请选择学科</span>
+											   <i class="a-icon a-icon-dropdown"></i>
+										  </a>
+										  <input type="hidden" name="subject.id" value="">
+										</div>
+	
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">所属地区</label>
+									<div id="areaid" class="col-sm-9">
+								  		<select name="area.id" class="prov form-control">
+								  			
+								  		</select> 
+									</div>	
+									
+								</div>
+							
+							</div>
+							
+						</div>
+						
+						<div class="row clearfix">
+							<div class="col-md-12">
+							
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">填答说明</label>
+									<div class="col-md-10">
+										<textarea name="cover" class="form-control" rows="8"></textarea>
+									</div>
+								</div>
+							
+							</div>
+							
+						</div>
+						
+						
+						<div id="paper-set-win" class="paper-set-win">
+
+						</div>
+						<script id="paper-set-winTpl" type="text/template">
+							{{#Records}}
+							<div class="paper-set-box">
+								<table id="win-paper-title{{inx}}" pos="main_title" class="table" data-inx="{{inx}}" data-itemTypeid = "{{itemType_id}}" data-itemTypename = "{{itemType_name}}" >
+								     <tbody>
+								            <td class="title-td"><span class="title-td-num">{{inx}}</span>、{{itemType_name}}</td>
+								            <td class="option-td">
+								                <ul>
+								                    <li class="fn-clear">
+														<label>说明：</label>
+														<span><textarea class="form-control" name="itemtypedesc" type="text"></textarea></span>
+													</li>
+								                </ul>
+								            </td>
+								        </tr>
+								    </tbody>
+								</table>
+							</div>
+							{{/Records}}
+						</script>
+						
+						
+						
+						<div class="row clearfix" style="text-align:center">
+							<button class="btn btn-primary savebutton" id="saveSetting" type="button" onclick="return trySubmit()">保存设置 + 开始添加试题 &rarr;</button>
+							
+						</div>
+												
+					</form>
+					
+				</div>
+				
+
+				<script type="text/javascript">
+				
+				function getarea() {
+					$.get('../areaSearch',function(r){
+						if(r.Records.length) {
+							var str = '<option value="">全部</option>';
+							$.each(r.Records,function(i,v){
+								str += '<option value="'+ v.id +'">'+ v.name +'</option>';
+							})
+							$('select[name="area.id"]').html(str);
+						}
+					})
+				}
+				
+				$(function(){
+					paperQuestion.Settinginit();
+					getarea();
+					if($.cookie('paperSubjectObj')) {
+						var obj = $.parseJSON($.cookie('paperSubjectObj'));
+						$('#subjectName').html(obj.sname);
+						$('input[name="subject.id"]').val(obj.sid);
+
+						questionOpt.depeandbysubject(obj.sid,'');
+						questionOpt.setinputid('subject',obj.sname,obj.sid);
+						paperQuestion.setItemType(obj.sid);
+					}
+				});
+				$(".btn-password").colorbox({
+					iframe : true,
+					width : "400px",
+					height : "330px",
+					opacity : '0.5',
+					overlayClose : false,
+					escKey : true
+				});
+				function esckeydown()
+				{
+				    if(event.keyCode==27){
+				       event.returnValue = null;
+				    }
+				    if(event.keyCode==8)
+				    {
+				    	if (((event.srcElement!=null) && (event.srcElement.tagName=="INPUT"))||((event.srcElement!=null) && (event.srcElement.tagName=="TEXTAREA"))||((event.srcElement!=null) && (event.srcElement.tagName=="DIV")))
+				          return
+				       else
+				          event.returnValue = null;
+				    }       
+				}
+				document.onkeydown=esckeydown;
+				function trySubmit() {
+					$(".savebutton").attr("disabled","true");
+				};
+				</script>
+				
+			</div>
+		</div>
+		
+		
+	</div> <!--end row-->
+	
+</div>	<!--end container-->
+<div id="tinymceCnt"></div>
+
+<div class="bs-footer">
+  <div>
+	  <p>Copyright © 2014 中国教育电视台 京ICP证101020号.     <a target="_blank" href="http://www.guoshi.com/">联系我们</a> <a style="display:none" href="http://www.zeppin.cn" target="_blank">http://www.zeppin.cn</a> </p>
+
+  </div>
+</div>
+
+</body>
+</html>
+		

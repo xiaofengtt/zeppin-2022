@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="../css/bootstrap2.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/iframe.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/url.min.js"></script>
+<script src="../js/upload/jquery.uploadfile.min.js"></script>
+</head>
+<body>
+	<div class="ifrcnt container">
+		<div class="hd">
+			<h3>添加广告</h3>
+		</div>
+		<div class="bd">
+			<div class="alert alert-danger"
+				style="display:none;margin:0 15px 15px;"></div>
+			<form id="formsubmit" class="form-horizontal" role="form"
+				action="#"
+				method="post">
+				<input type="hidden" name="advert.id" value="">
+				<div class="clearfix">
+					<div id="HtmlTpl" class="span10">
+						<div class="control-group">
+							<label class="control-label" for="">名称</label>
+							<div class="controls">
+								<input type="text" id="" name="name"
+									value="">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="">权重</label>
+							<div class="controls">
+								<input type="text" id="" name="weight"
+									value="">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="">状态</label>
+							<div class="controls">
+								<select name="status">
+									<option value="1">正常</option>
+									<option value="0">停用</option>
+									<option value="2">发布</option>
+								</select>
+
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="">广告图</label>
+							<div class="controls">
+								<div id="resourceId"><span class="btn btn-primary btn-create">&nbsp;上传广告图&nbsp;&nbsp;</span>
+								</div>
+								<img id="uploadImage" width="120px" >
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+
+				<div class="row actionbar">
+					<div class="offset7">
+						<button class="btn btn-primary" type="submit">确定</button>
+						<button id="colorboxcancel" onclick="parent.$.colorbox.close()"
+							class="btn btn-default" type="button">取消</button>
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<script>
+		$(function() {
+			var topurl = window.top.location.href;
+			var advertid = (url('?advert.id',topurl) != null) ? url('?advert.id',topurl) : '';
+			$('input[name="advert.id"]').val(advertid);
+			$('#formsubmit').submit(function() {
+				var str = $(this).serialize();
+				$.get('../advertAdd?' + str, function(data) {
+					if (data.Status == "success") {
+						window.top.location.reload(true);
+					} else {
+						$('.alert-danger').html(data.Message).show();
+					}
+				})
+				return false;
+			});
+			
+
+			
+			//项目类型 helper 函数
+			$(document).on("click",function(e) {
+				if(!$(e.target).parents().is('.ufc'))
+					$('.uul').hide();
+			});
+
+		});
+		$("#resourceId").uploadFile({
+				url:"../resourceAdd?type=1",
+				allowedTypes:"jpg,png,gif,jpeg",
+				maxFileSize:1024*1024*5,
+				fileName:"applyReportBook",
+				maxFileCount : 1,
+				dragDropStr: "",
+				extErrorStr:"文件格式不正确，请上传jpg或png类型的图片",
+				showStatusAfterSuccess:false,
+				showDelete : true,
+				deletelStr : '删除',
+				showAbort:false,
+				onSuccess:function(files,data,xhr)
+				{
+					if($('input[name="resource.id"]').length > 0) {
+						$('input[name="resource.id"]').val(data.Records.id);
+					}else {
+						$("#resourceId").append('<input type="hidden" name="resource.id" value="' + data.Records.id + '">');
+					}
+					$('#uploadImage').attr('src',data.Records.sourcePath);
+					
+				},
+				deleteCallback: function (data, pd) {
+		         	$.get("../resourceDelete?id="+$('input[name="resource.id"]').val(),function (resp,textStatus, jqXHR) {
+		                if(resp.Status=='success')  
+							 $("#resourceId").find('input[name="resource.id"]').remove();
+						else 
+							alert(resp.Message);
+		             });
+				}
+			});	
+	</script>
+<body>
+</html>

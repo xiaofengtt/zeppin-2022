@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 配置struts相关选项 -->
+	<constant name="struts-devmode" value="ture"></constant>
+	<constant name="struts-locale" value="zh-CN">constant</constant>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<constant name="struts.multipart.maxSize" value="100000000000" />
+	<constant name="struts.multipart.handler" value="myRequestParser" />
+	<bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest"
+		name="myRequestParser" class="cn.zeppin.action.base.RequestParseWrapper"
+		scope="default" optional="true" />
+	<package name="main" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="adminInterceptor" class="cn.zeppin.interceptor.AdminInterceptor"></interceptor>
+			<interceptor-stack name="adminFilter">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="adminInterceptor"></interceptor-ref>
+			</interceptor-stack>
+
+
+			<interceptor name="superAdminRightInterceptor" 	class="adminIter">
+			</interceptor>
+			
+			<interceptor-stack name="superAdminFilter">
+				<interceptor-ref name="adminInterceptor"></interceptor-ref>
+				<interceptor-ref name="superAdminRightInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+			
+			<interceptor name="phoneInterceptor" class="cn.zeppin.interceptor.PhoneInterceptor">
+			</interceptor>
+			<interceptor-stack name="phoneFilter">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="phoneInterceptor"></interceptor-ref>
+			</interceptor-stack>
+			
+		</interceptors>
+
+		<default-interceptor-ref name="superAdminRightInterceptor" />
+
+		<global-results>
+			<result name="error">error.jsp</result>
+		</global-results>
+
+		<!-- <action name="*" class="cn.zeppin{1}" method="{2}"> <interceptor-ref 
+			name="superAdminRightInterceptor"></interceptor-ref> </action> -->
+
+		<action name="area*" class="areaAction" method="{1}" />
+		<action name="sso*" class="loginAction" method="{1}" />
+		<action name="editor*" class="editorAction" method="{1}" />
+		<action name="manager*" class="managerAction" method="{1}" />
+		<action name="parter*" class="parterAction" method="{1}" />
+		<action name="category*" class="categoryAction" method="{1}" />
+		<action name="password*" class="passwordAction" method="{1}" />
+		<action name="count*" class="countAction" method="{1}" />
+		<action name="subjectItemType*" class="subjectItemTypeAction" method="{1}" />
+		<action name="subject*" class="subjectAction" method="{1}" />
+		
+		<action name="grade*" class="gradeAction" method="{1}" />
+		<action name="resource*" class="resourceAction" method="{1}" />
+		<action name="textbookCapter*" class="textbookCapterAction" method="{1}"></action>
+		<action name="textbook*" class="textbookAction" method="{1}"></action>
+		
+		<action name="knowledge*" class="knowledgeAction" method="{1}" />
+		<action name="organization*" class="organizationAction" method="{1}" />
+		<action name="nav*" class="rolefuncationAction" method="{1}" />
+		
+		<action name="itemType*" class="itemTypeAction" method="{1}" />
+		<action name="item*" class="itemAction" method="{1}" />
+		
+		<action name="strategyType*" class="strategyTypeAction" method="{1}" />
+		<action name="strategy*" class="strategyAction" method="{1}" />
+		
+		<action name="cache*" class="cacheAction" method="{1}" />
+		
+		<action name="material*" class="materialAction" method="{1}" />
+		
+		<action name="latex" class="latexAction" method="getLatexImg" />
+		
+		<action name="paper*" class="paperAction" method="{1}" >
+			<result name="paper">/admin/paperUpdate.jsp</result>
+		</action>
+		
+		<action name="testPaperSection*" class="testPaperSectionAction" method="{1}" />
+		
+		
+		
+		<action name="phone*" class="phoneLogin" method="{1}">
+			<result name="fail">/phone/index.jsp</result>
+			<result name="psychology" type="redirect">/phone/psychology.jsp</result>
+		</action>
+		
+		<action name="phPaper*" class="phonePaperAction" method="{1}">
+			
+			<result name="initAnswer">/phone/answer.jsp</result>
+			<result name="initParese" type="redirect" >/phone/phPaperParesePaper?usertest.id=${usertId}&amp;type=${clientType}</result>
+			
+			<result name="paper" type="redirect" >/phone/phPaperLoadItem?paper.id=${groupPaperId}&amp;usertest.id=${usertestId}&amp;clienttype=${clientType}</result>
+			<result name="medal">/phone/13results.jsp</result>
+			
+			<result name="logout" type="redirect">/phone/index.jsp</result>
+			
+		</action>
+		
+		<action name="my*" class="myAction" method="{1}">
+			<result name="my">/phone/my.jsp</result>
+			<result name="myAdd" type="redirect">/phone/myMyIndex</result>
+			<result name="answer">/phone/que.jsp</result>
+			<result name="myAnswer" type="redirect">/phone/myMyIndex</result>
+			<result name="friends">/phone/userlist.jsp</result>
+		</action>
+		
+	</package>
+</struts>    

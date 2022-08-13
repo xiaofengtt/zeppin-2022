@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+    <package name="struts2" extends="struts-default">
+
+	<interceptors>
+		<interceptor name="Login" class="com.gpjh.interceptor.LoginInterceptor"/>
+		<interceptor-stack name="LoginInterceptor">
+			<interceptor-ref name="Login">
+				<!-- <param name="includeMethods">list,edit,view,add,save,process</param> -->
+				<!-- <param name="excludeMethods">log</param> -->
+			</interceptor-ref>
+			<!-- <interceptor-ref name="SystemException"/> -->
+		</interceptor-stack>
+    </interceptors>
+    
+        <action name="login" class="LoginAction" method="doLogin">
+            <result name="success" type= "redirect">paper_view.action?id=${vid}</result>
+            <result name="login">login.jsp</result>
+            <result name="edit" type="redirect">paper_list.action</result>
+            <result name="novote">paper_unstart.jsp</result>
+        </action>
+
+        <action name="user_*" class="UserAction" method="{1}">
+            <result name="list">user/list.jsp</result>
+            <result name="add">user/add.jsp</result>
+            <result name="success" type="redirect">user_list.action</result>
+            <result name="error">user/add.jsp</result>
+            <result name="modify">user/add.jsp</result>
+        </action>
+        
+		<action name="paper_*" method="{1}" class="PaperAction">
+			<interceptor-ref name="Login">
+				<param name="includeMethods">list,edit,view,add,process</param>
+			</interceptor-ref>
+			<result name="edit">paper_edit.jsp</result>
+			<result name="list">paper_list.jsp</result>
+			<result name="add" type= "redirect">paper_edit.action?curid=${paperID}</result>
+			<result name="view">paper_view.jsp</result>
+			<result name="process">success.jsp</result>
+			<result name="cantadd">cantadd.jsp</result>
+			<result name="novote">paper_unstart.jsp</result>
+		</action>
+
+		<action name="report_*" method="{1}" class="ReportAction">
+			<interceptor-ref name="Login">
+				<param name="includeMethods">summary</param>
+			</interceptor-ref>
+			<result name="summary">report/summary.jsp</result>
+			<result name="detail">report/detail.jsp</result>
+			<result name="paper">report/paper.jsp</result>
+			<result name="huizong">report/huizong.jsp</result>
+			<result name="duibi">report/duibi.jsp</result>
+			<result name="wanchenglv">report/wanchenglv.jsp</result>
+		</action>
+		
+    </package>
+</struts>

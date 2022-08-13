@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="../css/bootstrap2.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/iframe.js"></script>
+<script src="../js/mustache.js"></script>
+
+<script src="../js/url.min.js"></script>
+
+</head>
+<body>
+	<div class="ifrcnt container">
+		<div class="hd">
+			<h3>编辑检索类别</h3>
+		</div>
+		<div class="bd">
+			<div class="alert alert-danger"	style="display:none;margin:0 15px 15px;"></div>
+			<form id="formsubmit" class="form-horizontal" role="form" action="#" method="post">
+				<input type="hidden" name="id" value="">
+				<div class="clearfix">
+					<div id="HtmlTpl" class="span10">
+						
+					</div>
+					<script id="DataTpl" type="text/template">
+						{{#Records}}
+							<div class="control-group">
+								<label class="control-label" for="">名称</label>
+								<div class="controls">
+									<input type="text" id="" name="name" value="{{name}}">
+								</div>
+							</div>
+
+							<div class="control-group">
+								<label class="control-label" for="">状态</label>
+								<div class="controls">
+									<select name="status">
+										<option {{#status}}selected{{/status}} value="0">停用</option>
+										<option {{#status}}selected{{/status}} value="1">正常</option>
+									</select>
+							
+								</div>
+							</div>							
+							
+						{{/Records}}
+						
+					</script>
+
+				</div>
+
+				<div class="row actionbar">
+					<div class="offset7">
+						<button class="btn btn-primary" type="submit">确定</button>
+						<button id="colorboxcancel" onclick="parent.$.colorbox.close()"
+							class="btn btn-default" type="button">取消</button>
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<script>
+		$(function() {
+			var id = url('?id');
+			$('input[name="id"]').val(id);
+			$.getJSON('../retrieveTypeLoad?split=_&id='+id, function(r) {
+				if(r.Status == 'success') {
+					var st = JSON.stringify(r);
+					
+				    var template = $('#DataTpl').html();
+					
+				    var html = Mustache.render(template, $.parseJSON(st));
+				    $('#HtmlTpl').html(html);
+				}else {
+					alert('服务端出错！请稍后重试！');
+				}
+			}).done(function(){
+				
+			});
+			
+			$('#formsubmit').submit(
+				function() {
+					var str = $(this).serialize();
+					$.get('../retrieveTypeUpdate?'+ str, function(data) {
+						if (data.Status == "success") {
+							window.top.location.reload(true);
+						} else {
+							$('.alert-danger').html(data.Message).show();
+						}
+					})
+					return false;
+				});
+			
+		})
+		
+	</script>
+<body>
+</html>

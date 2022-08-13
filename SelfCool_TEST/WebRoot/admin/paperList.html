@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>试卷列表 - 网络、移动学习云测评资源管理系统</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../img/m/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="../css/bootstrap.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/app.css">	
+<link rel="stylesheet" href="../css/ui-dialog.css">
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+
+<script src="../js/jquery-1.9.1.min.js"></script>
+
+<script src="../js/bootstrap.js"></script>
+<script src="../js/bootstrap-paginator.min.js"></script>
+
+<script src="../js/url.min.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/app.js"></script> 
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/moment.js"></script> 
+<script src="../js/zh-cn.js"></script>
+<script src="../js/jquery.serializejson.min.js"></script>
+<script src="../js/dialog-min.js"></script>
+<script src="../js/jquery.simplePagination.js"></script>
+
+<script>
+$(function(){
+	moment.lang('zh-cn');
+    function timedUpdate () {
+       update();
+       setTimeout(timedUpdate, 1000);
+   }
+   function update(){
+         $('#datafomate').html(moment().format('YYYY-MM-DD ,a h:mm:ss'));
+      }  
+	timedUpdate()
+	//$('#datafomate').html(moment().format('YYYY MMMM Do, h:mm:ss a'));
+})
+</script>
+ 
+</head>
+<body>
+
+<!--Header-part-->
+<div class="navbar" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo" title="网络、移动学习测评移动云资源平台" ><img src="../img/logo-jy.png" height="41"></a>
+    </div>
+	<p class="logout">欢迎<span id="loginname"></span> &nbsp;&nbsp;<span id="datafomate"></span> &nbsp;|&nbsp;  <a href="../admin/passwordEditiframe.html" data-fancybox-type="iframe" class="btn-password cboxElement">修改密码</a> &nbsp;|&nbsp;  <a href="login.html">退出</a> </p>
+	
+  </div>
+</div>
+<!--close-Header-part--> 
+
+<div id="container" class="container-fluid">
+
+	<div class="row">
+		<div class="sidebar">
+			<div class=" nav-sidebar">
+				<ul id="leftside" class="nav">
+				</ul>
+			</div>
+			<div class="js-nav-shadow bottom"><img src="../img/round-shadow-bottom.png" style="top: auto; bottom: 0px;"></div>
+		</div> <!--end sidebar-->
+		<script id="leftTpl" type="text/template">
+			{{#Records}}
+			<li class="active"><a href="#"><span>{{name}}</span> </a>
+				
+				<ul class="nav">
+					{{#data}}
+						<li {{#iscurrent}} class="cur" {{/iscurrent}}>  <a href="{{path}}">{{name}}
+						</a></li>
+					{{/data}}
+			
+				</ul>
+				
+			</li>
+			{{/Records}}
+		</script>
+		<style>
+		.main-inner {margin-right:15px;}
+		</style>
+		<div class="main">
+			<div class="main-inner">
+				<div class="meta_bar clearfix">
+					<dl class="clearfix">
+						<dt>学科: </dt>
+						<dd>
+							<div id="changeSubject" class="dropdown changeSubject">
+							  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								   <span class="cSname">请选择学科</span> [更换]
+								   <span class="caret"></span>
+							  </a>
+							  <div id="changeSubjectCnt" class="dropdown-menu">
+						    	
+							  </div>
+							</div>
+						</dd>	
+						<script id="changeSubjectTpl" type="text/template">
+							{{#Records}}
+								<div class="dl">
+					    	 		<h4>{{name}}</h4>
+									 <p>
+									 	{{#data}}
+											<a data-id="{{id}}" href="#">{{name}}</a>
+										{{/data}}
+									 </p>
+								 </div>
+							 {{/Records}}
+						</script>					
+					</dl>
+			
+					<dl class="clearfix">
+						<dt>年度: </dt>
+						<dd>
+							<select class="dropdown--small"  name="year" onchange="changefliterOption(this)">
+								<option value="">全部</option>
+								<option value="2015">2015</option>
+								<option value="2014">2014</option>
+								<option value="2013">2013</option>
+								<option value="2012">2012</option>
+								<option value="2011">2011</option>
+								<option value="2010">2010</option>
+							</select>
+							
+						</dd>
+					</dl>
+					<dl class="clearfix">
+						<dt>地区: </dt>
+						<dd>
+							<select class="dropdown--small" name="areaid" onchange="changefliterOption(this)">
+							</select>
+							
+						</dd>
+					</dl>
+					
+					<dl class="clearfix">
+						<dt>试卷状态: </dt>
+						<dd>
+							<select id="statusid" class="dropdown--small" name="status" onchange="changefliterOption(this)">
+								<option value="">全部</option>
+								<option value="1">审核</option>
+								<option value="3">发布</option>
+								<option value="0">删除</option>
+								<option value="2">草稿</option>
+							</select>
+							
+						</dd>
+					</dl>
+					
+				</div>
+				
+				<div class="">
+					<div class="cui-menu2">
+						<a href="../admin/paperSetting.html" class="btn btn-primary">
+							+ 添加试卷
+						</a>
+					</div>
+					<div id="paperBoxCnt" class="list-content clearfix" >
+						
+					</div>
+					<div class="pull-right pagination" id="pagnationPaper">
+						
+					</div>
+
+					<script id="paperBoxTpl" type="text/template">
+						{{#Records}}
+						<div class="list-item">
+							<div class="list-item-hd">
+								<table class="table table-bordered">
+									<tbody>
+										<tr>
+											<td width="100px" class="text-primary">ID: {{id}}</td>
+											<td><a href="../admin/paperLoadPaper?id={{id}}" class="text-primary">{{name}}</span></td>
+											<td width="130px"><span class="text-primary">状态：</span><span id="status{{id}}" class="statusicon">{{statusName}}</span></td>
+											<td width="250px" style="text-align:center">
+												<a href="../admin/QR_code.html?id={{id}}">二维码</a> &nbsp;&nbsp;&nbsp; <img  style="height:80px;width:80px" src="../admin/paperPaperForQRCode?id={{id}}" /> 
+												<a href="../admin/paperAuditingPaper?id={{id}}">审阅</a> &nbsp;&nbsp;&nbsp; 
+												<a href="../admin/paperLoadPaper?id={{id}}">编辑</a> &nbsp;&nbsp;&nbsp; 
+												<a class="paperStatusBtn" data-id="{{id}}" data-curstatus="{{status}}" data-status="1" href="javascript:void(0)">审核</a> &nbsp;&nbsp;&nbsp;
+												<a class="paperStatusBtn" data-id="{{id}}" data-curstatus="{{status}}" data-status="3" href="javascript:void(0)">发布</a> &nbsp;&nbsp;&nbsp;
+												<a class="paperStatusBtn" data-status="0" href="javascript:void(0)" data-id="{{id}}" data-curstatus="{{status}}">删除</a></td>
+										</tr>
+									</tbody>
+								</table>
+								
+							</div>
+							
+							<div class="list-item-bd clearfix">
+		
+								<div class="paper-icon" style="width:100px;text-align:center">
+									<img width="60" src="../img/bookIcon.gif">
+								</div>
+			
+								<div class="paper-property">
+									<p>
+										{{subject_name}} / {{sourceType}} / {{area_name}} / {{year}}年
+									</p>
+								</div>
+								
+								<div class="paper-score">
+									<p>含<span>{{itemCount}}</span>道题 ，满分<span>{{totalScore}}</span>分，时长<span>{{answerTime}}</span>分钟</p>
+									<p>{{sysUser_organization_name}} &nbsp;（{{sysUser_name}}）&nbsp; 创建于 &nbsp; {{createtime}}</p>
+								</div>
+								
+								
+							</div>
+							
+						</div>
+						{{/Records}}
+					</script>
+					
+				</div>
+
+
+			</div>
+		</div>
+		
+		
+	</div> <!--end row-->
+	
+</div>	<!--end container-->
+
+<div class="bs-footer">
+  <div>
+	  <p>Copyright © 2014 中国教育电视台 京ICP证101020号.     <a target="_blank" href="http://www.guoshi.com/">联系我们</a> <a style="display:none" href="http://www.zeppin.cn" target="_blank">http://www.zeppin.cn</a> </p>
+
+  </div>
+</div>
+
+<script src="../js/editor.js"></script>
+
+<script type="text/javascript">
+$(".btn-password").colorbox({
+	iframe : true,
+	width : "400px",
+	height : "330px",
+	opacity : '0.5',
+	overlayClose : false,
+	escKey : true
+});
+var defaultOption = {
+	sid : '',//学科
+	year : '',//年份
+	areaid : '',//地区
+	stid : ''//状态
+}
+
+//获得学科列表
+function getSubject() {
+	$.getJSON('../admin/subjectSearchAllSubject?split=_', function(r) {
+		if(r.Status == 'success' && r.Records.length > 0) {
+		    var template = $('#changeSubjectTpl').html();
+		    var html = Mustache.render(template, r);
+		    $('#changeSubjectCnt').html(html);
+// 			alert($.cookie('paperSubjectObj'));
+			if($.cookie('paperSubjectObj')) {
+				var obj = $.parseJSON($.cookie('paperSubjectObj'));
+				initchangeSubject(obj)
+			}else {
+				var obj = {};
+				obj.sid = r.Records[0].data[0].id, obj.sname = r.Records[0].data[0].name;
+				$.cookie('paperSubjectObj','{"sid":"'+ obj.sid +'","sname":"'+ obj.sname +'"}');
+				initchangeSubject(obj)
+			}
+			
+		}else {
+			alert('服务端出错！请稍后重试！');
+		}
+	});
+}
+
+//更改学科
+function changeSubject(obj) {
+	var th = $(obj), cSname = th.closest('.changeSubject').find('.cSname'), sid = th.data('id');
+	defaultOption.sid = sid;
+	itemList();	
+	cSname.html(th.text());
+	$.cookie('paperSubjectObj','{"sid":"'+ sid +'","sname":"'+ th.text() +'"}');
+}
+
+function initchangeSubject(obj) {//初始化 解析cookie的 值
+	defaultOption.sid = obj.sid;
+	
+	itemList();
+	$('.cSname').html(obj.sname);	
+}
+
+
+//加载试题列表
+function itemList() {
+	var page = (url('?page') == null) ? 1 : url('?page');
+	
+	sid = ( typeof defaultOption.sid == 'undefined') ? '' : '&subject.id='+ defaultOption.sid;
+	year = (typeof defaultOption.year == 'undefined') ? '' : '&year='+ defaultOption.year;
+	areaid = (typeof defaultOption.areaid == 'undefined') ? '' : '&area.scode='+ defaultOption.areaid;
+	stid = ( typeof defaultOption.stid == 'undefined') ? '' : '&status='+ defaultOption.stid;
+	
+	var d = dialog({
+	    title: '系统提示',
+		width : 320,
+	    content: '加载中...'
+	});
+	d.showModal();
+	$.getJSON('../paperList?split=_&sorts=createtime-desc&pagenum='+page+sid+year+areaid+stid, function(r) {
+		if(r.Status == 'success' && r.Records.length > 0) {
+		    var template = $('#paperBoxTpl').html();
+		    var html = Mustache.render(template, r);
+		    $('#paperBoxCnt').html(html);
+			$.each(r.Records,function(i,v){
+				if(v.status  == 3) {
+					$('.statusicon').eq(i).removeClass('text-success text-danger').addClass('text-success');
+				}else if(v.status == 0) {
+					$('.statusicon').eq(i).removeClass('text-success text-danger').addClass('text-danger');
+				}
+			})
+			
+			$('#pagnationPaper').pagination({
+				currentPage : r.PageNum,
+		        items: r.TotalRecordCount,
+		        itemsOnPage : r.PageSize,
+				edges: 3,
+				onPageClick : function(pageNumber,event) {
+					window.location = updateURLParameter(url(),'page',pageNumber);
+				}
+		    });
+			changeStatus();
+			
+			d.close().remove();
+		} else if (r.Status == 'success' && r.Records.length == 0) {
+			d.close().remove();
+			$('#pagnationPaper').html('');
+			$('#paperBoxCnt').html('<div class="no_data">该分类暂无试卷</div>');
+		} else {
+			alert('服务端出错！请稍后重试！');
+		}
+	});
+}
+//改变试卷状态
+function changeStatus () {
+	$('.paperStatusBtn').on('click',function(){
+		var e = this,cs = $(e).data('curstatus'),s = $(e).data('status'),id = $(e).data('id'),url = '../paperChangeStatus';
+		if(cs !=  s) {
+			$.get(url,{'id':id,'status':s},function(r){
+				if(r.Status == 'success') {
+					if (s == 3) {//发布
+						$('#status'+id).html('发布').removeClass('text-danger text-success').addClass('text-success');
+						$(e).next().data('curstatus',s);
+					}else if (s == 1) {//审核
+						$('#status'+id).html('审核').removeClass('text-danger text-success').addClass('text-success');
+						$(e).next().data('curstatus',s);
+					}else {
+						$('#status'+id).html('删除').removeClass('text-danger text-success').addClass('text-danger');
+						$(e).prev().data('curstatus',s);
+					}
+					$(e).data('curstatus',s);
+					
+				}
+				var d = dialog({
+				    title: '系统提示',
+					width : 320,
+				    content: r.Message 
+				});
+				d.showModal();
+				setTimeout(function () {
+				    d.close().remove();
+				}, 3000);
+				
+			})
+		}
+	})
+}
+
+function getarea() {
+	$.get('../areaSearch',function(r){
+		if(r.Records.length) {
+			var str = '<option value="">全部</option>';
+			$.each(r.Records,function(i,v){
+				str += '<option value="'+ v.scode +'">'+ v.name +'</option>';
+			})
+			$('select[name="areaid"]').html(str);
+		}
+	})
+}
+
+//简单筛选
+function changefliterOption(obj) {
+	var th = $(obj),id = th.val(),n = th.attr('name');
+	if(n == 'year') {
+		defaultOption.year = id;
+	}else if (n == 'areaid') {
+		defaultOption.areaid = id;
+	}else if (n == 'status') {
+		defaultOption.stid = id;
+	}
+	itemList();
+}
+
+$(function(){
+	function init() {
+		getSubject();
+		getarea();
+		//更改学科 试题列表刷新
+		$('#changeSubjectCnt').on('click','a',function(e){
+			e.preventDefault();
+			changeSubject(this);
+		});
+		
+	}
+	
+	init();	
+})
+	
+</script>
+</body>
+</html>
+		

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>添加试题</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../img/m/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="../css/bootstrap.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/app.css">	
+<link rel="stylesheet" href="../css/ui-dialog.css">
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/url.min.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/jquery.iframe-post-form.js"></script>
+
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/app.js"></script> 
+<script src="../js/editor.js"></script> 
+<script src="../js/moment.js"></script>
+<script src="../js/jquery.serializejson.min.js"></script>
+
+<script src="../js/dialog-min.js"></script> 
+<script src="../js/zh-cn.js"></script>
+<script src="../js/tinymce/dropzone/lib/dropzone.js"></script>
+<script src="../js/tinymce/tinymce.min.js"></script>
+<script src="../js/tinymce/tinymce_zhcn.js"></script>
+<style>
+.table tbody + tbody {
+  border-top: 0px;
+}
+input[type="radio"]{
+  height:18px;
+  width:18px
+}
+input[type="checkbox"]{
+  height:18px;
+  width:18px
+}
+</style>
+<script>
+$(function(){
+	moment.lang('zh-cn');
+    function timedUpdate () {
+       update();
+       setTimeout(timedUpdate, 1000);
+   }
+   function update(){
+          $('#datafomate').html(moment().format('YYYY-MM-DD ,a h:mm:ss'));
+      }  
+	timedUpdate()
+	
+})
+</script>
+ 
+</head>
+<body>
+
+<!--Header-part-->
+<div class="navbar" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo" title="网络、移动学习测评移动云资源平台" ><img src="../img/logo-jy.png" height="41"></a>
+    </div>
+	<p class="logout">欢迎<span id="loginname"></span> &nbsp;&nbsp;<span id="datafomate"></span> &nbsp;|&nbsp;  <a href="../admin/passwordEditiframe.html" data-fancybox-type="iframe" class="btn-password cboxElement">修改密码</a> &nbsp;|&nbsp;  <a href="login.html">退出</a> </p>
+	
+  </div>
+</div>
+<!--close-Header-part--> 
+<div id="container" class="container-fluid">
+
+	<div class="row">
+		<div class="sidebar">
+			<div class=" nav-sidebar">
+				<ul id="leftside" class="nav">
+				</ul>
+			</div>
+			<div class="js-nav-shadow bottom"><img src="../img/round-shadow-bottom.png" style="top: auto; bottom: 0px;"></div>
+		</div> <!--end sidebar-->
+		<script id="leftTpl" type="text/template">
+			{{#Records}}
+			<li class="active"><a href="#"><span>{{name}}</span> </a>
+				
+				<ul class="nav">
+					{{#data}}
+						<li {{#iscurrent}} class="cur" {{/iscurrent}}>  <a href="{{path}}">{{name}}
+						</a></li>
+					{{/data}}
+			
+				</ul>
+				
+			</li>
+			{{/Records}}
+		</script>
+		<div class="main" style="position:relative">
+
+			<div class="listwrap" style="margin-right:15px;">
+				<div  class="list_bar">添加<span id="qqTitle"></span></div>
+				<div class="question_form">
+					<form action="#" method="post" id="questionForm" class="form-horizontal">
+						
+						<div class="row clearfix">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">学科</label>
+									<div class="col-sm-9">
+										<div id="changeSubject" class="dropdown changeSubject dropbox">
+										  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											   <span id="subjectName">请选择学科</span>
+											   <i class="a-icon a-icon-dropdown"></i>
+										  </a>
+										  <input type="hidden" name="subject.id" value="">
+										</div>
+										
+										<script id="changeSubjectTpl" type="text/template">
+											{{#Records}}
+												<div class="dl">
+									    	 		<h4>{{name}}</h4>
+													 <p>
+													 	{{#data}}
+															<a data-id="{{id}}" onclick="questionOpt.setinputid('subject','{{name}}','{{id}}');questionOpt.depeandbysubject('{{id}}','{{grade_id}}')" data-gradeid="{{grade_id}}" href="javascript:void(0)">{{name}}</a>
+														{{/data}}
+													 </p>
+												 </div>
+											 {{/Records}}
+										</script>
+									</div>
+									
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">知识点</label>
+									<div class="col-sm-9">
+										<div class="dropdown dropbox">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="knowledgeName">请选择知识点</span><i class="a-icon a-icon-dropdown"></i></a>
+											<div class="gradeFliter dropdown-menu">
+												<div  class="treelist">
+													<div  class="list_sub sm_icon">
+														<div id="knowledgeido">
+												
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<input type="hidden" name="knowledge.id" value="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">来源出处</label>
+									<div class="col-sm-9">
+										<input type="text" name="source" class="form-control">
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-md-6">
+							
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">难易程度</label>
+									<div class="col-sm-9">
+										<select class="form-control"  name="diffcultyLevel">
+											<option value="1">非常简单</option>
+											<option value="2">简单</option>
+											<option value="3" selected="selected">一般</option>
+											<option value="4">困难</option>
+											<option value="5">非常困难</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">来源类型</label>
+									
+									<div class="col-sm-9">
+										<select class="form-control"  name="sourceType">
+											<option value="0">真题</option>
+											<option value="1">模拟试题</option>
+											<option value="2">课后练习题</option>
+											<option value="3">其他</option>
+										</select>
+									</div>
+								</div>
+							
+							</div>
+							
+						</div>
+						
+						
+						<div class="hr"></div>
+						
+						
+						<div class="row clearfix qustion-title">
+							<div class="col-md-12">
+							
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="">试题材料</label>
+									<div class="col-md-9">
+										<textarea class="stem-textarea" id="qustionMaterial" name="material">请输入材料...</textarea>
+									</div>
+								</div>
+
+							</div>
+							
+						</div>
+<!-- 						<div class="row clearfix qustion-title"> -->
+<!-- 							<div class="col-md-12"> -->
+							
+<!-- 								<div class="form-group"> -->
+<!-- 									<label class="col-sm-2 control-label" for="">试题解析</label> -->
+<!-- 									<div class="col-md-9"> -->
+<!-- 										<textarea class="stem-textarea" id="analysis" name="analysis">请输入试题解析...</textarea> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+
+<!-- 							</div> -->
+							
+<!-- 						</div> -->
+						<div class="row clearfix">
+							<label class="col-md-1" for=""></label>
+							<div class="col-md-5">
+								
+								
+								
+		  						<div class="btn-group" style="margin:10px 0">
+		  						  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+								    + 添加试题 <span class="caret"></span>
+								  </button>
+								  <ul id="quetypeCnt" class="dropdown-menu" role="menu">
+								  	<li><a data-object='{"qtype_name":"单选题","mtype":"1"}'>单选题</a></li>
+								  	<li><a data-object='{"qtype_name":"多选题","mtype":"5"}'>多选题</a></li>
+								  	<li><a data-object='{"qtype_name":"填空题","mtype":"2"}'>填空题</a></li>
+								  	<li><a data-object='{"qtype_name":"判断题","mtype":"3"}'>判断题</a></li>
+								  	<li><a data-object='{"qtype_name":"问答题","mtype":"6"}'>问答题</a></li>
+								  </ul>
+		  						</div>
+							</div>
+<!-- 	  						  <script id="quetypeTpl" type="text/template"> -->
+<!-- 	  	  						{{#Records}} -->
+<!-- 	  								 {{^isGroup}} -->
+<!-- 	  								  <li><a data-object='{"qtype_name":"{{name}}","mtype":"{{modelType}}","qtype":"{{id}}"}' href="javascript:void(0)">{{name}}</a></li> -->
+<!-- 	  								 {{/isGroup}} -->
+<!-- 	  	  						 {{/Records}} -->
+<!-- 	  						  </script> -->
+							  <script>
+// 				  				function getItemType() {
+// 				  					$.getJSON('../itemTypeSearch', function(r) {
+// 				  						if(r.Status == 'success' && r.Records.length > 0) {
+// 				  						    var t2 = $('#quetypeTpl').html();
+// 				  						    var h2 = Mustache.render(t2, r);
+// 				  						    $('#quetypeCnt').html(h2);
+							
+// 				  						}else {
+// 				  							alert('服务端出错！请稍后重试！');
+// 				  						}
+// 				  					});
+// 				  				}
+// 								getItemType();
+								
+							  </script>
+						</div>
+						<div class="row clearfix qustion-content">
+							
+							<div class="col-md-12">
+							
+								<div>
+									<div id="queGroupCnt" class="col-md-10"></div>
+									
+									<script id="queGroupTpl-1" type="text/template"><!--单选题模板-->
+										<div id="module-1" class="module" data-mtype="{{mtype}}" data-qtype="{{qtype}}">
+											<div class="topic_type_menu">
+												<strong>试题<span class="num">1</span><span class="title">({{qtype_name}})<span></strong>
+											</div>
+											<div class="topic_type_con">
+												<div class="th4 T_edit q_title" name="question">{{qtype_name}}</div>
+												<div class="q_options">
+													<ul class="unstyled">
+														<li><input type="radio" name="radio" value=""><label class="T_edit" for="" name="option" data-id="1">选项1</label></li>
+														<li><input type="radio" name="radio" value=""><label class="T_edit" for="" name="option" data-id="2">选项2</label></li>
+													</ul>
+												</div>
+												<div class="q_score">
+													默认分值:<input type="text" name="score">
+												</div>
+												<div class="q_opearation">
+													<span title="增加" data-mtype='{{mtype}}' class="glyphicon glyphicon-plus js-plus"></span>
+													<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+													<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+													<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label" for="">试题解析</label>
+												<div class="col-md-9">
+													<textarea class="stem-textarea" id="analysis" name="analysis">请输入试题解析...</textarea>
+												</div>
+											</div>
+										</div>
+									</script>
+									<script id="queGroupOptionTpl-1" type="text/template"><!--单选题选项-->
+										<li><input type="radio" name="radio" id="" value=""><label class="T_edit" for="" name="option" id="">选项1</label></li>
+									</script>
+									
+									
+									<script id="queGroupTpl-2" type="text/template"><!--填空题-->
+										<div id="module-1" class="module" data-mtype="{{mtype}}" data-qtype="{{qtype}}">
+											<div class="topic_type_menu">
+												<strong>试题<span class="num"></span><span class="title">({{qtype_name}})</span></strong>
+											</div>
+											<div class="topic_type_con">
+												<div class="th4 T_edit q_title" name="question">{{qtype_name}}</div>
+												<div class="q_options q_results">
+													<ul class="unstyled ">
+														<li><label class="T_edit" for="" name="option" id="">选项</label><span class="q_score_m2">默认分值:<input type="text" name="score"></span></li>
+														
+													</ul>
+												</div>
+												
+												<div class="q_opearation">
+													<span title="增加" data-mtype='{{mtype}}' class="glyphicon glyphicon-plus js-plus"></span>
+													<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+													<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+													<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label" for="">试题解析</label>
+												<div class="col-md-9">
+													<textarea class="stem-textarea" id="analysis" name="analysis">请输入试题解析...</textarea>
+												</div>
+											</div>
+										</div>
+									</script>
+									
+									<script id="queGroupOptionTpl-2" type="text/template"><!--填空题选项-->
+										<li><label class="T_edit" for="" name="option" id="">选项1</label><span class="q_score_m2">默认分值:<input type="text" name="score"></span></li>
+									</script>
+									
+									<script id="queGroupTpl-5" type="text/template"><!--多选题-->
+										<div id="" class="module" data-mtype="{{mtype}}" data-qtype="{{qtype}}">
+											<div class="topic_type_menu">
+												<strong>试题<span class="num"></span><span class="title">({{qtype_name}})</span></strong>
+											</div>
+											<div class="topic_type_con">
+												<div class="th4 T_edit q_title" name="question">{{qtype_name}}</div>
+												<div class="q_options">
+													<ul class="unstyled">
+														<li><input type="checkbox" name="radio" value=""><label class="T_edit" for="" name="option" data-id="1">选项1</label></li>
+														<li><input type="checkbox" name="radio" value=""><label class="T_edit" for="" name="option" data-id="2">选项2</label></li>
+													</ul>
+												</div>
+												<div class="q_score">
+													默认分值:<input type="text" name="score">
+												</div>
+												<div class="q_opearation">
+													<span title="增加" data-mtype='{{mtype}}' class="glyphicon glyphicon-plus js-plus"></span>
+													<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+													<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+													<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label" for="">试题解析</label>
+												<div class="col-md-9">
+													<textarea class="stem-textarea" id="analysis" name="analysis">请输入试题解析...</textarea>
+												</div>
+											</div>
+										</div>
+									</script>
+									
+									<script id="queGroupOptionTpl-5" type="text/template"><!--多选题选项-->
+										<li><input type="checkbox" name="radio" id="" value=""><label class="T_edit" for="" name="option" id="">选项</label></li>
+									</script>
+									
+									<script id="queGroupTpl-3" type="text/template"><!--判断模板-->
+										<div id="module-1" class="module" data-mtype="{{mtype}}" data-qtype="{{qtype}}">
+											<div class="topic_type_menu">
+												<strong>试题<span class="num">1</span><span class="title">({{qtype_name}})<span></strong>
+											</div>
+											<div class="topic_type_con">
+												<div class="th4 T_edit q_title" name="question">{{qtype_name}}</div>
+												<div class="q_options">
+													<ul class="unstyled">
+														<li><input type="radio" data-id="1" name="radio"><label name="option" data-id="1"><span class="qright">&radic;</span></label></li>
+														<li><input type="radio" data-id="2" name="radio"><label name="option" data-id="2"><span class="qwrong">&times;</span></label></li>
+													</ul>
+												</div>
+   												<div class="q_opearation">
+   													<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+   													<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+   													<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>
+   												</div>
+												<div class="q_score">
+													默认分值:<input type="text" name="score">
+												</div>
+											</div>
+											<div class="form-group">
+												<label class="col-sm-2 control-label" for="">试题解析</label>
+												<div class="col-md-9">
+													<textarea class="stem-textarea" id="analysis" name="analysis">请输入试题解析...</textarea>
+												</div>
+											</div>
+										</div>
+									</script>
+									<script id="queGroupTpl-6" type="text/template"><!--问答题模板-->
+										<div id="module-1" class="module" data-mtype="{{mtype}}" data-qtype="{{qtype}}">
+											<div class="topic_type_menu">
+												<strong>试题<span class="num">1</span><span class="title">({{qtype_name}})<span></strong>
+											</div>
+											<div class="row clearfix qustion-title">
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="col-sm-2 control-label" for=""></label>
+														<div class="col-md-9">
+															<textarea class="stem-textarea" id="qustionTitle" name="qustionTitle">请输入试题题干...</textarea>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-2 control-label" for="">试题解析</label>
+														<div class="col-md-9">
+															<textarea class="stem-textarea" id="analysis" name="analysis">请输入试题解析...</textarea>
+														</div>
+													</div>
+												</div>
+												<div class="q_opearation">
+   													<span title="删除" class="glyphicon glyphicon-remove js-remove"></span>
+   													<span title="上移" class="glyphicon glyphicon-chevron-up js-up"></span>
+   													<span title="下移" class="glyphicon glyphicon-chevron-down js-down"></span>
+   												</div>
+												<div class="q_score">
+													默认分值:<input type="text" name="score">
+												</div>
+											</div>
+										</div>		
+									</script>
+								</div>
+								
+							</div>
+							
+						</div>
+						
+						<div class="row clearfix" style="text-align:center">
+							<a href="javascript:void(0)" title="保存" style="width:200px" class="btn btn-primary btn-lg savebutton" id="savebutton"  onclick="return trySubmit()">保存</a>
+							<a class="btn btn-default btn-lg" href="../admin/itemList.html">返回</a>
+							<input type="button" class="btn btn-primary btn-lg savenextbutton" id="savenextbutton"  value="继续添加下一题"  onclick="return trySubmit()">
+						</div>
+												
+						
+						
+					</form>
+					
+				</div>
+				
+
+				<script type="text/javascript">
+				function trySubmit() {
+					$(".savebutton").attr("disabled","true");
+					$(".savenextbutton").attr("disabled","true");
+				};
+				
+				$(function(){
+					QuestionGOpt.G_addinit();
+					questionOpt.Addinit();
+					
+				})
+				$(".btn-password").colorbox({
+					iframe : true,
+					width : "400px",
+					height : "330px",
+					opacity : '0.5',
+					overlayClose : false,
+					escKey : true
+				});
+			
+				function esckeydown()
+				{
+				    if(event.keyCode==27){
+				       event.returnValue = null;
+				    }
+				    if(event.keyCode==8)
+				    {
+				       if (((event.srcElement!=null) && (event.srcElement.tagName=="INPUT"))||((event.srcElement!=null) && (event.srcElement.tagName=="TEXTAREA"))||((event.srcElement!=null) && (event.srcElement.tagName=="DIV")))
+				          return
+				       else
+				          event.returnValue = null;
+				    }       
+				}
+				document.onkeydown=esckeydown;
+				
+				</script>
+				
+			</div>
+		</div>
+		
+		
+	</div> <!--end row-->
+	
+</div>	<!--end container-->
+<div id="tinymceCnt"></div>
+
+<div class="bs-footer">
+  <div>
+	  <p>Copyright © 2014 中国教育电视台 京ICP证101020号.     <a target="_blank" href="http://www.xjedu.gov.cn/">联系我们</a> <a style="display:none" href="http://www.zeppin.cn" target="_blank">http://www.zeppin.cn</a> </p>
+
+  </div>
+</div>
+
+</body>
+</html>
+		

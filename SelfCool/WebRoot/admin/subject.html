@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>学科管理</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../css/bootstrap.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="../css/app.css">	
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../css/metro/blue/jtable.css" rel="stylesheet" type="text/css" >
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/jquery.jtable.js"></script>
+<script src="../js/jquery.jtable.zh-CN.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+
+<script src="../js/bootstrap-paginator.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/url.min.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/app.js"></script> 
+<script src="../js/moment.js"></script> 
+<script src="../js/zh-cn.js"></script>
+
+<script>
+$(function(){
+	moment.lang('zh-cn');
+    function timedUpdate () {
+       update();
+       setTimeout(timedUpdate, 1000);
+   }
+   function update(){
+          $('#datafomate').html(moment().format('YYYY-MM-DD ,a h:mm:ss'));
+      }  
+	timedUpdate()
+	//$('#datafomate').html(moment().format('YYYY MMMM Do, h:mm:ss a'));
+})
+</script>
+ 
+</head>
+<body>
+
+<!--Header-part-->
+<div class="navbar" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo" title="网络、移动学习测评移动云资源平台" ><img src="../img/logo-jy.png" height="41"></a>
+    </div>
+	<p class="logout">欢迎<span id="loginname"></span> &nbsp;&nbsp;<span id="datafomate"></span> &nbsp;|&nbsp;  <a href="../admin/passwordEditiframe.html" data-fancybox-type="iframe" class="btn-password cboxElement">修改密码</a> &nbsp;|&nbsp;  <a href="login.html">退出</a> </p>
+	
+  </div>
+</div>
+<!--close-Header-part--> 
+
+<div id="container" class="container-fluid">
+
+	<div class="row">
+		<div class="sidebar">
+			<div class=" nav-sidebar">
+				<ul id="leftside" class="nav">
+				</ul>
+			</div>
+			<div class="js-nav-shadow bottom"><img src="../img/round-shadow-bottom.png" style="top: auto; bottom: 0px;"></div>
+		</div> <!--end sidebar-->
+		<script id="leftTpl" type="text/template">
+			{{#Records}}
+			<li class="active"><a href="#"><span>{{name}}</span> </a>
+				
+				<ul class="nav">
+					{{#data}}
+						<li {{#iscurrent}} class="cur" {{/iscurrent}}>  <a href="{{path}}">{{name}}
+						</a></li>
+					{{/data}}
+			
+				</ul>
+				
+			</li>
+			{{/Records}}
+		</script>
+		<div class="main">
+
+			<div class="tablewrap">
+
+				<div class="cui-menu">
+					<a class="btn btn-primary btn-create" data-fancybox-type="iframe" href="../admin/subjectAddiframe.html">
+						+ 添加学科
+					</a>
+				</div>
+				
+				<!--搜索框-->
+				<div id="searchbox" class="searchbox">
+					<form class="search search_form" id="searchForm" action="#" method="POST">
+						<fieldset>
+							<label for="searchheader" class="placeholder overlabel">名称</label>
+							<input autocomplete="off" id="searchheader" value="" type="text" name="q">
+							<input type="hidden" name="" value="">
+							<div class="show_dropdown">
+								<div class="dropdown" style="display: block;">
+									<ul>
+										<li><label for="type_name">按名称</label><input type="radio" id="type_name" name="stype" value="name" checked="checked">
+										</li>
+										<li><label for="type_category">按考试分类</label><input type="radio" id="type_category" name="stype" value="category.name" >
+										</li>
+										
+									</ul>
+									<span class="bl"></span>
+									<span class="br"></span>
+								</div>
+							</div>
+							<button type="submit" id="searchBtn" class="search-button">Search</button>
+						</fieldset>
+					</form>
+			
+				</div>
+				
+				<div id="TableContainer"></div>
+
+
+				<script type="text/javascript">
+					
+				$(document).ready(function() {
+					$('#TableContainer').jtable(
+						{
+							title : '学科管理',
+							messages : zhCN,
+							paging : true, //Enable paging
+							pageSize : 10, //Set page size (default: 10)
+							pageSizes : [ 10, 20, 30, 40, 50 ],
+							sorting : true, //Enable sorting
+							defaultSorting : 'id ASC', //Set default sorting
+							dialogShowEffect : 'drop',
+							actions : {
+								listAction : '../subjectList',
+								deleteAction :'../subjectDelete'
+							},
+							fields : {
+								id : {
+									title : '编号',
+									key : true,
+									width:'2%'
+								},
+								name : {
+									title : '名称',
+									width: '8%'
+								
+								},
+								shortname : {
+									title : '简称',
+									width : '8%'
+								},
+								'category.name' : {
+									title: '所属考试分类',
+									width:'8%'								
+								},
+								examtime:{
+									title : '考试时间',
+									width : '5%'
+								},
+								price : {
+									title : '价格',
+									width: '5%'
+								
+								},
+								status : {
+									title:'状态',
+									width:'3%',
+									options : {
+										'0':'停用',
+										'1':'正常'
+									},
+									defaultValue : 1
+								
+								},
+								customedit : {
+									title : '设置题型',
+									width : '4%',
+									sorting : false,
+									edit : false,
+									create : false,
+									visibility : 'fixed',
+									display : function(data) {
+										var html = '<a class="ifrbox" data-fancybox-type="iframe" href="../admin/setItemTypeiframe.html?id=' + data.record.id +'">设置题型</a>';
+										return html;
+									}
+								},
+								customedit2:{
+									title : '设置考试时间',
+									width : '5%',
+									sorting : false,
+									edit : false,
+									create : false,
+									visibility : 'fixed',
+									display : function(data) {
+											var html = '<a class="ifrbox" data-fancybox-type="iframe" href="../admin/setExamTime.html?id=' + data.record.id +'">设置考试时间</a>';											return html;
+									}
+								},
+								customedit3:{
+									title : '设置分类检索',
+									width : '5%',
+									sorting : false,
+									edit : false,
+									create : false,
+									visibility : 'fixed',
+									display : function(data) {
+										
+										var html = '<a class="ifrbox" data-fancybox-type="iframe" href="../admin/subjectFoRetrieve?subject.id=' + data.record.id +'">设置分类检索</a>';
+										return html;
+										
+									}
+								},
+								customedit1 : {
+									title : '',
+									width : '3%',
+									sorting : false,
+									edit : false,
+									create : false,
+									visibility : 'fixed',
+									display : function(data) {
+										var html = '<a class="ifrbox jtable-cmd-btn" data-fancybox-type="iframe" href="../admin/subjectEditiframe.html?id=' + data.record.id + '">编辑</a>';
+										return html;
+									}
+								}
+							
+
+					
+							},
+						
+							columnResizable : false,
+							deleteConfirmation: function(data) {
+							  	data.deleteConfirmMessage = '确定要停用这行数据?';
+								 $('#DeleteDialogButton').html('停用');
+							},
+							
+							recordsLoaded :function (data) {
+								$(".ifrbox").colorbox({
+									iframe : true,
+									width : "860px",
+									height: "600px",
+									opacity : '0.5',
+									overlayClose : false,
+									escKey : true
+								});	
+								//删除按钮改成停用
+							    $('#'+data.target.id).find('.jtable-delete-command-button').each(function(){
+									$(this).attr('title','停用');
+									$(this).find('span').text('停用');
+								}) 
+		
+							}
+						
+						});
+
+						$('#TableContainer').jtable('load');
+					
+						//搜索
+				        $('#searchForm').submit(function (e) {
+				            e.preventDefault();
+							var key = $('input[name="stype"]:checked').val(),obj = {};
+							obj[key] = $('#searchheader').val();
+							
+				            $('#TableContainer').jtable('load', obj);
+							return false;
+				        });
+						
+				        $(".btn-create").colorbox({
+							iframe : true,
+							width : "860px",
+							height: "600px",
+							opacity : '0.5',
+							overlayClose : false,
+							escKey : true
+						});	
+						$(".btn-password").colorbox({
+							iframe : true,
+							width : "400px",
+							height : "330px",
+							opacity : '0.5',
+							overlayClose : false,
+							escKey : true
+						});								
+					});
+				
+				</script>
+
+			</div>
+		</div>
+		
+		
+	</div> <!--end row-->
+	
+</div>	<!--end container-->
+
+<div class="bs-footer">
+  <div>
+	  <p><a target="_blank" href="http://www.guoshi.com/">联系我们</a> <a style="display:none" href="http://www.zeppin.cn" target="_blank">http://www.zeppin.cn</a> </p>
+
+  </div>
+</div>
+
+</body>
+</html>
+		

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<!--多例 scope="singleton" 单例 scope="singleton" 单用户单例 scope="session"-->
+
+	<bean id="ssoLogin" class="cn.zeppin.action.sso.SsoLogin" scope="prototype">
+		<property name="ssoUserService" ref="ssoUserService"></property>
+		<property name="authService" ref="authService"></property>
+		<property name="versionService" ref="versionService"></property>
+	</bean>
+	
+     <bean id="ssoUserAction" class="cn.zeppin.action.admin.SsoUserAction" scope="prototype">
+		<property name="ssoUserService" ref="ssoUserService"></property>
+	</bean>
+	
+	<bean id="ssoUserTestAction" class="cn.zeppin.action.user.SsoUserTestAction" scope="prototype">
+		<property name="ssoUserService" ref="ssoUserService"></property>
+		<property name="ssoUserTestService" ref="ssoUserTestService"></property>
+		<property name="subjectService" ref="subjectService"></property>
+		<property name="itemService" ref="itemService"></property>
+		<property name="ssoUserTestItemService" ref="ssoUserTestItemService"></property>
+		<property name="knowledgeService" ref="knowledgeService"></property>
+		<property name="userSubjectService" ref="userSubjectService"></property>
+		<property name="subjectItemTypeService" ref="subjectItemTypeService"></property>
+		<property name="ssoUserTestItemCountService" ref="ssoUserTestItemCountService"></property>
+		
+	</bean>
+	
+	<bean id="loginAction" class="cn.zeppin.action.sso.LoginAction" scope="prototype">
+		<property name="sysUserService" ref="sysUserService" />
+	    <property name="ssoUserService" ref="ssoUserService"></property>
+		<property name="authService" ref="authService"></property>
+		<property name="versionService" ref="versionService"></property>
+	</bean>
+	
+	<bean id="areaAction" class="cn.zeppin.action.admin.AreaAction" scope="prototype">
+		<property name="areaService" ref="areaService" />
+	</bean>
+	
+	<bean id="passwordAction" class="cn.zeppin.action.admin.PasswordAction" scope="prototype">
+		<property name="sysUserService" ref="sysUserService" />
+	</bean>
+	
+	<bean id="managerAction" class="cn.zeppin.action.admin.ManagerAction" scope="prototype">
+		<property name="sysUserService" ref="sysUserService" />
+		<property name="sysUserSubjectService" ref="sysUserSubjectService" />
+		<property name="sysUserGradeService" ref="sysUserGradeService" />
+		<property name="gradeService" ref="gradeService" />
+	</bean>
+	
+	<bean id="retrieveAction" class="cn.zeppin.action.admin.RetrieveAction" scope="prototype">
+		<property name="retrieveService" ref="retrieveService" />
+		<property name="retrieveTypeService" ref="retrieveTypeService" />
+	</bean>
+	
+	<bean id="resourceAction" class="cn.zeppin.action.admin.ResourceAction" scope="prototype">
+		<property name="resourceService" ref="resourceService"></property>
+	</bean>
+	
+	<bean id="advertAction" class="cn.zeppin.action.admin.AdvertAction" scope="prototype">
+		<property name="resourceService" ref="resourceService"></property>
+		<property name="advertService" ref="advertService"></property>
+	</bean>
+	
+	<bean id="businessAction" class="cn.zeppin.action.admin.BusinessAction" scope="prototype">
+	    <property name="categoryService" ref="categoryService"></property>
+		<property name="businessService" ref="businessService"></property>
+		<property name="businessCategoryService" ref="businessCategoryService"></property>
+	</bean>
+		
+	<bean id="businessCategoryAction" class="cn.zeppin.action.admin.BusinessCategoryAction" scope="prototype">
+	    <property name="categoryService" ref="categoryService"></property>
+		<property name="businessService" ref="businessService"></property>
+		<property name="businessCategoryService" ref="businessCategoryService"></property>
+	</bean>
+	
+	<bean id="categoryAction" class="cn.zeppin.action.admin.CategoryAction" scope="prototype">
+		<property name="ssoUserService" ref="ssoUserService"></property>
+		<property name="categoryService" ref="categoryService"></property>
+		<property name="resourceService" ref="resourceService"></property>
+		<property name="categoryRetrieveService" ref="categoryRetrieveService"></property>
+		<property name="retrieveService" ref="retrieveService" />
+		<property name="subjectRetrieveService" ref="subjectRetrieveService" />
+	</bean>
+	
+	<bean id="subjectAction" class="cn.zeppin.action.admin.SubjectAction" scope="prototype">
+		<property name="subjectService" ref="subjectService"></property>
+		<property name="gradeService" ref="gradeService"></property>
+		<property name="categoryService" ref="categoryService"></property>
+		<property name="subjectCountDownService" ref="subjectCountDownService"></property>
+		<property name="categoryRetrieveService" ref="categoryRetrieveService"></property>
+		<property name="retrieveService" ref="retrieveService" />
+		<property name="subjectRetrieveService" ref="subjectRetrieveService" />
+		<property name="userSubjectService" ref="userSubjectService"></property>
+		<property name="ssoUserService" ref="ssoUserService"></property>
+	</bean>
+	
+		<!-- 用户与学科 -->
+	<bean id="userSubjectAction" class="cn.zeppin.action.user.UserSubjectAction" scope="prototype">
+		<property name="subjectService" ref="subjectService"></property>
+		<property name="gradeService" ref="gradeService"></property>
+		<property name="categoryService" ref="categoryService"></property>
+		<property name="subjectCountDownService" ref="subjectCountDownService"></property>
+		<property name="categoryRetrieveService" ref="categoryRetrieveService"></property>
+		<property name="retrieveService" ref="retrieveService" />
+		<property name="subjectRetrieveService" ref="subjectRetrieveService" />
+		<property name="userSubjectService" ref="userSubjectService"></property>
+		<property name="ssoUserService" ref="ssoUserService"></property>
+		<property name="taskService" ref="taskService"></property>
+		<property name="ssoTaskService" ref="ssoTaskService"></property>
+		<property name="ssoUserTestService" ref="ssoUserTestService"></property>
+	    <property name="itemService" ref="itemService"></property>
+	</bean>
+	
+	<bean id="userWrongBookAction" class="cn.zeppin.action.user.UserWrongBookAction" scope="prototype">
+		<property name="ssoUserService" ref="ssoUserService"></property>
+		<property name="subjectService" ref="subjectService"></property>
+		<property name="userWrongBookService" ref="userWrongBookService"></property>
+		<property name="itemService" ref="itemService"></property>
+		<property name="subjectItemTypeService" ref="subjectItemTypeService"></property>
+		<property name="ssoUserTestService" ref="ssoUserTestService"></property>
+		<property name="userSubjectService" ref="userSubjectService"></property>
+		<property name="ssoUserTestItemService" ref="ssoUserTestItemService"></property>
+	    <property name="ssoUserTestItemCountService" ref="ssoUserTestItemCountService"></property>
+	    
+	</bean>
+
+	<bean id="subjectItemTypeAction" class="cn.zeppin.action.admin.SubjectItemTypeAction" scope="prototype">
+		<property name="subjectService" ref="subjectService"></property>
+		<property name="subjectItemTypeService" ref="subjectItemTypeService"></property>
+		<property name="itemTypeService" ref="itemTypeService"></property>
+	</bean>
+	
+	<bean id="subjectCountDownAction" class="cn.zeppin.action.admin.SubjectCountDownAction" scope="prototype">
+		<property name="subjectCountDownService" ref="subjectCountDownService"></property>
+		<property name="subjectService" ref="subjectService"></property>
+	</bean>
+	
+	<bean id="itemTypeAction" class="cn.zeppin.action.admin.ItemTypeAction" scope="prototype">
+		<property name="itemTypeService" ref="itemTypeService"></property>
+		<property name="itemService" ref="itemService"></property>
+	</bean>
+	
+	<bean id="itemAction" class="cn.zeppin.action.admin.ItemAction" scope="prototype">
+		<property name="itemTypeService" ref="itemTypeService"></property>
+		<property name="itemService" ref="itemService"></property>
+		<property name="gradeService" ref="gradeService"></property>
+		<property name="subjectService" ref="subjectService"></property>
+		<property name="knowledgeService" ref="knowledgeService"></property>
+		<property name="paperService" ref="paperService"></property>
+		<property name="testPaperSectionService" ref="testPaperSectionService"></property>
+		<property name="testPaperItemService" ref="testPaperItemService"></property>
+		<property name="ssoUserTestService" ref="ssoUserTestService"></property>
+		<property name="ssoUserTestItemService" ref="ssoUserTestItemService"></property>
+		<property name="ssoUserService" ref="ssoUserService"></property>
+		<property name="taskService" ref="taskService"></property>
+	</bean>
+	
+	<bean id="paperAction" class="cn.zeppin.action.admin.PaperAction" scope="prototype">
+		<property name="paperService" ref="paperService"></property>
+		<property name="gradeService" ref="gradeService"></property>
+		<property name="subjectService" ref="subjectService"></property>
+		<property name="sysUserService" ref="sysUserService"></property>
+		<property name="areaService" ref="areaService" />
+		<property name="itemTypeService" ref="itemTypeService"></property>
+		<property name="testPaperSectionService" ref="testPaperSectionService"></property>
+		<property name="testPaperItemService" ref="testPaperItemService"></property>
+		<property name="itemService" ref="itemService"></property>
+		
+	</bean>
+	
+	<bean id="rolefuncationAction" class="cn.zeppin.action.admin.NavigationAction" scope="prototype">
+		<property name="roleFunctionService" ref="roleFuncationService"></property>
+	</bean>
+	
+	
+	<bean id="knowledgeAction" class="cn.zeppin.action.admin.KnowledgeAction" scope="prototype">
+		<property name="knowledgeService" ref="knowledgeService"></property>
+		<property name="gradeService" ref="gradeService"></property>
+		<property name="subjectService" ref="subjectService"></property>
+		<property name="sysUserService" ref="sysUserService" />
+		<property name="itemService" ref="itemService"></property>
+		<property name="ssoUserService" ref="ssoUserService"></property>
+		<property name="ssoUserTestItemService" ref="ssoUserTestItemService"></property>
+		<property name="ssoUserTestService" ref="ssoUserTestService"></property>
+	</bean>
+	
+	<!-- 资讯 -->
+	<bean id="informationAction" class="cn.zeppin.action.admin.InformationAction" scope="prototype">
+		<property name="informationService" ref="informationService"></property>
+		<property name="subjectService" ref="subjectService"></property>
+		<property name="resourceService" ref="resourceService"></property>
+	</bean>
+	
+</beans>

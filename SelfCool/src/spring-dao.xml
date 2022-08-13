@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- 基本DAO -->	
+	<bean id="activityDAO" class="cn.zeppin.dao.imp.ActivityDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="areaDAO" class="cn.zeppin.dao.imp.AreaDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="businessDAO" class="cn.zeppin.dao.imp.BusinessDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="businessCategoryDAO" class="cn.zeppin.dao.imp.BusinessCategoryDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="categoryDAO" class="cn.zeppin.dao.imp.CategoryDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="categoryRetrieveDAO" class="cn.zeppin.dao.imp.CategoryRetrieveDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="funcationDAO" class="cn.zeppin.dao.imp.FuncationDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="gradeDAO" class="cn.zeppin.dao.imp.GradeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="knowledgeDAO" class="cn.zeppin.dao.imp.KnowledgeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="organizationDAO" class="cn.zeppin.dao.imp.OrganizationDAO" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="resourceDAO" class="cn.zeppin.dao.imp.ResourceDAO" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="roleDAO" class="cn.zeppin.dao.imp.RoleDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="roleFuncationDAO" class="cn.zeppin.dao.imp.RoleFuncationDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="subjectDAO" class="cn.zeppin.dao.imp.SubjectDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="subjectItemTypeDAO" class="cn.zeppin.dao.imp.SubjectItemTypeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="paperDAO" class="cn.zeppin.dao.imp.PaperDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="testPaperSectionDAO" class="cn.zeppin.dao.imp.TestPaperSectionDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="testPaperItemDAO" class="cn.zeppin.dao.imp.TestPaperItemDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="itemDAO" class="cn.zeppin.dao.imp.ItemDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="itemTypeDAO" class="cn.zeppin.dao.imp.ItemTypeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="itemAnswerDAO" class="cn.zeppin.dao.imp.ItemAnswerDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="retrieveDAO" class="cn.zeppin.dao.imp.RetrieveDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="retrieveTypeDAO" class="cn.zeppin.dao.imp.RetrieveTypeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="subjectRetrieveDAO" class="cn.zeppin.dao.imp.SubjectRetrieveDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+
+	<bean id="advertDAO" class="cn.zeppin.dao.imp.AdvertDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="sysUserDAO" class="cn.zeppin.dao.imp.SysUserDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="sysUserSubjectDAO" class="cn.zeppin.dao.imp.SysUserSubjectDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="sysUserGradeDAO" class="cn.zeppin.dao.imp.SysUserGradeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="subjectCountDownDAO" class="cn.zeppin.dao.imp.SubjectCountDownDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	
+	<bean id="informationDAO" class="cn.zeppin.dao.imp.InformationDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+<!-- 前端 -->
+	
+	<bean id="authDAO" class="cn.zeppin.dao.imp.AuthDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="versionDAO" class="cn.zeppin.dao.imp.VersionDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="ssoUserDAO" class="cn.zeppin.dao.imp.SsoUserDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="userSubjectDAO" class="cn.zeppin.dao.imp.UserSubjectDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="userKnowledgeDAO" class="cn.zeppin.dao.imp.UserKnowledgeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="ssoUserPayDAO" class="cn.zeppin.dao.imp.SsoUserPayDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="ssoUserTestDAO" class="cn.zeppin.dao.imp.SsoUserTestDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="ssoUserTestItemDAO" class="cn.zeppin.dao.imp.SsoUserTestItemDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+		<bean id="ssoUserTestItemCountDAO" class="cn.zeppin.dao.imp.SsoUserTestItemCountDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+		
+	<bean id="ssoKnowledgeDegreeDAO" class="cn.zeppin.dao.imp.SsoKnowledgeDegreeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="taskDAO" class="cn.zeppin.dao.imp.TaskDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="ssoTaskDAO" class="cn.zeppin.dao.imp.SsoTaskDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- 短信接口  -->
+	<bean id="mobileCodeDAO" class="cn.zeppin.dao.imp.MobileCodeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+</beans>

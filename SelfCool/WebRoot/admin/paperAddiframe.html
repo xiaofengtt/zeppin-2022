@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="../css/bootstrap2.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/iframe.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/url.min.js"></script>
+
+</head>
+<body>
+	<div class="ifrcnt container">
+		<div class="hd">
+			<h3>请选择试题模板</h3>
+		</div>
+		<div class="bd">
+			<div class="alert alert-danger"
+				style="display:none;margin:0 15px 15px;"></div>
+			<button class="btn btn-primary" type="button" name="paperNomalAdd">添加普通试卷</button>
+			<button class="btn btn-primary" type="button" name="itemGroupAdd">添加组合试卷</button>
+		</div>
+
+	</div>
+	<script>
+	$(function(){
+		$('button[name=paperNomalAdd]').click(function(){
+			document.location.href='../admin/paperSetting.html'
+		});
+		$('button[name=itemGroupAdd]').click(function(){
+			document.location.href='../admin/paperGSetting.html';
+		});
+	});
+		
+		
+	</script>
+<body>
+</html>

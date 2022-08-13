@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>检索分类内容管理</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../css/bootstrap2.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+	
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../css/metro/blue/jtable.css" rel="stylesheet" type="text/css" >
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/jquery.jtable.js"></script>
+<script src="../js/jquery.jtable.zh-CN.js"></script>
+
+<script src="../js/url.min.js"></script>
+<script src="../js/mustache.js"></script> 
+
+
+</head>
+<body>
+
+
+
+<div  class="ifrcnt container">
+
+	<div class="">
+		
+		<div class="">
+			
+			<div class="bd">
+			<div class="tablewrap"  style="position:relative">
+				<div class="cui-menu" style="position: absolute;top: 50px;left: 0;z-index: 2;">
+					<button class="btn btn-primary btn-create" type="button">
+						+ 添加内容
+					</button>
+				</div>
+				<div id="TableContainer"></div>
+
+
+				<script type="text/javascript">
+					
+					$(document)
+						.ready(
+							function() {
+								var retrieveTypeId = (url('?id') != null) ? url('?id') : '';
+								
+								var listurl = '../admin/retrieveList?retrieveType.id='+retrieveTypeId;
+								
+								$('#TableContainer').jtable(
+									{
+										title : '内容管理',
+										messages : zhCN, //Lozalize
+										paging : true, //Enable paging
+										pageSize : 10, //Set page size (default: 10)
+										pageSizes : [ 10, 20, 30, 40, 50 ],
+										sorting : true, //Enable sorting
+										defaultSorting : 'id ASC', //Set default sorting
+										dialogShowEffect : 'drop',
+										addRecordButton : $('.btn-create'),
+										actions : {
+											listAction : listurl,
+											updateAction : '../retrieveUpdate?retrieveType.id='+retrieveTypeId,
+											deleteAction :'../retrieveDelete',
+											createAction : '../retrieveAdd?retrieveType.id='+retrieveTypeId
+										},
+										fields : {
+											id : {
+												title : '编号',
+												key : true,
+												width:'5%'
+											},
+											name : {
+												title : '名称',
+												width : '8%'
+										
+											},
+											status : {
+												title:'状态',
+												width:'5%',
+												options : {
+													'0':'停用',
+													'1':'正常'
+												},
+												defaultValue : 1
+											
+											}
+							
+										},
+								
+										columnResizable : false,
+										
+										deleteConfirmation: function(data) {
+											data.deleteConfirmMessage = '确定要停用这行数据?';
+											$('#DeleteDialogButton').html(' <span class="ui-button-text">停用</span> ');
+										},
+										formClosed : function(event,data) {
+										},
+
+										recordsLoaded :function (data) {
+											//删除按钮改成停用
+										    $('#'+data.target.id).find('.jtable-delete-command-button').each(function(){
+												$(this).attr('title','停用');
+												$(this).find('span').text('停用');
+											}) 
+					
+										}
+								
+									});
+										
+
+									$('#TableContainer').jtable('load');
+								
+								
+							})
+				</script>
+
+			</div>
+		</div>
+		</div>
+		
+		
+	</div> <!--end row-->
+	
+</div>	<!--end container-->
+
+</body>
+</html>
+		

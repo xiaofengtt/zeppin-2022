@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>考试时间管理</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../css/bootstrap2.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<!--[if lt IE 9]>
+  <script src="../js/html5shiv.js"></script>
+  <script src="../js/respond.min.js"></script>
+<![endif]-->
+	
+<link href="../css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../css/metro/blue/jtable.css" rel="stylesheet" type="text/css" >
+<link href="../css/colorbox.css" rel="stylesheet" type="text/css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery-ui.js"></script>
+<script src="../js/jquery.jtable.js"></script>
+<script src="../js/jquery.jtable.zh-CN.js"></script>
+
+<script src="../js/url.min.js"></script>
+<script src="../js/mustache.js"></script> 
+
+
+</head>
+<body>
+
+
+
+<div  class="ifrcnt container">
+
+	<div class="">
+		
+		<div class="">
+			
+			<div class="bd">
+			<div class="tablewrap"  style="position:relative">
+				<div class="cui-menu" style="position: absolute;top: 50px;left: 0;z-index: 2;">
+					<a class="btn btn-primary btn-create time-add" data-fancybox-type="iframe" href="../admin/subjectAddCountDowniframe.html">
+						+ 添加考试时间
+					</a>
+				</div>
+				<div id="TableContainer"></div>
+
+
+				<script type="text/javascript">
+					
+					$(document)
+						.ready(
+							function() {
+								var subjectId = (url('?id') != null) ? url('?id') : '';
+								
+								var listurl = '../admin/subCDownList?subject.id='+subjectId;
+								 $(".time-add").attr('href','../admin/../admin/subjectAddCountDowniframe.html?id='+subjectId); 
+								$('#TableContainer').jtable(
+									{
+										title : '考试时间管理',
+										messages : zhCN, //Lozalize
+										paging : true, //Enable paging
+										pageSize : 10, //Set page size (default: 10)
+										pageSizes : [ 10, 20, 30, 40, 50 ],
+										sorting : true, //Enable sorting
+										defaultSorting : 'id ASC', //Set default sorting
+										dialogShowEffect : 'drop',
+										addRecordButton : $('.btn-create'),
+										actions : {
+											listAction : listurl,
+											deleteAction : '../subCDownDelete'
+										},
+										fields : {
+											id : {
+												title : '编号',
+												key : true,
+												width:'5%'
+											},
+											examtime : {
+												title : '考试时间',
+												width : '8%'
+										
+											},
+											status : {
+												title:'状态',
+												width:'5%',
+												options : {
+													'0':'停用',
+													'1':'正常'
+												},
+												defaultValue : 1
+											
+											},
+											customedit:{
+												title : '编辑',
+												width : '5%',
+												sorting : false,
+												edit : false,
+												create : false,
+												visibility : 'fixed',
+												display : function(data) {
+														var html = '<a class="ifrbox" data-fancybox-type="iframe" href="../admin/subjectEditCountDowniframe.html?id=' + data.record.id +'&subject.id='+subjectId+'">编辑</a>';											return html;
+												}
+											}										
+										},
+								
+										columnResizable : false,
+										
+										deleteConfirmation: function(data) {
+											data.deleteConfirmMessage = '确定要停用这行数据?';
+											$('#DeleteDialogButton').html(' <span class="ui-button-text">停用</span> ');
+										},
+										formClosed : function(event,data) {
+										},
+
+										recordsLoaded :function (data) {
+											//删除按钮改成停用
+										    $('#'+data.target.id).find('.jtable-delete-command-button').each(function(){
+												$(this).attr('title','停用');
+												$(this).find('span').text('停用');
+											}) 
+					
+										}
+								
+									});
+										
+
+									$('#TableContainer').jtable('load');
+								
+								
+							})
+				</script>
+
+			</div>
+		</div>
+		</div>
+		
+		
+	</div> <!--end row-->
+	
+</div>	<!--end container-->
+
+</body>
+</html>
+		

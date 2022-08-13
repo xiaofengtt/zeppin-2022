@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	
+	<!-- 配置struts相关选项 -->
+	<constant name="struts-devmode" value="true"></constant>
+	<constant name="struts-locale" value="zh-CN">constant</constant>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<constant name="struts.multipart.maxSize" value="100000000000" />
+	<constant name="struts.multipart.parser" value="myRequestParser" />
+	<bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest" name="myRequestParser" class="cn.zeppin.base.RequestParseWrapper"
+		scope="default" optional="true" />
+	
+	<constant name="structs.ObjectFactory" value="spring"></constant>
+	
+	<package name="default" namespace="/" extends="struts-default">
+		
+		<!-- 配置连接器 -->
+		
+		<interceptors>
+		
+			<interceptor name="superAdminRightInterceptor" class="cn.zeppin.interceptor.SuperAdminRightInterceptor"></interceptor>
+			
+		</interceptors>
+		
+		<default-interceptor-ref name="superAdminRightInterceptor" />
+		
+		<!-- 地区-->
+		<action name="area*" class="areaAction" method="{1}" />
+		
+		<!-- 搜索列表 -->
+		<action name="nav*" class="rolefuncationAction" method="{1}" />
+		<!-- 用户 -->
+		<action name="ssoUser*" class="ssoUserAction" method="{1}" />
+		<!-- 用户测验 -->
+		<action name="userTest*" class="ssoUserTestAction" method="{1}" />
+		<!-- 用户科目 -->
+		<action name="userSubject*" class="userSubjectAction" method="{1}" />
+		<!-- 用户错题本 -->
+		<action name="userWrongBook*" class="userWrongBookAction" method="{1}" />
+		
+		
+		
+		<!-- 认证注册
+		<action name="sso*" class="ssoLogin" method="{1}" />
+		 -->
+		<!-- 后台登录 -->
+		<action name="sso*" class="loginAction" method="{1}" />
+		
+		<!-- 修改密码 -->
+		<action name="password*" class="passwordAction" method="{1}" />
+		
+		<!-- 管理员管理 -->
+		<action name="manager*" class="managerAction" method="{1}" />
+		
+		<!-- 学科题型关联 -->
+		<action name="subjectItemType*" class="subjectItemTypeAction" method="{1}" />
+		
+		<!-- 学科检索 -->
+		<action name="subject*" class="subjectAction" method="{1}" >
+			<result name="subRetrieve">/admin/subjectSetRetrieve.jsp</result>
+		</action>
+		
+		<!-- 考试倒计时 -->
+		<action name="subCDown*" class="subjectCountDownAction" method="{1}" />
+		
+		<!-- 业务分类-->
+		<action name="businessCategory*" class="businessCategoryAction" method="{1}" />
+		
+		<!-- 业务 -->
+		<action name="business*" class="businessAction" method="{1}" />
+		
+		<!-- 分类检索 -->
+		<action name="category*" class="categoryAction" method="{1}" />
+		
+		<!-- 分类科目检索 -->
+		<action name="retrieve*" class="retrieveAction" method="{1}" />
+		
+		<!-- 广告 -->
+		<action name="advert*" class="advertAction" method="{1}" />
+		
+		<!-- 资源 -->
+		<action name="resource*" class="resourceAction" method="{1}" />
+		
+		<!-- 知识点 -->
+		<action name="knowledge*" class="knowledgeAction" method="{1}" />
+	
+		<!-- 题型 -->
+		<action name="itemType*" class="itemTypeAction" method="{1}" />
+		
+		<!-- 试题 -->
+		<action name="item*" class="itemAction" method="{1}" />
+		
+		<!-- 试卷-->
+		<action name="paper*" class="paperAction" method="{1}" >
+			<result name="paper">/admin/paperUpdate.jsp</result>
+			<result name="auditing">/admin/paperAuditing.jsp</result>
+		</action>
+		
+		<!-- 资讯 -->
+		<action name="information*" class="informationAction" method="{1}" />
+		
+
+
+
+	</package>
+
+</struts>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>二维码</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullescreen"content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-title" content="二维码">
+    <style>
+        body{
+            background-color:#FAFAD2
+        }
+        .title{
+        position:absolute;
+        left:50%;
+        margin-left:-28px;
+        }
+        .QR-code{
+           position: absolute;
+           top:50%;
+       	   left:50%;
+       	   margin-top:-40px;
+       	   margin-left:-40px;         	   
+       }
+    </style>
+    <script src="../js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<script type="text/javascript" src="../js/url.min.js"></script>
+<div class="title">
+  <h3>二维码</h3>
+</div>
+<div class="QR-code">
+    <a class="enter" target="_blank"title="试卷">
+        <img ></a>
+</div>
+</body> 
+<script>
+    $(function(){
+        var id=url("?id");
+        $('a').attr('href','../admin/paperTest.html?id='+id);
+        $('img').attr('src','../admin/paperPaperForQRCode?id='+id);
+    })
+
+</script>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="../css/bootstrap2.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/iframe.js"></script>
+<script src="../js/mustache.js"></script>
+
+<script src="../js/url.min.js"></script>
+<script src="../js/upload/jquery.uploadfile.min.js"></script>
+</head>
+<body>
+	<div class="ifrcnt container">
+		<div class="hd">
+			<h3>编辑版本</h3>
+		</div>
+		<div class="bd">
+			<div class="alert alert-danger"
+				style="display:none;margin:0 15px 15px;"></div>
+			<form id="formsubmit" class="form-horizontal" role="form"
+				action="#"
+				method="post">
+				<input type="hidden" name="id" value="">
+				<div class="clearfix">
+					<div id="HtmlTpl" class="span10">
+						
+						
+					</div>
+					<script id="DataTpl" type="text/template">
+						{{#Records}}
+							<div class="control-group">
+								<label class="control-label" for="">版本号</label>
+								<div class="controls">
+									<input type="text" id="" name="version"
+										value="{{version}}">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="">设备平台</label>
+								<div class="controls">
+									<select class="deviceselector" name="device">
+										<option  value="1">IOS</option>
+										<option  value="2">Android</option>
+									</select>
+							
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="">强制更新</label>
+								<div class="controls">
+									<select class="forcedselector" name="forcedUpdate">
+										<option  value="0">否</option>
+										<option  value="1">是</option>
+									</select>
+							
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="">状态</label>
+								<div class="controls">
+									<select class="statusselector" name="status">
+										<option  value="0">未发布</option>
+										<option  value="1">发布</option>
+									</select>
+							
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="">文件</label>
+								<div class="controls">
+									<div id="resourceId"><span class="btn btn-primary btn-create">&nbsp;上传文件包&nbsp;&nbsp;</span><br><br>
+										<span id="uploadFile">{{resource_url}}</span>
+									</div>								
+								</div>
+							</div>						
+						{{/Records}}
+					</script>
+
+				</div>
+
+				<div class="row actionbar">
+					<div class="offset7">
+						<button class="btn btn-primary" type="submit">确定</button>
+						<button id="colorboxcancel" onclick="parent.$.colorbox.close()"
+							class="btn btn-default" type="button">取消</button>
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<script>
+		$(function() {
+			var id = url('?id');
+			$('input[name="id"]').val(id);
+			
+			$.getJSON('../versionLoad?id='+id+'&split=_', function(r) {
+				if(r.Status == 'success') {
+					var st = JSON.stringify(r);
+				    var template = $('#DataTpl').html();
+				    var html = Mustache.render(template, $.parseJSON(st));
+				    $('#HtmlTpl').html(html);
+				    $(".forcedselector option[value='"+r.Records.forcedUpdate+"']").attr('selected',true); 
+				    $(".deviceselector option[value='"+r.Records.device+"']").attr('selected',true); 
+				    $(".statusselector option[value='"+r.Records.status+"']").attr('selected',true); 
+				    $("#resourceId").uploadFile({
+						url:"../resourceAdd?type=4",
+						allowedTypes:"apk",
+						maxFileSize:1024*1024*200,
+						fileName:"applyReportBook",
+						maxFileCount : 1,
+						dragDropStr: "",
+						extErrorStr:"文件格式不正确，请上传apk文件包",
+						showStatusAfterSuccess:false,
+						showDelete : true,
+						deletelStr : '删除',
+						showAbort:false,
+						onSuccess:function(files,data,xhr)
+						{
+							if($('input[name="resource.id"]').length > 0) {
+								$('input[name="resource.id"]').val(data.Records.id);
+							}else {
+								$("#resourceId").append('<input type="hidden" name="resource.id" value="' + data.Records.id + '">');
+							}
+							$('#uploadFile').html(data.Records.sourcePath);
+							
+						},
+						deleteCallback: function (data, pd) {
+				         	$.get("../resourceDelete?id="+$('input[name="resource.id"]').val(),function (resp,textStatus, jqXHR) {
+				                if(resp.Status=='success')  
+									 $("#resourceId").find('input[name="resource.id"]').remove();
+								else 
+									alert(resp.Message);
+				             });
+						}
+					})
+				}else {
+					alert('服务端出错！请稍后重试！');
+				}
+			});			
+			
+			
+			$('#formsubmit').submit(
+				function() {
+					var str = $(this).serialize();
+					$.get('../versionUpdate?'+ str, function(data) {
+						if (data.Status == "success") {
+							window.top.location.reload(true);
+						} else {
+							$('.alert-danger').html(data.Message).show();
+						}
+					})
+					return false;
+				});
+			
+			//项目类型 helper 函数
+			$(document).on("click",function(e) {
+				if(!$(e.target).parents().is('.ufc'))
+					$('.uul').hide();
+			});
+		});
+		
+	</script>
+<body>
+</html>

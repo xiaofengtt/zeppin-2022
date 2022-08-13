@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="../css/bootstrap2.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/iframe.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/url.min.js"></script>
+<link href="http://hayageek.github.io/jQuery-Upload-File/4.0.2/uploadfile.css" rel="stylesheet">
+<script src="../js/jquery.uploadfile.min.js"></script>
+
+</head>
+<body>
+	<div class="ifrcnt container">
+		<div class="hd">
+			<h3>添加活动</h3>
+		</div>
+		<div class="bd">
+			<div class="alert alert-danger"
+				style="display:none;margin:0 15px 15px;"></div>
+			<form id="formsubmit" class="form-horizontal" role="form"
+				action="#"
+				method="post">
+				<!-- <input type="hidden" name="activity.id" value=""> -->
+				<div class="clearfix">
+					<div id="HtmlTpl" class="span10">
+						<div class="control-group">
+							<label class="control-label" for="">名称</label>
+							<div class="controls">
+								<input type="text" id="" name="name"
+									value="">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="">标题</label>
+							<div class="controls">
+								<input type="text" id="" name="title"
+									value="">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="">权重</label>
+							<div class="controls">
+								<input type="text" id="" name="weight"
+									value="">
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="">内容类型</label>
+							<div class="controls">
+								<select id="contentSelect" name="contentType" onchange="replaceContent();">
+									<option value="1">外部链接</option>
+									<option value="2">自制内容</option>
+								</select>
+
+							</div>
+						</div>
+						<div class="control-group">
+							<script id="editor" type="text/plain" style="width:100%;height:500px;"></script>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="">URL</label>
+							<div class="controls">
+								<input type="text" id="" name="url"
+									value="">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="">状态</label>
+							<div class="controls">
+								<select name="status">
+									<option value="1">正常</option>
+									<option value="0">停用</option>
+									<option value="2">发布</option>
+								</select>
+
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="">活动宣传图</label>
+							<div class="controls">
+								<div id="resourceId"><span class="btn btn-primary btn-create">&nbsp;上传活动图&nbsp;&nbsp;</span>
+								</div>
+								<img id="uploadImage" width="120px" >
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+
+				<div class="row actionbar">
+					<div class="offset7">
+						<button class="btn btn-primary" type="submit">确定</button>
+						<button id="colorboxcancel" onclick="parent.$.colorbox.close()"
+							class="btn btn-default" type="button">取消</button>
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<script>
+		$(function() {
+			var topurl = window.top.location.href;
+			var activityid = (url('?activity.id',topurl) != null) ? url('?activity.id',topurl) : '';
+			$('input[name="activity.id"]').val(activityid);
+			$('#formsubmit').submit(function() {
+				var str = $(this).serialize();
+				$.post('../activityAdd?' + str, function(data) {
+					if (data.Status == "success") {
+						window.top.location.reload(true);
+					} else {
+						$('.alert-danger').html(data.Message).show();
+					}
+				})
+				return false;
+			});
+			
+
+			
+			//项目类型 helper 函数
+			$(document).on("click",function(e) {
+				if(!$(e.target).parents().is('.ufc'))
+					$('.uul').hide();
+			});
+
+		});
+		$("#resourceId").uploadFile({
+				url:"../resourceAdd?type=1",
+				allowedTypes:"jpg,png,gif,jpeg",
+				maxFileSize:1024*1024*5,
+				fileName:"applyReportBook",
+				maxFileCount : 1,
+				dragDropStr: "",
+				extErrorStr:"文件格式不正确，请上传jpg或png类型的图片",
+				showStatusAfterSuccess:false,
+				showDelete : true,
+				deletelStr : '删除',
+				showAbort:false,
+				onSuccess:function(files,data,xhr)
+				{
+					if($('input[name="resource.id"]').length > 0) {
+						$('input[name="resource.id"]').val(data.Records.id);
+					}else {
+						$("#resourceId").append('<input type="hidden" name="resource.id" value="' + data.Records.id + '">');
+					}
+					$('#uploadImage').attr('src',data.Records.sourcePath);
+					
+				},
+				deleteCallback: function (data, pd) {
+		         	$.get("../resourceDelete?id="+$('input[name="resource.id"]').val(),function (resp,textStatus, jqXHR) {
+		                if(resp.Status=='success')  
+							 $("#resourceId").find('input[name="resource.id"]').remove();
+						else 
+							alert(resp.Message);
+		             });
+				}
+			});	
+	</script>
+<body>
+</html>

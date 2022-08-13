@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="../css/bootstrap2.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/iframe.js"></script>
+<script src="../js/mustache.js"></script>
+
+<script src="../js/url.min.js"></script>
+<script src="../js/upload/jquery.uploadfile.min.js"></script>
+</head>
+<body>
+	<div class="ifrcnt container">
+		<div class="hd">
+			<h3>编辑类型</h3>
+		</div>
+		<div class="bd">
+			<div class="alert alert-danger"
+				style="display:none;margin:0 15px 15px;"></div>
+			<form id="formsubmit" class="form-horizontal" role="form"
+				action="#"
+				method="post">
+				<input type="hidden" name="id" value="">
+				<div class="clearfix">
+					<div id="HtmlTpl" class="span10">
+						
+						
+					</div>
+					<script id="DataTpl" type="text/template">
+						{{#Records}}
+							<div class="control-group">
+								<label class="control-label" for="">名称</label>
+								<div class="controls">
+									<input type="text" id="" name="name"
+										value="{{name}}">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="">简称</label>
+								<div class="controls">
+									<input type="text" id="" name="shortname"
+										value="{{shortname}}">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="">状态</label>
+								<div class="controls">
+									<select name="status">
+										<option {{#status}}selected{{/status}} value="0">停用</option>
+										<option {{#status}}selected{{/status}} value="1">正常</option>
+									</select>
+							
+								</div>
+							</div>	
+							<div class="control-group">
+								<label class="control-label" for="">科目检索类别</label>
+								<div class="controls" style="padding-top:10px;">
+									<div class="restrictcnt clearfix span6" style="display:block">
+										<div class="ufcwrap" id="retrieveTypeCon">
+										</div>
+										<button type="button" onclick="retrieveTypeUbtn();"
+											class="btn btn-default frbtn retrieveTypeBtn disabledbtn"
+											disabled="disabled">确认</button>
+									</div>
+									<div id="retrieveTypemtr" style="padding-top:10px;clear:both">
+										{{#retrieveTypes}}
+										<div class="mtc">{{retrieveType_name}}<span onclick="delretrieveType($(this),'')" dataid="{{retrieveType_id}}" class="uclose">&times;</span></div>
+										{{/retrieveTypes}}
+									</div>
+									<div class="hidden" id="retrieveTypeIds">
+										{{#retrieveTypes}}
+										<input type="hidden" id="retrieveTypesid_{{retrieveType_id}}"
+											name="retrieveTypes" value="{{retrieveType_id}}">
+										{{/retrieveTypes}}
+									</div>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="">图标</label>
+								<div class="controls">
+									<div id="resourceId"><span class="btn btn-primary btn-create">&nbsp;上传图标&nbsp;&nbsp;</span><br><br>
+									<img id="uploadImage" width="120px" src="../{{resource_url}}" >
+									</div>								
+								</div>
+							</div>						
+						{{/Records}}
+					</script>
+
+				</div>
+
+				<div class="row actionbar">
+					<div class="offset7">
+						<button class="btn btn-primary" type="submit">确定</button>
+						<button id="colorboxcancel" onclick="parent.$.colorbox.close()"
+							class="btn btn-default" type="button">取消</button>
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<script>
+		$(function() {
+			var id = url('?id');
+			var pid = (url('?category.id') != null) ? url('?category.id') : '';
+			$('input[name="id"]').val(id);
+			
+			$.getJSON('../categoryLoad?id='+id+'&split=_', function(r) {
+				if(r.Status == 'success') {
+					var st = JSON.stringify(r);
+				    var template = $('#DataTpl').html();
+				    var html = Mustache.render(template, $.parseJSON(st));
+				    $('#HtmlTpl').html(html);
+				    retrieveTypeCon();
+				    $("#resourceId").uploadFile({
+						url:"../resourceAdd?type=1",
+						allowedTypes:"jpg,png,gif,jpeg",
+						maxFileSize:1024*1024*5,
+						fileName:"applyReportBook",
+						maxFileCount : 1,
+						dragDropStr: "",
+						extErrorStr:"文件格式不正确，请上传jpg或png类型的图片",
+						showStatusAfterSuccess:false,
+						showDelete : true,
+						deletelStr : '删除',
+						showAbort:false,
+						onSuccess:function(files,data,xhr)
+						{
+							if($('input[name="resource.id"]').length > 0) {
+								$('input[name="resource.id"]').val(data.Records.id);
+							}else {
+								$("#resourceId").append('<input type="hidden" name="resource.id" value="' + data.Records.id + '">');
+							}
+							$('#uploadImage').attr('src',data.Records.sourcePath);
+							
+						},
+						deleteCallback: function (data, pd) {
+				         	$.get("../resourceDelete?id="+$('input[name="resource.id"]').val(),function (resp,textStatus, jqXHR) {
+				                if(resp.Status=='success')  
+									 $("#resourceId").find('input[name="resource.id"]').remove();
+								else 
+									alert(resp.Message);
+				             });
+						}
+					})
+				}else {
+					alert('服务端出错！请稍后重试！');
+				}
+			});
+			
+			
+			
+			$('#formsubmit').submit(
+				function() {
+					var str = $(this).serialize();
+					$.get('../categoryUpdate?'+ str, function(data) {
+						if (data.Status == "success") {
+							window.top.location.reload(true);
+						} else {
+							$('.alert-danger').html(data.Message).show();
+						}
+					})
+					return false;
+				});
+			
+			//项目类型 helper 函数
+			$(document).on("click",function(e) {
+				if(!$(e.target).parents().is('.ufc'))
+					$('.uul').hide();
+			});
+			
+
+		});
+				//学科权限
+		function retrieveTypeCon(rid,level) {
+			var cUrl = "../admin/retrieveTypeList";
+			rid = (typeof (rid) == 'undefined') ? '' : rid;
+			level = (typeof (level) == 'undefined') ? '1' : level;
+			cUrl += (rid) ? '?retrieveType.id=' + rid : '?retrieveType.id=&level=1';
+			$.getJSON(cUrl,function(data) {
+				if (data.Status == 'success' && data.Records.length > 0) {
+					var ufc = '<div class="ufc"><span class="usel" onclick="showul($(this))"><strong>请选择...</strong></span><ul class="uul">';
+					$.each(data.Records,
+							function(i, c) {
+								aClick = (c.haschild) ? ' onclick="retrieveTypeCon(\''
+										+ c.id
+										+ '\');resspan($(this));"'
+										: ' onclick="resspan($(this));activeBtn(\'retrieveTypeBtn\')"';
+								ufc += '<li ' + aClick
+										+ ' dataid="' + c.id
+										+ '" dataname="'
+										+ c.name + '">'
+										+ c.name + '</li>';
+							});
+				}
+				ufc += '</ul></div>';
+				$("#retrieveTypeCon").append(ufc);
+			});
+			$('.retrieveTypeBtn').prop('disabled', true).addClass('disabledbtn');
+		}
+		
+		function retrieveTypeUbtn() {
+			var id = [];
+			var names = [];
+			type = (typeof (type) == 'undefined') ? '' : type;
+			$('#retrieveTypeCon .usel').each(function() {
+				if ($(this).attr('dataname')) {
+					names.push($(this).attr('dataname'));
+					id.push($(this).attr('dataid'));
+				}
+			});
+			var lastid = id.pop();
+			aClick = ' onclick="delretrieveType($(this),\'' + type + '\')"';
+
+			if ($('input[name="retrieveTypes"]').length > 0) {// 避免添加相同的权限
+				var rightid_array = [];
+				$('input[name="retrieveTypes"]').each(function() {
+					rightid_array.push($(this).val());
+				});
+				if ($.inArray(lastid.toString(), rightid_array) > -1) {
+					alert('已存在该权限范围');
+					return;
+				}
+				
+			}
+			$('#retrieveTypemtr').append(
+					'<div class="mtc">' + names.join('<span class="sn"> &gt; </span>')
+							+ '<span' + aClick + ' dataid="' + lastid
+							+ '" class="uclose">&times;</span></div>');
+			$('#retrieveTypeIds').append(
+					'<input type="hidden" id="retrieveTypesid_' + lastid
+							+ '" name="retrieveTypes" value="' + lastid + '">');
+			//showform();
+			$('#retrieveTypeCon').empty();
+			retrieveTypeCon();
+		}
+		
+		// 删除
+		function delretrieveType(t) {
+			t.closest('.mtc').remove();
+			$('#retrieveTypesid_' + t.attr('dataid')).remove();
+		}
+		
+		
+	</script>
+<body>
+</html>

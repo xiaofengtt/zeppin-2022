@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="../css/bootstrap2.css">
+<link rel="stylesheet" href="../css/iframe.css">
+<script src="../js/jquery-1.9.1.min.js"></script>
+<script src="../js/jquery.colorbox.js"></script>
+<script src="../js/iframe.js"></script>
+<script src="../js/mustache.js"></script>
+
+<script src="../js/url.min.js"></script>
+<script src="../js/upload/jquery.uploadfile.min.js"></script>
+<script src="../js/tinymce/dropzone/lib/dropzone.js"></script>
+<script src="../js/tinymce/tinymce.min.js"></script>
+<script src="../js/tinymce/tinymce_zhcn.js"></script>
+</head>
+<body>
+	<div class="ifrcnt container">
+		<div class="hd">
+			<h3>添加资讯</h3>
+		</div>
+		<div class="bd">
+			<div class="alert alert-danger"
+				style="display:none;margin:0 15px 15px;"></div>
+			<form id="formsubmit" class="form-horizontal" role="form"
+				action="#"
+				method="post">
+				<input type="hidden" name="advert.id" value="">
+				<div class="clearfix">
+					<div id="HtmlTpl" class="span10">
+						<div class="control-group">
+							<label class="control-label" for="">资讯类型</label>
+							<div class="controls">
+								<select name="type">
+									<option value="1">动态</option>
+									<option value="2">成绩</option>
+									<option value="3">报名</option>
+								</select>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="">学科</label>
+							<div class="controls">
+								<select name="subject.id">
+									
+								</select>
+								
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="">标题</label>
+							<div class="controls">
+								<input type="text" id="" name="title" value="">
+							</div>
+						</div>				
+						<div class="control-group">
+							<label class="control-label" for="">摘要</label>
+							<div class="controls">
+								<textarea name="abstract"></textarea>
+
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="">缩略图</label>
+							<div class="controls">
+								<div id="resourceId"><span class="btn btn-primary btn-create">&nbsp;上传缩略图&nbsp;&nbsp;</span>
+								</div>
+								<img id="uploadImage" width="120px" height="60px" >
+							</div>
+							
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="">内容</label>
+							<div class="controls">
+								<textarea class="stem-textarea" id="infoContent" ></textarea>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="">状态</label>
+							<div class="controls">
+								<select name="status">
+									<option value="1">正常</option>
+									<option value="0">停用</option>
+								</select>
+
+							</div>
+						</div>
+					</div>
+					
+				</div>
+
+				<div class="row actionbar">
+					<div class="offset7">
+						<button class="btn btn-primary" type="submit">确定</button>
+						<button id="colorboxcancel" onclick="parent.$.colorbox.close()"
+							class="btn btn-default" type="button">取消</button>
+					</div>
+
+				</div>
+			</form>
+		</div>
+
+	</div>
+	<script>
+		$(function() {
+			$('#formsubmit').submit(function() {
+				var str = $(this).serialize();
+				var content = tinyMCE.get('infoContent').getContent()
+				str = str+'&content='+content;
+				$.get('../informationAdd?' + str, function(data) {
+					if (data.Status == "success") {
+						window.top.location.reload(true);
+					} else {
+						$('.alert-danger').html(data.Message).show();
+					}
+				})
+				return false;
+			});
+			$.get('../subjectList?status=1',function(r){
+				if(r.Status == 'success' && r.Records.length > 0 ) {
+					var str = '';
+					var sid = $('select[name="subject.id"]').val();
+					for ( var i = 0, l = r.Records.length; i < l; i++ ) {
+						var selected = (sid == r.Records[i].id) ? ' selected' : '';
+					    str += '<option '+ selected +' value="'+ r.Records[i].id +'">'+ r.Records[i].name +'</option>';
+					}
+					$('select[name="subject.id"]').html(str);
+					
+					
+				}
+			});	
+			$("#resourceId").uploadFile({
+				url:"../resourceAdd?type=1",
+				allowedTypes:"jpg,png,gif,jpeg",
+				maxFileSize:1024*1024*5,
+				fileName:"applyReportBook",
+				maxFileCount : 1,
+				dragDropStr: "",
+				extErrorStr:"文件格式不正确，请上传jpg或png类型的图片",
+				showStatusAfterSuccess:false,
+				showDelete : true,
+				deletelStr : '删除',
+				showAbort:false,
+				onSuccess:function(files,data,xhr)
+				{
+					if($('input[name="resource.id"]').length > 0) {
+						$('input[name="resource.id"]').val(data.Records.id);
+					}else {
+						$("#resourceId").append('<input type="hidden" name="resource.id" value="' + data.Records.id + '">');
+					}
+					$('#uploadImage').attr('src',data.Records.sourcePath);
+					
+				},
+				deleteCallback: function (data, pd) {
+		         	$.get("../resourceDelete?id="+$('input[name="resource.id"]').val(),function (resp,textStatus, jqXHR) {
+		                if(resp.Status=='success')  
+							 $("#resourceId").find('input[name="resource.id"]').remove();
+						else 
+							alert(resp.Message);
+		             });
+				}
+			});
+			tinymce.init({
+			    selector: "#infoContent",
+				//theme: "modern",
+			    plugins: [
+			        "autoresize autolink link gkpatch gkimage lists fullscreen paste advlist table charmap nonbreaking imageupload zpformula zpimages help"
+			    ],
+			    toolbar: "bold italic underline strikethrough subscript superscript  nonbreaking | link  gkimage imageupload zpformula charmap | table  bullist numlist | removeformat help |  fullscreen",
+				menubar : !1,
+				statusbar : !1,
+				toolbar_items_size: "normal",
+				strikethrough: {inline: 'del'},
+				//object_resizing: !1,
+				autoscroll: !0,
+				width: 520,
+				height: 58,
+				paste_preprocess: function(a, b) {
+			      b.content = b.content.replace(/(<|\/)(h1|h2|h3|h4|h5|h6)/g, "$1p")
+			    },
+				//submit_form_selector: "DefaultForm",
+				image_upload_url: "../resourceAdd?type=1",//图片文件
+				imageupload_url : "../resourceAdd?type=3",//音频文件
+				image_panel_width: 200,
+				target_list: !1,
+				atFunc: null,
+				setup : function(ed) {
+					ed.on('init', function(e) {
+						tinymce.activeEditor.focus();
+					});
+					ed.on('focus', function(e) {
+						if($('.zon_edit').length) {
+							$('.zon_edit').remove();
+						}
+					});
+				}
+			});
+		});
+	</script>
+<body>
+</html>
