@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/channelAccountDetail.css" />
+	</head>
+	<body>
+		<div class="main">
+			<!-- 内容主体区域 -->
+		    <div class="layui-bodu" style="padding: 30px 35px;">
+		    	<form class="layui-form" action="" lay-filter="first">
+		    		<div class="layui-form-item">
+						<label class="layui-form-label">类型</label>
+						<div class="layui-input-block">
+							<select name="type" lay-filter="type">
+								<option value="">请选择</option>
+								<option value="recharge">充值</option>
+								<option value="withdraw">提现</option>
+							</select>
+						</div>
+					</div>
+				  	<div class="layui-form-item">
+						<label class="layui-form-label">渠道</label>
+						<div class="layui-input-block">
+							<select name="channel" lay-filter="channel">
+								<option value="">请选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">账户名称</label>
+						<div class="layui-input-block">
+							<input type="text" name="name" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">账户号码</label>
+						<div class="layui-input-block">
+							<input type="text" name="accountNum" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="channel-datas">
+						
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">转发地址</label>
+						<div class="layui-input-block">
+							<input type="text" name="transferUrl" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">单次限额</label>
+						<div class="layui-input-block">
+							<input name="min" placeholder="单次最小限额" autocomplete="off" class="layui-input layui-input-inline" >
+							<input name="max" placeholder="单次最大限额" autocomplete="off" class="layui-input layui-input-inline" >
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">每日限额</label>
+						<div class="layui-input-block">
+							<input name="dailyMax" autocomplete="off" class="layui-input" >
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">总限额</label>
+						<div class="layui-input-block">
+							<input name="totalMax" autocomplete="off" class="layui-input" >
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<div class="layui-row">
+							<div class="layui-col-xs6 mb-15" style="padding: 0 10px">
+								<input type="radio" name="poundageType" value="static" title="固定手续费" lay-filter="poundageType" checked>
+								</div>
+							<div class="layui-col-xs6 mb-15" style="padding: 0 10px">
+								<input type="radio" name="poundageType" value="rate" title="手续费率" lay-filter="poundageType">
+							</div>
+						</div>
+						<div class="layui-row">
+							<div class="layui-col-xs6" style="padding: 0 10px">
+								<input name="poundage" class="layui-input">
+							</div>
+							<div class="layui-col-xs6" style="padding: 0 10px">
+								<input name="poundageRate" class="layui-input" disabled>
+							</div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">状态</label>
+					    <div class="layui-input-block">
+							<input type="radio" name="status" value="normal" title="正常" checked>
+							<input type="radio" name="status" value="disable" title="停用">
+							<input type="radio" name="status" value="suspend" title="暂停">
+					    </div>
+					</div>
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn" onclick="parent.layer.closeAll()">取消</button>
+							<button class="layui-btn lay-submit" lay-submit lay-filter="*">确认</button>
+						</div>
+					</div>
+				</form>
+		    </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/channelAccountDetail.js" ></script>
+	</body>
+</html>

@@ -52,6 +52,12 @@ public class ExamTeacherRoom implements java.io.Serializable {
 	private String remark;
 	// 禁用原因
 	private String disableReason;
+	//是否被取消二次确认
+	private Short isConfirmCanceled;
+	//可参加考试的开始时间
+	private Timestamp startTime;
+	//可参加考试的结束时间
+	private Timestamp endTime;
 
 	// Constructors
 
@@ -63,7 +69,7 @@ public class ExamTeacherRoom implements java.io.Serializable {
 	public ExamTeacherRoom(Integer id, ExamInformation exam, ExamRoom room, InvigilationTeacher teacher, Short isChief,
 			Short isMixed, Short isConfirm, Timestamp confirtime, Integer operater, Short isAuto, Integer creator,
 			Timestamp createtime, Short status, Timestamp applytime, Integer credit, String reason, Short isFirstApply,
-			String remark, String disableReason) {
+			String remark, String disableReason,Short isConfirmCanceled,Timestamp startTime,Timestamp endTime) {
 		super();
 		this.id = id;
 		this.exam = exam;
@@ -84,6 +90,9 @@ public class ExamTeacherRoom implements java.io.Serializable {
 		this.isFirstApply = isFirstApply;
 		this.remark = remark;
 		this.disableReason = disableReason;
+		this.isConfirmCanceled = isConfirmCanceled;
+		this.startTime = startTime;
+		this.endTime = endTime;
 	}
 
 	// Property accessors
@@ -261,6 +270,34 @@ public class ExamTeacherRoom implements java.io.Serializable {
 
 	public void setDisableReason(String disableReason) {
 		this.disableReason = disableReason;
+	}
+
+	
+	@Column(name = "IS_CONFIRM_CANCELED", nullable = false, length = 4)
+	public Short getIsConfirmCanceled() {
+		return isConfirmCanceled;
+	}
+
+	public void setIsConfirmCanceled(Short isConfirmCanceled) {
+		this.isConfirmCanceled = isConfirmCanceled;
+	}
+
+	@Column(name = "START_TIME")
+	public Timestamp getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Timestamp startTime) {
+		this.startTime = startTime;
+	}
+	
+	@Column(name = "END_TIME")
+	public Timestamp getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Timestamp endTime) {
+		this.endTime = endTime;
 	}
 
 	/**

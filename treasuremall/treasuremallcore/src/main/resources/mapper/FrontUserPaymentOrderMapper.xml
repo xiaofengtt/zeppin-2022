@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.treasuremall.mapper.FrontUserPaymentOrderMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_payment_order where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+		<if test='goodsIssue != null and goodsIssue != ""'>
+            and goods_issue= #{goodsIssue}
+        </if>     
+        <if test='goodsId != null and goodsId != ""'>
+            and goods_id= #{goodsId}
+        </if>     
+        <if test='gameType != null and gameType != ""'>
+            and game_type= #{gameType}
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+		<if test='paymentGroup != null and paymentGroup != ""'>
+            and payment_group= #{paymentGroup}
+        </if>
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ createtime < #{timeend} ]]>
+        </if>
+        <!-- 投注量筛选 -->
+        <if test='totalAmountmin != null and totalAmountmax != null'>
+            and (<![CDATA[ actual_d_amount >= #{totalAmountmin} and actual_d_amount <= #{totalAmountmax} ]]>)
+        </if>  
+   		<if test='isLuck != null and isLuck != ""'>
+            and is_lucky= #{isLuck}
+        </if>      
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUserPaymentOrder">
+		select * from front_user_payment_order where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+        <if test='goodsIssue != null and goodsIssue != ""'>
+            and goods_issue= #{goodsIssue}
+        </if>    
+        <if test='goodsId != null and goodsId != ""'>
+            and goods_id= #{goodsId}
+        </if>  
+        <if test='gameType != null and gameType != ""'>
+            and game_type= #{gameType}
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+		<if test='paymentGroup != null and paymentGroup != ""'>
+            and payment_group= #{paymentGroup}
+        </if>
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ createtime < #{timeend} ]]>
+        </if>
+        <!-- 投注量筛选 -->
+        <if test='totalAmountmin != null and totalAmountmax != null'>
+            and (<![CDATA[ actual_d_amount >= #{totalAmountmin} and actual_d_amount <= #{totalAmountmax} ]]>)
+        </if>    
+        <if test='isLuck != null and isLuck != ""'>
+            and is_lucky= #{isLuck}
+        </if>        
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getGroupCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(DISTINCT goods_issue, front_user, payment_group) from front_user_payment_order where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+		<if test='goodsIssue != null and goodsIssue != ""'>
+            and goods_issue= #{goodsIssue}
+        </if>     
+        <if test='goodsId != null and goodsId != ""'>
+            and goods_id= #{goodsId}
+        </if>     
+        <if test='gameType != null and gameType != ""'>
+            and game_type= #{gameType}
+        </if>
+		<if test='paymentGroup != null and paymentGroup != ""'>
+            and payment_group= #{paymentGroup}
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ createtime < #{timeend} ]]>
+        </if>
+        <!-- 投注量筛选 -->
+        <if test='totalAmountmin != null and totalAmountmax != null'>
+            and (<![CDATA[ actual_d_amount >= #{totalAmountmin} and actual_d_amount <= #{totalAmountmax} ]]>)
+        </if>  
+   		<if test='isLuck != null and isLuck != ""'>
+            and is_lucky= #{isLuck}
+        </if> 
+<!--         group by goods_issue, front_user     -->
+	</select>
+	
+	<select id="getGroupListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUserPaymentOrder">
+		select group_concat(uuid ORDER BY is_lucky DESC) as uuid,front_user,front_user_show_id,goods_issue,game_type,order_num,order_type,SUM(d_amount) as d_amount,is_voucher_used, voucher, 
+		SUM(actual_d_amount) as actual_d_amount,SUM(buy_count) as buy_count,poundage,max(createtime) as createtime,`status`,remark,is_promotion,promotion_id,
+		max(is_lucky) as is_lucky,max(lucky_number) as lucky_number,payment_group from front_user_payment_order where 1=1
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+        <if test='goodsIssue != null and goodsIssue != ""'>
+            and goods_issue= #{goodsIssue}
+        </if>    
+        <if test='goodsId != null and goodsId != ""'>
+            and goods_id= #{goodsId}
+        </if>  
+        <if test='gameType != null and gameType != ""'>
+            and game_type= #{gameType}
+        </if>
+		<if test='paymentGroup != null and paymentGroup != ""'>
+            and payment_group= #{paymentGroup}
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ createtime < #{timeend} ]]>
+        </if>
+        <!-- 投注量筛选 -->
+        <if test='totalAmountmin != null and totalAmountmax != null'>
+            and (<![CDATA[ actual_d_amount >= #{totalAmountmin} and actual_d_amount <= #{totalAmountmax} ]]>)
+        </if>    
+        <if test='isLuck != null and isLuck != ""'>
+            and is_lucky= #{isLuck}
+        </if> 
+        group by goods_issue, front_user, payment_group         
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getLeftCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_payment_order fupo left join front_user fu on fupo.front_user = fu.uuid where 1=1 
+		<if test='userType != null and userType != ""'>
+            and fu.type= #{userType}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and fupo.front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and fupo.front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+		<if test='goodsIssue != null and goodsIssue != ""'>
+            and fupo.goods_issue= #{goodsIssue}
+        </if>     
+        <if test='goodsId != null and goodsId != ""'>
+            and fupo.goods_id= #{goodsId}
+        </if>     
+        <if test='gameType != null and gameType != ""'>
+            and fupo.game_type= #{gameType}
+        </if>
+		<if test='status != null and status != ""'>
+            and fupo.status= #{status}
+        </if>
+		<if test='paymentGroup != null and paymentGroup != ""'>
+            and fupo.payment_group= #{paymentGroup}
+        </if>
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ fupo.createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ fupo.createtime < #{timeend} ]]>
+        </if>
+        <!-- 投注量筛选 -->
+        <if test='totalAmountmin != null and totalAmountmax != null'>
+            and (<![CDATA[ fupo.actual_d_amount >= #{totalAmountmin} and fupo.actual_d_amount <= #{totalAmountmax} ]]>)
+        </if>  
+   		<if test='isLuck != null and isLuck != ""'>
+            and fupo.is_lucky= #{isLuck}
+        </if>      
+	</select>
+	
+	<select id="getLeftListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUserPaymentOrder">
+		select fupo.* from front_user_payment_order fupo left join front_user fu on fupo.front_user = fu.uuid where 1=1 
+		<if test='userType != null and userType != ""'>
+            and fu.type= #{userType}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and fupo.front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and fupo.front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+		<if test='goodsIssue != null and goodsIssue != ""'>
+            and fupo.goods_issue= #{goodsIssue}
+        </if>     
+        <if test='goodsId != null and goodsId != ""'>
+            and fupo.goods_id= #{goodsId}
+        </if>     
+        <if test='gameType != null and gameType != ""'>
+            and fupo.game_type= #{gameType}
+        </if>
+		<if test='status != null and status != ""'>
+            and fupo.status= #{status}
+        </if>
+		<if test='paymentGroup != null and paymentGroup != ""'>
+            and fupo.payment_group= #{paymentGroup}
+        </if>
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ fupo.createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ fupo.createtime < #{timeend} ]]>
+        </if>
+        <!-- 投注量筛选 -->
+        <if test='totalAmountmin != null and totalAmountmax != null'>
+            and (<![CDATA[ fupo.actual_d_amount >= #{totalAmountmin} and fupo.actual_d_amount <= #{totalAmountmax} ]]>)
+        </if>  
+   		<if test='isLuck != null and isLuck != ""'>
+            and fupo.is_lucky= #{isLuck}
+        </if>        
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by fupo.${sort}
+	        </when>
+	        <otherwise>
+	        	order by fupo.createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getPaymentStatisticsCount" parameterType="java.util.HashMap" resultType="int">
+		select count(distinct fupo.goods_id)
+		from front_user_payment_order fupo left join front_user fu on fupo.front_user = fu.uuid 
+		where fupo.status = 'success' 
+		<if test='userType != null and userType != ""'>
+            and fu.type= #{userType}
+        </if>
+		<if test='starttime != null and starttime != ""'>
+            and <![CDATA[ fupo.createtime >= #{starttime} ]]>
+        </if>
+        <if test='endtime != null and endtime != ""'>
+            and <![CDATA[ fupo.createtime <= #{endtime} ]]>
+        </if>
+	</select>
+	
+	<select id="getPaymentStatistics" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT a.goods, lg.title, lg.short_title as shortTitle, lg.d_price as dPrice, lg.current_issue_num as currentIssueNum, a.paymentCount, a.userCount FROM
+		(
+			select fupo.goods_id as goods, sum(fupo.buy_count) as paymentCount, count(DISTINCT fupo.front_user) as userCount 
+			from front_user_payment_order fupo left join front_user fu on fupo.front_user = fu.uuid 
+			where fupo.status = 'success' 
+			<if test='userType != null and userType != ""'>
+	            and fu.type= #{userType}
+	        </if>
+			<if test='starttime != null and starttime != ""'>
+	            and <![CDATA[ fupo.createtime >= #{starttime} ]]>
+	        </if>
+	        <if test='endtime != null and endtime != ""'>
+	            and <![CDATA[ fupo.createtime <= #{endtime} ]]>
+	        </if>
+			GROUP BY goods
+		) as a
+		LEFT JOIN luckygame_goods lg ON lg.goods_id = a.goods
+		<choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by a.paymentCount desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+</mapper>

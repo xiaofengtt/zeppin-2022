@@ -4,10 +4,15 @@
     color: #2B2B2B;
 
 }
-
+#startTime,#endTime{
+	border:1px solid #c1c1c1;
+	border-radius:5px;
+	outline: none;
+	font-size:12px;
+}
 .main_header {
     overflow: hidden;
-    height: 128px;
+    height: 170px;
     transition:all 0.4s ease-out;
 }
 
@@ -135,6 +140,7 @@
 /*弹框*/
 
 .modal_assess,
+.modal_unAssess,
 .modal_delete_all,
 .modal_disable_all{
 	background:#FFFFFF;
@@ -155,6 +161,11 @@
 	-moz-box-shadow: 0 0 10px 0px rgba(56,81,76,0.6);
 	box-shadow: 0 0 10px 0px rgba(56,81,76,0.6);
 }
+.modal_delete_all{
+	width:500px;
+}
+
+.modal_unAssess p,
 .modal_assess p,
 .modal_delete_all p
 {
@@ -187,6 +198,7 @@
 }
 
 .modal_assess .button_g input:nth-of-type(1),
+.modal_unAssess .button_g input:nth-of-type(1),
 .modal_delete_all .button_g input:nth-of-type(1),
 .modal_disable_all .button_g input:nth-of-type(1){
 	display: inline-block;
@@ -205,6 +217,7 @@
 }
 
 .modal_assess .button_g input:nth-of-type(2),
+.modal_unAssess .button_g input:nth-of-type(2),
 .modal_delete_all .button_g input:nth-of-type(2),
 .modal_disable_all .button_g input:nth-of-type(2){
 

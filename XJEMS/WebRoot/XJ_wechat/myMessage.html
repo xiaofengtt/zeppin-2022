@@ -52,6 +52,13 @@
 					<img src="./img/ic_green.png" class="logo">
 					<ul>
 						<li class="b_t">身份证号<span>{{:idcard}}</span></li>
+						<li class="b_t">性别<span>
+							{{if sex == '1'}}
+								男
+							{{else}}
+								女
+							{{/if}}
+						</span></li>
 						<li class="b_t">交通银行卡号<span>{{:bankCard}}</span></li>
 						<li class="b_t">学工号<span>{{:sid}}</span></li>
 						<li class="b_t">民族<span>{{:ethnic}}</span></li>
@@ -62,18 +69,34 @@
 				<div class="main_center">
 					<img src="./img/ic_bule.png" class="logo">
 					<ul>
-						<li class="b_t">身份类别 <span>{{if type=='1'}}考务组{{/if}}{{if type=='2'}}研究生{{/if}}{{if type=='3'}}教工{{/if}}</span>
+						<li class="b_t">身份类别 
+                        <span>
+                            {{if type=='1'}}考务组{{/if}}
+                            {{if type=='2'}}研究生{{/if}}
+                            {{if type=='3'}}教工{{/if}}
+                            {{if type=='4'}}本科{{/if}}
+                            {{if type=='5'}}非师大人员{{/if}}
+                        </span>
 						</li>
-	                    {{if type =='2'}}
+	                    {{if type =='2' ||  type=='4'}}
 						  <li class="b_t">专业 <span>{{:studyMajor}}</span></li>
 						  <li class="b_t">年级 <span>{{:studyGrade}}</span></li>
+						  <li class="b_t">学制 <span>{{if studyLength == 0}}无{{else}}{{:studyLength}}年制{{/if}}</span></li>
 						{{else}}
 						  <li class="b_t">职务 <span>{{:jobDuty}}</span></li>
 						  <li class="b_t">所学专业<span>{{:major}}</span></li>
 						{{/if}}
 						<li class="b_t">所在部门 <span>{{:organization}}</span>
 						</li>
-
+						<li class="b_t">编制属性<span>{{:formation}}</span></li>
+						<li class="b_t">职业 <span>{{:occupation}}</span>
+						</li>
+						<li class="b_t">开户行所属地区 <span>{{:bankOrg}}</span>
+						</li>
+						<li class="b_t">开户行<span>{{:bankName}}</span>
+						</li>
+						<li class="b_t">电子信箱<span>{{:email}}</span>
+						</li>
 						<li class="b_t">入校时间 <span>{{:inschooltime}}</span>
 						</li>
 						<li class="b_t">监考校区 <span>{{:invigilateCampusCN}}</span>
@@ -150,6 +173,12 @@
 
 </html>
 <script type="text/javascript">
+var ua = navigator.userAgent.toLowerCase();//获取设备苹果或安卓
+if(ua.match(/MicroMessenger/i) == "micromessenger"){
+//	window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appId + "&redirect_uri=http://" + Url + "/qcbWechat/index.html?&response_type=code&scope=snsapi_base&state=qcb#wechat_redirect";	
+}else{
+	window.location.href = "./blank.html";
+}
 	$(document).ready(function() {
 		var code = url('?code') == null ? '' : url('?code');
 		

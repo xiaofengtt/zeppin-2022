@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.worldmall.mapper.FrontUserAddressMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_address where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status = 'normal'
+	        </otherwise>
+        </choose>        
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.FrontUserAddress">
+		select * from front_user_address where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status = 'normal'
+	        </otherwise>
+        </choose>         
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by is_default,createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<update id="updateDefault" parameterType="String">
+	    update front_user_address set is_default=0
+	    where front_user= #{frontUser}
+	</update>
+</mapper>

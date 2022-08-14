@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Payduoduo商户系统</title>
+		<link rel="shortcut icon" href="img/favicon.ico">
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/list.css" />
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+	<body class="layui-layout-body">
+		<input id="uuidInput" type="hidden" value="f521636e-24a3-42e1-a748-675c538dc9f2"/>
+		<div class="main layui-layout layui-layout-admin">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="layui-body">
+				<div class="layui-row company-head">
+					<div class="layui-col-md6 company-goods" >
+						<p>商户名称：<span id="name"></span></p>
+						<p>商户编码：<span id="code"></span></p>
+						<p>商户状态：<span id="status"></span></p>
+					</div>
+					<div class="layui-col-md6 company-money" >
+						<p>可用余额：<span id="balance">******</span><a onclick="hideMoney(this)"><img id="hideImg" src="img/money-hide.png"/></a></p>
+						<input type="hidden" name="balance"/>
+						<p>冻结金额：<span id="balanceLock">******</span><a onclick="hideMoneys(this)"><img id="hideImg" src="img/money-hide.png"/></a></p>
+						<input type="hidden" name="balanceLock"/>
+					</div>
+					
+					<div class="layui-row" style="margin-top:10px">
+						<a class="layui-btn rechargeBtn">商户注资</a>
+						<a class="layui-btn withdrawBtn">商户结算</a>
+					</div>
+				</div>
+				<div class="layui-bodu" style="padding: 15px;">
+				 	<div id="dailyChart"></div>
+					<div style="overflow-x:auto;">
+			    		<table class="table-list mt-15"></table>
+			    	</div>
+					<div id="pageTool"></div>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/echarts.min.js"></script>
+		<script type="text/javascript" src="js/index.js" ></script>
+	</body>
+</html>

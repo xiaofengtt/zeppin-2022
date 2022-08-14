@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.treasuremall.mapper.FrontUserRanklistMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_ranklist where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUserRanklist">
+		select * from front_user_ranklist where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by rank_num asc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+        <choose>
+	        <when test='offSet != null and offSet != -1 and pageSize != null and pageSize != -1'>
+	        	limit #{offSet},#{pageSize};
+	        </when>
+	        <otherwise>
+	        	limit 0,50;
+	        </otherwise>
+        </choose>
+	</select>
+	
+	<update id="truncate">
+		TRUNCATE front_user_ranklist;
+	</update>
+	<update id="insertInfoList">
+		INSERT INTO front_user_ranklist 
+		SELECT base.*,@rownum:=@rownum+1 AS rank_num FROM
+		(SELECT @rownum:=0) r,
+		(SELECT fu.front_user,total.total_winning,fu.total_payment,total.winning_times,fu.payment_times,o.buy_count
+		from front_user_account fu 
+		LEFT JOIN front_user_ranklist ful on fu.front_user=ful.front_user 
+		LEFT JOIN 
+		(select fupo.front_user,SUM(fupo.buy_count) as buy_count from front_user_payment_order fupo WHERE fupo.`status`='success' 
+         and fupo.`createtime` > DATE_SUB(now(), INTERVAL 30 DAY) 
+         GROUP BY fupo.front_user) o
+		on fu.front_user=o.front_user
+        LEFT JOIN  
+         (SELECT po.`front_user` as front_user ,SUM(lgi.`d_price`) as total_winning, SUM(po.`is_lucky`)  AS winning_times
+            FROM `front_user_payment_order` po 
+            LEFT JOIN `luckygame_goods_issue` lgi on po.`goods_issue` =lgi.`uuid` 
+            WHERE po.`status` ='success' and po.`is_lucky` =1 
+            and po.`createtime` > DATE_SUB(now(), INTERVAL 30 DAY) 
+            GROUP BY po.`front_user`) total
+         on fu.`front_user` =total.front_user
+		where 1=1 AND total.total_winning>0 
+		AND ful.front_user is null 
+		ORDER BY total.total_winning DESC) base;
+	</update>
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.product.worldpay.mapper.CompanyChannelAccountMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from company_channel_account where 1=1
+		<if test='company != null and company != ""'>
+            and company= #{company}
+        </if>
+		<if test='companyChannel != null and companyChannel != ""'>
+            and company_channel= #{companyChannel}
+        </if>
+        <if test='channelAccount != null and channelAccount != ""'>
+            and channel_account= #{channelAccount}
+        </if>
+        <if test='channel != null and channel != ""'>
+            and channel= #{channel}
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="com.product.worldpay.entity.CompanyChannelAccount">
+		select * from company_channel_account where 1=1 
+		<if test='company != null and company != ""'>
+            and company= #{company}
+        </if>
+		<if test='companyChannel != null and companyChannel != ""'>
+            and company_channel= #{companyChannel}
+        </if>
+        <if test='channelAccount != null and channelAccount != ""'>
+            and channel_account= #{channelAccount}
+        </if>
+        <if test='channel != null and channel != ""'>
+            and channel= #{channel}
+        </if>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<delete id="deleteByCompanyChannel" parameterType="String">
+	    delete from company_channel_account where company_channel= #{companyChannel}
+	</delete>
+	
+	<select id="getChannelAccountListByParams" parameterType="java.util.HashMap" resultType="com.product.worldpay.entity.ChannelAccount">
+		select distinct ca.* from company_channel_account cca 
+		left join channel_account ca on cca.channel_account = ca.uuid
+		where 1=1
+		<if test='companyChannel != null and companyChannel != ""'>
+            and cca.company_channel= #{companyChannel}
+        </if>
+        <if test='status != null and status != ""'>
+            and ca.status= #{status}
+        </if>
+	</select>
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.worldmall.mapper.FrontUserPaidNumberMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_paid_number where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.FrontUserPaidNumber">
+		select * from front_user_paid_number where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+</mapper>

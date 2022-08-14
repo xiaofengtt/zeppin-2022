@@ -40,6 +40,7 @@ public class ExamInformation implements java.io.Serializable {
 	private String applyNotice;
 	//监考注意事项
 	private String invigilationNotice;
+	private Short isSend;
 
 	// Constructors
 
@@ -196,6 +197,15 @@ public class ExamInformation implements java.io.Serializable {
 
 	public void setInvigilationNotice(String invigilationNotice) {
 		this.invigilationNotice = invigilationNotice;
+	}
+
+	@Column(name = "IS_SEND", nullable = false)
+	public Short getIsSend() {
+		return isSend;
+	}
+
+	public void setIsSend(Short isSend) {
+		this.isSend = isSend;
 	}
 
 	/**

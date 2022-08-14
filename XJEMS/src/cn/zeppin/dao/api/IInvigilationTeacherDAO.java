@@ -24,6 +24,18 @@ public interface IInvigilationTeacherDAO extends IBaseDAO<InvigilationTeacher, I
 	public List<InvigilationTeacher> searchInvigilationTeacher(Map<String, Object> searchMap, Map<String, String> sortParams, int offset, int length);
 
 	/**
+	 * 根据指定条件获取列表
+	 * @param currentUser
+	 * @param searchMap
+	 * @param sorts
+	 * @param offset
+	 * @param length
+	 * @param role
+	 * @return
+	 */
+	public List<Object[]> searchInvigilationTeacherBySql(Map<String, Object> searchMap, Map<String, String> sortParams, int offset, int length);
+
+	/**
 	 * 根据指定条件获取数目
 	 * @param searchMap
 	 * @return
@@ -43,4 +55,11 @@ public interface IInvigilationTeacherDAO extends IBaseDAO<InvigilationTeacher, I
 	 * @return
 	 */
 	public InvigilationTeacher getTeacher(String loginname);
+	
+	/**
+	 * 根据指定条件获取数目
+	 * @param searchMap
+	 * @return
+	 */
+	public int updateStopInvigilationTeacher(Map<String, Object> searchMap);
 }

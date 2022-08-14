@@ -1,0 +1,194 @@
+@CHARSET "UTF-8";
+.content-inner{
+    /* padding: 20px 40px */;	
+}
+.content-head {
+	width: 100%;
+	height: 50px;
+	background:rgba(61,153,255,0.1);
+	padding:10px 25px 10px 25px;
+	line-height:30px;
+}
+.content-head button {
+	width: auto;
+	height: auto;
+	margin:0 0 0 20px;
+	float: right;
+	font-size: 14px;
+	color: #FFFFFF;
+	border:none;
+	cursor:pointer;
+}
+
+.content-head button {
+	padding: 4px 11px;
+	background: #3D99FF;
+	border-radius: 5px;
+}
+.content-head button:hover{
+	opacity: .8;
+	color:#fff;
+}
+
+/* .content-head button.all-select-button {
+	padding: 4px 11px;
+	background: #4D9CFE;
+	border-radius: 5px;
+} */
+
+.contain-body {
+	width: 100%;
+	padding:20px 0;
+}
+
+.contain-body>div {
+	height: 400px;
+	display: inline-block;
+	overflow-y: scroll;
+}
+
+.contain-body ul {
+	margin: 0;
+}
+#left-ul{
+	
+}
+
+.contain-body .contain-body-left,.contain-body-right,.contain-body-last {
+	width: 31%;
+	float: left;
+	background: #E5E7EE;
+	margin-right:3%;
+}
+.contain-body-last{
+	margin:0;
+}
+
+.contain-body li {
+	height: 40px;
+	text-align: left;
+	line-height: 40px;
+	margin:10px 0;
+}
+.contain-body li:hover{
+	background-color:rgba(61,153,255,1);
+}
+.contain-body li:hover span{
+	color:#fff !important;
+}
+.contain-body span {
+	opacity: 0.9;
+	font-size: 16px;
+	color: #333;
+	margin-left: 10px
+}
+
+/* .contain-body .contain-body-left li.selected {
+	color: #ffb822;
+} */
+
+.contain-body li.selected span {
+	color: rgba(61,153,255,1);
+	opacity: 1;
+}
+
+/* .contain-body .contain-body-right {
+	width: 30%;
+	float: left;
+	background: rgba(63, 63, 63, 1);
+	margin-left:20px;
+	border-radius: 4px;
+} */
+
+/* .contain-body .contain-body-right li {
+	height: 60px;
+	text-align: left;
+	line-height: 60px;
+} */
+
+.contain-body .contain-body-right span {
+	font-size: 16px;
+	margin-left: 10px
+}
+.contain-body .contain-body-right .selected span{
+	color: rgba(61,153,255,1);
+}
+
+.contain-body>div::-webkit-scrollbar {
+	width: 14px;
+}
+
+.contain-body>div::-webkit-scrollbar-button {
+	display: none
+}
+
+.contain-body>div::-webkit-scrollbar-track {
+	 -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.2);
+    background:#E5E7EE;
+	border-radius:0px 2px 2px 0px;
+}
+
+.contain-body>div::-webkit-scrollbar-thumb {
+	border-radius:4px;
+    background: #C1C4CC;
+    background-clip:padding-box;
+}
+
+.contain-body .checkbox-img {
+	background: #fff;
+	background-image: url(../img/Oval.png);
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+	display: inline-block;
+	margin: 0 0 2px 25px;
+	height: 16px;
+	width: 16px;
+	border-radius: 9px;
+	vertical-align: sub;
+}
+
+.contain-body li.selected .checkbox-img {
+	background-image: none;
+}
+
+.contain-body input[name="controller"]:checked+label {
+	background-image: url(../img/children_selected.png);
+}
+
+/* .contain-body .contain-body-left li.selected input[name="controller"]:checked+label {
+	background-image: url(../img/parent_selected.png);
+} */
+
+.contain-body input[name="menu"]:checked+label {
+	background-image: url(../img/children_selected.png);
+}
+
+/* .contain-body .contain-body-left li.selected input[name="menu"]:checked+label {
+	background-image: url(../img/parent_selected.png);
+} */
+
+/* .contain-body .contain-body-right .checkbox-img {
+	background: #fff;
+	background-image: url(../img/Oval.png);
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+	display: inline-block;
+	margin: 0 0 0 25px;
+	height: 16px;
+	width: 16px;
+	border-radius: 9px;
+}
+ */
+.contain-body input[name="method"]:checked+label {
+	background-image: url(../img/children_selected.png);
+}
+
+.contain-body input[name="menu"]:checked+label {
+	background-image: url(../img/children_selected.png);
+}
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+

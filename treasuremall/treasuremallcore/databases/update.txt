@@ -1,0 +1,645 @@
+ALTER TABLE `goods` ADD COLUMN `status`  varchar(20) NOT NULL AFTER `video`;
+ALTER TABLE `goods` MODIFY COLUMN `type`  varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `shortname`;
+ALTER TABLE `goods_type` ADD COLUMN `status`  varchar(20) NOT NULL AFTER `level`;
+
+ALTER TABLE `banner`
+ADD INDEX `INDEX_001` USING BTREE (`title`) ;
+
+ALTER TABLE `banner`
+MODIFY COLUMN `endtime`  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `status`;
+
+
+DROP TABLE IF EXISTS `channel`;
+CREATE TABLE `channel` (
+  `uuid` varchar(36) NOT NULL,
+  `channel_id` varchar(20) NOT NULL,
+  `title` varchar(30) NOT NULL,
+  `appkey` varchar(100) DEFAULT NULL,
+  `channel` varchar(20) DEFAULT NULL,
+  `is_default` tinyint(1) NOT NULL,
+  `createtime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` varchar(20) NOT NULL,
+  PRIMARY KEY (`uuid`),
+  UNIQUE KEY `AK_01` (`channel_id`) USING BTREE,
+  KEY `INDEX_01` (`channel_id`) USING BTREE,
+  KEY `INDEX_02` (`title`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+ALTER TABLE `voucher`
+ADD COLUMN `status`  varchar(20) NOT NULL AFTER `endtime`;
+
+ALTER TABLE `robot_setting`
+ADD COLUMN `goods`  text NOT NULL COMMENT '商品范围' AFTER `worktime_end`;
+
+ALTER TABLE `robot_setting`
+DROP COLUMN `goods_type`;
+
+ALTER TABLE `front_user_address`
+ADD COLUMN `status`  varchar(10) NOT NULL COMMENT 'normal/deleted' AFTER `is_default`;
+
+ALTER TABLE `front_user_withdraw_order`
+ADD COLUMN `front_user_show_id`  int(11) NOT NULL AFTER `front_user`;
+
+ALTER TABLE `front_user_recharge_order`
+ADD COLUMN `front_user_show_id`  int(11) NOT NULL AFTER `front_user`;
+
+
+ALTER TABLE `banner`
+MODIFY COLUMN `endtime`  timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' AFTER `status`,
+ADD COLUMN `starttime`  timestamp NOT NULL AFTER `status`;
+ALTER TABLE `banner`
+MODIFY COLUMN `starttime`  timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' AFTER `status`;
+
+ALTER TABLE `robot_setting`
+ADD COLUMN `is_all`  tinyint(1) NOT NULL DEFAULT 0 AFTER `status`;
+
+ALTER TABLE `front_user_payment_order`
+MODIFY COLUMN `order_num`  bigint(20) NOT NULL AFTER `game_type`;
+
+ALTER TABLE `front_user_history`
+DROP COLUMN `order_num`,
+CHANGE COLUMN `serial_num` `order_num`  bigint(20) NOT NULL AFTER `front_user`;
+
+DROP TABLE IF EXISTS `backadmin_offset_order`;
+DROP TABLE IF EXISTS `admin_offset_order`;
+CREATE TABLE `admin_offset_order` (
+  `uuid` varchar(36) NOT NULL,
+  `front_user` varchar(36) NOT NULL,
+  `order_num` bigint(20) NOT NULL,
+  `order_type` varchar(20) NOT NULL,
+  `type` varchar(20) NOT NULL COMMENT '加币/减币',
+  `d_amount` decimal(20,2) NOT NULL COMMENT '账户增加金额（代币）。根据充值活动，计算出充值订单增加的代币',
+  `remark` varchar(200) DEFAULT NULL,
+  `operator` varchar(36) DEFAULT NULL,
+  `operattime` timestamp NULL DEFAULT NULL,
+  `reason` varchar(100) DEFAULT NULL,
+  `status` varchar(20) NOT NULL COMMENT '待处理/已完成/取消/关闭',
+  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`uuid`),
+  UNIQUE KEY `AK_Key_2` (`order_num`),
+  KEY `FK_Reference_19` (`operator`),
+  CONSTRAINT `FK_Reference_19` FOREIGN KEY (`operator`) REFERENCES `admin` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='手动补偿/扣减订单';
+
+
+ALTER TABLE `front_user_voucher`
+ADD COLUMN `order_id`  varchar(36) NULL ;
+
+ALTER TABLE `front_user_voucher` ADD CONSTRAINT `FK_Payment_order` FOREIGN KEY (`order_id`) REFERENCES `front_user_payment_order` (`uuid`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `goods`
+MODIFY COLUMN `source_url`  varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `source`;
+
+ALTER TABLE `goods_cover_image` DROP FOREIGN KEY `FK_Reference_23`;
+
+ALTER TABLE `goods_cover_image` DROP FOREIGN KEY `FK_Reference_24`;
+
+ALTER TABLE `goods_cover_image` DROP FOREIGN KEY `FK_Reference_30`;
+
+
+
+delete from role_menu;
+delete from menu;
+
+INSERT INTO `menu` VALUES ('0ae36f97-90b4-11e8-95fb-acaa14314cbd', '管理员菜单管理', '2', '0ae36f97-90b4-11e8-95fb-ad1f2d312ad2', 'roleMenuList.html', 'img/li0_22', '2');
+INSERT INTO `menu` VALUES ('0ae36f97-90b4-11e8-95fb-ad1f2d312aa1', '基础配置', '2', '0ae36f97-90b4-11e8-95fb-ad1f2d312ad2', 'systemParamList.html', 'img/li0_21', '1');
+INSERT INTO `menu` VALUES ('0ae36f97-90b4-11e8-95fb-ad1f2d312ad2', '系统设置', '1', null, null, 'img/li0_10', '0');
+INSERT INTO `menu` VALUES ('0ae36f97-90b4-11e8-95fb-fcaa14314a51', '用户管理', '1', null, null, 'img/li0_12', '2');
+INSERT INTO `menu` VALUES ('0ae36f97-90b4-11e8-95fb-fcaa14314cbe', '售后管理', '1', null, null, 'img/li0_17', '7');
+INSERT INTO `menu` VALUES ('0ae36f97-90b4-11e8-95fb-fcaa163bc412', '运营管理', '1', null, null, 'img/li0_15', '5');
+INSERT INTO `menu` VALUES ('0ae36f97-90b4-11e8-95fb-fccd1431ad2a', '广告位管理', '2', '0ae36f97-90b4-11e8-95fb-fcaa163bc412', 'bannerList.html', 'img/li0_72', '2');
+INSERT INTO `menu` VALUES ('0ae36f97-a0be-21e8-95fb-faaa14314cbf', '管理员功能管理', '2', '0ae36f97-90b4-11e8-95fb-ad1f2d312ad2', 'roleControllerList.html', 'img/li0_23', '2');
+INSERT INTO `menu` VALUES ('10b52671-d03c-417f-9cd1-d88549b6c077', '抽奖玩法商品配置', '2', '47b230cb-19b4-4a68-a9f8-abc7b18893f4', null, 'img/li0_80', '0');
+INSERT INTO `menu` VALUES ('2ae36f92-30ba-21e8-a5fb-d1aaf4314cb1', '财务管理', '1', null, null, 'img/li0_14', '4');
+INSERT INTO `menu` VALUES ('40c89675-d62d-4d45-87ce-ab5c88447822', '提现订单', '2', '2ae36f92-30ba-21e8-a5fb-d1aaf4314cb1', null, 'img/li0_64', '4');
+INSERT INTO `menu` VALUES ('47b230cb-19b4-4a68-a9f8-abc7b18893f4', '抽奖管理', '1', null, null, 'img/li0_16', '6');
+INSERT INTO `menu` VALUES ('58ae01e4-6c07-4edb-9d5e-3756f5bc3860', '金币管理', '2', '0ae36f97-90b4-11e8-95fb-fcaa163bc412', null, 'img/li0_70', '0');
+INSERT INTO `menu` VALUES ('672230f6-3558-43bb-8aef-2605f096d2e5', '机器人管理', '1', null, null, 'img/li0_13', '3');
+INSERT INTO `menu` VALUES ('6f2d74f5-4577-40ac-98b7-f0e2f4357dbc', '管理员管理', '2', '0ae36f97-90b4-11e8-95fb-ad1f2d312ad2', 'adminList.html', 'img/li0_20', '0');
+INSERT INTO `menu` VALUES ('710f0db8-8157-45bb-9136-33528759a537', '红包管理', '2', '0ae36f97-90b4-11e8-95fb-fcaa163bc412', null, 'img/li0_71', '1');
+INSERT INTO `menu` VALUES ('836941ce-d554-4883-969a-2c6484a08493', '商品列表', '2', 'a1d8ef97-90b4-11e8-95fb-fcaa163bc412', 'goodsList.html', 'img/li0_30', '0');
+INSERT INTO `menu` VALUES ('87513889-cff7-4946-9fef-bd40a2fd0289', '用户列表', '2', '0ae36f97-90b4-11e8-95fb-fcaa14314a51', '', 'img/li0_40', '0');
+INSERT INTO `menu` VALUES ('94ab6f97-90b4-11e8-95fb-fccd1431ad2a', '注册渠道管理', '2', '0ae36f97-90b4-11e8-95fb-fcaa14314a51', 'channelList.html', 'img/li0_41', '1');
+INSERT INTO `menu` VALUES ('a1d8ef97-90b4-11e8-95fb-fcaa163bc412', '商品管理', '1', null, null, 'img/li0_11', '1');
+INSERT INTO `menu` VALUES ('a97a2567-1c55-43a7-a721-f5e084b9bb37', '派奖管理', '2', '0ae36f97-90b4-11e8-95fb-fcaa14314cbe', null, 'img/li0_90', '0');
+INSERT INTO `menu` VALUES ('b40eff7f-b4ff-4f89-a829-b04a0015d4fd', '提现审核', '2', '2ae36f92-30ba-21e8-a5fb-d1aaf4314cb1', null, 'img/li0_65', '5');
+INSERT INTO `menu` VALUES ('b5a2ce6b-2f5a-4658-8fe4-930c183697ba', '充值订单', '2', '2ae36f92-30ba-21e8-a5fb-d1aaf4314cb1', null, 'img/li0_62', '2');
+INSERT INTO `menu` VALUES ('b5e8cf97-90b4-11e8-95fb-fccd1431ad2a', '机器人列表', '2', '672230f6-3558-43bb-8aef-2605f096d2e5', 'robotList.html', 'img/li0_50', '0');
+INSERT INTO `menu` VALUES ('b6b0c281-14fd-4cae-8410-2af81f91c4ae', '投注订单', '2', '47b230cb-19b4-4a68-a9f8-abc7b18893f4', null, 'img/li0_81', '1');
+INSERT INTO `menu` VALUES ('c93d1b60-7a15-4184-9e38-2b2b49970dc8', '充值渠道管理', '2', '2ae36f92-30ba-21e8-a5fb-d1aaf4314cb1', null, 'img/li0_60', '0');
+INSERT INTO `menu` VALUES ('df87e1d0-45b8-4be7-805d-6f676cb7d665', '财务账号管理', '2', '2ae36f92-30ba-21e8-a5fb-d1aaf4314cb1', null, 'img/li0_61', '1');
+INSERT INTO `menu` VALUES ('e5e3578d-886a-446b-b847-ba850dbff467', '中奖订单', '2', '47b230cb-19b4-4a68-a9f8-abc7b18893f4', null, 'img/li0_82', '2');
+INSERT INTO `menu` VALUES ('fc7e7bbf-48e6-4484-b453-deee5e20edfc', '充值审核', '2', '2ae36f92-30ba-21e8-a5fb-d1aaf4314cb1', null, 'img/li0_63', '3');
+
+INSERT INTO role_menu(uuid,role,menu) 
+SELECT UUID(), '002170ff-082d-412f-a8a4-b021183fa365', uuid FROM menu;
+
+ALTER TABLE `front_user_payment_order`
+ADD COLUMN `front_user_show_id`  int(11) NOT NULL AFTER `front_user`;
+
+ALTER TABLE `front_user_payment_order`
+ADD INDEX `INDEX_front_user_show_id` USING BTREE (`front_user_show_id`) ;
+
+ALTER TABLE `front_user_withdraw_order`
+MODIFY COLUMN `operattime`  timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP AFTER `operator`;
+
+ALTER TABLE `front_user_withdraw_order`
+ADD COLUMN `order_channel`  varchar(36) NULL AFTER `order_type`;
+
+ALTER TABLE `front_user_history` DROP FOREIGN KEY `FK_Reference_17`;
+
+ALTER TABLE `front_user_history` DROP FOREIGN KEY `FK_Reference_18`;
+
+ALTER TABLE `front_user_history` DROP FOREIGN KEY `FK_Reference_20`;
+
+ALTER TABLE `front_user_history` DROP FOREIGN KEY `FK_Reference_33`;
+
+ALTER TABLE `front_user_recharge_order`
+MODIFY COLUMN `operattime`  timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP AFTER `operator`;
+
+ALTER TABLE `luckygame_goods_issue`
+MODIFY COLUMN `lotterytime`  timestamp NULL DEFAULT '0000-00-00 00:00:00' AFTER `createtime`,
+MODIFY COLUMN `finishedtime`  timestamp NULL DEFAULT '0000-00-00 00:00:00' AFTER `lotterytime`;
+
+ALTER TABLE `winning_info`
+ADD COLUMN `show_id`  int(11) NOT NULL AFTER `front_user`;
+ALTER TABLE `winning_info`
+ADD COLUMN `type`  varchar(10) NOT NULL COMMENT '未领奖/实物/金币' AFTER `winning_time`,
+ADD INDEX `Index_receive` USING BTREE (`receive_type`) ;
+
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `winning_info_receive`
+-- ----------------------------
+DROP TABLE IF EXISTS `winning_info_receive`;
+CREATE TABLE `winning_info_receive` (
+  `winning_info` varchar(36) NOT NULL,
+  `front_user` varchar(36) NOT NULL,
+  `show_id` int(11) NOT NULL,
+  `order_id` varchar(36) NOT NULL,
+  `goods_id` varchar(36) NOT NULL,
+  `status` varchar(20) NOT NULL COMMENT '未领奖/已领未派/已派奖/退货',
+  `type` varchar(10) NOT NULL COMMENT '实物/金币',
+  `ip` varchar(30) DEFAULT NULL,
+  `provide_info` varchar(500) DEFAULT NULL COMMENT '派奖信息JSON结构，包括时间、发货单号、快递公司等信息',
+  `createtime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `operator` varchar(36) DEFAULT NULL,
+  `operattime` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`winning_info`),
+  KEY `FK_Front_user` (`front_user`),
+  KEY `FK_Order_id` (`order_id`),
+  KEY `FK_Luckgame_goods_issue` (`goods_id`),
+  CONSTRAINT `FK_Front_user` FOREIGN KEY (`front_user`) REFERENCES `front_user` (`uuid`),
+  CONSTRAINT `FK_Order_id` FOREIGN KEY (`order_id`) REFERENCES `front_user_payment_order` (`uuid`),
+  CONSTRAINT `FK_Winning_info` FOREIGN KEY (`winning_info`) REFERENCES `winning_info` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `front_user_payment_order`
+MODIFY COLUMN `lucky_number`  int(11) NULL DEFAULT NULL AFTER `is_lucky`;
+
+ALTER TABLE `luckygame_goods_issue`
+MODIFY COLUMN `lucky_number`  int(11) NULL DEFAULT NULL AFTER `finishedtime`;
+
+ALTER TABLE `front_user_paid_number`
+DROP INDEX `AK_Key_2` ,
+ADD INDEX `AK_Key_2` USING BTREE (`front_user`) ;
+
+-- ----------------------------
+-- Table structure for `notice_public`
+-- ----------------------------
+DROP TABLE IF EXISTS `notice_public`;
+CREATE TABLE `notice_public` (
+  `uuid` varchar(36) NOT NULL,
+  `type` varchar(20) NOT NULL COMMENT '类型 平台公告/活动通知',
+  `title` varchar(100) NOT NULL,
+  `details` text NOT NULL,
+  `onlinetime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` varchar(10) NOT NULL COMMENT '状态 online/offline/delete 上线/下线/删除',
+  `createtime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `creator` varchar(36) NOT NULL,
+  PRIMARY KEY (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for `front_user_comment`
+-- ----------------------------
+DROP TABLE IF EXISTS `front_user_comment`;
+CREATE TABLE `front_user_comment` (
+  `uuid` varchar(36) NOT NULL,
+  `front_user` varchar(36) NOT NULL,
+  `front_user_show_id` int(11) NOT NULL,
+  `order_id` varchar(36) NOT NULL,
+  `goods_issue` varchar(36) NOT NULL,
+  `image` varchar(500) DEFAULT NULL,
+  `video` varchar(300) DEFAULT NULL,
+  `detail` varchar(1000) NOT NULL,
+  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` varchar(20) NOT NULL,
+  `operator` varchar(36) DEFAULT NULL,
+  `operattime` timestamp NULL DEFAULT NULL,
+  `reason` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uuid`),
+  KEY `FK_comment_front_user` (`front_user`),
+  KEY `FK_comment_payment_order` (`order_id`),
+  KEY `FK_comment_goods_issue` (`goods_issue`),
+  CONSTRAINT `FK_comment_front_user` FOREIGN KEY (`front_user`) REFERENCES `front_user` (`uuid`),
+  CONSTRAINT `FK_comment_goods_issue` FOREIGN KEY (`goods_issue`) REFERENCES `luckygame_goods_issue` (`uuid`),
+  CONSTRAINT `FK_comment_payment_order` FOREIGN KEY (`order_id`) REFERENCES `front_user_payment_order` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `front_user`
+MODIFY COLUMN `mobile`  varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `nickname`;
+
+ALTER TABLE `luckygame_goods`
+ADD COLUMN `goods_type`  varchar(36) NOT NULL AFTER `goods_id`;
+
+ALTER TABLE `luckygame_goods_issue`
+ADD COLUMN `goods_type`  varchar(36) NOT NULL AFTER `goods_id`;
+
+ALTER TABLE `front_user_comment`
+DROP COLUMN `winning_info`,
+ADD COLUMN `winning_info`  varchar(36) NOT NULL AFTER `goods_issue`;
+
+ALTER TABLE `front_user_comment` ADD CONSTRAINT `FK_comment_winning_info` FOREIGN KEY (`winning_info`) REFERENCES `winning_info` (`uuid`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `winning_info`
+ADD COLUMN `order_id`  varchar(36) NOT NULL AFTER `show_id`;
+
+
+ALTER TABLE `mobile_code`
+MODIFY COLUMN `creator`  varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `type`;
+
+ALTER TABLE `winning_info`
+ADD COLUMN `goods_id`  varchar(36) NOT NULL AFTER `goods_issue`;
+ALTER TABLE `winning_info`
+ADD INDEX `Index__goods_id01` (`goods_id`) USING BTREE ;
+
+update winning_info wi LEFT JOIN luckygame_goods_issue lgi on wi.goods_issue = lgi.uuid set wi.goods_id=lgi.goods_id;
+
+
+ALTER TABLE `front_user_payment_order`
+ADD COLUMN `goods_id`  varchar(36) NOT NULL AFTER `goods_issue`;
+ALTER TABLE `front_user_payment_order`
+ADD INDEX `Index_goods_id02` (`goods_id`) USING BTREE ;
+
+update front_user_payment_order wi LEFT JOIN luckygame_goods_issue lgi on wi.goods_issue = lgi.uuid set wi.goods_id=lgi.goods_id;
+
+ALTER TABLE `capital_account_history`
+ADD COLUMN `poundage`  decimal(20,2) NULL AFTER `remark`;
+
+INSERT INTO `system_param` VALUES ('gold_exchange_rate', '1', '金币汇率', 'full_system', 'currency', '1d0db2b5-2a10-482c-a6c2-57adabdccbf6', '2020-04-01 19:48:37');
+
+INSERT INTO `system_param` VALUES ('withdraw_poundage', '0.003', '用户提现手续费', 'user_withdraw', 'currency', '1d0db2b5-2a10-482c-a6c2-57adabdccbf6', '2020-04-02 17:14:58');
+
+INSERT INTO `system_param` VALUES ('withdraw_capital_account', 'af84d306-0985-4ca4-ae9e-744124e8c42e', '提现财务账号', 'user_withdraw', 'string', '1d0db2b5-2a10-482c-a6c2-57adabdccbf6', '2019-07-09 17:30:10');
+
+INSERT INTO `system_param` VALUES ('image_path_url', 'https://image.jumeiygc.com', '图片资源地址', 'path_url', 'string', '1d0db2b5-2a10-482c-a6c2-57adabdccbf6', '2019-07-09 17:30:10');
+
+DROP TABLE IF EXISTS `front_user_ranklist`;
+CREATE TABLE `front_user_ranklist` (
+  `front_user` varchar(36) NOT NULL,
+  `total_winning` decimal(20,2) DEFAULT '0.00' COMMENT '总中奖金额（金币）',
+  `total_payment` decimal(20,2) DEFAULT '0.00' COMMENT '总参与金额（金币）',
+  `winning_times` int(11) DEFAULT '0' COMMENT '总中奖次数',
+  `payment_times` int(11) DEFAULT '0' COMMENT '总参与次数',
+  `buy_count` int(11) DEFAULT '0' COMMENT '总参与人次数',
+  `rank_num` int(11) DEFAULT NULL COMMENT '排名',
+  PRIMARY KEY (`front_user`),
+  CONSTRAINT `FK_front_user_ranklist_front_user` FOREIGN KEY (`front_user`) REFERENCES `front_user` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+TRUNCATE front_user_ranklist;
+
+INSERT INTO front_user_ranklist 
+SELECT base.*,@rownum:=@rownum+1 AS rank_num FROM
+(SELECT @rownum:=0) r,
+(SELECT fu.front_user,fu.total_winning,fu.total_payment,fu.winning_times,fu.payment_times,o.buy_count
+from front_user_account fu 
+LEFT JOIN front_user_ranklist ful on fu.front_user=ful.front_user 
+LEFT JOIN 
+(select fupo.front_user,SUM(fupo.buy_count) as buy_count from front_user_payment_order fupo WHERE fupo.`status`='success' GROUP BY fupo.front_user) o
+on fu.front_user=o.front_user
+where 1=1 AND
+ful.front_user is null 
+ORDER BY fu.total_winning DESC) base;
+
+ALTER TABLE `front_user_address`
+ADD COLUMN `area`  varchar(36) NOT NULL AFTER `front_user`;
+
+ALTER TABLE `front_user_address` ADD CONSTRAINT `FK_front_user_address_area01` FOREIGN KEY (`area`) REFERENCES `area` (`uuid`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE `capital_account`
+ADD COLUMN `logo`  varchar(36) NOT NULL AFTER `account_num`;
+UPDATE capital_account ca LEFT JOIN capital_platform cp on ca.capital_platform=cp.uuid set ca.logo=cp.logo;
+
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `front_user_message`
+-- ----------------------------
+DROP TABLE IF EXISTS `front_user_message`;
+CREATE TABLE `front_user_message` (
+  `uuid` varchar(36) NOT NULL,
+  `front_user` varchar(36) NOT NULL,
+  `front_user_show_id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `content` text NOT NULL,
+  `createtime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` varchar(10) NOT NULL COMMENT 'normal/未读 read/已读',
+  `type` varchar(20) NOT NULL COMMENT '消息类型',
+  `source_id` varchar(36) DEFAULT NULL COMMENT '订单ID等',
+  `source_type` varchar(20) DEFAULT NULL,
+  `source_url` varchar(500) DEFAULT NULL COMMENT '跳转链接',
+  `source_image` varchar(36) DEFAULT NULL COMMENT '图片资源等',
+  PRIMARY KEY (`uuid`),
+  KEY `FK_front_user_message_fk01` (`front_user`),
+  CONSTRAINT `FK_front_user_message_fk01` FOREIGN KEY (`front_user`) REFERENCES `front_user` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `goods_issue_sharesnum`
+MODIFY COLUMN `sharenums`  longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `goods_issue`;
+
+ALTER TABLE `front_user_paid_number`
+MODIFY COLUMN `paid_sharenums`  longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL AFTER `issue_goods`;
+
+--mysql5.6版本以上可用
+ALTER TABLE `front_user_payment_order` 
+	MODIFY COLUMN `createtime` timestamp(3) NOT NULL DEFAULT '0000-00-00 00:00:00.000' AFTER `poundage`;
+
+
+ALTER TABLE `admin_offset_order`
+ADD INDEX `Index_key_createtime` USING BTREE (`createtime`) ;
+ALTER TABLE `admin_offset_order` ADD CONSTRAINT `FK_Reference_front_user` FOREIGN KEY (`front_user`) REFERENCES `front_user` (`uuid`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+ALTER TABLE `front_user`
+ADD INDEX `Index_front_user_type` USING BTREE (`type`) ;
+
+ALTER TABLE `front_user_account`
+ADD COLUMN `score_balance`  decimal(20,2) NOT NULL COMMENT '用户积分' AFTER `voucher_balance`;
+
+ALTER TABLE `capital_account`
+ADD COLUMN `front_user_group`  varchar(50) NULL AFTER `account_num`;
+
+DROP TABLE IF EXISTS `front_user_group`;
+CREATE TABLE `front_user_group` (
+  `name` varchar(20) NOT NULL,
+  `discription` varchar(20) NOT NULL COMMENT '分组描述',
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of front_user_group
+-- ----------------------------
+INSERT INTO `front_user_group` VALUES ('highrisk', '高风险用户');
+INSERT INTO `front_user_group` VALUES ('recharged', '充值用户');
+INSERT INTO `front_user_group` VALUES ('registered', '注册用户');
+INSERT INTO `front_user_group` VALUES ('VIP', 'vip用户');
+INSERT INTO `front_user_group` VALUES ('demo', '测试用户');
+
+ALTER TABLE `banner`
+ADD INDEX `INDEX_front_user_level` (`front_user_level`) USING BTREE ;
+
+ALTER TABLE `capital_account`
+ADD COLUMN `front_user_status`  varchar(50) NULL AFTER `front_user_group`;
+
+ALTER TABLE `capital_account`
+ADD INDEX `INDEX_ca_front_user_group` (`front_user_group`) USING BTREE ,
+ADD INDEX `INDEX_ca_front_user_status` (`front_user_status`) USING BTREE ;
+
+ALTER TABLE `front_user_voucher`
+MODIFY COLUMN `starttime`  timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '时间格式: yyyy-MM-dd HH:mm:ss  或 +B，B表示领取时间后多少天开始，不填代表立即生效' AFTER `goods`,
+MODIFY COLUMN `endtime`  timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '时间格式: yyyy-MM-dd HH:mm:ss  或 +E，E表示领取时间后多少天结束，不填永不失效' AFTER `starttime`;
+
+DROP TABLE IF EXISTS `front_user_blacklist`;
+CREATE TABLE `front_user_blacklist` (
+  `uuid` varchar(36) NOT NULL,
+  `front_user` varchar(36) NOT NULL,
+  `show_id` int(11) NOT NULL,
+  `nickname` varchar(100) NOT NULL,
+  `reason` varchar(100) NOT NULL,
+  `createtime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`uuid`),
+  KEY `INDEX_front_user_blacklist_show_id` (`show_id`) USING BTREE,
+  KEY `INDEX_front_user_blacklist_front_user` (`front_user`) USING BTREE,
+  KEY `INDEX_front_user_blacklist_nickname` (`nickname`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `menu` VALUES ('94ab6f97-90b4-11e8-95fb-fccd1431ad2b', '黑名单用户', '2', '0ae36f97-90b4-11e8-95fb-fcaa14314a51', 'blackList.html', 'img/li0_40', '2');
+INSERT INTO `capital_platform` VALUES ('0350ee9a-9357-11ea-82df-2cea7f200555', '兴达支付', 'acicpay', 'acicpay', '4', '1', '1', '1', 'normal', '4de31cfe-2f05-4240-8786-4708882a2441', '通道测试中，请勿支付。。。', '5219fd06-0ff3-4621-ae83-c3d013fe9fc7', '测试中', '10000.00', '1.00');
+INSERT INTO `capital_account` VALUES ('5c729dd6-9357-11ea-82df-2cea7f200555', '0350ee9a-9357-11ea-82df-2cea7f200555', '支付宝（兴达扫码）', '1002',null, null, 'f0de124e-9d31-4f86-a6f6-8010915b0926', '0.0000', '', '1.00', '10000.00', '20000.00', '3000000.00', '限额1-10000元，充的多送的多', 'acicpay', 'acicpay', 'normal', '1', 'ade7a178-0473-4bbf-9a0f-67eaaba628da', '2020-04-28 18:49:49');
+INSERT INTO `capital_account` VALUES ('b6735f9d-9357-11ea-82df-2cea7f200555', '0350ee9a-9357-11ea-82df-2cea7f200555', '银联快捷', '1004',null, null, 'f0de124e-9d31-4f86-a6f6-8010915b0926', '0.0000', '', '1.00', '10000.00', '20000.00', '3000000.00', '限额1-10000元，充的多送的多', 'acicpay', 'acicpay', 'normal', '1', 'ade7a178-0473-4bbf-9a0f-67eaaba628da', '2020-04-28 18:49:49');
+INSERT INTO `capital_account_statistics` VALUES ('5c729dd6-9357-11ea-82df-2cea7f200555', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0', '0');
+INSERT INTO `capital_account_statistics` VALUES ('b6735f9d-9357-11ea-82df-2cea7f200555', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0', '0');
+
+DROP TABLE IF EXISTS `front_user_score_history`;
+CREATE TABLE `front_user_score_history` (
+  `uuid` varchar(36) NOT NULL,
+  `front_user` varchar(36) NOT NULL,
+  `front_user_show_id` int(11) NOT NULL,
+  `order_num` bigint(20) DEFAULT NULL,
+  `order_id` varchar(36) DEFAULT NULL,
+  `order_type` varchar(20) NOT NULL COMMENT '积分记录来源',
+  `type` varchar(20) NOT NULL COMMENT '加/减',
+  `createtime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `s_amount` decimal(10,0) NOT NULL COMMENT '积分数值',
+  `score_balance_before` decimal(10,0) NOT NULL,
+  `score_balance_after` decimal(10,0) NOT NULL,
+  `reason` varchar(100) DEFAULT NULL,
+  `remark` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`uuid`),
+  KEY `FK_front_user_score_history_01` (`front_user`),
+  KEY `INDEX_front_user_score_history_showid` (`front_user_show_id`) USING BTREE,
+  KEY `INDEX_front_user_score_history_ordernum` (`order_num`) USING BTREE,
+  KEY `INDEX_front_user_score_history_ordertype` (`order_type`) USING BTREE,
+  KEY `INDEX_front_user_score_history_type` (`type`) USING BTREE,
+  CONSTRAINT `FK_front_user_score_history_01` FOREIGN KEY (`front_user`) REFERENCES `front_user` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `menu` VALUES ('68ae01e4-6c07-4edb-9d5e-3756f5bc3860', '用户金券管理', '2', '0ae36f97-90b4-11e8-95fb-fcaa163bc412', 'userVoucherList.html', 'img/li0_40', '0');
+
+INSERT INTO `capital_platform` VALUES ('1350ee9a-9357-11ea-82df-2cea7f20055a', '金樽支付', 'jinzun', 'jinzun', '5', '1', '1', '1', 'normal', '4de31cfe-2f05-4240-8786-4708882a2441', '通道测试中，请勿支付。。。', '5219fd06-0ff3-4621-ae83-c3d013fe9fc7', '测试中', '10000.00', '300.00');
+INSERT INTO `capital_account` VALUES ('6c729dd6-9357-11ea-82df-2cea7f20055a', '1350ee9a-9357-11ea-82df-2cea7f20055a', '支付宝（金樽扫码）', '4',null, null, 'f0de124e-9d31-4f86-a6f6-8010915b0926', '0.0000', '', '300.00', '10000.00', '20000.00', '3000000.00', '限额300-10000元，充的多送的多', 'jinzun', 'jinzun', 'normal', '4', 'ade7a178-0473-4bbf-9a0f-67eaaba628da', '2020-05-22 14:49:49');
+INSERT INTO `capital_account_statistics` VALUES ('6c729dd6-9357-11ea-82df-2cea7f20055a', '0.00', '0.00', '0.00', '0.00', '0.00', '0', '0', '0');
+
+ALTER TABLE `front_user_history`
+ADD INDEX `INDEX_front_user_history_01` (`createtime`) USING BTREE ;
+
+ALTER TABLE `front_user_payment_order`
+ADD INDEX `INDEX_front_user_payment_order_01` (`createtime`) USING BTREE ;
+
+ALTER TABLE `front_user_message`
+ADD INDEX `INDEX_front_user_message_01` (`createtime`) USING BTREE ;
+
+ALTER TABLE `front_user_message` ADD CONSTRAINT `FK_front_user_message_01` FOREIGN KEY (`front_user`) REFERENCES `front_user` (`uuid`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+
+
+-- ----------------------------
+-- Table structure for `front_user_daily`
+-- ----------------------------
+DROP TABLE IF EXISTS `front_user_daily`;
+CREATE TABLE `front_user_daily` (
+  `uuid` varchar(46) NOT NULL,
+  `front_user` varchar(36) NOT NULL,
+  `daily_date` varchar(10) NOT NULL,
+  PRIMARY KEY (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of front_user_daily
+-- ----------------------------
+
+ALTER TABLE `front_user_recharge_order`
+ADD COLUMN `is_activity`  tinyint(1) NULL AFTER `is_firsttime`,
+ADD COLUMN `activity_id`  varchar(20) NULL AFTER `is_activity`,
+ADD COLUMN `prize`  text NULL AFTER `activity_id`;
+
+
+INSERT INTO `front_user_group` VALUES ('visitor', '游客');
+
+ALTER TABLE `activity_info_firstcharge_prize`
+MODIFY COLUMN `capital_account`  varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `creator`;
+
+ALTER TABLE `front_user_buyfree_order`
+ADD COLUMN `receive_type`  varchar(20) NOT NULL DEFAULT 'normal' COMMENT '兑奖类型' AFTER `provide_info`;
+
+ALTER TABLE `front_user_checkin_history`
+ADD COLUMN `receive_type`  varchar(20) NOT NULL DEFAULT 'normal' AFTER `provide_info`;
+
+ALTER TABLE `front_user_scorelottery_history`
+ADD COLUMN `receive_type`  varchar(20) NOT NULL DEFAULT 'normal' AFTER `provide_info`;
+
+INSERT INTO `system_param` VALUES ('withdraw_scoreamount', '2', '用户提现消耗积分', 'user_withdraw', 'currency', '1d0db2b5-2a10-482c-a6c2-57adabdccbf6', '2020-04-21 20:59:38');
+
+ALTER TABLE `front_user_checkin_history`
+ADD COLUMN `front_user_history`  varchar(36) NULL AFTER `receive_type`;
+
+ALTER TABLE `front_user_scorelottery_history`
+ADD COLUMN `front_user_history`  varchar(36) NULL AFTER `receive_type`;
+
+ALTER TABLE `capital_account`
+DROP INDEX `AK_Key_2` ,
+ADD INDEX `AK_Key_2` (`account_num`) USING BTREE ;
+
+INSERT INTO `system_param` VALUES ('recharge_timeout', '10', '用户充值订单时限（单位分）', 'user_recharge', 'numberic', '1d0db2b5-2a10-482c-a6c2-57adabdccbf6', '2020-06-10 16:20:38');
+
+DROP TABLE IF EXISTS `front_user_edit`;
+CREATE TABLE `front_user_edit` (
+  `uuid` varchar(36) NOT NULL,
+  `front_user` varchar(36) NOT NULL,
+  `type` varchar(10) NOT NULL COMMENT '修改头像/修改昵称 headimg/nickname',
+  `info_before` varchar(100) NOT NULL,
+  `status` varchar(20) NOT NULL COMMENT 'normal-待审核/checked-已通过/nopass-未通过/delete-删除',
+  `info_after` varchar(100) NOT NULL,
+  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `reason` varchar(100) DEFAULT NULL,
+  `operator` varchar(36) DEFAULT NULL,
+  `operattime` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`uuid`),
+  KEY `FK_Front_User_edit_01` (`front_user`),
+  KEY `Index_Front_User_edit_01` (`type`) USING BTREE,
+  KEY `Index_Front_User_edit_02` (`info_before`,`info_after`) USING BTREE,
+  KEY `Index_Front_User_edit_03` (`status`) USING BTREE,
+  KEY `Index_Front_User_edit_04` (`createtime`) USING BTREE,
+  CONSTRAINT `FK_Front_User_edit_01` FOREIGN KEY (`front_user`) REFERENCES `front_user` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `front_user_payment_order`
+ADD INDEX `INDEX_front_user_payment_order_02` (`status`) USING BTREE ;
+
+ALTER TABLE `winning_info_receive`
+ADD INDEX `Index_winning_info_receive_01` (`status`) USING BTREE ,
+ADD INDEX `Index_winning_info_receive_02` (`type`) USING BTREE ;
+
+ALTER TABLE `front_user_scorelottery_history`
+ADD INDEX `INDEX_front_user_scorelottery_history_01` (`status`) USING BTREE ,
+ADD INDEX `INDEX_front_user_scorelottery_history_02` (`prize_type`) USING BTREE ;
+
+ALTER TABLE `front_user_checkin_history`
+ADD INDEX `INDEX_front_user_checkin_history_02` (`status`) USING BTREE ,
+ADD INDEX `INDEX_front_user_checkin_history_03` (`prize_type`) USING BTREE ;
+
+ALTER TABLE `front_user_buyfree_order`
+ADD INDEX `INDEX_front_user_buyfree_02` (`status`) USING BTREE ;
+
+ALTER TABLE `front_user_voucher`
+ADD INDEX `INDEX_front_user_voucher_01` (`createtime`) USING BTREE ,
+ADD INDEX `INDEX_front_user_voucher_02` (`status`) USING BTREE ;
+
+ALTER TABLE `luckygame_goods_issue`
+ADD INDEX `INDEX_luckygame_goods_issue_01` (`goods_type`) USING BTREE ,
+ADD INDEX `INDEX_luckygame_goods_issue_02` (`title`, `short_title`) USING BTREE ,
+ADD INDEX `INDEX_luckygame_goods_issue_03` (`bet_per_share`) USING BTREE ,
+ADD INDEX `INDEX_luckygame_goods_issue_04` (`status`) USING BTREE ,
+ADD INDEX `INDEX_luckygame_goods_issue_05` (`createtime`) USING BTREE ;
+
+ALTER TABLE `front_user_message`
+ADD INDEX `INDEX_front_user_message_02` (`status`) USING BTREE ;
+
+INSERT INTO `capital_platform` VALUES ('d78fda08-b13e-11ea-aeb4-fcaa14314cbe', 'Payduoduo支付', 'union', 'union', '6', '1', '1', '1', 'normal', '4de31cfe-2f05-4240-8786-4708882a2441', '充值限额1-10000元，充的多送的多', 'eae363cc-1ee4-456f-ac74-f2beff665b07', '充值限额1-10000元，充的多送的多', '10000.00', '1.00');
+
+ALTER TABLE `front_user_recharge_order`
+ADD INDEX `INDEX_front_user_recharge_order_01` (`status`) USING BTREE ,
+ADD INDEX `INDEX_front_user_recharge_order_02` (`createtime`) USING BTREE ;
+
+INSERT INTO `system_param` VALUES ('delivery_scoreamount', '1', '用户兑换实物消耗积分', 'full_system', 'currency', '1d0db2b5-2a10-482c-a6c2-57adabdccbf6', '2020-04-21 20:59:38');
+
+update front_user_history set type='user_sub' where order_type='user_payment';
+
+ALTER TABLE `luckygame_goods_issue`
+ADD COLUMN `lucky_group`  varchar(20) NULL COMMENT '中奖用户组：personal、lucky、raider' AFTER `lucky_number`;
+
+ALTER TABLE `front_user_payment_order`
+ADD COLUMN `payment_group`  varchar(20) NOT NULL DEFAULT 'personal' COMMENT '参与抽奖组：personal、lucky、raider' AFTER `lucky_number`;
+
+ALTER TABLE `admin_offset_order`
+ADD COLUMN `recharge_order`  varchar(36) NULL AFTER `createtime`;
+
+ALTER TABLE `front_user_recharge_order`
+ADD COLUMN `offset_order`  varchar(36) NULL AFTER `prize`;
+
+ALTER TABLE `front_user_history`
+ADD INDEX `INDEX_front_user_history_02` (`order_type`) USING BTREE ;
+
+INSERT INTO `activity_info` VALUES ('recommend', '推荐新人', 'normal', '2020-07-28 09:52:41', '1d0db2b5-2a10-482c-a6c2-57adabdccbf6', '{\"awardRate\":0,025,\"registUrl\":\"http://www.baidu.com\",\"voucher\":\"e93246cb-9d39-43e5-a64f-4d1b89b89dcb,ce533aa5-52eb-4edd-9118-3c598df79b31\"}', '2020-06-01 00:00:00', '2020-07-31 00:00:00', null, null, '5');
+DROP TABLE IF EXISTS `activity_info_recommend_ranking`;
+CREATE TABLE `activity_info_recommend_ranking` (
+  `uuid` varchar(36) NOT NULL,
+  `front_user` varchar(36) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `recommend` int(11) NOT NULL,
+  `award` decimal(20,2) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `robot_setting`
+ADD INDEX `Index_robot_setting_01` (`robot_id`) USING BTREE ,
+ADD INDEX `Index_robot_setting_02` (`game_type`) USING BTREE ;
+
+INSERT INTO `system_param` VALUES ('group_change_line_recharged', '66.00', '充值用户级别变更标准（单位元）', 'user_recharge', 'currency', '1d0db2b5-2a10-482c-a6c2-57adabdccbf6', '2020-08-05 10:59:59');
+
+ALTER TABLE `capital_account`
+ADD COLUMN `user_pre_receive`  int(11) NULL AFTER `createtime`;
+
+ALTER TABLE `front_user_recharge_order`
+ADD INDEX `INDEX_front_user_recharge_order_createtime` (`createtime`) USING BTREE ;
+
+ALTER TABLE `front_user_recharge_order`
+ADD INDEX `INDEX_front_user_recharge_capital_account` (`capital_account`) USING BTREE ;
+
+ALTER TABLE `front_user_scorelottery_history`
+ADD COLUMN `score_amount`  decimal(10,0) NOT NULL AFTER `activity_info_scorelottery_prize`;
+
+ALTER TABLE `luckygame_goods`
+ADD COLUMN `tabs`  varchar(50) NULL COMMENT '标签' AFTER `createtime`;
+
+INSERT INTO `role` VALUES ('702170ff-082d-412f-a8a4-b021183fa996', 'superadmin');
+INSERT INTO `menu` VALUES ('cea16c97-2acd-11eb-9b3a-fcaa14314cbe', '中奖概率管理', '2', '0ae36f97-90b4-11e8-95fb-ad1f2d312ad2', 'winningRateList.html', 'icon/icon0803.png', '0');

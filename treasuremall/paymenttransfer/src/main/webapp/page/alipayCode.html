@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>支付宝付款</title>
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/alipayCode.css" />
+</head>
+<body>
+	<div class="wrap" id="alipaycode">
+		<div class="first-box">
+			<div class="first-box-top">
+				<span>￥</span><b class="amount"></b>
+				<p>此订单请在 <span class="timeout"></span> 前付款</p>
+			</div>
+			<img onClick="getUrl(this,'img-url')" class="hiddenImg" src=""/>
+			<button><img src="img/ic-zfb.png"/><span>唤起支付宝App付款</span></button>
+			<img class="important-tips" src="img/bg-tips.png" />
+			<ul class="tips">
+				<li>1、进入付款页面后，付款金额必须为<span class="amount"></span>元，否则无法到账！</li>
+				<li>2、在无法唤起支付宝付款的情况下，建议采用二维码付款。流程如下：</li>
+			</ul>
+			<div class="img-code">
+				<img src="" />
+			</div>
+			<img src="img/bg-step.png" style="width:100%;" />
+			<div class="fixed-box">
+				<a class="cancle-btn">取消订单</a>
+				<a class="sure-btn">已完成付款</a>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+	<script src="js/llqrcode.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/analyticCode.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+	<script type="text/javascript" src="js/url.min.js" ></script>
+	<script type="text/javascript" src="js/index.js" ></script>
+	<script type="text/javascript" src="js/alipayCode.js" ></script>
+</body>
+</html>

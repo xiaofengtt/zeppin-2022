@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Payduoduo</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+	</head>
+	<body>
+		<div class="main">
+			<!-- 内容主体区域 -->
+		    <div class="layui-bodu" style="padding: 30px 35px;">
+		    	<form class="layui-form" action="" lay-filter="first">
+		    		<div class="layui-form-item">
+						<label class="layui-form-label">Type</label>
+						<div class="layui-input-block">
+							<input name="type" class="layui-input" value="withdrawal" disabled>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">Channel</label>
+						<div class="layui-input-block">
+							<select name="companyChannel" lay-filter="companyChannel" >
+								<option>please select</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">Bankcard</label>
+						<div class="layui-input-block">
+							<select name="companyBankcard" lay-filter="companyBankcard" >
+								<option>please select</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">Balance</label>
+						<div class="layui-input-block">
+							<input type="number" name="balance" class="layui-input" disabled>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">Withdrawal</label>
+						<div class="layui-input-block">
+							<input type="number" name="totalAmount" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">Poundage</label>
+						<div class="layui-input-block">
+							<input type="number" name="poundage" class="layui-input" disabled>
+							<input type="hidden" name="poundageRate">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">Amount</label>
+						<div class="layui-input-block">
+							<input type="number" name="amount" class="layui-input" disabled>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">TransInfo</label>
+						<div class="layui-input-block">
+							<textarea name="data" class="layui-textarea"></textarea>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn layui-cancel" onclick="parent.layer.closeAll()">Cancel</button>
+							<button class="layui-btn lay-submit" lay-submit lay-filter="*">Confirm</button>
+						</div>
+					</div>
+				</form>
+		    </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/tradeWithdraw.js" ></script>
+	</body>
+</html>

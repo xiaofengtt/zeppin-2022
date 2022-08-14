@@ -1,9 +1,15 @@
 package cn.zeppin.action.sms;
 
+import java.awt.image.BufferedImage;
+import java.io.OutputStream;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.imageio.ImageIO;
+
+import org.apache.commons.lang3.RandomStringUtils;
 
 import cn.zeppin.action.base.ActionParam;
 import cn.zeppin.action.base.ActionParam.ValueType;
@@ -13,6 +19,7 @@ import cn.zeppin.entity.MobileCode;
 import cn.zeppin.service.api.IInvigilationTeacherService;
 import cn.zeppin.service.api.IMobileCodeService;
 import cn.zeppin.utility.Dictionary;
+import cn.zeppin.utility.Java2D;
 import cn.zeppin.utility.SendSms;
 import cn.zeppin.utility.Utlity;
 
@@ -43,10 +50,43 @@ public class SendSmsAction extends BaseAction {
 	}
 
 	/**
+	 * @category 生成验证码
+	 */
+	public void AuthImg() {
+		try {
+			response.setHeader("Pragma", "No-cache");
+			response.setHeader("Cache-Control", "no-cache");
+			response.setContentType("image/jpeg");
+			response.addHeader("expires", "0");
+
+			char[] random = {'A','B','C','D','E','F','G',
+							'H','I','J','K','L','M','N',
+							'O','P','Q','R','S','T',
+							'U','V','W','X','Y','Z',
+							'1','2','3','4','5','6','7','8','9','0'};
+			
+			String authCode = RandomStringUtils.random(5,random);
+			OutputStream os = response.getOutputStream();
+
+			// 指定图形验证码图片的大小
+			BufferedImage image = Java2D.drawNewAuthCodeImg(authCode);
+
+			// 将验证码保存到seesion中
+			session.setAttribute("authcode", authCode);
+
+			ImageIO.write(image, "jpeg", os);
+			os.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+	/**
 	 * 发送验证码接口 接受移动端发送过来的手机号
 	 */
 	@ActionParam(key = "uid", type = ValueType.NUMBER)
 	@ActionParam(key = "mobile", type = ValueType.STRING, emptyable = false, nullable = false)
+	@ActionParam(key = "authcode", type = ValueType.STRING, emptyable = false, nullable = false)
 	@ActionParam(key = "check", type = ValueType.NUMBER, emptyable = false, nullable = false)
 	public void SendSms() {
 		ActionResult result = new ActionResult();
@@ -56,8 +96,9 @@ public class SendSmsAction extends BaseAction {
 
 		int uid = this.getIntValue(request.getParameter("uid"));
 		String mobile = this.getStrValue(request.getParameter("mobile"));
+		String authCode = this.getStrValue(request.getParameter("authcode"));
 		int check = this.getIntValue(request.getParameter("check"));
-
+		String sessionCode = session.getAttribute("authcode") == null ? "" : session.getAttribute("authcode").toString();
 		if (mobile != null && !"".equals(mobile)) {
 
 			if (!Utlity.isMobileNO(mobile)) {
@@ -65,7 +106,18 @@ public class SendSmsAction extends BaseAction {
 				Utlity.ResponseWrite(result, dataType, response);
 				return;
 			}
-
+			
+			//20191112新增图形验证码校验
+			if (authCode == null || authCode.equals("")) {
+				result.init(FAIL_STATUS, "请输入图形验证码！", null);
+				Utlity.ResponseWrite(result, dataType, response);
+				return;
+			}
+			if (sessionCode == null || !authCode.toLowerCase().equals(sessionCode.toLowerCase())) {
+				result.init(FAIL_STATUS, "图形验证码输入不正确！", null);
+				Utlity.ResponseWrite(result, dataType, response);
+				return;
+			}
 			if (check == 1) {
 				Map<String, Object> searchParams = new HashMap<String, Object>();
 				searchParams.put("mobile", mobile);
@@ -78,6 +130,16 @@ public class SendSmsAction extends BaseAction {
 			}
 
 			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("mobile", mobile);
+			params.put("starttime", Utlity.timeSpanToString(new Timestamp(System.currentTimeMillis() - 60000)));
+			Integer count = this.mobileCodeService.getMobileCodeCount(params);
+			if(count > 1){
+				result.init(FAIL_STATUS, "验证码发送过于频繁，请稍后再发！", null);
+				Utlity.ResponseWrite(result, dataType, response);
+				return;
+			}
+			
+			params.clear();
 			params.put("mobile", mobile);
 			params.put("status", Dictionary.MOBILECODE_STATUS_VALID);
 			List<MobileCode> lstMobileCode = this.mobileCodeService.getMobileCodeByParams(params);

@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+.img-code{
+	background:#CAF8E0;
+}
+.fixed-box .cancle-btn{
+	border-color:#04C260;
+	color:#04C260;
+}
+.fixed-box .sure-btn{
+	background:#04C260;
+}
+.orderNumber{
+	border-color:#04C260;
+	background: #F3FFF9;
+}
+.button-box a{
+	border-color:#04C260;
+	color:#04C260;
+}
+.button-box a.sure-btn{
+	background:#04C260;
+}
+.second-box{
+	display:none;
+}
+.second-box-bottom{
+	background: #fff url(../img/bg-title-wx.png) left 0.4rem no-repeat;
+    background-size: 4rem 0.68rem;
+}
+.important-tips{
+	padding-top:0.88rem;
+}
+.layui-layer-btn .layui-layer-btn0{
+	background:#04C260 !important;
+}

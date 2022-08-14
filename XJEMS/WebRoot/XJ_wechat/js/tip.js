@@ -23,6 +23,16 @@ $(document).ready(
 								$("#item").addClass("color");
 							}
 						});
+						$("#apply").click(function(){
+							if($("#item").hasClass("color") == false) {
+								alert("请仔细阅读以上条款，并点击同意按钮");
+							}else{
+								var urlStr = encodeURI("http://ks.xsdkszx.cn/XJ_wechat/apply.html?id="+ $(this).attr("data-id") + "_"+ $(this).attr("data-tid"));
+								var linkUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb5465b3377c55c8e&redirect_uri='+urlStr+'&response_type=code&scope=snsapi_base&state=xj#wechat_redirect';
+								window.location.href = linkUrl;
+							}
+						})
+						
 					} else { // 获取失败
 						var template = $.templates('#queboxTpl');
 						var html = "<p class='warning'>提示</p><p class='remind'>" + r.Message + "</p>";
@@ -39,41 +49,7 @@ $(document).ready(
 
 
 
-// 申请监考 tid:教师id
-function apply(exam, tid) {
-	if($("#item").hasClass("color")==false){
-		alert("请仔细阅读以上条款，并点击同意按钮");
-		return false;
-	}
-	$("#apply").attr("disabled",true);
-	$("#apply").css({"background-color":"#C1C1C1"});
-	$.ajax({
-		type : "post",
-		url : "../weixin/weixinApply",
-		async : true,
-		timeout : 3000,
-		data : {
-			"exam" : exam,
-			"tid" : tid
-		},
-		success : function(data) {
-			if (data.Status == 'success') {
-				alert("申请成功")
-				window.location.href =  data.Records;
-//				$("#errorMsg").hide();
-			} else {
-//				$("#errorMsg").show();
-				alert(data.Message);
-				$("#apply").attr("disabled",false);
-				$("#apply").css({"background-color":"#0BC66C"});
-				
-			}
-		},
-		error : function() {
-			alert("链接超时，请稍后再试");
-		}
-	});
-}
+
 // 取消申请监考 id：监考记录id
 function cancelApply(id) {
 	$.ajax({

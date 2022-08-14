@@ -40,6 +40,10 @@ public class ExamRoom implements java.io.Serializable {
 	private Timestamp createtime;
 
 	private String examRoomInfo;
+	//考场类型
+	private String roomType;
+	//监考注意事项
+	private String invigilationNotice;
 
 	// Constructors
 
@@ -50,7 +54,7 @@ public class ExamRoom implements java.io.Serializable {
 	/** minimal constructor */
 	public ExamRoom(Integer id, String roomIndex, String roomAddress, String examnationTime,
 			String examnationInformation, Short status, ExamInformation exam, Integer creator, Timestamp createtime,
-			String arrivaltime, String examRoomInfo) {
+			String arrivaltime, String examRoomInfo,String roomType,String invigilationNotice) {
 		super();
 		this.id = id;
 		this.roomIndex = roomIndex;
@@ -63,6 +67,8 @@ public class ExamRoom implements java.io.Serializable {
 		this.createtime = createtime;
 		this.arrivaltime = arrivaltime;
 		this.examRoomInfo = examRoomInfo;
+		this.roomType = roomType;
+		this.invigilationNotice = invigilationNotice;
 	}
 
 	// Property accessors
@@ -95,7 +101,7 @@ public class ExamRoom implements java.io.Serializable {
 		this.creator = creator;
 	}
 
-	@Column(name = "ROOM_INDEX", nullable = false, length = 20)
+	@Column(name = "ROOM_INDEX", nullable = false)
 	public String getRoomIndex() {
 		return roomIndex;
 	}
@@ -166,6 +172,24 @@ public class ExamRoom implements java.io.Serializable {
 
 	public void setExamRoomInfo(String examRoomInfo) {
 		this.examRoomInfo = examRoomInfo;
+	}
+	
+    @Column(name="ROOM_TYPE",length = 50)
+	public String getRoomType() {
+		return roomType;
+	}
+
+	public void setRoomType(String roomType) {
+		this.roomType = roomType;
+	}
+
+	@Column(name = "INVIGILATION_NOTICE")
+	public String getInvigilationNotice() {
+		return invigilationNotice;
+	}
+
+	public void setInvigilationNotice(String invigilationNotice) {
+		this.invigilationNotice = invigilationNotice;
 	}
 
 	/**

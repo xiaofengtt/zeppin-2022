@@ -68,7 +68,7 @@ import cn.zeppin.utility.wx.MessageUtil;
  * Function: TODO ADD FUNCTION. <br/>
  */
 public class WeixinAction extends BaseAction {
-	// private final String PATH = "http://ks.xjnu.edu.cn/";
+	// private final String PATH = "http://ks.xsdkszx.cn/";
 	private final String PATH = "http://" + request.getServerName() + "/";
 	/**
 	 * 
@@ -146,7 +146,7 @@ public class WeixinAction extends BaseAction {
 	@ActionParam(key = "photo", type = ValueType.NUMBER, nullable = false, emptyable = false)
 	@ActionParam(key = "name", type = ValueType.STRING, nullable = false, emptyable = false)
 	@ActionParam(key = "idcard", type = ValueType.STRING, nullable = false, emptyable = false)
-	@ActionParam(key = "sex", type = ValueType.NUMBER, nullable = false, emptyable = false)
+//	@ActionParam(key = "sex", type = ValueType.NUMBER, nullable = false, emptyable = false)
 	@ActionParam(key = "ethnic", type = ValueType.NUMBER, nullable = false, emptyable = false)
 	@ActionParam(key = "major", type = ValueType.STRING)
 	@ActionParam(key = "mobile", type = ValueType.STRING, nullable = false, emptyable = false)
@@ -162,15 +162,21 @@ public class WeixinAction extends BaseAction {
 	@ActionParam(key = "jobDuty", type = ValueType.STRING)
 	@ActionParam(key = "studyMajor", type = ValueType.STRING)
 	@ActionParam(key = "studyGrade", type = ValueType.STRING)
+	@ActionParam(key = "studyLength", type = ValueType.NUMBER)
 	@ActionParam(key = "bankCard", type = ValueType.STRING, nullable = false, emptyable = false)
 	@ActionParam(key = "openid", type = ValueType.STRING)
 	@ActionParam(key = "idcardPhoto", type = ValueType.STRING, nullable = false, emptyable = false)
+	@ActionParam(key = "formation", type = ValueType.STRING, nullable = false, emptyable = false)
+	@ActionParam(key = "occupation", type = ValueType.STRING, nullable = false, emptyable = false)
+	@ActionParam(key = "bankOrg", type = ValueType.STRING, nullable = false, emptyable = false)
+	@ActionParam(key = "bankName", type = ValueType.STRING, nullable = false, emptyable = false)
+	@ActionParam(key = "email", type = ValueType.STRING, nullable = false, emptyable = false)
 	public void Add() {
 		ActionResult actionResult = new ActionResult();
 
 		String name = request.getParameter("name");
 		String idcard = request.getParameter("idcard");
-		Short sex = Short.parseShort(request.getParameter("sex"));
+//		Short sex = Short.parseShort(request.getParameter("sex"));
 		Short ethnic = Short.parseShort(request.getParameter("ethnic"));
 		String major = request.getParameter("major");
 		String mobile = request.getParameter("mobile");
@@ -179,7 +185,66 @@ public class WeixinAction extends BaseAction {
 		String inschooltime = request.getParameter("inschooltime");
 		// 可空
 		String sid = request.getParameter("sid");
+		
+		
+		//20190418新增5个字段
+		String formation = request.getParameter("formation");
+//		if(type == 3){//职工非空
+		if(Utlity.checkStringNull(formation)){
+			actionResult.init(FAIL_STATUS, "请选择编制属性信息", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+//		} else {
+//			formation = Utlity.checkStringNull(formation) ? "未选择" : formation;
+//		}
+		String occupation = request.getParameter("occupation");
+		if(Utlity.checkStringNull(occupation)){
+			actionResult.init(FAIL_STATUS, "请填写职业信息", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		if(occupation.length() > 50){
+			actionResult.init(FAIL_STATUS, "职业内容超出50字长度限制", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		String bankOrg = request.getParameter("bankOrg");
+		if(Utlity.checkStringNull(bankOrg)){
+			actionResult.init(FAIL_STATUS, "请填写开户行所属地区", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		if(bankOrg.length() > 50){
+			actionResult.init(FAIL_STATUS, "开户行所属地区超出50字长度限制", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		String bankName = request.getParameter("bankName");
+		if(Utlity.checkStringNull(bankName)){
+			actionResult.init(FAIL_STATUS, "请填写开户行", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		if(bankName.length() > 50){
+			actionResult.init(FAIL_STATUS, "开户行超出50字长度限制", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		String email = request.getParameter("email");
+		if(Utlity.checkStringNull(email)){
+			actionResult.init(FAIL_STATUS, "请填写电子信箱", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		
 		Integer photo = this.getIntValue(request.getParameter("photo"));
+		if(photo == 1){
+			actionResult.init(FAIL_STATUS, "请上传头像", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		String studyLength = request.getParameter("studyLength") == null ? "0" : request.getParameter("studyLength");
 		String specialty = request.getParameter("specialty") == null ? "" : request.getParameter("specialty");
 		String invigilateCampus = request.getParameter("invigilateCampus");//
 		// 监考校区
@@ -197,6 +262,7 @@ public class WeixinAction extends BaseAction {
 			Utlity.ResponseWrite(actionResult, dataType, response);
 			return;
 		}
+	
 		Integer idPhoto = this.getIntValue(idcardPhoto);
 
 		InvigilationTeacher teacher = new InvigilationTeacher();
@@ -204,6 +270,7 @@ public class WeixinAction extends BaseAction {
 		try {
 			if (idcard != null) {
 				if (IDCardUtil.IDCardValidate(idcard).equals("")) {
+					idcard = idcard.toUpperCase();
 					Map<String, Object> searchCard = new HashMap<String, Object>();
 					searchCard.put("idcard", idcard);
 					List<InvigilationTeacher> list = this.invigilationTeacherService
@@ -243,7 +310,7 @@ public class WeixinAction extends BaseAction {
 			if (count > 0) {
 				actionResult.init(FAIL_STATUS, "该手机号已注册", null);
 				Utlity.ResponseWrite(actionResult, dataType, response);
-				return;
+				return; 
 			}
 			// 必填
 			String code = request.getParameter("code");
@@ -275,6 +342,20 @@ public class WeixinAction extends BaseAction {
 				Utlity.ResponseWrite(actionResult, dataType, response);
 				return;
 			}
+			
+			//20180919新增强制校验 研究生和本科 学制和年级必填
+			if("2".equals(type) || "4".equals(type)){
+				if(Utlity.checkStringNull(studyGrade) || "0".equals(studyGrade)){
+					actionResult.init(FAIL_STATUS, "请选择所在年级", null);
+					Utlity.ResponseWrite(actionResult, dataType, response);
+					return;
+				}
+				if(Utlity.checkStringNull(studyLength) || "0".equals(studyLength)){
+					actionResult.init(FAIL_STATUS, "请选择学制信息", null);
+					Utlity.ResponseWrite(actionResult, dataType, response);
+					return;
+				}
+			}
 
 			InvigilationTeacherOld teacherOld = invigilationTeacherService.getTeacherOldByIdcard(idcard);
 			if (teacherOld != null) {
@@ -292,7 +373,7 @@ public class WeixinAction extends BaseAction {
 			// 存储数据
 			teacher.setPinyin(pinyingUtil.getFirstSpell(name));
 			teacher.setMobile(mobile);
-			teacher.setSex(sex);
+			teacher.setSex(IDCardUtil.getSex(idcard));
 			Ethnic eth = this.ethnicService.getById(ethnic);
 			teacher.setEthnic(eth);
 			Resource pho = this.resourceService.getById(photo);
@@ -304,6 +385,14 @@ public class WeixinAction extends BaseAction {
 			teacher.setJobDuty(jobDuty);
 			teacher.setMajor(major);
 			teacher.setOrganization(organization);
+			
+			//20190418新增5个字段信息
+			teacher.setFormation(formation);
+			teacher.setOccupation(occupation);
+			teacher.setBankOrg(bankOrg);
+			teacher.setBankName(bankName);
+			teacher.setEmail(email);
+			
 			// teacher.setInschooltime(Timestamp.valueOf(inschooltime + "
 			// 00:00:00"));
 			teacher.setInschooltime(inschooltime);
@@ -327,6 +416,7 @@ public class WeixinAction extends BaseAction {
 			teacher.setOpenID(openid);
 			teacher.setDisableType((short) 1);
 			teacher.setIsDisable((short) 0);
+			teacher.setStudyLength(Integer.parseInt(studyLength));
 
 			// 身份证正面照
 			Resource idCardPhotrR = this.resourceService.getById(idPhoto);
@@ -348,20 +438,21 @@ public class WeixinAction extends BaseAction {
 
 	/**
 	 * 修改(修改教师信息需要审核)
+	 * 2017.12.14学制及所在年级，身份类别不可修改，
 	 */
-	@ActionParam(key = "id", type = ValueType.NUMBER, nullable = false, emptyable = false)
+//	@ActionParam(key = "id", type = ValueType.NUMBER, nullable = false, emptyable = false)
 	@ActionParam(key = "photo", type = ValueType.NUMBER, nullable = false, emptyable = false)
 	// @ActionParam(key = "name", type = ValueType.STRING, nullable = false,
 	// emptyable = false)
 	// @ActionParam(key = "idcard", type = ValueType.STRING, nullable = false,
 	// emptyable = false)
-	@ActionParam(key = "sex", type = ValueType.NUMBER, nullable = false, emptyable = false)
+//	@ActionParam(key = "sex", type = ValueType.NUMBER, nullable = false, emptyable = false)
 	@ActionParam(key = "ethnic", type = ValueType.NUMBER, nullable = false, emptyable = false)
 	@ActionParam(key = "major", type = ValueType.STRING, nullable = false, emptyable = false)
 	@ActionParam(key = "mobile", type = ValueType.STRING, nullable = false, emptyable = false)
 	@ActionParam(key = "code", type = ValueType.STRING, nullable = false, emptyable = false)
-	@ActionParam(key = "type", type = ValueType.NUMBER, nullable = false, emptyable = false)
-	@ActionParam(key = "organization", type = ValueType.STRING, nullable = false, emptyable = false)
+	@ActionParam(key = "type", type = ValueType.NUMBER)
+	@ActionParam(key = "organization", type = ValueType.STRING)
 	@ActionParam(key = "inschooltime", type = ValueType.STRING, nullable = false, emptyable = false)
 	@ActionParam(key = "specialty", type = ValueType.STRING, nullable = false, emptyable = false)
 	@ActionParam(key = "sid", type = ValueType.STRING, nullable = false, emptyable = false)
@@ -370,24 +461,94 @@ public class WeixinAction extends BaseAction {
 	// false, emptyable = false)
 	@ActionParam(key = "jobDuty", type = ValueType.STRING, nullable = false, emptyable = false)
 	@ActionParam(key = "studyMajor", type = ValueType.STRING, nullable = false, emptyable = false)
-	@ActionParam(key = "studyGrade", type = ValueType.STRING, nullable = false, emptyable = false)
+	@ActionParam(key = "studyGrade", type = ValueType.STRING)
+	@ActionParam(key = "studyLength", type = ValueType.NUMBER)
 	@ActionParam(key = "bankCard", type = ValueType.STRING, nullable = false, emptyable = false)
 	@ActionParam(key = "idcardPhoto", type = ValueType.STRING, nullable = false, emptyable = false)
+	@ActionParam(key = "formation", type = ValueType.STRING, nullable = false, emptyable = false)
+	@ActionParam(key = "occupation", type = ValueType.STRING, nullable = false, emptyable = false)
+	@ActionParam(key = "bankOrg", type = ValueType.STRING, nullable = false, emptyable = false)
+	@ActionParam(key = "bankName", type = ValueType.STRING, nullable = false, emptyable = false)
+	@ActionParam(key = "email", type = ValueType.STRING, nullable = false, emptyable = false)
 	public void Update() {
 		ActionResult actionResult = new ActionResult();
-		Integer id = this.getIntValue(request.getParameter("id"));
+		InvigilationTeacher teacher = (InvigilationTeacher) session.getAttribute("teachersession");
+		if(teacher == null){
+			actionResult.init(UNLOGIN_STATUS, "用户未登录", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+//		Integer id = this.getIntValue(request.getParameter("id"));
 		// String name = request.getParameter("name");
 		// String idcard = request.getParameter("idcard");
-		Short sex = Short.parseShort(request.getParameter("sex"));
+//		Short sex = Short.parseShort(request.getParameter("sex"));
 		Short ethnic = Short.parseShort(request.getParameter("ethnic"));
 		String major = request.getParameter("major");
 		String mobile = request.getParameter("mobile");
-		Short type = Short.parseShort(request.getParameter("type"));
+		String type = request.getParameter("type");
 		String organization = request.getParameter("organization");
+		
+		//20190418新增5个字段
+		String formation = request.getParameter("formation");
+//		if(teacher.getType() == 3){//职工非空
+		if(Utlity.checkStringNull(formation)){
+			actionResult.init(FAIL_STATUS, "请选择编制属性信息", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+//		} else {
+//			formation = Utlity.checkStringNull(formation) ? "未选择" : formation;
+//		}
+		String occupation = request.getParameter("occupation");
+		if(Utlity.checkStringNull(occupation)){
+			actionResult.init(FAIL_STATUS, "请填写职业信息", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		if(occupation.length() > 50){
+			actionResult.init(FAIL_STATUS, "职业内容超出50字长度限制", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		String bankOrg = request.getParameter("bankOrg");
+		if(Utlity.checkStringNull(bankOrg)){
+			actionResult.init(FAIL_STATUS, "请填写开户行所属地区", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		if(bankOrg.length() > 50){
+			actionResult.init(FAIL_STATUS, "开户行所属地区超出50字长度限制", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		String bankName = request.getParameter("bankName");
+		if(Utlity.checkStringNull(bankName)){
+			actionResult.init(FAIL_STATUS, "请填写开户行", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		if(bankName.length() > 50){
+			actionResult.init(FAIL_STATUS, "开户行超出50字长度限制", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		String email = request.getParameter("email");
+		if(Utlity.checkStringNull(email)){
+			actionResult.init(FAIL_STATUS, "请填写电子信箱", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		
 		String inschooltime = request.getParameter("inschooltime");
 		// 可空
 		String sid = request.getParameter("sid");
 		Integer photo = this.getIntValue(request.getParameter("photo"));
+		if(photo == 1){
+			actionResult.init(FAIL_STATUS, "请上传头像", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		Integer studyLength = this.getIntValue(request.getParameter("studyLength"),0);
 		String specialty = request.getParameter("specialty") == null ? "" : request.getParameter("specialty");
 		String invigilateCampus = request.getParameter("invigilateCampus");//
 		// 监考校区
@@ -412,7 +573,7 @@ public class WeixinAction extends BaseAction {
 			return;
 		}
 		try {
-			InvigilationTeacher teacher = invigilationTeacherService.getById(id);
+//			InvigilationTeacher teacher = invigilationTeacherService.getById(id);
 			Map<String, Object> searchParams = new HashMap<String, Object>();
 			searchParams.put("mobile", mobile);
 			Integer count = this.invigilationTeacherService.searchInvigilationTeacherCount(searchParams);
@@ -452,48 +613,80 @@ public class WeixinAction extends BaseAction {
 				Utlity.ResponseWrite(actionResult, dataType, response);
 				return;
 			}
+			if(Utlity.checkStringNull(organization)){
+				actionResult.init(FAIL_STATUS, "请正确填写所在学院或部门", null);
+				Utlity.ResponseWrite(actionResult, dataType, response);
+				return;
+			}
+			//20180919新增强制校验 研究生和本科 学制和年级必填
+			if(!Utlity.checkStringNull(type)){
+				if("2".equals(type) || "4".equals(type)){
+					if(Utlity.checkStringNull(studyGrade) || "0".equals(studyGrade)){
+						actionResult.init(FAIL_STATUS, "请选择所在年级", null);
+						Utlity.ResponseWrite(actionResult, dataType, response);
+						return;
+					}
+					if(studyLength == 0){
+						actionResult.init(FAIL_STATUS, "请选择学制信息", null);
+						Utlity.ResponseWrite(actionResult, dataType, response);
+						return;
+					}
+				}
+			}
+			
 			if (Utlity.checkStringNull(inschooltime)) {
 				actionResult.init(FAIL_STATUS, "请选择入校时间", null);
 				Utlity.ResponseWrite(actionResult, dataType, response);
 				return;
 			}
 
-			if (teacher != null) {
-				// teacher.setName(name);
-				// teacher.setIdcard(idcard);
-				// teacher.setPinyin(pinyingUtil.getFirstSpell(name));
-				teacher.setMobile(mobile);
-				teacher.setSex(sex);
-				Ethnic eth = this.ethnicService.getById(ethnic);
-				teacher.setEthnic(eth);
-				Resource pho = this.resourceService.getById(photo);
-				teacher.setPhoto(pho);
-				teacher.setType(type);
-				// 研究生 无职务
-				teacher.setStudyMajor(studyMajor);
-				teacher.setStudyGrade(studyGrade);
-				teacher.setJobDuty(jobDuty);
-				teacher.setMajor(major);
-				teacher.setOrganization(organization);
-				teacher.setInschooltime(inschooltime);
-
-				teacher.setSpecialty(specialty);
-				teacher.setInvigilateCampus(invigilateCampus);
-				// teacher.setInvigilateType(invigilateType);
-				teacher.setSid(sid);
-				teacher.setBankCard(bankCard);
-				// 身份证正面照
-				Resource idCardPhotrR = this.resourceService.getById(idPhoto);
-				teacher.setIdCardPhoto(idCardPhotrR);
-				// teacher.setCheckStatus((short) 1);// 审核状态：未审核
-				// teacher.setPassword(bankCard.substring(bankCard.length() -
-				// 6));// 默认密码身份证后6位
-
-			} else {
-				actionResult.init(FAIL_STATUS, "教师信息不存在", null);
-				Utlity.ResponseWrite(actionResult, dataType, response);
-				return;
+//			if (teacher != null) {
+			// teacher.setName(name);
+			// teacher.setIdcard(idcard);
+			// teacher.setPinyin(pinyingUtil.getFirstSpell(name));
+			teacher.setMobile(mobile);
+//				teacher.setSex(sex);
+			Ethnic eth = this.ethnicService.getById(ethnic);
+			teacher.setEthnic(eth);
+			Resource pho = this.resourceService.getById(photo);
+			teacher.setPhoto(pho);
+			if(!Utlity.checkStringNull(type)){
+				teacher.setType(Short.parseShort(type));
 			}
+			// 研究生 无职务
+			teacher.setStudyMajor(studyMajor);
+			teacher.setStudyGrade(studyGrade);
+			teacher.setJobDuty(jobDuty);
+			teacher.setMajor(major);
+			teacher.setOrganization(organization);
+			
+			//20190418新增5个字段信息
+			teacher.setFormation(formation);
+			teacher.setOccupation(occupation);
+			teacher.setBankOrg(bankOrg);
+			teacher.setBankName(bankName);
+			teacher.setEmail(email);
+			
+			teacher.setInschooltime(inschooltime);
+			teacher.setStudyLength(studyLength);
+
+			teacher.setSpecialty(specialty);
+			teacher.setInvigilateCampus(invigilateCampus);
+			// teacher.setInvigilateType(invigilateType);
+			teacher.setSid(sid);
+			teacher.setBankCard(bankCard);
+			// 身份证正面照
+			Resource idCardPhotrR = this.resourceService.getById(idPhoto);
+			teacher.setIdCardPhoto(idCardPhotrR);
+			// teacher.setCheckStatus((short) 1);// 审核状态：未审核
+			// teacher.setPassword(bankCard.substring(bankCard.length() -
+			// 6));// 默认密码身份证后6位
+
+//			} else {
+//				actionResult.init(FAIL_STATUS, "教师信息不存在", null);
+//				Utlity.ResponseWrite(actionResult, dataType, response);
+//				return;
+//			}
 
 			this.invigilationTeacherService.update(teacher);
 			// 清空验证码
@@ -524,7 +717,7 @@ public class WeixinAction extends BaseAction {
 			if (InvigilationTeacher != null) {
 				InvigilationTeacher.setStatus(Short.parseShort(status));
 				this.invigilationTeacherService.update(InvigilationTeacher);
-
+	
 				actionResult.init(SUCCESS, "操作成功", null);
 			} else {
 				actionResult.init(FAIL_STATUS, "考试信息不存在", null);
@@ -583,6 +776,8 @@ public class WeixinAction extends BaseAction {
 				etr.setIsMixed((short) 0);
 				etr.setIsConfirm((short) 0);
 				etr.setConfirtime(null);
+				etr.setStartTime(null);
+				etr.setEndTime(null);
 				this.examTeacherRoomService.update(etr);
 			}
 			String url = PATH + "XJ_wechat/tip.html";
@@ -701,6 +896,8 @@ public class WeixinAction extends BaseAction {
 			searchMap.put("teacher", invigilationTeacher.getId());
 			searchMap.put("status", 1);
 			searchMap.put("distribute", 3);
+			//2018-04-12新增   只有教师二次确认了以后才显示在“历史监考”记录中
+			searchMap.put("isConfirm", 1);
 			List listHistory = this.examTeacherRoomService.searchExamTeacherRoom(searchMap, null, offset, pagesize);
 			if (listHistory != null && !listHistory.isEmpty()) {
 				recordCount = listHistory.size();
@@ -766,6 +963,9 @@ public class WeixinAction extends BaseAction {
 		// 接受页面参数
 		Integer exam = this.getIntValue(request.getParameter("exam"));
 		Integer tid = this.getIntValue(request.getParameter("tid"));
+		String startTime = request.getParameter("startTime");
+		String endTime = request.getParameter("endTime");
+
 		// InvigilationTeacher teacher = checkOpenId(actionResult, toUserName);
 		InvigilationTeacher teacher = invigilationTeacherService.getById(tid);
 		if (teacher == null) {
@@ -821,6 +1021,8 @@ public class WeixinAction extends BaseAction {
 					etroom.setCreator(teacher.getId());
 					etroom.setIsAuto((short) 1);// 自主申报
 					etroom.setIsFirstApply((short) 0);
+					etroom.setStartTime(Timestamp.valueOf(startTime + " 00:00:00"));// 开始时间
+					etroom.setEndTime(Timestamp.valueOf(endTime + " 00:00:00"));// 结束时间
 					this.examTeacherRoomService.update(etroom);
 
 					String url = PATH + "XJ_wechat/tip.html";
@@ -863,11 +1065,15 @@ public class WeixinAction extends BaseAction {
 				etr.setTeacher(teacher);
 				etr.setExam(information);
 				etr.setIsConfirm((short) 0);
+				etr.setIsConfirmCanceled((short) 0);
 				etr.setIsAuto((short) 1);// 自主申报
 				// etr.setCredit(0);
 				etr.setStatus((short) 1);// 初始化状态为
 				etr.setCreatetime(new Timestamp(System.currentTimeMillis()));
 				etr.setCreator(teacher.getId());
+
+				etr.setStartTime(Timestamp.valueOf(startTime + " 00:00:00"));// 开始时间
+				etr.setEndTime(Timestamp.valueOf(endTime + " 00:00:00"));// 结束时间
 
 				// 查询是否申报过
 				searchMap.remove("exam");
@@ -994,6 +1200,11 @@ public class WeixinAction extends BaseAction {
 					Utlity.ResponseWrite(actionResult, dataType, response);
 					return;
 				}
+				if(etr.getIsConfirmCanceled() == 1){
+					actionResult.init(FAIL_STATUS, "您已被管理员禁用二次确认", null);
+					Utlity.ResponseWrite(actionResult, dataType, response);
+					return;
+				}
 				etr.setConfirtime(new Timestamp(System.currentTimeMillis()));// 确认时间
 				etr.setIsConfirm((short) 1);// 确认状态
 				examTeacherRoomService.update(etr);
@@ -1044,10 +1255,23 @@ public class WeixinAction extends BaseAction {
 	 */
 	public void GetInfo() throws IOException, DocumentException {
 		ActionResult actionResult = new ActionResult();
-		InvigilationTeacher teacher;
+		InvigilationTeacher teacher = (InvigilationTeacher) session.getAttribute("teachersession");
 		String tid = request.getParameter("id");
 		String code = request.getParameter("code");
 		if (!Utlity.checkStringNull(tid)) {
+			if(teacher != null){
+				if(!tid.equals(teacher.getId()+"")){
+					actionResult.init(FAIL_STATUS, "信息查询异常", null);
+					Utlity.ResponseWrite(actionResult, dataType, response);
+					return;
+				}
+			} else {
+				String url = PATH + "/XJ_wechat/myMessage.html";
+				url = ConfigUtil.getCodeUrl(url);
+				actionResult.init(UNLOGIN_STATUS, "请登录", url);
+				Utlity.ResponseWrite(actionResult, dataType, response);
+				return;
+			}
 			teacher = this.invigilationTeacherService.getById(Integer.parseInt(tid));
 			if (teacher == null) {
 				actionResult.init(UNREGISTERED_STATUS, "教师未在本平台注册，将要跳转到注册页面。。。", null);
@@ -1243,7 +1467,6 @@ public class WeixinAction extends BaseAction {
 	 */
 	private InvigilationTeacher checkOpenId(ActionResult actionResult, String code, String pagename) {
 		String openID = GetOpenId(code);
-		// String openID = "o4TYt0pcNYiSsOl-i0d1Rx_Tkglo";
 		if (openID == null || "".equals(openID)) {
 			actionResult.init(FAIL_STATUS, "微信授权失败", null);
 			Utlity.ResponseWrite(actionResult, dataType, response);
@@ -1257,6 +1480,8 @@ public class WeixinAction extends BaseAction {
 				Utlity.ResponseWrite(actionResult, dataType, response);
 				return null;
 			}
+			// 保存会话状态
+			session.setAttribute("teachersession", teacher);
 			return teacher;
 		} catch (Exception e) {
 			actionResult.init(FAIL_STATUS, "信息获取异常", null);
@@ -1304,6 +1529,11 @@ public class WeixinAction extends BaseAction {
 		}
 		if (uuid == null || uuid.equals("")) {
 			result.init(FAIL_STATUS, "请先获取短信验证码！", null);
+			Utlity.ResponseWrite(result, dataType, response);
+			return;
+		}
+		if((System.currentTimeMillis() - mobileCode.get(0).getCreatetime().getTime()) > 1200000) {//超时20分钟
+			result.init(FAIL_STATUS, "验证码超时，请重新获取验证码！", null);
 			Utlity.ResponseWrite(result, dataType, response);
 			return;
 		}
@@ -1363,7 +1593,6 @@ public class WeixinAction extends BaseAction {
 
 	public String GetOpenId(String code) {
 		String openid = "";
-		System.out.println("获取的code:" + code);
 		openid = ConfigUtil.getOauthAccessOpenId(code);// 重新取得用户的openid
 		return openid;
 	}
@@ -1419,14 +1648,19 @@ public class WeixinAction extends BaseAction {
 			Rectangle signRectIdCard = form.getFieldPositions("idcard").get(0).position;
 			float xIdCard = signRectIdCard.getLeft();
 			float yIdCard = signRectIdCard.getBottom();
-			Image imgIdCard = Image.getInstance(path + etr.getTeacher().getIdCardPhoto().getSourcePath());
-			// 获取操作的页面
-			PdfContentByte underIdCard = stamp.getOverContent(pageNoIdCard);
-			// 根据域的大小缩放图片
-			imgIdCard.scaleToFit(signRectIdCard.getWidth(), signRectIdCard.getHeight());
-			// 添加图片
-			imgIdCard.setAbsolutePosition(xIdCard, yIdCard);
-			underIdCard.addImage(imgIdCard);
+			try {
+				Image imgIdCard = Image.getInstance(path + etr.getTeacher().getIdCardPhoto().getSourcePath());
+				// 获取操作的页面
+				PdfContentByte underIdCard = stamp.getOverContent(pageNoIdCard);
+				// 根据域的大小缩放图片
+				imgIdCard.scaleToFit(signRectIdCard.getWidth(), signRectIdCard.getHeight());
+				// 添加图片
+				imgIdCard.setAbsolutePosition(xIdCard, yIdCard);
+				underIdCard.addImage(imgIdCard);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			// 查询历史监考记录
 			ExamRoom room = etr.getRoom();
@@ -1454,8 +1688,12 @@ public class WeixinAction extends BaseAction {
 			form.setField("arrivaltime", arrivaltime);// 到岗时间
 
 			// 监考注意事项
-			form.setField("contract",
-					HtmlHelper.strDscape(HtmlHelper.parseString2Html(etr.getExam().getInvigilationNotice())));
+		    String invigilationNotice = room.getInvigilationNotice();
+		    if(Utlity.checkStringNull(invigilationNotice)){
+		    	invigilationNotice =etr.getExam().getInvigilationNotice();
+		    }
+		    String formatContract = HtmlHelper.parseString2Html(HtmlHelper.strDscape(invigilationNotice));
+			form.setField("contract",formatContract);
 
 			stamp.setFormFlattening(true); // 千万不漏了这句啊, */
 			stamp.close();

@@ -9,7 +9,7 @@ var _sorts_1;
 var _name_1;
 var _sorts_2;
 var _name_2;
-
+var base = new Base64();
 function sort(sort) {
 	getList(_name_1,sort);
 }
@@ -17,14 +17,23 @@ function sort(sort) {
 function sort_t(sort) {
 	getList_r(_name_2,sort);
 }
+
+var year = new Date().getFullYear();
+for(var i = 0; i < 4; i++) {
+	$(".filter-studyGrade").append("<a data-value='" + year + "级'>" + year + "级</a>");
+	year--;
+}
+$(".filter-studyGrade").append("<a data-value='other'>其他</a>");
+
 $(document).ready(function() {
 	getList();
+	getCurrent();
 	$(".easy_modal input").eq(0).click(function(){
 		$(".easy_modal").fadeOut();
 	})
 	$(".main_right .slide_p").click(function(){
 		if($(".main_right .main_header").height()==0){
-			$(".main_right .main_header").height("175px");
+			$(".main_right .main_header").height("240px");
 			$(this).html("收起筛选项");
 		}else{
 			$(".main_right .main_header").height("0");
@@ -34,9 +43,10 @@ $(document).ready(function() {
 	
 	
 	//微信推送
-	$(".wechat_msg").click(function(){
+	$("#sendMsgTod").click(function(){
 		$(".history").fadeOut();
 		$(".easy_modal").fadeOut();
+		$("#send_und_modal").fadeOut();
 		$("#edit_modal").fadeIn();
 		$.ajax({
 			type:"get",
@@ -48,7 +58,20 @@ $(document).ready(function() {
 				})
 			}
 		});
+		//考场类型数据加载
+		 $.ajax({
+		        type: "get",
+		        url: "../admin/roomGetGroupByRoomType?exam="+exam,
+		        async: true,
+		        success: function(r) {
+		        		$("#roomType").html("<option value='全部'>全部</option>");
+		            for (var i = 0; i < r.Records.length; i++) {
+		                $("#roomType").append("<option value=" + r.Records[i].roomType + ">" + r.Records[i].roomType + "</option>")
+		            }
+		        }
+		    });
 	});
+
 	$("#submit_edit").click(function(){
 		if(invigilationNotice.getContent() != ""){
 			$.ajax({
@@ -57,7 +80,8 @@ $(document).ready(function() {
 				async:true,
 				data:{
 					exam:exam,
-					invigilationNotice:invigilationNotice.getContent()
+					invigilationNotice:invigilationNotice.getContent(),
+					roomType:base.encode($("#roomType").val())
 				},
 				success:function(r){
 					if(r.Status=='success'){
@@ -77,6 +101,41 @@ $(document).ready(function() {
 			$(".easy_modal").fadeIn().find('p').html("请填写监考注意事项！");
 		}
 	})
+	
+	//微信推送到申报了但未分配/禁用的监考教师
+	$("#sendMsgToUnd").click(function() {
+		$("#send_und_modal").fadeIn();
+		$(".history").fadeOut();
+		$(".easy_modal").fadeOut();
+		$("#edit_modal").fadeOut();
+		$("#send_und_modal input").eq(0).unbind("click").click(function() {
+			$.ajax({
+				type: "post",
+				url: "../admin/recordsSendToUnd",
+				async: true,
+				data: {
+					exam: exam
+				},
+				success: function(r) {
+					if(r.Status == 'success') {
+						$("#bg").hide();
+						$("#send_und_modal").fadeOut();
+						$(".easy_modal").fadeIn().find('p').html('消息发送成功！');
+					} else {
+						$("#bg").hide();
+						$(".easy_modal").fadeIn().find('p').html("消息发送失败，请稍后再试");
+					}
+				},
+				beforeSend: function() {
+					$("#bg").show();
+				}
+			});
+		})
+	});
+	$("#send_und_modal input").eq(1).click(function() {
+		$("#send_und_modal").fadeOut();
+	});
+	
 	$("#close").click(function(){
 		$("#edit_modal").fadeOut();
 	})
@@ -386,6 +445,24 @@ $(document).ready(function() {
 	//导出考场（按维度）
 	$("#load_room").prop('href',"../admin/documentDownloadExamRoom?exam="+url('?exam'));
 	
+	
+	//查看空按钮
+	$("#radioEmpty").change(function(){
+		var _this = $(".search");
+		_name_1 = _this.val();
+		pageNum = '1';
+		flag=true;
+		getList(_name_1,_sorts_1);
+		return false;
+	});
+	
+	$("#forradioEmpty").click(function(){
+		if($(this).hasClass('forlight')){
+			$(this).removeClass('forlight');
+		}else{
+			$(this).addClass('forlight');
+		}
+	})
 })
 
 
@@ -445,6 +522,9 @@ function getList(name,sorts){
 		urls += '&sorts='+sort;
 	}
 	
+	if($("#radioEmpty").is(':checked')){
+		urls += "&isNullRoom=1";
+	}
 	$.get(urls,function(r) {
 		if(r.Status =='success') {
 			if(r.TotalRecordCount > 0){
@@ -469,6 +549,18 @@ function getList(name,sorts){
 		$(".main_left_msg").unbind("click").click(function(){
 			$(this).addClass("border_lighting").siblings().removeClass("border_lighting");
 			roomId = $(this).find("input").attr("id");
+			
+			$(".teachers_info").find(".first_tr").find("th").removeClass("light");
+			$(".teachers_info").find(".first_tr").find("th").find(".iconfont").find("img").prop("src","");
+			sort_flag_0 = true;
+			sort_flag_1 = true;	
+			sort_flag_2 = true;	
+			sort_flag_3 = true;	
+			sort_flag_4 = true;	
+			sort_flag_5 = true;	
+			sort_flag_6 = true;	
+			sort_flag_7 = true;	
+			sort_flag_8 = true;
 			getList_r();
 			$(".tip_tr").hide();
 		});
@@ -528,6 +620,41 @@ var flag_r=true;
 
 var teacherStatus;
 
+function getCurrent() {
+	var mUrl = '../admin/examGetCurrent?';
+	$.get(mUrl, function(r) {
+		if(r.Status == 'success') {
+			exam = r.Records.id;
+			laydate({
+				elem: '#startTime',
+				min:r.Records.starttime,
+				max:r.Records.endtime,
+				start:r.Records.starttime,
+				choose:function(){
+					if($("#startTime").val() != "" && $("#endTime").val() != ""){
+						getList_r(_name_2,_sorts_2);
+					}
+				}
+			});
+			laydate({
+				elem: '#endTime',
+				min:r.Records.starttime,
+				max:r.Records.endtime,
+				start:r.Records.starttime,
+				choose:function(){
+					if($("#startTime").val() != "" && $("#endTime").val() != ""){
+						getList_r(_name_2,_sorts_2);
+					}
+				}
+			});
+			
+		} else {
+			$(".easy_modal p").html(r.Message);
+			$(".easy_modal").fadeIn();
+		}
+	}).done(function(r) {});
+}
+
 function getList_r(name,sorts){
 	var exam = url('?exam') == null ? "" : url('?exam');
 	if(exam == ''){
@@ -553,7 +680,7 @@ function getList_r(name,sorts){
 
 	
 	var page = (typeof pageNum_r == 'undefined') ? 1 : pageNum_r;
-	var pagesize = (typeof pagesize_r == 'undefined') ? 10 : pagesize_r;
+	var pagesize = (typeof pagesize_r == 'undefined') ? 20 : pagesize_r;
 	var urls = '../admin/recordsDistributeTeacherList?';
 	urls += 'pagenum='+page;
 	urls += '&pagesize='+pagesize;
@@ -565,6 +692,16 @@ function getList_r(name,sorts){
 	urls += '&isMixed='+isMixed;
 	urls += '&invigilateCampus='+invigilateCampus;
 	urls += '&invigilateType='+invigilateType;
+	
+	if($("#startTime").val() != "" && $("#endTime").val() != ""){
+		urls += "&starttime=" + $("#startTime").val();
+		urls += "&endtime=" + $("#endTime").val();
+	}
+	
+	var studyGrade = $(".filter-studyGrade").find(".lighting").attr("data-value");
+	if(type == 2 || type == 4) {
+		urls += '&studyGrade=' + studyGrade;
+	}
 	
 	if(teacherinfo != ''){
 		urls += '&teacherinfo='+teacherinfo;
@@ -591,7 +728,7 @@ function getList_r(name,sorts){
 				$('#teacherList').html(html);
 			}
 		} else {
-			var html = '<tr class="nodata"><td colspan=11>'+r.Message+'！</td></tr>'
+			var html = '<tr class="nodata"><td colspan=13>'+r.Message+'！</td></tr>'
 			$('#teacherList').html(html);
 		}
 	}).done(function(r){

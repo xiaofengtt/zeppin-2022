@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- 基本DAO -->
+	<bean id="funcationDAO" class="cn.zeppin.dao.imp.FuncationDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="resourceDAO" class="cn.zeppin.dao.imp.ResourceDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="roleDAO" class="cn.zeppin.dao.imp.RoleDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="roleFuncationDAO" class="cn.zeppin.dao.imp.RoleFuncationDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="sysUserDAO" class="cn.zeppin.dao.imp.SysUserDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="ethnicDaoImpl" class="cn.zeppin.dao.imp.EthnicDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="examInformationDAO" class="cn.zeppin.dao.imp.ExamInformationDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="examRoomDAO" class="cn.zeppin.dao.imp.ExamRoomDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="examTeacherRoomDAO" class="cn.zeppin.dao.imp.ExamTeacherRoomDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="invigilationTeacherDAO" class="cn.zeppin.dao.imp.InvigilationTeacherDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="iInvigilationTeacherOldDAO" class="cn.zeppin.dao.imp.InvigilationTeacherOldDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="teacherDisableRecordsDao" class="cn.zeppin.dao.imp.TeacherDisableRecordsDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 前端 -->
+
+	<bean id="ssoUserDAO" class="cn.zeppin.dao.imp.SsoUserDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="taskDAO" class="cn.zeppin.dao.imp.TaskDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- 监考责任书 模板 -->
+	<bean id="invigilationTemplateDAO" class="cn.zeppin.dao.imp.InvigilationTemplateDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- 短信接口 -->
+	<bean id="mobileCodeDAO" class="cn.zeppin.dao.imp.MobileCodeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+</beans>

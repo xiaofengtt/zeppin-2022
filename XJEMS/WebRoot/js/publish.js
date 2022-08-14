@@ -147,6 +147,11 @@ $(document).ready(function() {
 			return false;
 		}
 		
+		if($("#isSend").val()==''){
+			$("#modal").fadeIn().find('p').html("请正确填写是否群发消息");
+			return false;
+		}
+		
 		if(statement.getContent() == ""){
 			$("#modal").fadeIn().find('p').html("请正确填写监考责任书");
 			return false;

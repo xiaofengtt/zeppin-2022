@@ -29,4 +29,12 @@ public interface IExamRoomDAO extends IBaseDAO<ExamRoom, Integer> {
 	 * @return
 	 */
 	public int searchExamRoomCount(Map<String, Object> searchMap);
+	
+	public List<Object[]> searchByGroup(Map<String, Object> searchMap);
+	
+	/**
+	 *  根据考场的id更新每个考场对应的监考注意事项
+	 * @param invigilationNotice
+	 */
+	public void updateInvigilationNotice(Map<String, Object> searchMap, String invigilationNotice);
 }

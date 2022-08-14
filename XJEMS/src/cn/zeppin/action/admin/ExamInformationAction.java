@@ -16,8 +16,6 @@ import cn.zeppin.action.base.ActionResult;
 import cn.zeppin.action.base.BaseAction;
 import cn.zeppin.authority.AuthorityParas;
 import cn.zeppin.entity.ExamInformation;
-import cn.zeppin.entity.ExamTeacherRoom;
-import cn.zeppin.entity.InvigilationTeacher;
 import cn.zeppin.entity.InvigilationTemplate;
 import cn.zeppin.entity.SysUser;
 import cn.zeppin.entity.base.SerializeEntity;
@@ -91,6 +89,7 @@ public class ExamInformationAction extends BaseAction {
 	@ActionParam(key = "checkEndTime", type = ValueType.STRING, nullable = false, emptyable = false)
 	@ActionParam(key = "applyNotice", type = ValueType.STRING)
 	@ActionParam(key = "invigilationNotice", type = ValueType.STRING)
+	@ActionParam(key = "isSend", type = ValueType.NUMBER, nullable = false, emptyable = false)
 	public void Add() {
 
 		SysUser currentUser = (SysUser) session.getAttribute("usersession");
@@ -107,6 +106,9 @@ public class ExamInformationAction extends BaseAction {
 
 		String applyNotice = request.getParameter("applyNotice");
 		String invigilationNotice = request.getParameter("invigilationNotice");
+		
+		Short isSend = request.getParameter("isSend") == null ? 1 : Short.valueOf(request.getParameter("isSend"));
+		
 
 		// 校验页面参数格式
 		if (!Utlity.isDataFormat(starttime)) {
@@ -120,7 +122,7 @@ public class ExamInformationAction extends BaseAction {
 			return;
 		}
 		Timestamp startTime = Timestamp.valueOf(starttime + " 00:00:00");
-		Timestamp endTime = Timestamp.valueOf(endtime + " 00:00:00");
+		Timestamp endTime = Timestamp.valueOf(endtime + " 23:59:55");
 		if (startTime.compareTo(endTime) == 1) {
 			actionResult.init(FAIL_STATUS, "结束日期应大于考试日期", null);
 			Utlity.ResponseWrite(actionResult, dataType, response);
@@ -149,7 +151,7 @@ public class ExamInformationAction extends BaseAction {
 		ExamInformation eInformation = new ExamInformation();
 		eInformation.setName(name);
 		eInformation.setExamStarttime(Timestamp.valueOf(starttime + " 00:00:00"));
-		eInformation.setExamEndtime(Timestamp.valueOf(endtime + " 00:00:00"));
+		eInformation.setExamEndtime(Timestamp.valueOf(endtime + " 23:59:55"));
 
 		eInformation.setIntegral(integral);
 		eInformation.setInformation(information);
@@ -162,6 +164,7 @@ public class ExamInformationAction extends BaseAction {
 		eInformation.setCreator(currentUser.getId());
 		eInformation.setApplyNotice(applyNotice);// 申报注意事项
 		eInformation.setInvigilationNotice(invigilationNotice);// 监考注意事项
+		eInformation.setIsSend(isSend);//是否需要发送群发消息
 
 		try {
 			this.examInformationService.add(eInformation);
@@ -192,6 +195,7 @@ public class ExamInformationAction extends BaseAction {
 	@ActionParam(key = "status", type = ValueType.NUMBER)
 	@ActionParam(key = "applyNotice", type = ValueType.STRING)
 	@ActionParam(key = "invigilationNotice", type = ValueType.STRING)
+	@ActionParam(key = "isSend", type = ValueType.NUMBER)
 	public void Update() {
 
 		ActionResult actionResult = new ActionResult();
@@ -209,6 +213,7 @@ public class ExamInformationAction extends BaseAction {
 		int status = this.getIntValue(request.getParameter("status"));
 		String applyNotice = request.getParameter("applyNotice");
 		String invigilationNotice = request.getParameter("invigilationNotice");
+		Short isSend = request.getParameter("isSend") == null ? 1 : Short.valueOf(request.getParameter("isSend"));
 
 		// 校验页面参数格式
 		if (!Utlity.isDataFormat(starttime)) {
@@ -258,6 +263,8 @@ public class ExamInformationAction extends BaseAction {
 				examInformation.setStatus((short) status);//
 				examInformation.setApplyNotice(applyNotice);// 申报注意事项
 				examInformation.setInvigilationNotice(invigilationNotice);// 监考注意事项
+				
+				examInformation.setIsSend(isSend);
 			} else {
 				actionResult.init(FAIL_STATUS, "考试信息不存在", null);
 				Utlity.ResponseWrite(actionResult, dataType, response);
@@ -290,9 +297,10 @@ public class ExamInformationAction extends BaseAction {
 			ExamInformation examInformation = examInformationService.getById(id);
 			if (examInformation != null) {
 				// 从待发布到发布状态，则群发提醒，停止审核再到开始审核（发布）则不提醒
-				if ("1".equals(status) && examInformation.getStatus() == -1) {// 已发布，公众号群发消息
+				//20201023增加是否群发消息的判定
+				if ("1".equals(status) && examInformation.getStatus() == -1 && examInformation.getIsSend() == 1) {// 已发布，公众号群发消息
 					String pathimg = request.getSession().getServletContext().getRealPath("/").replace("\\", "/")
-							+ "img/exam.png";
+							+ "img/cover.png";
 					int result = MessageUtil.sendAll(examInformation, currentUser.getName(), "", pathimg);
 					if (result == 45009) {
 						examInformation.setStatus(Short.parseShort(status));
@@ -301,13 +309,14 @@ public class ExamInformationAction extends BaseAction {
 						Utlity.ResponseWrite(actionResult, dataType, response);
 						return;
 					}
-				} else if ("0".equals(status)) {// 已结束，教师打分未处理的为默认打分
-					Map<String, Object> searchMap = new HashMap<String, Object>();
-					searchMap.put("exam", id);
-					searchMap.put("status", 1);// 正常
-					List<ExamTeacherRoom> list = examTeacherRoomService.getByParams(searchMap);
-					updateCredit(list, examInformation.getIntegral(), "");
-				}
+				} 
+//				else if ("0".equals(status)) {// 已结束，教师打分未处理的为默认打分
+//					Map<String, Object> searchMap = new HashMap<String, Object>();
+//					searchMap.put("exam", id);
+//					searchMap.put("status", 1);// 正常
+//					List<ExamTeacherRoom> list = examTeacherRoomService.getByParams(searchMap);
+//					updateCredit(list, examInformation.getIntegral(), "");
+//				}
 				examInformation.setStatus(Short.parseShort(status));
 				this.examInformationService.update(examInformation);
 				actionResult.init(SUCCESS, "操作成功", null);
@@ -597,24 +606,24 @@ public class ExamInformationAction extends BaseAction {
 	 * @param integral
 	 * @param reason
 	 */
-	private void updateCredit(List<ExamTeacherRoom> list, int integral, String reason) {
-		if (list != null && list.size() > 0) {
-			for (int i = 0; i < list.size(); i++) {
-				ExamTeacherRoom etr = list.get(i);
-				if (etr != null && etr.getCredit() == null) {
-					// 同步更新教师积分
-					InvigilationTeacher teacher = etr.getTeacher();
-					Integer count = teacher.getIntgral();// 总分
-					count += integral;
-					teacher.setIntgral(count);
-					etr.setTeacher(teacher);
-					// 更新教师得分
-					etr.setCredit(integral);
-					etr.setReason(reason);
-					invigilationTeacherService.update(teacher);
-					examTeacherRoomService.update(etr);
-				}
-			}
-		}
-	}
+//	private void updateCredit(List<ExamTeacherRoom> list, int integral, String reason) {
+//		if (list != null && list.size() > 0) {
+//			for (int i = 0; i < list.size(); i++) {
+//				ExamTeacherRoom etr = list.get(i);
+//				if (etr != null && etr.getCredit() == null) {
+//					// 同步更新教师积分
+//					InvigilationTeacher teacher = etr.getTeacher();
+//					Integer count = teacher.getIntgral();// 总分
+//					count += integral;
+//					teacher.setIntgral(count);
+//					etr.setTeacher(teacher);
+//					// 更新教师得分
+//					etr.setCredit(integral);
+//					etr.setReason(reason);
+//					invigilationTeacherService.update(teacher);
+//					examTeacherRoomService.update(etr);
+//				}
+//			}
+//		}
+//	}
 }

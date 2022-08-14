@@ -73,6 +73,18 @@
 
 						</div>
 						
+						<div class="time status">
+							<label>是否群发消息：</label>
+							<div class="time_bd">
+								<select name="isSend" id="isSend" class="exam_status">
+									<option value="">请选择</option>
+									<option selected value="1">是</option>
+									<option value="0">否</option>
+								</select>
+								<p class="warning">请正确填写是否群发消息！</p>
+							</div>
+						</div>
+						
 					</div>
 
 					<div class="box1">

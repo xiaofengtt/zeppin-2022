@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.worldmall.mapper.WinningInfoReceiveMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from winning_info_receive wi left join goods g on wi.goods_id=g.uuid where 1=1 
+		<if test='orderId != null and orderId != ""'>
+            and wi.order_id= #{orderId}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and wi.front_user= #{frontUser}
+        </if>
+		<if test='showId != null and showId != ""'>
+            and wi.show_id= #{showId}
+        </if>        
+   		<if test='name != null and name != ""'>
+            and (g.name like '%${name}%' or g.shortname like '%${name}%$')
+        </if>
+   		<if test='source != null and source != ""'>
+            and g.source= #{source}
+        </if>
+		<if test='type != null and type != ""'>
+            and wi.type= #{type}
+        </if>   
+   		<if test='status != null and status != ""'>
+            and wi.status= #{status}
+        </if> 
+        <if test='orderId != null and orderId != ""'>
+            and wi.order_id = #{orderId}
+        </if>  
+   		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timeend != null'>
+            and (<![CDATA[ wi.createtime > #{timestart} and wi.createtime < #{timeend} ]]>)
+        </if>     
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.WinningInfoReceive">
+		select wi.* from winning_info_receive wi left join goods g on wi.goods_id=g.uuid where 1=1 
+		<if test='orderId != null and orderId != ""'>
+            and wi.order_id= #{orderId}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and wi.front_user= #{frontUser}
+        </if>
+        <if test='showId != null and showId != ""'>
+            and wi.show_id= #{showId}
+        </if> 
+   		<if test='name != null and name != ""'>
+            and (g.name like '%${name}%' or g.shortname like '%${name}%$')
+        </if>
+   		<if test='source != null and source != ""'>
+            and g.source= #{source}
+        </if>
+		<if test='type != null and type != ""'>
+            and wi.type= #{type}
+        </if>   
+   		<if test='status != null and status != ""'>
+            and wi.status= #{status}
+        </if> 
+        <if test='orderId != null and orderId != ""'>
+            and wi.order_id = #{orderId}
+        </if>  
+   		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timeend != null'>
+            and (<![CDATA[ wi.createtime > #{timestart} and wi.createtime < #{timeend} ]]>)
+        </if>           
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by wi.${sort}
+	        </when>
+	        <otherwise>
+	        	order by wi.createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+</mapper>

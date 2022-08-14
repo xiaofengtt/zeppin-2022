@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.treasuremall.mapper.FrontUserDailyMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_daily where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+		<if test='dailyDate != null and dailyDate != ""'>
+            and daily_date= #{dailyDate}
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUserDaily">
+		select * from front_user_daily where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+		<if test='dailyDate != null and dailyDate != ""'>
+            and daily_date= #{dailyDate}
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by daily_date desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getActiveListByParams" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select daily_date dailyDate, count(*) count
+		from front_user_daily 
+		where 1=1 
+		<if test='starttime != null and starttime != ""'>
+            and <![CDATA[ daily_date >= #{starttime} ]]>
+        </if>
+		<if test='endtime != null and endtime != ""'>
+            and <![CDATA[ daily_date <= #{endtime} ]]>
+        </if>
+        group by dailyDate
+	</select>
+</mapper>

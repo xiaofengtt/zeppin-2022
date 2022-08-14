@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.treasuremall.mapper.RoleMethodMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from role_method where 1=1 
+		<if test='uuid != null and uuid != ""'>
+	           and uuid= #{uuid}
+	       </if>
+		<if test='role != null and role != ""'>
+           and role= #{role}
+       </if>
+       <if test='menu != null and menu != ""'>
+           and method= #{method}
+       </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.RoleMethod">
+		select * from role_method where 1=1 
+		<if test='uuid != null and uuid != ""'>
+	           and uuid= #{uuid}
+	       </if>
+		<if test='role != null and role != ""'>
+           and role= #{role}
+       </if>
+       <if test='menu != null and menu != ""'>
+           and method= #{method}
+       </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by uuid desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<delete id="deleteByRole" parameterType="String">
+	    delete from role_method where role= #{role}
+	</delete>
+	
+	<select id="getMethodListByRole" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.Method">
+		select m.* 
+		from role_method rm 
+		left join method m on rm.method = m.uuid
+		where rm.role = #{role}
+		order by level desc
+	</select>
+</mapper>

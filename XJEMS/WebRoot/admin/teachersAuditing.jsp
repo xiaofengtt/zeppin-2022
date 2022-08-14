@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="renderer" content="webkit">
 <title>监考教师审核</title>
-<link rel="stylesheet" href="../css/teachers_message.css">
+<link rel="stylesheet" href="../css/teachersAuditing_message.css">
 <link rel="stylesheet" href="../css/button_group.css">
 <link rel="stylesheet" href="../css/paging.css" />
 <link rel="stylesheet" href="../css/teachersAuditing.css">
@@ -22,6 +22,7 @@
                     <div class="msg_header b_b">
                         <img src="{{:photo.sourcePath}}">
                         <p class="msg_text">
+                       	 	<input type="checkbox" class="checkbox" data-id="{{:id}}" />
                             <span id="hover_change"><a href="../admin/teachersHistoryMessage.jsp?id={{:id}}" target="_blank">{{:name}}</a></span>
                             <i></i>
                             <span>{{if sex == '1'}}男{{else}}女{{/if}}</span>
@@ -41,9 +42,28 @@
                             <p>身份证号：<span title="{{:idcard}}">{{:idcard}}</span></p>
                             <p>民族：<span title="{{:ethnic}}">{{:ethnic}}</span></p>
                             <p>专业：<span title="{{:major}}">{{:major}}</span></p>
-                            <p>身份类型：<span title="{{if type=='1'}}考务组{{else type=='2'}}研究生{{else type=='3'}}教工{{/if}}">{{if type=='1'}}考务组{{else type=='2'}}研究生{{else type=='3'}}教工{{/if}}</span></p>
+                            <p>身份类型：<span title="
+                               {{if type=='1'}}考务组
+                               {{else type=='2'}}研究生
+                               {{else type=='3'}}教工
+                               {{else type=='4'}}本科
+                               {{else type=='5'}}非师大人员
+                               {{/if}}">
+                               {{if type=='1'}}考务组
+                               {{else type=='2'}}研究生
+                               {{else type=='3'}}教工
+                               {{else type=='4'}}本科
+                               {{else type=='5'}}非师大人员
+                               {{/if}}</span></p>
                             <p>职务：<span title="{{:jobDuty}}">{{:jobDuty}}</span></p>
-                            
+							<p>职业： {{if occupation==''}}<span title="未填写">未填写</span>
+							{{else}}<span title="{{:occupation}}">{{:occupation}}</span>{{/if}}
+							</p>
+                            {{if type == 2 || type == 4}}
+								<p>学制时长：<span title="{{if studyLength == 0}}无{{else}}{{:studyLength}}年制{{/if}}">{{if studyLength == 0}}无{{else}}{{:studyLength}}年制{{/if}}</span></p>
+							{{/if}}
+							<p>编制属性： {{if formation==''}}<span title="未选择">未选择</span>
+							{{else}}<span title="{{:formation}}">{{:formation}}</span>{{/if}}</p>
                         </div>
                         
                         <div class="msg_content b_r">
@@ -52,13 +72,19 @@
                             <p>入校时间：<span title="{{:inschooltime}}">{{:inschooltime}}</span></p>
                             <p>状态：<span title="{{if status == '1'}}正常{{else}}停用{{/if}}">{{if status == '1'}}正常{{else}}停用{{/if}}</span></p>
                             <p>交通银行卡号：<span title="{{:bankCard}}">{{:bankCard}}</span></p>
+							<p>开户行所属地区： {{if bankOrg==''}}<span title="未填写">未填写</span>
+							{{else}}<span title="{{:bankOrg}}">{{:bankOrg}}</span>{{/if}}</p>
+							<p>开户行： {{if bankName==''}}<span title="未填写">未填写</span>
+							{{else}}<span title="{{:bankName}}">{{:bankName}}</span>{{/if}}</p>		
                         </div>
                         
                         <div class="msg_content b_r">
+							<p>电子信箱： {{if email==''}}<span title="未填写">未填写</span>
+							{{else}}<span title="{{:email}}">{{:email}}</span>{{/if}}</p>
                             <p>主考经验：<span title="{{if isChiefExaminer == '1'}}有{{else}}无{{/if}}">{{if isChiefExaminer == '1'}}有{{else}}无{{/if}}</span></p>
                             <p>混合监考经验：<span title="{{if isMixedExaminer == '1'}}有{{else}}无{{/if}}">{{if isMixedExaminer == '1'}}有{{else}}无{{/if}}</span></p>
                             <p>特长：<span title="{{:specialty}}">{{:specialty}}</span></p>
-                            <p>所在年级：<span title="{{:studyGrade}}">{{:studyGrade}}</span></p>
+                            <p>所在年级：<span title="{{if studyGrade == 0}}无{{else}}{{:studyGrade}}{{/if}}">{{if studyGrade == 0}}无{{else}}{{:studyGrade}}{{/if}}</span></p>
                             <p>批准人：<span title="{{:checkerName}}">{{:checkerName}}</span></p>
                         </div>
                         <div class="msg_content">
@@ -71,7 +97,7 @@
                         <div class="clear"></div>
 						{{if checkStatus == '0'}}
 							<div class="auditing_value">
-                        			<p>审核不通过原因：{{:checkReason}}</p>
+                        			<p title="{{:checkReason}}">审核不通过原因：{{:checkReason}}</p>
 							</div>
 						{{/if}}
                         
@@ -110,6 +136,8 @@
 				<span>身份类别：</span><a class="lighting" data-value="-1" href="javascript:;">全部</a>
 				<a data-value="3" href="javascript:;">教工</a> <a data-value="1" href="javascript:;">考务组</a>
 				<a data-value="2" href="javascript:;">研究生</a>
+				<a data-value="4" href="javascript:;">本科</a>
+				<a data-value="5" href="javascript:;">非师大人员</a>
 			</div>
 			<div class="filter-isChief">
 				<span>主考经验：</span><a class="lighting" data-value="-1" href="javascript:;">全部</a>
@@ -119,6 +147,25 @@
 			<div class="filter-isMixed">
 				<span>副考经验：</span><a class="lighting" data-value="-1" href="javascript:;">全部</a>
 				<a data-value="1" href="javascript:;">是</a> <a data-value="0" href="javascript:;">否</a>
+			</div>
+			<div class="filter-studyLength">
+				<span>学制筛选：</span>
+				<a class="lighting" data-value="-1" href="javascript:;">全部</a>
+				<a data-value="1" href="javascript:;">一年制</a>
+				<a data-value="2" href="javascript:;">二年制</a>
+				<a data-value="3" href="javascript:;">三年制</a>
+				<a data-value="4" href="javascript:;">四年制</a>
+				<a data-value="0" href="javascript:;">其他</a>
+			</div>
+			<div class="filter-studyGrade">
+				<span>所在年级：</span>
+				<a class="lighting" href="javascript:;" data-value="">全部</a>
+			</div>
+			<div class="filter-photo">
+				<span>头像上传：</span>
+				<a class="lighting" href="javascript:;" data-value="-1">全部</a>
+				<a href="javascript:;" data-value="0">头像未上传</a>
+				<a href="javascript:;" data-value="1">头像已上传</a>
 			</div>
 		</div>
 		<div class="search_body">
@@ -130,7 +177,10 @@
 		<div class="more">
 			<p>
 				<span>查看更多筛选<i class="iconfont"><img src="../img/bottom_r.png"></i></span>
-				<a href="" id="download">导出列表</a>
+				<a id="download">导出列表</a>
+				<a id="auditing_all">批量通过</a>
+				<a id="unauditing_all">批量不通过</a>
+				<a id="select_all">全选</a>
 			</p>
 		</div>
 
@@ -154,12 +204,26 @@
 			<form action="../admin/teacherDelete" method="post" id="modal_form">
 				<p>请填写原因</p>
 				<input type="hidden" name="id" id="teacherId"/>
-				<p style="width:55%;text-align: left;margin-left:90px"><input type="checkbox" class="unauditing" value="未参加新聘监考教师入库培训会"/><span style="font-size:14px">未参加新聘监考教师入库培训会</span></p>
-				<p style="margin-top:10px;width:55%;text-align: left;margin-left:90px"><input type="checkbox" class="unauditing" value="监考教师信息不准确"/><span style="font-size:14px">监考教师信息不准确</span></p>
-				<textarea name="reason" id="reason" placeholder="请输入原因，不能超过50字..." maxlength="50"></textarea>
+				<p style="width:55%;text-align: left;margin-left:90px"><input type="checkbox" class="unauditing" value="未参加新聘监考教师入库培训会，请在QQ监考群等待入库培训会的通知。"/><span style="font-size:14px">未参加新聘监考教师入库培训会，请在QQ监考群等待入库培训会的通知。</span></p>
+				<p style="margin-top:10px;width:55%;text-align: left;margin-left:90px"><input type="checkbox" class="unauditing" value="监考教师信息不准确，请及时更正。（还未参加新聘监考教师入库培训会，请在QQ监考群等待入库培训会通知）"/><span style="font-size:14px">监考教师信息不准确，请及时更正。（还未参加新聘监考教师入库培训会，请在QQ监考群等待入库培训会通知）</span></p>
+				<p style="margin-top:10px;width:55%;text-align: left;margin-left:90px"><input type="checkbox" class="unauditing" value="监考教师信息不准确，请及时更正。（已参加过新聘监考教师入库培训会）"/><span style="font-size:14px">监考教师信息不准确，请及时更正。（已参加过新聘监考教师入库培训会）</span></p>
+				<textarea name="reason" id="reason" placeholder="请输入原因..."></textarea>
 				<div class="button_g">
 					<a id="submit">提交</a>
 					<a id="close">返回</a>
+				</div>
+			</form>
+		</div>
+		<div id="modal_">
+			<form action="../admin/teacherDelete" method="post" id="modal_form">
+				<p>请填写原因</p>
+				<input type="hidden" name="id" id="teacherId_"/>
+				<p style="width:55%;text-align: left;margin-left:90px"><input type="checkbox" class="unauditing_" value="未参加新聘监考教师入库培训会"/><span style="font-size:14px">未参加新聘监考教师入库培训会</span></p>
+				<p style="margin-top:10px;width:55%;text-align: left;margin-left:90px"><input type="checkbox" class="unauditing_" value="监考教师信息不准确"/><span style="font-size:14px">监考教师信息不准确</span></p>
+				<textarea name="reason" id="reason_" placeholder="请输入原因..."></textarea>
+				<div class="button_g">
+					<a id="submit_">提交</a>
+					<a id="close_">返回</a>
 				</div>
 			</form>
 		</div>
@@ -185,7 +249,7 @@
 		$(".more p span").click(function() {
 			if ($(".main_header").height() == 85) {
 				$(".main_header").css({
-					"height" : "210px"
+					"height" : "330px"
 				});
 				$(this).html("收起更多筛选<i class='iconfont'><img src='../img/top_r.png'></i>");
 			} else {

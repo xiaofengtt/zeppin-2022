@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+	</head>
+	<body>
+		<input id="uuidInput" type="hidden" value="97692b7e-54b9-11eb-b238-fcaa14314cbe"/>
+		<div class="main">
+			<!--left-->
+			<!-- <script type="text/javascript" src="js/base-header.js"></script> -->
+			<!--header-->
+			<!--content-->
+			<div class="">
+			    <!-- 内容主体区域 -->
+				    <div class="layui-bodu" style="padding: 45px 35px;">
+				    	<form class="layui-form layui-form-pane1" action="" lay-filter="first">
+						  <div class="layui-form-item">
+						    <label class="layui-form-label">国家</label>
+						    <div class="layui-input-block">
+						      <select name="country" lay-filter="country"></select>
+						    </div>
+						  </div>
+						  <div class="layui-form-item">
+						    <label class="layui-form-label">渠道版本</label>
+						    <div class="layui-input-block">
+						      <select name="versionChannel" lay-filter="versionChannel"></select>
+						    </div>
+						  </div>
+						  <div class="layui-form-item">
+						    <label class="layui-form-label">国家代码</label>
+						    <div class="layui-input-block">
+						      <input type="text" name="countryCode" lay-verify="required" lay-reqText="appkey不能为空" required placeholder="国家代码" lay-verType="alert" autocomplete="off" class="layui-input" readonly="readonly">
+						    </div>
+						  </div>
+						  <div class="layui-form-item">
+						    <label class="layui-form-label">渠道名称</label>
+						    <div class="layui-input-block">
+						      <input type="text" name="channel" lay-verify="required" lay-reqText="channel不能为空" required placeholder="渠道名称" lay-verType="alert" autocomplete="off" class="layui-input" readonly="readonly">
+						    </div>
+						  </div>
+						  <div class="layui-form-item">
+						    <label class="layui-form-label">版本号</label>
+						    <div class="layui-input-block">
+						      <input type="text" name="version" lay-verify="required" lay-reqText="channel不能为空" required placeholder="版本号" lay-verType="alert" autocomplete="off" class="layui-input" readonly="readonly">
+						    </div>
+						  </div>
+						  <div class="layui-form-item" pane>
+						    <label class="layui-form-label">状态</label>
+						    <div class="layui-input-block">
+						      <input type="radio" name="isDefault" value="true" title="开">
+						      <input type="radio" name="isDefault" value="false" title="关" checked>
+						    </div>
+						  </div>
+							
+						  <div class="layui-form-item">
+						    <div class="layui-input-block">
+						      <button class="layui-btn lay-submit" lay-submit lay-filter="*">立即提交</button>
+						      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+						    </div>
+						  </div>
+						</form>
+				    </div>
+			 </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/fundDetail.js" ></script>
+	</body>
+</html>

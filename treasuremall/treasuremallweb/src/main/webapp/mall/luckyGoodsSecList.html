@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/luckyGoods.css" />
+	</head>
+	<body class="layui-layout-body">
+		<input id="uuidInput" type="hidden" value="10b52671-d03c-417f-9cd1-d88549b6c077"/>
+		<div class="main layui-layout layui-layout-admin">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="layui-body">
+			    <!-- 内容主体区域 -->
+				    <div class="layui-bodu" style="padding: 15px;">
+				    	<span class="layui-breadcrumb">
+						  <a href="javascript:">抽奖管理</a>
+						  <a class="goPrePage" href="javascript:">抽奖玩法商品配置</a>
+						  <a><cite>查看详情</cite></a>
+						</span>
+						<hr>
+				    	<div>
+				    		<div class="layui-row">
+					    		<div class="layui-col-md2" style="text-align:center;">
+							      <img src="" class="coverImg" />
+							    </div>
+							    <div class="layui-col-md3">
+							      <p>奖品名称：<span class="shortTitle"></span></p>
+							      <p>奖品价值：<span class="dPrice"></span></p>
+							      <p>上架时间：<span class="createtime"></span></p>
+							    </div>
+							    <div class="layui-col-md3">
+							      <p>已揭晓期数：<span class="endIssueNum"></span></p>
+							      <p>当前进行中期号：<span class="currentIssueNum"></span></p>
+							      <p>剩余未进行期数：<span class="restIssueNum"></span></p>
+							    </div>
+							    <div class="layui-col-md3">
+							      <p>总期数：<span class="totalIssueNum"></span></p>
+							      <p>单人次金币：<span class="betPerShare"></span></p>
+							      <p>总需人次：<span class="shares"></span></p>
+							    </div>
+				    		</div>
+				    	</div>
+						 <table class="table-list mt-15 mt-30"></table>
+						 <div id="pageTool"></div>
+				    </div>
+			 </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/alert.js" ></script>
+		<script type="text/javascript" src="js/luckyGoodsSecList.js" ></script>
+	</body>
+</html>

@@ -1,0 +1,481 @@
+//语言本地化
+
+//TabView
+"Home" = "Home";
+"Categories" = "Categories";
+"Record" = "Record";
+"Story" = "Story";
+"Account" = "Account";
+
+//Normal
+"ID" = "ID";
+"Cancel" = "Cancel";
+"Delete" = "Delete";
+"Successfully" = "Successfully";
+"OK" = "OK";
+"No" = "No";
+"Send" = "Send";
+"Save" = "Save";
+"Change" = "Change";
+"Resend" = "Resend";
+"Loading" = "Loading";
+"Next" = "Next";
+"Done" = "Done";
+"Camera" = "Camera";
+"Photo" = "Photo";
+"Coins" = "Coins";
+"coins" = "coins";
+"Review" = "Review";
+"Messages" = "Messages";
+"All" = "All";
+"dollars" = "dollars";
+"Completed" = "Completed";
+"Losing" = "Losing";
+"Incorrect" = "Incorrect";
+"Skip" = "Skip";
+"GET STARTED" = "GET STARTED";
+"No More Items" = "No More Items";
+"More" = "More";
+"OR" = "OR";
+
+"January" = "January";
+"February" = "February";
+"March" = "March";
+"April" = "April";
+"May" = "May";
+"June" = "June";
+"July" = "July";
+"August" = "August";
+"September" = "September";
+"October" = "October";
+"November" = "November";
+"December" = "December";
+
+
+//HttpManager
+"Connect Failed" = "Connect Failed";
+
+//Home
+"Rewards" = "Rewards";
+"Ranking" = "Ranking";
+"Valuable" = "Valuable";
+"FAQs" = "FAQs";
+"PK Zone" = "PK Zone";
+"Invite" = "Invite";
+"Services" = "Services";
+"Top Up" = "Top Up";
+
+"Congratulations to" = "Congratulations to";
+"for buying" = "for buying";
+"for" = "for";
+"LASTEST DEAL" = "LASTEST DEAL";
+"LUCKY DRAW" = "LUCKY DRAW";
+"PK ZONE" = "PK ZONE";
+"Join" = "Join";
+"Quantity" = "Quantity";
+"Qty" = "Qty";
+"End in" = "End in";
+"Hot" = "Hot";
+"Progress" = "Progress";
+"Participant" = "Participant";
+
+//Categories
+"High Valued" = "High Valued";
+
+//Record
+"Deal Records" = "Deal Records";
+"Ended" = "Ended";
+"Ongoing" = "Ongoing";
+"Winner" = "Winner";
+"search" = "search";
+"No goods yet" = "No goods yet";
+
+//Story
+"Issue" = "Issue";
+"Lucky No." = "Lucky No.";
+"Won at" = "Won at";
+"Results for" = "Results for";
+"No srories yet" = "No srories yet";
+"No reviews yet" = "No reviews yet";
+
+"Say something..." = "Say something...";
+"Add photos" = "Add photos";
+"Submit" = "Submit";
+"Review successfully!" = "Review successfully!";
+"My Reviews" = "My Reviews";
+"Personal Data" = "Personal Data";
+
+//Account
+"Ranking List:No." = "Ranking List:No.";
+"Balance" = "Balance";
+"Withdraw" = "Withdraw";
+"Coupons" = "Coupons";
+"Invite&Rewards" = "Invite&Rewards";
+"Refer&Earn" = "Refer&Earn";
+"Order History" = "Order History";
+"Winning Orders" = "Winning Orders";
+"Shipping Orders" = "Shipping Orders";
+"Complete Orders" = "Complete Orders";
+"Customer Service" = "Customer Service";
+"Transactions" = "Transactions";
+"Shipping Address" = "Shipping Address";
+"PayPal Account" = "PayPal Account";
+"Share" = "Share";
+"Invite and Rewards" = "Invite and Rewards";
+
+//RankingViewController
+"The ranking list only counts the data in the last 30 days" = "The ranking list only counts the data in the last 30 days";
+"Rank" = "Rank";
+"User" = "User";
+"Winning Amount" = "Winning Amount";
+
+//DetailViewController
+"Details" = "Details";
+"Join Rules" = "Join Rules";
+"Records" = "Records";
+"RECORDS" = "RECORDS";
+"Winning List" = "Winning List";
+"My Numbers" = "My Numbers";
+"No number yet" = "No number yet";
+"No data yet" = "No data yet";
+"View Now" = "View Now";
+"New issue has started" = "New issue has started";
+"No latest issue" = "No latest issue";
+"Buy Again" = "Buy Again";
+"All remaining" = "All remaining";
+"There is not so much left" = "There is not so much left";
+"Select the number of potions" = "Select the number of potions";
+"Select the quantity of this item" = "Select the quantity of this item";
+
+"Rules" = "Rules";
+"rules1" = "Team bet: both teams of the last number of random distribution, will be announced before the allocation time point of the last 100 items of goods participating time.";
+"rules2" = "Uncovering Countdown: each time is combined in time, minutes, seconds and milliseconds to get the corresponding value. For example, 12:04:10.123 is 1204102123. Sum the values of these 100 times (get the value A).";
+"rules3" = "Announcement time: divide the value A by the total number of people required for the commodity, and add the remaining number to the original number of 10000001 to get the final lucky number. The team with the lucky number wins the total victory. The winning team gets gold coins with equal value of commodities, and then rewards them according to the proportion of gold coin bets participated by team members.";
+"rules4" = "Warm tips: in order to prevent users from placing orders in batch level and millisecond level, the number will be changed from 9 bits to 8 bits for summation calculation when the hundred bits of millisecond are 0 and automatically discarded. For example: 20:18:07:002, the value is 20180702.";
+//PaymentViewController
+"Payment" = "Payment";
+"Pay Now" = "Pay Now";
+"Total coins" = "Total coins";
+"Total price" = "Total price";
+"Coupon" = "Coupon";
+"Order summary" = "Order summary";
+"Payment successful" = "Payment successful";
+"Insufficient account balance" = "Insufficient account balance";
+
+//LoginViewController
+"Sign In" = "Sign In";
+"Sign Up/Sign In" = "Sign Up/Sign In";
+"Sign In with Password" = "Sign In with Password";
+"Sign in with verification code" = "Sign in with verification code";
+"Sign in with Facebook" = "Sign in with Facebook";
+"Sign up with Facebook" = "Sign up with Facebook";
+"Already have an account?" = "Already have an account?";
+"Don’t have an account yet?" = "Don’t have an account yet?";
+"Sign up" = "Sign up";
+"Sign in" = "Sign in";
+"Sign in failed" = "Sign in failed";
+"Enter mobile number" = "Enter mobile number";
+"Enter password" = "Enter password";
+"Unverified mobile number is automatically registered after verification" = "Unverified mobile number is automatically registered after verification";
+"I have read and accept the " = "I have read and accept the ";
+"Terms of Service" = "Terms of Service";
+"Forgot your password?" = "Forgot your password?";
+"Enter CAPTCHA code" = "Enter CAPTCHA code";
+"Captcha code" = "Captcha code";
+"Incorrect CAPTCHA code, please try again" = "Incorrect CAPTCHA code, please try again";
+"Incorrect mobile number format, please try again" = "Incorrect mobile number format, please try again";
+"Incorrect verification code, please try again" = "Incorrect verification code, please try again";
+"Enter Verification Code" = "Enter Verification Code";
+"A Verification code has been sent" = "A Verification code has been sent";
+"Haven’t got it?" = "Haven’t got it?";
+
+//RetrieveViewController
+"Retrieve Password" = "Retrieve Password";
+"Use SMS verfication code to change password" = "Use SMS verfication code to change password";
+"Enter code" = "Enter code";
+"Reset Password" = "Reset Password";
+"Password must be 8-16 characters and contain both numbers and letters" = "Password must be 8-16 characters and contain both numbers and letters";
+
+//SettingsViewController
+"Settings" = "Settings";
+"Profile Photo" = "Profile Photo";
+"Phone No." = "Phone No.";
+"Name" = "Name";
+"Password" = "Password";
+"Log Out" = "Log Out";
+"set" = "set";
+"modify" = "modify";
+"binding" = "binding";
+"This camera is invalid" = "This camera is invalid";
+"Get photo failure" = "Get photo failure";
+"Binding Mobile Phone" = "Binding Mobile Phone";
+"Binding mobile phone" = "Binding mobile phone";
+"Set password" = "Set password";
+"Set Password" = "Set Password";
+"Please enter password" = "Please enter password";
+
+//OrderViewController
+"My Orders" = "My Orders";
+"No orders yet" = "No orders yet";
+"Exchanged at" = "Exchanged at";
+"Coins exchanged" = "Coins exchanged";
+"Deliver" = "Deliver";
+"Winning" = "Winning";
+"Exchanged" = "Exchanged";
+"Order time" = "Order time";
+"Buy More" = "Buy More";
+"Coins for exchange" = "Coins for exchange";
+"Shipping" = "Shipping";
+"Exchange for coins" = "Exchange for coins";
+"successfully" = "successfully";
+"Red Team" = "Red Team";
+"Blue Team" = "Blue Team";
+
+"exchange message" = "Exchange Instructions:\n1.Exchange gold coins: users can obtain gold coins with the same value as the winning goods, which are automatically sent to the account balance.\n2.Exchange goods: users need to use points for exchange, and the points required will be deducted automatically.";
+
+"Applied" = "Applied";
+"Delivered" = "Delivered";
+"Applied time" = "Applied time";
+"Delivered time" = "Delivered time";
+"Express Company" = "Express Company";
+"Express Number" = "Express Number";
+"Copied successfully" = "Copied successfully";
+
+//CouponsViewController
+"Available" = "Available";
+"Unavailable" = "Unavailable";
+"Expiring" = "Expiring";
+"Use Now" = "Use Now";
+"Used" = "Used";
+"Expired" = "Expired";
+"over" = "over";
+"You haven’t earned any coupons" = "You haven’t earned any coupons";
+"No expired coupons yet" = "No expired coupons yet";
+"Coupon is valid forever" = "Coupon is valid forever";
+
+//PayAccountViewController
+"Add your PayPal account" = "Add your PayPal account";
+"Enter youy PayPal account" = "Enter youy PayPal account";
+
+
+//AddressViewController
+"Choose Shipping Address" = "Choose Shipping Address";
+"Add a New Address" = "Add a New Address";
+"Add a Shipping Address" = "Add a Shipping Address";
+"Edit Address" = "Edit Address";
+"Are you sure you want to delete this address?" = "Are you sure you want to delete this address?";
+"Country/Region" = "Country/Region";
+"Contact Name" = "Contact Name";
+"Street Address or P.O.Box" = "Street Address or P.O.Box";
+"Apt,Suite,Unit,Building(optional)" = "Apt,Suite,Unit,Building(optional)";
+"City" = "City";
+"State/Province/Region" = "State/Province/Region";
+"ZIP Code" = "ZIP Code";
+"Please Select" = "Please Select";
+
+//PasswordViewController
+"Set Password" = "Set Password";
+"Reset Password" = "Reset Password";
+"Enter old password" = "Enter old password";
+"Enter new password" = "Enter new password";
+"Enter new password again" = "Enter new password again";
+"Old Password" = "Old Password";
+"New Password" = "New Password";
+"Password set successfully" = "Password set successfully";
+"Please enter all the mandatory field" = "Please enter all the mandatory field";
+"Incorrect old password" = "Incorrect old password";
+"Passwords do not match" = "Passwords do not match";
+
+//NameViewController
+"Enter your name" = "Enter your name";
+"Nicknname can’t be blank" = "Nicknname can’t be blank";
+
+//MobileViewController
+"Mobile Number" = "Mobile Number";
+"Verify Mobile Number" = "Verify Mobile Number";
+"Before you change your mobile number,verify your current number" = "Before you change your mobile number,verify your current number";
+"Send Code" = "Send Code";
+"Code" = "Code";
+"Change Mobile Number" = "Change Mobile Number";
+"Enter new mobile number" = "Enter new mobile number";
+"Mobile phone number changed successfully" = "Mobile phone number changed successfully";
+
+//ChargeViewController
+"SELECT AMOUNT" = "SELECT AMOUNT";
+"Other amount" = "Other amount";
+"Top Up Amount" = "Top Up Amount";
+"Get rewards of:" = "Get rewards of:";
+"Top Up Method" = "Top Up Method";
+"unavailable top up amount" = "unavailable top up amount";
+"unavailable method" = "unavailable method";
+"payment limit per transaction" = "payment limit per transaction";
+"Notice" = "Notice";
+"Top Up successfully" = "Top Up successfully";
+
+"Checkout" = "Checkout";
+"Card Number" = "Card Number";
+"Enter the card number" = "Enter the card number";
+"Expiry Date" = "Expiry Date";
+"CVC" = "CVC";
+"Enter the CVC" = "Enter the CVC";
+"Enter the ZIP code" = "Enter the ZIP code";
+
+//WithdrawController
+"Receiving Account" = "Receiving Account";
+"Transfer to account in 2 hours" = "Transfer to account in 2 hours";
+"Add PayPal account" = "Add PayPal account";
+"Withdrawal Amount" = "Withdrawal Amount";
+"Enter the withdrawal amount" = "Enter the withdrawal amount";
+"If the balance is less than $100,you must withdraw all" = "If the balance is less than $100,you must withdraw all";
+"Reward Points" = "Reward Points";
+"How to Get Points?" = "How to Get Points?";
+"points rules" = "1.Register to be a member of XShopping,you can get 100 points.\n2.You can get reward points for every purchase.\n3.You can use the points to offset the withdrawal fee.2 Points=$1.00";
+"unavailable withdraw amount" = "unavailable withdraw amount";
+"Withdraw successfully" = "Withdraw successfully";
+
+//TransactionsController
+"Transactions" = "Transactions";
+"No records yet" = "No records yet";
+
+"Order Details" = "Order Details";
+"Description" = "Description";
+"Coupon Applied" = "Coupon Applied";
+"Amount" = "Amount";
+"Fee" = "Fee";
+"Remarks" = "Remarks";
+"Order Date" = "Order Date";
+"Order ID" = "Order ID";
+"Status" = "Status";
+"Order Inquiries" = "Order Inquiries";
+
+//SearchViewController
+"Hot search" = "Hot search";
+"No products found,please try other keywords" = "No products found,please try other keywords";
+
+//MessageViewController
+"System Messages" = "System Messages";
+"Promo Notices" = "Promo Notices";
+"You currently don’t have message" = "You currently don’t have message";
+
+//ActitvityRewardsViewController
+"Free Lucky Draw for New Members" = "Free Lucky Draw for New Members";
+"Daily Sign-in" = "Daily Sign-in";
+"Continuous sign in" = "Continuous sign in";
+"days" = "days";
+"Come again tomorrow" = "Come again tomorrow";
+"Day" = "Day";
+"Join successfully" = "Join successfully";
+"You Won" = "You Won";
+"You won" = "You won";
+"Lucky Draw" = "Lucky Draw";
+"Winner List" = "Winner List";
+"points" = "points";
+"Insufficient points" = "Insufficient points";
+"points each time.Remaining Points" = "points each time.Remaining Points";
+"checkin rules" = "1、You can only sign in once a day.\n2、If the sign-in is broken midway, the sign-in record will be recalculated.\n3、If you violates the rules,the platform has the right to disable  his login.";
+"rewards notice1" = "Winning users will receive system message.";
+"rewards notice2" = "The final interpretation right of the event belongs to the platform.";
+"rewards notice3" = "Our activity is not related or affiliated with Apple Inc. in any way.";
+
+"Free Lucky Draw" = "Free Lucky Draw";
+"Daily Sign-in" = "Daily Sign-in";
+"Lucky Draw" = "Lucky Draw";
+
+//GradingView
+"grading_label" = "To claim your prize,please check your order to learn more.If you have any questions,just contact us.";
+"Claim Your Prize" = "Claim Your Prize";
+"Later" = "Later";
+
+//Privacy Policy
+"Privacy Policy" = "Privacy Policy";
+"privacy title 1" = "1.Introduction";
+"privacy content 1" = "1.1 Welcome to the XShopping platform. XShopping takes its responsibilities under applicable privacy laws and regulations (\"Privacy Laws\") seriously and is committed to respecting the privacy rights and concerns of all Users of our Shopee website (the \"Site\") (we refer to the Site and the services we provide as described in our Site collectively as the \"Services\"). We recognize the importance of the personal data you have entrusted to us and believe that it is our responsibility to properly manage, protect and process your personal data. This Privacy Policy (“Privacy Policy” or “Policy”) is designed to assist you in understanding how we collect, use, disclose and/or process the personal data you have provided to us and/or we possess about you, whether now or in the future, as well as to assist you in making an informed decision before providing us with any of your personal data. Please read this Privacy Policy carefully.\n1.2 \“Personal Data\" or \"personal data\" means data, whether true or not, about an individual who can be identified from that data, or from that data and other information to which an organisation has or is likely to have access. Common examples of personal data could include name, identification number and contact information.\n1.3 By using the Services, registering for an account with us, visiting our website, or accessing the Services, you acknowledge and agree that you accept the practices, requirements, and/or policies outlined in this Privacy Policy, and you hereby consent to us collecting, using, disclosing and/or processing your personal data as described herein. IF YOU DO NOT CONSENT TO THE PROCESSING OF YOUR PERSONAL DATA AS DESCRIBED IN THIS PRIVACY POLICY, PLEASE DO NOT USE OUR SERVICES OR ACCESS OUR WEBSITE. If we change our Privacy Policy, we will post those changes or the amended Privacy Policy on our website. We reserve the right to amend this Privacy Policy at any time.";
+"privacy title 2" = "2.Setting up an account";
+"privacy content 2" = "In order to use certain functionalities of the Services, you will have to create a user account which requires you to submit certain personal data. When you register and create an account, we require you to provide us with your name and email address as well as a user name that you select. We also ask for certain information about yourself such as your telephone number, email address, shipping address, bank account details. Upon activating an account, you will select a user name and password. Your user name and password will be used so you can securely access and maintain your account.";
+"privacy title 3" = "3.Cookies and Technologies";
+"privacy content 3" = "When you visit or interact with our sites, services, applications, tools or messaging, we or our authorized service providers may use cookies, web beacons, and other similar technologies for storing information to help provide you with a better, faster, and safer experience, and for advertising purposes.\nThis page is designed to help you understand more about these technologies and our use of them on our sites and in our services, applications, and tools. Below is a summary of a few key things you should know about our use of such technologies. You can review the contents of our full User Cookie Notice below.\nOur cookies and similar technologies have different functions. They are either necessary for the functioning of our services, help us improve our performance, give you extra functionalities, or help us to serve you relevant and targeted ads. We use cookies and similar technologies that only remain on your device for as long as you keep your browser active (session) and cookies and similar technologies that remain on your device for a longer period (persistent). You are free to block, delete, or disable these technologies if your device allows this. You can manage your cookies and your cookie preferences in your browser or device settings.\nWhere possible, security measures are set in place to prevent unauthorized access to our cookies and similar technologies. A unique identifier ensures that only we and/or our authorized service providers have access to cookie data.\nService providers are companies that help us with various aspects of our business, such as site operations, services, applications, advertisements and tools. We use some authorized service providers to help us to serve you relevant ads on our services and other places on the internet. These service providers may also place cookies on your device via our services (third party cookies). They may also collect information that helps them identify your device, such as IP-address, or other unique or device identifiers.";
+"privacy title 4" = "4.Information Security";
+"privacy content 4" = "We protect your personal information using technical and administrative security measures to reduce the risks of loss, misuse, unauthorized access, disclosure and alteration. Some of the safeguards we use are firewalls and data encryption, physical access controls to our data centers, and information access authorization controls.";
+"privacy title 5" = "5.Your Rights";
+"privacy content 5" = "We respect your right to access, correct, request deletion or request restriction of our usage of your personal information as required by applicable law. We also take steps to ensure that the personal information we collect is accurate and up to date.\nYou have the right to know what personal information we maintain about you.\nWe will provide you with a copy of your personal information in a structured, commonly used and machine-readable format on request.If your personal information is incorrect or incomplete, you have the right to ask us to update it.\nYou have the right to object to our processing of your personal information.\nYou can also ask us to delete or restrict how we use your personal information, but this right is determined by applicable law and may impact your access to some of our Services.";
+"privacy title 6" = "6.Data processed by Third Party";
+"privacy content 6" = "Our websites, products and services may contain links to or the ability for you to access third-party websites, products, and services. We are not responsible for the privacy practices employed by those third parties, nor are we responsible for the information or content their products and services contain. This Privacy Statement applies solely to data collected by us through our products and services. We encourage you to read the privacy policies of any third party before proceeding to use their websites, products, or services.";
+"privacy title 7" = "7.Changes to this Privacy Statement";
+"privacy content 7" = "From time to time, we may update our Privacy Policy to reflect new or different privacy practices. We will place a notice to our customers when we make material changes to the Privacy Policy. The modification of the Privacy Policy is of great significance to ensure your rights on personal data.\nConsequently, we sincerely recommend you to check the Privacy Policy available online periodically. Additionally, you are always free to check the Privacy Policy through quick links whenever you need to input your personal data. Simultaneously, we will notify you about the modification by sending a notice to your account. There will be a special quick link in your account to offer the full text of the Privacy Policy.";
+"privacy title 8" = "8.Information Disclosure";
+"privacy content 8" = "Under the following circumstances, this application will disclose all or part of your personal information in accordance with your personal wishes or legal regulations:\n(a) Disclosure to third parties with your prior consent;\n(b) To provide the products and services you request, you must share your personal information with third-party payments;\n(c) Disclosure to third parties or administrative and judicial institutions in accordance with the relevant provisions of the law or the requirements of administrative or judicial institutions.";
+
+//GroupViewController
+"GROUPON" = "GROUPON";
+"Price" = "Price";
+"Groupon No." = "Groupon No.";
+"Participants" = "Participants";
+
+//PushSetting
+"Push Notifications Required" = "Push Notifications Required";
+"Enable notifications to receive winning" = "Enable notifications to receive winning";
+"information" = "information";
+"You can always turn them off later" = "You can always turn them off later";
+"No thanks" = "No thanks";
+"Okay" = "Okay";
+
+
+//FaqsViewController
+"faqs_title1_1" = "What is a Group Buy";
+"faqs_title1_2" = "How is a Group Buy different than a regular purchase";
+"faqs_title1_3" = "Phases of a Group Buy";
+"faqs_title1_4" = "When will my order ship";
+"faqs_title1_5" = "Why doesn't my discount code work";
+"faqs_content1_1" = "A Group Buy is simply a group of people who band together to get a volume discount on a product or service.\nGroup Buys trade volume in exchange for a discount. The platform offers a range of discounts and states the number of buyers needed to reach each of those discount levels.\nThe entire group ends up with the best discount possible according to the number of members who have pledged.";
+"faqs_content1_2" = "Purchase Price: A group buy offers a discount from full retail.\nWait time: Group buy orders begin shipping on a specified date after the deal locks. Delivery times are stated in each deal’s Terms section.\nPayment Method: You are only charged if the deal successfully reaches your selected discount range.";
+"faqs_content1_3" = "Open Phase: During the Open Phase of a deal, you can show interest or pledge to join the gang.\nFinalization Phase: The platform reviews all the orders and determines inventory allocations or production demands. Platform usually complete the review process within 2 business days of the Optimization Phase ending.\nThe platform collects payment.\nYou receive your final order configuration message which includes information on what to expect next.";
+"faqs_content1_4" = "Orders placed before will ship within 2-3 business days.";
+"faqs_content1_5" = "The coupon codes for promotions and holidays do expire and are not valid for use after the specified date on the promotion. Please contact us if you have any problems with coupon codes and we will be happy to assist. ";
+
+"faqs_title2_1" = "XShopping is introduced";
+"faqs_title2_2" = "Account related issues";
+"faqs_title2_3" = "Q&A";
+"faqs_title2_4" = "Top-up and Withdraw:";
+
+"faqs_normal_1_1" = "XShopping is a novel online shopping platform, all brands of mobile phones, computers, electronics and other products only need 1 gold coin to join in the lucky shopping draw. The platform has been running steadily for four years since its establishment, creating a new shopping APP that is 100% fair and just, 100% authentic guarantee, and the integration of entertainment and shopping.";
+
+"faqs_content2_1_1q" = "Lucky Shopping Draw Process";
+"faqs_content2_1_1a" = "1. Choose products: Browse in the Items list and find the Item what you want. And Click \"Join\" Button.\n2. Buy Lucky Number: Items will be divided into lucky numbers equal to the value of the prize. For example, goods worth 1000 gold coins will be divided into 1000 lucky numbers. For every 1 gold coin you pay for a lucky number, pay 100 gold coins for 100 lucky numbers.\n3. Who is the winner: When all lucky numbers of an item are purchased, the \"lucky number\" is calculated according to publicly verifiable calculation rules, and the user who has this lucky number wins this item.\n4. Delivery: The winner will fill in the address and telephone number, and we will deliver the item to winner at the nearest warehouse.";
+"faqs_content2_1_2q" = "Get prizes rules";
+"faqs_content2_1_2a" = "1. Winning users should claim the winning prize within 15 days from the date of winning the prize, and provide the valid mailing address according to the prompts of the platform, otherwise the platform will consider you to give up the winning prize.\n2. The platform will arrange delivery within 5 working days from the date you receive the prize.\n3. If the prize belongs to mobile phone recharge card, electronic shopping card and other non-physical prizes, please contact customer service we will directly send the prize to you.";
+"faqs_content2_2_1q" = "can not receive SMS verification code?";
+"faqs_content2_2_1a" = "please directly contact [customer service] to provide your mobile phone number, we will check and solve the problem as soon as possible.";
+"faqs_content2_2_2q" = "Forget Password?";
+"faqs_content2_2_2a" = "Select \"Login with Password\" on the login page, click \"Forget Password\" to enter the password search and recovery interface, enter the phone number bound to the account, get the SMS verification code, and reset the password.";
+"faqs_content2_2_3q" = "How to change the phone number?";
+"faqs_content2_2_3a" = "Log in the APP, enter the \"Personal Center\", click the \"Settings\" button in the upper right corner, enter the page of changing the phone number, and change it according to the instructions.";
+"faqs_content2_2_4q" = "How to modify personal information?";
+"faqs_content2_2_4a" = "Log in the APP, enter the \"Personal Center\", and click the \"Settings\" button in the upper right corner to modify Profile Photo or nickname.";
+"faqs_content2_3_1q" = "What is XShopping?";
+"faqs_content2_3_1a" = "XShopping is an online shopping APP that sells items in the way of lucky draw. You can join a lucky draw for an item and buy some lucky numbers with gold coins. System calculates a lucky number according to the public calculation rules, and the user who has the lucky number wins the item.";
+"faqs_content2_3_2q" = "How to join?";
+"faqs_content2_3_2a" = "Register a accout, and select the item you want to buy from the item list, click the Join button, and then use gold coins to buy some of your lucky numbers to Join the lucky draw.";
+"faqs_content2_3_3q" = "How to view the winning status?";
+"faqs_content2_3_3a" = "After winning, you will receive APP notification message. Please open the permission of receiving APP notification on your mobile. You can also view the winning status of your order in the app's Personal Center.";
+"faqs_content2_3_4q" = "How to get the Item after winning?";
+"faqs_content2_3_4a" = "After you winning, enter the winning order page to choose item delivery and fill in the receiving address, if there are special requirements for goods, such as the choice of color, size, style, etc., please contact customer service instructions. After completion, we will arrange delivery as soon as possible. Please make sure your address information is correct and keep your phone unblocked.";
+"faqs_content2_3_5q" = "How to get the delivery status of items?";
+"faqs_content2_3_5a" = "You can contact customer service for delivery information.";
+"faqs_content2_3_6q" = "How to share the winning Items?";
+"faqs_content2_3_6a" = "After you receive the items, you can enter the Personal Center - My Order - Winning Record, release the sharing content. Include pictures, videos and text to share your winning joy with everyone. Sharing will be rewarded 1 gold coins, System will recharge automatically.";
+"faqs_content2_3_7q" = "How to Get Gold Coins?";
+"faqs_content2_3_7a" = "You can get gold coins by Top up money in the App. We provides two ways to pay, Credit Card or PayPal.";
+"faqs_content2_3_8q" = "How is the lucky number created?";
+"faqs_content2_3_8a" = "The time recorded for the last 100 orders of all users for this item. Each time is combined in the order of seconds and milliseconds to produce a corresponding value, such as 120410123 for 12:04:10.123. Sum up the values of the 100 times (get the value A), divide the value A by the number of lucky numbers of the commodity (get the remainder), add the original number 10000001, get the final lucky number. In order to prevent the hacker attack, the millisecond hundred digit of 0 is automatically removed, and the number will be changed from 9 digits to 8 digits for summation calculation. Example: 20:18:07:002, then the value is 20180702.";
+"faqs_content2_3_9q" = "Is the item genuine?";
+"faqs_content2_3_9a" = "All items on our platform are purchased and shipped directly from Amazon, Wish and other large e-commerce platforms, and all products are guaranteed to be 100% authentic brand.";
+"faqs_content2_3_10q" = "Can I exchange or return the items?";
+"faqs_content2_3_10a" = "Non-quality problem, do not give return or exchange. Please try your best to sign the items by youself and open the box to inspect the items, if found in the express caused damage to the items, please do not sign, can refuse to sign back.";
+"faqs_content2_4_1q" = "How long will the Top-up reach the account?";
+"faqs_content2_4_1a" = "After using Paypal or credit card to Top-up successfully, generally, the gold coins will recharge within 1 minute. Then If have any questions, please consult customer service.";
+"faqs_content2_4_2q" = "How to withdraw gold coins?";
+"faqs_content2_4_2a" = "You can click the \"Withdraw\" button in the \"Personal Center\" and bind your Paypal account to withdraw money.";
+"faqs_content2_4_3q" = "What is the withdraw fee?";
+"faqs_content2_4_3a" = "New users are entitled to a free cash withdrawal of 1,000 gold coins. Each time you buy, you can accumulate the corresponding free cash withdraw amount. In excess of the free withdrawal amount, a certain percentage of the service fee will be charged for each withdraw.";
+"faqs_content2_4_4q" = "When will the withdraw completed?";
+"faqs_content2_4_4a" = "We will transfer money within 15 minutes on average from 8:00 to 18:00 on weekdays. And on non-working days will be the next day. If you have any questions, please contact our online customer service.";

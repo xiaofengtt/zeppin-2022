@@ -1,0 +1,18 @@
+package cn.product.worldmall.mapper;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
+
+import cn.product.worldmall.entity.GoodsCoverImage;
+import cn.product.worldmall.util.MyMapper;
+
+public interface GoodsCoverImageMapper extends MyMapper<GoodsCoverImage> {
+	
+	public Integer getCountByParams(Map<String, Object> params);
+	
+    public List<GoodsCoverImage> getListByParams(Map<String,Object> params);
+    
+    public void deleteByBelongs(@Param("belongs")String belongs);
+}

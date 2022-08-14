@@ -36,7 +36,7 @@ public class InvigilationTeacher implements java.io.Serializable {
 	private Resource photo;
 	private String major;
 	// private InvigilationTeacherType type;
-	// 考务组，研究生，教工
+	// 考务组，研究生，教工,本科，非师大人员
 	private Short type;
 	private String organization;
 	private String inschooltime;
@@ -61,6 +61,7 @@ public class InvigilationTeacher implements java.io.Serializable {
 	private String jobDuty;
 	private String studyMajor;
 	private String studyGrade;
+	private Integer studyLength;
 	private String remark;
 
 	private String bankCard;
@@ -77,6 +78,13 @@ public class InvigilationTeacher implements java.io.Serializable {
 	private Short isDisable;
 	// 身份证正面照
 	private Resource idCardPhoto;
+	
+	//20190417新增5个属性字段
+	private String formation;//在编教职工、同职级教职工、长期聘用教职工、临时聘用教职工
+	private String occupation;//职业
+	private String bankOrg;//开户行地区
+	private String bankName;//开户行名称
+	private String email;//电子信箱
 
 	// Constructors
 
@@ -97,7 +105,7 @@ public class InvigilationTeacher implements java.io.Serializable {
 			Integer checker, String checkReason, String invigilateCampus, String invigilateType,
 			Integer invigilateCount, String jobDuty, String studyMajor, String studyGrade, String remark,
 			String bankCard, String openID, String sid, String password, Timestamp releaseTime, Short disableType,
-			Short isDisable, Resource idCardPhoto) {
+			Short isDisable, Resource idCardPhoto,Integer studyLength) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -138,6 +146,7 @@ public class InvigilationTeacher implements java.io.Serializable {
 		this.disableType = disableType;
 		this.isDisable = isDisable;
 		this.idCardPhoto = idCardPhoto;
+		this.studyLength = studyLength;
 	}
 
 	// Property accessors
@@ -307,7 +316,7 @@ public class InvigilationTeacher implements java.io.Serializable {
 		this.specialty = specialty;
 	}
 
-	@Column(name = "REASON", length = 100)
+	@Column(name = "REASON")
 	public String getReason() {
 		return reason;
 	}
@@ -495,6 +504,62 @@ public class InvigilationTeacher implements java.io.Serializable {
 
 	public void setIdCardPhoto(Resource idCardPhoto) {
 		this.idCardPhoto = idCardPhoto;
+	}
+	
+	
+	@Column(name = "STUDY_LENGTH")
+	public Integer getStudyLength() {
+		return studyLength;
+	}
+
+	public void setStudyLength(Integer studyLength) {
+		this.studyLength = studyLength;
+	}
+
+	@Column(name = "FORMATION")
+	public String getFormation() {
+		return formation;
+	}
+	
+
+	public void setFormation(String formation) {
+		this.formation = formation;
+	}
+	
+	@Column(name = "OCCUPATION")
+	public String getOccupation() {
+		return occupation;
+	}
+
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+	
+	@Column(name = "BANK_ORG")
+	public String getBankOrg() {
+		return bankOrg;
+	}
+
+	public void setBankOrg(String bankOrg) {
+		this.bankOrg = bankOrg;
+	}
+	
+	@Column(name = "BANK_NAME")
+	public String getBankName() {
+		return bankName;
+	}
+
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+	
+	@Column(name = "EMAIL")
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	/**

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/rootSetting.css" />
+	</head>
+	<body>
+		<input id="uuidInput" type="hidden" value="94ab6f97-90b4-11e8-95fb-fccd1431ad2a"/>
+		<div class="main">
+			<!--left-->
+			<!-- <script type="text/javascript" src="js/base-header.js"></script> -->
+			<!--header-->
+			<!--content-->
+			<div class="">
+			    <!-- 内容主体区域 -->
+				    <div class="layui-bodu" style="padding: 35px;">
+				    	<form class="layui-form layui-form-pane1" action="" lay-filter="first" style="max-width:100%;">
+				    	  <div class="layui-form-item">
+						    <label class="layui-form-label">玩法类型</label>
+						    <div class="layui-input-inline" style="width: 200px;">
+						        <select name="gameType" lay-filter="gameType">
+						          <option value="tradition">传统玩法 </option>
+						          <option value="onevone">1v1PK</option>
+						          <option value="group2">两群PK</option>
+						          <option value="group3">三群PK</option>
+						        </select>
+						    </div>
+						    <p class="layui-tips tips-must"></p>
+						  </div>
+						  <div class="layui-form-item">
+						    <label class="layui-form-label">投注金额</label>
+						    <div class="layui-input-inline" style="width: 200px;">
+						        <input type="number" name="minPay" placeholder="最小投注金额" autocomplete="off" class="layui-input">
+						    </div>
+						    <div class="layui-form-mid">-</div>
+						    <div class="layui-input-inline" style="width: 200px;">
+						        <input type="number" name="maxPay" placeholder="最大投注金额" autocomplete="off" class="layui-input">
+						    </div>
+						    <p class="layui-tips tips-must"></p>
+						  </div>
+						  <div class="layui-form-item">
+						    <label class="layui-form-label">间隔范围</label>
+						    <div class="layui-input-inline" style="width: 200px;">
+						        <input type="number" name="periodMin" placeholder="最小间隔时间" autocomplete="off" class="layui-input">
+						    </div>
+						    <div class="layui-form-mid">-</div>
+						    <div class="layui-input-inline" style="width: 200px;">
+						        <input type="number" name="periodRandom" placeholder="最大间隔时间" autocomplete="off" class="layui-input">
+						    </div>
+						    <p class="layui-tips tips-must">单位：秒</p>
+						  </div>
+						  <div class="layui-form-item">
+						    <label class="layui-form-label">参与时间</label>
+						    <div class="layui-input-inline" style="width: 200px;">
+						        <input type="text" name="worktimeBegin" placeholder="参与时间" autocomplete="off" readonly class="layui-input worktimeBegin">
+						    </div>
+						    <!-- <div class="layui-form-mid">-</div>
+						    <div class="layui-input-inline" style="width: 200px;">
+						        <input type="text" name="worktimeEnd" placeholder="结束时间" autocomplete="off" readonly class="layui-input worktimeEnd">
+						    </div> -->
+						    <p class="layui-tips tips-must"></p>
+						  </div>
+						  <div class="layui-form-item">
+						    <label class="layui-form-label">商品金额</label>
+						    <div class="layui-input-inline" style="width: 200px;">
+						        <input type="number" name="goodsPriceMin" placeholder="最小商品金额" autocomplete="off" class="layui-input">
+						    </div>
+						    <div class="layui-form-mid">-</div>
+						    <div class="layui-input-inline" style="width: 200px;">
+						        <input type="number" name="goodsPriceMax" placeholder="最大商品金额" autocomplete="off" class="layui-input">
+						    </div>
+						    <p class="layui-tips tips-must"></p>
+						  </div>
+						  <div class="layui-form-item">
+						    <label class="layui-form-label">奖品配置</label>
+						    
+						    <div class="layui-input-block" >
+						    	<input type="checkbox" name="close" lay-skin="switch"  id="c_all"  lay-filter="switchTest"  lay-text="全不选|全选">
+    							<input type="checkbox" name="close" lay-skin="switch"  id="c_boolean"  lay-filter="c_boolean"  lay-text="清空|清空">
+						       	<div class="goosList"></div>
+						    </div>
+						  </div>
+						  
+							
+						  <div class="layui-form-item">
+						    <div class="layui-input-block">
+						      <button class="layui-btn lay-submit" lay-submit lay-filter="*">立即提交</button>
+						      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+						    </div>
+						  </div>
+						</form>
+				    </div>
+			 </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/robotSetting.js" ></script>
+	</body>
+</html>

@@ -85,7 +85,7 @@ public class TeacherDisableRecords implements java.io.Serializable {
 		this.exam = exam;
 	}
 
-	@Column(name = "reason", length = 50)
+	@Column(name = "reason")
 	public String getReason() {
 		return reason;
 	}

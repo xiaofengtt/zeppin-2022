@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.worldmall.mapper.FrontUserCheckinHistoryMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_checkin_history where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+		<if test='activityInfoCheckinPrize != null and activityInfoCheckinPrize != ""'>
+            and activity_info_checkin_prize= #{activityInfoCheckinPrize}
+        </if>     
+        <if test='prizeType != null and prizeType != ""'>
+            and prize_type= #{prizeType}
+        </if>     
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>    
+		<if test='receiveType != null and receiveType != ""'>
+            and receive_type= #{receiveType}
+        </if>
+        <choose>
+	        <when test='statuses != null and statuses != ""'>
+	        	 and status in
+				<foreach collection="statuses" item="status" index="index" open="(" close=")" separator=",">
+					#{status}
+				</foreach>
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','finished','receive','confirm','return')
+	        </otherwise>
+        </choose> 
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ createtime < #{timeend} ]]>
+        </if>
+        <if test='timeline != null and timeline != ""'>
+            and (TO_DAYS(NOW()) - TO_DAYS(createtime) = ${timeline})
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.FrontUserCheckinHistory">
+		select * from front_user_checkin_history where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+        <if test='activityInfoCheckinPrize != null and activityInfoCheckinPrize != ""'>
+            and activity_info_checkin_prize= #{activityInfoCheckinPrize}
+        </if>     
+        <if test='prizeType != null and prizeType != ""'>
+            and prize_type= #{prizeType}
+        </if>     
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>    
+		<if test='receiveType != null and receiveType != ""'>
+            and receive_type= #{receiveType}
+        </if>
+        <choose>
+	        <when test='statuses != null and statuses != ""'>
+	        	 and status in
+				<foreach collection="statuses" item="status" index="index" open="(" close=")" separator=",">
+					#{status}
+				</foreach>
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','finished','receive','confirm','return')
+	        </otherwise>
+        </choose> 
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ createtime < #{timeend} ]]>
+        </if>
+        <if test='timeline != null and timeline != ""'>
+            and (TO_DAYS(NOW()) - TO_DAYS(createtime) = ${timeline})
+        </if>         
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by day_num asc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getGroupCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(DISTINCT activity_info_checkin_prize, front_user) from front_user_checkin_history where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+		<if test='activityInfoCheckinPrize != null and activityInfoCheckinPrize != ""'>
+            and activity_info_checkin_prize= #{activityInfoCheckinPrize}
+        </if>     
+        <if test='prizeType != null and prizeType != ""'>
+            and prize_type= #{prizeType}
+        </if>     
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+        <choose>
+	        <when test='statuses != null and statuses != ""'>
+	        	 and status in
+				<foreach collection="statuses" item="status" index="index" open="(" close=")" separator=",">
+					#{status}
+				</foreach>
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','finished','receive','confirm','return')
+	        </otherwise>
+        </choose> 
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ createtime < #{timeend} ]]>
+        </if>
+<!--         group by activity_info_checkin_prize, front_user     -->
+	</select>
+	
+	<select id="getGroupListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.FrontUserCheckinHistory">
+		select uuid,front_user,front_user_show_id,activity_info_checkin_prize,prize, prize_title,prize_type,prize_cover,day_num ,
+		status,operator,operattime,max(createtime) as createtime,remark,ip,
+		provide_info from front_user_checkin_history where 1=1
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+        <if test='activityInfoCheckinPrize != null and activityInfoCheckinPrize != ""'>
+            and activity_info_checkin_prize= #{activityInfoCheckinPrize}
+        </if>     
+        <if test='prizeType != null and prizeType != ""'>
+            and prize_type= #{prizeType}
+        </if>     
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+        <choose>
+	        <when test='statuses != null and statuses != ""'>
+	        	 and status in
+				<foreach collection="statuses" item="status" index="index" open="(" close=")" separator=",">
+					#{status}
+				</foreach>
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','finished','receive','confirm','return')
+	        </otherwise>
+        </choose> 
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ createtime < #{timeend} ]]>
+        </if>
+        group by activity_info_checkin_prize, front_user         
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by day_num asc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getLeftCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_checkin_history fuch left join front_user fu on fuch.front_user = fu.uuid where 1=1 
+		<if test='userType != null and userType != ""'>
+            and fu.type= #{userType}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and fuch.front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and fuch.front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+		<if test='activityInfoCheckinPrize != null and activityInfoCheckinPrize != ""'>
+            and fuch.activity_info_checkin_prize= #{activityInfoCheckinPrize}
+        </if>     
+        <if test='prizeType != null and prizeType != ""'>
+            and fuch.prize_type= #{prizeType}
+        </if>     
+		<if test='status != null and status != ""'>
+            and fuch.status= #{status}
+        </if>    
+		<if test='receiveType != null and receiveType != ""'>
+            and fuch.receive_type= #{receiveType}
+        </if>
+        <choose>
+	        <when test='statuses != null and statuses != ""'>
+	        	 and fuch.status in
+				<foreach collection="statuses" item="status" index="index" open="(" close=")" separator=",">
+					#{status}
+				</foreach>
+	        </when>
+	        <otherwise>
+	        	and fuch.status in ('normal','finished','receive','confirm','return')
+	        </otherwise>
+        </choose> 
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ fuch.createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ fuch.createtime < #{timeend} ]]>
+        </if>
+        <if test='timeline != null and timeline != ""'>
+            and (TO_DAYS(NOW()) - TO_DAYS(fuch.createtime) = ${timeline})
+        </if> 
+	</select>
+	
+	<select id="getLeftListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.FrontUserCheckinHistory">
+		select fuch.* from front_user_checkin_history fuch left join front_user fu on fuch.front_user = fu.uuid where 1=1 
+		<if test='userType != null and userType != ""'>
+            and fu.type= #{userType}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and fuch.front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and fuch.front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+		<if test='activityInfoCheckinPrize != null and activityInfoCheckinPrize != ""'>
+            and fuch.activity_info_checkin_prize= #{activityInfoCheckinPrize}
+        </if>     
+        <if test='prizeType != null and prizeType != ""'>
+            and fuch.prize_type= #{prizeType}
+        </if>     
+		<if test='status != null and status != ""'>
+            and fuch.status= #{status}
+        </if>    
+		<if test='receiveType != null and receiveType != ""'>
+            and fuch.receive_type= #{receiveType}
+        </if>
+        <choose>
+	        <when test='statuses != null and statuses != ""'>
+	        	 and fuch.status in
+				<foreach collection="statuses" item="status" index="index" open="(" close=")" separator=",">
+					#{status}
+				</foreach>
+	        </when>
+	        <otherwise>
+	        	and fuch.status in ('normal','finished','receive','confirm','return')
+	        </otherwise>
+        </choose> 
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ fuch.createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ fuch.createtime < #{timeend} ]]>
+        </if>
+        <if test='timeline != null and timeline != ""'>
+            and (TO_DAYS(NOW()) - TO_DAYS(fuch.createtime) = ${timeline})
+        </if> 
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by fuch.${sort}
+	        </when>
+	        <otherwise>
+	        	order by fuch.day_num asc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+</mapper>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<style>
+		.tips{
+			font-size: 12px;
+		    color: gray;
+		    line-height: 38px;
+		    display: inline-block;
+		    padding-left: 110px;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<!-- 内容主体区域 -->
+		    <div class="layui-bodu" style="padding: 60px 35px;">
+		    	<form class="layui-form" action="" lay-filter="first">
+		    		<div class="layui-form-item">
+						<label class="layui-form-label">原密码</label>
+						<div class="layui-input-block">
+							<input type="password" name="oldPwd" autocomplete="off" class="layui-input"/>
+						</div>
+					</div>
+				  	<div class="layui-form-item">
+						<label class="layui-form-label">新密码</label>
+						<div class="layui-input-block">
+							<input type="password" name="password" maxlength="16" autocomplete="off" class="layui-input" oninput="value=value.replace(/[^0-9A-Za-z]/g,'');"/>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">确认密码</label>
+						<div class="layui-input-block">
+							<input type="password" name="passwordNew" autocomplete="off" class="layui-input" oninput="value=value.replace(/[^0-9A-Za-z]/g,'');"/>
+						</div>
+						<p class="tips">8-16位密码，需包含字母及数字</p>
+					</div>
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn" onclick="parent.layer.closeAll()">取消</button>
+							<button class="layui-btn lay-submit" lay-submit lay-filter="*">确认</button>
+						</div>
+					</div>
+				</form>
+		    </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/resetPwd.js" ></script>
+	</body>
+</html>

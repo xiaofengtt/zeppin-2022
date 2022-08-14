@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+	</head>
+	<body>
+		<input id="uuidInput" type="hidden" value="b07ee217-6500-11eb-886e-fcaa14314cbe"/>
+		<div class="main">
+			<!--left-->
+			<!-- <script type="text/javascript" src="js/base-header.js"></script> -->
+			<!--header-->
+			<!--content-->
+			<div class="">
+			    <!-- 内容主体区域 -->
+				    <div class="layui-bodu" style="padding: 45px 35px;">
+				    	<form class="layui-form layui-form-pane1" action="" lay-filter="first">
+						  <div class="layui-form-item nickname" style="display: none;">
+						    <label class="layui-form-label">用户昵称</label>
+						    <div class="layui-input-block">
+						      <input type="text" name="nickname" lay-verify="required" lay-reqText="channel不能为空" required placeholder="用户昵称" lay-verType="alert" autocomplete="off" class="layui-input" readonly="readonly">
+						    </div>
+						  </div>
+						  <div class="layui-form-item device" style="display: none;">
+						    <label class="layui-form-label">设备类型</label>
+						    <div class="layui-input-block">
+						      <input type="text" name="device" lay-verify="required" lay-reqText="channel不能为空" required placeholder="设备类型" lay-verType="alert" autocomplete="off" class="layui-input" readonly="readonly">
+						    </div>
+						  </div>
+						  <div class="layui-form-item">
+						    <label class="layui-form-label">内容标题</label>
+						    <div class="layui-input-block">
+						      <input type="text" name="title" lay-verify="required" lay-reqText="channel不能为空" required placeholder="请填写内容标题" lay-verType="alert" autocomplete="off" class="layui-input">
+						    </div>
+						  </div>
+						  <div class="layui-form-item">
+						    <label class="layui-form-label">推送内容</label>
+						    <div class="layui-input-block">
+								<textarea class="layui-textarea" maxlength="500" name="content" placeholder="请填写推送内容" onkeyup="setLength(this,500,'wordsLength');"></textarea>
+								<span class="layui-form-label" style="position: absolute;right: 8px;bottom: -5px;">
+									<span id="wordsLength">0/500</span>
+								</span>
+							</div>
+						  </div>
+							
+						  <div class="layui-form-item">
+						    <div class="layui-input-block">
+						      <button class="layui-btn lay-submit" lay-submit lay-filter="*">立即提交</button>
+						      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+						    </div>
+						  </div>
+						</form>
+				    </div>
+			 </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/deviceDetail.js" ></script>
+	</body>
+</html>

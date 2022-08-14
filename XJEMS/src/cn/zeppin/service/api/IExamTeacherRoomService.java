@@ -36,9 +36,10 @@ public interface IExamTeacherRoomService {
 	 * @param id
 	 */
 	void delById(int id);
-	
+
 	/**
 	 * 根据指定条件获取列表
+	 * 
 	 * @param currentUser
 	 * @param searchMap
 	 * @param sorts
@@ -48,18 +49,20 @@ public interface IExamTeacherRoomService {
 	 * @return
 	 */
 	@SuppressWarnings("rawtypes")
-	public List searchExamTeacherRoom(Map<String, Object> searchMap, Map<String, String> sortParams, int offset, int length);
+	public List searchExamTeacherRoom(Map<String, Object> searchMap, Map<String, String> sortParams, int offset,
+			int length);
 
 	/**
 	 * 根据指定条件获取数目
+	 * 
 	 * @param searchMap
 	 * @return
 	 */
 	public int searchExamTeacherRoomCount(Map<String, Object> searchMap);
-	
-	
+
 	/**
-	 * 根据指定条件  获取教师信息
+	 * 根据指定条件 获取教师信息
+	 * 
 	 * @param searchMap
 	 * @param sortParams
 	 * @param offset
@@ -67,7 +70,8 @@ public interface IExamTeacherRoomService {
 	 * @return
 	 */
 	@SuppressWarnings("rawtypes")
-    public List searchInvigilationTeacher(Map<String, Object> searchMap, Map<String, String> sortParams, int offset, int length);
-	
+	public List searchInvigilationTeacher(Map<String, Object> searchMap, Map<String, String> sortParams, int offset,
+			int length);
+
 	public List<ExamTeacherRoom> getByParams(Map<String, Object> searchMap);
 }

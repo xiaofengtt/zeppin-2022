@@ -7,6 +7,7 @@ package cn.zeppin.action.admin;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -99,6 +100,8 @@ public class ExamTeacherRecordsAction extends BaseAction {
 	@AuthorityParas(userGroupName = "EDITOR_ADD_EDIT")
 	@ActionParam(key = "teacher", type = ValueType.NUMBER, nullable = false, emptyable = false)
 	@ActionParam(key = "exam", type = ValueType.NUMBER, nullable = false, emptyable = false)
+	@ActionParam(key = "startTime", type = ValueType.STRING, nullable = false, emptyable = false)
+	@ActionParam(key = "endTime", type = ValueType.STRING, nullable = false, emptyable = false)
 	public void Add() {
 
 		SysUser currentUser = (SysUser) session.getAttribute("usersession");
@@ -106,6 +109,8 @@ public class ExamTeacherRecordsAction extends BaseAction {
 		// 接受页面参数
 		Integer teacher = this.getIntValue(request.getParameter("teacher"));
 		Integer exam = this.getIntValue(request.getParameter("exam"));
+		String startTime = request.getParameter("startTime");
+		String endTime = request.getParameter("endTime");
 
 		// 校验页面参数格式
 		InvigilationTeacher teacherE = this.invigilationTeacherService.getById(teacher);
@@ -131,22 +136,22 @@ public class ExamTeacherRecordsAction extends BaseAction {
 			Utlity.ResponseWrite(actionResult, dataType, response);
 			return;
 		}
-		if (information.getStatus() == 2) {
-			actionResult.init(FAIL_STATUS, "考试已停止申报，不能申报监考", null);
-			Utlity.ResponseWrite(actionResult, dataType, response);
-			return;
-		}
+//		if (information.getStatus() == 2) {
+//			actionResult.init(FAIL_STATUS, "考试已停止申报，不能申报监考", null);
+//			Utlity.ResponseWrite(actionResult, dataType, response);
+//			return;
+//		}
 		if (information.getStatus() == -1) {
 			actionResult.init(FAIL_STATUS, "考试还未发布，不能进行申请监考操作", null);
 			Utlity.ResponseWrite(actionResult, dataType, response);
 			return;
 		}
-		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-		if (currentTime.getTime() > information.getApplyendtime().getTime()) {
-			actionResult.init(FAIL_STATUS, "超出申报截止时间，不能申报监考", null);
-			Utlity.ResponseWrite(actionResult, dataType, response);
-			return;
-		}
+//		Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+//		if (currentTime.getTime() > information.getApplyendtime().getTime()) {
+//			actionResult.init(FAIL_STATUS, "超出申报截止时间，不能申报监考", null);
+//			Utlity.ResponseWrite(actionResult, dataType, response);
+//			return;
+//		}
 
 		// // 判断是否已申报
 		// Map<String, Object> searchMap = new HashMap<String, Object>();
@@ -176,6 +181,8 @@ public class ExamTeacherRecordsAction extends BaseAction {
 				etroom.setCreator(currentUser.getId());
 				etroom.setIsFirstApply((short) 0);
 				etroom.setIsAuto((short) 0);// 非自主申报
+				etroom.setStartTime(Timestamp.valueOf(startTime + " 00:00:00"));// 开始时间
+				etroom.setEndTime(Timestamp.valueOf(endTime + " 00:00:00"));// 结束时间
 				this.examTeacherRoomService.update(etroom);
 				actionResult.init(SUCCESS_STATUS, "申请成功", null);
 				Utlity.ResponseWrite(actionResult, dataType, response);
@@ -213,6 +220,7 @@ public class ExamTeacherRecordsAction extends BaseAction {
 			etr.setTeacher(teacherE);
 			etr.setExam(information);
 			etr.setIsConfirm((short) 0);
+			etr.setIsConfirmCanceled((short) 0);
 			etr.setIsAuto((short) 0);
 			// etr.setCredit(0);
 			etr.setApplytime(new Timestamp(System.currentTimeMillis()));
@@ -220,6 +228,9 @@ public class ExamTeacherRecordsAction extends BaseAction {
 			etr.setStatus((short) 1);
 			etr.setCreatetime(new Timestamp(System.currentTimeMillis()));
 			etr.setCreator(currentUser.getId());
+			
+			etr.setStartTime(Timestamp.valueOf(startTime + " 00:00:00"));// 开始时间
+			etr.setEndTime(Timestamp.valueOf(endTime + " 00:00:00"));// 结束时间
 
 			// 查询是否申报过
 			searchMap.remove("exam");
@@ -269,6 +280,7 @@ public class ExamTeacherRecordsAction extends BaseAction {
 	@ActionParam(key = "pagesize", type = ValueType.NUMBER, nullable = false)
 	@ActionParam(key = "sorts", type = ValueType.STRING)
 	@ActionParam(key = "tsorts", type = ValueType.STRING)
+	@ActionParam(key = "isNullRoom", type = ValueType.NUMBER)
 	public void DistributeRoomList() {
 
 		ActionResult actionResult = new ActionResult();
@@ -287,7 +299,7 @@ public class ExamTeacherRecordsAction extends BaseAction {
 			Utlity.ResponseWrite(actionResult, dataType, response);
 			return;
 		}
-
+		int isNullRoom = this.getIntValue(request.getParameter("isNullRoom"));
 		// if (information.getStatus() == 0) {
 		// actionResult.init(FAIL_STATUS, "考试已结束", null);
 		// Utlity.ResponseWrite(actionResult, dataType, response);
@@ -297,6 +309,9 @@ public class ExamTeacherRecordsAction extends BaseAction {
 		String roominfo = request.getParameter("roominfo");
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		searchMap.put("room", roominfo);
+		if(isNullRoom>-1){
+			searchMap.put("isNullRoom", isNullRoom);
+		}
 		searchMap.put("exam", exam);
 		searchMap.put("status", 1);// 正常的
 
@@ -350,6 +365,7 @@ public class ExamTeacherRecordsAction extends BaseAction {
 								map.put("id", etr.getId());
 								map.put("name", etr.getTeacher().getName());
 								map.put("isChief", etr.getIsChief());
+								map.put("intgral", etr.getTeacher().getIntgral());
 								teachers.add(map);
 							}
 						}
@@ -395,6 +411,9 @@ public class ExamTeacherRecordsAction extends BaseAction {
 	@ActionParam(key = "pagenum", type = ValueType.NUMBER, nullable = false)
 	@ActionParam(key = "pagesize", type = ValueType.NUMBER, nullable = false)
 	@ActionParam(key = "sorts", type = ValueType.STRING)
+	@ActionParam(key = "starttime", type = ValueType.STRING)
+	@ActionParam(key = "endtime", type = ValueType.STRING)
+	@ActionParam(key = "studyGrade", type = ValueType.STRING)
 	public void DistributeTeacherList() {
 
 		ActionResult actionResult = new ActionResult();
@@ -426,6 +445,9 @@ public class ExamTeacherRecordsAction extends BaseAction {
 		Integer isMixed = getIntValue(request.getParameter("isMixed"));// 副考经验
 		Integer invigilateCampus = getIntValue(request.getParameter("invigilateCampus"));// 监考校区
 		Integer invigilateType = getIntValue(request.getParameter("invigilateType"));// 监考类型
+		String startTime = request.getParameter("starttime");
+		String endTime = request.getParameter("endtime");
+		String studyGrade = request.getParameter("studyGrade") == null ? "" : request.getParameter("studyGrade");
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		searchMap.put("teacherinfo", teacherinfo);
 		searchMap.put("exam", exam);
@@ -450,14 +472,28 @@ public class ExamTeacherRecordsAction extends BaseAction {
 		if (invigilateType > -1) {
 			searchMap.put("invigilateType", invigilateType);
 		}
-
-		Map<String, String> sortParams = new HashMap<String, String>();
+		if (startTime != null) {
+			searchMap.put("startTime", startTime);
+		}
+		if (endTime != null) {
+			searchMap.put("endTime", endTime);
+		}
+		
+		if (studyGrade != null && !"".equals(studyGrade)) {
+			searchMap.put("studyGrade", studyGrade);
+		}
+		LinkedHashMap<String, String> sortParams = new LinkedHashMap<String, String>();
 		if (sorts != null && !sorts.equals("")) {
 			String[] sortarray = sorts.split("-");
 			String sortname = sortarray[0];
 			String sorttype = sortarray[1];
 
 			sortParams.put(sortname, sorttype);
+
+			//如果不是用户手动点击“积分”排序时，默认先以考场id排序，其次已积分降序
+			if(!sorts.contains("intgral")){
+				sortParams.put("intgral", "desc");
+			}
 		}
 
 		try {
@@ -656,21 +692,22 @@ public class ExamTeacherRecordsAction extends BaseAction {
 		// TODO Auto-generated method stub
 		ActionResult actionResult = new ActionResult();
 		String id = request.getParameter("id");
-		String ids[] = id.split(",");
+//		String ids[] = id.split(",");
 		try {
-			for (int i = 0; i < ids.length; i++) {
-				ExamTeacherRoom etr = this.examTeacherRoomService.getById(Integer.parseInt(ids[i]));
-				if (etr != null) {
-					etr.setStatus((short) 0);
-					etr.setRoom(null);
-					etr.setIsChief((short) 0);
-					etr.setIsMixed((short) 0);
-					etr.setIsConfirm((short) 0);
-					etr.setConfirtime(null);
-					etr.setCredit(null);
-					this.examTeacherRoomService.update(etr);
-				}
-			}
+//			for (int i = 0; i < ids.length; i++) {
+//				ExamTeacherRoom etr = this.examTeacherRoomService.getById(Integer.parseInt(ids[i]));
+//				if (etr != null) {
+//					etr.setStatus((short) 0);
+//					etr.setRoom(null);
+//					etr.setIsChief((short) 0);
+//					etr.setIsMixed((short) 0);
+//					etr.setIsConfirm((short) 0);
+//					etr.setConfirtime(null);
+//					etr.setCredit(null);
+//					this.examTeacherRoomService.update(etr);
+//				}  
+//			}
+			this.invigilationTeacherService.deleteBatch(id);
 			actionResult.init(SUCCESS, "删除成功", null);
 		} catch (Exception e) {
 			actionResult.init(FAIL_STATUS, "删除失败", null);
@@ -753,6 +790,7 @@ public class ExamTeacherRecordsAction extends BaseAction {
 	@ActionParam(key = "teacherinfo", type = ValueType.STRING)
 	@ActionParam(key = "invigilateCampus", type = ValueType.STRING) // 增加监考校区和监考类型的筛选功能
 	@ActionParam(key = "invigilateType", type = ValueType.STRING)
+	@ActionParam(key = "studyGrade", type = ValueType.STRING)
 	public void AllList() {
 
 		ActionResult actionResult = new ActionResult();
@@ -785,7 +823,8 @@ public class ExamTeacherRecordsAction extends BaseAction {
 		Integer invigilateCampus = this.getIntValue(request.getParameter("invigilateCampus"));
 
 		String teacherinfo = request.getParameter("teacherinfo") == null ? "" : request.getParameter("teacherinfo");// 搜索参数
-
+		String studyGrade = request.getParameter("studyGrade") == null ? "" : request.getParameter("studyGrade");
+		
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		searchMap.put("exam", exam);
 		if (applyStatus > -1) {
@@ -821,6 +860,10 @@ public class ExamTeacherRecordsAction extends BaseAction {
 		}
 		if (invigilateCampus > 0) {
 			searchMap.put("invigilateType", invigilateType);// 监考类型
+		}
+		
+		if (studyGrade != null && !"".equals(studyGrade)) {
+			searchMap.put("studyGrade", studyGrade);
 		}
 
 		Map<String, String> sortParams = new HashMap<String, String>();
@@ -885,6 +928,8 @@ public class ExamTeacherRecordsAction extends BaseAction {
 	@ActionParam(key = "teacherinfo", type = ValueType.STRING)
 	@ActionParam(key = "isconfirm", type = ValueType.NUMBER)
 	@ActionParam(key = "isCredit", type = ValueType.NUMBER)
+	@ActionParam(key = "starttime", type = ValueType.STRING)
+	@ActionParam(key = "endtime", type = ValueType.STRING)
 	public void ConfirmList() {
 
 		ActionResult actionResult = new ActionResult();
@@ -895,6 +940,8 @@ public class ExamTeacherRecordsAction extends BaseAction {
 		String sorts = this.getStrValue(request.getParameter("sorts"), "");
 
 		Integer exam = this.getIntValue(request.getParameter("exam"));
+		String startTime = request.getParameter("starttime");
+		String endTime = request.getParameter("endtime");
 		ExamInformation information = this.examInformationService.getById(exam);
 		if (information == null) {
 			actionResult.init(FAIL_STATUS, "考试信息不存在", null);
@@ -945,6 +992,8 @@ public class ExamTeacherRecordsAction extends BaseAction {
 		if (isCredit > -1) {
 			searchMap.put("isCredit", isCredit + "");
 		}
+		searchMap.put("startTime", startTime);
+		searchMap.put("endTime", endTime);
 
 		Map<String, String> sortParams = new HashMap<String, String>();
 		if (sorts != null && !sorts.equals("")) {
@@ -1087,12 +1136,12 @@ public class ExamTeacherRecordsAction extends BaseAction {
 		try {
 			ExamTeacherRoom etr = examTeacherRoomService.getById(id);
 			if (etr != null) {
-				Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-				if (currentTime.getTime() > etr.getExam().getCheckendtime().getTime()) {
-					actionResult.init(FAIL_STATUS, "已超出确认截止时间，不能进行二次确认", null);
-					Utlity.ResponseWrite(actionResult, dataType, response);
-					return;
-				}
+//				Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+//				if (currentTime.getTime() > etr.getExam().getCheckendtime().getTime()) {
+//					actionResult.init(FAIL_STATUS, "已超出确认截止时间，不能进行二次确认", null);
+//					Utlity.ResponseWrite(actionResult, dataType, response);
+//					return;
+//				}
 				
 				if (etr.getStatus() == 2 || etr.getTeacher().getStatus() == 0) {
 					actionResult.init(FAIL_STATUS, "教师已被停用，无法进行二次确认", null);
@@ -1101,6 +1150,7 @@ public class ExamTeacherRecordsAction extends BaseAction {
 				}
 				etr.setConfirtime(new Timestamp(System.currentTimeMillis()));// 确认时间
 				etr.setIsConfirm((short) 1);// 确认状态
+				etr.setIsConfirmCanceled((short)0);
 				examTeacherRoomService.update(etr);
 				actionResult.init(SUCCESS, "已确认参加", null);
 			} else {
@@ -1112,6 +1162,35 @@ public class ExamTeacherRecordsAction extends BaseAction {
 		}
 		Utlity.ResponseWrite(actionResult, dataType, response);
 	}
+	
+	/**
+	 * 教师二次确认管理“取消二次确认”
+	 */
+	@AuthorityParas(userGroupName = "EDITOR_ADD_EDIT")
+	@ActionParam(key = "id", type = ValueType.NUMBER, nullable = false, emptyable = false)
+	public void CancelConfirm() {
+		// 监考记录id
+		int id = Integer.parseInt(request.getParameter("id"));
+		ActionResult actionResult = new ActionResult();
+		
+		try {
+			ExamTeacherRoom etr = examTeacherRoomService.getById(id);
+			if (etr != null) {
+				etr.setConfirtime(new Timestamp(System.currentTimeMillis()));// 确认时间
+				etr.setIsConfirm((short) 0);// 确认状态
+				etr.setIsConfirmCanceled((short)1);//被取消
+				examTeacherRoomService.update(etr);
+				actionResult.init(SUCCESS, "已取消二次确认", null);
+			} else {
+				actionResult.init(FAIL_STATUS, "考场信息不存在", null);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			actionResult.init(FAIL_STATUS, "操作失败", null);
+		}
+		Utlity.ResponseWrite(actionResult, dataType, response);
+	}
+
 
 	/**
 	 * 批量打分
@@ -1203,10 +1282,106 @@ public class ExamTeacherRecordsAction extends BaseAction {
 	 * 发送通知
 	 */
 	@ActionParam(key = "exam", type = ValueType.NUMBER, nullable = false, emptyable = false)
+	@ActionParam(key = "roomType", type = ValueType.STRING)
+	@ActionParam(key = "invigilationNotice", type = ValueType.STRING)
 	@SuppressWarnings("rawtypes")
 	public void Send() {
 		ActionResult actionResult = new ActionResult();
 		Integer exam = this.getIntValue(request.getParameter("exam"));// 考试id
+		String roomType = request.getParameter("roomType");//考场分类
+		String invigilationNotice = request.getParameter("invigilationNotice");// 监考注意事项
+		
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		searchMap.put("exam", exam);
+		//解码
+		roomType = Utlity.getBase64Decoder(roomType);
+		//当前考试考场类型，默认是全部，可通过类型发送到指定类型考场分配的监考老师
+		if(roomType != null && !"全部".equals(roomType)){
+			searchMap.put("roomType", roomType);
+		}
+		ExamInformation information = this.examInformationService.getById(exam);
+		if (information == null) {
+			actionResult.init(FAIL_STATUS, "考试信息不存在", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+
+		if (information.getStatus() == 0) {
+			actionResult.init(FAIL_STATUS, "考试已结束", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+			return;
+		}
+		try {
+			List list = examTeacherRoomService.searchExamTeacherRoom(searchMap, null, -1, -1);
+			if (list != null & list.size() > 0) {
+				int count = 0;
+				String access_token = CommonUtil.getAccessToken().getAccessToken();
+				for (int i = 0; i < list.size(); i++) {
+					Object o = list.get(i);
+					Object[] obj = (Object[]) o;
+					ExamTeacherRoom etr = (ExamTeacherRoom) obj[0];
+					if (etr.getRoom() != null && etr.getStatus() == 1) {// 已分配教师并且是未二次确认的老师
+						// 给用户发送系统消息通知
+						if (etr.getIsConfirm() == 0) {
+							count++;
+							Map<String, String> templateParams = new HashMap<>();
+							templateParams.put("first", "您好，您有新的考试安排");
+							templateParams.put("keyword1", etr.getExam().getName());
+							templateParams.put("keyword2",
+									etr.getRoom().getRoomIndex() + "-" + etr.getRoom().getRoomAddress());
+							templateParams.put("keyword3",
+									Utlity.timeSpanToDateString(etr.getExam().getExamStarttime()) + "(北京时间)");
+							templateParams.put("keyword4",
+									Utlity.timeSpanToDateString(etr.getExam().getExamEndtime()) + "(北京时间)");
+							templateParams.put("remark", "请尽快进行二次确认！");
+							templateParams.put("url", "http://" + request.getServerName()
+									+ "/XJ_wechat/roomMessage.html?id=" + etr.getId());
+							templateParams.put("touser", etr.getTeacher().getOpenID());
+							ConfigUtil.sendTemplate(access_token, MessageUtil.teacherAgreeTemplate(templateParams));
+						}
+					} 
+//					else  {// 未分配(包括禁用)
+//						if (etr.getStatus() != 0) {//不是删除状态
+//							Map<String, String> templateParams = new HashMap<>();
+//							templateParams.put("first", "收到监考" + etr.getExam().getName() + "考试的申请反馈");
+//							templateParams.put("keyword1", etr.getTeacher().getName());
+//							templateParams.put("keyword2", etr.getTeacher().getMobile());
+//							templateParams.put("keyword3",
+//									Utlity.timeSpanToString5(new Timestamp(System.currentTimeMillis())));
+//							templateParams.put("keyword4", "未录用");
+//							templateParams.put("remark", "遗憾的通知您，您未被录用。");
+//							templateParams.put("url", "");
+//							templateParams.put("touser", etr.getTeacher().getOpenID());
+//							System.out.println("未分配------------");
+//							System.out.println(MessageUtil.teacherAgreeTemplate(templateParams));
+//							// ConfigUtil.sendTemplate(access_token,
+//							// MessageUtil.teacherDeclinedTemplate(templateParams));
+//						}
+//					}
+				}
+				System.out.println(roomType + "----已分配人数："+ count);
+			}
+			//更新考场对应的监考类型
+			examRoomService.updateInvigilationNotice(searchMap, invigilationNotice);
+			actionResult.init(SUCCESS_STATUS, "发送成功", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			actionResult.init(FAIL_STATUS, "发送失败", null);
+			Utlity.ResponseWrite(actionResult, dataType, response);
+		}
+		Utlity.ResponseWrite(actionResult, dataType, response);
+	}
+	
+	
+	/**
+	 * 发送通知到未分配的监考教师
+	 */
+	@ActionParam(key = "exam", type = ValueType.NUMBER, nullable = false, emptyable = false)
+	@SuppressWarnings("rawtypes")
+	public void SendToUnd() {
+		ActionResult actionResult = new ActionResult();
+		Integer exam = this.getIntValue(request.getParameter("exam"));// 考试id
+		
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		searchMap.put("exam", exam);
 		ExamInformation information = this.examInformationService.getById(exam);
@@ -1225,42 +1400,32 @@ public class ExamTeacherRecordsAction extends BaseAction {
 			List list = examTeacherRoomService.searchExamTeacherRoom(searchMap, null, -1, -1);
 			if (list != null & list.size() > 0) {
 				String access_token = CommonUtil.getAccessToken().getAccessToken();
+				int count = 0;
 				for (int i = 0; i < list.size(); i++) {
 					Object o = list.get(i);
 					Object[] obj = (Object[]) o;
 					ExamTeacherRoom etr = (ExamTeacherRoom) obj[0];
-					if (etr.getRoom() != null && etr.getStatus() == 1) {// 已分配教师并且是未二次确认的老师
-						// 给用户发送系统消息通知
-						if (etr.getIsConfirm() == 0) {
+					if (!(etr.getRoom() != null && etr.getStatus() == 1)) {// 已分配教师并且是未二次确认的老师
+						// 未分配(包括禁用)
+						if (etr.getStatus() != 0) {//不是删除状态
 							Map<String, String> templateParams = new HashMap<>();
-							templateParams.put("first", "您好，您有新的考试安排");
-							templateParams.put("keyword1", etr.getExam().getName());
-							templateParams.put("keyword2",
-									etr.getRoom().getRoomIndex() + "-" + etr.getRoom().getRoomAddress());
+							templateParams.put("first", "收到监考" + etr.getExam().getName() + "考试的申请反馈");
+							templateParams.put("keyword1", etr.getTeacher().getName());
+							templateParams.put("keyword2", etr.getTeacher().getMobile());
 							templateParams.put("keyword3",
-									Utlity.timeSpanToDateString(etr.getExam().getExamStarttime()) + "(北京时间)");
-							templateParams.put("keyword4",
-									Utlity.timeSpanToDateString(etr.getExam().getExamEndtime()) + "(北京时间)");
-							templateParams.put("remark", "请尽快进行二次确认！");
-							templateParams.put("url", "http://" + request.getServerName()
-									+ "/XJ_wechat/roomMessage.html?id=" + etr.getId());
+									Utlity.timeSpanToString5(new Timestamp(System.currentTimeMillis())));
+							templateParams.put("keyword4", "未录用");
+							templateParams.put("remark", "遗憾的通知您，您未被录用。");
+							templateParams.put("url", "");
 							templateParams.put("touser", etr.getTeacher().getOpenID());
-							ConfigUtil.sendTemplate(access_token, MessageUtil.teacherAgreeTemplate(templateParams));
+							count++;
+							ConfigUtil.sendTemplate(access_token, MessageUtil.teacherDeclinedTemplate(templateParams));
 						}
-					} else if (etr.getStatus() != 0) {// 未分配(包括禁用)
-						Map<String, String> templateParams = new HashMap<>();
-						templateParams.put("first", "收到监考" + etr.getExam().getName() + "考试的申请反馈");
-						templateParams.put("keyword1", etr.getTeacher().getName());
-						templateParams.put("keyword2", etr.getTeacher().getMobile());
-						templateParams.put("keyword3",
-								Utlity.timeSpanToString5(new Timestamp(System.currentTimeMillis())));
-						templateParams.put("keyword4", "未录用");
-						templateParams.put("remark", "遗憾的通知您，您未被录用。");
-						templateParams.put("url", "");
-						templateParams.put("touser", etr.getTeacher().getOpenID());
-						ConfigUtil.sendTemplate(access_token, MessageUtil.teacherDeclinedTemplate(templateParams));
-					}
+					} 
 				}
+				
+
+				System.out.println("未分配人数："+ count);
 			}
 			actionResult.init(SUCCESS_STATUS, "发送成功", null);
 		} catch (Exception e) {

@@ -57,6 +57,9 @@ public class MobileCodeDAO extends HibernateTemplateDAO<MobileCode, Integer>
 			hql.append(params.get("status"));
 		}
 		
+		if(params.get("starttime") != null && !"".equals(params.get("starttime"))){
+			hql.append(" and mc.createtime > '").append(params.get("starttime")).append("'");
+		}
 		
 		Object result = this.getResultByHQL(hql.toString());
 		if (result != null) {
@@ -92,6 +95,10 @@ public class MobileCodeDAO extends HibernateTemplateDAO<MobileCode, Integer>
 		if(params.get("status") != null && !"".equals(params.get("status"))){
 			hql.append(" and mc.status = ");
 			hql.append(params.get("status"));
+		}
+		
+		if(params.get("starttime") != null && !"".equals(params.get("starttime"))){
+			hql.append(" and mc.createtime > '").append(params.get("starttime")).append("'");
 		}
 		return this.getByHQL(hql.toString());
 	}

@@ -1,0 +1,47 @@
+@CHARSET "UTF-8";
+.luckyGoodsItem{
+	float:left;
+	width:150px;
+	position:relative;
+	margin:0 5px;
+	height:265px;
+	overflow:hidden;
+}
+.luckyGoodsItem img{
+	width:100%;
+}
+.luckyGoodsItem input{
+	position:absolute;
+	left:0;
+	top:0;
+}
+.luckyGoodsItem p{
+	margin:5px;
+	font-size:13px;
+	color:#525252;
+	line-height:1.2;
+	text-align:center;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	display:-webkit-box;
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:2;
+}
+.layui-form-checkbox,.layui-form-checkbox i{
+	width:20px;
+	height:20px;
+	position:absolute;
+	top:0;
+	right:0;
+	line-height:20px;
+	padding-right:0;
+	margin:0 !important;
+}
+.layui-form-checkbox i{
+	border-left:1px solid #d2d2d2;
+}
+.goosList{
+	margin-top:10px;
+	max-height:500px;
+	overflow:auto;
+}

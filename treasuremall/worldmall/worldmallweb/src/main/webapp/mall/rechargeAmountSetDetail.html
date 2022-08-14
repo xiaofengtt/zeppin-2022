@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+	</head>
+	<body>
+		<div class="main">
+			<!-- 内容主体区域 -->
+		    <div class="layui-bodu" style="padding: 60px 35px;">
+		    	<form class="layui-form" action="" lay-filter="first">
+				  	<div class="layui-form-item">
+						<label class="layui-form-label">充值金额</label>
+						<div class="layui-input-block">
+							<input type="number" name="amount" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">到账金币</label>
+						<div class="layui-input-block">
+							<input type="number" name="dAmount" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item" pane>
+						<label class="layui-form-label">是否优惠</label>
+						<div class="layui-input-block">
+							<input type="radio" name="isPreferential" value="0" title="否" checked>
+							<input type="radio" name="isPreferential" value="1" title="是" >
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">优惠金币</label>
+						<div class="layui-input-block">
+							<input type="number" name="giveDAmount" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">排序</label>
+						<div class="layui-input-block">
+							<input type="number" name="sort" autocomplete="off" class="layui-input">
+						</div>
+					</div>					
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn" onclick="parent.layer.closeAll()">取消</button>
+							<button class="layui-btn lay-submit" lay-submit lay-filter="*">确认</button>
+						</div>
+					</div>
+				</form>
+		    </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/rechargeAmountSetDetail.js" ></script>
+	</body>
+</html>

@@ -42,8 +42,8 @@
 	height:200px;
 }
 .main .teachers_msg .idCard_tr img{
-	width:60%;
-	height:200px;
+	width:500px;
+	/*height:200px;*/
 	cursor: pointer;
 }
 .main .teachers_msg tr:nth-child(1) td:nth-child(even),
@@ -58,7 +58,8 @@
 .main .teachers_msg tr:nth-child(10) td:nth-child(even),
 .main .teachers_msg tr:nth-child(11) td:nth-child(even),
 .main .teachers_msg tr:nth-child(12) td:nth-child(even),
-.main .teachers_msg tr:nth-child(13) td:nth-child(even){
+.main .teachers_msg tr:nth-child(13) td:nth-child(even),
+.main .teachers_msg tr:nth-child(14) td:nth-child(even){
     background: #FFFFFF;
 }
 .main .teachers_msg{

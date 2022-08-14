@@ -13,6 +13,28 @@ $.ajax({
     success: function(r) {
         $(".title").html(r.Records.name);
         exam = r.Records.id;
+        laydate({
+				elem: '#startTime',
+				min:r.Records.starttime,
+				max:r.Records.endtime,
+				start:r.Records.starttime,
+				choose:function(){
+					if($("#startTime").val() != "" && $("#endTime").val() != ""){
+						getList(_name, _sorts);
+					}
+				}
+			});
+			laydate({
+				elem: '#endTime',
+				min:r.Records.starttime,
+				max:r.Records.endtime,
+				start:r.Records.starttime,
+				choose:function(){
+					if($("#startTime").val() != "" && $("#endTime").val() != ""){
+						getList(_name, _sorts);
+					}
+				}
+			});
     }
 });
 $(".main_header a").click(function() {
@@ -299,6 +321,11 @@ function getList(name, sorts) {
     mUrl += 'pagenum=' + page;
     mUrl += '&pagesize=' + pagesize;
     mUrl += '&exam=' + exam;
+    if($("#startTime").val() != "" && $("#endTime").val() != ""){
+		mUrl += "&starttime=" + $("#startTime").val();
+		mUrl += "&endtime=" + $("#endTime").val();
+	}
+    
     if (teacherinfo != '') {
         mUrl += '&teacherinfo=' + teacherinfo;
     }
@@ -322,7 +349,7 @@ function getList(name, sorts) {
                 pagesize = r.pageSize;
                 count = r.totalResultCount;
             } else {
-                var html = "<tr><td colspan='13'>没有数据！</td></tr>"
+                var html = "<tr><td colspan='15'>没有数据！</td></tr>"
                 $('#queboxCnt').html(html);
             }
         } else {
@@ -352,6 +379,7 @@ function getList(name, sorts) {
             $(".easy_modal").fadeOut();
             $(".modal_delete_all").fadeOut();
             $(".modal_disable_all").fadeOut();
+            $(".modal_unAssess").fadeOut();
             $(".modal_assess").fadeIn();
             $("#sub_assess").unbind("click").click(function() {
                 $.ajax({
@@ -384,14 +412,52 @@ function getList(name, sorts) {
             ////
             $("#close_assess").unbind("click").click(function() {
                 $(".modal_assess").fadeOut();
-            })
+            });
         });
 
 
+		//取消二次确认
+		$(".unAssess").unbind("click").click(function() {
+            var _this = $(this);
+            $(".easy_modal").fadeOut();
+            $(".modal_delete_all").fadeOut();
+            $(".modal_disable_all").fadeOut();
+            $(".modal_assess").fadeOut();
+            $(".modal_unAssess").fadeIn();
+            $("#sub_unAssess").unbind("click").click(function() {
+                $.ajax({
+                    type: "post",
+                    url: "../admin/recordsCancelConfirm",
+                    async: true,
+                    data: {
+                        id: _this.siblings('input').attr('id')
+                    },
+                    success: function(data) {
+                        if (data.Status == 'success') {
+                            $(".modal_unAssess").fadeOut();
+                            $(".easy_modal p").html(data.Message);
+                            $(".easy_modal").fadeIn();
+                            getList();
+                        } else {
+                            $(".modal_unAssess").fadeOut();
+                            $(".easy_modal p").html(data.Message);
+                            $(".easy_modal").fadeIn();
+                        }
+                    },
+                    fail: function() {
+                        $(".modal_unAssess").fadeOut();
+                        $(".easy_modal p").html(data.Message);
+                        $(".easy_modal").fadeIn();
 
+                    }
+                })
+            });
+            $("#close_unAssess").unbind("click").click(function(){
+				 $(".modal_unAssess").fadeOut();
+            });
+		});
 
-
-
+		
         //批量删除
         var assessNum = [];
         var assessNumStr;

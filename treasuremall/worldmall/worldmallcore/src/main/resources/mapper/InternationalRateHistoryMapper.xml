@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.worldmall.mapper.InternationalRateHistoryMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from international_rate_history where 1=1 
+		<if test='dailyDate != null and dailyDate != ""'>
+            and daily_date= #{dailyDate}
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','disable','checked')
+	        </otherwise>
+        </choose>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.InternationalRateHistory">
+		select * from international_rate_history where 1=1 
+		<if test='dailyDate != null and dailyDate != ""'>
+            and daily_date= #{dailyDate}
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','disable','checked')
+	        </otherwise>
+        </choose>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by daily_date desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getLessInfoListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.InternationalRateHistory">
+		select uuid,createtime,status,data_info,daily_date,updatetime from international_rate_history where 1=1 
+		<if test='dailyDate != null and dailyDate != ""'>
+            and daily_date= #{dailyDate}
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','disable','checked')
+	        </otherwise>
+        </choose>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by daily_date desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<update id="updateInfo" parameterType="java.util.HashMap">
+		update international_rate_history
+		<set>
+			<if test='updateStatus != null and updateStatus != ""'>
+				status = #{updateStatus},
+	        </if>
+        </set>
+      
+		where 1=1
+       		<if test='uuid != null and uuid != ""'>
+				and uuid in
+				<foreach collection="uuid" item="uuid" index="index" open="(" close=")" separator=",">
+					#{uuid}
+				</foreach>
+	        </if>
+       		<if test='nuuid != null and nuuid != ""'>
+				and uuid != #{nuuid}
+	        </if>
+       		<if test='status != null and status != ""'>
+				and status = #{status}
+	        </if>
+	</update>
+</mapper>

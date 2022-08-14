@@ -157,6 +157,7 @@ public class SerializeEntity {
 		result.put("applyNotice", examInformation.getApplyNotice() == null ? "" : examInformation.getApplyNotice());
 		result.put("invigilationNotice",
 				examInformation.getInvigilationNotice() == null ? "" : examInformation.getInvigilationNotice());
+		result.put("isSend", examInformation.getIsSend());
 		return result;
 	}
 
@@ -165,6 +166,7 @@ public class SerializeEntity {
 		result.put("id", room.getId());
 		result.put("roomIndex", room.getRoomIndex());
 		result.put("roomAddress", room.getRoomAddress());
+		result.put("roomType", room.getRoomType());
 		// result.put("examnationTime", room.getExamnationTime());
 		// result.put("examnationInformation", room.getExamnationInformation());
 		// result.put("arrivaltime", room.getArrivaltime());
@@ -283,7 +285,8 @@ public class SerializeEntity {
 		result.put("invigilateCount", teacher.getInvigilateCount());
 		result.put("jobDuty", Utlity.checkStringNull(teacher.getJobDuty()) ? "无" : teacher.getJobDuty());
 		result.put("studyMajor", Utlity.checkStringNull(teacher.getStudyMajor()) ? "无" : teacher.getStudyMajor());
-		result.put("studyGrade", Utlity.checkStringNull(teacher.getStudyGrade()) ? "无" : teacher.getStudyGrade());
+		result.put("studyGrade", Utlity.checkStringNull(teacher.getStudyGrade()) ? "0" : teacher.getStudyGrade());
+		result.put("studyLength", teacher.getStudyLength() == -1?0:teacher.getStudyLength());
 		result.put("remark", teacher.getRemark());
 		result.put("bankCard", Utlity.checkStringNull(teacher.getBankCard()) ? "无" : teacher.getBankCard());
 		result.put("sid", Utlity.checkStringNull(teacher.getSid()) ? "无" : teacher.getSid());
@@ -292,6 +295,11 @@ public class SerializeEntity {
 				teacher.getReleaseTime() == null ? "" : Utlity.timeSpanToString(teacher.getReleaseTime()));
 		result.put("disableType", teacher.getDisableType());
 		result.put("idcardPhoto", resource2Map(teacher.getIdCardPhoto()));
+		result.put("formation", Utlity.checkStringNull(teacher.getFormation()) ? "" : teacher.getFormation());
+		result.put("occupation", Utlity.checkStringNull(teacher.getOccupation()) ? "" : teacher.getOccupation());
+		result.put("bankOrg", Utlity.checkStringNull(teacher.getBankOrg()) ? "" : teacher.getBankOrg());
+		result.put("bankName", Utlity.checkStringNull(teacher.getBankName()) ? "" : teacher.getBankName());
+		result.put("email", Utlity.checkStringNull(teacher.getEmail()) ? "" : teacher.getEmail());
 		return result;
 	}
 
@@ -401,6 +409,22 @@ public class SerializeEntity {
 		result.put("isChief", etr.getIsChief());
 		result.put("remark", etr.getRemark());
 		result.put("credit", etr.getCredit() == null ? "无" : etr.getCredit());
+		if (etr.getStartTime() != null) {
+			result.put("startTime", Utlity.timeSpanToDateString(etr.getStartTime()));
+		}else {
+			result.put("startTime", "");
+		}
+		if (etr.getEndTime() != null) {
+			result.put("endTime", Utlity.timeSpanToDateString(etr.getEndTime()));
+		}else {
+			result.put("endTime", "");
+		}
+		//20180919新增年级信息
+		if(!Utlity.checkStringNull(teacher.getStudyGrade()) && !"0".equals(teacher.getStudyGrade())){
+			result.put("studyGrade", teacher.getStudyGrade());
+		}else{
+			result.put("studyGrade", "无");
+		}
 		return result;
 	}
 

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.treasuremall.mapper.FrontUserWithdrawOrderMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_withdraw_order where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and front_user_show_id like '%${frontUserShowId}%'
+        </if>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+        <if test='orderNum != null and orderNum != ""'>
+            and order_num like '%${orderNum}%'
+        </if>
+        <if test='starttime != null and starttime != ""'>
+            and <![CDATA[ createtime >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null and endtime != ""'>
+            and <![CDATA[ createtime <= #{endtime} ]]>
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUserWithdrawOrder">
+		select * from front_user_withdraw_order where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and front_user_show_id like '%${frontUserShowId}%'
+        </if>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+        <if test='orderNum != null and orderNum != ""'>
+            and order_num like '%${orderNum}%'
+        </if>
+        <if test='starttime != null and starttime != ""'>
+            and <![CDATA[ createtime >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null and endtime != ""'>
+            and <![CDATA[ createtime <= #{endtime} ]]>
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+		
+	<select id="getAmountByParams" parameterType="java.util.HashMap" resultType="java.math.BigDecimal">
+		select sum(actual_amount) from front_user_withdraw_order where 1=1   
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+        <if test='starttime != null and starttime != ""'>
+            and <![CDATA[ createtime >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null and endtime != ""'>
+            and <![CDATA[ createtime <= #{endtime} ]]>
+        </if>
+	</select>
+</mapper>

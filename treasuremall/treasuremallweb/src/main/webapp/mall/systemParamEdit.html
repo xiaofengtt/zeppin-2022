@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+	<link rel="stylesheet" href="css/paging.css" />
+	<link rel="stylesheet" href="layui/css/layui.css">
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/systemParamEdit.css" />
+</head>
+<body class="layui-layout-body">
+	<form class="layui-form layui-form-pane1 layui-form-tips" action="" lay-filter="first" style="margin-top:30px">
+		<!-- 数字类型 -->
+		<div class="content-item numberic">
+			<div class="layui-form-item">
+				<label class="layui-form-label">参数值：</label>
+				<div class="layui-input-inline">
+					<input class="layui-input numberInput" onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" />
+				</div>
+			</div>
+		</div>
+		<!-- 字符串 -->
+		<div class="content-item string">
+			<div class="layui-form-item">
+				<label class="layui-form-label">参数值：</label>
+				<div class="layui-input-inline">
+					<input class="layui-input numberInput"/>
+				</div>
+			</div>
+		</div>
+		<!-- 布尔 -->
+		<div class="content-item boolean">
+			<div class="layui-form-item">
+				<label class="layui-form-label">参数值：</label>
+				<div class="layui-input-inline">
+					<select class="numberInput" lay-filter="quiz">
+						<option value="true">是</option>
+						<option value="false">否</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<!-- 货币 -->
+		<div class="content-item currency">
+			<div class="layui-form-item">
+				<label class="layui-form-label">参数值：</label>
+				<div class="layui-input-inline">
+					<input class="layui-input numberInput" onkeyup="clearNoNum(this)" onblur="value=moneyFormat(value)"/>
+				</div>
+			</div>
+		</div>
+		<!-- 主值键 -->
+		<div class="content-item primarykey">
+			<div class="layui-form-item">
+				<label class="layui-form-label">参数值：</label>
+				<div class="layui-input-inline">
+					<select class="numberInput" lay-filter="quiz">
+						
+					</select>
+				</div>
+			</div>
+		</div>
+		<!-- 字典 -->
+		<div class="content-item map">
+			
+		</div>
+		<!-- 富文本 -->
+		<div class="content-item richtext">
+			<textarea id="richtext" style="display: none;"></textarea>
+		</div>
+		<div class="clear"></div>
+		<div class="btn-group">
+			<a class="sure-btn submit-btn">确定</a>
+		</div>
+		
+	</form>
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+	<script type="text/javascript" src="js/systemParamListEdit.js" ></script>
+</body>
+</html>

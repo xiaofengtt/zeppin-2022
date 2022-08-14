@@ -40,26 +40,55 @@
 		<div class="menu">
 			<a id="roomInfo"> <img src="../img/logo_1_r.png">
 				<p>本场考试考场管理</p>
-			</a> <a id="teachersControl"> <img src="../img/logo_2_r.png">
+			</a> 
+			<a id="teachersControl"> <img src="../img/logo_2_r.png">
 				<p>教师申报情况管理</p>
-			</a> <a id="roomMessage" class="right_none"> <img
+			</a> 
+			<a id="roomMessage" class="right_none"> <img
 				src="../img/logo_3_r.png">
 				<p>设置考场监考老师</p>
-			</a> <a id="teachersConfirm"> <img src="../img/logo_4_r.png">
+			</a> 
+			<a id="teachersConfirm"> <img src="../img/logo_4_r.png">
 				<p>监考老师二次确认</p>
-			</a> <a id="dTeacherInfo"> <img src="../img/logo_5_r.png">
+			</a> 
+			<a id="dTeacherInfo"> <img src="../img/logo_5_r.png">
 				<p>导出教师考场安排</p>
-			</a> <a id="dUndTeacher" class="right_none"> <img
+			</a> 
+			<a id="dTeacherInfoEnd"> <img src="../img/logo_5_r.png">
+				<p>导出本次监考教师</p>
+			</a> 
+			<a id="dUndTeacher" class="right_none"> <img
 				src="../img/logo_6_r.png">
 				<p>导出未录用人员名单</p>
-			</a> <a id="teacherAssess"> <img src="../img/logo_7_r.png">
+			</a> 
+			<a id="teacherAssess"> <img src="../img/logo_7_r.png">
 				<p>监考老师评价</p>
 			</a>
+			<a id="OutTeacherPdf" class="right_none" target="_blank"> <img
+				src="../img/logo_6_r.png">
+				<p>导出执考通知单</p>
+			</a>
 		</div>
+			
+			<a id="down"  target="_blank"><span id="clickDown" ></span></a>
+			
+			<div class="modal_assess">
+        		<input type="hidden" id="assess_id"/>
+        		<p>存在未二次确认教师，是否继续？</p>
+        		<div class="button_g">
+        			<input type="button" value="确认" id="sub_assess"/>
+        			<input type="button" value="取消" id="close_assess"/>
+       	</div>
+      </div>
+		
+		
+		
 	</div>
 	<div id="bg">
 		<img src="../img/select2-spinner.gif" alt="" />
 	</div>
+
+	
 	<div class="easy_modal">
 		<p></p>
 		<div class="button_g">

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+	</head>
+	<body class="layui-layout-body">
+		<input id="uuidInput" type="hidden" value="710f0db8-8157-45bb-9136-33528759a537"/>
+		<div class="main layui-layout layui-layout-admin">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="layui-body">
+				<!-- 内容主体区域 -->
+			    <div class="layui-bodu" style="padding: 15px;">			    
+				    <span class="layui-breadcrumb">
+						<a href="javascript:">运营管理</a>
+						<a href="voucherList.html">金券管理</a>
+						<a><cite>添加编辑</cite></a>
+					</span>
+					<hr>
+					<form class="layui-form layui-form-pane2 layui-form-tips" action="" lay-filter="first">
+						<div class="layui-form-item">
+							<label class="layui-form-label">金券名称</label>
+							<div class="layui-input-inline">
+								<input type="text" name="title" autocomplete="off" class="layui-input" >
+							</div>
+							<p class="layui-tips tips-must">金券名称，如活动名称：新人好礼</p>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">金券面值</label>
+							<div class="layui-input-inline">
+								<input type="text" name="dAmount" autocomplete="off" class="layui-input" >
+							</div>
+							<p class="layui-tips tips-must">内容为数字类型</p>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">使用最低限额</label>
+							<div class="layui-input-inline">
+								<input type="text" name="payMin" autocomplete="off" class="layui-input" >
+							</div>
+							<p class="layui-tips tips-must">内容为数字类型</p>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">限制类型</label>
+							<div class="layui-input-inline" id="goodsTypeDiv">
+								
+							</div>
+							<p class="layui-tips">不选默认全场通用</p>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">限制商品</label>
+							<div class="layui-input-inline" id="goodsDiv">
+								
+							</div>
+							<p class="layui-tips">不选默认全场通用</p>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">限制描述</label>
+							<div class="layui-input-inline">
+								<textarea name="discription" class="layui-textarea"></textarea>
+							</div>
+							<p class="layui-tips">不填默认全场通用</p>
+						</div>
+						<div class="layui-form-item">
+							<label class="layui-form-label">使用期限</label>
+							<div class="layui-input-block" style="margin-bottom:10px;">
+								<label class="layui-form-label" style="margin-left:8px;text-align:left;">固定有效期</label>
+							</div>
+							<div class="layui-input-block" style="margin-bottom:10px;width:100%;">
+								<div class="layui-input-inline" style="width: 195px;margin-left:30px;">
+									<input type="text" id="staticStarttime" name="staticStarttime" placeholder="开始时间" readonly class="layui-input">
+							    </div>
+							    <div class="layui-input-inline" style="width: 195px;margin-left:0;">
+									<input type="text" id="staticEndtime" name="staticEndtime" placeholder="结束时间" readonly class="layui-input">
+							    </div>
+							    <p class="layui-tips">代表起始日期的00:00:00到结束日期的23:59:59。</p>
+							</div>
+							<div class="layui-input-block" style="margin-bottom:10px">
+								<label class="layui-form-label">动态有效期</label>
+							</div>
+							<div class="layui-input-block" style="margin-bottom:10px;width:100%;">
+								<div class="layui-input-inline" style="width: 195px;margin-left:30px;">
+									<input type="text" name="dynamicStarttime" placeholder="开始时间" autocomplete="off" class="layui-input">
+							    </div>
+							    <div class="layui-input-inline" style="width: 195px;margin-left:0;">
+									<input type="text" name="dynamicEndtime" placeholder="结束时间" autocomplete="off" class="layui-input">
+							    </div>
+							    <p class="layui-tips ">暂时只支持天为单位。参考格式为空，+0，+7等，分别代表即时生/失效，即时生/失效，7日后生/失效。</p>
+							</div>
+						</div>
+						
+						<div class="layui-form-item">
+							<div class="layui-input-inline" style="margin-left:140px;">
+								<button class="layui-btn lay-submit" lay-submit lay-filter="*">立即提交</button>
+								<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/xm-select.js" ></script>
+		<script type="text/javascript" src="js/alert.js" ></script>
+		<script type="text/javascript" src="js/voucherDetail.js" ></script>
+	</body>
+</html>

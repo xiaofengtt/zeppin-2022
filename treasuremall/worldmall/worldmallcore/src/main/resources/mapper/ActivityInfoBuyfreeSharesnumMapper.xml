@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.worldmall.mapper.ActivityInfoBuyfreeSharesnumMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from activity_info_buyfree_sharesnum where 1=1 
+   		<if test='sharenums != null and sharenums != ""'>
+            and sharenums like '%${sharenums}%'
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.ActivityInfoBuyfreeSharesnum">
+		select * from activity_info_buyfree_sharesnum where 1=1 
+   		<if test='sharenums != null and sharenums != ""'>
+            and sharenums like '%${sharenums}%'
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by activity_info_buyfree desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+</mapper>

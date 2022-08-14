@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.treasuremall.mapper.FrontUserAccountMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_account where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUserAccount">
+		select * from front_user_account where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getByFrontUser" parameterType="String" resultType="cn.product.treasuremall.entity.FrontUserAccount">
+		select * from front_user_account where front_user = #{frontUser}
+	</select>
+	
+	<update id="updateStatus" parameterType="java.util.HashMap">
+		update front_user_account
+		<set>
+			account_status = #{status}
+		</set>
+		where front_user in
+		<foreach collection="uuid" item="uuid" index="index" open="(" close=")" separator=",">
+			#{uuid}
+		</foreach>
+	</update>
+	<update id="updateInfo" parameterType="java.util.HashMap">
+		update front_user_account
+		<set>
+			<if test='balance != null and balance != ""'>
+				balance = #{balance},
+	        </if>
+       		<if test='totalWinning != null and totalWinning != "" or totalWinning == 0'>
+				total_winning = #{totalWinning},
+	        </if>
+	   		<if test='winningTimes != null and winningTimes != "" or winningTimes == 0'>
+				winning_times = #{winningTimes},
+	        </if>  
+       		<if test='totalExchange != null and totalExchange != "" or totalExchange == 0'>
+				total_exchange = #{totalExchange},
+	        </if>
+	   		<if test='exchangeTimes != null and exchangeTimes != "" or exchangeTimes == 0'>
+				exchange_times = #{exchangeTimes},
+	        </if>   
+       		<if test='totalDelivery != null and totalDelivery != "" or totalDelivery == 0'>
+				total_delivery = #{totalDelivery},
+	        </if>
+	   		<if test='deliveryTimes != null and deliveryTimes != "" or deliveryTimes == 0'>
+				delivery_times = #{deliveryTimes},
+	        </if> 
+        </set>
+      
+		where front_user = #{uuid}
+	</update>
+</mapper>

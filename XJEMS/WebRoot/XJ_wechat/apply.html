@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>监考申报</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta name="format-detection" content="telephone=no" />
+		<script src="./js/global.js"></script>
+		<!--<link rel="stylesheet" href="./css/base.css">-->
+		<!--<link rel="stylesheet" href="./css/tip.css">-->
+		<style>
+			body{
+				background:#00B55E;
+			}
+			.box {
+				text-align: center;
+				padding:100px;
+				/*width:100%;*/
+			}
+			
+			.time-box {
+				margin-bottom: 10px;
+				width:100%;
+			}
+			
+			.time-box span {
+				font-size: 16px;
+				display: inline-block;
+				vertical-align: middle;
+				color: #FFFFFF;
+				text-align: center;
+			}
+			
+			.time-box input {
+				padding: 4px;
+				width:140px;
+				height: 24px;
+				outline: none;
+				border: 1px solid #c1c1c1;
+				border-radius: 5px;
+				text-align: center;
+				display: inline-block;
+				vertical-align: middle;
+				font-size:16px;
+			}
+			
+			#submit {
+				margin-top:20px;
+				width: 60px;
+				height: 28px;
+				padding: 4px;
+				font-size: 16px;
+				color: #FFFFFF;
+				background: #E0615F;
+				border-radius:5px;
+				outline: none;
+				border:1px solid #E0615F;
+				display: inline-block;
+				text-align: center;
+			}
+			
+			#warnInfo {
+			    display: block;
+			    color: red;
+			    font-size: 14px;
+			    line-height: 20px;
+			    padding: 10px 0;
+			}
+			
+		</style>
+
+	</head>
+
+	<body>
+		<div class="box">
+			<div class="time-box">
+				<span>开始日期</span>
+				<input type="text" id="startTime" readonly autocomplete="off" placeholder="请选择开始日期" />
+			</div>
+			<div class="time-box">
+				<span>结束日期</span>
+				<input type="text" id="endTime" readonly autocomplete="off" placeholder="请选择结束日期" />
+			</div>
+			<!--<input type="button" value="提交" id="submit" />-->
+			<button id="submit">提交</button>
+			<span id="warnInfo">本人于本次考试可全程参与到监考工作的日期（请再三确认再填写）</span>
+		</div>
+
+		<script src="../js/jquery-1.11.1.js"></script>
+		<script src="../js/url.min.js"></script>
+		<script src="../js/jsrender.js"></script>
+		<script src="../laydate-v1.1/laydate/laydate.js"></script>
+		<!--<script src="js/tip.js"></script>-->
+		<script>
+			var idStr = url("?id");
+			var exam = idStr.split("_")[0];
+			var id = idStr.split("_")[1];
+// 			var exam = url("?id");
+// 			var id = url("?tid");
+			var code = url('?code') == null ? '' : url('?code');
+			$.ajax({
+				type: "get",
+				url: "../weixin/weixinGetExamInfo?code=" + code,
+				timeout: 3000,
+				async: true,
+				success: function(r) {
+					if(r.Status == 'unlogin') {
+						window.location.href = r.Records;
+					} else if(r.Status == 'success') {
+						laydate({
+							elem: '#startTime',
+							btns: ['clear', 'confirm'],
+							istoday: false,
+							min: r.Records.starttime,
+							max: r.Records.endtime,
+							start:r.Records.starttime
+						});
+						laydate({
+							elem: '#endTime',
+							btns: ['clear', 'confirm'],
+							istoday: false,
+							min: r.Records.starttime,
+							max: r.Records.endtime,
+							start:r.Records.starttime
+						});
+
+					} else { // 获取失败
+
+						var html = "<p class='warning'>提示</p><p class='remind'>" + r.Message + "</p>";
+						$("body").html(html);
+
+					}
+				},
+				error: function() {
+					alert("链接超时，请稍后重试");
+				}
+			});
+
+			function apply() {
+
+				$("#submit").attr("disabled", true);
+				var startStr = $("#startTime").val().replace(/(^\s*)|(\s*$)/g,"");
+				var endStr = $("#endTime").val().replace(/(^\s*)|(\s*$)/g,"");
+				if(startStr == '' || endStr == ''){
+					alert("请选择开始日期和结束日期！");
+					$("#submit").attr("disabled", false);
+					return false;
+				}
+				var startTime = Date.parse(new Date($("#startTime").val()));
+				var endTime = Date.parse(new Date($("#endTime").val()));
+				if(startTime > endTime) {
+					alert("开始日期不能大于结束日期");
+					$("#submit").attr("disabled", false);
+					return false;
+				}
+				$.ajax({
+					type: "post",
+					url: "../weixin/weixinApply",
+					async: true,
+					timeout: 3000,
+					data: {
+						"exam": exam,
+						"tid": id,
+						"startTime": $("#startTime").val(),
+						"endTime": $("#endTime").val()
+					},
+					success: function(data) {
+						if(data.Status == 'success') {
+							alert("申请成功")
+// 							window.location.href = document.referrer;
+							var urlStr = encodeURI("http://ks.xsdkszx.cn/XJ_wechat/tip.html");
+// 							https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb5465b3377c55c8e&redirect_uri=http%3A%2F%2Fks.xsdkszx.cn%2FXJ_wechat%2Ftip.html&response_type=code&scope=snsapi_base&state=xj#wechat_redirect
+							var linkUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb5465b3377c55c8e&redirect_uri='+urlStr+'&response_type=code&scope=snsapi_base&state=xj#wechat_redirect';
+							window.location.href = linkUrl;
+							//				$("#errorMsg").hide();
+						} else {
+							//				$("#errorMsg").show();
+							alert(data.Message);
+							$("#submit").attr("disabled", false);
+// 							$("#apply").css({
+// 								"background-color": "#0BC66C"
+// 							});
+
+						}
+					},
+					error: function() {
+						alert("链接超时，请稍后再试");
+					}
+				});
+			}
+			// 申请监考 tid:教师id
+
+			$("#submit").click(function() {
+				apply();
+			});
+		</script>
+	</body>
+
+</html>

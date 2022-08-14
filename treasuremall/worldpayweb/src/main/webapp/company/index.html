@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Payduoduo</title>
+		<link rel="shortcut icon" href="img/favicon.ico">
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/list.css" />
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+	<body class="layui-layout-body">
+		<input id="uuidInput" type="hidden" value="f521636e-24a3-42e1-a748-675c538dc9f2"/>
+		<div class="main layui-layout layui-layout-admin">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="layui-body">
+				<div class="layui-row company-head">
+					<div class="layui-col-md6 company-goods" >
+						<p>Name：<span id="name"></span></p>
+						<p>Status：<span id="status"></span></p>
+						<p>Code：<span id="code"></span></p>
+					</div>
+					
+					<div class="layui-row" style="margin-top:10px">
+						<a class="layui-btn rechargeBtn">Store recharge</a>
+						<a class="layui-btn withdrawBtn">Store withdraw</a>
+					</div>
+				</div>
+				<div class="layui-bodu" style="padding: 15px;">
+				 	<div id="dailyChart"></div>
+					<div style="overflow-x:auto;">
+			    		<table class="table-list mt-15"></table>
+			    	</div>
+					<div id="pageTool"></div>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/echarts.min.js"></script>
+		<script type="text/javascript" src="js/index.js" ></script>
+	</body>
+</html>

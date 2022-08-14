@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+	</head>
+	<body class="layui-layout-body">
+		<input id="uuidInput" type="hidden" value="0ae36f97-90b4-11e8-95fb-fccd1431ad2a"/>
+		<div class="main layui-layout layui-layout-admin">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="layui-body">
+			    <div class="layui-bodu" style="padding:15px;">
+			    <!-- 内容主体区域 -->
+				    <span class="layui-breadcrumb">
+					  <a href="javascript:">运营</a>
+					  <a class="goPrePage" href="javascript:">广告位管理</a>
+					  <a class="skipLink">广告位资源管理</a>
+					  <a><cite>添加编辑</cite></a>
+					</span>
+					<hr>
+			    	<form class="layui-form layui-form-pane1 layui-form-tips" action="" lay-filter="first">
+					  <div class="layui-form-item">
+					    <label class="layui-form-label">中文名</label>
+					    <div class="layui-input-inline">
+					      <input type="text" name="title" lay-verify="required" lay-reqText="中文名不能为空" required placeholder="请输入中文名" autocomplete="off" class="layui-input" >
+					    </div>
+					    <p class="layui-tips tips-must"></p>
+					  </div>
+					  <div class="layui-form-item">
+					    <label class="layui-form-label">英文名</label>
+					    <div class="layui-input-inline">
+					      <input type="text" name="code" lay-verify="required" lay-reqText="英文名不能为空" required placeholder="请输入英文名" autocomplete="off" class="layui-input" >
+					    </div>
+					    <p class="layui-tips tips-must"></p>
+					  </div>
+					  
+					  <div class="layui-form-item">
+					    <label class="layui-form-label">跳转地址</label>
+					    <div class="layui-input-inline">
+					      <input type="text" name="url" lay-verify="required"  lay-verType="alert" autocomplete="off" class="layui-input">
+					    </div>
+					    <p class="layui-tips tips-must"></p>
+					  </div>
+					    <div class="layui-form-item">
+					      <label class="layui-form-label">类型</label>
+					      <div class="layui-input-inline">
+					        <select name="type" lay-filter="quiz">
+						        <option value="type_start">启动页广告</option>
+						        <option value="type_top">首页顶部广告</option>
+					        	<option value="type_eject">弹屏广告</option>
+						        <option value="type_login">登录页广告</option>
+						        <option value="type_payment">支付页面广告</option>
+					        </select>
+					      </div>
+					      <p class="layui-tips tips-must"></p>
+					    </div>
+					  <div class="layui-form-item">
+					    <label class="layui-form-label">上传图片</label>
+					    <div class="layui-input-inline">
+					    	<div class="layui-upload">
+							  <button type="button" class="layui-btn" id="uploadFile">上传图片</button>
+							  <p class="layui-tips tips-must"></p>
+							  <div class="layui-upload-list" style="display:none">
+							    <img class="layui-upload-img" id="demo1">
+							    <p id="demoText"></p>
+							  </div>
+							</div> 
+						     <!-- <div class="layui-upload-drag" id="uploadFile">
+								  <i class="layui-icon">&#xe67c;</i>
+								  <p>点击上传，或将文件拖拽到此处</p>
+							</div> -->
+							<input type="hidden" name="image"/>
+					    </div>
+					  </div>
+					  <div class="layui-form-item" pane>
+					    <label class="layui-form-label">状态</label>
+					    <div class="layui-input-inline">
+					      <input type="radio" name="status" value="normal" title="正常" checked>
+					      <input type="radio" name="status" value="disable" title="禁用">
+					    </div>
+					  </div>
+					  <div class="layui-form-item">
+					    <label class="layui-form-label">有效期</label>
+					    <div class="layui-input-inline">
+					      <input type="text" class="layui-input" id="endtime" readonly placeholder="请选择有效期">
+					    </div>
+					    <p class="layui-tips tips-must"></p>
+					  </div>
+
+					  <div class="layui-form-item" pane>
+					    <label class="layui-form-label">用户级别</label>
+					    <div class="layui-input-inline" style="width:auto;">
+					      <input type="checkbox" name="frontuserlevel" value="registered" title="注册">
+					      <input type="checkbox" name="frontuserlevel" value="recharged" title="充值">
+					      <input type="checkbox" name="frontuserlevel" value="VIP" title="VIP">
+					      <input type="checkbox" name="frontuserlevel" value="demo" title="测试">
+					      <input type="checkbox" name="frontuserlevel" value="visitor" title="游客">
+					    </div>
+					    <p class="layui-tips">若不勾选则所有用户可见</p>
+					  </div>
+					  <div class="layui-form-item">
+					    <div class="layui-input-inline" style="margin-left:140px;">
+					      <button class="layui-btn lay-submit" lay-submit lay-filter="*">立即提交</button>
+					      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+					    </div>
+					  </div>
+					</form>
+			    </div>
+			 </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/alert.js" ></script>
+		<script type="text/javascript" src="js/bannerDetail.js" ></script>
+	</body>
+</html>

@@ -1,9 +1,5 @@
 package cn.zeppin.dao.api;
 
-import java.util.List;
-import java.util.Map;
-
-import cn.zeppin.entity.InvigilationTeacher;
 import cn.zeppin.entity.InvigilationTeacherOld;
 
 /**

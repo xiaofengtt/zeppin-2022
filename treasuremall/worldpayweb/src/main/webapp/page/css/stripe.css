@@ -1,0 +1,70 @@
+@CHARSET "UTF-8";
+html{
+	height:100%;
+	background:#fff;
+}
+.goback{
+	height:0.88rem;
+	position:fixed;
+	width:100%;
+	background:rgba(255,255,255,1);
+	border-bottom:1px solid #F0F0F0;
+	left:0;
+	top:0;
+	padding-top:0.08rem;
+}
+.goback img{
+	height:0.72rem;
+	padding:0.16rem 0.24rem;
+}
+.box{
+	width:100%;
+	background: url(../img/bg.png) center no-repeat;
+	background-size:cover;
+	margin-bottom:1.32rem;
+	margin-top:0.88rem;
+	padding:0.32rem 0.24rem;
+}
+.item{
+	border-bottom:1px solid #F3F3F3;
+	padding:0.4rem 0.24rem;
+	display:flex;
+	font-size:0.3rem;
+	font-weight:400;
+	color:rgba(34,34,34,1);
+	line-height:0.3rem;
+	justify-content: space-between;
+}
+.no-border{
+	border:none;
+}
+.left{
+	width:2.20rem;
+	color:rgba(158,158,158,1);
+}
+.right{
+	width:4.2rem;
+	text-align:right;
+}
+#formDiv{
+	position:fixed;
+	width:100%;
+	height:1rem;
+	background:rgba(255,255,255,1);
+	border-top:1px solid #D3D3D3;
+	left:0;
+	bottom:0;
+	padding:0.1rem 0.24rem;
+}
+#formDiv button{
+	width:100%;
+	height:0.8rem;
+	border-radius:0.12rem;
+}
+.stripe-button-el span{
+	height:0.8rem !important;
+	line-height:0.8rem !important;
+	background:linear-gradient(180deg,rgba(73,186,239,1) 0%,rgba(0,145,230,1) 100%) !important;
+	border-radius:0.12rem !important;
+	font-size:0.32rem !important;
+}

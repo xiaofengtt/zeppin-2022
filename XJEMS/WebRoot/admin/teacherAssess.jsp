@@ -26,7 +26,18 @@
              	<td title="{{:name}}">{{:name}}</td>
                 <td title="{{:ethnic}}">{{:ethnic}}</td>
                 <td title="{{if sex=='1'}}男{{/if}}{{if sex=='2'}}女{{/if}}">{{if sex=='1'}}男{{/if}}{{if sex=='2'}}女{{/if}}</td>
-                <td title="{{if type=='1'}}考务组{{/if}}{{if type=='2'}}研究生{{/if}}{{if type=='3'}}教工{{/if}}">{{if type=='1'}}考务组{{/if}}{{if type=='2'}}研究生{{/if}}{{if type=='3'}}教工{{/if}}</td>
+               
+                <td title="{{if type==1}}考务组{{/if}}
+                           {{if type==2}}研究生{{/if}}
+                           {{if type==3}}教工{{/if}}
+                           {{if type==4}}本科{{/if}}
+                           {{if type==5}}非师大人员{{/if}}
+                         ">{{if type==1}}考务组{{/if}}
+                           {{if type==2}}研究生{{/if}}
+                           {{if type==3}}教工{{/if}}
+                           {{if type==4}}本科{{/if}}
+                           {{if type==5}}非师大人员{{/if}}
+                </td>
                 <td title="{{:roomIndex}}-{{:roomAddress}}">{{:roomIndex}}-{{:roomAddress}}</td>
                 <td title="{{if isChief=='1'}}主考{{/if}}{{if isChief=='0'}}副考{{/if}}">{{if isChief=='1'}}主考{{/if}}{{if isChief=='0'}}副考{{/if}}</td>
                 <td title="{{if isconfirm=='1'}}是{{/if}}{{if isconfirm=='0'}}否{{/if}}">{{if isconfirm=='1'}}是{{/if}}{{if isconfirm=='0'}}否{{/if}}</td>
@@ -67,28 +78,32 @@
                         <div id="select_page">
                         </div>
                     </div>
-                    <table class="teachers_info" cellspacing="0" cellpadding="0">
-                            <tr class="first_tr">
-                            		<th width="7%">
-                            			<a id="select_all" href="javascript:;">全选</a>
+                    <div class="scroll-warp">
+						<div class="scroll-inner">
+		                    <table class="teachers_info" cellspacing="0" cellpadding="0" style="width:200%;max-width: 150%;table-layout: auto;">
+	                            <tr class="first_tr">
+									<th>
+										<a id="select_all" href="javascript:;">全选</a>
 									<a id="unselect_all" href="javascript:;">反选</a>
-                            		</th>
-                                <th width="5%">序号</th>
-                                <th width="23%" class="sort_th">姓名<i class="iconfont"><img src=""></i></th>
-                                <th width="8%" class="sort_th">民族<i class="iconfont"><img src=""></i></th>
-                                <th width="5%" class="sort_th">性别<i class="iconfont"><img src=""></i></th>
-                                <th width="8%" class="sort_th">身份<i class="iconfont"><img src=""></i></th>
-                                <th width="12%">安排考场</th>
-                                <th width="6%" class="sort_th">角色<i class="iconfont"><img src=""></i></th>
-                                <th width="7%" class="sort_th">二次确认<i class="iconfont"><img src=""></i></th>
-                                <th width="10%" class="sort_th">确认时间<i class="iconfont"><img src=""></i></th>
-                                <th width="5%" class="sort_th">积分<i class="iconfont"><img src=""></i></th>
-              					<th width="8%" class="sort_th">是否打分<i class="iconfont"><img src=""></i></th>
-                                <th width="5%" class="sort_th">停用<i class="iconfont"><img src=""></i></th>
-                                <th width="7%">操作</th>
-                            </tr>
-                            <tbody id="queboxCnt"></tbody>
-                    </table>
+									</th>
+									<th>序号</th>
+									<th class="sort_th">姓名<i class="iconfont"><img src=""></i></th>
+									<th class="sort_th">民族<i class="iconfont"><img src=""></i></th>
+									<th class="sort_th">性别<i class="iconfont"><img src=""></i></th>
+									<th class="sort_th">身份<i class="iconfont"><img src=""></i></th>
+									<th>安排考场</th>
+									<th class="sort_th">角色<i class="iconfont"><img src=""></i></th>
+									<th class="sort_th">二次确认<i class="iconfont"><img src=""></i></th>
+									<th class="sort_th">确认时间<i class="iconfont"><img src=""></i></th>
+									<th class="sort_th">积分<i class="iconfont"><img src=""></i></th>
+									<th class="sort_th">是否打分<i class="iconfont"><img src=""></i></th>
+									<th class="sort_th">停用<i class="iconfont"><img src=""></i></th>
+									<th>操作</th>
+									</tr>
+									<tbody id="queboxCnt"></tbody>
+							</table>
+						</div>
+					</div>
                     <div class="back_top">
 						<a href="#">↑返回页面顶部</a>
 					</div>
@@ -106,7 +121,7 @@
                                     <p>评分:</p>
                                     <input type="text" id="select"autocomplete="off" placeholder="请输入分数，不能超过4位数..." maxlength="4">
                                     <p>原因:</p>
-                                    <textarea id="text" name="" id="" cols="13.7" rows="5.2" autocomplete="off" placeholder="请输入原因，不能超过50字..." maxlength="50"></textarea>
+                                    <textarea id="text" name="" id="" cols="13.7" rows="5.2" autocomplete="off" placeholder="请输入原因..."></textarea>
 								<div class="button_g">
 									<input type="button" id="close" value="取消">
                                     <input type="button" id="submit" value="提交">
@@ -125,7 +140,7 @@
                                     <p>评分:</p>
                                     <input type="text" class="select" autocomplete="off" placeholder="请输入分数，不能超过4位数..." maxlength="4">
                                     <p>原因:</p>
-                                    <textarea name="" id="" cols="13.7" rows="5.2" class="text" autocomplete="off" placeholder="请输入原因，不能超过50字..." maxlength="50"></textarea>
+                                    <textarea name="" id="" cols="13.7" rows="5.2" class="text" autocomplete="off" placeholder="请输入原因..."></textarea>
                                     <div class="button_g">
 	                                    	<input type="button" class="close" value="取消">
 	                                    <input type="button" class="submit" value="提交">

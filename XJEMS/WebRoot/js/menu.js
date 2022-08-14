@@ -59,12 +59,44 @@ function change(id, status) {
 
 // 数据加载
 $(document).ready(function() {
+	$(".modal_assess").fadeOut();
 	$("#bg").height($('body').height());
 	getCurrent();
 	$(".easy_modal input").eq(0).click(function(){
 		$(".easy_modal").fadeOut();
-	})
-})
+	});
+	
+	
+	//下载通知单按钮
+	$("#OutTeacherPdf").unbind("click").click(function() {
+		 $.ajax({
+	            type: "post",
+	            url: "../admin/teacherGetExamRoomTeacherListCount?exam="+url("?exam"),
+	            success: function(data) {
+	                if (data.Status == 'success') {
+	                	$("#clickDown").click();
+	                }else{
+	                	if(data.Status == 'error'){
+	                		$(".modal_assess").fadeIn();
+	                	}else{
+	            			$(".easy_modal p").html("失败，请稍后再试");
+	            			$(".easy_modal").fadeIn();
+	                	}
+	                } 
+	            }
+	        })
+	    });
+
+	    $("#sub_assess").unbind("click").click(function() {
+	    	$("#clickDown").click();
+	    	$(".modal_assess").fadeOut();
+	    });
+
+	    $("#close_assess").unbind("click").click(function() {
+	        $(".modal_assess").fadeOut();
+	    });
+});
+
 
 function getCurrent() {
 	var mUrl = '../admin/examGetCurrent?';
@@ -78,10 +110,12 @@ function getCurrent() {
 			$('#teachersControl').attr('href', 'teachersControl.jsp?exam=' + exam);
 			$('#roomMessage').attr('href', 'roomMessage.jsp?exam=' + exam);
 			$('#teachersConfirm').attr('href', 'teachersConfirm.jsp?exam=' + exam);
-			$('#dTeacherInfo').attr('href', '../admin/documentDownloadTeacherInfo?exam=' + exam +'&name='+r.Records.name);
+			$('#dTeacherInfo').attr('href', '../admin/documentDownloadExamRoom?exam=' + exam +'&name='+r.Records.name);
+			$('#dTeacherInfoEnd').attr('href', '../admin/documentDownloadTeacherInfo?exam=' + exam +'&name='+r.Records.name);
 			$('#dUndTeacher').attr('href', '../admin/documentDownloadUndTeacher?exam=' + exam +'&name='+r.Records.name);
 			$('#teacherAssess').attr('href', 'teacherAssess.jsp?exam=' + exam);
 			$('#edit').attr('href', 'publish_.jsp?id=' + exam);
+			$('#down').attr('href', '../admin/teacherGetExamRoomTeacherList?exam=' + exam);
 			switch (r.Records.status) {
 			case -1://待发布
 				start.style.color = "#E69B21";
@@ -107,3 +141,4 @@ function getCurrent() {
 		}
 	}).done(function(r) {});
 }
+

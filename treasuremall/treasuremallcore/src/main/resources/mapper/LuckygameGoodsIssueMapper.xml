@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.treasuremall.mapper.LuckygameGoodsIssueMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from luckygame_goods_issue where 1=1 
+		<if test='luckygameGoods != null and luckygameGoods != ""'>
+            and luckygame_goods= #{luckygameGoods}
+        </if>
+		<if test='gameType != null and gameType != ""'>
+            and game_type= #{gameType}
+        </if>
+		<if test='goodsId != null and goodsId != ""'>
+            and goods_id= #{goodsId}
+        </if>
+   		<if test='goodsType != null and goodsType != ""'>
+            and goods_type= #{goodsType}
+        </if>
+   		<if test='names != null and names != ""'>
+            and title like '%${names}%'
+        </if>
+        <!-- 商品价格筛选 -->
+        <if test='goodsPriceMax != null and goodsPriceMax != ""'>
+            and <![CDATA[ d_price <= #{goodsPriceMax} ]]>
+        </if>
+         <if test='goodsPriceMin != null and goodsPriceMin != ""'>
+            and <![CDATA[ d_price >= #{goodsPriceMin} ]]>
+        </if>
+        <!-- 投注额筛选 -->
+        <if test='maxPay != null and maxPay != ""'>
+            and <![CDATA[ bet_per_share <= #{maxPay} ]]>
+        </if>
+        <!-- uuid筛选 -->
+         <if test='minPay != null and minPay != ""'>
+            and <![CDATA[ bet_per_share >= #{minPay} ]]>
+        </if>     
+        <if test='uuid != null and uuid != ""'>
+            and luckygame_goods in
+			<foreach collection="uuid" item="uuid" index="index" open="(" close=")" separator=",">
+				#{uuid}
+			</foreach>
+        </if>  
+        <choose>
+	        <when test='statuses != null and statuses != ""'>
+	        	 and status in
+				<foreach collection="statuses" item="status" index="index" open="(" close=")" separator=",">
+					#{status}
+				</foreach>
+	        </when>
+	        <otherwise>
+	        	and status in ('betting','finished','lottery')
+	        </otherwise>
+        </choose> 
+        <choose>
+<!-- 	        <when test='status != null and status != ""'> -->
+<!-- 	        	 and status in -->
+<!-- 				<foreach collection="status" item="status" index="index" open="(" close=")" separator=","> -->
+<!-- 					#{status} -->
+<!-- 				</foreach> -->
+<!-- 	        </when> -->
+			<when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('betting','finished','lottery')
+	        </otherwise>
+        </choose>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.LuckygameGoodsIssue">
+		select * from luckygame_goods_issue where 1=1 
+		<if test='luckygameGoods != null and luckygameGoods != ""'>
+            and luckygame_goods= #{luckygameGoods}
+        </if>
+		<if test='gameType != null and gameType != ""'>
+            and game_type= #{gameType}
+        </if>
+		<if test='goodsId != null and goodsId != ""'>
+            and goods_id= #{goodsId}
+        </if>
+        <if test='goodsType != null and goodsType != ""'>
+            and goods_type= #{goodsType}
+        </if>
+   		<if test='names != null and names != ""'>
+            and title like '%${names}%'
+        </if>
+        <!-- 商品价格筛选 -->
+        <if test='goodsPriceMax != null and goodsPriceMax != ""'>
+            and <![CDATA[ d_price <= #{goodsPriceMax} ]]>
+        </if>
+         <if test='goodsPriceMin != null and goodsPriceMin != ""'>
+            and <![CDATA[ d_price >= #{goodsPriceMin} ]]>
+        </if>
+        <!-- 投注额筛选 -->
+        <if test='maxPay != null and maxPay != ""'>
+            and <![CDATA[ bet_per_share <= #{maxPay} ]]>
+        </if>
+        <!-- uuid筛选 -->
+         <if test='minPay != null and minPay != ""'>
+            and <![CDATA[ bet_per_share >= #{minPay} ]]>
+        </if>     
+        <if test='uuid != null and uuid != ""'>
+            and luckygame_goods in
+			<foreach collection="uuid" item="uuid" index="index" open="(" close=")" separator=",">
+				#{uuid}
+			</foreach>
+        </if>  
+        <choose>
+	        <when test='statuses != null and statuses != ""'>
+	        	 and status in
+				<foreach collection="statuses" item="status" index="index" open="(" close=")" separator=",">
+					#{status}
+				</foreach>
+	        </when>
+	        <otherwise>
+	        	and status in ('betting','finished','lottery')
+	        </otherwise>
+        </choose> 
+        <choose>
+<!-- 	        <when test='status != null and status != ""'> -->
+<!-- 	        	 and status in -->
+<!-- 				<foreach collection="status" item="status" index="index" open="(" close=")" separator=","> -->
+<!-- 					#{status} -->
+<!-- 				</foreach> -->
+<!-- 	        </when> -->
+			<when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('betting','finished','lottery')
+	        </otherwise>
+        </choose>       
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by sort desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<update id="updateSorts" parameterType="java.util.HashMap">
+		update luckygame_goods_issue
+		<set>
+			sort = #{sort}
+		</set>
+		where 1=1
+		<if test='luckygameGoods != null and luckygameGoods != ""'>
+            and luckygame_goods= #{luckygameGoods}
+        </if>
+		<if test='status != null and status != ""'>
+            and status in
+			<foreach collection="status" item="status" index="index" open="(" close=")" separator=",">
+				#{status}
+			</foreach>
+        </if>  
+	</update>
+		
+	<update id="updateOtherSorts" parameterType="java.util.HashMap">
+		update luckygame_goods_issue
+		<set>
+			sort = (sort${sorts})
+		</set>
+		where 1=1
+		<if test='luckygameGoods != null and luckygameGoods != ""'>
+            and <![CDATA[ luckygame_goods<> #{luckygameGoods} ]]>
+        </if>
+		<if test='status != null and status != ""'>
+            and status in
+			<foreach collection="status" item="status" index="index" open="(" close=")" separator=",">
+				#{status}
+			</foreach>
+        </if>  
+	</update>
+	
+	<update id="batchUpdateStatus" parameterType="java.util.HashMap">
+		update luckygame_goods_issue
+		<set>
+			status = #{status}
+		</set>
+		where 1=1
+		<if test='luckygameGoods != null and luckygameGoods != ""'>
+            and luckygame_goods= #{luckygameGoods}
+        </if>
+	</update>
+</mapper>

@@ -8,6 +8,7 @@
 <meta name="format-detection" content="telephone=no" />
 <link rel="stylesheet" href="./css/base.css">
 <link rel="stylesheet" href="./css/tip.css">
+<script src="./js/global.js"></script>
 
 <script id="queboxTpl" type="text/template">
 	<header>
@@ -40,7 +41,7 @@
         {{/if}}
         {{if isApply=='0'}}
 			<p id="item">同意以上条款</p>
-			<input type="button" id="apply" onclick="apply({{:id}},{{:tid}})" value="申请监考" />
+			<input type="button" id="apply" data-id="{{:id}}" data-tid="{{:tid}}" value="申请监考" />
         {{/if}}
 			<p class="error" id="errorMsg"></p>
 	</footer>
@@ -57,7 +58,7 @@
 	<script src="../js/jquery-1.11.1.js"></script>
 	<script src="../js/url.min.js"></script>
 	<script src="../js/jsrender.js"></script>
-	<script src="js/tip.js"></script>
+	<script src="js/tip.js?version=1.3"></script>
 
 </body>
 

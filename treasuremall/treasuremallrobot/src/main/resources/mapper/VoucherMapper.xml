@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.treasuremall.mapper.VoucherMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from voucher where 1=1 
+		<if test='title != null and title != ""'>
+            and title like '%${title}%'
+        </if>
+		<if test='goods != null and goods != ""'>
+            and (goods is null or goods like '%${goods}%')
+        </if>
+        <if test='goodsType != null and goodsType != ""'>
+            and (goods_type is null or goods_type like '%${goodsType}%')
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','disable')
+	        </otherwise>
+        </choose>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.Voucher">
+		select * from voucher where 1=1 
+        <if test='title != null and title != ""'>
+            and title like '%${title}%'
+        </if>
+		<if test='goods != null and goods != ""'>
+            and (goods is null or goods like '%${goods}%')
+        </if>
+        <if test='goodsType != null and goodsType != ""'>
+            and (goods_type is null or goods_type like '%${goodsType}%')
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','disable')
+	        </otherwise>
+        </choose>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+</mapper>

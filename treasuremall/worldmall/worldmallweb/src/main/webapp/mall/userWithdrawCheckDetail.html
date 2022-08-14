@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/luckyGoods.css" />
+		<style>
+			h1{
+				font-weight:normal;
+				font-size:18px;
+				line-height:30px;
+				padding:20px 0 10px 0;
+				text-align:center;
+			}
+			p{
+				padding:3px;
+				font-size:14px;
+				color:#333333;
+				line-height:1.5;
+				min-height:27px;
+			}
+			label{
+				width:100px;
+				display:inline-block;
+				color:#9A9A9A;
+				font-weight:400;
+			}
+			span{
+				font-weight:500;
+			}
+		</style>
+	</head>
+	<body class="layui-layout-body">
+		<input id="uuidInput" type="hidden" value="b40eff7f-b4ff-4f89-a829-b04a0015d4fd"/>
+		<div class="main">
+			<!--header-->
+			<!--content-->
+			<div>
+			    <!-- 内容主体区域 -->
+			    <h1>交易详情</h1>
+			    <div class="layui-bodu" style="padding: 10px 25px;">
+				 	<form class="layui-form layui-form-pane2 layui-row" action="" lay-filter="first">
+					 	<div class="layui-row">
+					 		<div class="layui-col-xs6">
+<!-- 						      <p><label>持卡人：</label><span class="frontUserAccountHolder"></span></p> -->
+<!-- 						      <p><label>开户行：</label><span class="frontUserBankName"></span></p> -->
+						      <p><label>订单号：</label><span class="orderNum"></span></p>
+						      <p><label>提现金额：</label><span class="amount"></span></p>
+						      <p><label>手续费：</label><span class="poundage"></span></p>
+						      <p><label>实际到账：</label><span class="actualAmount"></span></p>
+						    </div>
+						    <div class="layui-col-xs6">
+						      <p><label>PayPal账户：</label><span class="frontUserAccountNumber"></span></p>
+						      <p></p>
+						      <p><label>下单时间：</label><span class="createtime"></span></p>
+						      <p><label>当前余额：</label><span class="frontUserBalance"></span></p>
+						      <p><label>账户冻结金额：</label><span class="frontUserBalanceLock"></span></p>
+						    </div>
+					 	</div>
+					 	<div class="layui-row" style="margin-top:30px;">
+					 		<div class="layui-col-xs6">
+					 			<p><label>用户ID：</label><span class="frontUserShowId"></span></p>
+					 			<p><label>用户状态：</label><span class="status"></span></p>
+						      	<p><label>用户IP：</label><span class="ip"></span></p>
+						      	<p><label>总充值金额：</label><span class="totalRecharge"></span></p>
+						      	<p><label>参与量：</label><span class="totalPayment"></span></p>
+						      	<p><label>注册时间：</label><span class="registertime"></span></p>
+					 		</div>
+					 		<div class="layui-col-xs6">
+					 			<p><label>用户昵称：</label><span class=frontUserNickname></span></p>
+					 			<p><label>用户级别：</label><span class=frontUserLevel></span></p>
+						    	<p><label>所属地区：</label><span class="area"></span></p>
+						    	<p><label>总提现金额：</label><span class="totalWithdraw"></span></p>
+						    	<p><label>积分：</label><span class="scoreBalance"></span></p>
+					 		</div>
+					 	</div>					 	
+			    		<hr>
+					    <div class="layui-col-xs12" style="text-align:center;padding-top:30px;">
+					      	<button class="layui-btn layui-btn-sm lay-nopass">审核不通过</button>
+					    	<button class="layui-btn layui-btn-sm lay-submit" lay-submit lay-filter="*">审核通过</button>
+					    </div>
+				 	</form>
+					<table class="table-list mt-15"></table>
+					<div id="pageTool"></div>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/userWithdrawCheckDetail.js" ></script>
+	</body>
+</html>

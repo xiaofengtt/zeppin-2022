@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.product.worldpay.mapper.StatisticsCompanyMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from statistics_company where 1=1 
+		<if test='dailyDate != null and dailyDate != ""'>
+            and  daily_date = #{dailyDate}
+		</if>
+        <if test='company != null and company != ""'>
+            and company= #{company}
+        </if>
+        <if test='companyChannel != null and companyChannel != ""'>
+            and company_channel= #{companyChannel}
+        </if>
+        <if test='channel != null and channel != ""'>
+            and channel= #{channel}
+        </if>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+        <if test='starttime != null and starttime != ""'>
+            and <![CDATA[ daily_date >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null and endtime != ""'>
+            and <![CDATA[ daily_date <= #{endtime} ]]>
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="com.product.worldpay.entity.StatisticsCompany">
+		select * from statistics_company where 1=1 
+		<if test='dailyDate != null and dailyDate != ""'>
+            and  daily_date = #{dailyDate}
+		</if>
+        <if test='company != null and company != ""'>
+            and company= #{company}
+        </if>
+        <if test='companyChannel != null and companyChannel != ""'>
+            and company_channel= #{companyChannel}
+        </if>
+        <if test='channel != null and channel != ""'>
+            and channel= #{channel}
+        </if>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+        <if test='starttime != null and starttime != ""'>
+            and <![CDATA[ daily_date >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null and endtime != ""'>
+            and <![CDATA[ daily_date <= #{endtime} ]]>
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by daily_date desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<update id="statisticsDaily" parameterType="String">
+		INSERT INTO statistics_company
+			SELECT UUID() as uuid , #{dailyDate} as daily_date, company, company_channel, channel, type, currency, SUM(poundage+amount) as total_amount, SUM(poundage) as poundage, SUM(amount) as amount, NOW() as createtime 
+			FROM company_account_history 
+			WHERE createtime <![CDATA[ >=  ]]> CONCAT(#{dailyDate}, ' 00:00:00') and createtime <![CDATA[ <= ]]> CONCAT(#{dailyDate}, ' 23:59:59')
+			GROUP BY company, company_channel
+	</update>
+	
+	<select id="getDailyStatisticsByParams" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT daily_date as dailyDate, channel, currency, SUM(amount) as amount, SUM(poundage) as poundage, SUM(total_amount) as totalAmount 
+		FROM statistics_company 
+		WHERE 1=1 
+		<if test='company != null and company != ""'>
+            and company= #{company}
+        </if>
+		<if test='starttime != null and starttime != ""'>
+            and <![CDATA[ daily_date >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null and endtime != ""'>
+            and <![CDATA[ daily_date <= #{endtime} ]]>
+        </if>
+		GROUP BY daily_date, type
+		<choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by daily_date desc
+	        </otherwise>
+        </choose>
+	</select>
+	
+	<select id="getCompanyStatisticsByParams" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT company, type, currency, SUM(amount) as amount, SUM(poundage) as poundage, SUM(total_amount) as totalAmount 
+		FROM statistics_company 
+		WHERE 1=1 
+		<if test='starttime != null and starttime != ""'>
+            and <![CDATA[ daily_date >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null and endtime != ""'>
+            and <![CDATA[ daily_date <= #{endtime} ]]>
+        </if>
+		GROUP BY company, channel
+		<choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by company desc
+	        </otherwise>
+        </choose>
+	</select>
+</mapper>

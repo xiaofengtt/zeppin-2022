@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.worldmall.mapper.ActivityInfoCheckinPrizeMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from activity_info_checkin_prize where 1=1 
+		<if test='activityInfo != null and activityInfo != ""'>
+            and activity_info= #{activityInfo}
+        </if>
+		<if test='prize != null and prize != ""'>
+            and prize= #{prize}
+        </if>
+   		<if test='names != null and names != ""'>
+            and prize_title like '%${names}%'
+        </if>
+       	<if test='prizeType != null and prizeType != ""'>
+            and prize_type = #{prizeType}
+        </if>
+        <choose>
+			<when test='status != null and status == "all"'>
+	        	and status in ('normal','disable','delete')
+	        </when>
+	        <otherwise>
+	        	<choose>
+					<when test='status != null and status != ""'>
+			        	and status = #{status}
+			        </when>
+			        <otherwise>
+			        	and status in ('normal','disable')
+			        </otherwise>
+		        </choose>
+	        </otherwise>
+        </choose>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.ActivityInfoCheckinPrize">
+		select * from activity_info_checkin_prize where 1=1 
+		<if test='activityInfo != null and activityInfo != ""'>
+            and activity_info= #{activityInfo}
+        </if>
+		<if test='prize != null and prize != ""'>
+            and prize= #{prize}
+        </if>
+   		<if test='names != null and names != ""'>
+            and prize_title like '%${names}%'
+        </if>
+        <if test='prizeType != null and prizeType != ""'>
+            and prize_type = #{prizeType}
+        </if>
+        <choose>
+			<when test='status != null and status == "all"'>
+	        	and status in ('normal','disable','delete')
+	        </when>
+	        <otherwise>
+	        	<choose>
+					<when test='status != null and status != ""'>
+			        	and status = #{status}
+			        </when>
+			        <otherwise>
+			        	and status in ('normal','disable')
+			        </otherwise>
+		        </choose>
+	        </otherwise>
+        </choose>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by sort desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+</mapper>

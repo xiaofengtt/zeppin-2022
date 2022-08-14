@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>支付宝付款</title>
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/alipayCode.css" />
+<link rel="stylesheet" href="css/wechatCode.css" />
+</head>
+<body>
+	<div class="wrap" id="alipaycode">
+		<div class="first-box">
+			<div class="first-box-top">
+				<span>￥</span><b class="amount"></b>
+				<p>此订单请在 <span class="timeout"></span> 前付款</p>
+			</div>
+			<img onClick="getUrl(this,'img-url')" class="hiddenImg" src=""/>
+			<!-- <button><img src="img/ic-wx.png"/><span>唤起微信App付款</span></button> -->
+			<img class="important-tips" src="img/bg-tips-wx.png" />
+			<ul class="tips">
+				<li>1、进入付款页面后，付款金额必须为<span class="amount"></span>元，否则无法到账！</li>
+				<li>2、二维码付款流程如下：</li>
+			</ul>
+			<div class="img-code">
+				<img src="" />
+			</div>
+			<img src="img/bg-step-wx.png" style="width:100%;" />
+			<div class="fixed-box">
+				<a class="cancle-btn">取消订单</a>
+				<a class="sure-btn">已完成付款</a>
+			</div>
+		</div>
+		<div class="second-box">
+			<div class="first-box-top second-box-top">
+				<span>￥</span><b class="amount"></b>
+				<p>由于订单笔数较多，请复制粘贴微信转账单号到输入框中，我们会优先审核您的充值！</p>
+				<div class="order-box">
+					<input class="orderNumber" name="orderid" placeholder="请输入微信转账单号" />
+					<b class="order-clear"></b>
+				</div>
+				<div class="button-box">
+					<a class="cancle-btn">返回付款</a>
+					<a class="sure-btn">确认提交</a>
+				</div>
+			</div>
+			<div class="second-box-bottom">
+				<ul>
+					<li>
+						<img src="img/6-1.png" />
+						<p>1、打开微信“我”</p>
+					</li>
+					<li>
+						<img src="img/6-2.png" />
+						<p>2、点击“支付”</p>
+					</li>
+					<li>
+						<img src="img/6-3.png" />
+						<p>3、点击“钱包”</p>
+					</li>
+					<li>
+						<img src="img/6-4.png" />
+						<p>4、点击“账单”</p>
+					</li>
+					<li>
+						<img src="img/6-5.png" />
+						<p>5、选择该笔支付记录</p>
+					</li>
+					<li>
+						<img src="img/6-6.png" />
+						<p>6、查看复制转账单号</p>
+					</li>
+				</ul>
+			</div>			
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+	<script src="js/llqrcode.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/analyticCode.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+	<script type="text/javascript" src="js/url.min.js" ></script>
+	<script type="text/javascript" src="js/index.js" ></script>
+	<script type="text/javascript" src="js/wechatCode.js" ></script>
+</body>
+</html>

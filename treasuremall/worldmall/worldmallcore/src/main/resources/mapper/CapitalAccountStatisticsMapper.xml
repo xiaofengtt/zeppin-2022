@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.worldmall.mapper.CapitalAccountStatisticsMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from capital_account_statistics where 1=1 
+        <if test='capitalAccount != null and capitalAccount != ""'>
+            and capital_account= #{capitalAccount}
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.CapitalAccountStatistics">
+		select * from capital_account_statistics where 1=1 
+        <if test='capitalAccount != null and capitalAccount != ""'>
+            and capital_account= #{capitalAccount}
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by balance
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<update id="dailyRefrush">
+		update capital_account_statistics set daily_sum = 0
+	</update>
+</mapper>

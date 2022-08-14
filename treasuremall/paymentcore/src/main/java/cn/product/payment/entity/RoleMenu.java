@@ -1,0 +1,43 @@
+package cn.product.payment.entity;
+
+import java.io.Serializable;
+
+import javax.persistence.Id;
+	
+public class RoleMenu implements Serializable{
+	
+	/**
+	 * 角色菜单权限
+	 */
+	private static final long serialVersionUID = -2810683516560606504L;
+	
+	@Id
+    private String uuid;
+    private String role;
+    private String menu;
+    
+	public String getUuid() {
+		return uuid;
+	}
+	
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getMenu() {
+		return menu;
+	}
+
+	public void setMenu(String menu) {
+		this.menu = menu;
+	}
+    
+}

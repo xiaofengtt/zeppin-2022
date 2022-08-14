@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.worldmall.mapper.WinningInfoMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from winning_info where 1=1 
+		<if test='goodsIssue != null and goodsIssue != ""'>
+            and goods_issue= #{goodsIssue}
+        </if>
+		<if test='gameType != null and gameType != ""'>
+            and game_type= #{gameType}
+        </if>
+   		<if test='demoFlag != null and demoFlag != ""'>
+            and demo_flag= #{demoFlag}
+        </if>
+   		<if test='internationalInfo != null and internationalInfo != ""'>
+            and international_info= #{internationalInfo}
+        </if>
+        <if test='goodsId != null and goodsId != ""'>
+            and goods_id= #{goodsId}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='showId != null and showId != ""'>
+            and show_id= #{showId}
+        </if>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>  
+   		<!-- 时间筛选 -->
+        <if test='timestart != null and timeend != null'>
+            and (<![CDATA[ winning_time > #{timestart} and winning_time < #{timeend} ]]>)
+        </if> 
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.WinningInfo">
+		select * from winning_info where 1=1 
+		<if test='goodsIssue != null and goodsIssue != ""'>
+            and goods_issue= #{goodsIssue}
+        </if>
+		<if test='gameType != null and gameType != ""'>
+            and game_type= #{gameType}
+        </if>
+   		<if test='demoFlag != null and demoFlag != ""'>
+            and demo_flag= #{demoFlag}
+        </if>
+   		<if test='internationalInfo != null and internationalInfo != ""'>
+            and international_info= #{internationalInfo}
+        </if>
+        <if test='goodsId != null and goodsId != ""'>
+            and goods_id= #{goodsId}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='showId != null and showId != ""'>
+            and show_id= #{showId}
+        </if>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+   		<!-- 时间筛选 -->
+        <if test='timestart != null and timeend != null'>
+            and (<![CDATA[ winning_time > #{timestart} and winning_time < #{timeend} ]]>)
+        </if>         
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by winning_time desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getCountByRobotParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from winning_info wi left join front_user fu on wi.front_user = fu.uuid where 1=1 
+		<if test='goodsIssue != null and goodsIssue != ""'>
+            and wi.goods_issue= #{goodsIssue}
+        </if>
+		<if test='gameType != null and gameType != ""'>
+            and wi.game_type= #{gameType}
+        </if>
+   		<if test='demoFlag != null and demoFlag != ""'>
+            and wi.demo_flag= #{demoFlag}
+        </if>
+   		<if test='internationalInfo != null and internationalInfo != ""'>
+            and wi.international_info= #{internationalInfo}
+        </if>
+        <if test='goodsId != null and goodsId != ""'>
+            and wi.goods_id= #{goodsId}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and wi.front_user= #{frontUser}
+        </if>
+        <if test='showId != null and showId != ""'>
+            and wi.show_id= #{showId}
+        </if>
+        <if test='type != null and type != ""'>
+            and wi.type= #{type}
+        </if>  
+        <if test='frontUserType != null and frontUserType != ""'>
+            and fu.type= #{frontUserType}
+        </if> 
+   		<!-- 时间筛选 -->
+        <if test='timestart != null and timeend != null'>
+            and (<![CDATA[ wi.winning_time > #{timestart} and wi.winning_time < #{timeend} ]]>)
+        </if> 
+	</select>
+	
+	<select id="getListByRobotParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.WinningInfo">
+		select wi.* from winning_info wi left join front_user fu on wi.front_user = fu.uuid where 1=1 
+		<if test='goodsIssue != null and goodsIssue != ""'>
+            and wi.goods_issue= #{goodsIssue}
+        </if>
+		<if test='gameType != null and gameType != ""'>
+            and wi.game_type= #{gameType}
+        </if>
+   		<if test='demoFlag != null and demoFlag != ""'>
+            and wi.demo_flag= #{demoFlag}
+        </if>
+   		<if test='internationalInfo != null and internationalInfo != ""'>
+            and wi.international_info= #{internationalInfo}
+        </if>
+        <if test='goodsId != null and goodsId != ""'>
+            and wi.goods_id= #{goodsId}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and wi.front_user= #{frontUser}
+        </if>
+        <if test='showId != null and showId != ""'>
+            and wi.show_id= #{showId}
+        </if>
+        <if test='type != null and type != ""'>
+            and wi.type= #{type}
+        </if>    
+        <if test='frontUserType != null and frontUserType != ""'>
+            and fu.type= #{frontUserType}
+        </if> 
+   		<!-- 时间筛选 -->
+        <if test='timestart != null and timeend != null'>
+            and (<![CDATA[ wi.winning_time > #{timestart} and wi.winning_time < #{timeend} ]]>)
+        </if>          
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by wi.${sort}
+	        </when>
+	        <otherwise>
+	        	order by wi.winning_time asc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getAmountByParams" parameterType="java.util.HashMap" resultType="java.math.BigDecimal">
+		select sum(wi.deal_price) from winning_info wi left join front_user fu on wi.front_user = fu.uuid where 1=1 
+		 
+		<if test='userType != null and userType != ""'>
+            and fu.type= #{userType}
+        </if>
+		<if test='type != null and type != ""'>
+            and wi.type= #{type}
+        </if>
+        <if test='starttime != null and starttime != ""'>
+            and <![CDATA[ wi.winning_time >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null and endtime != ""'>
+            and <![CDATA[ wi.winning_time <= #{endtime} ]]>
+        </if>
+	</select>
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.worldmall.mapper.CapitalAccountHistoryMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from capital_account_history where 1=1 
+        <if test='capitalAccount != null and capitalAccount != ""'>
+            and capital_account= #{capitalAccount}
+        </if>
+        <if test='capitalPlatform != null and capitalPlatform != ""'>
+            and capital_platform= #{capitalPlatform}
+        </if>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.CapitalAccountHistory">
+		select * from capital_account_history where 1=1 
+		<if test='capitalAccount != null and capitalAccount != ""'>
+            and capital_account= #{capitalAccount}
+        </if>
+        <if test='capitalPlatform != null and capitalPlatform != ""'>
+            and capital_platform= #{capitalPlatform}
+        </if>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getTypeList" resultType="cn.product.worldmall.vo.back.StatusCountVO">
+		select type as 'status', count(*) as count from capital_account_history where 1=1 
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+		group by type
+	</select>
+</mapper>

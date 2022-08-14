@@ -48,10 +48,10 @@
 	top: 5px;
 	cursor: pointer;
 }
-#modal{
+#modal,#modal_{
 	position: fixed;
 	width:400px;
-	height:300px;
+	height:500px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
@@ -66,12 +66,12 @@
 	text-align: center;
 	display: none;
 }
-#modal p{
+#modal p,#modal_ p{
 	font-size:18px;
 	margin-top:20px;
 	
 }
-#modal textarea{
+#modal textarea,#modal_ textarea{
 	outline: none;
 	resize:none;
 	width:300px;
@@ -84,11 +84,11 @@
 	padding:6px;
 	font-size:14px;
 }
-#modal .button_g{
+#modal .button_g,#modal_ .button_g{
 	margin-top:20px;
 	text-align: center;
 }
-#modal #close{
+#modal #close,#modal_ #close_{
     display: inline-block;
     width: 70px;
     height: 32px;
@@ -104,7 +104,7 @@
     margin-left: 10px;
     cursor: pointer;
 }
-#modal #submit{
+#modal #submit,#modal_ #submit_{
 	display: inline-block;
     width: 70px;
     height: 32px;

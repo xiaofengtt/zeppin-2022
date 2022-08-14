@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.payment.mapper.ChannelAccountHistoryMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from channel_account_history where 1=1 
+		<if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+		<if test='channel != null and channel != ""'>
+            and channel= #{channel}
+        </if>
+        <if test='channelAccount != null and channelAccount != ""'>
+            and channel_account= #{channelAccount}
+        </if>
+        <if test='company != null and company != ""'>
+            and company= #{company}
+        </if>
+        <if test='orderInfo != null and orderInfo != ""'>
+            and order_info= #{orderInfo}
+        </if>
+        <if test='orderNum != null and orderNum != ""'>
+            and order_num like '%${orderNum}%'
+        </if>
+        <if test='starttime != null and starttime != ""'>
+            and <![CDATA[ createtime >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null and endtime != ""'>
+            and <![CDATA[ createtime <= #{endtime} ]]>
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.payment.entity.ChannelAccountHistory">
+		select * from channel_account_history where 1=1 
+		<if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+        <if test='channel != null and channel != ""'>
+            and channel= #{channel}
+        </if>
+        <if test='channelAccount != null and channelAccount != ""'>
+            and channel_account= #{channelAccount}
+        </if>
+        <if test='company != null and company != ""'>
+            and company= #{company}
+        </if>
+        <if test='orderInfo != null and orderInfo != ""'>
+            and order_info= #{orderInfo}
+        </if>
+        <if test='orderNum != null and orderNum != ""'>
+            and order_num like '%${orderNum}%'
+        </if>
+        <if test='starttime != null and starttime != ""'>
+            and <![CDATA[ createtime >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null and endtime != ""'>
+            and <![CDATA[ createtime <= #{endtime} ]]>
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+</mapper>

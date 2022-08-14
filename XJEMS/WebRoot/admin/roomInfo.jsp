@@ -20,7 +20,12 @@
                     <div class="title_color">
                         <table class="header_table">
                         		<tr>
-                        			<td class="b_r" title="{{:roomIndex}}">考场号：{{:roomIndex}}</td>
+                        			<td class="b_r" title="{{:roomIndex}}">
+                        				{{if roomType != ""}}
+                        					({{:roomType}})
+                        				{{/if}}
+                        				考场号：{{:roomIndex}}
+                        			</td>
                         			<td class="b_r" title="{{:roomAddress}}">考场地点：{{:roomAddress}}</td>
                         			<td>
                            			<a href="javascript:;" class="first_a">修改</a>
@@ -61,6 +66,10 @@
 				<div class="box">
 	        			<p>考场地点：</p>
 	        			<input type="text" name="roomAddress" value="{{:roomAddress}}" id="roomAddress" placeholder="请填写考场地点..."/>
+				</div>
+                <div class="box">
+	        			<p>考场分类：</p>
+	        			<input type="text" name="roomType" value="{{:roomType}}" id="roomType" placeholder="请填写考场分类..."/>
 				</div>
 				
 				{{for examnation}}

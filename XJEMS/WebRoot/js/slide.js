@@ -2,7 +2,7 @@ $(document).ready(function () {
     $(".more p span").click(function () {
         if ($(".main_header").height() == 85) {
             $(".main_header").css({
-                "height": "210px"
+                "height": "240px"
             });
 			$(this).html("收起更多筛选<i class='iconfont'><img src='../img/top_r.png'></i>")
         } else {

@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+.coverImg{
+	max-width:80px;
+}
+p{
+	padding:2px;
+	font-size:12px;
+	color:#525252;
+	line-height:1.2;
+}
+.layui-form-label{
+	width:130px;
+	text-align:right;
+}

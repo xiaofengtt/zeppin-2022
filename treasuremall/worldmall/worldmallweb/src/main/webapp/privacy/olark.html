@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>Olark</title>
+<link rel="stylesheet" href="css/base.css" />
+<style>
+	body{background:#fff;}
+	.content{
+		padding: 0.1rem;
+	}
+	.notes{
+		background: #f4f5f5;
+		padding: 0.2rem;
+		text-align: center;
+		font-size: 90%;
+	    line-height: 1.2;
+	    color: #404040;
+	    margin: 0.2rem 0;
+	    border-radius: 4px;
+	}
+	button{
+		display: block;
+		width: 100%;
+        background: linear-gradient(90deg, #FECF02 0%, #FFBC02 100%);
+    		color: #333333;
+    		height: 0.8rem;
+    		font-size: 0.3rem;
+    		border-radius: 4px;
+	}
+	p{
+		font-size: 80%;
+    		color: #404040;
+    		margin-bottom: 0.04rem;
+	}
+	input,textarea{
+		padding-right: 1.8em;
+		font-size: 0.16rem;
+		background: #f7f8f8;
+		width: 100%;
+		padding: 0.2rem;
+		border-radius: 4px;
+		margin: 0.1rem 0 0.2rem 0;
+		border: 1px solid #F7F8F8;
+	}
+	textarea{
+		min-height: 1.5rem;
+	}
+	.red{
+		border-color:red;
+	}
+</style>
+</head>
+<body>
+<!-- <div class="wrap">
+	<div class="content">
+		<div class="notes">We're not around but we still want to hear from you! Leave us a note:</div>
+		<p>Name</p>
+		<input class="name" placeholder="Enter your name" type="text" />
+		<p>Email</p>
+		<input class="email" placeholder="Enter your email" type="text" />
+		<p>Message</p>
+		<textarea placeholder=""></textarea>
+		<button>Send</button>
+	</div>
+</div> -->
+<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+<!-- <script type="text/javascript" src="js/index.js" ></script>
+<script>
+	$('button').click(function(){
+		var name = $(".name").val().replace(/(^\s*)|(\s*$)/g, "");
+		var mail = $(".email").val().replace(/(^\s*)|(\s*$)/g, "");
+		var message = $("textarea").val().replace(/(^\s*)|(\s*$)/g, "");
+		if(name == ''){
+			$(".name").addClass("red")
+			return false;
+		}else{
+			$(".name").removeClass("red")
+		}
+		if(mail == ''){
+			$(".email").addClass("red")
+			return false;
+		}else{
+			$(".email").removeClass("red")
+		}
+		if(message == ''){
+			$("textarea").addClass("red")
+			return false;
+		}else{
+			$("textarea").removeClass("red")
+		}
+		alert('We have received your letter and will deal with it as soon as possible')
+	})
+</script> -->
+<script type="text/javascript" async> ;(function(o,l,a,r,k,y){if(o.olark)return; r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0]; y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r); y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)}; y.extend=function(i,j){y("extend",i,j)}; y.identify=function(i){y("identify",k.i=i)}; y.configure=function(i,j){y("configure",i,j);k.c[i]=j}; k=y._={s:[],t:[+new Date],c:{},l:a}; })(window,document,"static.olark.com/jsclient/loader.js");
+olark.identify('6551-424-10-7689');olark('api.box.expand');</script>
+
+</body>
+</html>

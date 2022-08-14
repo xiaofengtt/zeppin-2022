@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.worldmall.mapper.ChannelMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from channel where 1=1 
+		<if test='channelId != null and channelId != ""'>
+            and channel_id= #{channelId}
+        </if>
+        <if test='title != null and title != ""'>
+            and title like '%${title}%'
+        </if>
+        <if test='isDefault != null and isDefault != ""'>
+            and is_default= ${isDefault}
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','disable')
+	        </otherwise>
+        </choose>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.Channel">
+		select * from channel where 1=1 
+		<if test='channelId != null and channelId != ""'>
+            and channel_id= #{channelId}
+        </if>
+        <if test='title != null and title != ""'>
+            and title like '%${title}%'
+        </if>
+        <if test='isDefault != null and isDefault != ""'>
+            and is_default= ${isDefault}
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','disable')
+	        </otherwise>
+        </choose>
+        
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<update id="updateIsDefault">
+		update channel
+		<set>
+			is_default = 0
+		</set>
+	</update>
+</mapper>

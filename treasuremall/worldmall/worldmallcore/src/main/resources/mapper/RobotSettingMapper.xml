@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.worldmall.mapper.RobotSettingMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from robot_setting where 1=1 
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.RobotSetting">
+		select * from robot_setting where 1=1 
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by game_type desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	<update id="updateStatus" parameterType="java.util.HashMap">
+		update robot_setting
+		<set>
+			status = #{status}
+		</set>
+		where robot_id in
+		<foreach collection="uuid" item="uuid" index="index" open="(" close=")" separator=",">
+			#{uuid}
+		</foreach>
+	</update>
+</mapper>

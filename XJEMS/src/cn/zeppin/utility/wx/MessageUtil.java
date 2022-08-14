@@ -131,7 +131,7 @@ public class MessageUtil {
 		News news = new News();
 		news.setTitle(information.getName());
 		news.setDescription(HtmlHelper.parseString2Html(information.getInformation()));
-		news.setPicUrl("http://ks.xjnu.edu.cn/img/exam.png");
+		news.setPicUrl("http://ks.xsdkszx.cn/img/exam.png");
 		news.setUrl("");
 
 		newsList.add(news);

@@ -1,11 +1,13 @@
 package cn.zeppin.utility;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
@@ -109,7 +111,7 @@ public class Utlity {
 	 * @return true|false
 	 */
 	public static boolean isMobileNO(String mobiles) {
-		Pattern p = Pattern.compile("^1[34578]\\d{9}$");
+		Pattern p = Pattern.compile("^1[3456789]\\d{9}$");
 		Matcher m = p.matcher(mobiles);
 		return m.matches();
 	}
@@ -434,6 +436,10 @@ public class Utlity {
 			return "研究生";
 		case Dictionary.INVIGILATION_TEACHER_TYPE3:
 			return "教职工";
+		case Dictionary.INVIGILATION_TEACHER_TYPE4:
+			return "本科";
+		case Dictionary.INVIGILATION_TEACHER_TYPE5:
+			return "非师大人员";
 		default:
 			return "";
 		}
@@ -496,46 +502,29 @@ public class Utlity {
 //		String sms = "您本次操作的验证码为："+captcha+",本次验证码5分钟后失效！";
 		return captcha;
 	}
+	/**
+	 *  获取系统当前年份
+	 * @return
+	 */
+	public static String getSysYear() {
+        Calendar date = Calendar.getInstance();
+        String year = String.valueOf(date.get(Calendar.YEAR));
+        return year;
+	}
 	
-//	/**
-//	 * 设置Excel Title栏样式
-//	 * 
-//	 * @param wb
-//	 * @return
-//	 */
-//	@SuppressWarnings("deprecation")
-//	public static HSSFCellStyle setStyleForTitle(HSSFWorkbook wb) {
-//		// 设置字体
-//		HSSFFont font = wb.createFont();
-//		font.setFontHeightInPoints((short) 11); // 字体高度
-//		font.setBoldweight(Font.BOLDWEIGHT_BOLD);
-//		// 设置单元格类型
-//		HSSFCellStyle cellStyle = wb.createCellStyle();
-//		cellStyle.setFont(font);
-//		cellStyle.setFillForegroundColor(HSSFColor.LIGHT_GREEN.index);
-//		cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
-//		cellStyle.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);// 水平居中且垂直居中
-//		cellStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
-//		cellStyle.setWrapText(true);
-//		return cellStyle;
-//	}
-//
-//	/**
-//	 * 设置Excel 内容栏样式
-//	 * 
-//	 * @param wb
-//	 * @return
-//	 */
-//	@SuppressWarnings("deprecation")
-//	public static HSSFCellStyle setStyleForContent(HSSFWorkbook wb) {
-//		// 设置字体
-//		HSSFFont font = wb.createFont();
-//		font.setFontHeightInPoints((short) 20); // 字体高度
-//		// 设置单元格类型
-//		HSSFCellStyle cellStyle = wb.createCellStyle();
-//		cellStyle.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);// 水平居中且垂直居中
-//		cellStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
-//		cellStyle.setWrapText(true);// 自动换行
-//		return cellStyle;
-//	}
+	/**
+	 *  Base64解码
+	 * @param encodedText
+	 * @return
+	 */
+	public static String getBase64Decoder(String encodedText){
+		Base64.Decoder decoder = Base64.getDecoder();
+		try {
+			return new String(decoder.decode(encodedText), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

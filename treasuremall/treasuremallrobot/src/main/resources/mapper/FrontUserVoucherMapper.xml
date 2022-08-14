@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.treasuremall.mapper.FrontUserVoucherMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_voucher where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='goods != null and goods != ""'>
+            and (goods is null or goods like '%${goods}%')
+        </if>
+        <if test='goodsType != null and goodsType != ""'>
+            and (goods_type is null or goods_type like '%${goodsType}%')
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+        <if test='statusArr != null and statusArr != ""'>
+            and status in ${statusArr}
+        </if>
+        <if test='creator != null and creator != ""'>
+            and creator = #{creator}
+        </if>
+        <if test='backlist != null and backlist != ""'>
+            and creator is not null
+        </if>
+        <!-- 创建时间筛选 -->
+        <if test='timestart != null and timeend != null'>
+            and (<![CDATA[ createtime > #{timestart} and createtime < #{timeend} ]]>)
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUserVoucher">
+		select * from front_user_voucher where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='goods != null and goods != ""'>
+            and (goods is null or goods like '%${goods}%')
+        </if>
+        <if test='goodsType != null and goodsType != ""'>
+            and (goods_type is null or goods_type like '%${goodsType}%')
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+        <if test='statusArr != null and statusArr != ""'>
+            and status in ${statusArr}
+        </if>
+        <if test='creator != null and creator != ""'>
+            and creator = #{creator}
+        </if>
+        <if test='backlist != null and backlist != ""'>
+            and creator is not null
+        </if>
+        <!-- 创建时间筛选 -->
+        <if test='timestart != null and timeend != null'>
+            and (<![CDATA[ createtime > #{timestart} and createtime < #{timeend} ]]>)
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getLeftCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_voucher fuv left join front_user fu on fuv.front_user=fu.uuid where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and fuv.front_user= #{frontUser}
+        </if>
+        <if test='goods != null and goods != ""'>
+            and (fuv.goods is null or fuv.goods like '%${goods}%')
+        </if>
+        <if test='goodsType != null and goodsType != ""'>
+            and (fuv.goods_type is null or fuv.goods_type like '%${goodsType}%')
+        </if>
+		<if test='status != null and status != ""'>
+            and fuv.status= #{status}
+        </if>
+        <if test='statusArr != null and statusArr != ""'>
+            and fuv.status in ${statusArr}
+        </if>
+        <if test='showid != null and showid != ""'>
+            and fu.show_id = #{showid}
+        </if>
+		<if test='mobile != null and mobile != ""'>
+            and fu.mobile = #{mobile}
+        </if>
+        <if test='userType != null and userType != ""'>
+            and fu.type= #{userType}
+        </if>
+        <if test='creator != null and creator != ""'>
+            and fuv.creator = #{creator}
+        </if>
+        <if test='backlist != null and backlist != ""'>
+            and fuv.creator is not null
+        </if>
+        <!-- 创建时间筛选 -->
+        <if test='timestart != null and timeend != null'>
+            and (<![CDATA[ fuv.createtime > #{timestart} and fuv.createtime < #{timeend} ]]>)
+        </if>
+	</select>
+	
+	<select id="getLeftListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUserVoucher">
+		select fuv.* from front_user_voucher fuv left join front_user fu on fuv.front_user=fu.uuid where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and fuv.front_user= #{frontUser}
+        </if>
+        <if test='goods != null and goods != ""'>
+            and (fuv.goods is null or fuv.goods like '%${goods}%')
+        </if>
+        <if test='goodsType != null and goodsType != ""'>
+            and (fuv.goods_type is null or fuv.goods_type like '%${goodsType}%')
+        </if>
+		<if test='status != null and status != ""'>
+            and fuv.status= #{status}
+        </if>
+        <if test='statusArr != null and statusArr != ""'>
+            and fuv.status in ${statusArr}
+        </if>
+        <if test='showid != null and showid != ""'>
+            and fu.show_id = #{showid}
+        </if>
+		<if test='mobile != null and mobile != ""'>
+            and fu.mobile = #{mobile}
+        </if>
+        <if test='userType != null and userType != ""'>
+            and fu.type= #{userType}
+        </if>
+        <if test='creator != null and creator != ""'>
+            and fuv.creator = #{creator}
+        </if>
+        <if test='backlist != null and backlist != ""'>
+            and fuv.creator is not null
+        </if>
+        <!-- 创建时间筛选 -->
+        <if test='timestart != null and timeend != null'>
+            and (<![CDATA[ fuv.createtime > #{timestart} and fuv.createtime < #{timeend} ]]>)
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by fuv.${sort}
+	        </when>
+	        <otherwise>
+	        	order by fuv.createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getStatusList" resultType="cn.product.treasuremall.vo.front.StatusCountVO">
+		select status as 'status', count(*) as count from front_user_voucher where 1=1 
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+        <if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+		group by status
+	</select>
+</mapper>

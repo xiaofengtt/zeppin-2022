@@ -93,6 +93,7 @@ public class ExamRoomService implements IExamRoomService {
 			ExamRoom room = new ExamRoom();
 			String roomIndex = excel.get("roomIndex");
 			String roomAddress = excel.get("roomAddress");
+			String roomType = excel.get("roomType");
 //			String examnationTime = excel.get("examnationTime");
 //			String examnationInformation = excel.get("examnationInformation");
 //			String arrivaltime = excel.get("arrivaltime");
@@ -104,6 +105,7 @@ public class ExamRoomService implements IExamRoomService {
 					ExamRoom currenExamRoom = list.get(i);
 					if (roomAddress.equals(currenExamRoom.getRoomAddress())) {// 已存在考场地点
 						currenExamRoom.setRoomIndex(roomIndex);
+						currenExamRoom.setRoomType(roomType);
 //						currenExamRoom.setExamnationTime(examnationTime);
 //						currenExamRoom.setExamnationInformation(examnationInformation);
 //						currenExamRoom.setArrivaltime(arrivaltime);
@@ -118,6 +120,7 @@ public class ExamRoomService implements IExamRoomService {
 				room.setRoomIndex(roomIndex);
 				room.setRoomAddress(roomAddress);
 				room.setExam(information);
+				room.setRoomType(roomType);
 //				room.setExamnationTime(examnationTime);
 //				room.setExamnationInformation(examnationInformation);
 //				room.setArrivaltime(arrivaltime);
@@ -131,6 +134,16 @@ public class ExamRoomService implements IExamRoomService {
 			int percent = (int) Math.ceil(((rowCount + excelList.indexOf(excel)) * 100) / (rowCount * 2));
 			session.setAttribute("percent", percent);
 		}
+	}
+
+	@Override
+	public List<Object[]> searchByGroup(Map<String, Object> searchMap) {
+		return this.iExamRoomDAO.searchByGroup(searchMap);
+	}
+
+	@Override
+	public void updateInvigilationNotice(Map<String, Object> searchMap, String invigilationNotice) {
+		this.iExamRoomDAO.updateInvigilationNotice(searchMap, invigilationNotice);
 	}
 
 }

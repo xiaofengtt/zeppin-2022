@@ -139,6 +139,8 @@ public class Dictionary {
 	public static final short INVIGILATION_TEACHER_TYPE = 1;// 考务组
 	public static final short INVIGILATION_TEACHER_TYPE2 = 2;// 研究生
 	public static final short INVIGILATION_TEACHER_TYPE3 = 3;// 教工
+	public static final short INVIGILATION_TEACHER_TYPE4 = 4;// 本科
+	public static final short INVIGILATION_TEACHER_TYPE5 = 5;// 非师大人员
 
 	public static final short INVIGILATION_TEACHER_CAMPUS_ALL = 0;// 全部（均可）
 	public static final short INVIGILATION_TEACHER_CAMPUS_WQ = 1;// 温泉校区

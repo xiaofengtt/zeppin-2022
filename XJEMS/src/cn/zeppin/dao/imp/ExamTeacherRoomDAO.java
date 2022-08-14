@@ -6,6 +6,7 @@ import java.util.Map;
 import cn.zeppin.dao.api.IExamTeacherRoomDAO;
 import cn.zeppin.dao.base.HibernateTemplateDAO;
 import cn.zeppin.entity.ExamTeacherRoom;
+import cn.zeppin.utility.Utlity;
 
 /**
  * ClassName: ExamTeacherRoomDAO <br/>
@@ -25,6 +26,9 @@ public class ExamTeacherRoomDAO extends HibernateTemplateDAO<ExamTeacherRoom, In
 		}
 		if (searchMap.get("status") != null && !searchMap.get("status").equals("")) {
 			hql.append(" and su.status=").append(searchMap.get("status"));
+		}
+		if (searchMap.get("isApply") != null && !searchMap.get("isApply").equals("")) {
+			hql.append(" and su.status<>0");
 		}
 		if (searchMap.get("exam") != null && !searchMap.get("exam").equals("")) {
 			hql.append(" and su.exam=").append(searchMap.get("exam"));
@@ -74,6 +78,11 @@ public class ExamTeacherRoomDAO extends HibernateTemplateDAO<ExamTeacherRoom, In
 		if (searchMap.get("roomId") != null && !searchMap.get("roomId").equals("")) {
 			hql.append(" and (su.room is null").append(" or su.room.id=" + searchMap.get("roomId") + ")");
 		}
+
+		//考场分类
+		if (searchMap.get("roomType") != null && !searchMap.get("roomType").equals("")) {
+			hql.append(" and su.room.roomType='").append(searchMap.get("roomType")).append("'");
+		}
 		// if (searchMap.get("status") != null &&
 		// !searchMap.get("status").equals("")){
 		// hql.append(" and su.status=").append(searchMap.get("status"));
@@ -106,6 +115,23 @@ public class ExamTeacherRoomDAO extends HibernateTemplateDAO<ExamTeacherRoom, In
 		}
 		if (searchMap.get("invigilateCampus") != null && !searchMap.get("invigilateCampus").equals("")) {
 			hql.append(" and t.invigilateCampus=").append(searchMap.get("invigilateCampus"));
+		}
+		if (searchMap.get("startTime") != null && !searchMap.get("startTime").equals("")) {
+			hql.append(" and su.startTime = '").append(searchMap.get("startTime")+" 00:00:00'");
+		}
+		if (searchMap.get("endTime") != null && !searchMap.get("endTime").equals("")) {
+			hql.append(" and su.endTime = '").append(searchMap.get("endTime")+ " 00:00:00'");
+		}
+		if (searchMap.get("studyGrade") != null && !searchMap.get("studyGrade").equals("")) {
+			if ("other".equals(searchMap.get("studyGrade"))) {
+				int currentYear = Integer.parseInt(Utlity.getSysYear());
+				for (int i = currentYear; i > currentYear - 4; i--) {
+					hql.append(" and t.studyGrade !='").append(i + "级'");
+				}
+//				hql.append(" or t.studyGrade =''");
+			} else {
+				hql.append(" and t.studyGrade ='").append(searchMap.get("studyGrade") + "'");
+			}
 		}
 
 		// 排序
@@ -149,6 +175,9 @@ public class ExamTeacherRoomDAO extends HibernateTemplateDAO<ExamTeacherRoom, In
 		if (searchMap.get("status") != null && !searchMap.get("status").equals("")) {
 			hql.append(" and su.status=").append(searchMap.get("status"));
 		}
+		if (searchMap.get("isApply") != null && !searchMap.get("isApply").equals("")) {
+			hql.append(" and su.status<>0");
+		}
 		if (searchMap.get("exam") != null && !searchMap.get("exam").equals("")) {
 			hql.append(" and su.exam=").append(searchMap.get("exam"));
 		}
@@ -197,6 +226,10 @@ public class ExamTeacherRoomDAO extends HibernateTemplateDAO<ExamTeacherRoom, In
 		if (searchMap.get("roomId") != null && !searchMap.get("roomId").equals("")) {
 			hql.append(" and (su.room is null").append(" or su.room.id=" + searchMap.get("roomId") + ")");
 		}
+		//考场分类
+		if (searchMap.get("roomType") != null && !searchMap.get("roomType").equals("")) {
+			hql.append(" and su.room.roomType=").append(searchMap.get("roomType"));
+		}
 		// if (searchMap.get("status") != null &&
 		// !searchMap.get("status").equals("")){
 		// hql.append(" and su.status=").append(searchMap.get("status"));
@@ -230,6 +263,24 @@ public class ExamTeacherRoomDAO extends HibernateTemplateDAO<ExamTeacherRoom, In
 		if (searchMap.get("invigilateCampus") != null && !searchMap.get("invigilateCampus").equals("")) {
 			hql.append(" and t.invigilateCampus=").append(searchMap.get("invigilateCampus"));
 		}
+		if (searchMap.get("startTime") != null && !searchMap.get("startTime").equals("")) {
+			hql.append(" and su.startTime = '").append(searchMap.get("startTime")+" 00:00:00'");
+		}
+		if (searchMap.get("endTime") != null && !searchMap.get("endTime").equals("")) {
+			hql.append(" and su.endTime = '").append(searchMap.get("endTime")+ " 00:00:00'");
+		}
+		if (searchMap.get("studyGrade") != null && !searchMap.get("studyGrade").equals("")) {
+			if ("other".equals(searchMap.get("studyGrade"))) {
+				int currentYear = Integer.parseInt(Utlity.getSysYear());
+				for (int i = currentYear; i > currentYear - 4; i--) {
+					hql.append(" and t.studyGrade !='").append(i + "级'");
+				}
+//				hql.append(" or t.studyGrade =''");
+			} else {
+				hql.append(" and t.studyGrade ='").append(searchMap.get("studyGrade") + "'");
+			}
+		}
+		
 		return ((Long) this.getResultByHQL(hql.toString())).intValue();
 	}
 
@@ -247,6 +298,9 @@ public class ExamTeacherRoomDAO extends HibernateTemplateDAO<ExamTeacherRoom, In
 		}
 		if (searchMap.get("exam") != null && !searchMap.get("exam").equals("")) {
 			hql.append(" and su.exam=").append(searchMap.get("exam"));
+		}
+		if (searchMap.get("isConfirm") != null && !searchMap.get("isConfirm").equals("")) {
+			hql.append(" and su.isConfirm=1");
 		}
 		if (searchMap.get("distribute") != null && !searchMap.get("distribute").equals("")) {
 			if ("2".equals(searchMap.get("distribute"))) {

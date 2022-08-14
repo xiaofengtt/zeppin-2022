@@ -91,6 +91,10 @@
 .out_box .inner_box span{
     font-size:16px;
 }
+.out_box .inner_box span.marked{
+    font-size:12px;
+    color:#808080;
+}
 .out_box .inner_box input[type="checkbox"]{
     display: none;
 }
@@ -303,4 +307,8 @@
 	-ms-border-radius: 5px;
 	-moz-border-radius: 5px;
 	cursor: pointer;
+}
+
+.hide{
+	display: none;
 }

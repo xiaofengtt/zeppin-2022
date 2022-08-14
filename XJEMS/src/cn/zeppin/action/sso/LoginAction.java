@@ -90,9 +90,9 @@ public class LoginAction extends BaseAction {
 		if (!this.containsParameter("loginname", "password", "authcode")) {
 			result.init(FAIL_STATUS, "接口参数传递不正确！", null);
 		} else {
-			String loginName = request.getParameter("loginname");
-			String passWord = request.getParameter("password");
-			String authCode = request.getParameter("authcode");
+			String loginName = Utlity.getBase64Decoder(request.getParameter("loginname"));
+			String passWord = Utlity.getBase64Decoder(request.getParameter("password"));
+			String authCode = Utlity.getBase64Decoder(request.getParameter("authcode"));
 			// 验证用户名为空
 			if (loginName == null || loginName.equals("")) {
 				result.init(FAIL_STATUS, "没有输入用户名！", null);

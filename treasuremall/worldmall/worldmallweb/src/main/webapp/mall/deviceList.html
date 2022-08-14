@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<style>
+			.layui-input-block{
+				margin-left: 90px;
+			}
+		</style>
+	</head>
+	<body class="layui-layout-body">
+		<input id="uuidInput" type="hidden" value="b07ee217-6500-11eb-886e-fcaa14314cbe"/>
+		<div class="main layui-layout layui-layout-admin">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="layui-body">
+			    <!-- 内容主体区域 -->
+				    <div class="layui-bodu" style="padding: 15px;">
+				    	<div class="layui-btn-group">
+				    	    <a class="layui-btn addMessage" data-type="parseTable">批量发送</a>
+							<a class="layui-btn addTheme" data-type="parseTable">绑定主题</a>
+						</div>
+				    	<form class="layui-form layui-form-pane1" action="" lay-filter="first" style="position:absolute;right:30px;top:35px;max-width:1050px;">
+						 	<div class="layui-form-item">
+						 		<div class="layui-col-md4 mb-15 layui-input-inline" style="width:250px;">
+					    			<label class="layui-form-label">设备类型</label>
+								    <div class="layui-input-block">
+								      	<select name="deviceType" lay-filter="quiz">
+											<option value="">全部</option>
+											<option value="01">iOS</option>
+											<option value="02">Android</option>
+								        </select>
+								    </div>
+					    		</div>
+						 		<div class="layui-col-md4 mb-15 layui-input-inline" style="width:250px;">
+						 			<label class="layui-form-label">所属主题</label>
+						 		    <div class="layui-input-block">
+						 		      	<select name="topic" lay-filter="quiz">
+						 		 
+						 		        </select>
+						 		    </div>
+						 		</div>
+								<div class="layui-col-md4 mb-15 layui-input-inline" style="width:250px;">
+									<label class="layui-form-label">用户群组</label>
+								    <div class="layui-input-block">
+								      	<select name="frontUserGroup" lay-filter="quiz">
+											<option value="">全部用户</option>
+											<option value="registered">注册用户</option>
+											<option value="recharged">充值用户</option>
+											<option value="VIP">VIP用户</option>
+											<option value="demo">测试用户</option>
+											<option value="visitor">游客</option>
+								        </select>
+								    </div>
+								</div>
+							     <button type="button" class="layui-btn layui-btn-primary" onclick="pageNum=1;getList()">
+								  	<i class="layui-icon">&#xe615;</i>
+								</button>
+							  </div>
+						 </form>
+						 <table class="table-list mt-15"></table>
+						 <div id="pageTool"></div>
+				    </div>
+			 </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/alert.js" ></script>
+		<script type="text/javascript" src="js/deviceList.js" ></script>
+	</body>
+</html>

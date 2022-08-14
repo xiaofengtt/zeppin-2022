@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<style>
+		.layui-form-pane1{
+			max-width:100%;
+		}
+		.layui-form-item .layui-input-block,.layui-form-item .layui-input-inline{
+			width:300px;
+		}
+		.layui-form-label{
+			width:120px;
+		}
+		.goodsImg{
+			position:absolute;
+			left:760px;
+			top:67px;
+			/* text-align:center; */
+			z-index:2;
+		}
+		.goodsImg img{
+			max-width:300px;
+			max-height:400px;
+		}
+		.goodsImg p{
+			display:none;
+		}
+		.layui-input-inline-value{
+			width:auto !important;
+			/* max-width:300px; */
+			line-height:38px;
+			font-size:13px;
+			color:#f55503;
+		}
+		.layui-input-inline-value span{
+			display:none;
+		}
+		</style>
+	</head>
+	<body class="layui-layout-body">
+		<input id="uuidInput" type="hidden" value="10b52671-d03c-417f-9cd1-d88549b6c076"/>
+		<div class="main layui-layout layui-layout-admin">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="layui-body">
+			    <!-- 内容主体区域 -->
+				    <div class="layui-bodu" style="padding: 15px;">
+				    
+					 	<span class="layui-breadcrumb">
+						  <a href="javascript:">抽奖管理</a>
+						  <a class="goPrePage" href="javascript:">战队pk商品配置</a>
+						  <a><cite>添加编辑</cite></a>
+						</span>
+						<hr>
+						<form class="layui-form layui-form-pane1 layui-form-tips" action="" lay-filter="first" >
+							    <div class="layui-item">
+									<div class="layui-form-item" style="position:relative;">
+									    <label class="layui-form-label">选择奖品</label>
+									    <div class="layui-input-block">
+									      <button class="layui-btn layui-btn-primary demoFlag-btn" style="margin-left:20px;" data-flag="0">普通商品</button>
+									      <button class="layui-btn layui-btn-primary demoFlag-btn" data-flag="1">马甲商品</button>
+									    </div>
+									    <div class="layui-input-inline" style="margin-top:10px;">
+									      <input type="text" name="goodsId" class="layui-input" readonly >
+									    </div>
+									    <div class="layui-input-inline layui-input-inline-value">
+									      <span class="oldgoosname"></span>
+									    </div>
+									    <p class="layui-tips tips-must"></p>
+									    <div class="goodsImg">
+									    	<p>商品code：<span class="goodsCode"></span></p>
+									    	<img src=""/>
+									    </div>
+									  </div>
+									  <div class="layui-form-item selectedGoods" style="display:none">
+									    <label class="layui-form-label"></label>
+									    <div class="layui-input-inline">
+									      <img src="" />
+									    </div>
+									  </div>
+									  <div class="layui-form-item">
+									    <label class="layui-form-label">商品价值</label>
+									    <div class="layui-input-inline">
+									      <input type="number" name="" readonly class="layui-input goodsPrice" >
+									    </div>
+									    <div class="layui-input-inline layui-input-inline-value">
+									      <span class="oldgoosprice"></span>
+									    </div>
+									    <p class="layui-tips">单位：美元</p>
+									  </div>
+									  <div class="layui-form-item">
+									    <label class="layui-form-label">奖品价值金币</label>
+									    <div class="layui-input-inline">
+									      <input type="number" name="dPrice" readonly class="layui-input" >
+									    </div>
+									    <div class="layui-input-inline layui-input-inline-value">
+									      <span class="oldgoosdPrice"></span>
+									    </div>
+									  </div>
+									  <div class="layui-form-item">
+									      <label class="layui-form-label">盈利比例</label>
+									      <div class="layui-input-inline">
+									        <select name="profitRate" lay-filter="quiz">
+									           <option value="">请选择</option>
+									           <option value="1.05">1.05</option>
+									           <option value="1.1">1.1</option>
+										       <option value="1.2">1.2</option>
+										       <option value="1.25">1.25</option>
+										       <option value="1.3">1.3</option>
+										       <option value="1.35">1.35</option>
+										       <option value="1.4">1.4</option>
+										       <option value="1.45">1.45</option>
+										       <option value="1.5">1.5</option>
+										       <option value="1.55">1.55</option>
+										       <option value="1.6">1.6</option>
+										       <option value="1.7">1.7</option>
+										       <option value="1.75">1.75</option>
+										       <option value="1.8">1.8</option>
+										       <option value="1.85">1.85</option>
+										       <option value="1.9">1.9</option>
+										       <option value="1.95">1.95</option>
+										       <option value="2">2</option>
+									        </select>
+									      </div>
+									      <p class="layui-tips tips-must"></p>
+									  </div>
+									  <div class="layui-form-item">
+									    <label class="layui-form-label">总金币</label>
+									    <div class="layui-input-inline">
+									      <input type="text" name="" readonly class="layui-input dTotal" >
+									    </div>
+									    <div class="layui-input-inline layui-input-inline-value">
+									      <span class="oldgoosdTotal"></span>
+									    </div>
+									  </div>
+									  <div class="layui-form-item">
+									    <label class="layui-form-label">单人次金币</label>
+									    <div class="layui-input-inline">
+									      <input type=""number"" name="betPerShare" placeholder="请输入单人次金币" autocomplete="off" class="layui-input" >
+									    </div>
+									    <p class="layui-tips tips-must"></p>
+									  </div>
+									  <div class="layui-form-item">
+									    <label class="layui-form-label">总需人次</label>
+									    <div class="layui-input-inline">
+									      <input type="number" name="shares" class="layui-input totalDemand" readonly >
+									    </div>
+									    <div class="layui-input-inline layui-input-inline-value">
+									      <span class="oldgoostotalDemand"></span>
+									    </div>
+									    <p class="layui-tips tips-must">需设置为偶数</p>
+									  </div>
+									  <div class="layui-form-item">
+									    <label class="layui-form-label">已揭晓期数</label>
+									    <div class="layui-input-inline">
+									      <div class="layui-form-mid layui-word-aux"><span class="currentIssueNum"></span>期</div>
+									    </div>
+									  </div>
+									  <div class="layui-form-item">
+									    <label class="layui-form-label">发布总期数</label>
+									    <div class="layui-input-inline">
+									      <input type="number" name="totalIssueNum" placeholder="请输入发布总期数" autocomplete="off" class="layui-input" >
+									    </div>
+									    <div class="layui-form-mid layui-word-aux" style="padding-top:0 !important;margin-left:20px;">
+									    	<input lay-filter="totalIssue" type="checkbox" name="totalIssue" value="-1" title="无期限">
+									    </div>
+									    <p class="layui-tips tips-must"></p>
+									  </div>
+									  <div class="layui-form-item">
+									    <div class="layui-input-block" style="margin-left:140px;">
+									      <button class="layui-btn lay-submit" lay-submit lay-filter="*">立即提交</button>
+									      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+									    </div>
+									  </div>
+								</div>
+						</form>
+				    </div>
+			 </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script src="js/bignumber.min.js"></script>
+		<script type="text/javascript" src="js/alert.js" ></script>
+		<script type="text/javascript" src="js/teamPkGoodsAdd.js" ></script>
+	</body>
+</html>

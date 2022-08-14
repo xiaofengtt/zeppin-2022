@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/luckyGoods.css" />
+		<style>
+			.left{
+				position:relative;
+			}
+			.left ul{
+				position:absolute;
+				right:0;
+				top:0;
+				width:45px;
+				font-size:0;
+			}
+			.left ul img{
+				width:100%;
+				display:none;
+			}
+			.right{
+				font-size:12px;
+				max-width:120px;
+			}
+			.right .layui-select-title{
+				margin-left:10px;
+				padding-left:5px;
+				line-height:24px;
+				margin-bottom:5px;
+			}
+			.right .layui-unselect{
+				height:30px;
+				margin-bottom:5px;
+			}
+			.right a{
+				display:none;
+				line-height:26px;
+				padding-left:15px;
+				color: #3D99FF;
+			}
+			.right a:hover{
+				opacity: .8;
+			}
+		</style>
+	</head>
+	<body>
+		<input id="uuidInput" type="hidden" value="87513889-cff7-4946-9fef-bd40a2fd0289"/>
+		<div class="main">
+			<!--left-->
+			<!-- <script type="text/javascript" src="js/base-header.js"></script> -->
+			<!--header-->
+			<!--content-->
+			<div class="">
+			    <!-- 内容主体区域 -->
+				    <div class="layui-bodu" style="padding: 35px;">
+				    	<div>
+				    		<div class="layui-row">
+					    		<div class="layui-col-md3">
+					    			<div class="left" style="width:50%;text-align:right;float:left;">
+					    				<img src="" class="coverImg" />
+					    				<ul>
+					    					<img class="high" src="img/img-high.png" />
+					    					<img class="vip" src="img/img-vip.png" />
+					    				</ul>
+					    			</div>
+							      	<div class="right" style="width:50%;float:left;">	
+							      		<form class="layui-form layui-form-pane2 layui-form-tips" action="" lay-filter="first">					      	
+								      		<select class="userLevel"  lay-filter="userLevel">
+								      			<option value="registered">注册用户</option>
+								      			<option value="recharged">充值用户</option>
+								      			<option value="VIP">VIP用户</option>
+								      			<option value="demo">测试用户</option>
+								      		</select>
+							      		</form>
+							      		<a class="setHigh" onclick="setHigh('highrisk')">设为风险用户</a>
+							      		<a class="setNormal" onclick="setHigh('normal')">取消风险用户</a>
+							      		<a class="setBlack" onclick="addBlack()">加入黑名单</a>
+							      	</div>
+							    </div>
+							    <div class="layui-col-md2">
+							      <p>真实姓名：<span class="realname"></span></p>
+							      <p>昵称：<span class="nickname"></span></p>
+							      <p>领取实物总额：<span class="totalDelivery">元</span></p>
+							      <p>投注次数：<span class="paymentTimes"></span></p>
+							    </div>
+							    <div class="layui-col-md2">
+							      <p>身份证号：<span class="idcard"></span></p>
+							      <p>账户余额：<span class="balance">元</span></p>
+							      <p>用户获利总额：<span class="totalProfit">元</span></p>
+							      <p>中奖次数：<span class="winningTimes"></span>次</p>
+							    </div>
+							    <div class="layui-col-md2">
+							      <p>用户ID：<span class="showId"></span></p>
+							      <p>充值总额：<span class="totalRecharge"></span>元</p>
+							      <p>投注总额：<span class="totalPayment"></span></p>
+							      <p>积分余额：<span class="scoreBalance"></span></p>
+							    </div>
+							    <div class="layui-col-md3">
+							      <p>注册时间：<span class="createtime"></span></p>
+							      <p>提现总额：<span class="totalWithdraw"></span>元</p>
+							      <p>中奖总额：<span class="totalWinning"></span></p>
+							    </div>
+				    		</div>
+				    	</div>
+				    	<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+						  <ul class="layui-tab-title">
+						    <li class="layui-this goldCoinsBtn">金币明细</li>
+						    <li class="attendanceRecordBtn">参与记录</li>
+						    <li class="winningRecordBtn">中奖纪录</li>
+						    <li class="receivingAddressBtn">收货地址</li>
+						    <li class="rechargeRecordBtn">充值记录</li>
+						    <li class="withdrawalsRecordBtn">提现记录</li>
+						    <li class="redEnvelopesBtn">红包</li>
+						  </ul>
+						  <div class="layui-tab-content">
+						    <div class="layui-tab-item layui-show goldCoins">
+						    	<table class="table-list mt-15"></table>
+						    	<div id="pageTool0" class="mt-15"></div>
+							</div>
+						    <div class="layui-tab-item attendanceRecord">
+								<table class="table-list mt-15"></table>
+						    	<div id="pageTool1" class="mt-15"></div>
+							</div>
+						    <div class="layui-tab-item winningRecord">
+								<table class="table-list mt-15"></table>
+						    	<div id="pageTool2" class="mt-15"></div>
+							</div>
+						    <div class="layui-tab-item receivingAddress">
+								<table class="table-list mt-15"></table>
+						    	<div id="pageTool3" class="mt-15"></div>
+						    </div>
+						    <div class="layui-tab-item rechargeRecord">
+								<table class="table-list mt-15"></table>
+						    	<div id="pageTool4" class="mt-15"></div>
+						    </div>
+						    <div class="layui-tab-item withdrawalsRecord">
+								<table class="table-list mt-15"></table>
+						    	<div id="pageTool5" class="mt-15"></div>
+						    </div>
+						    <div class="layui-tab-item redEnvelopes">
+						    	<ul class="voucherTab">
+								    <li class="light" data-value="normal">可使用</li>
+								    <li class="" data-value="unstart">待生效</li>
+								    <li class="" data-value="used">已使用</li>
+								    <li class="" data-value="overtime">已过期</li>
+								  </ul>
+								<table class="table-list mt-15"></table>
+						    	<div id="pageTool6" class="mt-15"></div>
+						    </div>
+						  </div>
+						</div> 
+				    </div>
+			 </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/userDetail.js" ></script>
+	</body>
+</html>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.worldmall.mapper.FrontUserHistoryMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_history where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+        <if test='orderType != null and orderType != ""'>
+            and order_type= #{orderType}
+        </if>
+        <if test='orderId != null and orderId != ""'>
+            and order_id= #{orderId}
+        </if>        
+        <if test='starttime != null and starttime != ""'>
+            and <![CDATA[ createtime >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null and endtime != ""'>
+            and <![CDATA[ createtime <= #{endtime} ]]>
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.FrontUserHistory">
+		select * from front_user_history where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+        <if test='orderType != null and orderType != ""'>
+            and order_type= #{orderType}
+        </if>
+        <if test='orderId != null and orderId != ""'>
+            and order_id= #{orderId}
+        </if> 
+        <if test='starttime != null and starttime != ""'>
+            and <![CDATA[ createtime >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null and endtime != ""'>
+            and <![CDATA[ createtime <= #{endtime} ]]>
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getLeftCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_history fuh left join front_user fu on fuh.front_user=fu.uuid  where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and fuh.front_user= #{frontUser}
+        </if>
+        <if test='showid != null and showid != ""'>
+            and fu.show_id = #{showid}
+        </if>
+		<if test='mobile != null and mobile != ""'>
+            and fu.mobile = #{mobile}
+        </if>
+        <if test='type != null and type != ""'>
+            and fuh.type= #{type}
+        </if>
+        <if test='orderType != null and orderType != ""'>
+            and fuh.order_type= #{orderType}
+        </if>
+        <if test='orderId != null and orderId != ""'>
+            and fuh.order_id= #{orderId}
+        </if>        
+        <if test='starttime != null and starttime != ""'>
+            and <![CDATA[ fuh.createtime >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null and endtime != ""'>
+            and <![CDATA[ fuh.createtime <= #{endtime} ]]>
+        </if>
+	</select>
+	
+	<select id="getLeftListByParams" parameterType="java.util.HashMap" resultType="cn.product.worldmall.entity.FrontUserHistory">
+		select * from front_user_history fuh left join front_user fu on fuh.front_user=fu.uuid  where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and fuh.front_user= #{frontUser}
+        </if>
+        <if test='showid != null and showid != ""'>
+            and fu.show_id = #{showid}
+        </if>
+		<if test='mobile != null and mobile != ""'>
+            and fu.mobile = #{mobile}
+        </if>
+        <if test='type != null and type != ""'>
+            and fuh.type= #{type}
+        </if>
+        <if test='orderType != null and orderType != ""'>
+            and fuh.order_type= #{orderType}
+        </if>
+        <if test='orderId != null and orderId != ""'>
+            and fuh.order_id= #{orderId}
+        </if>        
+        <if test='starttime != null and starttime != ""'>
+            and <![CDATA[ fuh.createtime >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null and endtime != ""'>
+            and <![CDATA[ fuh.createtime <= #{endtime} ]]>
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by fuh.${sort}
+	        </when>
+	        <otherwise>
+	        	order by fuh.createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+		
+	<select id="getAmountByParams" parameterType="java.util.HashMap" resultType="java.math.BigDecimal">
+		select sum(fuh.d_amount) from front_user_history fuh left join front_user fu on fuh.front_user = fu.uuid where 1=1   
+		 
+		<if test='userType != null and userType != ""'>
+            and fu.type= #{userType}
+        </if>
+		<if test='type != null and type != ""'>
+            and fuh.type= #{type}
+        </if>
+        <if test='orderType != null and orderType != ""'>
+            and fuh.order_type= #{orderType}
+        </if>
+        <if test='starttime != null and starttime != ""'>
+            and <![CDATA[ fuh.createtime >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null and endtime != ""'>
+            and <![CDATA[ fuh.createtime <= #{endtime} ]]>
+        </if>
+	</select>
+	
+	<select id="getMonthListByParams" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select date_format(fuh.createtime,'%Y-%m') as months, count(date_format(fuh.createtime,'%Y-%m')) as count 
+		from front_user_history fuh where 1=1 
+		
+		<if test='frontUser != null and frontUser != ""'>
+            and fuh.front_user= #{frontUser}
+        </if>
+        
+		group by date_format(fuh.createtime,'%Y-%m') having count > 0 
+		order by fuh.createtime desc;
+	</select>
+</mapper>

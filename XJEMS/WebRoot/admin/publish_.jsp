@@ -75,6 +75,18 @@
 							</div>
 						</div>
 					</div>
+					<div class="time_num box">
+						<div class="time">
+							<label>是否群发消息：</label>
+							<div class="time_bd">
+								<select name="isSend" id="isSend" class="exam_status" value="{{:isSend}}">
+									<option value="">请选择</option>
+									<option {{if isSend == 1}}selected{{/if}} value="1">是</option>
+									<option {{if isSend == 0}}selected{{/if}} value="0">否</option>
+								</select>
+							</div>
+						</div>
+					</div>
 	</script>
 	
 	</head>

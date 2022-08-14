@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/luckyGoods.css" />
+	</head>
+	<body class="layui-layout-body">
+		<input id="uuidInput" type="hidden" value="10b52671-d03c-417f-9cd1-d88549b6c077"/>
+		<div class="main layui-layout layui-layout-admin">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="layui-body">
+			    <!-- 内容主体区域 -->
+				    <div class="layui-bodu" style="padding: 15px;">
+				    	<div class="layui-btn-group">
+						    <a class="layui-btn goPrePage" data-type="parseTable">添加</a>
+						 </div>
+						 <form class="layui-form layui-form-pane1" action="" lay-filter="first" style="position:absolute;right:30px;top:35px;">
+						 	<div class="layui-form-item">
+							    <div class="layui-input-inline" style="width:150px;">
+							    	<input type="text" placeholder="搜商品名称" class="layui-input layui-name" >
+							    </div>
+							     <button type="button" class="layui-btn layui-btn-primary" onclick="pageNum=1;getList()">
+								  	<i class="layui-icon">&#xe615;</i>
+								</button>
+							  </div>
+						 </form>
+						 <table class="table-list mt-15"></table>
+						 <div id="pageTool"></div>
+				    </div>
+			 </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/alert.js" ></script>
+		<script type="text/javascript" src="js/luckyGoodsList.js" ></script>
+	</body>
+</html>

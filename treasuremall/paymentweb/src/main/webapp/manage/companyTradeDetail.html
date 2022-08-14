@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+	</head>
+	<body>
+		<div class="main">
+			<!-- 内容主体区域 -->
+		    <div class="layui-bodu" style="padding: 30px 35px;">
+		    	<form class="layui-form" action="" lay-filter="first">
+		    		<div class="layui-form-item">
+						<label class="layui-form-label">类型</label>
+						<div class="layui-input-block">
+							<select name="type" lay-filter="type">
+								<option value="recharge">注资</option>
+								<option value="withdraw">提现</option>
+							</select>
+						</div>
+					</div>
+				  	<div class="layui-form-item">
+						<label class="layui-form-label">商户</label>
+						<div class="layui-input-block">
+							<input name="company" class="layui-input" disabled>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">商户余额</label>
+						<div class="layui-input-block">
+							<input name="balance" class="layui-input" disabled>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">商户银行卡</label>
+						<div class="layui-input-block">
+							<select name="companyBankcard" lay-filter="companyBankcard" >
+								<option>请选择</option>
+							</select>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">交易总额</label>
+						<div class="layui-input-block">
+							<input name="totalAmount" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">手续费</label>
+						<div class="layui-input-block">
+							<input name="poundage" class="layui-input" disabled>
+							<input type="hidden" name="withdrawPoundageRate">
+							<input type="hidden" name="withdrawPoundageStatic">
+							<input type="hidden" name="rechargePoundageRate">
+							<input type="hidden" name="rechargePoundageStatic">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label id="accountTitle" class="layui-form-label">实际注资</label>
+						<div class="layui-input-block">
+							<input name="amount" class="layui-input" disabled>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">交易信息</label>
+						<div class="layui-input-block">
+							<textarea name="data" class="layui-textarea"></textarea>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn" onclick="parent.layer.closeAll()">取消</button>
+							<button class="layui-btn lay-submit" lay-submit lay-filter="*">确认</button>
+						</div>
+					</div>
+				</form>
+		    </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/companyTradeDetail.js" ></script>
+	</body>
+</html>

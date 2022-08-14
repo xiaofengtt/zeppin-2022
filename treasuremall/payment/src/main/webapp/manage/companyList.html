@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/list.css" />
+	</head>
+	<body class="layui-layout-body">
+		<input id="uuidInput" type="hidden" value="6bab521b-6344-11ea-93bd-89a085bb1b54"/>
+		<div class="main layui-layout layui-layout-admin">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="layui-body">
+			    <!-- 内容主体区域 -->
+			    <div class="layui-bodu" style="padding: 15px;">
+				 	<form class="layui-form layui-form-pane2 layui-row layui-form-search" action="" lay-filter="first">
+				 		<div class="layui-row">
+				 			<div class="layui-col-md4 mb-15" >
+					 			<label class="layui-form-label">商户名称</label>
+					 			<div class="layui-input-block">
+					 				 <input type="text" name="name" class="layui-input">
+					 			</div>
+					 		</div>
+					 		<div class="layui-col-md4 mb-15" >
+					 			<label class="layui-form-label">商户编码</label>
+					 			<div class="layui-input-block">
+					 				 <input type="text" name="code" class="layui-input">
+					 			</div>
+					 		</div>
+					 		<div class="layui-col-md4 mb-15" >
+						 		<div class="layui-input-block">
+						 			<a class="layui-btn" onclick="getList()">查询</a>
+					 			</div>
+					 		</div>
+						 </div>
+				 	</form>
+					<div style="overflow-x:auto;">
+			    		<table class="table-list mt-15"></table>
+			    	</div>
+					<div id="pageTool"></div>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/companyList.js" ></script>
+	</body>
+</html>

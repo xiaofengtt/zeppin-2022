@@ -1,0 +1,42 @@
+.layui-row{
+	margin:15px 0;
+}
+.layui-row .layui-col-xs6{
+	padding:0 30px;
+}
+.layui-split{
+	padding:5px 0;
+	border-top:1px solid #E5E7EE;
+}
+p, span{
+	padding:3px;
+	font-size:14px;
+	color:#333333;
+	line-height:1.5;
+	font-weight:500;
+}
+label{
+	width:100px;
+	display:inline-block;
+	color:#9A9A9A;
+	font-weight:400;
+}
+.title-info{
+	font-weight:500;
+	padding-bottom:8px;
+	color:rgba(51,51,51,1);
+	width:133px;
+}
+#type{
+	font-weight:500;
+	color:rgba(51,51,51,1);
+	line-height:25px;
+	display:block;
+	text-align:center;
+	font-size:18px;
+	padding:20px 0;
+}
+.layui-input-block{
+	margin-left:0;
+	text-align:center;
+}

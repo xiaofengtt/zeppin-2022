@@ -5,6 +5,14 @@ var flag=true;
 var _name;
 var _sorts;
 var target = true;
+
+var year = new Date().getFullYear();
+for(var i = 0; i < 4; i++) {
+	$(".filter-studyGrade").append("<a data-value='" + year + "级'>" + year + "级</a>");
+	year--;
+}
+$(".filter-studyGrade").append("<a data-value='other'>其他</a>");
+
 $(".main_header a").click(function(){
     $(this).addClass("lighting").siblings().removeClass("lighting");
     pageNum = '1';
@@ -28,6 +36,13 @@ function searchBtn(){
 		return false;
 }
 $(document).ready(function() {
+	
+//	var year = new Date().getFullYear();
+//	for(var i = 0; i < 4; i++) {
+//		$(".filter-studyGrade").append("<a data-value='" + year + "级'>" + year + "级</a>");
+//		year--;
+//	}
+//	$(".filter-studyGrade").append("<a data-value='other'>其他</a>");
 	
 	function sort(sort){
 		getList(_name,sort);
@@ -65,13 +80,13 @@ $(document).ready(function() {
 			$(this).find('img').attr('src','../img/toptop_r_14.png');
 			$(this).siblings().removeClass('light');
 			$(this).siblings().find('img').attr('src','');
-			sort("name-desc");
-			_sorts = "name_desc";
+			sort("pinyin-desc");
+			_sorts = "pinyin_desc";
 			sort_flag_0 = false;
 		}else{
 			$(this).find('img').attr('src','../img/bottombottom_r_14.png');
-			sort("name-asc");
-			_sorts = "name-asc";
+			sort("pinyin-asc");
+			_sorts = "pinyin-asc";
 			sort_flag_0 = true;
 		}
 	});
@@ -318,7 +333,7 @@ $(document).ready(function() {
 		}else{
 			$(this).find('img').attr('src','../img/bottombottom_r_14.png');
 			sort("isConfirm0-asc");
-			_sorts = "isConfirm-0asc";
+			_sorts = "isConfirm0-asc";
 			sort_flag_9 = true;
 		}
 	});
@@ -394,6 +409,11 @@ function getList(name,sorts){
 	mUrl += '&teacherStatus='+teacherStatus;
 	mUrl += '&isChief='+isChief;
 	mUrl += '&isMixed='+isMixed;
+	
+	var studyGrade = $(".filter-studyGrade").find(".lighting").attr("data-value");
+	if(type == 2 || type == 4) {
+		mUrl += '&studyGrade=' + studyGrade;
+	}
 	
 	$.get(mUrl,function(r) {
 		if(r.Status =='success') {

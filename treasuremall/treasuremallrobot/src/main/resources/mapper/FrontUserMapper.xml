@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.treasuremall.mapper.FrontUserMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user,front_user_account where 1=1 and  front_user.uuid = front_user_account.front_user
+		<if test='nuuid != null and nuuid != ""'>
+            and uuid != #{nuuid}
+        </if>
+        <if test='showid != null and showid != ""'>
+            and show_id = #{showid}
+        </if>
+        <if test='realname != null and realname != ""'>
+            and realname like '%${realname}%'
+        </if>
+		<if test='mobile != null and mobile != ""'>
+            and mobile = #{mobile}
+        </if>
+        <if test='idcard != null and idcard != ""'>
+            and idcard like '%${idcard}%'
+        </if>
+        <if test='channel != null and channel != ""'>
+            and register_channel like '%${channel}%'
+        </if>
+		<if test='level != null and level != ""'>
+            and level= #{level}
+        </if>
+        <if test='agent != null and agent != ""'>
+            and agent= #{agent}
+        </if>
+        <choose>
+			<when test='status != null and status == "login"'>
+	        	and status in ('normal','disable','blacklist','highrisk')
+	        </when>
+	        <otherwise>
+	        	<choose>
+					<when test='status != null and status != ""'>
+			        	and status = #{status}
+			        </when>
+			        <otherwise>
+			        	and status in ('normal','disable','highrisk')
+		<!-- 	        	and status in ('normal','disable','blacklist','highrisk') -->
+			        </otherwise>
+		        </choose>
+	        </otherwise>
+        </choose>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+        <!-- 创建时间筛选 -->
+        <if test='timestart != null and timeend != null'>
+            and (<![CDATA[ createtime > #{timestart} and createtime < #{timeend} ]]>)
+        </if>
+        <!-- 充值金额筛选 -->
+        <if test='rechargemin != null and rechargemax != null'>
+            and (<![CDATA[ total_recharge >= #{rechargemin} and total_recharge <= #{rechargemax} ]]>)
+        </if>
+        <!-- 中奖金额筛选 -->
+        <if test='winningmin != null and winningmax != null'>
+            and (<![CDATA[ total_winning >= #{winningmin} and total_winning <= #{winningmax} ]]>)
+        </if>
+        <!-- 提现金额筛选 -->
+        <if test='withdrawmin != null and withdrawmax != null'>
+            and (<![CDATA[ total_withdraw >= #{withdrawmin} and total_withdraw <= #{withdrawmax} ]]>)
+        </if>        
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUser">
+		select front_user.* from front_user,front_user_account where 1=1 and  front_user.uuid = front_user_account.front_user
+		<if test='nuuid != null and nuuid != ""'>
+            and uuid != #{nuuid}
+        </if>
+        <if test='showid != null and showid != ""'>
+            and show_id = #{showid}
+        </if>
+        <if test='realname != null and realname != ""'>
+            and realname like '%${realname}%'
+        </if>
+		<if test='mobile != null and mobile != ""'>
+            and mobile = #{mobile}
+        </if>
+        <if test='idcard != null and idcard != ""'>
+            and idcard like '%${idcard}%'
+        </if>
+        <if test='channel != null and channel != ""'>
+            and register_channel like '%${channel}%'
+        </if>
+		<if test='level != null and level != ""'>
+            and level= #{level}
+        </if>
+        <if test='agent != null and agent != ""'>
+            and agent= #{agent}
+        </if>
+		<choose>
+			<when test='status != null and status == "login"'>
+	        	and status in ('normal','disable','blacklist','highrisk')
+	        </when>
+	        <otherwise>
+	        	<choose>
+					<when test='status != null and status != ""'>
+			        	and status = #{status}
+			        </when>
+			        <otherwise>
+			        	and status in ('normal','disable','highrisk')
+		<!-- 	        	and status in ('normal','disable','blacklist','highrisk') -->
+			        </otherwise>
+		        </choose>
+	        </otherwise>
+        </choose>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+        <!-- 创建时间筛选 -->
+        <if test='timestart != null and timeend != null'>
+            and (<![CDATA[ createtime > #{timestart} and createtime < #{timeend} ]]>)
+        </if>
+        <!-- 充值金额筛选 -->
+        <if test='rechargemin != null and rechargemax != null'>
+            and (<![CDATA[ total_recharge >= #{rechargemin} and total_recharge <= #{rechargemax} ]]>)
+        </if>
+        <!-- 中奖金额筛选 -->
+        <if test='winningmin != null and winningmax != null'>
+            and (<![CDATA[ total_winning >= #{winningmin} and total_winning <= #{winningmax} ]]>)
+        </if>
+        <!-- 提现金额筛选 -->
+        <if test='withdrawmin != null and withdrawmax != null'>
+            and (<![CDATA[ total_withdraw >= #{withdrawmin} and total_withdraw <= #{withdrawmax} ]]>)
+        </if>        
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<update id="updateStatus" parameterType="java.util.HashMap">
+		update front_user
+		<set>
+			status = #{status},
+			<if test='status != null and status == "delete"'>
+				mobile = CONCAT(mobile,'_#',uuid),
+			</if>
+		</set>
+		where uuid in
+		<foreach collection="uuid" item="uuid" index="index" open="(" close=")" separator=",">
+			#{uuid}
+		</foreach>
+	</update>
+	
+	<select id="getCountAllByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user,front_user_account where 1=1 and  front_user.uuid = front_user_account.front_user
+		<if test='nuuid != null and nuuid != ""'>
+            and uuid != #{nuuid}
+        </if>
+        <if test='showid != null and showid != ""'>
+            and show_id = #{showid}
+        </if>
+        <if test='realname != null and realname != ""'>
+            and realname like '%${realname}%'
+        </if>
+		<if test='mobile != null and mobile != ""'>
+            and mobile = #{mobile}
+        </if>
+        <if test='idcard != null and idcard != ""'>
+            and idcard like '%${idcard}%'
+        </if>
+        <if test='channel != null and channel != ""'>
+            and register_channel like '%${channel}%'
+        </if>
+		<if test='level != null and level != ""'>
+            and level= #{level}
+        </if>
+        <if test='agent != null and agent != ""'>
+            and agent= #{agent}
+        </if>
+        <choose>
+			<when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','disable','blacklist','delete','highrisk')
+	        </otherwise>
+        </choose>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+        <!-- 创建时间筛选 -->
+        <if test='timestart != null and timeend != null'>
+            and (<![CDATA[ createtime > #{timestart} and createtime < #{timeend} ]]>)
+        </if>
+        <!-- 充值金额筛选 -->
+        <if test='rechargemin != null and rechargemax != null'>
+            and (<![CDATA[ total_recharge >= #{rechargemin} and total_recharge <= #{rechargemax} ]]>)
+        </if>
+        <!-- 中奖金额筛选 -->
+        <if test='winningmin != null and winningmax != null'>
+            and (<![CDATA[ total_winning >= #{winningmin} and total_winning <= #{winningmax} ]]>)
+        </if>
+        <!-- 提现金额筛选 -->
+        <if test='withdrawmin != null and withdrawmax != null'>
+            and (<![CDATA[ total_withdraw >= #{withdrawmin} and total_withdraw <= #{withdrawmax} ]]>)
+        </if>        
+	</select>
+	
+	<select id="getRegistListByParams" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select substring(createtime, 1, 10) dailyDate, count(*) count
+		from front_user
+		where 1=1 and type='normal'
+		<if test='starttime != null and starttime != ""'>
+            and <![CDATA[ createtime >= #{starttime} ]]>
+        </if>
+		<if test='endtime != null and endtime != ""'>
+            and <![CDATA[ createtime <= #{endtime} ]]>
+        </if>
+        group by substring(createtime, 1, 10)
+	</select>
+	
+	<select id="getRobotCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user fu LEFT JOIN robot_setting rs on fu.uuid = rs.robot_id where 1=1
+		<if test='nuuid != null and nuuid != ""'>
+            and fu.uuid != #{nuuid}
+        </if>
+        <if test='showid != null and showid != ""'>
+            and fu.show_id = #{showid}
+        </if>
+        <if test='realname != null and realname != ""'>
+            and fu.realname like '%${realname}%'
+        </if>
+		<if test='mobile != null and mobile != ""'>
+            and fu.mobile = #{mobile}
+        </if>
+        <if test='idcard != null and idcard != ""'>
+            and fu.idcard like '%${idcard}%'
+        </if>
+        <if test='channel != null and channel != ""'>
+            and fu.register_channel like '%${channel}%'
+        </if>
+		<if test='level != null and level != ""'>
+            and fu.level= #{level}
+        </if>
+        <if test='agent != null and agent != ""'>
+            and fu.agent= #{agent}
+        </if>
+        <choose>
+			<when test='status != null and status == "login"'>
+	        	and fu.status in ('normal','disable','blacklist','highrisk')
+	        </when>
+	        <otherwise>
+	        	<choose>
+					<when test='status != null and status != ""'>
+			        	and fu.status = #{status}
+			        </when>
+			        <otherwise>
+			        	and fu.status in ('normal','disable','highrisk')
+		<!-- 	        	and status in ('normal','disable','blacklist','highrisk') -->
+			        </otherwise>
+		        </choose>
+	        </otherwise>
+        </choose>
+        <if test='type != null and type != ""'>
+            and fu.type= #{type}
+        </if>
+        <!-- 创建时间筛选 -->
+        <if test='timestart != null and timeend != null'>
+            and (<![CDATA[ fu.createtime > #{timestart} and fu.createtime < #{timeend} ]]>)
+        </if>
+        <if test='gameType != null and gameType != ""'>
+            and rs.game_type = #{gameType}
+        </if>
+	</select>
+	
+	<select id="getRobotListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUser">
+		select fu.* from front_user fu LEFT JOIN robot_setting rs on fu.uuid = rs.robot_id where 1=1
+		<if test='nuuid != null and nuuid != ""'>
+            and fu.uuid != #{nuuid}
+        </if>
+        <if test='showid != null and showid != ""'>
+            and fu.show_id = #{showid}
+        </if>
+        <if test='realname != null and realname != ""'>
+            and fu.realname like '%${realname}%'
+        </if>
+		<if test='mobile != null and mobile != ""'>
+            and fu.mobile = #{mobile}
+        </if>
+        <if test='idcard != null and idcard != ""'>
+            and fu.idcard like '%${idcard}%'
+        </if>
+        <if test='channel != null and channel != ""'>
+            and fu.register_channel like '%${channel}%'
+        </if>
+		<if test='level != null and level != ""'>
+            and fu.level= #{level}
+        </if>
+        <if test='agent != null and agent != ""'>
+            and fu.agent= #{agent}
+        </if>
+        <choose>
+			<when test='status != null and status == "login"'>
+	        	and fu.status in ('normal','disable','blacklist','highrisk')
+	        </when>
+	        <otherwise>
+	        	<choose>
+					<when test='status != null and status != ""'>
+			        	and fu.status = #{status}
+			        </when>
+			        <otherwise>
+			        	and fu.status in ('normal','disable','highrisk')
+		<!-- 	        	and status in ('normal','disable','blacklist','highrisk') -->
+			        </otherwise>
+		        </choose>
+	        </otherwise>
+        </choose>
+        <if test='type != null and type != ""'>
+            and fu.type= #{type}
+        </if>
+        <!-- 创建时间筛选 -->
+        <if test='timestart != null and timeend != null'>
+            and (<![CDATA[ fu.createtime > #{timestart} and fu.createtime < #{timeend} ]]>)
+        </if>
+        <if test='gameType != null and gameType != ""'>
+            and rs.game_type = #{gameType}
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by fu.${sort}
+	        </when>
+	        <otherwise>
+	        	order by fu.createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+</mapper>

@@ -32,13 +32,23 @@
 				</tr>
 				<tr>
 					<td>身份类别</td>
-					<td title="{{if type=='1'}}考务组{{/if}}{{if type=='2'}}研究生{{/if}}{{if type=='3'}}教工{{/if}}">{{if type=='1'}}考务组{{/if}}{{if type=='2'}}研究生{{/if}}{{if type=='3'}}教工{{/if}}</td>
+                    <td title="{{if type==1}}考务组{{/if}}
+                           {{if type==2}}研究生{{/if}}
+                           {{if type==3}}教工{{/if}}
+                           {{if type==4}}本科{{/if}}
+                           {{if type==5}}非师大人员{{/if}}
+                         ">{{if type==1}}考务组{{/if}}
+                           {{if type==2}}研究生{{/if}}
+                           {{if type==3}}教工{{/if}}
+                           {{if type==4}}本科{{/if}}
+                           {{if type==5}}非师大人员{{/if}}
+                    </td>          
 					<td>所在学院或部门</td>
 					<td title="{{:organization}}">{{:organization}}</td>
 				</tr>
 				<tr>
 					<td>所学专业</td>
-					<td title="{{if type=='2'}}{{:major}}{{else}}{{:studyMajor}}{{/if}}">{{if type=='2'}}{{:major}}{{else}}{{:studyMajor}}{{/if}}</td>
+					<td title="{{if type=='2' || type=='4'}}{{:major}}{{else}}{{:studyMajor}}{{/if}}">{{if type=='2' || type=='4'}}{{:major}}{{else}}{{:studyMajor}}{{/if}}</td>
 					<td>入校时间</td>
 					<td title="{{:inschooltime}}">{{:inschooltime}}</td>
 				</tr>
@@ -69,7 +79,7 @@
 				</tr>
 				<tr>
 					<td>所在年级</td>
-					<td title="{{if type=='2'}}{{:studyGrade}}{{/if}}">{{if type=='2'}}{{:studyGrade}}{{/if}}</td>
+					<td title="{{if type=='2' || type=='4'}}{{if studyGrade == 0}}无{{else}}{{:studyGrade}}{{/if}}{{/if}}">{{if type=='2' || type=='4'}}{{if studyGrade == 0}}无{{else}}{{:studyGrade}}{{/if}}{{/if}}</td>
 					<td>监考次数</td>
 					<td colspan="2" title="{{:invigilateCount}}">{{:invigilateCount}}</td>
 				</tr>
@@ -78,6 +88,33 @@
 					<td title="{{:mobile}}">{{:mobile}}</td>
 					<td>银行卡卡号</td>
 					<td colspan="2" title="{{:bankCard}}">{{:bankCard}}</td>
+				</tr>
+				<tr>
+					<td>编制属性</td>
+					{{if formation==''}}
+					<td colspan="4" title="未选择">未选择</td>{{else}}
+					<td colspan="4" title="{{:formation}}">{{:formation}}</td>
+					{{/if}}
+				</tr>
+				<tr>
+					<td>职业</td>
+					{{if occupation==''}}
+					<td title="未填写">未填写</td>{{else}}
+					<td title="{{:occupation}}">{{:occupation}}</td>{{/if}}
+					<td>开户行所属地区</td>
+					{{if bankOrg==''}}
+					<td colspan="2" title="未填写">未填写</td>{{else}}
+					<td colspan="2" title="{{:bankOrg}}">{{:bankOrg}}</td>{{/if}}
+				</tr>
+				<tr>
+					<td>开户行</td>
+					{{if bankName==''}}
+					<td title="未填写">未填写</td>{{else}}
+					<td title="{{:bankName}}">{{:bankName}}</td>{{/if}}
+					<td>电子信箱</td>
+					{{if email==''}}
+					<td colspan="2" title="未填写">未填写</td>{{else}}
+					<td colspan="2" title="{{:email}}">{{:email}}</td>{{/if}}
 				</tr>
 				<tr>
 					<td>特长</td>
@@ -90,17 +127,36 @@
 					</tr>
 				{{/if}}
 				
+				{{if status == '0'}}
+					<tr>
+						<td>停用原因</td>
+						<td colspan="4" title="{{:reason}}">{{:reason}}</td>
+					</tr>
+				{{/if}}
+				
+				{{if type == '2' || type == '4'}}
+					<tr>
+						<td>学制时长</td>
+						{{if studyLength == 0}}
+							<td colspan="4">无</td>
+						{{else}}
+							<td colspan="4" title="{{:studyLength}}">{{:studyLength}}年制</td>
+						{{/if}}
+					</tr>
+				{{/if}}
+
+				
 				
 				{{if idcardPhoto.id != 1}}
 					<tr class="idCard_tr">
-						<td>身份证正面照片</td>
-						<td colspan="4" style="height:200px;padding:10px">
+						<td>身份证个人信息照片</td>
+						<td colspan="4" style="padding:10px">
 							<img src="{{:idcardPhoto.sourcePath}}" id="card_img"/>
 						</td>
 					</tr>
 				{{else}}
 					<tr>
-						<td>身份证正面照片</td>
+						<td>身份证个人信息照片</td>
 						<td colspan="4">
 							该教师未上传身份证照片
 						</td>
@@ -116,7 +172,7 @@
 				<td title="{{:roomIndex}} - {{:roomAdd}}">{{:roomIndex}} - {{:roomAdd}}</td>
 				<td title="{{:applytime}}">{{:applytime}}</td>
 				<td title="{{:score}}">{{:score}}</td>
-				<td title="{{:remark}}">{{:remark}}</td>
+				<td title="{{:reason}}">{{:reason}}</td>
 			</tr>
 		</script>
 	</head>
@@ -142,17 +198,21 @@
 						</div>
 					</div>
 
-					<table class="teachers_info" cellspacing="0" cellpadding="0">
-						<tr class="first_tr">
-							<th width="5%">序号</th>
-							<th width="25%">考试名称</th>
-							<th width="25%">监考考场</th>
-							<th width="20%">申报时间</th>
-							<th width="10%">积分</th>
-							<th width="15%">备注</th>
-						</tr>
-                        <tbody id="historyContent"></tbody>
-					</table>
+					<div class="scroll-warp">
+						<div class="scroll-inner">
+							<table class="teachers_info" cellspacing="0" cellpadding="0" style="width:130%;max-width: 130%;table-layout: auto;">
+								<tr class="first_tr">
+									<th>序号</th>
+									<th>考试名称</th>
+									<th>监考考场</th>
+									<th>申报时间</th>
+									<th>积分</th>
+									<th>评价</th>
+								</tr>
+		                        <tbody id="historyContent"></tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 				
 				<div class="easy_modal">

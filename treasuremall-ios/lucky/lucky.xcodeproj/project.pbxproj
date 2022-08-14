@@ -1,0 +1,1449 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A940862066A4B76FFB20BC75 /* Pods_lucky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07EC12CABCA7E4FC301241F /* Pods_lucky.framework */; };
+		B801B72924EA76A200AD0E54 /* LuckyMobileCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801B72824EA76A200AD0E54 /* LuckyMobileCodeView.swift */; };
+		B801B72B24EA8B1B00AD0E54 /* LuckyMobileCodeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B801B72A24EA8B1B00AD0E54 /* LuckyMobileCodeCellView.swift */; };
+		B8064C882550F58800C139F3 /* LuckyActivityOrderTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8064C872550F58800C139F3 /* LuckyActivityOrderTrackingViewController.swift */; };
+		B80A4CC724DA5A74003C3189 /* LuckyStatusCountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80A4CC624DA5A74003C3189 /* LuckyStatusCountModel.swift */; };
+		B80A4CC924DA5B01003C3189 /* LuckyWinningInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80A4CC824DA5B01003C3189 /* LuckyWinningInfoModel.swift */; };
+		B80A4CCB24DA5FFE003C3189 /* LuckySocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80A4CCA24DA5FFE003C3189 /* LuckySocketManager.swift */; };
+		B81040D72509C0230053771A /* LuckyOrderHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81040D62509C0230053771A /* LuckyOrderHistoryView.swift */; };
+		B81040D9250A12BB0053771A /* LuckyOrderExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81040D8250A12BB0053771A /* LuckyOrderExchangeView.swift */; };
+		B8115E9B24ECC7F800F54492 /* pull_refresh.gif in Resources */ = {isa = PBXBuildFile; fileRef = B8115E9A24ECC7F800F54492 /* pull_refresh.gif */; };
+		B8115E9D24ECD45700F54492 /* LuckyCommentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8115E9C24ECD45700F54492 /* LuckyCommentCellView.swift */; };
+		B8115E9F24ED2F3A00F54492 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = B8115E9E24ED2F3A00F54492 /* loading.gif */; };
+		B814134425022C1500E0F963 /* LuckyTableEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B814134325022C1500E0F963 /* LuckyTableEmptyView.swift */; };
+		B81413462502333A00E0F963 /* LuckySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81413452502333A00E0F963 /* LuckySearchViewController.swift */; };
+		B8147551251AE98200C1C28C /* LuckyTranscationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8147550251AE98200C1C28C /* LuckyTranscationViewController.swift */; };
+		B8147553251AF15900C1C28C /* LuckyMonthHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8147552251AF15900C1C28C /* LuckyMonthHistoryModel.swift */; };
+		B8147555251B01EA00C1C28C /* LuckyTranscationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8147554251B01EA00C1C28C /* LuckyTranscationCellView.swift */; };
+		B8156EDE24F4B2A30088C469 /* LuckyPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8156EDD24F4B2A30088C469 /* LuckyPasswordViewController.swift */; };
+		B8156EE024F4EE9A0088C469 /* LuckyPasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8156EDF24F4EE9A0088C469 /* LuckyPasswordTextField.swift */; };
+		B8156EE224F4FDFF0088C469 /* LuckyNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8156EE124F4FDFF0088C469 /* LuckyNameViewController.swift */; };
+		B8156EE424F508560088C469 /* LuckyMobileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8156EE324F508560088C469 /* LuckyMobileViewController.swift */; };
+		B817DA55254127990088CFC7 /* LuckyActivityBuyfreeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B817DA54254127990088CFC7 /* LuckyActivityBuyfreeCellView.swift */; };
+		B817DA57254167F90088CFC7 /* LuckyActivityTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B817DA56254167F90088CFC7 /* LuckyActivityTitleView.swift */; };
+		B819533125242A0600E8708E /* LuckyPrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B819533025242A0600E8708E /* LuckyPrivacyViewController.swift */; };
+		B8195333252444F100E8708E /* LuckyServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8195332252444F100E8708E /* LuckyServiceViewController.swift */; };
+		B81953352524646600E8708E /* LuckyPayCreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81953342524646600E8708E /* LuckyPayCreditViewController.swift */; };
+		B81BE4F0250F5F5900CE0518 /* LuckyReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81BE4EF250F5F5900CE0518 /* LuckyReviewViewController.swift */; };
+		B81DC3DE25148FD700957A88 /* LuckyDetailTypeSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81DC3DD25148FD700957A88 /* LuckyDetailTypeSelectButton.swift */; };
+		B824041F25B532EC00580115 /* LuckyQaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824041E25B532EC00580115 /* LuckyQaViewController.swift */; };
+		B824042E25B57C4700580115 /* LuckyFaqsQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B824042D25B57C4700580115 /* LuckyFaqsQuestionView.swift */; };
+		B82DB7FD251DC81C005C4186 /* LuckyPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82DB7FC251DC81C005C4186 /* LuckyPayViewController.swift */; };
+		B82DB805251DD527005C4186 /* image_winning_alert.gif in Resources */ = {isa = PBXBuildFile; fileRef = B82DB804251DD527005C4186 /* image_winning_alert.gif */; };
+		B82DB809251DE8B1005C4186 /* LuckyWinningAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82DB808251DE8B1005C4186 /* LuckyWinningAlertView.swift */; };
+		B82F081F259C8BF00064CD0B /* LuckyCurrencyRateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82F081E259C8BF00064CD0B /* LuckyCurrencyRateModel.swift */; };
+		B83439442542789400D80561 /* LuckyActivityCheckinRulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83439432542789400D80561 /* LuckyActivityCheckinRulesView.swift */; };
+		B834394625427F7700D80561 /* LuckyActivityWinningAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B834394525427F7700D80561 /* LuckyActivityWinningAlertView.swift */; };
+		B83439482542D11F00D80561 /* LuckyActivityPrizeWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83439472542D11F00D80561 /* LuckyActivityPrizeWheelView.swift */; };
+		B8347FC225087F4900F07B7C /* LuckyOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8347FC125087F4900F07B7C /* LuckyOrderViewController.swift */; };
+		B8347FC62508C25800F07B7C /* LuckyOrderCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8347FC52508C25800F07B7C /* LuckyOrderCompleteView.swift */; };
+		B8347FC82508DAB100F07B7C /* LuckyOrderWinningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8347FC72508DAB100F07B7C /* LuckyOrderWinningView.swift */; };
+		B839C86D24F60ECA007861FB /* LuckyShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B839C86C24F60ECA007861FB /* LuckyShareViewController.swift */; };
+		B839C86F24F6118E007861FB /* LuckyShareCommentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B839C86E24F6118E007861FB /* LuckyShareCommentCellView.swift */; };
+		B839C87124F65149007861FB /* LuckyChargeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B839C87024F65149007861FB /* LuckyChargeViewController.swift */; };
+		B839C87324F65673007861FB /* LuckyBannerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B839C87224F65673007861FB /* LuckyBannerScrollView.swift */; };
+		B83A963623CEB8F500E83A65 /* LuckyLocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83A963523CEB8F500E83A65 /* LuckyLocalDataManager.swift */; };
+		B83CB71D25184087001B3E36 /* LuckyDetailRecordCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83CB71C25184087001B3E36 /* LuckyDetailRecordCellView.swift */; };
+		B83CB71F251844BE001B3E36 /* LuckyDetailWinningCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83CB71E251844BE001B3E36 /* LuckyDetailWinningCellView.swift */; };
+		B83D267025AED9EE0063099A /* LuckyRemotePushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D266F25AED9EE0063099A /* LuckyRemotePushManager.swift */; };
+		B841CBE72546647C00ECFC14 /* LuckyActivityPrizeWheelCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B841CBE62546647C00ECFC14 /* LuckyActivityPrizeWheelCellView.swift */; };
+		B84DDA3D24E62A1100442401 /* LuckyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84DDA3C24E62A1100442401 /* LuckyLoginViewController.swift */; };
+		B84DDA3F24E631C600442401 /* LuckyMobileCodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84DDA3E24E631C600442401 /* LuckyMobileCodeManager.swift */; };
+		B84DDA4124E682EA00442401 /* LuckyTagManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84DDA4024E682EA00442401 /* LuckyTagManager.swift */; };
+		B84F71C12500FD9E0032ADC0 /* LuckyUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84F71C02500FD9E0032ADC0 /* LuckyUILabel.swift */; };
+		B858955525AEA092009ECE34 /* LuckyGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B858955425AEA092009ECE34 /* LuckyGuideView.swift */; };
+		B85F2D3D2541743500D4B0EE /* LuckyActivityCheckinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85F2D3C2541743500D4B0EE /* LuckyActivityCheckinView.swift */; };
+		B85F2D3F25417DD200D4B0EE /* LuckyActivityCheckinCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85F2D3E25417DD200D4B0EE /* LuckyActivityCheckinCellView.swift */; };
+		B868464024EE233900B27786 /* LuckyUserRankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B868463F24EE233900B27786 /* LuckyUserRankingView.swift */; };
+		B868464224EE316500B27786 /* LuckyUserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B868464124EE316500B27786 /* LuckyUserDataManager.swift */; };
+		B868464424EE4C1A00B27786 /* LuckyUserBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B868464324EE4C1A00B27786 /* LuckyUserBalanceView.swift */; };
+		B868464624EE571200B27786 /* LuckyUserTradeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B868464524EE571200B27786 /* LuckyUserTradeButton.swift */; };
+		B868464824EE693500B27786 /* LuckyJsonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B868464724EE693500B27786 /* LuckyJsonUtils.swift */; };
+		B868464A24EE707700B27786 /* LuckyUserOrderCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B868464924EE707700B27786 /* LuckyUserOrderCellButton.swift */; };
+		B868464C24EE79A000B27786 /* LuckyUserFunctionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B868464B24EE79A000B27786 /* LuckyUserFunctionCellView.swift */; };
+		B869296A25B672FF00C6066E /* LuckyPushSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B869296925B672FF00C6066E /* LuckyPushSettingView.swift */; };
+		B86B127824F8AC6200DA546E /* LuckyChargeCapitalAccountCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86B127724F8AC6200DA546E /* LuckyChargeCapitalAccountCellButton.swift */; };
+		B86B127C24F9122100DA546E /* LuckyUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86B127B24F9122100DA546E /* LuckyUIButton.swift */; };
+		B86B34E125A6E78B000EA319 /* LuckyGradingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86B34E025A6E78B000EA319 /* LuckyGradingManager.swift */; };
+		B871EBFE2522E4CA0007BF53 /* LuckyGroupDetailRecordCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B871EBFD2522E4CA0007BF53 /* LuckyGroupDetailRecordCellView.swift */; };
+		B871EC0025232B2C0007BF53 /* LuckyGroupWinningListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B871EBFF25232B2C0007BF53 /* LuckyGroupWinningListViewController.swift */; };
+		B871EC02252330100007BF53 /* LuckyGroupWinningListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B871EC01252330100007BF53 /* LuckyGroupWinningListCellView.swift */; };
+		B871EC04252336430007BF53 /* LuckyGroupRulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B871EC03252336430007BF53 /* LuckyGroupRulesViewController.swift */; };
+		B872E00723C5859E0051115A /* LuckyAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E00623C5859E0051115A /* LuckyAppDelegate.swift */; };
+		B872E00B23C5859E0051115A /* LuckyHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E00A23C5859E0051115A /* LuckyHomeViewController.swift */; };
+		B872E00E23C5859E0051115A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B872E00C23C5859E0051115A /* Main.storyboard */; };
+		B872E01023C5859F0051115A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B872E00F23C5859F0051115A /* Assets.xcassets */; };
+		B872E02323C589520051115A /* LuckyBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = B872E01E23C589520051115A /* LuckyBase64.m */; };
+		B872E02423C589520051115A /* LuckyDESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B872E02123C589520051115A /* LuckyDESUtils.m */; };
+		B872E02523C589520051115A /* LuckyEncodingUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E02223C589520051115A /* LuckyEncodingUtil.swift */; };
+		B872E10D23C58CBF0051115A /* LuckyBool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E10C23C58CBF0051115A /* LuckyBool.swift */; };
+		B872E10F23C58CDD0051115A /* LuckyDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E10E23C58CDD0051115A /* LuckyDouble.swift */; };
+		B872E11123C58CEC0051115A /* LuckyInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E11023C58CEB0051115A /* LuckyInt.swift */; };
+		B872E11323C58CFB0051115A /* LuckyDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E11223C58CFB0051115A /* LuckyDate.swift */; };
+		B872E11723C58D1F0051115A /* LuckyString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E11623C58D1E0051115A /* LuckyString.swift */; };
+		B872E11923C58FEE0051115A /* LuckyUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E11823C58FEE0051115A /* LuckyUIColor.swift */; };
+		B872E11B23C5900D0051115A /* LuckyUIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E11A23C5900D0051115A /* LuckyUIFont.swift */; };
+		B872E11F23C5C8AE0051115A /* LuckyBaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E11D23C5C8AE0051115A /* LuckyBaseTabBarController.swift */; };
+		B872E12023C5C8AE0051115A /* LuckyBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E11E23C5C8AE0051115A /* LuckyBaseNavigationController.swift */; };
+		B872E12223C5C8ED0051115A /* LuckyUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E12123C5C8ED0051115A /* LuckyUIImage.swift */; };
+		B8752FA025008CC6002D205B /* LuckyCountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8752F9F25008CC6002D205B /* LuckyCountDownView.swift */; };
+		B8752FA225009BE3002D205B /* LuckyRecordTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8752FA125009BE3002D205B /* LuckyRecordTableCellView.swift */; };
+		B8752FA42500CA96002D205B /* LuckyCountDownLongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8752FA32500CA96002D205B /* LuckyCountDownLongView.swift */; };
+		B8752FA62500EA26002D205B /* LuckyCategoriesGoodsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8752FA52500EA26002D205B /* LuckyCategoriesGoodsCellView.swift */; };
+		B875E615254901F8003C806B /* LuckyActivityOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B875E614254901F8003C806B /* LuckyActivityOrderViewController.swift */; };
+		B875E6202549111D003C806B /* LuckyActivityOrderBuyfreeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B875E61F2549111D003C806B /* LuckyActivityOrderBuyfreeCellView.swift */; };
+		B875E62225491FC7003C806B /* LuckyActivityOrderExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B875E62125491FC7003C806B /* LuckyActivityOrderExchangeView.swift */; };
+		B875E62425495099003C806B /* LuckyActivityOrderCheckinCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B875E62325495099003C806B /* LuckyActivityOrderCheckinCellView.swift */; };
+		B875E62625495404003C806B /* LuckyActivityOrderScorelotteryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B875E62525495404003C806B /* LuckyActivityOrderScorelotteryCellView.swift */; };
+		B875E62825495F3C003C806B /* LuckyFaqsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B875E62725495F3C003C806B /* LuckyFaqsViewController.swift */; };
+		B875E62A254961D8003C806B /* LuckyFaqsTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B875E629254961D8003C806B /* LuckyFaqsTitleView.swift */; };
+		B875E62C254968BC003C806B /* LuckyFaqsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B875E62B254968BC003C806B /* LuckyFaqsContentView.swift */; };
+		B877155224F38FD200D96938 /* LuckyCouponsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877155124F38FD200D96938 /* LuckyCouponsViewController.swift */; };
+		B877155424F392AE00D96938 /* LuckyFrontUserVoucherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877155324F392AE00D96938 /* LuckyFrontUserVoucherModel.swift */; };
+		B877155624F3978800D96938 /* LuckyTypeSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877155524F3978800D96938 /* LuckyTypeSelectButton.swift */; };
+		B877155824F39DA000D96938 /* LuckyCouponsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877155724F39DA000D96938 /* LuckyCouponsCellView.swift */; };
+		B877155A24F3ABAE00D96938 /* LuckyDottedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877155924F3ABAE00D96938 /* LuckyDottedLine.swift */; };
+		B878BA9E2511FD6F0057F0D0 /* LuckyPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B878BA9D2511FD6F0057F0D0 /* LuckyPaymentViewController.swift */; };
+		B878E4E123EBB22A00A1ECD4 /* LuckyNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B878E4E023EBB22A00A1ECD4 /* LuckyNotification.swift */; };
+		B87936E724E3CA15000A312F /* LuckyRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87936E624E3CA15000A312F /* LuckyRecordViewController.swift */; };
+		B87936E924E3CA44000A312F /* LuckyStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87936E824E3CA44000A312F /* LuckyStoryViewController.swift */; };
+		B87936EB24E3CA6B000A312F /* LuckyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87936EA24E3CA6B000A312F /* LuckyAccountViewController.swift */; };
+		B87ADC5624DBADF60032372E /* LuckyCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87ADC5524DBADF60032372E /* LuckyCategoriesViewController.swift */; };
+		B87B7D3025C932F9003BFD88 /* LuckyFaqsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B7D2F25C932F9003BFD88 /* LuckyFaqsModel.swift */; };
+		B87C00472501D70E0096D4D7 /* LuckyAddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C00462501D70E0096D4D7 /* LuckyAddressListViewController.swift */; };
+		B87C00492501E2FF0096D4D7 /* LuckyAddNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C00482501E2FF0096D4D7 /* LuckyAddNewView.swift */; };
+		B87C004B2501E6340096D4D7 /* LuckyAddressEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C004A2501E6340096D4D7 /* LuckyAddressEditViewController.swift */; };
+		B87C004D2501E9620096D4D7 /* LuckyAddressListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C004C2501E9620096D4D7 /* LuckyAddressListCellView.swift */; };
+		B87C004F2502102A0096D4D7 /* LuckyPayAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87C004E2502102A0096D4D7 /* LuckyPayAccountViewController.swift */; };
+		B87CDD5223C6C412005657C1 /* LuckyAppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87CDD5123C6C412005657C1 /* LuckyAppData.swift */; };
+		B87D7E302547C5E2001E20BE /* LuckyActivityPrizeWheelFanshapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87D7E2F2547C5E2001E20BE /* LuckyActivityPrizeWheelFanshapeView.swift */; };
+		B87E6844250779680086582A /* LuckySearchKeywordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87E6843250779680086582A /* LuckySearchKeywordButton.swift */; };
+		B880643524FC910100161BE7 /* LuckyMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880643424FC910100161BE7 /* LuckyMessageViewController.swift */; };
+		B880643924FCCCF400161BE7 /* LuckyMessageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880643824FCCCF400161BE7 /* LuckyMessageCellView.swift */; };
+		B880C5E424D909BE00E310EC /* LuckyFrontUserAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C5E324D909BE00E310EC /* LuckyFrontUserAddressModel.swift */; };
+		B880C5E624D90D5600E310EC /* LuckyFrontUserAgentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C5E524D90D5600E310EC /* LuckyFrontUserAgentModel.swift */; };
+		B880C5E824D90E8900E310EC /* LuckyFrontUserBuyfreeOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C5E724D90E8900E310EC /* LuckyFrontUserBuyfreeOrderModel.swift */; };
+		B880C5EA24D912DD00E310EC /* LuckyProvideInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C5E924D912DC00E310EC /* LuckyProvideInfoModel.swift */; };
+		B880C5EC24D942CA00E310EC /* LuckyFrontUserCheckinHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C5EB24D942CA00E310EC /* LuckyFrontUserCheckinHistoryModel.swift */; };
+		B880C5EE24D947DC00E310EC /* LuckyFrontUserCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C5ED24D947DC00E310EC /* LuckyFrontUserCommentModel.swift */; };
+		B880C5F024D94DDB00E310EC /* LuckyFrontUserHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C5EF24D94DDB00E310EC /* LuckyFrontUserHistoryModel.swift */; };
+		B880C5F224D94FF200E310EC /* LuckyFrontUserLuckyNumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C5F124D94FF200E310EC /* LuckyFrontUserLuckyNumModel.swift */; };
+		B880C5F424D951DE00E310EC /* LuckyLuckyNumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C5F324D951DE00E310EC /* LuckyLuckyNumModel.swift */; };
+		B880C5F624D9531C00E310EC /* LuckyFrontUserMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C5F524D9531C00E310EC /* LuckyFrontUserMessageModel.swift */; };
+		B880C5F824D9549500E310EC /* LuckyFrontUserPaymentOrderTopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C5F724D9549500E310EC /* LuckyFrontUserPaymentOrderTopModel.swift */; };
+		B880C5FA24D955D800E310EC /* LuckyFrontUserPaymentOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C5F924D955D800E310EC /* LuckyFrontUserPaymentOrderModel.swift */; };
+		B880C5FC24D95C5100E310EC /* LuckyFrontUserRecommendHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C5FB24D95C5100E310EC /* LuckyFrontUserRecommendHistoryModel.swift */; };
+		B880C5FE24D96C1400E310EC /* LuckyFrontUserScoreHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C5FD24D96C1400E310EC /* LuckyFrontUserScoreHistoryModel.swift */; };
+		B880C60024D96DC300E310EC /* LuckyFrontUserScorelotteryHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C5FF24D96DC300E310EC /* LuckyFrontUserScorelotteryHistoryModel.swift */; };
+		B880C60224D9702600E310EC /* LuckyGroupWinningInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C60124D9702600E310EC /* LuckyGroupWinningInfoModel.swift */; };
+		B880C60424D9715100E310EC /* LuckyLuckygameGoodsIssueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880C60324D9715100E310EC /* LuckyLuckygameGoodsIssueModel.swift */; };
+		B88AFB48250B5C7C002E98E0 /* LuckyInternationalInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88AFB47250B5C7C002E98E0 /* LuckyInternationalInfoModel.swift */; };
+		B88AFB4A250B6163002E98E0 /* LuckyAddressTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88AFB49250B6163002E98E0 /* LuckyAddressTextField.swift */; };
+		B88C248C2505CB99002CA810 /* LuckyWithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88C248B2505CB99002CA810 /* LuckyWithdrawViewController.swift */; };
+		B88C248E2505DB73002CA810 /* LuckyBalanceLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88C248D2505DB73002CA810 /* LuckyBalanceLabelView.swift */; };
+		B88C24902505E5C4002CA810 /* LuckyWithdrawPoundageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88C248F2505E5C4002CA810 /* LuckyWithdrawPoundageLabel.swift */; };
+		B88C24922506442E002CA810 /* LuckyFrontUserRateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88C24912506442E002CA810 /* LuckyFrontUserRateModel.swift */; };
+		B893F0F9253ED4880020C576 /* LuckyActivityAlertRewardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B893F0F8253ED4880020C576 /* LuckyActivityAlertRewardsView.swift */; };
+		B893F0FB253EDE180020C576 /* LuckyActivityRewardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B893F0FA253EDE180020C576 /* LuckyActivityRewardsViewController.swift */; };
+		B89572B8251C35D1005D77AE /* LuckyTranscationDetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89572B7251C35D1005D77AE /* LuckyTranscationDetailCellView.swift */; };
+		B89572BA251C81C6005D77AE /* LuckyRankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89572B9251C81C6005D77AE /* LuckyRankingViewController.swift */; };
+		B89572BC251C9AF4005D77AE /* LuckyRankingCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89572BB251C9AF4005D77AE /* LuckyRankingCellView.swift */; };
+		B895F46E23CEB9F200AD30A3 /* DataBase.plist in Resources */ = {isa = PBXBuildFile; fileRef = B895F46D23CEB9F200AD30A3 /* DataBase.plist */; };
+		B89684F5250F1B3200A75B7D /* LuckyOrderTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89684F4250F1B3200A75B7D /* LuckyOrderTrackingViewController.swift */; };
+		B896918B24F755A000792EFB /* LuckyFrontUserRechargeAmountSetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B896918A24F755A000792EFB /* LuckyFrontUserRechargeAmountSetModel.swift */; };
+		B896918D24F7589E00792EFB /* LuckyChargeAmountCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B896918C24F7589E00792EFB /* LuckyChargeAmountCellView.swift */; };
+		B896918F24F7A0F300792EFB /* LuckyChargeDAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B896918E24F7A0F300792EFB /* LuckyChargeDAmountView.swift */; };
+		B896919124F7B6AB00792EFB /* LuckyChargeCapitalAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B896919024F7B6AB00792EFB /* LuckyChargeCapitalAccountView.swift */; };
+		B897862A250F0BC600B5F225 /* LuckyHomeEnterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8978629250F0BC600B5F225 /* LuckyHomeEnterButton.swift */; };
+		B898FFC024EA5A2B0098036E /* LuckyCaptchaCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B898FFBF24EA5A2B0098036E /* LuckyCaptchaCodeView.swift */; };
+		B898FFC224EA5FD40098036E /* LuckyLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B898FFC124EA5FD40098036E /* LuckyLoadingView.swift */; };
+		B898FFCA24EA63A50098036E /* LuckyAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B898FFC924EA63A40098036E /* LuckyAlertView.swift */; };
+		B898FFCC24EA6C9B0098036E /* LuckyMobileCodeSendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B898FFCB24EA6C9B0098036E /* LuckyMobileCodeSendButton.swift */; };
+		B89B9ABE25B7D2DF00F908F1 /* LuckyAppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89B9ABD25B7D2DF00F908F1 /* LuckyAppleLoginManager.swift */; };
+		B89D192B251371E700EC404F /* LuckyDetailBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89D192A251371E700EC404F /* LuckyDetailBannerView.swift */; };
+		B8ACE880251090D10022F986 /* LuckyPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ACE87F251090D10022F986 /* LuckyPersonalViewController.swift */; };
+		B8ACE8822510A7BC0022F986 /* LuckyPersonalHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ACE8812510A7BC0022F986 /* LuckyPersonalHistoryView.swift */; };
+		B8ACE8842510A8600022F986 /* LuckyPersonalWinningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ACE8832510A8600022F986 /* LuckyPersonalWinningView.swift */; };
+		B8ACE8862510ABFB0022F986 /* LuckyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ACE8852510ABFB0022F986 /* LuckyDetailViewController.swift */; };
+		B8AD686024FDFE910014CD59 /* LuckyHomeSortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD685F24FDFE910014CD59 /* LuckyHomeSortButton.swift */; };
+		B8AD686224FE31570014CD59 /* LuckyHomeGoodsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD686124FE31570014CD59 /* LuckyHomeGoodsCellView.swift */; };
+		B8AD686424FE46080014CD59 /* LuckyProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD686324FE46080014CD59 /* LuckyProgressBar.swift */; };
+		B8AD686624FE54260014CD59 /* LuckyHomeRollMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AD686524FE54260014CD59 /* LuckyHomeRollMessageView.swift */; };
+		B8AFD18F25BFBA110062923D /* LuckyBindingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AFD18E25BFBA110062923D /* LuckyBindingViewController.swift */; };
+		B8B24B9724D2767900F52836 /* LuckyFrontUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B24B9624D2767900F52836 /* LuckyFrontUserModel.swift */; };
+		B8B24B9C24D29FFA00F52836 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B8B24B9E24D29FFA00F52836 /* Localizable.strings */; };
+		B8B24BA624D2A80D00F52836 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B24BA824D2A80D00F52836 /* LaunchScreen.storyboard */; };
+		B8B6323A2524198400124006 /* LuckyLotteryRulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B632392524198400124006 /* LuckyLotteryRulesViewController.swift */; };
+		B8B8600324FF6D63009D7871 /* LuckyGoodsTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8600224FF6D63009D7871 /* LuckyGoodsTypeModel.swift */; };
+		B8B8600524FF7899009D7871 /* LuckyGoodsTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8600424FF7899009D7871 /* LuckyGoodsTypeButton.swift */; };
+		B8B8600724FF7EFB009D7871 /* LuckyWinningRollModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8600624FF7EFB009D7871 /* LuckyWinningRollModel.swift */; };
+		B8B8600924FF951F009D7871 /* LuckyRevealingCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8600824FF951F009D7871 /* LuckyRevealingCellButton.swift */; };
+		B8B88A6A24EF5F5F0022167E /* LuckySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B88A6924EF5F5F0022167E /* LuckySettingViewController.swift */; };
+		B8B88A6C24EF667E0022167E /* LuckyUserSettingCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B88A6B24EF667E0022167E /* LuckyUserSettingCellView.swift */; };
+		B8B88A7124EFB12B0022167E /* LuckyUploadDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B88A7024EFB12B0022167E /* LuckyUploadDataManager.swift */; };
+		B8C1043E252094AA00A7CC78 /* LuckyPkProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1043D252094AA00A7CC78 /* LuckyPkProgressView.swift */; };
+		B8C10440252097C900A7CC78 /* LuckyUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C1043F252097C900A7CC78 /* LuckyUIView.swift */; };
+		B8C104442521AE7D00A7CC78 /* LuckyGroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C104432521AE7D00A7CC78 /* LuckyGroupDetailViewController.swift */; };
+		B8C64BC024FCFCDF001D6FEC /* LuckyHomeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C64BBF24FCFCDF001D6FEC /* LuckyHomeTitleView.swift */; };
+		B8C8D4C8251B36B8003A3460 /* LuckyYearMonthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C8D4C7251B36B8003A3460 /* LuckyYearMonthModel.swift */; };
+		B8C8D4CA251B4A28003A3460 /* LuckyTranscationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C8D4C9251B4A28003A3460 /* LuckyTranscationDetailViewController.swift */; };
+		B8D23E582519EEDD0015155B /* LuckyDetailBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D23E572519EEDD0015155B /* LuckyDetailBuyView.swift */; };
+		B8D3A7B924D7F018009F48C3 /* LuckyFrontUserAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3A7B824D7F018009F48C3 /* LuckyFrontUserAccountModel.swift */; };
+		B8D3A7BB24D7F31D009F48C3 /* LuckyFrontUserRanklistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3A7BA24D7F31D009F48C3 /* LuckyFrontUserRanklistModel.swift */; };
+		B8D3A7BD24D7F4E9009F48C3 /* LuckyActivityRecommendRankingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3A7BC24D7F4E9009F48C3 /* LuckyActivityRecommendRankingModel.swift */; };
+		B8D3A7C324D7F6CC009F48C3 /* LuckyActivityBuyfreeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3A7C224D7F6CC009F48C3 /* LuckyActivityBuyfreeModel.swift */; };
+		B8D3A7C524D80E91009F48C3 /* LuckyActivityCheckinPrizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3A7C424D80E91009F48C3 /* LuckyActivityCheckinPrizeModel.swift */; };
+		B8D3A7C724D81079009F48C3 /* LuckyActivityScorelotteryPrizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3A7C624D81079009F48C3 /* LuckyActivityScorelotteryPrizeModel.swift */; };
+		B8D3A7C924D813A2009F48C3 /* LuckyActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3A7C824D813A2009F48C3 /* LuckyActivityModel.swift */; };
+		B8D3A7CB24D81657009F48C3 /* LuckyBankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3A7CA24D81657009F48C3 /* LuckyBankModel.swift */; };
+		B8D3A7CD24D816EB009F48C3 /* LuckyBannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3A7CC24D816EB009F48C3 /* LuckyBannerModel.swift */; };
+		B8D3A7D024D81831009F48C3 /* LuckyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3A7CF24D81831009F48C3 /* LuckyUtils.swift */; };
+		B8D3A7D224D81F8D009F48C3 /* LuckyCapitalAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3A7D124D81F8D009F48C3 /* LuckyCapitalAccountModel.swift */; };
+		B8D3A7D424D8215C009F48C3 /* LuckyCategoryCountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3A7D324D8215C009F48C3 /* LuckyCategoryCountModel.swift */; };
+		B8E4688C253D2B3C00EAC9E5 /* LuckyVersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4688B253D2B3C00EAC9E5 /* LuckyVersionModel.swift */; };
+		B8E638D923C70103002C7964 /* LuckyHttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E638D823C70103002C7964 /* LuckyHttpManager.swift */; };
+		B8EEEB1925B130700069397C /* LuckyTableLoadingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EEEB1825B130700069397C /* LuckyTableLoadingFooterView.swift */; };
+		B8F0A21524EB823C0052DA0C /* LuckyRetrieveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F0A21424EB823C0052DA0C /* LuckyRetrieveViewController.swift */; };
+		B8F0A21724EB863F0052DA0C /* LuckyRetrieveCodeSendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F0A21624EB863F0052DA0C /* LuckyRetrieveCodeSendButton.swift */; };
+		B8F0A21924EBDB860052DA0C /* LuckyNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F0A21824EBDB860052DA0C /* LuckyNavigationView.swift */; };
+		B8F0A21B24EBE4B10052DA0C /* LuckyUIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F0A21A24EBE4B10052DA0C /* LuckyUIScrollView.swift */; };
+		B8F0A21D24EBE5260052DA0C /* LuckyScrollRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F0A21C24EBE5260052DA0C /* LuckyScrollRefreshView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B8E638EC23C7043B002C7964 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		40F7AF086E15DDAF797715F3 /* Pods-lucky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lucky.debug.xcconfig"; path = "Target Support Files/Pods-lucky/Pods-lucky.debug.xcconfig"; sourceTree = "<group>"; };
+		B801B72824EA76A200AD0E54 /* LuckyMobileCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyMobileCodeView.swift; sourceTree = "<group>"; };
+		B801B72A24EA8B1B00AD0E54 /* LuckyMobileCodeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyMobileCodeCellView.swift; sourceTree = "<group>"; };
+		B8064C872550F58800C139F3 /* LuckyActivityOrderTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityOrderTrackingViewController.swift; sourceTree = "<group>"; };
+		B80A4CC624DA5A74003C3189 /* LuckyStatusCountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyStatusCountModel.swift; sourceTree = "<group>"; };
+		B80A4CC824DA5B01003C3189 /* LuckyWinningInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyWinningInfoModel.swift; sourceTree = "<group>"; };
+		B80A4CCA24DA5FFE003C3189 /* LuckySocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckySocketManager.swift; sourceTree = "<group>"; };
+		B81040D62509C0230053771A /* LuckyOrderHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyOrderHistoryView.swift; sourceTree = "<group>"; };
+		B81040D8250A12BB0053771A /* LuckyOrderExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyOrderExchangeView.swift; sourceTree = "<group>"; };
+		B8115E9A24ECC7F800F54492 /* pull_refresh.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = pull_refresh.gif; sourceTree = "<group>"; };
+		B8115E9C24ECD45700F54492 /* LuckyCommentCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCommentCellView.swift; sourceTree = "<group>"; };
+		B8115E9E24ED2F3A00F54492 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
+		B814134325022C1500E0F963 /* LuckyTableEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyTableEmptyView.swift; sourceTree = "<group>"; };
+		B81413452502333A00E0F963 /* LuckySearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckySearchViewController.swift; sourceTree = "<group>"; };
+		B8147550251AE98200C1C28C /* LuckyTranscationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyTranscationViewController.swift; sourceTree = "<group>"; };
+		B8147552251AF15900C1C28C /* LuckyMonthHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyMonthHistoryModel.swift; sourceTree = "<group>"; };
+		B8147554251B01EA00C1C28C /* LuckyTranscationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyTranscationCellView.swift; sourceTree = "<group>"; };
+		B8156EDD24F4B2A30088C469 /* LuckyPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyPasswordViewController.swift; sourceTree = "<group>"; };
+		B8156EDF24F4EE9A0088C469 /* LuckyPasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyPasswordTextField.swift; sourceTree = "<group>"; };
+		B8156EE124F4FDFF0088C469 /* LuckyNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyNameViewController.swift; sourceTree = "<group>"; };
+		B8156EE324F508560088C469 /* LuckyMobileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyMobileViewController.swift; sourceTree = "<group>"; };
+		B817DA54254127990088CFC7 /* LuckyActivityBuyfreeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityBuyfreeCellView.swift; sourceTree = "<group>"; };
+		B817DA56254167F90088CFC7 /* LuckyActivityTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityTitleView.swift; sourceTree = "<group>"; };
+		B819533025242A0600E8708E /* LuckyPrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyPrivacyViewController.swift; sourceTree = "<group>"; };
+		B8195332252444F100E8708E /* LuckyServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyServiceViewController.swift; sourceTree = "<group>"; };
+		B81953342524646600E8708E /* LuckyPayCreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyPayCreditViewController.swift; sourceTree = "<group>"; };
+		B81BE4EF250F5F5900CE0518 /* LuckyReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyReviewViewController.swift; sourceTree = "<group>"; };
+		B81DC3DD25148FD700957A88 /* LuckyDetailTypeSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyDetailTypeSelectButton.swift; sourceTree = "<group>"; };
+		B824041E25B532EC00580115 /* LuckyQaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyQaViewController.swift; sourceTree = "<group>"; };
+		B824042D25B57C4700580115 /* LuckyFaqsQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFaqsQuestionView.swift; sourceTree = "<group>"; };
+		B82DB7FC251DC81C005C4186 /* LuckyPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyPayViewController.swift; sourceTree = "<group>"; };
+		B82DB804251DD527005C4186 /* image_winning_alert.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = image_winning_alert.gif; sourceTree = "<group>"; };
+		B82DB808251DE8B1005C4186 /* LuckyWinningAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyWinningAlertView.swift; sourceTree = "<group>"; };
+		B82F081E259C8BF00064CD0B /* LuckyCurrencyRateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCurrencyRateModel.swift; sourceTree = "<group>"; };
+		B83439432542789400D80561 /* LuckyActivityCheckinRulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityCheckinRulesView.swift; sourceTree = "<group>"; };
+		B834394525427F7700D80561 /* LuckyActivityWinningAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityWinningAlertView.swift; sourceTree = "<group>"; };
+		B83439472542D11F00D80561 /* LuckyActivityPrizeWheelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityPrizeWheelView.swift; sourceTree = "<group>"; };
+		B8347FC125087F4900F07B7C /* LuckyOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyOrderViewController.swift; sourceTree = "<group>"; };
+		B8347FC52508C25800F07B7C /* LuckyOrderCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyOrderCompleteView.swift; sourceTree = "<group>"; };
+		B8347FC72508DAB100F07B7C /* LuckyOrderWinningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyOrderWinningView.swift; sourceTree = "<group>"; };
+		B839C86C24F60ECA007861FB /* LuckyShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyShareViewController.swift; sourceTree = "<group>"; };
+		B839C86E24F6118E007861FB /* LuckyShareCommentCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyShareCommentCellView.swift; sourceTree = "<group>"; };
+		B839C87024F65149007861FB /* LuckyChargeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyChargeViewController.swift; sourceTree = "<group>"; };
+		B839C87224F65673007861FB /* LuckyBannerScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyBannerScrollView.swift; sourceTree = "<group>"; };
+		B83A963523CEB8F500E83A65 /* LuckyLocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyLocalDataManager.swift; sourceTree = "<group>"; };
+		B83CB71C25184087001B3E36 /* LuckyDetailRecordCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyDetailRecordCellView.swift; sourceTree = "<group>"; };
+		B83CB71E251844BE001B3E36 /* LuckyDetailWinningCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyDetailWinningCellView.swift; sourceTree = "<group>"; };
+		B83D266F25AED9EE0063099A /* LuckyRemotePushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyRemotePushManager.swift; sourceTree = "<group>"; };
+		B841CBE62546647C00ECFC14 /* LuckyActivityPrizeWheelCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityPrizeWheelCellView.swift; sourceTree = "<group>"; };
+		B84DDA3C24E62A1100442401 /* LuckyLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyLoginViewController.swift; sourceTree = "<group>"; };
+		B84DDA3E24E631C600442401 /* LuckyMobileCodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyMobileCodeManager.swift; sourceTree = "<group>"; };
+		B84DDA4024E682EA00442401 /* LuckyTagManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyTagManager.swift; sourceTree = "<group>"; };
+		B84F71C02500FD9E0032ADC0 /* LuckyUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyUILabel.swift; sourceTree = "<group>"; };
+		B858955425AEA092009ECE34 /* LuckyGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyGuideView.swift; sourceTree = "<group>"; };
+		B85F2D3C2541743500D4B0EE /* LuckyActivityCheckinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityCheckinView.swift; sourceTree = "<group>"; };
+		B85F2D3E25417DD200D4B0EE /* LuckyActivityCheckinCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityCheckinCellView.swift; sourceTree = "<group>"; };
+		B868463F24EE233900B27786 /* LuckyUserRankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyUserRankingView.swift; sourceTree = "<group>"; };
+		B868464124EE316500B27786 /* LuckyUserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyUserDataManager.swift; sourceTree = "<group>"; };
+		B868464324EE4C1A00B27786 /* LuckyUserBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyUserBalanceView.swift; sourceTree = "<group>"; };
+		B868464524EE571200B27786 /* LuckyUserTradeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyUserTradeButton.swift; sourceTree = "<group>"; };
+		B868464724EE693500B27786 /* LuckyJsonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyJsonUtils.swift; sourceTree = "<group>"; };
+		B868464924EE707700B27786 /* LuckyUserOrderCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyUserOrderCellButton.swift; sourceTree = "<group>"; };
+		B868464B24EE79A000B27786 /* LuckyUserFunctionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyUserFunctionCellView.swift; sourceTree = "<group>"; };
+		B869296925B672FF00C6066E /* LuckyPushSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyPushSettingView.swift; sourceTree = "<group>"; };
+		B86B127724F8AC6200DA546E /* LuckyChargeCapitalAccountCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyChargeCapitalAccountCellButton.swift; sourceTree = "<group>"; };
+		B86B127B24F9122100DA546E /* LuckyUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyUIButton.swift; sourceTree = "<group>"; };
+		B86B34E025A6E78B000EA319 /* LuckyGradingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyGradingManager.swift; sourceTree = "<group>"; };
+		B871EBFD2522E4CA0007BF53 /* LuckyGroupDetailRecordCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyGroupDetailRecordCellView.swift; sourceTree = "<group>"; };
+		B871EBFF25232B2C0007BF53 /* LuckyGroupWinningListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyGroupWinningListViewController.swift; sourceTree = "<group>"; };
+		B871EC01252330100007BF53 /* LuckyGroupWinningListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyGroupWinningListCellView.swift; sourceTree = "<group>"; };
+		B871EC03252336430007BF53 /* LuckyGroupRulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyGroupRulesViewController.swift; sourceTree = "<group>"; };
+		B872E00323C5859E0051115A /* Shopping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shopping.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B872E00623C5859E0051115A /* LuckyAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyAppDelegate.swift; sourceTree = "<group>"; };
+		B872E00A23C5859E0051115A /* LuckyHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyHomeViewController.swift; sourceTree = "<group>"; };
+		B872E00F23C5859F0051115A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B872E01A23C588F70051115A /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		B872E01E23C589520051115A /* LuckyBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyBase64.m; sourceTree = "<group>"; };
+		B872E01F23C589520051115A /* LuckyDESUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyDESUtils.h; sourceTree = "<group>"; };
+		B872E02023C589520051115A /* LuckyBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckyBase64.h; sourceTree = "<group>"; };
+		B872E02123C589520051115A /* LuckyDESUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckyDESUtils.m; sourceTree = "<group>"; };
+		B872E02223C589520051115A /* LuckyEncodingUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckyEncodingUtil.swift; sourceTree = "<group>"; };
+		B872E10C23C58CBF0051115A /* LuckyBool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckyBool.swift; sourceTree = "<group>"; };
+		B872E10E23C58CDD0051115A /* LuckyDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckyDouble.swift; sourceTree = "<group>"; };
+		B872E11023C58CEB0051115A /* LuckyInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckyInt.swift; sourceTree = "<group>"; };
+		B872E11223C58CFB0051115A /* LuckyDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckyDate.swift; sourceTree = "<group>"; };
+		B872E11623C58D1E0051115A /* LuckyString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckyString.swift; sourceTree = "<group>"; };
+		B872E11823C58FEE0051115A /* LuckyUIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckyUIColor.swift; sourceTree = "<group>"; };
+		B872E11A23C5900D0051115A /* LuckyUIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckyUIFont.swift; sourceTree = "<group>"; };
+		B872E11D23C5C8AE0051115A /* LuckyBaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckyBaseTabBarController.swift; sourceTree = "<group>"; };
+		B872E11E23C5C8AE0051115A /* LuckyBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckyBaseNavigationController.swift; sourceTree = "<group>"; };
+		B872E12123C5C8ED0051115A /* LuckyUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckyUIImage.swift; sourceTree = "<group>"; };
+		B8752F9F25008CC6002D205B /* LuckyCountDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCountDownView.swift; sourceTree = "<group>"; };
+		B8752FA125009BE3002D205B /* LuckyRecordTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyRecordTableCellView.swift; sourceTree = "<group>"; };
+		B8752FA32500CA96002D205B /* LuckyCountDownLongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCountDownLongView.swift; sourceTree = "<group>"; };
+		B8752FA52500EA26002D205B /* LuckyCategoriesGoodsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCategoriesGoodsCellView.swift; sourceTree = "<group>"; };
+		B875E614254901F8003C806B /* LuckyActivityOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityOrderViewController.swift; sourceTree = "<group>"; };
+		B875E61F2549111D003C806B /* LuckyActivityOrderBuyfreeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityOrderBuyfreeCellView.swift; sourceTree = "<group>"; };
+		B875E62125491FC7003C806B /* LuckyActivityOrderExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityOrderExchangeView.swift; sourceTree = "<group>"; };
+		B875E62325495099003C806B /* LuckyActivityOrderCheckinCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityOrderCheckinCellView.swift; sourceTree = "<group>"; };
+		B875E62525495404003C806B /* LuckyActivityOrderScorelotteryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityOrderScorelotteryCellView.swift; sourceTree = "<group>"; };
+		B875E62725495F3C003C806B /* LuckyFaqsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFaqsViewController.swift; sourceTree = "<group>"; };
+		B875E629254961D8003C806B /* LuckyFaqsTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFaqsTitleView.swift; sourceTree = "<group>"; };
+		B875E62B254968BC003C806B /* LuckyFaqsContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFaqsContentView.swift; sourceTree = "<group>"; };
+		B877155124F38FD200D96938 /* LuckyCouponsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCouponsViewController.swift; sourceTree = "<group>"; };
+		B877155324F392AE00D96938 /* LuckyFrontUserVoucherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserVoucherModel.swift; sourceTree = "<group>"; };
+		B877155524F3978800D96938 /* LuckyTypeSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyTypeSelectButton.swift; sourceTree = "<group>"; };
+		B877155724F39DA000D96938 /* LuckyCouponsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCouponsCellView.swift; sourceTree = "<group>"; };
+		B877155924F3ABAE00D96938 /* LuckyDottedLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyDottedLine.swift; sourceTree = "<group>"; };
+		B878BA9D2511FD6F0057F0D0 /* LuckyPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyPaymentViewController.swift; sourceTree = "<group>"; };
+		B878E4E023EBB22A00A1ECD4 /* LuckyNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyNotification.swift; sourceTree = "<group>"; };
+		B87936E624E3CA15000A312F /* LuckyRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyRecordViewController.swift; sourceTree = "<group>"; };
+		B87936E824E3CA44000A312F /* LuckyStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyStoryViewController.swift; sourceTree = "<group>"; };
+		B87936EA24E3CA6B000A312F /* LuckyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyAccountViewController.swift; sourceTree = "<group>"; };
+		B87ADC5524DBADF60032372E /* LuckyCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCategoriesViewController.swift; sourceTree = "<group>"; };
+		B87B7D2F25C932F9003BFD88 /* LuckyFaqsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFaqsModel.swift; sourceTree = "<group>"; };
+		B87C00462501D70E0096D4D7 /* LuckyAddressListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyAddressListViewController.swift; sourceTree = "<group>"; };
+		B87C00482501E2FF0096D4D7 /* LuckyAddNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyAddNewView.swift; sourceTree = "<group>"; };
+		B87C004A2501E6340096D4D7 /* LuckyAddressEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyAddressEditViewController.swift; sourceTree = "<group>"; };
+		B87C004C2501E9620096D4D7 /* LuckyAddressListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyAddressListCellView.swift; sourceTree = "<group>"; };
+		B87C004E2502102A0096D4D7 /* LuckyPayAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyPayAccountViewController.swift; sourceTree = "<group>"; };
+		B87CDD5123C6C412005657C1 /* LuckyAppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyAppData.swift; sourceTree = "<group>"; };
+		B87D7E2F2547C5E2001E20BE /* LuckyActivityPrizeWheelFanshapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityPrizeWheelFanshapeView.swift; sourceTree = "<group>"; };
+		B87E6843250779680086582A /* LuckySearchKeywordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckySearchKeywordButton.swift; sourceTree = "<group>"; };
+		B880643424FC910100161BE7 /* LuckyMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyMessageViewController.swift; sourceTree = "<group>"; };
+		B880643824FCCCF400161BE7 /* LuckyMessageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyMessageCellView.swift; sourceTree = "<group>"; };
+		B880C5E324D909BE00E310EC /* LuckyFrontUserAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserAddressModel.swift; sourceTree = "<group>"; };
+		B880C5E524D90D5600E310EC /* LuckyFrontUserAgentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserAgentModel.swift; sourceTree = "<group>"; };
+		B880C5E724D90E8900E310EC /* LuckyFrontUserBuyfreeOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserBuyfreeOrderModel.swift; sourceTree = "<group>"; };
+		B880C5E924D912DC00E310EC /* LuckyProvideInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyProvideInfoModel.swift; sourceTree = "<group>"; };
+		B880C5EB24D942CA00E310EC /* LuckyFrontUserCheckinHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserCheckinHistoryModel.swift; sourceTree = "<group>"; };
+		B880C5ED24D947DC00E310EC /* LuckyFrontUserCommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserCommentModel.swift; sourceTree = "<group>"; };
+		B880C5EF24D94DDB00E310EC /* LuckyFrontUserHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserHistoryModel.swift; sourceTree = "<group>"; };
+		B880C5F124D94FF200E310EC /* LuckyFrontUserLuckyNumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserLuckyNumModel.swift; sourceTree = "<group>"; };
+		B880C5F324D951DE00E310EC /* LuckyLuckyNumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyLuckyNumModel.swift; sourceTree = "<group>"; };
+		B880C5F524D9531C00E310EC /* LuckyFrontUserMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserMessageModel.swift; sourceTree = "<group>"; };
+		B880C5F724D9549500E310EC /* LuckyFrontUserPaymentOrderTopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserPaymentOrderTopModel.swift; sourceTree = "<group>"; };
+		B880C5F924D955D800E310EC /* LuckyFrontUserPaymentOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserPaymentOrderModel.swift; sourceTree = "<group>"; };
+		B880C5FB24D95C5100E310EC /* LuckyFrontUserRecommendHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserRecommendHistoryModel.swift; sourceTree = "<group>"; };
+		B880C5FD24D96C1400E310EC /* LuckyFrontUserScoreHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserScoreHistoryModel.swift; sourceTree = "<group>"; };
+		B880C5FF24D96DC300E310EC /* LuckyFrontUserScorelotteryHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserScorelotteryHistoryModel.swift; sourceTree = "<group>"; };
+		B880C60124D9702600E310EC /* LuckyGroupWinningInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyGroupWinningInfoModel.swift; sourceTree = "<group>"; };
+		B880C60324D9715100E310EC /* LuckyLuckygameGoodsIssueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyLuckygameGoodsIssueModel.swift; sourceTree = "<group>"; };
+		B88AFB47250B5C7C002E98E0 /* LuckyInternationalInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyInternationalInfoModel.swift; sourceTree = "<group>"; };
+		B88AFB49250B6163002E98E0 /* LuckyAddressTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyAddressTextField.swift; sourceTree = "<group>"; };
+		B88C248B2505CB99002CA810 /* LuckyWithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyWithdrawViewController.swift; sourceTree = "<group>"; };
+		B88C248D2505DB73002CA810 /* LuckyBalanceLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyBalanceLabelView.swift; sourceTree = "<group>"; };
+		B88C248F2505E5C4002CA810 /* LuckyWithdrawPoundageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyWithdrawPoundageLabel.swift; sourceTree = "<group>"; };
+		B88C24912506442E002CA810 /* LuckyFrontUserRateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserRateModel.swift; sourceTree = "<group>"; };
+		B893F0F8253ED4880020C576 /* LuckyActivityAlertRewardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityAlertRewardsView.swift; sourceTree = "<group>"; };
+		B893F0FA253EDE180020C576 /* LuckyActivityRewardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityRewardsViewController.swift; sourceTree = "<group>"; };
+		B89572B7251C35D1005D77AE /* LuckyTranscationDetailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyTranscationDetailCellView.swift; sourceTree = "<group>"; };
+		B89572B9251C81C6005D77AE /* LuckyRankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyRankingViewController.swift; sourceTree = "<group>"; };
+		B89572BB251C9AF4005D77AE /* LuckyRankingCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyRankingCellView.swift; sourceTree = "<group>"; };
+		B895F46D23CEB9F200AD30A3 /* DataBase.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DataBase.plist; sourceTree = "<group>"; };
+		B89684F4250F1B3200A75B7D /* LuckyOrderTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyOrderTrackingViewController.swift; sourceTree = "<group>"; };
+		B896918A24F755A000792EFB /* LuckyFrontUserRechargeAmountSetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserRechargeAmountSetModel.swift; sourceTree = "<group>"; };
+		B896918C24F7589E00792EFB /* LuckyChargeAmountCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyChargeAmountCellView.swift; sourceTree = "<group>"; };
+		B896918E24F7A0F300792EFB /* LuckyChargeDAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyChargeDAmountView.swift; sourceTree = "<group>"; };
+		B896919024F7B6AB00792EFB /* LuckyChargeCapitalAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyChargeCapitalAccountView.swift; sourceTree = "<group>"; };
+		B8978629250F0BC600B5F225 /* LuckyHomeEnterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyHomeEnterButton.swift; sourceTree = "<group>"; };
+		B898FFBF24EA5A2B0098036E /* LuckyCaptchaCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCaptchaCodeView.swift; sourceTree = "<group>"; };
+		B898FFC124EA5FD40098036E /* LuckyLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyLoadingView.swift; sourceTree = "<group>"; };
+		B898FFC924EA63A40098036E /* LuckyAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyAlertView.swift; sourceTree = "<group>"; };
+		B898FFCB24EA6C9B0098036E /* LuckyMobileCodeSendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyMobileCodeSendButton.swift; sourceTree = "<group>"; };
+		B89B9ABD25B7D2DF00F908F1 /* LuckyAppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyAppleLoginManager.swift; sourceTree = "<group>"; };
+		B89D192A251371E700EC404F /* LuckyDetailBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyDetailBannerView.swift; sourceTree = "<group>"; };
+		B8ACE87F251090D10022F986 /* LuckyPersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyPersonalViewController.swift; sourceTree = "<group>"; };
+		B8ACE8812510A7BC0022F986 /* LuckyPersonalHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyPersonalHistoryView.swift; sourceTree = "<group>"; };
+		B8ACE8832510A8600022F986 /* LuckyPersonalWinningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyPersonalWinningView.swift; sourceTree = "<group>"; };
+		B8ACE8852510ABFB0022F986 /* LuckyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyDetailViewController.swift; sourceTree = "<group>"; };
+		B8AD685F24FDFE910014CD59 /* LuckyHomeSortButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyHomeSortButton.swift; sourceTree = "<group>"; };
+		B8AD686124FE31570014CD59 /* LuckyHomeGoodsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyHomeGoodsCellView.swift; sourceTree = "<group>"; };
+		B8AD686324FE46080014CD59 /* LuckyProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyProgressBar.swift; sourceTree = "<group>"; };
+		B8AD686524FE54260014CD59 /* LuckyHomeRollMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyHomeRollMessageView.swift; sourceTree = "<group>"; };
+		B8AFD18E25BFBA110062923D /* LuckyBindingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyBindingViewController.swift; sourceTree = "<group>"; };
+		B8B24B9624D2767900F52836 /* LuckyFrontUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserModel.swift; sourceTree = "<group>"; };
+		B8B24B9D24D29FFA00F52836 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; usesTabs = 0; };
+		B8B632392524198400124006 /* LuckyLotteryRulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyLotteryRulesViewController.swift; sourceTree = "<group>"; };
+		B8B8600224FF6D63009D7871 /* LuckyGoodsTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyGoodsTypeModel.swift; sourceTree = "<group>"; };
+		B8B8600424FF7899009D7871 /* LuckyGoodsTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyGoodsTypeButton.swift; sourceTree = "<group>"; };
+		B8B8600624FF7EFB009D7871 /* LuckyWinningRollModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyWinningRollModel.swift; sourceTree = "<group>"; };
+		B8B8600824FF951F009D7871 /* LuckyRevealingCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyRevealingCellButton.swift; sourceTree = "<group>"; };
+		B8B88A6924EF5F5F0022167E /* LuckySettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckySettingViewController.swift; sourceTree = "<group>"; };
+		B8B88A6B24EF667E0022167E /* LuckyUserSettingCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyUserSettingCellView.swift; sourceTree = "<group>"; };
+		B8B88A6D24EF9FA40022167E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8B88A7024EFB12B0022167E /* LuckyUploadDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyUploadDataManager.swift; sourceTree = "<group>"; };
+		B8C1043D252094AA00A7CC78 /* LuckyPkProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyPkProgressView.swift; sourceTree = "<group>"; };
+		B8C1043F252097C900A7CC78 /* LuckyUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyUIView.swift; sourceTree = "<group>"; };
+		B8C104432521AE7D00A7CC78 /* LuckyGroupDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyGroupDetailViewController.swift; sourceTree = "<group>"; };
+		B8C64BBF24FCFCDF001D6FEC /* LuckyHomeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyHomeTitleView.swift; sourceTree = "<group>"; };
+		B8C8D4C7251B36B8003A3460 /* LuckyYearMonthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyYearMonthModel.swift; sourceTree = "<group>"; };
+		B8C8D4C9251B4A28003A3460 /* LuckyTranscationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyTranscationDetailViewController.swift; sourceTree = "<group>"; };
+		B8D23E572519EEDD0015155B /* LuckyDetailBuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyDetailBuyView.swift; sourceTree = "<group>"; };
+		B8D3A7B824D7F018009F48C3 /* LuckyFrontUserAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserAccountModel.swift; sourceTree = "<group>"; };
+		B8D3A7BA24D7F31D009F48C3 /* LuckyFrontUserRanklistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyFrontUserRanklistModel.swift; sourceTree = "<group>"; };
+		B8D3A7BC24D7F4E9009F48C3 /* LuckyActivityRecommendRankingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityRecommendRankingModel.swift; sourceTree = "<group>"; };
+		B8D3A7C024D7F67B009F48C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B8D3A7C124D7F67B009F48C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B8D3A7C224D7F6CC009F48C3 /* LuckyActivityBuyfreeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityBuyfreeModel.swift; sourceTree = "<group>"; };
+		B8D3A7C424D80E91009F48C3 /* LuckyActivityCheckinPrizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityCheckinPrizeModel.swift; sourceTree = "<group>"; };
+		B8D3A7C624D81079009F48C3 /* LuckyActivityScorelotteryPrizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityScorelotteryPrizeModel.swift; sourceTree = "<group>"; };
+		B8D3A7C824D813A2009F48C3 /* LuckyActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyActivityModel.swift; sourceTree = "<group>"; };
+		B8D3A7CA24D81657009F48C3 /* LuckyBankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyBankModel.swift; sourceTree = "<group>"; };
+		B8D3A7CC24D816EB009F48C3 /* LuckyBannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyBannerModel.swift; sourceTree = "<group>"; };
+		B8D3A7CF24D81831009F48C3 /* LuckyUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyUtils.swift; sourceTree = "<group>"; };
+		B8D3A7D124D81F8D009F48C3 /* LuckyCapitalAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCapitalAccountModel.swift; sourceTree = "<group>"; };
+		B8D3A7D324D8215C009F48C3 /* LuckyCategoryCountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyCategoryCountModel.swift; sourceTree = "<group>"; };
+		B8E4688B253D2B3C00EAC9E5 /* LuckyVersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyVersionModel.swift; sourceTree = "<group>"; };
+		B8E638D823C70103002C7964 /* LuckyHttpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyHttpManager.swift; sourceTree = "<group>"; };
+		B8EEEB1825B130700069397C /* LuckyTableLoadingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyTableLoadingFooterView.swift; sourceTree = "<group>"; };
+		B8F0A21424EB823C0052DA0C /* LuckyRetrieveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyRetrieveViewController.swift; sourceTree = "<group>"; };
+		B8F0A21624EB863F0052DA0C /* LuckyRetrieveCodeSendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyRetrieveCodeSendButton.swift; sourceTree = "<group>"; };
+		B8F0A21824EBDB860052DA0C /* LuckyNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyNavigationView.swift; sourceTree = "<group>"; };
+		B8F0A21A24EBE4B10052DA0C /* LuckyUIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyUIScrollView.swift; sourceTree = "<group>"; };
+		B8F0A21C24EBE5260052DA0C /* LuckyScrollRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckyScrollRefreshView.swift; sourceTree = "<group>"; };
+		D07EC12CABCA7E4FC301241F /* Pods_lucky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lucky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3CB0CFABA4A7F52A38C33DC /* Pods-lucky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lucky.release.xcconfig"; path = "Target Support Files/Pods-lucky/Pods-lucky.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B872E00023C5859E0051115A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A940862066A4B76FFB20BC75 /* Pods_lucky.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2D84EDEEFABEC5E28DE04D4B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				40F7AF086E15DDAF797715F3 /* Pods-lucky.debug.xcconfig */,
+				E3CB0CFABA4A7F52A38C33DC /* Pods-lucky.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B8064C722550F0B400C139F3 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				B817DA54254127990088CFC7 /* LuckyActivityBuyfreeCellView.swift */,
+				B85F2D3E25417DD200D4B0EE /* LuckyActivityCheckinCellView.swift */,
+				B893F0F8253ED4880020C576 /* LuckyActivityAlertRewardsView.swift */,
+				B817DA56254167F90088CFC7 /* LuckyActivityTitleView.swift */,
+				B85F2D3C2541743500D4B0EE /* LuckyActivityCheckinView.swift */,
+				B83439432542789400D80561 /* LuckyActivityCheckinRulesView.swift */,
+				B834394525427F7700D80561 /* LuckyActivityWinningAlertView.swift */,
+				B83439472542D11F00D80561 /* LuckyActivityPrizeWheelView.swift */,
+				B841CBE62546647C00ECFC14 /* LuckyActivityPrizeWheelCellView.swift */,
+				B87D7E2F2547C5E2001E20BE /* LuckyActivityPrizeWheelFanshapeView.swift */,
+				B875E61F2549111D003C806B /* LuckyActivityOrderBuyfreeCellView.swift */,
+				B875E62325495099003C806B /* LuckyActivityOrderCheckinCellView.swift */,
+				B875E62525495404003C806B /* LuckyActivityOrderScorelotteryCellView.swift */,
+				B875E62125491FC7003C806B /* LuckyActivityOrderExchangeView.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		B8064C732550F0CA00C139F3 /* Fund */ = {
+			isa = PBXGroup;
+			children = (
+				B896918C24F7589E00792EFB /* LuckyChargeAmountCellView.swift */,
+				B896918E24F7A0F300792EFB /* LuckyChargeDAmountView.swift */,
+				B896919024F7B6AB00792EFB /* LuckyChargeCapitalAccountView.swift */,
+				B86B127724F8AC6200DA546E /* LuckyChargeCapitalAccountCellButton.swift */,
+				B88C248F2505E5C4002CA810 /* LuckyWithdrawPoundageLabel.swift */,
+				B88C248D2505DB73002CA810 /* LuckyBalanceLabelView.swift */,
+			);
+			path = Fund;
+			sourceTree = "<group>";
+		};
+		B8064C742550F0DA00C139F3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B898FFCB24EA6C9B0098036E /* LuckyMobileCodeSendButton.swift */,
+				B801B72A24EA8B1B00AD0E54 /* LuckyMobileCodeCellView.swift */,
+				B8F0A21624EB863F0052DA0C /* LuckyRetrieveCodeSendButton.swift */,
+				B801B72824EA76A200AD0E54 /* LuckyMobileCodeView.swift */,
+				B898FFBF24EA5A2B0098036E /* LuckyCaptchaCodeView.swift */,
+				B8156EDF24F4EE9A0088C469 /* LuckyPasswordTextField.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B8064C752550F13900C139F3 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B898FFC124EA5FD40098036E /* LuckyLoadingView.swift */,
+				B8EEEB1825B130700069397C /* LuckyTableLoadingFooterView.swift */,
+				B898FFC924EA63A40098036E /* LuckyAlertView.swift */,
+				B8F0A21824EBDB860052DA0C /* LuckyNavigationView.swift */,
+				B877155924F3ABAE00D96938 /* LuckyDottedLine.swift */,
+				B82DB808251DE8B1005C4186 /* LuckyWinningAlertView.swift */,
+				B839C87224F65673007861FB /* LuckyBannerScrollView.swift */,
+				B814134325022C1500E0F963 /* LuckyTableEmptyView.swift */,
+				B8F0A21C24EBE5260052DA0C /* LuckyScrollRefreshView.swift */,
+				B8AD686324FE46080014CD59 /* LuckyProgressBar.swift */,
+				B877155524F3978800D96938 /* LuckyTypeSelectButton.swift */,
+				B8752F9F25008CC6002D205B /* LuckyCountDownView.swift */,
+				B8752FA32500CA96002D205B /* LuckyCountDownLongView.swift */,
+				B869296925B672FF00C6066E /* LuckyPushSettingView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		B8064C762550F1DF00C139F3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B858955425AEA092009ECE34 /* LuckyGuideView.swift */,
+				B89572BB251C9AF4005D77AE /* LuckyRankingCellView.swift */,
+				B8978629250F0BC600B5F225 /* LuckyHomeEnterButton.swift */,
+				B8C64BBF24FCFCDF001D6FEC /* LuckyHomeTitleView.swift */,
+				B8AD685F24FDFE910014CD59 /* LuckyHomeSortButton.swift */,
+				B8AD686124FE31570014CD59 /* LuckyHomeGoodsCellView.swift */,
+				B8AD686524FE54260014CD59 /* LuckyHomeRollMessageView.swift */,
+				B8B8600824FF951F009D7871 /* LuckyRevealingCellButton.swift */,
+				B880643824FCCCF400161BE7 /* LuckyMessageCellView.swift */,
+				B8C1043D252094AA00A7CC78 /* LuckyPkProgressView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		B8064C772550F1EA00C139F3 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				B868463F24EE233900B27786 /* LuckyUserRankingView.swift */,
+				B8B88A6B24EF667E0022167E /* LuckyUserSettingCellView.swift */,
+				B868464924EE707700B27786 /* LuckyUserOrderCellButton.swift */,
+				B868464B24EE79A000B27786 /* LuckyUserFunctionCellView.swift */,
+				B868464524EE571200B27786 /* LuckyUserTradeButton.swift */,
+				B868464324EE4C1A00B27786 /* LuckyUserBalanceView.swift */,
+				B877155724F39DA000D96938 /* LuckyCouponsCellView.swift */,
+				B8ACE8812510A7BC0022F986 /* LuckyPersonalHistoryView.swift */,
+				B8ACE8832510A8600022F986 /* LuckyPersonalWinningView.swift */,
+				B8147554251B01EA00C1C28C /* LuckyTranscationCellView.swift */,
+				B89572B7251C35D1005D77AE /* LuckyTranscationDetailCellView.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		B8064C782550F23F00C139F3 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				B8752FA125009BE3002D205B /* LuckyRecordTableCellView.swift */,
+				B8B8600424FF7899009D7871 /* LuckyGoodsTypeButton.swift */,
+				B8752FA52500EA26002D205B /* LuckyCategoriesGoodsCellView.swift */,
+				B87E6843250779680086582A /* LuckySearchKeywordButton.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		B8064C822550F3A300C139F3 /* Story */ = {
+			isa = PBXGroup;
+			children = (
+				B8115E9C24ECD45700F54492 /* LuckyCommentCellView.swift */,
+				B839C86E24F6118E007861FB /* LuckyShareCommentCellView.swift */,
+			);
+			path = Story;
+			sourceTree = "<group>";
+		};
+		B8064C832550F3FC00C139F3 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				B87C004C2501E9620096D4D7 /* LuckyAddressListCellView.swift */,
+				B87C00482501E2FF0096D4D7 /* LuckyAddNewView.swift */,
+				B88AFB49250B6163002E98E0 /* LuckyAddressTextField.swift */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
+		B8064C842550F42B00C139F3 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				B89D192A251371E700EC404F /* LuckyDetailBannerView.swift */,
+				B81DC3DD25148FD700957A88 /* LuckyDetailTypeSelectButton.swift */,
+				B83CB71C25184087001B3E36 /* LuckyDetailRecordCellView.swift */,
+				B83CB71E251844BE001B3E36 /* LuckyDetailWinningCellView.swift */,
+				B8D23E572519EEDD0015155B /* LuckyDetailBuyView.swift */,
+				B871EBFD2522E4CA0007BF53 /* LuckyGroupDetailRecordCellView.swift */,
+				B871EC01252330100007BF53 /* LuckyGroupWinningListCellView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		B8064C852550F44500C139F3 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				B8347FC52508C25800F07B7C /* LuckyOrderCompleteView.swift */,
+				B8347FC72508DAB100F07B7C /* LuckyOrderWinningView.swift */,
+				B81040D62509C0230053771A /* LuckyOrderHistoryView.swift */,
+				B81040D8250A12BB0053771A /* LuckyOrderExchangeView.swift */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		B8064C862550F4EA00C139F3 /* Faqs */ = {
+			isa = PBXGroup;
+			children = (
+				B875E62B254968BC003C806B /* LuckyFaqsContentView.swift */,
+				B875E629254961D8003C806B /* LuckyFaqsTitleView.swift */,
+				B824042D25B57C4700580115 /* LuckyFaqsQuestionView.swift */,
+			);
+			path = Faqs;
+			sourceTree = "<group>";
+		};
+		B8115E9924ECC7E900F54492 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				B82DB804251DD527005C4186 /* image_winning_alert.gif */,
+				B8115E9E24ED2F3A00F54492 /* loading.gif */,
+				B8115E9A24ECC7F800F54492 /* pull_refresh.gif */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		B83F835A23C5E58600A69977 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B872E00A23C5859E0051115A /* LuckyHomeViewController.swift */,
+				B87ADC5524DBADF60032372E /* LuckyCategoriesViewController.swift */,
+				B87936E624E3CA15000A312F /* LuckyRecordViewController.swift */,
+				B87936E824E3CA44000A312F /* LuckyStoryViewController.swift */,
+				B87936EA24E3CA6B000A312F /* LuckyAccountViewController.swift */,
+				B84DDA3C24E62A1100442401 /* LuckyLoginViewController.swift */,
+				B8F0A21424EB823C0052DA0C /* LuckyRetrieveViewController.swift */,
+				B880643424FC910100161BE7 /* LuckyMessageViewController.swift */,
+				B8ACE8852510ABFB0022F986 /* LuckyDetailViewController.swift */,
+				B8C104432521AE7D00A7CC78 /* LuckyGroupDetailViewController.swift */,
+				B871EC03252336430007BF53 /* LuckyGroupRulesViewController.swift */,
+				B871EBFF25232B2C0007BF53 /* LuckyGroupWinningListViewController.swift */,
+				B878BA9D2511FD6F0057F0D0 /* LuckyPaymentViewController.swift */,
+				B81413452502333A00E0F963 /* LuckySearchViewController.swift */,
+				B8B88A6924EF5F5F0022167E /* LuckySettingViewController.swift */,
+				B8156EDD24F4B2A30088C469 /* LuckyPasswordViewController.swift */,
+				B8156EE124F4FDFF0088C469 /* LuckyNameViewController.swift */,
+				B8AFD18E25BFBA110062923D /* LuckyBindingViewController.swift */,
+				B8156EE324F508560088C469 /* LuckyMobileViewController.swift */,
+				B87C004E2502102A0096D4D7 /* LuckyPayAccountViewController.swift */,
+				B877155124F38FD200D96938 /* LuckyCouponsViewController.swift */,
+				B8347FC125087F4900F07B7C /* LuckyOrderViewController.swift */,
+				B89684F4250F1B3200A75B7D /* LuckyOrderTrackingViewController.swift */,
+				B8147550251AE98200C1C28C /* LuckyTranscationViewController.swift */,
+				B8C8D4C9251B4A28003A3460 /* LuckyTranscationDetailViewController.swift */,
+				B839C87024F65149007861FB /* LuckyChargeViewController.swift */,
+				B82DB7FC251DC81C005C4186 /* LuckyPayViewController.swift */,
+				B81953342524646600E8708E /* LuckyPayCreditViewController.swift */,
+				B88C248B2505CB99002CA810 /* LuckyWithdrawViewController.swift */,
+				B839C86C24F60ECA007861FB /* LuckyShareViewController.swift */,
+				B87C00462501D70E0096D4D7 /* LuckyAddressListViewController.swift */,
+				B87C004A2501E6340096D4D7 /* LuckyAddressEditViewController.swift */,
+				B81BE4EF250F5F5900CE0518 /* LuckyReviewViewController.swift */,
+				B8ACE87F251090D10022F986 /* LuckyPersonalViewController.swift */,
+				B89572B9251C81C6005D77AE /* LuckyRankingViewController.swift */,
+				B8B632392524198400124006 /* LuckyLotteryRulesViewController.swift */,
+				B893F0FA253EDE180020C576 /* LuckyActivityRewardsViewController.swift */,
+				B875E614254901F8003C806B /* LuckyActivityOrderViewController.swift */,
+				B8064C872550F58800C139F3 /* LuckyActivityOrderTrackingViewController.swift */,
+				B819533025242A0600E8708E /* LuckyPrivacyViewController.swift */,
+				B8195332252444F100E8708E /* LuckyServiceViewController.swift */,
+				B875E62725495F3C003C806B /* LuckyFaqsViewController.swift */,
+				B824041E25B532EC00580115 /* LuckyQaViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		B872DFFA23C5859E0051115A = {
+			isa = PBXGroup;
+			children = (
+				B872E00523C5859E0051115A /* lucky */,
+				B872E00423C5859E0051115A /* Products */,
+				B872E02623C58AB00051115A /* Frameworks */,
+				2D84EDEEFABEC5E28DE04D4B /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		B872E00423C5859E0051115A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B872E00323C5859E0051115A /* Shopping.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B872E00523C5859E0051115A /* lucky */ = {
+			isa = PBXGroup;
+			children = (
+				B8115E9924ECC7E900F54492 /* Resource */,
+				B8B24B9524D275FD00F52836 /* Model */,
+				B8E638D323C6DF94002C7964 /* BaseView */,
+				B872E11C23C5C8AE0051115A /* BaseViewController */,
+				B872E10B23C58C6A0051115A /* Extension */,
+				B872E01D23C589520051115A /* Encoding */,
+				B83F835A23C5E58600A69977 /* ViewController */,
+				B8D3A7CE24D81819009F48C3 /* Util */,
+				B872E00623C5859E0051115A /* LuckyAppDelegate.swift */,
+				B87CDD5123C6C412005657C1 /* LuckyAppData.swift */,
+				B872E00C23C5859E0051115A /* Main.storyboard */,
+				B872E00F23C5859F0051115A /* Assets.xcassets */,
+				B8B24BA824D2A80D00F52836 /* LaunchScreen.storyboard */,
+				B895F46D23CEB9F200AD30A3 /* DataBase.plist */,
+				B8B88A6D24EF9FA40022167E /* Info.plist */,
+				B872E01A23C588F70051115A /* Bridging-Header.h */,
+				B8B24B9E24D29FFA00F52836 /* Localizable.strings */,
+			);
+			path = lucky;
+			sourceTree = "<group>";
+		};
+		B872E01D23C589520051115A /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				B872E01E23C589520051115A /* LuckyBase64.m */,
+				B872E01F23C589520051115A /* LuckyDESUtils.h */,
+				B872E02023C589520051115A /* LuckyBase64.h */,
+				B872E02123C589520051115A /* LuckyDESUtils.m */,
+				B872E02223C589520051115A /* LuckyEncodingUtil.swift */,
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
+		B872E02623C58AB00051115A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D07EC12CABCA7E4FC301241F /* Pods_lucky.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B872E10B23C58C6A0051115A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B872E11A23C5900D0051115A /* LuckyUIFont.swift */,
+				B872E12123C5C8ED0051115A /* LuckyUIImage.swift */,
+				B872E11023C58CEB0051115A /* LuckyInt.swift */,
+				B872E10E23C58CDD0051115A /* LuckyDouble.swift */,
+				B872E10C23C58CBF0051115A /* LuckyBool.swift */,
+				B872E11223C58CFB0051115A /* LuckyDate.swift */,
+				B872E11623C58D1E0051115A /* LuckyString.swift */,
+				B872E11823C58FEE0051115A /* LuckyUIColor.swift */,
+				B878E4E023EBB22A00A1ECD4 /* LuckyNotification.swift */,
+				B8F0A21A24EBE4B10052DA0C /* LuckyUIScrollView.swift */,
+				B86B127B24F9122100DA546E /* LuckyUIButton.swift */,
+				B84F71C02500FD9E0032ADC0 /* LuckyUILabel.swift */,
+				B8C1043F252097C900A7CC78 /* LuckyUIView.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		B872E11C23C5C8AE0051115A /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B872E11D23C5C8AE0051115A /* LuckyBaseTabBarController.swift */,
+				B872E11E23C5C8AE0051115A /* LuckyBaseNavigationController.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		B8B24B9524D275FD00F52836 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B8D3A7BC24D7F4E9009F48C3 /* LuckyActivityRecommendRankingModel.swift */,
+				B8D3A7C224D7F6CC009F48C3 /* LuckyActivityBuyfreeModel.swift */,
+				B8D3A7C424D80E91009F48C3 /* LuckyActivityCheckinPrizeModel.swift */,
+				B8D3A7C624D81079009F48C3 /* LuckyActivityScorelotteryPrizeModel.swift */,
+				B8D3A7C824D813A2009F48C3 /* LuckyActivityModel.swift */,
+				B8D3A7CA24D81657009F48C3 /* LuckyBankModel.swift */,
+				B8D3A7CC24D816EB009F48C3 /* LuckyBannerModel.swift */,
+				B8D3A7D124D81F8D009F48C3 /* LuckyCapitalAccountModel.swift */,
+				B8D3A7D324D8215C009F48C3 /* LuckyCategoryCountModel.swift */,
+				B8D3A7B824D7F018009F48C3 /* LuckyFrontUserAccountModel.swift */,
+				B880C5E324D909BE00E310EC /* LuckyFrontUserAddressModel.swift */,
+				B880C5E524D90D5600E310EC /* LuckyFrontUserAgentModel.swift */,
+				B880C5E724D90E8900E310EC /* LuckyFrontUserBuyfreeOrderModel.swift */,
+				B8D3A7BA24D7F31D009F48C3 /* LuckyFrontUserRanklistModel.swift */,
+				B896918A24F755A000792EFB /* LuckyFrontUserRechargeAmountSetModel.swift */,
+				B880C5EB24D942CA00E310EC /* LuckyFrontUserCheckinHistoryModel.swift */,
+				B880C5ED24D947DC00E310EC /* LuckyFrontUserCommentModel.swift */,
+				B880C5EF24D94DDB00E310EC /* LuckyFrontUserHistoryModel.swift */,
+				B880C5F124D94FF200E310EC /* LuckyFrontUserLuckyNumModel.swift */,
+				B880C5F524D9531C00E310EC /* LuckyFrontUserMessageModel.swift */,
+				B880C5F724D9549500E310EC /* LuckyFrontUserPaymentOrderTopModel.swift */,
+				B880C5F924D955D800E310EC /* LuckyFrontUserPaymentOrderModel.swift */,
+				B88C24912506442E002CA810 /* LuckyFrontUserRateModel.swift */,
+				B880C5FB24D95C5100E310EC /* LuckyFrontUserRecommendHistoryModel.swift */,
+				B880C5FD24D96C1400E310EC /* LuckyFrontUserScoreHistoryModel.swift */,
+				B8B24B9624D2767900F52836 /* LuckyFrontUserModel.swift */,
+				B880C5FF24D96DC300E310EC /* LuckyFrontUserScorelotteryHistoryModel.swift */,
+				B877155324F392AE00D96938 /* LuckyFrontUserVoucherModel.swift */,
+				B8B8600224FF6D63009D7871 /* LuckyGoodsTypeModel.swift */,
+				B880C60124D9702600E310EC /* LuckyGroupWinningInfoModel.swift */,
+				B88AFB47250B5C7C002E98E0 /* LuckyInternationalInfoModel.swift */,
+				B880C5F324D951DE00E310EC /* LuckyLuckyNumModel.swift */,
+				B880C60324D9715100E310EC /* LuckyLuckygameGoodsIssueModel.swift */,
+				B8147552251AF15900C1C28C /* LuckyMonthHistoryModel.swift */,
+				B880C5E924D912DC00E310EC /* LuckyProvideInfoModel.swift */,
+				B80A4CC624DA5A74003C3189 /* LuckyStatusCountModel.swift */,
+				B80A4CC824DA5B01003C3189 /* LuckyWinningInfoModel.swift */,
+				B8B8600624FF7EFB009D7871 /* LuckyWinningRollModel.swift */,
+				B8C8D4C7251B36B8003A3460 /* LuckyYearMonthModel.swift */,
+				B8E4688B253D2B3C00EAC9E5 /* LuckyVersionModel.swift */,
+				B87B7D2F25C932F9003BFD88 /* LuckyFaqsModel.swift */,
+				B82F081E259C8BF00064CD0B /* LuckyCurrencyRateModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B8D3A7CE24D81819009F48C3 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B8D3A7CF24D81831009F48C3 /* LuckyUtils.swift */,
+				B83A963523CEB8F500E83A65 /* LuckyLocalDataManager.swift */,
+				B80A4CCA24DA5FFE003C3189 /* LuckySocketManager.swift */,
+				B8E638D823C70103002C7964 /* LuckyHttpManager.swift */,
+				B84DDA3E24E631C600442401 /* LuckyMobileCodeManager.swift */,
+				B84DDA4024E682EA00442401 /* LuckyTagManager.swift */,
+				B868464124EE316500B27786 /* LuckyUserDataManager.swift */,
+				B868464724EE693500B27786 /* LuckyJsonUtils.swift */,
+				B8B88A7024EFB12B0022167E /* LuckyUploadDataManager.swift */,
+				B86B34E025A6E78B000EA319 /* LuckyGradingManager.swift */,
+				B83D266F25AED9EE0063099A /* LuckyRemotePushManager.swift */,
+				B89B9ABD25B7D2DF00F908F1 /* LuckyAppleLoginManager.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		B8E638D323C6DF94002C7964 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				B8064C752550F13900C139F3 /* Base */,
+				B8064C762550F1DF00C139F3 /* Home */,
+				B8064C782550F23F00C139F3 /* Category */,
+				B8064C842550F42B00C139F3 /* Detail */,
+				B8064C822550F3A300C139F3 /* Story */,
+				B8064C772550F1EA00C139F3 /* Account */,
+				B8064C742550F0DA00C139F3 /* Login */,
+				B8064C852550F44500C139F3 /* Order */,
+				B8064C732550F0CA00C139F3 /* Fund */,
+				B8064C832550F3FC00C139F3 /* Address */,
+				B8064C722550F0B400C139F3 /* Activity */,
+				B8064C862550F4EA00C139F3 /* Faqs */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B872E00223C5859E0051115A /* lucky */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B872E01723C5859F0051115A /* Build configuration list for PBXNativeTarget "lucky" */;
+			buildPhases = (
+				0A372CA7C618E0FF661C1192 /* [CP] Check Pods Manifest.lock */,
+				B872DFFF23C5859E0051115A /* Sources */,
+				B872E00023C5859E0051115A /* Frameworks */,
+				B872E00123C5859E0051115A /* Resources */,
+				B8E638EC23C7043B002C7964 /* Embed Frameworks */,
+				15E037BB2D585FA3113A6058 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = lucky;
+			productName = shopping;
+			productReference = B872E00323C5859E0051115A /* Shopping.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B872DFFB23C5859E0051115A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = shopping;
+				TargetAttributes = {
+					B872E00223C5859E0051115A = {
+						CreatedOnToolsVersion = 11.3;
+					};
+				};
+			};
+			buildConfigurationList = B872DFFE23C5859E0051115A /* Build configuration list for PBXProject "lucky" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B872DFFA23C5859E0051115A;
+			productRefGroup = B872E00423C5859E0051115A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B872E00223C5859E0051115A /* lucky */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B872E00123C5859E0051115A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B895F46E23CEB9F200AD30A3 /* DataBase.plist in Resources */,
+				B8B24BA624D2A80D00F52836 /* LaunchScreen.storyboard in Resources */,
+				B8B24B9C24D29FFA00F52836 /* Localizable.strings in Resources */,
+				B8115E9B24ECC7F800F54492 /* pull_refresh.gif in Resources */,
+				B8115E9F24ED2F3A00F54492 /* loading.gif in Resources */,
+				B872E01023C5859F0051115A /* Assets.xcassets in Resources */,
+				B82DB805251DD527005C4186 /* image_winning_alert.gif in Resources */,
+				B872E00E23C5859E0051115A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A372CA7C618E0FF661C1192 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lucky-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		15E037BB2D585FA3113A6058 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-lucky/Pods-lucky-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-lucky/Pods-lucky-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-lucky/Pods-lucky-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B872DFFF23C5859E0051115A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B83A963623CEB8F500E83A65 /* LuckyLocalDataManager.swift in Sources */,
+				B82DB7FD251DC81C005C4186 /* LuckyPayViewController.swift in Sources */,
+				B8B88A6A24EF5F5F0022167E /* LuckySettingViewController.swift in Sources */,
+				B839C87324F65673007861FB /* LuckyBannerScrollView.swift in Sources */,
+				B8B24B9724D2767900F52836 /* LuckyFrontUserModel.swift in Sources */,
+				B878E4E123EBB22A00A1ECD4 /* LuckyNotification.swift in Sources */,
+				B880643524FC910100161BE7 /* LuckyMessageViewController.swift in Sources */,
+				B82F081F259C8BF00064CD0B /* LuckyCurrencyRateModel.swift in Sources */,
+				B877155824F39DA000D96938 /* LuckyCouponsCellView.swift in Sources */,
+				B8347FC62508C25800F07B7C /* LuckyOrderCompleteView.swift in Sources */,
+				B872E11323C58CFB0051115A /* LuckyDate.swift in Sources */,
+				B880C5F024D94DDB00E310EC /* LuckyFrontUserHistoryModel.swift in Sources */,
+				B8156EE424F508560088C469 /* LuckyMobileViewController.swift in Sources */,
+				B8F0A21724EB863F0052DA0C /* LuckyRetrieveCodeSendButton.swift in Sources */,
+				B8D3A7B924D7F018009F48C3 /* LuckyFrontUserAccountModel.swift in Sources */,
+				B897862A250F0BC600B5F225 /* LuckyHomeEnterButton.swift in Sources */,
+				B8147555251B01EA00C1C28C /* LuckyTranscationCellView.swift in Sources */,
+				B8ACE8842510A8600022F986 /* LuckyPersonalWinningView.swift in Sources */,
+				B8ACE880251090D10022F986 /* LuckyPersonalViewController.swift in Sources */,
+				B8C1043E252094AA00A7CC78 /* LuckyPkProgressView.swift in Sources */,
+				B801B72B24EA8B1B00AD0E54 /* LuckyMobileCodeCellView.swift in Sources */,
+				B868464C24EE79A000B27786 /* LuckyUserFunctionCellView.swift in Sources */,
+				B8ACE8862510ABFB0022F986 /* LuckyDetailViewController.swift in Sources */,
+				B8B8600724FF7EFB009D7871 /* LuckyWinningRollModel.swift in Sources */,
+				B875E62A254961D8003C806B /* LuckyFaqsTitleView.swift in Sources */,
+				B872E11123C58CEC0051115A /* LuckyInt.swift in Sources */,
+				B88AFB48250B5C7C002E98E0 /* LuckyInternationalInfoModel.swift in Sources */,
+				B880C5F824D9549500E310EC /* LuckyFrontUserPaymentOrderTopModel.swift in Sources */,
+				B880C5E624D90D5600E310EC /* LuckyFrontUserAgentModel.swift in Sources */,
+				B880C60224D9702600E310EC /* LuckyGroupWinningInfoModel.swift in Sources */,
+				B89572BA251C81C6005D77AE /* LuckyRankingViewController.swift in Sources */,
+				B898FFCA24EA63A50098036E /* LuckyAlertView.swift in Sources */,
+				B8C104442521AE7D00A7CC78 /* LuckyGroupDetailViewController.swift in Sources */,
+				B814134425022C1500E0F963 /* LuckyTableEmptyView.swift in Sources */,
+				B868464224EE316500B27786 /* LuckyUserDataManager.swift in Sources */,
+				B87ADC5624DBADF60032372E /* LuckyCategoriesViewController.swift in Sources */,
+				B839C86F24F6118E007861FB /* LuckyShareCommentCellView.swift in Sources */,
+				B880C60024D96DC300E310EC /* LuckyFrontUserScorelotteryHistoryModel.swift in Sources */,
+				B8156EE224F4FDFF0088C469 /* LuckyNameViewController.swift in Sources */,
+				B839C87124F65149007861FB /* LuckyChargeViewController.swift in Sources */,
+				B8195333252444F100E8708E /* LuckyServiceViewController.swift in Sources */,
+				B878BA9E2511FD6F0057F0D0 /* LuckyPaymentViewController.swift in Sources */,
+				B89D192B251371E700EC404F /* LuckyDetailBannerView.swift in Sources */,
+				B81DC3DE25148FD700957A88 /* LuckyDetailTypeSelectButton.swift in Sources */,
+				B896919124F7B6AB00792EFB /* LuckyChargeCapitalAccountView.swift in Sources */,
+				B81BE4F0250F5F5900CE0518 /* LuckyReviewViewController.swift in Sources */,
+				B872E11F23C5C8AE0051115A /* LuckyBaseTabBarController.swift in Sources */,
+				B880C5FE24D96C1400E310EC /* LuckyFrontUserScoreHistoryModel.swift in Sources */,
+				B868464024EE233900B27786 /* LuckyUserRankingView.swift in Sources */,
+				B88C248C2505CB99002CA810 /* LuckyWithdrawViewController.swift in Sources */,
+				B89572B8251C35D1005D77AE /* LuckyTranscationDetailCellView.swift in Sources */,
+				B8C8D4CA251B4A28003A3460 /* LuckyTranscationDetailViewController.swift in Sources */,
+				B88C24902505E5C4002CA810 /* LuckyWithdrawPoundageLabel.swift in Sources */,
+				B85F2D3D2541743500D4B0EE /* LuckyActivityCheckinView.swift in Sources */,
+				B8C8D4C8251B36B8003A3460 /* LuckyYearMonthModel.swift in Sources */,
+				B8347FC82508DAB100F07B7C /* LuckyOrderWinningView.swift in Sources */,
+				B875E62825495F3C003C806B /* LuckyFaqsViewController.swift in Sources */,
+				B872E00B23C5859E0051115A /* LuckyHomeViewController.swift in Sources */,
+				B896918D24F7589E00792EFB /* LuckyChargeAmountCellView.swift in Sources */,
+				B880C5FC24D95C5100E310EC /* LuckyFrontUserRecommendHistoryModel.swift in Sources */,
+				B872E02523C589520051115A /* LuckyEncodingUtil.swift in Sources */,
+				B87936E924E3CA44000A312F /* LuckyStoryViewController.swift in Sources */,
+				B8D23E582519EEDD0015155B /* LuckyDetailBuyView.swift in Sources */,
+				B893F0FB253EDE180020C576 /* LuckyActivityRewardsViewController.swift in Sources */,
+				B8347FC225087F4900F07B7C /* LuckyOrderViewController.swift in Sources */,
+				B8D3A7C924D813A2009F48C3 /* LuckyActivityModel.swift in Sources */,
+				B875E615254901F8003C806B /* LuckyActivityOrderViewController.swift in Sources */,
+				B871EC02252330100007BF53 /* LuckyGroupWinningListCellView.swift in Sources */,
+				B880C5E424D909BE00E310EC /* LuckyFrontUserAddressModel.swift in Sources */,
+				B8B8600524FF7899009D7871 /* LuckyGoodsTypeButton.swift in Sources */,
+				B872E10F23C58CDD0051115A /* LuckyDouble.swift in Sources */,
+				B83439442542789400D80561 /* LuckyActivityCheckinRulesView.swift in Sources */,
+				B86B127C24F9122100DA546E /* LuckyUIButton.swift in Sources */,
+				B83CB71D25184087001B3E36 /* LuckyDetailRecordCellView.swift in Sources */,
+				B8ACE8822510A7BC0022F986 /* LuckyPersonalHistoryView.swift in Sources */,
+				B824041F25B532EC00580115 /* LuckyQaViewController.swift in Sources */,
+				B819533125242A0600E8708E /* LuckyPrivacyViewController.swift in Sources */,
+				B872E12223C5C8ED0051115A /* LuckyUIImage.swift in Sources */,
+				B8064C882550F58800C139F3 /* LuckyActivityOrderTrackingViewController.swift in Sources */,
+				B8EEEB1925B130700069397C /* LuckyTableLoadingFooterView.swift in Sources */,
+				B8C64BC024FCFCDF001D6FEC /* LuckyHomeTitleView.swift in Sources */,
+				B84DDA4124E682EA00442401 /* LuckyTagManager.swift in Sources */,
+				B8D3A7BD24D7F4E9009F48C3 /* LuckyActivityRecommendRankingModel.swift in Sources */,
+				B869296A25B672FF00C6066E /* LuckyPushSettingView.swift in Sources */,
+				B84DDA3F24E631C600442401 /* LuckyMobileCodeManager.swift in Sources */,
+				B86B34E125A6E78B000EA319 /* LuckyGradingManager.swift in Sources */,
+				B898FFC224EA5FD40098036E /* LuckyLoadingView.swift in Sources */,
+				B83439482542D11F00D80561 /* LuckyActivityPrizeWheelView.swift in Sources */,
+				B872E11B23C5900D0051115A /* LuckyUIFont.swift in Sources */,
+				B8156EE024F4EE9A0088C469 /* LuckyPasswordTextField.swift in Sources */,
+				B84DDA3D24E62A1100442401 /* LuckyLoginViewController.swift in Sources */,
+				B872E10D23C58CBF0051115A /* LuckyBool.swift in Sources */,
+				B872E02323C589520051115A /* LuckyBase64.m in Sources */,
+				B88AFB4A250B6163002E98E0 /* LuckyAddressTextField.swift in Sources */,
+				B880C5E824D90E8900E310EC /* LuckyFrontUserBuyfreeOrderModel.swift in Sources */,
+				B8E638D923C70103002C7964 /* LuckyHttpManager.swift in Sources */,
+				B871EC04252336430007BF53 /* LuckyGroupRulesViewController.swift in Sources */,
+				B880C5F224D94FF200E310EC /* LuckyFrontUserLuckyNumModel.swift in Sources */,
+				B8F0A21924EBDB860052DA0C /* LuckyNavigationView.swift in Sources */,
+				B8AD686424FE46080014CD59 /* LuckyProgressBar.swift in Sources */,
+				B8F0A21D24EBE5260052DA0C /* LuckyScrollRefreshView.swift in Sources */,
+				B877155424F392AE00D96938 /* LuckyFrontUserVoucherModel.swift in Sources */,
+				B877155224F38FD200D96938 /* LuckyCouponsViewController.swift in Sources */,
+				B8752FA42500CA96002D205B /* LuckyCountDownLongView.swift in Sources */,
+				B8D3A7CD24D816EB009F48C3 /* LuckyBannerModel.swift in Sources */,
+				B88C248E2505DB73002CA810 /* LuckyBalanceLabelView.swift in Sources */,
+				B877155A24F3ABAE00D96938 /* LuckyDottedLine.swift in Sources */,
+				B880C5FA24D955D800E310EC /* LuckyFrontUserPaymentOrderModel.swift in Sources */,
+				B8156EDE24F4B2A30088C469 /* LuckyPasswordViewController.swift in Sources */,
+				B86B127824F8AC6200DA546E /* LuckyChargeCapitalAccountCellButton.swift in Sources */,
+				B872E02423C589520051115A /* LuckyDESUtils.m in Sources */,
+				B87C004F2502102A0096D4D7 /* LuckyPayAccountViewController.swift in Sources */,
+				B880C5F624D9531C00E310EC /* LuckyFrontUserMessageModel.swift in Sources */,
+				B839C86D24F60ECA007861FB /* LuckyShareViewController.swift in Sources */,
+				B88C24922506442E002CA810 /* LuckyFrontUserRateModel.swift in Sources */,
+				B877155624F3978800D96938 /* LuckyTypeSelectButton.swift in Sources */,
+				B872E00723C5859E0051115A /* LuckyAppDelegate.swift in Sources */,
+				B880C5EC24D942CA00E310EC /* LuckyFrontUserCheckinHistoryModel.swift in Sources */,
+				B875E62225491FC7003C806B /* LuckyActivityOrderExchangeView.swift in Sources */,
+				B896918F24F7A0F300792EFB /* LuckyChargeDAmountView.swift in Sources */,
+				B87C00472501D70E0096D4D7 /* LuckyAddressListViewController.swift in Sources */,
+				B87B7D3025C932F9003BFD88 /* LuckyFaqsModel.swift in Sources */,
+				B8B88A7124EFB12B0022167E /* LuckyUploadDataManager.swift in Sources */,
+				B875E62625495404003C806B /* LuckyActivityOrderScorelotteryCellView.swift in Sources */,
+				B81413462502333A00E0F963 /* LuckySearchViewController.swift in Sources */,
+				B817DA55254127990088CFC7 /* LuckyActivityBuyfreeCellView.swift in Sources */,
+				B872E11923C58FEE0051115A /* LuckyUIColor.swift in Sources */,
+				B80A4CCB24DA5FFE003C3189 /* LuckySocketManager.swift in Sources */,
+				B880C5F424D951DE00E310EC /* LuckyLuckyNumModel.swift in Sources */,
+				B8D3A7CB24D81657009F48C3 /* LuckyBankModel.swift in Sources */,
+				B87E6844250779680086582A /* LuckySearchKeywordButton.swift in Sources */,
+				B8C10440252097C900A7CC78 /* LuckyUIView.swift in Sources */,
+				B8147551251AE98200C1C28C /* LuckyTranscationViewController.swift in Sources */,
+				B817DA57254167F90088CFC7 /* LuckyActivityTitleView.swift in Sources */,
+				B8F0A21B24EBE4B10052DA0C /* LuckyUIScrollView.swift in Sources */,
+				B81953352524646600E8708E /* LuckyPayCreditViewController.swift in Sources */,
+				B8AD686224FE31570014CD59 /* LuckyHomeGoodsCellView.swift in Sources */,
+				B8B6323A2524198400124006 /* LuckyLotteryRulesViewController.swift in Sources */,
+				B87936E724E3CA15000A312F /* LuckyRecordViewController.swift in Sources */,
+				B83D267025AED9EE0063099A /* LuckyRemotePushManager.swift in Sources */,
+				B841CBE72546647C00ECFC14 /* LuckyActivityPrizeWheelCellView.swift in Sources */,
+				B89B9ABE25B7D2DF00F908F1 /* LuckyAppleLoginManager.swift in Sources */,
+				B871EBFE2522E4CA0007BF53 /* LuckyGroupDetailRecordCellView.swift in Sources */,
+				B8115E9D24ECD45700F54492 /* LuckyCommentCellView.swift in Sources */,
+				B87C004B2501E6340096D4D7 /* LuckyAddressEditViewController.swift in Sources */,
+				B80A4CC924DA5B01003C3189 /* LuckyWinningInfoModel.swift in Sources */,
+				B80A4CC724DA5A74003C3189 /* LuckyStatusCountModel.swift in Sources */,
+				B8752FA225009BE3002D205B /* LuckyRecordTableCellView.swift in Sources */,
+				B8D3A7C524D80E91009F48C3 /* LuckyActivityCheckinPrizeModel.swift in Sources */,
+				B898FFCC24EA6C9B0098036E /* LuckyMobileCodeSendButton.swift in Sources */,
+				B858955525AEA092009ECE34 /* LuckyGuideView.swift in Sources */,
+				B89572BC251C9AF4005D77AE /* LuckyRankingCellView.swift in Sources */,
+				B868464624EE571200B27786 /* LuckyUserTradeButton.swift in Sources */,
+				B8AFD18F25BFBA110062923D /* LuckyBindingViewController.swift in Sources */,
+				B8B8600324FF6D63009D7871 /* LuckyGoodsTypeModel.swift in Sources */,
+				B868464424EE4C1A00B27786 /* LuckyUserBalanceView.swift in Sources */,
+				B880C60424D9715100E310EC /* LuckyLuckygameGoodsIssueModel.swift in Sources */,
+				B8D3A7D424D8215C009F48C3 /* LuckyCategoryCountModel.swift in Sources */,
+				B87C00492501E2FF0096D4D7 /* LuckyAddNewView.swift in Sources */,
+				B872E12023C5C8AE0051115A /* LuckyBaseNavigationController.swift in Sources */,
+				B896918B24F755A000792EFB /* LuckyFrontUserRechargeAmountSetModel.swift in Sources */,
+				B871EC0025232B2C0007BF53 /* LuckyGroupWinningListViewController.swift in Sources */,
+				B893F0F9253ED4880020C576 /* LuckyActivityAlertRewardsView.swift in Sources */,
+				B8AD686624FE54260014CD59 /* LuckyHomeRollMessageView.swift in Sources */,
+				B875E62C254968BC003C806B /* LuckyFaqsContentView.swift in Sources */,
+				B83CB71F251844BE001B3E36 /* LuckyDetailWinningCellView.swift in Sources */,
+				B880643924FCCCF400161BE7 /* LuckyMessageCellView.swift in Sources */,
+				B89684F5250F1B3200A75B7D /* LuckyOrderTrackingViewController.swift in Sources */,
+				B8D3A7C324D7F6CC009F48C3 /* LuckyActivityBuyfreeModel.swift in Sources */,
+				B880C5EE24D947DC00E310EC /* LuckyFrontUserCommentModel.swift in Sources */,
+				B872E11723C58D1F0051115A /* LuckyString.swift in Sources */,
+				B82DB809251DE8B1005C4186 /* LuckyWinningAlertView.swift in Sources */,
+				B8147553251AF15900C1C28C /* LuckyMonthHistoryModel.swift in Sources */,
+				B8D3A7BB24D7F31D009F48C3 /* LuckyFrontUserRanklistModel.swift in Sources */,
+				B85F2D3F25417DD200D4B0EE /* LuckyActivityCheckinCellView.swift in Sources */,
+				B81040D9250A12BB0053771A /* LuckyOrderExchangeView.swift in Sources */,
+				B880C5EA24D912DD00E310EC /* LuckyProvideInfoModel.swift in Sources */,
+				B898FFC024EA5A2B0098036E /* LuckyCaptchaCodeView.swift in Sources */,
+				B8F0A21524EB823C0052DA0C /* LuckyRetrieveViewController.swift in Sources */,
+				B801B72924EA76A200AD0E54 /* LuckyMobileCodeView.swift in Sources */,
+				B8D3A7D024D81831009F48C3 /* LuckyUtils.swift in Sources */,
+				B875E6202549111D003C806B /* LuckyActivityOrderBuyfreeCellView.swift in Sources */,
+				B8B8600924FF951F009D7871 /* LuckyRevealingCellButton.swift in Sources */,
+				B8752FA025008CC6002D205B /* LuckyCountDownView.swift in Sources */,
+				B8B88A6C24EF667E0022167E /* LuckyUserSettingCellView.swift in Sources */,
+				B868464A24EE707700B27786 /* LuckyUserOrderCellButton.swift in Sources */,
+				B834394625427F7700D80561 /* LuckyActivityWinningAlertView.swift in Sources */,
+				B8D3A7D224D81F8D009F48C3 /* LuckyCapitalAccountModel.swift in Sources */,
+				B8D3A7C724D81079009F48C3 /* LuckyActivityScorelotteryPrizeModel.swift in Sources */,
+				B8E4688C253D2B3C00EAC9E5 /* LuckyVersionModel.swift in Sources */,
+				B8752FA62500EA26002D205B /* LuckyCategoriesGoodsCellView.swift in Sources */,
+				B87D7E302547C5E2001E20BE /* LuckyActivityPrizeWheelFanshapeView.swift in Sources */,
+				B84F71C12500FD9E0032ADC0 /* LuckyUILabel.swift in Sources */,
+				B87936EB24E3CA6B000A312F /* LuckyAccountViewController.swift in Sources */,
+				B868464824EE693500B27786 /* LuckyJsonUtils.swift in Sources */,
+				B824042E25B57C4700580115 /* LuckyFaqsQuestionView.swift in Sources */,
+				B8AD686024FDFE910014CD59 /* LuckyHomeSortButton.swift in Sources */,
+				B875E62425495099003C806B /* LuckyActivityOrderCheckinCellView.swift in Sources */,
+				B87C004D2501E9620096D4D7 /* LuckyAddressListCellView.swift in Sources */,
+				B87CDD5223C6C412005657C1 /* LuckyAppData.swift in Sources */,
+				B81040D72509C0230053771A /* LuckyOrderHistoryView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B872E00C23C5859E0051115A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B8D3A7C124D7F67B009F48C3 /* en */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B8B24B9E24D29FFA00F52836 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B8B24B9D24D29FFA00F52836 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		B8B24BA824D2A80D00F52836 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B8D3A7C024D7F67B009F48C3 /* en */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B872E01523C5859F0051115A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B872E01623C5859F0051115A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B872E01823C5859F0051115A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40F7AF086E15DDAF797715F3 /* Pods-lucky.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = lucky/ShoppingDebug.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TH4QFN396M;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lucky.xcodeproj",
+					"$(PROJECT_DIR)/lucky",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = lucky/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.tianchuangyueteng.score;
+				PRODUCT_NAME = Shopping;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "lucky/Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		B872E01923C5859F0051115A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3CB0CFABA4A7F52A38C33DC /* Pods-lucky.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TH4QFN396M;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/lucky.xcodeproj",
+					"$(PROJECT_DIR)/lucky",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = lucky/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.tianchuangyueteng.score;
+				PRODUCT_NAME = Shopping;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "lucky/Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B872DFFE23C5859E0051115A /* Build configuration list for PBXProject "lucky" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B872E01523C5859F0051115A /* Debug */,
+				B872E01623C5859F0051115A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B872E01723C5859F0051115A /* Build configuration list for PBXNativeTarget "lucky" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B872E01823C5859F0051115A /* Debug */,
+				B872E01923C5859F0051115A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B872DFFB23C5859E0051115A /* Project object */;
+}

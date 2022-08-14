@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.alibaba.fastjson.JSONObject;
@@ -310,6 +309,11 @@ public class ConfigUtil {
 	}
 
 	public static void main(String[] args) throws ParseException, IOException {
-		ConfigUtil.findWeiXinUserList(new ArrayList<>(), CommonUtil.getAccessToken().getAccessToken(), null);
+//		ConfigUtil.findWeiXinUserList(new ArrayList<>(), CommonUtil.getAccessToken().getAccessToken(), null);
+//		String token = CommonUtil.getAccessToken().getAccessToken();
+//		System.out.println(token);
+//		String url = UPLOAD_URL.replace("ACCESS_TOKEN", null);
+//		System.out.println(url);
+		System.out.println(URLEncoder.encode("http://ks.xsdkszx.cn/XJ_wechat/myMessage.html"));
 	}
 }

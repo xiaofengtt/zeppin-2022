@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.treasuremall.mapper.FrontUserBuyfreeOrderMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_buyfree_order where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+		<if test='activityInfoBuyfree != null and activityInfoBuyfree != ""'>
+            and activity_info_buyfree= #{activityInfoBuyfree}
+        </if>     
+        <if test='goodsId != null and goodsId != ""'>
+            and goods_id= #{goodsId}
+        </if>     
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>    
+		<if test='receiveType != null and receiveType != ""'>
+            and receive_type= #{receiveType}
+        </if>
+        <choose>
+	        <when test='statuses != null and statuses != ""'>
+	        	 and status in
+				<foreach collection="statuses" item="status" index="index" open="(" close=")" separator=",">
+					#{status}
+				</foreach>
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','win','finished','nowin','receive','confirm','return')
+	        </otherwise>
+        </choose> 
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ createtime < #{timeend} ]]>
+        </if>
+        <if test='timeline != null and timeline != ""'>
+            and (TO_DAYS(NOW()) - TO_DAYS(createtime) = ${timeline})
+        </if>
+   		<if test='isLuck != null and isLuck != ""'>
+            and is_lucky= #{isLuck}
+        </if>      
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUserBuyfreeOrder">
+		select * from front_user_buyfree_order where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+        <if test='activityInfoBuyfree != null and activityInfoBuyfree != ""'>
+            and activity_info_buyfree= #{activityInfoBuyfree}
+        </if>     
+        <if test='goodsId != null and goodsId != ""'>
+            and goods_id= #{goodsId}
+        </if>     
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>    
+		<if test='receiveType != null and receiveType != ""'>
+            and receive_type= #{receiveType}
+        </if>
+        <choose>
+	        <when test='statuses != null and statuses != ""'>
+	        	 and status in
+				<foreach collection="statuses" item="status" index="index" open="(" close=")" separator=",">
+					#{status}
+				</foreach>
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','win','finished','nowin','receive','confirm','return')
+	        </otherwise>
+        </choose> 
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ createtime < #{timeend} ]]>
+        </if>
+        <if test='timeline != null and timeline != ""'>
+            and (TO_DAYS(NOW()) - TO_DAYS(createtime) = ${timeline})
+        </if>
+   		<if test='isLuck != null and isLuck != ""'>
+            and is_lucky= #{isLuck}
+        </if>          
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getGroupCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(DISTINCT activity_info_buyfree, front_user) from front_user_buyfree_order where 1=1 
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+		<if test='activityInfoBuyfree != null and activityInfoBuyfree != ""'>
+            and activity_info_buyfree= #{activityInfoBuyfree}
+        </if>     
+        <if test='goodsId != null and goodsId != ""'>
+            and goods_id= #{goodsId}
+        </if>     
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ createtime < #{timeend} ]]>
+        </if>
+   		<if test='isLuck != null and isLuck != ""'>
+            and is_lucky= #{isLuck}
+        </if>   
+<!--         group by activity_info_buyfree, front_user     -->
+	</select>
+	
+	<select id="getGroupListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUserBuyfreeOrder">
+		select uuid,front_user,front_user_show_id,activity_info_buyfree,goods_id, sharenum, 
+		is_lucky,status,operator,operattime,max(createtime) as createtime,remark,winning_time,ip,
+		provide_info from front_user_buyfree_order where 1=1
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+        <if test='activityInfoBuyfree != null and activityInfoBuyfree != ""'>
+            and activity_info_buyfree= #{activityInfoBuyfree}
+        </if>     
+        <if test='goodsId != null and goodsId != ""'>
+            and goods_id= #{goodsId}
+        </if>     
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ createtime < #{timeend} ]]>
+        </if>
+   		<if test='isLuck != null and isLuck != ""'>
+            and is_lucky= #{isLuck}
+        </if>   
+        group by activity_info_buyfree, front_user         
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getLeftCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_buyfree_order fubo left join front_user fu on fubo.front_user = fu.uuid where 1=1 
+		<if test='userType != null and userType != ""'>
+            and fu.type= #{userType}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and fubo.front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and fubo.front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+		<if test='activityInfoBuyfree != null and activityInfoBuyfree != ""'>
+            and fubo.activity_info_buyfree= #{activityInfoBuyfree}
+        </if>     
+        <if test='goodsId != null and goodsId != ""'>
+            and fubo.goods_id= #{goodsId}
+        </if>     
+		<if test='status != null and status != ""'>
+            and fubo.status= #{status}
+        </if>    
+		<if test='receiveType != null and receiveType != ""'>
+            and fubo.receive_type= #{receiveType}
+        </if>
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ fubo.createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ fubo.createtime < #{timeend} ]]>
+        </if>
+   		<if test='isLuck != null and isLuck != ""'>
+            and fubo.is_lucky= #{isLuck}
+        </if> 
+        <choose>
+	        <when test='statuses != null and statuses != ""'>
+	        	 and fubo.status in
+				<foreach collection="statuses" item="status" index="index" open="(" close=")" separator=",">
+					#{status}
+				</foreach>
+	        </when>
+	        <otherwise>
+	        	and fubo.status in ('normal','win','finished','nowin','receive','confirm','return')
+	        </otherwise>
+        </choose>  
+            
+	</select>
+	
+	<select id="getLeftListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUserBuyfreeOrder">
+		select fubo.* from front_user_buyfree_order fubo left join front_user fu on fubo.front_user = fu.uuid where 1=1 
+		<if test='userType != null and userType != ""'>
+            and fu.type= #{userType}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and fubo.front_user= #{frontUser}
+        </if>
+        <if test='frontUserShowId != null and frontUserShowId != ""'>
+            and fubo.front_user_show_id like '%${frontUserShowId}%'
+        </if>        
+		<if test='activityInfoBuyfree != null and activityInfoBuyfree != ""'>
+            and fubo.activity_info_buyfree= #{activityInfoBuyfree}
+        </if>     
+        <if test='goodsId != null and goodsId != ""'>
+            and fubo.goods_id= #{goodsId}
+        </if>     
+		<if test='status != null and status != ""'>
+            and fubo.status= #{status}
+        </if>    
+		<if test='receiveType != null and receiveType != ""'>
+            and fubo.receive_type= #{receiveType}
+        </if>
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ fubo.createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ fubo.createtime < #{timeend} ]]>
+        </if>
+   		<if test='isLuck != null and isLuck != ""'>
+            and fubo.is_lucky= #{isLuck}
+        </if>   
+        <choose>
+	        <when test='statuses != null and statuses != ""'>
+	        	 and fubo.status in
+				<foreach collection="statuses" item="status" index="index" open="(" close=")" separator=",">
+					#{status}
+				</foreach>
+	        </when>
+	        <otherwise>
+	        	and fubo.status in ('normal','win','finished','nowin','receive','confirm','return')
+	        </otherwise>
+        </choose>       
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by fubo.${sort}
+	        </when>
+	        <otherwise>
+	        	order by fubo.createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+</mapper>

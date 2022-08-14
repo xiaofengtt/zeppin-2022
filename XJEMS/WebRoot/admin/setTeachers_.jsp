@@ -34,17 +34,15 @@
 
 					<div class="out_box">
 						<div class="inner_box">
-							<label>性别：</label>
-							<select name="sex" id="sex" value="{{:sex}}">
-								<option value="1">男</option>
-								<option value="2">女</option>
-							</select>
-						</div>
-						<div class="inner_box b_r">
 							<label>民族：</label>
 							<select name="ethnic" id="ethnic">
 								<option value="0">请选择民族...</option>
 							</select>
+						</div>
+						<div class="inner_box b_r">
+							<label>联系方式：</label>
+							<input type="text" id="mobile" name="mobile" value="{{:mobile}}">
+							<p class="warning">请正确填写联系方式！</p>
 						</div>
 					</div>
 
@@ -54,10 +52,11 @@
 							<input type="text" id="major" name="major" value="{{:major}}">
 							<p class="warning">请正确填写专业！</p>
 						</div>
+						
 						<div class="inner_box b_r">
-							<label>联系方式：</label>
-							<input type="text" id="mobile" name="mobile" value="{{:mobile}}">
-							<p class="warning">请正确填写联系方式！</p>
+							<label>电子信箱：</label>
+							<input type="text" id="email" name="email" value="{{:email}}">
+							<p class="warning">请正确填写电子信箱！</p>
 						</div>
 					</div>
 
@@ -75,12 +74,122 @@
 								<option value="1">考务组</option>
 								<option value="2">研究生</option>
 								<option value="3">教工</option>
+								<option value="4">本科</option>
+								<option value="5">非师大人员</option>
 							</select>
 						</div>
-						<div class="inner_box b_r">
-							<label>所在学校或部门：</label>
-							<input type="text" id="organization" name="organization" value="{{:organization}}">
-							<p class="warning">请正确填写所在学校或部门！</p>
+						<div class="inner_box b_r hide">
+							<label>所在学院或部门：</label>
+							<select name="organization" id="organization-3" disabled>
+								<option value="">请选择学校或部门</option>
+								<option value="马克思主义学院">马克思主义学院</option>
+								<option value="商学院">商学院</option>
+								<option value="法学院">法学院</option>
+								<option value="政治与公共管理学院">政治与公共管理学院</option>
+								<option value="民族学与社会学院">民族学与社会学院</option>
+								<option value="教育科学学院">教育科学学院</option>
+								<option value="中国语言文学学院">中国语言文学学院</option>
+								<option value="历史学院">历史学院</option>
+								<option value="外国语学院">外国语学院</option>
+								<option value="国际文化交流学院">国际文化交流学院</option>
+								<option value="数学科学学院">数学科学学院</option>
+								<option value="物理与电子工程学院">物理与电子工程学院</option>
+								<option value="计算机科学技术学院">计算机科学技术学院</option>
+								<option value="地理科学与旅游学院">地理科学与旅游学院</option>
+								<option value="化学化工学院">化学化工学院</option>
+								<option value="生命科学学院">生命科学学院</option>
+								<option value="体育学院">体育学院</option>
+								<option value="音乐学院">音乐学院</option>
+								<option value="美术学院">美术学院</option>
+								<option value="初等教育学院">初等教育学院</option>
+								<option value="预科教育学院">预科教育学院</option>
+								<option value="成人（继续、网络）教育学院">成人（继续、网络）教育学院</option>
+								<option value="教师培训学院">教师培训学院</option>
+								<option value="新疆旅游培训学院">新疆旅游培训学院</option>
+								<option value="青年政治学院">青年政治学院</option>
+								<option value="组织部">组织部</option>
+								<option value="宣传部">宣传部</option>
+								<option value="纪检委">纪检委</option>
+								<option value="工会">工会</option>
+								<option value="团委">团委</option>
+								<option value="保卫处（温泉）">保卫处（温泉）</option>
+								<option value="保卫处（昆仑）">保卫处（昆仑）</option>
+								<option value="保卫处（文光）">保卫处（文光）</option>
+								<option value="人事处">人事处</option>
+								<option value="教务处">教务处</option>
+								<option value="科研处">科研处</option>
+								<option value="研究生处">研究生处</option>
+								<option value="学生处">学生处</option>
+								<option value="大学生就业指导中心">大学生就业指导中心</option>
+								<option value="审计处">审计处</option>
+								<option value="计财处">计财处</option>
+								<option value="后勤管理处">后勤管理处</option>
+								<option value="国有资产管理处">国有资产管理处</option>
+								<option value="实验室与设备管理处">实验室与设备管理处</option>
+								<option value="信息管理中心">信息管理中心</option>
+								<option value="图书馆">图书馆</option>
+								<option value="师大附中">师大附中</option>
+								<option value="后勤服务中心">后勤服务中心</option>
+								<option value="学生舍区服务部">学生舍区服务部</option>
+								<option value="教学服务中心">教学服务中心</option>
+								<option value="物业管理中心">物业管理中心</option>
+								<option value="后勤服务部">后勤服务部</option>
+								<option value="校医院">校医院</option>
+								<option value="派出所">派出所</option>
+								<option value="学术交流中心">学术交流中心</option>
+								<option value="校办">校办</option>
+								<option value="校友会">校友会</option>
+							</select>
+							<p class="warning">请选择所在学院或部门！</p>
+						</div>
+						<div class="inner_box b_r hide">
+							<label>学院名称：</label>
+							<select name="organization" id="organization-24" disabled>
+								<option value="">请选择学院名称</option>
+								<option value="马克思主义学院">马克思主义学院</option>
+								<option value="商学院">商学院</option>
+								<option value="法学院">法学院</option>
+								<option value="政治与公共管理学院">政治与公共管理学院</option>
+								<option value="民族学与社会学院">民族学与社会学院</option>
+								<option value="教育科学学院">教育科学学院</option>
+								<option value="中国语言文学学院">中国语言文学学院</option>
+								<option value="历史学院">历史学院</option>
+								<option value="外国语学院">外国语学院</option>
+								<option value="国际文化交流学院">国际文化交流学院</option>
+								<option value="数学科学学院">数学科学学院</option>
+								<option value="物理与电子工程学院">物理与电子工程学院</option>
+								<option value="计算机科学技术学院">计算机科学技术学院</option>
+								<option value="地理科学与旅游学院">地理科学与旅游学院</option>
+								<option value="化学化工学院">化学化工学院</option>
+								<option value="生命科学学院">生命科学学院</option>
+								<option value="体育学院">体育学院</option>
+								<option value="音乐学院">音乐学院</option>
+								<option value="美术学院">美术学院</option>
+								<option value="初等教育学院">初等教育学院</option>
+								<option value="预科教育学院">预科教育学院</option>
+								<option value="成人（继续、网络）教育学院">成人（继续、网络）教育学院</option>
+								<option value="教师培训学院">教师培训学院</option>
+								<option value="新疆旅游培训学院">新疆旅游培训学院</option>
+								<option value="青年政治学院">青年政治学院</option>
+							</select>
+							<p class="warning">请选择学院名称！</p>
+						</div>
+						<div class="inner_box b_r hide">
+							<label>所在学校部门：</label>
+							<input type="text" id="organization-5" name="organization" disabled>
+							<p class="warning">请填写所在学校部门！</p>
+						</div>
+					</div>
+
+					<div class="out_box">
+						<div class="inner_box">
+							<label>编制属性：</label>
+							<select name="formation" id="formation">
+								<option value="">请选择编制属性</option>
+								<option value="在编教师">在编教师</option>
+								<option value="临时聘用">临时聘用</option>
+							</select>
+							<p class="warning">请选择编制属性！</p>
 						</div>
 					</div>
 
@@ -129,18 +238,49 @@
 
 					<div class="out_box">
 						<div class="inner_box">
+							<label>开户行所属地区：<span class="marked">(例如：新疆乌鲁木齐市)</span></label>
+							<input type="text" id="bankOrg" name="bankOrg" value="{{:bankOrg}}">
+							<p class="warning">请正确填写开户行所属地区！</p>
+						</div>
+						<div class="inner_box b_r">
+							<label>开户行：<span class="marked">(例如：交通银行新疆乌鲁木齐市新医路支行)</span></label>
+							<input type="text" id="bankName" name="bankName" value="{{:bankName}}">
+							<p class="warning">请正确填写开户行！</p>
+						</div>
+					</div>
+
+					<div class="out_box">
+						<div class="inner_box">
+							<label>职业：<span class="marked">(例如：教职工，限50字以内)</span></label>
+							<input type="text" id="occupation" name="occupation" value="{{:occupation}}">
+							<p class="warning">请正确填写职业！</p>
+						</div>	
+						<div class="inner_box b_r">
 							<label>职务：</label>
 							<input type="text" id="jobDuty" name="jobDuty" value="{{:jobDuty}}">
 							<p class="warning">请正确填写职务！</p>
 						</div>
 					</div>
 					<div class="out_box">
-						<div class="inner_box">
-							<label>所在年级：</label>
-							<input type="text" id="studyGrade" name="studyGrade" value="{{:studyGrade}}">
-							<p class="warning">请正确填写所在年级！</p>
-						</div>
-					</div>
+                                <div class="inner_box">
+                                    <label>所在年级：</label>
+									<select name="studyGrade" id="studyGrade">
+                                       	<option value="0">请选择所在年级...</option>
+                                    </select>
+                                     <p class="warning">请选择所在年级！</p>
+                                </div>
+                                 <div class="inner_box b_r">
+                                    <label>学制信息：</label>
+									<select name="studyLength" id="studyLength">
+										<option value="0">请选择学制信息...</option>
+                                        <option value="1">一年制</option>
+                                        <option value="2">二年制</option>
+                                        <option value="3">三年制</option>
+                                        <option value="4">四年制</option>
+                                    </select>
+                                    <p class="warning">请选择学制信息！</p>
+                                </div>
+                            </div>
 
 					<div class="out_box">
 						<div class="inner_box" id="school">

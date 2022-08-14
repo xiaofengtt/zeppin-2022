@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/luckyGoods.css" />
+	</head>
+	<body class="layui-layout-body">
+		<input id="uuidInput" type="hidden" value="99da01e4-6c07-4edb-9d5e-3756f5bc3878"/>
+		<div class="main layui-layout layui-layout-admin">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="layui-body">
+				  <span class="layui-breadcrumb">
+					  <a href="javascript:">运营管理</a>
+					  <a href="activityList.html?tab=2">活动营销</a>
+					  <a><cite>中奖名单</cite></a>
+				  </span>
+				  <hr>
+			    <!-- 内容主体区域 -->
+				    <div class="layui-bodu" style="padding: 15px;">
+				    	
+				    	<!-- 查询 -->
+				    	<!-- <form class="layui-form layui-form-pane2 layui-row layui-form-search" action="" lay-filter="first">
+				    		<div class="layui-col-md3 mb-15">
+				    			<label class="layui-form-label">用户ID</label>
+							    <div class="layui-input-block">
+							      <input type="text" name="showId" class="layui-input" >
+							    </div>
+				    		</div>
+				    		<div class="layui-col-md2 mb-15 layui-col-md-offset1">
+								<button class="layui-btn lay-submit" lay-submit lay-filter="*">查询</button>
+							</div>
+				    	</form> -->
+				    	<form class="layui-form layui-form-pane1" action="" lay-filter="first" style="position:absolute;right:30px;top:70px;">						 	
+						 	<div class="layui-form-item">
+							 	<div class="layui-input-inline" style="width:150px;">
+							    	<select name="prizeType" lay-filter="quiz">
+							           <option value="">全部类型</option>
+								       <option value="gold">金币</option>
+								       <option value="voucher">金券</option>
+								       <option value="entity">实物</option>
+							        </select>
+							    </div>
+							    <div class="layui-input-inline" style="width:150px;">
+							    	<input type="text" name="showId" placeholder="搜用户ID" class="layui-input layui-id" >
+							    </div>
+							     <button type="button" class="layui-btn layui-btn-primary" onclick="pageNum=1;getList();">
+								  	<i class="layui-icon">&#xe615;</i>
+								</button>
+								<button class="layui-btn layui-btn-primary lay-export">导出</button>
+							  </div>
+						 </form>
+						 <table class="table-list mt-15" style="margin-top:45px;"></table>
+						 <div id="pageTool"></div>
+				    </div>
+			 </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/alert.js" ></script>
+		<script type="text/javascript" src="js/activityScoreDetail.js" ></script>
+	</body>
+</html>

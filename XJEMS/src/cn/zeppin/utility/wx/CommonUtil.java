@@ -104,7 +104,6 @@ public class CommonUtil {
 				ConfigUtil.APP_SECRECT);
 		// 发起GET请求获取凭证
 		JSONObject jsonObject = JSONObject.parseObject(httpsRequest(requestUrl, "GET", null));
-
 		if (null != jsonObject) {
 			try {
 				token = new Token();

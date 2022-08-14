@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.treasuremall.mapper.FrontUserCommentMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_comment where 1=1 
+		<if test='uuid != null and uuid != ""'>
+            and uuid != #{uuid}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user = #{frontUser}
+        </if>     
+		<if test='frontUserShowId != null and frontUserShowId != ""'>
+            and front_user_show_id = #{frontUserShowId}
+        </if>    
+		<if test='goodsIssue != null and goodsIssue != ""'>
+            and goods_issue = #{goodsIssue}
+        </if>         
+        <if test='orderId != null and orderId != ""'>
+            and order_id = #{orderId}
+        </if>           
+		<if test='name != null and name != ""'>
+            and detail like '%${name}%'
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','checked','nopass')
+	        </otherwise>
+        </choose>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUserComment">
+		select * from front_user_comment where 1=1 
+		<if test='uuid != null and uuid != ""'>
+            and uuid != #{uuid}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user = #{frontUser}
+        </if>     
+		<if test='frontUserShowId != null and frontUserShowId != ""'>
+            and front_user_show_id = #{frontUserShowId}
+        </if>    
+		<if test='goodsIssue != null and goodsIssue != ""'>
+            and goods_issue = #{goodsIssue}
+        </if>   
+		<if test='orderId != null and orderId != ""'>
+            and order_id = #{orderId}
+        </if>                         
+		<if test='name != null and name != ""'>
+            and detail like '%${name}%'
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','checked','nopass')
+	        </otherwise>
+        </choose>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+</mapper>

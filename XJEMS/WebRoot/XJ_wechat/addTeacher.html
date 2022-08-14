@@ -6,6 +6,7 @@
 		<title>注册信息</title>
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<meta name="format-detection" content="telephone=no" />
+		<script src="./js/global.js"></script>
 		<link rel="stylesheet" href="./css/base.css">
 		<link rel="stylesheet" href="./css/addTeacher.css">
 	</head>
@@ -23,7 +24,7 @@
 					<div class="img_bd">
 						<img src="./img/ic_head%20portrait.png" class="file_img">
 					</div>
-					<input type="file" class="load" name="img" accept="image/png,image/jpg,image/jpeg">
+					<input type="file" id="load" class="load" name="img" accept="image/png,image/jpg,image/jpeg">
 					<input type="hidden" name="type" value="1"/>
 				</form>
 			</div>
@@ -33,7 +34,7 @@
 				<form action="../weixin/resourceAdd?type=1" id="card_form" method="post" autocomplete="off">
 					<input type="file" id="card_file" name="card_img" accept="image/png,image/jpg,image/jpeg"/>
 					<img src="" id="card_img"/>
-					<p class="card_title">点击此处上传正面身份证图片</p>
+					<p class="card_title">点击此处上传身份证个人信息照片<p>
 					<input type="hidden" name="type" value="1"/>
 				</form>
 			</div>
@@ -61,12 +62,12 @@
 							<input type="text" id="sid" name="sid" placeholder="请输入学工号" autocomplete="off">
 							<p class="warn">新疆师范大学师生必填，其他可空</p>
 						</li>
-						<li class="b_b">
+						<!--<li class="b_b">
 							性别
 							<img class="woman" src="./img/ic_default_woman.png">
 							<img class="man" src="./img/ic_click_man.png">
 							<input type="hidden" name="sex" id="sex" value="1" autocomplete="off">
-						</li>
+						</li>-->
 						<li class="b_b">
 							民族
 							<select name="ethnic" id="ethnic" class="status" autocomplete="off">
@@ -135,6 +136,13 @@
 							<input type="number" id="mobile" name="mobile" placeholder="请输入手机号" autocomplete="off">
 						</li>
 						<li class="b_b">
+							图形验证码
+							<input id="authcode" name="authcode" style="right: 105px;width: 40%" type="text" maxlength="5" placeholder="请输入图形验证码" autocomplete="off"> 
+				<img style="vertical-align:middle;cursor:pointer;position: absolute;right: 10px;height:30px;top:10px;border-radius:5px !important;display:inline-block;"
+				 onclick="replace(this);"
+				 src="../weixin/smsAuthImg" id="authcode">
+						</li>
+						<li class="b_b">
 							验证码
 							<input type="number" id="code" name="code" class="code" placeholder="请输入验证码" autocomplete="off">
 							<a href="javascript:;" class="msg_num" class="right" id="sendCode">发送验证码</a>
@@ -152,16 +160,165 @@
 								<option value="0" style="color:#868686">请选择身份类别...</option>
 								<option value="2">研究生</option>
 								<option value="3">教工</option>
+								<option value="4">本科</option>
+								<option value="5">非师大人员</option>
+							</select>
+							<img src="./img/right.png" class="right">
+							<p class="warn">注意:审核通过后身份类别不可修改</p>
+						</li>
+						<li class="b_b hide">
+							所在学院或部门
+							<select name="organization" id="organization-3" class="status">
+								<option value="">请选择学校或部门</option>
+								<option value="马克思主义学院">马克思主义学院</option>
+								<option value="商学院">商学院</option>
+								<option value="法学院">法学院</option>
+								<option value="政治与公共管理学院">政治与公共管理学院</option>
+								<option value="民族学与社会学院">民族学与社会学院</option>
+								<option value="教育科学学院">教育科学学院</option>
+								<option value="中国语言文学学院">中国语言文学学院</option>
+								<option value="历史学院">历史学院</option>
+								<!--option value="语言学院">语言学院</option-->
+								<option value="外国语学院">外国语学院</option>
+								<option value="国际文化交流学院">国际文化交流学院</option>
+								<option value="数学科学学院">数学科学学院</option>
+								<option value="物理与电子工程学院">物理与电子工程学院</option>
+								<option value="计算机科学技术学院">计算机科学技术学院</option>
+								<option value="地理科学与旅游学院">地理科学与旅游学院</option>
+								<option value="化学化工学院">化学化工学院</option>
+								<option value="生命科学学院">生命科学学院</option>
+								<option value="体育学院">体育学院</option>
+								<option value="音乐学院">音乐学院</option>
+								<option value="美术学院">美术学院</option>
+								<option value="初等教育学院">初等教育学院</option>
+								<option value="预科教育学院">预科教育学院</option>
+								<option value="成人（继续、网络）教育学院">成人（继续、网络）教育学院</option>
+								<option value="教师培训学院">教师培训学院</option>
+								<option value="新疆旅游培训学院">新疆旅游培训学院</option>
+								<option value="青年政治学院">青年政治学院</option>
+								<option value="组织部">组织部</option>
+								<option value="宣传部">宣传部</option>
+								<option value="纪检委">纪检委</option>
+								<option value="工会">工会</option>
+								<option value="团委">团委</option>
+								<option value="保卫处（温泉）">保卫处（温泉）</option>
+								<option value="保卫处（昆仑）">保卫处（昆仑）</option>
+								<option value="保卫处（文光）">保卫处（文光）</option>
+								<option value="人事处">人事处</option>
+								<option value="教务处">教务处</option>
+								<option value="科研处">科研处</option>
+								<option value="研究生处">研究生处</option>
+								<option value="学生处">学生处</option>
+								<option value="大学生就业指导中心">大学生就业指导中心</option>
+								<option value="审计处">审计处</option>
+								<option value="计财处">计财处</option>
+								<option value="后勤管理处">后勤管理处</option>
+								<option value="国有资产管理处">国有资产管理处</option>
+								<option value="实验室与设备管理处">实验室与设备管理处</option>
+								<option value="信息管理中心">信息管理中心</option>
+								<option value="图书馆">图书馆</option>
+								<option value="师大附中">师大附中</option>
+								<option value="后勤服务中心">后勤服务中心</option>
+								<option value="学生舍区服务部">学生舍区服务部</option>
+								<option value="教学服务中心">教学服务中心</option>
+								<option value="物业管理中心">物业管理中心</option>
+								<option value="后勤服务部">后勤服务部</option>
+								<option value="校医院">校医院</option>
+								<option value="派出所">派出所</option>
+								<option value="学术交流中心">学术交流中心</option>
+								<option value="校办">校办</option>
+								<option value="校友会">校友会</option>
+							</select>
+							<img src="./img/right.png" class="right">
+						</li>
+						<li class="b_b hide">
+							学院名称
+							<select name="organization" id="organization-24" class="status">
+								<option value="">请选择学院名称</option>
+								<option value="马克思主义学院">马克思主义学院</option>
+								<option value="商学院">商学院</option>
+								<option value="法学院">法学院</option>
+								<option value="政治与公共管理学院">政治与公共管理学院</option>
+								<option value="民族学与社会学院">民族学与社会学院</option>
+								<option value="教育科学学院">教育科学学院</option>
+								<option value="中国语言文学学院">中国语言文学学院</option>
+								<option value="历史学院">历史学院</option>
+								<!--option value="语言学院">语言学院</option-->
+								<option value="外国语学院">外国语学院</option>
+								<option value="国际文化交流学院">国际文化交流学院</option>
+								<option value="数学科学学院">数学科学学院</option>
+								<option value="物理与电子工程学院">物理与电子工程学院</option>
+								<option value="计算机科学技术学院">计算机科学技术学院</option>
+								<option value="地理科学与旅游学院">地理科学与旅游学院</option>
+								<option value="化学化工学院">化学化工学院</option>
+								<option value="生命科学学院">生命科学学院</option>
+								<option value="体育学院">体育学院</option>
+								<option value="音乐学院">音乐学院</option>
+								<option value="美术学院">美术学院</option>
+								<option value="初等教育学院">初等教育学院</option>
+								<option value="预科教育学院">预科教育学院</option>
+								<option value="成人（继续、网络）教育学院">成人（继续、网络）教育学院</option>
+								<option value="教师培训学院">教师培训学院</option>
+								<option value="新疆旅游培训学院">新疆旅游培训学院</option>
+								<option value="青年政治学院">青年政治学院</option>
+							</select>
+							<img src="./img/right.png" class="right">
+						</li>
+						<li class="b_b hide">
+							所在学校部门
+							<input type="text" id="organization-5" name="organization" placeholder="请填写所在学校部门" autocomplete="off"/>
+						</li>
+						<li class="b_b">
+							所在年级
+							<select name="studyGrade" id="studyGrade"  class="status"  value="{{:studyGrade}}"  style="color:#000000">
+								<option value="0">请选择所在年级</option>
+							</select>
+							<p class="warn">注意:审核通过后所在年级不可修改</p>
+						</li>
+						<li class="b_b">
+							学制信息
+							<select name="studyLength" id="studyLength"  class="status"  value="{{:studyLength}}"  style="color:#000000">
+								<option value="0">请选择学制信息</option>
+								<option value="1">一年制</option>
+								<option value="2">二年制</option>
+								<option value="3">三年制</option>
+								<option value="4">四年制</option>
+							</select>
+							<p class="warn">注意:审核通过后学制信息不可修改</p>
+						</li>
+
+						<li class="b_b">
+							编制属性
+							<select name="formation" id="formation" class="status">
+								<option value="">请选择编制属性</option>
+								<option value="在编教师">在编教师</option>
+								<option value="临时聘用">临时聘用</option>
+<!-- 								<option value="在编教职工">在编教职工</option> -->
+<!-- 								<option value="同职级教职工">同职级教职工</option> -->
+<!-- 								<option value="长期聘用教职工">长期聘用教职工</option> -->
+<!-- 								<option value="临时聘用教职工">临时聘用教职工</option> -->
 							</select>
 							<img src="./img/right.png" class="right">
 						</li>
 						<li class="b_b">
-							所在学校部门
-							<input type="text" id="organization" name="organization" placeholder="请输入学校部门" autocomplete="off">
+							职业
+							<input type="text" id="occupation" name="occupation" placeholder="请输入职业" autocomplete="off">
+							<p class="warn">例如：教职工，限50字内</p>
 						</li>
 						<li class="b_b">
-							研究生所在年级
-							<input type="text" id="studyGrade" name="studyGrade" placeholder="请输入年级" autocomplete="off" disabled="disabled">
+							开户行所属地区
+							<input type="text" id="bankOrg" name="bankOrg" placeholder="请输入开户行所属地区" autocomplete="off">
+							<p class="warn">例如：新疆乌鲁木齐市</p>
+						</li>
+						<li class="b_b">
+							开户行
+							<input type="text" id="bankName" name="bankName" placeholder="请输入开户行" autocomplete="off">
+							<p class="warn">例如：交通银行新疆乌鲁木齐市新医路支行</p>
+						</li>
+						<li class="b_b">
+							电子信箱
+							<input type="text" id="email" name="email" placeholder="请输入电子信箱" autocomplete="off">
+							<p class="warn">请不要输入“空格、换行符”等特殊符号</p>
 						</li>
 						<li class="b_b">
 							所学专业
@@ -217,6 +374,6 @@
 	<!--<script src="../XJ_wechat/js/tap.js"></script>-->
 	<script src="../js/url.min.js"></script>
 	<script src="../XJ_wechat/js/input_test.js"></script>
-	<script type="text/javascript" src="../XJ_wechat/js/addTeacher.js"></script>
+	<script type="text/javascript" src="../XJ_wechat/js/addTeacher.js?version=1.1"></script>
 
 </html>

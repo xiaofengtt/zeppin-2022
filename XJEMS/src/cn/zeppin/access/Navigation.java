@@ -27,7 +27,7 @@ public class Navigation {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+ 
 	public int getLevel() {
 		return level;
 	}

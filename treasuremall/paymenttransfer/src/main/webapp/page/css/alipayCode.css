@@ -1,0 +1,221 @@
+.wrap{
+	background:rgba(245,245,245,1);
+	font-size:0.28rem;
+	height:100%;
+	overflow:auto;
+	display:none;
+}
+.first-box{
+	background:#fff;
+	min-height:100%;
+	width:100%;
+	text-align:center;
+	padding:0 0.4rem 1.60rem 0.40rem;
+}
+.first-box-top{
+	font-size:0.44rem;
+	padding-top:0.84rem;
+}
+.first-box-top b.amount{
+	font-size:0.72rem;
+	line-height:1;
+}
+.first-box-top p{
+	padding-top:0.40rem;
+	font-size:0.26rem;
+	color:#9E9E9E;
+}
+.timeout{
+	color:#F55503;
+}
+button{
+	width:100%;
+	height:0.88rem;
+	background:linear-gradient(180deg,rgba(255,211,20,1) 0%,rgba(255,188,2,1) 100%);
+	border-radius:0.43rem;
+	font-size:0;
+	font-weight:500;
+	color:rgba(206,80,0,1);
+	line-height:0.54rem;
+	padding:0.18rem 0 0.16rem 0;
+	margin:0.88rem 0 0.6rem 0;
+	display:flex;
+	align-items: center;
+    justify-content: center;
+}
+button span{
+	font-size:0.36rem;
+	margin:0 0 0 0.16rem;
+}
+button img{
+	margin:0;
+	width:0.4rem;
+}
+.important-tips{
+	width:3.8rem;
+	margin-bottom:0.08rem;
+}
+ul.tips li{
+	font-weight:500;
+	color:rgba(34,34,34,1);
+	line-height:0.48rem;
+	font-size:0.32rem;
+	padding:0.1rem 0;
+	text-align: justify;
+}
+ul.tips li span{
+	color:#CE5000;
+	font-size:0.44rem;
+}
+.img-code{
+	width:100%;
+	background:rgba(223,240,251,1);
+	border-radius:0.08rem;
+	padding:0.36rem;
+	margin:0.22rem 0 0.38rem 0;
+}
+.img-code img{
+	width:100%;
+}
+.fixed-box{
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:100%;
+	height:1rem;
+	border-top:1px solid #D3D3D3;
+	background:#fff;
+	padding:0.1rem 0.2rem;
+	display:flex;
+	justify-content: space-between;
+}
+.fixed-box a{
+	line-height:0.32rem;
+	font-size:0.32rem;
+	padding:0.24rem 0;
+	text-align:center;
+	display:inline-block;
+	border-radius:0.12rem;
+	font-weight:400;
+	margin:0;
+}
+.fixed-box .cancle-btn{
+	width:2.28rem;
+	height:0.8rem;
+	border:1px solid rgba(22,120,255,1);
+	color:rgba(22,120,255,1);
+}
+.fixed-box .sure-btn{
+	width:4.68rem;
+	height:0.8rem;
+	background:rgba(22,120,255,1);
+	color:rgba(255,255,255,1);
+}
+.second-box{
+	text-align:center;
+}
+.second-box-top{
+	background:rgba(255,255,255,1);
+	padding:0.84rem 0.4rem 0.4rem;
+}
+.second-box-top p{
+	padding-top:0.6rem;
+	text-align:justify;
+	color:#FF767C;
+}
+.orderNumber{
+	width:100%;
+	height:0.84rem;
+	background:rgba(223,240,251,1);
+	border-radius:0.08rem;
+	border:1px solid rgba(157,208,255,1);
+	padding:0.22rem 0.2rem;
+	color:rgba(34,34,34,1);
+	line-height:0.4rem;
+	font-size:0.28rem;
+	margin:0.4rem 0 0.6rem 0;
+}
+.button-box{
+	display:flex;
+	justify-content: space-between;
+	padding:0 0.3rem;
+}
+.button-box a{
+	width:2.2rem;
+	height:0.76rem;
+	border-radius:0.4rem;
+	border:1px solid rgba(22,120,255,1);
+	font-size:0.32rem;
+	font-weight:400;
+	color:rgba(22,120,255,1);
+	line-height:0.32rem;
+	padding:0.22rem 0;
+	text-align:center;
+}
+.button-box a.sure-btn{
+	background:rgba(22,120,255,1);
+	color:rgba(255,255,255,1);
+}
+.second-box-bottom{
+	margin-top:0.2rem;	
+	background:#fff url('../img/bg-title.png') left 0.4rem no-repeat;
+	background-size:4.28rem 0.68rem;
+	padding-top:1.48rem;
+}
+.second-box-bottom ul{
+	display: flex;
+	flex-wrap: wrap;
+    justify-content: space-between;
+    padding:0 0.32rem 0.4rem;
+}
+.second-box-bottom li{
+	height:4.12rem;
+	width:3.08rem;
+}
+.second-box-bottom li img{
+	width:100%;
+}
+.second-box-bottom li p{
+	padding-top:0.24rem;
+	text-align:center;
+	font-size:0.28rem;
+	font-weight:400;
+	color:rgba(34,34,34,1);
+	line-height:0.4rem;
+}
+.hiddenImg{
+	display:none;
+}
+.order-box{
+	position:relative;
+}
+.order-clear{
+	position:absolute;
+	right:0rem;
+	top:0.4rem;
+	width:0.84rem;
+	height:0.84rem;
+	display:none;
+	background:url('../img/clear.png') center no-repeat;
+	background-size:60%;
+}
+.layui-layer-dialog{
+	min-width:50% !important;
+	max-width:70%;
+	min-height:auto !important;
+}
+.layui-layer-dialog .layui-layer-content{
+	padding: 0.2rem 0.10rem !important;
+    min-height: 0.7rem !important;
+    line-height:0.6rem !important;
+    font-size:0.32rem !important;
+}
+.layui-layer-btn{
+	padding:0.2rem 0.2rem 0.24rem !important;
+}
+.layui-layer-btn .layui-layer-btn0{
+	font-size:0.32rem !important;
+	background-color:#1678FF !important;
+	height:0.72rem !important;
+	line-height:0.72rem !important;
+}

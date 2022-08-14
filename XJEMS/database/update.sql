@@ -40,3 +40,16 @@ ALTER TABLE `invigilation_teacher`
 ADD UNIQUE INDEX `UNIQUE_MOBILE` USING BTREE (`MOBILE`) ;
 
 
+ALTER TABLE `invigilation_teacher`
+ADD COLUMN `FORMATION`  varchar(20) NULL COMMENT '编制' AFTER `STUDY_LENGTH`,
+ADD COLUMN `OCCUPATION`  varchar(100) NULL COMMENT '职业' AFTER `FORMATION`,
+ADD COLUMN `BANK_ORG`  varchar(100) NULL COMMENT '开户行地区' AFTER `OCCUPATION`,
+ADD COLUMN `BANK_NAME`  varchar(100) NULL COMMENT '开户行名称' AFTER `BANK_ORG`,
+ADD COLUMN `EMAIL`  varchar(50) NULL COMMENT '邮箱' AFTER `BANK_NAME`;
+
+ALTER TABLE `exam_information`
+ADD COLUMN `IS_SEND`  tinyint(4) NOT NULL DEFAULT 1 AFTER `INVIGILATION_NOTICE`;
+
+UPDATE invigilation_teacher set FORMATION='在编教师' where FORMATION in ('在编教职工','同职级教职工','长期聘用教职工');
+
+UPDATE invigilation_teacher set FORMATION='临时聘用' where (FORMATION in ('临时聘用教职工','未选择','') or FORMATION is null);

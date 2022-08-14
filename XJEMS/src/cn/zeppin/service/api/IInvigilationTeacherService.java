@@ -5,6 +5,7 @@ import java.util.Map;
 
 import cn.zeppin.entity.InvigilationTeacher;
 import cn.zeppin.entity.InvigilationTeacherOld;
+import cn.zeppin.entity.SysUser;
 
 /**
  * ClassName: IInvigilationTeacherService <br/>
@@ -52,6 +53,20 @@ public interface IInvigilationTeacherService {
 	public List<InvigilationTeacher> searchInvigilationTeacher(Map<String, Object> searchMap,
 			Map<String, String> sortParams, int offset, int length);
 
+	/**
+	 * 根据指定条件获取列表
+	 * 
+	 * @param currentUser
+	 * @param searchMap
+	 * @param sorts
+	 * @param offset
+	 * @param length
+	 * @param role
+	 * @return
+	 */
+	public List<Object[]> searchInvigilationTeacherBySql(Map<String, Object> searchMap,
+			Map<String, String> sortParams, int offset, int length);
+	
 	/**
 	 * 根据指定条件获取数目
 	 * 
@@ -104,4 +119,17 @@ public interface IInvigilationTeacherService {
 	 * @param id
 	 */
 	public void updateResume(int id,String exam);
+	
+	
+	/**
+	 * 根据指定条件停用数据
+	 * 
+	 * @param searchMap
+	 * @return
+	 */
+	public int updateStopInvigilationTeacher(Map<String, Object> searchMap);
+
+	public int updateChangeStatus(String ids,short status,String reason, SysUser currentUser);
+	
+	public void  deleteBatch(String id);
 }

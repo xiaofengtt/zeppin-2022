@@ -1,3 +1,9 @@
+.scroll-warp{
+	width:100%;
+	}
+.scroll-inner{
+	overflow-x:auto;
+}
 .teachers_info {
 /*     min-width: 1066px; */
     /*

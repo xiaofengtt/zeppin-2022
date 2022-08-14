@@ -126,6 +126,7 @@ function getList(id) {
 				data:{
 					roomIndex:$("#roomIndex").val(),
 					roomAddress:$("#roomAddress").val(),
+					roomType:$("#roomType").val(),
 					id:$("#hidden_msg").val(),
 					examRoomInfo:JSON.stringify(examList)
 				},

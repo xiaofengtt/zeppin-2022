@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="shortcut icon" href="img/favicon.ico">
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/list.css" />
+	</head>
+	<body class="layui-layout-body">
+		<input id="uuidInput" type="hidden" value="afc8343f-6344-11ea-93bd-89a085bb1b54"/>
+		<div class="main layui-layout layui-layout-admin">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="layui-body">
+				<ul id="channelTab" class="layui-tab-title">
+					<li class="layui-this" data-uuid="a4ac649b-43f3-4f85-888c-dd85bbca25a6">支付宝扫码（<span id="a4ac649b-43f3-4f85-888c-dd85bbca25a6Count">0</span>）</li>
+					<li data-uuid="1075f929-5f6d-4d54-a64a-f728e0c92d04">企业支付宝（<span id="1075f929-5f6d-4d54-a64a-f728e0c92d04Count">0</span>）</li>
+					<li data-uuid="9298fcd6-36ee-41b2-8c99-31a7334d93dc">微信扫码（<span id="9298fcd6-36ee-41b2-8c99-31a7334d93dcCount">0</span>）</li>
+					<li data-uuid="fa70bb8c-44ac-404d-8f45-77d736216e71">企业微信（<span id="fa70bb8c-44ac-404d-8f45-77d736216e71Count">0</span>）</li>
+					<li data-uuid="d013e88e-de4b-4633-bd39-91a946137e9a">个人银行卡（<span id="d013e88e-de4b-4633-bd39-91a946137e9aCount">0</span>）</li>
+					<li data-uuid="f2f128f4-7ed6-421e-bad0-9ad9ed874e3a">企业银行卡（<span id="f2f128f4-7ed6-421e-bad0-9ad9ed874e3aCount">0</span>）</li>
+					<li data-uuid="ab0f3c59-669e-4950-8cdf-9087ed298c23">支付宝转银行卡（<span id="ab0f3c59-669e-4950-8cdf-9087ed298c23Count">0</span>）</li>
+				</ul>
+			    <!-- 内容主体区域 -->
+			    <div class="layui-bodu" style="padding: 15px;">
+				 	<form class="layui-form layui-form-pane2 layui-row layui-form-search" action="" lay-filter="first">
+				 		<div class="layui-row">
+				 			<div class="layui-col-md4 mb-15" >
+				    			<label class="layui-form-label">商户</label>
+							    <div class="layui-input-block">
+							      	<select name="company">
+							        </select>
+							    </div>
+				    		</div>
+					 		<div class="layui-col-md4 mb-15" >
+					 			<label class="layui-form-label">平台订单号</label>
+					 			<div class="layui-input-block">
+					 				 <input type="text" name="orderNum" class="layui-input">
+					 			</div>
+					 		</div>
+					 		<div class="layui-col-md4 mb-15" >
+					 			<label class="layui-form-label">商户订单号</label>
+					 			<div class="layui-input-block">
+					 				 <input type="text" name="companyOrderNum" class="layui-input">
+					 			</div>
+					 		</div>
+					 		<div class="layui-col-md4 mb-15" >
+					 			<label class="layui-form-label">状态</label>
+					 			<div class="layui-input-block">
+						 			<select name="status" lay-filter="quiz">
+										<option value="" selected>全部</option> 
+										<option value="normal">未付款</option> 
+										<option value="fail">处理失败</option> 
+										<option value="checked">已审核</option>
+										<option value="checking">待审核</option>
+										<option value="success">已完成</option>
+										<option value="close">已关闭</option>   
+									</select>
+								</div>
+					 		</div>
+					 		<div class="layui-col-md4 mb-15">
+							    <label class="layui-form-label">下单时间</label>
+							    <div class="layui-input-block">
+							        <input type="text" name="createtime" readonly class="layui-input createtime">
+							    </div>
+							</div>
+							<div class="layui-col-md4 mb-15" >
+					 			<label class="layui-form-label">充值信息</label>
+					 			<div class="layui-input-block">
+					 				 <input type="text" name="transData" class="layui-input">
+					 			</div>
+					 		</div>
+					 		<div class="layui-col-md4 mb-15" >
+						 		<div class="layui-input-block">
+						 			<a class="layui-btn" onclick="getList()">查询</a>
+						 			<a class="layui-btn" onclick="exportFile()">导出</a>
+					 			</div>
+					 		</div>
+						 </div>
+				 	</form>
+					<div style="overflow-x:auto;">
+			    		<table class="table-list mt-15"></table>
+			    	</div>
+					<div id="pageTool"></div>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/order-alert.js"></script>
+		<script type="text/javascript" src="js/userRechargeList.js" ></script>
+	</body>
+</html>

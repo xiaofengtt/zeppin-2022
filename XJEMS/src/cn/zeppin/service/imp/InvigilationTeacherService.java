@@ -14,9 +14,13 @@ import cn.zeppin.dao.api.ITeacherDisableRecordsDao;
 import cn.zeppin.entity.ExamTeacherRoom;
 import cn.zeppin.entity.InvigilationTeacher;
 import cn.zeppin.entity.InvigilationTeacherOld;
+import cn.zeppin.entity.SysUser;
 import cn.zeppin.entity.TeacherDisableRecords;
 import cn.zeppin.service.api.IInvigilationTeacherService;
 import cn.zeppin.utility.Utlity;
+import cn.zeppin.utility.wx.CommonUtil;
+import cn.zeppin.utility.wx.ConfigUtil;
+import cn.zeppin.utility.wx.MessageUtil;
 
 /**
  * ClassName: InvigilationTeacherService <br/>
@@ -97,10 +101,15 @@ public class InvigilationTeacherService implements IInvigilationTeacherService {
 	@Override
 	public List<InvigilationTeacher> searchInvigilationTeacher(Map<String, Object> searchMap,
 			Map<String, String> sortParams, int offset, int length) {
-		// TODO Auto-generated method stub
 		return this.getiInvigilationTeacherDAO().searchInvigilationTeacher(searchMap, sortParams, offset, length);
 	}
 
+	@Override
+	public List<Object[]> searchInvigilationTeacherBySql(Map<String, Object> searchMap,
+			Map<String, String> sortParams, int offset, int length) {
+		return this.getiInvigilationTeacherDAO().searchInvigilationTeacherBySql(searchMap, sortParams, offset, length);
+	}
+	
 	@Override
 	public int searchInvigilationTeacherCount(Map<String, Object> searchMap) {
 		// TODO Auto-generated method stub
@@ -155,7 +164,7 @@ public class InvigilationTeacherService implements IInvigilationTeacherService {
 				// 修改状态被禁用过
 				teacher.setIsDisable((short) 1);
 				this.update(teacher);
-				
+
 				if (!Utlity.checkStringNull(exam)) {
 					Map<String, Object> searchMap = new HashMap<String, Object>();
 					searchMap.put("exam", exam);
@@ -251,4 +260,96 @@ public class InvigilationTeacherService implements IInvigilationTeacherService {
 		}
 	}
 
+	@Override
+	public int updateStopInvigilationTeacher(Map<String, Object> searchMap) {
+		return this.getiInvigilationTeacherDAO().updateStopInvigilationTeacher(searchMap);
+	}
+
+	@Override
+	public int updateChangeStatus(String id, short status, String reason, SysUser currentUser) {
+		//return this.getiInvigilationTeacherDAO().updateChangeStatus(ids, status, reason, currentUserId);
+		String ids[] = id.split(",");
+		try {
+			for (int i = 0; i < ids.length; i++) {
+				InvigilationTeacher invigilationTeacher = getById(Integer.parseInt(ids[i]));
+				if (invigilationTeacher != null) {
+					invigilationTeacher.setCheckStatus((short) status);
+					invigilationTeacher.setChecker(currentUser.getId());
+					invigilationTeacher.setCheckReason(reason);
+					invigilationTeacher.setChecktime(new Timestamp(System.currentTimeMillis()));
+					update(invigilationTeacher);
+					
+					String token = CommonUtil.getAccessToken().getAccessToken();
+					if (token != null) {
+						if (status == 2 && invigilationTeacher.getOpenID() != null) {
+							Map<String, String> templateParams = new HashMap<>();
+							templateParams.put("first", "收到审核通知");
+							templateParams.put("keyword1",
+									Utlity.timeSpanToString5(invigilationTeacher.getChecktime()));
+							templateParams.put("keyword2", "您的注册信息已经审核通过!");
+							templateParams.put("keyword3", currentUser.getName());
+							templateParams.put("remark", "请查收");
+							templateParams.put("url", "");
+							templateParams.put("touser", invigilationTeacher.getOpenID());
+							ConfigUtil.sendTemplate(CommonUtil.getAccessToken().getAccessToken(),
+									MessageUtil.teacherCheckTemplate(templateParams));
+
+						} else if (status == 0) {
+							Map<String, String> templateParams = new HashMap<>();
+							templateParams.put("first", "收到审核通知");
+							templateParams.put("keyword1",
+									Utlity.timeSpanToString5(invigilationTeacher.getChecktime()));
+							templateParams.put("keyword2", "您的注册信息未通过审核，原因：" + reason);
+							templateParams.put("keyword3", currentUser.getName());
+							templateParams.put("remark", "请修改资料重新提交");
+							templateParams.put("url", "");
+							templateParams.put("touser", invigilationTeacher.getOpenID());
+							ConfigUtil.sendTemplate(CommonUtil.getAccessToken().getAccessToken(),
+									MessageUtil.teacherCheckTemplate(templateParams));
+						}
+					}
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return -1;
+		}
+		return 0;
+	}
+
+	
+
+	@Override
+	public void deleteBatch(String id) {
+		// TODO Auto-generated method stub
+		String ids[] = id.split(",");
+		for (int i = 0; i < ids.length; i++) {
+			Integer tid = Integer.parseInt(ids[i]);
+			InvigilationTeacher teacher = this.getById(tid);
+			this.deleteById(teacher);
+
+			Map<String, Object> searchMap = new HashMap<String, Object>();
+			searchMap.put("teacher", tid);
+			@SuppressWarnings("rawtypes")
+			List list = this.getiExamTeacherRoomDAO().searchExamTeacherRoom(searchMap, null, -1, -1);
+			if (list != null && !list.isEmpty()) {
+				for (int j = 0; j < list.size(); j++) {
+					Object o = list.get(j);
+					Object[] obj = (Object[]) o;
+					ExamTeacherRoom etr = (ExamTeacherRoom) obj[0];
+					if (etr != null) {
+						etr.setStatus((short) 0);
+						etr.setRoom(null);
+						etr.setIsChief((short) 0);
+						etr.setIsMixed((short) 0);
+						etr.setIsConfirm((short) 0);
+						etr.setConfirtime(null);
+						etr.setCredit(null);
+						this.getiExamTeacherRoomDAO().update(etr);
+					}
+				}
+			}			
+		}
+	}
 }

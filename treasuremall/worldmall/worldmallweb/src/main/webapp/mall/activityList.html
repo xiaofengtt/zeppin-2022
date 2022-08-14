@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/activityList.css" />
+	</head>
+	<body class="layui-layout-body">
+		<input id="uuidInput" type="hidden" value="99da01e4-6c07-4edb-9d5e-3756f5bc3878"/>
+		<div class="main layui-layout layui-layout-admin">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="layui-body">
+				<div class="layui-tab layui-tab-brief" lay-filter="activity">
+					<ul class="layui-tab-title"></ul>
+					<div class="layui-tab-content">
+						<!-- 0元购 -->
+						<div class="layui-tab-item layui-show buyfree">
+							<h2>基础设置</h2>
+							<div class="layui-row mb-15">
+							    <div class="layui-col-md5">
+							      <label class="layui-form-label" style="width:120px">活动地址</label>
+							      <p class="layui-input-block" style="line-height:38px;margin-left:120px;">/#/0-shopping</p>
+							    </div>
+							    <div class="layui-col-md5 layui-col-md-offset1">
+							      <label class="layui-form-label" style="width:160px;">活动有效期</label>
+							      <div class="layui-input-block layui-pr layui-pr-must" style="margin-left:160px;">
+							      	<input type="text" name="" readonly class="layui-input activityTime">
+							      </div>
+							    </div>
+							</div>
+							<div class="layui-row mb-15">
+							    <div class="layui-col-md5">
+							      <label class="layui-form-label" style="width:120px">banner图地址</label>
+							      <div class="layui-input-block layui-pr layui-pr-must" style="margin-left:120px;">
+							      	<input type="text" name="bannerUrl" class="layui-input bannerUrl">
+							      </div>
+							    </div>
+							    <div class="layui-col-md5 layui-col-md-offset1">
+							      <label class="layui-form-label" style="width:160px;">每人每日最多可参与</label>
+							      <div class="layui-input-block" style="margin-left:160px;">
+							      	<input type="text" name="timesline" class="layui-input timesline layui-col-md5 layui-input-inline"
+							      	style="text-align:center;width:60px;float:none;padding:0 10px;" onkeyup="integer(this)">
+							      	<p class="layui-input-inline" style="line-height:38px;margin-left:5px;">次</p>
+							      	<p class="layui-tips tips-must">仅支持正整数</p>
+							      </div>
+							    </div>
+							</div>
+							<hr>
+							<button class="layui-btn lay-addNew layui-btn-sm mb-15" lay-filter="*">新增奖品</button>
+							<button class="layui-btn lay-startActivity layui-btn-sm mb-15" lay-filter="*">开启活动</button>
+							<button class="layui-btn lay-closeActivity layui-btn-sm mb-15" lay-filter="*">关闭活动</button>
+							<button class="layui-btn lay-activityList layui-btn-sm mb-15" lay-filter="*">活动数据</button>
+							<button class="layui-btn lay-submit layui-btn-sm mb-15" lay-submit lay-filter="*">保存设置</button>
+							<h2>详细设置</h2>
+							<div class="goodsList"></div>
+						</div>
+						<!-- 签到活动 -->
+						<div class="layui-tab-item checkIn">
+							<h2>基础设置</h2>
+							<div class="layui-row mb-15">
+							    <div class="layui-col-md5">
+							      <label class="layui-form-label" style="width:120px">活动地址</label>
+							      <p class="layui-input-block" style="line-height:38px;margin-left:120px;">/#/0-shopping</p>
+							    </div>
+							    <div class="layui-col-md5 layui-col-md-offset1">
+							      <label class="layui-form-label" style="width:160px;">活动有效期</label>
+							      <div class="layui-input-block layui-pr layui-pr-must" style="margin-left:160px;">
+							      	<input type="text" name="" readonly class="layui-input activityTime">
+							      </div>
+							    </div>
+							</div>
+							<div class="layui-row mb-15">
+							    <div class="layui-col-md5">
+							      <label class="layui-form-label" style="width:120px">banner图地址</label>
+							      <div class="layui-input-block layui-pr layui-pr-must" style="margin-left:120px;">
+							      	<input type="text" name="bannerUrl" class="layui-input bannerUrl">
+							      </div>
+							    </div>
+							</div>
+							<hr>
+							<button class="layui-btn lay-addNew layui-btn-sm mb-15" lay-filter="*">新增奖品</button>
+							<button class="layui-btn lay-startActivity layui-btn-sm mb-15" lay-filter="*">开启活动</button>
+							<button class="layui-btn lay-closeActivity layui-btn-sm mb-15" lay-filter="*">关闭活动</button>
+							<button class="layui-btn lay-activityList layui-btn-sm mb-15" lay-filter="*">中奖名单</button>	
+							<button class="layui-btn lay-submit layui-btn-sm mb-15" lay-submit lay-filter="*">保存设置</button>
+							<h2>详细设置</h2>
+							<div class="goodsList"></div>
+						</div>
+						<!-- 积分转盘 -->
+						<div class="layui-tab-item scorelottery">
+							<h2>基础设置</h2>
+							<div class="layui-row mb-15">
+							    <div class="layui-col-md5">
+							      <label class="layui-form-label" style="width:120px">活动地址</label>
+							      <p class="layui-input-block" style="line-height:38px;margin-left:120px;">/#/0-shopping</p>
+							    </div>
+							    <div class="layui-col-md5 layui-col-md-offset1">
+							      <label class="layui-form-label" style="width:160px;">活动有效期</label>
+							      <div class="layui-input-block layui-pr layui-pr-must" style="margin-left:160px;">
+							      	<input type="text" name="" readonly class="layui-input activityTime">
+							      </div>
+							    </div>
+							</div>
+							<div class="layui-row mb-15">
+							    <div class="layui-col-md5">
+							      <label class="layui-form-label" style="width:120px">banner图地址</label>
+							      <div class="layui-input-block layui-pr layui-pr-must" style="margin-left:120px;">
+							      	<input type="text" name="bannerUrl" class="layui-input bannerUrl">
+							      </div>
+							    </div>
+							    <div class="layui-col-md5 layui-col-md-offset1">
+							      <label class="layui-form-label" style="width:160px;">每日抽奖机会</label>
+							      <div class="layui-input-block" style="margin-left:160px;">
+							      	<p class="layui-input-inline" style="line-height:38px;margin-right:5px;">每人每日可参与</p>
+							      	<input type="text" name="timesline" class="layui-input layui-input-inline timesline layui-col-md2" 
+							      	style="text-align:center;width:60px;float:none;padding:0 10px;" onkeyup="integer(this)">
+							      	<p class="layui-input-inline" style="line-height:38px;margin-left:5px;">次</p>
+							      	<p class="layui-tips tips-must">仅支持正整数</p>
+							      </div>
+							    </div>
+							</div>
+							<div class="layui-row mb-15">
+							    <div class="layui-col-md5">
+							      <label class="layui-form-label" style="width:120px">单次消耗积分</label>
+							      <div class="layui-input-inline">
+							      	<input type="text" name="scoreline" class="layui-input scoreline" 
+							      	style="text-align:center;width:80px;float:none;padding:0 10px;" onkeyup="integer(this)">
+							      </div>
+							      <p class="layui-tips">若不填则表示不消耗积分</p>
+							    </div>
+							</div>
+							<hr>
+							<button class="layui-btn lay-addNew layui-btn-sm mb-15" lay-filter="*">新增奖项</button>
+							<button class="layui-btn lay-startActivity layui-btn-sm mb-15" lay-filter="*">开启活动</button>
+							<button class="layui-btn lay-closeActivity layui-btn-sm mb-15" lay-filter="*">关闭活动</button>
+							<button class="layui-btn lay-activityList layui-btn-sm mb-15" lay-filter="*">中奖名单</button>
+							<button class="layui-btn lay-submit layui-btn-sm mb-15" lay-submit lay-filter="*">保存设置</button>
+							<h2>详细设置</h2>
+							<div class="goodsList"></div>
+						</div>
+						<!-- 首充活动 -->
+						<div class="layui-tab-item firstcharge">
+							<h2>基础设置</h2>
+							<div class="layui-row mb-15">
+							    <div class="layui-col-md5">
+							      <label class="layui-form-label" style="width:120px">活动地址</label>
+							      <p class="layui-input-block" style="line-height:38px;margin-left:120px;">/#/0-firstcharge</p>
+							    </div>
+							    <div class="layui-col-md5 layui-col-md-offset1">
+							      <label class="layui-form-label" style="width:160px;">活动有效期</label>
+							      <div class="layui-input-block layui-pr layui-pr-must" style="margin-left:160px;">
+							      	<input type="text" name="" readonly class="layui-input activityTime">
+							      </div>
+							    </div>
+							</div>
+							<div class="layui-row mb-15">
+							    <div class="layui-col-md5">
+							      <label class="layui-form-label" style="width:120px">banner图地址</label>
+							      <div class="layui-input-block layui-pr layui-pr-must" style="margin-left:120px;">
+							      	<input type="text" name="bannerUrl" class="layui-input bannerUrl">
+							      </div>
+							    </div>
+							</div>
+							<hr>
+							<button class="layui-btn lay-startActivity layui-btn-sm mb-15" lay-filter="*">开启活动</button>
+							<button class="layui-btn lay-closeActivity layui-btn-sm mb-15" lay-filter="*">关闭活动</button>	
+							<button class="layui-btn lay-submit layui-btn-sm mb-15" lay-submit lay-filter="*">保存设置</button>
+							<h2>详细设置</h2>
+							<div class="goodsList">
+								<div class="layui-col-md5">
+									<div class="layui-col-md12 mb-15">
+									    <label class="layui-form-label">固定额度</label>
+									    <div class="layui-input-block layui-pr layui-pr-must">
+									        <input type="text" name="amount" onkeyup="decimal(this)" class="layui-input">
+									    </div>
+									</div>
+									<div class="layui-col-md12 mb-15">
+									    <label class="layui-form-label">定额送</label>
+									    <div class="layui-input-block">
+									        <form class="layui-form" action="" lay-filter="first">
+										    	<div class="mb-15 voucher-box">
+										    		<input type="radio" name="prizeType" value="voucher" title="金券 送" checked>
+										    		<input type="text" name="title" readonly class="layui-input layui-voucher" placeholder="请选择金券" value="" 
+										    		style="display:inline-block;width:50%;">
+										    	</div>	
+									    	</form>
+									    	<ul class="voucher-list">								
+									    	</ul>
+									    </div>
+									</div>
+								</div>
+								<div class="layui-col-md5 layui-col-md-offset1">
+									<div class="layui-col-md12 mb-15">
+									    <label class="layui-form-label" style="width:160px;">充值渠道</label>
+									    <div class="layui-input-block layui-pr" style="margin-left:160px;">
+									    	<form class="layui-form" action="" lay-filter="first">
+										        <select name="capitalAccount" lay-filter="capitalPlatform">
+													<option value="">请选择</option>
+												</select>
+											</form>
+									    </div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- 充值返利活动 -->
+						<div class="layui-tab-item recharge">
+							<h2>基础设置</h2>
+							<div class="layui-row mb-15">
+							    <div class="layui-col-md5">
+							      <label class="layui-form-label" style="width:120px">活动地址</label>
+							      <p class="layui-input-block" style="line-height:38px;margin-left:120px;">/#/recharge</p>
+							    </div>
+							    <div class="layui-col-md5 layui-col-md-offset1">
+							      <label class="layui-form-label" style="width:160px;">活动有效期</label>
+							      <div class="layui-input-block layui-pr layui-pr-must" style="margin-left:160px;">
+							      	<input type="text" name="" readonly class="layui-input activityTime">
+							      </div>
+							    </div>
+							</div>
+							<div class="layui-row mb-15">
+							    <div class="layui-col-md5">
+							      <label class="layui-form-label" style="width:120px">banner图地址</label>
+							      <div class="layui-input-block layui-pr layui-pr-must" style="margin-left:120px;">
+							      	<input type="text" name="bannerUrl" class="layui-input bannerUrl">
+							      </div>
+							    </div>
+							</div>
+							<hr>
+							<button class="layui-btn lay-addNew layui-btn-sm mb-15" lay-filter="*">新增奖项</button>
+							<button class="layui-btn lay-startActivity layui-btn-sm mb-15" lay-filter="*">开启活动</button>
+							<button class="layui-btn lay-closeActivity layui-btn-sm mb-15" lay-filter="*">关闭活动</button>	
+							<button class="layui-btn lay-submit layui-btn-sm mb-15" lay-submit lay-filter="*">保存设置</button>
+							<h2>详细设置</h2>
+							<div class="goodsList">
+								
+							</div>
+						</div>
+						<!-- 邀新活动 -->
+						<div class="layui-tab-item recommend">
+							<h2>基础设置</h2>
+							<div class="layui-row mb-15">
+							    <div class="layui-col-md5">
+							      <label class="layui-form-label" style="width:120px">活动地址</label>
+							      <p class="layui-input-block" style="line-height:38px;margin-left:120px;">/#/invite-new</p>
+							    </div>
+							    <div class="layui-col-md5 layui-col-md-offset1">
+							      <label class="layui-form-label" style="width:160px;">活动有效期</label>
+							      <div class="layui-input-block layui-pr layui-pr-must" style="margin-left:160px;">
+							      	<input type="text" name="" readonly class="layui-input activityTime">
+							      </div>
+							    </div>
+							</div>
+							<div class="layui-row mb-15">
+							    <div class="layui-col-md5">
+							      <label class="layui-form-label" style="width:120px">banner图地址</label>
+							      <div class="layui-input-block layui-pr layui-pr-must" style="margin-left:120px;">
+							      	<input type="text" name="bannerUrl" class="layui-input bannerUrl">
+							      </div>
+							    </div>
+							    <div class="layui-col-md5 layui-col-md-offset1">
+							      <label class="layui-form-label" style="width:160px;">返利比例</label>
+							      <div class="layui-input-block layui-pr layui-pr-must" style="margin-left:160px;position:relative">
+							      	<input type="number" class="layui-input" name="awardRate" value="">
+							      	<b style="position:absolute;right:15px;font-weight:normal;top:10px;color: gray;">%</b>
+							      </div>
+							    </div>
+							</div>
+							<div class="layui-row mb-15">
+							    <div class="layui-col-md5">
+							      <label class="layui-form-label" style="width:120px">Android下载</label>
+							      <div class="layui-input-block layui-pr layui-pr-must" style="margin-left:120px;">
+							      	<input type="text" name="androidUrl" class="layui-input bannerUrl">
+							      </div>
+							    </div>
+							    <div class="layui-col-md5 layui-col-md-offset1">
+							      <label class="layui-form-label" style="width:160px;">iOS下载</label>
+							      <div class="layui-input-block layui-pr layui-pr-must" style="margin-left:160px;position:relative">
+							      	<input type="text" class="layui-input" name="iosUrl" value="">
+							      </div>
+							    </div>
+							</div>
+							<div class="layui-row mb-15">
+								<div class="layui-col-md5">
+								    <label class="layui-form-label" style="width:120px">注册送</label>
+								    <div class="layui-input-block">
+								        <form class="layui-form" action="" lay-filter="first">
+									    	<div class="mb-15 voucher-box">
+									    		<input type="text" name="title" readonly class="layui-input layui-voucher" placeholder="请选择金券" value="" 
+									    		style="display:inline-block;width:50%;">
+									    	</div>	
+								    	</form>
+								    	<ul class="voucher-list" style="padding-left:10px;">								
+								    	</ul>
+								    </div>
+								</div>
+							    <div class="layui-col-md5 layui-col-md-offset1">
+							      <label class="layui-form-label" style="width:160px">注册页地址</label>
+							      <div class="layui-input-block layui-pr layui-pr-must" style="margin-left:160px;">
+							      	<input type="text" name="registUrl" class="layui-input registUrl">
+							      </div>
+							    </div>
+							</div>
+							<hr>
+							<button class="layui-btn lay-startActivity layui-btn-sm mb-15" lay-filter="*">开启活动</button>
+							<button class="layui-btn lay-closeActivity layui-btn-sm mb-15" lay-filter="*" style="margin-left:0 !important">关闭活动</button>	
+							<button class="layui-btn lay-activityList layui-btn-sm mb-15" lay-filter="*">获利明细</button>
+							<button class="layui-btn lay-submit layui-btn-sm mb-15" lay-submit lay-filter="*">保存设置</button>
+							<h2>详细设置</h2>
+							<div>
+								<button class="layui-btn lay-addNew layui-btn-sm mb-15" lay-filter="*">新增设置</button>
+								<button class="layui-btn lay-datasubmit layui-btn-sm mb-15" lay-filter="*">保存数据</button>
+							</div>
+							<div class="goodsList">
+							</div>
+						</div>
+					</div>
+				</div>  				
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/alert.js" ></script>
+		<script type="text/javascript" src="js/activityList.js" ></script>
+		<!-- <script type="text/javascript" src="js/activity-scorelottery.js"></script> -->
+	</body>
+</html>

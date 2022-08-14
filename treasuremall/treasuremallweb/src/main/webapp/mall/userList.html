@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/luckyGoods.css" />
+	</head>
+	<body class="layui-layout-body">
+		<input id="uuidInput" type="hidden" value="87513889-cff7-4946-9fef-bd40a2fd0289"/>
+		<div class="main layui-layout layui-layout-admin">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="layui-body">
+			    <!-- 内容主体区域 -->
+				    <div class="layui-bodu" style="padding: 15px;">
+				    	<!-- 查询 -->
+				    	<form class="layui-form layui-form-pane2 layui-row layui-form-search" action="" lay-filter="first">
+				    		<div class="layui-col-md4 mb-15" >
+				    			<label class="layui-form-label">用户ID</label>
+							    <div class="layui-input-block">
+							      <input type="text" name="showid" class="layui-input" >
+							    </div>
+				    		</div>
+				    		<div class="layui-col-md4 mb-15" >
+				    			<label class="layui-form-label">注册渠道</label>
+							    <div class="layui-input-block">
+							      	<select name="channel" lay-filter="quiz">
+							        </select>
+							    </div>
+				    		</div>
+				    		<div class="layui-col-md4 mb-15" >
+							    <label class="layui-form-label">充值金额</label>
+							    <div class="layui-input-block">
+								    <div class="layui-input-block" style="width: 125px;float:left; margin:0">
+								        <input type="number" class="layui-input totalRechargeStart">
+								    </div>
+								    <div class="layui-form-mid">-</div>
+								    <div class="layui-input-block" style="width: 124px;float:left; margin:0">
+								        <input type="number" class="layui-input totalRechargeEnd">
+								    </div>
+							    </div>
+							</div>
+							<div class="layui-col-md4 mb-15" >
+				    			<label class="layui-form-label">手机号</label>
+							    <div class="layui-input-block">
+							      <input type="number" name="mobile" class="layui-input" >
+							    </div>
+				    		</div>
+				    		<div class="layui-col-md4 mb-15" >
+				    			<label class="layui-form-label">用户等级</label>
+							    <div class="layui-input-block">
+							      	<select name="level" lay-filter="level">
+							      		<option value="">全部用户</option>
+							      		<option value="registered">注册用户</option>
+							      		<option value="recharged">充值用户</option>
+							      		<option value="VIP">VIP用户</option>
+							      		<option value="demo">测试用户</option>
+							        </select>
+							    </div>
+				    		</div>
+				    		<div class="layui-col-md4 mb-15">
+							    <label class="layui-form-label">中奖金额</label>
+							    <div class="layui-input-block">
+								    <div class="layui-input-block" style="width: 125px;float:left; margin:0">
+								        <input type="number" class="layui-input totalWinningStart">
+								    </div>
+								    <div class="layui-form-mid">-</div>
+								    <div class="layui-input-block" style="width: 124px;float:left; margin:0">
+								        <input type="number" class="layui-input totalWinningEnd">
+								    </div>
+							    </div>
+							</div>
+							<div class="layui-col-md4 mb-15">
+							    <label class="layui-form-label">提现金额</label>
+							    <div class="layui-input-block">
+								    <div class="layui-input-block" style="width: 125px;float:left; margin:0">
+								        <input type="number" class="layui-input totalWithdrawStart">
+								    </div>
+								    <div class="layui-form-mid">-</div>
+								    <div class="layui-input-block" style="width: 124px;float:left; margin:0">
+								        <input type="number" class="layui-input totalWithdrawEnd">
+								    </div>
+							    </div>
+							</div>
+				    		<div class="layui-col-md4 mb-15">
+							    <label class="layui-form-label">创建时间</label>
+							    <div class="layui-input-block">
+							        <input type="text" name="createtime" readonly class="layui-input createtime">
+							    </div>
+							</div>
+				    		<div class="layui-col-md4 mb-15">
+								<div class="layui-input-block">
+									<button class="layui-btn lay-submit" lay-submit lay-filter="*">查询</button>
+									<button class="layui-btn layui-btn-primary lay-export">导出</button>
+								</div>
+							</div>
+				    	</form>
+				    	<div style="overflow-x:auto;">
+				    		<table class="table-list mt-15"></table>
+				    	</div>
+						 
+						 <div id="pageTool"></div>
+				    </div>
+			 </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/alert.js" ></script>
+		<script type="text/javascript" src="js/userList.js" ></script>
+	</body>
+</html>

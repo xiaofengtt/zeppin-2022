@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>后台系统</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/luckyGoods.css" />
+		<style>
+			.table-list .robotdisable td{
+				color:#fe2347;
+			}
+			.table-list tr.robotnormal td{
+				color:#525252;
+			}
+		</style>
+	</head>
+	<body class="layui-layout-body">
+		<input id="uuidInput" type="hidden" value="b5e8cf97-90b4-11e8-95fb-fccd1431ad2a"/>
+		<div class="main layui-layout layui-layout-admin">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="layui-body">
+			    <!-- 内容主体区域 -->
+				    <div class="layui-bodu" style="padding: 15px;">
+				    	<div class="layui-btn-group">
+						    <a class="layui-btn" data-type="parseTable" href="robotAdd.html">添加机器人</a>
+						    <a class="layui-btn coinOperation" data-type="parseTable">添加/扣减</a>
+						    <a class="layui-btn robotSet" data-type="parseTable">批量设置</a>
+						    <a class="layui-btn changeStatusStart" data-type="parseTable">批量启用</a>
+						    <a class="layui-btn changeStatusStop" data-type="parseTable">批量停用</a>
+						 </div>
+						 <form class="layui-form layui-form-pane1" action="" lay-filter="first" style="position:absolute;right:30px;top:35px;max-width:600px;">
+						 	<div class="layui-form-item">
+						 		<div class="layui-input-inline" style="width:150px;">
+							    	<select name="gameType" lay-filter="quiz">
+							        	<option value="">全部玩法</option>
+								    	<option value="tradition">传统玩法 </option>
+								    	<option value="group2">战队PK</option>
+							        </select>
+							    </div>
+						 		<div class="layui-input-inline" style="width:150px;">
+							    	<select name="status" lay-filter="quiz">
+							           <option value="">全部状态</option>
+								       <option value="normal">启用</option>
+								       <option value="disable">停用</option>
+							        </select>
+							    </div>
+							    <div class="layui-input-inline" style="width:150px;">
+							    	<input type="text" placeholder="搜机器人ID" class="layui-input layui-id" >
+							    </div>
+							     <button type="button" class="layui-btn layui-btn-primary" onclick="pageNum=1;getList();">
+								  	<i class="layui-icon">&#xe615;</i>
+								</button>
+							  </div>
+						 </form>
+						<div style="overflow-x:auto;">
+				    		<table class="table-list mt-15"></table>
+				    	</div>
+						 <div id="pageTool"></div>
+				    </div>
+			 </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/alert.js" ></script>
+		<script type="text/javascript" src="js/robotList.js" ></script>
+	</body>
+</html>

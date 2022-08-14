@@ -184,7 +184,10 @@ public class IDCardUtil
 		.substring(7) : string.substring(6));
 	Date date = new Date();
 	Calendar calendar = Calendar.getInstance();
-	calendar.set(year, month, day);
+//	calendar.set(year, month, day);
+	calendar.set(Calendar.DAY_OF_MONTH, day);  //设置日期
+    calendar.set(Calendar.MONTH, month-1 );
+    calendar.set(Calendar.YEAR, year); 
 	date = calendar.getTime();
 	return date;
     }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>NETTY SOCKET.IO DEMO</title>
+    <base>
+    <script src="mall/js/jquery-1.11.1.js"></script>
+<!--     <script src="mall/js/socket.io.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+
+    <style>
+        body {
+            padding: 20px;
+        }
+        #console {
+            height: 450px;
+            overflow: auto;
+        }
+        .username-msg {
+            color: orange;
+        }
+        .connect-msg {
+            color: green;
+        }
+        .disconnect-msg {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="console" class="well"></div>
+</body>
+<script type="text/javascript">
+    var socket;
+    connect();
+ 
+    function connect() {
+        var loginUserNum = '88';
+        var opts = {
+            query: 'token=' + loginUserNum
+        };
+        socket = io.connect('http://192.168.1.116:12345', opts);
+        socket.on('connect', function () {
+            console.log("连接成功");
+            serverOutput('<span class="connect-msg">连接成功</span>');
+        });
+        socket.on('put_event', function (data) {
+            output('<span class="username-msg">' + data.content + ' </span>');
+            console.log(data);
+        });
+
+        socket.on('disconnect', function () {
+            serverOutput('<span class="disconnect-msg">' + '已下线! </span>');
+        });
+    }
+    
+    function output(message) {
+        var element = $("<div>" + " " + message + "</div>");
+        $('#console').prepend(element);
+    }
+
+    function serverOutput(message) {
+        var element = $("<div>" + message + "</div>");
+        $('#console').prepend(element);
+    }
+</script>
+</html>

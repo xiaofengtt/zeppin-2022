@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Management System</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/base.css" />
+	</head>
+	<body>
+		<div class="main">
+		    <div class="layui-bodu" style="padding: 30px 35px;">
+		    	<form class="layui-form" action="" lay-filter="first">
+		    		<div class="layui-form-item">
+						<label class="layui-form-label">Store</label>
+						<div class="layui-input-block">
+							<input type="text" name="name" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">Recharge</label>
+						<div class="layui-input-block" style="margin-bottom:10px;">
+							<div class="layui-input-inline" style="width: 200px;">
+								<input type="radio" name="rechargePoundageType" value="static" title="fixed poundage" lay-filter="rechargePoundageType" checked>
+							</div>
+							<div class="layui-input-inline" style="width: 200px;">
+								<input name="rechargePoundage" class="layui-input">
+						    </div>
+						</div>
+						<div class="layui-input-block" style="margin-bottom:10px">
+							<div class="layui-input-inline" style="width: 200px;">
+								<input type="radio" name="rechargePoundageType" value="rate" title="poundage rate" lay-filter="rechargePoundageType">
+							</div>
+							<div class="layui-input-inline" style="width: 200px;">
+								<input name="rechargePoundageRate" class="layui-input" disabled>
+						    </div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">Withdrawal</label>
+						<div class="layui-input-block" style="margin-bottom:10px;">
+							<div class="layui-input-inline" style="width: 200px;">
+								<input type="radio" name="withdrawPoundageType" value="static" title="fixed poundage" lay-filter="withdrawPoundageType" checked>
+							</div>
+							<div class="layui-input-inline" style="width: 200px;">
+								<input name="withdrawPoundage" class="layui-input">
+						    </div>
+						</div>
+						<div class="layui-input-block" style="margin-bottom:10px">
+							<div class="layui-input-inline" style="width: 200px;">
+								<input type="radio" name="withdrawPoundageType" value="rate" title="poundage rate" lay-filter="withdrawPoundageType">
+							</div>
+							<div class="layui-input-inline" style="width: 200px;">
+								<input name="withdrawPoundageRate" class="layui-input" disabled>
+						    </div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">Store private</label>
+						<div class="layui-input-block">
+							<textarea name="companyPrivate" class="layui-textarea"></textarea>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">Store public</label>
+						<div class="layui-input-block">
+							<textarea name="companyPublic" class="layui-textarea"></textarea>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">System private</label>
+						<div class="layui-input-block">
+							<textarea name="systemPrivate" class="layui-textarea" disabled></textarea>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">System public</label>
+						<div class="layui-input-block">
+							<textarea name="systemPublic" class="layui-textarea" disabled></textarea>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">White list</label>
+						<div class="layui-input-block">
+							<input type="text" name="whiteUrl" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">Status</label>
+					    <div class="layui-input-block">
+							<input type="radio" name="status" value="normal" title="normal" checked>
+							<input type="radio" name="status" value="disable" title="disable">
+					    </div>
+					</div>
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn" onclick="parent.layer.closeAll()">Cancel</button>
+							<button class="layui-btn lay-submit" lay-submit lay-filter="*">Confirm</button>
+						</div>
+					</div>
+				</form>
+		    </div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/companyDetail.js" ></script>
+	</body>
+</html>

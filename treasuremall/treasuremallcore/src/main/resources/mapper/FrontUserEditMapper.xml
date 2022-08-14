@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.treasuremall.mapper.FrontUserEditMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_edit where 1=1 
+		<if test='uuid != null and uuid != ""'>
+            and uuid != #{uuid}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user = #{frontUser}
+        </if>     
+		<if test='type != null and type != ""'>
+            and type = #{type}
+        </if>    
+		<if test='name != null and name != ""'>
+            and (infoBefore like '%${name}%' or infoAfter like '%${name}%')
+        </if>
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ createtime < #{timeend} ]]>
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','checked','nopass')
+	        </otherwise>
+        </choose>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUserEdit">
+		select * from front_user_edit where 1=1 
+		<if test='uuid != null and uuid != ""'>
+            and uuid != #{uuid}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and front_user = #{frontUser}
+        </if>     
+		<if test='type != null and type != ""'>
+            and type = #{type}
+        </if>    
+		<if test='name != null and name != ""'>
+            and (infoBefore like '%${name}%' or infoAfter like '%${name}%')
+        </if>
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ createtime < #{timeend} ]]>
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','checked','nopass')
+	        </otherwise>
+        </choose>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getLeftCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_edit fue left join front_user fu on fue.front_user = fu.uuid where 1=1 
+		<if test='uuid != null and uuid != ""'>
+            and fue.uuid != #{uuid}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and fue.front_user = #{frontUser}
+        </if>  
+        <if test='showid != null and showid != ""'>
+            and fu.show_id = #{showid}
+        </if>
+		<if test='mobile != null and mobile != ""'>
+            and fu.mobile = #{mobile}
+        </if>
+        <if test='userType != null and userType != ""'>
+            and fu.type= #{userType}
+        </if>   
+		<if test='type != null and type != ""'>
+            and fue.type = #{type}
+        </if>    
+		<if test='name != null and name != ""'>
+            and (fue.infoBefore like '%${name}%' or fue.infoAfter like '%${name}%')
+        </if>
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ fue.createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ fue.createtime < #{timeend} ]]>
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and fue.status = #{status}
+	        </when>
+	        <otherwise>
+	        	and fue.status in ('normal','checked','nopass')
+	        </otherwise>
+        </choose>
+	</select>
+	
+	<select id="getLeftListByParams" parameterType="java.util.HashMap" resultType="cn.product.treasuremall.entity.FrontUserEdit">
+		select fue.* from front_user_edit fue left join front_user fu on fue.front_user = fu.uuid where 1=1 
+		<if test='uuid != null and uuid != ""'>
+            and fue.uuid != #{uuid}
+        </if>
+		<if test='frontUser != null and frontUser != ""'>
+            and fue.front_user = #{frontUser}
+        </if>  
+        <if test='showid != null and showid != ""'>
+            and fu.show_id = #{showid}
+        </if>
+		<if test='mobile != null and mobile != ""'>
+            and fu.mobile = #{mobile}
+        </if>
+        <if test='userType != null and userType != ""'>
+            and fu.type= #{userType}
+        </if>   
+		<if test='type != null and type != ""'>
+            and fue.type = #{type}
+        </if>    
+		<if test='name != null and name != ""'>
+            and (fue.infoBefore like '%${name}%' or fue.infoAfter like '%${name}%')
+        </if>
+ 		<!-- 创建时间筛选 -->
+        <if test='timestart != null and timestart != ""'>
+            and <![CDATA[ fue.createtime > #{timestart} ]]>
+        </if>
+        <if test='timeend != null and timeend != ""'>
+            and <![CDATA[ fue.createtime < #{timeend} ]]>
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and fue.status = #{status}
+	        </when>
+	        <otherwise>
+	        	and fue.status in ('normal','checked','nopass')
+	        </otherwise>
+        </choose>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by fue.${sort}
+	        </when>
+	        <otherwise>
+	        	order by fue.createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+</mapper>

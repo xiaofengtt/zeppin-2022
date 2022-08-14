@@ -1,0 +1,14 @@
+.layui-row{
+	margin:15px 0;
+}
+.layui-split{
+	padding:5px 0;
+	border-top:2px solid gray;
+}
+p, span{
+	padding:2px;
+	font-size:14px;
+	color:#525252;
+	line-height:1.5;
+}
+

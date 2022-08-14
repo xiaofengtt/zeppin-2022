@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.product.worldpay.mapper.MobileCodeMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from mobile_code where 1=1 
+		<if test='mobile != null and mobile != ""'>
+            and mobile= #{mobile}
+        </if>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+        <if test='creatortype != null and creatortype != ""'>
+            and creatortype= #{creatortype}
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="com.product.worldpay.entity.MobileCode">
+		select * from mobile_code where 1=1 
+		<if test='mobile != null and mobile != ""'>
+            and mobile= #{mobile}
+        </if>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+        <if test='creatortype != null and creatortype != ""'>
+            and creatortype= #{creatortype}
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+</mapper>

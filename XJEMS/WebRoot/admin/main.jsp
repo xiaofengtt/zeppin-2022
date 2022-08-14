@@ -32,10 +32,10 @@
 	$(document).ready(function() {
 		var mUrl = '../admin/examGetCurrent?';
 		$.get(mUrl, function(r) {
-			var id = r.Records.id;
-			var name = r.Records.name;
-			var status = r.Records.status;
+			var status = r.Status;
 			if (r.Status == 'success') {//有考试
+				var id = r.Records.id;
+				var name = r.Records.name;
 				window.location.href = "../admin/menu.jsp?exam=" + id;
 			} 
 		}).done(function(r) {

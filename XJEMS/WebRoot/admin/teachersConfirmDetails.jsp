@@ -10,17 +10,22 @@
         <link rel="stylesheet" href="../css/mainBox.css" />
         <link rel="stylesheet" href="../css/teachersConfirmDetails.css">
         <script id="queboxTpl" type="text/template">
-              <p class="title">关于{{:exam}}考试监考老师相关事宜通知</p>
+              <p class="title">{{:exam}}</p>
               <ul class="teacher_msg">
                 <li>监考老师：{{:name}}</li>
                 <li>电话号码：{{:mobile}}</li>
                 <li>民族：{{:ethnic}}</li>
                 <li>性别：{{if sex=='1'}}男{{/if}}{{if sex=='2'}}女{{/if}}</li>
-                <li>身份：{{if type=='1'}}考务组{{/if}}{{if type=='2'}}研究生{{/if}}{{if type=='3'}}教工{{/if}}</li>
+                <li>身份：{{if type=='1'}}考务组{{/if}}
+                         {{if type=='2'}}研究生{{/if}}
+                         {{if type=='3'}}教工{{/if}}
+                         {{if type=='4'}}本科{{/if}}
+                         {{if type=='5'}}非师大人员{{/if}}
+                </li>
                 <li>考场安排：{{:roomIndex}}-{{:roomAddress}}</li>
                 <li>教师角色：{{if isChief=='1'}}主考{{/if}}{{if isChief=='0'}}副考{{/if}}</li>
                 <li>二次确认：{{if isconfirm=='1'}}是{{/if}}{{if isconfirm=='0'}}否{{/if}}</li>
-                <li>确认时间：{{:applytime}}</li>
+                {{if isconfirm=='1'}}<li>确认时间：{{:confirmTime}}</li>{{/if}}
                </ul>
 		</script>
     </head>

@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="./js/global.js"></script>
 <script src="../js/jquery-1.11.1.js"></script>
 <script src="../js/jquery.cookie.js"></script>
 <script src="../js/url.min.js"></script>
@@ -26,7 +27,12 @@
 			<div>
 				<input type="text" placeholder="请输入手机号码" id="mobile" name="mobile"/>
 			</div>
-
+			<div>
+				<input id="authcode" name="authcode" type="text" maxlength="5" placeholder="请输入图形验证码"> 
+				<img style="vertical-align:middle;cursor:pointer;position: absolute;right: 10px;height:38px;top:5px;border-radius:5px !important;display:inline-block;"
+				 onclick="replace(this);"
+				 src="../weixin/smsAuthImg" id="authcode">
+			</div>
 			<div>
 				<input type="text" placeholder="请输入验证码" id="code" name="smsCode" /> <span
 					id="test">发送验证码</span> <span id="reaction">60秒后重新发送</span>
@@ -98,20 +104,25 @@
 				}
 			}, 1000);
 			var mobile = $("#mobile").val();
+			var authcode = $("#authcode").val();
 			$.ajax({
 				type : "post",
 				url : "../weixin/smsSendSms",
 				async : true,
 				data : {
 					"mobile" : mobile, //手机号
-					"check" : 0
-				//是否验证
+					"check" : 0,//是否验证
+					"authcode" : authcode//图形验证码
 				},
 				success : function(data) {
 					if (data.Status == 'success') {
 
 						
 					} else {
+						clearInterval(t);
+						$("#reaction").hide();
+						$("#reaction").html("60秒后重新发送");
+						$("#test").show();
 						alert(data.Message);
 					}
 				},
@@ -121,5 +132,10 @@
 			});
 		});
 	})
-	
+			
+	function replace(e){
+		var timestamp = Date.parse(new Date());
+		var random = Math.ceil(Math.random()*100);
+		e.src='../weixin/smsAuthImg?timestr='+timestamp+random;
+	}
 </script>

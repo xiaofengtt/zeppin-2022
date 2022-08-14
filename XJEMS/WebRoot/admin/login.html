@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="../css/style.css">
 <script src="../js/jquery-1.11.1.js"></script>
 <script src="../js/jquery.cookie.js"></script>
+<script src="../js/base64.js"></script>
 <!-- <script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script> -->
 
 <!--link rel="stylesheet" href="css/animate.css"-->
@@ -94,7 +95,9 @@ color: rgba(0,0,0,0.3);
 				
 					<div class="chknumber form-group" style="text-align:left;">
 						<input class="form-control placeholder-no-fix" style="width:147px;display:inline-block;padding:0 0 0 11px;margin:0 0 0 110px;"
-						 name="authcode" type="text" maxlength="5" placeholder="验证码"> 
+							name="authcode" id="authcode" type="text" maxlength="5" placeholder="验证码"/> 
+<!-- 						 name="authcode" type="text" maxlength="5" placeholder="验证码">  -->
+
 						<img style="vertical-align:middle;cursor:pointer;height:50px;border-radius:5px !important;display:inline-block;width:154px;margin-left: 3px;"
 						 onclick="replace(this);"
 						 src="../admin/ssoAuthImg" id="kaptchaImage">  
@@ -108,7 +111,12 @@ color: rgba(0,0,0,0.3);
 		</div>
 	</div>
 	<div id="footer">
-		<p>copyright&nbsp;&nbsp;2017&nbsp;&nbsp;新疆师范大学版权所有&nbsp;新备ICP&nbsp;10003677号-3</p>
+<!-- 		<p>copyright&nbsp;&nbsp;2017&nbsp;&nbsp;新疆师范大学版权所有&nbsp;新备ICP&nbsp;10003677号-3</p> -->
+		<p style="float:center;height:20px;line-height:20px;margin: 0px 0px 0px 5px;padding-top: 23px;">
+			copyright&nbsp;&nbsp;2020&nbsp;&nbsp;北京知鹏汇仁科技有限公司版权所有&nbsp;
+			<a target="_blank" style="color:#939393;" href="https://beian.miit.gov.cn">京ICP备17040166号-3</a>
+			<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802032998" style="color:#939393;display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="../img/beian.png" style="float:left;"/>京公网安备 11010802032998号</a>
+		</p>
 	</div>
 	<script type="text/javascript"> 
 // 		$youziku.load(".contentTopLeft,h1,p", "c6da775181ca42f7a7c023bb366de971", "PingFangSC_R");
@@ -119,15 +127,22 @@ color: rgba(0,0,0,0.3);
 		
 		$('#login-form').submit(function(){
 			var th = this;
-			var ss = $(th).serializeArray();
+			var base = new Base64();
+//			var ss =  base.encode($(th).serializeArray());
+			var loginname = base.encode($('#loginname').val());
+			var password = base.encode($("#password").val())
+			var authcode = base.encode($('#authcode').val());
+			
 			$(":submit,:input", th).attr("disabled", true);
-			$.post('../admin/ssoLogin' ,ss,function(r){
+			$.post('../admin/ssoLogin' ,{'loginname':loginname,'password':password,'authcode':authcode},function(r){
 				if(r.Status == 'success') {
 					$.cookie('islogin','true',{ expires: 1, path: '/' });
 					$.cookie('loginname',r.Records.name+'###'+r.Records['role.name'],{ expires: 1, path: '/' });
 					$.cookie('photo',r.Records.photo,{ expires: 1, path: '/' });
 					//console.log(r.Records['role.name'])
-					window.location.href = window.location.href.replace('login.html','main.jsp');
+// 					window.location.href = window.location.href.replace('login.html','main.jsp');
+					var b = location.href;
+					location.href = (b.indexOf("login") == -1) ? b + "main.jsp" : b.replace('login.html','main.jsp');
 					
 				}else {
 					$('#login_error').show().find('span').html(r.Message);

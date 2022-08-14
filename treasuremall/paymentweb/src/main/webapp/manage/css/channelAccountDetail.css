@@ -1,0 +1,68 @@
+.quota-add,.quota-item{
+	width:180px;
+	height:284px;
+	border-radius:4px;
+	margin-right:20px;
+	margin-bottom:5px;
+	float:left;
+	padding:16px;
+}
+.quota-add{
+	background:url('../img/channel-add.png') center 90px no-repeat;
+	background-size:50px;
+	border:1px dashed #9A9A9A;
+}
+.quota-add p{
+	color:rgba(154,154,154,1);
+	line-height:22px;
+	font-size:14px;
+	margin-top:140px;
+	text-align:center;
+}
+.quota-item{
+	position:relative;
+	background:rgba(247,247,247,1);
+}
+.delete-item{
+	position:absolute;
+	top:-12px;
+	right:-12px;
+	width:24px;
+	height:24px;
+	background:url('../img/channel-delete.png') center no-repeat;
+	background-size:100%;
+}
+.delete-item:hover{
+	background:url('../img/channel-delete-hover.png') center no-repeat;
+	background-size:100%;
+}
+.quota-money{
+	width:96px;
+	display:inline-block;
+}
+.layui-upload{
+	display:inline-block;
+}
+.item-top{
+	display:flex;
+}
+#normalImages img{
+	background:rgba(247,247,247,1);
+	border-radius:4px;
+	padding:16px;
+}
+.item-top{
+	margin-bottom:16px;
+}
+.item-top label{
+	width:50px;
+	line-height:38px;
+	margin-right:8px;
+	display:inline-block;
+	color:rgba(51,51,51,1);
+}
+.goodsCover{
+	width:96px;
+	max-height:144px;
+	margin-left:52px;
+}

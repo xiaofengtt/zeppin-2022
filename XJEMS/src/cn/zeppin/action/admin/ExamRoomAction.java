@@ -318,6 +318,7 @@ public class ExamRoomAction extends BaseAction {
 				// Thread.sleep(1000);// 手动延迟1s
 				String roomIndex = "";
 				String roomAddress = "";
+				String roomType = "";
 				String examnationTime = "";
 				String examnationInformation = "";
 				String arrivaltime = "";
@@ -340,45 +341,46 @@ public class ExamRoomAction extends BaseAction {
 					Utlity.ResponseWrite(actionResult, dataType, response);
 					return;
 				}
+				if (row.getCell(2) != null) {
+					row.getCell(2).setCellType(CellType.STRING);
+					roomType = row.getCell(2).getStringCellValue().replace(" ", "");
+				}else {
+					roomType = "";
+				}
+				// if ("".equals(roomAddress)) {
+				// actionResult.init(FAIL_STATUS, "第" + i + "行考场地点不能为空", null);
+				// Utlity.ResponseWrite(actionResult, dataType, response);
+				// return;
+				// }
 				examRoomInfoList = new ArrayList<ExamRoomInfo>();
-				for (int j = 2; j < coloumNum; j++) {
-					row.getCell(j).setCellType(CellType.STRING);
-					examnationInformation = row.getCell(j).getStringCellValue();
-					examnationTime = row.getCell(j + 1).getStringCellValue();
-					arrivaltime = row.getCell(j + 2).getStringCellValue();
-
+				for (int j = 3; j < coloumNum; j++) {
+					if (row.getCell(j) != null) {
+						row.getCell(j).setCellType(CellType.STRING);
+						examnationInformation = row.getCell(j).getStringCellValue();
+						examnationTime = row.getCell(j + 1).getStringCellValue();
+						arrivaltime = row.getCell(j + 2).getStringCellValue();
+					}else {
+						examnationInformation = null;
+						examnationTime = null;
+						arrivaltime = null;
+					}
 					if (!Utlity.checkStringNull(examnationInformation)) {
 						ExamRoomInfo examRoomInfo = new ExamRoomInfo();
 						examRoomInfo.setExamnationInformation(
 								Utlity.checkStringNull(examnationInformation) ? "无" : examnationInformation);
-						examRoomInfo.setExamnationTime(Utlity.checkStringNull(examnationTime) ? "无" : examnationTime);
+						examRoomInfo
+								.setExamnationTime(Utlity.checkStringNull(examnationTime) ? "无" : examnationTime);
 						examRoomInfo.setArrivaltime(Utlity.checkStringNull(arrivaltime) ? "无" : arrivaltime);
 						examRoomInfoList.add(examRoomInfo);
 					}
 					j += 2;
 				}
 				String examRoomInfo = JSON.toJSONString(examRoomInfoList, true);
-				//
-				// String[] examnationInformationArr =
-				// examnationInformation.split(";");
-				// String[] examnationTimeArr = examnationTime.split(";");
-				// String[] arrivaltimeArr = arrivaltime.split(";");
-				// System.out.println(examnationInformationArr.length + "-----"
-				// + examnationTimeArr.length + "----"
-				// + arrivaltimeArr.length);
-				// if (examnationInformationArr.length !=
-				// examnationTimeArr.length
-				// || examnationInformationArr.length != arrivaltimeArr.length)
-				// {
-				// actionResult.init(FAIL_STATUS, "第" + i +
-				// "行考试科目、考试时间、到岗时间不是一一对应关系", null);
-				// Utlity.ResponseWrite(actionResult, dataType, response);
-				// return;
-				// }
 
 				Map<String, String> excel = new HashMap<String, String>();
 				excel.put("roomIndex", roomIndex);
 				excel.put("roomAddress", roomAddress);
+				excel.put("roomType", roomType);
 				excel.put("examnationTime", examnationTime);
 				excel.put("examnationInformation", examnationInformation);
 				excel.put("arrivaltime", arrivaltime);
@@ -442,10 +444,14 @@ public class ExamRoomAction extends BaseAction {
 	@ActionParam(key = "id", type = ValueType.NUMBER, nullable = false, emptyable = false)
 	@ActionParam(key = "roomIndex", type = ValueType.STRING, nullable = false, emptyable = false)
 	@ActionParam(key = "roomAddress", type = ValueType.STRING, nullable = false, emptyable = false)
-//	@ActionParam(key = "examnationTime", type = ValueType.STRING, nullable = false, emptyable = false)
-//	@ActionParam(key = "examnationInformation", type = ValueType.STRING, nullable = false, emptyable = false)
-//	@ActionParam(key = "arrivaltime", type = ValueType.STRING, nullable = false, emptyable = false)
+	// @ActionParam(key = "examnationTime", type = ValueType.STRING, nullable =
+	// false, emptyable = false)
+	// @ActionParam(key = "examnationInformation", type = ValueType.STRING,
+	// nullable = false, emptyable = false)
+	// @ActionParam(key = "arrivaltime", type = ValueType.STRING, nullable =
+	// false, emptyable = false)
 	@ActionParam(key = "examRoomInfo", type = ValueType.STRING, nullable = false, emptyable = false)
+	@ActionParam(key = "roomType", type = ValueType.STRING)
 	public void Update() {
 
 		ActionResult actionResult = new ActionResult();
@@ -454,17 +460,16 @@ public class ExamRoomAction extends BaseAction {
 		Integer id = this.getIntValue(request.getParameter("id"));
 		String roomIndex = request.getParameter("roomIndex");
 		String roomAddress = request.getParameter("roomAddress");
-//		String examnationTime = request.getParameter("examnationTime");
-//		String examnationInformation = request.getParameter("examnationInformation");
-//		String arrivaltime = request.getParameter("arrivaltime");
+		// String examnationTime = request.getParameter("examnationTime");
+		// String examnationInformation =
+		// request.getParameter("examnationInformation");
+		// String arrivaltime = request.getParameter("arrivaltime");
 		String examRoomInfo = request.getParameter("examRoomInfo");
-		examRoomInfo = examRoomInfo.replaceAll("；", ";")
-		.replaceAll("，", ",")
-		.replaceAll("【", "[")
-		.replaceAll("】", "]");
-		//是否是json格式
+		String roomType = request.getParameter("roomType");
+		examRoomInfo = examRoomInfo.replaceAll("；", ";").replaceAll("，", ",").replaceAll("【", "[").replaceAll("】", "]");
+		// 是否是json格式
 		boolean ret = new JsonValidator().validate(examRoomInfo);
-		if(!ret){
+		if (!ret) {
 			actionResult.init(FAIL_STATUS, "考场信息json格式有误", null);
 			Utlity.ResponseWrite(actionResult, dataType, response);
 			return;
@@ -477,9 +482,10 @@ public class ExamRoomAction extends BaseAction {
 			if (room != null) {
 				room.setRoomIndex(roomIndex);
 				room.setRoomAddress(roomAddress);
-//				room.setExamnationTime(examnationTime);
-//				room.setExamnationInformation(examnationInformation);
-//				room.setArrivaltime(arrivaltime);
+				room.setRoomType(roomType);
+				// room.setExamnationTime(examnationTime);
+				// room.setExamnationInformation(examnationInformation);
+				// room.setArrivaltime(arrivaltime);
 				room.setExamRoomInfo(examRoomInfo);
 			} else {
 				actionResult.init(FAIL_STATUS, "考场信息不存在", null);
@@ -636,6 +642,52 @@ public class ExamRoomAction extends BaseAction {
 			actionResult.init(FAIL_STATUS, "信息获取异常", null);
 		}
 
+		Utlity.ResponseWrite(actionResult, dataType, response);
+	}
+
+	/**
+	 * 获取考场的类型分组
+	 */
+	@AuthorityParas(userGroupName = "EDITOR_ADD_EDIT")
+	@ActionParam(key = "exam", type = ValueType.NUMBER, nullable = false, emptyable = false)
+	public void GetGroupByRoomType() {
+		ActionResult actionResult = new ActionResult();
+		Integer exam = this.getIntValue(request.getParameter("exam"));
+		try {
+			ExamInformation information = this.examInformationService.getById(exam);
+			if (information == null) {
+				actionResult.init(FAIL_STATUS, "考试信息不存在", null);
+				Utlity.ResponseWrite(actionResult, dataType, response);
+				return;
+			}
+
+			if (information.getStatus() == 0) {
+				actionResult.init(FAIL_STATUS, "考试已结束", null);
+				Utlity.ResponseWrite(actionResult, dataType, response);
+				return;
+			}
+
+			Map<String, Object> searchMap = new HashMap<String, Object>();
+			searchMap.put("exam", exam);
+			searchMap.put("groupByRoomType", true);
+			List<Object[]> list = this.examRoomService.searchByGroup(searchMap);
+			List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
+			if (list != null && list.size() > 0) {
+				for (Object[] object : list) {
+					Map<String, Object> data = new HashMap<>();
+					data.put("count", object[0]);
+					if (Utlity.checkStringNull((String) object[1])) {
+						data.put("roomType", "无");
+					}else {
+						data.put("roomType", object[1]);
+					}
+					dataList.add(data);
+				}
+			}
+			actionResult.init(SUCCESS_STATUS, "获取成功！", dataList);
+		} catch (Exception e) {
+			actionResult.init(FAIL_STATUS, "获取异常", null);
+		}
 		Utlity.ResponseWrite(actionResult, dataType, response);
 	}
 

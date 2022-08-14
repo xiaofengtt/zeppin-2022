@@ -1,0 +1,172 @@
+ 1 
+    1  yum -y install zip unzip
+    2  mkdir /usr/local/java -p
+    3  tar -zxvf jdk-8.tar.gz 
+    4  mv jdk1.8.0_231 /usr/local/java/
+    5  vim /etc/profile
+    6  source /etc/profile 
+    7  java -version
+    8  sudo yum install nfs-utils -y
+    9  mkdir /data
+   10  vim /etc/fstab 
+   11  df -h
+   12  yum -y install gcc
+   13  cd /data/
+   14  ll
+   15  mv otp_src_22.2.tar.gz rabbitmq-server-generic-unix-3.8.2.tar.xz zookeeper-3.4.14.tar.gz /usr/local/
+   16  cd /usr/local/
+   17  ll
+   18  tar -zxvf zookeeper-3.4.14.tar.gz
+   19  mv zookeeper-3.4.14 zookeeper
+   20  vim /etc/profile
+   21  cd zookeeper
+   22  ll
+   23  cd conf/
+   24  ll
+   25  vim zoo.cfg
+   26  cd ..
+   27  mkdir data
+   28  ll
+   29  rm -rf data
+   30  cd /data/
+   31  ll
+   32  mkdir zookeeper
+   33  cd zookeeper/
+   34  mkdir data
+   35  mkdir log
+   36  cd /usr/local/zookeeper
+   37  vim conf/zoo.cfg 
+   38  ll
+   39  ln -s /data/zookeeper/data data
+   40  ln -s /data/zookeeper/log log
+   41  ll
+   42  cd bin
+   43  ll
+   44  ./zkServer.sh start
+   45  ./zkServer.sh status
+   46  netstat -anp | grep 2181
+   47  cd ..
+   48  ll
+   49  cd
+   50  yum -y install gcc glibc-devel make ncurses-devel openssl-devel xmlto perl wget
+   51  cd /usr/local/
+   52  ll
+   53  tar -zxvf otp_src_22.2.tar.gz 
+   54  cd otp_src_22.2
+   55  ll
+   56  yum install ¨Cy ncurses-devel
+   57  yum install ¨Cy wxWidgets-devel
+   58  yum install -y fop.noarch
+   59  yum install unixODBC.x86_64 unixODBC-devel.x86_64
+   60  yum install gcc-c++
+   61  ll
+   62  history
+   63  yum install wxBase #for /usr/bin/wx-config-3.0
+   64  cd /usr/bin
+   65  ll
+   66  ln -s wx-config-3.0 wx-config
+   67  ll
+   68  cd ../local/otp_src_22.2
+   69  ll
+   70  yum install unixODBC.x86_64 unixODBC-devel.x86_64
+   71  ./configure --prefix=/usr/local/erlang
+   72  make && make install
+   73  ll
+   74  cd ..
+   75  vim /etc/profile
+   76  source /etc/profile
+   77  erl
+   78  ll
+   79  tar -xvf rabbitmq-server-generic-unix-3.8.2.tar
+   80  xz -d rabbitmq-server-generic-unix-3.8.2.tar.xz
+   81  tar -xvf rabbitmq-server-generic-unix-3.8.2.tar
+   82  ll
+   83  mv rabbitmq_server-3.8.2 rabbitmq
+   84  ll
+   85  vim /etc/profile
+   86  source /etc/profile
+   87  rabbitmq-server -detached
+   88  cd rabbitmq
+   89  ll
+   90  rabbitmqctl status
+   91  cd
+   92  mkdir /etc/rabbitmq
+   93  rabbitmq-plugins enable rabbitmq_management
+   94  firewall-cmd --state
+   95  rabbitmqctl stop
+   96  rabbitmqctl start
+   97  rabbitmq-server -detached
+   98  cd /usr/local/rabbitmq/sbin/
+   99  rabbitmqctl add_user world world
+  100  rabbitmqctl set_user_tags world administrator
+  101  rabbitmqctl set_permissions -p "/" world ".*" ".*" ".*"
+  102  rabbitmqctl status
+
+
+
+   80  cd ..
+   81  ll
+   82  cd ..
+   83  cd java
+   84  ll
+   85  scp jdk-8u231-linux-x64.tar.gz root@10.0.0.17:~/
+   86  scp jdk-8u231-linux-x64.tar.gz root@10.0.0.16:~/
+   87  scp jdk-8u231-linux-x64.tar.gz root@10.0.0.13:~/
+   88  scp jdk-8u231-linux-x64.tar.gz root@10.0.0.15:~/
+   89  scp jdk-8u231-linux-x64.tar.gz root@10.0.0.14:~/
+   90  scp jdk-8u231-linux-x64.tar.gz root@10.0.0.12:~/
+   91  top
+   92  ps -ef | grep mq
+   93  history
+   94  rabbitmqctl status
+   95  rabbitmqctl stop
+   96  rabbitmqctl start
+   97  rabbitmq-server -detached
+   98  rabbitmqctl stop_app
+   99  ps -ef | grep rabbit
+  100  ps -ef | grep mq
+  101  rabbitmqctl reset
+  102  rabbitmqctl list_queues
+  103  history
+  104  rabbitmq-server -detached
+  105  rabbitmqctl list_queues
+  106  rabbitmqctl stop_app
+  107  rabbitmqctl reset
+  108  rabbitmqctl start_app
+  109  rabbitmqctl list_queues
+  110  history
+  111  rabbitmqctl add_user treasure treasure
+  112  rabbitmqctl set_user_tags treasure administrator
+  113  rabbitmqctl set_permissions -p "/" treasure ".*" ".*" ".*"
+  114  ps -ef | grep java
+  115  history
+  116  rabbitmqctl stop_app
+  117  rabbitmqctl reset
+  118  rabbitmqctl start_app
+  119  rabbitmqctl list_queues
+  120  rabbitmqctl add_user treasure treasure
+  121  rabbitmqctl set_user_tags treasure administrator
+  122  rabbitmqctl set_permissions -p "/" treasure ".*" ".*" ".*"
+  123  history
+  124  rabbitmqctl stop_app
+  125  rabbitmqctl reset
+  126  rabbitmqctl start_app
+  127  rabbitmqctl add_user treasure treasure
+  128  rabbitmqctl set_user_tags treasure administrator
+  129  rabbitmqctl set_permissions -p "/" treasure ".*" ".*" ".*"
+  130  ll
+  131  echo > /var/log/syslog
+  132  echo > /var/log/messages
+  133  echo > /var/log/xferlog
+  134  echo > /var/log/secure
+  135  echo > /var/log/auth.log
+  136  echo > /var/log/user.log
+  137  echo > /var/log/wtmp
+  138  echo > /var/log/lastlog
+  139  echo > /var/log/btmp
+  140  echo > /var/run/utmp
+  141  exit
+  142  free
+  143  free -m
+  144  exit
+  145  history
