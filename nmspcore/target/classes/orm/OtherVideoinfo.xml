@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.OtherVideoinfo">
+
+	<!--栏目筛选，通用 -->
+	<sql id="categorySelect">
+		<if test="categoryFirst != null and categoryFirst != ''">
+			and category_first = #{categoryFirst,jdbcType=VARCHAR}
+		</if>
+		<choose>
+			<when test="categorySecond != null and categorySecond != ''">
+				and category_second = #{categorySecond}
+			</when>
+			<otherwise>
+				<if test="categorySecondList != null and categorySecondList != ''">
+					and (category_second in (${categorySecondList},'') or category_second is NULL)
+				</if>
+			</otherwise>
+		</choose>
+	</sql>
+
+	<!--  根据参数取count -->
+	<select id="videoinfo_getCountByParams" parameterType="java.util.Map" resultType="int">
+
+		select count(distinct videoinfo.id) from videoinfo,video_province where 1=1 and videoinfo.id = video_province.videoid
+		<if test="id != null and id != ''">
+			and videoinfo.id = #{id} 
+		</if>
+		<if test="province != null and province != ''">
+			and video_province.provinceid  in (${province}) 
+		</if>
+		<if test="title != null and title != ''">
+			and title like "%"#{title}"%" 
+		</if>
+		<if test="context != null and context != ''">
+			and context like "%"#{context}"%" 
+		</if>
+		<if test="status != null and status != ''">
+			<if test='status == "1"'>
+			and videoinfo.status in ('unchecked','checked','nopass','publish')  
+			</if>
+			<if test='status == "2"'>
+			and videoinfo.status in ('uploaded','transcoding','failed','unfinished','deleted','unchecked','checked','nopass','publish') and videoinfo.creator = #{creator} 
+			</if>
+			<if test='status == "3"'>
+			and videoinfo.status not in ('publish','destroy')  and videoinfo.creator = #{creator} 
+			</if>
+			<if test='status != "1" and status !="2" and status !="3"'>
+			and videoinfo.status = #{status} 
+			</if>
+		</if>
+		<if test="havecommodity != null and havecommodity != ''">
+			and videoinfo.id in (select video from video_commodity_point where video_commodity_point.status='normal')
+		</if>
+		<if test="havecommodityNo != null and havecommodityNo != ''">
+			and videoinfo.id not in (select video from video_commodity_point where video_commodity_point.status='normal')
+		</if>
+		<if test="aftertime != null and aftertime != ''">
+			and videoinfo.createtime > #{aftertime}
+		</if>
+		<if test="statusUpload != null and statusUpload != ''">
+			and videoinfo.creator = #{creator}
+		</if>
+
+		<include refid="categorySelect"/>
+	</select> 
+	
+	<!-- 根据参数取未发布的视频count -->
+	<select id="videoinfo_getNoPublishCountByParams" parameterType="java.util.Map" resultType="int">
+		select count(distinct videoinfo.id) from videoinfo,video_province where videoinfo.status='checked' and videoinfo.id = video_province.videoid
+		<if test="id != null and id != ''">
+			and videoinfo.id = #{id} 
+		</if>
+		<if test="province != null and province != ''">
+			and video_province.provinceid  in (${province}) 
+		</if>
+		<if test="title != null and title != ''">
+			and title like "%"#{title}"%" 
+		</if>
+		<if test="context != null and context != ''">
+			and context like "%"#{context}"%" 
+		</if>
+		<if test="havecommodity != null and havecommodity != ''">
+			and videoinfo.id in (select video from video_commodity_point where video_commodity_point.status='normal')
+		</if>
+		<if test="havecommodityNo != null and havecommodityNo != ''">
+			and videoinfo.id not in (select video from video_commodity_point where video_commodity_point.status='normal')
+		</if>
+		<if test="aftertime != null and aftertime != ''">
+			and videoinfo.createtime > #{aftertime}
+		</if>
+
+		<include refid="categorySelect"/>
+
+<!-- 		<if test="status != null and status != ''"> -->
+<!-- 			and video_province.status = #{status}  -->
+<!-- 		</if> -->
+		
+	</select> 
+	
+	
+	
+	<select id="videoinfo_getNoPublishListByParams" parameterType="java.util.Map" resultType="java.util.Map">
+		select v.id, group_concat(vpn.provinceid separator ',') as province, v.title, v.context, v.tag, v.status, v.thumbnail, v.video, v.time_length as timeLength, v.source, v.copyright, v.author, v.creator as creatorName, v.createtime, v.sequence, r.path as originalVideoPath, r.url as originalVideoUrl, r.dpi as originalVideoDpi,vpn.id as vpnId
+		from videoinfo v , resource r ,video_province vpn
+		where v.original_video=r.id and v.status='checked' and v.id = vpn.videoid
+		<if test="id != null and id != ''">
+			and v.id = #{id} 
+		</if>
+		<if test="province != null and province != ''">
+			and vpn.provinceid  in (${province}) 
+		</if>
+		<if test="title != null and title != ''">
+			and v.title like "%"#{title}"%" 
+		</if>
+<!-- 		<if test="status != null and status != ''"> -->
+<!-- 			and vpn.status = #{status}  -->
+<!-- 		</if> -->
+		<if test="context != null and context != ''">
+			and v.context like "%"#{context}"%" 
+		</if>
+		<if test="havecommodity != null and havecommodity != ''">
+			and v.id in (select video from video_commodity_point where video_commodity_point.status='normal')
+		</if>
+		<if test="havecommodityNo != null and havecommodityNo != ''">
+			and v.id not in (select video from video_commodity_point where video_commodity_point.status='normal')
+		</if>
+		<if test="aftertime != null and aftertime != ''">
+			and v.createtime > #{aftertime}
+		</if>
+		group by v.id 
+		<if test="sort != null and sort != ''">
+			order by ${sort}
+		</if>
+		<if test="start != null and start != '' and limit != null and limit != ''">
+			limit ${start},${limit}
+		</if>
+		
+	</select> 
+	
+
+	
+	<select id="videoinfo_getListByParams" parameterType="java.util.Map" resultType="java.util.Map">
+		select  v.id,v.category_first categoryFirst,v.category_second categorySecond, group_concat(vpn.provinceid separator ',') as province, v.title, v.context, v.tag, v.status as status,v.thumbnail, v.video, v.time_length as timeLength, v.source, v.copyright, v.author, v.creator as creatorName, v.createtime, v.sequence, r.path as originalVideoPath, r.url as originalVideoUrl, r.dpi as originalVideoDpi,(select opinion from video_opinion where videoid = v.id ) as opinion,vpn.id as vpnId
+		from videoinfo v , resource r ,video_province vpn
+		where  v.original_video=r.id and v.id = vpn.videoid
+		<if test="id != null and id != ''">
+			and v.id = #{id} 
+		</if>
+		<if test="province != null and province != ''">
+			and vpn.provinceid  in (${province}) 
+		</if>
+		<if test="title != null and title != ''">
+			and v.title like "%"#{title}"%" 
+		</if>
+		<if test="status != null and status != ''">
+			<if test='status == "1"'>
+			and v.status in ('unchecked','checked','nopass','publish')
+			</if>
+			<if test='status == "2"'>
+			and v.status in ('uploaded','transcoding','failed','unfinished','deleted','unchecked','checked','nopass','publish') and v.creator = #{creator} 
+			</if>
+			<if test='status == "3"'>
+			and v.status not in ('publish','destroy') and v.creator = #{creator} and v.creator = #{creator} 
+			</if>
+			<if test='status != "1" and status !="2" and status !="3"'>
+			and v.status =#{status} 
+			</if>
+		</if>
+		<if test="context != null and context != ''">
+			and v.context like "%"#{context}"%" 
+		</if>
+		<if test="havecommodity != null and havecommodity != ''">
+			and v.id in (select video from video_commodity_point where video_commodity_point.status='normal')
+		</if>
+		<if test="havecommodityNo != null and havecommodityNo != ''">
+			and v.id not in (select video from video_commodity_point where video_commodity_point.status='normal')
+		</if>
+		<if test="aftertime != null and aftertime != ''">
+			and v.createtime > #{aftertime}
+		</if>
+		<if test="statusUpload != null and statusUpload != ''">
+			and v.creator = #{creator}
+		</if>
+
+		<include refid="categorySelect"/>
+
+		    group by v.id
+		<if test="sort != null and sort != ''">
+			order by ${sort}
+		</if>
+		<if test="start != null and start != '' and limit != null and limit != ''">
+			limit ${start},${limit}
+		</if>
+		
+	</select> 
+	
+	
+	<!-- 按照状态分类取count -->
+	<select id="videoinfo_getStatusCount" resultType="Map">
+		select vi.status , count(vi.status) as count from (select v.id as id, v.status as status from videoinfo v,video_province vp where 1=1 and v.id = vp.videoid and v.status not in ('destroy') 
+		<if test="province != null and province != ''">
+			and vp.provinceid in (${province})
+		</if>
+		<if test="title != null and title != ''">
+			and v.title like "%"#{title}"%" 
+		</if>
+		<if test="context != null and context != ''">
+			and v.context like "%"#{context}"%" 
+		</if>
+		<if test="creator != null and creator != ''">
+			and v.creator = #{creator} 
+		</if>
+
+
+		<if test="havecommodity != null and havecommodity != ''">
+			and v.id in (select video from video_commodity_point where video_commodity_point.status='normal')
+		</if>
+		<if test="havecommodityNo != null and havecommodityNo != ''">
+			and v.id not in (select video from video_commodity_point where video_commodity_point.status='normal')
+		</if>
+		<if test="aftertime != null and aftertime != ''">
+			and v.createtime > #{aftertime}
+		</if>
+
+		<include refid="categorySelect"/>
+
+		group by v.id) vi
+		group by vi.status
+	</select> 
+		<!-- 按照状态分类取count -->
+	<select id="videoinfo_getStatusCountPro" resultType="Map">
+		select video_province.status , count(video_province.status) as count from videoinfo,video_province where 1=1 and videoinfo.id = video_province.videoid
+		<if test="province != null and province != ''">
+			and video_province.provinceid in (${province})
+		</if>
+		<if test="title != null and title != ''">
+			and title like "%"#{title}"%" 
+		</if>
+		group by video_province.status
+	</select> 
+			<!-- 按照状态分类取prolist -->
+	<select id="videoinfo_getListPro" resultType="com.cmos.china.mobile.media.core.bean.videoProvince">
+		select video_province.id , video_province.videoid,video_province.status from videoinfo,video_province where 1=1 and videoinfo.id = video_province.videoid
+		<if test="province != null and province != ''">
+			and video_province.provinceid in (${province})
+		</if>
+		<if test="title != null and title != ''">
+			and title like "%"#{title}"%" 
+		</if>
+		<if test="videoid != null and videoid != ''">
+			and videoid = #{videoid}
+		</if>
+		group by video_province.status
+	</select> 
+		<!-- 按照状态分类取省份count -->
+	<select id="videoinfo_getProStatusCount" resultType="Map">
+		select province.code as id,province.name as name, count(name) as count from videoinfo,video_province,province where videoinfo.id = video_province.videoid and province.code = video_province.provinceid
+		<if test="province != null and province != ''">
+			and video_province.provinceid  in (${province})  
+		</if>
+		<if test="title != null and title != ''">
+			and title like "%"#{title}"%" 
+		</if>
+
+
+		<if test="context != null and context != ''">
+			and context like "%"#{context}"%" 
+		</if>
+		<if test="status != null and status != ''">
+			<if test='status == "1"'>
+			and videoinfo.status in ('unchecked','checked','nopass','publish')   
+			</if>
+			<if test='status == "2"'>
+			and videoinfo.status in ('uploaded','transcoding','failed','unfinished','deleted','unchecked','checked','nopass','publish')  and videoinfo.creator = #{creator} 
+			</if>
+			<if test='status == "3"'>
+			and videoinfo.status in ('publish','checked') 
+			</if>
+			<if test='status != "1" and status !="2" and status != "3"'>
+			and videoinfo.status = #{status} 
+			</if>
+		</if>
+
+        <include refid="categorySelect"/>
+
+		group by video_province.provinceid
+	</select> 
+	
+	<!-- 加载数据 -->  
+	<select id="videoinfo_get"  resultType="com.cmos.china.mobile.media.core.bean.Videoinfo">  
+		select * from videoinfo where id=#{id}  
+	</select>  
+	
+	<!-- 加载数据 -->  
+	<select id="videoinfo_getPro"  resultType="com.cmos.china.mobile.media.core.bean.videoProvince">  
+		select * from video_province where id=#{id}  
+	</select>  
+	
+	<!-- 增加数据 -->  
+	<insert id="videoinfo_add" parameterType="com.cmos.china.mobile.media.core.bean.Videoinfo" useGeneratedKeys="true" keyProperty="id">  
+		insert into videoinfo(id,title,context,tag,status,thumbnail,video,time_length,transcoding_flag,original_video,source,copyright,author,creator,createtime,sequence,category_first,category_second,click_count)
+		values(#{id},#{title},#{context},#{tag},#{status},#{thumbnail},#{video},#{timeLength},#{transcodingFlag},#{originalVideo},#{source},#{copyright},#{author},#{creator},#{createtime},#{sequence},#{categoryFirst,jdbcType=VARCHAR},#{categorySecond,jdbcType=VARCHAR},#{clickCount})
+	</insert>
+	
+	<!-- 增加省份数据 -->  
+	<insert id="videoinfoprovince_add" parameterType="com.cmos.china.mobile.media.core.bean.videoProvince">  
+		insert into video_province(id,videoid,provinceid,creator,createtime) 
+		values(#{id},#{videoid},#{provinceid},#{creator},#{createtime})  
+	</insert>
+	  
+	<!-- 修改数据 -->  
+	<update id="videoinfo_update" parameterType="com.cmos.china.mobile.media.core.bean.Videoinfo">  
+		UPDATE videoinfo
+		SET title = #{title},context=#{context},tag=#{tag},status=#{status},thumbnail=#{thumbnail},video=#{video},time_length=#{timeLength},transcoding_flag=#{transcodingFlag},original_video=#{originalVideo},source=#{source},copyright=#{copyright},author=#{author},sequence=#{sequence},category_first=#{categoryFirst},category_second=#{categorySecond,jdbcType=VARCHAR},click_count=#{clickCount}
+		WHERE
+			id = #{id}
+	</update>  
+		<!-- 修改数据 -->  
+	<update id="videoinfo_updatePro" parameterType="com.cmos.china.mobile.media.core.bean.videoProvince">  
+		update video_province
+		set videoid=#{videoid},provinceid=#{provinceid},status=#{status}
+		where id=#{id}  
+	</update>  
+	
+	<!-- 删除数据 -->  
+	<update id="videoinfo_delete" parameterType="com.cmos.china.mobile.media.core.bean.Videoinfo">  
+		update videoinfo set status='deleted' where id=#{id}
+	</update>  
+	<!-- 删除数据pro -->  
+	<update id="videoinfo_deletePro" parameterType="com.cmos.china.mobile.media.core.bean.videoProvince">  
+		update video_province set status='deleted' where id=#{id}
+	</update>  
+	
+	<!--  根据参数取count -->
+	<select id="videoPublish_getCountByParams" parameterType="java.util.Map" resultType="int">
+		 select count(distinct v.id) from video_province vpn,videoinfo v
+		 where v.id=vpn.videoid
+		<if test="id != null and id != ''">
+			and v.id = #{id} 
+		</if>
+		<if test="video != null and video != ''">
+			and v.id = #{video} 
+		</if>
+		<if test="title != null and title != ''">
+			and v.title like "%"#{title}"%" 
+		</if>
+		<if test="shortTitle != null and shortTitle != ''">
+			and v.context like "%"#{shortTitle}"%" 
+		</if>
+		<if test="province != null and province != ''">
+			and vpn.provinceid in (${province})
+		</if>
+		<if test="status != null and status != ''">
+			and v.status in (${status})
+		</if>
+		<if test="havecommodity != null and havecommodity != ''">
+			and v.id in (select video from video_commodity_point where video_commodity_point.status='normal') 
+		</if>
+		<if test="havecommodityNo != null and havecommodityNo != ''">
+			and v.id not in (select video from video_commodity_point where video_commodity_point.status='normal')
+		</if>
+		<if test="aftertime != null and aftertime != ''">
+			and v.createtime > #{aftertime}
+		</if>
+		<if test="statusNot != null and statusNot != ''">
+			and v.status != #{statusNot} 
+		</if>
+
+		<include refid="categorySelect"/>
+
+	</select> 
+	
+	<!-- 根据参数取vo -->
+	
+	<select id="videoPublish_getListByParams" parameterType="java.util.Map" resultType="java.util.Map">
+		select v.id as vid ,v.category_first categoryFirst,v.category_second categorySecond,group_concat(vpn.provinceid separator ',') as province, group_concat(p.name separator ',') as area, v.title, v.context, v.tag, v.status, v.thumbnail, v.video, v.time_length as timeLength, v.source, v.copyright, v.author, v.creator as creatorName, v.createtime, v.sequence, r.path as originalVideoPath, r.url as originalVideoUrl, r.dpi as originalVideoDpi
+		from videoinfo v , resource r ,video_province vpn, province p
+		where v.original_video=r.id and v.id = vpn.videoid and p.code = vpn.provinceid
+		<if test="id != null and id != ''">
+			and v.id = #{id} 
+		</if>
+		<if test="video != null and video != ''">
+			and v.id = #{video} 
+		</if>
+		<if test="title != null and title != ''">
+			and v.title like "%"#{title}"%" 
+		</if>
+		<if test="shortTitle != null and shortTitle != ''">
+			and v.context like "%"#{shortTitle}"%" 
+		</if>
+		<if test="province != null and province != ''">
+			and vpn.provinceid in (${province})
+		</if>
+		<if test="status != null and status != ''">
+			and v.status in (${status})
+		</if>
+		<if test="statusNot != null and statusNot != ''">
+			and v.status != #{statusNot} 
+		</if>
+		<if test="havecommodity != null and havecommodity != ''">
+			and v.id in (select video from video_commodity_point where video_commodity_point.status='normal') 
+		</if>
+		<if test="havecommodityNo != null and havecommodityNo != ''">
+			and v.id not in (select video from video_commodity_point where video_commodity_point.status='normal')
+		</if>
+		<if test="aftertime != null and aftertime != ''">
+			and v.createtime > #{aftertime}
+		</if>
+
+		<include refid="categorySelect"/>
+
+		group by v.id
+		<if test="sort != null and sort != ''">
+			order by ${sort}
+		</if>
+		<if test="start != null and start != '' and limit != null and limit != ''">
+			limit ${start},${limit}
+		</if>
+	</select>
+	
+	<!-- 根据参数取webcount -->
+	<select id="videoPublish_getWebCountByParams" parameterType="java.util.Map" resultType="int">
+		select count(distinct vi.id) from videoinfo vi,video_province vpn
+		where vi.id = vpn.videoid 
+		<if test="id != null and id != ''">
+			and vi.id = #{id} 
+		</if>
+		<if test="ids != null and ids != ''">
+			and vi.id in (${ids}) 
+		</if>
+		<if test="excludeIds != null and excludeIds != ''">
+			and vi.id not in (${excludeIds}) 
+		</if>
+		<if test="except != null and except != ''">
+			and vi.id != #{except} 
+		</if>
+		<if test="shortTitle != null and shortTitle != ''">
+			and (vi.context like "%"#{shortTitle}"%" or vi.title like "%"#{shortTitle}"%")
+		</if>
+
+		<if test="status != null and status != ''">
+			and vi.status = #{status} 
+		</if>
+
+        <include refid="categorySelect"/>
+
+	</select>
+	
+	<select id="videoPublish_getWebListByParams" parameterType="java.util.Map" resultType="java.util.Map">
+	select IFNULL(vi.category_second,vi.category_first) as categoryId ,vi.id as id,vi.creator as creator,vi.createtime as createTime,vi.title as title,vi.thumbnail as coverURL,vi.video as videoURL,vi.sequence,vi.createtime,vi.time_length as timeLength
+		from videoinfo vi,video_province vpn
+		where vi.id = vpn.videoid 
+		<if test="id != null and id != ''">
+			and vi.id = #{id} 
+		</if>
+		<if test="except != null and except != ''">
+			and vi.id != #{except} 
+		</if>
+		<if test="shortTitle != null and shortTitle != ''">
+			and (vi.context like "%"#{shortTitle}"%" or vi.title like "%"#{shortTitle}"%")
+		</if>
+
+		<if test="status != null and status != ''">
+			and vi.status = #{status} 
+		</if>
+		<if test="ids != null and ids != ''">
+			and vi.id in (${ids}) 
+		</if>
+		<if test="excludeIds != null and excludeIds != ''">
+			and vi.id not in (${excludeIds}) 
+		</if>
+
+        <include refid="categorySelect"/>
+
+		GROUP BY vi.id
+		<if test="sort != null and sort != ''">
+			order by ${sort}
+		</if>
+		<if test="start != null and start != '' and limit != null and limit != ''">
+			limit ${start},${limit}
+		</if>
+	</select> 
+	
+		<!-- 查询试用区域 --> 
+	<select id="videoPublish_getprocode" parameterType="java.util.Map" resultType="java.util.Map">
+		select p.name,p.code from videoinfo v,video_province vpn,province p
+		where vpn.videoid=v.id and v.status = 'checked' and p.code = vpn.provinceid
+		<if test="id != null and id != ''">
+			and v.id = #{id} 
+		</if>
+        <include refid="categorySelect"/>
+	</select>
+	<!-- app端查询适用用 --> 
+	<select id="app_videoPublish_getprocode" parameterType="java.util.Map" resultType="java.util.Map">
+		select  group_concat(p.name separator ',') as area
+		from videoinfo v ,video_province vpn, province p
+		where v.id = vpn.videoid and p.code = vpn.provinceid  and v.id = #{id} group by v.id
+	</select>
+
+
+	<!--根据栏目分页查询 list APP点播首页 换一换  start -->
+	<select id="videoPublish_GetPageByCategory" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT
+		IFNULL(
+		v.category_second,
+		v.category_first
+		) AS categoryId,
+		v.id AS id,
+		v.creator AS creator,
+		v.createtime AS createTime,
+		v.title AS title,
+		v.thumbnail AS coverURL,
+		v.video AS videoURL,
+		v.sequence,
+		v.createtime,
+		v.time_length AS timeLength
+		FROM
+		videoinfo v,
+		resource r,
+		video_province vpn,
+		province p
+		WHERE
+		v.original_video = r.id
+		AND v.id = vpn.videoid
+		AND p.code = vpn.provinceid
+		AND category_first = #{categoryFirst,jdbcType=VARCHAR}
+
+		<include refid="videoPublish_GetPageByCategory_where"/>
+
+		GROUP BY v.id
+
+		<if test="sort != null and sort != ''">
+			order by ${sort}
+		</if>
+
+		limit ${start},${limit}
+
+	</select>
+
+	<select id="videoPublish_GetPageByCategoryCount" parameterType="java.util.Map" resultType="int">
+		SELECT
+		count(distinct v.id)
+		FROM
+		videoinfo v,
+		resource r,
+		video_province vpn,
+		province p
+		WHERE
+		v.original_video = r.id
+		AND v.id = vpn.videoid
+		AND p.code = vpn.provinceid
+		AND category_first = #{categoryFirst,jdbcType=VARCHAR}
+
+		<include refid="videoPublish_GetPageByCategory_where"/>
+
+	</select>
+
+	<sql id="videoPublish_GetPageByCategory_where">
+
+			and v.status = 'publish'
+
+		<if test="except != null and except != ''">
+			and v.id != #{except,jdbcType=VARCHAR}
+		</if>
+
+		<choose>
+			<when test="categorySecond != null and categorySecond != ''">
+				and category_second = #{categorySecond,jdbcType=VARCHAR}
+			</when>
+			<otherwise>
+				and (category_second IS NULL or category_second='')
+			</otherwise>
+		</choose>
+	</sql>
+
+	<!--根据栏目分页查询 list APP点播首页 换一换  end -->
+
+
+</mapper>  

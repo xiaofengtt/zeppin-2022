@@ -52,6 +52,7 @@ public class ProvinceModuleServiceImpl extends BaseServiceImpl implements IProvi
 						Map<String,String> paramsMap = new HashMap<String,String>();
 						paramsMap.put("province", id);
 						paramsMap.put("module", module.getId());
+						paramsMap.put("sort", "priority");
 						List<ProvinceModuleVO> pmList = this.getBaseDao().queryForList("provinceModule_getListByParams", paramsMap, ProvinceModuleVO.class);
 						List<Map<String,Object>> moduleDataList = new ArrayList<Map<String,Object>>();
 						for(ProvinceModuleVO pm: pmList){		

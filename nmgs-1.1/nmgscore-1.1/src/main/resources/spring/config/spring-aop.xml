@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/task
+	http://www.springframework.org/schema/task/spring-task-3.0.xsd ">
+
+	<!-- To define those things need to adopt management class -->
+	<bean id="BeanProxy"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<!-- 对类名以Service结尾的类进行代理 -->
+			<list>
+				<value>baseService</value>
+			</list>
+		</property>
+		<!-- The agent class is loaded Interceptor (realization notification procedure) -->
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Define interceptor attribute is used to specify things, grade, exception handling         -->
+	<bean id="transactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="transactionManager"></property>
+		<property name="transactionAttributes">
+			<props>
+				<!-- PROPAGATION_SUPPORTS: If a transaction already exists, then added to the transaction; if no transaction, places of implementation of non-transaction;
+					 PROPAGATION_MANDATORY: Use the current transaction, if not, an exception is thrown;
+					 PROPAGATION_REQUIRED: New Transaction, if you currently have a transaction, pending;
+					 PROPAGATION_NOT_SUPPORTED: by way of non-execution of the transaction, if the transaction currently is pending;
+					 PROPAGATION_NEVER: by way of non-execution of the transaction if you currently have a transaction, an exception is thrown;
+					 +/- Exception: + indicates when something abnormal occurs submitted - represents an exception occurs when the transaction rollback -->
+				<prop key="get*">PROPAGATION_SUPPORTS,readOnly,-Exception</prop>
+				<prop key="query*">PROPAGATION_SUPPORTS,readOnly,-Exception</prop>
+				<prop key="select*">PROPAGATION_SUPPORTS,readOnly,-Exception</prop>
+				<prop key="del*"> PROPAGATION_SUPPORTS,-Exception</prop>
+				<prop key="update*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="insert*">PROPAGATION_REQUIRED,-Exception</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- By the spring of transaction management mybatis -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	
+	<aop:aspectj-autoproxy />
+	<!-- 切面 -->
+	<aop:config>
+		<aop:aspect id="logaop" ref="loggerInterceptor">
+			<aop:pointcut id="mycut" expression="execution(* com.cmos.cmos.service..*.* (..))" />
+			<aop:around pointcut-ref="mycut"  method="around"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<bean id="loggerInterceptor" class="com.cmos.china.mobile.media.core.control.MyLoggerInterceptor" />
+	
+</beans>

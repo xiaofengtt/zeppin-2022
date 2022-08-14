@@ -8,6 +8,7 @@ public class EncryptionUtil {
 	private EncryptionUtil(){}
 	private static final String ALGORITHM = "DES";
 
+	
 	/**
 	 * Get Des Key
 	 */
@@ -80,4 +81,10 @@ public class EncryptionUtil {
 		}
 		return b;
 	}
+//	
+//	public static void main(String[] args) throws Exception {
+//		System.out.println(byte2hex(encode("root".getBytes(),
+//				"cmoscmos".getBytes())));
+//     }
+	
 }

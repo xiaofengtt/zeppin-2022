@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+html{padding:0px;margin:0px;height:100%;width:100%}
+body{text-align:center}
+.center-div{padding-top:100px}
+img{height:200px;margin:0;}
+b{font-size:34px;color:#3ebef3;width:100%;text-align:center;display:block;padding-bottom:40px}
+.label{color:#000;font-size:20px;padding:0px;line-height:30px}
+.province-select{width:35%;display:inline-block;margin-right:20px;height:50px}
+.btn-lg{padding:8px 16px}

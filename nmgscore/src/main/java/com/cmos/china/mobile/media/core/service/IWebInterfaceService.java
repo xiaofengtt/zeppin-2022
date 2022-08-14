@@ -40,4 +40,18 @@ public interface IWebInterfaceService {
 	 */	
 	public void addLeaveMessage(InputObject inputObject, OutputObject outputObject) throws Exception;
 
+	/**
+	 * 获取组件信息
+	 */	
+	public void checkComponent(InputObject inputObject, OutputObject outputObject) throws Exception;
+	/**
+	 * 获取总发布列表
+	 */	
+	public void totalPublishList(InputObject inputObject, OutputObject outputObject) throws Exception;
+
+	/**
+	 * 获取最新app信息
+	 */	
+	public void getApps(InputObject inputObject, OutputObject outputObject) throws Exception;
+
 }

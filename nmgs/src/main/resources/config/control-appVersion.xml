@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE control SYSTEM "common-1.7-SNAPSHOT.dtd"> -->
+
+<control>
+	<action path="/front/admin/appVersion!execute">
+		<input uid="x0001" service="appVersionServrice" method="add" desc="上传文件（apk文件）">
+			<parameter key="apkId" toKey="apk" regex="required,length=36" desc="apk"/>
+			<parameter key="component" toKey="component" regex="required,length=36" desc="组件"/>
+			<parameter key="province" toKey="province" regex="required,length=36" desc="省份"/>
+			<parameter key="explain" toKey="explain" regex="required" desc="版本说明"/>
+			<parameter key="usersession.id" toKey="creator" scope="session" regex="required"/>
+		</input>
+		<input uid="x0002" service="appVersionServrice" method="getApps" desc="获取最新app信息">
+			<parameter key="component" toKey="component" regex="required,length=36" desc="组件"/>
+			<parameter key="province" toKey="province" regex="required,length=36" desc="省份"/>
+			<parameter key="pagenum" toKey="pagenum" desc="页码"/>
+			<parameter key="sorts" toKey="sort"/>
+			<parameter key="status" toKey="status" desc="状态"/>
+			<parameter key="pagesize" toKey="pagesize" desc="每页显示数"/>
+		</input>
+		<input uid="x0003" service="appVersionServrice" method="editApp" desc="编辑app信息">
+			<parameter key="id" toKey="id" regex="required"/>
+			<parameter key="status" toKey="status" regex="required" desc="状态"/>
+			<parameter key="usersession.id" toKey="auditor" scope="session" regex="required"/>
+		</input>
+	</action>
+</control>

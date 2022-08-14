@@ -21,7 +21,7 @@
 	
 	<!-- 根据参数取vo -->
 	<select id="videoinfo_getListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.vo.VideoinfoVO">
-		select v.id, v.title, v.context, v.tag, v.status, v.thumbnail, v.video, v.time_length as timeLength, v.source, v.copyright, v.author, u.name as creatorName, v.createtime, r.path as originalVideoPath, r.url as originalVideoUrl, r.dpi as originalVideoDpi 
+		select v.id,v.tcId,v.title, v.context, v.tag, v.status, v.thumbnail, v.video, v.time_length as timeLength, v.source, v.copyright, v.author, u.name as creatorName, v.createtime, r.path as originalVideoPath, r.url as originalVideoUrl, r.dpi as originalVideoDpi 
 		from videoinfo v , sys_user u , resource r 
 		where v.creator=u.id and v.original_video=r.id 
 		<if test="id != null and id != ''">

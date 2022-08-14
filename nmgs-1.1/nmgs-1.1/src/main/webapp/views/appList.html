@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>版本管理</title>
+
+<link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/themes/light.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/style-responsive.css" rel="stylesheet" type="text/css" />
+<link href="../assets/css/colorbox.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/jquery-ui.css" rel="stylesheet" type="text/css" >
+<link href="../assets/css/metro/blue/jtable.css" rel="stylesheet" type="text/css" >
+<link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../assets/css/columLists.css" type="text/css"/>
+<link rel="stylesheet" href="../assets/css/main.css" type="text/css"/>
+
+<script src="../assets/plugins/jquery.js" type="text/javascript"></script>
+<script src="../assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="../assets/scripts/app.js" type="text/javascript"></script>
+<script src="../assets/plugins/jquery-ui.js"></script>
+<script src="../assets/plugins/jquery.jtable.js"></script>
+<script src="../assets/plugins/jquery.jtable.zh-CN.js"></script>
+<script src="../assets/plugins/url.min.js"></script>
+<script src="../assets/plugins/jquery.colorbox.js"></script>
+<script src="../assets/scripts/source-left.js" type="text/javascript"></script>
+<style type="text/css">
+	a.btn{ margin-top:0px;}
+</style>
+</head>
+<body style="min-width:1000px;">
+<div class="page-container">
+	<div class="page-sidebar-wrapper" style="width:210px;float:left;">
+        <div class="page-sidebar navbar-collapse" style="width:100%;">
+            <ul class="page-sidebar-menu nav" id="page-sidebar-menu">
+                <li class="sidebar-toggler-wrapper">
+                    <div class="sidebar-toggler hidden-phone"></div>
+                </li>
+				<li class="leftli open">
+                    <a href="javascript:">
+                        <i class="fa fa-gears icon-home icon-black"></i><span class="title"> 展示数据管理 </span>
+                    </a>
+                    <ul class="sub-menu">
+                    	<li>
+                            <a href="javascript:" onclick="gotoSourceUrl('../views/provinceModule.html');">业务管理</a>
+                        </li>
+                    	<li >
+                            <a href="javascript:" onclick="gotoSourceUrl('../views/categoryList.html');">栏目管理</a>
+                        </li>
+                        <li>
+                            <a href="javascript:" onclick="gotoSourceUrl('../views/videoList.html');">视频管理</a>
+                        </li>
+                        <li>
+                            <a href="javascript:" onclick="gotoSourceUrl('../views/commodityList.html');">商品管理</a>
+                         </li>
+                        <li>
+                            <a href="javascript:" onclick="gotoSourceUrl('../views/videoPublishList.html');">发布管理</a>
+                        </li>
+                        <li style="background:#eee">
+                            <a href="javascript:" onclick="gotoSourceUrl('../views/appList.html');">版本管理</a>
+                        </li>
+                     </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="contentIframes" style="min-width:790px;float:left">
+			<div class="page-container">
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+					<!--content-->						
+						<div class="content">
+							
+							<div class="form-group cui-menu-left">
+								<span>组件：</span>
+                                <select class="form-control" id="componentSelect" onchange="changeComponent(this)" style="width:150px;display:inline">
+                                </select>
+                          	</div> 						
+							<div class="cui-menu">
+								<a id="createBtn" class="btn btn-default btn-create" >添加版本</a>
+							</div>							
+							<div id="TableContainer"></div>
+						</div>					
+					<!--content end-->
+
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        </div>
+</div>
+<script src="../assets/scripts/appList.js" type="text/javascript"></script>
+</body>
+</html>

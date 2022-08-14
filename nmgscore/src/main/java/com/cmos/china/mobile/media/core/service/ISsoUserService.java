@@ -33,4 +33,16 @@ public interface ISsoUserService {
 	 * 停用用户
 	 */	
 	public void delete(InputObject inputObject, OutputObject outputObject) throws Exception;
+	
+
+	/**
+	 * 获取短信
+	 */	
+	public void getSmsCode(InputObject inputObject, OutputObject outputObject) throws Exception;
+	
+
+	/**
+	 * 验证短信
+	 */	
+	public void authSmsCode(InputObject inputObject, OutputObject outputObject) throws Exception;
 }

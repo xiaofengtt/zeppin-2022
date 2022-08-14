@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.AppVersion">
+
+<!-- 根据参数取列表 -->
+	<select id="appversion_getListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.bean.AppVersion">
+		select * from appversion where 1=1 
+		<if test="component != null and component != ''">
+			and component = #{component} 
+		</if>
+		<if test="status != null and status != ''">
+			and status ${status} 
+		</if>
+		<if test="province != null and province != ''">
+			and province = #{province} 
+		</if>
+		<if test="versionnu != null and versionnu != ''">
+			and versionnu = #{versionnu} 
+		</if>
+		<if test="sort != null and sort != ''">
+			order by ${sort}
+		</if>
+		<if test="start != null and start != '' and limit != null and limit != ''">
+			limit ${start},${limit}
+		</if>
+		
+	</select> 	
+
+	<!-- 加载数据 -->  
+	<select id="appversion_get"  resultType="com.cmos.china.mobile.media.core.bean.AppVersion">  
+		select * from appversion where id=#{id}  
+	</select> 
+	 
+	<!-- 增加数据 -->  
+	<insert id="appversion_add" parameterType="com.cmos.china.mobile.media.core.bean.AppVersion">  
+		insert into appversion(id,component,path,versionna,versionnu,size,province,status,creator,createtime,appexplain) 
+		values(#{id},#{component},#{path},#{versionna},#{versionnu},#{size},#{province},#{status},#{creator},#{createtime},#{appexplain})  
+	</insert>  
+	  
+	<!-- 删除数据 -->  
+	<update id="appversion_delete" parameterType="com.cmos.china.mobile.media.core.bean.AppVersion">  
+		update appversion set status='deleted' where id=#{id}
+	</update>  
+	
+	
+	<!-- 修改数据 -->  
+	<update id="appversion_update" parameterType="com.cmos.china.mobile.media.core.bean.AppVersion">  
+		update appversion 
+		set creator=#{creator},status=#{status} 
+		where id=#{id}  
+	</update>  
+	<!-- 取总数 -->  
+	<select id="appversion_getCount"  parameterType="java.util.Map" resultType="int">  
+		select count(*) from appversion where 1=1
+		<if test="component != null and component != ''">
+			and component = #{component} 
+		</if>
+		<if test="status != null and status != ''">
+			and status ${status} 
+		</if>
+		<if test="province != null and province != ''">
+			and province = #{province} 
+		</if>
+	</select> 
+</mapper>  

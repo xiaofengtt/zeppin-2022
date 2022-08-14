@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- log4j2每隔60秒，自动监控该配置文件是否有变化，如果变化，则自动根据文件内容重新配 -->
+<configuration status="info" monitorInterval="60">
+
+	<appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d [%level][%t]%m%n"/>
+		</Console>
+		<!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch -->	    
+	    <RollingFile name="RollingFile" fileName="../logs/busi-nmspcore.log" filePattern="../logs/busi-nmspcore-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="%d [%level][%t]%m%n"/>
+            <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+        </RollingFile>
+	</appenders>
+	<loggers>
+		<root level="info" additivity="false">
+			<appender-ref ref="Console" />
+			<appender-ref ref="RollingFile" />
+		</root>
+	</loggers>
+</configuration>

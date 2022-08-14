@@ -1,7 +1,6 @@
 package com.cmos.china.mobile.media.core.service.impl;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +15,6 @@ import com.cmos.china.mobile.media.core.service.IVideoPublishService;
 import com.cmos.china.mobile.media.core.util.Utlity;
 import com.cmos.china.mobile.media.core.vo.VideoPublishVO;
 import com.cmos.china.mobile.media.core.vo.VideoStatusMapVO;
-import com.cmos.china.mobile.media.core.vo.VideoinfoVO;
 import com.cmos.core.bean.InputObject;
 import com.cmos.core.bean.OutputObject;
 
@@ -30,6 +28,8 @@ public class VideoPublishServiceImpl extends BaseServiceImpl implements IVideoPu
 		String id = inputObject.getValue("id");
 		String title = inputObject.getValue("title");
 		String shortTitle = inputObject.getValue("shortTitle");
+		String province = inputObject.getValue("province");
+		String component = inputObject.getValue("component");
 		String category = inputObject.getValue("category");
 		String status = inputObject.getValue("status");
 		Integer pagenum = Utlity.getIntValue(inputObject.getValue("pagenum"), 1);
@@ -52,6 +52,8 @@ public class VideoPublishServiceImpl extends BaseServiceImpl implements IVideoPu
 		paramMap.put("id", id);
 		paramMap.put("title", title);
 		paramMap.put("shortTitle", shortTitle);
+		paramMap.put("province", province);
+		paramMap.put("component", component);
 		paramMap.put("category", category);
 		paramMap.put("status", status);
 		paramMap.put("start", start+"");
@@ -125,21 +127,6 @@ public class VideoPublishServiceImpl extends BaseServiceImpl implements IVideoPu
 				}
 			}else{
 				resultData.put("cover","/assets/img/default_productBig.jpg");
-			}
-			
-			Map<String, String> paramMap = new HashMap<String, String>();
-			paramMap.put("status", Videoinfo.VideoStatusType.CHECKED);
-			paramMap.put("sort", "sequence");
-			List<VideoinfoVO> list = this.getBaseDao().queryForList("videoinfo_getListByParams", paramMap, VideoinfoVO.class);
-			List<VideoinfoVO> data = new ArrayList<VideoinfoVO>();
-			if(list != null && list.size() > 0){
-				for(VideoinfoVO vvo : list){
-					if(vvo.getId()!=null && vvo.getId().equals(video.getId())){
-						continue;
-					}
-					data.add(vvo);
-				}
-				resultData.put("videoList", data);
 			}
 			outputObject.setBean(resultData);
 		}
@@ -299,10 +286,14 @@ public class VideoPublishServiceImpl extends BaseServiceImpl implements IVideoPu
 	 */
 	@Override
 	public void statusList(InputObject inputObject, OutputObject outputObject) throws Exception {
+		String province = inputObject.getValue("province");
+		String component = inputObject.getValue("component");
 		String category = inputObject.getValue("category");
 		String title = inputObject.getValue("title");
 		
 		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("province", province);
+		paramMap.put("component", component);
 		paramMap.put("category", category);
 		paramMap.put("title", title);
 		List<Map<String,Object>> list = this.getBaseDao().queryForList("videoPublish_getStatusCount", paramMap);

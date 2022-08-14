@@ -5,7 +5,8 @@ import java.text.SimpleDateFormat;
 
 public class Utlity {
 	
-	public static final String basePath = "E:/apache-tomcat-8.0.30/webapps/nmgs";
+//	public static final String basePath = "/home/jhpt/data";
+	public static final String basePath = "/Users/zeppin/Desktop";
 	
 	public static String timeSpanToString(Timestamp ts) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

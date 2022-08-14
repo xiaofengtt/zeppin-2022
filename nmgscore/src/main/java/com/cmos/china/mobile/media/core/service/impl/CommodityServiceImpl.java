@@ -12,6 +12,7 @@ import java.util.UUID;
 import com.cmos.china.mobile.media.core.bean.Commodity;
 import com.cmos.china.mobile.media.core.bean.CommodityDisplay;
 import com.cmos.china.mobile.media.core.bean.Entity;
+import com.cmos.china.mobile.media.core.bean.Province;
 import com.cmos.china.mobile.media.core.bean.Resource;
 import com.cmos.china.mobile.media.core.service.ICommodityService;
 import com.cmos.china.mobile.media.core.util.Utlity;
@@ -28,12 +29,18 @@ public class CommodityServiceImpl extends BaseServiceImpl implements ICommodityS
 	@Override
 	public void list(InputObject inputObject, OutputObject outputObject) throws Exception {
 		String id = inputObject.getValue("id");
+		String province = inputObject.getValue("province");
 		String name = inputObject.getValue("name");
 		String price = inputObject.getValue("price");
 		String originalPrice = inputObject.getValue("originalPrice");
 		Integer pagenum = Utlity.getIntValue(inputObject.getValue("pagenum"), 1);
 		Integer pagesize = Utlity.getIntValue(inputObject.getValue("pagesize"), 10);
 		String sort = inputObject.getValue("sort");
+		
+		if(province==null||province.equals("")){
+			throw new Exception("地区不能为空");
+		}
+		
 		if(!Utlity.checkOrderBy(sort)){
 			throw new Exception("参数异常");
 		}
@@ -48,6 +55,7 @@ public class CommodityServiceImpl extends BaseServiceImpl implements ICommodityS
 		
 		Map<String, String> paramMap = new HashMap<String, String>();
 		paramMap.put("id", id);
+		paramMap.put("province", province);
 		paramMap.put("name", name);
 		paramMap.put("price", price);
 		paramMap.put("originalPrice", originalPrice);
@@ -120,7 +128,7 @@ public class CommodityServiceImpl extends BaseServiceImpl implements ICommodityS
 			}
 			
 			Map<String, String> paramMap = new HashMap<String, String>();
-			paramMap.put("id", commodity.getId());
+			paramMap.put("commodity", commodity.getId());
 			List<CommodityDisplayVO> cdList = this.getBaseDao().queryForList("commodityDisplay_getListByParams", paramMap, CommodityDisplayVO.class);
 			if(cdList != null && cdList.size()>0){
 				List<String> dispalyList = new ArrayList<String>();
@@ -140,6 +148,7 @@ public class CommodityServiceImpl extends BaseServiceImpl implements ICommodityS
 	public void add(InputObject inputObject, OutputObject outputObject) throws Exception {
 		String url = inputObject.getValue("url");
 		String name = inputObject.getValue("name");
+		String province = inputObject.getValue("province");
 		String cover = inputObject.getValue("cover");
 		String price = inputObject.getValue("price");
 		String originalPrice = inputObject.getValue("originalPrice");
@@ -148,6 +157,9 @@ public class CommodityServiceImpl extends BaseServiceImpl implements ICommodityS
 		
 		if(name==null||name.equals("")){
 			throw new Exception("名称不能为空");
+		}
+		if(province==null||province.equals("")){
+			throw new Exception("地区不能为空");
 		}
 		if(price==null||price.equals("")){
 			throw new Exception("销售价格不能为空");
@@ -163,9 +175,16 @@ public class CommodityServiceImpl extends BaseServiceImpl implements ICommodityS
 		commodity.setPrice(BigDecimal.valueOf(Double.valueOf(price)));
 		commodity.setUrl(url);
 		
-		if(url!=null && !url.equals("")){
-			commodity.setOriginalPrice(BigDecimal.valueOf(Double.valueOf(originalPrice)));
+		Province prov = this.getBaseDao().queryForObject("province_get", province, Province.class);
+		if(prov!=null){
+			commodity.setProvince(province);
+		}else{
+			throw new Exception("地区不存在");
 		}
+		
+
+			commodity.setOriginalPrice(BigDecimal.valueOf(Double.valueOf(originalPrice)));
+
 		if(cover!=null && !cover.equals("")){
 			commodity.setCover(cover);
 		}
@@ -231,10 +250,8 @@ public class CommodityServiceImpl extends BaseServiceImpl implements ICommodityS
 			commodity.setName(name);
 			commodity.setPrice(BigDecimal.valueOf(Double.valueOf(price)));
 			commodity.setUrl(url);
-			
-			if(url!=null && !url.equals("")){
-				commodity.setOriginalPrice(BigDecimal.valueOf(Double.valueOf(originalPrice)));
-			}
+			commodity.setOriginalPrice(BigDecimal.valueOf(Double.valueOf(originalPrice)));
+				
 			if(cover!=null && !cover.equals("")){
 				commodity.setCover(cover);
 			}
@@ -284,7 +301,15 @@ public class CommodityServiceImpl extends BaseServiceImpl implements ICommodityS
 		if(commodity==null){
 			throw new Exception("商品不存在");
 		}else{
-			this.getBaseDao().update("commodity_delete", commodity);
+			Map<String, String> params = new HashMap<String, String>();
+			params.put("commodity", commodity.getId());
+			params.put("statusNot", "destroy");
+			Integer count = this.getBaseDao().getTotalCount("videoCommodityPoint_getCountByParams", params);
+			if(count>0){
+				throw new Exception("商品已被关联，不可删除");
+			}else{
+				this.getBaseDao().update("commodity_delete", commodity);
+			}
 		}
 	}
 
@@ -293,10 +318,16 @@ public class CommodityServiceImpl extends BaseServiceImpl implements ICommodityS
 	 */
 	@Override
 	public void search(InputObject inputObject, OutputObject outputObject) throws Exception {
+		String province = inputObject.getValue("province");
 		String name = inputObject.getValue("name");
+		
+		if(province==null||province.equals("")){
+			throw new Exception("地区不能为空");
+		}
 		
 		Map<String, String> paramMap = new HashMap<String, String>();
 		paramMap.put("name", name);
+		paramMap.put("province", province);
 		paramMap.put("status", Entity.GerneralStatusType.NORMAL);
 		
 		List<CommodityVO> list = this.getBaseDao().queryForList("commodity_getListByParams", paramMap, CommodityVO.class);

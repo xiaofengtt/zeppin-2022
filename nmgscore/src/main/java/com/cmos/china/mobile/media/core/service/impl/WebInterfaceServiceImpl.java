@@ -8,8 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import com.cmos.china.mobile.media.core.bean.AppVersion;
 import com.cmos.china.mobile.media.core.bean.Category;
 import com.cmos.china.mobile.media.core.bean.Commodity;
+import com.cmos.china.mobile.media.core.bean.Component;
 import com.cmos.china.mobile.media.core.bean.Entity;
 import com.cmos.china.mobile.media.core.bean.LeaveMessage;
 import com.cmos.china.mobile.media.core.bean.Module;
@@ -20,6 +22,7 @@ import com.cmos.china.mobile.media.core.bean.Template;
 import com.cmos.china.mobile.media.core.bean.VideoPublish;
 import com.cmos.china.mobile.media.core.bean.Videoinfo;
 import com.cmos.china.mobile.media.core.service.IWebInterfaceService;
+import com.cmos.china.mobile.media.core.util.EncodindgUtlity;
 import com.cmos.china.mobile.media.core.util.Utlity;
 import com.cmos.china.mobile.media.core.vo.LeaveMessageVO;
 import com.cmos.china.mobile.media.core.vo.ProvinceModuleVO;
@@ -38,8 +41,36 @@ public class WebInterfaceServiceImpl extends BaseServiceImpl implements IWebInte
 	@Override
 	public void categoryList(InputObject inputObject, OutputObject outputObject) throws Exception {
 		String parent = inputObject.getValue("parent");
+		String component = inputObject.getValue("component");
+		String province = inputObject.getValue("province");
+		
+		Map<String, String> componentMap = new HashMap<String, String>();
+		componentMap.put("id", component);
+		componentMap.put("status", Entity.GerneralStatusType.NORMAL);
 		
 		Map<String, String> paramMap = new HashMap<String, String>();
+		if(province==null||province.equals("")){
+//			throw new Exception("所属地区异常");
+		}
+		else{
+			Province prov = this.getBaseDao().queryForObject("province_get", province, Province.class);
+			if(prov!=null && "normal".equals(prov.getStatus())){
+				paramMap.put("province", province);
+			}else{
+				throw new Exception("所属地区不存在或已停用");
+			}
+		}
+		if(component==null||component.equals("")){
+//			throw new Exception("接入组件异常");
+		}
+		else{
+			Integer count = this.getBaseDao().getTotalCount("component_getCountByParams", componentMap);
+			if(count>0){
+				paramMap.put("component", component);
+			}else{
+				throw new Exception("组件不存在或已停用");
+			}
+		}
 		if(parent!=null && !parent.equals("")){
 			paramMap.put("parent", parent);
 			paramMap.put("status", Entity.GerneralStatusType.NORMAL);
@@ -81,6 +112,7 @@ public class WebInterfaceServiceImpl extends BaseServiceImpl implements IWebInte
 	@Override
 	public void publishList(InputObject inputObject, OutputObject outputObject) throws Exception {
 		String category = inputObject.getValue("category");
+		String except = inputObject.getValue("except");
 		Integer pagenum = Utlity.getIntValue(inputObject.getValue("pagenum"), 1);
 		Integer pagesize = Utlity.getIntValue(inputObject.getValue("pagesize"), 10);
 		String sort = inputObject.getValue("sort");
@@ -107,6 +139,8 @@ public class WebInterfaceServiceImpl extends BaseServiceImpl implements IWebInte
 				Map<String, String> params = new HashMap<String, String>();
 				params.put("scode", scode);
 				params.put("status", VideoPublish.VideoPublishStatusType.CHECKED);
+				params.put("cstatus", Entity.GerneralStatusType.NORMAL);
+				params.put("except", except);
 				recordCount = this.getBaseDao().getTotalCount("videoPublish_getWebCountByParams", params);
 				params.put("start", start+"");
 				params.put("limit", pagesize+"");
@@ -116,6 +150,7 @@ public class WebInterfaceServiceImpl extends BaseServiceImpl implements IWebInte
 				for(WebVideoPublishVO wvp:wvplist){
 					Map<String, Object> data = new HashMap<String, Object>();
 					data.put("id", wvp.getId());
+					data.put("publishId", wvp.getPublishId());
 					data.put("title", wvp.getTitle());
 					data.put("coverURL", wvp.getCoverURL());
 					data.put("videoURL", wvp.getVideoURL());
@@ -253,62 +288,79 @@ public class WebInterfaceServiceImpl extends BaseServiceImpl implements IWebInte
 		Map<String,Object> templateData = new HashMap<String,Object>();
 		Map<String,Object> moduleData = new HashMap<String,Object>();
 		String id = inputObject.getValue("id");
-		
+		String component = inputObject.getValue("component");
+		Component moudleComponent = this.getBaseDao().queryForObject("component_get", component, Component.class);
 		Province province = this.getBaseDao().queryForObject("province_get", id, Province.class);
-		if(province!=null && !"".equals(province.getId())){
-			Template template = this.getBaseDao().queryForObject("template_get", province.getTemplate(), Template.class);
-			if(template!=null && !"".equals(template.getId())){
-				Map<String,String> moduleParamsMap = new HashMap<String,String>();
-				moduleParamsMap.put("template", template.getId());
-				List<Module> moduleList = this.getBaseDao().queryForList("module_getListByParams", moduleParamsMap, Module.class);
-				if(moduleList.size()>0){
-					templateData.put("id", template.getId());
-					templateData.put("name", template.getName());
-					templateData.put("module", moduleData);
-					for(Module module: moduleList){
-						Map<String,Object> moduleMap = new HashMap<String,Object>();
-						moduleMap.put("id", module.getId());
-						moduleMap.put("name", module.getName());
-						moduleMap.put("count", module.getCount());
-						moduleMap.put("sequence", module.getSequence());
-						moduleData.put(module.getId(), moduleMap);
-						Map<String,String> paramsMap = new HashMap<String,String>();
-						paramsMap.put("province", id);
-						paramsMap.put("module", module.getId());
-						paramsMap.put("status", "normal");
-						paramsMap.put("start", "0");
-						paramsMap.put("limit", module.getCount()+"");
-						List<ProvinceModuleVO> pmList = this.getBaseDao().queryForList("provinceModule_getListByParams", paramsMap, ProvinceModuleVO.class);
-						List<Map<String,Object>> moduleDataList = new ArrayList<Map<String,Object>>();
-						for(ProvinceModuleVO pm: pmList){		
-							Map<String,Object> data = new HashMap<String,Object>();
-							data.put("title", pm.getTitle());
-							data.put("content", pm.getContent());
-							data.put("url", pm.getUrl());
-							data.put("image", pm.getImage());
-							data.put("imageUrl", pm.getImageUrl());
-							data.put("index", moduleDataList.size() +"");
-							moduleDataList.add(data);
+		if (component == null || component.equals("")) {
+			throw new Exception("接入组件异常");
+		} else {
+			if (moudleComponent != null && !"".equals(moudleComponent.getId())) {
+				if (province != null && !"".equals(province.getId())) {
+					if(!moudleComponent.getStatus().equals(Entity.GerneralStatusType.NORMAL) || !province.getStatus().equals(Entity.GerneralStatusType.NORMAL))
+							{
+								throw new Exception("组件或地区已停用");
+//							Map<String, Object> rtdata = new HashMap<String, Object>();
+//							rtdata.put("component", moudleComponent.getStatus());
+//							rtdata.put("province", province.getStatus());
+//							outputObject.setBean(rtdata);
+//							return;
+							}
+					Template template = this.getBaseDao().queryForObject("template_get", province.getTemplate(),Template.class);
+					if (template != null && !"".equals(template.getId())) {
+						Map<String, String> moduleParamsMap = new HashMap<String, String>();
+						moduleParamsMap.put("template", template.getId());
+						List<Module> moduleList = this.getBaseDao().queryForList("module_getListByParams",moduleParamsMap, Module.class);
+						if (moduleList.size() > 0) {
+							templateData.put("id", template.getId());
+							templateData.put("name", template.getName());
+							templateData.put("module", moduleData);
+							for (Module module : moduleList) {
+								Map<String, Object> moduleMap = new HashMap<String, Object>();
+								moduleMap.put("id", module.getId());
+								moduleMap.put("name", module.getName());
+								moduleMap.put("count", module.getCount());
+								moduleMap.put("sequence", module.getSequence());
+								moduleData.put(module.getId(), moduleMap);
+								Map<String, String> paramsMap = new HashMap<String, String>();
+								paramsMap.put("province", id);
+								paramsMap.put("module", module.getId());
+								paramsMap.put("status", "normal");
+								paramsMap.put("sort", "priority");
+								paramsMap.put("start", "0");
+								paramsMap.put("limit", module.getCount() + "");
+								List<ProvinceModuleVO> pmList = this.getBaseDao().queryForList("provinceModule_getListByParams",paramsMap,ProvinceModuleVO.class);
+								List<Map<String, Object>> moduleDataList = new ArrayList<Map<String, Object>>();
+								for (ProvinceModuleVO pm : pmList) {
+									Map<String, Object> data = new HashMap<String, Object>();
+									data.put("title", pm.getTitle());
+									data.put("content", pm.getContent());
+									data.put("url", pm.getUrl());
+									data.put("image", pm.getImage());
+									data.put("imageUrl", pm.getImageUrl());
+									data.put("index", moduleDataList.size()+ "");
+									moduleDataList.add(data);
+								}
+								moduleMap.put("datas", moduleDataList);
+							}
+							outputObject.setBean(templateData);
+						} else {
+							throw new Exception("接入省份模板配置错误");
 						}
-						moduleMap.put("datas", moduleDataList);
+					} else {
+						throw new Exception("接入省份未选择模板");
 					}
-					outputObject.setBean(templateData);
-				}else{
-					throw new Exception("接入省份模板配置错误");
+				} else {
+					throw new Exception("接入省份信息不存在");
 				}
-			}else{
-				throw new Exception("接入省份未选择模板");
+			} else {
+				throw new Exception("接入组件信息不存在");
 			}
-		}else{
-			throw new Exception("接入省份信息不存在");
 		}
 	}
 
 	@Override
-	public void leaveMessageInfo(InputObject inputObject,
-			OutputObject outputObject) throws Exception {
-	
-		String video_publish = inputObject.getValue("video_publish");
+	public void leaveMessageInfo(InputObject inputObject, OutputObject outputObject) throws Exception {
+		String videoPublish = inputObject.getValue("videoPublish");
 		Integer pagenum = Utlity.getIntValue(inputObject.getValue("pagenum"), 1);
 		Integer pagesize = Utlity.getIntValue(inputObject.getValue("pagesize"), 10);
 		String status = " = 'checked'";
@@ -325,8 +377,7 @@ public class WebInterfaceServiceImpl extends BaseServiceImpl implements IWebInte
 		}
 
 		Map<String, String> paramMap = new HashMap<String, String>();
-
-		paramMap.put("video_publish", video_publish);
+		paramMap.put("videoPublish", videoPublish);
 		paramMap.put("status", status);
 		paramMap.put("start", start+"");
 		paramMap.put("limit", pagesize+"");
@@ -348,10 +399,10 @@ public class WebInterfaceServiceImpl extends BaseServiceImpl implements IWebInte
 	}
 
 	@Override
-	public void addLeaveMessage(InputObject inputObject, OutputObject outputObject)
-			throws Exception {
+	public void addLeaveMessage(InputObject inputObject, OutputObject outputObject) throws Exception {
+		String province = inputObject.getValue("province");
 		String content = inputObject.getValue("content");
-		String video_publish = inputObject.getValue("video_publish");
+		String videoPublish = inputObject.getValue("videoPublish");
 		String phone = inputObject.getValue("phone");
 		
 		LeaveMessage leavemessage = new LeaveMessage();
@@ -362,8 +413,14 @@ public class WebInterfaceServiceImpl extends BaseServiceImpl implements IWebInte
 			if(ssoUser!=null && !ssoUser.equals("")){
 				leavemessage.setCreator(ssoUser.getId());
 			}
-			if (video_publish != null && !video_publish.equals("")) {
-				leavemessage.setVideo_publish(video_publish);
+			Province prov = this.getBaseDao().queryForObject("province_get", province, Province.class);
+			if(prov!=null){
+				leavemessage.setProvince(province);
+			}else{
+				throw new Exception("地区不存在");
+			}
+			if (videoPublish != null && !videoPublish.equals("")) {
+				leavemessage.setVideoPublish(videoPublish);
 				if (content != null && !content.equals("")) {
 					leavemessage.setContent(content);
 				} else {
@@ -384,4 +441,148 @@ public class WebInterfaceServiceImpl extends BaseServiceImpl implements IWebInte
 		data.put("returnCode", "0");
 		outputObject.setBean(data);
 	}
+
+	@Override
+	public void checkComponent(InputObject inputObject, OutputObject outputObject) throws Exception {
+		String provinceId = inputObject.getValue("province");
+		String componentId = inputObject.getValue("component");
+		if(provinceId==null||provinceId.equals("")){
+			throw new Exception("地区不能为空");
+		}
+		if(componentId==null||componentId.equals("")){
+			throw new Exception("组件不能为空");
+		}
+		
+		Component component = this.getBaseDao().queryForObject("component_get", componentId, Component.class);
+		Province province = this.getBaseDao().queryForObject("province_get", provinceId, Province.class);
+		
+		if(component==null){
+			throw new Exception("组件不存在");
+		}else if(province==null){
+			throw new Exception("地区不存在");
+		}else{
+			Map<String,Object> data = new HashMap<String,Object>();
+			data.put("province",province.getStatus());
+			data.put("component",component.getStatus());
+			outputObject.setBean(data);
+		}
+	}
+	
+	@Override
+	public void totalPublishList(InputObject inputObject, OutputObject outputObject) throws Exception {
+		String provinceId = inputObject.getValue("province");
+		String componentId = inputObject.getValue("component");
+		String except = inputObject.getValue("except");
+		Integer pagenum = Utlity.getIntValue(inputObject.getValue("pagenum"), 1);
+		Integer pagesize = Utlity.getIntValue(inputObject.getValue("pagesize"), 10);
+		String sort = inputObject.getValue("sort");
+		if(!Utlity.checkOrderBy(sort)){
+			throw new Exception("参数异常");
+		}
+		
+		Integer start = (pagenum - 1) * pagesize;
+		  
+		if(sort == null || "".equals(sort)){
+			sort = "vp.sequence asc,vp.createtime desc";
+		}else{
+			sort = sort.replaceAll("-", " ");
+		}
+		if(provinceId==null||provinceId.equals("")){
+			throw new Exception("地区不能为空");
+		}
+		if(componentId==null||componentId.equals("")){
+			throw new Exception("组件不能为空");
+		}
+		
+		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+		int recordCount = 0;
+		
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("status", VideoPublish.VideoPublishStatusType.CHECKED);
+		params.put("cstatus", Entity.GerneralStatusType.NORMAL);
+		params.put("component", componentId);
+		params.put("except", except);
+		recordCount = this.getBaseDao().getTotalCount("videoPublish_getWebCountByParams", params);
+		params.put("start", start+"");
+		params.put("limit", pagesize+"");
+		params.put("sort", sort);
+		
+		List<WebVideoPublishVO> wvplist = this.getBaseDao().queryForList("videoPublish_getWebListByParams", params, WebVideoPublishVO.class);
+		
+		for(WebVideoPublishVO wvp:wvplist){
+			Map<String, Object> data = new HashMap<String, Object>();
+			data.put("id", wvp.getId());
+			data.put("publishId", wvp.getPublishId());
+			data.put("title", wvp.getTitle());
+			data.put("coverURL", wvp.getCoverURL());
+			data.put("videoURL", wvp.getVideoURL());
+			data.put("videoPath", wvp.getVideoURL()+"transcode/video_500K.mp4");
+			list.add(data);
+		}
+		
+		int pageCount =  (int) Math.ceil((double) recordCount / pagesize);
+		
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("totalResultCount", recordCount);
+		resultMap.put("pageNum", pagenum);
+		resultMap.put("pageSize", pagesize);
+		resultMap.put("totalPageCount", pageCount);
+		
+		outputObject.setBeans(list);
+		outputObject.setObject(resultMap);
+	}
+	
+	
+	
+	
+	@Override
+	public void getApps(InputObject inputObject, OutputObject outputObject)
+			throws Exception {
+		String component = inputObject.getValue("component");
+		String province = inputObject.getValue("province");
+		String sort = inputObject.getValue("sort");
+		String status = inputObject.getValue("status");
+		Integer pagenum = Utlity.getIntValue(inputObject.getValue("pagenum"), 1);
+		Integer pagesize = Utlity.getIntValue(inputObject.getValue("pagesize"), 10);
+		Integer start = (pagenum - 1) * pagesize;
+		if(sort == null || "".equals(sort)){
+			sort = "createtime desc";
+		}else{
+			sort = sort.replaceAll("-", " ");
+		}
+		Map<String,String> param = new HashMap<String,String>();
+		param.put("limit",pagesize+"");
+		param.put("start",start+"");
+		param.put("province",province);
+		param.put("component",component);
+		param.put("sort",sort);
+		if(status==null || status.equals("")){
+			param.put("status","in ('normal','stopped')");
+		}else{
+			param.put("status","='"+status+"'");
+		}
+		if(component!=null && !component.equals("")){
+			if(province!=null && !province.equals("")){
+				List<AppVersion> list = this.getBaseDao().queryForList("appversion_getListByParams", param,AppVersion.class);
+				Integer count = this.getBaseDao().getTotalCount("appversion_getCount", param);
+				Integer pageCount = (int) Math.ceil((double) count / pagesize);
+				Map<String, Object> resultMap = new HashMap<String, Object>();
+				resultMap.put("pageNum", pagenum);
+				resultMap.put("pageSize", pagesize);
+				resultMap.put("totalPageCount", pageCount);
+				resultMap.put("totalResultCount", count);
+				outputObject.setObject(resultMap);
+				for(int i = 0; i < list.size() ; i ++)
+				{
+					list.get(i).setPath(EncodindgUtlity.getCipher(list.get(i).getPath()));
+				}
+				outputObject.convertBeans2List(list);
+				}else{
+					throw new Exception("省份信息错误");
+				}
+			}else{
+				throw new Exception("组件信息为空");
+			}
+		}
+
 }

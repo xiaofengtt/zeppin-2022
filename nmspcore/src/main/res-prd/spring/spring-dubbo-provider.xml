@@ -1,0 +1,42 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="provider-of-nmspcore" />
+    
+    <!-- dubbo接口去除注册中心，采用直连的方式  -->
+    <dubbo:registry address=" zookeeper://172.17.19.17:2181?backup=172.17.19.18:2182,172.17.19.18:2181"/> 
+    
+    <!-- 用dubbo协议定义暴露的port   -->
+    <dubbo:protocol name="dubbo" port="28083" />
+    
+    <dubbo:service interface="com.cmos.core.service.IControlService" ref="controlService" group="nmspcoreGroup"/>
+	
+    <bean id="controlService" class="com.cmos.china.mobile.media.core.control.ControlServiceImpl" />
+
+    <bean id="sysProps"
+          class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass" value="java.lang.System" />
+        <property name="targetMethod" value="getProperties" />
+    </bean>
+    <bean id="dubboPort" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <!-- 指向上面的sysProps Bean -->
+        <property name="targetObject"  ref="sysProps" />
+        <property name="targetMethod" value="getProperty" />
+        <!-- 这里配置参数 -->
+        <property name="arguments">
+            <!-- 使用list元素列出调用方法的多个参数 -->
+            <list>
+                <value>dubbo_port</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="com.cmos.china.mobile.media.core.util.DubboPortHandler" init-method="init">
+        <property name="port" ref="dubboPort"></property>
+    </bean>
+
+</beans>

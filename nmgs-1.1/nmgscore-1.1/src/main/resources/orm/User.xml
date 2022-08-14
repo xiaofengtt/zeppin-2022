@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.User">
+	<!-- 取列表 -->  
+	<select id="user_getListByParams"  parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.bean.User">  
+		select * from sys_user where 1=1
+		<if test="id != null and id != ''">
+			and id = #{id} 
+		</if>
+		<if test="name != null and name != ''">
+			and name = #{name} 
+		</if> 
+		<if test="status != null and status != ''">
+			and status = #{status} 
+		</if>
+		<if test="status == null or status == ''">
+			and status = 'normal' 
+		</if>
+		<if test="sort != null and sort != ''">
+			order by ${sort}
+		</if>
+		<if test="start != null and start != '' and limit != null and limit != ''">
+			limit ${start},${limit}
+		</if>
+	</select>  
+	
+	<!-- 加载数据 -->  
+	<select id="user_get"  resultType="com.cmos.china.mobile.media.core.bean.User">  
+		select * from sys_user where id=#{id}  
+	</select>  
+	
+	<!-- 增加数据 -->  
+	<insert id="user_add" parameterType="com.cmos.china.mobile.media.core.bean.User" useGeneratedKeys="true" keyProperty="id">  
+		insert into sys_user(id,name,role,status,password,phone,email,department,jobtitle,creator,createtime) 
+		values(#{id},#{name},#{role},#{status},#{password},#{phone},#{email},#{department},#{jobtitle},#{creator},#{createtime})  
+	</insert> 
+	 
+	<!-- 修改数据 -->  
+	<update id="user_update" parameterType="com.cmos.china.mobile.media.core.bean.User">  
+		update sys_user 
+		set name=#{name},role=#{role},status=#{status},password=#{password},phone=#{phone},email=#{email},department=#{department},jobtitle=#{jobtitle} 
+		where id=#{id}  
+	</update>  
+	
+	<!-- 删除数据 -->  
+	<update id="user_delete" parameterType="com.cmos.china.mobile.media.core.bean.User">  
+		update sys_user set status='deleted' where id=#{id}
+	</update>  
+</mapper>  

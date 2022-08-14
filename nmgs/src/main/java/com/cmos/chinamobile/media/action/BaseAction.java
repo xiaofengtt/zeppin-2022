@@ -250,16 +250,17 @@ public abstract class BaseAction extends ActionSupport implements BeanFactoryAwa
 			//根据网卡取本机配置的IP   
 				InetAddress inet=null;   
 				try {   
-					inet = InetAddress.getLocalHost();   
+					inet = InetAddress.getLocalHost();  
+					ipAddress= inet.getHostAddress();  
 				} catch (Exception e) {   
 					logger.error("getIpAddr", e); 
 			    }   
-				ipAddress= inet.getHostAddress();   
+				 
 			}   
 		}
 		//对于通过多个代理的情况，第一个IP为客户端真实IP,多个IP按照','分割   
 		if(ipAddress!=null && ipAddress.length()>15){ //"***.***.***.***".length() = 15   
-			if(ipAddress.indexOf(",")>0){   
+			if(ipAddress.indexOf(',')>-1){   
 				ipAddress = ipAddress.substring(0,ipAddress.indexOf(","));   
 			}   
 		}   

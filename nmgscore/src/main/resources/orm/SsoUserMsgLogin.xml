@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.MsgCode">
+	<!-- 根据账号获取数据 -->  
+	<select id="msgCode_getByPhone"  resultType="com.cmos.china.mobile.media.core.bean.MsgCode">  
+		select * from sso_user_msglogin where user=#{user}  
+	</select>
+	
+	<!-- 增加数据 -->  
+	<insert id="msgCode_add" parameterType="com.cmos.china.mobile.media.core.bean.MsgCode">  
+		insert into sso_user_msglogin(id,user,code,usable_time,next_time) 
+		values(#{id},#{user},#{code},#{usableTime},#{nextTime})  
+	</insert> 
+	 
+	<!-- 修改数据 -->  
+	<update id="msgCode_update" parameterType="com.cmos.china.mobile.media.core.bean.MsgCode">  
+		update sso_user_msglogin 
+		set user=#{user},code=#{code},usable_time=#{usableTime},next_time=#{nextTime} 
+		where id=#{id}
+	</update>  
+</mapper>  

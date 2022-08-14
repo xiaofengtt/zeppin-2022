@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import com.cmos.china.mobile.media.core.base.VideoUtlity;
+import com.cmos.china.mobile.media.core.bean.Province;
 import com.cmos.china.mobile.media.core.bean.Resource;
 import com.cmos.china.mobile.media.core.bean.Videoinfo;
 import com.cmos.china.mobile.media.core.bean.Videoinfo.VideoStatusType;
@@ -30,17 +31,25 @@ public class VideoinfoServiceImpl extends BaseServiceImpl implements IVideoinfoS
 	@Override
 	public void list(InputObject inputObject, OutputObject outputObject) throws Exception {
 		String id = inputObject.getValue("id");
+		String province = inputObject.getValue("province");
 		String title = inputObject.getValue("title");
 		String status = inputObject.getValue("status");
+		
 		Integer pagenum = Utlity.getIntValue(inputObject.getValue("pagenum"), -1);
 		Integer pagesize = Utlity.getIntValue(inputObject.getValue("pagesize"), -1);
 		String sort = inputObject.getValue("sort");
+		
+		if(province==null||province.equals("")){
+			throw new Exception("地区不能为空");
+		}
+		
 		if(!Utlity.checkOrderBy(sort)){
 			throw new Exception("参数异常");
 		}
 		
 		Map<String, String> paramMap = new HashMap<String, String>();
 		paramMap.put("id", id);
+		paramMap.put("province", province);
 		paramMap.put("title", title);
 		paramMap.put("status", status);
 		
@@ -125,6 +134,7 @@ public class VideoinfoServiceImpl extends BaseServiceImpl implements IVideoinfoS
 	@Override
 	public void add(InputObject inputObject, OutputObject outputObject) throws Exception {
 		String title = inputObject.getValue("title");
+		String province = inputObject.getValue("province");
 		String originalVideo = inputObject.getValue("originalVideo");
 		String author = inputObject.getValue("author");
 		String tag = inputObject.getValue("tag");
@@ -134,9 +144,11 @@ public class VideoinfoServiceImpl extends BaseServiceImpl implements IVideoinfoS
 		String creator = inputObject.getValue("creator");
 		String sequenc = inputObject.getValue("sequence");
 		Integer sequence = Integer.valueOf(sequenc);
-		
 		if(title==null||title.equals("")){
 			throw new Exception("标题不能为空");
+		}
+		if(province==null||province.equals("")){
+			throw new Exception("地区不能为空");
 		}
 		if(originalVideo==null||originalVideo.equals("")){
 			throw new Exception("文件上传失败，请刷新页面");
@@ -147,6 +159,14 @@ public class VideoinfoServiceImpl extends BaseServiceImpl implements IVideoinfoS
 		videoinfo.setId(id);
 		videoinfo.setTitle(title);
 		videoinfo.setSequence(sequence);
+		
+		Province prov = this.getBaseDao().queryForObject("province_get", province, Province.class);
+		if(prov!=null){
+			videoinfo.setProvince(province);
+		}else{
+			throw new Exception("地区不存在");
+		}
+		
 		Resource resource = this.getBaseDao().queryForObject("resource_get", originalVideo, Resource.class);
 		if(resource!=null){
 //			String beanPath = Resource.class.getResource("").getPath();
@@ -196,7 +216,7 @@ public class VideoinfoServiceImpl extends BaseServiceImpl implements IVideoinfoS
 		String copyright = inputObject.getValue("copyright");
 		String sequenc = inputObject.getValue("sequence");
 		Integer sequence = Integer.valueOf(sequenc);
-		
+		System.out.println(context+"-------"+title);
 		if(id==null||id.equals("")){
 			throw new Exception("ID不能为空");
 		}
@@ -255,8 +275,21 @@ public class VideoinfoServiceImpl extends BaseServiceImpl implements IVideoinfoS
 		
 		Videoinfo videoinfo = this.getBaseDao().queryForObject("videoinfo_get", id, Videoinfo.class);
 		if(videoinfo!=null){
-			videoinfo.setStatus(status);
-			this.getBaseDao().update("videoinfo_update", videoinfo);
+			if("checked".equals(videoinfo.getStatus())){
+				Map<String, String> params = new HashMap<String, String>();
+				params.put("video", videoinfo.getId());
+				params.put("statusNot", "deleted");
+				Integer count = this.getBaseDao().getTotalCount("videoPublish_getCountByParams", params);
+				if(count>0){
+					throw new Exception("视频已被发布，不可取消审核");
+				}else{
+					videoinfo.setStatus(status);
+					this.getBaseDao().update("videoinfo_update", videoinfo);
+				}
+			}else{
+				videoinfo.setStatus(status);
+				this.getBaseDao().update("videoinfo_update", videoinfo);
+			}
 		}else{
 			throw new Exception("视频不存在");
 		}
@@ -268,10 +301,16 @@ public class VideoinfoServiceImpl extends BaseServiceImpl implements IVideoinfoS
 	@Override
 	public void statusList(InputObject inputObject, OutputObject outputObject) throws Exception {
 		String title = inputObject.getValue("title");
+		String province = inputObject.getValue("province");
+		
+		if(province==null||province.equals("")){
+			throw new Exception("地区不能为空");
+		}
 		
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		if(title!=null){
 			paramMap.put("title", title);
+			paramMap.put("province", province);
 		}
 		List<Map<String,Object>> list = this.getBaseDao().queryForList("videoinfo_getStatusCount", paramMap);
 		Map<String,Integer> countMap = new HashMap<String,Integer>();

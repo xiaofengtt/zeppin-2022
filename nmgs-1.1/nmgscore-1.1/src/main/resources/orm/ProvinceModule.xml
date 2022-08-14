@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.ProvinceModule">
+	<!-- 根据参数取count -->
+	<select id="provinceModule_getCountByParams" parameterType="java.util.Map" resultType="int">
+		select count(*) from province_module where 1=1 
+		<if test="id != null and id != ''">
+			and id = #{id} 
+		</if>
+		<if test="province != null and province != ''">
+			and province = #{province} 
+		</if>
+		<if test="module != null and module != ''">
+			and module = #{module} 
+		</if>
+		<if test="status != null and status != ''">
+			and status = #{status} 
+		</if>
+		<if test="status == null or status == ''">
+			and status in('normal','stopped') 
+		</if>
+	</select> 
+	
+	<!-- 根据参数取vo -->
+	<select id="provinceModule_getListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.vo.ProvinceModuleVO">
+		select pm.id,p.id as province,p.name as provinceName,m.id as module,m.name as moduleName,
+		pm.title,pm.content,pm.url,pm.image,r.url as imageUrl,pm.priority,pm.status
+		from province_module pm, province p, module m, resource r
+		where pm.province=p.id and pm.module=m.id and pm.image=r.id
+		<if test="id != null and id != ''">
+			and pm.id = #{id} 
+		</if>
+		<if test="province != null and province != ''">
+			and pm.province = #{province} 
+		</if>
+		<if test="module != null and module != ''">
+			and pm.module = #{module} 
+		</if>
+		<if test="status != null and status != ''">
+			and pm.status = #{status} 
+		</if>
+		<if test="status == null or status == ''">
+			and pm.status in('normal','stopped') 
+		</if>
+		<if test="sort != null and sort != ''">
+			order by pm.${sort}
+		</if>
+		<if test="start != null and start != '' and limit != null and limit != ''">
+			limit ${start},${limit}
+		</if>
+	</select> 
+	
+	<!-- 加载数据 -->  
+	<select id="provinceModule_get"  resultType="com.cmos.china.mobile.media.core.bean.ProvinceModule">  
+		select * from province_module where id=#{id}  
+	</select> 
+	 
+	<!-- 增加数据 -->  
+	<insert id="provinceModule_add" parameterType="com.cmos.china.mobile.media.core.bean.ProvinceModule">
+		insert into province_module(id,province,module,title,content,url,image,priority,status,creator,createtime) 
+		values(#{id},#{province},#{module},#{title},#{content},#{url},#{image},#{priority},#{status},#{creator},#{createtime})  
+	</insert>  
+	
+	<!-- 修改数据 -->  
+	<update id="provinceModule_update" parameterType="com.cmos.china.mobile.media.core.bean.ProvinceModule">  
+		update province_module 
+		set module=#{module},title=#{title},content=#{content},url=#{url},image=#{image},priority=#{priority},status=#{status} 
+		where id=#{id}  
+	</update>  
+	
+	<!-- 删除数据 -->  
+	<update id="provinceModule_delete" parameterType="com.cmos.china.mobile.media.core.bean.ProvinceModule">  
+		update province_module set status='deleted' where id=#{id}
+	</update>  
+</mapper>  

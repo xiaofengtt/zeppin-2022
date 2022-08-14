@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<context:annotation-config />
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="sessionManager" ref="sessionManager"></property>
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="realm" ref="userRealm"></property>
+	</bean>
+	
+	<bean id="userRealm" class="com.cmos.security.shiro.SecurityUserRealm">
+	</bean>
+	
+	<!-- sessionManager -->
+	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">	    
+	    <property name="globalSessionTimeout" value="1800000"/>
+        <property name="sessionDAO" ref="redisSessionDao"/>
+        <property name="sessionIdCookie" ref="cookie"/>
+        <!-- 是否在会话过期后会调用SessionDAO的delete方法删除会话 默认true -->  
+		<property name="deleteInvalidSessions" value="true" />
+        <property name="sessionValidationScheduler" ref="sessionValidationScheduler"/>
+        <property name="sessionValidationSchedulerEnabled" value="true"/>
+	</bean>
+	
+	<!-- redisSessionDAO -->
+	<bean id="redisSessionDao" class="com.cmos.security.shiro.dao.RedisSessionDao">
+		<property name="sessionRepository" ref="redisSessionRepository" />
+	</bean>
+	
+	<bean id="redisSessionRepository" class="com.cmos.security.shiro.service.impl.RedisSessionRepositoryImpl"/>
+	
+	<bean id="redisCacheDao" class="com.cmos.security.shiro.dao.RedisCacheDao">
+		<property name="cacheRepository" ref="redisCacheRepository" />
+	</bean>
+	
+	<bean id="redisCacheRepository" class="com.cmos.security.shiro.service.impl.RedisCacheRepositoryImpl"/>
+	
+	<!-- cacheManager -->
+	<bean id="cacheManager" class="com.cmos.security.shiro.manager.RedisCacheManager">
+		<property name="redisCacheDao" ref="redisCacheDao"/>
+	</bean>
+	
+	<bean id="sessionValidationScheduler"
+          class="org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler">
+        <property name="sessionManager" ref="sessionManager"/>
+        <property name="interval" value="180000"/>
+    </bean>
+    
+    <!-- cookie中的sessionid -->
+    <bean id="cookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg name="name" value="nmgssessionid" />
+        <property name="path" value="/nmgs" />
+        <property name="httpOnly" value="true"/>
+    </bean>
+	
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+	<bean id="shiroLoginService" class="com.cmos.chinamobile.media.remote.shiroLoginService"/>
+	
+	<bean id="ssoAuthenticatingFilter" class="com.cmos.security.shiro.filter.SSOAuthenticatingFilter">
+		<property name="shiroLoginService" ref="shiroLoginService" />
+		<property name="sessionRepository" ref="redisSessionRepository" />
+	</bean>
+	
+	<bean id="permFilter" class="com.cmos.security.shiro.filter.SecurityPermissionsAuthorizationFilter">
+	</bean>
+	
+	<!-- Shiro Filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="filters">
+		    <map>
+		        <entry key="sso" value-ref="ssoAuthenticatingFilter"/>
+		        <entry key="perms" value-ref="permFilter"/>
+		    </map>
+		</property>
+		<property name="filterChainDefinitions">
+			<value>
+				/front/web/** = anon
+				/front/admin/** = sso 
+				/views/** = sso
+				/** = anon
+			</value>
+		</property>
+	</bean>
+	
+</beans>

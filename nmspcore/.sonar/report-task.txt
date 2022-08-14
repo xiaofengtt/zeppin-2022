@@ -1,0 +1,5 @@
+projectKey=nmspcore
+serverUrl=http://localhost:9000
+dashboardUrl=http://localhost:9000/dashboard/index/nmspcore
+ceTaskId=AVjclSBgb4vJe9rl0mS7
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AVjclSBgb4vJe9rl0mS7

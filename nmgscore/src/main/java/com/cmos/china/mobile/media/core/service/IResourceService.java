@@ -9,15 +9,15 @@ public interface IResourceService {
 	 * 添加
 	 */	
 	public void add(InputObject inputObject, OutputObject outputObject) throws Exception;
-	
-	/**
-	 * 断点续传
-	 */	
-	public void add1(InputObject inputObject, OutputObject outputObject) throws Exception;
 
 	/**
 	 * 添加360压缩文件
 	 */	
 	public void displayAdd(InputObject inputObject, OutputObject outputObject) throws Exception;
+	
+	/**
+	 * 上传apk
+	 */	
+	public void updateApk(InputObject inputObject, OutputObject outputObject) throws Exception;
 
 }

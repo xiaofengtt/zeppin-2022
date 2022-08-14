@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.OtherInformation">
+
+	<!-- 根据参数取列表 -->
+	<select id="information_getListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.bean.OtherInformation">
+		select * from other_information where 1=1 
+		<if test="name != null and name != ''">
+			and name = #{name} 
+		</if>
+		<if test="status != null and status != ''">
+			and status = #{status} 
+		</if>
+	</select> 	
+
+	<!-- 加载数据 -->  
+	<select id="information_get"  resultType="com.cmos.china.mobile.media.core.bean.OtherInformation">  
+		select * from other_information where id=#{id}  
+	</select> 
+	 
+	<!-- 增加数据 -->  
+	<insert id="information_add" parameterType="com.cmos.china.mobile.media.core.bean.OtherInformation" useGeneratedKeys="true" keyProperty="id">  
+		insert into other_information(id,name,password,status) 
+		values(#{id},#{name},#{password},#{status})  
+	</insert>  
+	
+	<!-- 修改数据 -->  
+	<update id="information_update" parameterType="com.cmos.china.mobile.media.core.bean.OtherInformation">  
+		update other_information 
+		set name=#{name},password=#{password},status=#{status} 
+		where id=#{id}  
+	</update>
+	  
+	<!-- 删除数据 -->  
+	<update id="information_delete" parameterType="com.cmos.china.mobile.media.core.bean.OtherInformation">  
+		update other_information set status='deleted' where id=#{id}
+	</update>  
+</mapper>  

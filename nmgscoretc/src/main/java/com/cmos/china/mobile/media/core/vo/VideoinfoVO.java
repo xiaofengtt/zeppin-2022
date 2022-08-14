@@ -25,6 +25,7 @@ public class VideoinfoVO {
 	private String originalVideoPath;
 	private String originalVideoUrl;
 	private String originalVideoDpi;
+	private int tcId;
 	
 	private String getStatusCN(String status){
 		if(status.equals("unchecked")){
@@ -197,5 +198,13 @@ public class VideoinfoVO {
 
 	public void setOriginalVideoDpi(String originalVideoDpi) {
 		this.originalVideoDpi = originalVideoDpi;
+	}
+
+	public int getTcId() {
+		return tcId;
+	}
+
+	public void setTcId(int tcId) {
+		this.tcId = tcId;
 	}
 }

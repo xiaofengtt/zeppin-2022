@@ -1,5 +1,6 @@
 package com.cmos.china.mobile.media.core.util;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -20,8 +21,9 @@ public class Utlity{
 	public static final String XML_DATA = "xml";
 	public static final String TEXT_DATA = "text";
 //	public static final String basePath = "/home/zyzxfs/server";
-	public static final String basePath = "E:/apache-tomcat-8.0.30/webapps/nmgs";
-	
+//	public static final String basePath = "/home/jhpt/data";
+	public static final String basePath = "/Users/zeppin/Desktop";
+	 
 	/**
 	 * 
 	 * @param value
@@ -304,4 +306,17 @@ public class Utlity{
 	    }  
 	    return true;  
 	}  
+	
+	public static boolean deleteDir(File dir) {
+        if (dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i=0; i<children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+        return dir.delete();
+    }
 }

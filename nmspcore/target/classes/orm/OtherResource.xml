@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.OtherResource">
+
+	<!-- 根据参数取列表 -->
+	<select id="resource_getListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.bean.OtherResource">
+		select * from other_resource where 1=1 
+		<if test="name != null and name != ''">
+			and name = #{name} 
+		</if>
+		<if test="status != null and status != ''">
+			and status = #{status} 
+		</if>
+	</select> 	
+
+	<!-- 加载数据 -->  
+	<select id="resource_get"  resultType="com.cmos.china.mobile.media.core.bean.OtherResource">  
+		select * from other_resource where id=#{id}  
+	</select> 
+	 
+	<!-- 增加数据 -->  
+	<insert id="resource_add" parameterType="com.cmos.china.mobile.media.core.bean.OtherResource" useGeneratedKeys="true" keyProperty="id">  
+		insert into other_resource(id,type,name,url,size,dpi,status) 
+		values(#{id},#{type},#{name},#{url},#{size},#{dpi},#{status})  
+	</insert>  
+	
+	<!-- 修改数据 -->  
+	<update id="resource_update" parameterType="com.cmos.china.mobile.media.core.bean.OtherResource">  
+		update other_resource 
+		set type=#{type},name=#{name},url=#{url},size=#{size},dpi=#{dpi},status=#{status} 
+		where id=#{id}  
+	</update>
+	  
+	<!-- 删除数据 -->  
+	<update id="resource_delete" parameterType="com.cmos.china.mobile.media.core.bean.OtherResource">  
+		update other_resource set status='deleted' where id=#{id}
+	</update>  
+</mapper>  

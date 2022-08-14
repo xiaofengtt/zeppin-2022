@@ -166,6 +166,15 @@
 			<artifactId>cmos-esbclient</artifactId>
 			<version>0.6.6-SNAPSHOT</version>
 		</dependency>
+		
+		<dependency>
+            <groupId>cmos-ffmpeg-server</groupId>
+            <artifactId>cmos-ffmpeg-server</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/cmos-ffmpeg-server-0.0.1.jar</systemPath>
+        </dependency>
+        
 	</dependencies>
 	
 	<build>
@@ -235,18 +244,11 @@
 	        <id>dev</id>  
 	        <properties>  
 	            <profiles.active>dev</profiles.active>  
-	        </properties>    
-	        <activation>  
-	            <activeByDefault>true</activeByDefault>  
-	        </activation> 
-	    </profile>  
-	    <profile>  
-	        <!-- 集成测试 -->  
-	        <id>test</id>  
-	        <properties>  
-	            <profiles.active>test</profiles.active>  
 	        </properties>  
-	    </profile>
+	         <activation>  
+	            <activeByDefault>true</activeByDefault>  
+	        </activation>   
+	    </profile>  
 	  </profiles>  
 	
 </project>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit"> 
+		<title></title>
+		<link rel="stylesheet" href="../assets/css/Prostyle.css" />
+		<link rel="stylesheet" href="../assets/css/show.css" />
+		
+		<script src="../assets/plugins/jquery.js" type="text/javascript"></script>
+		<script src="../assets/plugins/url.min.js"></script>
+		
+		<style type="text/css">
+			*{margin:0;padding:0;list-style-type:none;}
+			a,img{border:0;}
+			body{font:12px/180% Arial, Helvetica, sans-serif, "微软雅黑";}
+			/* threesixty */
+			#threesixty{position:absolute;overflow:hidden;top:0;left:0;width:100%;height:100%;}
+			#threesixty ol{display: none;}
+			#threesixty ol li{position:absolute;top:0;width:100%;height:100%;text-align:center;}
+			#threesixty img{width:auto;height:100%;}
+			.current-image{visibility:visible;width:100%;}
+			.previous-image{visibility:hidden;width:0;}
+			#threesixty .loading{position:absolute;left:50%;top:50%;width:90px;height:90px;margin-left:-45px;margin-top:-50px;display:none;}
+			#threesixty .loading span{position:absolute;top:50%;width:100%;color:#333;font-size:12px;font-family:Arial, Verdana, sans;text-align:center;line-height:1em;margin-top:-0.5em;}
+			#threesixty em.loading{width:55px;padding:40px 0 0 0;display:block;position:absolute;top:50%;left:50%;margin:-27px 0 0 -27px;background:url(../assets/img/loading-ico.gif) no-repeat 10px 0;z-index:999999;text-align:center;font-size:12px;color:#219edf;font-family:Arial;font-style:normal;}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+		<div style="text-align: center;"><p class="leftAndright"><span style="display:inline-block;height: 21px;float: left;">鼠标左键拖动查看机身</span></p><div style="clear: both;"></div></div>
+	<div style="position: relative;height: 500px;">
+		<div id="threesixty" image_count='16' path_pattern='picture/white#index#.jpg' end_frame='74' scale='1' fix_width='700' fix_height='700' max_width='700' max_height='700'>
+		    <em class="loading"><p>0%</p></em>
+		    <ol></ol>
+		</div>
+	</div>
+	
+	<div class="shoppers">
+		<div class="shoppersLeft">
+			<h1></h1>
+		</div>
+		<p class="money">
+			&yen;<span class="number"></span>
+			<img src="../assets/img/noMoney.png" alt="享受0元购机" />
+			
+		</p>
+		<a class="goBuy" href="javascript:" target="_blank">去购买</a>
+		<div class="clear"></div>
+	</div>	
+</div>
+		<script type="text/javascript" src="../assets/scripts/show.js" ></script>
+	</body>
+</html>

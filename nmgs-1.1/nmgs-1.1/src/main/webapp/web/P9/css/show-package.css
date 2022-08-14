@@ -1,0 +1,34 @@
+@charset "utf-8";
+*{margin: 0 auto;padding: 0; letter-spacing: 0.0rem;-webkit-tap-highlight-color: transparent;-webkit-appearance: none; }
+*, *::before, *::after {box-sizing: border-box;}
+html, body, form, p, div, h1, h2, h3, h4, h5, h6{-webkit-text-size-adjust:none;-moz-text-size-adjust:none;-o-text-size-adjust:none;}
+body{margin:0;padding:0; background-color:#EEEEEE;width:100%;font-size:18px; font-family:"微软雅黑";}
+ul,li,h1,h2,h3,h4,h5,h6,p{padding:0;margin:0; list-style:none;}
+a{color:#fff; text-decoration:none;outline:none;}
+.clear{clear:both;height:0px;}
+.fl{float:left;}
+.fr{float:right;}
+a img,img{border:0;}
+i{font-style: normal;}
+.wrap{max-width:750px;min-width:320px; margin:0 auto;}
+
+#header{ background-color: #0084c9;}
+#header .header_inner{position: relative;}
+#header .header_inner p{font-size: 0.60rem;color: #ffffff;text-align: center;line-height: 0.6rem;padding: 0.45rem 0;}
+#header .header_inner a{position: absolute;padding: 0.40rem;display: block;left: 0;top: 0.03rem;}
+#header .header_inner a img{display: block;width: 0.34rem;height: 0.63rem;}
+
+.package-img{border-bottom:2px solid #f1f1f1;border-top:2px solid #f1f1f1;background: #ffffff;font-size: 0;}
+.package-img img{width: 100%;}
+.content{padding: 0.8rem 0.3rem 0.4rem 0.3rem;background: #ffffff;}
+.content .content-left{width: 4.5rem;float: left;padding-bottom: 0.2rem;}
+.content .content-left p.title{color: #050505;font-size: 0.28rem;line-height: 0.42rem;font-weight: bold;}
+.content .content-left p.price{color: #5d5c5a;font-size: 0.24rem;line-height: 0.42rem;padding-top: 0.23rem;}
+.content .content-left p.price span{font-size: 0.18rem;}
+.content .content-left p.price span span.sellingPrice{color: #f68934;font-size: 0.3rem;line-height: 0.42rem;}
+.content .content-right{width: 1.9rem;float: right;}
+.content .content-right a.goBuy{background-color: #f19149; border-radius: 0.08rem;display: block;width: 100%;color:#FFFFFF;font-size: 0.3rem;text-align: center;line-height: 0.7rem;height: 0.7rem;margin-top: 0.3rem;}
+.content p.titlebig{color: #5d5c5a;font-size: 0.24rem;line-height: 0.42rem;}
+.content .introduce{padding: 0.05rem 0.26rem;}
+.content .introduce p{color: #666666;line-height: 0.42rem;font-size: 0.24rem;}
+

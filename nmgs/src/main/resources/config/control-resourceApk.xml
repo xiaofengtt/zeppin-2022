@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE control SYSTEM "common-1.7-SNAPSHOT.dtd"> -->
+
+<control>
+	<action path="/front/admin/resourceApk!execute">
+		<input uid="y0001" service="resourceService" method="updateApk" desc="上传文件（压缩文件）">
+			<parameter key="apk" toKey="apk" scope="file" desc="apk展示文件"/>
+		</input>
+	</action>
+</control>

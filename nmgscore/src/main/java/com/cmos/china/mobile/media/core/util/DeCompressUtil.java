@@ -42,8 +42,7 @@ public class DeCompressUtil {
 						||"bmp".equals(type)||"tiff".equals(type)||"gif".equals(type)
 						||"psd".equals(type)){
 				}else{
-					
-					return null;
+					continue;
 				}
                
                InputStream in = zip.getInputStream(entry);
@@ -112,9 +111,8 @@ public class DeCompressUtil {
                    if("jpg".equals(type)||"jpeg".equals(type)||"png".equals(type)
    						||"bmp".equals(type)||"tiff".equals(type)||"gif".equals(type)
    						||"psd".equals(type)){
-   				}else{
-    					
-    					return null;
+   					}else{
+    					continue;
     				}
                    //2创建文件夹   
                    File dir = new File(destDirName);   

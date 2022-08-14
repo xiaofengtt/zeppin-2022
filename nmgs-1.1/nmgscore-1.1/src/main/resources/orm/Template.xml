@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.Template">
+	
+	<!-- 根据参数取count -->
+	<select id="template_getCount" parameterType="java.util.Map" resultType="int">
+		select count(*) from template
+	</select> 
+	
+	<!-- 根据参数取列表 -->
+	<select id="template_getList" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.bean.Template">
+		select * from template
+	</select>  
+	
+	<!-- 加载数据 -->  
+	<select id="template_get"  resultType="com.cmos.china.mobile.media.core.bean.Template">  
+		select * from template where id=#{id}  
+	</select> 
+</mapper>  

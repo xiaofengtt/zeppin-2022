@@ -19,7 +19,9 @@ public class Utlity {
 	public static final String JSON_DATA = "json";
 	public static final String XML_DATA = "xml";
 	public static final String TEXT_DATA = "text";
-
+	public static final String basePath = "/Users/zeppin/Desktop";
+//	public static final String basePath = "/home/zyzxfs/server";
+//	public static final String basePath = "/home/jhpt/data";
 
 	/**
 	 * 

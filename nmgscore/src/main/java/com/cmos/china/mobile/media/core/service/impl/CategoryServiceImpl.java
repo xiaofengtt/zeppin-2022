@@ -13,6 +13,7 @@ import java.util.UUID;
 import com.cmos.china.mobile.media.core.bean.Category;
 import com.cmos.china.mobile.media.core.bean.Component;
 import com.cmos.china.mobile.media.core.bean.Entity.GerneralStatusType;
+import com.cmos.china.mobile.media.core.bean.Province;
 import com.cmos.china.mobile.media.core.service.ICategoryService;
 import com.cmos.china.mobile.media.core.util.Utlity;
 import com.cmos.china.mobile.media.core.vo.CategoryVO;
@@ -28,6 +29,7 @@ public class CategoryServiceImpl extends BaseServiceImpl implements ICategorySer
 	public void list(InputObject inputObject, OutputObject outputObject) throws Exception {
 		String id = inputObject.getValue("id");
 		String name = inputObject.getValue("name");
+		String province = inputObject.getValue("province");
 		String component = inputObject.getValue("component");
 		String level = inputObject.getValue("level");
 		String parent = inputObject.getValue("parent");
@@ -36,6 +38,11 @@ public class CategoryServiceImpl extends BaseServiceImpl implements ICategorySer
 		Integer pagenum = Utlity.getIntValue(inputObject.getValue("pagenum"), 1);
 		Integer pagesize = Utlity.getIntValue(inputObject.getValue("pagesize"), 10);
 		String sort = inputObject.getValue("sort");
+
+		if(province==null||province.equals("")){
+			throw new Exception("地区不能为空");
+		}
+		
 		if(!Utlity.checkOrderBy(sort)){
 			throw new Exception("参数异常");
 		}
@@ -51,6 +58,7 @@ public class CategoryServiceImpl extends BaseServiceImpl implements ICategorySer
 		Map<String, String> paramMap = new HashMap<String, String>();
 		paramMap.put("id", id);
 		paramMap.put("name", name);
+		paramMap.put("province", province);
 		paramMap.put("component", component);
 		paramMap.put("level", level);
 		paramMap.put("parent", parent);
@@ -100,12 +108,17 @@ public class CategoryServiceImpl extends BaseServiceImpl implements ICategorySer
 	public void add(InputObject inputObject, OutputObject outputObject) throws Exception {
 		String name = inputObject.getValue("name");
 		String parent = inputObject.getValue("parent");
+		String province = inputObject.getValue("province");
 		String component = inputObject.getValue("component");
 		String creator = inputObject.getValue("creator");
 		String status = inputObject.getValue("status");
 		
+		
 		if(name==null||name.equals("")){
 			throw new Exception("名称不能为空");
+		}
+		if(province==null||province.equals("")){
+			throw new Exception("地区不能为空");
 		}
 		if(component==null||component.equals("")){
 			throw new Exception("组件不能为空");
@@ -114,9 +127,28 @@ public class CategoryServiceImpl extends BaseServiceImpl implements ICategorySer
 			throw new Exception("状态值不正确");
 		}
 		
+		if(parent != null && !parent.equals("")){
+			if(status.equals("normal")){
+			Map<String, String> param = new HashMap<String, String>();
+			param.put("id", parent);
+			param.put("status", "stopped");
+			Integer count = this.getBaseDao().getTotalCount("category_getCountByParams", param);
+			if(count > 0){
+				throw new Exception("父级栏目停用，子级不允许启用");
+				}
+			}
+		}
+
 		Category category = new Category();
 		String id = UUID.randomUUID().toString();
 		category.setId(id);
+		
+		Province prov = this.getBaseDao().queryForObject("province_get", province, Province.class);
+		if(prov!=null){
+			category.setProvince(province);
+		}else{
+			throw new Exception("地区不存在");
+		}
 		
 		Component comp = this.getBaseDao().queryForObject("component_get", component, Component.class);
 		if(comp!=null){
@@ -168,7 +200,6 @@ public class CategoryServiceImpl extends BaseServiceImpl implements ICategorySer
 	public void edit(InputObject inputObject, OutputObject outputObject) throws Exception {
 		String id = inputObject.getValue("id");
 		String name = inputObject.getValue("name");
-		String component = inputObject.getValue("component");
 		String status = inputObject.getValue("status");
 		
 		if(id==null||id.equals("")){
@@ -177,28 +208,68 @@ public class CategoryServiceImpl extends BaseServiceImpl implements ICategorySer
 		if(name==null||name.equals("")){
 			throw new Exception("名称不能为空");
 		}
-		if(component==null||component.equals("")){
-			throw new Exception("组件不能为空");
-		}
 		if(!GerneralStatusType.NORMAL.equals(status) && !GerneralStatusType.STOPPED.equals(status)){
 			throw new Exception("状态值不正确");
 		}
-		
 		Category category = this.getBaseDao().queryForObject("category_get", id, Category.class);
 		if(category == null){
 			throw new Exception("栏目不存在");
-		}else{
-			Component comp = this.getBaseDao().queryForObject("component_get", component, Component.class);
-			if(comp!=null){
-				category.setComponent(component);
-			}else{
-				throw new Exception("组件不存在");
-			}
-			category.setName(name);
-			category.setComponent(component);
-			category.setStatus(status);
-			this.getBaseDao().update("category_update", category);
 		}
+		
+		if(GerneralStatusType.STOPPED.equals(status)){
+			if(category.getParent() != null && !category.getParent().equals("")){
+				category.setName(name);
+				category.setStatus(status);
+				this.getBaseDao().update("category_update", category);
+			}else{
+				Map<String, String> param = new HashMap<String, String>();
+				param.put("level", "2");
+				param.put("status", "normal");
+				param.put("parent", id);
+				Integer count = this.getBaseDao().getTotalCount("category_getCountByParams", param);
+				if(count > 0){
+				throw new Exception("请先停用其子栏目");
+				}
+				category.setName(name);
+				category.setStatus(status);
+				this.getBaseDao().update("category_update", category);
+			}
+		}else{
+			if(category.getParent() == null || category.getParent().equals("")){
+				category.setName(name);
+				category.setStatus(status);
+				this.getBaseDao().update("category_update", category);
+			}else{
+				Map<String, String> param = new HashMap<String, String>();
+				param.put("id", category.getParent());
+				param.put("status", "stopped");
+				Integer count = this.getBaseDao().getTotalCount("category_getCountByParams", param);
+				if(count > 0){
+				throw new Exception("请先启用一级栏目");
+				}
+				category.setName(name);
+				category.setStatus(status);
+				this.getBaseDao().update("category_update", category);
+			}
+			
+		}
+
+		
+//		
+		
+		
+		
+		
+		
+		
+//		Category category = this.getBaseDao().queryForObject("category_get", id, Category.class);
+//		if(category == null){
+//			throw new Exception("栏目不存在");
+//		}else{
+//			category.setName(name);
+//			category.setStatus(status);
+//			this.getBaseDao().update("category_update", category);
+//		}
 	}
 
 	/**
@@ -216,7 +287,22 @@ public class CategoryServiceImpl extends BaseServiceImpl implements ICategorySer
 		if(category==null){
 			throw new Exception("栏目不存在");
 		}else{
-			this.getBaseDao().update("category_delete", category);
+			Map<String, String> paramMap = new HashMap<String, String>();
+			paramMap.put("parent", id);
+			Integer count = this.getBaseDao().getTotalCount("category_getCountByParams", paramMap);
+			if(count==0){
+				Map<String, String> param = new HashMap<String, String>();
+				param.put("category", category.getId());
+				param.put("statusNot", "deleted");
+				Integer countVideo = this.getBaseDao().getTotalCount("videoPublish_getCountByParams", param);
+				if(!(countVideo>0)){
+				this.getBaseDao().update("category_delete", category.getScode());
+				}else{
+					throw new Exception("请先删除该栏目所有视频");
+				}	
+			}else{
+				throw new Exception("请先删除所有子栏目");
+			}
 		}
 	}
 

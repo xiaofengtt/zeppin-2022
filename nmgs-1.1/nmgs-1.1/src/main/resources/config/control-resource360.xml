@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE control SYSTEM "common-1.7-SNAPSHOT.dtd"> -->
+
+<control>
+	<action path="/front/admin/resource360!execute">
+		<input uid="z0001" service="resourceService" method="displayAdd" desc="上传文件（压缩文件）">
+			<parameter key="display" toKey="display" scope="file" desc="360展示文件"/>
+		</input>
+	</action>
+</control>

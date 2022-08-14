@@ -192,7 +192,7 @@ public class AntZip {
 					readfile.close();
 				} catch (IOException ex) {
 					logger.error("AntZipError", ex);
-					throw new IOException("解压失败：" + ex.toString());
+//					throw new IOException("解压失败：" + ex.toString());
 				}
 			}
 		}

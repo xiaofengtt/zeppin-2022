@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+    
+<mapper namespace="com.cmos.china.mobile.media.core.bean.Resource">
+
+<!-- 根据参数取列表 -->
+	<select id="resource_getListByParams" parameterType="java.util.Map" resultType="com.cmos.china.mobile.media.core.bean.Resource">
+		select * from resource where 1=1 
+		<if test="filename != null and filename != ''">
+			and filename = #{filename} 
+		</if>
+	</select> 	
+
+	<!-- 加载数据 -->  
+	<select id="resource_get"  resultType="com.cmos.china.mobile.media.core.bean.Resource">  
+		select * from resource where id=#{id}  
+	</select> 
+	 
+	<!-- 增加数据 -->  
+	<insert id="resource_add" parameterType="com.cmos.china.mobile.media.core.bean.Resource" useGeneratedKeys="true" keyProperty="id">  
+		insert into resource(id,type,path,filename,url,filetype,size,dpi,status) 
+		values(#{id},#{type},#{path},#{filename},#{url},#{filetype},#{size},#{dpi},#{status})  
+	</insert>  
+	
+	<!-- 修改数据 -->  
+	<update id="resource_update" parameterType="com.cmos.china.mobile.media.core.bean.Resource">  
+		update resource 
+		set type=#{type},path=#{path},filename=#{filename},url=#{url},filetype=#{filetype},size=#{size},dpi=#{dpi},status=#{status} 
+		where id=#{id}  
+	</update>
+	  
+	<!-- 删除数据 -->  
+	<update id="resource_delete" parameterType="com.cmos.china.mobile.media.core.bean.Resource">  
+		update resource set status='deleted' where id=#{id}
+	</update>  
+</mapper>  

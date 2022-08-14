@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- log4j2每隔60秒，自动监控该配置文件是否有变化，如果变化，则自动根据文件内容重新配置 -->
+<configuration status="info" monitorInterval="60">
+
+	<appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d %-5level [%t] %logger{36} - %m%n"/>
+		</Console>
+		<!--控制台只输出level及以上级别的信息(onMatch)，其他的直接拒绝(onMismatch) 	     -->
+	    <RollingFile name="RollingFile" fileName="../logs/busi-nmgs.log" filePattern="../logs/busi-nmgs-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="%d %-5level [%t] %logger{36} - %m%n"/>
+            <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+        </RollingFile>
+<!--         <Socket name="socket_out" host="192.168.100.5" port="38800">   -->
+<!--         	输出格式  序列布局   -->
+<!--       		<SerializedLayout/>  -->
+<!--     	</Socket> -->
+	</appenders>
+	<loggers>
+		<root level="info" additivity="false">
+			<appender-ref ref="Console" />
+			<appender-ref ref="RollingFile" />
+<!-- 			<appender-ref ref="socket_out" /> -->
+		</root>
+	</loggers>
+</configuration>

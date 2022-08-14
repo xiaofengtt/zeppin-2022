@@ -106,6 +106,14 @@
 			<version>2.0.8</version> 
 		</dependency> 
 		
+		<dependency>
+            <groupId>cmos-ffmpeg-server</groupId>
+            <artifactId>cmos-ffmpeg-server</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/cmos-ffmpeg-server-0.0.1.jar</systemPath>
+        </dependency>
+		
 	</dependencies>
 	
 	<build>
@@ -168,11 +176,20 @@
 	        <id>dev</id>  
 	        <properties>  
 	            <profiles.active>dev</profiles.active>  
-	        </properties>   
-	        <activation>  
+	        </properties>  
+	         <activation>  
 	            <activeByDefault>true</activeByDefault>  
-	        </activation> 
-	    </profile>  
+	        </activation>  
+	    </profile> 
+	    
+	     <profile>  
+	        <!-- 生产 -->  
+	        <id>prd</id>  
+	        <properties>  
+	            <profiles.active>prd</profiles.active>  
+	        </properties>   
+	    </profile> 
+	     
 	    <profile>  
 	        <!-- 集成测试 -->  
 	        <id>test</id>  

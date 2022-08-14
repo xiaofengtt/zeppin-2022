@@ -38,7 +38,6 @@ public class VideoCommodityPointServiceImpl extends BaseServiceImpl implements I
 		paramMap.put("sort", sort);
 		
 		List<VideoPointVO> list = this.getBaseDao().queryForList("videoCommodityPoint_getListByParams", paramMap, VideoPointVO.class);
-		System.out.println(list.get(0).getShowtime());
 		outputObject.convertBeans2List(list);
 	}
 
