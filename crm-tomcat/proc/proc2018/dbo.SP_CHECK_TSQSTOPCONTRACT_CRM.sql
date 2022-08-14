@@ -1,0 +1,81 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_CHECK_TSQSTOPCONTRACT_CRM 	@IN_SERIAL_NO       INT,              --序号
+												@IN_INPUT_MAN       INT               --录入操作员
+WITH ENCRYPTION
+AS
+    DECLARE @V_PRODUCT_ID INT,@V_PRODUCT_CODE NVARCHAR(6),@V_PRODUCT_NAME NVARCHAR(120),@V_CONTRACT_BH VARCHAR(16),@V_CONTRACT_SUB_BH NVARCHAR(50),
+            @V_REBATE_FLAG INT,@V_CHECK_FLAG INT,@V_HT_SERIAL_NO INT,@V_SQ_MONEY DECIMAL(16,2)
+            
+    DECLARE @V_RET_CODE INT,@IBUSI_FLAG INT,@SBUSI_NAME VARCHAR(40),@SSUMMARY VARCHAR(200)
+    SET @V_RET_CODE = -20403000
+    SET @IBUSI_FLAG  = 20403
+
+    BEGIN TRY
+    BEGIN TRANSACTION
+    
+        IF NOT EXISTS(SELECT 1 FROM INTRUST..TSQSTOPCONTRACT WHERE SERIAL_NO = @IN_SERIAL_NO)
+            RAISERROR('退款申请不存在，请检查！',16,1)
+            
+        SELECT @V_PRODUCT_ID = A.PRODUCT_ID,@V_PRODUCT_CODE = B.PRODUCT_CODE,@V_PRODUCT_NAME = B.PRODUCT_NAME,
+               @V_REBATE_FLAG = A.REBATE_FLAG,@V_CHECK_FLAG = A.CHECK_FLAG,@V_HT_SERIAL_NO = A.HT_SERIAL_NO,@V_SQ_MONEY = A.SQ_MONEY
+            FROM INTRUST..TSQSTOPCONTRACT A,INTRUST..TPRODUCT B
+            WHERE A.SERIAL_NO = @IN_SERIAL_NO AND A.PRODUCT_ID = B.PRODUCT_ID
+        
+        IF @V_CHECK_FLAG <> 1 
+            RAISERROR('该退款申请已审核，请检查！',16,2)
+            
+        IF @V_REBATE_FLAG = 1
+            SELECT @V_CONTRACT_BH = CONTRACT_BH,@V_CONTRACT_SUB_BH = CONTRACT_SUB_BH
+                FROM INTRUST..TCONTRACT
+                WHERE SERIAL_NO = @V_HT_SERIAL_NO
+        ELSE
+            SELECT @V_CONTRACT_BH = CONTRACT_BH,@V_CONTRACT_SUB_BH = CONTRACT_SUB_BH
+                FROM INTRUST..TCONTRACTSG
+                WHERE SERIAL_NO = @V_HT_SERIAL_NO
+
+        UPDATE INTRUST..TSQSTOPCONTRACT
+            SET CHECK_FLAG = 2,
+                CHECK_MAN = @IN_INPUT_MAN,
+                CHECK_TIME = GETDATE()
+            WHERE SERIAL_NO = @IN_SERIAL_NO
+
+        --日志记录
+        SET @SBUSI_NAME = CASE @V_REBATE_FLAG WHEN 1 THEN '发行期退款审核' ELSE '申购期退款审核' END
+        SET @SSUMMARY = @SBUSI_NAME + '，产品编号: ' + @V_PRODUCT_CODE 
+                                    + '，产品名称: ' + @V_PRODUCT_NAME
+                                    + '，合同序号: ' + @V_CONTRACT_BH 
+                                    + '，合同编号: ' + @V_CONTRACT_SUB_BH
+                                    + '，对应合同ID：' + CONVERT(NVARCHAR,@V_HT_SERIAL_NO)
+                                    + '，申请金额：' + CONVERT(NVARCHAR,@V_SQ_MONEY)
+        INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+            VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+            
+    COMMIT TRANSACTION
+    END TRY
+
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0 BEGIN
+            ROLLBACK TRANSACTION
+        END
+        
+        DECLARE @V_ERROR_STR NVARCHAR(1000),@V_ERROR_NUMBER INT,@V_ERROR_SEVERITY INT,@V_ERROR_STATE INT,
+                @V_ERROR_PROCEDURE sysname,@V_ERROR_LINE INT,@V_ERROR_MESSAGE NVARCHAR(4000)
+
+        SELECT @V_ERROR_STR = N'Message:%s,<br><font color = ''white''>Error:%d,Level:%d,State:%d,Procedure:%s,Line:%d </font>',
+               @V_ERROR_NUMBER = ERROR_NUMBER(),
+               @V_ERROR_SEVERITY = ERROR_SEVERITY(),
+               @V_ERROR_STATE = ERROR_STATE(),
+               @V_ERROR_PROCEDURE = ERROR_PROCEDURE(),
+               @V_ERROR_LINE = ERROR_LINE(),
+               @V_ERROR_MESSAGE = ERROR_MESSAGE()
+
+        RAISERROR(@V_ERROR_STR,@V_ERROR_SEVERITY,1,@V_ERROR_MESSAGE,@V_ERROR_NUMBER,@V_ERROR_SEVERITY,@V_ERROR_STATE,
+                  @V_ERROR_PROCEDURE,@V_ERROR_LINE)
+        
+        RETURN -100
+    END CATCH
+    RETURN 100
+GO

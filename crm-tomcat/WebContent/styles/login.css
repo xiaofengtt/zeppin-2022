@@ -1,0 +1,133 @@
+* {
+	font-size: 100%;
+	font-family: Tahoma, Simsun, Helvetica, sans-serif;
+	letter-spacing: .03em;
+	overflow: hidden;
+}
+
+body {
+	font-size: 12px;
+	color: #333333;
+	background-color: #ffffff;
+	margin: 0;
+}
+
+form {
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: #08D;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #08D;
+}
+
+img {
+	border: 0;
+}
+
+h1 {
+	font-size: 133%;
+	font-weight: bold;
+	margin: 19px 0 5px 0;
+}
+
+p {
+	margin: 5px 0 4px 0;
+}
+
+.cssWLGradientIMG {
+	background-image: url(images/top-bg.jpg);
+	background-repeat: report-x;
+	height: 72px;
+}
+
+td#footerTD {
+	width: 100%;
+	font-size: 97%;
+	border-top: 1px solid #CDDDF4;
+}
+
+.cssFooterPadding {
+	padding: 4px 8px;
+}
+
+.cssFooterLeft {
+	float: left;
+}
+
+.cssFooterRight {
+	float: right;
+}
+
+.cssFooterLeft a {
+	color: #666666;
+}
+
+.cssFooterRightA {
+	color: #666666;
+	padding: 0 8px;
+	border-right: 1px solid #666666;
+}
+
+.cssLastFooterRightA {
+	color: #666666;
+	padding-left: 8px;
+}
+
+td#leftTD {
+	border-right: 1px solid #DDD;
+	text-align: right;
+	padding: 0 36px;
+}
+
+.cssLogo {
+	margin: 0 0 19px;
+}
+
+td#rightTD {
+	padding: 0 36px;
+	width: 360px;
+}
+
+.cssTextInput {
+	border: 1px solid #666666;
+	font-size: 18px;
+	width: 180px;
+	margin-left: 10px;
+	vertical-align: middle;
+}
+
+.cssTextImg {
+	border: 1px solid #666666;
+	font-size: 18px;
+	width: 94px;
+	margin-left: 7px;
+	vertical-align: middle;
+}
+
+.cssTextImg2 {
+	margin-top: 0px;
+	vertical-align: middle;
+}
+
+
+.cssLoginBtn_L1, .cssLoginBtn_L2 {
+	border: 0;
+	background-image: url(images/login-btn.jpg);
+	height: 23px;
+	line-height: 23px;
+	width: 82px;
+}
+
+.cssLoginBtn_L1 {
+	background-position: 0 0;
+}
+
+.cssLoginBtn_L2 {
+	background-position: 0 23px;
+}

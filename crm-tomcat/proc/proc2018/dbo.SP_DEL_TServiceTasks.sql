@@ -1,0 +1,46 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_DEL_TServiceTasks   @IN_SERIAL_NO      INT,             --任务ID
+                                        @IN_INPUT_MAN      INTEGER          --操作员
+WITH ENCRYPTION
+AS
+    DECLARE @V_RET_CODE INT, @IBUSI_FLAG INT,@SBUSI_NAME NVARCHAR(40), @SSUMMARY NVARCHAR(200)
+    SELECT @V_RET_CODE = -50301000, @IBUSI_FLAG = 50301
+    SELECT @SBUSI_NAME = N'删除创建服务任务', @SSUMMARY = N'删除创建服务任务'
+    --仅未处理、人工录入的记录可以删除
+    IF NOT EXISTS(SELECT 1 FROM TServiceTasks WHERE Serial_no = @IN_SERIAL_NO AND Status = 1 AND Originate = 2)
+        RETURN @V_RET_CODE - 2
+
+    BEGIN TRANSACTION
+    ----先删除任务明细记录
+    DELETE FROM TServiceTaskDetail WHERE TaskSerialNO = @IN_SERIAL_NO
+    IF @@ERROR <> 0
+    BEGIN
+        ROLLBACK TRANSACTION
+        RETURN -100
+    END
+    --再删除任务记录
+    DELETE FROM  TServiceTasks
+    WHERE Serial_no = @IN_SERIAL_NO
+    IF @@ERROR <> 0
+    BEGIN
+        ROLLBACK TRANSACTION
+        RETURN -100
+    END
+
+    SET @SSUMMARY = N'删除创建服务任务，操作员：' + CAST(@IN_INPUT_MAN AS NVARCHAR(10))
+    INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+        VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+    IF @@ERROR <> 0
+    BEGIN
+        ROLLBACK TRANSACTION
+        RETURN -100
+    END
+
+    COMMIT TRANSACTION
+
+    RETURN 100
+
+GO

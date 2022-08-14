@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//JP" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+	<META http-equiv="Content-Type" content="text/html; charset=GBK">
+	<title>Yahoo! Calendar Control - 2-Up Chinese Implementation</title>
+	
+	<script type="text/javascript" src="/includes/yui/build/yahoo/yahoo.js"></script>
+	<script type="text/javascript" src="/includes/yui/build/event/event.js" ></script>
+	<script type="text/javascript" src="/includes/yui/build/dom/dom.js" ></script>
+
+	<script type="text/javascript" src="/includes/yui/build/calendar/calendar.js"></script>
+	
+	<link type="text/css" rel="stylesheet" href="/includes/yui/build/calendar/assets/calendar.css">	
+	<link rel="stylesheet" type="text/css" href="/includes/yui/docs/assets/dpSyntaxHighlighter.css" />
+	
+	<script type="text/javascript" src="js/Calendar2up_CN.js"></script>
+	<link rel="stylesheet" href="css/Calendar_CN.css" type="text/css">
+	
+	<script language="javascript">
+
+		YAHOO.namespace("example.calendar");
+
+		function init() {
+			this.today = new Date();
+
+			var thisMonth = this.today.getMonth();
+			var thisDay = this.today.getDate();
+			var thisYear = this.today.getFullYear();
+			this.container1 = document.getElementById('container1');
+
+			this.link1 = document.getElementById('dateLink1');
+
+			this.selMonth1 = document.getElementById('selMonth1');
+			this.selDay1 = document.getElementById('selDay1');
+			this.selYear1 = document.getElementById('selYear1');
+			
+			this.selMonth1.selectedIndex = thisMonth;
+			this.selDay1.selectedIndex = thisDay-1;
+			var options_length = this.selYear1.options.length;
+//			alert("options.length is " + options_length);
+			if(thisYear > this.selYear1.options[options_length-1] || thisYear < this.selYear1.options[0])
+			{
+				alert("year out of the bound!");
+				return false;
+			}
+			for(i=0;i<options_length;i++)
+			{
+//				alert("value is " + this.selYear1.options[i].value);
+				if(this.selYear1.options[i].value.toString() == thisYear.toString())
+				{
+//					alert("equals" + i);
+					this.selYear1.options[i].selected = true;
+				}
+			}
+			//alert(this.selYear1.selectedIndex);
+			
+			YAHOO.example.calendar.cal = new YAHOO.widget.Calendar2up_CN("YAHOO.example.calendar.cal","container1",(thisMonth+1)+"/"+thisYear,(thisMonth+1)+"/"+thisDay+"/"+thisYear);
+			
+			var customConfig = function() {
+				this.Options.MULTI_SELECT = true;
+			}
+			
+			YAHOO.example.calendar.cal.setChildFunction("customConfig", customConfig);
+			YAHOO.example.calendar.cal.callChildFunction("customConfig");
+			
+			YAHOO.example.calendar.cal.setChildFunction("onSelect",setDate1);
+			
+			YAHOO.example.calendar.cal.title = "选择你需要返回的日期";
+			
+
+			var renderSunday = function(cal,cell) {
+				YAHOO.util.Dom.addClass(cell, "sunday");
+			}
+
+			YAHOO.example.calendar.cal.addWeekdayRenderer(1, renderSunday);
+			
+			YAHOO.example.calendar.cal.render();
+			showCalendar1();
+		}
+
+		function showCalendar1() {
+			var pos = YAHOO.util.Dom.getXY(link1);
+			YAHOO.example.calendar.cal.outerContainer.style.display='block';
+			YAHOO.util.Dom.setXY(YAHOO.example.calendar.cal.outerContainer, [pos[0],pos[1]+link1.offsetHeight+1]);
+		}
+
+		function setDate1() {
+			var date1 = YAHOO.example.calendar.cal.getSelectedDates()[0];
+			var set_date_year = date1.getYear();
+//			alert("date1's year is " + set_date_year);
+			var options_length = selYear1.options.length;
+//			alert("options.length is " + options_length);
+			if(set_date_year > selYear1.options[options_length-1] || set_date_year < selYear1.options[0])
+			{
+				alert("year out of the bound!");
+				return false;
+			}
+			for(i=0;i<options_length;i++)
+			{
+//				alert("value is " + selYear1.options[i].value);
+				if(selYear1.options[i].value.toString() == set_date_year.toString())
+				{
+//					alert("equals" + i);
+					selYear1.options[i].selected = true;
+				}
+			}
+//			selYear1.selectedIndex=date1.getYear();
+			selMonth1.selectedIndex=date1.getMonth();
+			selDay1.selectedIndex=date1.getDate()-1;
+//			YAHOO.example.calendar.cal.hide();
+//			alert(date1);
+		}
+		
+		function getDates() {
+			var cal = YAHOO.example.calendar.cal.getSelectedDates();
+			var length = cal.length;
+			if(length <= 0)
+			{
+				alert("未选定任何日期，请在日历中选择需要返回的日期!");
+				return false;
+			}
+			var timeArray = new Array();
+			var timeValue = new Array();
+			if(length > 0)
+			{
+				for(i=0;i<cal.length;i++)
+				{
+					timeArray[i] = cal[i];
+//					alert(timeArray[i]);
+					var tempStr = timeArray[i];
+					timeValue[i] = formatTime(tempStr);
+				}
+				alert(timeValue);
+			}
+//			alert(length);
+//			alert(cal);
+		}
+		function formatTime(time)
+		{
+			var time_value;
+			var fulltime = time.toString();
+//			alert("fulltime is " + fulltime);
+			var tempArray = new Array();
+			tempArray = fulltime.split(" ");
+			if(tempArray.length != 6)
+			{
+				alert("Calendar format error!");
+				return false;
+			}
+			time_value = tempArray[5].toString() + formatMouth(tempArray[1]).toString() + tempArray[2].toString();
+//			alert("final is " + time_value);
+			return time_value;
+		}
+		
+		function formatMouth(mouth)
+		{
+			var mouth_num;
+			var mouth_value = 0;
+			if(mouth != null)
+			{
+				mouth_num = mouth;
+			}else
+			{
+				alert("It is not a correct mouth!");
+				return false;
+			}
+			if(mouth_num == "Jan")
+			{
+				mouth_value = "01";
+			}else if(mouth_num == "Feb")
+			{
+				mouth_value = "02";
+			}else if(mouth_num == "Mar")
+			{
+				mouth_value = "03";
+			}else if(mouth_num == "Apr")
+			{
+				mouth_value = "04";
+			}else if(mouth_num == "May")
+			{
+				mouth_value = "05";
+			}else if(mouth_num == "Jun")
+			{
+				mouth_value = "06";
+			}else if(mouth_num == "Jul")
+			{
+				mouth_value = "07";
+			}else if(mouth_num == "Aug")
+			{
+				mouth_value = "08";
+			}else if(mouth_num == "Sep")
+			{
+				mouth_value = "09";
+			}else if(mouth_num == "Oct")
+			{
+				mouth_value = "10";
+			}else if(mouth_num == "Nov")
+			{
+				mouth_value = "11";
+			}else if(mouth_num == "Dec")
+			{
+				mouth_value = "12";
+			}else
+			{
+				alert("It is not a correct mouth!");
+				return false;
+			}
+			return mouth_value;
+		}
+		function changeDate1() {
+			var month = this.selMonth1.selectedIndex;
+			var day = this.selDay1.selectedIndex + 1;
+			var year_length = this.selYear1.options.length;
+			var year;
+			alert("change length is " + year_length);
+			for(i=0;i<year_length;i++)
+			{
+				if(this.selYear1.options[i].selected == true)
+				{
+					year = this.selYear1.options[i].value;
+					alert("year is " + year);
+				}
+			}
+			alert("select start!");
+//			var year = this.selYear1.options[this.selYear1.selectedIndex].value;
+			YAHOO.example.calendar.cal.select((month+1) + "/" + day + "/" + year);
+			alert("select end!");
+			YAHOO.example.calendar.cal.setMonth(month);
+			YAHOO.example.calendar.cal.setYear(year);
+			alert("set over!");
+			YAHOO.example.calendar.cal.render();
+			alert("render over!");
+		}
+	
+	</script>
+</head>
+
+<body onload="init()" style="margin:0px">
+
+<img src="img/ytravel.jpg" id="bgImg">
+
+<div style="position:absolute;left:230px;top:190px">
+	<select name="selYear1" id="selYear1" onchange="changeDate1()" style="display:none">
+		<option value="2005">2005年</option><option value="2006">2006年</option><option value="2007">2007年</option>
+		<option value="2008">2008年</option><option value="2009">2009年</option><option value="2010">2010年</option><option value="2011">2011年</option>
+	</select>
+	<select id="selMonth1" name="selMonth1" onchange="changeDate1()" style="display:none">
+	<option value="Jan">1月</option><option value="Feb">2月</option><option value="Mar">3月</option><option value="Apr">4月</option>
+	<option value="May">5月</option><option value="Jun">6月</option><option value="Jul">7月</option><option value="Aug">8月</option>
+	<option value="Sep">9月</option><option value="Oct">10月</option><option value="Nov">11月</option><option value="Dec">12月</option>
+	</select>
+	<select name="selDay1" id="selDay1" onchange="changeDate1()" style="display:none"><option value="1">1日</option><option value="2">2日</option><option value="3">3日</option>
+	<option value="4">4日</option><option value="5">5日</option><option value="6">6日</option><option value="7">7日</option><option value="8">8日</option><option value="9">9日</option>
+	<option value="10">10日</option><option value="11">11日</option><option value="12">12日</option><option value="13">13日</option><option value="14">14日</option><option value="15">15日</option>
+	<option value="16">16日</option><option value="17">17日</option><option value="18">18日</option><option value="19">19日</option><option value="20">20日</option><option value="21">21日</option>
+	<option value="22">22日</option><option value="23">23日</option><option value="24">24日</option><option value="25">25日</option><option value="26">26日</option>
+	<option value="27">27日</option><option value="28">28日</option><option value="29">29日</option><option value="30">30日</option><option value="31">31日</option>
+	</select>
+
+<a href="javascript:void(null)" onclick="showCalendar1()">
+<img id="dateLink1" src="../img/pdate.gif" border="0" style="vertical-align:middle;margin:5px"/>
+</a>
+
+<a href="javascript:getDates()">
+<img id="dateLink1" src="../img/pdate.gif" border="0" style="vertical-align:middle;margin:5px"/>
+</a>
+</div>
+
+<div id="container1" style="position:absolute;display:none"></div>
+
+<script src="/includes/yui/docs/assets/dpSyntaxHighlighter.js"></script>
+<script language="javascript"> 
+dp.SyntaxHighlighter.HighlightAll('code'); 
+</script>
+
+</body>
+</html>

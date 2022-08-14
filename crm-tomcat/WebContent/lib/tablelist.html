@@ -1,0 +1,132 @@
+
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge">	
+<title>Layout Test-page</title>
+<link href="styles/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/plugins/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-ui-1.9.0.js"></script>
+<script type="text/javascript" src="js/plugins/initstyle.js"></script>
+<script type="text/javascript" src="js/plugins/utilities.js"></script>
+<script type="text/javascript" src="js/plugins/formly.js"></script>
+<script type="text/javascript" src="js/page.all.js"></script>
+<script type="text/javascript" src="js/page.content.js"></script>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+j$(function(){
+	j$(".searchForm").autoResizeInput();
+
+	j$(".tableData").tableList({
+		icon:"x19 y28",
+		checkbox:true,
+		//radio:true,
+		//width:800,
+		//height:600,
+		cutStr:true,
+		tdWidth:{
+			tdLast:70,
+			//tdFirst:20,
+			td2:"20%",
+			//td3:70
+		}
+	});
+});
+</script>
+</head>
+<body class="pageContent">
+<div class="contentWrap">
+	<div class="location">
+		<div class="icon iconLocation"></div>
+		<div class="desc">报表查询 > 职能机构 > 职位清单</div>
+		<button class="buttonResize">最大化</button>
+	</div>
+	<div class="toolbar">
+		<ul class="operateGrid">
+			<li><button class="buttonNew">新增</button></li>
+			<li><button class="buttonSave">保存</button></li>
+			<li><button class="buttonExit">退出</button></li>
+			<li><button class="buttonPrint">打印</button></li>
+			<li><button class="buttonReturn">返回</button></li>
+			<li><button class="buttonEdit">编辑</button></li>
+			<li><button class="buttonDelete">删除</button></li>
+			<li><button class="buttonSubmit">提交</button></li>
+			<li><button class="buttonView">查看</button></li>
+			<li><button class="buttonRefresh">刷新</button></li>
+		</ul>
+		<input type="checkbox" id="check" class="buttonSearch" /><label class="buttonSearchLabel" for="check">搜索</label>
+	</div>
+	<div class="searchContainer">
+		<div class="searchForm">
+			<input type="text"  place="请输入项目名称"/>
+			<input type="text"  place="请输入项目负责人"/>
+			<select>
+				<option>请选择项目级别</option>
+			</select>
+			<select>
+				<option>请选择显示分类</option>
+			</select>
+		</div>
+		<div class="searchFormButtonSet">
+			<button class="buttonFormSubmit">查询</button>
+			<button class="selectFromAction">菜单</button>
+		</div>
+		<ul class="searchFormMenu">
+			<li><a href="#">清空所有字段</a></li>
+			<li><a href="#">清空部门字段</a></li>
+			<li><a href="#">高级查询</a></li>
+		</ul>
+	</div>
+	<table class="tableData">
+		<thead>
+			<tr><th>标题</th><th>部门</th><th>日期</th></tr>
+		</thead>
+		<tbody>
+			<tr><td><a href="portlet.html">刘子宪公司副总经理宣晓泉到江苏鑫源烟草薄片公司调研技术研究工作 刘子宪</a></td><td><a href="tableform.html">设备部</a></td><td>2011/9/22</td></tr>
+			<tr><td>淮阴烟厂召开庆“七一”离退休党员座谈会  刘济生 黄春华 </td><td>技术质量部</td><td>2011/9/22</td></tr>
+			<tr><td>淮阴烟厂开展六西格玛改进项目中期评审 赵青 </td><td>办公室</td><td>2011/9/22</td></tr>
+			<tr><td>南通烟滤嘴公司开展“坚持勤政廉政、服务企业发展” 主题征文活动 毛颖熙 </td><td>生产作业部门</td><td>2011/9/22</td></tr>
+			<tr><td>徐州烟厂物资供应、财务审计党支部举办“创先争优”主题党日活动  崔海滨 张雷 </td><td>办公室</td><td>2011/9/22</td></tr>
+			<tr><td><a href="#">淮阴烟厂第五、六、七党支部开展再踏红色之旅活动</a></td><td>财务办公室</td><td>2011/9/22</td></tr>
+			<tr><td>南京烟厂生产制造处制丝第二党小组开展“争先创优从我做起”主题义务劳动  陈勇 </td><td>设备部</td><td>2011/9/22</td></tr>
+			<tr><td>徐州烟厂团委积极做好2012年市级“青年安全生产示范岗”创建工作 吕洁 </td><td>技术质量部</td><td>2011/9/22</td></tr>
+			<tr><td>南通烟滤嘴公司认真做好迎接“南通名牌产品”复评审准备工作 孙智明 孙庆杰 </td><td>办公室</td><td>2011/9/22</td></tr>
+			<tr><td>淮阴烟厂物资供应处组织人员赴相关辅材供应企业开展技术交流  李涌 </td><td>生产作业部门</td><td>2011/9/22</td></tr>
+			<tr><td>徐州烟厂开展设备图形信息资源集成系统培训 史淑静 刘杰 </td><td>办公室</td><td>2011/9/22</td></tr>
+			<tr><td>生产制造中心对徐州烟厂进行二季度创优综合工作检查及测量体系审核 杨国庆 李佳 </td><td>财务办公室</td><td>2011/9/22</td></tr>
+			<tr><td>南通烟滤嘴公司精心做好新进大学毕业生入职准备工作毛颖熙 </td><td>设备部</td><td>2011/9/22</td></tr>
+			<tr><td>淮阴烟厂物流分中心举办叉车操作工技能竞赛活动漆行廷 </td><td>技术质量部</td><td>2011/9/22</td></tr>
+			<tr><td>徐州烟厂品质管理处召开会议布置下阶段工作丁超 </td><td>办公室</td><td>2011/9/22</td></tr>
+			<tr><td>南京烟厂卷包线可视化定置化工作进入现场实施阶段 周娴 </td><td>生产作业部门</td><td>2011/9/22</td></tr>
+			<tr><td>公司副总经理宣晓泉到淮阴烟厂调研  杜秀敏 黄春华 </td><td>办公室</td><td>2011/9/22</td></tr>
+			<tr><td>新建技术研发中心及“南京”品牌专线技改项目公用工程组召开联合工房除尘排潮系…孙程 </td><td>财务办公室</td><td>2011/9/22</td></tr>
+			<tr><td>市场营销中心党总支开展“迎七一主题党日”活动 王薇 </td><td>设备部</td><td>2011/9/22</td></tr>
+			<tr><td>公司市场营销中心党总支召开新党员座谈会 王薇 </td><td>技术质量部</td><td>2011/9/22</td></tr>
+			<tr><td>江苏鑫源烟草薄片公司召开新进人员赴外学习培训汇报会 朱永海 </td><td>办公室</td><td>2011/9/22</td></tr>
+			<tr><td>淮阴烟厂综合管理处加大对干冰膨胀烟丝生产线项目施工安全管理力度张前岳 </td><td>生产作业部门</td><td>2011/9/22</td></tr>
+			<tr><td>南通烟滤嘴公司召开团委换届选举大会 薛飞跃 吴莉 </td><td>办公室</td><td>2011/9/22</td></tr>
+			<tr><td>公司物资采购中心党支部组织参观黄花塘新四军纪念馆 何伟 章军 </td><td>财务办公室</td><td>2011/9/22</td></tr>
+		</tbody>
+	</table>
+	<div class="InfoBar">
+		<!--<div class="tipSimple tipError tipNormal"><span class="icon"></span><font>所选的结果自动保存！其中导航风格切换需刷新页面！</font></div>
+		<div class="tipSimple tipWarning"><span class="icon"></span><font>所选的结果自动保存！其中导航风格切换需刷新页面！</font></div>-->
+		<div class="tipSimple tipWarning"><span class="icon"></span><font>所选的结果自动保存！其中导航风格切换需刷新页面！</font></div>
+	</div>
+	<div class="pagebar">
+		<div class="pageState">第 1 - 10条, 共 3页 21条数据</div>
+		<ul class="pageCtrl">
+			<li><font>跳转到</font><span><input type="text"/></span><button class="buttonPageGoto">跳转到</button></li>
+			<li><button class="buttonPageFrist">首页</button></li>
+			<li><button class="buttonPagePrevious">末页</button></li>
+			<li><button class="buttonPageNext">末页</button></li>
+			<li><button class="buttonPageLast">末页</button></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+</script>
+

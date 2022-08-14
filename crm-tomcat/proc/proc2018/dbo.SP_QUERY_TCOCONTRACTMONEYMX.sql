@@ -1,0 +1,13 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_QUERY_TCOCONTRACTMONEYMX @IN_PAYPLAN_ID    INT,               --付款计划ID，对应表TCOCONTRACTPAYPLAN. PAYPLAN_ID
+                                             @IN_MONEYMX_ID    INT,               --到账明细ID
+                                             @IN_INPUT_MAN     INT                --录入人员，对应表TOPERATOR.OP_CODE 
+WITH ENCRYPTION
+AS
+    SELECT * FROM TCOCONTRACTMONEYMX
+        WHERE (ISNULL(@IN_PAYPLAN_ID,0) =0 OR PAYPLAN_ID = @IN_PAYPLAN_ID)
+            AND (ISNULL(@IN_MONEYMX_ID,0) =0 OR MONEYMX_ID =@IN_MONEYMX_ID)
+GO

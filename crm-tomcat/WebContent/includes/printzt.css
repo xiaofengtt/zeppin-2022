@@ -1,0 +1,266 @@
+TABLE,TR,TD,HR,INPUT,SELECT,TEXTAREA
+{ 
+	FONT-FAMILY: ·ÂËÎ_GB2312, ·ÂËÎ, Tahoma, Verdana, Arial;
+	FONT-SIZE: 11pt;
+}
+
+BUTTON
+{ 
+	FONT-FAMILY: Tahoma, Verdana, Arial;
+	FONT-SIZE: 8pt;
+}
+
+BODY
+{
+	FONT-FAMILY: ·ÂËÎ_GB2312, ·ÂËÎ, Tahoma, Verdana, Arial;
+	FONT-SIZE: 11pt;
+	BACKGROUND-COLOR: #ffffff
+}
+
+IMG
+{
+	BORDER-RIGHT: 0px;
+	BORDER-TOP: 0px;
+	BORDER-LEFT: 0px;
+	BORDER-BOTTOM: 0px
+}
+
+.numedit
+{	text-align: right;
+    BACKGROUND-COLOR: transparent;
+    BORDER-BOTTOM: #000000 1px solid;
+    BORDER-LEFT: medium none;
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+}
+
+.white
+{ COLOR: #ffffff }
+.white A:link
+{ COLOR: #ffffff; TEXT-DECORATION: none }
+.white A:visited
+{ COLOR: #ffffff; TEXT-DECORATION: none }
+.white A:active
+{ COLOR: #ff0000; TEXT-DECORATION: none }
+.white A:hover
+{ COLOR: #ff0000; TEXT-DECORATION: none }
+
+.a1
+{ COLOR: #ffffff; TEXT-DECORATION: none}
+.a1:link
+{ COLOR: #ffffff; TEXT-DECORATION: none}
+.a1:visited
+{ COLOR: #ffffff; TEXT-DECORATION: none}
+.a1:hover
+{ COLOR: #e3e3e3; TEXT-DECORATION: none}
+
+.font10
+{
+	font-size: 10px;
+	line-height: 14px;
+}
+
+.font12
+{
+	font-size: 12px;
+	line-height: 16px;
+}
+
+.font14
+{
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.font16
+{
+	font-size: 16px;
+	line-height: 24px;
+	font-weight : bold;
+}
+
+input, select, textarea
+{ BORDER: #849ED6 1px solid;}
+
+.flatcheckbox
+{ BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px;}
+
+.edline
+{
+    BACKGROUND-COLOR: transparent;
+    BORDER-BOTTOM: #000000 1px solid;
+    BORDER-LEFT: medium none;
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+}
+
+.edline_textarea
+{ BORDER: #000000 1px solid;}
+
+.ednoline
+{
+    BACKGROUND-COLOR: transparent;
+    BORDER-BOTTOM: medium none;
+    BORDER-LEFT: medium none;
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+}
+
+.iconbutton
+{
+    BORDER-RIGHT: 0px solid;
+    BORDER-TOP: 0px solid;
+    BACKGROUND-IMAGE: url(../images/xtsub.gif);
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: 0px solid;
+    WIDTH: 15px;
+    PADDING-TOP: 2px;
+    BACKGROUND-COLOR:white;		
+    BORDER-BOTTOM: 0px solid;
+    HEIGHT: 15px
+}
+
+//a: function(){this.style.background='#FFCC00'}
+//b: function(){this.style.background='#F7F7F7'}
+//c: function(){this.style.background='#FFFFFF'}
+//tr {background: #FFFFFF}
+.tr0 {background:#F7F7F7;lie:expression(onmouseover=a);ie1:expression(onmouseout=b)}
+.tr1 {background:#FFFFFF;lie:expression(onmouseover=a);ie1:expression(onmouseout=c)}
+
+.trh
+{
+	BACKGROUND-IMAGE: url(/images/headerbg.gif);
+	color: #FFFFFF;
+	font-weight: bold
+}
+
+.xpbutton2 
+{
+    BORDER-RIGHT: 0px solid;
+    BORDER-TOP: 0px solid;
+    BACKGROUND-IMAGE: url(/images/btn_bg2.gif);
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: 0px solid;
+    WIDTH: 46px;
+    PADDING-TOP: 2px;
+    BORDER-BOTTOM: 0px solid;
+    HEIGHT: 19px
+}
+
+.xpbutton3
+{
+    BORDER-RIGHT: 0px solid;
+    BORDER-TOP: 0px solid;
+    BACKGROUND-IMAGE: url(/images/btn_bg3.gif);
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: 0px solid;
+    WIDTH: 64px;
+    PADDING-TOP: 2px;
+    BORDER-BOTTOM: 0px solid;
+    HEIGHT: 19px
+}
+
+.xpbutton4
+{
+    BORDER-RIGHT: 0px solid;
+    BORDER-TOP: 0px solid;
+    BACKGROUND-IMAGE: url(/images/btn_bg4.gif);
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: 0px solid;
+    WIDTH: 82px;
+    PADDING-TOP: 2px;
+    BORDER-BOTTOM: 0px solid;
+    HEIGHT: 19px
+}
+
+.xpbutton5
+{
+    BORDER-RIGHT: 0px solid;
+    BORDER-TOP: 0px solid;
+    BACKGROUND-IMAGE: url(/images/btn_bg5.gif);
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: 0px solid;
+    WIDTH: 100px;
+    PADDING-TOP: 2px;
+    BORDER-BOTTOM: 0px solid;
+    HEIGHT: 19px
+}
+
+.xpbutton6
+{
+    BORDER-RIGHT: 0px solid;
+    BORDER-TOP: 0px solid;
+    BACKGROUND-IMAGE: url(/images/btn_bg6.gif);
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: 0px solid;
+    WIDTH: 136px;
+    PADDING-TOP: 2px;
+    BORDER-BOTTOM: 0px solid;
+    HEIGHT: 19px
+}
+
+
+.flyoutTd {
+	WIDTH: 120px;
+}
+
+.flyoutMenu {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 0px solid; BEHAVIOR: url("/includes/msmenu/default.htc"); BORDER-LEFT: #999999 0px solid; BORDER-BOTTOM: #999999 1px solid; BACKGROUND-COLOR: #f1f1f1; WIDTH: 120px;
+}
+.flyoutHeading {
+	PADDING-LEFT: 2px; FONT-WEIGHT: bold; PADDING-BOTTOM: 4px; CURSOR: default; PADDING-TOP: 2px; ; BACKGROUND-COLOR: #f1f1f1
+}
+.flyoutLink {
+	BORDER-RIGHT: #f1f1f1 1px solid; PADDING-RIGHT: 6px; BORDER-TOP: #f1f1f1 1px solid; PADDING-LEFT: 6px; BORDER-LEFT: #f1f1f1 1px solid; CURSOR: hand; PADDING-TOP: 1px; BORDER-BOTTOM: #f1f1f1 1px solid; 
+}
+.flyoutMenu TD.flyoutLink {
+	BORDER-RIGHT: #f1f1f1 1px solid; PADDING-RIGHT: 6px; BORDER-TOP: #f1f1f1 1px solid; PADDING-LEFT: 6px; PADDING-BOTTOM: 3px; BORDER-LEFT: #f1f1f1 1px solid; CURSOR: hand; PADDING-TOP: 1px; BORDER-BOTTOM: #f1f1f1 1px solid; 
+}
+.flyoutLink A {
+	COLOR: black; TEXT-DECORATION: none
+}
+.flyoutLink A:hover {
+	COLOR: black; TEXT-DECORATION: none
+}
+.flyoutLink A:visited {
+	COLOR: black; TEXT-DECORATION: none
+}
+.flyoutLink A:active {
+	COLOR: black; TEXT-DECORATION: none
+}
+.flyoutSubHeading {
+	PADDING-LEFT: 7px; FONT-WEIGHT: bold; PADDING-BOTTOM: 4px; CURSOR: default; PADDING-TOP: 2px; ; BACKGROUND-COLOR: #f1f1f1
+}
+.flyoutSubLink {
+	BORDER-RIGHT: #f1f1f1 1px solid; PADDING-RIGHT: 15px; BORDER-TOP: #f1f1f1 1px solid; PADDING-LEFT: 11px; PADDING-BOTTOM: 3px; BORDER-LEFT: #f1f1f1 1px solid; CURSOR: hand; PADDING-TOP: 1px; BORDER-BOTTOM: #f1f1f1 1px solid; 
+}
+.flyoutSubLink A {
+	COLOR: black; TEXT-DECORATION: none
+}
+.flyoutSubLink A:hover {
+	COLOR: black; TEXT-DECORATION: none
+}
+.flyoutSubLink A:visited {
+	COLOR: black; TEXT-DECORATION: none
+}
+.flyoutSubLink A:active {
+	COLOR: black; TEXT-DECORATION: none
+}
+
+H1 {
+	font-family: ºÚÌå
+}
+
+H2 {
+	font-family: ºÚÌå
+}
+
+
+
+H6 {
+	font-family: "Times New Roman"
+}
+
+.date {
+	font-family: "Times New Roman"
+}

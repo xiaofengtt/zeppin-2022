@@ -1,0 +1,81 @@
+.nbFlybar
+{
+	HEIGHT:1.0em;  
+	CURSOR:hand;
+	FONT-SIZE:15px;
+	FONT-FAMILY:宋体,Arial,sans-serif;
+	PADDING:2px;
+	BACKGROUND-COLOR:menu;
+	BORDER-STYLE:solid;
+	BORDER-WIDTH:1px;
+	BORDER-COLOR:threedhighlight threedshadow threedshadow threedhighlight;
+	WIDTH:100%;
+}
+.nbTableMain
+{
+	width:100%;
+	table-layout:fixed;
+}
+.nbTable
+{
+	FONT-SIZE:15px;
+	FONT-FAMILY:宋体,Arial,sans-serif;
+	width:100%;
+	overflow:scroll;
+	height:100%;
+}
+.treeOFLOW
+{
+	overflow:hidden;
+	text-align:center;
+}
+.treeBrand
+{
+	background-color:FFFFCE;
+}
+A:link 	{color: black;text-decoration: none;}
+A:visited 	{color: black;text-decoration: none;}
+A:active 	{color: black;text-decoration: none;}
+.cbSubmenu
+{
+    FONT-FAMILY:宋体,Arial,sans-serif;
+    FONT-SIZE: 15px;   
+    BACKGROUND-COLOR: #999999;
+    COLOR: menutext;
+}
+.cbSubmenuItem
+{
+    COLOR: buttontext;
+    CURSOR: default;
+    PADDING-RIGHT: 8px;
+    TEXT-DECORATION: none; 
+    WIDTH: 100%
+}
+.cbSubmenu IMG
+{
+    HEIGHT: 16px;
+    WIDTH: 16px;
+    MARGIN-LEFT: 3px;
+    MARGIN-RIGHT: 3px;
+   BORDER-STYLE:none
+}
+.cbSubmenuItem A:hover
+{
+    BACKGROUND-COLOR: highlight;
+    COLOR: highlighttext
+}
+.cbSubmenuItem:hover
+{
+    BACKGROUND-COLOR: highlight;
+    COLOR: highlighttext
+}
+.cbSubmenuItem SPAN
+{
+    FONT-FAMILY:宋体,Arial,sans-serif;
+    FONT-SIZE: 15px;
+    MARGIN: 10px;
+    PADDING-BOTTOM: 3px;
+    PADDING-LEFT: 3px;
+    PADDING-RIGHT: 3px;
+    PADDING-TOP: 5px
+}

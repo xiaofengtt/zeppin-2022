@@ -1,0 +1,205 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_ADD_TCustomers_MOB  @IN_CUST_NAME       NVARCHAR(100),
+                                        @IN_CUST_NO         NVARCHAR(8),
+                                        @IN_CUST_TYPE       INT,            --0个人 1机构
+                                        @IN_CARD_TYPE       NVARCHAR(10),
+                                        @IN_CARD_ID         NVARCHAR(40),
+                                        @IN_TOUCH_TYPE      NVARCHAR(10),
+                                        @IN_CUST_SOURCE     NVARCHAR(10),
+                                        @IN_MOBILE          NVARCHAR(100),
+                                        @IN_POST_ADDRESS    NVARCHAR(60),
+                                        @IN_POST_CODE       NVARCHAR(6),
+                                        @IN_INPUT_MAN       INT,
+                                        @OUT_CUST_NO        NVARCHAR(8) OUTPUT,
+                                        @OUT_CUST_ID        INT OUTPUT
+WITH ENCRYPTION
+AS
+    SET NOCOUNT ON
+    --系统日志信息
+    DECLARE @V_RET_CODE INT, @IBUSI_FLAG INT, @SBUSI_NAME NVARCHAR(40),@SSUMMARY NVARCHAR(200)
+    --客户信息
+    DECLARE @V_CUST_ID INT,@V_CUST_NO NVARCHAR(8),@V_MAX_ID INT,@V_CARD_TYPE_NAME NVARCHAR(30), @V_ReceiveServices BIGINT,
+            @V_CUST_ID2 INT, @V_MAX_ID2 INT,@V_CUST_TYPE_NAME NVARCHAR(10),@V_CUST_LEVEL NVARCHAR(10),@V_SEX_NAME NVARCHAR(10)
+    DECLARE @V_TOUCH_TYPE_NAME NVARCHAR(30),@V_CUST_SOURCE_NAME NVARCHAR(30)
+    --客户国籍(9997) 客户名称拼音 客户生日
+    DECLARE @V_COUNTRY NVARCHAR(10),@V_PinYinSimple NVARCHAR(100),@V_BIRTHDAY INT
+    --业务系统信息
+    DECLARE @V_BOOK_CODE INT, @V_INTRUST_OPERATOR INT,@V_DT_INTRUST INT
+
+    --系统日志信息 初始化
+    SELECT @V_RET_CODE = -20601000, @IBUSI_FLAG = 20601
+    SELECT @SBUSI_NAME = N'增加客户基本信息', @SSUMMARY = N'增加客户基本信息'
+    --业务系统信息 初始化
+    SELECT @V_DT_INTRUST = VALUE FROM TSYSCONTROL WHERE FLAG_TYPE = N'DT_INTRUST'
+    SELECT @V_ReceiveServices = SUM(ServiceType) FROM TServiceDefine
+    SELECT @V_BOOK_CODE = 1
+
+    --身份证处理
+    IF EXISTS(SELECT * FROM TSYSCONTROL WHERE FLAG_TYPE = N'A_CARDID' AND VALUE = 1)
+    BEGIN
+        IF @IN_CARD_TYPE = N'110801' AND LEN(@IN_CARD_ID)=15   --15位身份证号码转18位
+            SELECT @IN_CARD_ID = dbo.IDCARD15TO18(@IN_CARD_ID)
+    END
+    --证件名称及证件号码处理
+    IF @IN_CUST_TYPE = 0 SET @IN_CUST_TYPE = 1
+    IF @IN_CUST_TYPE = 1 SET @IN_CUST_TYPE = 2
+    IF @IN_CUST_TYPE = 1
+        BEGIN
+            SELECT @V_CUST_TYPE_NAME = N'个人'
+
+            IF @IN_CARD_TYPE IS NULL OR @IN_CARD_TYPE = N''
+                SELECT @IN_CARD_TYPE = N'110899', @V_CARD_TYPE_NAME = N'其它'
+            ELSE IF NOT EXISTS(SELECT 1 FROM TDICTPARAM WHERE TYPE_ID = 1108 AND TYPE_VALUE = @IN_CARD_TYPE)
+                SELECT @IN_CARD_TYPE = N'110899', @V_CARD_TYPE_NAME = N'其它'
+            ELSE
+                SELECT @V_CARD_TYPE_NAME = TYPE_CONTENT FROM TDICTPARAM WHERE TYPE_ID = 1108 AND TYPE_VALUE = @IN_CARD_TYPE
+        END
+    ELSE
+        BEGIN
+            SELECT @V_CUST_TYPE_NAME = N'机构'
+
+            IF @IN_CARD_TYPE IS NULL OR @IN_CARD_TYPE = N''
+                SELECT @IN_CARD_TYPE = N'210809', @V_CARD_TYPE_NAME = N'其他类机构代码'
+            ELSE IF NOT EXISTS(SELECT 1 FROM TDICTPARAM WHERE TYPE_ID = 2108 AND TYPE_VALUE = @IN_CARD_TYPE)
+                SELECT @IN_CARD_TYPE = N'210809', @V_CARD_TYPE_NAME = N'其他类机构代码'
+            ELSE
+                SELECT @V_CARD_TYPE_NAME = TYPE_CONTENT FROM TDICTPARAM WHERE TYPE_ID = 2108 AND TYPE_VALUE = @IN_CARD_TYPE
+        END
+
+            IF (@IN_CARD_TYPE IS NOT NULL AND @IN_CARD_TYPE  <> '') AND (@IN_CARD_ID IS NOT NULL AND @IN_CARD_ID  <> '')
+    BEGIN
+        IF EXISTS(SELECT * FROM TCustomers WHERE CUST_NAME = @IN_CUST_NAME AND CARD_TYPE = @IN_CARD_TYPE AND CARD_ID = @IN_CARD_ID AND STATUS <>'112805')
+           RETURN @V_RET_CODE-2   -- 客户已存在
+
+        IF EXISTS (SELECT * FROM TCustomers WHERE CARD_TYPE = @IN_CARD_TYPE AND CARD_ID = @IN_CARD_ID AND STATUS <>'112805' )
+           RETURN @V_RET_CODE-3  --该身份证号已存在
+    END
+    ELSE
+    BEGIN
+        SELECT @IN_CARD_ID = '999999'
+    END
+    --默认中国
+    SELECT @V_COUNTRY = '9997CHN'
+    --客户来源与联系方式
+    IF ISNULL(@IN_TOUCH_TYPE,'') = N'' SELECT @IN_TOUCH_TYPE = N'110901'
+        SELECT @V_TOUCH_TYPE_NAME = TYPE_CONTENT FROM TDICTPARAM  WHERE TYPE_VALUE = @IN_TOUCH_TYPE
+    IF ISNULL(@IN_CUST_SOURCE,'') = N'' SELECT @IN_CUST_SOURCE = N'111004'
+        SELECT @V_CUST_SOURCE_NAME = TYPE_CONTENT FROM TDICTPARAM  WHERE TYPE_VALUE = @IN_CUST_SOURCE
+
+    --生成CUST_ID
+    SELECT @V_CUST_ID2 = ISNULL(MAX(CUST_ID),0)+ 1 FROM INTRUST..TCUSTOMERINFO
+    SELECT @V_MAX_ID2 = ISNULL(MAX(LIST_ID),0)+ 1 FROM INTRUST..TCUSTOMERINFO
+
+    SELECT @V_CUST_ID = ISNULL(MAX(CUST_ID),0)+ 1 FROM TCustomers
+    SELECT @V_MAX_ID = ISNULL(MAX(LIST_ID),0)+ 1 FROM TCustomers
+
+    IF @V_CUST_ID2 > @V_CUST_ID
+        SET @V_CUST_ID = @V_CUST_ID2
+    IF @V_MAX_ID2 > @V_MAX_ID
+        SET @V_MAX_ID = @V_MAX_ID2
+
+    --客户编号
+    IF @IN_CUST_NO IS NULL OR @IN_CUST_NO = N''
+        BEGIN
+            SELECT @V_CUST_NO = CONVERT(CHAR(8),@IN_CUST_TYPE * 10000000+@V_MAX_ID)
+            --20050112 dongyg 个人客户编号以0开头，机构以J开头
+            IF @IN_CUST_TYPE = 1
+                SELECT @V_CUST_NO = N'0' + RIGHT(@V_CUST_NO,7)
+            ELSE
+                SELECT @V_CUST_NO = N'J' + RIGHT(@V_CUST_NO,7)
+        END
+    ELSE
+        BEGIN
+            IF EXISTS(SELECT * FROM TCustomers WHERE CUST_NO = @IN_CUST_NO)
+                RETURN @V_RET_CODE - 1  --客户编号已存在
+            SELECT @V_CUST_NO = @IN_CUST_NO
+        END
+    --如果是个人客户，证件类型是身份证，且未输入生日时，根据15位和18位的情况生成生日变量
+    IF @IN_CUST_TYPE = 1 AND (@V_BIRTHDAY IS NULL OR @V_BIRTHDAY = 0) AND @IN_CARD_TYPE = N'110801'
+    BEGIN
+        IF LEN(@IN_CARD_ID)=15
+        BEGIN
+            SELECT @V_BIRTHDAY = CONVERT(INT,'19'+SUBSTRING(@IN_CARD_ID,7,6))
+        END
+        ELSE IF LEN(@IN_CARD_ID) = 18
+        BEGIN
+            SELECT @V_BIRTHDAY = CONVERT(INT,SUBSTRING(@IN_CARD_ID,7,8))
+        END
+    END
+    --名字转换成拼音
+    SET @V_PinYinSimple = dbo.fGetPy(@IN_CUST_NAME)
+
+    BEGIN TRANSACTION
+        INSERT INTO TCustomers(ReceiveServices, --添加客户时，默认接收所有服务
+            CUST_ID,LIST_ID,CUST_NO,CUST_NAME,CUST_TYPE,CUST_TYPE_NAME,
+            CARD_TYPE,CARD_TYPE_NAME,CARD_ID,BIRTHDAY,PinYinSimple,
+            WT_FLAG,WT_FLAG_NAME,PASSWORD,CHECK_FLAG,
+            TOUCH_TYPE,TOUCH_TYPE_NAME,CUST_SOURCE,CUST_SOURCE_NAME,
+            CUST_TEL,POST_ADDRESS,POST_CODE,MOBILE,
+            INPUT_MAN,SERVICE_MAN
+        )
+        VALUES(@V_ReceiveServices,
+            @V_CUST_ID,@V_MAX_ID,@V_CUST_NO,@IN_CUST_NAME,@IN_CUST_TYPE,@V_CUST_TYPE_NAME,
+            @IN_CARD_TYPE,@V_CARD_TYPE_NAME,@IN_CARD_ID,@V_BIRTHDAY,@V_PinYinSimple,
+            2,'否','000000',2,
+            @IN_TOUCH_TYPE,@V_TOUCH_TYPE_NAME,@IN_CUST_SOURCE,@V_CUST_SOURCE_NAME,
+            @IN_MOBILE,@IN_POST_ADDRESS,@IN_POST_CODE,@IN_MOBILE,
+            @IN_INPUT_MAN,@IN_INPUT_MAN
+        )
+        IF @@ERROR <> 0
+        BEGIN
+            ROLLBACK TRANSACTION
+            RETURN -100
+        END
+
+        --客户资源信息表
+        INSERT INTO TCUSTSOURCEINFO(CUST_ID) SELECT CUST_ID FROM TCUSTOMERS WHERE CUST_ID = @V_CUST_ID
+        IF @@ERROR <> 0
+        BEGIN
+            ROLLBACK TRANSACTION
+            RETURN -100
+        END
+
+        --新增的客户是非交易客户
+        INSERT INTO TCustomerClass(CUST_ID,CLASSDEFINE_ID,CLASSDEFINE_NAME,CLASSDETAIL_ID,CLASSDETAIL_NAME,INSERTMAN,CHECK_FLAG)
+            VALUES(@V_CUST_ID,10,'是否认购',1002,'非交易客户',@IN_INPUT_MAN,2)
+        IF @@ERROR <> 0
+        BEGIN
+            ROLLBACK TRANSACTION
+            RETURN -100
+        END
+
+        --初始化客户积分卡
+        IF EXISTS(SELECT 1 FROM sysobjects WHERE NAME = 'IM_CUST_INTEGRAL_CARD') AND NOT EXISTS(SELECT 1 FROM IM_CUST_INTEGRAL_CARD WHERE CUST_ID = @V_CUST_ID)
+        BEGIN
+            INSERT INTO IM_CUST_INTEGRAL_CARD (CUST_ID,CUST_NAME,CUST_LEVEL_ID,BASE_INTEGRAL,RULE_INTEGAL,TOTAL_INTEGAL,EXCHANGED_INTEGAL,BALANCE)
+                SELECT CUST_ID,CUST_NAME,1,0,0,0,0,0
+                FROM TCustomers
+                WHERE CUST_ID = @V_CUST_ID
+
+            IF @@ERROR <> 0
+            BEGIN
+                ROLLBACK TRANSACTION
+                RETURN -100
+            END
+        END
+
+        --日志处理
+        SELECT @SSUMMARY = N'增加客户基本信息，客户名称：' + @IN_CUST_NAME
+        INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+            VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+        IF @@ERROR <> 0
+        BEGIN
+            ROLLBACK TRANSACTION
+            RETURN -100
+        END
+
+        SET @OUT_CUST_NO = @V_CUST_NO
+        SET @OUT_CUST_ID = @V_CUST_ID
+    COMMIT TRANSACTION
+    SET XACT_ABORT OFF
+    RETURN 100
+GO

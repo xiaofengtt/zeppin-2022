@@ -1,0 +1,12 @@
+<deeptreeconfig>
+  <TopXMLSrc>capitaltypemap.xml</TopXMLSrc>
+  <TreeLabel></TreeLabel>
+  <StartPage></StartPage>
+  <ErrorPage></ErrorPage>
+  <ContentTarget>fraContent</ContentTarget>
+  <TreeId></TreeId>
+  <TreeRootPath></TreeRootPath>
+  <Locale>gb2312</Locale>
+  <LocaleTextDirection>LTR</LocaleTextDirection>
+</deeptreeconfig>
+

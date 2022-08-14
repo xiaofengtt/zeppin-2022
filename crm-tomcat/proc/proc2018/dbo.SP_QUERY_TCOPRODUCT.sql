@@ -1,0 +1,18 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_QUERY_TCOPRODUCT @IN_COPRODUCT_ID                INT,             --合同ID
+                                     @IN_COPRODUCT_NAME              NVARCHAR(60)    --产品名称
+WITH ENCRYPTION
+AS
+    IF ISNULL(@IN_COPRODUCT_ID,0) <>0
+        SELECT A.*
+            FROM TCOPRODUCT A
+                WHERE A.COPRODUCT_ID =@IN_COPRODUCT_ID
+    ELSE
+        SELECT A.*
+            FROM TCOPRODUCT A
+                WHERE ISNULL(@IN_COPRODUCT_NAME,'') ='' OR A.COPRODUCT_NAME LIKE'%'+@IN_COPRODUCT_NAME+'%'
+                
+GO

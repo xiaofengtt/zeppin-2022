@@ -1,0 +1,429 @@
+<%@ page contentType="text/html; charset=GBK" import="enfo.crm.intrust.*,enfo.crm.customer.*,enfo.crm.tools.*,enfo.crm.dao.*,enfo.crm.system.*,enfo.crm.vo.*,java.math.*,java.util.*" %>
+<%@ taglib uri="/WEB-INF/tld/fmt.tld" prefix="fmt" %>
+<%@ include file="/includes/operator.inc" %>
+<%@ include file="/includes/parameter.inc" %>
+<%
+Integer product_id = Utility.parseInt(request.getParameter("product_id"), new Integer(0));//产品编号
+String contract_bh = Utility.trimNull(request.getParameter("contract_bh"));//合同编号
+Integer serial_no = Utility.parseInt(request.getParameter("serial_no"), new Integer(0));//合同原受益人的编号
+BigDecimal moneytype2 = Utility.parseDecimal(request.getParameter("moneytype2"), null);//转让份额
+
+Integer customer_cust_id = Utility.parseInt(Utility.trimNull(request.getParameter("customer_cust_id")), new Integer(0)); //受让方客户ID
+int inputflag=Utility.parseInt(request.getParameter("inputflag"), 1);//输入标记
+String bank_id = Utility.trimNull(request.getParameter("bank_id"));//银行名称ID
+String from_cust_id = Utility.trimNull(request.getParameter("from_cust_id"));
+String exchangetype = Utility.trimNull(request.getParameter("exchangetype"));//转让方式
+java.math.BigDecimal exchange_amount =
+	Utility.parseDecimal(Utility.trimNull(request.getParameter("contractsum1")), new java.math.BigDecimal(0));//转让金额
+String sx_fee = Utility.trimNull(request.getParameter("peoplenum1"));//转让手续费
+String check_man = Utility.trimNull(request.getParameter("check_man"));
+String Summary = Utility.trimNull(request.getParameter("Summary"));
+String bank_sub_name = Utility.trimNull(request.getParameter("bank_sub_name"));
+Integer project_id = Utility.parseInt(request.getParameter("project_id"),new Integer(0));
+Integer problem_id = new Integer(0);
+
+String defaultOptions = "<option value=\"\" selected>选项默认值</option>";//选项默认值 下拉不用国际化
+//"<option value=\"\" selected>请选择</option>"
+String contract_bh_list = defaultOptions;//合同列表
+String from_cust_id_list = defaultOptions;//受益人列表
+String trans_flagName_list = defaultOptions;//转让方式
+int readonly=0;//0表示新增受益权转让
+String preCodeOptions = defaultOptions;//银行账号列表
+String strButton=enfo.crm.tools.LocalUtilis.language("message.pleaseSelect",clientLocale);//请选择
+String jk_type ="";
+boolean is_succes_flag = false;
+Integer from_list_id=new Integer(0);
+
+BenifitorLocal benifitor_local = EJBFactory.getBenifitor();//受益人份额Bean
+BenifitorVO benifitor_vo = new BenifitorVO();
+CustomerLocal cust_local = EJBFactory.getCustomer();//客户Bean
+CustomerVO cust_vo = new CustomerVO();
+BenChangeLocal change_local = EJBFactory.getBenChanage();//受益权转让Bean
+BenChangeVO change_vo = new BenChangeVO();
+
+List benifitor_list = new ArrayList();
+Map benifitor_map = new HashMap();
+List cust_list = new ArrayList();
+Map cust_map = new HashMap();
+
+//选择产品获得相应的合同编号
+if(product_id != null && !product_id.equals(new Integer(0)))
+{
+	//1、合同编号不为空时即表示选择合同编号，则获得该产品的所有合同编号并选中该合同编号；2、获得原受益人信息
+	if(contract_bh != null && !"".equals(contract_bh))
+	{
+		contract_bh_list = Argument.getContract(new Integer(1), product_id, contract_bh,input_operatorCode);
+		//原受益人的编号不为空时即表示选择受益人信息，则获得原受益人可转让份额
+		if(serial_no != null && !(serial_no.equals(new Integer(0))))
+		{
+			benifitor_vo.setSerial_no(serial_no);
+			benifitor_list = benifitor_local.load(benifitor_vo);
+			if(benifitor_list != null && benifitor_list.size() > 0)
+			{
+				benifitor_map = (Map)benifitor_list.get(0);
+				moneytype2 = Utility.stringToDouble(Utility.trimNull(benifitor_map.get("BEN_AMOUNT")));
+				from_cust_id = Utility.trimNull(benifitor_map.get("CUST_ID"));
+				jk_type=Utility.trimNull(benifitor_map.get("JK_TYPE"));
+				from_list_id =Utility.parseInt(Utility.trimNull(benifitor_map.get("LIST_ID")), new Integer(0));
+			}
+		}
+		//如果未选择受益人信息，则获得受益人列表
+		from_cust_id_list = Argument.getFromCustIdOptions(new Integer(1), product_id, contract_bh, serial_no,input_operatorCode);
+	}else
+	{
+		//合同编号为空时获得该产品的所有合同编号
+		contract_bh_list = Argument.getContract(new Integer(1), product_id, "110203",input_operatorCode);
+	}
+}
+
+//选择受让方信息后，则获得受让方信息
+if(!customer_cust_id.equals(new Integer(0)))
+{
+	cust_vo.setCust_id(customer_cust_id);
+	cust_vo.setInput_man(input_operatorCode);
+	cust_list = cust_local.listProcAll(cust_vo);
+	if(cust_list != null && cust_list.size() > 0)
+	{
+		cust_map = (Map)cust_list.get(0);
+		//选择银行名称时获得账号
+		if(bank_id != null && !("".equals(bank_id)))
+			preCodeOptions = Argument.getCustBankAcctOptions(Utility.parseInt(Utility.trimNull(cust_map.get("CUST_ID")),new Integer(0))
+							,bank_id,Utility.trimNull(cust_map.get("CARD_ID")),"");
+	}
+}
+
+//银行账号没有时，则该为输入框
+if(preCodeOptions.equals("<option value=\"\" selected>请选择</option>"))
+////"<option value=\"\" selected>请选择</option>"
+	inputflag=2;
+	
+//保存受益权转让信息
+if(request.getMethod().equals("POST"))
+{
+	change_vo.setProduct_id(product_id);
+	change_vo.setInput_man(input_operatorCode);
+	change_vo.setInput_time(Utility.getCurrentTimestamp());
+	change_vo.setContract_bh(contract_bh);
+	change_vo.setFrom_cust_id(new Integer(from_cust_id));
+	change_vo.setJk_type(jk_type);
+	change_vo.setTrans_flag(exchangetype);
+	change_vo.setTo_amount(exchange_amount);
+	change_vo.setTo_cust_id(customer_cust_id);
+	if(user_id.intValue()==5){
+		change_vo.setSx_fee(Utility.parseDecimal(Utility.trimNull(request.getParameter("sxfee")),new java.math.BigDecimal(0)));
+		change_vo.setSx_fee1(Utility.parseDecimal(Utility.trimNull(request.getParameter("sxfee1")),new java.math.BigDecimal(0)));
+		change_vo.setSx_fee2(Utility.parseDecimal(Utility.trimNull(request.getParameter("sxfee2")),new java.math.BigDecimal(0)));
+		change_vo.setSx_fee3(Utility.parseDecimal(Utility.trimNull(request.getParameter("sxfee3")),new java.math.BigDecimal(0)));
+	}else{
+		if (sx_fee != null && sx_fee.length() != 0)
+			change_vo.setSx_fee(new java.math.BigDecimal(sx_fee));
+	}
+	change_vo.setChange_date(new Integer(request.getParameter("change_date")));
+	change_vo.setCheck_man(new Integer(Utility.parseInt(check_man, 0)));
+	change_vo.setCheck_flag(new Integer(1));
+	change_vo.setSummary(Summary);
+	change_vo.setBank_id(bank_id);
+	change_vo.setBank_sub_name(bank_sub_name);
+	if(inputflag==1)
+	{
+		change_vo.setBank_acct(request.getParameter("bank_acct2"));
+	}
+	else
+	{
+		change_vo.setBank_acct(request.getParameter("bank_acct"));
+	}
+	change_vo.setForm_list_id(from_list_id);
+	change_vo.setFx_change_flag(Utility.parseInt(request.getParameter("fx_change_flag"),new Integer(2)));
+	change_vo.setSy_change_flag(Utility.parseInt(request.getParameter("sy_change_flag"),new Integer(2)));
+	change_vo.setTrans_type(Utility.trimNull(request.getParameter("trans_type")));
+	change_vo.setChange_qs_date(new Integer(request.getParameter("change_qs_date")));
+	change_vo.setProjectid(project_id);
+	problem_id = change_local.append(change_vo);
+	
+	is_succes_flag = true;
+}
+%>
+<HTML>
+<HEAD>
+<title></title>
+<meta http-equiv="X-UA-Compatible" content="IE=7" >
+<META http-equiv=Content-Type content="text/html; charset=gbk">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="0">
+<LINK href="<%=request.getContextPath()%>/includes/default.css" type=text/css rel=stylesheet>
+<LINK href="<%=request.getContextPath()%>/includes/queryEx/css/queryEx.css" type=text/css
+	rel=stylesheet>
+<SCRIPT LANGUAGE="javascript" SRC="<%=request.getContextPath()%>/includes/queryEx/scripts/queryEx.js"></SCRIPT>
+<SCRIPT LANGUAGE="vbscript" SRC="<%=request.getContextPath()%>/includes/default.vbs"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="<%=request.getContextPath()%>/includes/default_<%=languageType%>.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="<%=request.getContextPath()%>/includes/investment.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="<%=request.getContextPath()%>/includes/calendar.js"></SCRIPT>
+
+<script>
+//成功之后返回到列表页面
+<%if(is_succes_flag){%>
+	sl_alert("<%=LocalUtilis.language("message.beneficiaryTranSaveOK",clientLocale)%> ！");//受益权转让保存成功
+	//操作员拥有事物管理权限时自动调整到事物页面
+	<%if(projectAccessPower.intValue() == 1 && problem_id.intValue() != 0 && project_id.intValue() != 0){ %>
+		showprojectinfo(<%=problem_id%>,<%=project_id%>,0,0);
+	<%}else{ %>		
+		location = "beneficial_transfer_list.jsp?firstFlag=1&contract_bh=<%=contract_bh%>&product_id=<%=product_id%>";  
+	<%} %>       
+<%}%>
+
+//展示事务
+function showprojectinfo(problem_id,project_id,flag,cust_id){
+	//layout.getRegion('west').hide();
+	var url = '<%=Utility.trimNull(application.getAttribute("INTRUST_ADDRESS"))%>/k2/logintrust.jsp?problem_id='+problem_id+'&uid=<%=input_operator.getLogin_user()%>';
+	location = url;
+}
+
+//选择产品、合同编号、原受益人信息、银行名称
+function selectOthers()
+{		
+	form=document.theform;
+	product_id=form.product_id.value;//产品ID
+	contract_bh=form.contract_bh.value;//合同ID
+	serial_no =  form.serial_no.value;//转让方ID
+	customer_cust_id = form.customer_cust_id.value;//受让方ID
+	bank_id=form.bank_id.value;//银行名称ID
+	moneytype2 = form.moneytype2.value;//可转让份额
+	
+	location="beneficial_transfer_add.jsp?product_id="+product_id+"&contract_bh="+contract_bh
+				+ "&serial_no=" + serial_no + "&customer_cust_id=" + customer_cust_id
+				+ "&bank_id=" + bank_id + "&moneytype2=" + moneytype2;
+}
+
+//选择受让方客户信息
+function getTransactionCustomer(prefix,readonly)
+{
+	var cust_id = getElement(prefix, "cust_id").value;//获得默认客户ID(customer_cust_id)
+	v = showModalDialog('<%=request.getContextPath()%>/marketing/customerInfo.jsp?prefix=' + prefix + '&cust_id=' + cust_id + '&readonly='+readonly,'','dialogWidth:700px;dialogHeight:638px;status:0;help:0;');
+	if (v != null)
+	{
+		showTransactionCustomer(prefix, v);
+	}	
+	return (v != null);
+}
+
+//选择银行名称
+function selectBank(value)
+{
+	if (value != "")
+	{	
+		selectOthers();
+	}
+}
+
+//银行账号选择或输入
+function changeInput(obj)
+{
+	if(document.theform.inputflag.value==1)
+	{
+		obj.innerText="<%=LocalUtilis.language("message.choose",clientLocale)%> ";//选择
+		document.theform.bank_acct.style.display="";
+		document.theform.bank_acct2.style.display="none";
+		document.theform.inputflag.value=2;
+	}
+	else
+	{
+		obj.innerText="<%=LocalUtilis.language("message.input",clientLocale)%> ";//输入
+		document.theform.bank_acct.style.display="none";
+		document.theform.bank_acct2.style.display="";
+		document.theform.inputflag.value=1;
+	}
+}
+
+//选择转让方式获得转让金额
+function exchage()
+{
+	if(document.theform.exchangetype.value == '111501')//全部转让
+	{	
+		document.theform.contractsum.disabled = true;	
+		document.theform.contractsum.value = <%=moneytype2%>;
+	}
+	else
+	{
+		document.theform.contractsum.disabled = false;	
+	}
+	showCnMoney(document.theform.contractsum.value,document.getElementById("contractsum_cn"));
+}
+
+//输入银行账号时显示位数
+function showAcctNum(value)
+{		
+	if (trim(value) == "")
+		bank_acct_num.innerText = "";
+	else
+		bank_acct_num.innerText = "(" + showLength(value) + " 位 )";
+}
+
+//数据验证
+function validateForm(theform)
+{ 	
+
+	 	
+	if(!sl_checkChoice(theform.product_id,"<%=LocalUtilis.language("class.productName",clientLocale)%> "))//产品名称
+		return false;
+	if(!sl_checkChoice(theform.contract_bh,"<%=LocalUtilis.language("class.contractID",clientLocale)%> "))//合同编号
+		return false;
+		
+	if(theform.customer_cust_id.value==0)	
+	{
+		sl_alert("<%=LocalUtilis.language("message.chooseAssigneeTip",clientLocale)%> ！");//请选择受让方
+		return false;
+	}
+	if (theform.customer_cust_id.value == theform.from_cust_id.value)
+	{
+		sl_alert("<%=LocalUtilis.language("message.assigneeError",clientLocale)%> ！");//受让方不能和受益人相同		
+		return false;
+	}
+
+	if(!sl_checkChoice(theform.exchangetype,"<%=LocalUtilis.language("class.exchangeType",clientLocale)%> "))//转让方式
+		return false;
+	if(sl_parseFloat(theform.contractsum.value)>sl_parseFloat(theform.moneytype2.value)){
+		sl_alert("<%=LocalUtilis.language("message.TransferableSharesLack",clientLocale)%> !");//可转让份额不足
+		return false;
+	}
+	if(!sl_checkDecimal(theform.contractsum, "<%=LocalUtilis.language("class.contractSum",clientLocale)%> ", 13,3,1))	//转让份额
+		return false;		
+	theform.contractsum1.value=sl_parseFloat(theform.contractsum.value);
+	var userid='<%=user_id.intValue()%>';
+	if(userid=="5"){
+		if(!sl_checkDecimal(theform.sxfee,"<%=LocalUtilis.language("class.sxFee",clientLocale)%> ", 13,3,0))	//原受益人变更费
+			return false;
+		if(!sl_checkDecimal(theform.sxfee1,"<%=LocalUtilis.language("class.sxFee1",clientLocale)%> ", 13,3,0))//现受益人变更费	
+			return false;
+		if(!sl_checkDecimal(theform.sxfee2,"<%=LocalUtilis.language("class.sxFee2",clientLocale)%> ", 13,3,0))//原受益人受益权代转让费	
+			return false;
+		if(!sl_checkDecimal(theform.sxfee3,"<%=LocalUtilis.language("class.sxFee3",clientLocale)%> ", 13,3,0))//现受益人受益权代转让费	
+			return false;
+	}else{
+		if(!sl_checkDecimal(theform.peoplenum,"<%=LocalUtilis.language("class.transFee",clientLocale)%> ", 13,3,0))//转让手续费	
+			return false;
+		theform.peoplenum1.value=sl_parseFloat(theform.peoplenum.value);
+	}
+	
+	if(!sl_checkDate(document.theform.change_date_picker,"<%=LocalUtilis.language("class.transDate",clientLocale)%> "))	return false;//转让日期
+		syncDatePicker(document.theform.change_date_picker, document.theform.change_date);
+	if(!sl_checkDate(document.theform.change_qs_date_picker,"<%=LocalUtilis.language("class.changeQSDate",clientLocale)%> "))	return false; //协议签署日期 
+	syncDatePicker(document.theform.change_qs_date_picker, document.theform.change_qs_date);	
+		
+	if(!sl_checkChoice(theform.trans_type,"<%=LocalUtilis.language("class.transType",clientLocale)%> "))//转让类别
+		return false;
+	if(!sl_check(theform.Summary,"<%=LocalUtilis.language("class.customerSummary",clientLocale)%> ",200,0))//备注
+		return false;
+	
+	if(theform.fx_change_flag.checked)
+		theform.fx_change_flag.value=2;
+		
+	if(document.theform.fx_change_flag.checked)
+		document.theform.fx_change_flag.value="1";		
+	if(!sl_checkChoice(theform.sy_change_flag,"<%=LocalUtilis.language("message.syChangeFlag",clientLocale)%> "))//转让收益
+			return false;
+	return sl_check_update();
+} 
+</script>
+</HEAD>
+<BODY class="BODY body-nox">
+<form name="theform" action="beneficial_transfer_add.jsp" method="post"  onsubmit="javascript:return validateForm(this);">
+<input type="hidden" name="customer_cust_id" value="<%=customer_cust_id%>">
+<input type="hidden" name="inputflag" value="<%=inputflag%>">
+<input type="hidden" name="from_cust_id" value="<%=from_cust_id%>">
+<input type="hidden" name="contractsum1" value="0"> 
+<input type="hidden" name="peoplenum1" value="0">
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr>
+	<td>
+		<table border="0" width="100%" cellpadding="4" cellspacing="0">
+			<tr>
+				<td class="page-title"><font color="#215dc6"><b><%=menu_info%></b></font></td>
+			</tr>
+		</table>
+		<br/>
+		<table border="0" width="100%" cellspacing="1" cellpadding="4" class="product-list">
+			<!--start 转让方信息-->
+			<tr>
+				<td align="right"><%=LocalUtilis.language("class.productNumber",clientLocale)%> :</td><!--产品选择-->
+				<td>
+					<select size="1" onkeydown="javascript:nextKeyPress(this)" name="product_id" class=productname onChange="javascript:selectOthers();">
+						<%=Argument.getProductListOptions(new Integer(1), product_id, "", input_operatorCode, 2)%>
+					</select>
+				</td>
+				<td align="right"><%=LocalUtilis.language("class.contractID",clientLocale)%> :</td><!--合同编号-->
+				<td>
+					<select size="1" onkeydown="javascript:nextKeyPress(this)" name="contract_bh"  onChange="javascript:selectOthers();">
+						<%=contract_bh_list%>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4"><b><%=LocalUtilis.language("menu.fromCustomerInfo",clientLocale)%> </b></td><!--原受益人信息-->
+			</tr>
+			<tr>
+				<td align="right" ><%=LocalUtilis.language("message.custInfo",clientLocale)%> :</td><!--受益人信息-->
+				<td colspan="3">
+					<select size="1" onkeydown="javascript:nextKeyPress(this)" name="serial_no" onChange="javascript:selectOthers();">
+						<%=from_cust_id_list%>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="right"><%=LocalUtilis.language("class.moneyType2",clientLocale)%> :</td><!--可转让份额-->
+				<td>
+					<input readonly class="edline" onkeydown="javascript:nextKeyPress(this)" name="moneytype2" size="25" value="<%=Utility.trimNull(Format.formatMoney(moneytype2))%>">
+				</td>
+			</tr>
+			<tr>
+				<td ><b><%=LocalUtilis.language("menu.assigneeInfo",clientLocale)%> </b></td><!--受让方信息-->
+				<td><button type="button"  class="xpbutton3"  accessKey=e name="btnEdit" title="<%=LocalUtilis.language("message.customerInfomation",clientLocale)%> " onclick="javascript:getTransactionCustomer('customer','<%=readonly%>');"><%=strButton%></button></td>
+				<!--客户信息-->
+			<tr>
+			<!--end 转让方信息-->		
+			<tr>
+				<td align="right"><%=LocalUtilis.language("class.exchangeType",clientLocale)%> :</td><!--转让方式-->
+				<td width="35%">
+					<select size="1" onchange="javascript:exchage()" onkeydown="javascript:nextKeyPress(this)" name="exchangetype" style="width: 150">
+						<%=Argument.getDictParamOptions_intrust(1115,null)%>
+					</select>
+				</td>
+				<td align="right" width="15%"><%=LocalUtilis.language("class.contractSum",clientLocale)%> :</td><!--转让份额-->
+				<td width="35%">
+					<input onkeydown="javascript:nextKeyPress(this)" onkeyup="javascript:showCnMoney(this.value,contractsum_cn)" name="contractsum" size="25" value=""><span id="contractsum_cn" class="span">&nbsp;<%=LocalUtilis.language("message.10000",clientLocale)%> </span>
+				</td><!--万-->
+			</tr>
+	
+			<tr>
+				<td align="right"><%=LocalUtilis.language("class.changeDate4",clientLocale)%> :</td><!--转让生效日期-->
+				<td><INPUT TYPE="text" NAME="change_date_picker"  class=selecttext  value="<%=Format.formatDateLine(Utility.getCurrentDate())%>">
+					<INPUT TYPE="button" value="▼" class=selectbtn onclick="javascript:CalendarWebControl.show(theform.change_date_picker,theform.change_date_picker.value,this);" tabindex="13">
+					<INPUT TYPE="hidden" NAME="change_date"   value=""></td>
+				<td align="right"></td><td></td>
+			</tr>
+	
+		</table>
+		<br/>
+		<table border="0" width="100%" cellspacing="1" cellpadding="4">
+			<tr>
+				<td>
+					<table border="0" width="100%">
+						<tr>
+							<td align="right">
+							<button type="button"  class="xpbutton3" accessKey=s id="btnSave" name="btnSave" onclick="javascript:if(document.theform.onsubmit()){document.theform.method='post';document.theform.submit();}"><%=LocalUtilis.language("message.save",clientLocale)%> (<u>S</u>)
+							</button><!--保存-->
+							&nbsp;&nbsp;
+							<button type="button"  class="xpbutton3" accessKey=b id="btnCancel" name="btnCancel" onclick="javascript:location='beneficial_transfer_list.jsp';"><%=LocalUtilis.language("message.back",clientLocale)%> (<u>B</u>)
+							</button><!--返回-->
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>		
+	<td>
+</tr>
+</table>
+</form>
+</BODY>
+</HTML>

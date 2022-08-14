@@ -1,0 +1,84 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_MODI_CHANNEL @IN_CONTRACT_SERIAL_NO INT,
+                                 @IN_CHANNEL_TYPE       NVARCHAR(20),
+                                 @IN_CHANNEL_ID         INT,
+                                 @IN_CHANNEL_MEMO       NVARCHAR(200),
+                                 @IN_INPUT_MAN          INT,
+                                 @IN_BONUS_FLAG         INT = NULL,
+								 @IN_CONTRACT_SUB_BH	NVARCHAR(60),
+								 @IN_LINK_MAN			INTEGER,
+								 @IN_RECOMMEND_MAN		INTEGER,
+								 @IN_CHANNEL_COOPERTYPE NVARCHAR(10),
+								 @IN_MARKET_MONEY		DEC(16,3),
+								 @IN_BANK_ID            NVARCHAR(10),
+								 @IN_BANK_SUB_NAME      NVARCHAR(60),
+								 @IN_BANK_ACCT          NVARCHAR(30),
+								 @IN_QS_DATE            INT,
+								 @IN_JK_DATE            INT,
+								 @IN_JK_TYPE            NVARCHAR(10),
+								 @IN_SUMMARY            NVARCHAR(200),
+								 @IN_PROV_FLAG          INTEGER,
+								 @IN_PROV_LEVEL         NVARCHAR(10),
+								 @IN_GAIN_ACCT          NVARCHAR(60)			 
+WITH ENCRYPTION
+AS
+    DECLARE @IN_OP_CODE INT,@V_LOGIN_USER NVARCHAR(20),@IBUSI_FLAG INT,@SBUSI_NAME NVARCHAR(40),@SSUMMARY NVARCHAR(200)
+    SELECT @SBUSI_NAME = N'修改审核后的认购渠道'
+    SELECT @SSUMMARY = N'修改审核后的认购渠道'
+    SELECT @IBUSI_FLAG = 20802
+    DECLARE @V_CUST_ID INT,@V_CHANNEL_TYPE_NAME NVARCHAR(60)
+    SELECT @V_CHANNEL_TYPE_NAME = TYPE_CONTENT FROM TDICTPARAM WHERE TYPE_VALUE = @IN_CHANNEL_TYPE
+    IF @IN_BONUS_FLAG = 0 SET @IN_BONUS_FLAG = NULL
+
+    SELECT @V_CUST_ID = CUST_ID FROM INTRUST..TCONTRACT WHERE SERIAL_NO = @IN_CONTRACT_SERIAL_NO
+
+    BEGIN TRANSACTION
+
+    BEGIN
+        UPDATE INTRUST..TCONTRACT
+            SET CONTRACT_SUB_BH 	= @IN_CONTRACT_SUB_BH,
+                BANK_ID             = @IN_BANK_ID,
+                BANK_SUB_NAME       = @IN_BANK_SUB_NAME,
+                BANK_ACCT           = @IN_BANK_ACCT,
+                GAIN_ACCT           = @IN_GAIN_ACCT,
+                QS_DATE             = @IN_QS_DATE,
+                JK_DATE             = @IN_JK_DATE,
+                JK_TYPE             = @IN_JK_TYPE,
+                SUMMARY             = @IN_SUMMARY,
+                PROV_FLAG           = @IN_PROV_FLAG,
+                PROV_LEVEL          = @IN_PROV_LEVEL,
+                CHANNEL_TYPE 		= @IN_CHANNEL_TYPE,
+                CHANNEL_ID 			= @IN_CHANNEL_ID,
+                CHANNEL_MEMO 		= @IN_CHANNEL_MEMO,				
+				LINK_MAN			= @IN_LINK_MAN,
+				RECOMMEND_MAN		= @IN_RECOMMEND_MAN,
+				CHANNEL_COOPERTYPE 	= @IN_CHANNEL_COOPERTYPE,
+				MARKET_MONEY		= @IN_MARKET_MONEY,
+                BONUS_FLAG = ISNULL(@IN_BONUS_FLAG,BONUS_FLAG),
+                CHECK_FLAG = 9
+            WHERE SERIAL_NO = @IN_CONTRACT_SERIAL_NO
+    END
+
+    IF EXISTS(SELECT 1 FROM TCUSTSOURCEINFO WHERE CUST_ID = @V_CUST_ID AND CHANNEL_TYPE IS NULL)
+        UPDATE TCUSTSOURCEINFO
+            SET CHANNEL_TYPE = @IN_CHANNEL_TYPE,
+                CHANNEL_TYPE_NAME = @V_CHANNEL_TYPE_NAME,
+                CHANNEL_ID = @IN_CHANNEL_ID,
+                CHANNEL_MEMO = @IN_CHANNEL_MEMO
+            WHERE CUST_ID = @V_CUST_ID
+
+    SELECT @SSUMMARY = N'修改审核后的认购渠道：合同号'+ RTRIM(CONVERT(NVARCHAR(16),@IN_CONTRACT_SERIAL_NO))
+    INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+        VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_CONTRACT_SERIAL_NO,@SSUMMARY)
+    IF @@ERROR <> 0
+    BEGIN
+        ROLLBACK TRANSACTION
+        RETURN -100
+    END
+
+    COMMIT TRANSACTION
+    return 100
+GO

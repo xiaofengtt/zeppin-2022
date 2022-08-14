@@ -1,0 +1,74 @@
+A.navigation:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.navigation:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.navigation:active {
+	COLOR: #0000FF; TEXT-DECORATION: none
+}
+A.navigation:hover {
+	COLOR: #0000FF; TEXT-DECORATION: none
+}
+
+A.SortTitle:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.SortTitle:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.SortTitle:active {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.SortTitle:hover {
+	COLOR: #000000; TEXT-DECORATION: underline;
+}
+
+.TableTitleNoLineHeight {
+	background-color: #ECECFF;
+	font-weight: bold;
+	color: #000000;
+}
+
+.TableTitle {
+	background-color: #5EA6E0;
+	font-weight: bold;
+	height:22px;
+	color: #FFFFFF;
+	text-align:center;
+}
+
+.TableDetail1 {
+	background-color: #EEEEEE;
+	font-size:9pt;
+	height:20px;
+}
+
+.TableDetail2 {
+	background-color: #FFFFFF;
+	font-size: 9pt;
+	height:20px;
+}
+
+.TableStyle {
+	background-color: #DFDFDF;
+	border-width: 1px;
+	border: 0px;
+}
+
+.selectLine {
+	background-color: #C0DBFF;
+	font-size: 9pt;
+	color: #000000;
+	height:20px;
+}
+
+.NavigationTitle {
+	font-size: 9pt;
+	color: #000000;
+}
+.white
+{
+
+}
+

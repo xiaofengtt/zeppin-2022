@@ -1,0 +1,70 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+--  PROCEDURE SP2_CHECK_TVideoRecording
+--select * from TVideoRecording
+-- SP2_CHECK_TVideoRecording 1,1,'',888
+CREATE PROCEDURE SP2_CHECK_TVideoRecording
+                      @IN_VID                 INT,        --ID
+                      @IN_CHECK_FLAG          INT,        --审核状态:1未审核(撤消)2审核通过3审核否决
+                      @IN_CHECK_COMMEMT       NVARCHAR(400),--审核说明
+                      @IN_INPUT_MAN           INT         --操作员
+                      
+WITH ENCRYPTION
+AS
+    
+    DECLARE @IBUSI_FLAG INT,@SBUSI_NAME NVARCHAR(40),@SSUMMARY NVARCHAR(200)
+    DECLARE @V_PREPRODUCT_ID INT,@V_PRE_STATUS NVARCHAR(20),@V_INPUTMANNAME NVARCHAR(60)
+    DECLARE @V_PRODUCT_ID INT,@V_SUB_PRODUCT_ID INT,@V_HT_STATUS NVARCHAR(20),@V_CheckFlag INT
+    SELECT @SBUSI_NAME = N'审核双录信息'
+    SELECT @SSUMMARY = N'审核双录信息'
+    SELECT @IBUSI_FLAG = 30243
+    
+    BEGIN TRY
+    BEGIN TRANSACTION
+    
+		SET @IN_CHECK_FLAG=ISNULL(@IN_CHECK_FLAG,0)
+		IF ISNULL(@IN_CHECK_FLAG,0) NOT IN (1,2,3)
+			RAISERROR('审核状态错误，请联系管理员',16,1)
+		SELECT @V_CheckFlag=CheckFlag FROM TVideoRecording WHERE VID=@IN_VID
+		IF @@ROWCOUNT=0
+			RAISERROR('双录信息不存在',16,1)
+		IF @V_CheckFlag=1 AND @IN_CHECK_FLAG=1
+			RAISERROR('双录信息处于待审核状态，不用撤消',16,1)
+		IF (@V_CheckFlag=2 OR @V_CheckFlag=3) AND (@IN_CHECK_FLAG=3 OR @IN_CHECK_FLAG=2)
+			RAISERROR('双录信息已审核通过，不能再审核操作',16,1)
+		SELECT @V_INPUTMANNAME=OP_NAME FROM TOPERATOR WHERE OP_CODE=@IN_INPUT_MAN
+		IF @IN_CHECK_FLAG=1 --撤消
+			UPDATE TVideoRecording SET CheckFlag=@IN_CHECK_FLAG,CheckMan=null,CheckManName='',CheckTime=null
+				,CheckComment=@IN_CHECK_COMMEMT WHERE VID=@IN_VID
+		ELSE
+			UPDATE TVideoRecording SET CheckFlag=@IN_CHECK_FLAG,CheckMan=@IN_INPUT_MAN,CheckManName=@V_INPUTMANNAME,CheckTime=GETDATE()
+				,CheckComment=@IN_CHECK_COMMEMT WHERE VID=@IN_VID
+		
+    INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+        VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+    
+    COMMIT TRANSACTION
+    END TRY
+
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION
+
+        DECLARE @V_ERROR_STR NVARCHAR(1000),@V_ERROR_NUMBER INT,@V_ERROR_SEVERITY INT,@V_ERROR_STATE INT,
+                @V_ERROR_PROCEDURE sysname,@V_ERROR_LINE INT,@V_ERROR_MESSAGE NVARCHAR(4000)
+
+        SELECT @V_ERROR_STR = N'Message:%s,Procedure:%s,Line:%d',
+               @V_ERROR_NUMBER = ERROR_NUMBER(),
+               @V_ERROR_SEVERITY = ERROR_SEVERITY(),
+               @V_ERROR_STATE = ERROR_STATE(),
+               @V_ERROR_PROCEDURE = ERROR_PROCEDURE(),
+               @V_ERROR_LINE = ERROR_LINE(),
+               @V_ERROR_MESSAGE = ERROR_MESSAGE()
+
+        RAISERROR(@V_ERROR_STR,@V_ERROR_SEVERITY,1,@V_ERROR_MESSAGE,@V_ERROR_PROCEDURE,@V_ERROR_LINE)
+
+        RETURN -100
+    END CATCH
+    RETURN 100
+GO

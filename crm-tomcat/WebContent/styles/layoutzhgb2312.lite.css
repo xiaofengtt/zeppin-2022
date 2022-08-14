@@ -1,0 +1,55 @@
+TD {
+    FONT-SIZE: 12px;
+    COLOR: #333333;
+    FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica, "Bitstream Vera Sans", sans-serif
+}
+
+.button {
+    BACKGROUND: url(../styles/images/calendar.gif) no-repeat;
+    CURSOR: pointer;
+    COLOR: #395366;
+    BORDER-TOP-STYLE: none;
+    PADDING-TOP: 2px;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    TEXT-ALIGN: center;
+    BORDER-BOTTOM-STYLE: none
+}
+.button2 {
+    BACKGROUND: url(../styles/images/buttom_bg1.gif) no-repeat;
+    WIDTH: 72px;
+    CURSOR: pointer;
+    COLOR: #395366;
+    BORDER-TOP-STYLE: none;
+    PADDING-TOP: 2px;
+    BORDER-RIGHT-STYLE: none;
+    BORDER-LEFT-STYLE: none;
+    HEIGHT: 20px;
+    TEXT-ALIGN: center;
+    BORDER-BOTTOM-STYLE: none
+}
+.tdblodth {
+	BORDER-TOP: #b7c4d4 1px solid;
+	PADDING-LEFT: 4px;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	BACKGROUND: url(../styles/images/ico_thbg.gif) #e2e7ef no-repeat right top;
+	COLOR: #000;
+	LINE-HEIGHT: 23px;
+	BORDER-BOTTOM: #f9f9fa 1px solid;
+	WHITE-SPACE: nowrap;
+	HEIGHT: 21px;
+	padding-right: 4px;
+}
+A {
+	COLOR: #333333; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff6600; TEXT-DECORATION: none
+}
+.flux_title {
+	MARGIN-TOP: 15px; FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #0d2d7c; TEXT-ALIGN: center
+}
+INPUT {
+	BORDER-RIGHT: #b4b4b4 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #b4b4b4 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; BORDER-LEFT: #b4b4b4 1px solid; COLOR: #333333; LINE-HEIGHT: 17px; PADDING-TOP: 0px; BORDER-BOTTOM: #b4b4b4 1px solid; HEIGHT: 19px
+}

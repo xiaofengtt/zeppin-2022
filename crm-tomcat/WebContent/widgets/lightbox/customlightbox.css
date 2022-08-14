@@ -1,0 +1,16 @@
+
+
+
+#box {
+	width: 300px;
+	background: #2d2d2d;
+	padding: 10px;
+	border: 2px solid #eee;
+}
+
+#close {
+	position: absolute;
+	top: -5px;
+	right: -5px;
+	cursor: pointer;
+}

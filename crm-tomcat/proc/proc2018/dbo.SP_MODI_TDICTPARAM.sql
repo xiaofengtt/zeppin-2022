@@ -1,0 +1,49 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_MODI_TDICTPARAM @IN_SERIAL_NO    INT,
+                                    @IN_TYPE_ID      INT,
+                                    @IN_TYPE_NAME    NVARCHAR(20),
+                                    @IN_TYPE_VALUE   NVARCHAR(10),
+                                    @IN_TYPE_CONTENT NVARCHAR(256),
+                                    @IN_INPUT_MAN    INT,
+                                    @IN_ADDITIVE_VALUE NVARCHAR(127) = NULL,
+                                    @IN_AML_VALUE    NVARCHAR(20) = NULL
+WITH ENCRYPTION
+AS
+    DECLARE @V_RET_CODE INT, @IBUSI_FLAG INT, @SBUSI_NAME NVARCHAR(40), @SSUMMARY NVARCHAR(200)
+    SELECT @V_RET_CODE = -10201000, @IBUSI_FLAG = 10201
+    SELECT @SBUSI_NAME = N'修改字典参数', @SSUMMARY = N'修改字典参数'
+
+    IF NOT EXISTS(SELECT * FROM TDICTPARAM WHERE SERIAL_NO = @IN_SERIAL_NO)
+       RETURN @V_RET_CODE-11   -- 记录不存在
+
+    BEGIN TRANSACTION
+
+    UPDATE TDICTPARAM
+        SET TYPE_ID      = @IN_TYPE_ID,
+            TYPE_NAME    = @IN_TYPE_NAME,
+            TYPE_VALUE   = @IN_TYPE_VALUE,
+            TYPE_CONTENT = @IN_TYPE_CONTENT,
+            ADDITIVE_VALUE = @IN_ADDITIVE_VALUE,
+            AML_VALUE = @IN_AML_VALUE
+        WHERE SERIAL_NO = @IN_SERIAL_NO
+    IF @@ERROR <> 0
+    BEGIN
+        ROLLBACK TRANSACTION
+        RETURN -100
+    END
+
+    SELECT @SSUMMARY = N'修改字典参数，参数值：' + RTRIM(@IN_TYPE_VALUE) + N'，参数说明：' + @IN_TYPE_CONTENT
+    INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+        VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+    IF @@ERROR <> 0
+    BEGIN
+        ROLLBACK TRANSACTION
+        RETURN -100
+    END
+
+    COMMIT TRANSACTION
+    RETURN 100
+GO

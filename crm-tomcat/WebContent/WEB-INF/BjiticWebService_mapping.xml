@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java-wsdl-mapping xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://www.ibm.com/webservices/xsd/j2ee_jaxrpc_mapping_1_1.xsd">
+    <package-mapping>
+        <package-type>enfo.crm.service</package-type>
+        <namespaceURI>http://service.crm.enfo</namespaceURI>
+    </package-mapping>
+    <java-xml-type-mapping>
+        <java-type>org.w3c.dom.Element</java-type>
+        <root-type-qname xmlns:rtq="http://xml.apache.org/xml-soap">rtq:Element</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>javax.xml.soap.SOAPElement</java-type>
+        <root-type-qname xmlns:rtq="http://websphere.ibm.com/webservices/">rtq:SOAPElement</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>java.lang.Object</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:anyType</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>java.lang.String</java-type>
+        <root-type-qname xmlns:rtq="http://www.w3.org/2001/XMLSchema">rtq:string</root-type-qname>
+        <qname-scope>simpleType</qname-scope>
+    </java-xml-type-mapping>
+    <service-interface-mapping>
+        <service-interface>enfo.crm.service.BjiticWebServiceService</service-interface>
+        <wsdl-service-name xmlns:sim="http://service.crm.enfo">sim:BjiticWebServiceService</wsdl-service-name>
+        <port-mapping>
+            <port-name>BjiticWebService</port-name>
+            <java-port-name>BjiticWebService</java-port-name>
+        </port-mapping>
+    </service-interface-mapping>
+    <service-endpoint-interface-mapping>
+        <service-endpoint-interface>enfo.crm.service.BjiticWebService</service-endpoint-interface>
+        <wsdl-port-type xmlns:seimwpt="http://service.crm.enfo">seimwpt:BjiticWebService</wsdl-port-type>
+        <wsdl-binding xmlns:seimwb="http://service.crm.enfo">seimwb:BjiticWebServiceSoapBinding</wsdl-binding>
+        <service-endpoint-method-mapping>
+            <java-method-name>checkIsBjiticDSCust</java-method-name>
+            <wsdl-operation>checkIsBjiticDSCust</wsdl-operation>
+            <wrapped-element></wrapped-element>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>java.lang.Object</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://service.crm.enfo">mppm:checkIsBjiticDSCustRequest</wsdl-message>
+                    <wsdl-message-part-name>custName</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>1</param-position>
+                <param-type>java.lang.Object</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://service.crm.enfo">mppm:checkIsBjiticDSCustRequest</wsdl-message>
+                    <wsdl-message-part-name>custType</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>2</param-position>
+                <param-type>java.lang.Object</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://service.crm.enfo">mppm:checkIsBjiticDSCustRequest</wsdl-message>
+                    <wsdl-message-part-name>cardType</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>3</param-position>
+                <param-type>java.lang.Object</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:mppm="http://service.crm.enfo">mppm:checkIsBjiticDSCustRequest</wsdl-message>
+                    <wsdl-message-part-name>cardNo</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping>
+                <method-return-value>java.lang.String</method-return-value>
+                <wsdl-message xmlns:wrvm="http://service.crm.enfo">wrvm:checkIsBjiticDSCustResponse</wsdl-message>
+                <wsdl-message-part-name>checkIsBjiticDSCustReturn</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+        </service-endpoint-method-mapping>
+    </service-endpoint-interface-mapping>
+</java-wsdl-mapping>

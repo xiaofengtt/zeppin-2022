@@ -1,0 +1,160 @@
+[MAINFRAME_MENU]
+BEGIN_MENU
+	POPUP "文件(&F)"
+	BEGIN_MENU
+		MENUITEM "新建", "FileNew"
+		POPUP "打开文件"
+		BEGIN_MENU
+			MENUITEM "打开本地文件", "FileOpen"
+			MENUITEM "打开远程文件", "FileWebOpen"
+		END_MENU
+		MENUITEM SEPARATOR
+		MENUITEM "保存", "FileSave"
+		MENUITEM "表页另存为", "FileSheetSaveAs"
+		MENUITEM SEPARATOR
+		POPUP "读入文件"
+		BEGIN_MENU
+			MENUITEM "文本文件", "FileImportText"
+			MENUITEM "CSV文件", "FileImportCSV"
+			MENUITEM "Excel文件", "FileImportExcel"
+		END_MENU
+		POPUP "输出文件"
+		BEGIN_MENU
+			MENUITEM "文本文件", "FileExportText"
+			MENUITEM "CSV文件", "FileExportCSV"
+			MENUITEM "Excel文件", "FileExportExcel"
+			MENUITEM "PDF文件", "FileExportPDF"
+		END_MENU
+		MENUITEM SEPARATOR
+		MENUITEM "页面设置", "FilePageSetup"
+		MENUITEM "打印预览", "FilePrintPreview"
+		MENUITEM "打印", "FilePrint"
+		MENUITEM SEPARATOR
+		MENUITEM "退出", "FileExit"
+	END_MENU
+	POPUP "编辑(&E)"
+	BEGIN_MENU
+		MENUITEM "撤消", "EditUndo"
+		MENUITEM "重做", "EditRedo"
+		MENUITEM SEPARATOR
+		MENUITEM "剪切", "EditCut"
+		MENUITEM "复制", "EditCopy"
+		MENUITEM "粘贴", "EditPaste"
+		MENUITEM "选择性粘贴", "EditPasteSpecial"
+		MENUITEM SEPARATOR
+		MENUITEM "查找", "EditFind"
+		MENUITEM "替换", "EditReplace"
+		MENUITEM "定位", "EditGoto"
+		MENUITEM SEPARATOR
+		MENUITEM "全选", "EditSelectAll"
+		MENUITEM "垂直填充", "EditFillV"
+		MENUITEM "插入特殊符号", "EditInsertSpeChar"
+		MENUITEM "超级连接", "EditHyperlink"
+	END_MENU
+	POPUP "视图(&V)"
+	BEGIN_MENU
+		MENUITEM "不滚动行列", "ViewFreezed"
+		MENUITEM SEPARATOR
+		MENUITEM "页签", "ViewSheetLabel"
+		MENUITEM "行标", "ViewRowLabel"
+		MENUITEM "列标", "ViewColLabel"
+		MENUITEM "水平滚动条", "ViewHScroll"
+		MENUITEM "垂直滚动条", "ViewVScroll"
+	END_MENU
+	POPUP "格式(&T)"
+	BEGIN_MENU
+		MENUITEM "单元格", "FormatCellProperty"
+		MENUITEM SEPARATOR
+		MENUITEM "画线/抹线", "FormatDrawborder"
+		MENUITEM "插入图片", "FormatInsertPic"
+		MENUITEM "删除图片", "FormatRemovePic"
+		MENUITEM "设置组合", "FormatMergeCell"
+		MENUITEM "取消组合", "FormatUnMergeCell"
+		POPUP "表行"
+		BEGIN_MENU
+			MENUITEM "插入", "RowInsert"
+			MENUITEM "删除", "RowDelete"
+			MENUITEM "追加", "RowAppend"
+			MENUITEM SEPARATOR
+			MENUITEM "隐藏", "RowHide"
+			MENUITEM "取消隐藏", "RowUnhide"
+			MENUITEM SEPARATOR
+			MENUITEM "设置行高", "RowHeight"
+			MENUITEM "最适合行高", "RowBestHeight"
+		END_MENU
+		POPUP "表列"
+		BEGIN_MENU
+			MENUITEM "插入", "ColInsert"
+			MENUITEM "删除", "ColDelete"
+			MENUITEM "追加", "ColAppend"
+			MENUITEM SEPARATOR
+			MENUITEM "隐藏", "ColHide"
+			MENUITEM "取消隐藏", "ColUnhide"
+			MENUITEM SEPARATOR
+			MENUITEM "设置列宽", "ColWidth"
+			MENUITEM "最适合列宽", "ColBestWidth"
+		END_MENU
+		MENUITEM SEPARATOR
+		MENUITEM "填加行分级显示", "menuAddRowCompage"
+		MENUITEM "删除行分级显示", "menuDelRowCompage"
+		MENUITEM "填加列分级显示", "menuAddColCompage"
+		MENUITEM "删除列分级显示", "menuDelColCompage"
+		MENUITEM "删除全部分级显示", "menuDelAllCompage"
+	END_MENU
+	POPUP "表页(&S)"
+	BEGIN_MENU
+		MENUITEM "设置页签", "SheetRename"
+		MENUITEM "表页尺寸", "SheetSize"
+		MENUITEM "表页保护", "SheetProptect"
+		MENUITEM SEPARATOR
+		MENUITEM "插入表页", "SheetInsert"
+		MENUITEM "删除表页", "SheetDelete"
+		MENUITEM "追加表页", "SheetAppend"
+		MENUITEM SEPARATOR
+		MENUITEM "格式页排序", "SheetSortStyle"
+		MENUITEM "数据页排序", "SheetSortValue"
+	END_MENU
+	POPUP "公式(&M)"
+	BEGIN_MENU
+		MENUITEM "输入公式", "FormulaInput"
+		MENUITEM "批量录入公式", "FormulaBatchInput"
+		MENUITEM "填充公式序列", "FormulaSerial"
+		MENUITEM SEPARATOR
+		MENUITEM "定义单元格显示公式", "FormulaCellShow"
+		MENUITEM "定义单元格颜色公式", "FormulaCellColor"
+		MENUITEM SEPARATOR
+		MENUITEM "公式列表", "FormulaList"
+		MENUITEM "重算全表", "FormulaReCalc"
+	END_MENU
+	POPUP "自定义函数(&U)"
+	BEGIN_MENU
+		MENUITEM "定义自定义函数XX", "UserFuncDefine"
+		MENUITEM "增加自定义函数YY和ZZ", "UserFuncAdd"
+		MENUITEM "删除自定义函数XX", "UserFuncDelete"
+		MENUITEM "修改自定义函数YY", "UserFuncModify"
+	END_MENU
+	POPUP "数据(&D)"
+	BEGIN_MENU
+		MENUITEM "数据转换", "DataRangeRotate"
+		MENUITEM "舍位平衡", "DataRangeBlance"
+		MENUITEM "区域排序", "DataRangeSort"
+		MENUITEM "区域分类汇总", "DataRangeClassSum"
+		MENUITEM "区域查询", "DataRangeQuery"
+		MENUITEM SEPARATOR
+		MENUITEM "简单区域汇总", "DataRange3DEasySum"
+		MENUITEM "页间区域汇总", "DataRange3DSum"
+		MENUITEM "页间区域透视", "DataRange3DView"
+		MENUITEM "页间区域查询", "DataRange3DQuery"
+		MENUITEM SEPARATOR
+		MENUITEM "条形码向导", "DataWzdBarcode"
+		MENUITEM "图表向导", "DataWzdChart"
+		MENUITEM SEPARATOR
+		MENUITEM "定义变量", "DEFINEVARDLG"
+	END_MENU
+END_MENU
+
+[USER_FUNCTION_DEF]
+END_FUNCDEF
+
+[EVENT_SCRIPT]
+END_SCRIPT

@@ -1,0 +1,84 @@
+.TableStyle {
+	background-color: #FFFFFF;
+	BORDER-TOP: #808080 1px solid; 
+	BORDER-BOTTOM: #808080 1px solid; 
+	BORDER-LEFT: #808080 1px solid; 
+	BORDER-RIGHT: #808080 1px solid; 
+}
+
+.topicTitle {
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#DBE0E5,endColorStr=#BDC5CE);
+	background-color: #DBE0E5;
+	font-family: ËÎÌו;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.TintBG {
+	background-color: #F3F7FA;
+}
+
+.Tint {
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#E1E9F1,endColorStr=#FFFFFF);
+	background-color: #FFFFFF;
+}
+
+.Deep {
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#E1E9F1,endColorStr=#ECF0F6);
+	background-color: #E1E9F1;
+}
+
+A.topic:link {
+	COLOR: #303F9C; TEXT-DECORATION: none
+}
+A.topic:visited {
+	COLOR: #303F9C; TEXT-DECORATION: none
+}
+A.topic:active {
+	COLOR: #303F9C; TEXT-DECORATION: none
+}
+A.topic:hover {
+	COLOR: #303F9C; TEXT-DECORATION: underline
+}
+
+.Forum_page_top_bg {
+	background-color: #387FD0;
+}
+
+.Forum_page_item_title {
+	color: #303F9C9;
+}
+
+.Forum_view_title {
+	background-color: #387FD0;
+	color: #FFFFFF;
+	font-family: ËÎÌו;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.DetailLine {
+	border-bottom: solid 1px #FF9005;
+}
+
+.GrayBG {
+	background-color: #B4D2FF;
+}
+
+.Detail_end {
+	font-family: ËÎÌו;
+	font-size: 9pt;
+	color: #A5A5A5;
+}
+
+.no_color_bg {
+	background-color: #FFFFFF;
+}
+
+.Voting_table {
+	background-color: #DFDFDF;
+}
+
+.Voting_title {
+	background-color: #EEEEEE;
+}

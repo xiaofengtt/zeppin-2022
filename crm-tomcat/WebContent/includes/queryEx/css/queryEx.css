@@ -1,0 +1,42 @@
+.qcTitle
+{
+	BACKGROUND-IMAGE: url(../images/headerbg.gif);	
+	height:11px;
+	border:0;
+	color:#FFFFFF;
+	font-weight: bold;	
+	cursor:move;
+}
+
+.qcTitle1
+{
+	BACKGROUND-IMAGE: url(../images/headerbg.gif);	
+	height:11px;
+	border:0;
+	color:#FFFFFF;
+	font-weight: bold;	
+	cursor:move;
+}
+.qcMain
+{	
+	background-color:#ffffff;	
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=#bbbbbb,direction=135,strength=5);
+	border:1px solid #D6DFF7;
+	padding:1px;
+	position:absolute;
+	z-index:1;
+}
+
+.qcClose
+{
+	BACKGROUND-IMAGE: url(../images/btn_close.gif);
+	background-repeat:no-repeat;
+	width:11px;
+	height:11px;
+	BORDER-RIGHT: 0px solid;
+    BORDER-TOP: 0px solid;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: 0px solid;    
+    PADDING-TOP: 2px;
+    BORDER-BOTTOM: 0px solid;
+}

@@ -1,0 +1,259 @@
+
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge">	
+<title>Layout Test-page</title>
+<link href="styles/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/plugins/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-ui-1.9.0.js"></script>
+<script type="text/javascript" src="js/plugins/initstyle.js"></script>
+<script type="text/javascript" src="js/plugins/utilities.js"></script>
+<script type="text/javascript" src="js/plugins/formly.js"></script>
+<script type="text/javascript" src="js/page.all.js"></script>
+<script type="text/javascript" src="js/page.content.js"></script>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+j$(function(){
+	j$(".tableForm").tableForm({
+		className:"tableFormSimple",
+		width:"100%",
+		//height:200,
+		inputWidth:"100%",//
+		inputHeight:30,//input类高度设置，textarea默认X2
+		//inputResize:true,//自适应input，但是如果input类的元素有size，width，style="width:XX"类的属性则pass。
+		inputFoceResize:true,//强制自适应input，忽略input原有属性。
+		TDTitleWidth:150,//标题字段宽度
+		hiddenColon:false,//隐藏冒号
+		//autoResize:false//自适应宽度
+	});
+	j$(".test2").tableForm({TDTitleWidth:80});
+	
+	j$(":input").change(function(){
+		alert("changed")
+		j$("html").addClass('notSave');
+	})
+	j$(window).unload(function(){
+		if(j$("html").hasClass('notSave')){
+			alert("Not Save!!!")
+		}
+	})
+	j$(".buttonmy").addClass("buttonSimple").button({
+       icons: {primary: "x1 y1 icon"}
+	});
+	
+	j$( "#tabs" ).tabs()
+	//.tabs('select', 2);
+});
+
+</script>
+</head>
+<body class="pageContent">
+<div class="contentWrap">
+	<div class="location">
+		<div class="icon iconLocation"></div>
+		<div class="desc">报表查询 > 职能机构 > 职位清单</div>
+		<button class="buttonResize">最大化</button>
+	</div>
+	<div class="toolbar">
+		<ul class="operateGrid">
+			<li><button class="buttonNew">新增</button></li>
+			<li><button class="buttonSave">保存</button></li>
+			<li><button class="buttonExit">退出</button></li>
+			<li><button class="buttonReturn">返回</button></li>
+			<li><button class="buttonEdit">编辑</button></li>
+			<li><button class="buttonPrint">打印</button></li>
+			<li><button class="buttonDelete">删除</button></li>
+			<li><button class="buttonSubmit">提交</button></li>
+			<li><button class="buttonView">查看</button></li>
+			<li><button class="buttonRefresh">刷新</button></li>
+			<li><button class="buttonmy" id="test">新建按钮DEMO</button></li>
+		</ul>
+	</div>
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">数据列表1</a></li>
+			<li><a href="#tabs-2">数据列表2</a></li>
+			<li><a href="#tabs-3">数据列表3</a></li>
+		</ul>
+		<div id="tabs-1">
+			<div class="InfoBar">
+				<!--<div class="tipSimple tipError tipNormal"><span class="icon"></span><font>所选的结果自动保存！其中导航风格切换需刷新页面！</font></div>
+				<div class="tipSimple tipWarning"><span class="icon"></span><font>所选的结果自动保存！其中导航风格切换需刷新页面！</font></div>-->
+				<div class="tipSimple tipNormal"><span class="icon"></span><font>所选的结果自动保存！其中导航风格切换需刷新页面！</font></div>
+			</div>
+			<table class="tableForm">
+				<thead>
+					<tr>
+						<th class="TF-Subject " colspan="4" ><span>某某有限责任公司派车单</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					 <tr>
+						 <td>*用车部门:</td>
+						 <td>物流中心</td>
+						 <td>*申请人：</td>
+						 <td>张大明</td>
+					 </tr>
+					 <tr>
+						 <td>用车人:</td>
+						 <td>
+						 	<select>
+							    <option value=""></option>
+							    <option value="100099">孙庆平</option>
+							    <option value="100095">王隽芝</option>
+							    <option value="100160">刘振宁</option>
+							    <option value="100015">刘立清</option>
+							    <option value="400039">戴宁</option>
+							    <option value="100190" selected="selected">张大明</option>
+							    <option value="100089">李景发</option>
+							</select>
+						 </td>
+						 <td>*用车人联系方式:</td>
+						 <td><!--
+						 	<input type="text" style="word-wrap:break-word; word-break:break-all; white-space:pre-wrap;" value="http://10.43.250.147:8080/portlatSSOServlet?userid=0100085&noPassword=yes&j_url=/businessworkitem/noSendList.action?moduleName=noSendList"/>
+						 -->
+						 </td>
+					 </tr>
+					 <tr>
+						  <td>*出车类型:</td>
+						  <td>
+						  <select>
+						    <option value=""></option>
+						    <option value="1">长途</option>
+						    <option value="2">市内</option>
+						  </select>
+						  </td>
+						  <td>申用期请人:</td>
+						 <td><input value="" type="text" />	</td>
+					 </tr>
+					 <tr>	
+						  <td >使用期限:</td>
+						  <td colspan="3" ><input value="" type="text" /></td>
+					 </tr>
+					 <tr>
+					 	<td>起止路线:</td>	
+						<td colspan="3">
+							<input type="text" />
+						</td>
+					 </tr>
+					 <tr>
+					 	<td>出发时间和地点:</td>	
+						<td colspan="3">
+							<input type="text" />
+						</td>
+					 </tr>
+					 <tr>
+						  <td rowspan="2">出车事由:</td>
+						  <td colspan="3">
+					        <textarea width="200"></textarea>
+						  </td>
+					 </tr> 
+					 <tr >
+						  <td colspan="3">
+							 <input type="text"/><button>测试</button>
+						  </td>
+					 </tr>
+					 <tr>
+						  <td>物流中心意见:</td>
+						  <td colspan="3">
+						  	<input type="radio"/>
+						  </td>
+					 </tr>
+					  <tr>
+						  <td>分管领导意见:</td>
+						  <td colspan="3">
+					  		<table class="test2">
+								 <tbody>
+								 	<tr>
+										 <td>*用车部门:</td>
+										 <td>物流中心</td>
+										 <td>*申请人：</td>
+										 <td>张大明</td>
+									 </tr>
+								 </tbody>
+							</table>
+						  </td>
+					 </tr>
+					 <tr>	
+						  <td >使用期限:</td>
+						  <td colspan="3" ><input value="" width="100" type="text" /></td>
+					 </tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="tabs-2">
+			<table class="tableList done">
+				<tr>
+					<td>首钢迁钢公司四个作业部安全标准化建设顺利通过国家一级考核评审</td>
+					<td>11/07</td>
+				</tr>
+				<tr>
+					<td>首钢迁钢公司召开兼职通讯员总结表彰会</td>
+					<td>11/08</td>
+				</tr>
+				<tr>
+					<td>弘扬爱国精神 立志成长成才——首钢迁钢公司组织优秀团员青年开展爱国主义教育活动</td>
+					<td>11/07</td>
+				</tr>
+				<tr>
+					<td>首钢迁钢男篮在全国冶金职工运动会上夺冠</td>
+					<td>11/08</td>
+				</tr>
+				<tr>
+					<td>首钢迁钢公司酸洗生产线试车成功</td>
+					<td>11/07</td>
+				</tr>
+				<tr>
+					<td>首钢迁钢公司冷轧激光刻痕机组热试成功</td>
+					<td>11/07</td>
+				</tr>
+			</table>
+		</div>
+		<div id="tabs-3">
+			<table class="test2 tableFormSimple">
+				<tbody>
+					 <tr>
+						 <td>其他意见:</td>
+						 <td>物流中心</td>
+						 <td>流程记录:</td>
+						 <td>张大明</td>
+						 <td>当前用户:</td>
+						 <td>物流中心</td>
+						 <td>当前审批人:</td>
+						 <td>张大明</td>
+						 <td>当前用户:</td>
+						 <td>物流中心</td>
+						 <td>当前审批人:</td>
+						 <td>张大明</td>
+					 </tr>
+					 <tr>
+						 <td>其他意见:</td>
+						 <td>物流中心</td>
+						 <td>流程记录:</td>
+						 <td>张大明</td>
+						 <td>当前用户:</td>
+						 <td>物流中心</td>
+						 <td>当前审批人:</td>
+						 <td>张大明</td>
+						 <td>当前用户:</td>
+						 <td>物流中心</td>
+						 <td>当前审批人:</td>
+						 <td>张大明</td>
+					 </tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="pagebar">
+		<div class="pageState">此处放置提示信息！</div>
+	</div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+</script>
+
+
+

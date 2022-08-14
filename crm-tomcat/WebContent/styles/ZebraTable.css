@@ -1,0 +1,63 @@
+body {
+	background: #fff;
+}
+
+.zabra_table {
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 12px;
+}
+
+.zabra_table th {
+	background: #aeaeae;
+	color: #fff;
+	font-weight: bold;
+	padding: 2px 11px;
+	text-align: left;
+	border-right: 1px solid #fff;
+	line-height: 1.8;
+}
+
+.zabra_table td {
+	padding: 5px 11px;
+	border-bottom: 1px solid #CCCCCC;
+	vertical-align: top;
+	background: #fff;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+
+.zabra_table tr.alt td {
+	background: #c5c5c5;
+}
+
+.FloatRight {
+	float: right;
+	display: block;
+}
+.FloatLeft {
+	float: left;
+	display: block;
+}
+
+a img {
+	BORDER-TOP-STYLE: none;
+	BORDER-RIGHT-STYLE: none;
+	BORDER-LEFT-STYLE: none;
+	BORDER-BOTTOM-STYLE: none;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	text-decoration: underline;;
+	color: black;
+}
+
+span {
+	font-size: 12px;
+	margin-left: 8px;
+}

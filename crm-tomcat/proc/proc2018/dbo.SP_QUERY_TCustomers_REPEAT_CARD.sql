@@ -1,0 +1,167 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE dbo.SP_QUERY_TCustomers_REPEAT_CARD @IN_REPEAT_TIME INT, -- 重复超过次数
+                                                     @IN_FLAG INT, --1身份证号重复 2姓名重复
+                                                     @IN_INPUT_MAN INT,
+                                                     @IN_MUST_CONTAIN NVARCHAR(100) = '', -- 身份证号/姓名必须包含的    
+                                                     @IN_LOOSELY_MATCH NVARCHAR(100) = '', -- 相似匹配        
+                                                     @IN_MAX_DIFF INT = 0 -- 相似匹配允许身份证号/姓名中不同出现的次数
+                                                 
+WITH ENCRYPTION
+AS
+    DECLARE @V_CARD_ID NVARCHAR(100)
+
+    ------临时表
+    DECLARE @V_CUSTINFO TABLE
+    (
+        CUST_ID         INT,
+        CUST_NO         NVARCHAR(8),
+        CUST_NAME       NVARCHAR(100),
+        CUST_TYPE       INT,
+        CUST_TYPE_NAME  NVARCHAR(100),
+        CARD_ID         NVARCHAR(40),
+        CARD_TYPE       NVARCHAR(40),
+        CARD_TYPE_NAME  NVARCHAR(60),
+        SERVICE_MAN     INT,
+        MODI_FLAG       INT,
+		IS_DEAL_NAME	NVARCHAR(60),
+		CUST_LEVEL_NAME NVARCHAR(60)
+    )
+    DECLARE @V_TCUSTOMERS TABLE
+    (
+        CUST_ID         INT,
+        CUST_NO         NVARCHAR(8),
+        CUST_NAME       NVARCHAR(100),
+        CUST_TYPE       INT,
+        CUST_TYPE_NAME  NVARCHAR(100),
+        CARD_ID         NVARCHAR(40),
+        CARD_ID2         NVARCHAR(40),
+        CARD_TYPE       NVARCHAR(40),
+        CARD_TYPE_NAME  NVARCHAR(60),
+        SERVICE_MAN     INT,
+        MODI_FLAG       INT,
+		IS_DEAL_NAME	NVARCHAR(60),
+		CUST_LEVEL_NAME NVARCHAR(60)
+    )
+
+    IF @IN_FLAG = 1 --身份证号重复
+    BEGIN
+        IF EXISTS(SELECT 1 FROM TOPROLE WHERE ROLE_ID IN (1,4) AND OP_CODE = @IN_INPUT_MAN)BEGIN
+            INSERT INTO @V_TCUSTOMERS
+                SELECT A.CUST_ID,CUST_NO,CUST_NAME,CUST_TYPE,CUST_TYPE_NAME,CARD_ID,CARD_ID,CARD_TYPE,CARD_TYPE_NAME,SERVICE_MAN,0,
+                    CASE IS_DEAL WHEN 1 THEN '事实客户'
+                                WHEN 2 THEN '潜在客户'
+                                ELSE '其他' END AS IS_DEAL_NAME 
+                        ,B.CLASSDETAIL_NAME
+                    FROM TCustomers A LEFT JOIN TCustomerClass B ON B.CLASSDEFINE_ID=12 AND A.CUST_ID=B.CUST_ID
+                    WHERE STATUS <>'112805' 
+                        AND (ISNULL(@IN_MUST_CONTAIN,'')='' OR CARD_ID LIKE '%'+@IN_MUST_CONTAIN+'%' 
+                                OR dbo.IDCARD15TO18(CARD_ID) LIKE '%'+@IN_MUST_CONTAIN+'%' 
+                                OR dbo.IDCARD18TO15(CARD_ID) LIKE '%'+@IN_MUST_CONTAIN+'%')
+                        AND (ISNULL(@IN_LOOSELY_MATCH,'')='' OR DBO.LOOSELY_MATCH(@IN_LOOSELY_MATCH,CARD_ID,@IN_MAX_DIFF)<>0)
+        END ELSE 
+        BEGIN
+            INSERT INTO @V_TCUSTOMERS
+                SELECT A.CUST_ID,CUST_NO,CUST_NAME,CUST_TYPE,CUST_TYPE_NAME,CARD_ID,CARD_ID,CARD_TYPE,CARD_TYPE_NAME,SERVICE_MAN,0,
+                    CASE IS_DEAL WHEN 1 THEN '事实客户'
+                                WHEN 2 THEN '潜在客户'
+                                ELSE '其他' END AS IS_DEAL_NAME 
+                        ,B.CLASSDETAIL_NAME
+                    FROM TCustomers A LEFT JOIN TCustomerClass B ON B.CLASSDEFINE_ID=12 AND A.CUST_ID=B.CUST_ID
+                    WHERE STATUS <>'112805' 
+                        AND (ISNULL(@IN_MUST_CONTAIN,'')='' OR CARD_ID LIKE '%'+@IN_MUST_CONTAIN+'%' 
+                                OR dbo.IDCARD15TO18(CARD_ID) LIKE '%'+@IN_MUST_CONTAIN+'%' 
+                                OR dbo.IDCARD18TO15(CARD_ID) LIKE '%'+@IN_MUST_CONTAIN+'%')
+                        AND (ISNULL(@IN_LOOSELY_MATCH,'')='' OR DBO.LOOSELY_MATCH(@IN_LOOSELY_MATCH,CARD_ID,@IN_MAX_DIFF)<>0)
+                        AND A.SERVICE_MAN = @IN_INPUT_MAN
+        END
+                    
+        UPDATE @V_TCUSTOMERS SET CARD_ID2 = dbo.IDCARD15TO18(CARD_ID2) WHERE LEN(CARD_ID2) = 15
+
+        SELECT CARD_ID2 INTO #REPEAT_CARD_ID FROM @V_TCUSTOMERS GROUP BY CARD_ID2 HAVING COUNT(*)>@IN_REPEAT_TIME
+        INSERT INTO @V_CUSTINFO 
+              SELECT CUST_ID,CUST_NO,CUST_NAME,CUST_TYPE,CUST_TYPE_NAME,CARD_ID,
+                    CARD_TYPE,CARD_TYPE_NAME,SERVICE_MAN,0,IS_DEAL_NAME,CUST_LEVEL_NAME
+                FROM @V_TCUSTOMERS A
+                WHERE EXISTS (SELECT 1 FROM #REPEAT_CARD_ID WHERE CARD_ID2=A.CARD_ID2)
+
+
+        --如果有客户访问权限控制，则执行客户信息加密
+/*
+        IF EXISTS(SELECT * FROM TSYSCONTROL WHERE FLAG_TYPE = N'CUSTRIGHT' AND VALUE = 1)
+        BEGIN
+            --修改有有权限的显示
+            UPDATE @V_CUSTINFO SET MODI_FLAG = dbo.GETCUSTRIGHT(SERVICE_MAN,@IN_INPUT_MAN)
+                WHERE SERVICE_MAN IN (SELECT ENABLE_OP_CODE FROM TOPCUSTRIGHT WHERE OP_CODE = @IN_INPUT_MAN)
+                    OR SERVICE_MAN = @IN_INPUT_MAN
+
+            UPDATE @V_CUSTINFO SET CARD_ID=replace('******',CARD_ID,CARD_ID)
+                WHERE MODI_FLAG = 2
+        END
+*/
+        SELECT * FROM @V_CUSTINFO ORDER BY CUST_NAME ASC
+    END
+    ELSE IF @IN_FLAG = 2 --姓名重复
+    BEGIN
+    IF EXISTS(SELECT 1 FROM TOPROLE WHERE ROLE_ID IN (1,4) AND OP_CODE = @IN_INPUT_MAN)BEGIN
+        INSERT INTO @V_TCUSTOMERS
+            SELECT A.CUST_ID,CUST_NO,CUST_NAME,CUST_TYPE,CUST_TYPE_NAME,CARD_ID,CARD_ID,CARD_TYPE,CARD_TYPE_NAME,SERVICE_MAN,0,
+				CASE IS_DEAL WHEN 1 THEN '事实客户'
+							 WHEN 2 THEN '潜在客户'
+							 ELSE '其他' END AS IS_DEAL_NAME
+					,B.CLASSDETAIL_NAME
+			    FROM TCustomers A LEFT JOIN TCustomerClass B ON B.CLASSDEFINE_ID=12 AND A.CUST_ID=B.CUST_ID
+                WHERE STATUS <>'112805' 
+                    AND (ISNULL(@IN_MUST_CONTAIN,'')='' OR CUST_NAME LIKE '%'+@IN_MUST_CONTAIN+'%')
+                    AND (ISNULL(@IN_LOOSELY_MATCH,'')='' OR DBO.LOOSELY_MATCH(@IN_LOOSELY_MATCH,CUST_NAME,@IN_MAX_DIFF)<>0)
+    END ELSE
+    BEGIN
+        INSERT INTO @V_TCUSTOMERS
+            SELECT A.CUST_ID,CUST_NO,CUST_NAME,CUST_TYPE,CUST_TYPE_NAME,CARD_ID,CARD_ID,CARD_TYPE,CARD_TYPE_NAME,SERVICE_MAN,0,
+				CASE IS_DEAL WHEN 1 THEN '事实客户'
+							 WHEN 2 THEN '潜在客户'
+							 ELSE '其他' END AS IS_DEAL_NAME
+					,B.CLASSDETAIL_NAME
+			    FROM TCustomers A LEFT JOIN TCustomerClass B ON B.CLASSDEFINE_ID=12 AND A.CUST_ID=B.CUST_ID
+                WHERE STATUS <>'112805' 
+                    AND (ISNULL(@IN_MUST_CONTAIN,'')='' OR CUST_NAME LIKE '%'+@IN_MUST_CONTAIN+'%')
+                    AND (ISNULL(@IN_LOOSELY_MATCH,'')='' OR DBO.LOOSELY_MATCH(@IN_LOOSELY_MATCH,CUST_NAME,@IN_MAX_DIFF)<>0)
+                    AND A.SERVICE_MAN = @IN_INPUT_MAN
+    END
+                    
+                    
+        UPDATE @V_TCUSTOMERS SET CARD_ID2 = dbo.IDCARD15TO18(CARD_ID2) WHERE LEN(CARD_ID2) = 15
+        
+        SELECT CUST_NAME INTO #REPEAT_CUST_NAME FROM @V_TCUSTOMERS GROUP BY CUST_NAME HAVING COUNT(*)>@IN_REPEAT_TIME
+        IF @IN_LOOSELY_MATCH<>''
+            INSERT INTO @V_CUSTINFO 
+              SELECT CUST_ID,CUST_NO,CUST_NAME,CUST_TYPE,CUST_TYPE_NAME,CARD_ID,
+                CARD_TYPE,CARD_TYPE_NAME,SERVICE_MAN,0,IS_DEAL_NAME,CUST_LEVEL_NAME
+                FROM @V_TCUSTOMERS A
+                WHERE EXISTS (SELECT 1 FROM #REPEAT_CUST_NAME WHERE CUST_NAME=A.CUST_NAME)
+        ELSE 
+            INSERT INTO @V_CUSTINFO 
+              SELECT CUST_ID,CUST_NO,CUST_NAME,CUST_TYPE,CUST_TYPE_NAME,CARD_ID,CARD_TYPE,CARD_TYPE_NAME,SERVICE_MAN,0,IS_DEAL_NAME,CUST_LEVEL_NAME
+                FROM @V_TCUSTOMERS A
+                WHERE EXISTS (SELECT 1 FROM #REPEAT_CUST_NAME WHERE CUST_NAME=A.CUST_NAME)
+                
+        --如果有客户访问权限控制，则执行客户信息加密
+/*
+        IF EXISTS(SELECT * FROM TSYSCONTROL WHERE FLAG_TYPE = N'CUSTRIGHT' AND VALUE = 1)
+        BEGIN
+            --修改有有权限的显示
+            UPDATE @V_CUSTINFO SET MODI_FLAG = dbo.GETCUSTRIGHT(SERVICE_MAN,@IN_INPUT_MAN)
+                WHERE SERVICE_MAN IN (SELECT ENABLE_OP_CODE FROM TOPCUSTRIGHT WHERE OP_CODE = @IN_INPUT_MAN)
+                    OR SERVICE_MAN = @IN_INPUT_MAN
+
+            UPDATE @V_CUSTINFO SET CARD_ID=replace('******',CARD_ID,CARD_ID)
+                WHERE MODI_FLAG = 2
+        END
+*/
+        SELECT * FROM @V_CUSTINFO B
+			WHERE NOT EXISTS (SELECT * FROM TCUSTMERGE WHERE CHECK_FLAG=1 AND (TCUSTMERGE.FROM_CUST_ID=B.CUST_ID OR TCUSTMERGE.TO_CUST_ID=B.CUST_ID)) --合并后未审查的客户，不能再查出来
+			ORDER BY CUST_NAME ASC
+    END
+GO

@@ -1,0 +1,440 @@
+<!--
+// **********************************************************************************************************
+// NavBar.htm	Custom Navigation Bar(自制导航条)
+// 2000/12/04	董国杰
+// 导航栏1.0版
+// 作者∶董国杰       E-mail: webmaster@biaoge.com.cn
+// Copyleft@ 1999年，北京用友华表软件技术有限公司 http://www.biaoge.com.cn
+// 您可以为任何目的使用，拷贝，修改，分发本代码,但必须在所有分发的软件及材料
+// 中保留本声明。如果您将此导航条用在Internet上，请求您为我们做一个链接"华表，
+// 中国人的电子表格"，并指向http://www.biaoge.com.cn。
+
+// HtmlMenu version 1.0
+// Author: Dongguojie        E-mail: webmaster@biaoge.com.cn
+// Copyleft@ 1999,Cell Software Co., Ltd. http://www.cellactivex.com
+// Permission to use, copy, modify, and distribute this software and its documentation for  
+// any purpose is hereby granted without fee, provided that the above copyright notice, 
+// author statement and this permission notice appear in all copies of this software and 
+// related documentation.
+// If you use this Navigation Bar on Internet, we ask for you making a hyperlink to http://www.cellactivex.com, 
+// named "Cell Control, essential tool for applications".
+// ************************************************************************************************************
+-->
+
+<HTML>
+<HEAD>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>菜单导航条</title>
+
+<link rel="stylesheet" type="text/css" href="control/navbar.css">
+</HEAD>
+
+<BODY id="outbar_mainbody" topmargin="0" leftmargin="0" 
+	oncontextmenu="return(event.ctrlKey);" 
+	onselectstart="return(false);" 
+	style="background-color:#999999;"
+	scroll="no" 
+>
+
+<!-- Functions used by navbar -->     
+<script language=javascript src="control/navbar.js"></script>     
+
+<!-- initialize global variables -->     
+<script language=javascript>    
+g_arrayMenuBar[0]= "File";
+g_arrayMenuBar[1]= "Edit";
+g_arrayMenuBar[2]= "View";
+g_arrayMenuBar[3]= "Format";
+g_arrayMenuBar[4]= "RowCol";
+g_arrayMenuBar[5]= "Sheet";
+g_arrayMenuBar[6]= "Formula";
+g_arrayMenuBar[7]= "Data";
+
+
+g_lTotalMenuBars = 8;
+
+</script>
+<!-- The following table renders the Menu of the navbar -->    
+<TABLE id=nbTableMain class="nbTableMain" style="height:100%;" cellpadding=0 cellspacing=0 >
+	<TR>
+		<TD class="treeBrand" >
+			<DIV class="treeOFLOW"><IMG src="images/logo.gif" style="padding:0;" border=0></DIV>
+		</TD>
+	</TR>
+	<TR height="100%">
+		<TD>
+			<TABLE id=nbTableMenu class="nbTable" style="display:none;" cellspacing=0 height="100%" cellpadding="0" >
+				<TR>
+					<TD id="File" TABINDEX=0 class="nbFlybar" NOWRAP 
+						onkeydown="flybar_keydown()" onclick="ToggleTab(this.id)">
+						<DIV class="treeOFLOW">文件(<U>F</U>)</DIV>
+					</TD>
+				</TR>
+				<TR style="height:100%">
+					<TD id="idFile" valign=top style="text-align: left">
+<TABLE cellpadding=0 cellspacing=0 tabIndex="0" class="cbSubmenu" width="100%">
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFileNew" menuitem="true" HREF="javascript:mnuFileNew_click()" target="viewer" title="新建文档"><IMG align=absmiddle src="general/new.gif" ondragstart="return(false);"><SPAN>新建</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFileOpen" menuitem="true" HREF="javascript:mnuFileOpen_click()" target="viewer" title="打开本地文档"><IMG align=absmiddle src="general/open.gif" ondragstart="return(false);"><SPAN>打开本地文档</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFileWebOpen" menuitem="true" HREF="javascript:mnuFileWebOpen_click()" target="viewer" title="打开远程文档"><IMG align=absmiddle src="general/openweb.gif" ondragstart="return(false);"><SPAN>打开远程文档</SPAN></A></TD>
+	</TR>
+
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFileSave" menuitem="true" HREF="javascript:mnuFileSave_click()" target="viewer" title="保存文档"><IMG align=absmiddle src="general/save.gif" ondragstart="return(false);"><SPAN>保存</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFileSheetSaveAs" menuitem="true" HREF="javascript:mnuFileSheetSaveAs_click()" target="viewer" title="表页另存为"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>表页另存为</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFileImportText" menuitem="true" HREF="javascript:mnuFileImportText_click()" target="viewer" title="读入文本文件"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>读入文本文件</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFileImportExcel" menuitem="true" HREF="javascript:mnuFileImportExcel_click()" target="viewer" title="读入Excel文件"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>读入Excel文件</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFileExportText" menuitem="true" HREF="javascript:mnuFileExportText_click()" target="viewer" title="输出文本文件"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>输出文本文件</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFileExportExcel" menuitem="true" HREF="javascript:mnuFileExportExcel_click()" target="viewer" title="输出Excel文件"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>输出Excel文件</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFilePageSetup" menuitem="true" HREF="javascript:mnuFilePageSetup_click()" target="viewer" title="页面设置"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>页面设置</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFilePrintPreview" menuitem="true" HREF="javascript:mnuFilePrintPreview_click()" target="viewer" title="打印预览"><IMG align=absmiddle src="general/printpreview.gif" ondragstart="return(false);"><SPAN>打印预览</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFilePrint" menuitem="true" HREF="javascript:mnuFilePrint_click()" target="viewer" title="打印"><IMG align=absmiddle src="general/print.gif" ondragstart="return(false);"><SPAN>打印</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFileExit" menuitem="true" HREF="javascript:mnuFileExit_click()" target="viewer" title="退出"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>退出</SPAN></A></TD>
+	</TR>
+</TABLE>
+					</TD>
+				</TR>
+				<TR>
+					<TD id="Edit" TABINDEX=0 class="nbFlybar" NOWRAP 
+						onkeydown="flybar_keydown()" onclick="ToggleTab(this.id);">
+						<DIV class="treeOFLOW">编辑(<U>E</U>)</DIV>
+					</TD>
+				</TR>
+				<TR>
+					<TD id="idEdit" valign=top style="text-align:left;display:none;">
+<TABLE cellpadding=0 cellspacing=0 tabIndex="0" class="cbSubmenu" width="100%">
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuEditUndo" menuitem="true" HREF="javascript:mnuEditUndo_click()" target="viewer" title="撤消操作"><IMG align=absmiddle src="general/undo.gif" ondragstart="return(false);"><SPAN>撤消</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuEditRedo" menuitem="true" HREF="javascript:mnuEditRedo_click()" target="viewer" title="重新操作"><IMG align=absmiddle src="general/redo.gif" ondragstart="return(false);"><SPAN>重做</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuEditCut" menuitem="true" HREF="javascript:mnuEditCut_click()" target="viewer" title="剪切"><IMG align=absmiddle src="general/cut.gif" ondragstart="return(false);"><SPAN>剪切</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuEditCopy" menuitem="true" HREF="javascript:mnuEditCopy_click()" target="viewer" title="复制"><IMG align=absmiddle src="general/copy.gif" ondragstart="return(false);"><SPAN>复制</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuEditPaste" menuitem="true" HREF="javascript:mnuEditPaste_click()" target="viewer" title="粘贴"><IMG align=absmiddle src="general/paste.gif" ondragstart="return(false);"><SPAN>粘贴</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuEditPasteSpecial" menuitem="true" HREF="javascript:mnuEditPasteSpecial_Click()" target="viewer" title="选择性粘贴"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>选择性粘贴</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuEditFind" menuitem="true" HREF="javascript:mnuEditFind_click()" target="viewer" title="查找"><IMG align=absmiddle src="general/find.gif" ondragstart="return(false);"><SPAN>查找</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuEditReplace" menuitem="true" HREF="javascript:mnuEditReplace_click()" target="viewer" title="替换"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>替换</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuEditGoto" menuitem="true" HREF="javascript:mnuEditGoto_click()" target="viewer" title="定位"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>定位</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuEditSelectAll" menuitem="true" HREF="javascript:mnuEditSelectAll_click()" target="viewer" title="全选"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>全选</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuEditFillV" menuitem="true" HREF="javascript:mnuEditFillV_click()" target="viewer" title="垂直填充"><IMG align=absmiddle src="general/fillv.gif" ondragstart="return(false);"><SPAN>垂直填充</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuEditInsertSpeChar" menuitem="true" HREF="javascript:mnuEditInsertSpeChar_click()" target="viewer" title="插入特殊符号"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>插入特殊符号</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuEditHyperlink" menuitem="true" HREF="javascript:mnuEditHyperlink_click()" target="viewer" title="超级链接"><IMG align=absmiddle src="design/hyperlink.gif" ondragstart="return(false);"><SPAN>超级链接</SPAN></A></TD>
+	</TR>
+	
+</TABLE>
+					</TD>
+				</TR>
+				<TR>
+					<TD id="View" TABINDEX=0 class="nbFlybar" NOWRAP 
+						onkeydown="flybar_keydown()" onclick="ToggleTab(this.id);">
+						<DIV class="treeOFLOW">视图(<U>V</U>)</DIV>
+					</TD>
+				</TR>
+				<TR>
+					<TD id="idView" valign=top style="text-align: left;display:none;">
+<TABLE cellpadding=0 cellspacing=0 tabIndex="0" class="cbSubmenu" width="100%">
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuViewFreezed" menuitem="true" HREF="javascript:mnuViewFreezed_click()" target="viewer" title="设置不滚动行列"><IMG align=absmiddle src="general/freeze.gif" ondragstart="return(false);"><SPAN>不滚动行列</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuViewSheetLabel" menuitem="true" HREF="javascript:mnuViewSheetLabel_click()" target="viewer" title="页签"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>页签</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuViewRowLabel" menuitem="true" HREF="javascript:mnuViewRowLabel_click()" target="viewer" title="行标"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>行标</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuViewColLabel" menuitem="true" HREF="javascript:mnuViewColLabel_click()" target="viewer" title="列标"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>列标</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuViewHScroll" menuitem="true" HREF="javascript:mnuViewHScroll_click()" target="viewer" title="水平滚动条"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>水平滚动条</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuViewVScroll" menuitem="true" HREF="javascript:mnuViewVScroll_click()" target="viewer" title="垂直滚动条"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>垂直滚动条</SPAN></A></TD>
+	</TR>
+</TABLE>
+					</TD>
+				</TR>
+                <TR>
+					<TD id="Format" TABINDEX=0 class="nbFlybar" NOWRAP 
+						onkeydown="flybar_keydown()" onclick="ToggleTab(this.id);">
+						<DIV class="treeOFLOW">格式(<u>T</u>)</DIV>
+					</TD>
+                </TR>
+                <TR>
+					<TD id="idFormat" valign=top style="text-align: left;display:none;">
+<TABLE cellpadding=0 cellspacing=0 tabIndex="0" class="cbSubmenu" width="100%">
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFormatCellProperty" menuitem="true" HREF="javascript:mnuFormatCellProperty_click()" target="viewer" title="单元格属性"><IMG align=absmiddle src="design/cellproperty.gif" ondragstart="return(false);"><SPAN>单元格</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFormatDrawborder" menuitem="true" HREF="javascript:mnuFormatDrawborder_click()" target="viewer" title="画线/抹线"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>画线/抹线</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFormatInsertPic" menuitem="true" HREF="javascript:mnuFormatInsertPic_click()" target="viewer" title="插入图片"><IMG align=absmiddle src="design/insertpic.gif" ondragstart="return(false);"><SPAN>插入图片</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFormatRemovePic" menuitem="true" HREF="javascript:mnuFormatRemovePic_click()" target="viewer" title="删除图片"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>删除图片</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFormatMergeCell" menuitem="true" HREF="javascript:mnuFormatMergeCell_click()" target="viewer" title="设置组合"><IMG align=absmiddle src="design/mergecell.gif" ondragstart="return(false);"><SPAN>设置组合</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFormatUnMergeCell" menuitem="true" HREF="javascript:mnuFormatUnMergeCell_click()" target="viewer" title="取消组合"><IMG align=absmiddle src="design/unmergecell.gif" ondragstart="return(false);"><SPAN>取消组合</SPAN></A></TD>
+	</TR>
+</TABLE>
+					</TD>
+                </TR>
+                <TR>
+					<TD id="RowCol" TABINDEX=0 class="nbFlybar" NOWRAP 
+						onkeydown="flybar_keydown()" onclick="ToggleTab(this.id);">
+						<DIV class="treeOFLOW">表行列(<u>R</u>)</DIV>
+					</TD>
+                </TR>
+                <TR>
+					<TD id="idRowCol" valign=top style="text-align: left;display:none;">
+<TABLE cellpadding=0 cellspacing=0 tabIndex="0" class="cbSubmenu" width="100%">
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuRowInsert" menuitem="true" HREF="javascript:mnuRowInsert_click()" target="viewer" title="插入表行"><IMG align=absmiddle src="design/insertrow.gif" ondragstart="return(false);"><SPAN>插入表行</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuRowDelete" menuitem="true" HREF="javascript:mnuRowDelete_click()" target="viewer" title="删除表行"><IMG align=absmiddle src="design/deleterow.gif" ondragstart="return(false);"><SPAN>删除表行</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuRowAppend" menuitem="true" HREF="javascript:mnuRowAppend_click()" target="viewer" title="追加表行"><IMG align=absmiddle src="design/appendrow.gif" ondragstart="return(false);"><SPAN>追加表行</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuRowHeight" menuitem="true" HREF="javascript:mnuRowHeight_click()" target="viewer" title="行高"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>行高</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuRowHide" menuitem="true" HREF="javascript:mnuRowHide_click()" target="viewer" title="隐藏行"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>隐藏行</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuRowUnhide" menuitem="true" HREF="javascript:mnuRowUnhide_click()" target="viewer" title="取消隐藏行"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>取消隐藏行</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuRowBestHeight" menuitem="true" HREF="javascript:mnuRowBestHeight_click()" target="viewer" title="最适合行高"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>最适合行高</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuColInsert" menuitem="true" HREF="javascript:mnuColInsert_click()" target="viewer" title="插入表列"><IMG align=absmiddle src="design/insertcol.gif" ondragstart="return(false);"><SPAN>插入表列</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuColDelete" menuitem="true" HREF="javascript:mnuColDelete_click()" target="viewer" title="删除表列"><IMG align=absmiddle src="design/deletecol.gif" ondragstart="return(false);"><SPAN>删除表列</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuColAppend" menuitem="true" HREF="javascript:mnuColAppend_click()" target="viewer" title="追加表列"><IMG align=absmiddle src="design/appendcol.gif" ondragstart="return(false);"><SPAN>追加表列</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuColWidth" menuitem="true" HREF="javascript:mnuColWidth_click()" target="viewer" title="列宽"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>列宽</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuColHide" menuitem="true" HREF="javascript:mnuColHide_click()" target="viewer" title="隐藏列"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>隐藏列</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuColUnhide" menuitem="true" HREF="javascript:mnuColUnhide_click()" target="viewer" title="取消隐藏列"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>取消隐藏列</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuColBestWidth" menuitem="true" HREF="javascript:mnuColBestWidth_click()" target="viewer" title="最适合列宽"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>最适合列宽</SPAN></A></TD>
+	</TR>
+	
+</TABLE>
+					</TD>
+                </TR>
+                <TR>
+					<TD id="Sheet" TABINDEX=0 class="nbFlybar" NOWRAP 
+						onkeydown="flybar_keydown()" onclick="ToggleTab(this.id);">
+						<DIV class="treeOFLOW">表页(<u>S</u>)</DIV>
+					</TD>
+                </TR>
+                <TR>
+					<TD id="idSheet" valign=top style="text-align: left;display:none;">
+<TABLE cellpadding=0 cellspacing=0 tabIndex="0" class="cbSubmenu" width="100%">
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuSheetRename" menuitem="true" HREF="javascript:mnuSheetRename_click()" target="viewer" title="设置页签"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>设置页签</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuSheetSize" menuitem="true" HREF="javascript:mnuSheetSize_click()" target="viewer" title="表页尺寸"><IMG align=absmiddle src="design/sheetsize.gif" ondragstart="return(false);"><SPAN>表页尺寸</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuSheetProptect" menuitem="true" HREF="javascript:mnuSheetProptect_click()" target="viewer" title="表页保护"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>表页保护</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuSheetInsert" menuitem="true" HREF="javascript:mnuSheetInsert_click()" target="viewer" title="插入表页"><IMG align=absmiddle src="design/insertsheet.gif" ondragstart="return(false);"><SPAN>插入表页</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuSheetDelete" menuitem="true" HREF="javascript:mnuSheetDelete_click()" target="viewer" title="删除表页"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>删除表页</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuSheetAppend" menuitem="true" HREF="javascript:mnuSheetAppend_click()" target="viewer" title="追加表页"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>追加表页</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuSheetSortStyle" menuitem="true" HREF="javascript:mnuSheetSortStyle_click()" target="viewer" title="格式页排序"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>格式页排序</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuSheetSortValue" menuitem="true" HREF="javascript:mnuSheetSortValue_click()" target="viewer" title="数据页排序"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>数据页排序</SPAN></A></TD>
+	</TR>
+</TABLE>
+					</TD>
+                </TR>
+                <TR>
+					<TD id="Formula" TABINDEX=0 class="nbFlybar" NOWRAP 
+						onkeydown="flybar_keydown()" onclick="ToggleTab(this.id);">
+						<DIV class="treeOFLOW">公式(<u>M</u>)</DIV>
+					</TD>
+                </TR>
+                <TR>
+					<TD id="idFormula" valign=top style="text-align: left;display:none;">
+<TABLE cellpadding=0 cellspacing=0 tabIndex="0" class="cbSubmenu" width="100%">
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFormulaInput" menuitem="true" HREF="javascript:mnuFormulaInput_click()" target="viewer" title="输入公式"><IMG align=absmiddle src="general/formula.gif" ondragstart="return(false);"><SPAN>输入公式</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFormulaBatchInput" menuitem="true" HREF="javascript:mnuFormulaBatchInput_click()" target="viewer" title="批量录入公式"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>批量录入公式</SPAN></A></TD>
+	</TR>
+
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFormulaCellShow" menuitem="true" HREF="javascript:mnuFormulaCellShow_click()" target="viewer" title="定义单元格显示公式"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>定义单元格显示公式</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFormulaCellColor" menuitem="true" HREF="javascript:mnuFormulaCellColor_click()" target="viewer" title="定义单元格颜色公式"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>定义单元格颜色公式</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFormulaList" menuitem="true" HREF="javascript:mnuFormulaList_click()" target="viewer" title="公式列表"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>公式列表</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuFormulaReCalc" menuitem="true" HREF="javascript:mnuFormulaReCalc_click()" target="viewer" title="重算全表"><IMG align=absmiddle src="design/calculateall.gif" ondragstart="return(false);"><SPAN>重算全表</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuUserFuncDefine" menuitem="true" HREF="javascript:mnuUserFuncDefine_click()" target="viewer" title="定义自定义函数"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>定义自定义函数XX</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuUserFuncAdd" menuitem="true" HREF="javascript:mnuUserFuncAdd_click()" target="viewer" title="增加自定义函数"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>增加自定义函数YY和ZZ</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuUserFuncDelete" menuitem="true" HREF="javascript:mnuUserFuncDelete_click()" target="viewer" title="删除自定义函数"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>删除自定义函数XX</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuUserFuncModify" menuitem="true" HREF="javascript:mnuUserFuncModify_click()" target="viewer" title="修改自定义函数"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>修改自定义函数YY</SPAN></A></TD>
+	</TR>
+</TABLE>
+					</TD>
+                </TR>
+                <TR>
+					<TD id="Data" TABINDEX=0 class="nbFlybar" NOWRAP 
+						onkeydown="flybar_keydown()" onclick="ToggleTab(this.id);">
+						<DIV class="treeOFLOW">数据(<u>D</u>)</DIV>
+					</TD>
+                </TR>
+                <TR>
+					<TD id="idData" valign=top style="text-align: left;display:none;">
+<TABLE cellpadding=0 cellspacing=0 tabIndex="0" class="cbSubmenu" width="100%">
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuDataRangeRotate" menuitem="true" HREF="javascript:mnuDataRangeRotate_click()" target="viewer" title="数据转置"><IMG align=absmiddle src="general/rotate.gif" ondragstart="return(false);"><SPAN>数据转置</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuDataRangeBlance" menuitem="true" HREF="javascript:mnuDataRangeBlance_click()" target="viewer" title="舍位平衡"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>舍位平衡</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuDataRangeSort" menuitem="true" HREF="javascript:mnuDataRangeSort_click()" target="viewer" title="区域排序"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>区域排序</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuDataRangeClassSum" menuitem="true" HREF="javascript:mnuDataRangeClassSum_click()" target="viewer" title="区域分类汇总"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>区域分类汇总</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuDataRangeQuery" menuitem="true" HREF="javascript:mnuDataRangeQuery_click()" target="viewer" title="区域查询"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>区域查询</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuDataRange3DEasySum" menuitem="true" HREF="javascript:mnuDataRange3DEasySum_click()" target="viewer" title="简单区域汇总"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>简单区域汇总</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuDataRange3DSum" menuitem="true" HREF="javascript:mnuDataRange3DSum_click()" target="viewer" title="页间区域汇总"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>页间区域汇总</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuDataRange3DView" menuitem="true" HREF="javascript:mnuDataRange3DView_click()" target="viewer" title="页间区域透视"><IMG align=absmiddle src="general/view3d.gif" ondragstart="return(false);"><SPAN>页间区域透视</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuDataRange3DQuery" menuitem="true" HREF="javascript:mnuDataRange3DQuery_click()" target="viewer" title="页间区域查询"><IMG align=absmiddle src="images/blank.gif" ondragstart="return(false);"><SPAN>页间区域查询</SPAN></A></TD>
+	</TR>
+	<TR><TD><HR><!--Menu item line--></TD></TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuDataWzdBarcode" menuitem="true" HREF="javascript:mnuDataWzdBarcode_click()" target="viewer" title="条形码向导"><IMG align=absmiddle src="design/barcode.gif" ondragstart="return(false);"><SPAN>条形码向导</SPAN></A></TD>
+	</TR>
+	<TR>
+		<TD NOWRAP width="100%"><A class="cbSubmenuItem" id="mnuDataWzdChart" menuitem="true" HREF="javascript:mnuDataWzdChart_click()" target="viewer" title="图表向导"><IMG align=absmiddle src="general/chartw.gif" ondragstart="return(false);"><SPAN>图表向导</SPAN></A></TD>
+	</TR>
+	
+</TABLE>
+					</TD>
+                </TR>
+               
+			</TABLE>
+		</TD>
+	</TR>
+</TABLE>
+
+</BODY>
+</HTML>

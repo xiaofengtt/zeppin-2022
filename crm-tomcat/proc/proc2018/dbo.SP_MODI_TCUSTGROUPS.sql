@@ -1,0 +1,28 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_MODI_TCUSTGROUPS   @IN_GROUPID          INT,               --父级组ID（TCUSTGROUPS.GROUPID）
+                                       @IN_GROUPNAME        NVARCHAR(60),      --子分组名称
+                                       @IN_INPUT_MAN        INT =  0           --操作员
+WITH ENCRYPTION
+AS
+    DECLARE @V_RET_CODE INT, @IBUSI_FLAG INT,@SBUSI_NAME NVARCHAR(40), @SSUMMARY NVARCHAR(200)
+    SELECT @V_RET_CODE = -30401000, @IBUSI_FLAG = 30401
+
+    SELECT @SBUSI_NAME = N'修改客户经理级别名称（仅修改名称）', @SSUMMARY = N'修改客户经理级别名称（仅修改名称）'
+    IF EXISTS (SELECT 1 FROM TCustGroups WHERE GroupID = @IN_GROUPID)
+    BEGIN
+        SET XACT_ABORT ON
+        BEGIN TRANSACTION
+        UPDATE TCustGroups
+        SET GroupName = @IN_GROUPNAME
+        WHERE GroupID = @IN_GROUPID
+
+        SET @SSUMMARY = N'修改客户经理级别名称（仅修改名称），操作员：' + CAST(@IN_INPUT_MAN AS NVARCHAR(10))
+        INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+            VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+        COMMIT TRANSACTION
+        SET XACT_ABORT OFF
+    END
+GO

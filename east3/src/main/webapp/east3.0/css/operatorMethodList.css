@@ -1,0 +1,181 @@
+.hidden{
+	display: none !important;
+	visibility:hidden !important;
+}
+
+.main-contain .contain-head {
+    width: 100%;
+    height: 50px;
+    background: #EEF5FE;
+    padding: 10px 25px 10px 25px;
+}
+
+.main-contain .contain-head span {
+    opacity: 0.8;
+    font-size: 16px;
+    color: #2B2B2B;
+    margin-top: 3px;
+    display: inline-block;
+}
+
+.main-contain .contain-head button {
+    width: auto;
+    height: auto;
+    margin: 0 0 0 20px;
+    float: right;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.main-contain .contain-head button.submit-button {
+    padding: 4px 11px;
+    background: #F5A623;
+    border-radius: 5px;
+}
+
+.main-contain .contain-head button.all-select-button {
+    padding: 4px 11px;
+    background: #4D9CFE;
+    border-radius: 5px;
+}
+
+.main-contain .contain-body {
+    height: 600px;
+    width: 100%;
+}
+
+.main-contain .contain-body>div {
+    height: 600px;
+    display: inline-block;
+    overflow-y: scroll;
+}
+
+.main-contain .contain-body ul {
+    margin: 0;
+}
+
+.main-contain .contain-body .contain-body-left {
+    width: 30%;
+    float: left;
+}
+
+.main-contain .contain-body .contain-body-left li {
+    height: 50px;
+    text-align: left;
+    line-height: 60px;
+}
+
+.main-contain .contain-body .contain-body-left span {
+    opacity: 0.5;
+    font-size: 13px;
+    color: #010101;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.main-contain .contain-body .contain-body-left li.selected {
+    background: #74B2FF;
+}
+
+.main-contain .contain-body .contain-body-left li.selected span {
+    color: #fff;
+    opacity: 1;
+}
+
+.main-contain .contain-body .contain-body-right {
+    width: 70%;
+    float: right;
+}
+
+.main-contain .contain-body .contain-body-right li {
+    height: 40px;
+    text-align: left;
+    line-height: 40px;
+}
+
+.main-contain .contain-body .contain-body-right span {
+    font-size: 13px;
+    color: #4D9CFE;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.contain-body>div::-webkit-scrollbar {
+    width: 14px;
+}
+
+.contain-body>div::-webkit-scrollbar-button {
+    display: none
+}
+
+.contain-body>div::-webkit-scrollbar-track {
+    background: #F7FAFF;
+    border: 1px solid #BFBFBF;
+}
+
+.contain-body>div::-webkit-scrollbar-thumb {
+    opacity: 0.6;
+    background: #BED2F2;
+}
+
+.main-contain .contain-body .contain-body-left .checkbox-img {
+    background: #fff;
+    background-image: url(../img/Oval.png);
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    display: inline-block;
+    margin: 0 0 0 25px;
+    height: 16px;
+    width: 16px;
+    border-radius: 9px;
+    vertical-align: middle;
+}
+
+.main-contain .contain-body .contain-body-left li.selected .checkbox-img {
+    background-image: none;
+}
+
+.main-contain .contain-body .contain-body-left input[name="controller"]:checked+label {
+    background-image: url(../img/children_selected.png);
+}
+
+.main-contain .contain-body .contain-body-left li.selected input[name="controller"]:checked+label {
+    background-image: url(../img/parent_selected.png);
+}
+
+.main-contain .contain-body .contain-body-left input[name="menu"]:checked+label {
+    background-image: url(../img/children_selected.png);
+}
+
+.main-contain .contain-body .contain-body-left li.selected input[name="menu"]:checked+label {
+    background-image: url(../img/parent_selected.png);
+}
+
+.main-contain .contain-body .contain-body-right .checkbox-img {
+    background: #fff;
+    background-image: url(../img/Oval.png);
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    display: inline-block;
+    margin: 0 0 0 75px;
+    height: 16px;
+    width: 16px;
+    border-radius: 9px;
+    vertical-align: middle;
+}
+
+.main-contain .contain-body .contain-body-right input[name="method"]:checked+label {
+    background-image: url(../img/children_selected.png);
+}
+
+.main-contain .contain-body .contain-body-right input[name="menu"]:checked+label {
+    background-image: url(../img/children_selected.png);
+}
+.showClass{
+	display:block;
+}
+.hideClass{
+	display:none;
+}

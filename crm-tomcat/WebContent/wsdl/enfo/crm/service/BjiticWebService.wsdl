@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.crm.enfo" xmlns:impl="http://service.crm.enfo" xmlns:intf="http://service.crm.enfo" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <wsdl:types>
+  <schema targetNamespace="http://service.crm.enfo" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://service.crm.enfo" xmlns:intf="http://service.crm.enfo" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <element name="checkIsBjiticDSCustResponse">
+    <complexType>
+     <sequence>
+      <element name="checkIsBjiticDSCustReturn" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkIsBjiticDSCust">
+    <complexType>
+     <sequence>
+      <element name="custName" nillable="true" type="xsd:anyType"/>
+      <element name="custType" nillable="true" type="xsd:anyType"/>
+      <element name="cardType" nillable="true" type="xsd:anyType"/>
+      <element name="cardNo" nillable="true" type="xsd:anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="checkIsBjiticDSCustResponse">
+
+      <wsdl:part element="impl:checkIsBjiticDSCustResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkIsBjiticDSCustRequest">
+
+      <wsdl:part element="impl:checkIsBjiticDSCust" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="BjiticWebService">
+
+      <wsdl:operation name="checkIsBjiticDSCust">
+
+         <wsdl:input message="impl:checkIsBjiticDSCustRequest" name="checkIsBjiticDSCustRequest"/>
+
+         <wsdl:output message="impl:checkIsBjiticDSCustResponse" name="checkIsBjiticDSCustResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BjiticWebServiceSoapBinding" type="impl:BjiticWebService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="checkIsBjiticDSCust">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkIsBjiticDSCustRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkIsBjiticDSCustResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BjiticWebServiceService">
+
+      <wsdl:port binding="impl:BjiticWebServiceSoapBinding" name="BjiticWebService">
+
+         <wsdlsoap:address location="http://192.168.2.55:9090/services/BjiticWebService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

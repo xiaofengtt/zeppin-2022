@@ -1,0 +1,153 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_MODI_TCustomer_MOB      @IN_CUST_NO         NVARCHAR(8),
+                                            @IN_CUST_NAME       NVARCHAR(100),
+                                            @IN_CARD_TYPE       NVARCHAR(10),
+                                            @IN_CARD_ID         NVARCHAR(40),
+                                            @IN_MOBILE          NVARCHAR(100),
+                                            @IN_POST_ADDRESS    NVARCHAR(60),
+                                            @IN_POST_CODE       NVARCHAR(6),
+                                            @IN_INPUT_MAN       INT
+
+WITH ENCRYPTION
+AS
+    SET NOCOUNT ON
+    DECLARE @V_RET_CODE INT,@IBUSI_FLAG INT,@SBUSI_NAME NVARCHAR(40),@SSUMMARY NVARCHAR(200)
+    DECLARE @OLD_CUST_NO NVARCHAR(8),@OLD_CARD_TYPE NVARCHAR(10),@OLD_CARD_ID NVARCHAR(40)
+    DECLARE @OLD_MOBILE  NVARCHAR(100),@OLD_POST_ADDRESS NVARCHAR(60),@OLD_POST_CODE NVARCHAR(6)
+    DECLARE @V_CARD_TYPE_NAME NVARCHAR(30),@V_CUST_TYPE INT,@V_CUST_ID INT,@V_STATUS NVARCHAR(10),@V_CHECK_FLAG INT
+
+    SELECT @V_RET_CODE = -20602000
+    SELECT @IBUSI_FLAG = 20602
+    SELECT @SBUSI_NAME = N'修改客户基本信息'
+    SELECT @SSUMMARY = N'修改客户基本信息'
+
+    IF NOT EXISTS(SELECT 1 FROM TCustomers WHERE CUST_NO = @IN_CUST_NO)
+       RETURN @V_RET_CODE-1   -- 客户编号不存在
+
+    SELECT @V_STATUS = STATUS,@V_CHECK_FLAG = CHECK_FLAG FROM TCustomers WHERE CUST_NO = @IN_CUST_NO
+    IF @V_STATUS = N'112805'
+       RETURN @V_RET_CODE - 2  -- 已销户不能修改
+    --暂存
+    SELECT @OLD_CUST_NO = CUST_NO,@OLD_CARD_TYPE = CARD_TYPE,@OLD_CARD_ID = CARD_ID ,
+           @OLD_MOBILE = MOBILE,@OLD_POST_ADDRESS = POST_ADDRESS ,@OLD_POST_CODE = POST_CODE,
+           @V_CUST_TYPE = CUST_TYPE,@V_CUST_ID = CUST_ID
+    FROM    TCustomers
+    WHERE   CUST_NO = @IN_CUST_NO
+
+    IF EXISTS(SELECT 1 FROM TSYSCONTROL WHERE FLAG_TYPE = N'A_CARDID' AND VALUE = 1)
+    BEGIN
+        IF @IN_CARD_TYPE = N'110801' AND LEN(@IN_CARD_ID)=15   --15位身份证号码转18位
+            SELECT @IN_CARD_ID = dbo.IDCARD15TO18(@IN_CARD_ID)
+    END
+
+    IF (@IN_CARD_TYPE IS NOT NULL AND @IN_CARD_TYPE  <> '') AND (@IN_CARD_ID IS NOT NULL AND @IN_CARD_ID  <> '')
+    BEGIN
+        IF EXISTS ( SELECT 1 FROM TCustomers WHERE CARD_TYPE = @IN_CARD_TYPE AND CARD_ID = @IN_CARD_ID AND CUST_ID <> @V_CUST_ID AND STATUS <> '112805' )
+           RETURN @V_RET_CODE - 3 --该身份证号已存在
+    END
+
+    IF @V_CUST_TYPE = 1
+        BEGIN
+            IF @IN_CARD_TYPE IS NULL OR @IN_CARD_TYPE = N''
+                SELECT @IN_CARD_TYPE = N'110899', @V_CARD_TYPE_NAME = N'其它'
+            ELSE IF NOT EXISTS(SELECT 1 FROM INTRUST..TDICTPARAM WHERE TYPE_ID = 1108 AND TYPE_VALUE = @IN_CARD_TYPE)
+                SELECT @IN_CARD_TYPE = N'110899', @V_CARD_TYPE_NAME = N'其它'
+            ELSE
+                SELECT @V_CARD_TYPE_NAME = TYPE_CONTENT FROM INTRUST..TDICTPARAM WHERE TYPE_ID = 1108 AND TYPE_VALUE = @IN_CARD_TYPE
+        END
+    ELSE
+        BEGIN
+            IF @IN_CARD_TYPE IS NULL OR @IN_CARD_TYPE = N''
+                SELECT @IN_CARD_TYPE = N'210899', @V_CARD_TYPE_NAME = N'其他'
+            ELSE IF NOT EXISTS(SELECT 1 FROM INTRUST..TDICTPARAM WHERE TYPE_ID = 2108 AND TYPE_VALUE = @IN_CARD_TYPE)
+                SELECT @IN_CARD_TYPE = N'210899', @V_CARD_TYPE_NAME = N'其他'
+            ELSE
+                SELECT @V_CARD_TYPE_NAME = TYPE_CONTENT FROM INTRUST..TDICTPARAM WHERE TYPE_ID = 2108 AND TYPE_VALUE = @IN_CARD_TYPE
+        END
+    BEGIN TRANSACTION
+        --------------------修改TCustomerChanges表---------------------
+        IF LTRIM(RTRIM(@OLD_MOBILE)) <> LTRIM(RTRIM(@IN_MOBILE))
+        BEGIN
+            INSERT INTO TCustomerChanges(CUST_ID,FIELD_NAME,FIELD_CN_NAME,OLD_FIELD_INFO,NEW_FIELD_INFO,INPUT_MAN)
+                VALUES(@V_CUST_ID,N'MOBILE',N'手机',@OLD_MOBILE,@IN_MOBILE,@IN_INPUT_MAN)
+            IF @@ERROR <> 0
+            BEGIN
+                ROLLBACK TRANSACTION
+                RETURN -100
+            END
+        END
+
+        IF LTRIM(RTRIM(@OLD_POST_ADDRESS)) <> LTRIM(RTRIM(@IN_POST_ADDRESS))
+        BEGIN
+            INSERT INTO TCustomerChanges(CUST_ID,FIELD_NAME,FIELD_CN_NAME,OLD_FIELD_INFO,NEW_FIELD_INFO,INPUT_MAN)
+                VALUES(@V_CUST_ID,N'POST_ADDRESS',N'邮寄地址',@OLD_POST_ADDRESS,@IN_POST_ADDRESS,@IN_INPUT_MAN)
+            IF @@ERROR <> 0
+            BEGIN
+                ROLLBACK TRANSACTION
+                RETURN -100
+            END
+        END
+
+        IF LTRIM(RTRIM(@OLD_POST_CODE)) <> LTRIM(RTRIM(@IN_POST_CODE))
+        BEGIN
+            INSERT INTO TCustomerChanges(CUST_ID,FIELD_NAME,FIELD_CN_NAME,OLD_FIELD_INFO,NEW_FIELD_INFO,INPUT_MAN)
+                VALUES(@V_CUST_ID,N'POST_CODE',N'邮政编码',@OLD_POST_CODE,@IN_POST_CODE,@IN_INPUT_MAN)
+            IF @@ERROR <> 0
+            BEGIN
+                ROLLBACK TRANSACTION
+                RETURN -100
+            END
+        END
+
+        IF LTRIM(RTRIM(@OLD_CARD_ID)) <> LTRIM(RTRIM(@IN_CARD_ID))
+        BEGIN
+            INSERT INTO TCustomerChanges(CUST_ID,FIELD_NAME,FIELD_CN_NAME,OLD_FIELD_INFO,NEW_FIELD_INFO,INPUT_MAN)
+                VALUES(@V_CUST_ID,N'CARD_ID',N'证件号码',@OLD_CARD_ID,@IN_CARD_ID,@IN_INPUT_MAN)
+            IF @@ERROR <> 0
+            BEGIN
+                ROLLBACK TRANSACTION
+                RETURN -100
+            END
+        END
+
+        IF LTRIM(RTRIM(@OLD_CARD_TYPE)) <> LTRIM(RTRIM(@IN_CARD_TYPE))
+        BEGIN
+            INSERT INTO TCustomerChanges(CUST_ID,FIELD_NAME,FIELD_CN_NAME,OLD_FIELD_INFO,NEW_FIELD_INFO,INPUT_MAN)
+                VALUES(@V_CUST_ID,N'CARD_ID',N'证件号码',@OLD_CARD_TYPE,@IN_CARD_TYPE,@IN_INPUT_MAN)
+            IF @@ERROR <> 0
+            BEGIN
+                ROLLBACK TRANSACTION
+                RETURN -100
+            END
+        END
+     --------------------------------------------------------------------
+        UPDATE TCustomers
+        SET CUST_NAME    = @IN_CUST_NAME   ,
+            CARD_TYPE    = @IN_CARD_TYPE   ,
+            CARD_TYPE_NAME   = @V_CARD_TYPE_NAME,
+            CARD_ID      = @IN_CARD_ID     ,
+            MOBILE       = @IN_MOBILE      ,
+            POST_ADDRESS = @IN_POST_ADDRESS,
+            POST_CODE    = @IN_POST_CODE
+        WHERE CUST_NO = @IN_CUST_NO
+        IF @@ERROR <> 0
+        BEGIN
+            ROLLBACK TRANSACTION
+            RETURN -100
+        END
+
+        SELECT @SSUMMARY = N'修改客户基本信息，客户编号：' + @IN_CUST_NO
+        INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+            VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+        IF @@ERROR <> 0
+        BEGIN
+            ROLLBACK TRANSACTION
+            RETURN -100
+        END
+    COMMIT TRANSACTION
+    SET XACT_ABORT OFF
+    RETURN 100
+GO

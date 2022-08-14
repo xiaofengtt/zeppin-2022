@@ -1,0 +1,125 @@
+
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge">	
+<title>Layout Test-page</title>
+<link href="styles/main.css" rel="stylesheet" type="text/css" />
+<link href="styles/formly/formly.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/plugins/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-ui-1.9.0.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.layout-1.3.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.scrollbar.js"></script>
+<script type="text/javascript" src="js/plugins/initstyle.js"></script>
+<script type="text/javascript" src="js/plugins/utilities.js"></script>
+<script type="text/javascript">
+
+
+</script>
+<style type="text/css">
+	.pagePortlet-2{ background-color:#e8ecf1;}   
+	*{box-sizing: border-box;}
+	.row{font-size: 0; padding:10px; }
+	.row .col-box{display:inline-block;font-size: 14px; padding:10px;}
+	.row .col-1{width: 8.333333333%;}
+	.row .col-2{width: 16.66666666%;}
+	.row .col-3{width: 25%;}
+	.row .col-4{width: 33.33333333%;}
+	.row .col-5{width: 41.66666666%;}
+	.row .col-6{width: 50%;}
+	.row .col-7{width: 58.33333333%;}
+	.row .col-8{width: 66.66666666%;}
+	.row .col-9{width: 75%;}
+	.row .col-10{width: 83.3333333%;}
+	.row .col-11{width: 91.6666666%;}
+	.row .col-12{width: 100%;}
+</style>
+</head>
+<body class="pagePortlet pagePortlet-2">
+	<div class="row">
+		<div class="col-box col-12">
+			<div class="portlet portlet-inquiry">
+				<div class="portlet-header">查询<span class="icon more"></span></div>
+				<div class="portlet-content">
+					123123
+				</div>
+			</div>
+		</div>
+		<div class="col-box col-3">
+			<div class="portlet portlet-inquiry">
+				<div class="portlet-header">查询<span class="icon more"></span></div>
+				<div class="portlet-content">
+					123123
+				</div>
+			</div>
+		</div>
+		<div class="col-box col-6">
+			<div class="portlet portlet-inquiry">
+				<div class="portlet-header">查询<span class="icon more"></span></div>
+				<div class="portlet-content">
+					<table class="table-done">
+						<tr>
+							<td><a href="http://www.baidu.com">首钢迁钢公司四个作业部安全标准化建设顺利通过国家一级考核评审</a></td>
+							<td>11/07</td>
+						</tr>
+						<tr>
+							<td>首钢迁钢公司召开兼职通讯员总结表彰会</td>
+							<td>11/08</td>
+						</tr>
+						<tr>
+							<td>弘扬爱国精神 立志成长成才——首钢迁钢公司组织优秀团员青年开展爱国主义教育活动</td>
+							<td>11/07</td>
+						</tr>
+						<tr>
+							<td>首钢迁钢男篮在全国冶金职工运动会上夺冠</td>
+							<td>11/08</td>
+						</tr>
+						<tr>
+							<td>首钢迁钢公司酸洗生产线试车成功</td>
+							<td>11/07</td>
+						</tr>
+						<tr>
+							<td>首钢迁钢公司冷轧激光刻痕机组热试成功</td>
+							<td>11/07</td>
+						</tr>
+						<tr>
+							<td>弘扬爱国精神 立志成长成才——首钢迁钢公司组织优秀团员青年开展爱国主义教育活动</td>
+							<td>11/07</td>
+						</tr>
+						<tr>
+							<td>首钢迁钢男篮在全国冶金职工运动会上夺冠</td>
+							<td>11/08</td>
+						</tr>
+						<tr>
+							<td>首钢迁钢公司酸洗生产线试车成功</td>
+							<td>11/07</td>
+						</tr>
+						<tr>
+							<td>首钢迁钢公司冷轧激光刻痕机组热试成功</td>
+							<td>11/07</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-box col-3">
+			<div class="portlet portlet-inquiry">
+				<div class="portlet-header">查询</div>
+				<div class="portlet-content">
+					123123
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+$(function(){
+	$(".table-done").tableList({
+		icon:"x11 y29",
+		tdWidth:{
+			tdLast:40
+		}
+	});
+})
+</script>

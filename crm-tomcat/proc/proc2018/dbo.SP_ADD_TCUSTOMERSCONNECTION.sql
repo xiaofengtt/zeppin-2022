@@ -1,0 +1,93 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE SP_ADD_TCUSTOMERSCONNECTION @IN_CUST_ID INT, --客户ID(EFCRM..CUSTOMERS.CUST_ID)
+											 @IN_INPUT_MAN     INT,
+											 @IN_CUST_TEL      NVARCHAR(40), --客户号码
+											 @IN_MOBILE        NVARCHAR(40), --手机号
+											 @IN_O_TEL         NVARCHAR(40), --公司电话
+											 @IN_H_TEL         NVARCHAR(40), --家庭电话
+											 @IN_BP            NVARCHAR(40),  --手机号2
+											 @IN_APPLY_REASON  NVARCHAR(200)  --申请事由
+WITH ENCRYPTION
+AS
+    SET NOCOUNT ON
+    DECLARE @V_ERROR NVARCHAR(200)
+    DECLARE @V_STATUS INT -- 状态 1-待确认 2-确认未通过 3-待审核 4-审核未通过 5-已通过
+    DECLARE @V_STATUS_NAME NVARCHAR(50)
+    
+    SELECT @V_STATUS=1
+    SELECT @V_STATUS_NAME=N'待确认'
+    DECLARE @IBUSI_FLAG INT,@SBUSI_NAME NVARCHAR(40),@SSUMMARY NVARCHAR(200)
+
+    SELECT @IBUSI_FLAG = 655351
+    SELECT @SBUSI_NAME = N'客户联系方式修改申请'
+    SELECT @SSUMMARY = N'客户联系方式修改申请'
+    
+    DECLARE @V_O_CUST_TEL NVARCHAR(40)
+    DECLARE @V_O_MOBILE NVARCHAR(40)
+    DECLARE @V_O_O_TEL NVARCHAR(40)
+    DECLARE @V_O_H_TEL NVARCHAR(40)
+    DECLARE @V_O_BP NVARCHAR(40)
+    
+    DECLARE @V_CUST_NAME NVARCHAR(100)
+
+    DECLARE @V_SERIAL_NO INT
+           
+
+    ------------------------------------------------------------------------
+    BEGIN TRY
+    --1.业务逻辑与操作
+    --校验
+	IF NOT EXISTS(SELECT 1 FROM TCustomers WHERE CUST_ID = @IN_CUST_ID)
+    BEGIN
+        SET @V_ERROR = N'客户不存在！'
+        RAISERROR(@V_ERROR,16,3)
+    END
+    
+    SELECT @V_CUST_NAME=CUST_NAME, @V_O_CUST_TEL=CUST_TEL, @V_O_MOBILE=MOBILE, @V_O_O_TEL=O_TEL, @V_O_H_TEL=H_TEL, @V_O_BP=BP
+    FROM TCustomers WHERE CUST_ID = @IN_CUST_ID
+    
+    ------------------------------------------------------------------------
+    BEGIN TRANSACTION
+    
+    INSERT INTO TCUSTOMOERS_CONNECTION_MODI(CUST_ID,INPUT_MAN
+      ,[STATUS]
+      ,[STATUS_NAME]
+      ,[O_CUST_TEL]
+      ,[N_CUST_TEL]
+      ,[O_MOBILE]
+      ,[N_MOBILE]
+      ,[O_O_TEL]
+      ,[N_O_TEL]
+      ,[O_H_TEL]
+      ,[N_H_TEL]
+      ,[O_BP]
+      ,[N_BP]
+      ,[APPLY_REASON])
+       VALUES(@IN_CUST_ID,@IN_INPUT_MAN,@V_STATUS,@V_STATUS_NAME,@V_O_CUST_TEL,@IN_CUST_TEL,@V_O_MOBILE,@IN_MOBILE,
+       @V_O_O_TEL,@IN_O_TEL,@V_O_H_TEL,@IN_H_TEL,@V_O_BP,@IN_BP,@IN_APPLY_REASON)
+    SET @V_SERIAL_NO = @@IDENTITY
+    --2.日志
+    SELECT @SSUMMARY = N'客户联系方式修改申请，客户名称：' + @V_CUST_NAME
+    INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY) VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+    COMMIT TRANSACTION
+    END TRY
+    --3.异常处理
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION
+        DECLARE @V_ERROR_STR NVARCHAR(1000),@V_ERROR_NUMBER INT,@V_ERROR_SEVERITY INT,@V_ERROR_STATE INT,
+                @V_ERROR_PROCEDURE sysname,@V_ERROR_LINE INT,@V_ERROR_MESSAGE NVARCHAR(4000)
+        SELECT @V_ERROR_STR = N'Message:%s,Procedure:%s,Line:%d',
+               @V_ERROR_NUMBER = ERROR_NUMBER(),
+               @V_ERROR_SEVERITY = ERROR_SEVERITY(),
+               @V_ERROR_STATE = ERROR_STATE(),
+               @V_ERROR_PROCEDURE = ERROR_PROCEDURE(),
+               @V_ERROR_LINE = ERROR_LINE(),
+               @V_ERROR_MESSAGE = ERROR_MESSAGE()
+        RAISERROR(@V_ERROR_STR,@V_ERROR_SEVERITY,1,@V_ERROR_MESSAGE,@V_ERROR_PROCEDURE,@V_ERROR_LINE)
+        RETURN -100
+    END CATCH
+    RETURN @V_SERIAL_NO
+GO

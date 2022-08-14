@@ -1,0 +1,71 @@
+.bottomDiv{
+	background-image  :url(../images/webcall/MainMenuBG.bmp);
+	position:fixed;
+  	_position:absolute;
+	bottom:0px;
+	left:0px;
+	HEIGHT: 30px;
+	width : 100%;
+	FONT-FAMILY:Î¢ÈíÑÅºÚ;
+	FONT-SIZE  £º38pt;
+	overflow:visible;
+
+}
+
+.topDiv{
+	background-image  :url(../images/webcall/MainMenuBG.bmp);
+	HEIGHT: 25px;
+	width : 100%;
+	FONT-FAMILY :ºÚÌå;
+	fontSize £º38pt;
+}
+
+.middleDiv{
+	width : 100%;
+	FONT-FAMILY :Î¢ÈíÑÅºÚ;
+	fontSize  £º18pt;
+	position:absolute;
+	bottom:30px;
+	top:30px;
+	
+}
+
+.BODY2{
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	BACKGROUND-COLOR: #EBF3F6;
+}
+
+.xpbutton31{
+    BORDER-RIGHT: 0px solid;
+    BORDER-TOP: 0px solid;
+    BACKGROUND-IMAGE: url(../images/webcall/button.gif);
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT: 0px solid;
+    WIDTH: 67px;
+    PADDING-TOP: 2px;
+    BORDER-BOTTOM: 0px solid;
+    HEIGHT: 33px;
+}
+
+.div_scroll{
+	BACKGROUND-COLOR: transparent; 
+	scrollbar-face-color: #9EBFE8; 
+	scrollbar-shadow-color: #FFFFFF;
+	scrollbar-highlight-color: #FFFFFF; 
+	scrollbar-3dlight-color: #9EBFE8; 
+	scrollbar-darkshadow-color: #9EBFE8;
+	scrollbar-track-color: #FFFFFF; 
+	scrollbar-arrow-color: #FFFFFF;
+	position:fixed;
+  	_position:absolute; 
+	height:457px; 
+	width : 100%;
+	BORDER:0px;
+	PADDING:0px;
+	MARGIN:0px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}

@@ -1,0 +1,14 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_QUERY_TCOCONTRACTPOINTS @IN_SUBCOCONTRACT_ID           INT,                 --合同金额明细ID
+                                            @IN_COCONTRACT_ID              INT,                 --主合同ID，对应TCOCONTRACT.COCONTRACT_ID
+                                            @IN_INPUT_MAN                  INT                  --录入人员，对应表TOPERATOR.OP_CODE  
+WITH ENCRYPTION
+AS
+    SELECT * FROM TCOCONTRACTPOINTS 
+        WHERE (ISNULL(@IN_SUBCOCONTRACT_ID,0) =0 OR SUBCOCONTRACT_ID =@IN_SUBCOCONTRACT_ID)
+            AND (ISNULL(@IN_COCONTRACT_ID,0) =0 OR COCONTRACT_ID =@IN_COCONTRACT_ID)
+
+GO

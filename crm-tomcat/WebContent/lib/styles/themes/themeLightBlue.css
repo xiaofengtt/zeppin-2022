@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+.themeLightBlue .region-selector{ background-color:#197fe6;}
+.themeLightBlue .region-selector .desc{ color:#64c0f1; }
+.themeLightBlue .region-selector .content{ color:#fff; background-color:#2e9be7;}
+.themeLightBlue .region-selector .content a{color:#fff; }
+.themeLightBlue .region-selector:hover{background-color:#0f7adf;}
+.themeLightBlue .region-selector:hover .content{background-color:#4fb2f8;}
+
+.themeLightBlue .header-fun{}
+.themeLightBlue .header-fun li{ color:#fff; }
+.themeLightBlue .header-fun .hf-info{color:#a3ccf5; }
+.themeLightBlue .header-fun li .icon{}
+.themeLightBlue .header-fun li a{color:#fff;}
+
+.themeLightBlue .pageHome .frameLoading{background-image:url(themeLightBlue/initstyle/loading02.gif);}
+.themeLightBlue .pageHome .header .logoWrap li{background-image:url(themeLightBlue/pageHome/logo.png);}
+.themeLightBlue .pageHome .header{background-image:url(themeLightBlue/pageHome/headerBG.png);}
+.themeLightBlue .pageHome .header .shine{background-image:url(themeLightBlue/pageHome/headerShineBG.png);}
+.themeLightBlue .pageHome .header .navIcons li{background-image:url(themeLightBlue/pageHome/navIcons.png);}
+
+.themeLightBlue .pageHome .header .navTabs li span{background-image:url(themeLightBlue/pageHome/navTabsCorner.png);}
+.themeLightBlue .pageHome .header .navTabs li .desc{background-image:url(themeLightBlue/pageHome/navTabsBG.png);}
+.themeLightBlue .pageHome .header .logoBtn li,
+.themeLightBlue .pageHome .header .navTabs li.frist .desc a.icon{background-image:url(themeLightBlue/pageHome/headerIcons.png);}
+.themeLightBlue .pageHome .header .navTabsWrap .navCtrl{background-image:url(themeLightBlue/pageHome/navTabsArrow.png); }
+.themeLightBlue .pageHome .header .navTabsWrap .navCrack{background-image:url(themeLightBlue/pageHome/navTabsCrack.png); }
+.themeLightBlue .pageHome .header,
+.themeLightBlue .pageHome .header .logoWrap,
+.themeLightBlue .pageHome .header .logoWrap li{background-color:#10a9ef;}
+.themeLightBlue .pageHome .header .shine{display:block; background-color:#005fbe; width:1280px;}
+
+.themeLightBlue .pageHome .header .navTabs li .desc font{color:#27507c;}
+.themeLightBlue .pageHome .header .navTabs li.hover .desc font,
+.themeLightBlue .pageHome .header .navTabs li.active .desc font{color:#007bd8;}
+.themeLightBlue .pageHome .header .navTabs li.hover.frist .desc a.icon{background-position-y:-17px;}
+.themeLightBlue .pageHome .header .navIcons .active span{color:#2073c8;}
+
+.themeLightBlue .pageLogin .frame{background-image:url(themeLightBlue/pageLogin/frame.png);}
+
+

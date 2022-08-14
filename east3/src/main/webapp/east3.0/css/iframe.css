@@ -1,0 +1,13 @@
+body {min-width:0;background:#fff}
+form{margin:0}
+.layerOpen .contents{padding-top: 37px}
+.layerOpen .contents .btnGroup {margin-top:45px}
+.layerOpen .contents .form-group {margin:0 60px}
+.layerOpen .contents .form-group{margin-bottom: 20px}
+.layerOpen .contents .btnGroup .sureBtn {margin:0px 0px 0px 60px;height:40px;width:115.9px}
+.layerOpen .contents .btnGroup .cancleBtn {float:right;margin:0px 60px 0px 0px;height:40px;width:115.9px}
+
+#formsubmit .single-input{width:100%;font-size: 14px !important;}
+.detail .single-input{width:100%;font-size: 14px !important;}
+.detail label {color: #2B2B2B;text-align: left;margin-bottom: 8px;font-size: 18px;}
+.detail select, .detail input {padding: 10px 18px !important;height: 45px;color: #7C7C7C;}

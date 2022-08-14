@@ -1,0 +1,543 @@
+/***
+--------------------------- 
+HTML Element Initialization
+---------------------------
+. reset HTML Elements
+***/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote,th,td {
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+fieldset,img {
+	border: 0;
+}
+
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style: normal;
+	font-weight: normal;
+}
+
+ol,ul {
+	list-style: none;
+}
+
+caption,th {
+	text-align: left;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-size: 100%;
+}
+
+q:before,q:after {
+	content: '';
+}
+
+a:link {
+	color: #039;
+}
+
+a:visited {
+	color: #639;
+}
+html, body {
+	overflow: hidden;
+	font-size: 12px;
+	width:600px;
+}
+
+/* for ext */
+.x-layout-panel{
+	border:0;
+}
+
+.x-layout-container{
+	background-color:#ffffff;
+}
+/***
+-----------------------
+Framework Banner Styles
+-----------------------
+. relative positioned (sits along top, regardless of where its served on linearized page).
+. Banner includes: logo, secondary-navigation, and search.
+. legend:
+     region-selector : worldwide
+***/
+.home-banner {    
+  	background-image:url(/images/userlogo/enfo/top.jpg);   
+	background-repeat: no-repeat; 
+}
+
+#home-column-left {   
+  	background-image: url(../images/bg.gif);
+	background-repeat: no-repeat;
+	margin-top:1px;
+	margin-bottom:-10px;
+	border:1px solid #c3daf9;
+	overflow-y: scroll;
+	overflow-x: scroll;
+} 
+#home-header {
+	overflow: visible;
+	text-align: right;
+}
+
+#home-logo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 77px;
+	z-index: 10; /* Moz logo active */
+}
+
+#home-header .nav-secondary {
+	margin-right: -1px;
+	padding: 5px 0 0 5px;
+	height: 22px;
+	font-size: 12px;
+	color: #666;
+	background-color: transparent;
+	white-space: nowrap;
+}
+
+.nav-secondary .region-selector {
+	margin: 0 5px 0 90px;
+}
+
+.nav-secondary .region-selector span.region,.nav-secondary .region-selector span.language {
+	font-weight: bold;
+}
+
+.nav-secondary .region-selector .language-selector {
+	padding-left: 4px;
+}
+
+#home-header .nav-secondary a,#home-header .nav-secondary a:visited {
+	color: #222222;
+	background-color: transparent;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+#home-header .nav-secondary a:hover,#home-header .nav-secondary a:active {
+	text-decoration: underline;
+}
+
+#home-header .nav-secondary .link-delimiter {
+	padding: 0 7px 0 4px;
+}
+
+#home-header .nav-secondary a.login,#home-header .nav-secondary a:visited .login,#home-header .nav-secondary .loggedin {
+	font-weight: bold;
+}
+
+/* Hide */
+#home-header .search-entitlement,#home-header .search label {
+	visibility: hidden; /* NS7 */
+	display: none;
+}
+
+#home-header .search {
+	float: right;
+	height: 8px;
+}
+
+#home-header #searchPhrase {
+	float: left;
+	margin-right: -1px;
+	padding: 1px 0 2px 3px;
+	height: 100%; /* Moz text-box resize */
+	width: 235px;
+	border: 1px solid #ccc;
+	border-top: 2px solid #999;
+	border-left: 2px solid #999;
+}
+
+#home-header .search #go {
+	float: left;
+	height: 22px;
+	width: 31px;
+}
+
+#home-header #scroll {
+	clear: both;
+	margin: 0 auto;
+	height: 27px;
+	line-height: 27px;
+	text-align: right;
+	color: #C2130E;
+}
+
+#home-header #scrollMe a {
+	text-decoration: none;
+	color: #222222;
+	background: url(../images/32.gif) no-repeat;
+	background-position: left;
+	padding-left: 50px;
+	padding-right: 10px;
+}
+
+#home-header #scrollMe a:hover,#home-header #scrollMe a:active {
+	text-decoration: underline;
+}
+
+/*** 
+---------------------
+Libra Specific Styles
+---------------------
+. generic round corners
+. added 09/01/06
+***/ /*** Generic Rounded Corner Module Declaration ***/
+.corner-top,.corner-left,.corner-bottom {
+	position: relative; /* req */
+	background-image: url(images/cr_def.gif);
+	background-repeat: no-repeat;
+	display: block;
+	font-size: 0;
+	height: 3px;
+}
+
+.corner-top {
+	background-position: 100% 0;
+	width: auto;
+	top: -1px;
+	right: -1px;
+}
+
+.corner-top .corner-left {
+	background-position: 0 -6px;
+	width: 3px;
+	left: -2px;
+}
+
+.corner-bottom {
+	background-position: 100% -3px;
+	clear: both;
+	width: auto;
+	bottom: -1px;
+	right: -1px;
+}
+
+.corner-bottom .corner-left {
+	background-position: 0 -9px;
+	width: 3px;
+	left: -2px;
+}
+
+.rc-container {
+	border-bottom: 1px solid #194189;
+	border-left: 0px;
+	border-right: 0px;
+	border-top: 1px solid #59baea;
+}
+
+.side {
+	border: 1px solid #aeaeae;
+	border-top: 0;
+}
+
+/*** 
+---------------------------
+Site Area Navigation Styles
+---------------------------
+. features overrides to generic rounded corners css 
+. defines border and the corners. 
+. content to define height & keep the corner positioning correct 
+. legend:
+    cdc-nav-module : wrapper div
+    nav-container  : table
+    nav            : table column cells
+***/
+#nav-module {
+	margin-top: 1px;
+	background: url(images/sitearea-nav.jpg) repeat-x top left;
+}
+
+/* IE requires height. FF1.0 takes literally */
+* html #nav-module {
+	height: 1%;
+}
+
+#nav-module .nav-container {
+	margin-top: -3px;
+	/*width: 100%;*/
+}
+
+/* IE6 moves flydown 1 pixel down to not overlap nav */
+* html #nav-module .nav-container {
+	margin-bottom: -1px;
+}
+
+#nav-module .nav {
+	padding: 6px 7px 6px 8px;
+	border-right: 1px solid #ccc;
+}
+
+#nav-module .selectnav{
+    padding: 6px 7px 6px 8px;
+	border-right: 1px solid #ccc;    
+}
+/* IE hover alternative */
+* html #nav-module .nav {
+	behavior: expression( 
+		this.onmouseenter = new Function("this.className+=' hover'"),
+		this.onmouseleave = new Function("this.className=this.className.replace(' hover','')"),
+		this.style.behavior = null);
+}
+
+#nav-module .lastnav {
+	border-right: 0 solid #ccc;
+}
+
+#nav-module .nav:hover,#nav-module .hover {
+	background: url(images/sitearea-nav.jpg) repeat-x 0 -100px;
+}
+
+#nav-module .nav a {
+	display: block;
+	padding: 0; /* req */
+	height: auto; /* req: min auto. Not 100% */
+	color: #FFFFFF;
+	background-color: transparent;
+	line-height: 1.13em; /* equiv: 4px line-height; */
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+}
+
+#nav-module .nav:hover a,#nav-module .hover a {
+	color: #FFFFFF;
+}
+
+.selectnav{
+    background: url(images/sitearea-nav.jpg) repeat-x 0 -100px;        
+}
+
+.selectnav a{
+    display: block;
+	padding: 0; /* req */
+	height: auto; /* req: min auto. Not 100% */
+	color: #FFFFFF;
+	background-color: transparent;
+	line-height: 1.13em; /* equiv: 4px line-height; */
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none; 
+}
+/*
+-------------------------
+Web Module Segment Styles
+-------------------------
+ . info (links)
+ . quicklinks
+ . (software) downloads
+ . opt-parcel
+*/ /* All Modules */
+.side-parcel {
+	background: #fff url(images/home_corners.gif) no-repeat -781px bottom;
+	margin: 8px 0 1px;
+	padding-bottom: 1px;
+	width: 180px;
+}
+
+.side-parcel h3 {
+	background: #aeaeae url(images/home_corners.gif) no-repeat -592px 0px;
+	padding: 5px 10px 4px;
+	color: #fff;
+	font-weight: bold;
+	line-height: 1em;
+	cursor: hand;
+}
+
+.side-parcel ul {
+	padding: 0 0 0 10px;
+	line-height: 101%; /* sync IE and FF line-height */
+}
+
+.side-parcel li {
+	display: block;
+	padding: 0 0 5px;
+}
+
+.side-parcel ul,.nojs,.js {
+	border-left: 1px solid #aeaeae;
+	border-right: 1px solid #aeaeae;
+	
+}
+
+.side-parcel div.selectBox a {
+	display: block;
+	width: 153px;
+	min-height: 14px; /* req: mac */
+	padding: 2px 6px 1px;
+	border: 1px solid #aeaeae;
+	background: url(images/dd-arrow.gif) no-repeat 149px 1px;
+	text-decoration: none;
+}
+
+.side-parcel div.selectBox a:link,.side-parcel div.selectBox a:visited {
+	color: #666;
+	text-decoration: none;
+}
+
+.side-parcel a:link,.side-parcel a:visited,#downloads-nojs a:link,#downloads-nojs a:visited
+	{
+	text-decoration: none;
+	color: #2f6681;
+}
+
+.side-parcel a:hover,.side-parcel a:active,#downloads-nojs a:hover,#downloads-nojs a:active
+	{
+	text-decoration: underline;
+}
+
+.opt-parcel {
+	margin-top: 8px;
+}
+
+/* Alternative Settings */
+.no-rc h3 {
+	padding-top: 5px;
+	background-image: none;
+}
+
+.alt-color {
+	background-color: #efefef;
+}
+
+.alt-links li {
+	display: block;
+	list-style: none;
+	margin: 4px 0 2px -5px;
+	line-height: 1em;
+	padding-left: 15px;
+	background: url(images/chevrons.gif) no-repeat 3% 25%;
+}
+
+.alt-links a:link,.alt-links a:visited {
+	font-weight: bold;
+}
+
+/***
+----------------------------------------
+Package: Basic text formatting for menus            
+----------------------------------------
+ . Change colors, fonts, borders, etc.
+***/
+.menuFrame {
+	display: none;
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin-top: -1px;
+	width: 120px;
+}
+
+* html .menuFrame {
+	margin-left: 1px;
+}  /* req: IE 6 extra 1 pixel margin */
+.menu {
+	position: relative;
+	left: 0;
+	top: 0;
+	width: auto;
+	height: auto;
+	text-align: center;
+	border: 1px outset;
+	border-top-width: 0;
+	font-size: 86.6%;
+}
+
+.menu li {
+	display: inline; %
+	margin-bottom: -1px; /* IE has 1 extra pixel at top of each li */
+}
+
+* html body .menu li {
+	behavior: expression(
+		this.onmouseenter = new Function("this.className+=' subhover'"),
+		this.onmouseleave = new Function("this.className=this.className.replace(' subhover','')"),
+		this.style.behavior = null);
+}
+
+.menu a:link,.menu a:visited {
+	line-height: 140%;
+	color: #2f6681;
+	padding: 2px 10px 0;
+	text-decoration: none;
+	border-top: 1px solid #d5e0e6;
+	border-right: 1px solid #c9cbcd;
+	display: block;
+	background: url(images/sitearea-nav-bg.png) repeat-x;
+	width: 97px;
+}
+
+* html .menu li a:link,* html .menu li a:visited {
+	background: none;
+	background-color: #fff;
+	filter: alpha(opacity = 97); /* req: IE 6 & 7, ignored by rest */
+}
+
+* html .menu li a:hover {
+	background-color: #d5e0e6;
+	filter: alpha(opacity = 97); /* req: IE 6 & 7, ignored by rest */
+}
+
+.menu a:hover,.menu .subhover {
+	display: block;
+	background-position: 0 -250px;
+}
+
+#membertoolFrame {
+	position:relative;
+	top:0px;
+	left:0px;
+}
+
+#home-column-left {
+	overflow-x :no;
+	overflow-y :no;
+	scrollbar-face-color:#DEDEDE;
+	scrollbar-base-color:#F5F5F5;
+	scrollbar-arrow-color:black;
+	scrollbar-track-color:#F5F5F5;
+	scrollbar-shadow-color:#EBF5FF;
+	scrollbar-highlight-color:#F5F5F5;
+	scrollbar-3dlight-color:#C3C3C3;
+	scrollbar-darkshadow-Color:#9D9D9D;
+}
+
+.cssKey {
+	border: 1px solid #666666;
+	font-size: 18px;
+	width: 330px;
+	margin-left: 10px;
+	vertical-align: middle;
+	text-align: right;
+}
+
+.cssSpan{
+	font-size: 18px;
+	padding-left:40px;
+	margin-top:5px;
+}
+
+.cssTitle{
+	font-size: 18px;
+	width: 250px;
+	margin-left: 10px;
+	vertical-align: middle;
+}
+
+.btn_Key {
+BORDER-RIGHT: #002D96 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #002D96 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#FFFFFF, EndColorStr=#9DBCEA); BORDER-LEFT: #002D96 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #002D96 1px solid
+}
+
+

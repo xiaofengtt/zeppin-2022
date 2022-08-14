@@ -1,0 +1,281 @@
+/*
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ * licensing@extjs.com
+ * 
+ * http://www.extjs.com/license
+ */
+
+.ext-el-mask-msg {
+    border:1px solid #aaa;
+    background: #ddd url(../images/default/box/tb.gif) repeat-x 0 -16px;
+}
+.ext-el-mask-msg div {
+    border:1px solid #ccc;
+}
+/*
+ Menu
+ */
+
+.x-menu-item {
+	color:#222;
+}
+.x-menu-item-active {
+	background:#ddd;
+    border:1px solid #aaa;
+}
+.x-menu-sep {
+	background:#aaa;
+}
+/** 
+* Tabs
+*/
+.x-tabs-wrap {
+	background:#4f4f4f;
+	border-bottom:1px solid #b3b6b0;
+}
+.x-tabs-strip .x-tabs-text {
+	color:white;
+	font-weight:normal;
+}
+.x-tabs-strip .on .x-tabs-text {
+	cursor:default;
+	color:#333333;
+}
+
+.x-tabs-body {
+    border:1px solid #b3b6b0;
+    border-top:0 none;
+}
+
+.x-tabs-bottom .x-tabs-strip {
+	background:#4f4f4f;
+}
+
+.x-tabs-bottom .x-tabs-wrap {
+	border-bottom:0 none;
+	padding-top:0;
+	border-top:1px solid #b3b6b0;
+}
+
+
+.x-tabs-bottom .x-tabs-body {
+    border:1px solid #b3b6b0;
+    border-bottom:0 none;
+}
+/**
+* Basic-Dialog 
+*/
+.x-dlg-proxy {
+	background:#d3d6d0;
+	border:2px solid #b3b6b0;
+}
+.x-dlg-shadow{
+	background:#cccccc;
+   opacity:.3;
+   -moz-opacity:.3;
+   filter: alpha(opacity=30);
+}
+
+.x-dlg .x-dlg-dlg-body{
+	background:#fff;
+	border:0 none;
+	border-top:0 none;
+	padding:0 0px 0px;
+	position:absolute;
+	top:24px;left:0;
+	z-index:1;
+}
+.x-dlg-auto-tabs .x-dlg-dlg-body{
+	background:transparent;
+}
+.x-dlg-auto-tabs .x-tabs-top .x-tabs-wrap{
+	background:transparent;
+}
+.x-dlg .x-dlg-ft{
+	border-top:1px solid #b3b6b0;
+	background:#F0F0F0;
+	padding-bottom:8px;
+}
+.x-dlg .x-dlg-bg{
+	opacity:.90;-moz-opacity:.90;filter:alpha(opacity=85);
+	zoom:1;
+}
+.x-dlg .x-dlg-bg-left,.x-dlg .x-dlg-bg-center,.x-dlg .x-dlg-bg-right{
+}
+
+.x-dlg .x-tabs-top .x-tabs-body{
+	border:0 none;
+}
+.x-dlg .x-tabs-bottom .x-tabs-body{
+	border:1px solid #b3b6b0;
+	border-bottom:0 none;
+}
+.x-dlg .x-layout-container  .x-tabs-body{
+	border:0 none;
+}
+
+
+
+/* QuickTips */
+
+
+
+.x-tip .x-tip-bd-inner {
+    padding:2px;
+}
+
+/* BorderLayout */
+.x-layout-container{
+    background:#4f4f4f;
+}
+.x-layout-collapsed{
+    background-color:#9f9f9f;
+	 border:1px solid #4c535c;
+}
+.x-layout-collapsed-over{
+	 background-color:#bfbfbf;
+}
+.x-layout-panel{
+    border:1px solid #4c535c;
+}
+.x-layout-nested-layout .x-layout-panel {
+	  border:0 none;
+}
+.x-layout-split{
+    background-color:#f3f2e7;
+}
+
+.x-layout-panel-hd-text{
+	color:white;
+}
+
+.x-layout-split-h{
+    background:#9f9f9f;
+}
+.x-layout-split-v{
+    background:#9f9f9f;
+}
+.x-layout-panel .x-tabs-wrap{
+    background:#4f4f4f;
+}
+.x-layout-nested-layout .x-layout-panel-north {
+	  border-bottom:1px solid #4c535c;
+}
+.x-layout-nested-layout .x-layout-panel-south {
+	  border-top:1px solid #4c535c;
+}
+.x-layout-nested-layout .x-layout-panel-east {
+	  border-left:1px solid #4c535c;
+}
+.x-layout-nested-layout .x-layout-panel-west {
+	  border-right:1px solid #4c535c;
+}
+.x-layout-panel-dragover {
+	border: 2px solid #4c535c;
+}
+
+
+.x-layout-container .x-layout-tabs-body{
+	border:0 none;
+}
+/** Resizable */
+
+
+
+.x-resizable-proxy{
+    border: 1px dashed #615e55;
+}
+
+/** Toolbar */
+
+
+.x-paging-info {
+    color:#000;
+}
+/* grid */
+.x-grid-topbar .x-toolbar{
+	border:0;
+	border-bottom:1px solid #555;
+}
+.x-grid-bottombar .x-toolbar{
+	border:0;
+	border-top:1px solid #555;
+}
+.x-grid-locked .x-grid-body td {
+	background: #fafafa;
+	border-right: 1px solid #e1e1e1;
+	border-bottom: 1px solid #e1e1e1 !important;
+}
+.x-grid-locked .x-grid-body td .x-grid-cell-inner {
+	border-top:0 none;
+}
+.x-grid-locked .x-grid-row-alt td{
+	background: #f1f1f1;
+}
+.x-grid-locked .x-grid-row-selected td{
+	color: #fff !important;
+	background-color: #316ac5 !important;
+}
+.x-grid-hd{
+	border-bottom:0;
+	background:none;
+}
+.x-grid-hd-row{
+	height:auto;
+}
+
+.x-grid-row-alt{
+	background-color: #f5f5f5;
+}
+.x-grid-row-over td{
+	background-color:#eeeeee;
+}
+.x-grid-col {
+	border-right: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+.x-grid-header .x-grid-hd-inner {
+	padding-bottom: 1px;
+}
+.x-grid-header  .x-grid-hd-text {
+	padding-bottom: 3px;
+    color:#333333;
+}
+.x-grid-hd-over .x-grid-hd-inner {
+	border-bottom: 1px solid #555;
+	padding-bottom: 0;
+}
+.x-grid-hd-over .x-grid-hd-text {
+	background-color: #fafafa;
+	border-bottom: 1px solid #555;
+	padding-bottom: 2px;
+}
+.x-grid-header .sort-asc .x-grid-hd-inner, .x-grid-header .sort-desc .x-grid-hd-inner {
+	border-bottom: 1px solid #555;
+	padding-bottom: 0;
+}
+.x-grid-header .sort-asc  .x-grid-hd-text, .x-grid-header .sort-desc .x-grid-hd-text {
+	border-bottom: 1px solid #3b5a82;
+	padding-bottom: 2px;
+}
+
+.x-props-grid .x-grid-col-name{
+	 background-color: #eee;
+}
+/* toolbar */
+
+
+/* combo box */
+.x-combo-list {
+    border:1px solid #999;
+    background:#dddddd;
+}
+
+.x-resizable-pinned .x-combo-list-inner {
+    border-bottom:1px solid #aaa;
+}
+.x-combo-list .x-combo-selected{
+	background:#ddd !important;
+    border:1px solid #aaa;
+}

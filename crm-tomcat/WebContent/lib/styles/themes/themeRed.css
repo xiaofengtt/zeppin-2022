@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+.themeRed .region-selector{ background-color:#e64d19;}
+.themeRed .region-selector .desc{ color:#f5b8a3; }
+.themeRed .region-selector .content{ color:#fff; background-color:#eb7047;}
+.themeRed .region-selector .content a{color:#fff; }
+.themeRed .region-selector:hover{background-color:#eb7047;}
+.themeRed .region-selector:hover .desc{color:#fadbd1;}
+.themeRed .region-selector:hover .content{background-color:#f09475;}
+
+.themeRed .header-fun{}
+.themeRed .header-fun li{ color:#fff; }
+.themeRed .header-fun .hf-info{color:#f5b8a3; }
+.themeRed .header-fun li .icon{}
+.themeRed .header-fun li a{color:#fff;}
+
+.themeRed .pageHome .frameLoading{background-image:url(themeRed/initstyle/loading02.gif);}
+.themeRed .pageHome .header .logoWrap li{background-image:url(themeRed/pageHome/logo.png);}
+.themeRed .pageHome .header{background-image:url(themeRed/pageHome/headerBG.png);}
+.themeRed .pageHome .header .navIcons li{background-image:url(themeRed/pageHome/navIcons.png);}
+.themeRed .pageHome .header .assistButton li{background-image:url(themeRed/pageHome/assistButton.png);}
+
+.themeRed .pageHome .header .navTabs li span{background-image:url(themeRed/pageHome/navTabsCorner.png);}
+.themeRed .pageHome .header .navTabs li .desc{background-image:url(themeRed/pageHome/navTabsBG.png);}
+.themeRed .pageHome .header .logoBtn li,
+.themeRed .pageHome .header .navTabs li.frist .desc a.icon{background-image:url(themeRed/pageHome/headerIcons.png);}
+.themeRed .pageHome .header .navTabsWrap .navCtrl{background-image:url(themeRed/pageHome/navTabsArrow.png); }
+.themeRed .pageHome .header .navTabsWrap .navCrack{background-image:url(themeRed/pageHome/navTabsCrack.png); }
+.themeRed .pageHome .header,
+.themeRed .pageHome .header .logoWrap,
+.themeRed .pageHome .header .logoWrap li{background-color:#b40000;}
+
+.themeRed .pageHome .header .navTabs li.active .desc font{color:#ff7800;}
+.themeRed .pageHome .header .navIcons .active span{color:#b40000;}
+
+.themeRed .pageLogin .frame{background-image:url(themeRed/pageLogin/frame.png);}
+.themeRed .pageLogin .frame .user,
+.themeRed .pageLogin .frame .pass,
+.themeRed .pageLogin .frame .submit,
+.themeRed .pageLogin .frame .remUP,
+.themeRed .pageLogin .frame .icons .btn{background-image:url(themeRed/pageLogin/object.png); }
+.themeRed .pageLogin #dialog .dialogBg{background-image:url(themeRed/pageLogin/dialogBg.png);}
+.themeRed .pageLogin .frame .user,.themeRed .pageLogin .frame .pass{color:#ff7800;}
+.themeRed .pageLogin .frame .user.blur,.themeRed .pageLogin .frame .pass.blur{color:#686868;}
+
+.themeRed .pagePortlet .portlet .ui-icon{background-image:url(themeRed/jqueryui/ui-icons_228ef1_256x240.png); }
+.themeRed.initstyle .icon32 .icon{background-image:url(themeRed/initstyle/icon32.png); }
+.themeRed .pagePortlet .portlet .portlet-header .desc{color:#B40000;}
+.themeRed .buttonWIcon.icon32 li,
+.themeRed .buttonWIcon.icon16C li{background-image:url(themeRed/initstyle/buttonBg.png);}
+.themeRed.initstyle .icon32 li .desc{color:#fd861c;}

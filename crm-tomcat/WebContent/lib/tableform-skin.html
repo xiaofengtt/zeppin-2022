@@ -1,0 +1,169 @@
+
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge">	
+<title>Layout Test-page</title>
+<link href="styles/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/plugins/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-ui-1.9.0.js"></script>
+<script type="text/javascript" src="js/plugins/initstyle.js"></script>
+<script type="text/javascript" src="js/plugins/utilities.js"></script>
+<script type="text/javascript" src="js/plugins/formly.js"></script>
+<script type="text/javascript" src="js/page.all.js"></script>
+<script type="text/javascript" src="js/page.content.js"></script>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+j$(function(){
+	j$(".tableForm").tableForm({
+		width:"800",
+		//height:200,
+		inputWidth:"100%",
+		inputHeight:30,
+		//inputResize:false,		
+		TDTitleWidth:150,
+		hiddenColon:true,
+		//autoResize:false
+	});
+	j$(".test2").tableForm({TDTitleWidth:80});
+	
+	j$(":input").change(function(){
+		alert("changed")
+		j$("html").addClass('notSave');
+	})
+	j$(window).unload(function(){
+		if(j$("html").hasClass('notSave')){
+			alert("Not Save!!!")
+		}
+	})
+	
+});
+
+</script>
+</head>
+<body class="pageContent">
+<div class="contentWrap">
+	<div class="location">
+		<div class="icon iconLocation"></div>
+		<div class="desc">报表查询 > 职能机构 > 职位清单</div>
+		<button class="buttonResize">最大化</button>
+	</div>
+	<div class="toolbar">
+		<ul class="operateGrid">
+			<li><button class="buttonNew">新增</button></li>
+			<li><button class="buttonSave">保存</button></li>
+			<li><button class="buttonExit">退出</button></li>
+			<li><button class="buttonReturn">返回</button></li>
+			<li><button class="buttonEdit">编辑</button></li>
+			<li><button class="buttonDelete">删除</button></li>
+			<li><button class="buttonSubmit">提交</button></li>
+			<li><button class="buttonView">查看</button></li>
+			<li><button class="buttonRefresh">刷新</button></li>
+		</ul>
+	</div>
+	<div class="InfoBar">
+		<!--<div class="tipSimple tipError tipNormal"><span class="icon"></span><font>所选的结果自动保存！其中导航风格切换需刷新页面！</font></div>
+		<div class="tipSimple tipWarning"><span class="icon"></span><font>所选的结果自动保存！其中导航风格切换需刷新页面！</font></div>-->
+		<div class="tipSimple tipError"><span class="icon"></span><font>双击切换表单样式！！！双击切换表单样式！！！双击切换表单样式！！！双击切换表单样式！！！</font></div>
+	</div>
+	<table class="tableForm" ondblclick="if(j$(this).hasClass('tableFormSimple')&&j$(this).hasClass('tableFormRed')){j$(this).removeClass('tableFormSimple');j$(this).removeClass('tableFormRed');}else if(j$(this).hasClass('tableFormSimple')==false){j$(this).addClass('tableFormSimple')}else if(j$(this).hasClass('tableFormRed')==false){j$(this).addClass('tableFormRed')}">
+		<thead>
+			<tr>
+				<th class="TF-Subject " colspan="4" ><span>请双击Form切换皮肤</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			 <tr>
+				 <td>*用车部门:</td>
+				 <td>物流中心</td>
+				 <td>*申请人：</td>
+				 <td>张大明</td>
+			 </tr>
+			 <tr>
+				 <td>用车人:</td>
+				 <td>
+				 	<select>
+					    <option value=""></option>
+					    <option value="100099">孙庆平</option>
+					    <option value="100095">王隽芝</option>
+					    <option value="100160">刘振宁</option>
+					    <option value="100015">刘立清</option>
+					    <option value="400039">戴宁</option>
+					    <option value="100190" selected="selected">张大明</option>
+					    <option value="100089">李景发</option>
+					</select>
+				 </td>
+				 <td>*用车人联系方式:</td>
+				 <td><!--
+				 	<input type="text" style="word-wrap:break-word; word-break:break-all; white-space:pre-wrap;" value="http://10.43.250.147:8080/portlatSSOServlet?userid=0100085&noPassword=yes&j_url=/businessworkitem/noSendList.action?moduleName=noSendList"/>
+				 -->
+				 </td>
+			 </tr>
+			 <tr>
+				  <td>*出车类型:</td>
+				  <td>
+				  <select>
+				    <option value=""></option>
+				    <option value="1">长途</option>
+				    <option value="2">市内</option>
+				  </select>
+				  </td>
+				  <td>申用期请人:</td>
+				 <td><input value="" type="text" />	</td>
+			 </tr>
+			 <tr>	
+				  <td >使用期限:</td>
+				  <td colspan="3" ><input value="" type="text" /></td>
+			 </tr>
+			 <tr>
+			 	<td>起止路线:</td>	
+				<td colspan="3">
+					<input type="text" />
+				</td>
+			 </tr>
+			 <tr>
+			 	<td>出发时间和地点:</td>	
+				<td colspan="3">
+					<input type="text" />
+				</td>
+			 </tr>
+			 <tr>
+				  <td rowspan="2">出车事由:</td>
+				  <td colspan="3">
+			        <textarea></textarea>
+				  </td>
+			 </tr> 
+			 <tr >
+				  <td colspan="3">
+					 <input type="text"/><button>测试</button>
+				  </td>
+			 </tr>
+			 <tr>
+				  <td>物流中心意见:</td>
+				  <td colspan="3">
+				  	<input type="radio"/>
+				  </td>
+			 </tr>
+			  <tr>
+				  <td>分管领导意见:</td>
+				  <td colspan="3">
+				  </td>
+			 </tr>
+		</tbody>
+	</table>
+	<div class="tableFormInfo ">
+		注：红色*为必填项！<br/>
+		注：标题关键字未必填项！
+	</div>
+	<div class="pagebar">
+		<div class="pageState"></div>
+	</div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+</script>
+
+
+

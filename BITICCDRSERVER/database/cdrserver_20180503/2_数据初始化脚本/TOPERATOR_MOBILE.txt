@@ -1,0 +1,27 @@
+delete from TOPERATOR_MOBILE;
+dbcc checkident(TOPERATOR_MOBILE,reseed,0);
+
+insert INTO TOPERATOR_MOBILE 
+select t.op_code FK_TOPERATOR, null as TO_MOBILE, null as TO_TEL 
+from TOPERATOR t 
+where t.STATUS=1;
+
+update TOPERATOR_MOBILE set TO_MOBILE=tn.TO_MOBILE,TO_TEL=tn.TO_TEL
+from 
+	(
+	select ROW_NUMBER() over(order by t.id) as num, t.* 
+	from TOPERATOR_MOBILE t 
+	where t.TO_MOBILE is null or t.TO_TEL is null
+	) tm 
+left join 
+	(
+	select ROW_NUMBER() over(order by t.id) as unum, t.TO_MOBILE, t.TO_TEL, t.[STATUS] 
+	from TOUT_NUMBER t
+	) tn 
+on tm.num = tn.unum and tn.STATUS = 'normal'
+where TOPERATOR_MOBILE.ID = tm.ID
+
+
+
+select * from TOPERATOR_MOBILE
+select * from TOUT_NUMBER

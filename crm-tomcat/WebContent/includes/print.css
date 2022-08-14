@@ -1,0 +1,172 @@
+
+.font10
+{
+	font-size: 10px;
+	line-height: 14px;
+}
+
+.font12
+{
+	font-size: 12px;
+	line-height: 16px;
+}
+
+.font14
+{
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.font16
+{
+	font-size: 16px;
+	line-height: 24px;
+	font-weight : bold;
+}
+
+.accrualDataTable
+{
+	border-color: black;
+	border-width: 1px;
+	border-style: solid;
+	font-size: 15px
+}
+
+
+.leftTd {
+	border-left-width: 1px;
+	border-color: black;
+	border-style: solid;
+	border-bottom-width: 0px;
+	border-top-width: 0px;
+	border-right-width: 0px
+}
+
+.rightTd {<!--×ó-->
+	border-color: black;
+	border-right-width: 1px;
+	border-style: solid;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-width: 0px;
+}
+
+.topTd {
+	border-color: black;
+	border-top-width: 1px;
+	border-style: solid;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-right-width: 0px
+}
+
+.bottomTd {
+	border-bottom-width: 1px;
+	border-color: black;
+	border-style: solid;
+	border-left-width: 0px;
+	border-top-width: 0px;
+	border-right-width: 0px
+}
+
+.rightBottomTd {
+	border-color: black;
+	border-top-width: 0px;
+	border-style: solid;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-right-width: 1px
+}
+
+.topRightTd {
+	border-color: black;
+	border-top-width: 1px;
+	border-style: solid;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-right-width: 1px
+}
+.leftTopRightTd {
+	border-color: black;
+	border-top-width: 1px;
+	border-style: solid;
+	border-bottom-width: 0px;
+	border-left-width: 1px;
+	border-right-width: 1px
+}
+
+.leftTopRightBottomTd {
+	border-color: black;
+	border-top-width: 1px;
+	border-style: solid;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-width: 1px
+}
+
+.topRightBottomTd {
+	border-color: black;
+	border-top-width: 1px;
+	border-style: solid;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-right-width: 1px
+}
+
+.leftBottomRightTd {
+	border-color: black;
+	border-top-width: 0px;
+	border-style: solid;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-width: 1px
+}
+
+.leftTopTd {
+	border-color: black;
+	border-top-width: 1px;
+	border-left-width: 1px;
+	border-bottom-style: none;
+	border-left-style: solid;
+	border-top-style: solid;
+	border-right-style: none
+}
+
+.topLeftBottomTd {
+	border-color: black;
+	border-top-width: 1px;
+	border-style: solid;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-width: 0px
+}
+.company {
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	font-size: 25px;
+	
+}
+
+.printTable {
+	page-break-before: always
+}
+
+
+@media print {
+  .notprint{
+  visibility:hidden;
+  }
+}
+
+@media screen {
+  .notprint{
+  }
+}
+
+.post_title { 
+	font-family: ËÎÌå;
+	text-decoration: underline;
+	font-size: 23pt;
+	font-weight: bold
+}

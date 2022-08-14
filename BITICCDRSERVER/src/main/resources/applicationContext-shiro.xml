@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.2.xsd
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+       http://www.springframework.org/schema/util 
+       http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+       
+    <description>apache shiro配置</description>
+   
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/views/login.jsp"/>
+        <property name="successUrl" value="/views/index.jsp"/>
+        <property name="unauthorizedUrl" value="/views/401.jsp"/>
+        <property name="filters">  
+            <map>  
+                <entry key="authc">  
+                    <bean class="cn.zeppin.product.itic.backadmin.filter.LoginCheckFilter"></bean>  
+                </entry>  
+                <entry key="roles">  
+                    <bean class="cn.zeppin.product.itic.backadmin.filter.RoleAuthorizationFilter"></bean>  
+                </entry>
+                <entry key="perms">  
+                    <bean class="cn.zeppin.product.itic.backadmin.filter.PermsAuthorizationFilter"></bean>  
+                </entry>    
+            </map>  
+        </property>  
+        <property name="filterChainDefinitions">
+            <value>
+                <!-- 登录，登出，验证码 ，开通-->
+				/rest/backadmin/operator/login = anon
+				/rest/backadmin/operator/logout = anon
+				
+                /rest/backadmin/mslist/** = authc
+                /rest/backadmin/operator/** = authc
+                /rest/backadmin/number/** = authc
+                <!-- 网页端REST接口-->
+                /web/** = anon
+                /CDR/** = anon
+				<!--其他后台REST接口-->
+                /** = authc
+                
+				<!--其他css、js、html、jsp、jpg、png、mp4等文件资源 --> 
+                /** = anon
+            </value>
+        </property>
+    </bean>
+
+    <!-- 缓存管理器 使用Ehcache实现
+    <bean id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:ehcache-shiro.xml"/>
+    </bean>
+    -->
+     
+	<bean id="shiroRedisTemplate" class="org.springframework.data.redis.core.RedisTemplate" p:connection-factory-ref="jedisConnectionFactory"/>
+    
+    <bean id="redisCacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
+        <constructor-arg index="0" ref="shiroRedisTemplate"></constructor-arg>
+        <!-- 缓存失效时间3天 -->
+        <property name="defaultExpiration" value="259200"/>
+    </bean>
+    
+    <bean id="shiroCacheManager" class="cn.zeppin.product.itic.core.cache.ShiroRedisCacheManager">
+         <property name="cacheManager" ref="redisCacheManager"/>
+    </bean>
+	 
+    <!-- 会话DAO -->
+    <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.MemorySessionDAO"/>
+
+    <!-- 会话管理器 -->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="sessionDAO" ref="sessionDAO"/>
+        <property name="cacheManager" ref="shiroCacheManager"/>
+        <property name="sessionIdCookieEnabled" value="true" />
+        <property name="sessionIdCookie.name" value="jsid"/>
+        <!-- 全局会话超时时间（单位毫秒），默认30分钟 -->
+        <property name="globalSessionTimeout" value="1800000" />
+    </bean>
+    
+
+    <!-- 安全管理器 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realms" ref="securityRealm" />
+        <!-- cacheManager,集合spring缓存工厂-->  
+        <property name="cacheManager" ref="shiroCacheManager" /> 
+        <property name="sessionManager" ref="sessionManager" />
+     
+    </bean>
+    
+      <!-- 安全管理器  -->
+    <bean id="securityRealm" class="cn.zeppin.product.itic.backadmin.security.SecurityRealm">
+        <constructor-arg index="0" ref="shiroCacheManager"></constructor-arg>
+        <constructor-arg index="1" ref="credentialsMatcher"></constructor-arg>
+    </bean> 
+    
+    <bean id="credentialsMatcher" class="cn.zeppin.product.itic.backadmin.security.RetryNumLimitCredentialsMatcher">  
+        <constructor-arg ref="shiroCacheManager" />
+        <property name="hashAlgorithmName" value="MD5" />  
+        <property name="storedCredentialsHexEncoded" value="true" />  
+        <property name="hashIterations" value="3" />  
+	</bean>   
+	
+
+    <!-- Shiro生命周期处理器 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+    
+    <bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">  
+        <property name="config">  
+            <bean class="com.google.code.kaptcha.util.Config">  
+                <constructor-arg>  
+                    <props>  
+                        <prop key="kaptcha.border">no</prop>  
+                        <prop key="kaptcha.border.color">105,179,90</prop>  
+                        <prop key="kaptcha.textproducer.font.color">25,25,112</prop>  
+                        <prop key="kaptcha.image.width">300</prop>  
+                        <prop key="kaptcha.textproducer.font.size">85</prop>  
+                        <prop key="kaptcha.image.height">100</prop>  
+                        <prop key="kaptcha.session.key">authCode</prop>  
+                        <prop key="kaptcha.textproducer.char.length">5</prop>  
+                        <prop key="kaptcha.textproducer.font.names">Century,Calibri,Arial,Courier</prop>   
+                        <prop key="kaptcha.textproducer.char.string">ABCDEFGHJK23456789MNPQRSTUVWXYZ</prop>
+                        <prop key="kaptcha.textproducer.char.space">3</prop>
+                    </props>  
+                </constructor-arg>  
+            </bean>  
+        </property>  
+        
+    </bean>  
+
+</beans>

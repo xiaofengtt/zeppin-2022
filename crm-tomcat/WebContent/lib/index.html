@@ -1,0 +1,133 @@
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="x-ua-compatible" content="ie=edge">	
+<title>Project</title>
+<link href="styles/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">/*var portletPage="http://baidu.com";*/</script>
+<script type="text/javascript" src="js/plugins/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-ui-1.9.0.js"></script>
+<script type="text/javascript" src="js/plugins/jquery.layout-1.3.js"></script>
+<script type="text/javascript" src="js/plugins/initstyle.js"></script>
+<script type="text/javascript" src="js/plugins/utilities.js"></script>
+<script type="text/javascript" src="js/page.all.js"></script>
+<script type="text/javascript" src="js/page.home.js"></script>
+<!--[if IE 6]><script type="text/javascript" src="js/iepngfix_tilebg.js"></script><![endif]-->
+<style type="text/css">
+</style>
+</head>
+<body class="pageHome">
+<div class="pageLoading"></div>
+<div class="ui-layout-north header">
+	<div class="shine"></div>
+	<ul class="logoWrap">
+		<li class="companyName"></li>
+		<li class="systemName"></li>
+	</ul>
+	<ul class="logoBtn">
+		<li class="infoBtn buttonNC" title="关于"></li> 
+		<li class="pausBtn checkBtn" title="暂停动画"></li>
+	</ul>
+	<ul class="nav radioBtn">
+		<li class="navIcon_Home" onclick="j$.writeURL()"><a href="#">工作台</a></li>
+		<li class="navIcon_norm" onclick="">菜单测试</li>
+		<li class="navIcon_paper" onclick="j$.writeURL({sidenav:'sidenav.html',content:'welcome.html'})">待办中心</li>
+		<li class="navIcon_doc" onclick="j$.writeURL({content:'welcome.html'})">业务办理</li>
+		<li class="navIcon_search" onclick="j$.writeURL({sidenav:'sidenav.html',content:'welcome.html'})">报表查询</li>
+		<li class="navIcon_email" onclick="j$.writeURL({sidenav:'sidenav.html',content:'welcome.html'})">电子邮件</li>
+		<li class="navIcon_peoples" onclick="j$.writeURL({sidenav:'sidenav.html',content:'welcome.html'})">用户中心</li>
+		<li class="navIcon_folder" onclick="j$.writeURL({sidenav:'sidenav.html',content:'welcome.html'})">文档中心</li>
+		<li class="navIcon_earth" onclick="j$.writeURL({sidenav:'sidenav.html',content:'welcome.html'})">信息发布</li>
+		<li class="navIcon_notify">通知公告</li>
+		<li class="navIcon_eyes">办事公开</li>
+		<li class="navIcon_gear">系统管理</li>
+		<li class="navIcon_person">个人自助</li>
+		<li class="navIcon_book" onclick="j$.writeURL()">通讯录</li>
+		<li class="navIcon_receptor">信息发布</li>
+		<li class="navIcon_notepad">值班管理</li>
+		<li class="navIcon_officdoc">公文办理</li>
+		<li class="navIcon_stupid">两项工作</li>
+		<li class="navIcon_box">专卖内管</li>
+		<li class="navIcon_norm">标准化</li>
+	</ul>
+	<ul class="navIcon-norm-menu">
+		<li><a href="#">新建任务一</a></li>
+		<li><a href="#">新建任务二</a></li>
+		<li><a href="#">新建任务三</a></li>
+	</ul>
+	<ul class="assist">
+		<li class="userInfo">Administrator</li>
+		<li class="ctrlPanl" title="系统设置"></li>
+		<li class="userConfig" title="用户配置"><font>用户配置</font></li>
+		<li class="logoff" title="注销"></li>
+	</ul>
+</div>
+<div class="ui-layout-west sideNavLayout" id="home-column-left"><iframe src='' frameborder='0' id='sidenavFrame'></iframe></div>
+<div class="ui-layout-center contentLayout" id="contentLayout"><iframe src='' frameborder='0' id='contentFrame'></iframe></div>
+<div id='framePool'>
+	
+	
+</div>
+<div class="dialogCtrlPanl">
+	<ul class="ctrlPanlGrid">
+		<li class="firstRow">
+			<span>导航风格<font> (需刷新页面)</font></span>
+			<select id="navStyleSwitch">
+				<option value="navStyleIcons">图标风格</option>
+				<option value="navStyleTabs">标签风格</option>
+			</select>
+		</li>
+		<li>
+			<span>皮肤切换</span>
+			<ul class="themeSwitch radioBtn">
+				<li class="themeRed"></li>
+				<li class="themeDarkBlue"></li>
+				<li class="themeLightBlue"></li>
+				<li class="themeBlack noInt"></li>
+				<li class="themeGray noInt"></li>
+			</ul>
+		</li>
+		<li><span>动画效果<font> (提高性能但降低用户体验)</font></span><span id="aniSwitch" class="switch checkBtn"></span></li>
+		<li class="lastRow"><div class="tipSimple tipNormal"><span class="icon"></span><font>所选的结果自动保存！其中导航风格切换需刷新页面！</font></div></li>
+	</ul>
+</div>
+<div class="passChange">test</div>
+
+</body>
+</html>
+<script type="text/javascript">
+j$(".logoff").click(function(){
+	window.open("login.html","_self")
+});
+
+j$(".userConfig").click(function() {
+	j$(".passChange").dialog({
+		height: 200,
+        width: 400,
+        modal: true
+	});
+	j$.writeURL({sidenav:'sidenav.html',content:'welcome.html'})
+});
+j$(".navIcon_norm").click(function() {
+	var menu = j$(".navIcon-norm-menu").show().position({
+		my: "left top",
+		at: "left bottom",
+		of: this
+	});
+	j$( document ).one( "click", function() {
+		menu.hide();
+	});
+	return false;
+})
+j$(".navIcon-norm-menu").hide().css("width","100").menu();
+j$(".header").mouseleave(function(){j$(".navIcon-norm-menu").hide()});
+/*
+		function close(){
+		   window.open("close.html",'newwindow','height=100, width=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no',false);
+		}
+		j$(function(){
+			j$(window).bind("beforeunload",function(){close();});
+		});
+*/		
+</script>

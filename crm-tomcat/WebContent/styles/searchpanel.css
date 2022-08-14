@@ -1,0 +1,26 @@
+
+#searchPanel #printPanel {
+	border-bottom: 1px dashed #cccccc;
+	text-align: right;
+	height: 20px;
+	line-height: 20px;
+}
+
+#searchPanel #searchTerms {
+	border-top: 1px solid #ffffff;
+	background: #F1F1F1 none repeat scroll 0%;
+	height: 35px;
+	width:100%;
+	overflow: hidden;
+}
+#searchPanel #searchTerms ul {
+	float: left;
+	margin-top: 5px;
+	width: 100%;
+	list-style-type: none;
+}
+
+#searchPanel #searchTerms #searchBtn {
+	height: 22px;
+	width: 70px;
+}

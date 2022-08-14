@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+.row{margin-bottom:15px;}
+label{line-height:34px;text-align:right;}
+.form-control[readonly]{background:#fff;}
+.control-label{float:left;padding:0 15px;}
+a{cursor:pointer;}
+.secondDiv{display:none;}
+.layui-layer-dialog .layui-layer-content{padding:20px;}
+.layui-layer-content textarea{width:100%;resize:none;}
+.layui-layer-loading{background:#000;background:rgba(0,0,0,0.5);color:#fff;border-radius:0;padding:20px;}

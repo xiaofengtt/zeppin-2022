@@ -1,0 +1,81 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_MODI_TCOMPLAINT @IN_SERIAL		   INTEGER,	       --邮寄日期
+									@IN_CONTENT        NVARCHAR(MAX),  --投诉内容
+									@IN_CHECK_CONTENT  NVARCHAR(MAX),  --核查情况
+									@IN_REPLY_TYPE     INTEGER,		   --回复方式:1电话；2短信；3EMAIL；4信件
+									@IN_REPLY_DATE     INTEGER ,       --回复日期
+									@IN_DO_STATUS      INTEGER,        --处理状态:1未完成、2完成、3转给相关部门
+									@IN_FORWARD_TYPE   INTEGER ,	   --转交方式:1电话; 2EMAIL；3其他（DO_STATUS=3有效）
+									@IN_DO_RESULT      NVARCHAR(MAX),  --处理结果
+									@IN_REPLY_MAN	   INTEGER,		   --回访人
+									@IN_INPUT_MAN      INTEGER         --操作员
+WITH ENCRYPTION
+AS
+    SET NOCOUNT ON
+
+    DECLARE @V_ERROR NVARCHAR(200), @IBUSI_FLAG INT, @SBUSI_NAME NVARCHAR(40), @SSUMMARY NVARCHAR(200)
+    
+    BEGIN TRY
+    
+    SET @IBUSI_FLAG = 30601
+    SET @SBUSI_NAME = '客户投诉'
+    
+    --校验输入数据
+    IF LTRIM(ISNULL(@IN_CONTENT,'')) = ''
+	BEGIN
+		SET @V_ERROR = N'投诉内容不能为空'
+		RAISERROR(@V_ERROR,16,1)
+	END
+	IF @IN_DO_STATUS=2 AND LTRIM(RTRIM(ISNULL(@IN_DO_RESULT,''))) = '' 
+	BEGIN
+		SET @V_ERROR = N'处理结果不能为空'
+		RAISERROR(@V_ERROR,16,1)
+	END
+	--不是转给相关部门时，没有输入处理结果，则处理状态设为1未完成
+	IF ISNULL(@IN_DO_STATUS,0)<>3 AND LTRIM(RTRIM(ISNULL(@IN_DO_RESULT,''))) = ''
+	BEGIN
+		SET @IN_DO_STATUS = 1
+	END
+    BEGIN TRANSACTION
+    
+    --
+    UPDATE TCOMPLAINT
+		SET CONTENT=@IN_CONTENT,		  --投诉内容
+		CHECK_CONTENT=@IN_CHECK_CONTENT,  --核查情况
+		REPLY_TYPE=@IN_REPLY_TYPE,		  --回复方式:1电话；2短信；3EMAIL；4信件
+		REPLY_DATE=@IN_REPLY_DATE,        --回复日期
+		DO_STATUS=@IN_DO_STATUS,	      --处理状态:1未完成、2完成、3转给相关部门
+		FORWARD_TYPE=@IN_FORWARD_TYPE,	  --转交方式:1电话; 2EMAIL；3其他（DO_STATUS=3有效）
+		DO_RESULT=@IN_DO_RESULT,		  --处理结果
+		REPLY_MAN=@IN_REPLY_MAN			  --回访人
+        WHERE SERIAL=@IN_SERIAL
+    
+    --日志记录
+    SET @SSUMMARY = @SBUSI_NAME + ',修改,客户投诉:记录号：'+CAST(@IN_SERIAL AS VARCHAR)
+    INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+        VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+    COMMIT TRANSACTION
+    END TRY
+
+    --3.异常处理
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION
+        DECLARE @V_ERROR_STR NVARCHAR(1000),@V_ERROR_NUMBER INT,@V_ERROR_SEVERITY INT,@V_ERROR_STATE INT,
+                @V_ERROR_PROCEDURE sysname,@V_ERROR_LINE INT,@V_ERROR_MESSAGE NVARCHAR(4000)
+        SELECT @V_ERROR_STR = N'Message:%s<BR><font color = "white">Error:%d,Level:%d,State:%d,Procedure:%s,Line:%d</font>',
+               @V_ERROR_NUMBER = ERROR_NUMBER(),
+               @V_ERROR_SEVERITY = ERROR_SEVERITY(),
+               @V_ERROR_STATE = ERROR_STATE(),
+               @V_ERROR_PROCEDURE = ERROR_PROCEDURE(),
+               @V_ERROR_LINE = ERROR_LINE(),
+               @V_ERROR_MESSAGE = ERROR_MESSAGE()
+        RAISERROR(@V_ERROR_STR,@V_ERROR_SEVERITY,1,@V_ERROR_MESSAGE,@V_ERROR_NUMBER,@V_ERROR_SEVERITY,@V_ERROR_STATE,
+                  @V_ERROR_PROCEDURE,@V_ERROR_LINE)
+        RETURN -100
+    END CATCH
+    RETURN 100
+GO

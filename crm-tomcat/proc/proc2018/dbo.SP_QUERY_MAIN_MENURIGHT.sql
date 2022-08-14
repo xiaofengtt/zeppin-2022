@@ -1,0 +1,43 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_QUERY_MAIN_MENURIGHT    @IN_OP_CODE  INT,
+                                            @IN_MAIN_ID  NVARCHAR(2),
+                                            @OUT_FLAG    INT OUTPUT
+WITH ENCRYPTION
+AS
+    SET NOCOUNT ON
+    DECLARE @V_USER_ID INT
+    SELECT @V_USER_ID = USER_ID FROM TSYSTEMINFO
+    SELECT @IN_MAIN_ID = ISNULL(@IN_MAIN_ID,'')
+
+    SELECT MENU_ID,FUNC_ID
+    INTO #TEMPRIGHT
+    FROM TROLERIGHT
+    WHERE ROLE_ID IN(SELECT ROLE_ID FROM TOPROLE WHERE OP_CODE = @IN_OP_CODE)
+    GROUP BY MENU_ID,FUNC_ID
+
+    IF LEN(@IN_MAIN_ID) = 1 AND @IN_MAIN_ID <> 'P'
+    BEGIN
+        IF EXISTS(SELECT * FROM #TEMPRIGHT WHERE (SUBSTRING(MENU_ID,1,1) = @IN_MAIN_ID))
+        BEGIN
+            SET @OUT_FLAG = 1
+        END
+        ELSE
+        BEGIN
+            SET @OUT_FLAG = 0
+        END
+    END
+    ELSE
+    BEGIN
+        IF @IN_MAIN_ID = N'' SET @OUT_FLAG = 0
+        ELSE
+        BEGIN
+            SET @OUT_FLAG = 0
+        END
+    END
+    IF @V_USER_ID IN ( 2, 999 ) AND @IN_MAIN_ID = 'W' --20111219 dongyg 知识库全员有权限
+        SET @OUT_FLAG = 1
+    RETURN 100
+GO

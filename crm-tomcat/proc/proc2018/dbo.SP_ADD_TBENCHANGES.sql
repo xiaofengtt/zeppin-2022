@@ -1,0 +1,224 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_ADD_TBENCHANGES @IN_PRODUCT_ID          INTEGER,
+                                    @IN_CONTRACT_BH         NVARCHAR(16),
+                                    @IN_FROM_CUST_ID        INTEGER,
+                                    @IN_JK_TYPE             NVARCHAR(10),
+                                    @IN_TRANS_FLAG          NVARCHAR(10),
+                                    @IN_TO_AMOUNT           DECIMAL(16,3),
+                                    @IN_SX_FEE              DECIMAL(16,3),
+                                    @IN_TO_CUST_ID          INTEGER,
+                                    @IN_SUMMARY             NVARCHAR(200),
+                                    @IN_BANK_ID             NVARCHAR(10),
+                                    @IN_BANK_ACCT           NVARCHAR(30),
+                                    @IN_INPUT_MAN           INTEGER,
+                                    @IN_CHECK_MAN           INTEGER,
+                                    @IN_CHANGE_DATE         INTEGER,
+                                    @IN_BANK_SUB_NAME       NVARCHAR(60),
+                                    @IN_FROM_LIST_ID        INTEGER,
+                                    @IN_FX_CHANGE_FLAG      INTEGER,
+                                    @IN_SY_CHANGE_FLAG      INTEGER,
+                                    @IN_TRANS_TYPE          NVARCHAR(10),
+                                    @IN_CHANGE_QS_DATE      INTEGER       = NULL,
+                                    @IN_DF_REC_NO           INTEGER       = NULL,
+                                    @IN_ZQR_NAME            NVARCHAR(100) = NULL,
+                                    @IN_CHANGE_END_DATE     INTEGER       = NULL,
+                                    @IN_SX_FEE1             DECIMAL(16,3) = NULL,       --(USE_ID = 5)
+                                    @IN_SX_FEE2             DECIMAL(16,3) = NULL,       --(USE_ID = 5)
+                                    @IN_SX_FEE3             DECIMAL(16,3) = NULL,       --(USE_ID = 5)
+                                    @IN_RP_FLAG             INTEGER       = 1,
+                                    @IN_RP_MONEY            DECIMAL(16,3) = 0,
+                                    @IN_PROJECTID           INTEGER = 0,                --受益权转让审批类别
+                                    @OUT_PROBLEM_ID         INTEGER = 0 OUTPUT,         --流程ID
+                                    @IN_BANK_ACCT_NAME      NVARCHAR(200) = NULL        --银行账户名
+WITH ENCRYPTION
+AS
+    SET NOCOUNT ON
+    DECLARE @V_ERROR NVARCHAR(200)
+    DECLARE @V_SERIAL_NO INT,@V_BOOK_CODE INT,@V_TRANS_FLAG_NAME NVARCHAR(30),@V_BANK_NAME NVARCHAR(30)
+    DECLARE @V_BEN_AMOUNT DECIMAL(16,3),@V_TO_AMOUNT DECIMAL(16,3), @V_QS_DATE INT,@V_BEN_STATUS NVARCHAR(10),@V_FROZEN_TMP DECIMAL(16,3),
+            @V_FROZEN_MONEY DECIMAL(16,3),@V_CONTRACT_SUB_BH NVARCHAR(50),@V_PRODUCT_CODE NVARCHAR(6)
+    DECLARE @V_RET_CODE INT,@IBUSI_FLAG INT,@SBUSI_NAME NVARCHAR(40),@SSUMMARY NVARCHAR(200),@V_TRANS_TYPE_NAME NVARCHAR(30)
+    DECLARE @V_CARD_TYPE NVARCHAR(10), @V_CARD_ID NVARCHAR(40), @V_HT_STATUS NVARCHAR(10), @V_JS_TOTAL DEC(16,3)
+    DECLARE @V_FROM_LIST_ID INT,@V_TO_LIST_ID INT, @V_VALID_PERIOD INT
+    DECLARE @V_FROM_CUST_NAME NVARCHAR(60),@V_TO_CUST_NAME NVARCHAR(60),@V_PROBLEMID INT,@V_RET INT
+    SELECT @V_RET_CODE = -21701000
+    SELECT @IBUSI_FLAG = 21701
+    SELECT @SBUSI_NAME = N'受益权变更'
+
+    BEGIN TRY
+
+    SELECT @V_TRANS_TYPE_NAME = TYPE_CONTENT FROM INTRUST..TDICTPARAM WHERE TYPE_VALUE = @IN_TRANS_TYPE  --20050522谭鸿添加
+    SET @SSUMMARY = N'受益权变更,类别: ' + ISNULL(@V_TRANS_TYPE_NAME,'')
+
+    SELECT @V_HT_STATUS = HT_STATUS, @V_QS_DATE = QS_DATE,@V_CONTRACT_SUB_BH = CONTRACT_SUB_BH
+        FROM INTRUST..TCONTRACT WHERE PRODUCT_ID = @IN_PRODUCT_ID AND CONTRACT_BH = @IN_CONTRACT_BH --AND CUST_ID = @IN_FROM_CUST_ID
+    /*  合同冻结与受益权无关 COMMENT BY SHENKL 2006/12/18
+        IF @V_HT_STATUS = '120103'
+            RETURN @V_RET_CODE - 4  --合同已冻结不能转让受益权
+    */
+    SELECT @V_PRODUCT_CODE = PRODUCT_CODE FROM INTRUST..TPRODUCT WHERE PRODUCT_ID = @IN_PRODUCT_ID
+    SELECT @V_BANK_NAME = TYPE_CONTENT FROM INTRUST..TDICTPARAM WHERE TYPE_VALUE = @IN_BANK_ID
+    SELECT @V_SERIAL_NO = SERIAL_NO,@V_BOOK_CODE = BOOK_CODE, @V_BEN_AMOUNT = ISNULL(BEN_AMOUNT,0), @V_VALID_PERIOD = VALID_PERIOD, @V_JS_TOTAL = JS_TOTAL,
+           @V_FROZEN_TMP = ISNULL(FROZEN_TMP,0),@V_FROZEN_MONEY = ISNULL(FROZEN_MONEY,0)
+        FROM INTRUST..TBENIFITOR
+        WHERE PRODUCT_ID = @IN_PRODUCT_ID AND CONTRACT_BH = @IN_CONTRACT_BH AND LIST_ID = @IN_FROM_LIST_ID
+    IF @IN_TRANS_TYPE IN('181512','181514') BEGIN 
+    -- 解质押和解冻
+        IF NOT EXISTS(SELECT 1 FROM INTRUST..TBENCHANGES WHERE SERIAL_NO = @IN_DF_REC_NO) BEGIN
+            --RETURN @V_RET_CODE - 7  -- 对应质押/冻结记录不存在
+            SET @V_ERROR = '质押/冻结记录不存在'
+            RAISERROR(@V_ERROR,16,1)
+        END
+        SELECT @V_BEN_AMOUNT = ISNULL(TO_AMOUNT,0),@V_FROZEN_TMP = ISNULL(FROZEN_TMP,0),@V_FROZEN_MONEY = ISNULL(FROZEN_MONEY,0)
+        FROM INTRUST..TBENCHANGES WHERE SERIAL_NO = @IN_DF_REC_NO
+        IF @V_BEN_AMOUNT - @V_FROZEN_MONEY - @V_FROZEN_TMP < @IN_TO_AMOUNT BEGIN
+            --RETURN @V_RET_CODE - 2  -- 受益份额不足
+            SET @V_ERROR = '受益份额不足'
+            RAISERROR(@V_ERROR,16,2)
+        END
+    END
+    ELSE
+    BEGIN
+        IF @V_BEN_AMOUNT - @V_FROZEN_TMP < @IN_TO_AMOUNT BEGIN
+            RETURN @V_RET_CODE - 2  -- 受益份额不足
+            SET @V_ERROR = '受益份额不足'
+            RAISERROR(@V_ERROR,16,3)
+        END
+    END
+    IF NOT EXISTS(SELECT 1 FROM INTRUST..TBENIFITOR WHERE PRODUCT_ID = @IN_PRODUCT_ID AND CONTRACT_BH = @IN_CONTRACT_BH AND
+                                                 CUST_ID = @IN_FROM_CUST_ID AND JK_TYPE = @IN_JK_TYPE AND 
+                                                 LIST_ID = @IN_FROM_LIST_ID) BEGIN
+            --RETURN @V_RET_CODE-1   -- 受益人信息不存在
+            SET @V_ERROR = '受益人信息不存在'
+            RAISERROR(@V_ERROR,16,4)
+    END
+    IF @IN_CHANGE_DATE < @V_QS_DATE BEGIN
+        --RETURN @V_RET_CODE - 5  --转让日期不能早于合同签署日期
+        SET @V_ERROR = '转让日期不能早于合同签署日期'
+        RAISERROR(@V_ERROR,16,5)
+    END
+    --转让类别：181511质押、181512解质押、181513冻结、181514解冻
+    IF @IN_TRANS_TYPE IN ('181511','181512','181513','181514') BEGIN
+    --受益权质押、解押、冻结，解冻 需要判断
+        --质押、 解质押，冻结，解冻 自动判断“转让类型”
+        IF @IN_TO_AMOUNT = @V_BEN_AMOUNT
+            SELECT @IN_TRANS_FLAG = '111501'
+        ELSE
+            SELECT @IN_TRANS_FLAG = '111502'
+    END
+    IF NOT EXISTS(SELECT 1 FROM INTRUST..TCUSTOMERINFO WHERE CUST_ID = @IN_TO_CUST_ID ) BEGIN
+        --RETURN @V_RET_CODE - 3  -- 受让人不存在
+        SET @V_ERROR = '受让人信息不存在'
+        RAISERROR(@V_ERROR,16,6)
+    END
+    SELECT @V_TRANS_FLAG_NAME = TYPE_CONTENT FROM INTRUST..TDICTPARAM WHERE TYPE_VALUE = @IN_TRANS_FLAG
+
+    SELECT @V_FROM_LIST_ID = @IN_FROM_LIST_ID
+    --处理冻结、质押
+    IF @IN_TRANS_TYPE NOT IN ('181511','181513') BEGIN
+        IF @IN_TRANS_TYPE IN ('181512','181514')
+            --解押、解冻时，TO_LIST_ID应为对应质押、冻结的FROM_LIST_ID
+            SELECT @V_TO_LIST_ID = FROM_LIST_ID,@V_FROM_LIST_ID = TO_LIST_ID FROM INTRUST..TBENCHANGES WHERE SERIAL_NO = @IN_DF_REC_NO
+        ELSE
+            --受益权转让
+            SELECT @V_TO_LIST_ID = LIST_ID FROM INTRUST..TBENIFITOR
+                WHERE PRODUCT_ID = @IN_PRODUCT_ID AND CONTRACT_BH = @IN_CONTRACT_BH AND CUST_ID = @IN_TO_CUST_ID AND 
+                      JK_TYPE = @IN_JK_TYPE AND VALID_PERIOD = @V_VALID_PERIOD AND BEN_STATUS NOT IN('121106','121103')
+    END
+    ELSE
+    BEGIN
+        --质押、冻结是同一客户之间操作
+        SELECT @IN_TO_CUST_ID = @IN_FROM_CUST_ID
+        --质押
+        IF @IN_TRANS_TYPE = '181511'
+            SELECT @V_BEN_STATUS = '121106'
+        --冻结
+        ELSE IF @IN_TRANS_TYPE = '181513'
+            SELECT @V_BEN_STATUS = '121103'
+        SELECT @V_TO_LIST_ID = LIST_ID FROM INTRUST..TBENIFITOR
+            WHERE DF_BEN_REC_NO = @V_SERIAL_NO AND BEN_STATUS = @V_BEN_STATUS
+    END
+    SELECT @V_TO_LIST_ID = ISNULL(@V_TO_LIST_ID,0)
+
+    BEGIN TRANSACTION
+
+    INSERT INTO INTRUST..TBENCHANGES(BOOK_CODE,PRODUCT_ID,CONTRACT_BH,FROM_CUST_ID,JK_TYPE,
+                            TO_AMOUNT,SX_FEE,TO_CUST_ID,SUMMARY,INPUT_MAN,CHECK_MAN,TRANS_FLAG,TRANS_FLAG_NAME,
+                            BANK_ID,BANK_NAME,BANK_ACCT, CHANGE_DATE, BANK_SUB_NAME,BANK_ACCT_NAME,
+                            FROM_LIST_ID, TO_LIST_ID, FX_CHANGE_FLAG, SY_CHANGE_FLAG, TRANS_TYPE, TRANS_TYPE_NAME,CHANGE_QS_DATE,
+                            DF_REC_NO,ZQR_NAME,CHANGE_END_DATE,SX_FEE1,SX_FEE2 ,SX_FEE3, FROM_PRIOR_AMOUNT, RP_FLAG,RP_MONEY)
+        VALUES(@V_BOOK_CODE,@IN_PRODUCT_ID,@IN_CONTRACT_BH,@IN_FROM_CUST_ID,@IN_JK_TYPE,
+               @IN_TO_AMOUNT,@IN_SX_FEE,@IN_TO_CUST_ID,@IN_SUMMARY,@IN_INPUT_MAN,@IN_CHECK_MAN,@IN_TRANS_FLAG,@V_TRANS_FLAG_NAME,
+               @IN_BANK_ID,@V_BANK_NAME,@IN_BANK_ACCT, @IN_CHANGE_DATE, @IN_BANK_SUB_NAME,@IN_BANK_ACCT_NAME,
+               @V_FROM_LIST_ID, @V_TO_LIST_ID, @IN_FX_CHANGE_FLAG, @IN_SY_CHANGE_FLAG, @IN_TRANS_TYPE, @V_TRANS_TYPE_NAME,@IN_CHANGE_QS_DATE,
+               @IN_DF_REC_NO,@IN_ZQR_NAME,@IN_CHANGE_END_DATE,@IN_SX_FEE1,@IN_SX_FEE2,@IN_SX_FEE3, @V_BEN_AMOUNT ,@IN_RP_FLAG ,@IN_RP_MONEY)
+    SET @V_SERIAL_NO = @@IDENTITY
+    IF @IN_TRANS_TYPE IN ('181512','181514')
+        --解押、解冻时将原质押、冻结记录CHECK_FLAG = 3(TODO:将明细中临时冻结金额)
+        UPDATE INTRUST..TBENCHANGES SET FROZEN_TMP = ISNULL(FROZEN_TMP,0) + @IN_TO_AMOUNT WHERE SERIAL_NO = @IN_DF_REC_NO
+    ELSE
+        --TBENIFITOR表的<转让方>设置临时冻结金额
+        UPDATE INTRUST..TBENIFITOR SET FROZEN_TMP = ISNULL(FROZEN_TMP,0) + @IN_TO_AMOUNT
+            WHERE PRODUCT_ID = @IN_PRODUCT_ID AND CONTRACT_BH = @IN_CONTRACT_BH AND LIST_ID = @IN_FROM_LIST_ID
+
+    IF @IN_TRANS_TYPE IN ('181501','181502','181503') --受益权转让
+    BEGIN
+        ----添加一条客户银行帐号信息--
+        IF NOT EXISTS( SELECT 1 FROM INTRUST..TCUSTBANKACCT WHERE CUST_ID = @IN_TO_CUST_ID AND BANK_ID = @IN_BANK_ID AND BANK_ACCT = @IN_BANK_ACCT )
+              AND @IN_BANK_ID <> '' AND NOT @IN_BANK_ID IS NULL AND @IN_BANK_ACCT <> '' AND NOT @IN_BANK_ACCT IS NULL
+        BEGIN
+            SELECT @V_CARD_TYPE = CARD_TYPE, @V_CARD_ID = CARD_ID  FROM INTRUST..TCUSTOMERINFO WHERE CUST_ID = @IN_TO_CUST_ID
+            INSERT INTO INTRUST..TCUSTBANKACCT(CUST_ID, BANK_ID, BANK_NAME, BANK_ACCT,ACCT_NAME, CARD_TYPE, CARD_ID)
+              VALUES(@IN_TO_CUST_ID, @IN_BANK_ID, @V_BANK_NAME, @IN_BANK_ACCT,@IN_BANK_ACCT_NAME, @V_CARD_TYPE, @V_CARD_ID)
+        END
+    END
+
+    ------------------------
+    
+    --START 添加事物审批
+    IF ISNULL(@IN_PROJECTID,0) <> 0 BEGIN
+        EXEC @V_RET = SP_ADD_TBENCHANGES_TPROBLEMS @V_SERIAL_NO, @IN_PROJECTID, @IN_INPUT_MAN, @V_PROBLEMID OUTPUT
+        SET @OUT_PROBLEM_ID = @V_PROBLEMID
+    END
+    --END 添加事物审批
+    
+    SELECT @V_FROM_CUST_NAME = CUST_NAME FROM INTRUST..TCUSTOMERINFO WHERE CUST_ID = @IN_FROM_CUST_ID
+    SELECT @V_TO_CUST_NAME = CUST_NAME FROM INTRUST..TCUSTOMERINFO WHERE CUST_ID = @IN_TO_CUST_ID
+    
+    SELECT @SSUMMARY = @SSUMMARY + N', 产品编号: ' + @V_PRODUCT_CODE + 
+                                   N'，合同编号：' + @V_CONTRACT_SUB_BH + 
+                                   N'，受益序号：' + RTRIM(CONVERT(CHAR,@IN_FROM_LIST_ID)) +
+                                   N'，受益人：'   + @V_FROM_CUST_NAME + 
+                                   N'，变更份额：' + RTRIM(CONVERT(CHAR,@IN_TO_AMOUNT)) +
+                                   N'，转让对家：' + ISNULL(@V_TO_CUST_NAME,'')
+
+    INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+        VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+    
+    COMMIT TRANSACTION
+    END TRY
+
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0 
+            ROLLBACK TRANSACTION 
+
+        DECLARE @V_ERROR_STR NVARCHAR(1000),@V_ERROR_NUMBER INT,@V_ERROR_SEVERITY INT,@V_ERROR_STATE INT,
+                @V_ERROR_PROCEDURE sysname,@V_ERROR_LINE INT,@V_ERROR_MESSAGE NVARCHAR(4000)
+        SELECT @V_ERROR_STR = N',Message %s,Error %d,Level %d,State %d,Procedure %s,Line %d',
+               @V_ERROR_NUMBER = ERROR_NUMBER(),
+               @V_ERROR_SEVERITY = ERROR_SEVERITY(),
+               @V_ERROR_STATE = ERROR_STATE(),
+               @V_ERROR_PROCEDURE = ERROR_PROCEDURE(),
+               @V_ERROR_LINE = ERROR_LINE(),
+               @V_ERROR_MESSAGE = ERROR_MESSAGE()
+
+        RAISERROR(@V_ERROR_STR,@V_ERROR_MESSAGE,@V_ERROR_SEVERITY,1,@V_ERROR_NUMBER,@V_ERROR_SEVERITY,
+                  @V_ERROR_STATE,@V_ERROR_PROCEDURE,@V_ERROR_LINE)
+        RETURN -100
+
+    END CATCH
+    RETURN 100
+GO

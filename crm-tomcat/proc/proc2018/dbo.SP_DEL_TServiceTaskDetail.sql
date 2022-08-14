@@ -1,0 +1,51 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_DEL_TServiceTaskDetail    @IN_SERIAL_NO         INTEGER,         --序号（TServiceTaskDetail.Serial_no）
+                                              @IN_INPUT_MAN         INTEGER          --操作员
+WITH ENCRYPTION
+AS
+    DECLARE @V_TASKSERIALNO INT
+    DECLARE @V_RET_CODE INT, @IBUSI_FLAG INT,@SBUSI_NAME NVARCHAR(40), @SSUMMARY NVARCHAR(200)
+    SELECT @V_RET_CODE = -50301000, @IBUSI_FLAG = 50301
+    SELECT @SBUSI_NAME = N'删除服务任务明细', @SSUMMARY = N'删除服务任务明细'
+
+    SELECT @V_TASKSERIALNO = TaskSerialNO
+    FROM TServiceTaskDetail
+    WHERE Serial_no = @IN_SERIAL_NO
+
+    IF NOT EXISTS(SELECT 1 FROM TServiceTasks WHERE Serial_no = @V_TASKSERIALNO )
+        RETURN @V_RET_CODE - 1  --对应的任务列表不存在
+    BEGIN TRANSACTION
+    --任务列表客户累计数减1
+    UPDATE TServiceTasks
+    SET CustomerCount = CustomerCount - 1
+    WHERE Serial_no = @V_TASKSERIALNO
+    IF @@ERROR <> 0
+    BEGIN
+        ROLLBACK TRANSACTION
+        RETURN -100
+    END
+    DELETE FROM TServiceTaskDetail
+    WHERE Serial_no = @IN_SERIAL_NO
+    IF @@ERROR <> 0
+    BEGIN
+        ROLLBACK TRANSACTION
+        RETURN -100
+    END
+
+    SET @SSUMMARY = N'删除服务任务明细，操作员：' + CAST(@IN_INPUT_MAN AS NVARCHAR(10))
+    INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+        VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+    IF @@ERROR <> 0
+    BEGIN
+        ROLLBACK TRANSACTION
+        RETURN -100
+    END
+
+    COMMIT TRANSACTION
+
+    RETURN 100
+
+GO

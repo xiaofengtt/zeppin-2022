@@ -1,0 +1,30 @@
+body{background: url(../img/loginBg.jpg) center no-repeat;}
+.content{text-align:center;width:322px !important;background:none !important;width:322px;position:absolute;
+margin-left:-161px;margin-top:-200px;top:50%;left:50%;}
+.content form{margin-top:62px;}
+.input-icon input{padding-top:14px;padding-bottom:11px;padding-left:57px !important;line-height:23px;font-size:18px;height:auto;
+border-radius:5px !important;color: #2B2B2B !important;outline:none;background:#e9f8ff;}
+#loginname{letter-spacing:-1px;}
+#password{color:#575757 !important;letter-spacing:7px;}
+.chknumber input{font-size: 16px;color: rgba(0,0,0,0.5);line-height:22px;height:50px;border-radius:5px !important;margin-right:6px;background:#e9f8ff;}
+#loginBut{margin:18px 0;width:100%;font-size: 20px;color: #ffffff;height:50px;background: #0c9bda;border-radius: 5px !important;
+display:inline-block;outline: none;}
+.copyright{text-align:center;-webkit-text-size-adjust:none; font-size:12px;color:rgba(255,255,255,0.45);line-height:13px;-webkit-transform: scale(0.75);}
+.copyright p{margin-bottom:3px;height:20px;white-space:nowrap;}
+.input-icon i{width:19px;height:19px;margin:16px 0 15px 12px;}
+.input-icon i.user{background:url(../img/userLogin.png) 100% 100% no-repeat;background-size:cover;}
+.input-icon i.lock{background:url(../img/lockLogin.png) 100% 100% no-repeat;background-size:cover;}
+.chknumber input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+color: rgba(0,0,0,0.3);
+}
+.chknumber input:-moz-placeholder, textarea:-moz-placeholder {
+color: rgba(0,0,0,0.3);
+}
+.chknumber input::-moz-placeholder, textarea::-moz-placeholder {
+color: rgba(0,0,0,0.3);
+}
+.chknumber input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+color: rgba(0,0,0,0.3);
+} 
+.loginLogo{width:380px;margin-left:-29px;}
+

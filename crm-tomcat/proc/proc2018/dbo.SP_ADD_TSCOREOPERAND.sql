@@ -1,0 +1,43 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_ADD_TSCOREOPERAND @IN_SUBJECT_ID    INT,             --科目ID
+                                      @IN_OPERAND_NO    NVARCHAR(16),    --操作数编号
+                                      @IN_OPERAND_NAME  NVARCHAR(60),    --操作数名称
+                                      @IN_SCORING       INT,             --人工（系统）打分 1人工，2系统
+                                      @IN_SOURCE        INT,             --来源(仅人工)1手工打分2通过计算打分
+                                      @IN_SUMMARY       NVARCHAR(200),   --描述
+                                      @IN_INPUT_MAN     INT              --操作员
+WITH ENCRYPTION
+AS
+    DECLARE @V_RET_CODE INT,@IBUSI_FLAG INT,@SBUSI_NAME NVARCHAR(40),@SSUMMARY NVARCHAR(200)
+    SELECT @SBUSI_NAME = N'增加计分操作数信息'
+    SELECT @SSUMMARY = N'增加计分操作数信息'
+    SELECT @IBUSI_FLAG = 21003
+    SELECT @V_RET_CODE = -21003000
+
+    IF EXISTS(SELECT * FROM TSCOREOPERAND WHERE SUBJECT_ID = @IN_SUBJECT_ID AND OPERAND_NO = @IN_OPERAND_NO)
+        RETURN @V_RET_CODE - 11   -- 计分操作数信息已存在
+
+    BEGIN TRANSACTION
+
+    INSERT INTO TSCOREOPERAND(SUBJECT_ID,OPERAND_NO,OPERAND_NAME,SCORING,SOURCE,SUMMARY,INPUT_MAN)
+         VALUES(@IN_SUBJECT_ID,@IN_OPERAND_NO,@IN_OPERAND_NAME,@IN_SCORING,@IN_SOURCE,@IN_SUMMARY,@IN_INPUT_MAN)
+    IF @@ERROR <> 0
+    BEGIN
+        ROLLBACK TRANSACTION
+        RETURN -100
+    END
+    SELECT @SSUMMARY = N'增加计分操作数信息，操作数编号：'+RTRIM(@IN_OPERAND_NO)+N',操作数名称：'+RTRIM(@IN_OPERAND_NAME)
+    INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+        VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+    IF @@ERROR <> 0
+    BEGIN
+        ROLLBACK TRANSACTION
+        RETURN -100
+    END
+
+    COMMIT TRANSACTION
+    RETURN 100
+GO

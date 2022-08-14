@@ -1,0 +1,106 @@
+
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge">	
+<title>Layout Test-page</title>
+<link href="styles/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/plugins/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-ui-1.9.0.js"></script>
+<script type="text/javascript" src="js/plugins/initstyle.js"></script>
+<script type="text/javascript" src="js/plugins/utilities.js"></script>
+<script type="text/javascript" src="js/plugins/formly.js"></script>
+<script type="text/javascript" src="js/page.all.js"></script>
+<script type="text/javascript" src="js/page.content.js"></script>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+j$(function(){
+	j$(".searchForm").autoResizeInput();
+
+	j$(".tableData").tableList({
+		icon:"x19 y28",
+		checkbox:true,
+		//radio:true,
+		//width:800,
+		//height:600,
+		cutStr:true,
+		tdWidth:{
+			tdLast:70,
+			//tdFirst:20,
+			td2:"20%",
+			//td3:70
+		}
+	});
+});
+</script>
+</head>
+<body class="pageContent">
+<div class="contentWrap">
+	<div class="location">
+		<div class="icon iconLocation"></div>
+		<div class="desc">报表查询 > 职能机构 > 职位清单</div>
+		<button class="buttonResize">最大化</button>
+	</div>
+	<div class="toolbar">
+		<ul class="operateGrid">
+			<li><button class="buttonNew">新增</button></li>
+			<li><button class="buttonSave">保存</button></li>
+			<li><button class="buttonExit">退出</button></li>
+			<li><button class="buttonPrint">打印</button></li>
+			<li><button class="buttonReturn">返回</button></li>
+			<li><button class="buttonEdit">编辑</button></li>
+			<li><button class="buttonDelete">删除</button></li>
+			<li><button class="buttonSubmit">提交</button></li>
+			<li><button class="buttonView">查看</button></li>
+			<li><button class="buttonRefresh">刷新</button></li>
+		</ul>
+		<input type="checkbox" id="check" class="buttonSearch" /><label class="buttonSearchLabel" for="check">搜索</label>
+	</div>
+	<div class="searchContainer">
+		<div class="searchForm">
+			<input type="text"  place="请输入项目名称"/>
+			<input type="text"  place="请输入项目负责人"/>
+			<select>
+				<option>请选择项目级别</option>
+			</select>
+			<select>
+				<option>请选择显示分类</option>
+			</select>
+		</div>
+		<div class="searchFormButtonSet">
+			<button class="buttonFormSubmit">查询</button>
+			<button class="selectFromAction">菜单</button>
+		</div>
+		<ul class="searchFormMenu">
+			<li><a href="#">清空所有字段</a></li>
+			<li><a href="#">清空部门字段</a></li>
+			<li><a href="#">高级查询</a></li>
+		</ul>
+	</div>
+	<table class="tableData">
+		<thead>
+			<tr><th>标题</th><th>部门</th><th>日期</th></tr>
+		</thead>
+	</table>
+	<div class="InfoBar">
+		<!--<div class="tipSimple tipError tipNormal"><span class="icon"></span><font>所选的结果自动保存！其中导航风格切换需刷新页面！</font></div>
+		<div class="tipSimple tipWarning"><span class="icon"></span><font>所选的结果自动保存！其中导航风格切换需刷新页面！</font></div>-->
+		<div class="tipSimple tipWarning"><span class="icon"></span><font>所选的结果自动保存！其中导航风格切换需刷新页面！</font></div>
+	</div>
+	<div class="pagebar">
+		<div class="pageState">第 1 - 10条, 共 3页 21条数据</div>
+		<ul class="pageCtrl">
+			<li><font>跳转到</font><span><input type="text"/></span><button class="buttonPageGoto">跳转到</button></li>
+			<li><button class="buttonPageFrist">首页</button></li>
+			<li><button class="buttonPagePrevious">末页</button></li>
+			<li><button class="buttonPageNext">末页</button></li>
+			<li><button class="buttonPageLast">末页</button></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+</script>
+

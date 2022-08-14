@@ -1,0 +1,11 @@
+
+.a_imgbtn {
+	text-decoration: none;
+	cursor: hand;
+	background-image: url(/includes/proto/btn.jpg);
+	width: 68px;
+	height: 26px;		
+	line-height: 26px;
+	text-align: center;
+	color: black;	
+}

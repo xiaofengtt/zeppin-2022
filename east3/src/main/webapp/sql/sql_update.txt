@@ -1,0 +1,18 @@
+create or replace trigger T_XM_XTZJYYHTXX_INSERT
+before insert on T_XM_XTZJYYHTXX
+for each row
+declare
+begin
+  if :new.id is null then
+    :new.id:=get_uuid;
+  end if;
+  if :new.createtime is null then
+    :new.createtime:=sysdate;
+  end if;
+  if :new.updatetime is null then
+    :new.updatetime:=sysdate;
+  end if;
+  if :new.status is null then
+    :new.status:='normal';
+  end if;
+end T_XM_XTZJYYHTXX_INSERT;

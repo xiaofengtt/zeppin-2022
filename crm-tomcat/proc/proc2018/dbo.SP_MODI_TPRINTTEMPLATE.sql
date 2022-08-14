@@ -1,0 +1,67 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_MODI_TPRINTTEMPLATE @IN_TEMPLATE_ID          INTEGER,        --模板记录号
+                                        @IN_TEMPLATE_CODE        NVARCHAR(24),   --模板代码
+                                        @IN_TEMPLATE_NAME        NVARCHAR(60),   --模板名称
+                                        @IN_TEMPLATE_CONTENT     NVARCHAR(MAX),  --模板内容
+                                        @IN_SUMMARY              NVARCHAR(512),  --备注
+                                        @IN_INPUT_MAN            INTEGER         --操作员
+
+WITH ENCRYPTION 
+AS
+    DECLARE @V_TEMPLATE_CODE NVARCHAR(24),@V_TEMPLATE_NAME NVARCHAR(60)
+    DECLARE @V_RET_CODE INT,@IBUSI_FLAG INT,@SBUSI_NAME NVARCHAR(40),@SSUMMARY NVARCHAR(200)
+    SET @V_RET_CODE = -99999000
+    SET @IBUSI_FLAG = 99999
+    SET @SBUSI_NAME = '修改打印模板'
+    
+    BEGIN TRY
+        SELECT @V_TEMPLATE_CODE = TEMPLATE_CODE,@V_TEMPLATE_NAME = TEMPLATE_NAME
+            FROM TPRINTTEMPLATE
+            WHERE TEMPLATE_ID = @IN_TEMPLATE_ID
+
+        BEGIN TRANSACTION
+
+        UPDATE TPRINTTEMPLATE
+            SET TEMPLATE_CODE    = @IN_TEMPLATE_CODE,
+                TEMPLATE_NAME    = @IN_TEMPLATE_NAME,
+                TEMPLATE_CONTENT = @IN_TEMPLATE_CONTENT,
+                SUMMARY          = @IN_SUMMARY
+            WHERE TEMPLATE_ID = @IN_TEMPLATE_ID
+                
+        SELECT @SSUMMARY = @SBUSI_NAME
+        IF @V_TEMPLATE_CODE <> @IN_TEMPLATE_CODE
+            SET @SSUMMARY = @SSUMMARY + '，模板代码：' + @V_TEMPLATE_CODE + '->' + @IN_TEMPLATE_CODE
+        IF @V_TEMPLATE_NAME <> @IN_TEMPLATE_NAME
+            SET @SSUMMARY = @SSUMMARY + '，模板名称：' + @V_TEMPLATE_NAME + '->' + @IN_TEMPLATE_NAME
+        INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+            VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+        
+        COMMIT TRANSACTION
+        RETURN 100
+    END TRY
+    
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0 BEGIN
+            ROLLBACK TRANSACTION
+        END
+        
+        DECLARE @V_ERROR_STR NVARCHAR(1000),@V_ERROR_NUMBER INT,@V_ERROR_SEVERITY INT,@V_ERROR_STATE INT,
+                @V_ERROR_PROCEDURE sysname,@V_ERROR_LINE INT,@V_ERROR_MESSAGE NVARCHAR(4000)
+
+        SELECT @V_ERROR_STR = N'Message:%s,Error:%d,Level:%d,State:%d,Procedure:%s,Line:%d',
+               @V_ERROR_NUMBER = ERROR_NUMBER(),
+               @V_ERROR_SEVERITY = ERROR_SEVERITY(),
+               @V_ERROR_STATE = ERROR_STATE(),
+               @V_ERROR_PROCEDURE = ERROR_PROCEDURE(),
+               @V_ERROR_LINE = ERROR_LINE(),
+               @V_ERROR_MESSAGE = ERROR_MESSAGE()
+
+        RAISERROR(@V_ERROR_STR,@V_ERROR_SEVERITY,1,@V_ERROR_MESSAGE,@V_ERROR_NUMBER,@V_ERROR_SEVERITY,@V_ERROR_STATE,
+                  @V_ERROR_PROCEDURE,@V_ERROR_LINE)
+        
+        RETURN -100
+    END CATCH
+GO

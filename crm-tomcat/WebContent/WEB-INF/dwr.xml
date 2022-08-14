@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 1.0//EN" "http://www.getahead.ltd.uk/dwr/dwr10.dtd">
+
+<dwr>
+	<allow>
+		<create creator="new" javascript="loginService">
+			<param name="class"  value="enfo.crm.service.LoginService"/>					
+		</create>
+		<create creator="new" javascript="checkService">
+			<param name="class"  value="enfo.crm.service.CheckService"/>					
+		</create>
+		<create creator="new" javascript="CustomerService">
+			<param name="class"  value="enfo.crm.service.CustomerService"/>					
+		</create>	
+		<create creator="new" javascript="menuService">
+			<param name="class"  value="enfo.crm.service.MenuService"/>					
+		</create>				
+		<create creator="new" javascript="contract">
+			<param name="class"  value="enfo.crm.service.CrontractBHService"/>					
+		</create>		
+		<create creator="new" javascript="utilityService">
+			<param name="class"  value="enfo.crm.service.UtilityService" />
+		</create>
+		<create creator="new" javascript="ccService">
+			<param name="class"  value="enfo.crm.service.CallCenterService" />
+		</create>
+		<create creator="new" javascript="CustomerInfo">
+			<param name="class" value="enfo.crm.service.CustomerInfo" />
+		</create>
+		<create creator="new" javascript="holidayService">
+			<param name="class" value="enfo.crm.service.HolidayService" />
+		</create>
+		<create creator="new" javascript="fundInfoService">
+			<param name="class"  value="enfo.crm.service.FundInfoService" />
+		</create>
+		<convert converter="bean" match="enfo.crm.dao.BusiException"/> 	
+		<convert converter="bean" match="enfo.crm.vo.CCVO"/> 					 	
+	</allow>
+	
+</dwr>

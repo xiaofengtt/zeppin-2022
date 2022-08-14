@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+.themeFlatBlue .region-selector{ background-color:#1466b8;}
+.themeFlatBlue .region-selector .desc{ color:#75c7f0; }
+.themeFlatBlue .region-selector .content{ color:#fff; background-color:#197fe6;}
+.themeFlatBlue .region-selector .content a{color:#fff; }
+.themeFlatBlue .region-selector:hover{background-color:#197fe6;}
+.themeFlatBlue .region-selector:hover .content{background-color:#6699cc;}
+
+.themeFlatBlue .header-fun{}
+.themeFlatBlue .header-fun li{ color:#fff; }
+.themeFlatBlue .header-fun .hf-info{color:#d1f3fa; }
+.themeFlatBlue .header-fun li .icon{}
+.themeFlatBlue .header-fun li a{color:#fff;}
+
+
+.themeFlatBlue .pageHome .frameLoading{background-image:url(themeFlatBlue/initstyle/loading02.gif);}
+.themeFlatBlue .pageHome .header .logoWrap li{background-image:url(themeFlatBlue/pageHome/logo.png);}
+.themeFlatBlue .pageHome .header{background-image:url(themeFlatBlue/pageHome/headerBG.png); background-color:#407fbf;}
+.themeFlatBlue .pageHome .header .shine{background-image:none;}
+.themeFlatBlue .pageHome .header .navIcons li{background-image:url(themeFlatBlue/pageHome/navIcons.png);}
+
+.themeFlatBlue .pageHome .header .navTabs li span{background-image:url(themeFlatBlue/pageHome/navTabsCorner.png);}
+.themeFlatBlue .pageHome .header .navTabs li .desc{background-image:url(themeFlatBlue/pageHome/navTabsBG.png);}
+.themeFlatBlue .pageHome .header .logoBtn li,
+.themeFlatBlue .pageHome .header .navTabs li.frist .desc a.icon{background-image:url(themeFlatBlue/pageHome/headerIcons.png);}
+.themeFlatBlue .pageHome .header .navTabsWrap .navCtrl{background-image:url(themeFlatBlue/pageHome/navTabsArrow.png); }
+.themeFlatBlue .pageHome .header .navTabsWrap .navCrack{background-image:url(themeFlatBlue/pageHome/navTabsCrack.png); }
+.themeFlatBlue .pageHome .header .logoWrap,
+.themeFlatBlue .pageHome .header .logoWrap li{background-color:transparent;}
+.themeFlatBlue .pageHome .header .shine{display:block; background-color:transparent; width:1280px;}
+
+.themeFlatBlue .pageHome .header .navTabs li .desc font{color:#27507c;}
+.themeFlatBlue .pageHome .header .navTabs li.hover .desc font,
+.themeFlatBlue .pageHome .header .navTabs li.active .desc font{color:#007bd8;}
+.themeFlatBlue .pageHome .header .navTabs li.hover.frist .desc a.icon{background-position-y:-17px;}
+.themeFlatBlue .pageHome .header .navIcons .active span{color:#2073c8;}
+
+.themeFlatBlue .pageLogin .frame{background-image:url(themeFlatBlue/pageLogin/frame.png);}
+
+

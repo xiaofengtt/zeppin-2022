@@ -1,0 +1,138 @@
+#error{
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:12px;
+    width:235px;
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;    
+}
+
+#error #top{
+    background: url("../image/top.gif") no-repeat scroll 0 0 transparent;
+    height: 2px;
+    overflow: hidden;
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;     
+}
+
+#error #bot{
+    background: url("../image/bottom.gif") no-repeat scroll 0 0 transparent;
+    height: 7px;
+    overflow: hidden; 
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;    
+}
+
+#error #msg{
+    background:url("../image/background.gif") repeat-y scroll 0 0 transparent;
+    overflow:hidden;
+    padding:0px 10px;
+    position:relative;
+}
+
+#error #msg #close{
+    color: #666666;
+    cursor: pointer;
+    font-family: 'ºÚÌå';
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;    
+}
+
+#error #msg #tip{
+    overflow:hidden;
+    width:207px;
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+}
+
+#error #msg #tip p{
+    background: url("../image/error.gif") no-repeat scroll 0 3px transparent;
+    color: #CC0000;
+    font-weight: bold;
+    line-height: 16px;
+    margin-bottom: 5px;
+    padding: 2px 0 2px 18px;  
+}
+
+#twice{
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:12px;
+    width:251px;
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;       
+}
+
+#twice #top{
+    background: url("../image/twicetop.gif") no-repeat scroll 0 0 transparent;
+    height: 7px;
+    overflow: hidden;
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;     
+}
+
+#twice #main{
+    background:url("../image/twice.gif") repeat-y scroll 0 0 transparent;
+    overflow:hidden;
+    padding:0px;
+    position:relative;
+}
+
+#twice #main #close{
+    color: #666666;
+    cursor: pointer;
+    font-family: 'ºÚÌå';
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    right: 5px;
+    top: 0;
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;    
+}
+
+#twice #main .inputdiv{
+    overflow:hidden;
+    width:251px;
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+}
+
+#twice #main .inputdiv p{   
+    color: #CC0000;
+    font-weight: bold;
+    line-height: 16px;
+    margin-bottom: 2px;
+    padding: 2px 0 0px 5px;  
+}
+
+#twice #bottom{
+    background: url("../image/twicebottom.gif") no-repeat scroll 0 0 transparent;
+    height: 2px;
+    overflow: hidden; 
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;    
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Tree TreeId="msdnlib" NodeXmlSrc="map.xml">
+     <TreeNode NodeId="filelist" Href="#0|1|0|0" Title="客户评级" NodeXmlSrc="client_class_define_tree.jsp">
+  </TreeNode>
+</Tree>

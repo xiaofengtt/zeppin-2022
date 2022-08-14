@@ -1,0 +1,65 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE SP_MODI_TNONPRODUCT @IN_NONPRODUCT_ID       INT,
+                                    @IN_NONPRODUCT_NAME      NVARCHAR(60),    --非信托产品名称
+                                    @IN_INVESTMENT_DIRECTION NVARCHAR(10),    --投向（字典1155）
+                                    @IN_VALID_PRIOD_UNIT     INT,             --期限单位：1天2月3季4年9无
+                                    @IN_VALID_PRIOD          INT,             --期限
+                                    @IN_START_DATE           INT,             --起始日期
+                                    @IN_END_DATE             INT,             --结束日期
+                                    @IN_EXPECT_MONEY         DEC(16,3),       --预期产品金额
+                                    @IN_EXPECT_RATE1         DEC(9,6),        --预期收益1
+                                    @IN_EXPECT_RATE2         DEC(9,6),        --预期收益2
+                                    @IN_INVESTMENT_MANAGER   NVARCHAR(60),    --投资管理人
+                                    @IN_PARTNER_CUST_ID      INT,             --合伙人企业ID（TCustomers.CUST_ID）
+                                    @IN_INPUT_MAN            INT,             --录入操作员
+                                    @IN_DESCRIPTION          NVARCHAR(MAX) = '' --描述(简介)
+WITH ENCRYPTION
+AS
+    DECLARE @V_RET_CODE INT,@IBUSI_FLAG INT,@SBUSI_NAME NVARCHAR(40),@SSUMMARY NVARCHAR(200),@TABLE_ID NVARCHAR(60)
+    DECLARE @V_INVESTMENT_DIRECTION_NAME NVARCHAR(30),@V_EXPECT_RATE1 DEC(9,6),@V_EXPECT_RATE2 DEC(9,6)
+    SELECT @SBUSI_NAME = N'修改非信托产品信息'
+    SELECT @SSUMMARY = N'修改非信托产品信息'
+    SELECT @IBUSI_FLAG = 39001
+    SELECT @V_RET_CODE = -39001000
+    SELECT @V_EXPECT_RATE1 = (@IN_EXPECT_RATE1/100)
+    SELECT @V_EXPECT_RATE2 = (@IN_EXPECT_RATE2/100)
+
+    IF NOT EXISTS(SELECT * FROM TNONPRODUCT WHERE NONPRODUCT_ID = @IN_NONPRODUCT_ID)
+        RETURN @V_RET_CODE - 11   --非信托产品信息不存在
+
+    BEGIN TRANSACTION
+
+    SELECT @V_INVESTMENT_DIRECTION_NAME = TYPE_CONTENT FROM TDICTPARAM WHERE TYPE_VALUE = @IN_INVESTMENT_DIRECTION
+
+    UPDATE TNONPRODUCT
+    SET NONPRODUCT_NAME = @IN_NONPRODUCT_NAME, INVESTMENT_DIRECTION_NAME = @V_INVESTMENT_DIRECTION_NAME,
+        INVESTMENT_DIRECTION = @IN_INVESTMENT_DIRECTION,VALID_PRIOD_UNIT = @IN_VALID_PRIOD_UNIT,
+        VALID_PRIOD = @IN_VALID_PRIOD,START_DATE = @IN_START_DATE,
+        END_DATE = @IN_END_DATE,EXPECT_MONEY = @IN_EXPECT_MONEY,
+        EXPECT_RATE1 = @V_EXPECT_RATE1,EXPECT_RATE2 = @V_EXPECT_RATE2,
+        INVESTMENT_MANAGER = @IN_INVESTMENT_MANAGER,PARTNER_CUST_ID = @IN_PARTNER_CUST_ID,
+        INPUT_MAN = @IN_INPUT_MAN,INPUT_TIME = GETDATE(),
+        DESCRIPTION = @IN_DESCRIPTION
+    WHERE NONPRODUCT_ID = @IN_NONPRODUCT_ID
+    IF @@ERROR <> 0
+    BEGIN
+        ROLLBACK TRANSACTION
+        RETURN -100
+    END
+
+    SELECT @SSUMMARY = N'修改非信托产品信息:'+@IN_NONPRODUCT_NAME
+    INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+        VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+    IF @@ERROR <> 0
+    BEGIN
+        ROLLBACK TRANSACTION
+        RETURN -100
+    END
+
+    COMMIT TRANSACTION
+    RETURN 100
+GO

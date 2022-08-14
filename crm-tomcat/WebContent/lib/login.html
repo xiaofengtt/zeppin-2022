@@ -1,0 +1,84 @@
+
+<html>
+<head>
+<meta charset="utf-8"/>	
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Project</title>
+<link href="styles/login.css" rel="stylesheet" type="text/css" />
+<link href="styles/initstyle/initstyle.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/plugins/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="js/plugins/jquery-ui-1.9.0.js"></script>
+<script type="text/javascript" src="js/plugins/initstyle.js"></script>
+<script type="text/javascript" src="js/page.all.js"></script>
+<script type="text/javascript" src="js/page.login.js"></script>
+<!--[if IE 6]><script type="text/javascript" src="js/plugins/iepngfix_tilebg.js"></script><![endif]-->
+<script type="text/javascript">
+		//登陆提交表单事件！请去掉注释更新！
+	/*var loginSubmit=function(){alert(123)};*/
+		//帮助信息
+	var helpHtml="<div class='help'>\u5982\u5FD8\u8BB0\u5BC6\u7801\u8BF7\u8054\u7CFB\u7BA1\u7406\u5458\uFF01</br>UI\u8BBE\u8BA1\u5E08 & \u524D\u7AEF\u5DE5\u7A0B\u5E08 \u5C39\u5FD7\u519B</br>\u8054\u7CFB\u65B9\u5F0F\uFF1Awhisperdc@163.com</br>\u66F4\u65B0\u754C\u9762\u65F6\u8BF7\u5220\u9664\u6B64\u4FE1\u606F\uFF0C\u8C22\u8C22\uFF01<\/div><div class='dialogBg helpBg' /\>"
+		//版权信息
+		,copyrightHtml="<div class='copyright'>\u7248\u6743\u6240\u6709 \u00A9 2012  \u9996\u94A2\u8FC1\u94A2<\/div><div class='dialogBg copyrightBg' /\>"
+		//浏览器列表！！请勿修改！
+		,downloadHtml="<div class='download'><div class='desc'>\u4E3A\u4E86\u83B7\u5F97\u66F4\u597D\u7684\u4F53\u9A8C\uFF0C\u6211\u4EEC\u63A8\u8350\u4EE5\u4E0B\u6D4F\u89C8\u5668\uFF01</div><ul class='browser'><li class='loadIE9'></li><li class='loadChrome'></li><li class='loadFirefox'></li><li class='loadOpera'></li><li class='loadSafari'></li></ul><\/div>"
+		,downloadHtml1="<div class='download'><div class='desc'>\u5982\u679C\u60A8\u662FwinXP\u7684\u7528\u6237,\u63A8\u8350\u60A8\u4F7F\u7528IE8\u6D4F\u89C8\u5668</div><ul class='browser custom'><li class='loadIE8' title='\u4E0B\u8F7DIE8\u6D4F\u89C8\u5668'></li><li class='loadSetup' title='\u4E0B\u8F7D\u7CFB\u7EDF\u63A7\u4EF6'></li><li class='loadHelp' title='\u4E0B\u8F7D\u5E2E\u52A9\u6587\u6863'></li></ul><\/div>"
+		//用户名密码错误提示
+		,wrongHtml="<div class='error'>\u7528\u6237\u540D\u5BC6\u7801\u9519\u8BEF\uFF0C\u8BF7\u91CD\u8BD5\uFF01<\/div><div class='dialogBg wrongBg' /\>"
+		//信息不完整提示
+		,notCompletHtml="<div class='error'>\u8BF7\u586B\u5199\u7528\u6237\u540D\u548C\u5BC6\u7801\uFF01\u7136\u540E\u518D\u8BD5\uFF01<\/div><div class='dialogBg notCompleteBg' /\>"
+		//IE6&IE7提示
+		,thisIsIE6Html="<div class='download'><div class='desc update'>\u4F60\u7684IE\u7248\u672C\u8FC7\u65E7\uFF0C\u8BF7\u5347\u7EA7\u4EE5\u83B7\u5F97\u66F4\u597D\u7684\u4F53\u9A8C\uFF01</div><div class='loadIE8'>\u4E0B\u8F7DIE8\u6D4F\u89C8\u5668</div><\/div>"
+		//demo回车键提示，没用处，但请勿删除
+		,enterKeyHtml="<div class='error'>\u66FF\u6362\u9875\u9762\u4E2D\u7684\u65B9\u6CD5\u4E3A\u63D0\u4EA4\u8868\u5355\u4E8B\u4EF6\uFF01<\/div>"
+</script>
+<script type="text/javascript">
+j$(function(){
+	if(window.location.href.indexOf("wrong")!=-1){
+		setD("wrong")
+	}
+	
+	j$(".loadIE8").live("click",function(){
+        window.open("http://windows.microsoft.com/zh-CN/internet-explorer/downloads/ie-8");
+        closeD();
+    });
+    j$(".loadIE9").live("click",function(){
+        window.open("http://windows.microsoft.com/zh-CN/internet-explorer/download-ie");
+        closeD();
+    });
+    j$(".loadChrome").live("click",function(){
+        window.open("http://www.google.cn/intl/zh-CN/chrome/browser/");
+        closeD();
+    });
+    j$(".loadFirefox").live("click",function(){
+        window.open("http://firefox.com.cn/download/");
+        closeD();
+    });
+    j$(".loadOpera").live("click",function(){
+        window.open("http://www.opera.com/");
+        closeD();
+    });
+    j$(".loadSafari").live("click",function(){
+        window.open("http://www.apple.com/safari/");
+        closeD();
+    });
+	
+})
+</script>
+</head>
+<body class="pageLogin">
+	<div class="pageLoading"></div>
+	<div class="frame">
+		<input class="user" type="text" maxLength="20"/>
+		<input class="pass" type="password" maxLength="20"/>
+		<a class="buttonNC submit"></a>
+		<a class="checkBtn remUP" title="&#x8BB0;&#x4F4F;&#x7528;&#x6237;&#x540D;"></a>
+		<ul class="icons button">
+			<li class="download" title="&#19979;&#36733;"></li>
+			<li class="copyright" title="&#29256;&#26435;&#20449;&#24687;"></li>
+			<li class="help" title="&#24110;&#21161;"></li>
+		</ul>
+	</div>
+	<div id="dialog"></div>
+</body>
+</html>
+

@@ -1,0 +1,100 @@
+@charset "utf-8";
+@IMPORT url("jqueryui/base/jquery.ui.all.css");
+@IMPORT url("jqueryui/ui-lightness-blue/jquery.ui.theme.css");
+@IMPORT url("themes/themes.css");
+
+
+body,html{width:100%; height:100%; margin:0; font-size:12px;}
+body{background-image:url(images/pageLogin/bg.png); background-position:center center; background-repeat:no-repeat; background-color:#eeeef0;}
+ul,li{padding:0;margin:0; list-style:none;}
+
+.frame{background-image:url(images/pageLogin/frame.png);}
+.frame .user,
+.frame .pass,
+.frame .submit,
+.frame .remUP,
+.frame .icons .btn{background-image:url(images/pageLogin/object.png); position:absolute;}
+#dialog .download .loadIE8{background-image:url(images/pageLogin/downloadBtn.png);}
+#dialog .download .browser li{background-image:url(images/pageLogin/browser.png);}
+#dialog .download .custom li{background-image:url(images/pageLogin/custom.png);}
+#dialog .dialogBg{background-image:url(images/pageLogin/dialogBg.png);}
+.loading{background-image:url(images/pageLogin/loading01.gif);}
+
+.loading{background-position:center 250px; background-repeat:no-repeat; background-color:#fff;  position:absolute; left:0;top:0; width:100%; height:100%; z-index:999; }
+
+/*.IE6 .frame .user,
+.IE6 .frame .pass,*/
+.IE6 .frame,
+.IE6 .frame .submit,
+.IE6 .frame .remUP,
+.IE6 .frame .icons .btn,
+.IE6 #dialog .download .loadIE8,
+.IE6 #dialog .download .browser li,
+.IE6 #dialog .dialogBg{behavior:url(js/plugins/iepngfix.htc);} 
+
+.IE6 .frame .user,
+.IE6 .frame .pass{border:1px solid #fff;}
+.IE6 .frame .user {left:38px; background-position-x:0!important;}
+.IE6 .frame .pass {left:273px; background-position-x:-221px!important;}
+.IE6 .frame .focus{background-position-y:-33px!important;}
+.IE6 .frame .blur {background-position-y:-66px!important;}
+
+.frame{ width:740px;height:380px; position:absolute;  left:50%; top:50%; margin:-210px 0 0 -370px; }
+.frame .user,
+.frame .pass{width:187px; height:32px; bottom:33px; font:bold 14px/30px Tahoma,"Micrsoft Yahei"; background-color:transparent; border:none; padding-left:33px; color:#3161c8; }
+.frame .user.blur,
+.frame .pass.blur{color:#686868;}
+.frame .user{left:40px; background-position:0 0;}
+.frame .user.focus{ background-position:0 -33px;}
+.frame .user.blur { background-position:0 -66px;}
+.frame .pass{left:275px; background-position:-221px 0;}
+.frame .pass.focus{ background-position:-221px -33px;}
+.frame .pass.blur { background-position:-221px -66px;}
+
+.frame .submit{ width:90px; height:90px;  z-index:8; bottom:-15px; right:150px; cursor:pointer; background-position:-442px 0; border:0; background-color:transparent; }
+.IE6 .frame .submithover,
+.frame .submit.hover{ background-position:-442px -91px;}
+
+.frame .remUP{ width:30px; height:30px; z-index:9; right:133px; bottom:46px;  cursor:pointer; background-position:-533px 0;}
+.IE6 .frame .remUPhover,
+.frame .remUP.hover { background-position:-533px -31px;}
+.frame .remUP.active{ background-position:-533px -62px;}
+
+.frame .icons{position:absolute; right:30px; bottom:36px;}
+.frame .icons .btn{ width:16px; height:16px; float:left; cursor:pointer; position:static; margin:7px;}
+.frame .icons .download { background-position:-564px 0;}
+.frame .icons .copyright{ background-position:-581px 0;}
+.frame .icons .help     { background-position:-598px 0;}
+.IE6 .frame .icons .downloadhover,
+.frame .icons .download.hover { background-position:-564px -17px;}
+.IE6 .frame .icons .copyrighthover,
+.frame .icons .copyright.hover{ background-position:-581px -17px;}
+.IE6 .frame .icons .helphover,
+.frame .icons .help.hover     { background-position:-598px -17px;}
+
+#dialog{font:16px/24px Arial,"Microsoft Yahei"; color:#46729e; overflow:hidden;}
+#dialog .download{text-align:center; vertical-align:middle;}
+#dialog .download .loadIE8{width:170px; height:50px; margin:0 auto; font:14px/48px Arial,"Microsoft Yahei";cursor:pointer; text-indent:30px; color:#fff; overflow:hidden;}
+#dialog .download .browser{margin:0 auto; margin-left:10px;}
+#dialog .download .browser li{width:50px; height:50px; margin:0 5px; float:left; cursor:pointer;}
+#dialog .download .browser .loadIE9    {background-position:0 0;}
+#dialog .download .browser .loadChrome {background-position:-51px 0;}
+#dialog .download .browser .loadFirefox{background-position:-102px 0;}
+#dialog .download .browser .loadOpera  {background-position:0 -51px;}
+#dialog .download .browser .loadSafari {background-position:-51px -51px;}
+#dialog .download .custom li{margin-left:20px;}
+#dialog .download .custom .loadIE8{margin-left:50px;background-position:0 0;}
+#dialog .download .custom .loadSetup{background-position:-51px 0;}
+#dialog .download .custom .loadHelp{background-position:-102px 0;}
+
+#dialog .download .desc{font:14px/30px Arial,"Microsoft Yahei";text-align:center; }
+#dialog .download .update{font:14px/25px Arial,"Microsoft Yahei";text-align:center; }
+#dialog .copyright{margin-top:30px; }
+#dialog .help{margin-left:10px;text-align:left; font-size:12px; line-height:22px; }
+#dialog .error{margin-top:30px; }
+#dialog .dialogBg{width:90px; height:90px; position:absolute; right:0; top:8px; z-index:0;}
+#dialog .dialogBg.helpBg{background-position:-91px -91px;}
+#dialog .dialogBg.copyrightBg{background-position:0 -91px;}
+#dialog .dialogBg.wrongBg{background-position:0 0;}
+#dialog .dialogBg.notCompleteBg{background-position:-91px 0;}
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus{outline:none !important;} 

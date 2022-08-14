@@ -1,0 +1,2108 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_QUERY_TCustomers @IN_CUST_ID    INT,                    --客户ID
+                                     @IN_CUST_NO    NVARCHAR(8),            --客户编号
+                                     @IN_CUST_NAME  NVARCHAR(80),           --客户名称
+                                     @IN_CHECK_FLAG INT,                    --复核标识：1未复核2已复核
+                                     @IN_INPUT_MAN  INT,                    --操作员
+                                     @IN_PRODUCT_ID INT             = NULL, --产品ID
+                                     @IN_PROV_LEVEL NVARCHAR(10)    = NULL, --受益优先级别(1204)
+                                     @IN_CUST_TYPE  INT             = 0,    --客户类型:1个人2机构
+                                     @IN_IS_DEAL    INT             = 0,    --客户类型:1事实客户2潜在客户(因前期开发者未注释，此处注释为可能的含义)
+                                     @IN_CUST_TEL   NVARCHAR(40)    = NULL, --客户电话
+                                     @IN_EXPORT_FLAG INT            = 0     --导出标记：0非导出查询 1导出客户信息 2导出手机 3导出通讯录
+WITH ENCRYPTION
+AS
+    SET NOCOUNT ON
+    DECLARE @RET INT, @V_DT_INTRUST INT, @IN_NODE_SHARE INT, @V_CUSTQZ0001 INT, @V_QUERYCUSTOMERS INT
+    DECLARE @V_FLAG_ACCESS_ALL INT, @V_FLAG_ENCRYPTION INT, @V_SQL NVARCHAR(2000),@V_USER_ID INT,@V_ENCRYPTION_SIZE INT
+	DECLARE @V_FACT_POTENTIAL_FLAG_FZ INT
+	SELECT @V_FACT_POTENTIAL_FLAG_FZ = VALUE FROM TSYSCONTROL WHERE FLAG_TYPE = 'FACT_POTENTIAL_FLAG_FZ'--方正客户信息加密条件
+    --能够访问所有客户信息
+    SELECT @V_FLAG_ACCESS_ALL = 0 --访问全部标志
+    SELECT @V_FLAG_ENCRYPTION = 0 --加密标志
+    SELECT @V_QUERYCUSTOMERS = VALUE FROM TSYSCONTROL WHERE FLAG_TYPE = N'QUERYCUSTOMERS'
+    SELECT @V_USER_ID = USER_ID FROM TSYSTEMINFO
+    IF @V_QUERYCUSTOMERS IS NULL SET @V_QUERYCUSTOMERS = 1
+	--加密显示位数	
+	IF EXISTS(SELECT 1 FROM TDICTPARAM WHERE TYPE_VALUE = '800701')
+		SELECT @V_ENCRYPTION_SIZE = CAST(TYPE_CONTENT AS INT) FROM TDICTPARAM WHERE TYPE_VALUE = '800701'
+	ELSE
+		SET  @V_ENCRYPTION_SIZE = 4
+    --客户经理级别树中，同节点客户经理是否共享客户
+    IF EXISTS(SELECT 1 FROM TSYSCONTROL WHERE FLAG_TYPE = 'MANAGER002' AND VALUE = 1)
+        SET @IN_NODE_SHARE = 0  --共享
+    ELSE
+        SET @IN_NODE_SHARE = 1  --不共享
+    --能够访问所有客户信息
+    IF EXISTS(SELECT 1 FROM TOPRIGHT WHERE OP_CODE = @IN_INPUT_MAN AND MENU_ID = N'999' AND FUNC_ID = 99903)
+        SELECT @V_FLAG_ACCESS_ALL = 1
+    --如果操作员的角色中存在访问所有客户信息权限的标志 则赋予能够访问所有客户信息权限
+    IF EXISTS(SELECT 1 FROM TOPROLE WHERE OP_CODE = @IN_INPUT_MAN AND ROLE_ID IN(SELECT ROLE_ID FROM TROLE WHERE FLAG_ACCESS_ALL = 1))
+        SELECT @V_FLAG_ACCESS_ALL = 1
+
+    --20120822 打印角色不加密可能是为交银加的，由于ROLE_ID写死了会影响其他客户，故添加USER_ID判断
+    IF (@V_USER_ID = 8) AND EXISTS(SELECT 1 FROM TOPROLE WHERE OP_CODE = @IN_INPUT_MAN AND ROLE_ID = 5) --如果用户存在打印角色的时候 不需要加密
+    BEGIN
+        SET @V_FLAG_ENCRYPTION = 2
+    END
+    ELSE
+    BEGIN
+        --如果操作员的角色中存在不保密限制的角色，则不进行保密限制，否则加密
+        IF EXISTS(SELECT 1 FROM TOPROLE WHERE OP_CODE = @IN_INPUT_MAN AND ROLE_ID IN(SELECT ROLE_ID FROM TROLE WHERE FLAG_ENCRYPTION = 0))
+            SELECT @V_FLAG_ENCRYPTION = 2
+        ELSE
+			SELECT @V_FLAG_ENCRYPTION = 1
+    END
+    SELECT @V_DT_INTRUST = VALUE FROM TSYSCONTROL WHERE FLAG_TYPE = N'DT_INTRUST'
+    SELECT @V_CUSTQZ0001 = VALUE FROM TSYSCONTROL WHERE FLAG_TYPE = N'CUSTQZ0001' --默认1
+    --------------------------------------------------------------------
+    DECLARE @V_TEMPCUST1 TABLE(CUST_ID INT) --根据输入条件能够访问的客户，根据查询条件 AND
+    DECLARE @V_TEMPCUST2 TABLE(CUST_ID INT) --根据访问权限能够访问的客户，根据访问权限 OR
+    DECLARE @V_INPUT_MAN_TEAM_ID INT    --操作员的团队ID
+    DECLARE @V_FACT_POTE_FLAG INT ,@V_IS_DEAL INT
+    SELECT @V_INPUT_MAN_TEAM_ID = TEAM_ID FROM TMANAGERTEAMMEMBERS WHERE MANAGERID = @IN_INPUT_MAN
+
+    SELECT @V_FACT_POTE_FLAG = VALUE FROM TSYSCONTROL WHERE  FLAG_TYPE = 'FACT_POTENTIAL_FLAG'--事实潜在客户加密条件
+
+    IF @V_FACT_POTE_FLAG = 1  SET @V_IS_DEAL = 2 -- 潜在客户信息加密
+    IF @V_FACT_POTE_FLAG = 2  SET @V_IS_DEAL = 1 -- 事实客户信息加密
+    IF @V_FACT_POTE_FLAG = 3  SET @V_IS_DEAL = 0 -- 事实、潜在客户信息加密
+    IF @V_FACT_POTE_FLAG = 4  SET @V_IS_DEAL = 3 -- 事实、潜在客户信息都不加密
+
+
+    --创建临时表
+    SELECT A.[CUST_ID]
+			  ,[CUST_NO]
+			  ,[CUST_NAME]
+			  ,[CUST_TEL]
+			  ,[POST_ADDRESS]
+			  ,[POST_ADDRESS2]
+			  ,[POST_CODE]
+			  ,[POST_CODE2]
+			  ,[CARD_TYPE]
+			  ,[CARD_TYPE_NAME]
+			  ,[CARD_ID]
+			  ,[CARD_VALID_DATE]
+			  ,[CARD_ADDRESS]
+			  ,[COUNTRY]
+			  ,[BIRTHDAY]
+			  ,[AGE]
+			  ,[SEX]
+			  ,[SEX_NAME]
+			  ,[O_TEL]
+			  ,[H_TEL]
+			  ,[MOBILE]
+			  ,[BP]
+			  ,[FAX]
+			  ,[E_MAIL]
+			  ,[CUST_TYPE]
+			  ,[CUST_TYPE_NAME]
+			  ,[JG_CUST_TYPE]
+			  ,[WT_FLAG]
+			  ,[WT_FLAG_NAME]
+			  ,[PASSWORD]
+			  ,[TOUCH_TYPE]
+			  ,[TOUCH_TYPE_NAME]
+			  ,[CUST_SOURCE]
+			  ,[CUST_SOURCE_NAME]
+			  ,[RG_TIMES]
+			  ,[TOTAL_MONEY]
+			  ,[CURRENT_MONEY]
+			  ,[LAST_RG_DATE]
+			  ,[INPUT_MAN]
+			  ,[INPUT_TIME]
+			  ,[CHECK_FLAG]
+			  ,[CHECK_MAN]
+			  ,[MODI_MAN]
+			  ,[MODI_TIME]
+			  ,[CANCEL_MAN]
+			  ,[CANCEL_TIME]
+			  ,[STATUS]
+			  ,[STATUS_NAME]
+			  ,[SUMMARY]
+			  ,[LEGAL_MAN]
+			  ,[LEGAL_ADDRESS]
+			  ,[REGISTRATION_ID]
+			  ,[CONTACT_MAN]
+			  ,[LIST_ID]
+			  ,[PRINT_DEPLOY_BILL]
+			  ,[PRINT_POST_INFO]
+			  ,[IS_LINK]
+			  ,[SERVICE_MAN]
+			  ,[ENT_CUST_ID]
+			  ,[VIP_CARD_ID]
+			  ,[VIP_DATE]
+			  ,[HGTZR_BH]
+			  ,[VOC_TYPE]
+			  ,[VOC_TYPE_NAME]
+			  ,[GRADE_LEVEL]
+			  ,[GRADE_LEVEL_NAME]
+			  ,[MONEY_SOURCE]
+			  ,[MONEY_SOURCE_NAME]
+			  ,[FACT_CONTROLLER]
+			  ,[FC_CARD_TYPE]
+			  ,[FC_CARD_ID]
+			  ,[FC_CARD_VALID_DATE]
+			  ,[TRANS_NAME]
+			  ,[TRANS_CARD_TYPE]
+			  ,[TRANS_CARD_NAME]
+			  ,[TRANS_CARD_NO]
+			  ,[TRANS_TEL]
+			  ,[TRANS_MOBILE]
+			  ,[TRANS_ADDRESS]
+			  ,[TRANS_POST_CODE]
+			  ,[PinYinSimple]
+			  ,[PinYinWhole]
+			  ,[ImageIdentification]
+			  ,[ReceiveServices]
+			  ,[POTENTIAL_MONEY]
+			  ,[IS_DEAL]
+			  ,[TRUE_FLAG]
+			  ,[GOV_PROV_REGIONAL]
+			  ,[GOV_PROV_REGIONAL_NAME]
+			  ,[GOV_REGIONAL]
+			  ,[GOV_REGIONAL_NAME]
+			  ,[RECOMMENDED]
+			  ,[HEAD_OFFICE_CUST_ID]
+			  ,[STATURE]
+			  ,[WEIGHT]
+			  ,[SPOUSE_NAME]
+			  ,[SPOUSE_INFO]
+			  ,[CHILDREN_NAME]
+			  ,[CHILDREN_INFO]
+			  ,[EMPLOYEE_NUM]
+			  ,[HOLDING]
+			  ,[PERSONAL_INCOME]
+			  ,[HOUSEHOLD_INCOME]
+			  ,[FEEDING_NUM_PEOPLE]
+			  ,[MAIN_SOURCE]
+			  ,[OTHER_SOURCE]
+			  ,[HOUSE_POSITION]
+			  ,[HOUSE_PROPERTY]
+			  ,[HOUSE_AREA]
+			  ,[PLAT_ENVALUATE]
+			  ,[MARKET_APPRAISAL]
+			  ,[VEHICLE_NUM]
+			  ,[VEHICLE_MAKE]
+			  ,[VEHICLE_TYPE]
+			  ,[CREDIT_TYPE]
+			  ,[CREDIT_NUM]
+			  ,[CREDIT_START_DATE]
+			  ,[CREDIT_END_DATE]
+			  ,[OTHER_INVESTMENT_STATUS]
+			  ,[OTHER_INVE_STATUS_NAME]
+			  ,[TYPE_PREF]
+			  ,[TYPE_PREF_NAME]
+			  ,[TIME_LIMIT_PREF]
+			  ,[TIME_LIMIT_PREF_NAME]
+			  ,[INVEST_PREF]
+			  ,[INVEST_PREF_NAME]
+			  ,[HOBBY_PREF]
+			  ,[HOBBY_PREF_NAME]
+			  ,[SERVICE_PREF]
+			  ,[SERVICE_PREF_NAME]
+			  ,[CONTACT_PREF]
+			  ,[CONTACT_PREF_NAME]
+			  ,[RISK_PREF]
+			  ,[RISK_PREF_NAME]
+			  ,[NATION]
+			  ,[NATION_NAME]
+			  ,[MARITAL]
+			  ,[HEALTH]
+			  ,[HEALTH_NAME]
+			  ,[EDUCATION]
+			  ,[EDUCATION_NAME]
+			  ,[POST]
+			  ,[HOLDEROFANOFFICE]
+			  ,[COMPANY_CHARACTER]
+			  ,[COMPANY_CHARACTER_NAME]
+			  ,[COMPANY_STAFF]
+			  ,[BOCOM_STAFF]
+			  ,[CLIENT_QUALE]
+			  ,[CLIENT_QUALE_NAME]
+			  ,[REGISTERED_PLACE]
+			  ,[REGISTERED_CAPITAL]
+			  ,[COMPANY_FAMILY]
+			  ,[FREE_CASH_FLOW]
+			  ,[BUREND_OF_DEBT]
+			  ,[COMPLETE_FLAG]
+			  ,[MODI_FLAG]
+			  ,[COMPANY_UNIT]
+			  ,[COMPANY_DEPART]
+			  ,[COMPANY_POSITION]
+			  ,[CUST_AUM]
+			  ,[CUST_AUM_NAME]
+			  ,[CUST_AGE_GROUP]
+			  ,[CUST_AGE_GROUP_NAME]
+			  ,[INVES_EXPERINCE]
+			  ,[CUST_SOURCE_EXPLAIN]
+			  ,[EAST_JG_TYPE]
+			  ,[EAST_JG_TYPE_NAME]
+			  ,[JG_WTRLX2]
+			, CONVERT(DEC(16,3),0.00) AS BEN_AMOUNT, CONVERT(DEC(16,3),0.00) AS CURR_TO_AMOUNT,A.MODI_FLAG AS MODI_FLAG_2,
+                A.CARD_ID AS H_CARD_ID,
+                A.CUST_TEL AS H_CUST_TEL,
+                A.MOBILE AS H_MOBILE,
+                A.O_TEL AS H_O_TEL,
+                A.H_TEL AS H_H_TEL,
+                A.BP AS H_BP,
+                A.FAX AS H_FAX,
+                A.E_MAIL AS H_E_MAIL,
+                B.ACTIVITY_FEE AS ACTIVITY_FEE,
+                0 AS TOTAL_COUNT -- 累计购买次数
+        INTO #TEMP_QUERY_TCustomers
+        FROM TCustomers A,TCUSTSERVICEINFO B  WHERE 1 = 0
+    --------------------------------------------------------------------
+    DECLARE @V_MANAGER_IDS TABLE(MANAGERID INT, MANAGERNAME NVARCHAR(60))
+    --处理客户经理同级共享(共享给当前操作员的源客户经理)，共享时，同节点及下级节点的客户经理所辖客户，由于也具有访问权限，故一起共享了。故对经理树的处理放在下面
+    INSERT INTO @V_MANAGER_IDS(MANAGERID)
+        SELECT SourceManagerID FROM TAuthorizationShare WHERE ShareType = 1 AND Status = 1 AND ManagerID = @IN_INPUT_MAN
+    --从客户经理树取当前操作员所辖客户经理,再取这些客户经理的客户
+    INSERT INTO @V_MANAGER_IDS
+        --1.根据节点主经理来判断当前操作员
+        --所辖节点的主客户经理
+        SELECT A.MANAGERID,A.MANAGERNAME FROM TCustManagerTree A, TCustManagerTree B
+        WHERE (A.LEFT_ID BETWEEN B.LEFT_ID+@IN_NODE_SHARE AND B.RIGHT_ID) AND A.MANAGERID <> 0 AND A.MANAGERID IS NOT NULL
+            AND (B.MANAGERID = @IN_INPUT_MAN OR EXISTS(SELECT 1 FROM @V_MANAGER_IDS Z WHERE B.MANAGERID = Z.MANAGERID) )
+        --所辖节点的成员客户经理
+        UNION ALL
+        SELECT C.MANAGERID,C.MANAGERNAME FROM TCustManagerTree A, TCustManagerTree B, TCustManagerTreeMembers C
+        WHERE (A.LEFT_ID BETWEEN B.LEFT_ID+@IN_NODE_SHARE AND B.RIGHT_ID) AND A.SERIAL_NO = C.TREE_ID
+            AND (B.MANAGERID = @IN_INPUT_MAN OR EXISTS(SELECT 1 FROM @V_MANAGER_IDS Z WHERE B.MANAGERID = Z.MANAGERID) )
+        --2.根据节点成员经理来判断当前操作员
+        --所辖节点的主客户经理
+        UNION ALL
+        SELECT D.MANAGERID,D.MANAGERNAME FROM TCustManagerTreeMembers B, TCustManagerTree C, TCustManagerTree D
+        WHERE B.TREE_ID = C.SERIAL_NO AND (D.LEFT_ID BETWEEN C.LEFT_ID+@IN_NODE_SHARE AND C.RIGHT_ID)
+            AND (B.MANAGERID = @IN_INPUT_MAN OR EXISTS(SELECT 1 FROM @V_MANAGER_IDS Z WHERE B.MANAGERID = Z.MANAGERID) )
+        --所辖节点的成员客户经理
+        UNION ALL
+        SELECT A.MANAGERID,A.MANAGERNAME FROM TCustManagerTreeMembers B, TCustManagerTree C, TCustManagerTree D, TCustManagerTreeMembers A
+        WHERE B.TREE_ID = C.SERIAL_NO AND (D.LEFT_ID BETWEEN C.LEFT_ID+@IN_NODE_SHARE AND C.RIGHT_ID) AND A.TREE_ID = D.SERIAL_NO
+            AND (B.MANAGERID = @IN_INPUT_MAN OR EXISTS(SELECT 1 FROM @V_MANAGER_IDS Z WHERE B.MANAGERID = Z.MANAGERID) )
+    --处理授权给下级的(当前操作员的)客户授权集，注：被授权的客户没有级联共享给同级别经理
+    INSERT INTO @V_TEMPCUST2
+        SELECT DISTINCT A.CUST_ID FROM TAuthorizationCusts A, TAuthorizationShare B
+        WHERE A.CA_ID = B.CA_ID AND B.ShareType = 2 AND B.Status = 1 AND B.ManagerID = @IN_INPUT_MAN
+            AND NOT EXISTS(SELECT 1 FROM @V_TEMPCUST2 C WHERE A.CUST_ID = C.CUST_ID)
+    --处理快捷授权的客户ShareType=3
+    INSERT INTO @V_TEMPCUST2(CUST_ID)
+        SELECT CUST_ID FROM TAuthorizationShare A WHERE ShareType = 3 AND Status = 1 AND (GETDATE() BETWEEN ISNULL(A.START_TIME,GETDATE()) AND ISNULL(A.INVALID_TIME,GETDATE()+36000)) AND ManagerID = @IN_INPUT_MAN
+            AND NOT EXISTS(SELECT 1 FROM @V_TEMPCUST2 C WHERE A.CUST_ID = C.CUST_ID)
+        UNION ALL
+        SELECT B.CUST_ID FROM TAuthorizationShare A, TCustomers B
+        WHERE A.SourceManagerID = B.SERVICE_MAN AND A.ShareType = 3 AND A.Status = 1 AND A.CUST_ID = 0 AND (GETDATE() BETWEEN ISNULL(A.START_TIME,GETDATE()) AND ISNULL(A.INVALID_TIME,GETDATE()+36000)) AND A.ManagerID = @IN_INPUT_MAN
+            AND NOT EXISTS(SELECT 1 FROM @V_TEMPCUST2 C WHERE A.CUST_ID = C.CUST_ID)
+    --以上客户经理的客户
+    INSERT INTO @V_TEMPCUST2
+        SELECT DISTINCT CUST_ID FROM TCustomers  A
+        WHERE EXISTS( SELECT 1 FROM @V_MANAGER_IDS B WHERE A.SERVICE_MAN = B.MANAGERID)
+                OR EXISTS( SELECT 1 FROM @V_MANAGER_IDS C WHERE (@V_QUERYCUSTOMERS = 1 AND A.INPUT_MAN = C.MANAGERID) )
+            AND NOT EXISTS(SELECT 1 FROM @V_TEMPCUST2 C WHERE A.CUST_ID = C.CUST_ID)
+    --20110610 dongyg 按"产品客户经理"控制访问权限
+    IF EXISTS(SELECT 1 FROM TSYSCONTROL WHERE FLAG_TYPE = 'PRODUCT001' AND VALUE = 1)
+    BEGIN
+        INSERT INTO @V_TEMPCUST2
+            SELECT DISTINCT A.CUST_ID FROM INTRUST..TBENIFITOR A, INTRUST..TPRODUCT B WHERE A.PRODUCT_ID = B.PRODUCT_ID AND B.SERVICE_MAN = @IN_INPUT_MAN
+    END
+    --------------------------------------------------------------------
+    --20111025 DONGYG 如果不控制潜在客户的查询，将所有潜在客户添加到 @V_TEMPCUST2 中
+    IF @V_CUSTQZ0001 <> 1
+        INSERT INTO @V_TEMPCUST2(CUST_ID) SELECT CUST_ID FROM TCustomers WHERE IS_DEAL = 2
+
+    IF @IN_CHECK_FLAG = 1
+    BEGIN
+        IF @IN_PRODUCT_ID IS NULL OR @IN_PRODUCT_ID = 0
+            INSERT INTO #TEMP_QUERY_TCustomers
+              SELECT A.[CUST_ID]
+			  ,[CUST_NO]
+			  ,[CUST_NAME]
+			  ,[CUST_TEL]
+			  ,[POST_ADDRESS]
+			  ,[POST_ADDRESS2]
+			  ,[POST_CODE]
+			  ,[POST_CODE2]
+			  ,[CARD_TYPE]
+			  ,[CARD_TYPE_NAME]
+			  ,[CARD_ID]
+			  ,[CARD_VALID_DATE]
+			  ,[CARD_ADDRESS]
+			  ,[COUNTRY]
+			  ,[BIRTHDAY]
+			  ,[AGE]
+			  ,[SEX]
+			  ,[SEX_NAME]
+			  ,[O_TEL]
+			  ,[H_TEL]
+			  ,[MOBILE]
+			  ,[BP]
+			  ,[FAX]
+			  ,[E_MAIL]
+			  ,[CUST_TYPE]
+			  ,[CUST_TYPE_NAME]
+			  ,[JG_CUST_TYPE]
+			  ,[WT_FLAG]
+			  ,[WT_FLAG_NAME]
+			  ,[PASSWORD]
+			  ,[TOUCH_TYPE]
+			  ,[TOUCH_TYPE_NAME]
+			  ,[CUST_SOURCE]
+			  ,[CUST_SOURCE_NAME]
+			  ,[RG_TIMES]
+			  ,[TOTAL_MONEY]
+			  ,[CURRENT_MONEY]
+			  ,[LAST_RG_DATE]
+			  ,[INPUT_MAN]
+			  ,[INPUT_TIME]
+			  ,[CHECK_FLAG]
+			  ,[CHECK_MAN]
+			  ,[MODI_MAN]
+			  ,[MODI_TIME]
+			  ,[CANCEL_MAN]
+			  ,[CANCEL_TIME]
+			  ,[STATUS]
+			  ,[STATUS_NAME]
+			  ,[SUMMARY]
+			  ,[LEGAL_MAN]
+			  ,[LEGAL_ADDRESS]
+			  ,[REGISTRATION_ID]
+			  ,[CONTACT_MAN]
+			  ,[LIST_ID]
+			  ,[PRINT_DEPLOY_BILL]
+			  ,[PRINT_POST_INFO]
+			  ,[IS_LINK]
+			  ,[SERVICE_MAN]
+			  ,[ENT_CUST_ID]
+			  ,[VIP_CARD_ID]
+			  ,[VIP_DATE]
+			  ,[HGTZR_BH]
+			  ,[VOC_TYPE]
+			  ,[VOC_TYPE_NAME]
+			  ,[GRADE_LEVEL]
+			  ,[GRADE_LEVEL_NAME]
+			  ,[MONEY_SOURCE]
+			  ,[MONEY_SOURCE_NAME]
+			  ,[FACT_CONTROLLER]
+			  ,[FC_CARD_TYPE]
+			  ,[FC_CARD_ID]
+			  ,[FC_CARD_VALID_DATE]
+			  ,[TRANS_NAME]
+			  ,[TRANS_CARD_TYPE]
+			  ,[TRANS_CARD_NAME]
+			  ,[TRANS_CARD_NO]
+			  ,[TRANS_TEL]
+			  ,[TRANS_MOBILE]
+			  ,[TRANS_ADDRESS]
+			  ,[TRANS_POST_CODE]
+			  ,[PinYinSimple]
+			  ,[PinYinWhole]
+			  ,[ImageIdentification]
+			  ,[ReceiveServices]
+			  ,[POTENTIAL_MONEY]
+			  ,[IS_DEAL]
+			  ,[TRUE_FLAG]
+			  ,[GOV_PROV_REGIONAL]
+			  ,[GOV_PROV_REGIONAL_NAME]
+			  ,[GOV_REGIONAL]
+			  ,[GOV_REGIONAL_NAME]
+			  ,[RECOMMENDED]
+			  ,[HEAD_OFFICE_CUST_ID]
+			  ,[STATURE]
+			  ,[WEIGHT]
+			  ,[SPOUSE_NAME]
+			  ,[SPOUSE_INFO]
+			  ,[CHILDREN_NAME]
+			  ,[CHILDREN_INFO]
+			  ,[EMPLOYEE_NUM]
+			  ,[HOLDING]
+			  ,[PERSONAL_INCOME]
+			  ,[HOUSEHOLD_INCOME]
+			  ,[FEEDING_NUM_PEOPLE]
+			  ,[MAIN_SOURCE]
+			  ,[OTHER_SOURCE]
+			  ,[HOUSE_POSITION]
+			  ,[HOUSE_PROPERTY]
+			  ,[HOUSE_AREA]
+			  ,[PLAT_ENVALUATE]
+			  ,[MARKET_APPRAISAL]
+			  ,[VEHICLE_NUM]
+			  ,[VEHICLE_MAKE]
+			  ,[VEHICLE_TYPE]
+			  ,[CREDIT_TYPE]
+			  ,[CREDIT_NUM]
+			  ,[CREDIT_START_DATE]
+			  ,[CREDIT_END_DATE]
+			  ,[OTHER_INVESTMENT_STATUS]
+			  ,[OTHER_INVE_STATUS_NAME]
+			  ,[TYPE_PREF]
+			  ,[TYPE_PREF_NAME]
+			  ,[TIME_LIMIT_PREF]
+			  ,[TIME_LIMIT_PREF_NAME]
+			  ,[INVEST_PREF]
+			  ,[INVEST_PREF_NAME]
+			  ,[HOBBY_PREF]
+			  ,[HOBBY_PREF_NAME]
+			  ,[SERVICE_PREF]
+			  ,[SERVICE_PREF_NAME]
+			  ,[CONTACT_PREF]
+			  ,[CONTACT_PREF_NAME]
+			  ,[RISK_PREF]
+			  ,[RISK_PREF_NAME]
+			  ,[NATION]
+			  ,[NATION_NAME]
+			  ,[MARITAL]
+			  ,[HEALTH]
+			  ,[HEALTH_NAME]
+			  ,[EDUCATION]
+			  ,[EDUCATION_NAME]
+			  ,[POST]
+			  ,[HOLDEROFANOFFICE]
+			  ,[COMPANY_CHARACTER]
+			  ,[COMPANY_CHARACTER_NAME]
+			  ,[COMPANY_STAFF]
+			  ,[BOCOM_STAFF]
+			  ,[CLIENT_QUALE]
+			  ,[CLIENT_QUALE_NAME]
+			  ,[REGISTERED_PLACE]
+			  ,[REGISTERED_CAPITAL]
+			  ,[COMPANY_FAMILY]
+			  ,[FREE_CASH_FLOW]
+			  ,[BUREND_OF_DEBT]
+			  ,[COMPLETE_FLAG]
+			  ,[MODI_FLAG]
+			  ,[COMPANY_UNIT]
+			  ,[COMPANY_DEPART]
+			  ,[COMPANY_POSITION]
+			  ,[CUST_AUM]
+			  ,[CUST_AUM_NAME]
+			  ,[CUST_AGE_GROUP]
+			  ,[CUST_AGE_GROUP_NAME]
+			  ,[INVES_EXPERINCE]
+			  ,[CUST_SOURCE_EXPLAIN]
+			  ,[EAST_JG_TYPE]
+			  ,[EAST_JG_TYPE_NAME]
+			  ,[JG_WTRLX2], 0,0,0,CARD_ID,CUST_TEL,MOBILE,O_TEL,H_TEL,BP,FAX,E_MAIL,ACTIVITY_FEE,0
+                FROM TCustomers A LEFT JOIN TCUSTSERVICEINFO B ON(B.CUST_ID = A.CUST_ID)
+
+                WHERE (A.CUST_ID = @IN_CUST_ID OR @IN_CUST_ID = 0 OR @IN_CUST_ID IS NULL)
+                    AND (CUST_NO LIKE '%'+@IN_CUST_NO OR CUST_NO LIKE @IN_CUST_NO+'_______' OR @IN_CUST_NO = N'' OR @IN_CUST_NO IS NULL)
+                    AND (CUST_NAME LIKE '%'+@IN_CUST_NAME+'%' OR @IN_CUST_NAME = N'' OR @IN_CUST_NAME IS NULL)
+                    AND (A.CUST_TYPE = @IN_CUST_TYPE OR ISNULL(@IN_CUST_TYPE,0) = 0 )
+                    AND (A.IS_DEAL = @IN_IS_DEAL OR ISNULL(@IN_IS_DEAL,0) = 0 )
+                    AND CHECK_FLAG = 1
+                    AND (A.SERVICE_MAN = @IN_INPUT_MAN OR (@V_QUERYCUSTOMERS = 1 AND A.INPUT_MAN = @IN_INPUT_MAN) OR @V_FLAG_ACCESS_ALL = 1
+                         OR EXISTS(SELECT 1 FROM @V_TEMPCUST2 Y WHERE A.CUST_ID = Y.CUST_ID) )
+					AND A.STATUS <> '112805'	 
+        ELSE
+        BEGIN
+           BEGIN
+                INSERT INTO @V_TEMPCUST1 SELECT DISTINCT(CUST_ID) FROM INTRUST.dbo.TBENIFITOR A
+                    WHERE PRODUCT_ID = @IN_PRODUCT_ID AND (PROV_LEVEL=@IN_PROV_LEVEL OR ISNULL(@IN_PROV_LEVEL,'') ='')
+                        AND NOT EXISTS(SELECT 1 FROM @V_TEMPCUST1 Z WHERE A.CUST_ID = Z.CUST_ID)
+                INSERT INTO @V_TEMPCUST1 SELECT DISTINCT(CUST_ID) FROM INTRUST.dbo.TPRECONTRACT A
+                    WHERE PRODUCT_ID = @IN_PRODUCT_ID AND PRE_STATUS = N'111301' --预约状态:有效
+                        AND NOT EXISTS(SELECT 1 FROM @V_TEMPCUST1 Z WHERE A.CUST_ID = Z.CUST_ID)
+            END
+
+            INSERT INTO #TEMP_QUERY_TCustomers
+                SELECT A.[CUST_ID]
+			  ,[CUST_NO]
+			  ,[CUST_NAME]
+			  ,[CUST_TEL]
+			  ,[POST_ADDRESS]
+			  ,[POST_ADDRESS2]
+			  ,[POST_CODE]
+			  ,[POST_CODE2]
+			  ,[CARD_TYPE]
+			  ,[CARD_TYPE_NAME]
+			  ,[CARD_ID]
+			  ,[CARD_VALID_DATE]
+			  ,[CARD_ADDRESS]
+			  ,[COUNTRY]
+			  ,[BIRTHDAY]
+			  ,[AGE]
+			  ,[SEX]
+			  ,[SEX_NAME]
+			  ,[O_TEL]
+			  ,[H_TEL]
+			  ,[MOBILE]
+			  ,[BP]
+			  ,[FAX]
+			  ,[E_MAIL]
+			  ,[CUST_TYPE]
+			  ,[CUST_TYPE_NAME]
+			  ,[JG_CUST_TYPE]
+			  ,[WT_FLAG]
+			  ,[WT_FLAG_NAME]
+			  ,[PASSWORD]
+			  ,[TOUCH_TYPE]
+			  ,[TOUCH_TYPE_NAME]
+			  ,[CUST_SOURCE]
+			  ,[CUST_SOURCE_NAME]
+			  ,[RG_TIMES]
+			  ,[TOTAL_MONEY]
+			  ,[CURRENT_MONEY]
+			  ,[LAST_RG_DATE]
+			  ,[INPUT_MAN]
+			  ,[INPUT_TIME]
+			  ,[CHECK_FLAG]
+			  ,[CHECK_MAN]
+			  ,[MODI_MAN]
+			  ,[MODI_TIME]
+			  ,[CANCEL_MAN]
+			  ,[CANCEL_TIME]
+			  ,[STATUS]
+			  ,[STATUS_NAME]
+			  ,[SUMMARY]
+			  ,[LEGAL_MAN]
+			  ,[LEGAL_ADDRESS]
+			  ,[REGISTRATION_ID]
+			  ,[CONTACT_MAN]
+			  ,[LIST_ID]
+			  ,[PRINT_DEPLOY_BILL]
+			  ,[PRINT_POST_INFO]
+			  ,[IS_LINK]
+			  ,[SERVICE_MAN]
+			  ,[ENT_CUST_ID]
+			  ,[VIP_CARD_ID]
+			  ,[VIP_DATE]
+			  ,[HGTZR_BH]
+			  ,[VOC_TYPE]
+			  ,[VOC_TYPE_NAME]
+			  ,[GRADE_LEVEL]
+			  ,[GRADE_LEVEL_NAME]
+			  ,[MONEY_SOURCE]
+			  ,[MONEY_SOURCE_NAME]
+			  ,[FACT_CONTROLLER]
+			  ,[FC_CARD_TYPE]
+			  ,[FC_CARD_ID]
+			  ,[FC_CARD_VALID_DATE]
+			  ,[TRANS_NAME]
+			  ,[TRANS_CARD_TYPE]
+			  ,[TRANS_CARD_NAME]
+			  ,[TRANS_CARD_NO]
+			  ,[TRANS_TEL]
+			  ,[TRANS_MOBILE]
+			  ,[TRANS_ADDRESS]
+			  ,[TRANS_POST_CODE]
+			  ,[PinYinSimple]
+			  ,[PinYinWhole]
+			  ,[ImageIdentification]
+			  ,[ReceiveServices]
+			  ,[POTENTIAL_MONEY]
+			  ,[IS_DEAL]
+			  ,[TRUE_FLAG]
+			  ,[GOV_PROV_REGIONAL]
+			  ,[GOV_PROV_REGIONAL_NAME]
+			  ,[GOV_REGIONAL]
+			  ,[GOV_REGIONAL_NAME]
+			  ,[RECOMMENDED]
+			  ,[HEAD_OFFICE_CUST_ID]
+			  ,[STATURE]
+			  ,[WEIGHT]
+			  ,[SPOUSE_NAME]
+			  ,[SPOUSE_INFO]
+			  ,[CHILDREN_NAME]
+			  ,[CHILDREN_INFO]
+			  ,[EMPLOYEE_NUM]
+			  ,[HOLDING]
+			  ,[PERSONAL_INCOME]
+			  ,[HOUSEHOLD_INCOME]
+			  ,[FEEDING_NUM_PEOPLE]
+			  ,[MAIN_SOURCE]
+			  ,[OTHER_SOURCE]
+			  ,[HOUSE_POSITION]
+			  ,[HOUSE_PROPERTY]
+			  ,[HOUSE_AREA]
+			  ,[PLAT_ENVALUATE]
+			  ,[MARKET_APPRAISAL]
+			  ,[VEHICLE_NUM]
+			  ,[VEHICLE_MAKE]
+			  ,[VEHICLE_TYPE]
+			  ,[CREDIT_TYPE]
+			  ,[CREDIT_NUM]
+			  ,[CREDIT_START_DATE]
+			  ,[CREDIT_END_DATE]
+			  ,[OTHER_INVESTMENT_STATUS]
+			  ,[OTHER_INVE_STATUS_NAME]
+			  ,[TYPE_PREF]
+			  ,[TYPE_PREF_NAME]
+			  ,[TIME_LIMIT_PREF]
+			  ,[TIME_LIMIT_PREF_NAME]
+			  ,[INVEST_PREF]
+			  ,[INVEST_PREF_NAME]
+			  ,[HOBBY_PREF]
+			  ,[HOBBY_PREF_NAME]
+			  ,[SERVICE_PREF]
+			  ,[SERVICE_PREF_NAME]
+			  ,[CONTACT_PREF]
+			  ,[CONTACT_PREF_NAME]
+			  ,[RISK_PREF]
+			  ,[RISK_PREF_NAME]
+			  ,[NATION]
+			  ,[NATION_NAME]
+			  ,[MARITAL]
+			  ,[HEALTH]
+			  ,[HEALTH_NAME]
+			  ,[EDUCATION]
+			  ,[EDUCATION_NAME]
+			  ,[POST]
+			  ,[HOLDEROFANOFFICE]
+			  ,[COMPANY_CHARACTER]
+			  ,[COMPANY_CHARACTER_NAME]
+			  ,[COMPANY_STAFF]
+			  ,[BOCOM_STAFF]
+			  ,[CLIENT_QUALE]
+			  ,[CLIENT_QUALE_NAME]
+			  ,[REGISTERED_PLACE]
+			  ,[REGISTERED_CAPITAL]
+			  ,[COMPANY_FAMILY]
+			  ,[FREE_CASH_FLOW]
+			  ,[BUREND_OF_DEBT]
+			  ,[COMPLETE_FLAG]
+			  ,[MODI_FLAG]
+			  ,[COMPANY_UNIT]
+			  ,[COMPANY_DEPART]
+			  ,[COMPANY_POSITION]
+			  ,[CUST_AUM]
+			  ,[CUST_AUM_NAME]
+			  ,[CUST_AGE_GROUP]
+			  ,[CUST_AGE_GROUP_NAME]
+			  ,[INVES_EXPERINCE]
+			  ,[CUST_SOURCE_EXPLAIN]
+			  ,[EAST_JG_TYPE]
+			  ,[EAST_JG_TYPE_NAME]
+			  ,[JG_WTRLX2], 0, 0,0,CARD_ID,CUST_TEL,MOBILE,O_TEL,H_TEL,BP,FAX,E_MAIL,ACTIVITY_FEE,0
+                  FROM TCustomers A LEFT JOIN TCUSTSERVICEINFO C ON(C.CUST_ID = A.CUST_ID), @V_TEMPCUST1 B
+                  WHERE A.CUST_ID = B.CUST_ID
+                    AND (A.CUST_ID = @IN_CUST_ID OR @IN_CUST_ID = 0 OR @IN_CUST_ID IS NULL)
+                    AND (A.CUST_NO LIKE '%'+@IN_CUST_NO OR CUST_NO LIKE @IN_CUST_NO+'_______' OR @IN_CUST_NO = N'' OR @IN_CUST_NO IS NULL)
+                    AND (A.CUST_NAME LIKE '%'+@IN_CUST_NAME+'%' OR @IN_CUST_NAME = N'' OR @IN_CUST_NAME IS NULL)
+                    AND (A.CUST_TYPE = @IN_CUST_TYPE OR ISNULL(@IN_CUST_TYPE,0) = 0 )
+                    AND (A.IS_DEAL = @IN_IS_DEAL OR ISNULL(@IN_IS_DEAL,0) = 0 )
+                    AND A.CHECK_FLAG = 1
+                    AND (A.SERVICE_MAN = @IN_INPUT_MAN OR (@V_QUERYCUSTOMERS = 1 AND A.INPUT_MAN = @IN_INPUT_MAN) OR @V_FLAG_ACCESS_ALL = 1
+                         OR EXISTS(SELECT 1 FROM @V_TEMPCUST2 Y WHERE A.CUST_ID = Y.CUST_ID) )
+					AND A.STATUS <> '112805'	 
+        END
+    END
+    ELSE IF @IN_CHECK_FLAG = 2
+    BEGIN
+        IF @IN_PRODUCT_ID IS NULL OR @IN_PRODUCT_ID = 0
+            INSERT INTO #TEMP_QUERY_TCustomers
+              SELECT A.[CUST_ID]
+			  ,[CUST_NO]
+			  ,[CUST_NAME]
+			  ,[CUST_TEL]
+			  ,[POST_ADDRESS]
+			  ,[POST_ADDRESS2]
+			  ,[POST_CODE]
+			  ,[POST_CODE2]
+			  ,[CARD_TYPE]
+			  ,[CARD_TYPE_NAME]
+			  ,[CARD_ID]
+			  ,[CARD_VALID_DATE]
+			  ,[CARD_ADDRESS]
+			  ,[COUNTRY]
+			  ,[BIRTHDAY]
+			  ,[AGE]
+			  ,[SEX]
+			  ,[SEX_NAME]
+			  ,[O_TEL]
+			  ,[H_TEL]
+			  ,[MOBILE]
+			  ,[BP]
+			  ,[FAX]
+			  ,[E_MAIL]
+			  ,[CUST_TYPE]
+			  ,[CUST_TYPE_NAME]
+			  ,[JG_CUST_TYPE]
+			  ,[WT_FLAG]
+			  ,[WT_FLAG_NAME]
+			  ,[PASSWORD]
+			  ,[TOUCH_TYPE]
+			  ,[TOUCH_TYPE_NAME]
+			  ,[CUST_SOURCE]
+			  ,[CUST_SOURCE_NAME]
+			  ,[RG_TIMES]
+			  ,[TOTAL_MONEY]
+			  ,[CURRENT_MONEY]
+			  ,[LAST_RG_DATE]
+			  ,[INPUT_MAN]
+			  ,[INPUT_TIME]
+			  ,[CHECK_FLAG]
+			  ,[CHECK_MAN]
+			  ,[MODI_MAN]
+			  ,[MODI_TIME]
+			  ,[CANCEL_MAN]
+			  ,[CANCEL_TIME]
+			  ,[STATUS]
+			  ,[STATUS_NAME]
+			  ,[SUMMARY]
+			  ,[LEGAL_MAN]
+			  ,[LEGAL_ADDRESS]
+			  ,[REGISTRATION_ID]
+			  ,[CONTACT_MAN]
+			  ,[LIST_ID]
+			  ,[PRINT_DEPLOY_BILL]
+			  ,[PRINT_POST_INFO]
+			  ,[IS_LINK]
+			  ,[SERVICE_MAN]
+			  ,[ENT_CUST_ID]
+			  ,[VIP_CARD_ID]
+			  ,[VIP_DATE]
+			  ,[HGTZR_BH]
+			  ,[VOC_TYPE]
+			  ,[VOC_TYPE_NAME]
+			  ,[GRADE_LEVEL]
+			  ,[GRADE_LEVEL_NAME]
+			  ,[MONEY_SOURCE]
+			  ,[MONEY_SOURCE_NAME]
+			  ,[FACT_CONTROLLER]
+			  ,[FC_CARD_TYPE]
+			  ,[FC_CARD_ID]
+			  ,[FC_CARD_VALID_DATE]
+			  ,[TRANS_NAME]
+			  ,[TRANS_CARD_TYPE]
+			  ,[TRANS_CARD_NAME]
+			  ,[TRANS_CARD_NO]
+			  ,[TRANS_TEL]
+			  ,[TRANS_MOBILE]
+			  ,[TRANS_ADDRESS]
+			  ,[TRANS_POST_CODE]
+			  ,[PinYinSimple]
+			  ,[PinYinWhole]
+			  ,[ImageIdentification]
+			  ,[ReceiveServices]
+			  ,[POTENTIAL_MONEY]
+			  ,[IS_DEAL]
+			  ,[TRUE_FLAG]
+			  ,[GOV_PROV_REGIONAL]
+			  ,[GOV_PROV_REGIONAL_NAME]
+			  ,[GOV_REGIONAL]
+			  ,[GOV_REGIONAL_NAME]
+			  ,[RECOMMENDED]
+			  ,[HEAD_OFFICE_CUST_ID]
+			  ,[STATURE]
+			  ,[WEIGHT]
+			  ,[SPOUSE_NAME]
+			  ,[SPOUSE_INFO]
+			  ,[CHILDREN_NAME]
+			  ,[CHILDREN_INFO]
+			  ,[EMPLOYEE_NUM]
+			  ,[HOLDING]
+			  ,[PERSONAL_INCOME]
+			  ,[HOUSEHOLD_INCOME]
+			  ,[FEEDING_NUM_PEOPLE]
+			  ,[MAIN_SOURCE]
+			  ,[OTHER_SOURCE]
+			  ,[HOUSE_POSITION]
+			  ,[HOUSE_PROPERTY]
+			  ,[HOUSE_AREA]
+			  ,[PLAT_ENVALUATE]
+			  ,[MARKET_APPRAISAL]
+			  ,[VEHICLE_NUM]
+			  ,[VEHICLE_MAKE]
+			  ,[VEHICLE_TYPE]
+			  ,[CREDIT_TYPE]
+			  ,[CREDIT_NUM]
+			  ,[CREDIT_START_DATE]
+			  ,[CREDIT_END_DATE]
+			  ,[OTHER_INVESTMENT_STATUS]
+			  ,[OTHER_INVE_STATUS_NAME]
+			  ,[TYPE_PREF]
+			  ,[TYPE_PREF_NAME]
+			  ,[TIME_LIMIT_PREF]
+			  ,[TIME_LIMIT_PREF_NAME]
+			  ,[INVEST_PREF]
+			  ,[INVEST_PREF_NAME]
+			  ,[HOBBY_PREF]
+			  ,[HOBBY_PREF_NAME]
+			  ,[SERVICE_PREF]
+			  ,[SERVICE_PREF_NAME]
+			  ,[CONTACT_PREF]
+			  ,[CONTACT_PREF_NAME]
+			  ,[RISK_PREF]
+			  ,[RISK_PREF_NAME]
+			  ,[NATION]
+			  ,[NATION_NAME]
+			  ,[MARITAL]
+			  ,[HEALTH]
+			  ,[HEALTH_NAME]
+			  ,[EDUCATION]
+			  ,[EDUCATION_NAME]
+			  ,[POST]
+			  ,[HOLDEROFANOFFICE]
+			  ,[COMPANY_CHARACTER]
+			  ,[COMPANY_CHARACTER_NAME]
+			  ,[COMPANY_STAFF]
+			  ,[BOCOM_STAFF]
+			  ,[CLIENT_QUALE]
+			  ,[CLIENT_QUALE_NAME]
+			  ,[REGISTERED_PLACE]
+			  ,[REGISTERED_CAPITAL]
+			  ,[COMPANY_FAMILY]
+			  ,[FREE_CASH_FLOW]
+			  ,[BUREND_OF_DEBT]
+			  ,[COMPLETE_FLAG]
+			  ,[MODI_FLAG]
+			  ,[COMPANY_UNIT]
+			  ,[COMPANY_DEPART]
+			  ,[COMPANY_POSITION]
+			  ,[CUST_AUM]
+			  ,[CUST_AUM_NAME]
+			  ,[CUST_AGE_GROUP]
+			  ,[CUST_AGE_GROUP_NAME]
+			  ,[INVES_EXPERINCE]
+			  ,[CUST_SOURCE_EXPLAIN]
+			  ,[EAST_JG_TYPE]
+			  ,[EAST_JG_TYPE_NAME]
+			  ,[JG_WTRLX2], 0, 0,0,CARD_ID,CUST_TEL,MOBILE,O_TEL,H_TEL,BP,FAX,E_MAIL,ACTIVITY_FEE,0
+                FROM TCustomers A LEFT JOIN TCUSTSERVICEINFO B ON(B.CUST_ID = A.CUST_ID)
+                WHERE (A.CUST_ID = @IN_CUST_ID OR @IN_CUST_ID = 0 OR @IN_CUST_ID IS NULL)
+                    AND (A.CUST_NO LIKE '%'+@IN_CUST_NO OR CUST_NO LIKE @IN_CUST_NO+'_______' OR @IN_CUST_NO = N'' OR @IN_CUST_NO IS NULL)
+                    AND (A.CUST_NAME LIKE '%'+@IN_CUST_NAME+'%' OR @IN_CUST_NAME = N'' OR @IN_CUST_NAME IS NULL)
+                    AND (A.CUST_TYPE = @IN_CUST_TYPE OR ISNULL(@IN_CUST_TYPE,0) = 0 )
+                    AND (A.IS_DEAL = @IN_IS_DEAL OR ISNULL(@IN_IS_DEAL,0) = 0 )
+                    AND A.CHECK_FLAG = 2
+                    AND (A.SERVICE_MAN = @IN_INPUT_MAN OR (@V_QUERYCUSTOMERS = 1 AND A.INPUT_MAN = @IN_INPUT_MAN) OR @V_FLAG_ACCESS_ALL = 1
+                         OR EXISTS(SELECT 1 FROM @V_TEMPCUST2 Y WHERE A.CUST_ID = Y.CUST_ID) )
+					AND A.STATUS <> '112805'	 
+
+        ELSE
+        BEGIN
+            BEGIN
+                INSERT INTO @V_TEMPCUST1 SELECT DISTINCT(CUST_ID) FROM INTRUST.dbo.TBENIFITOR A WHERE PRODUCT_ID = @IN_PRODUCT_ID AND (PROV_LEVEL=@IN_PROV_LEVEL OR ISNULL(@IN_PROV_LEVEL,'') ='')
+                        AND NOT EXISTS(SELECT 1 FROM @V_TEMPCUST1 Z WHERE A.CUST_ID = Z.CUST_ID)
+                INSERT INTO @V_TEMPCUST1 SELECT DISTINCT(CUST_ID) FROM INTRUST.dbo.TPRECONTRACT A WHERE PRODUCT_ID = @IN_PRODUCT_ID AND PRE_STATUS='111301'
+                        AND NOT EXISTS(SELECT 1 FROM @V_TEMPCUST1 Z WHERE A.CUST_ID = Z.CUST_ID)
+            END
+
+            INSERT INTO #TEMP_QUERY_TCustomers
+              SELECT A.[CUST_ID]
+			  ,[CUST_NO]
+			  ,[CUST_NAME]
+			  ,[CUST_TEL]
+			  ,[POST_ADDRESS]
+			  ,[POST_ADDRESS2]
+			  ,[POST_CODE]
+			  ,[POST_CODE2]
+			  ,[CARD_TYPE]
+			  ,[CARD_TYPE_NAME]
+			  ,[CARD_ID]
+			  ,[CARD_VALID_DATE]
+			  ,[CARD_ADDRESS]
+			  ,[COUNTRY]
+			  ,[BIRTHDAY]
+			  ,[AGE]
+			  ,[SEX]
+			  ,[SEX_NAME]
+			  ,[O_TEL]
+			  ,[H_TEL]
+			  ,[MOBILE]
+			  ,[BP]
+			  ,[FAX]
+			  ,[E_MAIL]
+			  ,[CUST_TYPE]
+			  ,[CUST_TYPE_NAME]
+			  ,[JG_CUST_TYPE]
+			  ,[WT_FLAG]
+			  ,[WT_FLAG_NAME]
+			  ,[PASSWORD]
+			  ,[TOUCH_TYPE]
+			  ,[TOUCH_TYPE_NAME]
+			  ,[CUST_SOURCE]
+			  ,[CUST_SOURCE_NAME]
+			  ,[RG_TIMES]
+			  ,[TOTAL_MONEY]
+			  ,[CURRENT_MONEY]
+			  ,[LAST_RG_DATE]
+			  ,[INPUT_MAN]
+			  ,[INPUT_TIME]
+			  ,[CHECK_FLAG]
+			  ,[CHECK_MAN]
+			  ,[MODI_MAN]
+			  ,[MODI_TIME]
+			  ,[CANCEL_MAN]
+			  ,[CANCEL_TIME]
+			  ,[STATUS]
+			  ,[STATUS_NAME]
+			  ,[SUMMARY]
+			  ,[LEGAL_MAN]
+			  ,[LEGAL_ADDRESS]
+			  ,[REGISTRATION_ID]
+			  ,[CONTACT_MAN]
+			  ,[LIST_ID]
+			  ,[PRINT_DEPLOY_BILL]
+			  ,[PRINT_POST_INFO]
+			  ,[IS_LINK]
+			  ,[SERVICE_MAN]
+			  ,[ENT_CUST_ID]
+			  ,[VIP_CARD_ID]
+			  ,[VIP_DATE]
+			  ,[HGTZR_BH]
+			  ,[VOC_TYPE]
+			  ,[VOC_TYPE_NAME]
+			  ,[GRADE_LEVEL]
+			  ,[GRADE_LEVEL_NAME]
+			  ,[MONEY_SOURCE]
+			  ,[MONEY_SOURCE_NAME]
+			  ,[FACT_CONTROLLER]
+			  ,[FC_CARD_TYPE]
+			  ,[FC_CARD_ID]
+			  ,[FC_CARD_VALID_DATE]
+			  ,[TRANS_NAME]
+			  ,[TRANS_CARD_TYPE]
+			  ,[TRANS_CARD_NAME]
+			  ,[TRANS_CARD_NO]
+			  ,[TRANS_TEL]
+			  ,[TRANS_MOBILE]
+			  ,[TRANS_ADDRESS]
+			  ,[TRANS_POST_CODE]
+			  ,[PinYinSimple]
+			  ,[PinYinWhole]
+			  ,[ImageIdentification]
+			  ,[ReceiveServices]
+			  ,[POTENTIAL_MONEY]
+			  ,[IS_DEAL]
+			  ,[TRUE_FLAG]
+			  ,[GOV_PROV_REGIONAL]
+			  ,[GOV_PROV_REGIONAL_NAME]
+			  ,[GOV_REGIONAL]
+			  ,[GOV_REGIONAL_NAME]
+			  ,[RECOMMENDED]
+			  ,[HEAD_OFFICE_CUST_ID]
+			  ,[STATURE]
+			  ,[WEIGHT]
+			  ,[SPOUSE_NAME]
+			  ,[SPOUSE_INFO]
+			  ,[CHILDREN_NAME]
+			  ,[CHILDREN_INFO]
+			  ,[EMPLOYEE_NUM]
+			  ,[HOLDING]
+			  ,[PERSONAL_INCOME]
+			  ,[HOUSEHOLD_INCOME]
+			  ,[FEEDING_NUM_PEOPLE]
+			  ,[MAIN_SOURCE]
+			  ,[OTHER_SOURCE]
+			  ,[HOUSE_POSITION]
+			  ,[HOUSE_PROPERTY]
+			  ,[HOUSE_AREA]
+			  ,[PLAT_ENVALUATE]
+			  ,[MARKET_APPRAISAL]
+			  ,[VEHICLE_NUM]
+			  ,[VEHICLE_MAKE]
+			  ,[VEHICLE_TYPE]
+			  ,[CREDIT_TYPE]
+			  ,[CREDIT_NUM]
+			  ,[CREDIT_START_DATE]
+			  ,[CREDIT_END_DATE]
+			  ,[OTHER_INVESTMENT_STATUS]
+			  ,[OTHER_INVE_STATUS_NAME]
+			  ,[TYPE_PREF]
+			  ,[TYPE_PREF_NAME]
+			  ,[TIME_LIMIT_PREF]
+			  ,[TIME_LIMIT_PREF_NAME]
+			  ,[INVEST_PREF]
+			  ,[INVEST_PREF_NAME]
+			  ,[HOBBY_PREF]
+			  ,[HOBBY_PREF_NAME]
+			  ,[SERVICE_PREF]
+			  ,[SERVICE_PREF_NAME]
+			  ,[CONTACT_PREF]
+			  ,[CONTACT_PREF_NAME]
+			  ,[RISK_PREF]
+			  ,[RISK_PREF_NAME]
+			  ,[NATION]
+			  ,[NATION_NAME]
+			  ,[MARITAL]
+			  ,[HEALTH]
+			  ,[HEALTH_NAME]
+			  ,[EDUCATION]
+			  ,[EDUCATION_NAME]
+			  ,[POST]
+			  ,[HOLDEROFANOFFICE]
+			  ,[COMPANY_CHARACTER]
+			  ,[COMPANY_CHARACTER_NAME]
+			  ,[COMPANY_STAFF]
+			  ,[BOCOM_STAFF]
+			  ,[CLIENT_QUALE]
+			  ,[CLIENT_QUALE_NAME]
+			  ,[REGISTERED_PLACE]
+			  ,[REGISTERED_CAPITAL]
+			  ,[COMPANY_FAMILY]
+			  ,[FREE_CASH_FLOW]
+			  ,[BUREND_OF_DEBT]
+			  ,[COMPLETE_FLAG]
+			  ,[MODI_FLAG]
+			  ,[COMPANY_UNIT]
+			  ,[COMPANY_DEPART]
+			  ,[COMPANY_POSITION]
+			  ,[CUST_AUM]
+			  ,[CUST_AUM_NAME]
+			  ,[CUST_AGE_GROUP]
+			  ,[CUST_AGE_GROUP_NAME]
+			  ,[INVES_EXPERINCE]
+			  ,[CUST_SOURCE_EXPLAIN]
+			  ,[EAST_JG_TYPE]
+			  ,[EAST_JG_TYPE_NAME]
+			  ,[JG_WTRLX2], 0, 0,0,CARD_ID,CUST_TEL,MOBILE,O_TEL,H_TEL,BP,FAX,E_MAIL,ACTIVITY_FEE,0
+                FROM TCustomers A LEFT JOIN TCUSTSERVICEINFO C ON(C.CUST_ID = A.CUST_ID),@V_TEMPCUST1 B
+                WHERE A.CUST_ID = B.CUST_ID
+                    AND (A.CUST_ID = @IN_CUST_ID OR @IN_CUST_ID = 0 OR @IN_CUST_ID IS NULL)
+                    AND (A.CUST_NO LIKE '%'+@IN_CUST_NO OR CUST_NO LIKE @IN_CUST_NO+'_______' OR @IN_CUST_NO = N'' OR @IN_CUST_NO IS NULL)
+                    AND (A.CUST_NAME LIKE '%'+@IN_CUST_NAME+'%' OR @IN_CUST_NAME = N'' OR @IN_CUST_NAME IS NULL)
+                    AND (A.CUST_TYPE = @IN_CUST_TYPE OR ISNULL(@IN_CUST_TYPE,0) = 0 )
+                    AND (A.IS_DEAL = @IN_IS_DEAL OR ISNULL(@IN_IS_DEAL,0) = 0 )
+                    AND A.CHECK_FLAG = 2
+                    AND (A.SERVICE_MAN = @IN_INPUT_MAN OR (@V_QUERYCUSTOMERS = 1 AND A.INPUT_MAN = @IN_INPUT_MAN) OR @V_FLAG_ACCESS_ALL = 1
+                         OR EXISTS(SELECT 1 FROM @V_TEMPCUST2 Y WHERE A.CUST_ID = Y.CUST_ID) )
+					AND A.STATUS <> '112805'	 
+
+        END
+    END
+    ELSE IF @IN_CHECK_FLAG = 10
+    BEGIN
+        IF @IN_PRODUCT_ID IS NULL OR @IN_PRODUCT_ID = 0
+            INSERT INTO #TEMP_QUERY_TCustomers
+              SELECT A.[CUST_ID]
+			  ,[CUST_NO]
+			  ,[CUST_NAME]
+			  ,[CUST_TEL]
+			  ,[POST_ADDRESS]
+			  ,[POST_ADDRESS2]
+			  ,[POST_CODE]
+			  ,[POST_CODE2]
+			  ,[CARD_TYPE]
+			  ,[CARD_TYPE_NAME]
+			  ,[CARD_ID]
+			  ,[CARD_VALID_DATE]
+			  ,[CARD_ADDRESS]
+			  ,[COUNTRY]
+			  ,[BIRTHDAY]
+			  ,[AGE]
+			  ,[SEX]
+			  ,[SEX_NAME]
+			  ,[O_TEL]
+			  ,[H_TEL]
+			  ,[MOBILE]
+			  ,[BP]
+			  ,[FAX]
+			  ,[E_MAIL]
+			  ,[CUST_TYPE]
+			  ,[CUST_TYPE_NAME]
+			  ,[JG_CUST_TYPE]
+			  ,[WT_FLAG]
+			  ,[WT_FLAG_NAME]
+			  ,[PASSWORD]
+			  ,[TOUCH_TYPE]
+			  ,[TOUCH_TYPE_NAME]
+			  ,[CUST_SOURCE]
+			  ,[CUST_SOURCE_NAME]
+			  ,[RG_TIMES]
+			  ,[TOTAL_MONEY]
+			  ,[CURRENT_MONEY]
+			  ,[LAST_RG_DATE]
+			  ,[INPUT_MAN]
+			  ,[INPUT_TIME]
+			  ,[CHECK_FLAG]
+			  ,[CHECK_MAN]
+			  ,[MODI_MAN]
+			  ,[MODI_TIME]
+			  ,[CANCEL_MAN]
+			  ,[CANCEL_TIME]
+			  ,[STATUS]
+			  ,[STATUS_NAME]
+			  ,[SUMMARY]
+			  ,[LEGAL_MAN]
+			  ,[LEGAL_ADDRESS]
+			  ,[REGISTRATION_ID]
+			  ,[CONTACT_MAN]
+			  ,[LIST_ID]
+			  ,[PRINT_DEPLOY_BILL]
+			  ,[PRINT_POST_INFO]
+			  ,[IS_LINK]
+			  ,[SERVICE_MAN]
+			  ,[ENT_CUST_ID]
+			  ,[VIP_CARD_ID]
+			  ,[VIP_DATE]
+			  ,[HGTZR_BH]
+			  ,[VOC_TYPE]
+			  ,[VOC_TYPE_NAME]
+			  ,[GRADE_LEVEL]
+			  ,[GRADE_LEVEL_NAME]
+			  ,[MONEY_SOURCE]
+			  ,[MONEY_SOURCE_NAME]
+			  ,[FACT_CONTROLLER]
+			  ,[FC_CARD_TYPE]
+			  ,[FC_CARD_ID]
+			  ,[FC_CARD_VALID_DATE]
+			  ,[TRANS_NAME]
+			  ,[TRANS_CARD_TYPE]
+			  ,[TRANS_CARD_NAME]
+			  ,[TRANS_CARD_NO]
+			  ,[TRANS_TEL]
+			  ,[TRANS_MOBILE]
+			  ,[TRANS_ADDRESS]
+			  ,[TRANS_POST_CODE]
+			  ,[PinYinSimple]
+			  ,[PinYinWhole]
+			  ,[ImageIdentification]
+			  ,[ReceiveServices]
+			  ,[POTENTIAL_MONEY]
+			  ,[IS_DEAL]
+			  ,[TRUE_FLAG]
+			  ,[GOV_PROV_REGIONAL]
+			  ,[GOV_PROV_REGIONAL_NAME]
+			  ,[GOV_REGIONAL]
+			  ,[GOV_REGIONAL_NAME]
+			  ,[RECOMMENDED]
+			  ,[HEAD_OFFICE_CUST_ID]
+			  ,[STATURE]
+			  ,[WEIGHT]
+			  ,[SPOUSE_NAME]
+			  ,[SPOUSE_INFO]
+			  ,[CHILDREN_NAME]
+			  ,[CHILDREN_INFO]
+			  ,[EMPLOYEE_NUM]
+			  ,[HOLDING]
+			  ,[PERSONAL_INCOME]
+			  ,[HOUSEHOLD_INCOME]
+			  ,[FEEDING_NUM_PEOPLE]
+			  ,[MAIN_SOURCE]
+			  ,[OTHER_SOURCE]
+			  ,[HOUSE_POSITION]
+			  ,[HOUSE_PROPERTY]
+			  ,[HOUSE_AREA]
+			  ,[PLAT_ENVALUATE]
+			  ,[MARKET_APPRAISAL]
+			  ,[VEHICLE_NUM]
+			  ,[VEHICLE_MAKE]
+			  ,[VEHICLE_TYPE]
+			  ,[CREDIT_TYPE]
+			  ,[CREDIT_NUM]
+			  ,[CREDIT_START_DATE]
+			  ,[CREDIT_END_DATE]
+			  ,[OTHER_INVESTMENT_STATUS]
+			  ,[OTHER_INVE_STATUS_NAME]
+			  ,[TYPE_PREF]
+			  ,[TYPE_PREF_NAME]
+			  ,[TIME_LIMIT_PREF]
+			  ,[TIME_LIMIT_PREF_NAME]
+			  ,[INVEST_PREF]
+			  ,[INVEST_PREF_NAME]
+			  ,[HOBBY_PREF]
+			  ,[HOBBY_PREF_NAME]
+			  ,[SERVICE_PREF]
+			  ,[SERVICE_PREF_NAME]
+			  ,[CONTACT_PREF]
+			  ,[CONTACT_PREF_NAME]
+			  ,[RISK_PREF]
+			  ,[RISK_PREF_NAME]
+			  ,[NATION]
+			  ,[NATION_NAME]
+			  ,[MARITAL]
+			  ,[HEALTH]
+			  ,[HEALTH_NAME]
+			  ,[EDUCATION]
+			  ,[EDUCATION_NAME]
+			  ,[POST]
+			  ,[HOLDEROFANOFFICE]
+			  ,[COMPANY_CHARACTER]
+			  ,[COMPANY_CHARACTER_NAME]
+			  ,[COMPANY_STAFF]
+			  ,[BOCOM_STAFF]
+			  ,[CLIENT_QUALE]
+			  ,[CLIENT_QUALE_NAME]
+			  ,[REGISTERED_PLACE]
+			  ,[REGISTERED_CAPITAL]
+			  ,[COMPANY_FAMILY]
+			  ,[FREE_CASH_FLOW]
+			  ,[BUREND_OF_DEBT]
+			  ,[COMPLETE_FLAG]
+			  ,[MODI_FLAG]
+			  ,[COMPANY_UNIT]
+			  ,[COMPANY_DEPART]
+			  ,[COMPANY_POSITION]
+			  ,[CUST_AUM]
+			  ,[CUST_AUM_NAME]
+			  ,[CUST_AGE_GROUP]
+			  ,[CUST_AGE_GROUP_NAME]
+			  ,[INVES_EXPERINCE]
+			  ,[CUST_SOURCE_EXPLAIN]
+			  ,[EAST_JG_TYPE]
+			  ,[EAST_JG_TYPE_NAME]
+			  ,[JG_WTRLX2], 0, 0,0,CARD_ID,CUST_TEL,MOBILE,O_TEL,H_TEL,BP,FAX,E_MAIL,ACTIVITY_FEE,0
+                FROM TCustomers A LEFT JOIN TCUSTSERVICEINFO B ON(B.CUST_ID = A.CUST_ID)
+                WHERE (A.CUST_ID = @IN_CUST_ID OR @IN_CUST_ID = 0 OR @IN_CUST_ID IS NULL)
+                    AND (A.CUST_NO LIKE '%'+@IN_CUST_NO OR CUST_NO LIKE @IN_CUST_NO+'_______' OR @IN_CUST_NO = N'' OR @IN_CUST_NO IS NULL)
+                    AND (A.CUST_NAME LIKE '%'+@IN_CUST_NAME+'%' OR @IN_CUST_NAME = N'' OR @IN_CUST_NAME IS NULL)
+                    AND (A.CUST_TYPE = @IN_CUST_TYPE OR ISNULL(@IN_CUST_TYPE,0) = 0 )
+                    AND (A.IS_DEAL = @IN_IS_DEAL OR ISNULL(@IN_IS_DEAL,0) = 0 )
+                    AND (A.SERVICE_MAN = @IN_INPUT_MAN OR (@V_QUERYCUSTOMERS = 1 AND A.INPUT_MAN = @IN_INPUT_MAN) OR @V_FLAG_ACCESS_ALL = 1
+                         OR EXISTS(SELECT 1 FROM @V_TEMPCUST2 Y WHERE A.CUST_ID = Y.CUST_ID) )
+        ELSE
+        BEGIN
+            BEGIN
+                INSERT INTO @V_TEMPCUST1 SELECT DISTINCT(CUST_ID) FROM INTRUST.dbo.TBENIFITOR A WHERE PRODUCT_ID = @IN_PRODUCT_ID AND (PROV_LEVEL=@IN_PROV_LEVEL OR ISNULL(@IN_PROV_LEVEL,'') ='')
+                        AND NOT EXISTS(SELECT 1 FROM @V_TEMPCUST1 Z WHERE A.CUST_ID = Z.CUST_ID)
+                INSERT INTO @V_TEMPCUST1 SELECT DISTINCT(CUST_ID) FROM INTRUST.dbo.TPRECONTRACT A WHERE PRODUCT_ID = @IN_PRODUCT_ID AND PRE_STATUS='111301'
+                        AND NOT EXISTS(SELECT 1 FROM @V_TEMPCUST1 Z WHERE A.CUST_ID = Z.CUST_ID)
+            END
+
+            INSERT INTO #TEMP_QUERY_TCustomers
+              SELECT A.[CUST_ID]
+			  ,[CUST_NO]
+			  ,[CUST_NAME]
+			  ,[CUST_TEL]
+			  ,[POST_ADDRESS]
+			  ,[POST_ADDRESS2]
+			  ,[POST_CODE]
+			  ,[POST_CODE2]
+			  ,[CARD_TYPE]
+			  ,[CARD_TYPE_NAME]
+			  ,[CARD_ID]
+			  ,[CARD_VALID_DATE]
+			  ,[CARD_ADDRESS]
+			  ,[COUNTRY]
+			  ,[BIRTHDAY]
+			  ,[AGE]
+			  ,[SEX]
+			  ,[SEX_NAME]
+			  ,[O_TEL]
+			  ,[H_TEL]
+			  ,[MOBILE]
+			  ,[BP]
+			  ,[FAX]
+			  ,[E_MAIL]
+			  ,[CUST_TYPE]
+			  ,[CUST_TYPE_NAME]
+			  ,[JG_CUST_TYPE]
+			  ,[WT_FLAG]
+			  ,[WT_FLAG_NAME]
+			  ,[PASSWORD]
+			  ,[TOUCH_TYPE]
+			  ,[TOUCH_TYPE_NAME]
+			  ,[CUST_SOURCE]
+			  ,[CUST_SOURCE_NAME]
+			  ,[RG_TIMES]
+			  ,[TOTAL_MONEY]
+			  ,[CURRENT_MONEY]
+			  ,[LAST_RG_DATE]
+			  ,[INPUT_MAN]
+			  ,[INPUT_TIME]
+			  ,[CHECK_FLAG]
+			  ,[CHECK_MAN]
+			  ,[MODI_MAN]
+			  ,[MODI_TIME]
+			  ,[CANCEL_MAN]
+			  ,[CANCEL_TIME]
+			  ,[STATUS]
+			  ,[STATUS_NAME]
+			  ,[SUMMARY]
+			  ,[LEGAL_MAN]
+			  ,[LEGAL_ADDRESS]
+			  ,[REGISTRATION_ID]
+			  ,[CONTACT_MAN]
+			  ,[LIST_ID]
+			  ,[PRINT_DEPLOY_BILL]
+			  ,[PRINT_POST_INFO]
+			  ,[IS_LINK]
+			  ,[SERVICE_MAN]
+			  ,[ENT_CUST_ID]
+			  ,[VIP_CARD_ID]
+			  ,[VIP_DATE]
+			  ,[HGTZR_BH]
+			  ,[VOC_TYPE]
+			  ,[VOC_TYPE_NAME]
+			  ,[GRADE_LEVEL]
+			  ,[GRADE_LEVEL_NAME]
+			  ,[MONEY_SOURCE]
+			  ,[MONEY_SOURCE_NAME]
+			  ,[FACT_CONTROLLER]
+			  ,[FC_CARD_TYPE]
+			  ,[FC_CARD_ID]
+			  ,[FC_CARD_VALID_DATE]
+			  ,[TRANS_NAME]
+			  ,[TRANS_CARD_TYPE]
+			  ,[TRANS_CARD_NAME]
+			  ,[TRANS_CARD_NO]
+			  ,[TRANS_TEL]
+			  ,[TRANS_MOBILE]
+			  ,[TRANS_ADDRESS]
+			  ,[TRANS_POST_CODE]
+			  ,[PinYinSimple]
+			  ,[PinYinWhole]
+			  ,[ImageIdentification]
+			  ,[ReceiveServices]
+			  ,[POTENTIAL_MONEY]
+			  ,[IS_DEAL]
+			  ,[TRUE_FLAG]
+			  ,[GOV_PROV_REGIONAL]
+			  ,[GOV_PROV_REGIONAL_NAME]
+			  ,[GOV_REGIONAL]
+			  ,[GOV_REGIONAL_NAME]
+			  ,[RECOMMENDED]
+			  ,[HEAD_OFFICE_CUST_ID]
+			  ,[STATURE]
+			  ,[WEIGHT]
+			  ,[SPOUSE_NAME]
+			  ,[SPOUSE_INFO]
+			  ,[CHILDREN_NAME]
+			  ,[CHILDREN_INFO]
+			  ,[EMPLOYEE_NUM]
+			  ,[HOLDING]
+			  ,[PERSONAL_INCOME]
+			  ,[HOUSEHOLD_INCOME]
+			  ,[FEEDING_NUM_PEOPLE]
+			  ,[MAIN_SOURCE]
+			  ,[OTHER_SOURCE]
+			  ,[HOUSE_POSITION]
+			  ,[HOUSE_PROPERTY]
+			  ,[HOUSE_AREA]
+			  ,[PLAT_ENVALUATE]
+			  ,[MARKET_APPRAISAL]
+			  ,[VEHICLE_NUM]
+			  ,[VEHICLE_MAKE]
+			  ,[VEHICLE_TYPE]
+			  ,[CREDIT_TYPE]
+			  ,[CREDIT_NUM]
+			  ,[CREDIT_START_DATE]
+			  ,[CREDIT_END_DATE]
+			  ,[OTHER_INVESTMENT_STATUS]
+			  ,[OTHER_INVE_STATUS_NAME]
+			  ,[TYPE_PREF]
+			  ,[TYPE_PREF_NAME]
+			  ,[TIME_LIMIT_PREF]
+			  ,[TIME_LIMIT_PREF_NAME]
+			  ,[INVEST_PREF]
+			  ,[INVEST_PREF_NAME]
+			  ,[HOBBY_PREF]
+			  ,[HOBBY_PREF_NAME]
+			  ,[SERVICE_PREF]
+			  ,[SERVICE_PREF_NAME]
+			  ,[CONTACT_PREF]
+			  ,[CONTACT_PREF_NAME]
+			  ,[RISK_PREF]
+			  ,[RISK_PREF_NAME]
+			  ,[NATION]
+			  ,[NATION_NAME]
+			  ,[MARITAL]
+			  ,[HEALTH]
+			  ,[HEALTH_NAME]
+			  ,[EDUCATION]
+			  ,[EDUCATION_NAME]
+			  ,[POST]
+			  ,[HOLDEROFANOFFICE]
+			  ,[COMPANY_CHARACTER]
+			  ,[COMPANY_CHARACTER_NAME]
+			  ,[COMPANY_STAFF]
+			  ,[BOCOM_STAFF]
+			  ,[CLIENT_QUALE]
+			  ,[CLIENT_QUALE_NAME]
+			  ,[REGISTERED_PLACE]
+			  ,[REGISTERED_CAPITAL]
+			  ,[COMPANY_FAMILY]
+			  ,[FREE_CASH_FLOW]
+			  ,[BUREND_OF_DEBT]
+			  ,[COMPLETE_FLAG]
+			  ,[MODI_FLAG]
+			  ,[COMPANY_UNIT]
+			  ,[COMPANY_DEPART]
+			  ,[COMPANY_POSITION]
+			  ,[CUST_AUM]
+			  ,[CUST_AUM_NAME]
+			  ,[CUST_AGE_GROUP]
+			  ,[CUST_AGE_GROUP_NAME]
+			  ,[INVES_EXPERINCE]
+			  ,[CUST_SOURCE_EXPLAIN]
+			  ,[EAST_JG_TYPE]
+			  ,[EAST_JG_TYPE_NAME]
+			  ,[JG_WTRLX2], 0, 0,0,CARD_ID,CUST_TEL,MOBILE,O_TEL,H_TEL,BP,FAX,E_MAIL,ACTIVITY_FEE,0
+                FROM TCustomers A LEFT JOIN TCUSTSERVICEINFO C ON(C.CUST_ID = A.CUST_ID), @V_TEMPCUST1 B
+                WHERE A.CUST_ID = B.CUST_ID
+                    AND (A.CUST_ID = @IN_CUST_ID OR @IN_CUST_ID = 0 OR @IN_CUST_ID IS NULL)
+                    AND (A.CUST_NO LIKE '%'+@IN_CUST_NO OR CUST_NO LIKE @IN_CUST_NO+'_______' OR @IN_CUST_NO = N'' OR @IN_CUST_NO IS NULL)
+                    AND (A.CUST_NAME LIKE '%'+@IN_CUST_NAME+'%' OR @IN_CUST_NAME = N'' OR @IN_CUST_NAME IS NULL)
+                    AND (A.CUST_TYPE = @IN_CUST_TYPE OR ISNULL(@IN_CUST_TYPE,0) = 0 )
+                    AND (A.IS_DEAL = @IN_IS_DEAL OR ISNULL(@IN_IS_DEAL,0) = 0 )
+                    AND (A.SERVICE_MAN = @IN_INPUT_MAN OR (@V_QUERYCUSTOMERS = 1 AND A.INPUT_MAN = @IN_INPUT_MAN) OR @V_FLAG_ACCESS_ALL = 1
+                         OR EXISTS(SELECT 1 FROM @V_TEMPCUST2 Y WHERE A.CUST_ID = Y.CUST_ID) )
+					AND A.STATUS <> '112805'	 
+        END
+    END
+    ELSE
+    BEGIN
+        IF @IN_PRODUCT_ID IS NULL OR @IN_PRODUCT_ID = 0 BEGIN
+            --北京信托预约时能查出所有客户
+            IF @V_USER_ID = 2 BEGIN
+                INSERT INTO #TEMP_QUERY_TCustomers
+                  SELECT A.[CUST_ID]
+			  ,[CUST_NO]
+			  ,[CUST_NAME]
+			  ,[CUST_TEL]
+			  ,[POST_ADDRESS]
+			  ,[POST_ADDRESS2]
+			  ,[POST_CODE]
+			  ,[POST_CODE2]
+			  ,[CARD_TYPE]
+			  ,[CARD_TYPE_NAME]
+			  ,[CARD_ID]
+			  ,[CARD_VALID_DATE]
+			  ,[CARD_ADDRESS]
+			  ,[COUNTRY]
+			  ,[BIRTHDAY]
+			  ,[AGE]
+			  ,[SEX]
+			  ,[SEX_NAME]
+			  ,[O_TEL]
+			  ,[H_TEL]
+			  ,[MOBILE]
+			  ,[BP]
+			  ,[FAX]
+			  ,[E_MAIL]
+			  ,[CUST_TYPE]
+			  ,[CUST_TYPE_NAME]
+			  ,[JG_CUST_TYPE]
+			  ,[WT_FLAG]
+			  ,[WT_FLAG_NAME]
+			  ,[PASSWORD]
+			  ,[TOUCH_TYPE]
+			  ,[TOUCH_TYPE_NAME]
+			  ,[CUST_SOURCE]
+			  ,[CUST_SOURCE_NAME]
+			  ,[RG_TIMES]
+			  ,[TOTAL_MONEY]
+			  ,[CURRENT_MONEY]
+			  ,[LAST_RG_DATE]
+			  ,[INPUT_MAN]
+			  ,[INPUT_TIME]
+			  ,[CHECK_FLAG]
+			  ,[CHECK_MAN]
+			  ,[MODI_MAN]
+			  ,[MODI_TIME]
+			  ,[CANCEL_MAN]
+			  ,[CANCEL_TIME]
+			  ,[STATUS]
+			  ,[STATUS_NAME]
+			  ,[SUMMARY]
+			  ,[LEGAL_MAN]
+			  ,[LEGAL_ADDRESS]
+			  ,[REGISTRATION_ID]
+			  ,[CONTACT_MAN]
+			  ,[LIST_ID]
+			  ,[PRINT_DEPLOY_BILL]
+			  ,[PRINT_POST_INFO]
+			  ,[IS_LINK]
+			  ,[SERVICE_MAN]
+			  ,[ENT_CUST_ID]
+			  ,[VIP_CARD_ID]
+			  ,[VIP_DATE]
+			  ,[HGTZR_BH]
+			  ,[VOC_TYPE]
+			  ,[VOC_TYPE_NAME]
+			  ,[GRADE_LEVEL]
+			  ,[GRADE_LEVEL_NAME]
+			  ,[MONEY_SOURCE]
+			  ,[MONEY_SOURCE_NAME]
+			  ,[FACT_CONTROLLER]
+			  ,[FC_CARD_TYPE]
+			  ,[FC_CARD_ID]
+			  ,[FC_CARD_VALID_DATE]
+			  ,[TRANS_NAME]
+			  ,[TRANS_CARD_TYPE]
+			  ,[TRANS_CARD_NAME]
+			  ,[TRANS_CARD_NO]
+			  ,[TRANS_TEL]
+			  ,[TRANS_MOBILE]
+			  ,[TRANS_ADDRESS]
+			  ,[TRANS_POST_CODE]
+			  ,[PinYinSimple]
+			  ,[PinYinWhole]
+			  ,[ImageIdentification]
+			  ,[ReceiveServices]
+			  ,[POTENTIAL_MONEY]
+			  ,[IS_DEAL]
+			  ,[TRUE_FLAG]
+			  ,[GOV_PROV_REGIONAL]
+			  ,[GOV_PROV_REGIONAL_NAME]
+			  ,[GOV_REGIONAL]
+			  ,[GOV_REGIONAL_NAME]
+			  ,[RECOMMENDED]
+			  ,[HEAD_OFFICE_CUST_ID]
+			  ,[STATURE]
+			  ,[WEIGHT]
+			  ,[SPOUSE_NAME]
+			  ,[SPOUSE_INFO]
+			  ,[CHILDREN_NAME]
+			  ,[CHILDREN_INFO]
+			  ,[EMPLOYEE_NUM]
+			  ,[HOLDING]
+			  ,[PERSONAL_INCOME]
+			  ,[HOUSEHOLD_INCOME]
+			  ,[FEEDING_NUM_PEOPLE]
+			  ,[MAIN_SOURCE]
+			  ,[OTHER_SOURCE]
+			  ,[HOUSE_POSITION]
+			  ,[HOUSE_PROPERTY]
+			  ,[HOUSE_AREA]
+			  ,[PLAT_ENVALUATE]
+			  ,[MARKET_APPRAISAL]
+			  ,[VEHICLE_NUM]
+			  ,[VEHICLE_MAKE]
+			  ,[VEHICLE_TYPE]
+			  ,[CREDIT_TYPE]
+			  ,[CREDIT_NUM]
+			  ,[CREDIT_START_DATE]
+			  ,[CREDIT_END_DATE]
+			  ,[OTHER_INVESTMENT_STATUS]
+			  ,[OTHER_INVE_STATUS_NAME]
+			  ,[TYPE_PREF]
+			  ,[TYPE_PREF_NAME]
+			  ,[TIME_LIMIT_PREF]
+			  ,[TIME_LIMIT_PREF_NAME]
+			  ,[INVEST_PREF]
+			  ,[INVEST_PREF_NAME]
+			  ,[HOBBY_PREF]
+			  ,[HOBBY_PREF_NAME]
+			  ,[SERVICE_PREF]
+			  ,[SERVICE_PREF_NAME]
+			  ,[CONTACT_PREF]
+			  ,[CONTACT_PREF_NAME]
+			  ,[RISK_PREF]
+			  ,[RISK_PREF_NAME]
+			  ,[NATION]
+			  ,[NATION_NAME]
+			  ,[MARITAL]
+			  ,[HEALTH]
+			  ,[HEALTH_NAME]
+			  ,[EDUCATION]
+			  ,[EDUCATION_NAME]
+			  ,[POST]
+			  ,[HOLDEROFANOFFICE]
+			  ,[COMPANY_CHARACTER]
+			  ,[COMPANY_CHARACTER_NAME]
+			  ,[COMPANY_STAFF]
+			  ,[BOCOM_STAFF]
+			  ,[CLIENT_QUALE]
+			  ,[CLIENT_QUALE_NAME]
+			  ,[REGISTERED_PLACE]
+			  ,[REGISTERED_CAPITAL]
+			  ,[COMPANY_FAMILY]
+			  ,[FREE_CASH_FLOW]
+			  ,[BUREND_OF_DEBT]
+			  ,[COMPLETE_FLAG]
+			  ,[MODI_FLAG]
+			  ,[COMPANY_UNIT]
+			  ,[COMPANY_DEPART]
+			  ,[COMPANY_POSITION]
+			  ,[CUST_AUM]
+			  ,[CUST_AUM_NAME]
+			  ,[CUST_AGE_GROUP]
+			  ,[CUST_AGE_GROUP_NAME]
+			  ,[INVES_EXPERINCE]
+			  ,[CUST_SOURCE_EXPLAIN]
+			  ,[EAST_JG_TYPE]
+			  ,[EAST_JG_TYPE_NAME]
+			  ,[JG_WTRLX2], 0, 0,0,CARD_ID,CUST_TEL,MOBILE,O_TEL,H_TEL,BP,FAX,E_MAIL,ACTIVITY_FEE,0
+                    FROM TCustomers A LEFT JOIN TCUSTSERVICEINFO B ON(B.CUST_ID = A.CUST_ID)
+                    WHERE (A.CUST_ID = @IN_CUST_ID OR @IN_CUST_ID = 0 OR @IN_CUST_ID IS NULL)
+                        AND (A.CUST_NO LIKE '%'+@IN_CUST_NO OR CUST_NO LIKE @IN_CUST_NO+'_______' OR @IN_CUST_NO = N'' OR @IN_CUST_NO IS NULL)
+                        AND (A.CUST_NAME LIKE '%'+@IN_CUST_NAME+'%' OR @IN_CUST_NAME = N'' OR @IN_CUST_NAME IS NULL)
+                        AND (A.CUST_TYPE = @IN_CUST_TYPE OR ISNULL(@IN_CUST_TYPE,0) = 0 )
+                        AND (A.IS_DEAL = @IN_IS_DEAL OR ISNULL(@IN_IS_DEAL,0) = 0 )
+						AND A.STATUS <> '112805'	
+            END
+            ELSE BEGIN
+                INSERT INTO #TEMP_QUERY_TCustomers
+                  SELECT A.[CUST_ID]
+			  ,[CUST_NO]
+			  ,[CUST_NAME]
+			  ,[CUST_TEL]
+			  ,[POST_ADDRESS]
+			  ,[POST_ADDRESS2]
+			  ,[POST_CODE]
+			  ,[POST_CODE2]
+			  ,[CARD_TYPE]
+			  ,[CARD_TYPE_NAME]
+			  ,[CARD_ID]
+			  ,[CARD_VALID_DATE]
+			  ,[CARD_ADDRESS]
+			  ,[COUNTRY]
+			  ,[BIRTHDAY]
+			  ,[AGE]
+			  ,[SEX]
+			  ,[SEX_NAME]
+			  ,[O_TEL]
+			  ,[H_TEL]
+			  ,[MOBILE]
+			  ,[BP]
+			  ,[FAX]
+			  ,[E_MAIL]
+			  ,[CUST_TYPE]
+			  ,[CUST_TYPE_NAME]
+			  ,[JG_CUST_TYPE]
+			  ,[WT_FLAG]
+			  ,[WT_FLAG_NAME]
+			  ,[PASSWORD]
+			  ,[TOUCH_TYPE]
+			  ,[TOUCH_TYPE_NAME]
+			  ,[CUST_SOURCE]
+			  ,[CUST_SOURCE_NAME]
+			  ,[RG_TIMES]
+			  ,[TOTAL_MONEY]
+			  ,[CURRENT_MONEY]
+			  ,[LAST_RG_DATE]
+			  ,[INPUT_MAN]
+			  ,[INPUT_TIME]
+			  ,[CHECK_FLAG]
+			  ,[CHECK_MAN]
+			  ,[MODI_MAN]
+			  ,[MODI_TIME]
+			  ,[CANCEL_MAN]
+			  ,[CANCEL_TIME]
+			  ,[STATUS]
+			  ,[STATUS_NAME]
+			  ,[SUMMARY]
+			  ,[LEGAL_MAN]
+			  ,[LEGAL_ADDRESS]
+			  ,[REGISTRATION_ID]
+			  ,[CONTACT_MAN]
+			  ,[LIST_ID]
+			  ,[PRINT_DEPLOY_BILL]
+			  ,[PRINT_POST_INFO]
+			  ,[IS_LINK]
+			  ,[SERVICE_MAN]
+			  ,[ENT_CUST_ID]
+			  ,[VIP_CARD_ID]
+			  ,[VIP_DATE]
+			  ,[HGTZR_BH]
+			  ,[VOC_TYPE]
+			  ,[VOC_TYPE_NAME]
+			  ,[GRADE_LEVEL]
+			  ,[GRADE_LEVEL_NAME]
+			  ,[MONEY_SOURCE]
+			  ,[MONEY_SOURCE_NAME]
+			  ,[FACT_CONTROLLER]
+			  ,[FC_CARD_TYPE]
+			  ,[FC_CARD_ID]
+			  ,[FC_CARD_VALID_DATE]
+			  ,[TRANS_NAME]
+			  ,[TRANS_CARD_TYPE]
+			  ,[TRANS_CARD_NAME]
+			  ,[TRANS_CARD_NO]
+			  ,[TRANS_TEL]
+			  ,[TRANS_MOBILE]
+			  ,[TRANS_ADDRESS]
+			  ,[TRANS_POST_CODE]
+			  ,[PinYinSimple]
+			  ,[PinYinWhole]
+			  ,[ImageIdentification]
+			  ,[ReceiveServices]
+			  ,[POTENTIAL_MONEY]
+			  ,[IS_DEAL]
+			  ,[TRUE_FLAG]
+			  ,[GOV_PROV_REGIONAL]
+			  ,[GOV_PROV_REGIONAL_NAME]
+			  ,[GOV_REGIONAL]
+			  ,[GOV_REGIONAL_NAME]
+			  ,[RECOMMENDED]
+			  ,[HEAD_OFFICE_CUST_ID]
+			  ,[STATURE]
+			  ,[WEIGHT]
+			  ,[SPOUSE_NAME]
+			  ,[SPOUSE_INFO]
+			  ,[CHILDREN_NAME]
+			  ,[CHILDREN_INFO]
+			  ,[EMPLOYEE_NUM]
+			  ,[HOLDING]
+			  ,[PERSONAL_INCOME]
+			  ,[HOUSEHOLD_INCOME]
+			  ,[FEEDING_NUM_PEOPLE]
+			  ,[MAIN_SOURCE]
+			  ,[OTHER_SOURCE]
+			  ,[HOUSE_POSITION]
+			  ,[HOUSE_PROPERTY]
+			  ,[HOUSE_AREA]
+			  ,[PLAT_ENVALUATE]
+			  ,[MARKET_APPRAISAL]
+			  ,[VEHICLE_NUM]
+			  ,[VEHICLE_MAKE]
+			  ,[VEHICLE_TYPE]
+			  ,[CREDIT_TYPE]
+			  ,[CREDIT_NUM]
+			  ,[CREDIT_START_DATE]
+			  ,[CREDIT_END_DATE]
+			  ,[OTHER_INVESTMENT_STATUS]
+			  ,[OTHER_INVE_STATUS_NAME]
+			  ,[TYPE_PREF]
+			  ,[TYPE_PREF_NAME]
+			  ,[TIME_LIMIT_PREF]
+			  ,[TIME_LIMIT_PREF_NAME]
+			  ,[INVEST_PREF]
+			  ,[INVEST_PREF_NAME]
+			  ,[HOBBY_PREF]
+			  ,[HOBBY_PREF_NAME]
+			  ,[SERVICE_PREF]
+			  ,[SERVICE_PREF_NAME]
+			  ,[CONTACT_PREF]
+			  ,[CONTACT_PREF_NAME]
+			  ,[RISK_PREF]
+			  ,[RISK_PREF_NAME]
+			  ,[NATION]
+			  ,[NATION_NAME]
+			  ,[MARITAL]
+			  ,[HEALTH]
+			  ,[HEALTH_NAME]
+			  ,[EDUCATION]
+			  ,[EDUCATION_NAME]
+			  ,[POST]
+			  ,[HOLDEROFANOFFICE]
+			  ,[COMPANY_CHARACTER]
+			  ,[COMPANY_CHARACTER_NAME]
+			  ,[COMPANY_STAFF]
+			  ,[BOCOM_STAFF]
+			  ,[CLIENT_QUALE]
+			  ,[CLIENT_QUALE_NAME]
+			  ,[REGISTERED_PLACE]
+			  ,[REGISTERED_CAPITAL]
+			  ,[COMPANY_FAMILY]
+			  ,[FREE_CASH_FLOW]
+			  ,[BUREND_OF_DEBT]
+			  ,[COMPLETE_FLAG]
+			  ,[MODI_FLAG]
+			  ,[COMPANY_UNIT]
+			  ,[COMPANY_DEPART]
+			  ,[COMPANY_POSITION]
+			  ,[CUST_AUM]
+			  ,[CUST_AUM_NAME]
+			  ,[CUST_AGE_GROUP]
+			  ,[CUST_AGE_GROUP_NAME]
+			  ,[INVES_EXPERINCE]
+			  ,[CUST_SOURCE_EXPLAIN]
+			  ,[EAST_JG_TYPE]
+			  ,[EAST_JG_TYPE_NAME]
+			  ,[JG_WTRLX2], 0, 0,0,CARD_ID,CUST_TEL,MOBILE,O_TEL,H_TEL,BP,FAX,E_MAIL,ACTIVITY_FEE,0
+                    FROM TCustomers A LEFT JOIN TCUSTSERVICEINFO B ON(B.CUST_ID = A.CUST_ID)
+                    WHERE (A.CUST_ID = @IN_CUST_ID OR @IN_CUST_ID = 0 OR @IN_CUST_ID IS NULL)
+                        AND (A.CUST_NO LIKE '%'+@IN_CUST_NO OR CUST_NO LIKE @IN_CUST_NO+'_______' OR @IN_CUST_NO = N'' OR @IN_CUST_NO IS NULL)
+                        AND (A.CUST_NAME LIKE '%'+@IN_CUST_NAME+'%' OR @IN_CUST_NAME = N'' OR @IN_CUST_NAME IS NULL)
+                        AND (A.CUST_TYPE = @IN_CUST_TYPE OR ISNULL(@IN_CUST_TYPE,0) = 0 )
+                        AND (A.IS_DEAL = @IN_IS_DEAL OR ISNULL(@IN_IS_DEAL,0) = 0 )
+                        AND (A.SERVICE_MAN = @IN_INPUT_MAN OR (@V_QUERYCUSTOMERS = 1 AND A.INPUT_MAN = @IN_INPUT_MAN) OR @V_FLAG_ACCESS_ALL = 1
+                             OR EXISTS(SELECT 1 FROM @V_TEMPCUST2 Y WHERE A.CUST_ID = Y.CUST_ID) )
+						 AND A.STATUS <> '112805'
+            END
+        END
+        ELSE
+        BEGIN
+            BEGIN
+                INSERT INTO @V_TEMPCUST1 SELECT DISTINCT(CUST_ID) FROM INTRUST.dbo.TBENIFITOR A WHERE PRODUCT_ID = @IN_PRODUCT_ID AND (PROV_LEVEL=@IN_PROV_LEVEL OR ISNULL(@IN_PROV_LEVEL,'') ='')
+                        AND NOT EXISTS(SELECT 1 FROM @V_TEMPCUST1 Z WHERE A.CUST_ID = Z.CUST_ID)
+                INSERT INTO @V_TEMPCUST1 SELECT DISTINCT(CUST_ID) FROM INTRUST.dbo.TPRECONTRACT A WHERE PRODUCT_ID = @IN_PRODUCT_ID AND PRE_STATUS='111301'
+                        AND NOT EXISTS(SELECT 1 FROM @V_TEMPCUST1 Z WHERE A.CUST_ID = Z.CUST_ID)
+            END
+
+            INSERT INTO #TEMP_QUERY_TCustomers
+              SELECT A.[CUST_ID]
+			  ,[CUST_NO]
+			  ,[CUST_NAME]
+			  ,[CUST_TEL]
+			  ,[POST_ADDRESS]
+			  ,[POST_ADDRESS2]
+			  ,[POST_CODE]
+			  ,[POST_CODE2]
+			  ,[CARD_TYPE]
+			  ,[CARD_TYPE_NAME]
+			  ,[CARD_ID]
+			  ,[CARD_VALID_DATE]
+			  ,[CARD_ADDRESS]
+			  ,[COUNTRY]
+			  ,[BIRTHDAY]
+			  ,[AGE]
+			  ,[SEX]
+			  ,[SEX_NAME]
+			  ,[O_TEL]
+			  ,[H_TEL]
+			  ,[MOBILE]
+			  ,[BP]
+			  ,[FAX]
+			  ,[E_MAIL]
+			  ,[CUST_TYPE]
+			  ,[CUST_TYPE_NAME]
+			  ,[JG_CUST_TYPE]
+			  ,[WT_FLAG]
+			  ,[WT_FLAG_NAME]
+			  ,[PASSWORD]
+			  ,[TOUCH_TYPE]
+			  ,[TOUCH_TYPE_NAME]
+			  ,[CUST_SOURCE]
+			  ,[CUST_SOURCE_NAME]
+			  ,[RG_TIMES]
+			  ,[TOTAL_MONEY]
+			  ,[CURRENT_MONEY]
+			  ,[LAST_RG_DATE]
+			  ,[INPUT_MAN]
+			  ,[INPUT_TIME]
+			  ,[CHECK_FLAG]
+			  ,[CHECK_MAN]
+			  ,[MODI_MAN]
+			  ,[MODI_TIME]
+			  ,[CANCEL_MAN]
+			  ,[CANCEL_TIME]
+			  ,[STATUS]
+			  ,[STATUS_NAME]
+			  ,[SUMMARY]
+			  ,[LEGAL_MAN]
+			  ,[LEGAL_ADDRESS]
+			  ,[REGISTRATION_ID]
+			  ,[CONTACT_MAN]
+			  ,[LIST_ID]
+			  ,[PRINT_DEPLOY_BILL]
+			  ,[PRINT_POST_INFO]
+			  ,[IS_LINK]
+			  ,[SERVICE_MAN]
+			  ,[ENT_CUST_ID]
+			  ,[VIP_CARD_ID]
+			  ,[VIP_DATE]
+			  ,[HGTZR_BH]
+			  ,[VOC_TYPE]
+			  ,[VOC_TYPE_NAME]
+			  ,[GRADE_LEVEL]
+			  ,[GRADE_LEVEL_NAME]
+			  ,[MONEY_SOURCE]
+			  ,[MONEY_SOURCE_NAME]
+			  ,[FACT_CONTROLLER]
+			  ,[FC_CARD_TYPE]
+			  ,[FC_CARD_ID]
+			  ,[FC_CARD_VALID_DATE]
+			  ,[TRANS_NAME]
+			  ,[TRANS_CARD_TYPE]
+			  ,[TRANS_CARD_NAME]
+			  ,[TRANS_CARD_NO]
+			  ,[TRANS_TEL]
+			  ,[TRANS_MOBILE]
+			  ,[TRANS_ADDRESS]
+			  ,[TRANS_POST_CODE]
+			  ,[PinYinSimple]
+			  ,[PinYinWhole]
+			  ,[ImageIdentification]
+			  ,[ReceiveServices]
+			  ,[POTENTIAL_MONEY]
+			  ,[IS_DEAL]
+			  ,[TRUE_FLAG]
+			  ,[GOV_PROV_REGIONAL]
+			  ,[GOV_PROV_REGIONAL_NAME]
+			  ,[GOV_REGIONAL]
+			  ,[GOV_REGIONAL_NAME]
+			  ,[RECOMMENDED]
+			  ,[HEAD_OFFICE_CUST_ID]
+			  ,[STATURE]
+			  ,[WEIGHT]
+			  ,[SPOUSE_NAME]
+			  ,[SPOUSE_INFO]
+			  ,[CHILDREN_NAME]
+			  ,[CHILDREN_INFO]
+			  ,[EMPLOYEE_NUM]
+			  ,[HOLDING]
+			  ,[PERSONAL_INCOME]
+			  ,[HOUSEHOLD_INCOME]
+			  ,[FEEDING_NUM_PEOPLE]
+			  ,[MAIN_SOURCE]
+			  ,[OTHER_SOURCE]
+			  ,[HOUSE_POSITION]
+			  ,[HOUSE_PROPERTY]
+			  ,[HOUSE_AREA]
+			  ,[PLAT_ENVALUATE]
+			  ,[MARKET_APPRAISAL]
+			  ,[VEHICLE_NUM]
+			  ,[VEHICLE_MAKE]
+			  ,[VEHICLE_TYPE]
+			  ,[CREDIT_TYPE]
+			  ,[CREDIT_NUM]
+			  ,[CREDIT_START_DATE]
+			  ,[CREDIT_END_DATE]
+			  ,[OTHER_INVESTMENT_STATUS]
+			  ,[OTHER_INVE_STATUS_NAME]
+			  ,[TYPE_PREF]
+			  ,[TYPE_PREF_NAME]
+			  ,[TIME_LIMIT_PREF]
+			  ,[TIME_LIMIT_PREF_NAME]
+			  ,[INVEST_PREF]
+			  ,[INVEST_PREF_NAME]
+			  ,[HOBBY_PREF]
+			  ,[HOBBY_PREF_NAME]
+			  ,[SERVICE_PREF]
+			  ,[SERVICE_PREF_NAME]
+			  ,[CONTACT_PREF]
+			  ,[CONTACT_PREF_NAME]
+			  ,[RISK_PREF]
+			  ,[RISK_PREF_NAME]
+			  ,[NATION]
+			  ,[NATION_NAME]
+			  ,[MARITAL]
+			  ,[HEALTH]
+			  ,[HEALTH_NAME]
+			  ,[EDUCATION]
+			  ,[EDUCATION_NAME]
+			  ,[POST]
+			  ,[HOLDEROFANOFFICE]
+			  ,[COMPANY_CHARACTER]
+			  ,[COMPANY_CHARACTER_NAME]
+			  ,[COMPANY_STAFF]
+			  ,[BOCOM_STAFF]
+			  ,[CLIENT_QUALE]
+			  ,[CLIENT_QUALE_NAME]
+			  ,[REGISTERED_PLACE]
+			  ,[REGISTERED_CAPITAL]
+			  ,[COMPANY_FAMILY]
+			  ,[FREE_CASH_FLOW]
+			  ,[BUREND_OF_DEBT]
+			  ,[COMPLETE_FLAG]
+			  ,[MODI_FLAG]
+			  ,[COMPANY_UNIT]
+			  ,[COMPANY_DEPART]
+			  ,[COMPANY_POSITION]
+			  ,[CUST_AUM]
+			  ,[CUST_AUM_NAME]
+			  ,[CUST_AGE_GROUP]
+			  ,[CUST_AGE_GROUP_NAME]
+			  ,[INVES_EXPERINCE]
+			  ,[CUST_SOURCE_EXPLAIN]
+			  ,[EAST_JG_TYPE]
+			  ,[EAST_JG_TYPE_NAME]
+			  ,[JG_WTRLX2], 0, 0,0,CARD_ID,CUST_TEL,MOBILE,O_TEL,H_TEL,BP,FAX,E_MAIL,ACTIVITY_FEE,0
+                FROM TCustomers A LEFT JOIN TCUSTSERVICEINFO C ON(C.CUST_ID = A.CUST_ID), @V_TEMPCUST1 B
+                WHERE A.CUST_ID = B.CUST_ID
+                    AND (A.CUST_ID = @IN_CUST_ID OR @IN_CUST_ID = 0 OR @IN_CUST_ID IS NULL)
+                    AND (A.CUST_NO LIKE '%'+@IN_CUST_NO OR CUST_NO LIKE @IN_CUST_NO+'_______' OR @IN_CUST_NO = N'' OR @IN_CUST_NO IS NULL)
+                    AND (A.CUST_NAME LIKE '%'+@IN_CUST_NAME+'%' OR @IN_CUST_NAME = N'' OR @IN_CUST_NAME IS NULL)
+                    AND (A.CUST_TYPE = @IN_CUST_TYPE OR ISNULL(@IN_CUST_TYPE,0) = 0 )
+                    AND (A.IS_DEAL = @IN_IS_DEAL OR ISNULL(@IN_IS_DEAL,0) = 0 )
+                    AND (A.SERVICE_MAN = @IN_INPUT_MAN OR (@V_QUERYCUSTOMERS = 1 AND A.INPUT_MAN = @IN_INPUT_MAN) OR @V_FLAG_ACCESS_ALL = 1
+                         OR EXISTS(SELECT 1 FROM @V_TEMPCUST2 Y WHERE A.CUST_ID = Y.CUST_ID) )
+					AND A.STATUS <> '112805'	 
+
+        END
+    END
+
+    --开关控制 加密重要联系信息
+    IF(@V_FLAG_ENCRYPTION = 1)
+    BEGIN
+		IF(@V_FACT_POTENTIAL_FLAG_FZ = 2)
+		BEGIN
+        UPDATE #TEMP_QUERY_TCustomers
+        SET --CARD_ID = ISNULL(stuff(CARD_ID,1,len(CARD_ID)-@V_ENCRYPTION_SIZE,'******'),'****'),
+            CUST_TEL = ISNULL(stuff(CUST_TEL,1,len(CUST_TEL)-@V_ENCRYPTION_SIZE,'******'),'****'),
+            O_TEL = ISNULL(stuff(O_TEL,1,len(O_TEL)-@V_ENCRYPTION_SIZE,'******'),'****'),
+            H_TEL = ISNULL(stuff(H_TEL,1,len(H_TEL)-@V_ENCRYPTION_SIZE,'******'),'****'),
+            E_MAIL = ISNULL(stuff(E_MAIL,1,charindex('@',E_MAIL)-1,'******'),'****'),
+            FAX = ISNULL(stuff(FAX,1,len(FAX)-@V_ENCRYPTION_SIZE,'******'),'****'),
+            MOBILE = ISNULL(stuff(MOBILE,1,len(MOBILE)-@V_ENCRYPTION_SIZE,'******'),'****'),
+            BP = ISNULL(stuff(BP,1,len(BP)-@V_ENCRYPTION_SIZE,'******'),'****'),
+            POST_ADDRESS = ISNULL(stuff(POST_ADDRESS,1,len(POST_ADDRESS)-@V_ENCRYPTION_SIZE,'******'),'****'),
+            H_CUST_TEL = ISNULL(stuff(H_CUST_TEL,1,len(H_CUST_TEL)-@V_ENCRYPTION_SIZE,'******'),'****'),
+            H_MOBILE   = ISNULL(stuff(H_MOBILE,1,len(H_MOBILE)-@V_ENCRYPTION_SIZE,'******'),'****'),
+            H_O_TEL    = ISNULL(stuff(H_O_TEL,1,len(H_O_TEL)-@V_ENCRYPTION_SIZE,'******'),'****'),
+            H_H_TEL    = ISNULL(stuff(H_H_TEL,1,len(H_H_TEL)-@V_ENCRYPTION_SIZE,'******'),'****'),
+            H_BP       = ISNULL(stuff(H_BP,1,len(H_BP)-@V_ENCRYPTION_SIZE,'******'),'****'),
+            H_FAX      = ISNULL(stuff(H_FAX,1,len(H_FAX)-@V_ENCRYPTION_SIZE,'******'),'****'),
+            H_E_MAIL   = ISNULL(stuff(H_E_MAIL,1,len(H_E_MAIL)-@V_ENCRYPTION_SIZE,'******'),'****')
+        FROM #TEMP_QUERY_TCustomers A
+        WHERE ISNULL(SERVICE_MAN,0) <> @IN_INPUT_MAN --不是客户经理本人的客户
+            AND (IS_DEAL = @V_IS_DEAL OR ISNULL(@V_IS_DEAL,0)=0)--潜在or事实 客户加密
+            AND (NOT EXISTS(SELECT CUST_ID FROM @V_TEMPCUST2 B WHERE A.CUST_ID = B.CUST_ID))--没有授权的客户都不能看到联系方式
+		END
+		ELSE
+		BEGIN
+		UPDATE #TEMP_QUERY_TCustomers
+		SET --CUST_TEL = ISNULL(stuff(A.CUST_TEL,len(A.CUST_TEL)-@V_ENCRYPTION_SIZE+1,len(A.CUST_TEL),'******'),'****'),
+            CUST_TEL = ISNULL(stuff(CUST_TEL,len(CUST_TEL)-@V_ENCRYPTION_SIZE+1,len(CUST_TEL),'******'),'****'),
+            O_TEL = ISNULL(stuff(O_TEL,len(O_TEL)-@V_ENCRYPTION_SIZE+1,len(O_TEL),'******'),'****'),
+            H_TEL = ISNULL(stuff(H_TEL,+len(H_TEL)-@V_ENCRYPTION_SIZE+1,len(H_TEL),'******'),'****'),
+            E_MAIL = ISNULL(stuff(E_MAIL,1,charindex('@',E_MAIL)-1,'******'),'****'),
+            FAX = ISNULL(stuff(FAX,len(FAX)-@V_ENCRYPTION_SIZE+1,len(FAX),'******'),'****'),
+            MOBILE = ISNULL(stuff(MOBILE,len(MOBILE)-@V_ENCRYPTION_SIZE+1,len(MOBILE),'******'),'****'),
+            BP = ISNULL(stuff(BP,len(BP)-@V_ENCRYPTION_SIZE+1,len(BP)-@V_ENCRYPTION_SIZE,'******'),'****'),
+            POST_ADDRESS = ISNULL(stuff(POST_ADDRESS,len(POST_ADDRESS)-@V_ENCRYPTION_SIZE+1,len(POST_ADDRESS),'******'),'****'),
+            H_CUST_TEL = ISNULL(stuff(H_CUST_TEL,len(H_CUST_TEL)-@V_ENCRYPTION_SIZE+1,len(H_CUST_TEL),'******'),'****'),
+            H_MOBILE   = ISNULL(stuff(H_MOBILE,len(H_MOBILE)-@V_ENCRYPTION_SIZE+1,len(H_MOBILE),'******'),'****'),
+            H_O_TEL    = ISNULL(stuff(H_O_TEL,len(H_O_TEL)-@V_ENCRYPTION_SIZE+1,len(H_O_TEL),'******'),'****'),
+            H_H_TEL    = ISNULL(stuff(H_H_TEL,len(H_H_TEL)-@V_ENCRYPTION_SIZE+1,len(H_H_TEL),'******'),'****'),
+            H_BP       = ISNULL(stuff(H_BP,len(H_BP)-@V_ENCRYPTION_SIZE+1,len(H_BP),'******'),'****'),
+            H_FAX      = ISNULL(stuff(H_FAX,len(H_FAX)-@V_ENCRYPTION_SIZE+1,len(H_FAX),'******'),'****'),
+            H_E_MAIL   = ISNULL(stuff(H_E_MAIL,1,len(H_E_MAIL)-@V_ENCRYPTION_SIZE,'******'),'****')
+        FROM #TEMP_QUERY_TCustomers A
+		END
+    END
+
+    BEGIN
+        UPDATE #TEMP_QUERY_TCustomers SET BEN_AMOUNT = B.BEN_AMOUNT
+            FROM #TEMP_QUERY_TCustomers A, (SELECT CUST_ID, SUM(BEN_AMOUNT) AS BEN_AMOUNT FROM INTRUST.dbo.TBENIFITOR GROUP BY CUST_ID ) B
+            WHERE A.CUST_ID = B.CUST_ID
+        IF @IN_PRODUCT_ID IS NULL OR @IN_PRODUCT_ID = 0
+            UPDATE #TEMP_QUERY_TCustomers SET CURR_TO_AMOUNT = B.CURR_TO_AMOUNT
+                FROM #TEMP_QUERY_TCustomers A, (SELECT CUST_ID, SUM(TO_AMOUNT) AS CURR_TO_AMOUNT FROM INTRUST.dbo.TCONTRACT GROUP BY CUST_ID ) B
+                WHERE A.CUST_ID = B.CUST_ID
+        ELSE
+            UPDATE #TEMP_QUERY_TCustomers SET CURR_TO_AMOUNT = B.CURR_TO_AMOUNT
+                FROM #TEMP_QUERY_TCustomers A, (SELECT CUST_ID, SUM(TO_AMOUNT) AS CURR_TO_AMOUNT FROM INTRUST.dbo.TCONTRACT WHERE PRODUCT_ID = @IN_PRODUCT_ID GROUP BY CUST_ID ) B
+                WHERE A.CUST_ID = B.CUST_ID
+    END
+    --20100302 dongyg EFCRM.TCustomers.TOTAL_MONEY/CURRENT_MONEY 的值未根据业务发生而变化，需要根据 INTRUST.TCUSTOMERINFO.TOTAL_MONEY/CURRENT_MONEY 修正
+    BEGIN
+        UPDATE #TEMP_QUERY_TCustomers
+            SET TOTAL_MONEY = B.TOTAL_MONEY, CURRENT_MONEY = B.CURRENT_MONEY
+            FROM #TEMP_QUERY_TCustomers A, INTRUST..TCUSTOMERINFO B
+            WHERE A.CUST_ID = B.CUST_ID
+    END
+	--统计导出的记录数
+    DECLARE @V_EXPORT_NUM INT
+	IF @IN_EXPORT_FLAG>0
+	BEGIN
+		SELECT @V_EXPORT_NUM=COUNT(0) FROM #TEMP_QUERY_TCustomers A
+            LEFT JOIN TOPERATOR B ON A.SERVICE_MAN = B.OP_CODE
+            LEFT JOIN TCustManagers C ON A.SERVICE_MAN = C.ManagerID
+            LEFT JOIN TMANAGERTEAMMEMBERS D ON A.SERVICE_MAN = D.MANAGERID
+        WHERE (ISNULL(@IN_CUST_TEL,'') = '' OR A.H_TEL LIKE '%'+@IN_CUST_TEL+'%'
+                                            OR A.O_TEL LIKE '%'+@IN_CUST_TEL+'%'
+                                            OR A.MOBILE LIKE '%'+@IN_CUST_TEL+'%'
+                                            OR A.BP LIKE '%'+@IN_CUST_TEL+'%')
+    END
+    --导出时，做日志记录	
+	IF @IN_EXPORT_FLAG=1 --客户信息导出
+		INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+			VALUES('20301','客户信息导出',@IN_INPUT_MAN,'客户信息导出数：'+CAST(@V_EXPORT_NUM AS VARCHAR)+'；')
+	ELSE IF @IN_EXPORT_FLAG=2 --客户手机
+	    INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+			VALUES('20301','客户信息导出',@IN_INPUT_MAN,'客户手机导出数：'+CAST(@V_EXPORT_NUM AS VARCHAR)+'；')
+	ELSE IF @IN_EXPORT_FLAG=3 --客户通讯录
+	    INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+			VALUES('20301','客户信息导出',@IN_INPUT_MAN,'客户通讯录导出数：'+CAST(@V_EXPORT_NUM AS VARCHAR)+'；')
+	
+	UPDATE #TEMP_QUERY_TCustomers 
+	    SET TOTAL_COUNT= TOTAL_COUNT + (SELECT COUNT(*) FROM INTRUST..TCONTRACT WHERE CUST_ID=#TEMP_QUERY_TCustomers.CUST_ID)    
+	UPDATE #TEMP_QUERY_TCustomers
+	    SET TOTAL_COUNT= TOTAL_COUNT + (SELECT COUNT(*) FROM INTRUST..TCONTRACTSG WHERE CUST_ID=#TEMP_QUERY_TCustomers.CUST_ID)
+	UPDATE #TEMP_QUERY_TCustomers
+	    SET TOTAL_COUNT= TOTAL_COUNT + (SELECT COUNT(*) FROM TCUSTINFOADD WHERE CUST_ID=#TEMP_QUERY_TCustomers.CUST_ID)
+	    WHERE TOTAL_COUNT=0
+	            		
+    SELECT TR.TC_TEL AS V_TEL_NUM,A.*, B.OP_NAME AS SERVICE_MAN_NAME, C.Extension EXTENSION, (CASE WHEN ISNULL(D.TEAM_ID,0) = ISNULL(@V_INPUT_MAN_TEAM_ID,0) THEN 1 ELSE 0 END) IS_TEAM
+			,E.CLASSDETAIL_NAME CUST_LEVEL_NAME
+        FROM #TEMP_QUERY_TCustomers A
+            LEFT JOIN TOPERATOR B ON A.SERVICE_MAN = B.OP_CODE
+            LEFT JOIN TCustManagers C ON A.SERVICE_MAN = C.ManagerID
+            LEFT JOIN TMANAGERTEAMMEMBERS D ON A.SERVICE_MAN = D.MANAGERID
+            LEFT JOIN TCustomerClass E ON E.CLASSDEFINE_ID=12 AND E.CUST_ID=A.CUST_ID
+            --todo 添加 绑定号码 
+			LEFT JOIN TNUMBER_RELATION TR ON TR.FK_TCUSTOMERS=A.CUST_ID
+        WHERE (ISNULL(@IN_CUST_TEL,'') = '' OR A.H_TEL LIKE '%'+@IN_CUST_TEL+'%'
+                                            OR A.O_TEL LIKE '%'+@IN_CUST_TEL+'%'
+                                            OR A.MOBILE LIKE '%'+@IN_CUST_TEL+'%'
+                                            OR A.BP LIKE '%'+@IN_CUST_TEL+'%')
+        ORDER BY CURRENT_MONEY DESC
+GO

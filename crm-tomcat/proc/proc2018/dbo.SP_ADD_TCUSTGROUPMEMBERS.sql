@@ -1,0 +1,36 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_ADD_TCUSTGROUPMEMBERS    @IN_GROUPID       INT,      --客户分组ID（TCustGroups.GroupID）
+                                             @IN_CUSTID        INT,      --客户ID
+                                             @IN_INPUT_MAN     INT =  0  --输入员
+WITH ENCRYPTION
+AS
+    DECLARE @V_RET_CODE INT, @IBUSI_FLAG INT,@SBUSI_NAME NVARCHAR(40), @SSUMMARY NVARCHAR(200)
+    SELECT @V_RET_CODE = -30301000, @IBUSI_FLAG = 30301
+    SELECT @SBUSI_NAME = N'添加客户分组成员', @SSUMMARY = N'添加客户分组成员'
+    IF EXISTS(SELECT 1 FROM TCustGroupMembers WHERE GroupID = @IN_GROUPID AND CUST_ID = @IN_CUSTID)
+        RETURN @V_RET_CODE - 1 --客户组中该客户已存在，不允许重复添加
+    DECLARE @V_RIGHT_ID INT,@V_LEVEL_ID INT
+    IF EXISTS (SELECT 1 FROM TCustGroups WHERE GroupID = @IN_GROUPID)
+    BEGIN
+        BEGIN TRANSACTION
+        INSERT INTO TCustGroupMembers(GroupID,CUST_ID,InsertMan,InsertTime)
+            VALUES (@IN_GROUPID,@IN_CUSTID,@IN_INPUT_MAN,CONVERT(DATETIME,CONVERT(NVARCHAR(64),GETDATE(),120)) )
+        IF @@ERROR <> 0
+        BEGIN
+            ROLLBACK TRANSACTION
+            RETURN -100
+        END
+        SET @SSUMMARY = N'添加客户分组成员，操作员：' + CAST(@IN_INPUT_MAN AS NVARCHAR(10))
+        INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+        VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+        IF @@ERROR <> 0
+        BEGIN
+            ROLLBACK TRANSACTION
+            RETURN -100
+        END
+        COMMIT TRANSACTION
+    END
+GO

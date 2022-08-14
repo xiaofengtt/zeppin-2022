@@ -1,0 +1,86 @@
+.xWin {
+	position: absolute;
+	cursor: default;
+	border-width: 2px;
+	border-style: outset;
+	padding: 0px;
+	font-size: 12px;
+	overflow: hidden;
+	display: block;
+}
+
+.xWin .xTitle {
+	color: #FFFFFF;
+	font-weight: bold;
+	height: 20px;
+	display: block;
+	BACKGROUND-IMAGE: url(../images/headerbg.gif);
+}
+
+.xWin .xTitle input {
+	background-color: transparent;
+	color: #FFFFFF;
+	border-width: 0px;
+	border-style: solid;
+	height: 20px;
+	width: 16px;
+	line-height: 20px;
+	font-family: webdings;
+	font-size: 10px;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	float: right;
+	display: block;
+}
+
+.xWin .xTitle .xWinTitleCloseButton {
+	
+}
+
+.xWin .xTitle .xWinTitleMaxButton {
+	
+}
+
+.xWin .xTitle .xWinTitleMinButton {
+	
+}
+
+.xWin .xTitle .xWinTitleContent {
+	color: #FFFFFF;
+	font-size: 12px;
+	height: 18px;
+	line-height: 20px;
+	margin: 0px;
+	padding-left: 3px;
+	float: left;
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-align: left;
+	cursor: move;
+}
+
+.xWin .xWinBody {
+	margin: 0px;
+	background-color: #ffffff;
+	padding: 3px;
+	font-size: 12px;
+	overflow: auto;
+	position: relative;
+	display: block;
+}
+
+.xShadow {
+	position: absolute;
+	display: block;
+	color: #FFFFFF;
+}
+
+.xBIframe {
+	position: absolute;
+	visibility: inherit;
+	top: 0px;
+	left: 0px;
+	z-index: -1;	
+}

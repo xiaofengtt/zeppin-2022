@@ -1,0 +1,14 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_QUERY_CustomerClass1 @IN_CUST_ID    INT,
+                                         @IN_INPUT_MAN  INT
+
+WITH ENCRYPTION
+AS
+    SELECT A.*, B.CUST_NAME
+    FROM TCustomerClass A, TCustomers B
+    WHERE A.CUST_ID = B.CUST_ID
+        AND(A.CUST_ID = @IN_CUST_ID OR @IN_CUST_ID IS NULL OR @IN_CUST_ID = 0)
+GO

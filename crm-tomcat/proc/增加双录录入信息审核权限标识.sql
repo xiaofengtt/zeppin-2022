@@ -1,0 +1,1 @@
+INSERT [dbo].[TFUNCTYPE] ([MENU_ID], [FUNC_ID], [FUNC_NAME], [USER_ID], [URL], [ICON_CLS]) VALUES (N'W0201', 205, N'Ë«Â¼Â¼ÈëÐÅÏ¢ÉóºË', 0, NULL, NULL)

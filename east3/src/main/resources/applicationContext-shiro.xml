@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.2.xsd
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+       http://www.springframework.org/schema/util 
+       http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+       
+    <description>apache shiro配置</description>
+   
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/views/login.jsp"/>
+        <property name="successUrl" value="/views/index.jsp"/>
+        <property name="unauthorizedUrl" value="/views/401.jsp"/>
+        <property name="filters">  
+            <map>  
+                <entry key="authc">  
+                    <bean class="cn.zeppin.product.itic.backadmin.filter.CaptchaFormAuthenticationFilter"></bean>  
+                </entry>  
+                <entry key="roles">  
+                    <bean class="cn.zeppin.product.itic.backadmin.filter.RoleAuthorizationFilter"></bean>  
+                </entry>
+                <entry key="perms">  
+                    <bean class="cn.zeppin.product.itic.backadmin.filter.PermsAuthorizationFilter"></bean>  
+                </entry>    
+            </map>  
+        </property>  
+        <property name="filterChainDefinitions">
+            <value>
+                <!-- 登录，登出，验证码 ，改密码-->
+				/rest/backadmin/operator/login = anon
+				/rest/backadmin/operator/logout = anon
+                /rest/backadmin/operator/password = authc
+                
+				<!--角色及用户权限 -->
+				/rest/backadmin/input/output = authc
+				/rest/backadmin/log/checkList = authc
+				/rest/backadmin/check/** = authc,roles[superAdmin]
+				/rest/backadmin/opManage/** = authc,roles[superAdmin]
+				/rest/backadmin/role/** = authc,roles[superAdmin]
+                /rest/backadmin/operatorMethod/** = authc,roles[superAdmin]
+				/rest/backadmin/operatorMenu/** = authc,roles[superAdmin]
+				/rest/backadmin/log/** = authc,roles[superAdmin]
+				/rest/backadmin/input/** = authc,roles[superAdmin]
+                /rest/backadmin/cross/admin* = authc,roles[superAdmin]
+				<!--导航信息 -->
+                /rest/backadmin/menu/list = authc
+                
+                <!--数据权限 -->
+                /rest/backadmin/TGgGdxxb/list = authc,perms[TGgGdxxb:list]
+                /rest/backadmin/TGgGdxxb/get = authc,perms[TGgGdxxb:list]
+                /rest/backadmin/TGgGdxxb/editGet = authc,perms[TGgGdxxb:list]
+                /rest/backadmin/TGgGdxxb/add* = authc,perms[TGgGdxxb:edit]
+                /rest/backadmin/TGgGdxxb/edit = authc,perms[TGgGdxxb:edit]
+                /rest/backadmin/TGgGdxxb/delete = authc,perms[TGgGdxxb:edit]
+                /rest/backadmin/TGgGdxxb/checkList = authc,perms[TGgGdxxb:edit]
+                /rest/backadmin/TGgGdxxb/check* = authc,perms[TGgGdxxb:check]
+                
+                /rest/backadmin/TGgJgxxb/list = authc,perms[TGgJgxxb:list]
+                /rest/backadmin/TGgJgxxb/get = authc,perms[TGgJgxxb:list]
+                /rest/backadmin/TGgJgxxb/add* = authc,perms[TGgJgxxb:edit]
+                /rest/backadmin/TGgJgxxb/edit = authc,perms[TGgJgxxb:edit]
+                /rest/backadmin/TGgJgxxb/delete = authc,perms[TGgJgxxb:edit]
+                /rest/backadmin/TGgJgxxb/checkList = authc,perms[TGgJgxxb:edit]
+                /rest/backadmin/TGgJgxxb/check* = authc,perms[TGgJgxxb:check]
+                
+                /rest/backadmin/TGgYgxxb/list = authc,perms[TGgYgxxb:list]
+                /rest/backadmin/TGgYgxxb/get = authc,perms[TGgYgxxb:list]
+                /rest/backadmin/TGgYgxxb/add* = authc,perms[TGgYgxxb:edit]
+                /rest/backadmin/TGgYgxxb/edit = authc,perms[TGgYgxxb:edit]
+                /rest/backadmin/TGgYgxxb/delete = authc,perms[TGgYgxxb:edit]
+                /rest/backadmin/TGgYgxxb/checkList = authc,perms[TGgYgxxb:edit]
+                /rest/backadmin/TGgYgxxb/check* = authc,perms[TGgYgxxb:check]
+                
+                /rest/backadmin/TGyGydbgxb/list = authc,perms[TGyGydbgxb:list]
+                /rest/backadmin/TGyGydbgxb/get = authc,perms[TGyGydbgxb:list]
+                /rest/backadmin/TGyGydbgxb/add* = authc,perms[TGyGydbgxb:edit]
+                /rest/backadmin/TGyGydbgxb/edit = authc,perms[TGyGydbgxb:edit]
+                /rest/backadmin/TGyGydbgxb/delete = authc,perms[TGyGydbgxb:edit]
+                /rest/backadmin/TGyGydbgxb/checkList = authc,perms[TGyGydbgxb:edit]
+                /rest/backadmin/TGyGydbgxb/check* = authc,perms[TGyGydbgxb:check]
+                
+                /rest/backadmin/TGyGydbhtb/list = authc,perms[TGyGydbhtb:list]
+                /rest/backadmin/TGyGydbhtb/get = authc,perms[TGyGydbhtb:list]
+                /rest/backadmin/TGyGydbhtb/add* = authc,perms[TGyGydbhtb:edit]
+                /rest/backadmin/TGyGydbhtb/edit = authc,perms[TGyGydbhtb:edit]
+                /rest/backadmin/TGyGydbhtb/delete = authc,perms[TGyGydbhtb:edit]
+                /rest/backadmin/TGyGydbhtb/checkList = authc,perms[TGyGydbhtb:edit]
+                /rest/backadmin/TGyGydbhtb/check* = authc,perms[TGyGydbhtb:check]
+                
+                /rest/backadmin/TGyGydzywb/list = authc,perms[TGyGydzywb:list]
+                /rest/backadmin/TGyGydzywb/get = authc,perms[TGyGydzywb:list]
+                /rest/backadmin/TGyGydzywb/add* = authc,perms[TGyGydzywb:edit]
+                /rest/backadmin/TGyGydzywb/edit = authc,perms[TGyGydzywb:edit]
+                /rest/backadmin/TGyGydzywb/delete = authc,perms[TGyGydzywb:edit]
+                /rest/backadmin/TGyGydzywb/checkList = authc,perms[TGyGydzywb:edit]
+                /rest/backadmin/TGyGydzywb/check* = authc,perms[TGyGydzywb:check]
+                
+                /rest/backadmin/TGyGyzhxx/list = authc,perms[TGyGyzhxx:list]
+                /rest/backadmin/TGyGyzhxx/get = authc,perms[TGyGyzhxx:list]
+                /rest/backadmin/TGyGyzhxx/add* = authc,perms[TGyGyzhxx:edit]
+                /rest/backadmin/TGyGyzhxx/edit = authc,perms[TGyGyzhxx:edit]
+                /rest/backadmin/TGyGyzhxx/delete = authc,perms[TGyGyzhxx:edit]
+                /rest/backadmin/TGyGyzhxx/checkList = authc,perms[TGyGyzhxx:edit]
+                /rest/backadmin/TGyGyzhxx/check* = authc,perms[TGyGyzhxx:check]
+                
+                /rest/backadmin/TGyGyzjyyjyl/list = authc,perms[TGyGyzjyyjyl:list]
+                /rest/backadmin/TGyGyzjyyjyl/get = authc,perms[TGyGyzjyyjyl:list]
+                /rest/backadmin/TGyGyzjyyjyl/add* = authc,perms[TGyGyzjyyjyl:edit]
+                /rest/backadmin/TGyGyzjyyjyl/edit = authc,perms[TGyGyzjyyjyl:edit]
+                /rest/backadmin/TGyGyzjyyjyl/delete = authc,perms[TGyGyzjyyjyl:edit]
+                /rest/backadmin/TGyGyzjyyjyl/checkList = authc,perms[TGyGyzjyyjyl:edit]
+                /rest/backadmin/TGyGyzjyyjyl/check* = authc,perms[TGyGyzjyyjyl:check]
+                
+                /rest/backadmin/TGyGyzzyyhtxx/list = authc,perms[TGyGyzzyyhtxx:list]
+                /rest/backadmin/TGyGyzzyyhtxx/get = authc,perms[TGyGyzzyyhtxx:list]
+                /rest/backadmin/TGyGyzzyyhtxx/add* = authc,perms[TGyGyzzyyhtxx:edit]
+                /rest/backadmin/TGyGyzzyyhtxx/edit = authc,perms[TGyGyzzyyhtxx:edit]
+                /rest/backadmin/TGyGyzzyyhtxx/delete = authc,perms[TGyGyzzyyhtxx:edit]
+                /rest/backadmin/TGyGyzzyyhtxx/checkList = authc,perms[TGyGyzzyyhtxx:edit]
+                /rest/backadmin/TGyGyzzyyhtxx/check* = authc,perms[TGyGyzzyyhtxx:check]
+                
+                /rest/backadmin/TJyQjglxxfzq/list = authc,perms[TJyQjglxxfzq:list]
+                /rest/backadmin/TJyQjglxxfzq/get = authc,perms[TJyQjglxxfzq:list]
+                /rest/backadmin/TJyQjglxxfzq/add* = authc,perms[TJyQjglxxfzq:edit]
+                /rest/backadmin/TJyQjglxxfzq/edit = authc,perms[TJyQjglxxfzq:edit]
+                /rest/backadmin/TJyQjglxxfzq/delete = authc,perms[TJyQjglxxfzq:edit]
+                /rest/backadmin/TJyQjglxxfzq/checkList = authc,perms[TJyQjglxxfzq:edit]
+                /rest/backadmin/TJyQjglxxfzq/check* = authc,perms[TJyQjglxxfzq:check]
+                
+                /rest/backadmin/TJyQjglxxzq/list = authc,perms[TJyQjglxxzq:list]
+                /rest/backadmin/TJyQjglxxzq/get = authc,perms[TJyQjglxxzq:list]
+                /rest/backadmin/TJyQjglxxzq/add* = authc,perms[TJyQjglxxzq:edit]
+                /rest/backadmin/TJyQjglxxzq/edit = authc,perms[TJyQjglxxzq:edit]
+                /rest/backadmin/TJyQjglxxzq/delete = authc,perms[TJyQjglxxzq:edit]
+                /rest/backadmin/TJyQjglxxzq/checkList = authc,perms[TJyQjglxxzq:edit]
+                /rest/backadmin/TJyQjglxxzq/check* = authc,perms[TJyQjglxxzq:check]
+                
+                /rest/backadmin/TJyXtsypz/list = authc,perms[TJyXtsypz:list]
+                /rest/backadmin/TJyXtsypz/get = authc,perms[TJyXtsypz:list]
+                /rest/backadmin/TJyXtsypz/add* = authc,perms[TJyXtsypz:edit]
+                /rest/backadmin/TJyXtsypz/edit = authc,perms[TJyXtsypz:edit]
+                /rest/backadmin/TJyXtsypz/delete = authc,perms[TJyXtsypz:edit]
+                /rest/backadmin/TJyXtsypz/checkList = authc,perms[TJyXtsypz:edit]
+                /rest/backadmin/TJyXtsypz/check* = authc,perms[TJyXtsypz:check]
+                
+                /rest/backadmin/TJyXtsyqzrxx/list = authc,perms[TJyXtsyqzrxx:list]
+                /rest/backadmin/TJyXtsyqzrxx/get = authc,perms[TJyXtsyqzrxx:list]
+                /rest/backadmin/TJyXtsyqzrxx/add* = authc,perms[TJyXtsyqzrxx:edit]
+                /rest/backadmin/TJyXtsyqzrxx/edit = authc,perms[TJyXtsyqzrxx:edit]
+                /rest/backadmin/TJyXtsyqzrxx/delete = authc,perms[TJyXtsyqzrxx:edit]
+                /rest/backadmin/TJyXtsyqzrxx/checkList = authc,perms[TJyXtsyqzrxx:edit]
+                /rest/backadmin/TJyXtsyqzrxx/check* = authc,perms[TJyXtsyqzrxx:check]
+                
+                /rest/backadmin/TJyXtzjmjjfpl/list = authc,perms[TJyXtzjmjjfpl:list]
+                /rest/backadmin/TJyXtzjmjjfpl/get = authc,perms[TJyXtzjmjjfpl:list]
+                /rest/backadmin/TJyXtzjmjjfpl/add* = authc,perms[TJyXtzjmjjfpl:edit]
+                /rest/backadmin/TJyXtzjmjjfpl/edit = authc,perms[TJyXtzjmjjfpl:edit]
+                /rest/backadmin/TJyXtzjmjjfpl/delete = authc,perms[TJyXtzjmjjfpl:edit]
+                /rest/backadmin/TJyXtzjmjjfpl/checkList = authc,perms[TJyXtzjmjjfpl:edit]
+                /rest/backadmin/TJyXtzjmjjfpl/check* = authc,perms[TJyXtzjmjjfpl:check]
+                
+                /rest/backadmin/TJyXtzjyyjyl/list = authc,perms[TJyXtzjyyjyl:list]
+                /rest/backadmin/TJyXtzjyyjyl/get = authc,perms[TJyXtzjyyjyl:list]
+                /rest/backadmin/TJyXtzjyyjyl/add* = authc,perms[TJyXtzjyyjyl:edit]
+                /rest/backadmin/TJyXtzjyyjyl/edit = authc,perms[TJyXtzjyyjyl:edit]
+                /rest/backadmin/TJyXtzjyyjyl/delete = authc,perms[TJyXtzjyyjyl:edit]
+                /rest/backadmin/TJyXtzjyyjyl/checkList = authc,perms[TJyXtzjyyjyl:edit]
+                /rest/backadmin/TJyXtzjyyjyl/check* = authc,perms[TJyXtzjyyjyl:check]
+                
+                /rest/backadmin/TKhDsfhzjgxx/list = authc,perms[TKhDsfhzjgxx:list]
+                /rest/backadmin/TKhDsfhzjgxx/get = authc,perms[TKhDsfhzjgxx:list]
+                /rest/backadmin/TKhDsfhzjgxx/add* = authc,perms[TKhDsfhzjgxx:edit]
+                /rest/backadmin/TKhDsfhzjgxx/edit = authc,perms[TKhDsfhzjgxx:edit]
+                /rest/backadmin/TKhDsfhzjgxx/delete = authc,perms[TKhDsfhzjgxx:edit]
+                /rest/backadmin/TKhDsfhzjgxx/checkList = authc,perms[TKhDsfhzjgxx:edit]
+                /rest/backadmin/TKhDsfhzjgxx/check* = authc,perms[TKhDsfhzjgxx:check]
+                
+                /rest/backadmin/TKhJydsgr/list = authc,perms[TKhJydsgr:list]
+                /rest/backadmin/TKhJydsgr/get = authc,perms[TKhJydsgr:list]
+                /rest/backadmin/TKhJydsgr/add* = authc,perms[TKhJydsgr:edit]
+                /rest/backadmin/TKhJydsgr/edit = authc,perms[TKhJydsgr:edit]
+                /rest/backadmin/TKhJydsgr/delete = authc,perms[TKhJydsgr:edit]
+                /rest/backadmin/TKhJydsgr/checkList = authc,perms[TKhJydsgr:edit]
+                /rest/backadmin/TKhJydsgr/check* = authc,perms[TKhJydsgr:check]
+                
+                /rest/backadmin/TKhJydsjg/list = authc,perms[TKhJydsjg:list]
+                /rest/backadmin/TKhJydsjg/get = authc,perms[TKhJydsjg:list]
+                /rest/backadmin/TKhJydsjg/add* = authc,perms[TKhJydsjg:edit]
+                /rest/backadmin/TKhJydsjg/edit = authc,perms[TKhJydsjg:edit]
+                /rest/backadmin/TKhJydsjg/delete = authc,perms[TKhJydsjg:edit]
+                /rest/backadmin/TKhJydsjg/checkList = authc,perms[TKhJydsjg:edit]
+                /rest/backadmin/TKhJydsjg/check* = authc,perms[TKhJydsjg:check]
+                
+                /rest/backadmin/TKhJydsjggdxx/list = authc,perms[TKhJydsjggdxx:list]
+                /rest/backadmin/TKhJydsjggdxx/get = authc,perms[TKhJydsjggdxx:list]
+                /rest/backadmin/TKhJydsjggdxx/add* = authc,perms[TKhJydsjggdxx:edit]
+                /rest/backadmin/TKhJydsjggdxx/edit = authc,perms[TKhJydsjggdxx:edit]
+                /rest/backadmin/TKhJydsjggdxx/delete = authc,perms[TKhJydsjggdxx:edit]
+                /rest/backadmin/TKhJydsjggdxx/checkList = authc,perms[TKhJydsjggdxx:edit]
+                /rest/backadmin/TKhJydsjggdxx/check* = authc,perms[TKhJydsjggdxx:check]
+                
+                /rest/backadmin/TKhTzgwhtb/list = authc,perms[TKhTzgwhtb:list]
+                /rest/backadmin/TKhTzgwhtb/get = authc,perms[TKhTzgwhtb:list]
+                /rest/backadmin/TKhTzgwhtb/add* = authc,perms[TKhTzgwhtb:edit]
+                /rest/backadmin/TKhTzgwhtb/edit = authc,perms[TKhTzgwhtb:edit]
+                /rest/backadmin/TKhTzgwhtb/delete = authc,perms[TKhTzgwhtb:edit]
+                /rest/backadmin/TKhTzgwhtb/checkList = authc,perms[TKhTzgwhtb:edit]
+                /rest/backadmin/TKhTzgwhtb/check* = authc,perms[TKhTzgwhtb:check]
+                
+                /rest/backadmin/TKhXtkhgr/list = authc,perms[TKhXtkhgr:list]
+                /rest/backadmin/TKhXtkhgr/get = authc,perms[TKhXtkhgr:list]
+                /rest/backadmin/TKhXtkhgr/add* = authc,perms[TKhXtkhgr:edit]
+                /rest/backadmin/TKhXtkhgr/edit = authc,perms[TKhXtkhgr:edit]
+                /rest/backadmin/TKhXtkhgr/delete = authc,perms[TKhXtkhgr:edit]
+                /rest/backadmin/TKhXtkhgr/checkList = authc,perms[TKhXtkhgr:edit]
+                /rest/backadmin/TKhXtkhgr/check* = authc,perms[TKhXtkhgr:check]
+                
+                /rest/backadmin/TKhXtkhjg/list = authc,perms[TKhXtkhjg:list]
+                /rest/backadmin/TKhXtkhjg/get = authc,perms[TKhXtkhjg:list]
+                /rest/backadmin/TKhXtkhjg/add* = authc,perms[TKhXtkhjg:edit]
+                /rest/backadmin/TKhXtkhjg/edit = authc,perms[TKhXtkhjg:edit]
+                /rest/backadmin/TKhXtkhjg/delete = authc,perms[TKhXtkhjg:edit]
+                /rest/backadmin/TKhXtkhjg/checkList = authc,perms[TKhXtkhjg:edit]
+                /rest/backadmin/TKhXtkhjg/check* = authc,perms[TKhXtkhjg:check]
+                
+                /rest/backadmin/TKjGynbkmdzb/list = authc,perms[TKjGynbkmdzb:list]
+                /rest/backadmin/TKjGynbkmdzb/get = authc,perms[TKjGynbkmdzb:list]
+                /rest/backadmin/TKjGynbkmdzb/add* = authc,perms[TKjGynbkmdzb:edit]
+                /rest/backadmin/TKjGynbkmdzb/edit = authc,perms[TKjGynbkmdzb:edit]
+                /rest/backadmin/TKjGynbkmdzb/delete = authc,perms[TKjGynbkmdzb:edit]
+                /rest/backadmin/TKjGynbkmdzb/checkList = authc,perms[TKjGynbkmdzb:edit]
+                /rest/backadmin/TKjGynbkmdzb/check* = authc,perms[TKjGynbkmdzb:check]
+                
+                /rest/backadmin/TKjGyzcfzkmtjb/list = authc,perms[TKjGyzcfzkmtjb:list]
+                /rest/backadmin/TKjGyzcfzkmtjb/get = authc,perms[TKjGyzcfzkmtjb:list]
+                /rest/backadmin/TKjGyzcfzkmtjb/add* = authc,perms[TKjGyzcfzkmtjb:edit]
+                /rest/backadmin/TKjGyzcfzkmtjb/edit = authc,perms[TKjGyzcfzkmtjb:edit]
+                /rest/backadmin/TKjGyzcfzkmtjb/delete = authc,perms[TKjGyzcfzkmtjb:edit]
+                /rest/backadmin/TKjGyzcfzkmtjb/checkList = authc,perms[TKjGyzcfzkmtjb:edit]
+                /rest/backadmin/TKjGyzcfzkmtjb/check* = authc,perms[TKjGyzcfzkmtjb:check]
+                
+                /rest/backadmin/TKjGyzzkjqkmb/list = authc,perms[TKjGyzzkjqkmb:list]
+                /rest/backadmin/TKjGyzzkjqkmb/get = authc,perms[TKjGyzzkjqkmb:list]
+                /rest/backadmin/TKjGyzzkjqkmb/add* = authc,perms[TKjGyzzkjqkmb:edit]
+                /rest/backadmin/TKjGyzzkjqkmb/edit = authc,perms[TKjGyzzkjqkmb:edit]
+                /rest/backadmin/TKjGyzzkjqkmb/delete = authc,perms[TKjGyzzkjqkmb:edit]
+                /rest/backadmin/TKjGyzzkjqkmb/checkList = authc,perms[TKjGyzzkjqkmb:edit]
+                /rest/backadmin/TKjGyzzkjqkmb/check* = authc,perms[TKjGyzzkjqkmb:check]
+                
+                /rest/backadmin/TKjXtnbkmdzb/list = authc,perms[TKjXtnbkmdzb:list]
+                /rest/backadmin/TKjXtnbkmdzb/get = authc,perms[TKjXtnbkmdzb:list]
+                /rest/backadmin/TKjXtnbkmdzb/add* = authc,perms[TKjXtnbkmdzb:edit]
+                /rest/backadmin/TKjXtnbkmdzb/edit = authc,perms[TKjXtnbkmdzb:edit]
+                /rest/backadmin/TKjXtnbkmdzb/delete = authc,perms[TKjXtnbkmdzb:edit]
+                /rest/backadmin/TKjXtnbkmdzb/checkList = authc,perms[TKjXtnbkmdzb:edit]
+                /rest/backadmin/TKjXtnbkmdzb/check* = authc,perms[TKjXtnbkmdzb:check]
+                
+                /rest/backadmin/TKjXtxmzcfztjb/list = authc,perms[TKjXtxmzcfztjb:list]
+                /rest/backadmin/TKjXtxmzcfztjb/get = authc,perms[TKjXtxmzcfztjb:list]
+                /rest/backadmin/TKjXtxmzcfztjb/add* = authc,perms[TKjXtxmzcfztjb:edit]
+                /rest/backadmin/TKjXtxmzcfztjb/edit = authc,perms[TKjXtxmzcfztjb:edit]
+                /rest/backadmin/TKjXtxmzcfztjb/delete = authc,perms[TKjXtxmzcfztjb:edit]
+                /rest/backadmin/TKjXtxmzcfztjb/checkList = authc,perms[TKjXtxmzcfztjb:edit]
+                /rest/backadmin/TKjXtxmzcfztjb/check* = authc,perms[TKjXtxmzcfztjb:check]
+                
+                /rest/backadmin/TKjXtxmzzkjqkmb/list = authc,perms[TKjXtxmzzkjqkmb:list]
+                /rest/backadmin/TKjXtxmzzkjqkmb/get = authc,perms[TKjXtxmzzkjqkmb:list]
+                /rest/backadmin/TKjXtxmzzkjqkmb/add* = authc,perms[TKjXtxmzzkjqkmb:edit]
+                /rest/backadmin/TKjXtxmzzkjqkmb/edit = authc,perms[TKjXtxmzzkjqkmb:edit]
+                /rest/backadmin/TKjXtxmzzkjqkmb/delete = authc,perms[TKjXtxmzzkjqkmb:edit]
+                /rest/backadmin/TKjXtxmzzkjqkmb/checkList = authc,perms[TKjXtxmzzkjqkmb:edit]
+                /rest/backadmin/TKjXtxmzzkjqkmb/check* = authc,perms[TKjXtxmzzkjqkmb:check]
+                
+                /rest/backadmin/TXmFdcjsxmxx/list = authc,perms[TXmFdcjsxmxx:list]
+                /rest/backadmin/TXmFdcjsxmxx/get = authc,perms[TXmFdcjsxmxx:list]
+                /rest/backadmin/TXmFdcjsxmxx/add* = authc,perms[TXmFdcjsxmxx:edit]
+                /rest/backadmin/TXmFdcjsxmxx/edit = authc,perms[TXmFdcjsxmxx:edit]
+                /rest/backadmin/TXmFdcjsxmxx/delete = authc,perms[TXmFdcjsxmxx:edit]
+                /rest/backadmin/TXmFdcjsxmxx/checkList = authc,perms[TXmFdcjsxmxx:edit]
+                /rest/backadmin/TXmFdcjsxmxx/check* = authc,perms[TXmFdcjsxmxx:check]
+                
+                /rest/backadmin/TXmFfdcjsxmxx/list = authc,perms[TXmFfdcjsxmxx:list]
+                /rest/backadmin/TXmFfdcjsxmxx/get = authc,perms[TXmFfdcjsxmxx:list]
+                /rest/backadmin/TXmFfdcjsxmxx/add* = authc,perms[TXmFfdcjsxmxx:edit]
+                /rest/backadmin/TXmFfdcjsxmxx/edit = authc,perms[TXmFfdcjsxmxx:edit]
+                /rest/backadmin/TXmFfdcjsxmxx/delete = authc,perms[TXmFfdcjsxmxx:edit]
+                /rest/backadmin/TXmFfdcjsxmxx/checkList = authc,perms[TXmFfdcjsxmxx:edit]
+                /rest/backadmin/TXmFfdcjsxmxx/check* = authc,perms[TXmFfdcjsxmxx:check]
+                
+                /rest/backadmin/TXmXtdbgxb/list = authc,perms[TXmXtdbgxb:list]
+                /rest/backadmin/TXmXtdbgxb/get = authc,perms[TXmXtdbgxb:list]
+                /rest/backadmin/TXmXtdbgxb/add* = authc,perms[TXmXtdbgxb:edit]
+                /rest/backadmin/TXmXtdbgxb/edit = authc,perms[TXmXtdbgxb:edit]
+                /rest/backadmin/TXmXtdbgxb/delete = authc,perms[TXmXtdbgxb:edit]
+                /rest/backadmin/TXmXtdbgxb/checkList = authc,perms[TXmXtdbgxb:edit]
+                /rest/backadmin/TXmXtdbgxb/check* = authc,perms[TXmXtdbgxb:check]
+                
+                /rest/backadmin/TXmXtdbhtb/list = authc,perms[TXmXtdbhtb:list]
+                /rest/backadmin/TXmXtdbhtb/get = authc,perms[TXmXtdbhtb:list]
+                /rest/backadmin/TXmXtdbhtb/add* = authc,perms[TXmXtdbhtb:edit]
+                /rest/backadmin/TXmXtdbhtb/edit = authc,perms[TXmXtdbhtb:edit]
+                /rest/backadmin/TXmXtdbhtb/delete = authc,perms[TXmXtdbhtb:edit]
+                /rest/backadmin/TXmXtdbhtb/checkList = authc,perms[TXmXtdbhtb:edit]
+                /rest/backadmin/TXmXtdbhtb/check* = authc,perms[TXmXtdbhtb:check]
+                
+                /rest/backadmin/TXmXtdzywb/list = authc,perms[TXmXtdzywb:list]
+                /rest/backadmin/TXmXtdzywb/get = authc,perms[TXmXtdzywb:list]
+                /rest/backadmin/TXmXtdzywb/add* = authc,perms[TXmXtdzywb:edit]
+                /rest/backadmin/TXmXtdzywb/edit = authc,perms[TXmXtdzywb:edit]
+                /rest/backadmin/TXmXtdzywb/delete = authc,perms[TXmXtdzywb:edit]
+                /rest/backadmin/TXmXtdzywb/checkList = authc,perms[TXmXtdzywb:edit]
+                /rest/backadmin/TXmXtdzywb/check* = authc,perms[TXmXtdzywb:check]
+                
+                /rest/backadmin/TXmXtxmqsxx/list = authc,perms[TXmXtxmqsxx:list]
+                /rest/backadmin/TXmXtxmqsxx/get = authc,perms[TXmXtxmqsxx:list]
+                /rest/backadmin/TXmXtxmqsxx/add* = authc,perms[TXmXtxmqsxx:edit]
+                /rest/backadmin/TXmXtxmqsxx/edit = authc,perms[TXmXtxmqsxx:edit]
+                /rest/backadmin/TXmXtxmqsxx/delete = authc,perms[TXmXtxmqsxx:edit]
+                /rest/backadmin/TXmXtxmqsxx/checkList = authc,perms[TXmXtxmqsxx:edit]
+                /rest/backadmin/TXmXtxmqsxx/check* = authc,perms[TXmXtxmqsxx:check]
+                
+                /rest/backadmin/TXmXtxmsyqb/list = authc,perms[TXmXtxmsyqb:list]
+                /rest/backadmin/TXmXtxmsyqb/get = authc,perms[TXmXtxmsyqb:list]
+                /rest/backadmin/TXmXtxmsyqb/add* = authc,perms[TXmXtxmsyqb:edit]
+                /rest/backadmin/TXmXtxmsyqb/edit = authc,perms[TXmXtxmsyqb:edit]
+                /rest/backadmin/TXmXtxmsyqb/delete = authc,perms[TXmXtxmsyqb:edit]
+                /rest/backadmin/TXmXtxmsyqb/checkList = authc,perms[TXmXtxmsyqb:edit]
+                /rest/backadmin/TXmXtxmsyqb/check* = authc,perms[TXmXtxmsyqb:check]
+                
+                /rest/backadmin/TXmXtxmxx/list = authc,perms[TXmXtxmxx:list]
+                /rest/backadmin/TXmXtxmxx/get = authc,perms[TXmXtxmxx:list]
+                /rest/backadmin/TXmXtxmxx/add* = authc,perms[TXmXtxmxx:edit]
+                /rest/backadmin/TXmXtxmxx/edit = authc,perms[TXmXtxmxx:edit]
+                /rest/backadmin/TXmXtxmxx/delete = authc,perms[TXmXtxmxx:edit]
+                /rest/backadmin/TXmXtxmxx/checkList = authc,perms[TXmXtxmxx:edit]
+                /rest/backadmin/TXmXtxmxx/check* = authc,perms[TXmXtxmxx:check]
+                
+                /rest/backadmin/TXmXtxmyjhklypgb/list = authc,perms[TXmXtxmyjhklypgb:list]
+                /rest/backadmin/TXmXtxmyjhklypgb/get = authc,perms[TXmXtxmyjhklypgb:list]
+                /rest/backadmin/TXmXtxmyjhklypgb/add* = authc,perms[TXmXtxmyjhklypgb:edit]
+                /rest/backadmin/TXmXtxmyjhklypgb/edit = authc,perms[TXmXtxmyjhklypgb:edit]
+                /rest/backadmin/TXmXtxmyjhklypgb/delete = authc,perms[TXmXtxmyjhklypgb:edit]
+                /rest/backadmin/TXmXtxmyjhklypgb/checkList = authc,perms[TXmXtxmyjhklypgb:edit]
+                /rest/backadmin/TXmXtxmyjhklypgb/check* = authc,perms[TXmXtxmyjhklypgb:check]
+                
+                /rest/backadmin/TXmXtzhxx/list = authc,perms[TXmXtzhxx:list]
+                /rest/backadmin/TXmXtzhxx/get = authc,perms[TXmXtzhxx:list]
+                /rest/backadmin/TXmXtzhxx/add* = authc,perms[TXmXtzhxx:edit]
+                /rest/backadmin/TXmXtzhxx/edit = authc,perms[TXmXtzhxx:edit]
+                /rest/backadmin/TXmXtzhxx/delete = authc,perms[TXmXtzhxx:edit]
+                /rest/backadmin/TXmXtzhxx/checkList = authc,perms[TXmXtzhxx:edit]
+                /rest/backadmin/TXmXtzhxx/check* = authc,perms[TXmXtzhxx:check]
+                
+                /rest/backadmin/TXmXtzjmjhtxx/list = authc,perms[TXmXtzjmjhtxx:list]
+                /rest/backadmin/TXmXtzjmjhtxx/get = authc,perms[TXmXtzjmjhtxx:list]
+                /rest/backadmin/TXmXtzjmjhtxx/add* = authc,perms[TXmXtzjmjhtxx:edit]
+                /rest/backadmin/TXmXtzjmjhtxx/edit = authc,perms[TXmXtzjmjhtxx:edit]
+                /rest/backadmin/TXmXtzjmjhtxx/delete = authc,perms[TXmXtzjmjhtxx:edit]
+                /rest/backadmin/TXmXtzjmjhtxx/checkList = authc,perms[TXmXtzjmjhtxx:edit]
+                /rest/backadmin/TXmXtzjmjhtxx/check* = authc,perms[TXmXtzjmjhtxx:check]
+                
+                /rest/backadmin/TXmXtzjyyhtxx/list = authc,perms[TXmXtzjyyhtxx:list]
+                /rest/backadmin/TXmXtzjyyhtxx/get = authc,perms[TXmXtzjyyhtxx:list]
+                /rest/backadmin/TXmXtzjyyhtxx/add* = authc,perms[TXmXtzjyyhtxx:edit]
+                /rest/backadmin/TXmXtzjyyhtxx/edit = authc,perms[TXmXtzjyyhtxx:edit]
+                /rest/backadmin/TXmXtzjyyhtxx/delete = authc,perms[TXmXtzjyyhtxx:edit]
+                /rest/backadmin/TXmXtzjyyhtxx/checkList = authc,perms[TXmXtzjyyhtxx:edit]
+                /rest/backadmin/TXmXtzjyyhtxx/check* = authc,perms[TXmXtzjyyhtxx:check]
+                
+                /rest/backadmin/cross/tableList = authc
+                /rest/backadmin/cross/check = authc
+                
+				<!--其他后台REST接口-->
+                /rest/** = authc
+                
+				<!--其他css、js、html、jsp、jpg、png、mp4等文件资源 -->
+                /** = anon
+                
+                
+            	<!-- 登录页允许访问 
+            	/rest/backadmin/operator/add = roles[管理员]
+                /rest/backadmin/operator/login = anon
+                /rest/backadmin/operator/authCode = anon
+                /rest/backadmin/operator/add = anon
+                /rest/backadmin/operator/logout = logout
+            	/operator/** = authc 
+            	/rest/backadmin/views/** = authc  -->
+            	<!-- 静态资源允许访问 
+                /app/** = anon
+                /assets/** = anon
+                
+                anon:例子/admins/**=anon 没有参数，表示可以匿名使用。 
+				authc:例如/admins/user/**=authc表示需要认证(登录)才能使用，没有参数 
+				roles：例子/admins/user/**=roles[admin],参数可以写多个，多个时必须加上引号，并且参数之间用逗号分割，当有多个参数时，例如admins/user/**=roles["admin,guest"],每个参数通过才算通过，相当于hasAllRoles()方法。 
+				perms：例子/admins/user/**=perms[user:add:*],参数可以写多个，多个时必须加上引号，并且参数之间用逗号分割，例如/admins/user/**=perms["user:add:*,user:modify:*"]，当有多个参数时必须每个参数都通过才通过，想当于isPermitedAll()方法。 
+				rest：例子/admins/user/**=rest[user],根据请求的方法，相当于/admins/user/**=perms[user:method] ,其中method为post，get，delete等。 
+				port：例子/admins/user/**=port[8081],当请求的url的端口不是8081是跳转到schemal://serverName:8081?queryString,其中schmal是协议http或https等，serverName是你访问的host,8081是url配置里port的端口，queryString是你访问的url里的？后面的参数。 
+				authcBasic：例如/admins/user/**=authcBasic没有参数表示httpBasic认证 
+				ssl:例子/admins/user/**=ssl没有参数，表示安全的url请求，协议为https 
+				user:例如/admins/user/**=user没有参数表示必须存在用户，当登入操作时不做检查  
+				logout:
+                -->
+            	
+            </value>
+        </property>
+    </bean>
+     
+	<bean id="shiroRedisTemplate" class="org.springframework.data.redis.core.RedisTemplate" p:connection-factory-ref="jedisConnectionFactory"/>
+    
+    <bean id="redisCacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
+        <constructor-arg index="0" ref="shiroRedisTemplate"></constructor-arg>
+        <!-- 缓存失效时间3天 -->
+        <property name="defaultExpiration" value="259200"/>
+    </bean>
+    
+    <bean id="shiroCacheManager" class="cn.zeppin.product.itic.core.cache.ShiroRedisCacheManager">
+         <property name="cacheManager" ref="redisCacheManager"/>
+    </bean>
+	 
+    <!-- 会话DAO -->
+    <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.MemorySessionDAO"/>
+
+    <!-- 会话管理器 -->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="sessionDAO" ref="sessionDAO"/>
+        <property name="cacheManager" ref="shiroCacheManager"/>
+        <property name="sessionIdCookieEnabled" value="true" />
+        <property name="sessionIdCookie.name" value="jsid"/>
+        <!-- 全局会话超时时间（单位毫秒），默认30分钟 -->
+        <property name="globalSessionTimeout" value="1800000" />
+    </bean>
+    
+
+    <!-- 安全管理器 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realms" ref="securityRealm" />
+        <!-- cacheManager,集合spring缓存工厂-->  
+        <property name="cacheManager" ref="shiroCacheManager" /> 
+        <property name="sessionManager" ref="sessionManager" />
+     
+    </bean>
+    
+      <!-- 安全管理器  -->
+    <bean id="securityRealm" class="cn.zeppin.product.itic.backadmin.security.SecurityRealm">
+        <constructor-arg index="0" ref="shiroCacheManager"></constructor-arg>
+        <constructor-arg index="1" ref="credentialsMatcher"></constructor-arg>
+    </bean> 
+    
+    <bean id="credentialsMatcher" class="cn.zeppin.product.itic.backadmin.security.RetryNumLimitCredentialsMatcher">  
+        <constructor-arg ref="shiroCacheManager" />
+        <property name="hashAlgorithmName" value="MD5" />  
+        <property name="storedCredentialsHexEncoded" value="true" />  
+        <property name="hashIterations" value="3" />  
+	</bean>   
+	
+
+    <!-- Shiro生命周期处理器 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+    
+    <bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">  
+        <property name="config">  
+            <bean class="com.google.code.kaptcha.util.Config">  
+                <constructor-arg>  
+                    <props>  
+                        <prop key="kaptcha.border">no</prop>  
+                        <prop key="kaptcha.border.color">105,179,90</prop>  
+                        <prop key="kaptcha.textproducer.font.color">25,25,112</prop>  
+                        <prop key="kaptcha.image.width">300</prop>  
+                        <prop key="kaptcha.textproducer.font.size">85</prop>  
+                        <prop key="kaptcha.image.height">100</prop>  
+                        <prop key="kaptcha.session.key">authCode</prop>  
+                        <prop key="kaptcha.textproducer.char.length">5</prop>  
+                        <prop key="kaptcha.textproducer.font.names">Century,Calibri,Arial,Courier</prop>   
+                        <prop key="kaptcha.textproducer.char.string">ABCDEFGHJK23456789MNPQRSTUVWXYZ</prop>
+                        <prop key="kaptcha.textproducer.char.space">3</prop>
+                    </props>  
+                </constructor-arg>  
+            </bean>  
+        </property>  
+        
+    </bean>  
+
+</beans>

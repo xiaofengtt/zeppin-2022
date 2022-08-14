@@ -1,0 +1,53 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE dbo.SP_QUERY_TDIRECTSENDTOTAL @IN_SMS_SERIAL_NO    	INT,                       --序号
+                                           @IN_WAY_TYPE             INTEGER  =0,               --1:sms; 2:mail;
+                                           @IN_PLAN_TIME_BEGIN      INT  =0,                   --计划发送时间，SEND_TYPE=2时有效
+                                           @IN_PLAN_TIME_END        INT  =0,                   --计划发送时间，SEND_TYPE=2时有效
+                                           @IN_MOBILES              NVARCHAR(60) ='',          --自填手机号/邮箱，逗号分隔
+                                           @IN_CONTENT_TEMPLET      NVARCHAR(200) ='',          --发送内容，如果通过客户取手机号/邮箱，可以使用%1代表客户名称；自填则不能使用%1
+                                           @IN_CUST_NAME            NVARCHAR(60)  ='',         --客户名称
+										   @IN_CHECK_FLAG 			INT  =0,
+										   @IN_CHECK_MAN 			INT  =0,	
+										   @IN_INPUT_MAN            INT  =0
+
+WITH ENCRYPTION
+AS
+	DECLARE @V_FLAG_ACCESS_ALL INT
+    IF ISNULL(@IN_PLAN_TIME_BEGIN,0) =0
+        SET @IN_PLAN_TIME_BEGIN =0
+    IF ISNULL(@IN_PLAN_TIME_END,0) =0
+        SET @IN_PLAN_TIME_END =20991231
+	SELECT @V_FLAG_ACCESS_ALL = 0 --访问全部标志	
+    --如果操作员的角色中存在访问所有客户信息权限的标志 则赋予能够访问所有信息权限
+    IF EXISTS(SELECT 1 FROM TOPROLE WHERE OP_CODE = @IN_INPUT_MAN AND ROLE_ID IN(SELECT ROLE_ID FROM TROLE WHERE FLAG_ACCESS_ALL = 1))
+        SELECT @V_FLAG_ACCESS_ALL = 1 
+    IF ISNULL(@IN_SMS_SERIAL_NO,0) <> 0
+        SELECT A.* FROM TDIRECTSENDTOTAL A WHERE A.SERIAL_NO = @IN_SMS_SERIAL_NO
+    ELSE
+	BEGIN
+        SELECT A.* FROM TDIRECTSENDTOTAL A 
+			WHERE (ISNULL(@IN_WAY_TYPE,0) =0 OR A.WAY_TYPE = @IN_WAY_TYPE) 
+				AND (ISNULL(@IN_CHECK_FLAG,0) =0 OR A.CHECK_FLAG = @IN_CHECK_FLAG)
+				AND (ISNULL(@IN_CHECK_MAN,0) =0 OR A.CHECK_MAN = @IN_CHECK_MAN) 
+				AND (ISNULL(@IN_INPUT_MAN,0) =0 OR A.INPUT_MAN = @IN_INPUT_MAN OR @IN_INPUT_MAN = 888 OR @V_FLAG_ACCESS_ALL = 1  )
+                AND (ISNULL(CONVERT(INT,CONVERT(CHAR(8),A.input_time,112)),0) BETWEEN @IN_PLAN_TIME_BEGIN AND @IN_PLAN_TIME_END)
+                AND (ISNULL(@IN_CONTENT_TEMPLET,'') ='' OR A.CONTENT_TEMPLET LIKE '%'+@IN_CONTENT_TEMPLET+'%')
+				AND A.SERIAL_NO IN(SELECT B.SEND_SERIAL_NO FROM TDIRECTSENDDETAIL B,TCustomers C 
+					WHERE B.CUST_ID = C.CUST_ID AND (ISNULL(@IN_CUST_NAME,'') ='' OR C.CUST_NAME LIKE '%'+@IN_CUST_NAME+'%')
+						AND (ISNULL(@IN_MOBILES,'') ='' OR C.MOBILE = @IN_MOBILES))	
+		UNION
+		SELECT A.* FROM TDIRECTSENDTOTAL A 
+			WHERE (ISNULL(@IN_WAY_TYPE,0) =0 OR A.WAY_TYPE = @IN_WAY_TYPE) 
+				AND (ISNULL(@IN_CHECK_FLAG,0) =0 OR A.CHECK_FLAG = @IN_CHECK_FLAG)
+				AND (ISNULL(@IN_CHECK_MAN,0) =0 OR A.CHECK_MAN = @IN_CHECK_MAN) 
+				AND (ISNULL(@IN_INPUT_MAN,0) =0 OR A.INPUT_MAN = @IN_INPUT_MAN OR @V_FLAG_ACCESS_ALL = 1 OR @IN_INPUT_MAN = 888  )
+                AND (ISNULL(CONVERT(INT,CONVERT(CHAR(8),A.input_time,112)),0) BETWEEN @IN_PLAN_TIME_BEGIN AND @IN_PLAN_TIME_END) 
+                AND (ISNULL(@IN_MOBILES,'') ='' OR A.MOBILES = @IN_MOBILES)
+                AND (ISNULL(@IN_CONTENT_TEMPLET,'') ='' OR A.CONTENT_TEMPLET LIKE '%'+@IN_CONTENT_TEMPLET+'%')
+				AND A.SERIAL_NO NOT IN (SELECT SEND_SERIAL_NO FROM TDIRECTSENDDETAIL) AND (ISNULL(@IN_CUST_NAME,'') ='')
+		ORDER BY INPUT_TIME DESC		
+	END					
+GO

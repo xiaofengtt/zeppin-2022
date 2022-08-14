@@ -1,0 +1,43 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_MODI_TUSERINFO @IN_USER_ID     INT,
+                                   @IN_USER_NAME   NVARCHAR(127),
+                                   @IN_ADDRESS     NVARCHAR(127),
+                                   @IN_POST        NVARCHAR(6),
+                                   @IN_TEL         NVARCHAR(15),
+                                   @IN_FAX         NVARCHAR(15),
+                                   @IN_INPUT_MAN   INT
+WITH ENCRYPTION
+AS
+    DECLARE @V_RET_CODE INT,@IBUSI_FLAG INT,@SBUSI_NAME NVARCHAR(40),@SSUMMARY NVARCHAR(200)
+    SELECT @V_RET_CODE = -70105000
+    SELECT @IBUSI_FLAG = 70105
+    SELECT @SBUSI_NAME = N'修改用户信息'
+    SELECT @SSUMMARY = N'修改用户信息'
+
+    BEGIN TRANSACTION
+
+    UPDATE TUSERINFO
+    SET USER_NAME = @IN_USER_NAME,
+        ADDRESS   = @IN_ADDRESS,
+        POST_CODE = @IN_POST,
+        TELEPHONE = @IN_TEL,
+        FAX       = @IN_FAX
+    WHERE USER_ID = @IN_USER_ID
+    IF @@ERROR <> 0
+    BEGIN
+        ROLLBACK TRANSACTION
+        RETURN -100
+    END
+    INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY)
+        VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+    IF @@ERROR <> 0
+    BEGIN
+        ROLLBACK TRANSACTION
+        RETURN -100
+    END
+    COMMIT TRANSACTION
+    RETURN 100
+GO

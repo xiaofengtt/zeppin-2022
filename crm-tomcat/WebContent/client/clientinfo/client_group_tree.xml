@@ -1,0 +1,11 @@
+<deeptreeconfig>
+  <TopXMLSrc>map.xml</TopXMLSrc>
+  <TreeLabel></TreeLabel>
+  <StartPage></StartPage>
+  <ErrorPage></ErrorPage>
+  <ContentTarget>fraContent</ContentTarget>
+  <TreeId></TreeId>
+  <TreeRootPath></TreeRootPath>
+  <Locale>gbk</Locale>
+  <LocaleTextDirection>LTR</LocaleTextDirection>
+</deeptreeconfig>

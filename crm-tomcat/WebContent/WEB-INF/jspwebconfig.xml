@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <jsp-config>		
+		
+    <jsp-property-group>
+			
+         <description>
+         </description>
+			
+         <display-name>JSPConfiguration</display-name>
+			
+         <url-pattern>*.inc</url-pattern>
+			
+         <el-ignored>true</el-ignored>
+			
+         <page-encoding>GBK</page-encoding>
+			
+         <scripting-invalid>false</scripting-invalid>
+			
+         <include-prelude></include-prelude>
+			
+         <include-coda></include-coda>
+		
+    </jsp-property-group>
+
+ </jsp-config> 

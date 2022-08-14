@@ -1,0 +1,101 @@
+﻿USE EFCRM
+GO
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE SP_MODI_TSALESRESULTFORSTATISTIC @IN_SERIAL_NO  INT, --序号
+                                         @IN_DZ_TIME    DATETIME, --到帐时间,精确到分
+                                         @IN_DZ_MONEY   DEC(16,3),    --到帐金额
+                                         @IN_JK_TYPE    NVARCHAR(10), --缴款方式(1114)
+                                         @IN_INPUT_MAN  INT,
+                                         @IN_ONWAY_FLAG INT = 0,       --在途资金标志:1是
+                                        @IN_RG_PRODUCTI_NAME       NVARCHAR(200), --产品名称
+                                        @IN_RG_CUST_TYPE       INT, --客户类型
+                                        @IN_RG_CUST_NAME       NVARCHAR(50),  --客户名称
+                                        @IN_RG_PRODUCT_TYPE       INT, --产品类型
+                                        @IN_RG_PRODUCT_TYPE_NAME       NVARCHAR(50), --产品类型名称
+                                        @IN_RG_SERVICE_MAN       INT --客户经理
+WITH ENCRYPTION
+AS
+    SET NOCOUNT ON
+    DECLARE @V_ERROR NVARCHAR(200)
+    DECLARE @V_RET_CODE INT,@IBUSI_FLAG INT,@SBUSI_NAME NVARCHAR(40),@SSUMMARY NVARCHAR(200)
+    SELECT @V_RET_CODE = -20701000
+    SELECT @IBUSI_FLAG = 655353
+    SELECT @SBUSI_NAME = N'修改客户其他产品到账'
+    SELECT @SSUMMARY = N'修改客户其他产品到账'
+
+    DECLARE @V_JK_TYPE_NAME NVARCHAR(30)
+    DECLARE @V_END_DATE INT, @V_PRE_CODE NVARCHAR(16), @V_PREPRODUCT_ID INT, @V_PREPRODUCT_NAME NVARCHAR(100),
+            @V_PRE_MONEY DEC(16,3), @V_RG_MONEY DEC(16,3), @V_PRE_SERIAL_NO INT, @V_DZ_MONEY DEC(16,3)
+	DECLARE @V_CUST_TYPE_NAME NVARCHAR(30)
+	DECLARE @V_RG_SERVICE_MAN_NAME NVARCHAR(200)
+    ------------------------------------------------------------------------
+    BEGIN TRY
+    --1.业务逻辑与操作
+    --校验
+    SELECT @V_JK_TYPE_NAME = TYPE_CONTENT FROM TDICTPARAM WHERE TYPE_VALUE = @IN_JK_TYPE
+    IF @V_JK_TYPE_NAME IS NULL
+    BEGIN
+        SET @V_ERROR = N'缴款方式【'+@IN_JK_TYPE+N'】不存在！'
+        RAISERROR(@V_ERROR,16,3)
+    END
+    IF NOT EXISTS(SELECT 1 FROM TOPERATOR WHERE OP_CODE = @IN_RG_SERVICE_MAN)
+    BEGIN
+        SET @V_ERROR = N'客户经理不存在！'
+        RAISERROR(@V_ERROR,16,5)
+    END
+    SELECT @V_RG_SERVICE_MAN_NAME=OP_NAME
+    FROM TOPERATOR WHERE OP_CODE = @IN_RG_SERVICE_MAN
+    
+    IF NOT EXISTS(SELECT 1 FROM TPREMONEYDETAIL WHERE SERIAL_NO = @IN_SERIAL_NO)
+    BEGIN
+        SET @V_ERROR = N'记录不存在！'
+        RAISERROR(@V_ERROR,16,3)
+    END
+   
+	IF @IN_RG_CUST_TYPE = 1
+	SET @V_CUST_TYPE_NAME = N'个人'
+	ELSE IF @IN_RG_CUST_TYPE = 2
+	SET @V_CUST_TYPE_NAME = N'机构'
+	ELSE
+	BEGIN
+        SET @V_ERROR = N'客户类型不存在！'
+        RAISERROR(@V_ERROR,16,4)
+    END
+    ------------------------------------------------------------------------
+    BEGIN TRANSACTION
+
+    /*UPDATE TPRECONTRACT SET RG_MONEY = ISNULL(RG_MONEY,0) - @V_DZ_MONEY + @IN_DZ_MONEY, RG_DATE = DBO.GETDATEINT(@IN_DZ_TIME) WHERE SERIAL_NO = @V_PRE_SERIAL_NO
+    UPDATE TPREMONEYDETAIL SET DZ_MONEY = @IN_DZ_MONEY, DZ_DATE = @IN_DZ_TIME, JK_TYPE = @IN_JK_TYPE, JK_TYPE_NAME = @V_JK_TYPE_NAME, ONWAY_FLAG=@IN_ONWAY_FLAG
+        WHERE SERIAL_NO = @IN_SERIAL_NO*/
+    UPDATE TSALESRESULTFORSTATISTIC SET DZ_MONEY = @IN_DZ_MONEY, DZ_DATE = @IN_DZ_TIME, JK_TYPE = @IN_JK_TYPE, JK_TYPE_NAME = @V_JK_TYPE_NAME, ONWAY_FLAG=@IN_ONWAY_FLAG
+		,RG_CUST_NAME = @IN_RG_CUST_NAME, RG_CUST_TYPE = @IN_RG_CUST_TYPE, RG_CUST_TYPE_NAME = @V_CUST_TYPE_NAME
+		,RG_PRODUCT_NAME = @IN_RG_PRODUCTI_NAME, PRE_PRODUCT_TYPE = @IN_RG_PRODUCT_TYPE, PRE_PRODUCT_TYPE_NAME = @IN_RG_PRODUCT_TYPE_NAME
+		,RG_SERVICE_MAN = @IN_RG_SERVICE_MAN, RG_SERVICE_MAN_NAME = @V_RG_SERVICE_MAN_NAME
+        WHERE SERIAL_NO = @IN_SERIAL_NO AND RECORDS_COUNT = -1
+
+    --2.日志
+    SELECT @SSUMMARY = N'修改客户其他产品到账，产品名称：' + @IN_RG_PRODUCTI_NAME
+                                         + N'产品类型：' + @IN_RG_PRODUCT_TYPE_NAME
+                                         + N'客户名称：' + @IN_RG_CUST_NAME
+                                       + N'到帐金额：' + CONVERT(NVARCHAR(30),@IN_DZ_MONEY)
+    INSERT INTO TLOGLIST(BUSI_FLAG,BUSI_NAME,OP_CODE,SUMMARY) VALUES(@IBUSI_FLAG,@SBUSI_NAME,@IN_INPUT_MAN,@SSUMMARY)
+    COMMIT TRANSACTION
+    END TRY
+    --3.异常处理
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0 ROLLBACK TRANSACTION
+        DECLARE @V_ERROR_STR NVARCHAR(1000),@V_ERROR_NUMBER INT,@V_ERROR_SEVERITY INT,@V_ERROR_STATE INT,
+                @V_ERROR_PROCEDURE sysname,@V_ERROR_LINE INT,@V_ERROR_MESSAGE NVARCHAR(4000)
+        SELECT @V_ERROR_STR = N'Message:%s,Procedure:%s,Line:%d',
+               @V_ERROR_NUMBER = ERROR_NUMBER(),
+               @V_ERROR_SEVERITY = ERROR_SEVERITY(),
+               @V_ERROR_STATE = ERROR_STATE(),
+               @V_ERROR_PROCEDURE = ERROR_PROCEDURE(),
+               @V_ERROR_LINE = ERROR_LINE(),
+               @V_ERROR_MESSAGE = ERROR_MESSAGE()
+        RAISERROR(@V_ERROR_STR,@V_ERROR_SEVERITY,1,@V_ERROR_MESSAGE,@V_ERROR_PROCEDURE,@V_ERROR_LINE)
+        RETURN -100
+    END CATCH
+    RETURN 100
+GO

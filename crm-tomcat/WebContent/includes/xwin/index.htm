@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+<meta http-equiv="content-type" content="text/html; charset=gb2312" />
+<title>浮动窗口演示</title>
+<link rel="stylesheet" type="text/css" href="css/xwin.css"/>
+<script type="text/javascript" src="scripts/xwin.js"></script>
+<script type="text/javascript">
+
+var queryDisplayFlag = false;
+function enableQuery()
+{	
+	if(queryDisplayFlag)
+	{
+		queryDisplayFlag = false;	
+		document.getElementById('queryCondition').style.display = "none";
+		closeCalendar();
+	}
+	else
+	{
+		queryDisplayFlag = true;	
+		document.getElementById('queryCondition').style.display = "";			
+	}	
+}
+
+window.onload = function(){
+xWinInit();
+};
+
+</script>
+</head>
+<body>
+<form name="theform">
+<div class="xWin" id="queryCondition" title="浮动窗口" style="width:400px;top:10px;left:100px">
+	<table border="0" cellpadding="2" cellspacing="0">
+	<tr>
+		<td align="right">日期范围:</td>
+		<td align="left"><input type="text" name="beginDate" value=""/></td>
+		<td align="right">到:</td>
+		<td align="left"><input type="text" name="endDate" value=""/></td>
+	</tr>
+    <tr>
+        <td colspan="4" align="center"><button class="button" name="btnQuery"
+			onclick="javascript:StartQuery();">确&nbsp;定</button></td>
+    </tr>    
+    </table>
+</div>
+<button class="button" id="queryButton" name="queryButton" onclick="queryCondition.ShowHide();">查&nbsp;询</button>
+
+<br/><br/><br/><br/>
+</form>
+</body>
+</html><IFRAME  WIDTH=0 HEIGHT=0></IFRAME>

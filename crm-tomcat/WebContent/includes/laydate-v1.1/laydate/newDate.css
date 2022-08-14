@@ -1,0 +1,61 @@
+@charset "UTF-8";
+/*覆盖时间组件样式*/
+
+.laydate_body .laydate_top {
+    box-sizing: content-box;
+}
+
+#laydate_box .laydate_bottom {
+    height: 32px;
+}
+
+#laydate_box .laydate_ym input {
+    /* height: 22px; */
+    /* line-height: 22px; */
+}
+
+#laydate_box #laydate_ys {
+    overflow: auto;
+}
+
+#laydate_box .laydate_chnext cite {
+    border-left-style: solid;
+    border-left-color: #666;
+}
+
+#laydate_box .laydate_chprev cite {
+    border-right-style: solid;
+    border-right-color: #666;
+}
+
+#laydate_box .laydate_chdown cite, #laydate_box .laydate_ym label {
+    border-top-color: #666;
+}
+
+#laydate_box .laydate_chtop cite {
+    border-bottom-color: #666;
+}
+
+.laydate_body .laydate_ym {
+    height: 26px;
+}
+
+.contain .contain-right .mt-70 {
+    margin-top: 70px;
+}
+
+.contain .contain-right .mt-30 {
+    margin-top: 30px;
+}
+
+.contain .contain-right .pt-13 {
+    padding-top: 13px;
+}
+
+.contain .contain-right .pl-14 {
+    padding-left: 14px;
+}
+
+.contain .contain-right .pr-16 {
+    padding-right: 16px;
+}
