@@ -1,0 +1,118 @@
+apply plugin: 'com.android.application'
+apply from: 'and_res_guard.gradle'
+
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.woaishijiebei.www"
+        minSdkVersion 14
+        targetSdkVersion 29
+        versionCode 11
+        versionName "1.1"
+        vectorDrawables.useSupportLibrary = true
+        flavorDimensions "versionCode"
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+        multiDexEnabled false
+        //testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            //发布版本的签名配置
+            keyAlias 'shaba2019'
+            keyPassword 'Pdd147258'
+            storeFile file('shabasport.keystore')
+            storePassword 'Pdd147258'
+        }
+        debug {
+            storeFile file('debug.keystore')
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+    buildTypes {
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            //是否开启zip优化
+            zipAlignEnabled true
+            //混淆
+            minifyEnabled true
+            // 移除无用的resource文件
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    def file = output.outputFile
+                    //要被替换的源字符串
+                    def sourceFile = "-${variant.flavorName}-${variant.buildType.name}"
+                    def fileName = "ty_v${defaultConfig.versionName}_${variant.productFlavors[0].name}_${releaseTime()}"
+                    // 输出apk名称为XXapp1.4.0_2017-02-14.apk
+                    if (variant.buildType.name.equals('release')) {
+//                        fileName = "nt-${defaultConfig.versionName}-${releaseTime()}.apk"
+                        fileName = "ty_v${defaultConfig.versionName}_${variant.productFlavors[0].name}_${releaseTime()}"
+                    }
+                    //output.outputFile = new File(file.parentFile, fileName)
+                    outputFileName = output.outputFile.name.replace(sourceFile, fileName);
+                }
+            }
+        }
+    }
+    compileOptions {
+    }
+    //打包不检查
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    productFlavors {
+        tencent {
+            manifestPlaceholders = [channel_value:"tencent"]
+        }//应用宝
+        zhushou360 {
+            manifestPlaceholders = [channel_value:"zhushou360"]
+        }//360手机助手
+        xiaomi {
+            manifestPlaceholders = [channel_value:"xiaomi"]
+        }//小米应用商店
+        huawei {
+            manifestPlaceholders = [channel_value:"huawei"]
+        }//华为应用市场
+        oppo {
+            manifestPlaceholders = [channel_value:"oppo"]
+        }//OPPO软件商店
+        meizu {
+            manifestPlaceholders = [channel_value:"meizu"]
+        }//魅族
+        google {
+            manifestPlaceholders = [channel_value:"google"]
+        }//谷歌
+        vivo {
+            manifestPlaceholders = [channel_value:"vivo"]
+        }//vivo
+        samsung {
+            manifestPlaceholders = [channel_value:"samsung"]
+        }//三星
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    //网络框架retrofit
+    implementation'com.squareup.retrofit2:retrofit:2.6.2'
+    implementation'com.squareup.retrofit2:converter-gson:2.6.2'
+    implementation'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
+    //rxjava
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.14'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    //log
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+}

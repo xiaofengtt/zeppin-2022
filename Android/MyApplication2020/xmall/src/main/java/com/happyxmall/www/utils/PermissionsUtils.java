@@ -1,0 +1,213 @@
+package com.happyxmall.www.utils;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AppOpsManager;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
+import android.provider.Settings;
+import android.view.Display;
+import android.view.Gravity;
+import android.view.Window;
+import android.view.WindowManager;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
+
+import com.happyxmall.www.MainActivity;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 权限工具类
+ */
+public class PermissionsUtils {
+
+    private final int mRequestCode = 100;//权限请求码
+    public static boolean showSystemSetting = true;
+    private static final String CHECK_OP_NO_THROW ="checkOpNoThrow";
+    private static final String OP_POST_NOTIFICATION = "OP_POST_NOTIFICATION";
+
+    private PermissionsUtils() {
+    }
+
+    private static PermissionsUtils permissionsUtils;
+    private IPermissionsResult mPermissionsResult;
+
+    public static PermissionsUtils getInstance() {
+        if (permissionsUtils == null) {
+            permissionsUtils = new PermissionsUtils();
+        }
+        return permissionsUtils;
+    }
+
+    public void chekPermissions(Activity context, String[] permissions, @NonNull IPermissionsResult permissionsResult) {
+        mPermissionsResult = permissionsResult;
+        if (Build.VERSION.SDK_INT < 23) {
+            //6.0才用动态权限
+            permissionsResult.passPermissons();
+            return;
+        }
+
+        //创建一个mPermissionList，逐个判断哪些权限未授予，未授予的权限存储到mPerrrmissionList中
+        List<String> mPermissionList = new ArrayList<>();
+        //逐个判断你要的权限是否已经通过
+        for (int i = 0; i < permissions.length; i++) {
+            if (ContextCompat.checkSelfPermission(context, permissions[i]) != PackageManager.PERMISSION_GRANTED) {
+                mPermissionList.add(permissions[i]);//添加还未授予的权限
+            }
+        }
+        //申请权限
+        if (mPermissionList.size() > 0) {//有权限没有通过，需要申请
+            ActivityCompat.requestPermissions(context, permissions, mRequestCode);
+        } else {
+            //说明权限都已经通过，可以做你想做的事情去
+            permissionsResult.passPermissons();
+            return;
+        }
+    }
+
+    //请求权限后回调的方法 //参数： requestCode  是我们自己定义的权限请求码
+    // 参数： permissions  是我们请求的权限名称数组
+    // 参数： grantResults 是我们在弹出页面后是否允许权限的标识数组，数组的长度对应的是权限名称数组的长度，数组的数据0表示允许权限，-1表示我们点击了禁止权限
+    public void onRequestPermissionsResult(Activity context, int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        boolean hasPermissionDismiss = false;
+        //有权限没有通过
+        if (mRequestCode == requestCode) {
+            for (int i = 0; i < grantResults.length; i++) {
+                if (grantResults[i] == -1) {
+                    hasPermissionDismiss = true;
+                }
+            }
+            //如果有权限没有被允许
+            if (hasPermissionDismiss) {
+                if (showSystemSetting) {
+                    showSystemPermissionsSettingDialog(context);//跳转到系统设置权限页面，或者直接关闭页面，不让他继续访问
+                } else {
+                    mPermissionsResult.forbitPermissons();
+                }
+            } else {
+                //全部权限通过，可以进行下一步操作。。。
+                mPermissionsResult.passPermissons();
+            }
+        }
+    }
+
+    /**
+     * 不再提示权限时的展示对话框
+     */
+    AlertDialog mPermissionDialog;
+
+    private void showSystemPermissionsSettingDialog(final Activity context) {
+        final String mPackName = context.getPackageName();
+        if (mPermissionDialog == null) {
+            mPermissionDialog = new AlertDialog.Builder(context).setMessage("已禁用权限，请手动授予").setPositiveButton("设置", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    cancelPermissionDialog();
+                    Uri packageURI = Uri.parse("package:" + mPackName);
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI);
+                    context.startActivity(intent);
+                    context.finish();
+                }
+            }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //关闭页面或者做其他操作
+                    cancelPermissionDialog();
+                    //mContext.finish();
+                    mPermissionsResult.forbitPermissons();
+                }
+            }).create();
+        }
+        mPermissionDialog.show();
+        //放在show()之后，不然有些属性是没有效果的，比如height和width
+        //以下代码设置解决弹窗不居中问题，一侧有边距，一侧没有
+        Window dialogWindow = mPermissionDialog.getWindow();
+        WindowManager m = context.getWindowManager();
+        Display d = m.getDefaultDisplay(); // 获取屏幕宽、高
+        WindowManager.LayoutParams p = dialogWindow.getAttributes(); // 获取对话框当前的参数值
+        // 设置宽度
+        p.width = (int) (d.getWidth() * 0.95); // 宽度设置为屏幕的0.95
+        p.gravity = Gravity.CENTER;//设置位置
+        //p.alpha = 0.8f;//设置透明度
+        dialogWindow.setAttributes(p);
+
+    }
+
+    //关闭对话框
+    private void cancelPermissionDialog() {
+        if (mPermissionDialog != null) {
+            mPermissionDialog.cancel();
+            mPermissionDialog = null;
+        }
+    }
+
+    public interface IPermissionsResult {
+        void passPermissons();
+
+        void forbitPermissons();
+    }
+
+    public static boolean isNotificationEnabled(Context context) {
+        NotificationManagerCompat manager = NotificationManagerCompat.from(context);
+        // areNotificationsEnabled方法的有效性官方只最低支持到API 19，低于19的仍可调用此方法不过只会返回true，即默认为用户已经开启了通知。
+        return manager.areNotificationsEnabled();
+    }
+
+    public void goSetNotificationStart(Activity context){
+        mPermissionDialog = new AlertDialog.Builder(context).setMessage("Need notification permission").setPositiveButton("Set", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+                    intent.putExtra("android.provider.extra.APP_PACKAGE", context.getPackageName());
+                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) { //5.0
+                    intent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+                    intent.putExtra("app_package", context.getPackageName());
+                    intent.putExtra("app_uid", context.getApplicationInfo().uid);
+                    //context.startActivity(intent);
+                } else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) { //4.4
+                    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    intent.addCategory(Intent.CATEGORY_DEFAULT);
+                    intent.setData(Uri.parse("package:" + context.getPackageName()));
+                } else if (Build.VERSION.SDK_INT >= 15) {
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+                    intent.setData(Uri.fromParts("package", context.getPackageName(), null));
+                }
+                context.startActivity(intent);
+                context.finish();
+            }
+        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                cancelPermissionDialog();
+            }
+        }).create();
+        mPermissionDialog.show();
+        //放在show()之后，不然有些属性是没有效果的，比如height和width
+        //以下代码设置解决弹窗不居中问题，一侧有边距，一侧没有
+        Window dialogWindow = mPermissionDialog.getWindow();
+        WindowManager m = context.getWindowManager();
+        Display d = m.getDefaultDisplay(); // 获取屏幕宽、高
+        WindowManager.LayoutParams p = dialogWindow.getAttributes(); // 获取对话框当前的参数值
+        // 设置宽度
+        p.width = (int) (d.getWidth() * 0.95); // 宽度设置为屏幕的0.95
+        p.gravity = Gravity.CENTER;//设置位置
+        //p.alpha = 0.8f;//设置透明度
+        dialogWindow.setAttributes(p);
+    }
+}

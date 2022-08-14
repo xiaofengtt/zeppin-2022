@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "853291773756",
+    "project_id": "xshopping---funny-shopping",
+    "storage_bucket": "xshopping---funny-shopping.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:853291773756:android:9694a8770414cd20257839",
+        "android_client_info": {
+          "package_name": "com.happyxmall.www"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "853291773756-p6jo9ciflssi2hiktinn0la22oob6o41.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1oim9IBt9wMQGps_LosCQC2Ss66Hmiw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "853291773756-p6jo9ciflssi2hiktinn0la22oob6o41.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,4 @@
+include ':app', ':score', ':freekick', ':ttshop', ':fenghuangsport', ':jiuzhousport', ':woaishijiebeisport'
+include ':xmall'
+include ':happyxmall'
+include ':bottom'

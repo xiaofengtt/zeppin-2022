@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<in.srain.cube.views.ptr.PtrClassicFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/finance_PtrClassicFrameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    cube_ptr:ptr_duration_to_close="300"
+    cube_ptr:ptr_duration_to_close_header="2000"
+    cube_ptr:ptr_keep_header_when_refresh="true"
+    cube_ptr:ptr_pull_to_fresh="false"
+    cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
+    cube_ptr:ptr_resistance="3">
+
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                     xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                     android:id="@+id/coordinatorLayout"
+                                                     android:layout_width="match_parent"
+                                                     android:layout_height="match_parent"
+                                                     android:background="@color/list_bg"
+        >
+
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/list_bg"
+            app:elevation="0dp">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/toolbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y760"
+                android:minHeight="?actionBarSize"
+                app:contentScrim="@color/colorPrimary"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                app:statusBarScrim="@android:color/transparent"
+                app:titleEnabled="false">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/list_bg"
+                    android:paddingBottom="@dimen/y30"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.5">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y633"
+                        android:background="@drawable/finance_head_bg"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/ll_totalAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:paddingBottom="@dimen/y20">
+
+                            <TextView
+                                android:id="@+id/tv_topDes"
+                                style="@style/FinancialDesTxtStyle"
+                                android:text="总资产(元)"
+                                android:textColor="@color/white"/>
+
+                            <TextView
+                                android:id="@+id/tv_topValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/y10"
+                                android:fontFamily="sans-serif"
+                                android:includeFontPadding="false"
+                                android:text="****"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_32"/>
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/iv_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/y200"
+                            android:layout_toRightOf="@+id/ll_totalAmount"
+                            android:padding="@dimen/x50"
+                            android:src="@drawable/icon_switch_white"/>
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="@dimen/x15"
+                        android:layout_marginRight="@dimen/x15"
+                        android:background="@drawable/bg_white_radius"
+                        android:paddingBottom="@dimen/y30"
+                        android:paddingLeft="@dimen/x40"
+                        android:paddingRight="@dimen/x40">
+
+                        <TextView
+                            android:id="@+id/tv_earningsDes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/y40"
+                            android:text="账户余额(元)"
+                            android:textColor="@color/color_717171"
+                            android:textSize="@dimen/text_16"/>
+
+                        <TextView
+                            android:id="@+id/tv_accountBalance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/tv_earningsDes"
+                            android:fontFamily="sans-serif"
+                            android:text="****"
+                            android:textColor="@color/color_ED403D"
+                            android:textSize="@dimen/text_18"/>
+
+                        <TextView
+                            android:id="@+id/tv_recharge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/tv_withdrawal"
+                            android:background="@drawable/finance_recharge_bg"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="4dp"
+                            android:text="充值"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_14"/>
+
+                        <TextView
+                            android:id="@+id/tv_withdrawal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/x30"
+                            android:background="@drawable/finance_withdrawal_bg"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:paddingTop="4dp"
+                            android:text="提现"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_14"/>
+                    </RelativeLayout>
+                </FrameLayout>
+
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="?attr/actionBarSize"
+                    android:paddingTop="20dp"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingBottom="@dimen/x40"
+                        android:paddingTop="@dimen/x40"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_18"/>
+
+
+                    <CheckBox
+                        android:id="@+id/cb_display"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_marginRight="@dimen/x30"
+                        android:button="@null"
+                        android:checked="true"
+                        android:drawableLeft="@drawable/selector_eye"
+                        android:padding="@dimen/x30"/>
+
+                </android.support.v7.widget.Toolbar>
+
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_tab"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y150"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x15"
+            android:background="@drawable/finance_tab_bg"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <!--<android.support.design.widget.TabLayout-->
+            <!--android:id="@+id/tabLayout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/y100"-->
+            <!--app:tabIndicatorColor="@color/color_0069E5"-->
+            <!--app:tabMode="fixed"-->
+            <!--app:tabTextAppearance="@style/TabLayoutTextStyle"-->
+            <!--app:tabSelectedTextColor="@color/color_0069E5"-->
+            <!--app:tabTextColor="@color/alpha_50_black"/>-->
+
+            <com.flyco.tablayout.SlidingTabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:tl_iconVisible="false"
+                app:tl_indicator_color="@color/color_0069E5"
+                app:tl_indicator_corner_radius="0dp"
+                app:tl_indicator_height="@dimen/y6"
+                app:tl_indicator_margin_bottom="@dimen/x20"
+                app:tl_indicator_width="@dimen/x85"
+                app:tl_tab_space_equal="true"
+                app:tl_textSelectColor="@color/color_0069E5"
+                app:tl_textUnselectColor="@color/alpha_50_black"
+                app:tl_textsize="@dimen/text_16"/>
+
+            <!--<View-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="@dimen/y3"-->
+            <!--android:background="@color/line_30_979797"/>-->
+
+        </LinearLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/y150"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        </android.support.v4.view.ViewPager>
+
+
+        <include
+            layout="@layout/layout_not_logged_in"/>
+    </android.support.design.widget.CoordinatorLayout>
+</in.srain.cube.views.ptr.PtrClassicFrameLayout>
+
+
+

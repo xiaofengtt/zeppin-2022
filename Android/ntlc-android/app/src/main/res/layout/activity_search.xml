@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_bg"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.bank.activity.SearchActivity">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <LinearLayout
+        style="@style/LayoutStyleRadius"
+        android:layout_marginLeft="@dimen/x15"
+        android:layout_marginRight="@dimen/x15"
+        android:layout_marginTop="@dimen/x20"
+        android:background="@drawable/bg_white_radius"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/y20">
+
+        <cn.zeppin.product.ntb.widget.ClearEditText
+            android:id="@+id/cet_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/x17"
+            android:background="@drawable/search_bg"
+            android:drawableLeft="@drawable/icon_search"
+            android:drawablePadding="@dimen/x15"
+            android:hint="输入您想要搜索的内容"
+            android:imeOptions="actionSearch"
+            android:paddingBottom="@dimen/x30"
+            android:paddingLeft="@dimen/x45"
+            android:paddingRight="@dimen/x45"
+            android:paddingTop="@dimen/y30"
+            android:singleLine="true"
+            android:textColor="@color/alpha_80_black"
+            android:textColorHint="@color/alpha_40_black"
+            android:textSize="@dimen/text_14"/>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/id_tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+            android:layout_marginBottom="@dimen/x40"
+            android:layout_marginTop="@dimen/y20"
+            app:tabIndicatorColor="@color/color_0069E5"
+            app:tabMode="fixed"/>
+
+    </LinearLayout>
+
+    <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/search_refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/search_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/y25"
+            tools:listitem="@layout/item_product_list"></android.support.v7.widget.RecyclerView>
+
+    </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
+
+</LinearLayout>

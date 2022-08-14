@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_bg"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.finance.activity.RechargeActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/recharge_head_bg"
+        android:paddingTop="@dimen/y50">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/x40"
+            android:src="@drawable/icon_white_back"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/x40"
+            android:text="充值"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_20"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_selectBankCard"
+            style="@style/LayoutStyleRadius"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x15"
+            android:layout_marginTop="@dimen/y30"
+            android:minHeight="@dimen/y202"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/x50"
+            android:paddingLeft="@dimen/x35"
+            android:paddingRight="@dimen/x50"
+            android:paddingTop="@dimen/x50"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_payBankIcon"
+                android:layout_width="@dimen/x60"
+                android:layout_height="@dimen/x60"
+                android:layout_marginRight="@dimen/x20"
+                android:src="@drawable/bankcard"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_payBankName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/iv_payBankIcon"
+                    android:fontFamily="sans-serif"
+                    android:text="选择银行卡"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_bankLimit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y10"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="单笔限额"
+                        android:textColor="@color/alpha_40_black"
+                        android:textSize="@dimen/text_12"/>
+
+                    <TextView
+                        android:id="@+id/tv_singleLimit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/color_E1C08B"
+                        android:textSize="@dimen/text_12"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="，每日限额"
+                        android:textColor="@color/alpha_40_black"
+                        android:textSize="@dimen/text_12"/>
+
+                    <TextView
+                        android:id="@+id/tv_dailyLimit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/color_E1C08B"
+                        android:textSize="@dimen/text_12"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_down"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_addBank"
+            style="@style/LayoutStyleRadius"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x15"
+            android:layout_marginTop="@dimen/y30"
+            android:minHeight="@dimen/y202"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/x50"
+            android:paddingLeft="@dimen/x35"
+            android:paddingRight="@dimen/x50"
+            android:paddingTop="@dimen/x50"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="@dimen/x60"
+                android:layout_height="@dimen/x60"
+                android:layout_marginRight="@dimen/x15"
+                android:src="@drawable/icon_add_bank"/>
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv_payBankIcon"
+                android:layout_weight="1"
+                android:text="添加银行卡"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_arrow"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_alipay"
+            style="@style/LayoutStyleRadius"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x15"
+            android:layout_marginTop="@dimen/y30"
+            android:minHeight="@dimen/y202"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/y50"
+            android:paddingLeft="@dimen/x35"
+            android:paddingRight="@dimen/x50"
+            android:paddingTop="@dimen/y50">
+
+            <ImageView
+                android:layout_width="@dimen/x60"
+                android:layout_height="@dimen/x60"
+                android:layout_marginRight="@dimen/x15"
+                android:src="@drawable/alipay_logo"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支付宝"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16"/>
+
+            <TextView
+                android:id="@+id/alipay"
+                style="@style/TextLimitsStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x15"
+                android:layout_marginRight="@dimen/x30"
+                android:layout_weight="1"
+                android:text="(用户名称)"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_14"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/x15"
+                android:enabled="false"
+                android:text="未绑定"
+                android:textColor="@color/txt_alipay_binding"
+                android:textSize="@dimen/text_14"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_arrow"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/y20"
+            android:paddingLeft="@dimen/x50"
+            android:paddingTop="@dimen/y20"
+            android:text="账户余额 3000.00 元"/>
+
+        <LinearLayout
+            style="@style/LayoutStyleRadius"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x15"
+            android:layout_marginTop="0dp"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x55"
+                android:layout_marginTop="@dimen/x55"
+                android:text="充值金额"
+                android:textColor="@color/alpha_80_black"
+                android:textSize="@dimen/text_16"/>
+
+            <cn.zeppin.product.ntb.widget.ClearEditText
+                android:id="@+id/et_price"
+                style="@style/pay_editText_style"
+                android:hint="请输入充值金额（最低1元）"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y20"
+            android:drawableLeft="@drawable/icon_warn_red"
+            android:drawablePadding="@dimen/x15"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:textColor="@color/error_txt"
+            android:textSize="@dimen/text_12"
+            android:visibility="gone"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/x50"
+            android:text="@string/zeppin_name"
+            android:textSize="@dimen/text_12"/>
+
+        <Button
+            android:id="@+id/btn_pay"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y130"
+            android:layout_marginLeft="@dimen/x109"
+            android:layout_marginRight="@dimen/x109"
+            android:layout_marginTop="@dimen/y30"
+            android:background="@drawable/btn_buy_bg"
+            android:text="充值"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_16"/>
+    </LinearLayout>
+</LinearLayout>

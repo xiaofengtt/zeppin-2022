@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="25dp"
+    android:height="20dp"
+    android:viewportHeight="25.0"
+    android:viewportWidth="20.0">
+    <item android:state_checked="false" android:drawable="@mipmap/ic_home_ina"/>
+    <item android:state_checked="true" android:drawable="@mipmap/ic_home_a"/>
+</selector>

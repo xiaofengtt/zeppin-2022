@@ -1,0 +1,194 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.1"
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+    defaultConfig {
+        applicationId "cn.zeppin.product.ntb"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 7
+//        versionName "2.1.5"
+        versionName "2.1.5_test"
+        flavorDimensions "versionCode"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+//        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yinyongbao"]//添加一个默认渠道号
+
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        release {
+            //发布版本的签名配置
+            keyAlias 'NtZeppin'
+            keyPassword 'zeppin'
+            storeFile file('/Users/zeppin/Desktop/workspace/android/ntlc/NtZeppin.jks')
+            storePassword 'zeppin'
+        }
+        debug {
+            //发布版本的签名配置
+            keyAlias 'NtZeppin'
+            keyPassword 'zeppin'
+            storeFile file('/Users/zeppin/Desktop/workspace/android/ntlc/NtZeppin.jks')
+            storePassword 'zeppin'
+        }
+    }
+
+    buildTypes {
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            //是否开启zip优化
+            zipAlignEnabled true
+            //混淆
+            minifyEnabled true
+            // 移除无用的resource文件
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 混淆文件的位置
+            signingConfig signingConfigs.release
+            applicationVariants.all { variant ->
+                //variant.outputs.each { output ->
+                variant.outputs.all { output ->
+                    def file = output.outputFile
+                    def sourceFile = "-${variant.flavorName}-${variant.buildType.name}"
+                    def fileName
+                    // 输出apk名称为XXapp1.4.0_2017-02-14.apk
+                    if (variant.buildType.name.equals('release')) {
+//                        fileName = "nt-${defaultConfig.versionName}-${releaseTime()}.apk"
+                        fileName = "nt_v${defaultConfig.versionName}_${variant.productFlavors[0].name}_${releaseTime()}.apk"
+                    } else if (variant.buildType.name.equals('debug')) {
+                        fileName = "nt-${defaultConfig.versionName}-${releaseTime()}-debug.apk"
+
+//                        fileName = "nt_v${defaultConfig.versionName}_${variant.productFlavors[0].name}_${releaseTime()}.apk"
+                    }
+                    //output.outputFile = new File(file.parentFile, fileName)
+                    outputFileName = output.outputFile.name.replace(sourceFile, fileName);
+                }
+            }
+        }
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            versionNameSuffix "_debug"
+        }
+    }
+
+//
+//    packagingOptions {
+//        exclude 'META-INF/NOTICE'
+//        exclude 'META-INF/maven/com.nineoldandroids/library/pom.properties'
+//    }
+    sourceSets {
+        main {
+            jniLibs {
+                srcDirs 'libs'
+            }
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+    //设置虚拟机堆内存空间大小，避免在编译期间OOM
+//    dexOptions {
+//        incremental true
+//        javaMaxHeapSize "4g"
+//    }
+    //打包不检查
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    productFlavors {
+        yingyongbao {}//应用宝
+        baidu {}//百度手机助手
+        zhushou360 {}//360手机助手
+        xiaomi {}//小米应用商店
+        huawei {}//华为应用市场
+        wandoujia {}//豌豆荚（阿里分发）
+        anzhi {}//安智市场
+        mmyingyong {}//MM应用市场
+        jifeng {}//机锋应用市场
+        oppo {}//OPPO软件商店
+        youyi {}//优忆安卓市场
+        kuan {}//酷安
+        yingyonghui {}//应用汇
+        kupai {}//酷派应用商店
+        mumayi {}//木蚂蚁市场
+        nduo {}//N多市场
+        meizu {}//魅族
+        zhongxing {}//中兴
+        vivo {}//vivo
+        lianxiang {}//联想
+        leshi {}//乐视
+        samsung {}//三星
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    api project(':library')
+    api project(':lockpattern')
+    //支付宝
+    api files('libs/alipaySdk-20170725.jar')
+    //友盟分享sdk
+    api files('libs/SocialSDK_QQ_Simplify.jar')
+    api files('libs/SocialSDK_Sina_Simplify.jar')
+    api files('libs/SocialSDK_WeChat_Simplify.jar')
+    api files('libs/umeng_shareboard_widget.jar')
+    api files('libs/umeng_social_api.jar')
+    api files('libs/umeng_social_net.jar')
+    api files('libs/umeng_social_shareboard.jar')
+    api files('libs/umeng_social_shareview.jar')
+    api files('libs/umeng_social_tool.jar')
+
+    //图片裁剪
+    //    api 'com.tencent.bugly:crashreport:latest.release'
+    //顶部下拉刷新
+    //版本更新
+    //tab选择器
+    //noinspection GradleCompatible
+    api 'com.android.support:appcompat-v7:25.4.0'
+    //noinspection GradleCompatible
+    api 'com.android.support:design:25.4.0'
+    //noinspection GradleCompatible
+    api 'com.android.support:support-vector-drawable:25.4.0'
+    //noinspection GradleCompatible
+    api 'com.android.support:support-v4:25.4.0'
+    api 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+    //noinspection GradleCompatible
+    api 'com.android.support:recyclerview-v7:25.4.0'
+    api 'com.zhy:flowlayout-lib:1.0.3'
+    api 'com.soundcloud.android:android-crop:1.0.1@aar'
+    api 'top.zibin:Luban:1.0.9'
+    api 'com.facebook.fresco:fresco:0.12.0'
+    api 'com.gavin.com.library:stickyDecoration:1.1.2'
+    api 'com.lidong.pdf:android_pdf:1.0.1'
+    api 'in.srain.cube:ultra-ptr:1.0.11'
+    api 'com.allenliu.versionchecklib:library:1.8.2'
+    api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    api 'com.kyleduo.switchbutton:library:1.4.5'
+    testImplementation 'junit:junit:4.12'
+}

@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/list_bg"
+              android:orientation="vertical">
+
+    <include
+        android:id="@+id/id_toolbar"
+        layout="@layout/include_toolbar"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_login"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y545"
+        android:background="@drawable/user_head_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="个人中心"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="@dimen/text_20"/>-->
+
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:paddingTop="20dp"
+            app:contentInsetStart="0dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="个人中心"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_18"/>
+
+            <FrameLayout
+                android:id="@+id/fl_notice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="right"
+                android:layout_margin="@dimen/x40">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/x5"
+                    android:src="@drawable/icon_message_notice"/>
+
+                <ImageView
+                    android:id="@+id/iv_new_notice"
+                    android:layout_width="@dimen/x15"
+                    android:layout_height="@dimen/x15"
+                    android:layout_gravity="right"
+                    android:src="@drawable/circle_new_version"
+                    android:visibility="gone"/>
+            </FrameLayout>
+        </android.support.v7.widget.Toolbar>
+
+        <cn.zeppin.product.ntb.widget.SelectableRoundedImageView
+            android:id="@+id/iv_head"
+            android:layout_width="@dimen/x160"
+            android:layout_height="@dimen/x160"
+            android:layout_above="@+id/tv_username"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/y140"
+            android:scaleType="centerCrop"
+            android:src="@drawable/head_login"
+            app:sriv_left_bottom_corner_radius="@dimen/x160"
+            app:sriv_left_top_corner_radius="@dimen/x160"
+            app:sriv_right_bottom_corner_radius="@dimen/x160"
+            app:sriv_right_top_corner_radius="@dimen/x160"/>
+
+        <TextView
+            android:id="@+id/tv_userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/y50"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_16"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_unLogin"
+        style="@style/LayoutStyleRadius2"
+        android:layout_marginTop="@dimen/y35"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x30"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/y55"
+            android:paddingTop="@dimen/y55">
+
+            <TextView
+                android:id="@+id/tv_toLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点击注册/登录"
+                android:textColor="@color/color_70_212121"
+                android:textSize="@dimen/text_18"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_toLogin"
+                android:layout_marginTop="@dimen/y20"
+                android:text="1秒登录，查看更多理财产品"
+                android:textColor="@color/color_50_212121"
+                android:textSize="@dimen/text_14"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/head_unlogin"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/LayoutStyleRadius2"
+                android:layout_marginTop="@dimen/y25"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/y35"
+                android:paddingTop="@dimen/y45">
+
+                <LinearLayout
+                    android:id="@+id/ll_idCard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/iv_idCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/user_idcard"/>
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/y20"
+                        android:text="实名认证"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_16"/>
+
+
+                    <TextView
+                        android:id="@+id/tv_authStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/y10"
+                        android:text="未认证"
+                        android:textColor="@color/color_4990E2"
+                        android:textSize="@dimen/text_12"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/y3"
+                    android:layout_height="@dimen/y150"
+                    android:background="@color/color_ECECEC"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_bankCard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/iv_bankCard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/user_bankcard"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/y20"
+                        android:text="我的银行卡"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_16"/>
+
+                    <TextView
+                        android:id="@+id/tv_bindStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/y10"
+                        android:text="未绑定"
+                        android:textColor="@color/color_4990E2"
+                        android:textSize="@dimen/text_12"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LayoutStyleRadius2"
+                android:layout_marginTop="@dimen/y25">
+
+                <RelativeLayout
+                    android:id="@+id/rl_tradingRecord"
+                    style="@style/ContentLayoutStyle">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/y15"
+                        android:text="交易记录"
+                        android:textColor="@color/alpha_80_black"
+                        android:textSize="@dimen/text_16"/>
+
+                    <TextView
+                        style="@style/TxtArrow"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_coupon"
+                    style="@style/ContentLayoutStyle"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/y15"
+                        android:text="优惠券"
+                        android:textColor="@color/alpha_80_black"
+                        android:textSize="@dimen/text_16"/>
+
+                    <TextView
+                        android:id="@+id/tv_coupon_count"
+                        style="@style/TxtArrow"
+                        android:enabled="false"
+                        android:text="1张"
+                        android:textColor="@color/txt_alipay_binding"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_safe"
+                    style="@style/ContentLayoutStyle"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/y15"
+                        android:text="账户安全"
+                        android:textColor="@color/alpha_80_black"
+                        android:textSize="@dimen/text_16"/>
+
+                    <TextView
+                        style="@style/TxtArrow"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_bindingAlipay"
+                    style="@style/ContentLayoutStyle"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/y15"
+                        android:text="绑定支付宝"
+                        android:textColor="@color/alpha_80_black"
+                        android:textSize="@dimen/text_16"/>
+
+                    <TextView
+                        android:id="@+id/tv_alipay_isBind"
+                        style="@style/TxtArrow"
+                        android:enabled="false"
+                        android:text="未绑定"
+                        android:textColor="@color/txt_alipay_binding"/>
+                </RelativeLayout>
+
+                <!--<RelativeLayout-->
+                    <!--android:id="@+id/rl_setPwd"-->
+                    <!--style="@style/ContentLayoutStyle"-->
+                    <!--android:visibility="gone">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:drawablePadding="@dimen/y15"-->
+                        <!--android:text="设置密码"-->
+                        <!--android:textColor="@color/alpha_80_black"-->
+                        <!--android:textSize="@dimen/text_16"/>-->
+
+                    <!--<TextView style="@style/TxtArrow"/>-->
+                <!--</RelativeLayout>-->
+
+                <!--<RelativeLayout-->
+                    <!--android:id="@+id/rl_editPwd"-->
+                    <!--style="@style/ContentLayoutStyle"-->
+                    <!--android:visibility="gone">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:drawablePadding="@dimen/y15"-->
+                        <!--android:text="修改密码"-->
+                        <!--android:textColor="@color/alpha_80_black"-->
+                        <!--android:textSize="@dimen/text_16"/>-->
+
+                    <!--<TextView style="@style/TxtArrow"/>-->
+                <!--</RelativeLayout>-->
+
+                <RelativeLayout
+                    android:id="@+id/rl_version_update"
+                    style="@style/ContentLayoutStyle">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/y15"
+                        android:text="版本更新"
+                        android:textColor="@color/alpha_80_black"
+                        android:textSize="@dimen/text_16"/>
+
+                    <ImageView
+                        android:id="@+id/iv_new_version"
+                        android:layout_width="@dimen/x20"
+                        android:layout_height="@dimen/x20"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/x30"
+                        android:layout_toLeftOf="@+id/tv_version"
+                        android:layout_toStartOf="@+id/tv_version"
+                        android:src="@drawable/circle_new_version"
+                        android:visibility="gone"/>
+
+
+                    <TextView
+                        android:id="@+id/tv_version"
+                        style="@style/TxtArrow"
+                        android:enabled="false"
+                        android:gravity="center"
+                        android:text="v1.0.0"
+                        android:textColor="@color/color_565656"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_contactUs"
+                    style="@style/ContentLayoutStyle">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="@dimen/y15"
+                        android:text="联系我们"
+                        android:textColor="@color/alpha_80_black"
+                        android:textSize="@dimen/text_16"/>
+
+                    <TextView style="@style/TxtArrow"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_logout"
+                style="@style/LayoutStyleRadius2"
+                android:layout_height="@dimen/y130"
+                android:layout_marginBottom="@dimen/y50"
+                android:layout_marginTop="@dimen/y25"
+                android:text="退出登录"
+                android:textColor="@color/color_8A8A8A"
+                android:textSize="@dimen/text_18"
+                android:visibility="invisible"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

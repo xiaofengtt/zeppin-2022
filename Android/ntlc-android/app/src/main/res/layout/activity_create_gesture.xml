@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/list_bg"
+              android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.star.lockpattern.widget.LockPatternIndicator
+                android:id="@+id/lockPatterIndicator"
+                android:layout_width="@dimen/x150"
+                android:layout_height="@dimen/x150"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/y100"/>
+
+            <TextView
+                android:id="@+id/messageTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/y50"
+                android:text="@string/create_gesture_default"
+                android:textColor="@color/alpha_70_black"
+                android:textSize="@dimen/text_16"/>
+
+            <com.star.lockpattern.widget.LockPatternView
+                android:id="@+id/lockPatternView"
+                android:layout_width="@dimen/x800"
+                android:layout_height="@dimen/x800"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/y100"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y50"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/y100">
+
+            <Button
+                android:id="@+id/resetBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:gravity="right|center_vertical"
+                android:onClick="resetLockPattern"
+                android:text="@string/create_gesture_reset"
+                android:textColor="@color/alpha_60_black"
+                android:textSize="@dimen/text_16"/>
+
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="@dimen/x3"
+                android:layout_height="@dimen/y50"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginRight="@dimen/x30"
+                android:background="@color/alpha_40_black"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/skipBtn"
+                android:layout_width="@dimen/x130"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:gravity="left|center_vertical"
+                android:onClick="skip"
+                android:text="@string/create_gesture_skip"
+                android:textColor="@color/alpha_60_black"
+                android:textSize="@dimen/text_16"
+                android:visibility="gone"/>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

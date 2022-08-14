@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TopBar">
+        <attr name="tittle" format="string"/> //中间标题的文本内容。 format中文意思是格式，也就是我们所说的类型
+        <attr name="tittleTextSize" format="dimension"/> //中间标题文本大小
+        <attr name="tittleTextColor" format="color"/>   //中间标题文本颜色
+        <attr name="tittleBackground" format="reference|color"/>//中间标题背景
+        <attr name="leftTextColor" format="color"/>    //左边按钮的文本颜色
+        <attr name="leftBackground" format="reference|color"/>   //左边按钮的背景
+        <attr name="leftImageDrawable" format="reference"/>   //左边按钮的图片
+        <attr name="leftImageWidth" format="dimension"/>   //左边按钮的图片宽
+        <attr name="leftImageHeight" format="dimension"/>   //左边按钮的图片高
+        <attr name="leftText" format="string"/>   //左边按钮的文本
+        <attr name="rightTextColor" format="color"/>    //右边按钮的文本颜色
+        <attr name="rightBackground" format="reference|color"/>  // 右边按钮的背景
+        <attr name="rightText" format="string"/>   //右边按钮的文本
+    </declare-styleable>
+</resources>

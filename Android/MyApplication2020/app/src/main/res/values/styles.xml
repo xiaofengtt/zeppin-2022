@@ -1,0 +1,15 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <!--<style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">-->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--<item name="android:homeAsUpIndicator">@drawable/back</item>-->
+    </style>
+    <style name="StartTheme" parent="AppTheme">
+        <!--<item name="android:windowBackground">@drawable/start</item>-->
+        <item name="android:windowBackground">@color/colorWhite</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+</resources>

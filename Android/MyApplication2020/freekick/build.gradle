@@ -1,0 +1,121 @@
+apply plugin: 'com.android.application'
+
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "cn.product.freekick"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        flavorDimensions "versionCode"
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+        multiDexEnabled false
+        //testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            //发布版本的签名配置
+            keyAlias 'FreeKick'
+            keyPassword 'FreeKick'
+            storeFile file('E:\\weekTime@liuyuntao\\重要\\天天比分\\马甲包\\任意球\\keys\\freefick_360.jks')
+            storePassword 'FreeKick'
+        }
+        debug {
+            storeFile file('debug.keystore')
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+    buildTypes {
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            //是否开启zip优化
+            zipAlignEnabled true
+            //混淆
+            minifyEnabled true
+            // 移除无用的resource文件
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    def file = output.outputFile
+                    //要被替换的源字符串
+                    def sourceFile = "-${variant.flavorName}-${variant.buildType.name}"
+                    def fileName = "nt_v${defaultConfig.versionName}_${variant.productFlavors[0].name}_${releaseTime()}"
+                    // 输出apk名称为XXapp1.4.0_2017-02-14.apk
+                    if (variant.buildType.name.equals('release')) {
+//                        fileName = "nt-${defaultConfig.versionName}-${releaseTime()}.apk"
+                        fileName = "freekick_v${defaultConfig.versionName}_${variant.productFlavors[0].name}_${releaseTime()}"
+                    }
+                    //output.outputFile = new File(file.parentFile, fileName)
+                    outputFileName = output.outputFile.name.replace(sourceFile, fileName);
+                }
+            }
+        }
+    }
+    compileOptions {
+    }
+    //打包不检查
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    productFlavors {
+        yingyongbao {}//应用宝
+        baidu {}//百度手机助手
+        zhushou360 {}//360手机助手
+        xiaomi {}//小米应用商店
+        huawei {}//华为应用市场
+        wandoujia {}//豌豆荚（阿里分发）
+        //anzhi {}//安智市场
+        //mmyingyong {}//MM应用市场
+        //jifeng {}//机锋应用市场
+        oppo {}//OPPO软件商店
+        //youyi {}//优忆安卓市场
+        //kuan {}//酷安
+        // yingyonghui {}//应用汇
+        //kupai {}//酷派应用商店
+        //mumayi {}//木蚂蚁市场
+        //nduo {}//N多市场
+        meizu {}//魅族
+        //zhongxing {}//中兴
+        vivo {}//vivo
+        //lianxiang {}//联想
+        //leshi {}//乐视
+        //samsung {}//三星
+    }
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    //implementation 'com.jakewharton:butterknife:8.8.1'
+    //annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //testImplementation 'junit:junit:4.12'
+    //androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    //androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    testImplementation 'junit:junit:4.12'
+    //友盟分享API
+    implementation files('libs/umeng-share-core-6.9.4.jar')
+    implementation files('libs/umeng-share-QQ-simplify-6.9.4.jar')
+    implementation files('libs/umeng-share-wechat-simplify-6.9.4.jar')
+    implementation files('libs/umeng-share-sina-simplify-6.9.4.jar')
+    implementation files('libs/umeng-sharetool-6.9.4.jar')
+    implementation files('libs/umeng-shareboard-widget-6.9.4.jar')
+    implementation files('libs/umeng-common-2.0.2.jar')
+    implementation files('libs/SecurityEnvSDK-release-1.1.0.jar')
+//    implementation 'com.android.support:support-v4:28.0.0'
+}

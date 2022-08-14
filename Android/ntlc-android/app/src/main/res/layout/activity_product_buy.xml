@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/list_bg"
+    android:orientation="vertical"
+    tools:context="cn.zeppin.product.ntb.ui.bank.activity.ProductBuyActivity">
+
+    <include layout="@layout/include_toolbar"/>
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/LayoutStyleRadius"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x15"
+            android:layout_marginTop="@dimen/y25"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/y38"
+            android:paddingLeft="@dimen/x22"
+            android:paddingRight="@dimen/x22"
+            android:paddingTop="@dimen/x38">
+
+            <ImageView
+                android:id="@+id/iv_bankIcon"
+                android:layout_width="@dimen/x130"
+                android:layout_height="@dimen/x130"
+                android:background="@drawable/detail_img_bg"
+                android:padding="@dimen/x15"
+                android:src="@mipmap/ic_launcher"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:paddingLeft="@dimen/x15"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_18"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y10">
+
+                    <TextView
+                        android:id="@+id/tv_bankName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--"
+                        android:textColor="@color/alpha_50_black"
+                        android:textSize="@dimen/text_14"/>
+
+                    <TextView
+                        android:id="@+id/tv_scode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/alpha_50_black"
+                        android:textSize="@dimen/text_14"/>
+
+                    <cn.zeppin.product.ntb.widget.TextViewBorder
+                        android:id="@+id/tv_term"
+                        style="@style/TextLimitsStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/y10"
+                        android:paddingBottom="@dimen/x3"
+                        android:paddingLeft="@dimen/x20"
+                        android:paddingRight="@dimen/x20"
+                        android:paddingTop="@dimen/x5"
+                        android:text="期限/天"
+                        android:textColor="@color/color_E1C08B"
+                        android:textSize="@dimen/text_12"
+                        app:borderColor="@color/color_E1C08B"
+                        app:borderRadius="0dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y10"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/x15"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:paddingTop="@dimen/x30">
+
+
+            <TextView
+                android:id="@+id/tv_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="当前余额：0.00元"
+                android:textColor="@color/alpha_70_black"
+                android:textSize="@dimen/text_14"/>
+
+            <TextView
+                android:id="@+id/tv_recharge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:paddingLeft="@dimen/x15"
+                android:paddingRight="@dimen/x15"
+                android:text="充值"
+                android:textColor="@color/color_0069E5"
+                android:textSize="@dimen/text_14"/>
+            <!--</LinearLayout>-->
+
+            <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@drawable/circle_rmb"-->
+            <!--android:padding="@dimen/x10"-->
+            <!--android:src="@drawable/icon_rmb"/>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/tv_minInvestAmountAdd"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="@dimen/x10"-->
+            <!--android:gravity="right"-->
+            <!--android:text="投资递增金额：0.00元"-->
+            <!--android:textColor="@color/alpha_70_black"-->
+            <!--android:textSize="@dimen/text_14"/>-->
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/LayoutStyleRadius"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x15"
+            android:background="@drawable/bg_empty_layout"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/x15"
+            android:paddingRight="@dimen/x15">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/y56"
+                android:paddingTop="@dimen/y80">
+
+                <TextView
+                    android:id="@+id/tv_money_des"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="买入金额"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16"/>
+
+                <cn.zeppin.product.ntb.widget.ClearEditText
+                    android:id="@+id/cet_money"
+                    style="@style/buy_editText_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x60"
+                    android:layout_marginRight="@dimen/x60"
+                    android:layout_toRightOf="@id/tv_money_des"
+                    android:fontFamily="sans-serif"
+                    android:maxLength="10"
+                    android:numeric="decimal"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_border_product"
+                android:paddingBottom="@dimen/y32"
+                android:paddingTop="@dimen/y32">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="预期年化利率"
+                    android:textColor="@color/color_B5B5B5"
+                    android:textSize="@dimen/text_12"/>
+
+                <TextView
+                    android:id="@+id/tv_product_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x15"
+                    android:fontFamily="sans-serif"
+                    android:text="0.00%"
+                    android:textColor="@color/color_E74845"
+                    android:textSize="@dimen/text_12"/>
+
+
+                <TextView
+                    android:id="@+id/tv_termCN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x80"
+                    android:text="--天预期收益"
+                    android:textColor="@color/color_B5B5B5"
+                    android:textSize="@dimen/text_12"/>
+
+                <TextView
+                    android:id="@+id/tv_expected_return"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x15"
+                    android:fontFamily="sans-serif"
+                    android:text="0.00元"
+                    android:textColor="@color/color_E74845"
+                    android:textSize="@dimen/text_12"/>
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x25"
+                android:background="#1AD09637"
+                android:drawableLeft="@drawable/icon_warn_yellow"
+                android:drawablePadding="@dimen/x10"
+                android:paddingBottom="@dimen/x23"
+                android:paddingLeft="@dimen/x15"
+                android:paddingTop="@dimen/x23"
+                android:textColor="@color/color_D09637"
+                android:textSize="@dimen/text_12"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_coupon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x15"
+            android:layout_marginTop="@dimen/y25"
+            android:background="@drawable/bg_empty_layout"
+            android:paddingBottom="@dimen/y57"
+            android:paddingLeft="@dimen/x15"
+            android:paddingRight="@dimen/x30"
+            android:paddingTop="@dimen/y57">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的优惠券"
+                android:textColor="@color/alpha_80_black"
+                android:textSize="@dimen/text_16"/>
+
+            <TextView
+                android:id="@+id/tv_coupon_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawablePadding="@dimen/x15"
+                android:drawableRight="@drawable/icon_arrow"
+                android:text="1张"
+                android:textColor="@color/txt_coupon"/>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_buy"
+            style="@style/ButtonStyle1"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="@dimen/y83"
+            android:text="确认购买"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y20"
+            android:gravity="left|center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/x110">
+
+            <!--<CheckBox-->
+            <!--android:id="@+id/cb_purAgreement"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:button="@null"-->
+            <!--android:checked="true"-->
+            <!--android:drawableLeft="@drawable/icon_buy_agreement"-->
+            <!--android:drawablePadding="@dimen/"-->
+            <!--android:paddingBottom="@dimen/y10"-->
+            <!--android:paddingTop="@dimen/y10"-->
+            <!--android:text="我已阅读并同意"-->
+            <!--android:textColor="#A0A0A0"-->
+            <!--android:textSize="@dimen/text_12"/>-->
+            <ImageView
+                android:layout_width="@dimen/x30"
+                android:layout_height="@dimen/x30"
+                android:layout_marginRight="@dimen/x15"
+                android:src="@drawable/icon_buy_agreement"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我已阅读并同意"
+                android:textColor="#A0A0A0"
+                android:textSize="@dimen/text_12"/>
+
+            <TextView
+                android:id="@+id/tv_agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/y10"
+                android:paddingTop="@dimen/y10"
+                android:text="《牛投理财定向委托投资管理协议》"
+                android:textColor="@color/color_5392DD"
+                android:textSize="@dimen/text_12"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/y70"
+        android:text="预期年化利率不代表实际利息收益"
+        android:textColor="@color/color_999999"
+        android:textSize="@dimen/text_12"/>
+</LinearLayout>

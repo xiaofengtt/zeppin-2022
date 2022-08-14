@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Library</string>
+    <string name="net_error">网络访问错误，请稍后再试</string>
+    <string name="net_off">网络开小差了</string>
+    <string name="empty">还没有数据哦</string>
+    <string name="loading">加载中...</string>
+    <string name="reload">重新尝试</string>
+    <string name="no_net">网络不可用,请检查您的网络</string>
+
+    <string name="data_empty">没有符合条件的产品哦~</string>
+
+    <string name="refresh_header">下拉刷新</string>
+</resources>

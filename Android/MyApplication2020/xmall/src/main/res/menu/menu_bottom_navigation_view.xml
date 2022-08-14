@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/item_home"
+        android:enabled="true"
+        android:checked="true"
+        android:icon="@drawable/ic_home_back"
+        android:title="@string/title_home"
+        app:labelVisibilityMode="labeled" />
+    <item
+        android:id="@+id/item_categories"
+        android:enabled="true"
+        android:icon="@drawable/ic_categories_back"
+        app:labelVisibilityMode="labeled"
+        android:title="@string/title_categories" />
+    <item
+        android:id="@+id/item_record"
+        android:enabled="true"
+        android:icon="@drawable/ic_record_back"
+        app:labelVisibilityMode="labeled"
+        android:title="@string/title_record" />
+    <item
+        android:id="@+id/item_story"
+        android:enabled="true"
+        android:icon="@drawable/ic_story_back"
+        app:labelVisibilityMode="labeled"
+        android:title="@string/title_story" />
+    <item
+        android:id="@+id/item_account"
+        android:enabled="true"
+        android:icon="@drawable/ic_account_back"
+        app:labelVisibilityMode="labeled"
+        android:title="@string/title_account" />
+
+</menu>

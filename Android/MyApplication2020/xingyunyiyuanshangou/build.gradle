@@ -1,0 +1,177 @@
+apply plugin: 'com.android.application'
+apply from: 'and_res_guard.gradle'
+
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+def getVersionCode() {// 获取版本号
+    def versionFile = file('version.properties')// 读取第一步新建的文件
+    if (versionFile.canRead()) {// 判断文件读取异常
+        Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionFile))
+        def versionCode = versionProps['VERSION_CODE'].toInteger()// 读取文件里面的版本号
+        def runTasks = gradle.startParameter.taskNames
+        if ('assembleGoogleRelease' in runTasks ||'assembleBaiduRelease' in runTasks) {//仅在assembleRelease任务是增加版本号,其他渠道包在此分别配置
+            // 版本号自增之后再写入文件（此处是关键，版本号自增+1）
+            versionProps['VERSION_CODE'] = (++versionCode).toString()
+            versionProps.store(versionFile.newWriter(), null)
+        }
+        return versionCode // 返回自增之后的版本号
+    } else {
+        throw new GradleException("Could not find version.properties!")
+    }
+}
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.foshanxingyunyiyuanshangou.www"
+        minSdkVersion 14
+        targetSdkVersion 29
+        versionCode 310
+        versionName "3.1.0"
+        vectorDrawables.useSupportLibrary = true
+        flavorDimensions "versionCode"
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+        multiDexEnabled false
+        manifestPlaceholders = [
+                JPUSH_APPKEY : "2cea0caca38671a262fd63f0", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL : "H5_APP_Download", //暂时填写默认值即可.
+        ]
+    }
+    signingConfigs {
+        release {
+            //发布版本的签名配置
+            keyAlias 'xingyunyiyuanshangou'
+            keyPassword 'Pdd2021!!'
+            storeFile file('xingyunyiyuanshangou.keystore')
+            storePassword 'Pdd2021!!'
+        }
+        debug {
+            storeFile file('debug.keystore')
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+    buildTypes {
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            //是否开启zip优化
+            zipAlignEnabled true
+            //混淆
+            minifyEnabled true
+            // 移除无用的resource文件
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    def file = output.outputFile
+                    //要被替换的源字符串
+                    def sourceFile = "-${variant.flavorName}-${variant.buildType.name}"
+                    def fileName = "zy_v${defaultConfig.versionName}_${variant.productFlavors[0].name}_${releaseTime()}"
+                    // 输出apk名称为XXapp1.4.0_2017-02-14.apk
+                    if (variant.buildType.name.equals('release')) {
+//                        fileName = "rp-${defaultConfig.versionName}-${releaseTime()}.apk"
+                        fileName = "zy_v${defaultConfig.versionName}_${variant.productFlavors[0].name}_${releaseTime()}"
+                    }
+                    //output.outputFile = new File(file.parentFile, fileName)
+                    outputFileName = output.outputFile.name.replace(sourceFile, fileName);
+                }
+            }
+        }
+    }
+    compileOptions {
+    }
+    //打包不检查
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    productFlavors {
+        tencent {
+            //替换AndroidManifest中的值
+            manifestPlaceholders = [channel_value:"tencent",channel_appid:"xingyunyiyuanshangouTencent"]
+        }//应用宝
+        baidu {
+            //替换AndroidManifest中的值
+            manifestPlaceholders = [channel_value:"baidu",channel_appid:"xingyunyiyuanshangouBaidu"]
+        }//百度手机助手
+        google {
+            //替换AndroidManifest中的值
+            manifestPlaceholders = [channel_value:"google",channel_appid:"xingyunyiyuanshangouGoogle"]
+        }//百度手机助手
+        bao360 {
+            //替换AndroidManifest中的值
+            manifestPlaceholders = [channel_value:"yingyong360",channel_appid:"xingyunyiyuanshangou360"]
+        }//360手机助手
+        xiaomi {
+            //替换AndroidManifest中的值
+            manifestPlaceholders = [channel_value:"xiaomi",channel_appid:"xingyunyiyuanshangouXiaomi"]
+        }//小米应用商店
+        huawei {
+            //替换AndroidManifest中的值
+            manifestPlaceholders = [channel_value:"huawei",channel_appid:"xingyunyiyuanshangouHuawei"]
+        }//华为应用市场
+        samsung {
+            //替换AndroidManifest中的值
+            manifestPlaceholders = [channel_value:"samsung",channel_appid:"xingyunyiyuanshangouSamsung"]
+        }//豌豆荚（阿里分发）
+        oppo {
+            //替换AndroidManifest中的值
+            manifestPlaceholders = [channel_value:"oppo",channel_appid:"xingyunyiyuanshangouOppo"]
+        }//OPPO软件商店
+        meizu {
+            //替换AndroidManifest中的值
+            manifestPlaceholders = [channel_value:"meizu",channel_appid:"xingyunyiyuanshangouMeizu"]
+        }//魅族
+        //zhongxing {}//中兴
+        vivo {
+            //替换AndroidManifest中的值
+            manifestPlaceholders = [channel_value:"vivo",channel_appid:"xingyunyiyuanshangouVivo"]
+        }//vivo
+        other {
+            //替换AndroidManifest中的值
+            manifestPlaceholders = [channel_value:"other",channel_appid:"xingyunyiyuanshangouOther"]
+        }//vivo
+        //lianxiang {}//联想
+        //leshi {}//乐视
+        //samsung {}//三星
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    //implementation 'com.jakewharton:butterknife:8.8.1'
+    //annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //testImplementation 'junit:junit:4.12'
+    //androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    //androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    testImplementation 'junit:junit:4.12'
+    //implementation 'com.android.support:support-v4:28.0.0'
+    androidTestImplementation 'junit:junit:4.12'
+    //极光API
+//    //LeanCloudSDK
+//    implementation ('cn.leancloud:storage-android:5.0.26'){
+//        exclude group: 'com.alibaba', module: 'fastjson'
+//        exclude group: 'org.ligboy.retrofit2', module: 'converter-fastjson'
+//        exclude group: 'com.android.support'
+//    }
+//    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+//    implementation 'com.alibaba:fastjson:1.1.70.android'
+//    implementation 'org.ligboy.retrofit2:converter-fastjson-android:2.1.0'
+    //网络框架retrofit
+    implementation'com.squareup.retrofit2:retrofit:2.6.2'
+    implementation'com.squareup.retrofit2:converter-gson:2.6.2'
+    implementation'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
+    //rxjava
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.14'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    //log
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+}

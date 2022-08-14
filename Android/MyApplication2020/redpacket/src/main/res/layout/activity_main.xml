@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/start"
+    tools:context="com.gouwuhongbao.www.MainActivity">
+
+    <!--<com.gouwuhongbao.www.TopBar-->
+    <!--android:id="@+id/topbar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="44dp"-->
+    <!--custom:leftImageDrawable="@drawable/back"-->
+    <!--custom:leftImageHeight="42dp"-->
+    <!--custom:leftImageWidth="42dp"-->
+    <!--custom:tittle="天天比分"-->
+    <!--custom:tittleBackground="@drawable/setbar_bg"-->
+    <!--custom:tittleTextColor="#4FACFE"-->
+    <!--custom:tittleTextSize="4.7dp" />-->
+
+
+    <!--<ProgressBar-->
+        <!--android:id="@+id/web_progress"-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="44dp" />-->
+    <!--<View-->
+        <!--android:id="@+id/web_empty_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_height="0dp"/>-->
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         />
+</RelativeLayout>

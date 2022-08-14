@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--<item android:drawable="@color/color_EBEBEB" android:state_pressed="true"/>-->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+
+            <solid android:color="@color/color_EBEBEB"/>
+
+            <corners android:radius="@dimen/x15"/>
+
+        </shape>
+    </item>
+    <item android:drawable="@drawable/bg_white_radius"/>
+
+</selector>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/list_bg"
+              android:orientation="vertical">
+
+    <cn.zeppin.product.ntb.widget.SelectableRoundedImageView
+        android:id="@+id/iv_head"
+        android:layout_width="@dimen/x180"
+        android:layout_height="@dimen/x180"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y200"
+        android:scaleType="centerCrop"
+        android:src="@drawable/head_login"
+        app:sriv_left_bottom_corner_radius="@dimen/x180"
+        app:sriv_left_top_corner_radius="@dimen/x180"
+        app:sriv_right_bottom_corner_radius="@dimen/x180"
+        app:sriv_right_top_corner_radius="@dimen/x180"/>
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y50"
+        android:textSize="@dimen/text_16"/>
+
+    <TextView
+        android:id="@+id/tvWarn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y20"
+        android:text="5次失败后，需要重新登录"
+        android:textColor="@color/alpha_60_black"
+        android:textSize="@dimen/text_14"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y100"
+            android:orientation="vertical">
+
+            <com.star.lockpattern.widget.LockPatternView
+                android:id="@+id/lockPatternView"
+                android:layout_width="@dimen/x800"
+                android:layout_height="@dimen/x800"
+                android:layout_gravity="center_horizontal"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_bottom"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/y100">
+
+            <Button
+                android:id="@+id/btnForgetGesture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@color/transparent"
+                android:text="@string/gesture_forget_gesture"
+                android:textColor="@color/alpha_70_black"
+                android:textSize="@dimen/text_14"/>
+
+            <View
+                android:layout_width="@dimen/x3"
+                android:layout_height="@dimen/y50"
+                android:layout_marginLeft="@dimen/x15"
+                android:layout_marginRight="@dimen/x15"
+                android:background="@color/alpha_60_black"/>
+
+            <Button
+                android:id="@+id/btnOtherAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@color/transparent"
+                android:text="@string/gesture_other_account"
+                android:textColor="@color/alpha_70_black"
+                android:textSize="@dimen/text_14"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
