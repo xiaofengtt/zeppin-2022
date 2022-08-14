@@ -1,0 +1,13 @@
+.msg_table p {
+    margin-bottom: 0;
+}
+
+.msg_table tr th {
+    text-align: left;
+    padding: 10px;
+}
+
+.msg_table tr td {
+    padding: 10px;
+    text-align: left;
+}

@@ -36,10 +36,15 @@ public class SendSms {
 	
 	public static String sendSms(String content,String mobile){
 		StringBuilder url = new StringBuilder();
+		//牛投理财
+		String uid = "70212976";
+		String pwd = "afb00fb9c7ab51889223c821a4da2a76";
+		//自学酷
 //		String uid = "70208580";
 //		String pwd = "b3aae0eeeb290755569d22c167c77f63";
-		String uid = "70211188";
-		String pwd = "04ad2d52a0176ab18ed14e468bf70661";
+		//新疆师范大学
+//		String uid = "70211188";
+//		String pwd = "04ad2d52a0176ab18ed14e468bf70661";
 		url.append("http://api.duanxin.cm/?");
 		try {
 			content = URLEncoder.encode(content, "utf-8");
@@ -76,16 +81,21 @@ public class SendSms {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
+			return "1";
 		}
 	}
 
-	public static String sendSmses(String content,String mobile){
+	public static String sendSms4Qcb(String content,String mobile){
 		StringBuilder url = new StringBuilder();
+		//牛投理财
+		String uid = "70212974";
+		String pwd = "acd50ce3f96114043e138b04074eeb40";
+		//自学酷
 //		String uid = "70208580";
 //		String pwd = "b3aae0eeeb290755569d22c167c77f63";
-		String uid = "70211387";
-		String pwd = "b9c74237328fd809bfce5d6e4274c39a";
+		//新疆师范大学
+//		String uid = "70211188";
+//		String pwd = "04ad2d52a0176ab18ed14e468bf70661";
 		url.append("http://api.duanxin.cm/?");
 		try {
 			content = URLEncoder.encode(content, "utf-8");
@@ -121,7 +131,8 @@ public class SendSms {
 			return getRsult(inputline);
 			
 		} catch (Exception e) {
-			return null;
+			e.printStackTrace();
+			return "1";
 		}
 	} 
     
@@ -173,6 +184,9 @@ public class SendSms {
 				break;
 			case "112":
 				status = result+"_"+"号码不正确";
+				break;
+			case "114":
+				status = result+"_"+"账号被锁定，10分钟后解锁";
 				break;
 			case "120":
 				status = result+"_"+"系统升级";

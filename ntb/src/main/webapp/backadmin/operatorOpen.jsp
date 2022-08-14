@@ -7,11 +7,12 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>牛投帮-后台管理系统</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="css/operatorOpen.css" />
 	</head>
 	<body>
 		<jsp:include page="header.jsp"/>
-		<input id="scode" type="hidden" value="0000" /> 
+		<input id="scode" type="hidden" value="0000" />
 		<div class="contents">
 			<div class="form-group">
 				<form:form id="formsubmit" role="form" action="#" method="post">
@@ -36,7 +37,7 @@
 				</form:form>
 			</div>
 		</div>
-		
+
 		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
 		<script type="text/javascript" src="js/operatorOpen.js" ></script>
 	</body>

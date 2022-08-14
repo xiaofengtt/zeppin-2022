@@ -1,0 +1,17 @@
+<!--pages/contact/contact.wxml-->
+<view class="container">
+  <view class="top-view">
+    <image src="/resources/contact/code.jpg"></image>
+    <view>关注牛投财富官方微信</view>
+  </view>
+  <view class="content-view">
+    <view>牛投理财致力于让每一个家庭财富增值，是一家专业面向家庭理财的服务平台，系北京知鹏汇仁科技有限公司（Zeppin）旗下产品，公司于2013年成立，注册资本1000万。牛投理财借助自身渠道优势，精挑细选市场上低风险、高收益特征的理财产品，为每个家庭财富管理提供优质服务。</view>
+  </view>
+  <view class="contact-view">
+    <view class="title">客服联系方式</view>
+    <view class="tr"><image src="/resources/contact/mobile.png"></image>010-6222 6659</view>
+    <view class="tr"><image src="/resources/contact/message.png"></image>server@zeppin.cn</view>
+    <view class="tr"><image src="/resources/contact/position.png"></image>北京市海淀区学院南路学院派</view>
+  </view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

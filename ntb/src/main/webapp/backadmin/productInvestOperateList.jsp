@@ -7,6 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>牛投帮-后台管理系统</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="css/paging.css">
 		<link rel="stylesheet" href="css/fundList.css" />
 		<script id="queboxTpl" type="text/template">
@@ -19,7 +20,7 @@
 				<td class="operation">
 					{{if type == 'add'}}
 					<div class="btn-group">
-						<a onclick="openThis(this)">查看详情</a>
+						<a onclick="openThis(event)">查看详情</a>
 						<div class="popover log">
 							<div class="popover-content">
 								{{for newData}}
@@ -31,7 +32,7 @@
 					</div>
 					{{else type == 'delete' || type == 'check'}}
 					<div class="btn-group">
-						<a onclick="openThis(this)">查看详情</a>
+						<a onclick="openThis(event)">查看详情</a>
 						<div class="popover log">
 							<div class="popover-content">
 								{{for oldData}}
@@ -43,7 +44,7 @@
 					</div>
 					{{else type == 'edit'}}
 					<div class="btn-group">
-						<a onclick="openThis(this)">查看详情</a>
+						<a onclick="openThis(event)">查看详情</a>
 						<div class="popover log">
 							<div class="popover-content">
 								<p>投资金额：{{for oldData}}{{:amount}}{{/for}}<span class="editSpan">修改为：{{for newData}}{{:amount}}{{/for}}</span></p>
@@ -53,7 +54,7 @@
 					</div>
 					{{else type == 'redeem'}}
 					<div class="btn-group">
-						<a onclick="openThis(this)">查看详情</a>
+						<a onclick="openThis(event)">查看详情</a>
 						<div class="popover log">
 							<div class="popover-content">
 								{{for newData}}
@@ -73,7 +74,7 @@
 					{{/if}}
 					{{if status =='unchecked'}}
 						<div class="btn-group">
-							<a class="operaBranch" onclick="openThis(this)">审核</a>
+							<a class="operaBranch" onclick="openThis(event)">审核</a>
 							<div class="popover">
 								<div class="popover-content">
 									<p><input class="form-control reason" type="text" name="reason"></p>
@@ -86,7 +87,7 @@
 						</div>
 					{{else}}
 						<div class="btn-group">
-							<a onclick="openThis(this)">审核记录</a>
+							<a onclick="openThis(event)">审核记录</a>
 							<div class="popover log">
 								<div class="popover-content">
 									<p>审核人：{{:checkerName}}</p>
@@ -99,11 +100,16 @@
 				</td>
 			</tr>
 		</script>
+		<style>
+			.main-contain .tableList td{
+				overflow:visible !important;
+			}
+		</style>
 	</head>
 	<body>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="navigation.jsp"/>
-		<input id="scode" type="hidden" value="00400043" />  
+		<input id="scode" type="hidden" value="00500052" />
 		<div class="contain">
 			<jsp:include page="contentLeft.jsp"/>
 			<div class="contain-right">
@@ -126,7 +132,7 @@
 								<a id="checked">审核通过<span id="checkedCount">(0)</span></a>
 								<a id="unchecked">待审核<span id="uncheckedCount">(0)</span></a>
 								<a id="unpassed">审核不通过<span id="unpassedCount">(0)</span></a>
-							</div>							
+							</div>
 						</div>
 						<div class="statusDiv filter1">
 							<label>审核类型：</label>
@@ -140,7 +146,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<table class="table text-center tableList table-striped">
 						<thead>
 							<tr>
@@ -159,11 +165,10 @@
 			</div>
 			<div class="clear"></div>
 		</div>
-
-		<script type="text/javascript" src="js/jquery.colorbox.js"></script>
-		<script type="text/javascript" src="js/url.min.js"></script>
-		<script type="text/javascript" src="js/jsrender.min.js"></script>
-		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
-		<script type="text/javascript" src="js/productInvestOperateList.js" ></script>
+		<script type="text/javascript" src="./js/jquery.colorbox.js"></script>
+		<script type="text/javascript" src="./js/url.min.js"></script><script type="text/javascript" src="js/flagSubmit.js"></script>
+		<script type="text/javascript" src="./js/jsrender.min.js"></script>
+		<script type="text/javascript" src="./js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="./js/productInvestOperateList.js" ></script>
 	</body>
 </html>

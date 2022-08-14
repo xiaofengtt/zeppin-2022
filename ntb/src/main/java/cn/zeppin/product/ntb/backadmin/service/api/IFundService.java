@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import cn.zeppin.product.ntb.core.entity.Fund;
-import cn.zeppin.product.ntb.core.entity.FundRate;
 import cn.zeppin.product.ntb.core.entity.base.Entity;
 import cn.zeppin.product.ntb.core.service.base.IBaseService;
 
@@ -36,24 +35,18 @@ public interface IFundService extends IBaseService<Fund, String> {
 	public Integer getCount(Map<String, String> inputParams);
 	
 	/**
-	 * 获取基金分状态列表
-	 * @param resultClass
+	 * 验证同名的活期理财是否已经存在
+	 * @param name
+	 * @param uuid
 	 * @return
 	 */
-	public List<Entity> getStatusList(Class<? extends Entity> resultClass);
+	public boolean isExistFundByName(String name, String uuid);
 	
 	/**
-	 * 新增基金
-	 * @param fund
-	 * @param fundRateList
+	 * 验证同编号的活期理财是否已经存在
+	 * @param scode
+	 * @param uuid
+	 * @return
 	 */
-	public void add(Fund fund, List<FundRate> fundRateList);
-	
-	/**
-	 * 编辑基金费率
-	 * @param fund
-	 * @param fundType
-	 * @param fundRateList
-	 */
-	public void updateFundRate(Fund fund, String fundType, List<FundRate> fundRateList);
+	public boolean isExistFundByScode(String scode, String uuid);
 }

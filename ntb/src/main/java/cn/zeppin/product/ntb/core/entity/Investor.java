@@ -47,8 +47,6 @@ public class Investor extends BaseEntity {
 	private String loginPassword;
 	private String secretPassword;
 	
-	private String thirdPaymentAccount;
-	private String thirdPaymentPassword;
 	
 	private String status;
 	
@@ -57,9 +55,12 @@ public class Investor extends BaseEntity {
 	private Boolean realnameAuthFlag;
 	private Boolean secretPasswordFlag;
 	
-	private BigDecimal totalAmount;
+	private BigDecimal totalInvest;
 	private BigDecimal totalReturn;
 	private BigDecimal accountBalance;
+	private BigDecimal currentAccount;
+	private BigDecimal currentAccountYesterday;
+	private Boolean flagCurrent;
 	
 	private Timestamp createtime;
 	
@@ -68,6 +69,15 @@ public class Investor extends BaseEntity {
 	private Timestamp lastLoginTime;
 	private String lastLoginIp;
 	
+	private String openid;
+	
+	private String idcardImg;
+	
+	private String sex;
+	
+	private String aliPhoto;
+	private String aliUserid;
+	private String aliNickname;
 	
 	public class InvestorStatus{
 		public final static String NORMAL = "normal";
@@ -75,6 +85,13 @@ public class Investor extends BaseEntity {
 		public final static String LOCKED = "locked";
 		public final static String DELETED = "deleted";
 		public final static String UNOPEN = "unopen";
+	}
+	
+	public class InvestorRegistSource{
+		public final static String WEIXIN = "weixin";
+		public final static String ANDROID = "android";
+		public final static String IOS = "IOS";
+		public final static String WEB = "web";
 	}
 	
 	@Id
@@ -87,7 +104,7 @@ public class Investor extends BaseEntity {
 		this.uuid = uuid;
 	}
 	
-	@Column(name = "nickname", unique = true, nullable = false, length = 50)
+	@Column(name = "nickname", length = 50)
 	public String getNickname() {
 		return nickname;
 	}
@@ -150,7 +167,7 @@ public class Investor extends BaseEntity {
 		this.idcard = idcard;
 	}
 
-	@Column(name = "login_password", nullable = false, length = 300)
+	@Column(name = "login_password", length = 300)
 	public String getLoginPassword() {
 		return loginPassword;
 	}
@@ -166,24 +183,6 @@ public class Investor extends BaseEntity {
 
 	public void setSecretPassword(String secretPassword) {
 		this.secretPassword = secretPassword;
-	}
-
-	@Column(name = "third_payment_account", length = 300)
-	public String getThirdPaymentAccount() {
-		return thirdPaymentAccount;
-	}
-
-	public void setThirdPaymentAccount(String thirdPaymentAccount) {
-		this.thirdPaymentAccount = thirdPaymentAccount;
-	}
-
-	@Column(name = "third_payment_password", length = 300)
-	public String getThirdPaymentPassword() {
-		return thirdPaymentPassword;
-	}
-
-	public void setThirdPaymentPassword(String thirdPaymentPassword) {
-		this.thirdPaymentPassword = thirdPaymentPassword;
 	}
 
 	@Column(name = "binding_mobile_flag", nullable = false)
@@ -222,13 +221,13 @@ public class Investor extends BaseEntity {
 		this.secretPasswordFlag = secretPasswordFlag;
 	}
 
-	@Column(name = "total_amount", nullable = false, length = 20)
-	public BigDecimal getTotalAmount() {
-		return totalAmount;
+	@Column(name = "total_invest", nullable = false, length = 20)
+	public BigDecimal getTotalInvest() {
+		return totalInvest;
 	}
 
-	public void setTotalAmount(BigDecimal totalAmount) {
-		this.totalAmount = totalAmount;
+	public void setTotalInvest(BigDecimal totalInvest) {
+		this.totalInvest = totalInvest;
 	}
 
 	@Column(name = "total_return", nullable = false, length = 20)
@@ -247,6 +246,33 @@ public class Investor extends BaseEntity {
 
 	public void setAccountBalance(BigDecimal accountBalance) {
 		this.accountBalance = accountBalance;
+	}
+
+	@Column(name = "current_account", nullable = false, length = 20)
+	public BigDecimal getCurrentAccount() {
+		return currentAccount;
+	}
+
+	public void setCurrentAccount(BigDecimal currentAccount) {
+		this.currentAccount = currentAccount;
+	}
+	
+	@Column(name = "flag_current", nullable = false)
+	public Boolean getFlagCurrent() {
+		return flagCurrent;
+	}
+
+	public void setFlagCurrent(Boolean flagCurrent) {
+		this.flagCurrent = flagCurrent;
+	}
+	
+	@Column(name = "current_account_yesterday", nullable = false)
+	public BigDecimal getCurrentAccountYesterday() {
+		return currentAccountYesterday;
+	}
+
+	public void setCurrentAccountYesterday(BigDecimal currentAccountYesterday) {
+		this.currentAccountYesterday = currentAccountYesterday;
 	}
 
 	@Column(name = "referrer", length = 36)
@@ -284,4 +310,60 @@ public class Investor extends BaseEntity {
 	public void setLastLoginIp(String lastLoginIp) {
 		this.lastLoginIp = lastLoginIp;
 	}
+
+	@Column(name = "openid", length = 30)
+	public String getOpenid() {
+		return openid;
+	}
+
+	public void setOpenid(String openid) {
+		this.openid = openid;
+	}
+	
+	@Column(name = "idcard_img", length = 36)
+	public String getIdcardImg() {
+		return idcardImg;
+	}
+
+	public void setIdcardImg(String idcardImg) {
+		this.idcardImg = idcardImg;
+	}
+
+	@Column(name = "sex", length = 10)
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	@Column(name = "ali_photo", length = 100)
+	public String getAliPhoto() {
+		return aliPhoto;
+	}
+
+	public void setAliPhoto(String aliPhoto) {
+		this.aliPhoto = aliPhoto;
+	}
+	
+	@Column(name = "ali_userid", length = 16)
+	public String getAliUserid() {
+		return aliUserid;
+	}
+
+	public void setAliUserid(String aliUserid) {
+		this.aliUserid = aliUserid;
+	}
+	
+	@Column(name = "ali_nickname", length = 50)
+	public String getAliNickname() {
+		return aliNickname;
+	}
+	
+
+	public void setAliNickname(String aliNickname) {
+		this.aliNickname = aliNickname;
+	}
+	
 }

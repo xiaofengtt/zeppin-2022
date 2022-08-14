@@ -1,0 +1,51 @@
+<!--certificationPhoto.wxml-->
+<view class="container">
+  <view class="top-view">
+    <image src="/resources/common/warn.png"></image>
+    <text>温馨提示：实名认证一旦成功将不能修改</text>
+  </view>
+  <form bindsubmit="formSubmit">
+    <view class="main-view">
+      <view class="input-view">
+        <view class="tr">
+          <label>姓名</label>
+          <input type="text" disabled value="{{name}}"/>
+        </view>
+        <view class="tr">
+          <label>身份证</label>
+          <input type="text" disabled value="{{idcard}}"/>
+        </view>
+      </view>
+      <view class="photo-view">
+        <view class="title">上传身份证</view>
+        <view class="tr-photo">
+          <view class="photo" catchtap="{{buttonAble ? 'chooseImageTap' : ''}}" data-index='0'>
+            <block wx:if="{{frontUrl == ''}}"> 
+              <image class="icon" src="/resources/certification/upload.png"></image>
+              <text>上传正面</text>
+            </block>
+            <block wx:if="{{frontUrl != ''}}"> 
+              <image class="photo-image" mode="aspectFit" src="{{frontUrl}}"></image>
+            </block>  
+          </view>
+          <view class="photo" catchtap="{{buttonAble ? 'chooseImageTap' : ''}}" data-index='1'>
+            <block wx:if="{{backUrl == ''}}"> 
+              <image  class="icon" src="/resources/certification/upload.png"></image>
+              <text>上传反面</text>
+            </block>
+            <block wx:if="{{backUrl != ''}}"> 
+              <image class="photo-image" mode="aspectFit" src="{{backUrl}}"></image>
+            </block>  
+          </view>
+        </view>
+      </view>
+      <view class="note-view">注释：上传的身份证必须真实清晰才能通过审核</view>
+      <view class="submit-view">
+        <view class="submit-row">
+          <button disabled="{{!buttonAble}}" formType="submit">提交认证</button>
+        </view>
+      </view>
+    </view>
+  </form>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

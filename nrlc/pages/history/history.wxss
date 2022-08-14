@@ -1,0 +1,110 @@
+/* pages/history/history.wxss */
+page{
+  background: #eee;
+  height: 100%;
+}
+
+.container{
+  height: 100%;
+}
+
+.month-view{
+  width: 100%;
+}
+
+.month-view .month{
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  padding: 0 26rpx;
+  margin-bottom: 20rpx;
+  background: #FFF;
+}
+
+.month-view .month text{
+  font-size: 30rpx;
+  color: #000;
+}
+
+.month-view .data{
+  width: 100%;
+  height: 100rpx;
+  padding: 0 26rpx;
+  margin-bottom: 20rpx;
+  background: #FFF;
+}
+
+.month-view .data image{
+  vertical-align: top;
+  width: 46rpx;
+  height: 46rpx;
+  margin: 26rpx 20rpx 0 0;
+}
+
+.month-view .data .info{
+  display: inline-block;
+  width: 430rpx;
+  height: 100rpx;
+}
+
+.month-view .data .info .title{
+  height: 40rpx;
+  line-height: 40rpx;
+  margin-top: 16rpx;
+  font-size: 30rpx;
+  color: rgba(0, 0, 0, 0.8);
+   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.month-view .data .info .time{
+  height: 28rpx;
+  line-height: 28rpx;
+  margin-top: 2rpx;
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.month-view .data .money{
+  float: right;
+  max-width: 200rpx;
+  height: 100rpx;
+  padding-top: 10rpx;
+  text-align: right;
+}
+
+.month-view .data .money .status{
+  line-height: 40rpx;
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.5)
+}
+
+.month-view .data .money .income{
+  color: rgba(128, 193, 56, 0.8);
+  line-height: 40rpx;
+  font-size: 36rpx;
+}
+
+.month-view .data .money .expenses{
+  color: rgba(213, 65, 65, 0.8);
+  line-height: 40rpx;
+  font-size: 36rpx;
+}
+
+.nodata{
+  height: 100%;
+  background: #fff;
+  width: 100%;
+  text-align: center;
+}
+
+.nodata image{
+  width: 25%;
+  margin: 20% auto 20rpx auto;
+}
+
+.nodata text{
+  font-size: 28rpx;
+  color: #979797;
+}

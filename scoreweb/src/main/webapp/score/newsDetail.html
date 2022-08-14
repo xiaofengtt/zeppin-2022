@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>详情</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/uploadfile.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/base-header.css" />
+		<link rel="stylesheet" href="css/base-left.css" />
+		<link rel="stylesheet" href="css/newsDetail.css" />
+	</head>
+	<body>
+		<input id="uuidInput" type="hidden" value="0ae36f97-90b4-11e8-95fb-fcaa14314cbn"/>
+		<div class="main">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="content-main mt-15">
+				<p class="position"><a href="newsList.html">文章列表</a>&nbsp;>&nbsp;<b>文章详情</b></p>
+				<div class="content-detail mt-15">
+					<div class="content-box mb-30">
+						<!-- <p class="title">详细信息</p> -->
+						<div class="content-item">
+							<div class="form-group col-md-12 ">
+								<label class="col-md-1">文章标题：</label>
+								<div class="content-items col-md-11">
+									<input class="form-control" id="articleTitle" name="articleTitle">
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-12 ">
+								<label class="col-md-1">新闻时间：</label>
+								<div class="content-items col-md-5">
+									<input class="form-control" id="newsTime" name="valueDate"/>
+								</div>
+								<label class="col-md-1">作者：</label>
+								<div class="content-items col-md-5">
+									<input class="form-control" id="author" name="author" />
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-12 ">
+								<label class="col-md-1">原文出处：</label>
+								<div class="content-items col-md-5">
+									<input class="form-control" id="articleUrl" name="articleUrl" readonly>
+								</div>
+								<label class="col-md-1">来源：</label>
+								<div class="content-items col-md-5">
+									<input class="form-control" id="source" name="source" readonly />
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-12 ">
+								<label class="col-md-1">球队：</label>
+								<div class="content-items col-md-5" style="position:relative;">
+									<div id="team"></div>
+									<a class="chooseBtn"></a>
+									<div class="teamList">
+										<ul class="treeHead hasChild">
+											
+										</ul>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<label class="col-md-1">分类：</label>
+								<div class="content-items col-md-5">
+									<div id="categoryResult"></div>
+									<a class="chooseCategoryBtn"></a>
+									<div id="category"></div> 
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-12 ">
+								<label class="col-md-1">封面：</label>
+								<div class="content-items col-md-1 coverBox">
+									<div class="" style="text-align:center;border-radius: 4px;height:100%;position:relative;overflow:hidden;">
+										<img id="imageShow" style="border:0;max-width:100%;max-height:160px;display: none;"/>
+										<div id="resourceId">
+
+										</div>
+										<p class="coverTips">添加封面</p>
+									</div>
+									<div id="resourceAdd"><input type="hidden" name="document" id="document" value=""></div>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-12 ">
+								<label class="col-md-1">文章内容：</label>
+								<div class="content-items col-md-11">
+									<div class="T_edit" id="revenueFeature"></div>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<!--<div class="content-box mb-30">
+						<p class="title">基本信息</p>
+					</div>-->
+					
+					<div class="btn-group">
+						<a class="sure-btn preview-btn">预览</a>
+						<a class="sure-btn add-btn">确定</a>
+						<a class="sure-btn submit-btn">发布</a>
+						<a class="sure-btn disable-btn">禁用</a>
+						<a class="cancel-btn goBack-btn">返回</a>
+					</div>
+				</div>
+			</div>
+				
+		</div>
+		<div class="layerDiv">
+			<div class="layerInner">
+				<a class="closeLayer"></a>
+				<div class="layerContent"></div>
+			</div>
+			
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.uploadfile.min.js"></script>
+		<script type="text/javascript" src="js/laydate/laydate.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="./js/tinymce/dropzone/lib/dropzone.js"></script>
+		<script type="text/javascript" src="./js/tinymce/tinymce.min.js"></script>
+		<script type="text/javascript" src="./js/tinymce/tinymce_zhcn.js"></script>
+		<script type="text/javascript" src="./js/tinymce/tinymce_tool.js"></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/editor.js" ></script>
+		<script type="text/javascript" src="js/newsdetail.js" ></script>
+	</body>
+</html>

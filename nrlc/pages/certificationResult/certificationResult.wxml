@@ -1,0 +1,31 @@
+<!--certificationResult.wxml-->
+<view class="container">
+<view class="{{user.realnameAuthFlag? 'background' : 'background-white'}}">
+  <view class="top-view">
+    <view class="{{user.realnameAuthFlag? 'pass' : ''}}">
+      <image src="{{user.realnameAuthFlag? '/resources/certification/pass.png' : '/resources/certification/nopass.png'}}"></image>
+    </view>
+  </view>
+  <block wx:if="{{user.realnameAuthFlag}}">
+    <view class="table-view">
+      <view class="tr">
+        <view class="key">姓名</view>
+        <view class="value">{{user.realname}}</view>
+      </view>
+      <view class="tr">
+        <view class="key">身份证</view>
+        <view class="value">{{user.idcard}}</view>
+      </view>
+      <view class="tr" bindtap="{{(user.idcardImgStatus == 'notupload' || user.idcardImgStatus == 'unpassed') && buttonAble ? 'toCertificationPhoto' : ''}}">
+        <view class="key">证件审核</view>
+        <view class="value">{{user.idcardImgStatusCN}}</view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{!user.realnameAuthFlag}}">
+    <view class="button-view">
+      <view class="button" bindtap="{{buttonAble ? 'toCertification' : ''}}">重新认证</view>
+    </view>
+  </block>
+</view>
+</view>

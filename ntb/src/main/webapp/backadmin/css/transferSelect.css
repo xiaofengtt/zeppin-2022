@@ -1,0 +1,113 @@
+.card_border {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.transfer_box_title {
+    text-align: center;
+}
+
+.transfer_card_box {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.transfer_card_box .transfer_card {
+    width: 258px;
+    height: 100px;
+    display: inline-block;
+    font-size: 14px;
+    position: relative;
+    margin-left: 44px;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+/*.transfer_card_box .margin_none {
+    margin: 0;
+}*/
+
+.transfer_card_box .transfer_card:hover {
+    -webkit-box-shadow: 0 0 5px 1px #4D9CFF;
+    -moz-box-shadow: 0 0 5px 1px #4D9CFF;
+    -ms-box-shadow: 0 0 5px 1px #4D9CFF;
+    -o-box-shadow: 0 0 5px 1px #4D9CFF;
+    box-shadow: 0 0 5px 1px #4D9CFF;
+}
+
+.transfer_card_box .highLight {
+    -webkit-box-shadow: 0 0 5px 1px #4D9CFF;
+    -moz-box-shadow: 0 0 5px 1px #4D9CFF;
+    -ms-box-shadow: 0 0 5px 1px #4D9CFF;
+    -o-box-shadow: 0 0 5px 1px #4D9CFF;
+    box-shadow: 0 0 5px 1px #4D9CFF;
+}
+
+.transfer_card_box .transfer_card .transfer_card_title {
+    color: #737373;
+    margin: 0;
+}
+
+.transfer_card_box .transfer_card .transfer_card_num {
+    margin-top: 30px;
+    display: inline-block;
+    color: #c1c1c1;
+}
+
+.transfer_card_box .transfer_card .transfer_card_type {
+    position: absolute;
+    top: 15px;
+    color: #c1c1c1;
+    right: 10px;
+}
+
+.transfer_card_box .transfer_card img {
+    position: absolute;
+    right: 10px;
+    bottom: 13px;
+    display: none;
+}
+
+.btn_group {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+.contain-right .btn_group a {
+    display: inline-block;
+    font-size: 16px;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: #C1C1C1;
+    border: 1px solid #C1C1C1;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    background: #FFFFFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.btn_group a:nth-child(1):hover {
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+}
+
+.btn_group a:nth-child(2) {
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+    margin-left: 30px;
+}
+
+.btn_group a:nth-child(2):hover {
+    color: #FFFFFF;
+    background: #4D9CFF;
+}

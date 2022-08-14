@@ -108,8 +108,8 @@ public class BankFinancialProductService extends BaseService implements IBankFin
 	 * @return  List<Entity>
 	 */
 	@Override
-	public List<Entity> getStageList(Class<? extends Entity> resultClass) {
-		return bankFinancialProductDAO.getStageList(resultClass);
+	public List<Entity> getStageList(Map<String, String> inputParams, Class<? extends Entity> resultClass) {
+		return bankFinancialProductDAO.getStageList(inputParams, resultClass);
 	}
 	
 	/**

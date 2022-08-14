@@ -1,0 +1,124 @@
+/* pages/bankcardDetail/bankcardDetail.wxss */
+page{
+  background: #eee;
+}
+
+.top-view{
+  widows: 100%;
+  background: #FFF;
+}
+
+.top-view .bankcard{
+  position: relative;
+  width: 700rpx;
+  height: 420rpx;
+  margin: 40rpx auto;
+  padding-top: 66rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.top-view .bankcard image.back{
+  position: absolute;
+  width: 400rpx;
+  height: 400rpx;
+  left: 350rpx;
+  top: 160rpx;
+  opacity: 0.1;
+
+}
+
+.top-view .bankcard .bank{
+  width: 500rpx;
+  height: 66rpx;
+  padding-left: 36rpx;
+  text-align: left;
+}
+
+.top-view .bankcard .bank image{
+  width: 66rpx;
+  height: 66rpx;
+  margin-right: 14rpx;
+}
+
+.top-view .bankcard .bank view{
+  display: inline-block;
+  line-height: 66rpx;
+  vertical-align: top;
+  font-size: 32rpx;
+  color: #FFF;
+}
+
+.top-view .bankcard .card{
+  width: 100%;
+  height: 56rpx;
+  line-height: 56rpx;
+  margin-top: 120rpx;
+  padding-right: 34rpx;
+  text-align: right;
+  color: #FFF;
+  font-size: 60rpx;
+}
+
+.top-view .bankcard .card text{
+  vertical-align: text-bottom;
+  padding: 0 20rpx;
+}
+
+.top-view .bankcard .card text.num{
+  vertical-align: text-top;
+  font-size: 52rpx;
+} 
+
+.limit-view{
+  width: 100%;
+  margin-top: 20rpx;
+  padding-bottom: 40rpx;
+  background: #FFF;
+}
+
+.limit-view .title{
+  width: 100%;
+  height: 44rpx;
+  line-height: 44rpx;
+  margin: 40rpx 0;
+  font-size: 32rpx;
+  color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.limit-view .tr{
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 0 44rpx 0 62rpx;
+}
+
+.limit-view .tr image{
+  vertical-align: text-bottom;
+  width: 36rpx;
+  height: 34rpx;
+  margin-right: 20rpx;
+}
+
+.limit-view .tr text{
+  font-size: 30rpx;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.limit-view .tr view{
+  float: right;
+  font-size: 30rpx;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.submit-view{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 20rpx;
+  text-align: center;
+  background: #FFF;
+  font-size: 28rpx;
+  color: rgba(0, 140, 250, 0.7);
+}

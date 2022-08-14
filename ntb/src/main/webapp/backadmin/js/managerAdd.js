@@ -21,6 +21,7 @@ $(document).ready(function() {
 		onSuccess:function(files,data,xhr){
 			$('input[name="photo"]').val(data.data.uuid);
 			$('#imageShow').attr('src','..'+data.data.url);
+			 $('#imageShow').prop("target","_blank");
 			$(".ajax-upload-dragdrop").css("display","none");
 		}
 	});
@@ -28,12 +29,19 @@ $(document).ready(function() {
 
 //提交
 $('#formsubmit').submit(function() {
+	if (flagSubmit == false) {
+        return false;
+    }
+    flagSubmit = false;
+    setTimeout(function() {
+        flagSubmit = true;
+    }, 3000);
 	var name=$("#name").val().replace(/(^\s*)|(\s*$)/g, "");
 	var idcard=$("#idcard").val().replace(/(^\s*)|(\s*$)/g, "");
 	var mobile=$("#mobile").val().replace(/(^\s*)|(\s*$)/g, "");
 	var type=$("#type").val().replace(/(^\s*)|(\s*$)/g, "");
 	var workage=$("#workage").val().replace(/(^\s*)|(\s*$)/g, "");
-	
+	var email=$("#email").val().replace(/(^\s*)|(\s*$)/g, "");
 	if(name==""){
 		layer.msg('姓名不能为空', {
 			time: 2000 
@@ -54,6 +62,14 @@ $('#formsubmit').submit(function() {
 		layer.msg('从业年限应为数字类型', {
 			time: 2000 
 		});
+	}else if(!checkPhone(mobile)){
+		layer.msg('手机号校验失败', {
+			time: 2000 
+		});    
+	}else if(!checkEmail(email)){
+		layer.msg('邮箱校验失败', {
+			time: 2000 
+		});    
 	}else{
 		var str = $(this).serialize();
 		$.post('../rest/backadmin/manager/add',str, function(data) {

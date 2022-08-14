@@ -1,0 +1,61 @@
+@CHARSET "UTF-8";
+.content-inner{
+	background: #FFF;
+	padding-bottom:40px;
+/*     padding: 20px 40px;	 */
+}
+.role-box{
+	position:relative;
+}
+.role-box span{
+	line-height:30px;
+	display:block;
+	float:left;
+}
+.role-box a{
+	display:block;
+	float:right;
+	top:0;
+	right:0px;
+	line-height:30px;
+	background:#ffb822;
+	color:#fff;
+	border-radius:3px;
+	padding:0 11px;	
+}
+.role-box a:hover{
+	background:#f4ac10;
+}
+.role-box ul{
+	float:left;
+}
+.role-box ul li{
+	float:left;
+	height:30px;
+	line-height:30px;
+	padding:0px 11px;
+	margin-right:10px;
+	border:1px solid #dfdfdf;
+	border-radius:3px;
+	cursor:pointer;
+}
+.role-box ul li:hover,.role-box ul li.role-selected{
+	background:#ffb822;
+	color:#fff;
+	border-color:#ffb822;
+}
+
+.content-box{
+	
+}
+.content-box .nodata{
+	padding:60px 40px;
+	text-align:center;
+	font-size:20px;
+}
+
+
+
+
+
+

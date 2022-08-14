@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>详情</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/uploadfile.css">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/base-header.css" />
+		<link rel="stylesheet" href="css/base-left.css" />
+		<link rel="stylesheet" href="css/newsDetail.css" />
+	</head>
+	<body>
+		<input id="uuidInput" type="hidden" value="0ae36f97-90b4-11e8-95fb-fcaa1431442a"/>
+		<div class="main">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="content-main mt-15">
+				<p class="position"><a href="capitalPlatformList.html">交易渠道列表</a>&nbsp;>&nbsp;<a href="javascript:" onclick="javascript:window.location.href=document.referrer">渠道账号列表</a>&nbsp;>&nbsp;<b>渠道账号详情</b></p>
+				<div class="content-detail mt-15">
+					<div class="content-box mb-30">
+						<!-- <p class="title">详细信息</p> -->
+						<div class="content-item">
+							<div class="form-group col-md-6 ">
+								<label class="col-md-3">渠道名称：</label>
+								<div class="content-items col-md-9">
+									<input class="form-control" id="capitalPlatformName" name="capitalPlatformName" readonly="readonly">
+									<input class="form-control" type="hidden" id="capitalPlatform" name="capitalPlatform">
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-6 ">
+								<label class="col-md-3">名称：</label>
+								<div class="content-items col-md-9">
+									<input class="form-control" id="name" name="name">
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-6 ">
+								<label class="col-md-3">账户号：</label>
+								<div class="content-items col-md-9">
+									<input class="form-control" id="accountNum" name="accountNum" />
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div id="privateKeyDiv" class="form-group col-md-6 ">
+								<label class="col-md-3">私钥：</label>
+								<div class="content-items col-md-9">
+									<input class="form-control" id="privateKey" name="privateKey"/>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div id="accountNameDiv" class="form-group col-md-6 ">
+								<label class="col-md-3">账户名：</label>
+								<div class="content-items col-md-9">
+									<input class="form-control" id="accountName" name="accountName"/>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div id="bankNameDiv" class="form-group col-md-6 ">
+								<label class="col-md-3">所属银行：</label>
+								<div class="content-items col-md-9">
+									<input class="form-control" id="bankName" name="bankName"/>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div id="branchBankDiv" class="form-group col-md-6 ">
+								<label class="col-md-3">开户行：</label>
+								<div class="content-items col-md-9">
+									<input class="form-control" id="branchBank" name="branchBank"/>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-6 ">
+								<label class="col-md-3">最低金额：</label>
+								<div class="content-items col-md-9">
+									<input class="form-control" id="min" name="min" onblur="value=moneyFormat(value)" />
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-6 ">
+								<label class="col-md-3">最高金额：</label>
+								<div class="content-items col-md-9">
+									<input class="form-control" id="max" name="max" onblur="value=moneyFormat(value)" />
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-6 ">
+								<label class="col-md-3">每日限额：</label>
+								<div class="content-items col-md-9">
+									<input class="form-control" id="dailyMax" name="dailyMax" onblur="value=moneyFormat(value)" />
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-6 ">
+								<label class="col-md-3">排序：</label>
+								<div class="content-items col-md-9">
+									<input class="form-control" id="sort" name="sort"/>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-6 ">
+								<label class="col-md-3">状态：</label>
+								<div class="content-items col-md-9">
+									<select class="form-control" id="status" name="status" >									
+										<option value="normal">正常</option>
+										<option value="disable">停用</option>
+									</select>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-6 ">
+								<label class="col-md-3">备注：</label>
+								<div class="content-items col-md-9">
+									<input class="form-control" id="remark" name="remark"/>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<!--<div class="content-box mb-30">
+						<p class="title">基本信息</p>
+					</div>-->
+					
+					<div class="btn-group">
+						<a class="sure-btn add-btn">确定</a>
+						<a class="sure-btn submit-btn">确定</a>
+						<a class="cancel-btn goBack-btn">返回</a>
+					</div>
+				</div>
+			</div>
+				
+		</div>
+		<div class="layerDiv">
+			<div class="layerInner">
+				<a class="closeLayer"></a>
+				<div class="layerContent"></div>
+			</div>
+			
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/capitalAccountDetail.js" ></script>
+	</body>
+</html>

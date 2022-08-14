@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>用户功能管理</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/base-header.css" />
+		<link rel="stylesheet" href="css/base-left.css" />
+		<link rel="stylesheet" href="css/roleMenuList.css" />
+		<link rel="stylesheet" href="css/roleMenuEdit.css" />
+		<link rel="stylesheet" href="css/roleControllerList.css" />
+	</head>
+	<body>		
+		<input id="uuidInput" type="hidden" value="0ae36f97-90b4-11e8-95fb-fcaa14314cbk"/>
+		<div class="main">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="content-main mt-15">
+				<div class="content-inner">
+					<div class="role-box">
+						<span>选择角色：</span>
+						<ul class="role-list"></ul>
+						<div class="clear"></div>
+					</div>
+					<div class="content-box">
+						<p class="nodata">请选择角色！</p>
+					</div>
+					<div id="contain-all" class="hidden">
+						<div class="content-head">
+							<span><span id="roleName"></span>角色权限设置</span>
+							<button class="btn submit-button" type="submit">提交修改</button>
+							<button class="btn all-select-button" type="button" onclick="selectAll() ">全选</button>
+						</div>
+						<input type="hidden" id="role" name="role"/>
+						<div class="contain-body">
+							<div class="contain-body-left" id="contain-body-left">
+								<ul id="left-ul"></ul>
+							</div>
+							<div class="contain-body-right" id="contain-body-right"></div>
+							<div class="contain-body-last" id="contain-body-last"></div>
+							<p class="clear"></p>
+						</div>
+					</div>
+				</div>		
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/roleControllerList.js" ></script>
+	</body>
+</html>

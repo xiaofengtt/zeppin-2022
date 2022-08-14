@@ -1,0 +1,32 @@
+/* pages/rechargeResult/rechargeResult.wxss */
+.main-view{
+  width: 100%;
+  text-align: center;
+}
+
+.main-view image{
+  display: inline-block;
+  width: 140rpx;
+  height: 140rpx;
+  margin: 170rpx auto 20rpx auto;
+}
+
+.main-view text{
+  display: inline-block;
+  width: 100%;
+  line-height: 44rpx;
+  font-size: 32rpx;
+  color: #333333;
+  text-align: center;
+}
+
+.main-view view{
+  width: 360rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  margin: 140rpx auto 0 auto;
+  font-size: 32rpx;
+  color:  #008DFB;
+  border: 1px solid #008DFB;
+  border-radius: 6rpx;
+}

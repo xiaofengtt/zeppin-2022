@@ -1,0 +1,27 @@
+.wrap{
+	background:#fff;
+	text-align:center;
+	padding:1.3rem 0.3rem 0.1rem 0.3rem;
+}
+p{
+	font-size: 0.32rem;
+    color: rgba(46,46,46,0.8);
+    line-height: 0.5rem;
+    text-indent: 2em;
+    margin-bottom: 0.2rem;
+    text-align: justify;
+}
+h3{
+	font-size:0.36rem;
+	line-height:0.6rem;
+	color:rgba(46,46,46,1);
+	padding:0.2rem 0;
+}
+span{
+	font-size:0.28rem;
+	text-align:right;
+	width:100%;
+	display:inline-block;
+	padding-bottom:0.4rem;
+	color: rgba(46,46,46,0.5);
+}

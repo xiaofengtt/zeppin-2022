@@ -1,0 +1,80 @@
+.screening {
+    margin-top: 30px;
+    width: 100%;
+    padding: 5px 20px;
+    border: 1px solid #E9E9E9;
+    position: relative;
+    /*height: 42px;*/
+}
+
+.screening .item {
+    height: 42px;
+    line-height: 42px;
+}
+
+.screening .item div {
+    display: inline-block;
+}
+
+.screening .item div a {
+    color: #000000;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.screening .item div a:hover {
+    color: #4D9CFE;
+}
+
+.screening .item div a.statusLight {
+    color: #4D9CFE;
+}
+
+.screening .add_account {
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 14px;
+    height: 35px;
+    width: 100px;
+    line-height: 35px;
+    background: #4D9CFF;
+    text-align: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    position: absolute;
+    top: 9px;
+    right: 10px;
+}
+
+.screening .add_account:hover {
+    background: #3F8DF6;
+}
+
+.screening nav {
+    width: auto;
+    margin: 0;
+    display: inline-block;
+    height: 42px;
+    line-height: 42px;
+}
+
+.screening nav span {
+    font-size: 16px;
+}
+
+.screening .statusDiv {
+    background: #FFFFFF;
+}
+
+.screening .statusDiv a {
+    margin: 0 5px;
+    padding: 5px 5px;
+    display: inline-block;
+    height: 40px;
+    /*line-height: 40px;*/
+    color: #737373;
+    width: auto;
+}

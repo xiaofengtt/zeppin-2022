@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>详情</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/base-header.css" />
+		<link rel="stylesheet" href="css/base-left.css" />
+		<link rel="stylesheet" href="css/newsDetail.css" />
+	</head>
+	<body>
+		<input id="uuidInput" type="hidden" value="0ae36f97-90b4-11e8-95fb-fcaa14314cbp"/>
+		<div class="main">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="content-main mt-15">
+				<p class="position"><a href="adminList.html">管理员列表</a>&nbsp;>&nbsp;<b>管理员详情</b></p>
+				<div class="content-detail mt-15">
+					<div class="content-box mb-30">
+						<!-- <p class="title">详细信息</p> -->
+						<div class="content-item">
+							<div class="form-group col-md-6 ">
+								<label class="col-md-2">账号：</label>
+								<div class="content-items col-md-10">
+									<input class="form-control" id="username" disabled>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-6 passwordBox">
+								<label class="col-md-2">密码：</label>
+								<div class="content-items col-md-10">
+									<input class="form-control" id="password">
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-6 ">
+								<label class="col-md-2">真实名称：</label>
+								<div class="content-items col-md-10">
+									<input class="form-control" id="realname">
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-6 ">
+								<label class="col-md-2">角色：</label>
+								<div class="content-items col-md-10">
+									<select class="form-control" id="role" >									
+										<option value="002170ff-082d-412f-a8a4-b021183fa365">管理员</option>
+										<option value="002170ff-082d-412f-a8a4-b021183fa332">审核人</option>
+										<option value="002170ff-082d-412f-a8a4-b021183fa311">编辑</option>
+									</select>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="form-group col-md-6 ">
+								<label class="col-md-2">状态：</label>
+								<div class="content-items col-md-10">
+									<select class="form-control" id="status" name="status" >									
+										<option value="normal">正常</option>
+										<option value="disable">停用</option>
+									</select>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="clear"></div>
+							
+						</div>
+					</div>
+					<!--<div class="content-box mb-30">
+						<p class="title">基本信息</p>
+					</div>-->
+					
+					<div class="btn-group">
+						<a class="sure-btn submit-btn">确定</a>
+						<a class="cancel-btn goBack-btn">返回</a>
+					</div>
+				</div>
+			</div>
+				
+		</div>
+		<div class="layerDiv">
+			<div class="layerInner">
+				<a class="closeLayer"></a>
+				<div class="layerContent"></div>
+			</div>
+			
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="js/laydate/laydate.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/adminDetail.js" ></script>
+	</body>
+</html>

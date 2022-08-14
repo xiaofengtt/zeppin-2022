@@ -70,6 +70,11 @@ public class BankFinancialProduct extends BaseEntity {
 	private String area;
 	private String remark;
 	private BigDecimal netWorth;
+	private BigDecimal accountBalance;
+	private BigDecimal investment;
+	private BigDecimal totalRedeem;
+	private BigDecimal totalReturn;
+	private Boolean isRedeem;
 	private String creator;
 	private Timestamp createtime;
 	private String document;
@@ -481,6 +486,42 @@ public class BankFinancialProduct extends BaseEntity {
 		this.netWorth = netWorth;
 	}
 	
+	@Column(name = "investment", nullable = false, length = 20)
+	public BigDecimal getInvestment() {
+		return investment;
+	}
+	
+	public void setInvestment(BigDecimal investment) {
+		this.investment = investment;
+	}
+	
+	@Column(name = "account_balance", nullable = false, length = 20)
+	public BigDecimal getAccountBalance() {
+		return accountBalance;
+	}
+
+	public void setAccountBalance(BigDecimal accountBalance) {
+		this.accountBalance = accountBalance;
+	}
+	
+	@Column(name = "total_redeem", nullable = false, length = 20)
+	public BigDecimal getTotalRedeem() {
+		return totalRedeem;
+	}
+	
+	public void setTotalRedeem(BigDecimal totalRedeem) {
+		this.totalRedeem = totalRedeem;
+	}
+	
+	@Column(name = "total_return", nullable = false, length = 20)
+	public BigDecimal getTotalReturn() {
+		return totalReturn;
+	}
+	
+	public void setTotalReturn(BigDecimal totalReturn) {
+		this.totalReturn = totalReturn;
+	}
+	
 	@Column(name = "createtime", nullable = false)
 	public Timestamp getCreatetime() {
 		return createtime;
@@ -507,17 +548,22 @@ public class BankFinancialProduct extends BaseEntity {
 	public void setDocument(String document) {
 		this.document = document;
 	}
-
 	
 	@Column(name = "payment_type")
 	public String getPaymentType() {
 		return paymentType;
 	}
 	
-
 	public void setPaymentType(String paymentType) {
 		this.paymentType = paymentType;
 	}
 	
+	@Column(name = "is_redeem")
+	public Boolean getIsRedeem() {
+		return isRedeem;
+	}
 	
+	public void setIsRedeem(Boolean isRedeem) {
+		this.isRedeem = isRedeem;
+	}
 }

@@ -5,6 +5,8 @@ package cn.zeppin.product.ntb.core.entity;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,10 +14,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import cn.zeppin.product.ntb.core.entity.base.BaseEntity;
+import cn.zeppin.product.utility.DataTimeConvert;
 
 /**
  * 
- * @description 【数据对象】银行理财产品发布信息
+ * @description 【数据对象】募集产品信息
  */
 
 @Entity
@@ -52,6 +55,7 @@ public class BankFinancialProductPublish extends BaseEntity {
 	private BigDecimal custodyFee;
 	private BigDecimal networkFee;
 	private BigDecimal totalAmount;
+	private BigDecimal collectAmount;
 	private Timestamp collectStarttime;
 	private Timestamp collectEndtime;
 	private Integer term;
@@ -71,10 +75,19 @@ public class BankFinancialProductPublish extends BaseEntity {
 	private String area;
 	private String remark;
 	private BigDecimal netWorth;
+	private BigDecimal accountBalance;
+	private BigDecimal investment;
+	private BigDecimal totalRedeem;
+	private BigDecimal totalReturn;
+	private BigDecimal realReturnRate;
+	private BigDecimal realCollect;
+	private BigDecimal realReturn;
 	private String creator;
 	private Timestamp createtime;
 	private String document;
 	private String paymentType;
+	
+	private Boolean flagBuy;
 	
 	public class BankFinancialProductPublishStatus{
 		public final static String CHECKED = "checked";
@@ -84,8 +97,7 @@ public class BankFinancialProductPublish extends BaseEntity {
 	public class BankFinancialProductPublishStage{
 		public final static String UNSTART = "unstart";
 		public final static String COLLECT = "collect";
-		public final static String UNINVEST = "uninvest";//待投资
-		public final static String INVESTING = "investing";//投资中
+		public final static String UNINVEST = "uninvest";//投资中
 		public final static String INVESTED = "invested";//投资完成
 		public final static String PROFIT = "profit";//收益
 		public final static String BALANCE = "balance";//结算
@@ -98,7 +110,89 @@ public class BankFinancialProductPublish extends BaseEntity {
 		public final static String FLOATINGINCOME = "floatingIncome";//保本浮动收益
 		public final static String UNFLOATINGINCOME = "unfloatingIncome";//非保本浮动
 	}
+
 	
+	public BankFinancialProductPublish() {
+		super();
+	}
+	
+	/**
+	 * 临时
+	 * @return
+	 */
+	public static List<BankFinancialProductPublish> getInstance() {
+		List<BankFinancialProductPublish> bfppList = new ArrayList<BankFinancialProductPublish>();
+		bfppList.add(new BankFinancialProductPublish("1"));
+		bfppList.add(new BankFinancialProductPublish("2"));
+		return bfppList;
+	}
+
+	public BankFinancialProductPublish(String uuid) {
+		super();
+		long time = 1000*60*60*24;
+		this.uuid = "9c138895-f3c6-47f6-aa54-c0261cd12c3"+uuid;
+		this.bankFinancialProduct = "7ff8893b-5e99-4129-b7b1-4ef80c6dd1c3";
+		this.name = "“金源宝”日进斗金00"+uuid+"期";
+		this.series = "金元宝系列";
+		this.url = "";
+		this.scode = "JYB00"+uuid;
+		this.shortname = "“金源宝”日进斗金00"+uuid+"期";
+		this.type = "unfloatingIncome";
+		this.stage = "collect";
+		this.status = "checked";
+		this.target = "individual";
+		this.custodian = "b9b348b6-52e7-4bee-a27c-70bf8bf2ce70";
+		this.currencyType = "rmb";
+		this.targetAnnualizedReturnRate = BigDecimal.valueOf(6.5);
+		this.minAnnualizedReturnRate = BigDecimal.valueOf(6.5);
+		this.minInvestAmount = BigDecimal.valueOf(10000);
+		this.minInvestAmountAdd = BigDecimal.valueOf(10000);
+		this.maxInvestAmount = BigDecimal.valueOf(300000.00);
+		this.subscribeFee = BigDecimal.ZERO;
+		this.purchaseFee = BigDecimal.ZERO;
+		this.redemingFee = BigDecimal.ZERO;
+		this.managementFee = BigDecimal.valueOf(0.02);
+		this.custodyFee = BigDecimal.valueOf(0.03);
+		this.networkFee = BigDecimal.ZERO;
+		this.totalAmount = BigDecimal.valueOf(100000000.00);
+		this.collectAmount = BigDecimal.valueOf(1000000.00);
+		this.collectStarttime = DataTimeConvert.getCurrentTime("yyyy-MM-dd 00:00:00");
+		this.collectEndtime = new Timestamp(this.collectStarttime.getTime()+time);
+		if("1".equals(uuid)){
+			this.term = 30;
+		} else {
+			this.term = 180;
+		}
+		this.recordDate = new Timestamp(System.currentTimeMillis());
+		this.valueDate = new Timestamp(this.collectStarttime.getTime()+time*2);
+		this.maturityDate = new Timestamp(this.valueDate.getTime()+time*this.term);;
+		this.flagPurchase = false;
+		this.flagRedemption = false;
+		this.flagFlexible = false;
+		this.investScope = "<p>本理财产品投资于债券、货币市场工具、同业存款、符合监管机构要求的信托计划、资产收益权、货币市场基金、债券基金等固定收益类工具、资产证券化产品。</p>";
+		this.style = "";
+		this.riskLevel = "R2";
+		this.creditLevel = null;
+		this.revenueFeature = "<p>本理财产品的收益来源于所投资资产组合的投资收益，包括但不限于债券的利息、回购及拆借收益、存放同业收益、信托计划、资产管理计划、交易过程中的价差收入等投资收益。</p>";
+		this.flagCloseend = null;
+		this.guaranteeStatus = "3";
+		this.area = "3fcbe315-0947-11e7-97f7-3a386a6ce01d";
+		this.remark = "";
+		this.netWorth = null;
+		this.accountBalance = BigDecimal.ZERO;
+		this.investment = BigDecimal.ZERO;
+		this.totalRedeem = BigDecimal.ZERO;
+		this.totalReturn = BigDecimal.ZERO;
+		this.realReturnRate = BigDecimal.ZERO;
+		this.realCollect = BigDecimal.ZERO;
+		this.realReturn = BigDecimal.ZERO;
+		this.creator = "1d2f3518-83f7-42cd-84df-edef10e615f2";
+		this.createtime = new Timestamp(System.currentTimeMillis());
+		this.document = "";
+		this.paymentType = "last";
+		this.flagBuy = true;
+	}
+
 	@Id
 	@Column(name = "uuid", unique = true, nullable = false, length = 36)
 	public String getUuid() {
@@ -325,6 +419,15 @@ public class BankFinancialProductPublish extends BaseEntity {
 	public void setTotalAmount(BigDecimal totalAmount) {
 		this.totalAmount = totalAmount;
 	}
+	
+	@Column(name = "collect_amount", length = 20)
+	public BigDecimal getCollectAmount() {
+		return collectAmount;
+	}
+
+	public void setCollectAmount(BigDecimal collectAmount) {
+		this.collectAmount = collectAmount;
+	}
 
 	@Column(name = "collect_starttime")
 	public Timestamp getCollectStarttime() {
@@ -497,6 +600,69 @@ public class BankFinancialProductPublish extends BaseEntity {
 		this.netWorth = netWorth;
 	}
 	
+	@Column(name = "investment", nullable = false, length = 20)
+	public BigDecimal getInvestment() {
+		return investment;
+	}
+	
+	public void setInvestment(BigDecimal investment) {
+		this.investment = investment;
+	}
+	
+	@Column(name = "account_balance", nullable = false, length = 20)
+	public BigDecimal getAccountBalance() {
+		return accountBalance;
+	}
+
+	public void setAccountBalance(BigDecimal accountBalance) {
+		this.accountBalance = accountBalance;
+	}
+	
+	@Column(name = "total_redeem", nullable = false, length = 20)
+	public BigDecimal getTotalRedeem() {
+		return totalRedeem;
+	}
+	
+	public void setTotalRedeem(BigDecimal totalRedeem) {
+		this.totalRedeem = totalRedeem;
+	}
+	
+	@Column(name = "total_return", nullable = false, length = 20)
+	public BigDecimal getTotalReturn() {
+		return totalReturn;
+	}
+
+	public void setTotalReturn(BigDecimal totalReturn) {
+		this.totalReturn = totalReturn;
+	}
+
+	@Column(name = "real_return_rate", length = 20)
+	public BigDecimal getRealReturnRate() {
+		return realReturnRate;
+	}
+
+	public void setRealReturnRate(BigDecimal realReturnRate) {
+		this.realReturnRate = realReturnRate;
+	}
+	
+	@Column(name = "real_collect", length = 20)
+	public BigDecimal getRealCollect() {
+		return realCollect;
+	}
+
+	public void setRealCollect(BigDecimal realCollect) {
+		this.realCollect = realCollect;
+	}
+
+	@Column(name = "real_return", length = 20)
+	public BigDecimal getRealReturn() {
+		return realReturn;
+	}
+
+	public void setRealReturn(BigDecimal realReturn) {
+		this.realReturn = realReturn;
+	}
+
 	@Column(name = "createtime", nullable = false)
 	public Timestamp getCreatetime() {
 		return createtime;
@@ -524,16 +690,21 @@ public class BankFinancialProductPublish extends BaseEntity {
 		this.document = document;
 	}
 
-	
 	@Column(name = "payment_type")
 	public String getPaymentType() {
 		return paymentType;
 	}
 	
-
 	public void setPaymentType(String paymentType) {
 		this.paymentType = paymentType;
 	}
 	
+	@Column(name = "flag_buy")
+	public Boolean getFlagBuy() {
+		return flagBuy;
+	}
 	
+	public void setFlagBuy(Boolean flagBuy) {
+		this.flagBuy = flagBuy;
+	}
 }

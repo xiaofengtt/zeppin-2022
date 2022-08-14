@@ -6,11 +6,12 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
-		<title>修改财务用户</title>
+		<title>牛投帮-后台管理系统</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="css/bootstrap.css" />
 		<link rel="stylesheet" href="css/bootstrap2.css" />
 		<link rel="stylesheet" href="css/style.css" />
-		
+
 		<script id="DataTpl" type="text/template">
 			<input type="hidden" name="uuid" value="{{:uuid}}"/>
 			<div class="form-group form-group-double col-xs-6">
@@ -19,7 +20,7 @@
 					<select id="role" name="role">
 						<option id="0e15ae93-f57f-11e6-ac06-cacda7da5000" value="0e15ae93-f57f-11e6-ac06-cacda7da5000" >财务经理</option>
 						<option id="0922a25d-f57f-11e6-ac06-cacda7da5000" value="0922a25d-f57f-11e6-ac06-cacda7da5000" >财务编辑</option>
-					</select>				
+					</select>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -63,7 +64,7 @@
 					</select>
 					{{if status=='locked'}}{{:lockedtimeCN}}{{/if}}
 				</div>
-				<div class="clear"></div>	
+				<div class="clear"></div>
 			</div>
 			<div class="clear"></div>
 		</script>
@@ -71,7 +72,7 @@
 	<body>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="navigation.jsp"/>
-		<input id="scode" type="hidden" value="00100013" />  
+		<input id="scode" type="hidden" value="00100013" />
 		<div class="contain">
 			<jsp:include page="contentLeft.jsp"/>
 			<div class="contain-right">
@@ -84,7 +85,7 @@
 							<div id="DataCnt"></div>
 							<div class="btnGroup">
 								<button class="btn sureBtn" type="submit">确定</button>
-								<button class="btn cancleBtn" onclick="window.location.href=history.go(-1)">取消</button>
+								<button class="btn cancleBtn" onclick="history.go(-1)">取消</button>
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -95,10 +96,12 @@
 		</div>
 		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
 		<script type="text/javascript" src="js/jquery.colorbox.js"></script>
-		<script type="text/javascript" src="js/url.min.js"></script>
+		<script type="text/javascript" src="js/url.min.js"></script><script type="text/javascript" src="js/flagSubmit.js"></script>
 		<script type="text/javascript" src="js/jsrender.min.js"></script>
 		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.js" ></script>
+		<script type="text/javascript" src="js/paramCheck.js" ></script>
 		<script type="text/javascript" src="js/financeOperatorEdit.js" ></script>
+		<script type="text/javascript" src="js/flagSubmit.js"></script>
 	</body>
 </html>

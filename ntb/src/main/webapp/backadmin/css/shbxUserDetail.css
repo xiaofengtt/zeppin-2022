@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+.head_photo{
+	display:block;
+	float:left;
+}
+#DataCnt{
+	display:inline-block;
+	font-size:14px;
+	line-height:30px;
+}
+.selectBar{
+	border-bottom:1px solid #ececec;
+	padding-top:20px;
+}
+.selectBar button{
+	padding:5px;
+	margin-right:10px;
+	border:none;
+	background:none;
+	outline:none;
+	font-size:15px;
+}
+.selectBar button.light{
+	color: #4D9CFE;
+}
+.jfInfo{
+	display:none;
+}

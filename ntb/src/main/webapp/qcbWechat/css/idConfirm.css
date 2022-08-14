@@ -1,0 +1,50 @@
+.top{
+	height:4.76rem;
+	background:#FFFFFF;
+	text-align: center;
+	padding-top:1.06rem;
+	margin-top:0.2rem;
+}
+.top p{
+	margin-bottom:0.15rem;
+	font-size: 0.32rem;
+	color: #333333;
+}
+.top span{
+	display: block;
+	font-size:0.24rem;
+	opacity: 0.5;
+	color:#333333;
+}
+.top img{
+	display: inline-block;
+	width:2.66rem;
+	margin-top:0.52rem;
+}
+.bottom{
+	margin-top:0.24rem;
+	background:#FFFFFF;
+	
+}
+.bottom p{
+	width:100%;
+	margin:0 auto;
+	display: block;
+	border-bottom:1px solid #EBEBEB;
+	color:rgba(44, 44, 44, 1);
+	font-size:0.28rem;
+	line-height:0.28rem;
+	padding: 0.3rem;
+	position: relative;
+	opacity: 0.8;
+}
+
+.bottom p:nth-child(2){
+	border:none;
+}
+
+.bottom p .value{
+	position: absolute;
+	right:0.3rem;
+	top:0.34rem;	
+}

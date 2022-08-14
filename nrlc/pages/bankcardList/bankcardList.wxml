@@ -1,0 +1,20 @@
+<!--pages/bankcardList/bankcardList.wxml-->
+<view class="container">
+  <view class="data-table">
+    <block wx:for="{{dataList}}" wx:key="{{uuid}}">
+      <view class="tr" style="background: {{item.color}}" data-index="{{index}}" bindtap="{{buttonAble ? 'toBankcardDetail' : ''}}">
+        <view class="bank">
+          <image src="{{resourceBase}}{{item.icon}}"></image>
+          <view>{{item.shortName}}</view>
+        </view>
+        <view class="card">
+          <text>****</text><text>****</text><text>****</text><text class="num">{{item.bankcard}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="add-view" bindtap="{{buttonAble ? 'toBankcardAdd' : ''}}">
+    <view><text>+</text>添加银行卡</view>
+  </view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

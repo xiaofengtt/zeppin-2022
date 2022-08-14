@@ -6,12 +6,12 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
-		<title>牛投帮后台管理系统</title>
-		<script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
-		<link href='http://cdn.webfont.youziku.com/webfonts/nomal/27029/47558/58ecabb2f629d80dbc71b3c2.css' rel='stylesheet' type='text/css' />
+		<title>牛投帮-后台管理系统</title>
+		<!-- <script type="text/javascript" src="https://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
+		<link href='https://cdn.webfont.youziku.com/webfonts/nomal/27029/47558/58ecabb2f629d80dbc71b3c2.css' rel='stylesheet' type='text/css' /> -->
 	</head>
 	<body>
-		<div class="contain-left">			
+		<div class="contain-left">
 			<!-- 用户信息 -->
 			<div class="userInfo">
 				<a class="btn-user-edit" href="currentOperatorDetail.jsp?uuid=${sessionScope.currentOperator.uuid}">
@@ -20,7 +20,7 @@
 				<p id="adminName">${sessionScope.currentOperator.realname}</p>
 			</div>
 			<ul id="menu">
-				
+
 			</ul>
 			<div class="realTime cssa01a7f8496995 text-center"><span class="data"></span><span class="hours"></span></div>
 		</div>

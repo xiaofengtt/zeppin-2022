@@ -1,0 +1,44 @@
+.content-header{
+	height: 55px;
+	background: #FFFFFF;
+	padding-top: 13px;
+	padding-right: 33px;
+	text-align: right;
+}
+.content-header .headPortrait{
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	float: right;
+	margin-right: 10px;
+}
+.header-username{
+	float: right;
+	color: #373737;
+	font-size: 14px;
+	line-height: 30px;
+}
+.setting-btn,.layout-btn{
+	width: 30px;
+	height: 30px;
+	padding: 7px;
+	display: inline-block;
+	float: right;
+	margin-left: 5px;
+}
+.setting-btn{
+	background: url(../img/icon-set-nor.png) center no-repeat;
+	background-size: 53%;
+}
+.setting-btn:hover{
+	background: url(../img/icon-set-click.png) center no-repeat;
+	background-size: 53%;
+}
+.layout-btn{
+	background: url(../img/icon-layout-norpng.png) center no-repeat;
+	background-size: 53%;
+}
+.layout-btn:hover{
+	background: url(../img/icon-layout-click.png) center no-repeat;
+	background-size: 53%;
+}

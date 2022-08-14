@@ -62,11 +62,11 @@ public class ManagerController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	@ActionParam(key = "name", type = DataType.STRING)
-	@ActionParam(key = "status", type = DataType.STRING)
-	@ActionParam(key = "pageNum", type = DataType.NUMBER)
-	@ActionParam(key = "pageSize", type = DataType.NUMBER)
-	@ActionParam(key = "sorts", type = DataType.STRING)
+	@ActionParam(key = "name", message = "搜索参数", type = DataType.STRING)
+	@ActionParam(key = "status", message = "状态", type = DataType.STRING)
+	@ActionParam(key = "pageNum", message="页码", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "pageSize", message="每页数量", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "sorts", message = "排序参数", type = DataType.STRING)
 	@ResponseBody
 	public Result list(String name, String status, Integer pageNum, Integer pageSize, String sorts) {
 		//查询条件
@@ -89,7 +89,7 @@ public class ManagerController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "uuid", message = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
 	@ResponseBody
 	public Result get(String uuid) {		
 		//获取主理人信息
@@ -106,7 +106,7 @@ public class ManagerController extends BaseController {
 			//获取创建人信息
 			BkOperator operator = bkOperatorService.get(manager.getCreator());
 			if (resource != null){
-				managerVO.setCreatorName(operator.getName());
+				managerVO.setCreatorName(operator.getRealname());
 			}
 			//界面返回封装对象
 			return ResultManager.createDataResult(managerVO);
@@ -132,18 +132,18 @@ public class ManagerController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	@ActionParam(key = "name", type = DataType.STRING, required = true, minLength = 1, maxLength = 30)
-	@ActionParam(key = "type", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
-	@ActionParam(key = "graduation", type = DataType.STRING, maxLength = 50)
-	@ActionParam(key = "education", type = DataType.STRING, maxLength = 20)
-	@ActionParam(key = "score", type = DataType.NUMBER)
-	@ActionParam(key = "resume", type = DataType.STRING)
-	@ActionParam(key = "workage", type = DataType.NUMBER)
-	@ActionParam(key = "mobile", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
-	@ActionParam(key = "idcard", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
-	@ActionParam(key = "email", type = DataType.STRING, maxLength = 50)
-	@ActionParam(key = "photo", type = DataType.STRING, maxLength = 36)
-	@ActionParam(key = "status", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
+	@ActionParam(key = "name", message = "姓名", type = DataType.STRING, required = true, minLength = 1, maxLength = 30)
+	@ActionParam(key = "type", message = "类型", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
+	@ActionParam(key = "graduation", message = "毕业院校", type = DataType.STRING, maxLength = 50)
+	@ActionParam(key = "education", message = "学历", type = DataType.STRING, maxLength = 20)
+	@ActionParam(key = "score", message = "积分", type = DataType.NUMBER)
+	@ActionParam(key = "resume", message = "个人简历", type = DataType.STRING)
+	@ActionParam(key = "workage", message = "从业年限", type = DataType.NUMBER)
+	@ActionParam(key = "mobile", message = "手机号", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
+	@ActionParam(key = "idcard", message = "身份证号", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
+	@ActionParam(key = "email", message = "邮箱", type = DataType.EMAIL, maxLength = 50)
+	@ActionParam(key = "photo", message = "头像", type = DataType.STRING, maxLength = 36)
+	@ActionParam(key = "status", message = "状态", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
 	@ResponseBody
 	public Result add(String name, String type, String graduation, String education, BigDecimal score, String resume,
 			Integer workage, String mobile, String idcard, String email, String photo, String status) {
@@ -160,6 +160,7 @@ public class ManagerController extends BaseController {
 		}
 		
 		//验证是否有重名的情况
+		idcard = idcard.toUpperCase();
 		if (managerService.isExistManagerByIdcard(idcard,null)) {
 			return ResultManager.createFailResult("身份证已存在！");
 		}
@@ -214,19 +215,19 @@ public class ManagerController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
-	@ActionParam(key = "name", type = DataType.STRING, required = true, minLength = 1, maxLength = 30)
-	@ActionParam(key = "type", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
-	@ActionParam(key = "graduation", type = DataType.STRING, maxLength = 50)
-	@ActionParam(key = "education", type = DataType.STRING, maxLength = 20)
-	@ActionParam(key = "score", type = DataType.NUMBER)
-	@ActionParam(key = "resume", type = DataType.STRING)
-	@ActionParam(key = "workage", type = DataType.NUMBER)
-	@ActionParam(key = "mobile", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
-	@ActionParam(key = "idcard", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
-	@ActionParam(key = "email", type = DataType.STRING, maxLength = 50)
-	@ActionParam(key = "photo", type = DataType.STRING, maxLength = 36)
-	@ActionParam(key = "status", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
+	@ActionParam(key = "uuid", message = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "name", message = "姓名", type = DataType.STRING, required = true, minLength = 1, maxLength = 30)
+	@ActionParam(key = "type", message = "类型", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
+	@ActionParam(key = "graduation", message = "毕业院校", type = DataType.STRING, maxLength = 50)
+	@ActionParam(key = "education", message = "学历", type = DataType.STRING, maxLength = 20)
+	@ActionParam(key = "score", message = "积分", type = DataType.NUMBER)
+	@ActionParam(key = "resume", message = "个人简历", type = DataType.STRING)
+	@ActionParam(key = "workage", message = "从业年限", type = DataType.NUMBER)
+	@ActionParam(key = "mobile", message = "手机号", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
+	@ActionParam(key = "idcard", message = "身份证号", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
+	@ActionParam(key = "email", message = "邮箱", type = DataType.EMAIL, maxLength = 50)
+	@ActionParam(key = "photo", message = "头像", type = DataType.STRING, maxLength = 36)
+	@ActionParam(key = "status", message = "状态", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
 	@ResponseBody
 	public Result edit(String uuid, String name, String type, String graduation, String education, BigDecimal score, 
 			String resume, Integer workage, String mobile, String idcard, String email, String photo, String status) {
@@ -246,6 +247,7 @@ public class ManagerController extends BaseController {
 			}
 			
 			//验证是否有重名的情况
+			idcard = idcard.toUpperCase();
 			if (managerService.isExistManagerByIdcard(idcard,uuid)) {
 				return ResultManager.createFailResult("身份证已存在！");
 			}
@@ -282,7 +284,7 @@ public class ManagerController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
+	@ActionParam(key = "uuid", message = "uuid", type = DataType.STRING, required = true)
 	@ResponseBody
 	public Result delete(String uuid) {
 		

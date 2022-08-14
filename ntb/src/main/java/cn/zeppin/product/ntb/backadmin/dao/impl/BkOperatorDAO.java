@@ -61,6 +61,10 @@ public class BkOperatorDAO extends BaseDAO<BkOperator, String> implements IBkOpe
 		if (inputParams.get("role") != null && !"".equals(inputParams.get("role"))) {
 			builder.append(" and b.role in (" + inputParams.get("role") + ") ");
 		}
+		//手机号
+		if (inputParams.get("mobile") != null && !"".equals(inputParams.get("mobile"))) {
+			builder.append(" and b.mobile like '" + inputParams.get("mobile") + "_#%' ");
+		}
 		//状态
 		if (inputParams.get("status") != null && !"".equals(inputParams.get("status"))) {
 			builder.append(" and b.status = '" + inputParams.get("status") + "' ");

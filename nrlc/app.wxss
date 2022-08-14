@@ -1,0 +1,33 @@
+/**app.wxss**/
+view{
+  box-sizing: border-box;
+}
+
+.container {
+  font-family: San Francisco, Helvetica, Tahoma, Arial, "PingFangSC-Regular", "Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+} 
+
+.message-view{
+  position: fixed;
+  top: 38%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 100;
+}
+
+.message-view view{
+  position: static;
+  display: inline-block;
+  max-width: 400rpx; 
+  line-height: 44rpx;
+  padding: 30rpx 40rpx;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10rpx;
+  color: #FFF;
+  font-size: 32rpx;
+}

@@ -67,6 +67,10 @@ public class ResourceController extends BaseController {
 				res.setUuid(uuid);
 				String name = dir[dir.length-1];res.setFilename(name);
 				res.setFiletype(file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf(".") + 1));
+				if(res.getFiletype().toLowerCase().equals("apk")||res.getFiletype().toLowerCase().equals("ipa")){
+					name = file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf("."));
+					res.setFilename(name);
+				}
 				res.setSize(BigInteger.valueOf(file.getSize()));
 				res.setStatus(ResourceStatus.NORMAL);
 				res.setUrl(basePath + name + "." + res.getFiletype());
@@ -86,6 +90,10 @@ public class ResourceController extends BaseController {
 					res.setType("1");
 				}else if(res.getFiletype().toLowerCase().equals("doc")||res.getFiletype().toLowerCase().equals("docx")||res.getFiletype().toLowerCase().equals("pdf")){
 					res.setType("3");///文本文档
+				}else if(res.getFiletype().toLowerCase().equals("xls")||res.getFiletype().toLowerCase().equals("xlsx")){
+					res.setType("4");///文本文档
+				}else if(res.getFiletype().toLowerCase().equals("apk")||res.getFiletype().toLowerCase().equals("ipa")){
+					res.setType("5");///安装包
 				}else{
 					return ResultManager.createFailResult("文件格式错误");
 				}

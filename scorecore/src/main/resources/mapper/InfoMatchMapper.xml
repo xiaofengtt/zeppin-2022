@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.score.mapper.InfoMatchMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from info_match where 1=1 
+		<if test='category != null and category != ""'>
+            and category = #{category}
+        </if>
+		<if test='season != null and season != ""'>
+            and season = #{season}
+        </if>
+        <if test='round != null and round != ""'>
+            and round = #{round}
+        </if>
+        <if test='starttime != null'>
+            and <![CDATA[ time >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null'>
+            and <![CDATA[ time <= #{endtime} ]]>
+        </if>
+        <if test='hometeam != null and hometeam != ""'>
+            and hometeam = #{hometeam}
+        </if>
+        <if test='awayteam != null and awayteam != ""'>
+            and awayteam = #{awayteam}
+        </if>
+        <if test='team != null and team != ""'>
+            and (awayteam = #{team} or hometeam = #{team})
+        </if>
+        <if test='T2TA != null and T2TA != "" and T2TB != null and T2TB != ""'>
+            and hometeam in (#{T2TA}, #{T2TB}) and awayteam in (#{T2TA}, #{T2TB})
+        </if>
+        <if test='concern != null and concern != ""'>
+            and (awayteam in (${concern}) or hometeam in (${concern}))
+        </if>
+   		<if test='interfaceid != null and interfaceid != ""'>
+            and interfaceid= #{interfaceid}
+        </if>
+        <if test='status != null and status != ""'>
+        	and status = #{status}
+        </if>
+        <if test='nstatus != null and nstatus != ""'>
+        	and status != #{nstatus}
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.score.entity.InfoMatch">
+		select * from info_match where 1=1 
+		<if test='category != null and category != ""'>
+            and category = #{category}
+        </if>
+		<if test='season != null and season != ""'>
+            and season = #{season}
+        </if>
+        <if test='round != null and round != ""'>
+            and round = #{round}
+        </if>
+       <if test='starttime != null'>
+            and <![CDATA[ time >= #{starttime} ]]>
+		</if>
+        <if test='endtime != null'>
+            and <![CDATA[ time <= #{endtime} ]]>
+        </if>
+        <if test='hometeam != null and hometeam != ""'>
+            and hometeam = #{hometeam}
+        </if>
+        <if test='awayteam != null and awayteam != ""'>
+            and awayteam = #{awayteam}
+        </if>
+        <if test='team != null and team != ""'>
+            and (awayteam = #{team} or hometeam = #{team})
+        </if>
+        <if test='T2TA != null and T2TA != "" and T2TB != null and T2TB != ""'>
+            and hometeam in (#{T2TA}, #{T2TB}) and awayteam in (#{T2TA}, #{T2TB})
+        </if>
+        <if test='concern != null and concern != ""'>
+            and (awayteam in (${concern}) or hometeam in (${concern}))
+        </if>
+   		<if test='interfaceid != null and interfaceid != ""'>
+            and interfaceid= #{interfaceid}
+        </if>
+        <if test='status != null and status != ""'>
+        	and status = #{status}
+        </if>
+        <if test='nstatus != null and nstatus != ""'>
+        	and status != #{nstatus}
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by time desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+</mapper>

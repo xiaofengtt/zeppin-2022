@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<title>银行卡</title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/bankCardList.css" />
+	</head>
+	<body onload="loading();" style="display:none;">
+		<div class="titleDiv">
+			<img class="titleBack" src="img/icon_return.png" alt="返回" />
+			<p>银行卡</p>
+		</div>
+		<div class="wrap">
+			<div class="bank-list">
+
+				
+			</div>
+			<a class="addBtn" href="javascript:">添加银行卡</a>
+			<p class="layer">
+				提示信息
+			</p>
+			<div id="confirm-box">
+				<div class="confirm-box-inner">
+					<h3>温馨提示</h3>
+					<h4></h4>
+					<div class="confirm-box-inner-btnbox clearfix">
+						<input type="button"  value="取消" id="confirm-box-close"/>
+						<input type="button"  value="立即提交" id="confirm"/>
+					</div>
+				</div>
+			</div>
+			<div id="loading-box">
+				<img src="./img/icon-loading.gif" alt="" />
+			</div>
+		</div>
+		<script src="./js/burialPoint.js"></script>
+		<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+		<script src="./js/base64.js"></script>
+		<script src="./js/md5.js"></script>
+		<script type="text/javascript" src="js/picker.min.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="js/bankCardList.js" ></script>
+	</body>
+</html>

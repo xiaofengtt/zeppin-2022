@@ -1,0 +1,75 @@
+/* pages/contact/contact.wxss */
+page{
+  background: #eee
+}
+
+.container{
+  background: #FFF
+}
+
+.top-view{
+  width: 100%;
+  margin-top: 80rpx;
+  text-align: center;
+}
+
+.top-view image{
+  width: 160rpx;
+  height: 160rpx;
+  margin: 0 auto;
+}
+
+
+.top-view view{
+  width: 100%;
+  height: 34rpx;
+  line-height: 34rpx;
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: #363636;
+}
+
+.content-view{
+  width: 100%;
+  margin-top: 30rpx;
+  padding: 0 26rpx;
+}
+
+.content-view > view{
+  line-height: 34rpx;
+  margin-bottom: 24rpx;
+  font-size: 22rpx;
+  color: rgba(0, 0, 0, 0.8);
+  text-align: justify; 
+}
+
+.contact-view{
+  width: 100%;
+  margin-top: 26rpx;
+  margin-bottom: 30rpx;
+  padding: 0 26rpx;
+  text-align: left;
+}
+
+.contact-view > view{
+  width: 100%;
+  height: 34rpx;
+  line-height: 34rpx;
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.contact-view .title{
+  margin-bottom: 24rpx;
+}
+
+.contact-view .tr{
+  margin-bottom: 12rpx;
+}
+
+.contact-view .tr image{
+  width: 28rpx;
+  height: 26rpx;
+  margin-right: 12rpx;
+  vertical-align: text-top;
+}

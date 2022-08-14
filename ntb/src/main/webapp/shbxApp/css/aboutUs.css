@@ -1,0 +1,29 @@
+.info-top{
+	background:#fff url(../img/logo-aboutUs.png) center 0.4rem no-repeat;
+	background-size:29.3% auto;
+	padding:2.8rem 0.3rem 0.1rem 0.3rem;
+}
+.info-top p{
+	font-size:0.32rem;
+	color:rgba(46,46,46,0.8);
+	line-height:0.5rem;
+	text-indent:2em;
+	margin-bottom:0.2rem;
+	text-align: justify;
+}
+.info-bottom{
+	background:#fff;
+	
+}
+.info-item{
+	padding:0.28rem 0.3rem;
+	font-size:0.32rem;
+	color: rgba(46,46,46,0.8);
+}
+.info-item label{
+	width:4rem;
+	text-align:right;
+	display:inline-block;
+	float: right;
+	
+}

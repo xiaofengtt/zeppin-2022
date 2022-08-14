@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>购买理财</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/productBuy.css?version=1.5" />
+	</head>
+	<body>
+
+		
+		<div class="main">
+			<div class="main-top">
+				<div class="main-top-top">
+					<div class="main-top-top-logo">
+						<img src="" alt="" />
+					</div>
+					<div class="main-top-top-name">
+						<p id="productName"></p>
+						<span id="productBankAndScode"></span>
+						<h5 id="term"></h5>
+					</div>
+				</div>
+			</div>
+			<!--main-top-->
+			
+			<p id="accountBalance">
+				当前余额：<i></i>
+			</p>
+			
+			<div class="content">
+				<p>
+					<span>买入金额</span>
+					<input type="number" id="price" placeholder="" />
+				</p>
+
+				<p>
+					<em class="balance">
+						预期年化利率
+						<i id="targetAnnualizedReturnRate"></i>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<label id="termReturn">90天预期收益</label>
+						<i id="totalReturn">0.00元</i>
+					</em>
+				</p>
+			</div><!--content-->
+
+			<a href="javascript:void(0);" class="product-msg openId-url">
+				我的优惠券
+				<p>
+					<span class="color-gray" id="couponCount">无可用</span>
+					<img src="./img/right.png" alt="" />
+				</p>
+			</a>
+			
+			<div id="drawcash">
+				<span>确认购买</span>
+				<span></span>
+				<span></span>
+			</div>
+			
+			<p class="product-pdf">
+				<img src="./img/icon_coupon_selected.png" alt="" />
+				<span>我已阅读并同意</span>
+				<a href="../resource/123.pdf">《牛投理财定向委托投资管理协议》</a>
+			</p>
+			<span class="tip-msg">预期年化利率不代表实际利息收益</span>
+		</div><!--main-->
+		
+		
+		<div id="modal-box">
+			<div class="modal-box-inner">
+				<h3>温馨提示</h3>
+				<h4></h4>
+				<div class="modal-box-inner-btnbox clearfix">
+					<!--<input type="button"  value="取消" id="modal-box-close"/>-->
+					<input type="button"  value="确认" id="modal-box-close"/>
+				</div>
+			</div>
+		</div>
+		
+		<div id="code-box">
+			<div class="code-box-inner">
+				<!--<p>验证码已发送至186****00588的手机</p>-->
+				<p id="success-title">请输入验证码</p>
+				<div class="code-box-inner-mid">
+					<input type="tel" name="" id="mobileCode" value="" placeholder="请输入验证码" maxlength="6" />
+					<span id="getCode">获取验证码</span>
+					<span id="numCode">重新获取(<i id="count">60</i>s)</span>
+				</div>
+				<div class="code-box-inner-btnbox clearfix">
+					<input type="button"  value="取消" id="code-box-close"/>
+					<input type="button"  value="确认" id="submit"/>
+				</div>
+			</div>
+		</div>
+		
+		<div id="tip-box">
+			<div class="tip-box-inner">
+				<div class="tip-box-inner-content">
+					<p>余额不足，请充值！</p>
+					<img src="./img/recharge_success.png" alt="" />
+					<input type="button" value="前往充值" id="goBind"/>
+				</div>
+				<div id="tip-close">
+					
+				</div>
+			</div>
+		</div>
+		<p class="layer">
+			提示信息
+		</p>
+
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/changePrice.js?version=1.5"></script>
+		<script src="./js/flagSubmit.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/operation.js?version=1.5"></script>
+		<script src="./js/productBuy.js?version=1.5"></script>
+	</body>
+</html>

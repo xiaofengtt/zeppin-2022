@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.score.mapper.AdminRoleMapper">
+	<resultMap id="BaseResultMap" type="cn.product.score.entity.AdminRole">
+		<id column="uuid" jdbcType="VARCHAR" property="uuid" />
+		<result column="admin" jdbcType="VARCHAR" property="admin" />
+		<result column="role" jdbcType="VARCHAR" property="role" />
+	</resultMap>
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from admin_role where 1=1 
+		<if test="role != null and role != ''">
+            and role= #{role}
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.score.entity.AdminRole">
+		select * from admin_role where 1=1 
+		<if test="role != null and role != ''">
+            and role= #{role}
+        </if>
+        <choose>
+	        <when test="sort != null and sort != ''">
+	        	order by ${sort}
+	        </when>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getListByRole" parameterType="String" resultType="String">
+		select admin from admin_role where role = #{role}
+	</select>
+</mapper>

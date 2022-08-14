@@ -1,0 +1,149 @@
+.selectBar{
+	background: #FFFFFF;
+	height: 0.84rem;
+	text-align: center;
+	position:fixed;
+	top:1.28rem;
+	left:0;
+	width:100%;
+}
+.selectBar li{
+	width: 25%;
+	float: left;
+	height: 0.84rem;
+	line-height: 0.9rem;
+	font-size: 0.32rem;
+}
+.selectBar li a{
+	height: 0.84rem;
+	border-bottom: 2px solid #FFFFFF;
+	display: inline-block;
+}
+.selectBar li.light a{
+	color:rgba(79,172,254,1);
+	border-color: #4FACFE;
+}
+.order-list{
+	padding: 0.8rem 0.3rem;
+}
+.order-item{
+	padding: 0.28rem 0.2rem;
+	border-radius: 0.08rem;
+}
+.todo{
+	background: url(../img/bg-order1.png) center no-repeat;
+	background-size: cover;
+}
+.doing{
+	background: url(../img/bg-order2.png) center no-repeat;
+	background-size: cover;
+}
+.closed{
+	background: url(../img/bg-order3.png) center no-repeat;
+	background-size: cover;
+}
+.insuredName{
+	float: left;
+	width: 5rem;
+	font-size: 0.32rem;
+	line-height: 0.52rem;
+}
+.todo .insuredStatus{
+	width: 1.16rem;
+	height: 0.52rem;
+	border-radius: 0.28rem;
+	display: block;
+	float: right;
+	border: 1px solid rgba(255,168,33,1);
+	color:rgba(255,168,33,1);
+	font-size:0.28rem;
+	text-align: center;
+	line-height: 0.52rem;
+}
+.doing .insuredStatus{
+	width: 1.16rem;
+	height: 0.52rem;
+	border-radius: 0.28rem;
+	display: block;
+	float: right;
+	border:1px solid rgba(36,204,171,1);
+	color:rgba(36,204,171,1);
+	font-size:0.28rem;
+	text-align: center;
+	line-height: 0.52rem;
+}
+.closed .insuredStatus{
+	padding:0 0.1rem;
+	height: 0.52rem;
+	border-radius: 0.28rem;
+	display: block;
+	float: right;
+	border:1px solid rgba(251,80,82,1);
+	color:rgba(251,80,82,1);
+	font-size:0.28rem;
+	text-align: center;
+	line-height: 0.52rem;
+}
+.insuredPosition{
+	background: url(../img/icon-position.png) left center no-repeat;
+	padding-left: 0.4rem;
+	font-size: 0.32rem;
+	font-weight: lighter;
+	float: left;
+	background-size:auto 80% ;
+	width: 50%;
+	margin-top: 0.2rem;
+}
+.insuredPay{
+	width: 50%;
+	float: right;
+	text-align: right;
+	font-size: 0.28rem;
+	margin-top: 0.2rem;
+}
+.noOrder{
+	background: url(../img/noOrder.png) center 2.4rem no-repeat;
+	background-size: 34% auto;
+	padding-top: 5.2rem;
+	text-align: center;
+}
+.noOrder p{
+	font-size: 0.36rem;
+}
+.gobtn{
+	width: 5.32rem;
+	display: block;
+	height: 0.8rem;
+	border-radius: 0.04rem;
+	background:rgba(79,172,254,1);
+	font-size: 0.32rem;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 0.9rem;
+	margin-top: 0.8rem;
+}
+.pengdingList,.doingList,.doneList{
+	display:none;
+}
+/* 适配iphonex */
+@media only screen and (device-width: 375px) and (device-height: 812px) and 
+(-webkit-device-pixel-ratio: 3) {
+	.selectBar{
+		top: 1.76rem;
+	}
+}
+/* 适配iphonexr */
+@media only screen and (device-width: 414px) and (device-height: 896px) and 
+(-webkit-device-pixel-ratio: 2) {
+	.selectBar{
+		top: 1.66rem;
+	}
+}
+
+/* 适配iphonexsmax */
+@media only screen and (device-width: 414px) and (device-height: 896px) and 
+(-webkit-device-pixel-ratio: 3) {
+	.selectBar{
+		top: 1.66rem;
+	}
+}

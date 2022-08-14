@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.score.mapper.FrontUserHistoryCheckMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from front_user_history_check where 1=1 
+		<if test='frontUserHistory != null and frontUserHistory != ""'>
+            and front_user_history= #{frontUserHistory}
+        </if>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+        <if test='transType != null and transType != ""'>
+            and trans_type = #{transType}
+        </if>
+        <if test='checker != null and checker != ""'>
+            and checker= #{checker}
+        </if>
+        <if test='creator != null and creator != ""'>
+            and creator= #{creator}
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.score.entity.FrontUserHistoryCheck">
+		select * from front_user_history_check where 1=1 
+		<if test='frontUserHistory != null and frontUserHistory != ""'>
+            and front_user_history= #{frontUserHistory}
+        </if>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+        <if test='transType != null and transType != ""'>
+            and trans_type = #{transType}
+        </if>
+        <if test='checker != null and checker != ""'>
+            and checker= #{checker}
+        </if>
+        <if test='creator != null and creator != ""'>
+            and creator= #{creator}
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getStatusList" parameterType="java.util.HashMap" resultType="cn.product.score.vo.back.StatusCountVO">
+		select status, count(*) as count from front_user_history_check where 1=1 and status != 'delete'
+		<if test='transType != null and transType != ""'>
+            and trans_type = #{transType}
+        </if>
+		<if test='creator != null and creator != ""'>
+            and creator = #{creator}
+        </if>
+        group by status
+	</select>
+</mapper>

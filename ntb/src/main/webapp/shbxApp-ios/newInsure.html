@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>缴社保</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/mobiscroll.core-2.5.2.css" />
+		<link rel="stylesheet" href="css/mobiscroll.animation-2.5.2.css" />
+		<link rel="stylesheet" href="css/mobiscroll.android-ics-2.5.2.css" />
+		<link rel="stylesheet" href="css/socialSecurityCalculator.css" />
+		<link rel="stylesheet" href="css/payHasInsuredRecord.css" />
+		<link rel="stylesheet" href="css/newInsure.css" />
+	</head>
+	<body onload="loading();" style="display:none;">
+		<input type="hidden" value="" id="cbdq" />
+		<input type="hidden" value="" id="cjgzsj" />
+		<input type="hidden" value="" id="hkxz" />
+		<input type="hidden" value="" id="jfyf" />
+		<div class="titleDiv">
+			<img class="titleBack" src="img/icon_return.png" alt="返回" />
+			<p>缴社保</p>
+		</div>
+		<div class="wrap">
+			<div class="progressDiv">
+				<div class="progressTop">
+					<label class="stepOne light"></label>
+					<div class="border-top"></div>
+					<label class="stepTwo"></label>
+					<div class="border-top"></div>
+					<label class="stepThree"></label>
+					<div class="clear"></div>
+				</div>
+				<div class="progressBottom">
+					<span class="spanOne color-green">参保人信息</span>
+					<span class="spanTwo color-2E30">设置参保信息</span>
+					<span class="spanThree color-2E30">确认并支付</span>
+				</div>
+			</div>
+			<!--第一步-->
+			<div class="stepInfo firstInfo">
+				<div class="info-item">
+					<span>参保人姓名</span>
+					<input type="text" class="cbrxm" placeholder="请填写参保人姓名" value=""/>
+					<div class="clear"></div>
+				</div>
+				<div class="info-item">
+					<span>手机号</span>
+					<input type="tel" class="sjh" placeholder="请填写参保人手机号" value="" maxlength="11" onkeyup="value=value.replace(/[^\d]/g,'')"/>
+					<div class="clear"></div>
+				</div>
+				<div class="info-item">
+					<span>身份证号</span>
+					<input type="text" class="sfzh" placeholder="请输入参保人身份证号" value="" maxlength="18"/>
+					<div class="clear"></div>
+				</div>
+				<div class="info-item info-jfyf" data="hkxz" id="picker1">
+					<span>户口所在地</span>
+					<input type="text" class="hkszd" disabled="disabled" placeholder="请选择" value=""/>
+					<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+					<div class="clear"></div>
+				</div>
+				<div class="info-item info-jfyf" data="hkxz" id="picker2">
+					<span>户口性质</span>
+					<input type="text" class="hkxz" disabled="disabled" placeholder="请选择" value=""/>
+					<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+					<div class="clear"></div>
+				</div>
+				<div class="info-item info-jfyf" data="hkxz" id="picker3">
+					<span>民族</span>
+					<input type="text" class="mz" disabled="disabled" placeholder="请选择" value=""/>
+					<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+					<div class="clear"></div>
+				</div>
+				<div class="info-item info-jfyf" data="hkxz" id="picker4">
+					<span>学历</span>
+					<input type="text" class="xl" disabled="disabled" placeholder="请选择" value=""/>
+					<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+					<div class="clear"></div>
+				</div>
+				<div class="info-item" data="hkxz" id="picker5">
+					<span>参加工作时间</span>
+					<input type="text" class="cjgzsj" disabled="disabled" placeholder="请选择" value=""/>
+					<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+					<div class="clear"></div>
+				</div>
+				<div class="info-item" data="hkxz" id="picker8">
+					<span>个人身份</span>
+					<input type="text" class="grsf" disabled="disabled" placeholder="请选择" value=""/>
+					<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+					<div class="clear"></div>
+				</div>
+				<div class="info-item">
+					<span>邮箱</span>
+					<input type="email" class="yx" placeholder="请填写参保人邮箱" value=""/>
+					<div class="clear"></div>
+				</div>
+			</div>			
+			<a class="bigSure firstInfo stepBtn stepBtnOne mb-120">下一步</a>
+			<!--第二步-->
+			<div class="secondInfo">
+				<div class="stepInfo">
+					<div class="info-item">
+						<span>参保地区</span>
+						<input type="text" class="cbdq" disabled="disabled" placeholder="请选择" value="北京市"/>
+						<div class="clear"></div>
+					</div>
+					<div class="info-item info-cblx" data="hkszd">
+						<span>参保类型</span>				
+						<label class="light radioLabel" data="new" data-value="1" data-cn="新参保">新参保</label>				
+						<label class="radioLabel" data="changein" data-value="2" data-cn="普通转入">普通转入</label>
+						<div class="clear"></div>
+					</div>
+					<div class="info-item info-gsmc" style="display:none;">
+						<span>公司名称</span>
+						<input type="text" class="gsmc" placeholder="请输入原工作单位" value=""/>
+						<div class="clear"></div>
+					</div>
+					<div class="info-item info-jfyf" data="hkxz" id="picker7">
+						<span>缴费开始月份</span>
+						<input type="text" class="jfyf" disabled="disabled" placeholder="请选择" value=""/>
+						<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+						<div class="clear"></div>
+					</div>
+					<div class="info-item">
+						<span>社保基数(元)</span>
+						<input type="number" class="sbjs form-money" id="js_yc2" placeholder="3387~25401" value="" onkeyup="value=value.replace(/[^\d\.]/g,'')" onblur="value=value.replace(/[^\d\.]/g,'')" />
+						<a class="jsButton zdjs" onclick="sbjs(this);">最低基数</a>
+						<div class="clear"></div>
+					</div>
+					<div class="info-item info-gjj" data="gjj">
+						<span>公积金</span>				
+						<label class="radioLabel" data="缴纳" data-value="1">缴纳</label>				
+						<label class="light radioLabel" data="不缴纳" data-value="2">不缴纳</label>
+						<div class="clear"></div>
+					</div>
+					<div class="info-item info-gjjjs noBorder" style="display:none;">
+						<span>公积金基数(元)</span>
+						<input type="number" class="gjjjs form-money" id="js_yc" placeholder="2273~25401" value="" onkeyup="value=value.replace(/[^\d\.]/g,'')" onblur="value=value.replace(/[^\d\.]/g,'')" />
+						<a class="jsButton zdjs" onclick="sbjn(this);;">最低基数</a>
+						<div class="clear"></div>
+					</div>
+				</div>
+				
+				<div class="payInfo mt-28 pl-30 bg-fff">
+					<div class="info-item info-jfje" data="hkxz">
+						<span>缴纳金额(元)</span>
+						<input type="text" class="jfje color-red" disabled="disabled" placeholder="0.00" value=""/>
+						<b class="fymx color-2E70">费用明细</b>
+						<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+						<div class="clear"></div>
+					</div>
+					<div class="info-item info-fwf" data="hkxz" id="picker6">
+						<span>服务费(元)</span>
+						<input type="text" class="fwf color-red" disabled="disabled" placeholder="请选择" value=""/>
+						<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="totalAmount secondInfo">
+				<div class="amoutLeft color-2E">
+					合计金额(元)：<span class="color-red">0.00</span>
+				</div>
+				<a class="surebtn">提交订单</a>
+				<div class="clear"></div>
+			</div>
+			<!--第三步-->
+			<div class="threeInfo threeInfo-input" style="margin-bottom: 3.3rem;">
+				<!--参保人信息-->
+				<div class="insuredInfo mt-28">
+					<div class="insuredTop">
+						<span class="sureName color-2E"></span>
+						<label class="sureTel color-2E"></label>
+					</div>
+					<ul class="insuredBottom insuredUserBottom color-2E70" style="display:none;">
+						<li><label>身份证号</label><span class="color-2E sureIdnumber"></span><div class="clear"></div></li>
+						<li><label>户口所在地</label><span class="color-2E sureHkszd"></span><div class="clear"></div></li>
+						<li><label>户口性质</label><span class="color-2E sureHkxz"></span><div class="clear"></div></li>
+						<li><label>民族</label><span class="color-2E sureNation"></span><div class="clear"></div></li>
+						<li><label>学历</label><span class="color-2E sureEducation"></span><div class="clear"></div></li>
+						<li><label>参加工作时间</label><span class="color-2E sureWorkTime"></span><div class="clear"></div></li>
+						<li><label>邮箱</label><span class="color-2E sureEmail"></span><div class="clear"></div></li>
+						
+					</ul>
+					<a class="takeUp">收起</a>
+					<a class="takeDown">展开</a>
+				</div>
+				<div class="insuredInfo mt-28">
+					<ul class="insuredBottom color-2E70 noBorder">
+						<li><label>参保地区</label><span class="color-2E sureCbdq"></span><div class="clear"></div></li>
+						<li><label>参保类型</label><span class="color-2E sureCblx"></span><div class="clear"></div></li>
+						<li class="gsmcLi"><label>公司名称</label><span class="color-2E sureCompany"></span><div class="clear"></div></li>
+						<li><label>缴费月份</label><span class="color-2E sureJfyf"></span><div class="clear"></div></li>
+						<li><label>社保基数(元)</label><span class="color-2E sureSbjs"></span><div class="clear"></div></li>
+						<li class="gjjjsLi"><label>公积金基数(元)</label><span class="color-2E sureGjjjs"></span><div class="clear"></div></li>
+					</ul>
+				</div>
+				<div class="insuredInfo mt-28">
+					<ul class="insuredBottom color-2E70 noBorder">
+						<li><label>缴纳金额(元)</label><span class="color-red sureJnje"></span><div class="clear"></div></li>
+						<li><label>服务费(元)</label><span class="color-red sureFwf"></span><div class="clear"></div></li>
+						
+					</ul>
+				</div>
+				
+				
+			</div>
+			<div class="totalAmount threeInfo">
+				<div class="amoutLeft color-2E">
+					合计金额(元)：<span class="color-red">0.00</span>
+				</div>
+				<a class="surebtn light">确认支付</a>
+				<div class="clear"></div>
+			</div>
+			
+			
+			<div class="layerDiv">
+				<div class="layerInner">
+					<p class="layer-title">请选择服务费</p>
+					<span class="cancel cancel-hook">取消</span>
+					<span class="confirm confirm-hook">确定</span>
+					<ul>
+						<li class="light" data = "400.00(12个月)" data-value="400" data-length="12"><span class="color-2E fwf-12">12个月(2018.08~2019.07)</span><label class="color-red">400元</label><div class="clear"></div></li>
+						<li data = "220.00(6个月)" data-value="220" data-length="6"><span class="color-2E fwf-6">6个月(2018.08~2019.07)</span><label class="color-red">220元</label><div class="clear"></div></li>
+						<li data = "120.00(3个月)" data-value="120" data-length="3"><span class="color-2E fwf-3">3个月(2018.08~2019.07)</span><label class="color-red">120元</label><div class="clear"></div></li>
+						<li data = "50.00(1个月)" data-value="50" data-length="1"><span class="color-2E fwf-1">1个月(2018.08~2019.07)</span><label class="color-red">50元</label><div class="clear"></div></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--费用明细-->
+		<div class="stepTwoBox">
+			<div class="resultDiv" style="padding-bottom: 0.8rem;margin-top: 0.28rem;display: block;">
+				<div class="totalResult">
+						<div class="sbfy fyBox">
+							<span>社保费用(元)：</span>
+							<label class="sbfyValue valueLable">2273</label>
+						</div>
+						<div class="gjjfy fyBox">
+							<span>公积金费用(元)：</span>
+							<label class="gjjfyValue valueLable">2273</label>
+						</div>
+						<div class="gsfy fyBox">
+							<span>个人所得税(元)：</span>
+							<label class="gsfyValue valueLable">2273</label>
+						</div>
+						<div class="zj fyBox">
+							<span>总计(元)：</span>
+							<label class="zjValue valueLable">2273</label>
+						</div>
+						<div class="clear"></div>
+					</div>
+				<div class="tableBox">
+					<table></table>
+				</div>
+				
+			</div>
+		</div>
+		<!--明细的确定按钮-->
+		<div class="fixedBtn stepTwoBox mb-120" style="position:inherit;">
+			<a class="bigSure light">确定</a>
+		</div>
+		
+		<p class="layer">
+			提示信息
+		</p>
+		<div id="loading-box">
+			<img src="./img/icon-loading.gif" alt="" />
+		</div>
+		<div id="confirm-box" class="indexConfirm">
+			<div class="confirm-box-inner">
+				<h3>温馨提示</h3>
+				<h4></h4>
+				<div class="confirm-box-inner-btnbox clearfix">
+					<input type="button"  value="取消" id="confirm-box-close"/>
+					<input type="button"  value="立即提交" id="confirm"/>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<ul>
+				<a href="javascript:"><li class="index indexBar">首页</li></a>
+				<a href="javascript:" class=""><li class="jshb light paySocial">缴社保</li></a>
+				<a href="javascript:"><li class="sshb sshbBar">算社保</li></a>
+				<a href="javascript:"><li class="consultList consultListBar">资讯</li></a>
+				<a href="javascript:"><li class="myhome">我的</li></a>
+			</ul>
+		</footer>
+		<script src="./js/burialPoint.js"></script>
+		<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+		<script src="./js/base64.js"></script>
+		<script src="./js/md5.js"></script>
+		<script type="text/javascript" src="js/picker.min.js" ></script>	
+		<script type="text/javascript" src="js/url.min.js" ></script>		
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<link rel="stylesheet" href="css/base.css" />
+		
+		<script src="js/mobiscroll.core-2.5.2.js"></script>
+		<script src="js/mobiscroll.core-2.5.2-zh.js"></script>
+		<script src="js/mobiscroll.datetime-2.5.1.js"></script>
+		<script src="js/mobiscroll.datetime-2.5.1-zh.js"></script>
+		<script src="js/mobiscroll.android-ics-2.5.2.js"></script>
+		
+		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript" src="js/socialSecurityCalculator.js" ></script>
+		<script type="text/javascript" src="js/newInsure.js" ></script>
+		<script type="text/javascript">
+			// 获取视图原始高度
+			windowHeight = $(window).height();  
+			// 为window绑定resize事件
+			window.onresize = function () {
+			  var nowHeight = $(window).height();
+		      if (nowHeight < windowHeight) {
+		        // 将底部弹起的按钮隐藏（可使用给按钮添加相应消失类）
+		    	  	$("footer").hide();
+		      } else {
+		        // 将按钮正常显示（可使用给按钮移除相应消失类）
+		    	  	$("footer").show();
+		      }
+		    }
+			
+		</script>
+	</body>
+</html>

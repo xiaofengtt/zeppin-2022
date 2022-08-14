@@ -7,10 +7,11 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>修改系统管理员</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="css/bootstrap.css" />
 		<link rel="stylesheet" href="css/bootstrap2.css" />
 		<link rel="stylesheet" href="css/style.css" />
-		
+
 		<script id="DataTpl" type="text/template">
 			<input type="hidden" name="uuid" value="{{:uuid}}"/>
 			<div class="form-group form-group-double col-xs-6">
@@ -53,7 +54,7 @@
 					</select>
 					{{if status=='locked'}}{{:lockedtimeCN}}{{/if}}
 				</div>
-				<div class="clear"></div>	
+				<div class="clear"></div>
 			</div>
 			<div class="clear"></div>
 		</script>
@@ -61,7 +62,7 @@
 	<body>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="navigation.jsp"/>
-		<input id="scode" type="hidden" value="00100011" />  
+		<input id="scode" type="hidden" value="00100011" />
 		<div class="contain">
 			<jsp:include page="contentLeft.jsp"/>
 			<div class="contain-right">
@@ -74,7 +75,7 @@
 							<div id="DataCnt"></div>
 							<div class="btnGroup">
 								<button class="btn sureBtn" type="submit">确定</button>
-								<button class="btn cancleBtn" onclick="window.location.href=history.go(-1)">取消</button>
+								<button class="btn cancleBtn" onclick="history.go(-1)">取消</button>
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -85,10 +86,12 @@
 		</div>
 		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
 		<script type="text/javascript" src="js/jquery.colorbox.js"></script>
-		<script type="text/javascript" src="js/url.min.js"></script>
+		<script type="text/javascript" src="js/url.min.js"></script><script type="text/javascript" src="js/flagSubmit.js"></script>
 		<script type="text/javascript" src="js/jsrender.min.js"></script>
 		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.js" ></script>
+		<script type="text/javascript" src="js/paramCheck.js" ></script>
 		<script type="text/javascript" src="js/superAdminEdit.js" ></script>
+		<script type="text/javascript" src="js/flagSubmit.js"></script>
 	</body>
 </html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/systemParamEdit.css" />
+</head>
+<body>
+	<div class="content-box mt-30">
+		<!-- 数字类型 -->
+		<div class="content-item numberic">
+			<div class="form-group col-xs-12 ">
+				<label class="col-xs-2 text-right">参数值：</label>
+				<div class="content-items col-xs-10">
+					<input class="form-control numberInput" onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');" />
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!-- 字符串 -->
+		<div class="content-item string">
+			<div class="form-group col-xs-12 ">
+				<label class="col-xs-2 text-right">参数值：</label>
+				<div class="content-items col-xs-10">
+					<input class="form-control numberInput"/>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!-- 布尔 -->
+		<div class="content-item boolean">
+			<div class="form-group col-xs-12 ">
+				<label class="col-xs-2 text-right">参数值：</label>
+				<div class="content-items col-xs-10">
+					<select class="form-control numberInput">
+						<option value="true">是</option>
+						<option value="false">否</option>
+					</select>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!-- 货币 -->
+		<div class="content-item currency">
+			<div class="form-group col-xs-12 ">
+				<label class="col-xs-2 text-right">参数值：</label>
+				<div class="content-items col-xs-10">
+					<input class="form-control numberInput" onkeyup="clearNoNum(this)" onblur="value=moneyFormat(value)"/>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!-- 主值键 -->
+		<div class="content-item primarykey">
+			<div class="form-group col-xs-12 ">
+				<label class="col-xs-2 text-right">参数值：</label>
+				<div class="content-items col-xs-10">
+					<select class="form-control numberInput">
+						
+					</select>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!-- 字典 -->
+		<div class="content-item map">
+			
+		</div>
+		<div class="clear"></div>
+		<div class="btn-group">
+			<a class="sure-btn submit-btn">确定</a>
+		</div>
+		
+	</div>
+	<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+	<script type="text/javascript" src="js/url.min.js" ></script>
+	<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+	<script type="text/javascript" src="js/base.js" ></script>
+	<script type="text/javascript" src="js/systemParamListEdit.js" ></script>
+</body>
+</html>

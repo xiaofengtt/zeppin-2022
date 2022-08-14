@@ -1,0 +1,107 @@
+@CHARSET "UTF-8";
+p {
+    margin: 0;
+}
+
+.account_price {
+    width: 100%;
+    border: 1px solid #F7FBFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.account_price .account_price_header {
+    width: 100%;
+    background: #F7FBFF;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -ms-border-radius: 5px 5px 0 0;
+    -o-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+}
+
+.account_price .account_price_header .account_price_title {
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 0 0 10px;
+    color: #737373;
+}
+
+.account_price .account_price_header .account_price_header_btn {
+    position: absolute;
+    height: 40px;
+    line-height: 40px;
+    top: 0;
+    right: 0;
+}
+
+.account_price .account_price_header .account_price_header_btn a {
+    font-size: 14px;
+    margin: 0 16px 0 16px;
+}
+
+.account_price_content {
+    width: 100%;
+}
+
+.account_price_content img {
+    cursor: pointer;
+    margin-left: 5px;
+    vertical-align: sub;
+    position: absolute;
+    top: 13px;
+}
+
+.account_price_content .account_price_content_key, .account_price_content .account_price_content_value {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+}
+
+.account_price_content .account_price_content_key span {
+    text-align: center;
+    display: inline-block;
+    width: 16%;
+    font-size: 14px;
+    position: relative;
+}
+
+.account_price_content .account_price_content_key span:nth-child(6)::after {
+    content: ".";
+    display: block;
+    visibility: hidden;
+}
+
+.account_price_content .account_price_content_key span p {
+    position: absolute;
+    margin: 0;
+    left: 0;
+    right: 0;
+    line-height: 14px;
+}
+
+.account_price_content .account_price_content_key span p:nth-child(1) {
+    top: 10px;
+}
+
+.account_price_content .account_price_content_key span p:nth-child(2) {
+    top: 26px;
+}
+
+.account_price_content .account_price_content_value span {
+    text-align: center;
+    display: inline-block;
+    width: 16%;
+    font-size: 18px;
+    color: orange;
+    position: relative;
+}
+
+.account_price_content .account_price_content_value i {
+    font-style: normal;
+}

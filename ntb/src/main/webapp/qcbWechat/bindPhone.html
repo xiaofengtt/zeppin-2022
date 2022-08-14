@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>绑定手机</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/idConfirm.css?version=1.5" />
+		<style>
+			.bottom p{
+				border:none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div class="top">
+				<p class="top-title">你已成功绑定手机！</p>
+				<span>恭喜你！</span>
+				<img src="./img/auth_success.png" alt="" />
+			</div>
+			<div class="bottom">
+				<p>
+					<span class="key">手机号</span>
+					<span class="value"></span>
+				</p>
+			</div>
+		</div>
+		
+		<p class="layer">
+			提示信息
+		</p>
+		
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script>
+			$(document).ready(function(){
+				$(".value").html(url("?mobile"));
+			});
+		</script>
+	</body>
+</html>
+

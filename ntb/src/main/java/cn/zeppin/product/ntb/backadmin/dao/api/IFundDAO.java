@@ -35,9 +35,25 @@ public interface IFundDAO extends IBaseDAO<Fund, String> {
 	Integer getCount(Map<String, String> inputParams);
 	
 	/**
-	 * 获取基金分状态列表
+	 * 获取活期理财分状态列表
 	 * @param resultClass
 	 * @return
 	 */
 	List<Entity> getStatusList(Class<? extends Entity> resultClass);
+	
+	/**
+	 * 验证同名的活期理财信息是否已经存在
+	 * @param name
+	 * @param uuid
+	 * @return
+	 */
+	boolean isExistFundByName(String name, String uuid);
+	
+	/**
+	 * 验证同编号的活期理财是否已经存在
+	 * @param scode
+	 * @param uuid
+	 * @return
+	 */
+	boolean isExistFundByScode(String scode, String uuid);
 }

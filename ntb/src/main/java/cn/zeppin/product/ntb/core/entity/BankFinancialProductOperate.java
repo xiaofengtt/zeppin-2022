@@ -30,6 +30,7 @@ public class BankFinancialProductOperate extends BaseEntity {
 	private String bankFinancialProduct;
 	private String type;
 	private String value;
+	private String old;
 	private String reason;
 	private String status;
 	private String checker;
@@ -91,6 +92,15 @@ public class BankFinancialProductOperate extends BaseEntity {
 		this.value = value;
 	}
 	
+	@Column(name = "old")
+	public String getOld() {
+		return old;
+	}
+
+	public void setOld(String old) {
+		this.old = old;
+	}
+
 	@Column(name = "reason", length = 500)
 	public String getReason() {
 		return reason;

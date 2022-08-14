@@ -1,0 +1,124 @@
+.text_box {
+    width: 96%;
+    margin: 0 auto;
+    margin-top: 8px;
+}
+
+#bank-list {
+    vertical-align: top;
+}
+
+#bank-list ul {
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 5;
+    -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    width: 244px;
+    border-radius: 3px;
+    background: #FFFFFF;
+    display: none;
+}
+
+#bank-list ul li {
+    font-size: 12px;
+    padding: 4px 10px;
+    text-align: center;
+}
+
+#bank-list ul li span:nth-child(1) {
+    display: inline-block;
+    width: 78%;
+    border-right: 1px solid #c1c1c1;
+    line-height: 5px;
+}
+
+#bank-list ul li span:nth-child(2) {
+    display: inline-block;
+    width: 20%;
+}
+
+.confirm_item input {
+    text-align: right;
+    color: orange;
+    outline: none;
+    width: 112px;
+}
+
+.bank {
+    /*display: inline-block;*/
+    border: 1px solid #c1c1c1;
+    vertical-align: top;
+    padding: 10px;
+    width: 244px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    background: url("../img/big-bottom-g.png")no-repeat;
+    background-position: 220px center;
+}
+
+#bank-list ul li:hover {
+    background-color: #4D9CFF;
+    color: #FFFFFF;
+}
+
+#bank-list .bank-name {
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+#bank-list .img-num {
+    margin: 0;
+}
+
+#bank-list .img-num img {
+    display: inline-block;
+    width: 120px;
+}
+
+#bank-list .img-num label {
+    font-size: 14px;
+    display: inline-block;
+    padding: 5px 0px 5px 6px;
+    line-height: 4px;
+    border-left: 1px solid #c1c1c1;
+}
+
+#bank-list .img-num span {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn_group {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+.btn_group input {
+    font-size: 16px;
+    padding: 0;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    background: #FFFFFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+}
+
+.btn_group input:nth-child(1):hover {
+    background: #4D9CFF;
+    color: #FFFFFF;
+}

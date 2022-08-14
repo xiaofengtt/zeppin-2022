@@ -1,0 +1,88 @@
+/*头部*/
+#header{width: 100%;background: #ffffff;border-bottom: 1px solid #deddd9;}
+#header .heaer-inner{max-width: 1200px;height: 65px;}
+#header .heaer-inner .nav-left{vertical-align:middle;height: 65px;display: inline-block;float: left;padding-left: 10px;}
+#header .heaer-inner .nav-logo{background: url(../img/qcb-logo.png) center no-repeat;width: 160px;height: 50px;display:inline-block;
+	margin-top: 7px;float:left;background-size:contain;}
+#header .heaer-inner .nav-left p{float: left;color: #666666;font-size: 24px;line-height: 73px;font-weight: 300;}
+#header .heaer-inner .nav-right{display: inline-block;float: right;}
+#header .heaer-inner .nav-right span{color: #999999;font-size: 18px;line-height: 65px;padding-right: 10px;}
+#header .heaer-inner .nav-right span a{cursor: pointer;color: #FFB320;padding: 0 5px;}
+#header .heaer-inner .nav-right span a:hover{text-decoration: underline;}
+/*banner*/
+#banner{width: 100%;height: 650px;background: url(../img/banner-login.jpg) center no-repeat;background-size: cover;}
+#banner .banner-inner{height: 100%;max-width: 1200px;padding: 0 10px;position: relative;}
+#banner .banner-inner .content{position: absolute;top: 46px;right: 10px;width: 380px;border-radius: 3px;}
+#banner .banner-inner .content h1{height: 70px;line-height: 70px;color: #333333;font-size: 18px;font-weight: normal;background: #f5f4f2;border-radius: 3px 3px 0 0;padding: 0 30px;}
+#banner .banner-inner .content ul{padding:30px 30px 25px 30px;background: #ffffff;}
+#banner .banner-inner .content ul li{margin-bottom: 20px;}
+#banner .banner-inner .content ul li div.inputBox{border: 1px solid #dedede;border-radius: 2px;font-size:0;}
+#banner .banner-inner .content ul li div.inputBox label{width:60px;text-align:right;display:block;float:left;height:44px;line-height:44px;color:#888;font-size:14px;}
+#banner .banner-inner .content ul li input{width: 258px;height: 44px;line-height:44px;border:none;padding-left: 18px;font-size: 14px;
+color: #333;outline: none;display:block;float:left;}
+#banner .banner-inner .content ul li input:focus{border-color: #f9ba56;}
+#banner .banner-inner .content ul li input.light{border-color: #f9ba56;}
+#banner .banner-inner .content ul li input.codeinput{width: 128px;display:block;float: left;border-radius: 2px 0 0 2px;}
+#banner .banner-inner .content ul li img.code{border: 1px solid #DEDEDE;border-radius: 0 2px 2px 0;width: 130px;height: 44px;cursor: pointer;}
+#banner .banner-inner .content ul li .tips{color: rgb(255,80,74);font-size: 12px;padding: 5px;display: none;}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {color: #999999;}
+input:-moz-placeholder, textarea:-moz-placeholder {color:#999999;}
+input::-moz-placeholder, textarea::-moz-placeholder {color:#999999;}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {color:#999999;}
+.loginBtn{width: 100%;height: 44px;background: #ff9d00;font-size: 18px;line-height: 44px;color: #fff !important;margin-top: 20px;border: none;border-radius: 2px;cursor: pointer;outline: none;}
+.loginBtn:hover{background: #ea9001;}
+.remember{float: left;color: #666666;font-size: 14px;}
+#banner .banner-inner .content ul li input#checkbox{width: 16px;height: 16px;cursor: pointer;}
+.forgetPassword{float: right;color: #666666;font-size:14px;cursor:pointer;}
+.forgetPassword:hover{text-decoration: underline;}
+.piaochecked{float: left;text-align: center;background-image: url(../img/checkboxBg.png);background-repeat: no-repeat;
+background-position: 0 0;background-size: cover;width: 14px;height: 14px;margin: 3px 7px 0 0;border: 1px solid #c6c6c6;}
+.on_check {background-position: 0 -21px;}
+.radioclass {opacity: 0;cursor: pointer;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter: alpha(opacity=0);}
+
+/*footer*/
+.footer{font-size: 14px;color: #797873;line-height: 18px;text-align: center;padding: 18px 0;}
+.footer a{color: #797873;}
+.footer a:hover{text-decoration: underline;}
+
+.iframe {
+	background:#eee;
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: none;
+}
+
+.iframeInner {
+    width: 180px;
+    height: 80px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -90px;
+    margin-top: -40px;
+    background: #FFF;
+}
+
+.iframeInner .closeIframe {
+    width: 20px;
+    height: 20px;
+    padding: 7px;
+    position: absolute;
+    right: 14px;
+    top: 7px;
+    cursor: pointer;
+    background:url(../img/closeIframe.png) center no-repeat;
+    background-size:70%;
+}
+
+.iframeInner p{
+	text-align:center;
+	line-height:90px;
+}
+.loadingBtn{background:#ffb031 url(../img/loadingBtn.gif) center no-repeat !important;/* background-size:25px !important; */}
+
+

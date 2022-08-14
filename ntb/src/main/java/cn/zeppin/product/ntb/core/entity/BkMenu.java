@@ -43,6 +43,7 @@ public class BkMenu extends BaseEntity {
 	private String pid;
 	private String url;
 	private String icon;
+	private Integer sort;
 	
 	
 	@Id
@@ -126,5 +127,15 @@ public class BkMenu extends BaseEntity {
 
 	public void setIcon(String icon) {
 		this.icon = icon;
+	}
+
+	@Column(name = "sort", length = 11)
+	public Integer getSort() {
+		return sort;
+	}
+
+
+	public void setSort(Integer sort) {
+		this.sort = sort;
 	}
 }

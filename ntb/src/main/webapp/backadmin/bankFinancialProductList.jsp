@@ -7,32 +7,40 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>牛投帮-后台管理系统</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="css/paging.css">
 		<link rel="stylesheet" href="css/fundList.css" />
 		<script id="queboxTpl" type="text/template">
 			<div class="list-item">
 				<div class="list-item-hd">
 					<table>
-						<tr height="60px">
-							<td class="stageTag" width="80px">
+						<tr height="37px">
 							{{if stage=='unstart'}}
-								未开始
-							{{else stage=='collect'}}
-								募集中
-							{{else stage=='income'}}
-								收益中
-							{{else stage=='finished'}}
-								已过期
-							{{/if}}
+							<td width="50px">
+								<span class="stageTag back-white">未开始</span>
 							</td>
+							{{else stage=='collect'}}
+							<td width="50px">
+								<span class="stageTag back-blue">募集中</span>
+							</td>
+							{{else stage=='income'}}
+							<td width="50px">
+								<span class="stageTag back-green">收益中</span>
+							</td>
+							{{else stage=='finished'}}
+							<td width="50px">
+								<span class="stageTag back-grey">已过期</span>
+							</td>
+							{{/if}}
 							<td width="70%">
-								<a class="fundName" target="_blank" href="bankFinancialProductEdit.jsp?uuid={{:uuid}}"><span>【{{:custodianName}}】{{:name}}({{:scode}})</span></a> 
+								<a class="fundName" href="./bankFinancialProductEdit.jsp?uuid={{:uuid}}"><span>【{{:custodianName}}】{{:name}}({{:scode}})</span></a>
 							</td>
 							<td width="30%" class="text-right">
+									<a class="btn" href="./bankFinancialProductCopy.jsp?uuid={{:uuid}}">添加</a>
 								{{if status=='checked'}}
-									<a class="btn" target="_blank" href="bankFinancialProductDaily.jsp?uuid={{:uuid}}">每日净值</a>
+									<a class="btn" href="bankFinancialProductDaily.jsp?uuid={{:uuid}}">每日净值</a>
 									{{if !isPublish}}
-										<a class="btn" target="_blank" href="productPublishAdd.jsp?uuid={{:uuid}}">发布</a>
+										<a class="btn" href="./productPublishAdd.jsp?uuid={{:uuid}}">发布</a>
 									{{/if}}
 								{{/if}}
 							</td>
@@ -79,12 +87,16 @@
 					</table>
 				</div>
 				<div class="list-item-ft">
-					<div>最小投资金额：{{:minInvestAmount}}</div>
-					<div>最小投资递增金额：{{:minInvestAmountAdd}}</div>
-					<div>风险等级：{{:riskLevelCN}}</div>
-					<div>销售地区：{{:area}}</div>
-					<div>产品到期日：{{:maturityDate}}</div>
-					<div class="right text-right">{{:createtime}} {{:creator}}创建</div>
+					<table class="table">
+						<tr class="table_tr">
+							<td>最小投资金额：{{:minInvestAmountCN}}元</td>
+							<td>最小投资递增金额：{{:minInvestAmountAddCN}}元</td>
+							<td>风险等级：{{:riskLevelCN}}</td>
+							<td>销售地区：{{:area}}</td>
+							<td>产品到期日：{{:maturityDate}}</td>
+							<td>{{:createtime}} {{:creator}}创建</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</script>
@@ -92,13 +104,13 @@
 	<body>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="navigation.jsp"/>
-		<input id="scode" type="hidden" value="00300031" />  
+		<input id="scode" type="hidden" value="00300031" />
 		<div class="contain">
 			<jsp:include page="contentLeft.jsp"/>
 			<div class="contain-right">
 				<div class="location">
 					<div class="locationLeft"><a class="current">理财产品信息管理</a></div>
-					<a class="btn-add add addNew" target="_blank" href="../backadmin/bankFinancialProductAdd.jsp" style="margin-top:0px;">+&ensp;理财产品</a>	
+					<a class="btn-add add addNew" target="_blank" href="../backadmin/bankFinancialProductAdd.jsp" style="margin-top:0px;">+&ensp;理财产品</a>
 					<div class="clear"></div>
 				</div>
 				<div class="main-contain pt-13 pl-14 pr-16" style="min-width:1002px;">
@@ -143,11 +155,11 @@
 								</div>
 							</div>
 							<div class="statusDiv filter filter-custodian">
-								<label>管理银行：</label>
-								<div id="custodians">
-									<a class="statusLight" id="all">全部</a>
-									
-								</div>
+								<label style="margin-top:10px">管理银行：</label>
+                            <div id="custodians" style="width:80%;vertical-align:top;">
+                                <a class="statusLight" id="all">全部</a>
+
+                            </div>
 							</div>
 							<div class="statusDiv filter filter-type">
 								<label>产品类型：</label>
@@ -190,24 +202,24 @@
 							<li id="sorting-targetAnnualizedReturnRate" class=""><a data-name="target_annualized_return_rate"><span>收益率</span></a></li>
 							<li id="sorting-maturityDate" class=""><a data-name="maturity_date"><span>产品到期日</span></a></li>
 							<li id="sorting-term" class=""><a data-name="term"><span>理财期限</span></a></li>
-			
+
 						</ul>
 					</div>
-					
+
 					<div class="list-content" id="queboxCnt">
-						
+
 					</div>
 					<div id="pageTool"></div>
 				</div>
 			</div>
 			<div class="clear"></div>
 		</div>
-
-		<script type="text/javascript" src="js/jquery.colorbox.js"></script>
-		<script type="text/javascript" src="js/url.min.js"></script>
-		<script type="text/javascript" src="js/jsrender.min.js"></script>
-		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
-		<script type="text/javascript" src="js/highcharts.js" ></script>
-		<script type="text/javascript" src="js/bankFinancialProductList.js" ></script>
+		<script type="text/javascript" src="./js/getHtmlDocName.js"></script>
+		<script type="text/javascript" src="./js/jquery.colorbox.js"></script>
+		<script type="text/javascript" src="./js/url.min.js"></script><script type="text/javascript" src="js/flagSubmit.js"></script>
+		<script type="text/javascript" src="./js/jsrender.min.js"></script>
+		<script type="text/javascript" src="./js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="./js/highcharts.js" ></script>
+		<script type="text/javascript" src="./js/bankFinancialProductList.js" ></script>
 	</body>
 </html>

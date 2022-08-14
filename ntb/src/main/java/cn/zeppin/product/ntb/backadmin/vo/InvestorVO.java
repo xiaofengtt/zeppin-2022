@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 import cn.zeppin.product.ntb.core.entity.Investor;
 import cn.zeppin.product.ntb.core.entity.base.Entity;
 import cn.zeppin.product.utility.DataTimeConvert;
+import cn.zeppin.product.utility.Utlity;
 
 public class InvestorVO implements Entity {
 
@@ -22,9 +23,18 @@ public class InvestorVO implements Entity {
 	private String email;
 	private String status;
 	private String statusCN;
-	private BigDecimal totalAmount;
+	private BigDecimal totalInvest;
+	private String totalInvestCN;
 	private BigDecimal totalReturn;
+	private String totalReturnCN;
 	private BigDecimal accountBalance;
+	private String accountBalanceCN;
+	private BigDecimal currentAccount;
+	private String currentAccountCN;
+	private Boolean flagCurrent;
+	
+	private String totalAmount;
+	
 	private Timestamp createtime;
 	private String createtimeCN;
 	private String referrer;
@@ -34,6 +44,17 @@ public class InvestorVO implements Entity {
 	private String lastLoginTimeCN;
 	private String lastLoginIp;
 	
+	private String openid;
+	
+	private String idcardImg;
+	private String checkstatus;
+	private String sex;	
+	
+	private Boolean bindingMobileFlag;
+	private Boolean bindingEmailFlag;
+	private Boolean realnameAuthFlag;
+	private Boolean secretPasswordFlag;
+	private Boolean bindingBankcardFlag;
 	
 	public InvestorVO(){
 		
@@ -41,15 +62,25 @@ public class InvestorVO implements Entity {
 	
 	public InvestorVO(Investor investor){
 		this.uuid = investor.getUuid();
-		this.nickname=investor.getNickname();
-		this.realname=investor.getRealname();
-		this.idcard=investor.getIdcard();
+		this.nickname = investor.getNickname() == null ? "" : investor.getNickname();
+		this.realname = investor.getRealname() == null ? "" : investor.getRealname();
+		this.idcard=investor.getIdcard() == null ? "" : investor.getIdcard();
 		this.mobile=investor.getMobile();
-		this.email=investor.getEmail();
+		this.email=investor.getEmail() == null ? "" : investor.getEmail();
 		this.status = investor.getStatus();
-		this.totalAmount = investor.getTotalAmount();
+		this.totalInvest = investor.getTotalInvest();
 		this.totalReturn = investor.getTotalReturn();
 		this.accountBalance = investor.getAccountBalance();
+		this.currentAccount = investor.getCurrentAccount();
+		this.flagCurrent = investor.getFlagCurrent();
+		if(investor.getTotalInvest() != null && investor.getAccountBalance() != null){
+			this.totalAmount = Utlity.numFormat4UnitDetail(investor.getTotalInvest().add(investor.getAccountBalance()));
+		} else {
+			this.totalAmount = "0.00";
+		}
+		this.totalInvestCN = Utlity.numFormat4UnitDetail(investor.getTotalInvest());
+		this.totalReturnCN = Utlity.numFormat4UnitDetail(investor.getTotalReturn());
+		this.accountBalanceCN = Utlity.numFormat4UnitDetail(investor.getAccountBalance());
 		this.createtime = investor.getCreatetime();
 		this.createtimeCN = DataTimeConvert.timespanToString(investor.getCreatetime(),"yyyy-MM-dd HH:mm:ss");
 		this.referrer = investor.getReferrer();
@@ -59,7 +90,7 @@ public class InvestorVO implements Entity {
 			this.lastLoginTimeCN = DataTimeConvert.timespanToString(investor.getLastLoginTime(),"yyyy-MM-dd HH:mm:ss");
 		}
 		
-		this.lastLoginIp = investor.getLastLoginIp();
+		this.lastLoginIp = investor.getLastLoginIp() == null ? "" : investor.getLastLoginIp();
 		
 		if(Investor.InvestorStatus.NORMAL.equals(investor.getStatus())){
 			this.statusCN = "正常";
@@ -75,7 +106,14 @@ public class InvestorVO implements Entity {
 			this.statusCN = "无";
 		}
 		
+		this.openid = investor.getOpenid() == null ? "" : investor.getOpenid();
+		this.idcardImg = investor.getIdcardImg() == null ? "" : investor.getIdcardImg();
+		this.sex = investor.getSex();
 		
+		this.bindingEmailFlag = investor.getBindingEmailFlag();
+		this.bindingMobileFlag = investor.getBindingMobileFlag();
+		this.realnameAuthFlag = investor.getRealnameAuthFlag();
+		this.secretPasswordFlag = investor.getSecretPasswordFlag();
 	}
 	
 	public String getUuid() {
@@ -151,12 +189,12 @@ public class InvestorVO implements Entity {
 		this.idcard = idcard;
 	}
 
-	public BigDecimal getTotalAmount() {
-		return totalAmount;
+	public BigDecimal getTotalInvest() {
+		return totalInvest;
 	}
 
-	public void setTotalAmount(BigDecimal totalAmount) {
-		this.totalAmount = totalAmount;
+	public void setTotalInvest(BigDecimal totalInvest) {
+		this.totalInvest = totalInvest;
 	}
 
 	public BigDecimal getTotalReturn() {
@@ -173,6 +211,30 @@ public class InvestorVO implements Entity {
 
 	public void setAccountBalance(BigDecimal accountBalance) {
 		this.accountBalance = accountBalance;
+	}
+
+	public BigDecimal getCurrentAccount() {
+		return currentAccount;
+	}
+
+	public void setCurrentAccount(BigDecimal currentAccount) {
+		this.currentAccount = currentAccount;
+	}
+
+	public String getCurrentAccountCN() {
+		return currentAccountCN;
+	}
+
+	public void setCurrentAccountCN(String currentAccountCN) {
+		this.currentAccountCN = currentAccountCN;
+	}
+
+	public Boolean getFlagCurrent() {
+		return flagCurrent;
+	}
+
+	public void setFlagCurrent(Boolean flagCurrent) {
+		this.flagCurrent = flagCurrent;
 	}
 
 	public String getReferrer() {
@@ -231,6 +293,109 @@ public class InvestorVO implements Entity {
 	public void setStatusCN(String statusCN) {
 		this.statusCN = statusCN;
 	}
+
+	public String getOpenid() {
+		return openid;
+	}
 	
+	public void setOpenid(String openid) {
+		this.openid = openid;
+	}
+	
+	public String getTotalAmount() {
+		return totalAmount;
+	}
+	
+	public void setTotalAmount(String totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+	
+	public String getIdcardImg() {
+		return idcardImg;
+	}
+	
+	public void setIdcardImg(String idcardImg) {
+		this.idcardImg = idcardImg;
+	}
+	
+	public String getCheckstatus() {
+		return checkstatus;
+	}
+	
+	public void setCheckstatus(String checkstatus) {
+		this.checkstatus = checkstatus;
+	}
+	
+	public String getSex() {
+		return sex;
+	}
+	
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public Boolean getBindingMobileFlag() {
+		return bindingMobileFlag;
+	}
+
+	public void setBindingMobileFlag(Boolean bindingMobileFlag) {
+		this.bindingMobileFlag = bindingMobileFlag;
+	}
+
+	public Boolean getBindingEmailFlag() {
+		return bindingEmailFlag;
+	}
+
+	public void setBindingEmailFlag(Boolean bindingEmailFlag) {
+		this.bindingEmailFlag = bindingEmailFlag;
+	}
+
+	public Boolean getRealnameAuthFlag() {
+		return realnameAuthFlag;
+	}
+
+	public void setRealnameAuthFlag(Boolean realnameAuthFlag) {
+		this.realnameAuthFlag = realnameAuthFlag;
+	}
+
+	public Boolean getSecretPasswordFlag() {
+		return secretPasswordFlag;
+	}
+
+	public void setSecretPasswordFlag(Boolean secretPasswordFlag) {
+		this.secretPasswordFlag = secretPasswordFlag;
+	}
+
+	public Boolean getBindingBankcardFlag() {
+		return bindingBankcardFlag;
+	}
+
+	public void setBindingBankcardFlag(Boolean bindingBankcardFlag) {
+		this.bindingBankcardFlag = bindingBankcardFlag;
+	}
+
+	public String getTotalInvestCN() {
+		return totalInvestCN;
+	}
+
+	public void setTotalInvestCN(String totalInvestCN) {
+		this.totalInvestCN = totalInvestCN;
+	}
+
+	public String getTotalReturnCN() {
+		return totalReturnCN;
+	}
+
+	public void setTotalReturnCN(String totalReturnCN) {
+		this.totalReturnCN = totalReturnCN;
+	}
+
+	public String getAccountBalanceCN() {
+		return accountBalanceCN;
+	}
+
+	public void setAccountBalanceCN(String accountBalanceCN) {
+		this.accountBalanceCN = accountBalanceCN;
+	}
 	
 }

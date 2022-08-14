@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import cn.zeppin.product.ntb.core.entity.base.BaseEntity;
 
@@ -19,7 +20,7 @@ import cn.zeppin.product.ntb.core.entity.base.BaseEntity;
  */
 
 @Entity
-@Table(name = "bank_financial_product_invest")
+@Table(name = "bank_financial_product_invest", uniqueConstraints = {@UniqueConstraint(columnNames = {"company_account","bank_financial_product","bank_financial_product_publish"})})
 public class BankFinancialProductInvest extends BaseEntity {
 	
 	/**
@@ -30,26 +31,18 @@ public class BankFinancialProductInvest extends BaseEntity {
 	private String uuid;
 	private String bankFinancialProduct;
 	private String bankFinancialProductPublish;
-	private BigDecimal amount;
-	private BigDecimal redeemAmount;
-	private BigDecimal investIncome;
-	private BigDecimal returnCapital;
-	private BigDecimal returnInterest;
-	private BigDecimal platfomIncome;
+	private String companyAccount;
+	private BigDecimal totalRedeem;
+	private BigDecimal totalAmount;
+	private BigDecimal totalReturn;
 	private String stage;
-	private String status;
 	private String creator;
 	private Timestamp createtime;
 	
-	public class BankFinancialProductInvestStatus{
-		public final static String UNCHECKED = "unchecked";
-		public final static String CHECKED = "checked";
-		public final static String DELETED = "deleted";
-	}
+	private BigDecimal accountBalance;
 	
 	public class BankFinancialProductInvestStage{
-		public final static String UNSTART = "unstart";
-		public final static String INCOME = "income";
+		public final static String NORMAL = "normal";
 		public final static String FINISHED = "finished";
 	}
 	
@@ -81,6 +74,42 @@ public class BankFinancialProductInvest extends BaseEntity {
 		this.bankFinancialProductPublish = bankFinancialProductPublish;
 	}
 	
+	@Column(name = "company_account", nullable = false, length = 36)
+	public String getCompanyAccount() {
+		return companyAccount;
+	}
+
+	public void setCompanyAccount(String companyAccount) {
+		this.companyAccount = companyAccount;
+	}
+
+	@Column(name = "total_redeem")
+	public BigDecimal getTotalRedeem() {
+		return totalRedeem;
+	}
+	
+	public void setTotalRedeem(BigDecimal totalRedeem) {
+		this.totalRedeem = totalRedeem;
+	}
+	
+	@Column(name = "total_amount", nullable = false)
+	public BigDecimal getTotalAmount() {
+		return totalAmount;
+	}
+	
+	public void setTotalAmount(BigDecimal totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+	
+	@Column(name = "total_return")
+	public BigDecimal getTotalReturn() {
+		return totalReturn;
+	}
+	
+	public void setTotalReturn(BigDecimal totalReturn) {
+		this.totalReturn = totalReturn;
+	}
+	
 	@Column(name = "stage", nullable = false, length = 20)
 	public String getStage() {
 		return stage;
@@ -88,69 +117,6 @@ public class BankFinancialProductInvest extends BaseEntity {
 	
 	public void setStage(String stage) {
 		this.stage = stage;
-	}
-	
-	@Column(name = "status", nullable = false, length = 10)
-	public String getStatus() {
-		return status;
-	}
-	
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
-	@Column(name = "amount", nullable = false)
-	public BigDecimal getAmount() {
-		return amount;
-	}
-	
-	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
-	}
-	
-	@Column(name = "redeem_amount")
-	public BigDecimal getRedeemAmount() {
-		return redeemAmount;
-	}
-	
-	public void setRedeemAmount(BigDecimal redeemAmount) {
-		this.redeemAmount = redeemAmount;
-	}
-	
-	@Column(name = "invest_income")
-	public BigDecimal getInvestIncome() {
-		return investIncome;
-	}
-	
-	public void setInvestIncome(BigDecimal investIncome) {
-		this.investIncome = investIncome;
-	}
-	
-	@Column(name = "return_capital")
-	public BigDecimal getReturnCapital() {
-		return returnCapital;
-	}
-	
-	public void setReturnCapital(BigDecimal returnCapital) {
-		this.returnCapital = returnCapital;
-	}
-	
-	@Column(name = "return_interest")
-	public BigDecimal getReturnInterest() {
-		return returnInterest;
-	}
-	
-	public void setReturnInterest(BigDecimal returnInterest) {
-		this.returnInterest = returnInterest;
-	}
-	
-	@Column(name = "platfom_income")
-	public BigDecimal getPlatfomIncome() {
-		return platfomIncome;
-	}
-	
-	public void setPlatfomIncome(BigDecimal platfomIncome) {
-		this.platfomIncome = platfomIncome;
 	}
 	
 	@Column(name = "createtime", nullable = false)
@@ -169,5 +135,14 @@ public class BankFinancialProductInvest extends BaseEntity {
 	
 	public void setCreator(String creator) {
 		this.creator = creator;
+	}
+	
+	@Column(name = "account_balance", nullable = false)
+	public BigDecimal getAccountBalance() {
+		return accountBalance;
+	}
+
+	public void setAccountBalance(BigDecimal accountBalance) {
+		this.accountBalance = accountBalance;
 	}
 }

@@ -38,6 +38,7 @@ public class BkController extends BaseEntity {
 	private String uuid;
 	private String name;
 	private String description;
+	private Integer	sort;
 	
 	
 	@Id
@@ -48,7 +49,6 @@ public class BkController extends BaseEntity {
 		return uuid;
 	}
 	
-	
 	public void setUuid(String uuid) {
 		this.uuid = uuid;
 	}
@@ -58,19 +58,26 @@ public class BkController extends BaseEntity {
 		return name;
 	}
 	
-	
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	
 	@Column(name = "description", length = 200)
 	public String getDescription() {
 		return description;
 	}
 	
-	
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	@Column(name = "sort", length = 11)
+	public Integer getSort() {
+		return sort;
+	}
+
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
+	
 }

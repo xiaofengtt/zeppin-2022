@@ -1,0 +1,48 @@
+{
+    "button": [
+        {
+            "type": "click", 
+            "name": "银行理财", 
+            "key": "V1001_PRODUCT", 
+            "sub_button": [
+                {
+                    "type": "view", 
+                    "name": "收益排行榜1127期", 
+                    "url": "http://mp.weixin.qq.com/s/fSmSw3FWU2j-zcMBsSdK1g"
+                }, 
+                {
+                    "type": "view", 
+                    "name": "收益排行榜1201期", 
+                    "url": "http://mp.weixin.qq.com/s?__biz=MzIxNDk1NzE5MA==&mid=2247483700&idx=1&sn=ef3ce1bdd2843826ac5a7492de23874b&chksm=979eecdda0e965cb657d4d95a5952807c4d33b39e2dbc92942515a31d6d607c3651edc60d2d7&scene=18#wechat_redirect"
+                }
+            ]
+        }, 
+        {
+            "type": "view", 
+            "name": "APP下载", 
+            "url": "http://a.app.qq.com/o/simple.jsp?pkgname=cn.zeppin.product.ntb&fromcase=40002"
+        }, 
+        {
+            "type": "view", 
+            "name": "关于我们", 
+            "url": "http://mp.weixin.qq.com/s?__biz=MzIxNDk1NzE5MA==&mid=2247483697&idx=1&sn=2bfb526b25eef1a84b1ad88c8dc74d90&chksm=979eecd8a0e965cecee3abcc059fd4a1d4115039ade35d75fa5c4857610ed4aa9c3105d9a45f&scene=18#wechat_redirect"
+        }
+    ]
+}
+
+
+-------------------
+{
+	"button": [{
+			"type": "view",
+			"name": "员工服务",
+			"key": "V1001_SERVICE",
+			"url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2a3df3ca05c5be3f&redirect_uri=http://54907753.ngrok.io/NTB/qcbWechat/index.html?&response_type=code&scope=snsapi_base&state=qcb#wechat_redirect"
+		},
+		{
+			"type": "view",
+			"name": "关于我们",
+			"url": "http://54907753.ngrok.io/NTB/qcbWechat/indexFront.html"
+		}
+	]
+}

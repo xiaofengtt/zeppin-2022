@@ -16,10 +16,11 @@ public class BankFinancialProductDailyVO implements Entity {
 	private String bankFinancialProduct;
 	private BigDecimal netValue;
 	private String statistime;	
+	private String creator;
+	private String creatorName;
 	
 	public BankFinancialProductDailyVO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public BankFinancialProductDailyVO(BankFinancialProductDaily bfp) {
@@ -27,7 +28,7 @@ public class BankFinancialProductDailyVO implements Entity {
 		this.bankFinancialProduct = bfp.getBankFinancialProduct();
 		this.netValue = bfp.getNetValue();
 		this.statistime =  Utlity.timeSpanToDateString(bfp.getStatistime());
-		
+		this.creator = bfp.getCreator();
 	}
 
 	public String getUuid() {
@@ -62,5 +63,20 @@ public class BankFinancialProductDailyVO implements Entity {
 		this.statistime = statistime;
 	}
 
+	public String getCreator() {
+		return creator;
+	}
+
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
+
+	public String getCreatorName() {
+		return creatorName;
+	}
+
+	public void setCreatorName(String creatorName) {
+		this.creatorName = creatorName;
+	}
 	
 }

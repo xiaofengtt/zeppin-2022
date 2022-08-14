@@ -85,9 +85,10 @@ public class BankFinancialProductDAO extends BaseDAO<BankFinancialProduct, Strin
 			Class<? extends Entity> resultClass) {
 		StringBuilder builder = new StringBuilder();
 		builder.append(" select bfp.uuid,bfp.name,bfp.scode,bfp.url,bfp.type,bfp.stage,bfp.status,bfp.target,bfp.custodian,bfp.target_annualized_return_rate as targetAnnualizedReturnRate,"
-				+ "bfp.total_amount as totalAmount,bfp.collect_starttime as collectStarttime,bfp.collect_endtime as collectEndtime,bfp.term,bfp.record_date as recordDate,bfp.guarantee_status as guaranteeStatus,"
-				+ "bfp.value_date as valueDate,bfp.maturity_date as maturityDate,bfp.flag_purchase as flagPurchase, bfp.flag_redemption as flagRedemption, bfp.flag_flexible as flagFlexible,bfp.currency_type as currencyType,"
-				+ "bfp.risk_level as riskLevel,bfp.net_worth as netWorth,bfp.creator,bfp.createtime,bfp.area as area,bfp.min_invest_amount as minInvestAmount,bfp.max_invest_amount as maxInvestAmount, bfp.min_invest_amount_add as minInvestAmountAdd from bank_financial_product bfp where 1=1 ");
+				+ " bfp.total_amount as totalAmount,bfp.collect_starttime as collectStarttime,bfp.collect_endtime as collectEndtime,bfp.term,bfp.record_date as recordDate,bfp.guarantee_status as guaranteeStatus,"
+				+ " bfp.value_date as valueDate,bfp.maturity_date as maturityDate,bfp.flag_purchase as flagPurchase, bfp.flag_redemption as flagRedemption, bfp.flag_flexible as flagFlexible,bfp.currency_type as currencyType,"
+				+ " bfp.risk_level as riskLevel,bfp.net_worth as netWorth,bfp.creator,bfp.createtime,bfp.area as area,bfp.min_invest_amount as minInvestAmount,bfp.max_invest_amount as maxInvestAmount, bfp.min_invest_amount_add as minInvestAmountAdd,"
+				+ " bfp.account_balance as accountBalance, bfp.investment, bfp.total_redeem as totalRedeem, bfp.total_return as totalReturn, bfp.is_redeem as isRedeem from bank_financial_product bfp where 1=1 ");
 		//名称
 		if (inputParams.get("name") != null && !"".equals(inputParams.get("name"))) {
 			builder.append(" and bfp.name like '%" + inputParams.get("name") + "%' ");
@@ -166,6 +167,14 @@ public class BankFinancialProductDAO extends BaseDAO<BankFinancialProduct, Strin
 		//redeem
 		if (inputParams.get("redeem") != null && !"".equals(inputParams.get("redeem"))) {
 			builder.append(" and bfp.flag_redemption = '" + inputParams.get("redeem") + "'");
+		}
+		//isRedeem
+		if (inputParams.get("isRedeem") != null && !"".equals(inputParams.get("isRedeem"))) {
+			builder.append(" and bfp.is_redeem = '" + inputParams.get("isRedeem") + "'");
+		}
+		//invested
+		if (inputParams.get("invested") != null && "1".equals(inputParams.get("invested"))) {
+			builder.append(" and bfp.investment > 0 ");
 		}
 		// 排序
 		if (sorts != null && sorts.length() > 0) {
@@ -264,6 +273,14 @@ public class BankFinancialProductDAO extends BaseDAO<BankFinancialProduct, Strin
 		if (inputParams.get("redeem") != null && !"".equals(inputParams.get("redeem"))) {
 			builder.append(" and bfp.flag_redemption = '" + inputParams.get("redeem") + "'");
 		}
+		//invested
+		if (inputParams.get("invested") != null && "1".equals(inputParams.get("invested"))) {
+			builder.append(" and bfp.investment > 0 ");
+		}
+		//isRedeem
+		if (inputParams.get("isRedeem") != null && !"".equals(inputParams.get("isRedeem"))) {
+			builder.append(" and bfp.is_redeem = '" + inputParams.get("isRedeem") + "'");
+		}
 		return Integer.valueOf(super.getResultBySQL(builder.toString()).toString());
 	}
 	
@@ -278,13 +295,17 @@ public class BankFinancialProductDAO extends BaseDAO<BankFinancialProduct, Strin
 	public List<Entity> getPublishListForPage(Map<String, String> inputParams, Integer pageNum, Integer pageSize, String sorts, Class<? extends Entity> resultClass) {
 		StringBuilder builder = new StringBuilder();
 		builder.append(" select bfp.uuid,bfp.name,bfp.scode,bfp.url,bfp.type,bfp.stage,bfp.status,bfp.target,bfp.custodian,bfp.target_annualized_return_rate as targetAnnualizedReturnRate,"
-				+ "bfp.total_amount as totalAmount,bfp.collect_starttime as collectStarttime,bfp.collect_endtime as collectEndtime,bfp.term,bfp.record_date as recordDate,bfp.guarantee_status as guaranteeStatus,"
-				+ "bfp.value_date as valueDate,bfp.maturity_date as maturityDate,bfp.flag_purchase as flagPurchase, bfp.flag_redemption as flagRedemption, bfp.flag_flexible as flagFlexible,bfp.currency_type as currencyType,"
-				+ "bfp.risk_level as riskLevel,bfp.net_worth as netWorth,bfp.creator,bfp.createtime,bfp.area as area,bfp.min_invest_amount as minInvestAmount,bfp.max_invest_amount as maxInvestAmount, bfp.min_invest_amount_add as minInvestAmountAdd"
-				+ " from bank_financial_product bfp left join bank_financial_product_publish bfpp on bfpp.bank_financial_product = bfp.uuid where bfp.status='checked' and bfpp.uuid is not null ");
+				+ " bfp.total_amount as totalAmount,bfp.collect_starttime as collectStarttime,bfp.collect_endtime as collectEndtime,bfp.term,bfp.record_date as recordDate,bfp.guarantee_status as guaranteeStatus,"
+				+ " bfp.value_date as valueDate,bfp.maturity_date as maturityDate,bfp.flag_purchase as flagPurchase, bfp.flag_redemption as flagRedemption, bfp.flag_flexible as flagFlexible,bfp.currency_type as currencyType,"
+				+ " bfp.risk_level as riskLevel,bfp.net_worth as netWorth,bfp.creator,bfp.createtime,bfp.area as area,bfp.min_invest_amount as minInvestAmount,bfp.max_invest_amount as maxInvestAmount, bfp.min_invest_amount_add as minInvestAmountAdd,"
+				+ " bfp.account_balance as accountBalance, bfp.investment, bfp.total_redeem as totalRedeem, bfp.total_return as totalReturn, bfp.is_redeem as isRedeem "
+				+ " from bank_financial_product bfp left join bank_financial_product_publish bfpp on bfpp.bank_financial_product = bfp.uuid ");
+		builder.append(" left join bank b on bfp.custodian = b.uuid ");
+		builder.append("where bfp.status='checked' and bfpp.uuid is null ");
 		//名称
 		if (inputParams.get("name") != null && !"".equals(inputParams.get("name"))) {
-			builder.append(" and bfp.name like '%" + inputParams.get("name") + "%' ");
+			builder.append(" and (bfp.name like '%" + inputParams.get("name") + "%' ");
+			builder.append(" or b.name like '%" + inputParams.get("name") + "%') ");
 		}
 		// 排序
 		if (sorts != null && sorts.length() > 0) {
@@ -305,10 +326,13 @@ public class BankFinancialProductDAO extends BaseDAO<BankFinancialProduct, Strin
 	@Override
 	public Integer getPublishCount(Map<String, String> inputParams) {
 		StringBuilder builder = new StringBuilder();
-		builder.append(" select count(*) from bank_financial_product bfp left join bank_financial_product_publish bfpp on bfpp.bank_financial_product = bfp.uuid where bfp.status='checked' and bfpp.uuid is null ");
+		builder.append(" select count(*) from bank_financial_product bfp left join bank_financial_product_publish bfpp on bfpp.bank_financial_product = bfp.uuid ");
+		builder.append(" left join bank b on bfp.custodian = b.uuid ");
+		builder.append(" where bfp.status='checked' and bfpp.uuid is null ");
 		//名称
 		if (inputParams.get("name") != null && !"".equals(inputParams.get("name"))) {
-			builder.append(" and bfp.name like '%" + inputParams.get("name") + "%' ");
+			builder.append(" and (bfp.name like '%" + inputParams.get("name") + "%' ");
+			builder.append(" or b.name like '%" + inputParams.get("name") + "%') ");
 		}
 		
 		return Integer.valueOf(super.getResultBySQL(builder.toString()).toString());
@@ -328,13 +352,19 @@ public class BankFinancialProductDAO extends BaseDAO<BankFinancialProduct, Strin
 	
 	/**
 	 * 获取银行理财产品分阶段列表
+	 * @param inputParams
 	 * @param resultClass
 	 * @return  List<Entity>
 	 */
 	@Override
-	public List<Entity> getStageList(Class<? extends Entity> resultClass) {
+	public List<Entity> getStageList(Map<String, String> inputParams, Class<? extends Entity> resultClass) {
 		StringBuilder builder = new StringBuilder();
-		builder.append("select bfp.stage as status, count(*) as count from bank_financial_product bfp where bfp.status='checked' group by bfp.stage");
+		builder.append("select bfp.stage as status, count(*) as count from bank_financial_product bfp where bfp.status='checked'");
+		//invested
+		if (inputParams.get("invested") != null && "1".equals(inputParams.get("invested"))) {
+			builder.append(" and bfp.investment > 0 ");
+		}
+		builder.append(" group by bfp.stage");
 		return super.getBySQL(builder.toString(), resultClass);
 	}
 	

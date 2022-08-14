@@ -1,0 +1,248 @@
+
+.banner{
+	font-size: 0;
+}
+.banner .swiper-slide{
+	padding:0;
+}
+.banner img{
+	width: 100%;
+}
+.banner .swiper-pagination-bullet{
+	background:rgba(255,255,255,.5);
+}
+.banner .swiper-pagination-bullet-active{
+	background:rgba(255,255,255,1);
+}
+.box{
+	background: #FFFFFF;
+	padding: 0.36rem 0.4rem 0.32rem 0.4rem;
+	text-align: center;
+}
+.box a{
+	display: inline-block;
+	padding: 0 0.9rem;
+}
+.box img{
+	width: 0.96rem;
+	display: block;
+	margin-bottom: 0.15rem;
+}
+.box span{
+	font-size:0.32rem;
+	color:rgba(46,46,46,1);
+	line-height:0.44rem;
+}
+.icon-list{
+	background: #FFFFFF;
+	font-size: 0rem;
+	padding: 0.16rem;
+	padding-top:0;
+}
+.icon-item{
+	width: 25%;
+	display: inline-block;
+	font-size: 0rem;
+	text-align: center;
+	padding: 0.2rem 0.3rem;
+}
+.icon-item img{
+	width: 0.56rem;
+	padding:0.12rem 0;
+}
+.icon-item p{
+	font-size: 0.28rem;
+	color:rgba(46,46,46,1);
+}
+.fwrc{
+	background: url(../img/bg-fwrc.png) center no-repeat;
+	background-size: cover;
+	height: 0.8rem;
+	text-align: center;
+	font-size: 0.28rem;
+	line-height: 0.9rem;
+}
+.fwrc p{
+	background: url(../img/icon-fwrc.png) left center no-repeat;
+	display: inline-block;
+	padding-left: 0.5rem;
+	background-size: auto 40%;
+	height: 0.8rem;
+}
+.copyright{
+	font-size:0.2rem;
+	text-align: center;
+	padding-top: 0.32rem;
+	padding-bottom: 1.02rem;
+}
+
+/* 社保资讯 */
+.consultBox{
+	background:rgba(255,255,255,1);	
+	position:relative;
+}
+.icon-list .consultTitle{
+	background:url(../img/bg-index-purpose.png) center no-repeat;
+	background-size:cover;
+	margin-bottom:0.28rem;
+}
+.consultTitle{
+	text-align:center;
+	font-size:0.32rem;
+	padding-top:0.26rem;
+	background:url(../img/bg-index-consultList.png) center no-repeat;
+	background-size:cover;
+}
+.userStories .consultTitle{
+	background:url(../img/bg-index-user.png) center no-repeat;
+	background-size:cover;
+}
+.consulteMore{
+	position:absolute;
+	top:0;
+	right:0rem;
+	font-size:0;
+	padding:0.34rem;
+}
+.consulteMore img{
+	width:0.16rem;
+}
+.consultBox li{
+	border-bottom:1px solid rgba(0,0,0,0.1);
+	padding:0.28rem 0.3rem 0.24rem 0.6rem;
+	background:url(../img/icon-consultList.png) 0.3rem center no-repeat;
+	background-size:auto 12.5%;
+}
+
+.consultBox li p{
+	width:5.2rem;
+	text-overflow: ellipsis; 
+	overflow: hidden; 
+	white-space: nowrap; 
+	float:left;
+	font-size:0.30rem;
+}
+.consultBox li span{
+	width:1.3rem;
+	float:right;
+	color:rgba(46,46,46,0.5);
+	font-size:0.28rem;
+	display:block;
+	text-align:right;
+	margin-top: 0.08rem;
+}
+.userStories{
+	background:rgba(255,255,255,1);
+	text-align:center;
+}
+
+.layerInner{
+	background:rgba(255,255,255,1) url(../img/bg-zxrx.png) right top no-repeat;
+	background-size: 100% auto;
+	border-radius:0.12rem;
+	width:6.38rem;
+	height:4rem;
+	position:absolute;
+	top:30%;
+	left:0.66rem;
+	padding:0.5rem 0 0.7rem 0;
+}
+.layerInner h4{
+	text-align:center;
+	font-size:0.4rem;
+	color:rgba(46, 46, 46, 1);
+	font-weight:normal;
+	padding-bottom:0.5rem;
+}
+.layerInner div{
+	background:url(../img/icon-tel.png) 0.32rem center no-repeat;
+	height:0.6rem;
+	color:rgba(46, 46, 46, 1);
+	font-weight:normal;
+	font-size:0.36rem;
+	padding-left:1.12rem;
+	background-size: auto 90%;
+	line-height:0.6rem;
+	margin-bottom:0.5rem;
+	position:relative;
+}
+.layerInner div:nth-child(3){
+	background:url(../img/icon-QQ.png) 0.32rem center no-repeat;
+	background-size: auto 90%;
+}
+.layerInner div img{
+	position:absolute;
+	top:0.15rem;
+	right:0.32rem;
+	width:0.2rem;
+}
+.closeLayer{
+	position:absolute;
+	width:0.8rem;
+	height:0.8rem;
+	display:block;
+	background:url(../img/icon_close-white.png) center no-repeat;
+	background-size:80%;
+	top:4.96rem;
+	left:50%;
+	margin-left:-0.4rem;
+}
+.hotline{
+	width:1.2rem;
+	height:1.2rem;
+	background:url(../img/icon-zxrx.png) center no-repeat;
+	display:block;
+	position:fixed;
+	bottom:3.9rem;
+	right:0rem;
+	background-size:100%;
+	z-index:98;
+}
+/* 适配iphonex */
+@media only screen and (device-width: 375px) and (device-height: 812px) and 
+(-webkit-device-pixel-ratio: 3) {
+	.wrap{
+		padding-bottom:2.04rem;
+	}
+}
+/* 适配iphonexr */
+@media only screen and (device-width: 414px) and (device-height: 896px) and 
+(-webkit-device-pixel-ratio: 2) {
+	.wrap{
+		padding-bottom:2.04rem;
+	}
+}
+/* 适配iphonexsmax */
+@media only screen and (device-width: 414px) and (device-height: 896px) and 
+(-webkit-device-pixel-ratio: 3) {
+	.wrap{
+		padding-bottom:2.04rem;
+	}
+}
+/* 适配iphone4 */
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){
+	.wrap{
+		padding-bottom:1.38rem;
+	}
+} 
+/* 适配iphone5 */
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){
+	.wrap{
+		padding-bottom:1.38rem;
+	}
+} 
+
+/* 适配iphone6.7.8 */
+@media (device-height:667px) and (-webkit-min-device-pixel-ratio:2){
+	.wrap{
+		padding-bottom:1.38rem;
+	}
+}
+
+
+/* 适配iphone6.7.8plus */
+@media (device-height:736px) and (-webkit-min-device-pixel-ratio:2){
+	.wrap{
+		padding-bottom:1.68rem;
+	}
+}

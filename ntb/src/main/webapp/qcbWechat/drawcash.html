@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>提现</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/drawcash.css?version=1.5" />
+		<script type="text/template" id="queboxTpl">
+			<li>
+				<img src="..{{:iconColor}}" data-src="{{:iconColor}}" alt="" />
+				<span class="bank-name">{{:name}}</span><span class="bank-num">({{:bankcard}})</span>
+				<input type="hidden" value="{{:uuid}}" />
+				<div class="check"></div>
+				<div class="tap-bg"></div>
+			</li>
+		</script>
+	</head>
+
+	<body>
+		<div class="main">
+			<div class="select">
+				<img id="bankLogo" src="" alt="" />
+				<span id="bankName"></span>
+				<span id="bankNum"></span>
+				<input id="bankuuid" type="hidden" value="" />
+				<img class="bottom" src="./img/bottom.png" alt="" />
+			</div>
+			<div class="content">
+				<p>
+					<span>提现金额</span>
+					<input type="number" id="price" placeholder="单笔最高5万元" />
+					<img src="img/icon_delete.png" id="drawcashDelete" />
+					<span id="drawcashAll">全部提现</span>
+				</p>
+				<em class="balance">
+					当前可提现金额为
+					<i id="accountBalance"></i>
+					 元
+					
+				</em>
+				<em class="poundage">
+					单笔转账费金额：<i>1.00</i> 元
+				</em>
+			</div>
+			<div id="drawcash">
+				<span>提现</span>
+				<span></span>
+				<span></span>
+			</div>
+			<!-- 提现规则 -->
+			<p class="rules">
+				 提现规则：<br/>
+				 1.支持银行卡提现。 <br/>
+				 2.实名认证用户必须使用与实名认证信息姓名相同的银行卡账户来提现。<br/>
+				 3.提现金额和提现时间说明如下： <br/>
+				 （1）提现金额不能大于当前账户可用余额 <br/>
+				 （2）单笔提现最高5万元，提现手续费1元/笔 <br/>
+				 4.提现申请成功后，平台将提交银行处理，具体到账时间以银行处理时间为准。 <br/>
+				 5.如果您提交的帐号有误，提现款项将退回“账户余额”，请您检查后重新申请提现。
+			 </p>
+		</div>
+
+		<!--弹出层-->
+		<div id="select-bank">
+			<div class="inner">
+				<ul class="list">
+					
+				</ul>
+			</div>
+		</div>
+		
+		<div id="code-box">
+			<div class="code-box-inner">
+				<!--<p>验证码已发送至186****00588的手机</p>-->
+				<p id="success-title">请输入验证码</p>
+				<div class="code-box-inner-mid">
+					<input type="tel" name="" id="mobileCode" value="" placeholder="请输入验证码" maxlength="6" />
+					<span id="getCode">获取验证码</span>
+					<span id="numCode">重新获取(<i id="count">10</i>s)</span>
+				</div>
+				<div class="code-box-inner-btnbox clearfix">
+					<input type="button"  value="取消" id="code-box-close"/>
+					<input type="button"  value="确认" id="submit"/>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div id="modal-box">
+			<div class="modal-box-inner">
+				<h3>温馨提示</h3>
+				<h4></h4>
+				<div class="modal-box-inner-btnbox clearfix">
+					<input type="button"  value="取消" id="modal-box-close"/>
+					<input type="button"  value="确认"/>
+				</div>
+			</div>
+		</div>
+		
+		<p class="layer">
+			提示信息
+		</p>
+		
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/flagSubmit.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jsrender.min.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/changePrice.js?version=1.5"></script>
+		<script src="./js/operation.js?version=1.5"></script>
+		<script src="./js/drawcash.js?version=1.6"></script>
+	</body>
+
+</html>

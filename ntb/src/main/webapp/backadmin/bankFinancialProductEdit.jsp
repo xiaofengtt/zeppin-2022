@@ -7,6 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>牛投帮-后台管理系统</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="css/fundEdit.css" />
 		<link rel="stylesheet" href="css/datepicker3.css" >
 		<link rel="stylesheet" href="css/uploadfile.css">
@@ -14,7 +15,7 @@
 	<body>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="navigation.jsp"/>
-		<input id="scode" type="hidden" value="00300031" />  
+		<input id="scode" type="hidden" value="00300031" />
 		<div class="contain">
 			<jsp:include page="contentLeft.jsp"/>
 			<div class="contain-right">
@@ -29,20 +30,20 @@
 									<img id="custodiansLogo"/>
 								</div>
 								<div class="form-group noBorder">
-									<label>资金托管方：</label>
-									<div class="content-items"><span id="custodians"></span>
+									<label class="label_large">管理银行：</label>
+									<div class="content-items"><span id="custodians" class="label_large"></span>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group noBorder">
-									<label>产品名称：</label>
-									<div class="content-items"><span id="names"></span>
+									<label class="label_large">产品名称：</label>
+									<div class="content-items"><span id="names" class="label_large"></span>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group noBorder">
-									<label>产品链接：</label>
-									<div class="content-items"><span id="urls"></span>
+									<label class="label_large">产品链接：</label>
+									<div class="content-items"><span id="urls" class="label_large"></span>
 									</div>
 									<div class="clear"></div>
 								</div>
@@ -52,7 +53,7 @@
 									<img id="custodianLogo"/>
 								</div>
 								<div class="form-group col-md-12">
-									<label><b class="red">*</b> 资金托管方：</label>
+									<label><b class="red">*</b> 管理银行：</label>
 									<div class="content-items">
 										<select class="form-control long" id="custodian" name="custodian" onchange="changeCustodian()">
 											<option value="">请选择</option>
@@ -84,74 +85,74 @@
 						<p class="title">基本信息</p>
 						<div class="content-item">
 							<!-- 信息 -->
-							<div class="content-item-info">		
-								<div class="form-group col-md-6">
+							<div class="content-item-info">
+								<div class="form-group col-md-12">
 									<label>产品系列：</label>
 									<div class="content-items"><span id="seriess"></span>
 									</div>
 									<div class="clear"></div>
 								</div>
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12">
 									<label>产品简称：</label>
 									<div class="content-items"><span id="shortnames"></span>
 									</div>
 									<div class="clear"></div>
 								</div>
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12">
 									<label>产品编号：</label>
 									<div class="content-items"><span id="scodes"></span>
 									</div>
 									<div class="clear"></div>
-								</div>	
-								<div class="form-group col-md-6">
+								</div>
+								<div class="form-group col-md-12">
 									<label>产品规模：</label>
 									<div class="content-items"><span id="totalAmounts"></span>亿元
 									</div>
 									<div class="clear"></div>
 								</div>
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12">
 									<label>产品类型：</label>
 									<div class="content-items"><span id="types"></span>
 									</div>
 									<div class="clear"></div>
 								</div>
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12">
 									<label>目标年化收益率：</label>
 									<div class="content-items"><span id="targetAnnualizedReturnRates"></span>%
 									</div>
 									<div class="clear"></div>
 								</div>
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12">
 									<label>理财币种：</label>
 									<div class="content-items"><span id="currencyTypes"></span>
 									</div>
 									<div class="clear"></div>
 								</div>
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12">
 									<label>最低年化收益率：</label>
 									<div class="content-items"><span id="minAnnualizedReturnRates"></span>%
 									</div>
 									<div class="clear"></div>
 								</div>
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12">
 									<label>风险等级：</label>
 									<div class="content-items"><span id="riskLevels"></span>
 									</div>
 									<div class="clear"></div>
 								</div>
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12">
 									<label>收益支付方式：</label>
 									<div class="content-items"><span id="paymentTypes"></span>
 									</div>
 									<div class="clear"></div>
 								</div>
-								<div class="form-group col-md-6 noBorder">
+								<div class="form-group col-md-12">
 									<label>面向对象：</label>
 									<div class="content-items"><span id="targets"></span>
 									</div>
 									<div class="clear"></div>
-								</div>	
-								<div class="form-group col-md-6 noBorder">
+								</div>
+								<div class="form-group col-md-12 noBorder">
 									<label>发行地区：</label>
 									<div class="content-items"><span id="areas"></span>
 									</div>
@@ -162,35 +163,35 @@
 							<!-- 编辑 -->
 							<div class="content-item-edit">
 								<div class="form-group col-md-6 noBorder">
-									<label><b class="red">*</b> 产品系列：</label>
+									<label class="label_left"><b class="red">*</b> 产品系列：</label>
 									<div class="content-items">
 										<input class="form-control" id="series" name="series"/>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-6 noBorder">
-									<label>产品简称：</label>
+									<label class="label_left">产品简称：</label>
 									<div class="content-items">
 										<input class="form-control" id="shortname" name="shortname"/>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-6 noBorder">
-									<label><b class="red">*</b> 产品编号：</label>
+									<label class="label_left"><b class="red">*</b> 产品编号：</label>
 									<div class="content-items">
 										<input class="form-control" id="scodess" name="scode"/>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-6 noBorder">
-									<label>产品规模：</label>
+									<label class="label_left">产品规模：</label>
 									<div class="content-items">
 										<input class="form-control" id="totalAmount" name="totalAmount"/><i>亿元</i>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-6 noBorder">
-									<label><b class="red">*</b> 产品类型：</label>
+									<label class="label_left"><b class="red">*</b> 产品类型：</label>
 									<div class="content-items">
 										<select class="form-control" name="type" id="type">
 											<option value="income">固定收益</option>
@@ -201,14 +202,14 @@
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-6 noBorder">
-									<label><b class="red">*</b> 目标年化收益率：</label>
+									<label class="label_left"><b class="red">*</b> 目标年化收益率：</label>
 									<div class="content-items">
 										<input class="form-control" id="targetAnnualizedReturnRate" name="targetAnnualizedReturnRate"/><i>%</i>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-6">
-									<label><b class="red">*</b> 理财币种：</label>
+									<label class="label_left"><b class="red">*</b> 理财币种：</label>
 									<div class="content-items">
 										<select class="form-control" id="currencyType" name="currencyType">
 											<option value="rmb">人民币</option>
@@ -218,14 +219,14 @@
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-6">
-									<label>最低年化收益率：</label>
+									<label class="label_left">最低年化收益率：</label>
 									<div class="content-items">
 										<input class="form-control" id="minAnnualizedReturnRate" name="minAnnualizedReturnRate"/><i>%</i>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-6">
-									<label><b class="red">*</b> 风险等级：</label>
+									<label class="label_left"><b class="red">*</b> 风险等级：</label>
 									<div class="content-items">
 										<select class="form-control" id="riskLevel" name="riskLevel">
 											<option value="R1">R1（谨慎型）</option>
@@ -238,7 +239,7 @@
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-6">
-									<label><b class="red">*</b> 收益支付方式：</label>
+									<label class="label_left"><b class="red">*</b> 收益支付方式：</label>
 									<div class="content-items">
 										<select class="form-control" id="paymentType" name="paymentType">
 											<option value="last">到期全部支付</option>
@@ -249,7 +250,7 @@
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-6 noBorder">
-									<label><b class="red">*</b> 面向对象：</label>
+									<label class="label_left"><b class="red">*</b> 面向对象：</label>
 									<div class="content-items">
 										<select class="form-control" name="target" id="target">
 											<option value="individual">个人</option>
@@ -259,7 +260,7 @@
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-6">
-									<label><b class="red">*</b> 发行地区：</label>
+									<label class="label_left"><b class="red">*</b> 发行地区：</label>
 									<div class="content-items">
 										<select class="form-control" id="area" name="area">
 											<option value="">请选择</option>
@@ -310,7 +311,7 @@
 								<div class="form-group col-md-12">
 									<label>起息/结束日：</label>
 									<div class="content-items"><span id="valueDates"></span>
-									 至 
+									 至
 									<span id="maturityDates"></span>
 									 产品期限：<span id="terms"></span>天
 									</div>
@@ -318,19 +319,22 @@
 								</div>
 								<div class="form-group col-md-12">
 									<label>最小投资递增：</label>
-									<div class="content-items"><span id="minInvestAmountAdds"></span>元
+									<div class="content-items">
+										<span id="minInvestAmountAdds"></span>元
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-12">
 									<label>最小投资金额：</label>
-									<div class="content-items"><span id="minInvestAmounts"></span>元
+									<div class="content-items">
+										<span id="minInvestAmounts"></span>元
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-12">
 									<label>最大投资金额：</label>
-									<div class="content-items"><span id="maxInvestAmounts"></span>元
+									<div class="content-items">
+										<span id="maxInvestAmounts"></span>元
 									</div>
 									<div class="clear"></div>
 								</div>
@@ -372,7 +376,7 @@
 									<label><b class="red">*</b> 认购时间：</label>
 									<div class="content-items">
 										<input class="form-control datepicker" id="collectStarttime" name="collectStarttime" data-provide="datepicker"/>
-										 至 
+										 至
 										<input class="form-control datepicker" id="collectEndtime" name="collectEndtime" data-provide="datepicker"/>
 									</div>
 									<div class="clear"></div>
@@ -388,7 +392,7 @@
 									<label><b class="red">*</b> 起息/结束日：</label>
 									<div class="content-items">
 										<input class="form-control datepicker" id="valueDate" name="valueDate" data-provide="datepicker"/>
-										 至 
+										 至
 										<input class="form-control datepicker" id="maturityDate" name="maturityDate" data-provide="datepicker"/>
 										 产品期限：<input readonly="readonly" class="form-control short" id="term" name="term"/><i>天</i>
 									</div>
@@ -399,6 +403,7 @@
 									<div class="content-items">
 										<input class="form-control" id="minInvestAmount" name="minInvestAmount"/><i>元</i>
 									</div>
+									<span id="minInvestAmount_big" style="color:green;"></span>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-12">
@@ -406,6 +411,7 @@
 									<div class="content-items">
 										<input class="form-control" id="minInvestAmountAdd" name="minInvestAmountAdd"/><i>元</i>
 									</div>
+									<span id="minInvestAmountAdd_big" style="color:green;"></span>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-12">
@@ -413,6 +419,7 @@
 									<div class="content-items">
 										<input class="form-control" id="maxInvestAmount" name="maxInvestAmount"/><i>元</i>
 									</div>
+									<span id="maxInvestAmount_big" style="color:green;"></span>
 									<div class="clear"></div>
 								</div>
 								<div class="clear"></div>
@@ -424,7 +431,7 @@
 						<div class="content-item">
 							<!-- 信息 -->
 							<div class="content-item-info">
-								
+
 								<div class="form-group col-md-6">
 									<label>认购费率：</label>
 									<div class="content-items"><span id="subscribeFees"></span>%
@@ -466,42 +473,42 @@
 							<!-- 编辑 -->
 							<div class="content-item-edit">
 								<div class="form-group col-md-6">
-									<label><b class="red">*</b> 认购费率：</label>
+									<label class="label_left"><b class="red">*</b> 认购费率：</label>
 									<div class="content-items">
 										<input class="form-control" id="subscribeFee" name="subscribeFee"/><i>%</i>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-6">
-									<label><b class="red">*</b> 申购费率：</label>
+									<label class="label_left"><b class="red">*</b> 申购费率：</label>
 									<div class="content-items">
 										<input class="form-control" id="purchaseFee" name="purchaseFee"/><i>%</i>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-6">
-									<label><b class="red">*</b> 赎回费率：</label>
+									<label class="label_left"><b class="red">*</b> 赎回费率：</label>
 									<div class="content-items">
 										<input class="form-control" id="redemingFee" name="redemingFee"/><i>%</i>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-6">
-									<label><b class="red">*</b> 托管费率：</label>
+									<label class="label_left"><b class="red">*</b> 托管费率：</label>
 									<div class="content-items">
 										<input class="form-control" id="custodyFee" name="custodyFee"/><i>%</i>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-6">
-									<label><b class="red">*</b> 销售费率：</label>
+									<label class="label_left"><b class="red">*</b> 销售费率：</label>
 									<div class="content-items">
 										<input class="form-control" id="networkFee" name="networkFee"/><i>%</i>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-6">
-									<label><b class="red">*</b> 管理费率：</label>
+									<label class="label_left"><b class="red">*</b> 管理费率：</label>
 									<div class="content-items">
 										<input class="form-control" id="managementFee" name="managementFee"/><i>%</i>
 									</div>
@@ -518,29 +525,29 @@
 							<div class="content-item-info" style="margin-top:15px;">
 								<div class="form-group col-md-12 noBorder">
 									<label>投资范围：</label>
-									<div class="content-items">
+									<div class="content-items text_large">
 										<span id="investScopes"></span>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-12 noBorder">
 									<label>产品收益说明：</label>
-									<div class="content-items">
+									<div class="content-items text_large">
 										<span id="revenueFeatures"></span>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-12 noBorder">
 									<label>产品更多描述：</label>
-									<div class="content-items">
+									<div class="content-items text_large">
 										<span id="remarks"></span>
 									</div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-12 noBorder">
 									<label>产品说明书：</label>
-									<div class="content-items">
-										<a id="documentsLink" href="#"><span id="documents"></span></a>
+									<div class="content-items text_large">
+										<a id="documentsLink" href="javascript:void(0);"><span id="documents"></span></a>
 									</div>
 									<div class="clear"></div>
 								</div>
@@ -549,26 +556,26 @@
 							<!-- 编辑 -->
 							<div class="content-item-edit">
 								<div class="form-group col-md-12">
-									<label><b class="red">*</b> 投资范围：</label>
+									<label class="label_left"><b class="red">*</b> 投资范围：</label>
 									<div id="investScope"></div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-12">
-									<label><b class="red">*</b> 产品收益说明：</label>
+									<label class="label_left"><b class="red">*</b> 产品收益说明：</label>
 									<div id="revenueFeature"></div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-12">
-									<label>产品更多描述：</label>
+									<label class="label_left">产品更多描述：</label>
 									<div id="remark"></div>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-12">
-									<label>产品说明书：</label>
+									<label class="label_left">产品说明书：</label>
 									<div class="col-md-9" style="text-align:left;line-height:38px;">
 										<a id="imageShow" style="border:0;max-width:100%;max-height:150px;margin-top:15px;display: none;"></a>
 										<div id="resourceId">
-											
+
 										</div>
 									</div>
 									<div id="resourceAdd"><input type="hidden" name="document" id="document" value=""></div>
@@ -583,23 +590,25 @@
 					</div>
 					<div class="btnGroup text-center save">
 						<button class="btn sureBtn submitBtn" type="submit">提交</button>
-						<button class="btn cancleBtn" type="button" onclick="window.close();">取消</button>
+						<button class="btn cancleBtn" type="button">取消</button>
 					</div>
 				</div>
 				</form:form>
 			</div>
 			<div class="clear"></div>
 		</div>
-		
-		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>	
-		<script type="text/javascript" src="js/laydate/laydate.js" ></script>
-		<script type="text/javascript" src="js/url.min.js"></script>
-		<script type="text/javascript" src="js/jquery.uploadfile.min.js"></script>
-		<script type="text/javascript" src="js/tinymce/dropzone/lib/dropzone.js"></script>
-		<script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
-		<script type="text/javascript" src="js/tinymce/tinymce_zhcn.js"></script>
-		<script type="text/javascript" src="js/tinymce/tinymce_tool.js"></script>
-		<script type="text/javascript" src="js/bankFinancialProductEdit.js" ></script>
-		
+
+		<script type="text/javascript" src="./js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="./js/laydate/laydate.js" ></script>
+		<script type="text/javascript" src="./js/url.min.js"></script>
+		<script type="text/javascript" src="./js/flagSubmit.js"></script>
+		<script type="text/javascript" src="./js/jquery.uploadfile.min.js"></script>
+		<script type="text/javascript" src="./js/tinymce/dropzone/lib/dropzone.js"></script>
+		<script type="text/javascript" src="./js/tinymce/tinymce.min.js"></script>
+		<script type="text/javascript" src="./js/tinymce/tinymce_zhcn.js"></script>
+		<script type="text/javascript" src="./js/tinymce/tinymce_tool.js"></script>
+		<script type="text/javascript" src="./js/bankFinancialProductEdit.js" ></script>
+		<script type="text/javascript" src="./js/changeMoneyToChinese.js"></script>
+
 	</body>
 </html>

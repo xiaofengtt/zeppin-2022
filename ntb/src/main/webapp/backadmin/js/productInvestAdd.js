@@ -1,5 +1,12 @@
 //提交
 $('#formsubmit').submit(function() {
+	if (flagSubmit == false) {
+        return false;
+    }
+    flagSubmit = false;
+    setTimeout(function() {
+        flagSubmit = true;
+    }, 3000);
 	var uuid = (url('?uuid') != null) ? url('?uuid') : '';
 	var amount=$("#amount").val().replace(/(^\s*)|(\s*$)/g, "");
 	

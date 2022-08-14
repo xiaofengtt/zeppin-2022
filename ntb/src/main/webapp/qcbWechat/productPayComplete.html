@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>结果详情</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/productBuy.css?version=1.5" />
+		<style type="text/css">
+			.top{
+				text-align: center;
+				background:#FFFFFF;
+				padding:0.8rem 0;
+			}
+			.top h3{
+				font-size: 0.32rem;
+				color: #2C2C2C;
+				margin-bottom:0.2rem;
+			}
+			.top p{
+				opacity: 0.4;
+				font-size: 0.28rem;
+				color: #2C2C2C;
+				margin-bottom:0.4rem;
+			}
+			.top img{
+				margin-bottom:0.7rem;
+				width:2.6rem;
+				height:2.4rem;
+			}
+		</style>
+	</head>
+	<body>
+
+		
+		<div class="main">
+			<div class="top">
+				<h3>支付成功，申请处理中...</h3>
+				<p id="time">2017年12月12日  12:45:20</p>
+				<img src="./img/pay_success.png" alt="" />
+				<input type="button" class="big-btn" value="我的持仓"/>
+			</div>
+		</div><!--main-->
+		
+		
+		
+		
+		
+		<p class="layer">
+			提示信息
+		</p>
+
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script>
+			var now = Number(Date.now());
+			$("#time").html(timestampToTime(now));
+			function timestampToTime(timestamp) {
+				var date = new Date(timestamp); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+				Y = date.getFullYear() + '年';
+				M = (date.getMonth() + 1 < 10 ? (date.getMonth() + 1) : date.getMonth() + 1) + '月';
+				D = date.getDate() + '日 ';
+		//		h = date.getHours() + ':';
+				h = (date.getHours() + 1 < 10 ? '0' + (date.getHours() + 1) : date.getHours()) + ':'
+		//		m = date.getMinutes() + ':';
+		//		m = date.getMinutes();
+				m = (date.getMinutes() + 1 < 10 ? '0' + (date.getMinutes() + 1) : date.getMinutes())
+				s = date.getSeconds();
+		//		return Y + M + D + h + m + s;
+				return Y + M + D + h + m;
+			}
+			$(".big-btn").tap(function(){
+				window.location.href = "./myPosition.html?openId=" + openIdUrl;
+			});
+		</script>
+	</body>
+</html>

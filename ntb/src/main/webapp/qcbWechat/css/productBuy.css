@@ -1,0 +1,217 @@
+.main-top {
+	background: #FFFFFF;
+}
+
+.main-top-top {
+	padding: 0.28rem 0.28rem;
+	border-bottom: 1px solid #EBEBEB;
+}
+
+.main-top-top-logo {
+	background: #F4F4F4;
+	border-radius: 5px;
+	width: 0.9rem;
+	height: 0.9rem;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0.16rem;
+	margin-right: 0.2rem;
+}
+
+.main-top-top-logo img {
+	width: 100%;
+	height: 100%;
+}
+
+.main-top-top-name {
+	display: inline-block;
+	vertical-align: middle;
+	width: 82%;
+	min-height: 0.9rem;
+	padding: 0.08rem 0;
+}
+
+.main-top-top-name p {
+	opacity: 0.9;
+	font-size: 0.3rem;
+	color: #000000;
+}
+
+.main-top-top-name span {
+	margin-top: 0.1rem;
+	display: inline-block;
+	opacity: 0.76;
+	font-size: 0.26rem;
+	color: #3F3F3F;
+}
+.main-top-top-name h5{
+	width:auto;
+	vertical-align: middle;
+	color: #4A4A4A;
+	border: 1px solid #D09637;
+	padding:0.04rem 0.08rem 0.02rem 0.08rem;
+	font-size: 0.22rem;
+	line-height:0.22rem;
+	color: #C4A46E;
+	text-align: center;
+	display: inline-block;
+}
+
+
+.content {
+	/*margin-top: 0.3rem;*/
+	background: #FFFFFF;
+}
+
+.content p {
+	width: 7.26rem;
+	margin: 0 auto;
+	display: block;
+	width: 7.26rem;
+	border-bottom: 1px solid rgba(176, 176, 176, 0.2);
+	color: #000000;
+	font-size: 0.28rem;
+	line-height: 0.28rem;
+	padding: 0.32rem 0.15rem;
+	position: relative;
+	opacity: 0.8;
+}
+
+.content p:nth-child(2) {
+	border: none;
+	color:rgba(0,0,0,0.9);
+}
+
+.content p:nth-child(2) em {
+	font-size: 0.24rem;
+	opacity: 0.69rem;
+}
+
+.content p:nth-child(2) em i {
+	color: #FF7600;
+}
+
+#drawcashAll {
+	color: #3D8EED;
+}
+
+.poundage {
+	display: none;
+}
+
+.content p span {
+	display: inline-block;
+	width: 1.12rem;
+	vertical-align: middle;
+}
+
+.content input {
+	margin-left: 0.56rem;
+	color: #000000;
+	/*opacity: 0.5;*/
+	font-size: 0.38rem;
+	border: none;
+	width: 5rem;
+	vertical-align: middle;
+}
+
+.product-msg {
+	display: block;
+	font-size: 0.28rem;
+	padding: 0.26rem 0.28rem;
+	background: #FFFFFF;
+	position: relative;
+	margin-top: 0.2rem;
+	color: rgba(0,0,0,0.8);
+	margin-bottom:0.4rem;
+}
+
+.product-msg p {
+	position: absolute;
+	top: 0.28rem;
+	right: 0.28rem;
+}
+
+.product-msg p span{
+	display: inline-block;
+	vertical-align: middle;
+}
+.product-msg p span i{
+	color:#FF7600;
+	opacity: 0.69rem;
+}
+.product-msg p img {
+	width: 0.2rem;
+	height: 0.32rem;
+	display: inline-block;
+	vertical-align: middle;
+}
+.color-gray{
+	color:rgba(63,63,63,0.76);
+}
+.product-pdf{
+	display: block;
+	margin-top:0.2rem;
+	font-size:0.22rem;
+	color:rgba(63,63,63,0.76);
+	text-align: center;
+}
+.product-pdf img{
+	display: inline-block;
+	vertical-align: middle;
+	width:0.22rem;
+	height:0.22rem;
+}
+.product-pdf span{
+	display: inline-block;
+	vertical-align: middle;	
+}
+.product-pdf a{
+	display: inline-block;
+	vertical-align: middle;
+	color: #FF7600;
+}
+
+.tip-msg{
+	color: rgba(63,63,63,0.76);
+	font-size:0.28rem;
+	position: fixed;
+	left:0;
+	right:0;
+	margin:auto;
+	width:4.3rem;
+	bottom:0.4rem;
+}
+
+#drawcash {
+	background: #FF7600;
+	margin:0 auto;
+	margin-top: 0.52rem;
+	line-height:0.95rem;
+	vertical-align: middle;
+	font-size:0.36rem;
+	border:none;
+	border-radius:5px;
+	display: block;
+	width:6rem;
+	height:0.95rem;
+	color:#FFFFFF;
+	position: relative;
+	text-align: center;
+}
+#drawcash span{
+	display: inline-block;
+	text-align: center;
+}
+#drawcash span:nth-child(2){
+	margin-top:-0.02rem;
+}
+
+#accountBalance{
+	padding:0.14rem 0.28rem;
+	font-size:0.24rem;
+}
+#accountBalance i{
+	color:#FF7600;
+	opacity: 0.67;
+}

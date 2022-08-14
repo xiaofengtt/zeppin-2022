@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>购买详情</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/productMsg.css?version=1.5" />
+		<link rel="stylesheet" href="./css/fixedFinancingDetail.css?version=1.5" />
+		<script type="text/template" id="queboxTpl">
+			<div class="main-top">
+				<h3>购买金额(元)</h3>
+				<p>{{:priceCN}}</p>
+				{{if stage == "finished"}}
+					<img src="./img/honoring_finish.png" alt="" />
+				{{/if}}
+			</div>
+			<!--main-top-->
+
+			<div class="box">
+				<ul>
+					<li>
+						<p>产品名称</p>
+						<span>
+							{{if flagBuy == true}}
+								<a href="./productDetail.html?uuid={{:product}}" class="openId-url">【{{:bankName}}】{{:productName}}({{:productScode}})</a>
+							{{else}}
+								【{{:bankName}}】{{:productName}}({{:productScode}})
+							{{/if}}
+						</span>
+					</li>
+					<li>
+						<p>产品期限</p>
+						<span>{{:term}}天</span>
+					</li>
+					<li class="buy-price">
+						<p>购买金额</p>
+						<span>
+							<i>{{:priceCN}}元</i>
+							<img src="./img/bottom.png" alt="" />
+						</span>
+					</li>
+					{{for accountHistory}}
+						{{if couponName == null}}
+							<li class="coupon">
+								<p>{{:priceCN}}元</p>
+								<span>{{:createtimeCN}}</span>
+							</li>
+						{{else}}
+							<li class="coupon">
+								<p>{{:priceCN}}元({{:couponName}})</p>
+								<span>{{:createtimeCN}}</span>
+							</li>
+						{{/if}}
+					{{/for}}
+					
+					{{if stage == "finished"}}
+						<li>
+							<p>实际收益率</p>
+							<span>{{:realReturnRateCN}}%</span>
+						</li>
+					{{else}}
+						<li>
+							<p>预期收益率</p>
+							<span>{{:targetAnnualizedReturnRate}}%</span>
+						</li>
+					{{/if}}
+					<li>
+						<p>购买时间</p>
+						<span>{{:paytimeCN}}</span>
+					</li>
+
+				</ul>
+			</div>
+			<!--box-->
+
+			<div class="box">
+				<ul>
+					<li>
+						<p>起息日</p>
+						<span>{{:valueDate}}</span>
+					</li>
+					<li>
+						<p>到期日</p>
+						<span>{{:maturityDate}}</span>
+					</li>
+					<li>
+						<p>交易状态</p>
+						{{if stage == "profit"}}
+							<span>
+								<img src="./img/icon_profit.png" alt="" />
+								<i>{{:stageCN}}</i>
+							</span>
+						{{/if}}
+						{{if stage == "balance"}}
+							<span>
+								<img src="./img/icon_balance.png" alt="" />
+								<i>{{:stageCN}}</i>
+							</span>
+						{{/if}}
+						{{if stage == "confirming"}}
+							<span>
+								<img src="./img/icon_confirming.png" alt="" />
+								<i>{{:stageCN}}</i>
+							</span>
+						{{/if}}
+						{{if stage == "finished"}}
+							<span>
+								<img src="./img/icon_finished.png" alt="" />
+								<i>{{:stageCN}}</i>
+							</span>
+						{{/if}}
+					</li>
+					<li>
+						<p>购买协议</p>
+						<span>
+							<a href="..{{:agreementUrl}}" class="openId-url">{{:agreementName}}</a>
+						</span>
+					</li>
+				</ul>
+			</div>
+			<!--box-->
+		</script>
+	</head>
+
+	<body>
+		<div class="nav">
+			<a href="./bankFinancing.html" class="openId-url">
+				<img src="./img/nav1-g.png" alt="" />
+				<p>银行理财</p>
+			</a>
+			<a href="./myPosition.html" class="openId-url">
+				<img src="./img/nav2-b.png" alt="" />
+				<p class="current">我的持仓</p>
+			</a>
+		</div>
+
+		<div class="main">
+
+		</div>
+		<!--main-->
+
+		<div id="modal-box">
+			<div class="modal-box-inner">
+				<h3>温馨提示</h3>
+				<h4></h4>
+				<div class="modal-box-inner-btnbox clearfix">
+					<!--<input type="button"  value="取消" id="modal-box-close"/>-->
+					<input type="button" value="确认" id="modal-box-close" />
+				</div>
+			</div>
+		</div>
+
+		<div id="tip-box">
+			<div class="tip-box-inner">
+				<div class="tip-box-inner-content">
+					<p>你还未绑定银行卡！</p>
+					<img src="./img/auth_failed.png" alt="" />
+					<input type="button" value="马上绑卡" id="goBind" />
+				</div>
+				<div id="tip-close">
+
+				</div>
+			</div>
+		</div>
+		<p class="layer">
+			提示信息
+		</p>
+
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/jsrender.min.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/fixedFinancingDetail.js?version=1.5"></script>
+	</body>
+
+</html>

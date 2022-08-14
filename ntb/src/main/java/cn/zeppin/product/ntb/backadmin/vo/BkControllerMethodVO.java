@@ -15,6 +15,7 @@ public class BkControllerMethodVO implements Entity {
 	private String controllerName;
 	private String name;
 	private String description;
+	private Integer sort;
 	
 	public BkControllerMethodVO(){
 		
@@ -25,6 +26,7 @@ public class BkControllerMethodVO implements Entity {
 		this.name = controllerMethod.getName();
 		this.controller = controllerMethod.getController();
 		this.description = controllerMethod.getDescription();
+		this.sort = controllerMethod.getSort();
 	}
 
 	public String getUuid() {
@@ -66,6 +68,12 @@ public class BkControllerMethodVO implements Entity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
+
+	public Integer getSort() {
+		return sort;
+	}
+
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
 }

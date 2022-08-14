@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>员工登录</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/index.css?version=1.6" />
+	</head>
+	<body>
+		<div class="main">
+			<form action="" class="form">
+				<div class="phoneDiv">				
+					<img src="./img/qcb-logo.png" alt="" class="logo" />
+					<h1>手机号登录</h1>
+					<div class="form-item">
+						<input type="tel" id="mobile" name="mobile" placeholder="请输入手机号" maxlength="11"/>
+						<img src="./img/icon_delete.png" alt="" id="icon-delete" />
+					</div>
+					
+					<input type="button" class="big-btn" id="getCode" value="获取验证码"/>
+				</div>
+				<div class="codeDiv">
+					<img src="./img/qcb-logo.png" alt="" class="logo" />
+					<h1>输入验证码</h1>
+					<p>验证码已通过短信发送至：<span class="sendPhone"></span></p>
+					<div class="form-item" style="border:0;">
+						<input type="tel" id="mobileCode" name="mobileCode" placeholder="" 
+						maxlength="6" onkeyup="checkForNum(this)"  onselectstart="return false;" onblur="checkForNum(this)" />
+						<div class="code-box">
+							<div class="code-item" name="val-item"></div>
+							<div class="code-item" name="val-item"></div>
+							<div class="code-item" name="val-item"></div>
+							<div class="code-item" name="val-item"></div>
+							<div class="code-item" name="val-item"></div>
+							<div class="code-item nomargin" name="val-item"></div>
+						</div>
+						<div class="form-item code-box-input" style="min-height:auto;">
+							<input type="tel" id="mobileCodeInput" placeholder="请输入验证码" maxlength="6" 
+							onkeyup="checkForNum(this)"  onselectstart="return false;" onblur="checkForNum(this)"/>
+						</div>
+					</div>
+					<a href="javascript:void(0)" id="numCode"><i id="count"></i>秒重新获取</a>
+					<a href="javascript:void(0)" id="regetCode">重新发送</a>
+				</div>
+				<!-- <input type="button" class="big-btn" id="login" value="登录"/> -->
+			</form>
+		</div>
+		
+		<div id="modal-box">
+			<div class="modal-box-inner">
+				<h3>温馨提示</h3>
+				<h4>您确定要退出登录吗？</h4>
+				<div class="modal-box-inner-btnbox clearfix">
+					<!--<input type="button"  value="取消" id="modal-box-close"/>-->
+					<input type="button"  value="确认" id="modal-box-close"/>
+				</div>
+			</div>
+		</div>
+		
+		<p class="layer">
+			提示信息
+		</p>
+		
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/flagSubmit.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/index.js?version=1.6"></script>
+	</body>
+</html>
+

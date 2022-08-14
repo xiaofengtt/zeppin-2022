@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+<title>转入</title>
+<link rel="stylesheet" href="./css/base.css?version=1.5" />
+<link rel="stylesheet" href="./css/moneyTurnin.css?version=1.5" />
+</head>
+<body>
+	<div class="main">		
+		<div class="completeTop">
+			<span>转入成功</span>
+			<b></b>
+		</div>
+		<div class="completeBottom">
+			<p><span>产品名称：</span><span class="value" id="productName">活期盈</span><div class="clear"></div></p>
+			<p><span>支付方式：</span><span class="value" id="turnTo">账户余额</span><div class="clear"></div></p>
+			<p><span>转入金额：</span><span class="value" id="amountMoney"></span><div class="clear"></div></p>
+		</div>
+		<div id="completeBtn">
+			<span>完成</span>
+			<span></span>
+			<span></span>
+		</div>
+
+		<p class="layer">
+			提示信息
+		</p>
+
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+	</div>
+	<a id="goIndex"></a>
+
+	<script src="./js/auto.js?version=1.5"></script>
+	<script src="./js/url.js?version=1.5"></script>
+	<script src="./js/cookie.js?version=1.5"></script>
+	<script src="./js/url.min.js?version=1.5"></script>
+	<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+	<script src="./js/jquery-Tap.js?version=1.5"></script>
+	<script src="./js/global.js?version=1.5"></script>
+	<script src="./js/modal-In.js?version=1.5"></script>
+	<script src="./js/operation.js?version=1.5"></script>
+	<script>
+		var money = url("?money") != null ? url("?money") : "0.00";
+		$("#amountMoney").html("￥"+addCommas(money));
+		$("#completeBtn").tap(function(){
+			window.location.href = "./freeFinancing.html?openId=" + openIdUrl;
+		});
+	</script>
+</body>
+</html>

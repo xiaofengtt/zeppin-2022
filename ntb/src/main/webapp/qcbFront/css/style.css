@@ -1,0 +1,6 @@
+*{margin: 0 auto;padding: 0;box-sizing: border-box;font-family:"Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;}
+a{text-decoration: none;}
+ul{list-style: none;}
+.clear{clear: both;}
+.noBorder{border:none !important;}
+.wrap{max-width:1920px;min-width:320px; margin:0 auto;}

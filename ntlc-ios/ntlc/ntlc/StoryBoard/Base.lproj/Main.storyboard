@@ -1,0 +1,1217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AmQ-Nq-tQO">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--我的持仓-->
+        <scene sceneID="pdv-qJ-NgP">
+            <objects>
+                <viewController storyboardIdentifier="myViewController" id="9PH-vi-18v" customClass="MyViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mqx-0D-uN1"/>
+                        <viewControllerLayoutGuide type="bottom" id="r76-dK-Gtv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Ls-63-CV9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b3F-bj-Yhr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="b3F-bj-Yhr" firstAttribute="width" secondItem="3Ls-63-CV9" secondAttribute="width" id="6fo-F1-I0t"/>
+                            <constraint firstItem="b3F-bj-Yhr" firstAttribute="centerX" secondItem="3Ls-63-CV9" secondAttribute="centerX" id="7E8-JJ-Tyo"/>
+                            <constraint firstItem="b3F-bj-Yhr" firstAttribute="height" secondItem="3Ls-63-CV9" secondAttribute="height" id="Mjk-lC-03U"/>
+                            <constraint firstItem="b3F-bj-Yhr" firstAttribute="centerY" secondItem="3Ls-63-CV9" secondAttribute="centerY" id="kxL-ti-t82"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="我的持仓" image="tab_my_normal" landscapeImage="tab_my_normal" selectedImage="tab_my_selected" id="Mrr-Yy-ov0"/>
+                    <navigationItem key="navigationItem" id="vcc-Hf-7VV"/>
+                    <connections>
+                        <outlet property="mainView" destination="b3F-bj-Yhr" id="yzq-Zk-AHp"/>
+                        <segue destination="XwQ-j0-m29" kind="push" id="vtP-Gt-0CC"/>
+                        <segue destination="jT5-tN-c29" kind="push" id="nIK-0l-jVL"/>
+                        <segue destination="mxs-fb-CZ0" kind="push" id="obg-ux-RRR"/>
+                        <segue destination="Snp-ZS-fmy" kind="push" id="uO1-gZ-hci"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CtY-u3-Xl7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1281" y="39"/>
+        </scene>
+        <!--个人中心-->
+        <scene sceneID="pgR-aH-hgY">
+            <objects>
+                <viewController storyboardIdentifier="meViewController" id="jGW-PL-r3C" customClass="MeViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QKE-cT-Xik"/>
+                        <viewControllerLayoutGuide type="bottom" id="MKd-7b-wiJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lxw-zg-7Gf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRh-eB-lhC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fRh-eB-lhC" firstAttribute="centerY" secondItem="lxw-zg-7Gf" secondAttribute="centerY" id="4IT-5c-UWS"/>
+                            <constraint firstItem="fRh-eB-lhC" firstAttribute="width" secondItem="lxw-zg-7Gf" secondAttribute="width" id="7Lm-oh-yrx"/>
+                            <constraint firstItem="fRh-eB-lhC" firstAttribute="centerX" secondItem="lxw-zg-7Gf" secondAttribute="centerX" id="d15-Jd-IAF"/>
+                            <constraint firstItem="fRh-eB-lhC" firstAttribute="height" secondItem="lxw-zg-7Gf" secondAttribute="height" id="eLJ-RL-eH3"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="个人中心" image="tab_me_normal" landscapeImage="tab_me_normal" selectedImage="tab_me_selected" id="89p-S3-rX8"/>
+                    <navigationItem key="navigationItem" title="个人中心" id="mzz-hb-phP"/>
+                    <connections>
+                        <outlet property="mainScrollView" destination="fRh-eB-lhC" id="2lX-fe-nEU"/>
+                        <segue destination="Udd-Ib-t8u" kind="show" identifier="toContact" id="iTv-db-Oqc"/>
+                        <segue destination="XEf-3t-3rB" kind="push" id="745-IU-vxL"/>
+                        <segue destination="8XX-Uw-yM2" kind="push" id="b0A-mG-FAV"/>
+                        <segue destination="QCm-lG-qDa" kind="push" id="8Mq-TR-D72"/>
+                        <segue destination="nOa-DE-G6F" kind="push" id="WhV-eG-vIp"/>
+                        <segue destination="s86-6F-xga" kind="push" id="Px3-la-6CE"/>
+                        <segue destination="SNM-4g-TUh" kind="push" id="xJT-WV-HVf"/>
+                        <segue destination="y6m-Dc-NCS" kind="push" id="nBy-v5-T4O"/>
+                        <segue destination="nPl-yN-YsA" kind="push" id="JQN-D7-2ef"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w50-G1-uXR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1281" y="3851"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="xqy-jZ-paX">
+            <objects>
+                <viewController storyboardIdentifier="loginViewController" id="XEf-3t-3rB" customClass="LoginViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZBl-1Z-dOs"/>
+                        <viewControllerLayoutGuide type="bottom" id="4or-mf-RjC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yXT-4n-prn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ugz-QB-XbV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ugz-QB-XbV" firstAttribute="width" secondItem="yXT-4n-prn" secondAttribute="width" id="MLG-5R-axS"/>
+                            <constraint firstItem="ugz-QB-XbV" firstAttribute="centerX" secondItem="yXT-4n-prn" secondAttribute="centerX" id="NUH-32-TXH"/>
+                            <constraint firstItem="ugz-QB-XbV" firstAttribute="height" secondItem="yXT-4n-prn" secondAttribute="height" id="aSp-ae-iN4"/>
+                            <constraint firstItem="ugz-QB-XbV" firstAttribute="centerY" secondItem="yXT-4n-prn" secondAttribute="centerY" id="ePq-Bv-teG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="EHh-x2-Dze"/>
+                    <connections>
+                        <outlet property="mainView" destination="ugz-QB-XbV" id="0Ma-7U-DB0"/>
+                        <segue destination="KLh-xt-C8G" kind="push" id="g9F-eM-bCX"/>
+                        <segue destination="Err-zJ-E1z" kind="push" id="x5u-fV-dHU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s72-r3-wll" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2177" y="1576"/>
+        </scene>
+        <!--银行理财-->
+        <scene sceneID="2r7-pj-eC5">
+            <objects>
+                <navigationController storyboardIdentifier="productNavigationController" id="qq3-C7-F2B" customClass="BaseNavigationController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="银行理财" image="tab_product_normal" landscapeImage="tab_product_normal" selectedImage="tab_product_selected" id="NGD-EZ-DeD"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bH1-wK-foJ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qmT-Gh-bs5" kind="relationship" relationship="rootViewController" id="q1v-1W-WCz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bMA-Mn-fzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="334" y="-733"/>
+        </scene>
+        <!--银行理财产品-->
+        <scene sceneID="93S-No-9mQ">
+            <objects>
+                <viewController storyboardIdentifier="productListViewController" id="qmT-Gh-bs5" customClass="ProductListViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qx2-Mn-ora"/>
+                        <viewControllerLayoutGuide type="bottom" id="d3F-Qf-Sew"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cDZ-3X-Hel">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EuA-ye-v78">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EuA-ye-v78" firstAttribute="height" secondItem="cDZ-3X-Hel" secondAttribute="height" id="CRI-JE-c8e"/>
+                            <constraint firstItem="EuA-ye-v78" firstAttribute="centerY" secondItem="cDZ-3X-Hel" secondAttribute="centerY" id="kRa-S5-lGU"/>
+                            <constraint firstItem="EuA-ye-v78" firstAttribute="width" secondItem="cDZ-3X-Hel" secondAttribute="width" id="ogm-ea-ht0"/>
+                            <constraint firstItem="EuA-ye-v78" firstAttribute="centerX" secondItem="cDZ-3X-Hel" secondAttribute="centerX" id="ora-An-0g8"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="银行理财" image="tab_product_normal" landscapeImage="tab_product_normal" selectedImage="tab_product_selected" id="FFn-go-aeb">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="银行理财产品" id="0Ec-Ea-cHM">
+                        <barButtonItem key="rightBarButtonItem" id="cID-Cv-Gq7"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mainView" destination="EuA-ye-v78" id="fMq-de-LmW"/>
+                        <segue destination="fmu-MK-9bu" kind="show" identifier="toProductDetail" id="bGe-mg-oVe"/>
+                        <segue destination="K8p-Kx-Npo" kind="show" id="Sde-2L-v4J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n7t-uq-7yR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1281" y="-732"/>
+        </scene>
+        <!--搜索产品-->
+        <scene sceneID="6Td-lW-HZO">
+            <objects>
+                <viewController storyboardIdentifier="productSearchViewController" id="K8p-Kx-Npo" customClass="ProductSearchViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="duE-3t-zQK"/>
+                        <viewControllerLayoutGuide type="bottom" id="J34-Kd-fgm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ene-eN-WAD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Exb-rh-Eri">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Exb-rh-Eri" firstAttribute="centerX" secondItem="ene-eN-WAD" secondAttribute="centerX" id="8SJ-Tj-WlC"/>
+                            <constraint firstItem="Exb-rh-Eri" firstAttribute="width" secondItem="ene-eN-WAD" secondAttribute="width" id="BNo-xO-oaY"/>
+                            <constraint firstItem="Exb-rh-Eri" firstAttribute="centerY" secondItem="ene-eN-WAD" secondAttribute="centerY" id="CrS-Ur-P1R"/>
+                            <constraint firstItem="Exb-rh-Eri" firstAttribute="height" secondItem="ene-eN-WAD" secondAttribute="height" id="cNv-AV-f8O"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="搜索产品" id="Vid-ow-wzJ"/>
+                    <connections>
+                        <outlet property="mainView" destination="Exb-rh-Eri" id="6uO-tg-8Me"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uxn-gI-4BA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2177" y="-1514"/>
+        </scene>
+        <!--产品详情-->
+        <scene sceneID="usf-sI-Lfx">
+            <objects>
+                <viewController storyboardIdentifier="productDetailViewController" id="fmu-MK-9bu" customClass="ProductDetailViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qny-Jk-p0c"/>
+                        <viewControllerLayoutGuide type="bottom" id="zXl-jv-gq5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KhF-VA-zrv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0s-Kd-lmM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Y0s-Kd-lmM" firstAttribute="width" secondItem="KhF-VA-zrv" secondAttribute="width" id="4uD-29-hAM"/>
+                            <constraint firstItem="Y0s-Kd-lmM" firstAttribute="centerY" secondItem="KhF-VA-zrv" secondAttribute="centerY" id="6yP-tN-bfD"/>
+                            <constraint firstItem="Y0s-Kd-lmM" firstAttribute="height" secondItem="KhF-VA-zrv" secondAttribute="height" id="Ik8-Ja-Obb"/>
+                            <constraint firstItem="Y0s-Kd-lmM" firstAttribute="centerX" secondItem="KhF-VA-zrv" secondAttribute="centerX" id="Okg-SE-fi3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="产品详情" id="BU3-fh-Py5"/>
+                    <connections>
+                        <outlet property="mainView" destination="Y0s-Kd-lmM" id="z14-VR-9oy"/>
+                        <segue destination="7I4-4a-JRE" kind="show" identifier="toProductInstruction" id="Fcv-p5-iu9"/>
+                        <segue destination="A3O-BT-uux" kind="show" id="48u-ER-QdJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r58-ZS-TN1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2177" y="-734"/>
+        </scene>
+        <!--Base Tab Bar Controller-->
+        <scene sceneID="zyE-gG-UjH">
+            <objects>
+                <tabBarController storyboardIdentifier="baseTabBarController" id="AmQ-Nq-tQO" customClass="BaseTabBarController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="aRf-m9-U4d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="qq3-C7-F2B" kind="relationship" relationship="viewControllers" id="GaN-uL-zfp"/>
+                        <segue destination="y8d-Xr-QnV" kind="relationship" relationship="viewControllers" id="wpe-HU-QIb"/>
+                        <segue destination="nl8-QE-XMJ" kind="relationship" relationship="viewControllers" id="A5Q-DB-p9j"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h69-4Y-cGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-564" y="38"/>
+        </scene>
+        <!--我的持仓-->
+        <scene sceneID="g8k-nL-F6K">
+            <objects>
+                <navigationController storyboardIdentifier="myNavigationController" id="y8d-Xr-QnV" customClass="BaseNavigationController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="我的持仓" image="tab_my_normal" landscapeImage="tab_my_normal" selectedImage="tab_my_selected" id="ByP-w1-b4L"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ztW-8V-718">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9PH-vi-18v" kind="relationship" relationship="rootViewController" id="lBA-aF-R9O"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cxK-IP-HQD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="334" y="38"/>
+        </scene>
+        <!--个人中心-->
+        <scene sceneID="4rj-z8-Jkb">
+            <objects>
+                <navigationController storyboardIdentifier="meNavigationController" id="nl8-QE-XMJ" customClass="BaseNavigationController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="个人中心" image="tab_me_normal" landscapeImage="tab_me_normal" selectedImage="tab_me_selected" id="RsT-hG-ln2"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2kO-un-aN6">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tel-hm-gNX">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="jGW-PL-r3C" kind="relationship" relationship="rootViewController" id="Hwv-mh-GVv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZGs-ae-o9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="334" y="3852"/>
+        </scene>
+        <!--联系我们-->
+        <scene sceneID="vNC-bb-bl5">
+            <objects>
+                <viewController storyboardIdentifier="contactViewController" id="Udd-Ib-t8u" customClass="ContactViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IWL-sD-N2S"/>
+                        <viewControllerLayoutGuide type="bottom" id="ci4-UH-7kg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tAV-vG-H1f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZvM-Yi-mr4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZvM-Yi-mr4" firstAttribute="width" secondItem="tAV-vG-H1f" secondAttribute="width" id="0ud-AN-kmW"/>
+                            <constraint firstItem="ZvM-Yi-mr4" firstAttribute="centerY" secondItem="tAV-vG-H1f" secondAttribute="centerY" id="7gl-gX-yYm"/>
+                            <constraint firstItem="ZvM-Yi-mr4" firstAttribute="centerX" secondItem="tAV-vG-H1f" secondAttribute="centerX" id="SlL-eS-SVH"/>
+                            <constraint firstItem="ZvM-Yi-mr4" firstAttribute="height" secondItem="tAV-vG-H1f" secondAttribute="height" id="b61-uY-Mdm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="联系我们" largeTitleDisplayMode="always" id="dDG-vI-BL2"/>
+                    <connections>
+                        <outlet property="mainView" destination="ZvM-Yi-mr4" id="dGD-XB-14C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1GY-y3-piT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2177" y="3098"/>
+        </scene>
+        <!--实名认证-->
+        <scene sceneID="aaV-9g-hGA">
+            <objects>
+                <viewController storyboardIdentifier="idcardAuthViewController" id="8XX-Uw-yM2" customClass="IdcardAuthViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jdA-ve-WWF"/>
+                        <viewControllerLayoutGuide type="bottom" id="VLL-nd-s0e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4xL-Ie-7cy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GPm-sp-dPb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GPm-sp-dPb" firstAttribute="centerY" secondItem="4xL-Ie-7cy" secondAttribute="centerY" id="IMk-2z-pMz"/>
+                            <constraint firstItem="GPm-sp-dPb" firstAttribute="height" secondItem="4xL-Ie-7cy" secondAttribute="height" id="mRv-AS-ljG"/>
+                            <constraint firstItem="GPm-sp-dPb" firstAttribute="centerX" secondItem="4xL-Ie-7cy" secondAttribute="centerX" id="ocR-rA-lgX"/>
+                            <constraint firstItem="GPm-sp-dPb" firstAttribute="width" secondItem="4xL-Ie-7cy" secondAttribute="width" id="rvf-E2-xoz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="实名认证" id="E0C-Iq-N1i"/>
+                    <connections>
+                        <outlet property="mainView" destination="GPm-sp-dPb" id="xlF-Rv-PXN"/>
+                        <segue destination="BgO-sN-dgy" kind="push" id="qBv-bD-tiA"/>
+                        <segue destination="ST6-u8-9lq" kind="push" id="bOZ-Xn-B6v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tfE-rU-1B7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2177" y="3852"/>
+        </scene>
+        <!--实名认证-->
+        <scene sceneID="2OP-X4-0Ny">
+            <objects>
+                <viewController storyboardIdentifier="idcardSuccessViewController" id="BgO-sN-dgy" customClass="IdcardSuccessViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0NZ-Cb-b9O"/>
+                        <viewControllerLayoutGuide type="bottom" id="LiT-WE-xqW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oH4-ak-tcy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9rk-jI-1JM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9rk-jI-1JM" firstAttribute="width" secondItem="oH4-ak-tcy" secondAttribute="width" id="184-lm-E7w"/>
+                            <constraint firstItem="9rk-jI-1JM" firstAttribute="centerX" secondItem="oH4-ak-tcy" secondAttribute="centerX" id="C0b-Kc-x15"/>
+                            <constraint firstItem="9rk-jI-1JM" firstAttribute="height" secondItem="oH4-ak-tcy" secondAttribute="height" id="MpI-YW-0Ua"/>
+                            <constraint firstItem="9rk-jI-1JM" firstAttribute="centerY" secondItem="oH4-ak-tcy" secondAttribute="centerY" id="k25-n6-yAe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="实名认证" id="vxs-Hq-yPw"/>
+                    <connections>
+                        <outlet property="mainView" destination="9rk-jI-1JM" id="Op2-zx-5q7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7b7-FL-oJl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3084" y="3098"/>
+        </scene>
+        <!--产品说明书-->
+        <scene sceneID="W4l-gj-tj8">
+            <objects>
+                <viewController storyboardIdentifier="productInstructionViewController" id="7I4-4a-JRE" customClass="ProductInstructionViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="miz-5P-hal"/>
+                        <viewControllerLayoutGuide type="bottom" id="sK1-YG-PeK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FbX-Pb-rA7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Exw-2a-wPE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Exw-2a-wPE" firstAttribute="height" secondItem="FbX-Pb-rA7" secondAttribute="height" id="5bX-mb-zFq"/>
+                            <constraint firstItem="Exw-2a-wPE" firstAttribute="centerX" secondItem="FbX-Pb-rA7" secondAttribute="centerX" id="MKW-zM-Gce"/>
+                            <constraint firstItem="Exw-2a-wPE" firstAttribute="width" secondItem="FbX-Pb-rA7" secondAttribute="width" id="bkA-a1-z0J"/>
+                            <constraint firstItem="Exw-2a-wPE" firstAttribute="centerY" secondItem="FbX-Pb-rA7" secondAttribute="centerY" id="lcB-Zs-Na2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="产品说明书" id="p4v-2C-8WR"/>
+                    <connections>
+                        <outlet property="mainView" destination="Exw-2a-wPE" id="ccF-s3-8bo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hyV-Zj-EKL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3084" y="-734"/>
+        </scene>
+        <!--购买理财-->
+        <scene sceneID="nzO-1l-dkY">
+            <objects>
+                <viewController storyboardIdentifier="productBuyViewController" id="A3O-BT-uux" customClass="ProductBuyViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WiK-54-iZY"/>
+                        <viewControllerLayoutGuide type="bottom" id="8PD-MX-wyi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Knv-F4-HCW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7w6-V0-Yyq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7w6-V0-Yyq" firstAttribute="centerY" secondItem="Knv-F4-HCW" secondAttribute="centerY" id="70D-dy-KLH"/>
+                            <constraint firstItem="7w6-V0-Yyq" firstAttribute="width" secondItem="Knv-F4-HCW" secondAttribute="width" id="Rpa-xf-ok6"/>
+                            <constraint firstItem="7w6-V0-Yyq" firstAttribute="centerX" secondItem="Knv-F4-HCW" secondAttribute="centerX" id="Xc9-Tp-43z"/>
+                            <constraint firstItem="7w6-V0-Yyq" firstAttribute="height" secondItem="Knv-F4-HCW" secondAttribute="height" id="eJI-ih-f4k"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="购买理财" id="QBK-al-JAg"/>
+                    <connections>
+                        <outlet property="mainView" destination="7w6-V0-Yyq" id="doy-n0-WUQ"/>
+                        <segue destination="IHh-ac-nQ0" kind="push" id="VLl-h8-YY9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KX7-go-Hck" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3084" y="-1514"/>
+        </scene>
+        <!--Register View Controller-->
+        <scene sceneID="bBc-Nw-mgM">
+            <objects>
+                <viewController storyboardIdentifier="registerViewController" id="Err-zJ-E1z" customClass="RegisterViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TXm-G9-zGR"/>
+                        <viewControllerLayoutGuide type="bottom" id="k67-YK-FkZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lQO-RP-5tC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdI-Nm-Fxq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bdI-Nm-Fxq" firstAttribute="centerX" secondItem="lQO-RP-5tC" secondAttribute="centerX" id="5og-j9-Prw"/>
+                            <constraint firstItem="bdI-Nm-Fxq" firstAttribute="width" secondItem="lQO-RP-5tC" secondAttribute="width" id="5oj-bF-pcs"/>
+                            <constraint firstItem="bdI-Nm-Fxq" firstAttribute="height" secondItem="lQO-RP-5tC" secondAttribute="height" id="X2Y-qk-q9U"/>
+                            <constraint firstItem="bdI-Nm-Fxq" firstAttribute="centerY" secondItem="lQO-RP-5tC" secondAttribute="centerY" id="bNu-QP-wq9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7Ot-O0-GoI"/>
+                    <connections>
+                        <outlet property="mainView" destination="bdI-Nm-Fxq" id="Cby-oM-kOg"/>
+                        <segue destination="GSk-gO-3NH" kind="push" id="iGW-vQ-Bhv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="92e-5p-7db" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3084" y="1576"/>
+        </scene>
+        <!--找回密码-->
+        <scene sceneID="8vA-1O-twe">
+            <objects>
+                <viewController storyboardIdentifier="resetConfirmViewController" id="KLh-xt-C8G" customClass="ResetConfirmViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Oa1-QY-jYy"/>
+                        <viewControllerLayoutGuide type="bottom" id="f9E-WK-yUq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OAk-gA-THy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8eG-8v-4Uu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8eG-8v-4Uu" firstAttribute="centerX" secondItem="OAk-gA-THy" secondAttribute="centerX" id="3SK-hq-reW"/>
+                            <constraint firstItem="8eG-8v-4Uu" firstAttribute="width" secondItem="OAk-gA-THy" secondAttribute="width" id="Qsy-c8-H4x"/>
+                            <constraint firstItem="8eG-8v-4Uu" firstAttribute="height" secondItem="OAk-gA-THy" secondAttribute="height" id="SGI-Zr-rK4"/>
+                            <constraint firstItem="8eG-8v-4Uu" firstAttribute="centerY" secondItem="OAk-gA-THy" secondAttribute="centerY" id="esP-e5-pre"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="找回密码" id="D39-Ob-yBV"/>
+                    <connections>
+                        <outlet property="mainView" destination="8eG-8v-4Uu" id="yMU-80-rX7"/>
+                        <segue destination="xDV-WV-4uv" kind="push" id="7Wh-5v-4O8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="85d-qv-uRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3084" y="2336"/>
+        </scene>
+        <!--重置密码-->
+        <scene sceneID="hdM-76-ort">
+            <objects>
+                <viewController storyboardIdentifier="resetPwdViewController" id="xDV-WV-4uv" customClass="ResetPwdViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qm1-2A-LoP"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bm9-cD-Af2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rFh-Pm-f5a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVB-qO-zaz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GVB-qO-zaz" firstAttribute="height" secondItem="rFh-Pm-f5a" secondAttribute="height" id="GjB-gT-ogp"/>
+                            <constraint firstItem="GVB-qO-zaz" firstAttribute="width" secondItem="rFh-Pm-f5a" secondAttribute="width" id="MS4-3g-d0i"/>
+                            <constraint firstItem="GVB-qO-zaz" firstAttribute="centerY" secondItem="rFh-Pm-f5a" secondAttribute="centerY" id="UoF-xv-uLp"/>
+                            <constraint firstItem="GVB-qO-zaz" firstAttribute="centerX" secondItem="rFh-Pm-f5a" secondAttribute="centerX" id="igG-g1-8bL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="重置密码" id="mAH-UG-kgz"/>
+                    <connections>
+                        <outlet property="mainView" destination="GVB-qO-zaz" id="a5o-zZ-K9C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n0W-Xa-Zd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3993" y="2336"/>
+        </scene>
+        <!--Pdf View Controller-->
+        <scene sceneID="b2I-ZC-ovO">
+            <objects>
+                <viewController storyboardIdentifier="pdfViewController" id="GSk-gO-3NH" customClass="PdfViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yBc-gM-S0n"/>
+                        <viewControllerLayoutGuide type="bottom" id="hIm-Pd-A44"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="x0s-0y-DYO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9GC-hJ-Njc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9GC-hJ-Njc" firstAttribute="width" secondItem="x0s-0y-DYO" secondAttribute="width" id="Bbz-Ga-Iso"/>
+                            <constraint firstItem="9GC-hJ-Njc" firstAttribute="centerY" secondItem="x0s-0y-DYO" secondAttribute="centerY" id="DT8-f9-m5n"/>
+                            <constraint firstItem="9GC-hJ-Njc" firstAttribute="height" secondItem="x0s-0y-DYO" secondAttribute="height" id="Kev-BM-8Uc"/>
+                            <constraint firstItem="9GC-hJ-Njc" firstAttribute="centerX" secondItem="x0s-0y-DYO" secondAttribute="centerX" id="f8M-7B-REJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Htg-QX-mQv"/>
+                    <connections>
+                        <outlet property="mainView" destination="9GC-hJ-Njc" id="EPf-LV-zRS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Z5-ib-zNc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3994" y="1576"/>
+        </scene>
+        <!--银行卡-->
+        <scene sceneID="lRD-mF-tRV">
+            <objects>
+                <viewController storyboardIdentifier="bankcardListViewController" id="QCm-lG-qDa" customClass="BankcardListViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="30M-S8-OCi"/>
+                        <viewControllerLayoutGuide type="bottom" id="ALg-Ha-HqH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r5s-wY-fUB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ha0-nP-iSI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ha0-nP-iSI" firstAttribute="centerX" secondItem="r5s-wY-fUB" secondAttribute="centerX" id="9pP-zr-7eF"/>
+                            <constraint firstItem="Ha0-nP-iSI" firstAttribute="width" secondItem="r5s-wY-fUB" secondAttribute="width" id="PnH-NN-l0v"/>
+                            <constraint firstItem="Ha0-nP-iSI" firstAttribute="height" secondItem="r5s-wY-fUB" secondAttribute="height" id="jBN-x1-KU9"/>
+                            <constraint firstItem="Ha0-nP-iSI" firstAttribute="centerY" secondItem="r5s-wY-fUB" secondAttribute="centerY" id="lUn-gr-pie"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="银行卡" id="BbB-WG-9CS"/>
+                    <connections>
+                        <outlet property="mainView" destination="Ha0-nP-iSI" id="s9Q-6D-jPL"/>
+                        <segue destination="mwN-ky-bbg" kind="push" id="7Xz-Ax-2re"/>
+                        <segue destination="iuI-pg-RG4" kind="push" id="LRr-jG-Dc1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TWj-vD-8NF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2177" y="4595"/>
+        </scene>
+        <!--实名认证-->
+        <scene sceneID="qa3-XK-3Ei">
+            <objects>
+                <viewController storyboardIdentifier="idcardFailedViewController" id="ST6-u8-9lq" customClass="IdcardFailedViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mcs-My-U0y"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kzc-Vt-Bfo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0e4-BD-UO7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDS-8U-vAI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XDS-8U-vAI" firstAttribute="width" secondItem="0e4-BD-UO7" secondAttribute="width" id="39i-YL-QN4"/>
+                            <constraint firstItem="XDS-8U-vAI" firstAttribute="centerX" secondItem="0e4-BD-UO7" secondAttribute="centerX" id="7J7-53-1v6"/>
+                            <constraint firstItem="XDS-8U-vAI" firstAttribute="height" secondItem="0e4-BD-UO7" secondAttribute="height" id="Csn-bd-QOs"/>
+                            <constraint firstItem="XDS-8U-vAI" firstAttribute="centerY" secondItem="0e4-BD-UO7" secondAttribute="centerY" id="nbS-FR-0hl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="实名认证" id="RsB-rb-AGu"/>
+                    <connections>
+                        <outlet property="mainView" destination="XDS-8U-vAI" id="yAX-aG-IrH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NhU-fD-Itm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3084" y="3853"/>
+        </scene>
+        <!--添加银行卡-->
+        <scene sceneID="VmM-Tz-Y6s">
+            <objects>
+                <viewController storyboardIdentifier="bankcardBindViewController" id="mwN-ky-bbg" customClass="BankcardBindViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fQZ-HN-ImE"/>
+                        <viewControllerLayoutGuide type="bottom" id="SqH-DQ-TH3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BHi-Ri-Ffi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UhO-nX-45T">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UhO-nX-45T" firstAttribute="height" secondItem="BHi-Ri-Ffi" secondAttribute="height" id="4hj-X6-tKg"/>
+                            <constraint firstItem="UhO-nX-45T" firstAttribute="centerX" secondItem="BHi-Ri-Ffi" secondAttribute="centerX" id="JRT-BB-KSl"/>
+                            <constraint firstItem="UhO-nX-45T" firstAttribute="centerY" secondItem="BHi-Ri-Ffi" secondAttribute="centerY" id="RGX-P2-Ray"/>
+                            <constraint firstItem="UhO-nX-45T" firstAttribute="width" secondItem="BHi-Ri-Ffi" secondAttribute="width" id="tIv-oK-eNz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="添加银行卡" id="HoA-tw-Yfk"/>
+                    <connections>
+                        <outlet property="mainView" destination="UhO-nX-45T" id="1Sv-hy-n5x"/>
+                        <segue destination="gI7-ej-oFx" kind="push" id="Ngf-1x-5XB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tkf-LE-uff" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3084" y="4594"/>
+        </scene>
+        <!--交易限额-->
+        <scene sceneID="ItM-ST-qel">
+            <objects>
+                <viewController storyboardIdentifier="bankcardDetailViewController" id="iuI-pg-RG4" customClass="BankcardDetailViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="w5w-aI-STX"/>
+                        <viewControllerLayoutGuide type="bottom" id="JE5-VT-PBv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9B3-q4-nsM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fW8-II-sjj">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fW8-II-sjj" firstAttribute="centerX" secondItem="9B3-q4-nsM" secondAttribute="centerX" id="Eue-Af-yPS"/>
+                            <constraint firstItem="fW8-II-sjj" firstAttribute="centerY" secondItem="9B3-q4-nsM" secondAttribute="centerY" id="S6r-nX-iGA"/>
+                            <constraint firstItem="fW8-II-sjj" firstAttribute="width" secondItem="9B3-q4-nsM" secondAttribute="width" id="SIG-KP-KcV"/>
+                            <constraint firstItem="fW8-II-sjj" firstAttribute="height" secondItem="9B3-q4-nsM" secondAttribute="height" id="UbU-Ee-agP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="交易限额" id="WVN-ar-t96"/>
+                    <connections>
+                        <outlet property="mainView" destination="fW8-II-sjj" id="akc-vK-nRh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Vf-G6-VEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3084" y="5342"/>
+        </scene>
+        <!--添加银行卡-->
+        <scene sceneID="hIE-Fb-vVH">
+            <objects>
+                <viewController storyboardIdentifier="bankChooseViewController" id="gI7-ej-oFx" customClass="BankChooseViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Os9-NB-var"/>
+                        <viewControllerLayoutGuide type="bottom" id="5F0-8P-eKY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8cZ-cF-eT5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3cJ-nc-3J3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3cJ-nc-3J3" firstAttribute="centerY" secondItem="8cZ-cF-eT5" secondAttribute="centerY" id="QGr-sT-zeC"/>
+                            <constraint firstItem="3cJ-nc-3J3" firstAttribute="centerX" secondItem="8cZ-cF-eT5" secondAttribute="centerX" id="hi3-DC-cE6"/>
+                            <constraint firstItem="3cJ-nc-3J3" firstAttribute="height" secondItem="8cZ-cF-eT5" secondAttribute="height" id="vc9-mz-8tf"/>
+                            <constraint firstItem="3cJ-nc-3J3" firstAttribute="width" secondItem="8cZ-cF-eT5" secondAttribute="width" id="x3J-Ns-6sJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="添加银行卡" id="LGj-Tg-bZw"/>
+                    <connections>
+                        <outlet property="mainView" destination="3cJ-nc-3J3" id="s6c-Zw-uhn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g5O-js-c7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3993" y="4594"/>
+        </scene>
+        <!--交易记录-->
+        <scene sceneID="TxP-Ka-jNU">
+            <objects>
+                <viewController storyboardIdentifier="historyViewController" id="nOa-DE-G6F" customClass="HistoryViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9od-3t-bVs"/>
+                        <viewControllerLayoutGuide type="bottom" id="pwr-NN-0RL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eqD-ZL-av4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gND-Lh-Hwe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gND-Lh-Hwe" firstAttribute="width" secondItem="eqD-ZL-av4" secondAttribute="width" id="N6q-pS-Isn"/>
+                            <constraint firstItem="gND-Lh-Hwe" firstAttribute="centerX" secondItem="eqD-ZL-av4" secondAttribute="centerX" id="QMS-BG-LLc"/>
+                            <constraint firstItem="gND-Lh-Hwe" firstAttribute="height" secondItem="eqD-ZL-av4" secondAttribute="height" id="gMO-3g-bfZ"/>
+                            <constraint firstItem="gND-Lh-Hwe" firstAttribute="centerY" secondItem="eqD-ZL-av4" secondAttribute="centerY" id="yU1-fZ-7NW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="交易记录" largeTitleDisplayMode="always" id="fyh-jG-2UK"/>
+                    <connections>
+                        <outlet property="mainView" destination="gND-Lh-Hwe" id="gIb-Uu-9mg"/>
+                        <segue destination="wEZ-eV-2CH" kind="push" id="C2X-pL-UXn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MF1-y4-ejF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2177" y="6105"/>
+        </scene>
+        <!--交易详情-->
+        <scene sceneID="Poe-DW-f10">
+            <objects>
+                <viewController storyboardIdentifier="historyDetailViewController" id="wEZ-eV-2CH" customClass="HistoryDetailViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="odL-32-Dfb"/>
+                        <viewControllerLayoutGuide type="bottom" id="FqY-w9-zVQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4AP-Bk-koa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CTE-BO-A52">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CTE-BO-A52" firstAttribute="width" secondItem="4AP-Bk-koa" secondAttribute="width" id="JUX-jA-tOf"/>
+                            <constraint firstItem="CTE-BO-A52" firstAttribute="height" secondItem="4AP-Bk-koa" secondAttribute="height" id="O0f-Mu-eeD"/>
+                            <constraint firstItem="CTE-BO-A52" firstAttribute="centerX" secondItem="4AP-Bk-koa" secondAttribute="centerX" id="kdm-Dc-0VK"/>
+                            <constraint firstItem="CTE-BO-A52" firstAttribute="centerY" secondItem="4AP-Bk-koa" secondAttribute="centerY" id="xRL-gN-N2y"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="交易详情" largeTitleDisplayMode="always" id="jDK-ty-br2"/>
+                    <connections>
+                        <outlet property="mainView" destination="CTE-BO-A52" id="OQA-Em-xoM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qbm-Z1-xzk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3084" y="6105"/>
+        </scene>
+        <!--结果详情-->
+        <scene sceneID="rXd-oZ-ofh">
+            <objects>
+                <viewController storyboardIdentifier="productBuyResultViewController" id="IHh-ac-nQ0" customClass="ProductBuyResultViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PUy-it-eGP"/>
+                        <viewControllerLayoutGuide type="bottom" id="gIE-7Z-9O5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XnE-L6-VaE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o0a-4I-FD1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="o0a-4I-FD1" firstAttribute="height" secondItem="XnE-L6-VaE" secondAttribute="height" id="Ofn-Mj-6vE"/>
+                            <constraint firstItem="o0a-4I-FD1" firstAttribute="width" secondItem="XnE-L6-VaE" secondAttribute="width" id="TMs-qf-fYF"/>
+                            <constraint firstItem="o0a-4I-FD1" firstAttribute="centerX" secondItem="XnE-L6-VaE" secondAttribute="centerX" id="UCi-Dr-3Hc"/>
+                            <constraint firstItem="o0a-4I-FD1" firstAttribute="centerY" secondItem="XnE-L6-VaE" secondAttribute="centerY" id="UzW-4e-C4V"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="结果详情" id="K0X-Zf-0f5"/>
+                    <connections>
+                        <outlet property="mainView" destination="o0a-4I-FD1" id="ADj-k6-gTd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="23I-aN-vSV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3993" y="-1514"/>
+        </scene>
+        <!--充值-->
+        <scene sceneID="pho-ws-wtZ">
+            <objects>
+                <viewController storyboardIdentifier="alipayRechargeViewController" id="XwQ-j0-m29" customClass="AlipayRechargeViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sEn-Zh-f9U"/>
+                        <viewControllerLayoutGuide type="bottom" id="AcM-Uq-W2G"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ske-PS-bta">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YCX-PH-c1Z">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YCX-PH-c1Z" firstAttribute="centerY" secondItem="ske-PS-bta" secondAttribute="centerY" id="4DE-az-heb"/>
+                            <constraint firstItem="YCX-PH-c1Z" firstAttribute="height" secondItem="ske-PS-bta" secondAttribute="height" id="988-2h-6DR"/>
+                            <constraint firstItem="YCX-PH-c1Z" firstAttribute="width" secondItem="ske-PS-bta" secondAttribute="width" id="bhw-fJ-3ax"/>
+                            <constraint firstItem="YCX-PH-c1Z" firstAttribute="centerX" secondItem="ske-PS-bta" secondAttribute="centerX" id="mEC-Eu-d0G"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="充值" id="wMp-iU-amg"/>
+                    <connections>
+                        <outlet property="mainView" destination="YCX-PH-c1Z" id="bnm-7L-qvB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aaq-Bp-PaP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2177" y="38"/>
+        </scene>
+        <!--提现-->
+        <scene sceneID="9sB-nD-B7j">
+            <objects>
+                <viewController storyboardIdentifier="withdrawViewController" id="jT5-tN-c29" customClass="WithdrawViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gLY-X9-QvR"/>
+                        <viewControllerLayoutGuide type="bottom" id="uVB-5m-eTg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r4p-Nn-yLJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mwB-y2-1qS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mwB-y2-1qS" firstAttribute="width" secondItem="r4p-Nn-yLJ" secondAttribute="width" id="VKf-SA-M3u"/>
+                            <constraint firstItem="mwB-y2-1qS" firstAttribute="centerY" secondItem="r4p-Nn-yLJ" secondAttribute="centerY" id="VZy-LP-3XA"/>
+                            <constraint firstItem="mwB-y2-1qS" firstAttribute="centerX" secondItem="r4p-Nn-yLJ" secondAttribute="centerX" id="ZHY-Ui-Y7i"/>
+                            <constraint firstItem="mwB-y2-1qS" firstAttribute="height" secondItem="r4p-Nn-yLJ" secondAttribute="height" id="ZSZ-4V-GYy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="提现" id="Wkg-ap-FnO"/>
+                    <connections>
+                        <outlet property="mainView" destination="mwB-y2-1qS" id="tOy-5E-mSd"/>
+                        <segue destination="0Ce-Ql-HH9" kind="push" id="dPn-MV-3C2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X0J-dO-ofs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2177" y="806"/>
+        </scene>
+        <!--提现申请-->
+        <scene sceneID="RzJ-Cn-uhD">
+            <objects>
+                <viewController storyboardIdentifier="withdrawResultViewController" id="0Ce-Ql-HH9" customClass="WithdrawResultViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2gy-a5-2ff"/>
+                        <viewControllerLayoutGuide type="bottom" id="K8T-dW-Pjf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="B2k-ao-xcx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ec6-Va-4ei">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ec6-Va-4ei" firstAttribute="centerY" secondItem="B2k-ao-xcx" secondAttribute="centerY" id="4dI-tw-j9s"/>
+                            <constraint firstItem="ec6-Va-4ei" firstAttribute="width" secondItem="B2k-ao-xcx" secondAttribute="width" id="GIP-1G-QPO"/>
+                            <constraint firstItem="ec6-Va-4ei" firstAttribute="height" secondItem="B2k-ao-xcx" secondAttribute="height" id="YCt-j1-879"/>
+                            <constraint firstItem="ec6-Va-4ei" firstAttribute="centerX" secondItem="B2k-ao-xcx" secondAttribute="centerX" id="qgO-ZE-EaR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="提现申请" id="x8l-2x-H6X"/>
+                    <connections>
+                        <outlet property="mainView" destination="ec6-Va-4ei" id="raD-nj-PbV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nsL-SL-4TA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3084" y="806"/>
+        </scene>
+        <!--购买详情-->
+        <scene sceneID="Ugq-tI-NtX">
+            <objects>
+                <viewController storyboardIdentifier="myDetailViewController" id="mxs-fb-CZ0" customClass="MyDetailViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vqC-4T-Wb3"/>
+                        <viewControllerLayoutGuide type="bottom" id="G3a-Eq-1Qq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W35-Vk-8Q3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yr0-Lz-p3Z">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yr0-Lz-p3Z" firstAttribute="centerY" secondItem="W35-Vk-8Q3" secondAttribute="centerY" id="9Re-iT-stu"/>
+                            <constraint firstItem="yr0-Lz-p3Z" firstAttribute="centerX" secondItem="W35-Vk-8Q3" secondAttribute="centerX" id="Rod-Yk-BZe"/>
+                            <constraint firstItem="yr0-Lz-p3Z" firstAttribute="height" secondItem="W35-Vk-8Q3" secondAttribute="height" id="Sqg-hJ-2Z4"/>
+                            <constraint firstItem="yr0-Lz-p3Z" firstAttribute="width" secondItem="W35-Vk-8Q3" secondAttribute="width" id="guR-Ec-OOG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="购买详情" id="GbN-l9-2Mq"/>
+                    <connections>
+                        <outlet property="mainView" destination="yr0-Lz-p3Z" id="d9e-3y-eKb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R2T-KP-MJi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1281" y="806"/>
+        </scene>
+        <!--绑定支付宝-->
+        <scene sceneID="blo-gk-Zzs">
+            <objects>
+                <viewController storyboardIdentifier="alipayResultViewController" id="s86-6F-xga" customClass="AlipayResultViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vz8-IS-heN"/>
+                        <viewControllerLayoutGuide type="bottom" id="DAy-3A-LlA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mMb-nU-Nr5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dnk-IN-Crr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Dnk-IN-Crr" firstAttribute="height" secondItem="mMb-nU-Nr5" secondAttribute="height" id="8Hs-zz-fzK"/>
+                            <constraint firstItem="Dnk-IN-Crr" firstAttribute="centerX" secondItem="mMb-nU-Nr5" secondAttribute="centerX" id="9o9-c3-aMW"/>
+                            <constraint firstItem="Dnk-IN-Crr" firstAttribute="width" secondItem="mMb-nU-Nr5" secondAttribute="width" id="VPi-cw-Er9"/>
+                            <constraint firstItem="Dnk-IN-Crr" firstAttribute="centerY" secondItem="mMb-nU-Nr5" secondAttribute="centerY" id="ckM-tV-osw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="绑定支付宝" largeTitleDisplayMode="always" id="Ejf-68-DYd"/>
+                    <connections>
+                        <outlet property="mainView" destination="Dnk-IN-Crr" id="aSw-35-3eI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s3q-RQ-A7v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2177" y="6874"/>
+        </scene>
+        <!--设置密码-->
+        <scene sceneID="iYD-Lj-GRP">
+            <objects>
+                <viewController storyboardIdentifier="modifyPwdViewController" id="SNM-4g-TUh" customClass="ModifyPwdViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IvX-E7-Q9R"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qen-O3-8at"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dVX-JB-7kc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJU-xc-TWr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tJU-xc-TWr" firstAttribute="centerY" secondItem="dVX-JB-7kc" secondAttribute="centerY" id="Cta-iP-8sV"/>
+                            <constraint firstItem="tJU-xc-TWr" firstAttribute="width" secondItem="dVX-JB-7kc" secondAttribute="width" id="pxB-Fp-4MF"/>
+                            <constraint firstItem="tJU-xc-TWr" firstAttribute="height" secondItem="dVX-JB-7kc" secondAttribute="height" id="rfD-Mg-DTe"/>
+                            <constraint firstItem="tJU-xc-TWr" firstAttribute="centerX" secondItem="dVX-JB-7kc" secondAttribute="centerX" id="vUI-Mf-BME"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="设置密码" largeTitleDisplayMode="always" id="jKu-0F-D7a"/>
+                    <connections>
+                        <outlet property="mainView" destination="tJU-xc-TWr" id="Lwk-ND-6dH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vyl-ho-Dwo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2177" y="2336"/>
+        </scene>
+        <!--我的消息-->
+        <scene sceneID="FWv-jl-PUN">
+            <objects>
+                <viewController storyboardIdentifier="messageViewController" id="y6m-Dc-NCS" customClass="MessageViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FIP-cp-9oT"/>
+                        <viewControllerLayoutGuide type="bottom" id="f88-aa-07I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ftu-U6-Bev">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhT-qa-B4f">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hhT-qa-B4f" firstAttribute="width" secondItem="Ftu-U6-Bev" secondAttribute="width" id="0cb-52-M6m"/>
+                            <constraint firstItem="hhT-qa-B4f" firstAttribute="centerX" secondItem="Ftu-U6-Bev" secondAttribute="centerX" id="nQ7-b9-CYx"/>
+                            <constraint firstItem="hhT-qa-B4f" firstAttribute="centerY" secondItem="Ftu-U6-Bev" secondAttribute="centerY" id="qm7-Nm-BK0"/>
+                            <constraint firstItem="hhT-qa-B4f" firstAttribute="height" secondItem="Ftu-U6-Bev" secondAttribute="height" id="rBE-UD-ahc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="我的消息" id="wph-ms-Hnp"/>
+                    <connections>
+                        <outlet property="mainView" destination="hhT-qa-B4f" id="8dj-46-lta"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SuK-Aw-Kbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1281" y="2336"/>
+        </scene>
+        <!--优惠券-->
+        <scene sceneID="2ec-bZ-GHY">
+            <objects>
+                <viewController storyboardIdentifier="couponListViewController" id="nPl-yN-YsA" customClass="CouponListViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r99-g2-fcW"/>
+                        <viewControllerLayoutGuide type="bottom" id="sPP-wo-Vyi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qtc-uK-4pg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eb5-54-pYw">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Eb5-54-pYw" firstAttribute="width" secondItem="qtc-uK-4pg" secondAttribute="width" id="RAx-UJ-mIH"/>
+                            <constraint firstItem="Eb5-54-pYw" firstAttribute="centerX" secondItem="qtc-uK-4pg" secondAttribute="centerX" id="W1T-TM-sUR"/>
+                            <constraint firstItem="Eb5-54-pYw" firstAttribute="height" secondItem="qtc-uK-4pg" secondAttribute="height" id="crX-f1-udd"/>
+                            <constraint firstItem="Eb5-54-pYw" firstAttribute="centerY" secondItem="qtc-uK-4pg" secondAttribute="centerY" id="dya-ob-LJG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="优惠券" id="QfD-JW-ero"/>
+                    <connections>
+                        <outlet property="mainView" destination="Eb5-54-pYw" id="8rC-c5-FCX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KZa-mH-mRX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1281" y="5342"/>
+        </scene>
+        <!--充值-->
+        <scene sceneID="fS7-mg-9JK">
+            <objects>
+                <viewController storyboardIdentifier="bankcardRechargeViewController" id="Snp-ZS-fmy" customClass="BankcardRechargeViewController" customModule="ntlc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="msO-ND-993"/>
+                        <viewControllerLayoutGuide type="bottom" id="5gF-YO-iQX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L8H-Us-EX9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDa-v1-sxp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QDa-v1-sxp" firstAttribute="height" secondItem="L8H-Us-EX9" secondAttribute="height" id="MRz-3o-399"/>
+                            <constraint firstItem="QDa-v1-sxp" firstAttribute="centerX" secondItem="L8H-Us-EX9" secondAttribute="centerX" id="Usa-gz-XkH"/>
+                            <constraint firstItem="QDa-v1-sxp" firstAttribute="centerY" secondItem="L8H-Us-EX9" secondAttribute="centerY" id="k5k-ze-cJI"/>
+                            <constraint firstItem="QDa-v1-sxp" firstAttribute="width" secondItem="L8H-Us-EX9" secondAttribute="width" id="vHC-mZ-Dx6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="充值" id="dc7-nM-Ivh"/>
+                    <connections>
+                        <outlet property="mainView" destination="QDa-v1-sxp" id="dZp-ou-pdz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iEv-Kt-c8L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3084" y="38"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tab_me_normal" width="27" height="30"/>
+        <image name="tab_me_selected" width="27" height="30"/>
+        <image name="tab_my_normal" width="34" height="27"/>
+        <image name="tab_my_selected" width="34" height="27"/>
+        <image name="tab_product_normal" width="33" height="28"/>
+        <image name="tab_product_selected" width="33" height="28"/>
+    </resources>
+</document>

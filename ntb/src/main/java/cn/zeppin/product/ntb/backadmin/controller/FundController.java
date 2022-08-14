@@ -4,10 +4,9 @@
 package cn.zeppin.product.ntb.backadmin.controller;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,31 +21,37 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.zeppin.product.ntb.backadmin.service.api.IFundDailyService;
-import cn.zeppin.product.ntb.backadmin.service.api.IFundRateService;
+import cn.zeppin.product.ntb.backadmin.service.api.IBankService;
+import cn.zeppin.product.ntb.backadmin.service.api.IBkOperatorService;
+import cn.zeppin.product.ntb.backadmin.service.api.IFundOperateService;
+import cn.zeppin.product.ntb.backadmin.service.api.IFundPublishOperateService;
 import cn.zeppin.product.ntb.backadmin.service.api.IFundService;
-import cn.zeppin.product.ntb.backadmin.vo.FundDailyVO;
 import cn.zeppin.product.ntb.backadmin.vo.FundDetailsVO;
+import cn.zeppin.product.ntb.backadmin.vo.FundOperateDetailVO;
+import cn.zeppin.product.ntb.backadmin.vo.FundOperateVO;
 import cn.zeppin.product.ntb.backadmin.vo.StstusCountVO;
-import cn.zeppin.product.ntb.backadmin.vo.FundVO;
 import cn.zeppin.product.ntb.core.controller.base.ActionParam;
+import cn.zeppin.product.ntb.core.controller.base.ActionParam.DataType;
 import cn.zeppin.product.ntb.core.controller.base.BaseController;
 import cn.zeppin.product.ntb.core.controller.base.Result;
 import cn.zeppin.product.ntb.core.controller.base.ResultManager;
-import cn.zeppin.product.ntb.core.entity.Fund;
-import cn.zeppin.product.ntb.core.entity.FundDaily;
+import cn.zeppin.product.ntb.core.entity.Bank;
 import cn.zeppin.product.ntb.core.entity.BkOperator;
+import cn.zeppin.product.ntb.core.entity.Fund;
+import cn.zeppin.product.ntb.core.entity.CompanyAccountOperate.CompanyAccountOperateStatus;
 import cn.zeppin.product.ntb.core.entity.Fund.FundStatus;
-import cn.zeppin.product.ntb.core.entity.FundRate;
-import cn.zeppin.product.ntb.core.entity.FundRate.FundRateTypes;
+import cn.zeppin.product.ntb.core.entity.FundOperate;
+import cn.zeppin.product.ntb.core.entity.FundOperate.FundOperateStatus;
+import cn.zeppin.product.ntb.core.entity.FundOperate.FundOperateType;
 import cn.zeppin.product.ntb.core.entity.base.Entity;
-import cn.zeppin.product.ntb.core.controller.base.ActionParam.DataType;
+import cn.zeppin.product.ntb.core.exception.TransactionException;
+import cn.zeppin.product.utility.JSONUtils;
 import cn.zeppin.product.utility.Utlity;
 
 /**
  * @author hehe
  *
- * 后台基金信息管理
+ * 后台活期理财信息管理
  */
 
 @Controller
@@ -57,13 +62,71 @@ public class FundController extends BaseController {
 	private IFundService fundService;
 	
 	@Autowired
-	private IFundDailyService fundDailyService;
+	private IFundOperateService fundOperateService;
 	
 	@Autowired
-	private IFundRateService fundRateService;
+	private IFundPublishOperateService fundPublishOperateService;
+	
+	@Autowired
+	private IBkOperatorService bkOperatorService;
+
+	@Autowired
+	private IBankService bankService;
 	
 	/**
-	 * 根据条件查询基金信息 
+	 * 活期理财待审核数据数量
+	 * @return
+	 */
+	@RequestMapping(value = "/operateTotalTypeList", method = RequestMethod.GET)
+	@ResponseBody
+	public Result operateTotalTypeList() {
+		List<StstusCountVO> dataList = new ArrayList<StstusCountVO>();
+		//查询条件
+		Map<String, String> searchMap = new HashMap<String, String>();
+		
+		//取管理员信息
+		Subject subject = SecurityUtils.getSubject();
+		Session session = subject.getSession();
+		BkOperator currentOperator = (BkOperator) session.getAttribute("currentOperator");
+		searchMap.put("creator", currentOperator.getUuid());
+		searchMap.put("status", "editor");
+		
+		//活期理财
+		BigInteger fundNum = BigInteger.valueOf(this.fundOperateService.getCount(searchMap));
+		dataList.add(new StstusCountVO("fund",fundNum));
+		
+		//发布的活期理财
+		BigInteger fundPublishNum = BigInteger.valueOf(this.fundPublishOperateService.getCount(searchMap));
+		dataList.add(new StstusCountVO("fundPublish",fundPublishNum));
+		
+		return ResultManager.createDataResult(dataList);
+	}
+	
+	/**
+	 * 活期理财待审核数据数量
+	 * @return
+	 */
+	@RequestMapping(value = "/operateTotalCheckTypeList", method = RequestMethod.GET)
+	@ResponseBody
+	public Result operateTotalCheckTypeList() {
+		List<StstusCountVO> dataList = new ArrayList<StstusCountVO>();
+		//查询条件
+		Map<String, String> searchMap = new HashMap<String, String>();
+		searchMap.put("status", CompanyAccountOperateStatus.UNCHECKED);
+		
+		//活期理财
+		BigInteger fundNum = BigInteger.valueOf(this.fundOperateService.getCount(searchMap));
+		dataList.add(new StstusCountVO("fund",fundNum));
+		
+		//发布的活期理财
+		BigInteger fundPublishNum = BigInteger.valueOf(this.fundPublishOperateService.getCount(searchMap));
+		dataList.add(new StstusCountVO("fundPublish",fundPublishNum));
+		
+		return ResultManager.createDataResult(dataList);
+	}
+	
+	/**
+	 * 根据条件查询活期理财信息 
 	 * @param name
 	 * @param status
 	 * @param pageNum
@@ -72,77 +135,92 @@ public class FundController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	@ActionParam(key = "name", type = DataType.STRING)
-	@ActionParam(key = "status", type = DataType.STRING)
-	@ActionParam(key = "pageNum", type = DataType.NUMBER)
-	@ActionParam(key = "pageSize", type = DataType.NUMBER)
-	@ActionParam(key = "sorts", type = DataType.STRING)
+	@ActionParam(key = "name", message="搜索参数", type = DataType.STRING)
+	@ActionParam(key = "gp", message="管理银行", type = DataType.STRING)//管理银行
+	@ActionParam(key = "invested", message="投资状态", type = DataType.STRING)//已投资
+	@ActionParam(key = "status", message="状态", type = DataType.STRING)
+	@ActionParam(key = "pageNum", message="页码", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "pageSize", message="每页数量", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "sorts", message="排序参数", type = DataType.STRING)
 	@ResponseBody
-	public Result list(String name, String status, Integer pageNum, Integer pageSize, String sorts) {
+	public Result list(String name, String gp, String invested, String status, Integer pageNum, Integer pageSize, String sorts) {
 		//查询条件
 		Map<String, String> searchMap = new HashMap<String, String>();
 		searchMap.put("name", name);
+		searchMap.put("gp", gp);
+		searchMap.put("invested", invested);
 		searchMap.put("status", status);
 		
-		//查询符合条件的基金信息的总数
+		//查询符合条件的活期理财信息的总数
 		Integer totalResultCount = fundService.getCount(searchMap);
-		//查询符合条件的基金信息列表
-		List<Entity> list = fundService.getListForPage(searchMap, pageNum, pageSize, sorts, FundVO.class);
+		//查询符合条件的活期理财信息列表
+		List<Entity> list = fundService.getListForPage(searchMap, pageNum, pageSize, sorts, Fund.class);
+		List<FundDetailsVO> dataList = new ArrayList<FundDetailsVO>();
+		for(Entity e : list){
+			Fund fund = (Fund) e;
+			FundDetailsVO fdVO = new FundDetailsVO(fund);
+			
+			BkOperator creator = this.bkOperatorService.get(fund.getCreator());
+			if(creator != null){
+				fdVO.setCreatorName(creator.getName());
+			}
+			if(fund.getGp()!=null && !"".equals(fund.getGp())){
+				Bank bank = this.bankService.get(fund.getGp());
+				if(bank != null){
+					fdVO.setGpName(bank.getName());
+				}else{
+					fdVO.setGpName("未选择");
+				}
+			}else{
+				fdVO.setGpName("未选择");
+			}
+			dataList.add(fdVO);
+		}
 		
-		return ResultManager.createDataResult(list, pageNum, pageSize, totalResultCount);
+		return ResultManager.createDataResult(dataList, pageNum, pageSize, totalResultCount);
 	}
 	
 	/**
-	 * 获取基金分状态列表
-	 * @return
-	 */
-	@RequestMapping(value = "/statusList", method = RequestMethod.GET)
-	@ResponseBody
-	public Result statusList() {		
-		//获取基金信息
-		List<Entity> list = fundService.getStatusList(StstusCountVO.class);
-
-		return ResultManager.createDataResult(list,list.size());
-	}
-	
-	/**
-	 * 获取一条基金信息
+	 * 获取一条活期理财信息
 	 * @param uuid
 	 * @return
 	 */
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
 	@ResponseBody
 	public Result get(String uuid) {		
-		//获取基金信息
+		//获取活期理财信息
 		Fund fund = fundService.get(uuid);
 		if (fund == null) {
 			return ResultManager.createFailResult("该条数据不存在！");
 		}
-		FundDetailsVO fundDetailsVo = new FundDetailsVO(fund);
-		//fund
-		Map<String, String> searchMap = new HashMap<String, String>();
-		searchMap.put("fund", fund.getUuid());
-		List<Entity> list = this.fundRateService.getListForPage(searchMap, -1, -1, null, FundRate.class);
-		List<FundRate> listFundRate = new ArrayList<FundRate>();
-		if(list != null && list.size() > 0){
-			for(Entity entity : list){
-				FundRate fundRate = (FundRate)entity;
-				listFundRate.add(fundRate);
-			}
+		FundDetailsVO fdVO = new FundDetailsVO(fund);
+		
+		BkOperator creator = this.bkOperatorService.get(fund.getCreator());
+		if(creator != null){
+			fdVO.setCreatorName(creator.getName());
 		}
-		fundDetailsVo.setFundRateList(listFundRate);
-		return ResultManager.createDataResult(fundDetailsVo);
+		
+		if(fund.getGp()!=null && !"".equals(fund.getGp())){
+			Bank bank = this.bankService.get(fund.getGp());
+			if(bank != null){
+				fdVO.setGpName(bank.getName());
+			}else{
+				fdVO.setGpName("未选择");
+			}
+		}else{
+			fdVO.setGpName("未选择");
+		}
+		return ResultManager.createDataResult(fdVO);
 	}
 	
 	/**
-	 * 添加一条基金信息
+	 * 添加一条活期理财信息
 	 * @param name
 	 * @param scode
 	 * @param shortname
 	 * @param type
 	 * @param gp
-	 * @param custodian
 	 * @param flagStructured
 	 * @param structuredType
 	 * @param structuredRemark
@@ -167,261 +245,640 @@ public class FundController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	@ActionParam(key = "step", type = DataType.STRING, required = true)
-	@ActionParam(key = "uuid", type = DataType.STRING)
-	@ActionParam(key = "name", type = DataType.STRING, minLength = 1, maxLength = 200)
-	@ActionParam(key = "scode", type = DataType.STRING, minLength = 1, maxLength = 100)
-	@ActionParam(key = "shortname", type = DataType.STRING, minLength = 1, maxLength = 50)
-	@ActionParam(key = "type", type = DataType.STRING, minLength = 1, maxLength = 20)
-	@ActionParam(key = "gp", type = DataType.STRING, maxLength = 50)
-	@ActionParam(key = "custodian", type = DataType.STRING, maxLength = 50)
-	@ActionParam(key = "flagStructured", type = DataType.BOOLEAN)
-	@ActionParam(key = "structuredType", type = DataType.STRING, maxLength = 20)
-	@ActionParam(key = "structuredRemark", type = DataType.STRING, maxLength = 1000)
-	@ActionParam(key = "style", type = DataType.STRING, maxLength = 20)
-	@ActionParam(key = "riskLevel", type = DataType.STRING, maxLength = 20)
-	@ActionParam(key = "creditLevel", type = DataType.STRING, maxLength = 20)
-	@ActionParam(key = "performanceLevel", type = DataType.STRING, maxLength = 30)
-	@ActionParam(key = "planingScale", type = DataType.CURRENCY, maxLength = 20)
-//	@ActionParam(key = "actualScale", type = DataType.CURRENCY, maxLength = 20)
-	@ActionParam(key = "setuptime", type = DataType.DATE)
-	@ActionParam(key = "collectStarttime", type = DataType.DATE)
-	@ActionParam(key = "collectEndtime", type = DataType.DATE)
-	@ActionParam(key = "purchaseStarttime", type = DataType.DATE)
-	@ActionParam(key = "purchaseEndtime", type = DataType.DATE)
-	@ActionParam(key = "goal", type = DataType.STRING, maxLength = 1000)
-	@ActionParam(key = "investIdea", type = DataType.STRING, maxLength = 1000)
-	@ActionParam(key = "investScope", type = DataType.STRING, maxLength = 1000)
-	@ActionParam(key = "investStaregy", type = DataType.STRING, maxLength = 1000)
-	@ActionParam(key = "investStandard", type = DataType.STRING, maxLength = 1000)
-	@ActionParam(key = "revenueFeature", type = DataType.STRING, maxLength = 1000)
-	@ActionParam(key = "riskManagement", type = DataType.STRING, maxLength = 1000)
-	@ActionParam(key = "fundRates", type = DataType.STRING_ARRAY)
+	@ActionParam(key = "name", message="活期理财全程", type = DataType.STRING, required = true, minLength = 1, maxLength = 200)
+	@ActionParam(key = "scode", message="活期理财编号", type = DataType.STRING, required = true, minLength = 1, maxLength = 100)
+	@ActionParam(key = "shortname", message="活期理财简称", type = DataType.STRING, required = true, minLength = 1, maxLength = 50)
+	@ActionParam(key = "type", message="活期理财类型", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
+	@ActionParam(key = "gp", message="管理方", type = DataType.STRING, required = true)
+	@ActionParam(key = "flagStructured", message="分级状态", type = DataType.BOOLEAN)
+	@ActionParam(key = "structuredType", message="分级类别", type = DataType.STRING, maxLength = 20)
+	@ActionParam(key = "structuredRemark", message="分级描述", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "style", message="投资风格", type = DataType.STRING, maxLength = 20)
+	@ActionParam(key = "riskLevel", message="风险等级", type = DataType.STRING, maxLength = 20)
+	@ActionParam(key = "creditLevel", message="信用等级", type = DataType.STRING, maxLength = 20)
+	@ActionParam(key = "performanceLevel", message="业务等级", type = DataType.STRING, maxLength = 30)
+	@ActionParam(key = "planingScale", message="总募集规模", type = DataType.CURRENCY, maxLength = 20)
+	@ActionParam(key = "setuptime", message="成立日期", type = DataType.DATE)
+	@ActionParam(key = "collectStarttime", message="募集起始日", type = DataType.DATE)
+	@ActionParam(key = "collectEndtime", message="募集截止日", type = DataType.DATE)
+	@ActionParam(key = "purchaseStarttime", message="日常申购起始日", type = DataType.DATE)
+	@ActionParam(key = "purchaseEndtime", message="日常申购截止日", type = DataType.DATE)
+	@ActionParam(key = "goal", message="投资目标", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "investIdea", message="投资理念", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "investScope", message="投资范围", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "investStaregy", message="投资策略", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "investStandard", message="投资标准", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "revenueFeature", message="风险收益特征", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "riskManagement", message="具体目标", type = DataType.STRING, maxLength = 1000)
 	@ResponseBody
-	public Result add(String step, String uuid, String name, String scode, String shortname, String type, String gp, String custodian, String flagStructured, 
+	public Result add(String name, String scode, String shortname, String type, String gp, String flagStructured, 
 			String structuredType, String structuredRemark, String style, String riskLevel, String creditLevel, String performanceLevel,
-			String planingScale, String setuptime, String collectStarttime, String collectEndtime, 
-			String purchaseStarttime, String purchaseEndtime, String goal, String investIdea, String investScope, String investStaregy,
-			String investStandard, String revenueFeature, String riskManagement, String[] fundRates) {
+			String planingScale, String setuptime, String collectStarttime, String collectEndtime, String purchaseStarttime, 
+			String purchaseEndtime, String goal, String investIdea, String investScope, String investStaregy, String investStandard, 
+			String revenueFeature, String riskManagement) {
+	
+		Subject subject = SecurityUtils.getSubject();
+		Session session = subject.getSession();
+		BkOperator currentOperator = (BkOperator) session.getAttribute("currentOperator");
 		
-		if(step == null){
-			return ResultManager.createFailResult("步骤参数不能为空！");
+		if(fundService.isExistFundByName(name,null)){
+			return ResultManager.createFailResult("活期理财名称已存在！");
+		}
+		if(fundService.isExistFundByScode(scode,null)){
+			return ResultManager.createFailResult("活期理财编号已存在！");
 		}
 		
-		if("1".equals(step)){
-			if(name == null){
-				return ResultManager.createFailResult("基金名称不能为空！");
-			}
-			if(scode == null){
-				return ResultManager.createFailResult("基金编号不能为空！");
-			}
-			if(shortname == null){
-				return ResultManager.createFailResult("基金简称不能为空！");
-			}
-			if(type == null){
-				return ResultManager.createFailResult("基金类型不能为空！");
-			}
-			
-			Subject subject = SecurityUtils.getSubject();
-			Session session = subject.getSession();
-			BkOperator currentOperator = (BkOperator) session.getAttribute("currentOperator");
-			Fund fund = new Fund();
-			fund.setUuid(UUID.randomUUID().toString());
-			fund.setName(name);
-			fund.setScode(scode);
-			fund.setShortname(shortname);
-			fund.setType(type);
-			fund.setStatus(FundStatus.UNCHECKED);
-			fund.setCreator(currentOperator.getUuid());
-			fund.setCreatetime(new Timestamp(System.currentTimeMillis()));
-			
-			if(uuid != null && !"".equals(uuid)){//编辑
-				Fund funds = this.fundService.get(uuid);
-				if(funds == null){
-					return ResultManager.createFailResult("基金信息错误，请刷新后重新录入！");
-				}
-				fund.setUuid(uuid);
-				fund = this.fundService.update(fund);
-			}else{
-				fund = this.fundService.insert(fund);
-			}
-			return ResultManager.createDataResult(fund, "保存成功！");
-		} else {
-			
-			if(uuid == null || "".equals(uuid)){
-				return ResultManager.createFailResult("uuid不能为空！");
-			}
-			
-			Fund fund = this.fundService.get(uuid);
-			if(fund == null){
-				return ResultManager.createFailResult("该条数据不存在！");
-			}
-			
-			if ("2".equals(step)) {
-				fund.setSetuptime(Timestamp.valueOf(Utlity.getFullTime(setuptime)));
-				fund.setPerformanceLevel(performanceLevel);
-				fund.setGp(gp);
-				fund.setCustodian(custodian);
-				fund.setFlagStructured(Boolean.valueOf(flagStructured));
-				fund.setStructuredType(structuredType);
-				fund.setStructuredRemark(structuredRemark);
-				fund.setStyle(style);
-				fund.setRiskLevel(riskLevel);
-				fund.setCreditLevel(creditLevel);
-				fund.setPlaningScale(BigDecimal.valueOf(Double.valueOf(planingScale)));
-				fund.setCollectStarttime(Timestamp.valueOf(Utlity.getFullTime(collectStarttime)));
-				fund.setCollectEndtime(Timestamp.valueOf(Utlity.getFullTime(collectEndtime)));
-				fund.setPurchaseStarttime(Timestamp.valueOf(Utlity.getFullTime(purchaseStarttime)));
-				fund.setPurchaseEndtime(Timestamp.valueOf(Utlity.getFullTime(purchaseEndtime)));
-				
-				fund = this.fundService.update(fund);
-			} else if ("3".equals(step)) {
-				fund.setGoal(goal);
-				fund.setInvestStaregy(investStaregy);
-				fund.setInvestStandard(investStandard);
-				fund.setInvestIdea(investIdea);
-				fund.setInvestScope(investScope);
-				fund.setRevenueFeature(revenueFeature);
-				fund.setRiskManagement(riskManagement);
-				
-				fund = this.fundService.update(fund);
-			} else if ("4".equals(step)) {
-				List<FundRate> fundRateList = new ArrayList<FundRate>();
-				
-				if(fundRates!=null && fundRates.length > 0){
-					for(String fundRate: fundRates){
-						String[] params = fundRate.split("_");
-						if (params != null && params.length == 5){
-							if(params[0].length() < 1){
-								return ResultManager.createFailResult("基金费率有误！");
-							}
-							if(!Utlity.isCurrency(params[1])){
-								return ResultManager.createFailResult("基金费率下限资金应为货币数值！");
-							}
-							if(!Utlity.isCurrency(params[2])){
-								return ResultManager.createFailResult("基金费率上限资金应为货币数值！");
-							}
-							if(Double.valueOf(params[1]) > Double.valueOf(params[2])){
-								return ResultManager.createFailResult("基金费率下限不应大于基金费率上限！");
-							}
-							if(!Utlity.isNumeric(params[3])){
-								return ResultManager.createFailResult("基金费率应为数字类型！");
-							}
-							if(!Utlity.isNumeric(params[4])){
-								return ResultManager.createFailResult("基金优惠费率应为数字类型！");
-							}
-							if(Double.valueOf(params[4]) > Double.valueOf(params[3])){
-								return ResultManager.createFailResult("基金优惠费率不应大于基金费率！");
-							}
-							FundRate fr = new FundRate();
-							fr.setUuid(UUID.randomUUID().toString());
-							fr.setFund(fund.getUuid());
-							fr.setType(params[0]);
-							fr.setLowlimit(BigDecimal.valueOf(Double.valueOf(params[1])));
-							fr.setUpperlimit(BigDecimal.valueOf(Double.valueOf(params[2])));
-							fr.setRate(BigDecimal.valueOf(Double.valueOf(params[3])));
-							fr.setOpenrate(BigDecimal.valueOf(Double.valueOf(params[4])));
-							fundRateList.add(fr);
-						}else{
-							return ResultManager.createFailResult("基金费率有误！");
-						}
-					}
-					fundService.add(fund,fundRateList);
-				}else{
-					return ResultManager.createFailResult("请添加费率信息基金费率！");
-				}
-			}
-			return ResultManager.createDataResult(fund, "保存成功！");
+		Fund fund = new Fund();
+		fund.setUuid(UUID.randomUUID().toString());
+		fund.setName(name);
+		fund.setScode(scode);
+		fund.setShortname(shortname);
+		fund.setType(type);
+		fund.setStatus(FundStatus.CHECKED);
+		fund.setAccountBalance(BigDecimal.ZERO);
+		fund.setCreator(currentOperator.getUuid());
+		fund.setCreatetime(new Timestamp(System.currentTimeMillis()));
+
+		fund.setSetuptime(Timestamp.valueOf(Utlity.getFullTime(setuptime)));
+		fund.setPerformanceLevel(performanceLevel);
+		Bank bank = bankService.get(gp);
+		if(bank != null){
+			fund.setGp(gp);
+		}else{
+			return ResultManager.createFailResult("资金托管方选择错误！");
 		}
+		fund.setFlagStructured(Boolean.valueOf(flagStructured));
+		fund.setStructuredType(structuredType);
+		fund.setStructuredRemark(structuredRemark);
+		fund.setStyle(style);
+		fund.setRiskLevel(riskLevel);
+		fund.setCreditLevel(creditLevel);
+		fund.setPlaningScale(BigDecimal.valueOf(Double.valueOf(planingScale)));
+		fund.setCollectStarttime(Timestamp.valueOf(Utlity.getFullTime(collectStarttime)));
+		fund.setCollectEndtime(Timestamp.valueOf(Utlity.getFullTime(collectEndtime)));
+		fund.setPurchaseStarttime(Timestamp.valueOf(Utlity.getFullTime(purchaseStarttime)));
+		fund.setPurchaseEndtime(Timestamp.valueOf(Utlity.getFullTime(purchaseEndtime)));
+			
+		fund.setGoal(goal);
+		fund.setInvestStaregy(investStaregy);
+		fund.setInvestStandard(investStandard);
+		fund.setInvestIdea(investIdea);
+		fund.setInvestScope(investScope);
+		fund.setRevenueFeature(revenueFeature);
+		fund.setRiskManagement(riskManagement);
+		
+		//添加待审核记录
+		FundOperate fo = new FundOperate();
+		fo.setUuid(UUID.randomUUID().toString());
+		fo.setType(FundOperateType.ADD);
+		fo.setValue(JSONUtils.obj2json(fund));
+		fo.setStatus(FundOperateStatus.DRAFT);
+		fo.setCreator(currentOperator.getUuid());
+		fo.setCreatetime(new Timestamp(System.currentTimeMillis()));
+		this.fundOperateService.insert(fo);
+		return ResultManager.createSuccessResult("保存成功！");
 	}
 	
 	/**
-	 * 编辑一条基金信息
+	 * 编辑一条活期理财信息
 	 * @param uuid
 	 * @param name
 	 * @param scode
 	 * @param shortname
 	 * @param type
-	 * @param status
+	 * @param gp
+	 * @param flagStructured
+	 * @param structuredType
+	 * @param structuredRemark
+	 * @param style
+	 * @param riskLevel
+	 * @param creditLevel
+	 * @param performanceLevel
+	 * @param planingScale
+	 * @param actualScale
+	 * @param setuptime
+	 * @param collectStarttime
+	 * @param collectEndtime
+	 * @param purchaseStarttime
+	 * @param purchaseEndtime
+	 * @param goal
+	 * @param investIdea
+	 * @param investScope
+	 * @param investStaregy
+	 * @param investStandard
+	 * @param revenueFeature
+	 * @param riskManagement
 	 * @return
 	 */
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
-	@ActionParam(key = "step", type = DataType.STRING, required = true)
-	@ActionParam(key = "name", type = DataType.STRING, minLength = 1, maxLength = 200)
-	@ActionParam(key = "scode", type = DataType.STRING, minLength = 1, maxLength = 100)
-	@ActionParam(key = "shortname", type = DataType.STRING, minLength = 1, maxLength = 50)
-	@ActionParam(key = "type", type = DataType.STRING, minLength = 1, maxLength = 20)
-	@ActionParam(key = "gp", type = DataType.STRING, maxLength = 50)
-	@ActionParam(key = "custodian", type = DataType.STRING, maxLength = 50)
-	@ActionParam(key = "flagStructured", type = DataType.BOOLEAN)
-	@ActionParam(key = "structuredType", type = DataType.STRING, maxLength = 20)
-	@ActionParam(key = "structuredRemark", type = DataType.STRING, maxLength = 1000)
-	@ActionParam(key = "style", type = DataType.STRING, maxLength = 20)
-	@ActionParam(key = "riskLevel", type = DataType.STRING, maxLength = 20)
-	@ActionParam(key = "creditLevel", type = DataType.STRING, maxLength = 20)
-	@ActionParam(key = "performanceLevel", type = DataType.STRING, maxLength = 30)
-	@ActionParam(key = "planingScale", type = DataType.CURRENCY, maxLength = 20)
-	@ActionParam(key = "setuptime", type = DataType.DATE)
-	@ActionParam(key = "collectStarttime", type = DataType.DATE)
-	@ActionParam(key = "collectEndtime", type = DataType.DATE)
-	@ActionParam(key = "purchaseStarttime", type = DataType.DATE)
-	@ActionParam(key = "purchaseEndtime", type = DataType.DATE)
-	@ActionParam(key = "goal", type = DataType.STRING, maxLength = 1000)
-	@ActionParam(key = "investIdea", type = DataType.STRING, maxLength = 1000)
-	@ActionParam(key = "investScope", type = DataType.STRING, maxLength = 1000)
-	@ActionParam(key = "investStaregy", type = DataType.STRING, maxLength = 1000)
-	@ActionParam(key = "investStandard", type = DataType.STRING, maxLength = 1000)
-	@ActionParam(key = "revenueFeature", type = DataType.STRING, maxLength = 1000)
-	@ActionParam(key = "riskManagement", type = DataType.STRING, maxLength = 1000)
-	@ActionParam(key = "fundRates", type = DataType.STRING_ARRAY)
-	@ActionParam(key = "rateType", type = DataType.STRING)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "name", message="活期理财全程", type = DataType.STRING, required = true, minLength = 1, maxLength = 200)
+	@ActionParam(key = "scode", message="活期理财编号", type = DataType.STRING, required = true, minLength = 1, maxLength = 100)
+	@ActionParam(key = "shortname", message="活期理财简称", type = DataType.STRING, required = true, minLength = 1, maxLength = 50)
+	@ActionParam(key = "type", message="活期理财类型", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
+	@ActionParam(key = "gp", message="管理方", type = DataType.STRING, required = true)
+	@ActionParam(key = "flagStructured", message="分级状态", type = DataType.BOOLEAN)
+	@ActionParam(key = "structuredType", message="分级类型", type = DataType.STRING, maxLength = 20)
+	@ActionParam(key = "structuredRemark", message="分级描述", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "style", message="投资风格", type = DataType.STRING, maxLength = 20)
+	@ActionParam(key = "riskLevel", message="风险等级", type = DataType.STRING, maxLength = 20)
+	@ActionParam(key = "creditLevel", message="信用等级", type = DataType.STRING, maxLength = 20)
+	@ActionParam(key = "performanceLevel", message="业务等级", type = DataType.STRING, maxLength = 30)
+	@ActionParam(key = "planingScale", message="总募集规模", type = DataType.CURRENCY, maxLength = 20)
+	@ActionParam(key = "setuptime", message="成立日期", type = DataType.DATE)
+	@ActionParam(key = "collectStarttime", message="募集起始日", type = DataType.DATE)
+	@ActionParam(key = "collectEndtime", message="募集截止日", type = DataType.DATE)
+	@ActionParam(key = "purchaseStarttime", message="日常申购起始日", type = DataType.DATE)
+	@ActionParam(key = "purchaseEndtime", message="日常申购截止日", type = DataType.DATE)
+	@ActionParam(key = "goal", message="投资目标", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "investIdea", message="投资理念", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "investScope", message="投资范围", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "investStaregy", message="投资策略", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "investStandard", message="投资标准", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "revenueFeature", message="风险收益特征", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "riskManagement", message="具体目标", type = DataType.STRING, maxLength = 1000)
 	@ResponseBody
-	public Result edit(String step, String uuid, String name, String series, String scode, String shortname, String type, String gp, String custodian, String flagStructured, 
-			String structuredType, String structuredRemark, String style, String riskLevel, String creditLevel, String performanceLevel,
-			String planingScale, String setuptime, String collectStarttime, String collectEndtime, 
+	public Result edit(String uuid, String name, String series, String scode, String shortname, String type, String gp, 
+			String flagStructured, String structuredType, String structuredRemark, String style, String riskLevel, String creditLevel,
+			String performanceLevel, String planingScale, String setuptime, String collectStarttime, String collectEndtime, 
 			String purchaseStarttime, String purchaseEndtime, String goal, String investIdea, String investScope, String investStaregy,
-			String investStandard, String revenueFeature, String riskManagement, String[] fundRates, String rateType) {
+			String investStandard, String revenueFeature, String riskManagement) {
 		
-		if(step == null){
-			return ResultManager.createFailResult("步骤参数不能为空！");
-		}
-		
-		if(uuid == null){
-			return ResultManager.createFailResult("uuid不能为空！");
-		}
+		Subject subject = SecurityUtils.getSubject();
+		Session session = subject.getSession();
+		BkOperator currentOperator = (BkOperator) session.getAttribute("currentOperator");
 		
 		Fund fund = this.fundService.get(uuid);
 		if(fund == null){
-			return ResultManager.createFailResult("该条数据不存在！");
+			return ResultManager.createFailResult("活期理财信息不存在！");
 		}
 		
-		if("1".equals(step)){
-			if(name == null){
-				return ResultManager.createFailResult("基金名称不能为空！");
+		if(fundService.isExistFundByName(name,fund.getUuid())){
+			return ResultManager.createFailResult("活期理财名称已存在！");
+		}
+		if(fundService.isExistFundByScode(scode,fund.getUuid())){
+			return ResultManager.createFailResult("活期理财编号已存在！");
+		}
+		
+		fund.setName(name);
+		fund.setScode(scode);
+		fund.setShortname(shortname);
+		
+		fund.setType(type);
+		Bank bank = bankService.get(gp);
+		if(bank != null){
+			fund.setGp(gp);
+		}else{
+			return ResultManager.createFailResult("资金托管方选择错误！");
+		}
+		fund.setSetuptime(Timestamp.valueOf(Utlity.getFullTime(setuptime)));
+		fund.setPerformanceLevel(performanceLevel);
+		fund.setFlagStructured(Boolean.valueOf(flagStructured));
+		fund.setStructuredType(structuredType);
+		fund.setStructuredRemark(structuredRemark);
+		fund.setStyle(style);
+		fund.setRiskLevel(riskLevel);
+		fund.setCreditLevel(creditLevel);
+		fund.setPlaningScale(BigDecimal.valueOf(Double.valueOf(planingScale)));
+		fund.setCollectStarttime(Timestamp.valueOf(Utlity.getFullTime(collectStarttime)));
+		fund.setCollectEndtime(Timestamp.valueOf(Utlity.getFullTime(collectEndtime)));
+		fund.setPurchaseStarttime(Timestamp.valueOf(Utlity.getFullTime(purchaseStarttime)));
+		fund.setPurchaseEndtime(Timestamp.valueOf(Utlity.getFullTime(purchaseEndtime)));
+		
+		fund.setGoal(goal);
+		fund.setInvestScope(investScope);
+		fund.setInvestStaregy(investStaregy);
+		fund.setInvestStandard(investStandard);
+		fund.setInvestIdea(investIdea);
+		fund.setRevenueFeature(revenueFeature);
+		fund.setRiskManagement(riskManagement);
+		
+		//添加待审核记录
+		FundOperate fo = new FundOperate();
+		fo.setUuid(UUID.randomUUID().toString());
+		fo.setFund(fund.getUuid());
+		fo.setType(FundOperateType.EDIT);
+		fo.setValue(JSONUtils.obj2json(fund));
+		fo.setStatus(FundOperateStatus.DRAFT);
+		fo.setCreator(currentOperator.getUuid());
+		fo.setCreatetime(new Timestamp(System.currentTimeMillis()));
+		this.fundOperateService.insert(fo);
+		return ResultManager.createSuccessResult("保存成功！");
+	}
+	
+	/**
+	 * 变更活期理财审核状态
+	 * @param uuid
+	 * @param status
+	 * @return
+	 */
+	@RequestMapping(value = "/check", method = RequestMethod.GET)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "status", message="状态", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
+	@ResponseBody
+	public Result check(String uuid, String status) {
+		if(!FundStatus.CHECKED.equals(status) && !FundStatus.DELETED.equals(status)){
+			return ResultManager.createFailResult("审核状态错误！");
+		}
+		
+		//获取活期理财信息
+		Fund fund = fundService.get(uuid);
+		if(fund != null && uuid.equals(fund.getUuid())){
+			//修改活期理财审核状态
+			fund.setStatus(status);
+			fund = fundService.update(fund);
+			
+			return ResultManager.createSuccessResult("操作成功！");
+		}
+		else{
+			return ResultManager.createFailResult("该条数据不存在！");
+		}
+	}
+	
+	/**
+	 * 删除一条活期理财信息
+	 * @param uuid
+	 * @return
+	 */
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true)
+	@ResponseBody
+	public Result delete(String uuid) {
+		//获取活期理财信息
+		Fund fund = fundService.get(uuid);
+		if(fund != null){
+			//取管理员信息
+			Subject subject = SecurityUtils.getSubject();
+			Session session = subject.getSession();
+			BkOperator currentOperator = (BkOperator) session.getAttribute("currentOperator");
+			
+			//添加待审记录
+			FundOperate fo = new FundOperate();
+			fo.setUuid(UUID.randomUUID().toString());
+			fo.setFund(fund.getUuid());
+			fo.setType(FundOperateType.DELETE);
+			fo.setValue("");
+			fo.setStatus(FundOperateStatus.UNCHECKED);
+			fo.setCreator(currentOperator.getUuid());
+			fo.setSubmittime(new Timestamp(System.currentTimeMillis()));
+			fo.setCreatetime(new Timestamp(System.currentTimeMillis()));
+			this.fundOperateService.insert(fo);
+			return ResultManager.createSuccessResult("添加待审记录成功！");
+		}else{
+			return ResultManager.createFailResult("该条数据不存在！");
+		}
+	}
+	
+	/**
+	 * 获取一条活期理财信息
+	 * @param uuid
+	 * @return
+	 */
+	@RequestMapping(value = "/operateGet", method = RequestMethod.GET)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, maxLength = 36)
+	@ResponseBody
+	public Result operateGet(String uuid) {		
+		//获取活期理财信息
+		FundOperate fo = fundOperateService.get(uuid);
+		if (fo == null) {
+			return ResultManager.createFailResult("该条数据不存在！");
+		}
+		if (!FundOperateType.ADD.equals(fo.getType()) && !FundOperateType.EDIT.equals(fo.getType())
+				&& !FundOperateType.DELETE.equals(fo.getType()) ){
+			return ResultManager.createFailResult("操作信息类型不正确！");
+		}
+		FundOperateDetailVO fodVO = new FundOperateDetailVO(fo);
+		BkOperator creator = this.bkOperatorService.get(fodVO.getCreator());
+		if(creator != null){
+			fodVO.setCreatorName(creator.getRealname());
+		}
+		
+		if(!FundOperateType.ADD.equals(fo.getType())){
+			if(FundOperateType.EDIT.equals(fo.getType()) && FundOperateStatus.CHECKED.equals(fo.getStatus()) 
+					&& fo.getOld() != null && !"".equals(fo.getOld())){
+				Fund fund = JSONUtils.json2obj(fo.getOld(), Fund.class);	
+				FundDetailsVO fdvo = new FundDetailsVO(fund);
+				
+				BkOperator operator = this.bkOperatorService.get(fund.getCreator());
+				if(operator != null){
+					fdvo.setCreatorName(operator.getRealname());
+				}
+				
+				if(fund.getGp()!=null && !"".equals(fund.getGp())){
+					Bank bank = this.bankService.get(fund.getGp());
+					if(bank != null){
+						fdvo.setGpName(bank.getName());
+					}else{
+						fdvo.setGpName("未选择");
+					}
+				}else{
+					fdvo.setGpName("未选择");
+				}
+				fodVO.setOldData(fdvo);
+			}else{
+				Fund fund = fundService.get(fo.getFund());
+				FundDetailsVO fdvo = new FundDetailsVO(fund);
+				
+				BkOperator operator = this.bkOperatorService.get(fund.getCreator());
+				if(operator != null){
+					fdvo.setCreatorName(operator.getRealname());
+				}
+				
+				if(fund.getGp()!=null && !"".equals(fund.getGp())){
+					Bank bank = this.bankService.get(fund.getGp());
+					if(bank != null){
+						fdvo.setGpName(bank.getName());
+					}else{
+						fdvo.setGpName("未选择");
+					}
+				}else{
+					fdvo.setGpName("未选择");
+				}
+				fodVO.setOldData(fdvo);
 			}
-			if(scode == null){
-				return ResultManager.createFailResult("基金编号不能为空！");
+		}
+		if(FundOperateType.ADD.equals(fo.getType()) || FundOperateType.EDIT.equals(fo.getType())){
+			Fund fund = JSONUtils.json2obj(fo.getValue(), Fund.class);	
+			FundDetailsVO fdvo = new FundDetailsVO(fund);
+			
+			BkOperator operator = this.bkOperatorService.get(fund.getCreator());
+			if(operator != null){
+				fdvo.setCreatorName(operator.getRealname());
 			}
-			if(shortname == null){
-				return ResultManager.createFailResult("基金简称不能为空！");
+			
+			if(fund.getGp()!=null && !"".equals(fund.getGp())){
+				Bank bank = this.bankService.get(fund.getGp());
+				if(bank != null){
+					fdvo.setGpName(bank.getName());
+				}else{
+					fdvo.setGpName("未选择");
+				}
+			}else{
+				fdvo.setGpName("未选择");
+			}
+			fodVO.setNewData(fdvo);
+		}
+		return ResultManager.createDataResult(fodVO);
+	}
+	
+	/**
+	 * 活期理财投资信息修改操作列表
+	 * @param status
+	 * @return
+	 */
+	@RequestMapping(value = "/operateList", method = RequestMethod.GET)
+	@ActionParam(key = "status", message="状态", type = DataType.STRING)
+	@ActionParam(key = "type", message="类型", type = DataType.STRING)
+	@ActionParam(key = "name", message="搜索参数", type = DataType.STRING)
+	@ActionParam(key = "pageNum", message="页码", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "pageSize", message="每页数量", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "sorts", message="排序参数", type = DataType.STRING)
+	@ResponseBody
+	public Result operateList(String status, String type, String name, Integer pageNum, Integer pageSize, String sorts) {
+		//查询条件
+		Map<String, String> searchMap = new HashMap<String, String>();
+		searchMap.put("name", name);
+		if(!"all".equals(status)){
+			searchMap.put("status", status);
+		}
+		if(!"all".equals(type)){
+			searchMap.put("type", type);
+		}
+		//取管理员信息
+		Subject subject = SecurityUtils.getSubject();
+		Session session = subject.getSession();
+		BkOperator currentOperator = (BkOperator) session.getAttribute("currentOperator");
+		searchMap.put("creator", currentOperator.getUuid());
+		
+		//查询符合条件的活期理财信息的总数
+		Integer totalResultCount = fundOperateService.getCount(searchMap);
+		//查询符合条件的活期理财信息列表
+		List<Entity> list = fundOperateService.getListForPage(searchMap, pageNum, pageSize, sorts, FundOperate.class);
+		
+		//封装可用信息到前台List
+		List<Object> listVO = new ArrayList<Object>();
+		if(list != null && list.size() > 0){
+			for(Entity e: list){
+				FundOperate fo = (FundOperate)e;
+				FundOperateVO foVO = new FundOperateVO(fo);
+				if(FundOperateType.ADD.equals(fo.getType())){
+					Fund fund = JSONUtils.json2obj(fo.getValue(), Fund.class);
+					foVO.setFundName(fund.getName());
+					foVO.setScode(fund.getScode());
+
+					if(fund.getGp()!=null && !"".equals(fund.getGp())){
+						Bank bank = this.bankService.get(fund.getGp());
+						if(bank != null){
+							foVO.setGp(fund.getGp());
+							foVO.setGpName(bank.getName());
+						}else{
+							foVO.setGp("");
+							foVO.setGpName("未选择");
+						}
+					}else{
+						foVO.setGp("");
+						foVO.setGpName("未选择");
+					}
+				}
+				if(foVO.getFund() != null && !"".equals(foVO.getFund())){
+					Fund fund = this.fundService.get(foVO.getFund());
+					if(fund != null){
+						foVO.setFundName(fund.getName());
+						foVO.setScode(fund.getScode());
+					}
+
+					if(fund.getGp()!=null && !"".equals(fund.getGp())){
+						Bank bank = this.bankService.get(fund.getGp());
+						if(bank != null){
+							foVO.setGp(fund.getGp());
+							foVO.setGpName(bank.getName());
+						}else{
+							foVO.setGp("");
+							foVO.setGpName("未选择");
+						}
+					}else{
+						foVO.setGp("");
+						foVO.setGpName("未选择");
+					}
+				}
+				BkOperator creator = this.bkOperatorService.get(foVO.getCreator());
+				if(creator != null){
+					foVO.setCreatorName(creator.getRealname());
+				}
+				if(foVO.getChecker() != null && !"".equals(foVO.getChecker())){
+					BkOperator checker = this.bkOperatorService.get(foVO.getChecker());
+					if(checker != null){
+						foVO.setCheckerName(checker.getRealname());
+					}
+				}
+				
+				listVO.add(foVO);
+			}
+		}
+		return ResultManager.createDataResult(listVO, pageNum, pageSize, totalResultCount);
+	}
+	
+	/**
+	 * 活期理财投资信息修改操作列表(管理员)
+	 * @param status
+	 * @return
+	 */
+	@RequestMapping(value = "/operateCheckList", method = RequestMethod.GET)
+	@ActionParam(key = "status", message="状态", type = DataType.STRING)
+	@ActionParam(key = "type", message="类型", type = DataType.STRING)
+	@ActionParam(key = "name", message="搜索参数", type = DataType.STRING)
+	@ActionParam(key = "pageNum", message="页码", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "pageSize", message="每页数量", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "sorts", message="排序参数", type = DataType.STRING)
+	@ResponseBody
+	public Result operateCheckList(String status, String type, String name, Integer pageNum, Integer pageSize, String sorts) {
+		//查询条件
+		Map<String, String> searchMap = new HashMap<String, String>();
+		searchMap.put("name", name);
+//		if(!"all".equals(status)){
+//			searchMap.put("status", status);
+//		}
+		searchMap.put("status", status);
+		
+		if(!"all".equals(type)){
+			searchMap.put("type", type);
+		}
+		
+		if(Utlity.checkStringNull(sorts)){
+			sorts = "submittime-desc";
+		}
+		
+		//查询符合条件的活期理财信息的总数
+		Integer totalResultCount = fundOperateService.getCount(searchMap);
+		//查询符合条件的活期理财信息列表
+		List<Entity> list = fundOperateService.getListForPage(searchMap, pageNum, pageSize, sorts, FundOperate.class);
+		
+		//封装可用信息到前台List
+		List<Object> listVO = new ArrayList<Object>();
+		if(list != null && list.size() > 0){
+			for(Entity e: list){
+				FundOperate fo = (FundOperate)e;
+				FundOperateVO foVO = new FundOperateVO(fo);
+				if(FundOperateType.ADD.equals(fo.getType())){
+					Fund fund = JSONUtils.json2obj(fo.getValue(), Fund.class);
+					foVO.setFundName(fund.getName());
+					foVO.setScode(fund.getScode());
+					foVO.setCustodian(fund.getCustodian());
+				}
+				if(foVO.getFund() != null && !"".equals(foVO.getFund())){
+					Fund fund = this.fundService.get(foVO.getFund());
+					if(fund != null){
+						foVO.setFundName(fund.getName());
+						foVO.setScode(fund.getScode());
+						foVO.setCustodian(fund.getCustodian());
+					}
+				}
+				BkOperator creator = this.bkOperatorService.get(foVO.getCreator());
+				if(creator != null){
+					foVO.setCreatorName(creator.getRealname());
+				}
+				if(foVO.getChecker() != null && !"".equals(foVO.getChecker())){
+					BkOperator checker = this.bkOperatorService.get(foVO.getChecker());
+					if(checker != null){
+						foVO.setCheckerName(checker.getRealname());
+					}
+				}
+				
+				listVO.add(foVO);
+			}
+		}
+		return ResultManager.createDataResult(listVO, pageNum, pageSize, totalResultCount);
+	}
+	
+	/**
+	 * 编辑一条活期理财审核信息
+	 * @param uuid
+	 * @param name
+	 * @param scode
+	 * @param shortname
+	 * @param type
+	 * @param gp
+	 * @param flagStructured
+	 * @param structuredType
+	 * @param structuredRemark
+	 * @param style
+	 * @param riskLevel
+	 * @param creditLevel
+	 * @param performanceLevel
+	 * @param planingScale
+	 * @param actualScale
+	 * @param setuptime
+	 * @param collectStarttime
+	 * @param collectEndtime
+	 * @param purchaseStarttime
+	 * @param purchaseEndtime
+	 * @param goal
+	 * @param investIdea
+	 * @param investScope
+	 * @param investStaregy
+	 * @param investStandard
+	 * @param revenueFeature
+	 * @param riskManagement
+	 * @return
+	 */
+	@RequestMapping(value = "/operateEdit", method = RequestMethod.POST)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, maxLength = 36)
+	@ActionParam(key = "name", message="活期理财全程", type = DataType.STRING, required = true, minLength = 1, maxLength = 200)
+	@ActionParam(key = "scode", message="活期理财编号", type = DataType.STRING, required = true, minLength = 1, maxLength = 100)
+	@ActionParam(key = "shortname", message="活期理财简称", type = DataType.STRING, required = true, minLength = 1, maxLength = 50)
+	@ActionParam(key = "type", message="活期理财类型", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
+	@ActionParam(key = "gp", message="管理方", type = DataType.STRING, required = true)
+	@ActionParam(key = "flagStructured", message="分级状态", type = DataType.BOOLEAN)
+	@ActionParam(key = "structuredType", message="分级类型", type = DataType.STRING, maxLength = 20)
+	@ActionParam(key = "structuredRemark", message="分级描述", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "style", message="投资风格", type = DataType.STRING, maxLength = 20)
+	@ActionParam(key = "riskLevel", message="风险等级", type = DataType.STRING, maxLength = 20)
+	@ActionParam(key = "creditLevel", message="信用等级", type = DataType.STRING, maxLength = 20)
+	@ActionParam(key = "performanceLevel", message="业务等级", type = DataType.STRING, maxLength = 30)
+	@ActionParam(key = "planingScale", message="总募集规模", type = DataType.CURRENCY, maxLength = 20)
+	@ActionParam(key = "setuptime", message="成立日期", type = DataType.DATE)
+	@ActionParam(key = "collectStarttime", message="募集起始日", type = DataType.DATE)
+	@ActionParam(key = "collectEndtime", message="募集截止日", type = DataType.DATE)
+	@ActionParam(key = "purchaseStarttime", message="日常申购起始日", type = DataType.DATE)
+	@ActionParam(key = "purchaseEndtime", message="日常申购截止日", type = DataType.DATE)
+	@ActionParam(key = "goal", message="投资目标", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "investIdea", message="投资理念", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "investScope", message="投资范围", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "investStaregy", message="投资策略", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "investStandard", message="投资标准", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "revenueFeature", message="风险收益特征", type = DataType.STRING, maxLength = 1000)
+	@ActionParam(key = "riskManagement", message="具体目标", type = DataType.STRING, maxLength = 1000)
+	@ResponseBody
+	public Result operateEdit(String uuid, String name, String series, String scode, String shortname, String type, String gp, 
+			String flagStructured, String structuredType, String structuredRemark, String style, String riskLevel, String creditLevel,
+			String performanceLevel, String planingScale, String setuptime, String collectStarttime, String collectEndtime, 
+			String purchaseStarttime, String purchaseEndtime, String goal, String investIdea, String investScope, String investStaregy,
+			String investStandard, String revenueFeature, String riskManagement){
+		
+		FundOperate fo = fundOperateService.get(uuid);
+		if (fo != null) {
+			Fund fund = JSONUtils.json2obj(fo.getValue(), Fund.class);
+			
+			if(fundService.isExistFundByName(name,fo.getFund())){
+				return ResultManager.createFailResult("活期理财名称已存在！");
+			}
+			if(fundService.isExistFundByScode(scode,fo.getFund())){
+				return ResultManager.createFailResult("活期理财编号已存在！");
 			}
 			
 			fund.setName(name);
 			fund.setScode(scode);
 			fund.setShortname(shortname);
-			fund = this.fundService.update(fund);
 			
-		} else if ("2".equals(step)) {
-
-			if(type == null){
-				return ResultManager.createFailResult("基金类型不能为空！");
-			}
 			fund.setType(type);
-			fund.setGp(gp);
+			Bank bank = bankService.get(gp);
+			if(bank != null){
+				fund.setGp(gp);
+			}else{
+				return ResultManager.createFailResult("资金托管方选择错误！");
+			}
 			fund.setSetuptime(Timestamp.valueOf(Utlity.getFullTime(setuptime)));
 			fund.setPerformanceLevel(performanceLevel);
-			fund.setCustodian(custodian);
 			fund.setFlagStructured(Boolean.valueOf(flagStructured));
 			fund.setStructuredType(structuredType);
 			fund.setStructuredRemark(structuredRemark);
@@ -434,8 +891,6 @@ public class FundController extends BaseController {
 			fund.setPurchaseStarttime(Timestamp.valueOf(Utlity.getFullTime(purchaseStarttime)));
 			fund.setPurchaseEndtime(Timestamp.valueOf(Utlity.getFullTime(purchaseEndtime)));
 			
-			fund = this.fundService.update(fund);
-		} else if ("3".equals(step)) {
 			fund.setGoal(goal);
 			fund.setInvestScope(investScope);
 			fund.setInvestStaregy(investStaregy);
@@ -444,86 +899,71 @@ public class FundController extends BaseController {
 			fund.setRevenueFeature(revenueFeature);
 			fund.setRiskManagement(riskManagement);
 			
-			fund = this.fundService.update(fund);
-		} else if ("4".equals(step)) {
-			if(!FundRateTypes.APPLY.equals(rateType)&&!FundRateTypes.BUY.equals(rateType)&&!FundRateTypes.REDEEM.equals(rateType)){
-				return ResultManager.createFailResult("基金费率类型有误！");
-			}
-			
-			List<FundRate> fundRateList = new ArrayList<FundRate>();
-			
-			if(fundRates!=null && fundRates.length > 0){
-				for(String fundRate: fundRates){
-					String[] params = fundRate.split("_");
-					if (params != null && params.length == 5){
-						if(params[0].length() < 1){
-							return ResultManager.createFailResult("基金费率有误！");
-						}
-						if(!params[0].equals(rateType)){
-							return ResultManager.createFailResult("基金费率类型有误！");
-						}
-						if(!Utlity.isCurrency(params[1])){
-							return ResultManager.createFailResult("基金费率下限资金应为货币数值！");
-						}
-						if(!Utlity.isCurrency(params[2])){
-							return ResultManager.createFailResult("基金费率上限资金应为货币数值！");
-						}
-						if(Double.valueOf(params[1]) > Double.valueOf(params[2])){
-							return ResultManager.createFailResult("基金费率下限不应大于基金费率上限！");
-						}
-						if(!Utlity.isNumeric(params[3])){
-							return ResultManager.createFailResult("基金费率应为数字类型！");
-						}
-						if(!Utlity.isNumeric(params[4])){
-							return ResultManager.createFailResult("基金优惠费率应为数字类型！");
-						}
-						if(Double.valueOf(params[4]) > Double.valueOf(params[3])){
-							return ResultManager.createFailResult("基金优惠费率不应大于基金费率！");
-						}
-						FundRate fr = new FundRate();
-						fr.setUuid(UUID.randomUUID().toString());
-						fr.setFund(fund.getUuid());
-						fr.setType(params[0]);
-						fr.setLowlimit(BigDecimal.valueOf(Double.valueOf(params[1])));
-						fr.setUpperlimit(BigDecimal.valueOf(Double.valueOf(params[2])));
-						fr.setRate(BigDecimal.valueOf(Double.valueOf(params[3])));
-						fr.setOpenrate(BigDecimal.valueOf(Double.valueOf(params[4])));
-						fundService.updateFundRate(fund,rateType,fundRateList);
-					}else{
-						return ResultManager.createFailResult("基金费率有误！");
-					}
-				}
-			}else{
-				return ResultManager.createFailResult("请添加费率信息基金费率！");
-			}
+			//修改待审核记录
+			fo.setValue(JSONUtils.obj2json(fund));
+			fo.setCreatetime(new Timestamp(System.currentTimeMillis()));
+			fundOperateService.update(fo);
+			return ResultManager.createSuccessResult("修改待审核记录成功！");
+		}else{
+			return ResultManager.createFailResult("该条数据不存在！");
 		}
-		return ResultManager.createDataResult(fund, "保存成功！");
 	}
 	
-	
 	/**
-	 * 变更基金审核状态
+	 * 删除一条活期理财操作信息
 	 * @param uuid
-	 * @param status
 	 * @return
 	 */
-	@RequestMapping(value = "/check", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
-	@ActionParam(key = "status", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
+	@RequestMapping(value = "/operateDelete", method = RequestMethod.GET)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true)
 	@ResponseBody
-	public Result check(String uuid, String status) {
-		if(!FundStatus.CHECKED.equals(status) && !FundStatus.UNCHECKED.equals(status) && !FundStatus.UNPASSED.equals(status) && !FundStatus.DELETED.equals(status)){
-			return ResultManager.createFailResult("审核状态错误！");
-		}
-		
-		//获取基金信息
-		Fund fund = fundService.get(uuid);
-		if(fund != null && uuid.equals(fund.getUuid())){
-			//修改基金审核状态
-			fund.setStatus(status);
-			fund = fundService.update(fund);
-			
+	public Result operateDelete(String uuid) {
+		//获取活期理财操作信息
+		FundOperate fo = fundOperateService.get(uuid);
+		if(fo != null){
+			if(!FundOperateStatus.DRAFT.equals(fo.getStatus()) && !FundOperateStatus.UNPASSED.equals(fo.getStatus())){
+				return ResultManager.createFailResult("审核状态错误");
+			}
+			fo.setStatus(FundOperateStatus.DELETED);
+			fundOperateService.update(fo);
 			return ResultManager.createSuccessResult("操作成功！");
+		}else{
+			return ResultManager.createFailResult("该条数据不存在！");
+		}
+	}
+	
+	/**
+	 *待审核草稿-提交审核
+	 * @param uuid
+	 * @return
+	 */
+	@RequestMapping(value = "/operateSubmitCheck", method = RequestMethod.GET)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true)
+	@ResponseBody
+	public Result operateSubmitCheck(String uuid) {
+		//获取活期理财操作信息
+		FundOperate fo = fundOperateService.get(uuid);
+		if(fo != null){
+			if(FundOperateStatus.CHECKED.equals(fo.getStatus())){
+				return ResultManager.createFailResult("该记录已审核完毕");
+			}
+			
+			if(FundOperateType.EDIT.equals(fo.getType()) || FundOperateType.NETVALUE.equals(fo.getType())){
+				Map<String, String> searchMap = new HashMap<String, String>();
+				searchMap.put("fund", fo.getFund());
+				searchMap.put("type", fo.getType());
+				searchMap.put("status", FundOperateStatus.UNCHECKED);
+				
+				Integer count = this.fundOperateService.getCount(searchMap);
+				if(count > 0 ){
+					return ResultManager.createFailResult("该条数据有其他修改操作正在等待审核！");
+				}
+			}
+			
+			fo.setSubmittime(new Timestamp(System.currentTimeMillis()));
+			fo.setStatus(FundOperateStatus.UNCHECKED);
+			fundOperateService.update(fo);
+			return ResultManager.createSuccessResult("提交审核成功！");
 		}
 		else{
 			return ResultManager.createFailResult("该条数据不存在！");
@@ -531,229 +971,130 @@ public class FundController extends BaseController {
 	}
 	
 	/**
-	 * 删除一条基金信息
+	 * 审核活期理财修改操作
 	 * @param uuid
+	 * @param status
+	 * @param reason
 	 * @return
 	 */
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
+	@RequestMapping(value = "/operateCheck", method = RequestMethod.GET)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true)
+	@ActionParam(key = "status", message="审核状态", type = DataType.STRING, required = true, maxLength = 20)
+	@ActionParam(key = "reason", message="审核原因", type = DataType.STRING, maxLength = 500)
 	@ResponseBody
-	public Result delete(String uuid) {
+	public Result operateCheck(String uuid, String status, String reason) {
+		if(!FundOperateStatus.CHECKED.equals(status) && !FundOperateStatus.UNPASSED.equals(status)){
+			return ResultManager.createFailResult("审核状态错误");
+		}
 		
-		//获取基金信息
-		Fund fund = fundService.get(uuid);
-		if(fund != null && uuid.equals(fund.getUuid())){
-			//删除基金信息
-			fundService.delete(fund);
-			return ResultManager.createSuccessResult("删除成功！");
-		}else{
+		//获取活期理财投资信息
+		FundOperate fo = fundOperateService.get(uuid);
+		if(fo != null){
+			if(!FundOperateStatus.UNCHECKED.equals(fo.getStatus())){
+				return ResultManager.createFailResult("该记录审核状态错误");
+			}
+			//取管理员信息
+			Subject subject = SecurityUtils.getSubject();
+			Session session = subject.getSession();
+			BkOperator currentOperator = (BkOperator) session.getAttribute("currentOperator");
+			
+			if(fo.getCreator().equals(currentOperator.getUuid())){
+				return ResultManager.createFailResult("无法审核自己提交的操作记录");
+			}
+			
+			fo.setChecker(currentOperator.getUuid());
+			fo.setChecktime(new Timestamp(System.currentTimeMillis()));
+			fo.setStatus(status);
+			fo.setReason(reason);
+			try {
+				fundOperateService.check(fo);
+			} catch (TransactionException e) {
+				super.flushAll();
+				return ResultManager.createFailResult(e.getMessage());
+			} catch (Exception e) {
+				e.printStackTrace();
+				super.flushAll();
+				return ResultManager.createFailResult("数据操作出错！");
+			}
+			return ResultManager.createSuccessResult("审核记录成功！");
+		}
+		else{
 			return ResultManager.createFailResult("该条数据不存在！");
 		}
 	}
 	
 	/**
-	 * 查询净值列表
-	 * @param uuid
-	 * @param starttime 起始查询时间
-	 * @param endtime	终止查询时间
-	 * @param deadline 1-前1个月 2-前3个月 3-前6个月 4-前1年
+	 * 获取活期理财操作分状态列表
 	 * @return
 	 */
-	@RequestMapping(value = "/netvaluelist", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
-	@ActionParam(key = "starttime", type = DataType.DATE)
-	@ActionParam(key = "endtime", type = DataType.DATE)
-	@ActionParam(key = "deadline", type = DataType.STRING, required = true)
-	@ActionParam(key = "pageNum", type = DataType.NUMBER)
-	@ActionParam(key = "pageSize", type = DataType.NUMBER)
+	@RequestMapping(value = "/operateStatusList", method = RequestMethod.GET)
 	@ResponseBody
-	public Result netvaluelist(String uuid, String starttime, String endtime, String deadline, Integer pageNum, Integer pageSize) {
-		
-		//获取银行理财产品信息
-		Fund fund = fundService.get(uuid);
-		if(fund != null && uuid.equals(fund.getUuid())){
-			Map<String, String> searchMap = new HashMap<String, String>();
-			searchMap.put("fund", uuid);
-			Calendar c = Calendar.getInstance();
-			if(!"all".equals(deadline)){
-				switch (deadline) {
-				case "1":
-					c.setTime(new Date());
-			        c.add(Calendar.MONTH, -1);
-			        Date m = c.getTime();
-					starttime = Utlity.timeSpanToDateString(m);
-					endtime = Utlity.timeSpanToDateString(new Timestamp(System.currentTimeMillis()));
-					break;
-				case "2":
-					c.setTime(new Date());
-			        c.add(Calendar.MONTH, -3);
-			        Date m2 = c.getTime();
-					starttime = Utlity.timeSpanToDateString(m2);
-					endtime = Utlity.timeSpanToDateString(new Timestamp(System.currentTimeMillis()));
-					break;
-				case "3":
-					c.setTime(new Date());
-			        c.add(Calendar.MONTH, -6);
-			        Date m3 = c.getTime();
-					starttime = Utlity.timeSpanToDateString(m3);
-					endtime = Utlity.timeSpanToDateString(new Timestamp(System.currentTimeMillis()));
-					break;
-				case "4":
-					c.setTime(new Date());
-			        c.add(Calendar.YEAR, -1);
-			        Date m4 = c.getTime();
-					starttime = Utlity.timeSpanToDateString(m4);
-					endtime = Utlity.timeSpanToDateString(new Timestamp(System.currentTimeMillis()));
-					break;
-
-				default:
-					break;
-				}
-			}
-			
-			if(starttime != null && !"".equals(starttime)){
-				searchMap.put("starttime", Utlity.getFullTime(starttime));
-			}
-			
-			if(endtime != null && !"".equals(endtime)){
-				searchMap.put("endtime", Utlity.getFullTime(endtime));
-			}
-			
-			Integer count = fundDailyService.getCount(searchMap);
-			//查询符合条件的银行理财产品净值信息
-			List<Entity> list = fundDailyService.getListForPage(searchMap, pageNum, pageSize, "", FundDaily.class);
-			if(list != null){
-				List<FundDailyVO> listvo = new ArrayList<FundDailyVO>();
-				for(Entity entity : list){
-					FundDaily bfd = (FundDaily)entity;
-					FundDailyVO bfdvo = new FundDailyVO(bfd);
-					bfdvo.setFund(fund.getName());
-					listvo.add(bfdvo);
-				}
-				return ResultManager.createDataResult(listvo,fund.getName(), pageNum, pageSize, count);
-			}else{
-				return ResultManager.createFailResult("查询失败！");
-			}
-			
-		}else{
-			return ResultManager.createFailResult("对应理财产品不存在！");
-		}
-	}
-	
-	/**
-	 * 获取一条净值信息
-	 * @param uuid
-	 * @return
-	 */
-	@RequestMapping(value = "/netvalueGet", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
-	@ResponseBody
-	public Result netvalueGet(String uuid) {
-		FundDaily fundDaily = fundDailyService.get(uuid);
-		if(fundDaily != null && uuid.equals(fundDaily.getUuid())){
-			FundDailyVO vo = new FundDailyVO(fundDaily);
-			return ResultManager.createDataResult(vo);
-		} else {
-			return ResultManager.createFailResult("基金净值信息不存在！");
-		}
-	}
-	
-	/**
-	 * 录入一条净值信息
-	 * 需要检查对应时间内是否已存在净值信息
-	 * @param uuid
-	 * @param statistime
-	 * @param netValue
-	 * @return
-	 */
-	@RequestMapping(value = "/netvalueadd", method = RequestMethod.POST)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
-	@ActionParam(key = "statistime", type = DataType.DATE, required = true)
-	@ActionParam(key = "netValue", type = DataType.NUMBER, required = true)
-	@ResponseBody
-	public Result netvalueadd(String uuid, String statistime, BigDecimal netValue) {
-		
-		//获取用户登录信息
+	public Result operateStatusList() {		
+		//查询条件
+		Map<String, String> searchMap = new HashMap<String, String>();
+		//取管理员信息
 		Subject subject = SecurityUtils.getSubject();
 		Session session = subject.getSession();
 		BkOperator currentOperator = (BkOperator) session.getAttribute("currentOperator");
+		searchMap.put("creator", currentOperator.getUuid());
+		//获取活期理财投资信息
+		List<Entity> list = fundOperateService.getStatusList(searchMap, StstusCountVO.class);
+		return ResultManager.createDataResult(list,list.size());
+	}
+	
+	/**
+	 * 获取活期理财操作分状态列表
+	 * @return
+	 */
+	@RequestMapping(value = "/operateCheckStatusList", method = RequestMethod.GET)
+	@ResponseBody
+	public Result operateCheckStatusList() {	
+		//查询条件
+		Map<String, String> searchMap = new HashMap<String, String>();
+		searchMap.put("status", "all");
+		//获取活期理财投资信息
+		List<Entity> list = fundOperateService.getStatusList(searchMap, StstusCountVO.class);
+		return ResultManager.createDataResult(list,list.size());
+	}
+	
+	/**
+	 * 获取活期理财投资操作分类型列表
+	 * @return
+	 */
+	@RequestMapping(value = "/operateTypeList", method = RequestMethod.GET)
+	@ActionParam(key = "status", message="审核状态", type = DataType.STRING, required = true, maxLength = 20)
+	@ResponseBody
+	public Result operateTypeList(String status) {
+		//查询条件
+		Map<String, String> searchMap = new HashMap<String, String>();
+		if(!"all".equals(status)){
+			searchMap.put("status", status);
+		}
 		
-		//获取银行理财产品信息
-		Fund fund = fundService.get(uuid);
-		if(fund != null && uuid.equals(fund.getUuid())){
-			
-			FundDaily fundDaily = new FundDaily();
-			
-			/*
-			 * 判断是否已经存在过相同时间内的净值信息
-			 */
-			Map<String, String> searchMap = new HashMap<String, String>();
-			searchMap.put("fund", fund.getUuid());
-			searchMap.put("statistime", Utlity.getFullTime(statistime));
-			
-			List<Entity> list = this.fundDailyService.getListForPage(searchMap, 0, 1, null, FundDaily.class);
-			if(list != null && list.size() > 0){
-				return ResultManager.createFailResult("当前统计时间已存在净值信息，不能重复添加！");
-			}
-			
-			/*
-			 * 入库
-			 */
-			fundDaily.setUuid(UUID.randomUUID().toString());
-			fundDaily.setFund(fund.getUuid());
-			fundDaily.setCreator(currentOperator.getUuid());
-			fundDaily.setCreatetime(new Timestamp(System.currentTimeMillis()));
-			fundDaily.setNetValue(netValue);
-			fundDaily.setStatistime(Timestamp.valueOf(Utlity.getFullTime(statistime)));
-			this.fundDailyService.addDaily(fundDaily);
-			return ResultManager.createSuccessResult("保存成功！");
-		} else {
-			return ResultManager.createFailResult("对应基金不存在！");
-		}
+		//取管理员信息
+		Subject subject = SecurityUtils.getSubject();
+		Session session = subject.getSession();
+		BkOperator currentOperator = (BkOperator) session.getAttribute("currentOperator");
+		searchMap.put("creator", currentOperator.getUuid());
+		
+		List<Entity> list = fundOperateService.getTypeList(searchMap,StstusCountVO.class);
+		return ResultManager.createDataResult(list,list.size());
 	}
 	
 	/**
-	 * 编辑净值信息
-	 * @param uuid
-	 * @param statistime
-	 * @param netValue
+	 * 获取活期理财操作分类型列表（管理员）
 	 * @return
 	 */
-	@RequestMapping(value = "/netvalueEdit", method = RequestMethod.POST)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
-	@ActionParam(key = "statistime", type = DataType.DATE, required = true)
-	@ActionParam(key = "netValue", type = DataType.NUMBER, required = true)
+	@RequestMapping(value = "/operateCheckTypeList", method = RequestMethod.GET)
+	@ActionParam(key = "status", message="审核状态", type = DataType.STRING, required = true, maxLength = 20)
 	@ResponseBody
-	public Result netvalueEdit(String uuid, String statistime, BigDecimal netValue) {
-		FundDaily fundDaily = fundDailyService.get(uuid);
-		if(fundDaily != null && uuid.equals(fundDaily.getUuid())){
-			if(Timestamp.valueOf(Utlity.getFullTime(statistime)).equals(fundDaily.getStatistime())){
-				fundDaily.setNetValue(netValue);
-				this.fundDailyService.update(fundDaily);
-				return ResultManager.createSuccessResult("修改成功！");
-			}else{
-				return ResultManager.createFailResult("净值时间错误，非法操作！");
-			}
-		} else {
-			return ResultManager.createFailResult("基金净值信息不存在！");
-		}
-	}
-	
-	/**
-	 * 删除一条净值信息
-	 * @param uuid
-	 * @return
-	 */
-	@RequestMapping(value = "/netvalueDelete", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
-	@ResponseBody
-	public Result netvalueDelete(String uuid) {
-		FundDaily fundDaily = fundDailyService.get(uuid);
-		if(fundDaily != null && uuid.equals(fundDaily.getUuid())){
-			this.fundDailyService.delete(fundDaily);
-			return ResultManager.createSuccessResult("删除成功！");
-		} else {
-			return ResultManager.createFailResult("基金净值信息不存在！");
-		}
+	public Result operateCheckTypeList(String status) {
+		//查询条件
+		Map<String, String> searchMap = new HashMap<String, String>();
+		
+		searchMap.put("status", status);
+		
+		List<Entity> list = fundOperateService.getTypeList(searchMap,StstusCountVO.class);
+		return ResultManager.createDataResult(list,list.size());
 	}
 }

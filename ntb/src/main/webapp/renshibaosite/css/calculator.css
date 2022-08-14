@@ -1,0 +1,276 @@
+*{
+    
+}
+.cal_box{
+	width:600px;
+    height: 360px;
+    background: #fff;
+    padding: 20px 0;
+    z-index: 10;
+}
+.cal_box_con{
+    background: #d9d9d9;
+    z-index: 100;  
+    box-sizing: initial;
+}
+.detailed{
+    width: 600px;
+    margin: 0 auto;
+   /*  -moz-box-shadow: 0px 0px 10px 5px  #cccdcf;
+    -ms-box-shadow: 0px 0px 10px 5px  #cccdcf;
+    -o-box-shadow: 0px 0px 10px 5px  #cccdcf;
+    box-shadow: 0px 0px 10px 5px  #cccdcf; */
+    background: #fff;
+}
+.detailed p{
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    color: #484848;
+    font-size: 16px;
+    position: relative;
+}
+.detailed p b{
+    font-size: 16px;
+    color: #c3c3c3;
+    float: right;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+.detailed p i{
+    font-size: 12px;
+    position: absolute;
+    right: 70px;
+    font-style: normal;
+    bottom: -13px;
+
+}
+.cal_tab th{
+    color: #363636;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    font-weight: normal;
+}
+.cal_tab tr{
+    border-bottom: 1px solid #f2f2f2;
+}
+.cal_tab tr td{
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    color: #363636;
+}
+.cal_tab tr:last-child{
+    border-bottom: none;
+}
+.cal_bot{
+    background: #ff8c34;
+}
+.cal_botl{
+    width: 50px;
+    background: #ffc69a;
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+    height: 95px;
+    line-height: 50px;
+    writing-mode:tb-rl;
+    font-size: 16px;
+    color: #f36900;
+    font-weight: bold;
+    letter-spacing: 12px;
+    padding-top:10px;
+}
+.cal_botr{
+    float: right;
+    width: 550px;
+    height: 95px;
+    font-size: 14px;
+    color:#fff;
+}
+.cal_botr p{
+    color: #fff;
+    padding-top: 10px;
+}
+.cal_botr em{
+    color: #fff;
+    font-style: normal;
+    font-size: 20px;
+}
+.last-left{
+    padding-left: 50px;
+    width: 200px;
+    float: left;
+}
+.last-left span{
+	display:block;
+	float:left;
+}
+.last-left input{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #fff;
+    text-align: right;
+    background: transparent;
+    padding-right: 4px;
+    color: #fff;
+    width: 94px;
+    display:block;
+    float:left;
+}
+.last-left ul li{
+    margin-bottom: 15px;
+    padding-top: 3px;
+    width:180px;
+}
+.jsq{
+    width: 510px;
+    margin: 0 auto;
+}
+.jsq ul li{
+    font-size: 16px;
+    color: #646464;
+    margin-bottom: 10px;
+    position:relative;
+}
+.jsq ul li li{	
+	height: 50px;
+	line-height: 50px;
+}
+.jsq ul li span{
+    width: 105px;
+    display: inline-block;
+    letter-spacing: 4px;
+}
+.jsq ul li p.jsqTips{
+	padding-left:110px;
+	font-size: 12px;
+	line-height: 18px;
+	margin-top: 10px;
+	color:#999;
+}
+.ldo{
+    border: 1px solid #cccccc;
+    height: 48px;
+/*     line-height: 48px; */
+    border-radius: 4px;
+    width: 392px;
+    text-indent: 20px;
+    font-size: 16px;
+    color: #646464;
+    padding:10px 0;
+}
+
+#sqgz::-webkit-input-placeholder{
+    color: #000!important;
+}
+#sqgz::-moz-placeholder{
+    color: #000!important;
+}
+.let-sp{
+    letter-spacing: 49px;
+    font-style: normal;
+}
+.select_dq{
+    height: 50px;
+    line-height: 50px;
+}
+.jsq ul li:nth-child(3).sod_select{
+    width:395px!important;
+}
+.end{
+    width: 390px;
+    height: 50px;
+    text-align: center;
+    background: #f68f41;
+    color: #fff;
+    font-size: 20px;
+    letter-spacing: 1px;
+    display: block;
+    line-height: 50px;
+    float: right;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-right:8px;
+}
+li.jnlx .sod_select {
+    width: 394px;
+    margin-right: 0!important;
+    height: 48px;
+    display: inline-block;
+}
+li.jnlx .sod_list{
+    width: 394px!important;
+}
+li.xzdq .sod_select:nth-child(2){
+    height: 48px;
+    width: 196px;
+    display: inline-block;
+}
+li.xzdq .sod_select:nth-child(3){
+    margin-right: 0!important;
+    height: 48px;
+    display: inline-block;
+}
+li.xzdq .sod_select:nth-child(3) .sod_list{
+    width: 185px!important;
+}
+.sod_label{
+    padding-top: 8px!important;
+}
+.sbjn label input{
+    margin-right: 10px;
+    opacity:0;
+}
+.sbjn label{
+    width: 170px;
+    display: inline-block;
+    cursor:pointer;
+    background:url(../img/radioBg-gray.png) left center no-repeat;
+}
+.sbjn label.light{
+    background:url(../img/radioBg.png) left center no-repeat;
+}
+.sbjs .sod_select{
+    height: 48px;
+    width: 196px!important;
+}
+.js_yc{
+    width: 187px;
+    height: 48px;
+    border-radius: 4px;
+    border: none;
+    display: inline-block;
+    float: right;
+    border: 1px solid #ccc;
+    text-indent: 10px;
+    margin-right:8px;
+}
+.let_no{
+    letter-spacing: 0px!important;
+}
+label.w185{
+    width: 210px;
+}
+.footer{
+    display: none
+}
+.cal_botr em input{
+    background: none;
+    border: none;
+    width: 130px;
+    color: #fff;
+}
+.jsq ul li b{
+	position:absolute;
+	font-size:14px;
+	top:15px;
+	right:20px;
+	font-weight: lighter;
+}
+.last{padding-top:37px;}

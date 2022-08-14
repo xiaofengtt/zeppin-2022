@@ -1,0 +1,79 @@
+.main-top{
+	padding:0.36rem;
+	text-align: center;
+	position: relative;
+}
+.main-top h3{
+	opacity: 0.3;
+	font-size: 0.28rem;
+	color: #000000;
+}
+.main-top p{
+	font-size: 0.52rem;
+	color: #000000;
+	margin-top:0.2rem;
+}
+.main-top img{
+	position: absolute;
+	width:2.6rem;
+	height:1.4rem;
+	right:0;
+	bottom:0;
+}
+.box {
+	margin-bottom: 0.2rem;
+	background: #FFFFFF;
+}
+
+.box ul {
+	padding: 0;
+}
+
+.box li {
+	border-top: 1px solid #EBEBEB;
+	padding: 0.2rem 0.28rem;
+	position:relative;
+}
+
+.box li {
+	opacity: 0.69;
+	font-size: 0.28rem;
+}
+.box li p{
+	color: #000000;
+}
+.box li span{
+	display: inline-block;
+	position:absolute;
+	right:0.28rem;
+	top:50%;
+	-webkit-transform:translateY(-50%);
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	width:65%;
+	text-align: right;
+}
+.box li span a{
+	color: #2F6EB7;
+	opacity: 0.8;
+}
+.box li span img{
+	display: inline-block;
+	vertical-align: middle;
+	width:0.28rem;
+	height:0.28rem;
+}
+.box li span i{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.box .buy-price img{
+	width:0.32rem;
+	height:0.16rem;
+}
+.coupon{
+	display:none;
+	font-size:0.26rem;
+}

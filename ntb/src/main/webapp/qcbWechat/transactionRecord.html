@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>交易记录</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/transactionRecord.css?version=1.5" />
+		<script type="text/template" id="queboxTpl">
+			<div class="month-item">
+				<h4 class="month-item-title">{{:time}}</h4>
+				{{for dataList}}
+					{{if priceflag == true}}
+						<a class="openId-url" href="./transactionRecordDetail.html?uuid={{:uuid}}">
+							<div class="item-list">
+							<i class="bg-red">
+								<span class="fuckWechat">收</span>
+							</i>
+							<div class="item-box">
+							<div class="item-list-mid">
+								<p>
+									<small></small>
+									{{:typeCN}}
+								</p>
+								<span class="color-gray">{{:createtimeLessCN}}</span>
+							</div>
+							<div class="item-list-right">
+								<p class="color-red">
+									<small>+</small>
+									{{:price}}
+								</p>
+								<span class="color-{{:status}}">{{:statusCN}}</span>
+							</div>
+							</div>
+						</div>
+						</a>
+					{{else}}
+						<a class="openId-url" href="./transactionRecordDetail.html?uuid={{:uuid}}">
+							<div class="item-list">
+							<i class="bg-green">
+								<span class="fuckWechat">支</span>
+							</i>
+							<div class="item-box">
+							<div class="item-list-mid">
+								<p>
+									<small></small>
+									{{:typeCN}}
+								</p>
+								<span class="color-gray">
+									{{:createtimeLessCN}}
+								</span>
+							</div>
+							<div class="item-list-right">
+								<p class="color-green">
+									<small>-</small>
+									{{:price}}
+								</p>
+								<span class="color-{{:status}}">
+									{{:statusCN}}
+								</span>
+							</div>
+							</div>
+						</div>
+						</a>
+					{{/if}}
+				{{/for}}
+			</div>
+		</script>
+	</head>
+	<body>
+		<div class="main">
+			
+		</div>
+		
+		<p class="layer">
+			提示信息
+		</p>
+
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jsrender.min.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/transactionRecord.js?version=1.5"></script>
+	</body>
+</html>
+

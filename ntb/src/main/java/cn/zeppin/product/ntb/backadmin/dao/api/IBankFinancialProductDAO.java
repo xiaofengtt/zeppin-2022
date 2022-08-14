@@ -58,10 +58,11 @@ public interface IBankFinancialProductDAO extends IBaseDAO<BankFinancialProduct,
 	
 	/**
 	 * 获取银行理财产品分阶段列表
+	 * @param inputParams
 	 * @param resultClass
 	 * @return
 	 */
-	List<Entity> getStageList(Class<? extends Entity> resultClass);
+	List<Entity> getStageList(Map<String, String> inputParams, Class<? extends Entity> resultClass);
 	
 	/**
 	 * 修改待投资阶段

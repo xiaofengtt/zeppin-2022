@@ -1,0 +1,141 @@
+main {
+    max-width: 1320px;
+    /*min-width:1320px;*/
+    margin: 20px auto 40px auto;
+    display: block;
+    /*position: relative;*/
+}
+
+.nav-header-left {
+    width: 300px;
+}
+
+.main-left {
+    max-width: 230px;
+    width: 17.5%;
+    display: inline-block;
+    vertical-align: top;
+    transition: all 0.2s linear;
+}
+
+.main-left-item {
+    width: 176px;
+    border-bottom: 1px solid #E8E4E4;
+    padding: 10px 0 6px 0px;
+    position: relative;
+    margin-bottom: 14px;
+}
+
+.main-left a {
+    cursor: pointer;
+    display: inline-block;
+    color: #333333;
+    margin-bottom: 14px;
+    margin-left: 30px;
+    font-size: 14px;
+}
+
+.main-left .title {
+    font-size: 18px;
+    margin-left: 0;
+    padding-left: 30px;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.main-left .title img {
+    position: absolute;
+    /*width:20px;
+	height:18px;*/
+    left: 0;
+    top: 2px;
+}
+
+.main-left-item ul li a:hover {
+    color: #FF9E10;
+}
+
+.main-right {
+    /*width:1084px;*/
+    width: 82%;
+    /*min-width:1086px;*/
+    display: inline-block;
+    vertical-align: top;
+    /*margin-left:10px;*/
+    margin-top: 10px;
+}
+
+#click {
+    display: none;
+    position: absolute;
+    left: 24px;
+    top: 17px;
+    width: 40px;
+    height: 40px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    /*border: 2px solid #FFB172;*/
+    border: 2px solid #A5A5A5;
+    padding-top: 7px;
+    cursor: pointer;
+}
+
+#click span {
+    display: block;
+    width: 26px;
+    margin: 0 auto;
+    height: 2px;
+    /*background: #FFB172;*/
+    background: #A5A5A5;
+    margin-top: 4px;
+}
+
+#click:hover {
+    border: 2px solid #FFB172;
+}
+
+#click:hover span {
+    background: #FFB172;
+}
+
+@media only screen and (max-width:1186px) {
+    #name {
+        display: none;
+    }
+    .main-left {
+        position: fixed;
+        top: 0;
+        left: -230px;
+        z-index: 100;
+        background: #F2F5F7;
+        width: 186px;
+        box-shadow: 0px 1px 4px 1px #E2E2E2;
+        padding-left: 10px;
+        overflow-y: scroll;
+    }
+    .main-right {
+        width: 96%;
+        margin: 0 auto;
+        display: block;
+    }
+    .nav-header-right ul li {
+        padding: 0;
+    }
+    .nav-header-left {
+        width: 300px;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    #click {
+        display: inline-block;
+    }
+}
+
+@media only screen and (max-width:990px) {
+    .nav-header-left {
+        width: 104px;
+        overflow: hidden;
+    }
+}

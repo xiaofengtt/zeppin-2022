@@ -6,18 +6,17 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
-		<title>添加银行</title>
+		<title>牛投帮-后台管理系统</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="css/bootstrap.css" />
 		<link rel="stylesheet" href="css/bootstrap2.css" />
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/uploadfile.css">
-		<link href='http://cdn.webfont.youziku.com/webfonts/nomal/27029/46768/58f86193f629d8113ccf311e.css' rel='stylesheet' type='text/css' />
-		<script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
 	</head>
 	<body>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="navigation.jsp"/>
-		<input id="scode" type="hidden" value="00200022" />  
+		<input id="scode" type="hidden" value="00200022" />
 		<div class="contain">
 			<jsp:include page="contentLeft.jsp"/>
 			<div class="contain-right">
@@ -40,7 +39,7 @@
 									</div>
 									<div class="clear"></div>
 								</div>
-								
+
 								<div class="form-group col-xs-6">
 									<label class="col-xs-12">功能描述：</label>
 									<div class="col-xs-12">
@@ -49,10 +48,18 @@
 									<div class="clear"></div>
 								</div>
 								<div class="clear"></div>
+								<div class="form-group col-xs-6">
+									<label class="col-xs-12">默认排序：</label>
+									<div class="col-xs-12">
+										<input type="text" name="sort" id="sort" class="form-control"/>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div class="clear"></div>
 <!-- 								<div class="btnGroup text-center"> -->
 								<div class="btnGroup" style="margin-top:45px;">
 									<button class="btn sureBtn" type="submit">确定</button>
-									<button class="btn cancleBtn" type="button" onclick="window.location.href=history.go(-1);">取消</button>
+									<button class="btn cancleBtn" type="button" onclick="window.location.href = document.referrer;">取消</button>
 								</div>
 								<div class="clear"></div>
 							</div>
@@ -67,5 +74,6 @@
 		<script type="text/javascript" src="js/bootstrap.js" ></script>
 		<script type="text/javascript" src="js/jquery.uploadfile.min.js"></script>
 		<script type="text/javascript" src="js/controllerInfoAdd.js" ></script>
+		<script type="text/javascript" src="js/flagSubmit.js"></script>
 	</body>
 </html>

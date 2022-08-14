@@ -7,6 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>添加主理人</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="css/bootstrap.css" />
 		<link rel="stylesheet" href="css/bootstrap2.css" />
 		<link rel="stylesheet" href="css/style.css" />
@@ -15,7 +16,7 @@
 	<body>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="navigation.jsp"/>
-		<input id="scode" type="hidden" value="00100014" />  
+		<input id="scode" type="hidden" value="00100014" />
 		<div class="contain">
 			<jsp:include page="contentLeft.jsp"/>
 			<div class="contain-right">
@@ -69,7 +70,7 @@
 									<select name="status">
 										<option value="normal">正常</option>
 										<option value="disable">停用</option>
-									</select>				
+									</select>
 								</div>
 								<div class="clear"></div>
 							</div>
@@ -80,7 +81,7 @@
 									<div class="uploadLogo" style="text-align:center;">
 										<img id="imageShow" style="border:0;max-width:100%;max-height:150px;margin-top:15px;">
 										<div id="resourceId">
-											
+
 										</div>
 									</div>
 									<div id="resourceAdd"><input type="hidden" name="photo" id="photo" value=""></div>
@@ -121,7 +122,7 @@
 							<div class="clear"></div>
 							<div class="btnGroup">
 								<button class="btn sureBtn" type="submit">确定</button>
-								<button class="btn cancleBtn" type="button" onclick="window.location.href=history.go(-1);">取消</button>
+								<button class="btn cancleBtn" type="button" onclick="window.location.href = document.referrer;">取消</button>
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -138,6 +139,8 @@
 		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.js" ></script>
 		<script type="text/javascript" src="js/jquery.uploadfile.min.js"></script>
+		<script type="text/javascript" src="js/paramCheck.js" ></script>
 		<script type="text/javascript" src="js/managerAdd.js" ></script>
+		<script type="text/javascript" src="js/flagSubmit.js"></script>
 	</body>
 </html>

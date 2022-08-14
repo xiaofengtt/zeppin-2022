@@ -7,6 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>添加运营用户</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="css/bootstrap.css" />
 		<link rel="stylesheet" href="css/bootstrap2.css" />
 		<link rel="stylesheet" href="css/style.css" />
@@ -14,7 +15,7 @@
 	<body>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="navigation.jsp"/>
-		<input id="scode" type="hidden" value="00100012" />  
+		<input id="scode" type="hidden" value="00100012" />
 		<div class="contain">
 			<jsp:include page="contentLeft.jsp"/>
 			<div class="contain-right">
@@ -31,7 +32,7 @@
 										<option value="" >请选择</option>
 										<option value="0127fcbe-f57f-11e6-ac06-cacda7da5000" >运营经理</option>
 										<option value="49f5c6f5-f8d2-45c2-94bb-4036be1c4bb6" >运营编辑</option>
-									</select>				
+									</select>
 								</div>
 								<div class="clear"></div>
 							</div>
@@ -68,7 +69,7 @@
 							<div class="clear"></div>
 							<div class="btnGroup">
 								<button class="btn sureBtn" type="submit">确定</button>
-								<button class="btn cancleBtn" onclick="window.location.href=history.go(-1)">取消</button>
+								<button class="btn cancleBtn" onclick="history.go(-1)">取消</button>
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -81,6 +82,8 @@
 		<script type="text/javascript" src="js/jquery.colorbox.js"></script>
 		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.js" ></script>
+		<script type="text/javascript" src="js/paramCheck.js" ></script>
 		<script type="text/javascript" src="js/operateOperatorAdd.js" ></script>
+		<script type="text/javascript" src="js/flagSubmit.js"></script>
 	</body>
 </html>

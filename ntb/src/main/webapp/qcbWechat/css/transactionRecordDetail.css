@@ -1,0 +1,185 @@
+.main{
+	/*background:#FFFFFF;*/
+	padding-bottom:0.64rem;
+}
+.top{
+	background: #FFFFFF;
+	padding:0.5rem 0.3rem;
+	position: relative;
+	text-align:center;
+	margin-top:0.2rem;
+}
+.top i{
+	display: inline-block;
+	vertical-align: middle;
+	color:#FFFFFF;
+	width:0.4rem;
+	height:0.4rem;
+	text-align: center;
+	-webkit-border-radius:50%;
+	font-size:0.26rem;
+	line-height:0.28rem;
+	margin-right:0.16rem;
+	position: relative;
+}
+.top > span{
+	color:rgba(44, 44, 44, 1);
+	font-size:0.32rem;
+	display: inline-block;
+	vertical-align: middle;
+	line-height:0.4rem;
+}
+.fuckWechat{
+	display: inline-block;
+	position: absolute;
+	top:50%;
+	left:50%;
+	height:0.28rem;
+	-webkit-transform: translate(-50%,-50%);
+}
+.top p{
+	font-size:0.58rem;
+	margin:0.15rem 0;
+}
+.top b{
+	font-weight:normal;
+	color:rgba(102,102,102,1);
+	font-size:0.24rem;
+}
+.name{
+	font-size:0.32rem;
+	margin:0 auto;
+	text-align: center;
+	color:#FFFFFF;
+}
+
+.price{
+	font-size:0.70rem;
+	color:#FFFFFF;
+	text-align: center;
+	margin-top:0.22rem;
+}
+.msg{
+	margin-top:0.2rem;
+}
+.msg-item{
+	/*height:1rem;*/
+	/*line-height:1rem;*/
+	padding: 0.22rem 0.3rem;
+	border-bottom:1px solid #eaeaea;
+	background-position: center 0.46rem;
+	position: relative;
+	background:#FFFFFF;
+}
+.msg-item p{
+	font-size:0.28rem;
+	width:3rem;
+	color:rgba(44, 44, 44, 1);
+}
+.msg-item span{
+	display: inline-block;
+	font-size:0.28rem;
+	position: absolute;
+	top:50%;
+	-webkit-transform: translateY(-50%);
+	right:0.28rem;
+	color:rgba(44, 44, 44, 1);
+	
+}
+.bg-icon-1{
+	background: url("../img/")no-repeat;
+}
+.bg-icon-2{
+	background: url("../img/")no-repeat;
+}
+.bg-icon-3{
+	background: url("../img/")no-repeat;
+}
+
+#allRight{
+	background:#FF7600;
+	color:#FFFFFF;
+	/*border:1px solid #E5CE90;*/
+	margin-top:0.74rem;
+}
+#checked{
+	margin-top:0.74rem;
+	background:#c1c1c1;
+}
+.tip{
+	width:6rem;
+	margin:0 auto;
+	margin-top:0.40rem;
+	font-size:0.28rem;
+	color:#A2A2A2;
+}
+.color-red{
+	color:rgba(255,0,0,1);
+}
+.bg-green{
+	border:1px solid rgba(75, 169, 0, 1);
+}
+.bg-green .fuckWechat{
+	color:rgba(75, 169, 0, 1);
+}
+.bg-red{
+	border:1px solid rgba(255,0,0,1);
+}
+.bg-red .fuckWechat{
+	color:rgba(255,0,0,1);
+}
+.color-green{
+	color: rgba(75, 169, 0, 1);
+}
+.top b.color-FAIL{
+	color:rgba(255, 119, 2, 1);
+}
+/* 进度显示 */
+.progressDiv{
+	background:#fff;
+	margin-top:0.2rem;
+	padding:0.4rem;
+	height:5rem;
+	display:none;
+}
+.progressLeft{
+	width:0.4rem;
+	float:left;
+}
+.progressRight{
+	width:5rem;
+	padding-left:0.3rem;
+	float:left;
+}
+.progressLeft .circular{
+	width:0.4rem;
+	height:0.4rem;
+	background:url(../img/progress-circle.png) center no-repeat;
+	background-size:cover;
+}
+.progressLeft .circular.light{
+	background:url(../img/progress-circle-light.png) center no-repeat;
+	background-size:cover;
+}
+.progressLeft .line{
+	width:0.4rem;
+	height:1.22rem;
+	background:url(../img/progress-line.png) center no-repeat;
+	background-size:auto 100%;
+}
+.progressLeft .line.light{
+	background:url(../img/progress-line-light.png) center no-repeat;
+	background-size:auto 100%;
+}
+.progressRight p{
+	color:rgba(44, 44, 44, 1);
+	font-size:0.28rem;
+	margin-bottom:0.1rem;
+}
+.progressRight b{
+	color:rgba(102, 102, 102, 1);
+	font-size:0.24rem;
+}
+.progressRight div{
+	height:1.62rem;
+}

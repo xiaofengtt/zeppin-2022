@@ -6,12 +6,13 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="css/bootstrap.css" />
 		<link rel="stylesheet" href="css/bootstrap2.css" />
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/colorbox.css" />
 		<link rel="stylesheet" href="css/paging.css">
-		<script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
+		<%-- <script type="text/javascript" src="https://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script> --%>
 	</head>
 	<body>
 		<div class="header">
@@ -29,9 +30,9 @@
 			</div>
 		</div>
 		<script>
-			$youziku.load("h1,.locationLeft,.PFSCR,.order,.list-item-ft,.fundName", "c6da775181ca42f7a7c023bb366de971", "PingFangSC_R");
-			$youziku.load("#search", "40c55e59f78848f89c2bfe9b105e4fb6", "SiYuan-ExtraLight");//思源黑体ExtraLight 
-			$youziku.draw(); 
+			// $youziku.load("h1,.locationLeft,.PFSCR,.order,.list-item-ft,.fundName", "c6da775181ca42f7a7c023bb366de971", "PingFangSC_R");
+			// $youziku.load("#search", "40c55e59f78848f89c2bfe9b105e4fb6", "SiYuan-ExtraLight");//思源黑体ExtraLight
+			// $youziku.draw();
 		</script>
 		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.js" ></script>

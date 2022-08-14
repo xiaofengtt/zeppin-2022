@@ -1,0 +1,50 @@
+.card {
+    width: 260px;
+    height: 140px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 5px 1px #4D9CFF;
+    -moz-box-shadow: 0 0 5px 1px #4D9CFF;
+    -ms-box-shadow: 0 0 5px 1px #4D9CFF;
+    -o-box-shadow: 0 0 5px 1px #4D9CFF;
+    box-shadow: 0 0 5px 1px #4D9CFF;
+    position: relative;
+    text-align: left;
+}
+
+.card .card_title {
+    display: inline-block;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 0;
+}
+
+.card .card_title_small {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.card .card_title_right {
+    top: 20px;
+    right: 10px;
+    position: absolute;
+    font-size: 14px;
+}
+
+.card .card_remark_top {
+    position: absolute;
+    right: 10px;
+    bottom: 24px;
+    font-size: 12px;
+    margin: 0;
+    color: #c1c1c1;
+}
+
+.card .card_remark_bottom {
+    position: absolute;
+    right: 10px;
+    bottom: 4px;
+    font-size: 12px;
+    margin: 0;
+    color: #c1c1c1;
+}

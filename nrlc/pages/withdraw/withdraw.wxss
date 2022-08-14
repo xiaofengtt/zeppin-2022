@@ -1,0 +1,154 @@
+/* pages/withdraw/withdraw.wxss */
+page{
+  background: #eee;
+}
+
+.card-view{
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+  padding-top: 14rpx;
+  line-height: 40rpx;
+  background: #FFF;
+}
+
+.card-view .bank{
+  height: 40rpx;
+  padding-left: 26rpx;
+  font-size: 30rpx;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.card-view .card{
+  height: 40rpx;
+  padding-left: 26rpx;
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.card-view image{
+  position: absolute;
+  top: 32rpx;
+  right: 24rpx;
+  width: 18rpx;
+  height: 28rpx;
+}
+
+.amount-view{
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+  margin-top: 20rpx;
+  background: #FFF;
+}
+.amount-view label{
+  display: inline-block;
+  margin: 0 30rpx 0 20rpx; 
+  line-height: 100rpx;
+  font-size: 30rpx;
+  text-align: left;
+  vertical-align: top;
+}
+
+.amount-view input{
+  display: inline-block;
+  width: 70%;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 32rpx;
+  text-align: left;
+}
+
+.warn-view{
+  width: 100%;
+  height: 60rpx;
+}
+
+.warn-view > view{
+  display: inline-block;
+  height: 100%;
+  line-height: 60rpx;
+}
+
+.warn-view .balance{
+  margin-left: 26rpx;
+}
+
+.warn-view .error{
+  margin-left: 46rpx;
+}
+
+.warn-view image{
+  width: 26rpx;
+  height: 24rpx;
+}
+
+.warn-view text{
+  margin-left: 8rpx;
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.warn-view .error text{
+  color: #D0011B;
+}
+.tr{
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+  background: #FFF;
+  border-bottom: 1px solid #eee;
+}
+
+.tr label{
+  position: absolute;
+  top: 0;
+  left: 26rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.tr input{
+  position: absolute;
+  top: 0;
+  left: 160rpx;
+  width: 60%;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+}
+
+.tr text{
+  position: absolute;
+  right: 28rpx;
+  top: 30rpx;
+  color: #008DFB;
+  line-height: 40rpx;
+  font-size: 30rpx;
+}
+
+.tr text.disabled{
+  color: #ADADAD;
+}
+
+.submit-view{
+  width: 100%;
+  height: 100rpx;
+  margin-top: 80rpx
+}
+
+.submit-view button{
+  width: 700rpx;
+  height: 100%;
+  margin: 0 auto;
+  background: #008DFB;
+  color: #FFF;
+  line-height: 100rpx;
+  font-size: 36rpx;
+}
+
+.submit-view button.disabled{
+  background: #D0D0D0;
+  color: #FFF;
+}

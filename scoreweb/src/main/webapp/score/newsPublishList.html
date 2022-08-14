@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>新闻发布列表</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/base-header.css" />
+		<link rel="stylesheet" href="css/base-left.css" />
+	</head>
+	<body>
+		<input id="uuidInput" type="hidden" value="0ae36f97-90b4-11e8-95fb-fcaa14314cbo"/>
+		<div class="main">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="content-main mt-15">
+				<!--筛选-->
+				<div class="screen-box">
+					<div class="screen-operate">
+						<!-- <a onclick="deleteList();">删除</a> -->
+						<!-- <a onclick="checkList('publish');">审核通过</a> -->
+						<!-- <a onclick="checkList('nopass');">审核不通过</a> -->
+						<!-- <a class="add-btn" href="detail.html">内容</a> -->
+						<!-- <a class="operate-btn">操作
+							<ul class="operate-ul">
+								<li onclick="deleteList();">删除</li>
+								<li onclick="checkList('publish');">审核通过</li>
+								<li onclick="checkList('nopass');">审核不通过</li>
+							</ul>
+						</a> -->
+						
+						<div class="clear"></div>
+					</div>
+					<ul class="screen-ul">
+						<li class="light" data-status=""><a href="javascript:">全部<span id="allStatus">(0)</span></a></li>
+						<li data-status="uncheck"><a href="javascript:">未审核<span id="uncheckStatus">(0)</span></a></li>
+						<li data-status="publish"><a href="javascript:">已发布<span id="publishStatus">(0)</span></a></li>
+						<li data-status="nopass"><a href="javascript:">未通过<span id="nopassStatus">(0)</span></a></li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<!--筛选-->
+				<table class="table-list mt-15">
+					
+				</table>
+				<!--分页-->
+				<div id="pageTool">
+
+                 </div>
+			</div>
+		</div>
+		<div class="layerDiv">
+			<div class="layerInner">
+				<a class="closeLayer"></a>
+				<div class="layerContent"></div>
+			</div>
+			
+		</div>
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/newsPublishList.js" ></script>
+	</body>
+</html>

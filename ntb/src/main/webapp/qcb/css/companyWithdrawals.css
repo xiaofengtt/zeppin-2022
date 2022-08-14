@@ -1,0 +1,68 @@
+.box{padding: 22px 0;margin-bottom: 30px;}
+.box-title{color: #333333;padding-left: 40px;}
+.withdrawalStep h1{padding-top: 13px;}
+a.withdrawalsRecord{background: url(../img/withdrawals-icon.png) left center no-repeat;padding-left: 24px;font-size: 14px;position: absolute;right: 40px;top: 27px;}
+.companyInfo{border-top:1px solid #ececec;margin-top: 16px;padding: 30px 40px 0 40px;}
+.companyInfo .group{padding-bottom: 15px;}
+.companyInfo label{float: left;color: #333333;font-size: 14px;line-height: 26px;padding-right: 20px;}
+.companyInfo p{float: left;color: #000000;font-size: 16px;line-height: 24px;}
+.companyInfo p.accountBalance{font-size: 18px;}
+.withdrawalStep .group{padding: 30px 40px 0 40px;}
+.withdrawalStep .group label{float: left;width: 94px;line-height: 44px;font-size: 14px;color: #333333;}
+.group-right{width: 400px;float: left;position: relative;}
+/*收款账户*/
+.chooseAccount{border:1px solid #dedede;width:100%;border-radius: 2px;padding: 11px 15px;color: #333333;font-size: 14px;position: relative;cursor:pointer;}
+.chooseAccount p.bankName{padding-bottom: 15px;}
+.chooseAccount img{width: 102px;display: block;float: left;}
+.chooseAccount p.bankLastNumber{float: left;height: 18px;line-height: 18px;border-left: 1px solid #bfbfbf;margin-left: 24px;padding: 0 25px;margin-top: 4px;}
+.chooseAccount p.bankLastNumber span{font-weight: 500;}
+.arrow-down{width: 17px;height: 10px;display: block;background: url(../img/arrow-down.png) center no-repeat;position: absolute;right: 19px;top: 34px;cursor: pointer;}
+.tips{float: left;padding-left: 27px;line-height: 44px;font-size: 14px;display: none;}
+.addAccount{cursor: pointer;margin-top: 15px;}
+.group .group-right input{width: 100%;height: 44px;line-height: 44px;border-radius: 2px;outline: none;border: 1px solid #BFBFBF;padding-left: 15px;font-size: 14px;color: #999999;}
+.group .group-right input.light{border-color: #f9ba56;}
+.group .group-right input:focus{border-color: #f9ba56;}
+.unit{position: absolute;right: 19px;color: #333333;font-size: 14px;top: 12px;}
+.serviceBox{width: 400px;margin:35px 0 70px 135px;}
+.serviceBox p.serviceCharge{float: left;color: #858585;font-size: 14px;}
+.serviceBox p.serviceCharge span{font-weight: 500;padding-right:4px;color: #5c5c5c;}
+.smsNotice{float: right;}
+.piaochecked{float: left;text-align: center;background-image: url(../img/checkboxBg.png);background-repeat: no-repeat;background-position: 0 0;background-size: cover;width: 15px;height: 15px;margin: 5px 7px 0 0;border: 1px solid #c6c6c6;}
+.on_check {background-position: 0 -21px;}
+.radioclass {opacity: 0;cursor: pointer;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter: alpha(opacity=0);}
+.smsNotice label{color: #6e6e6e;font-size: 14px;cursor: pointer;}
+.stepBtn{width: 400px;height: 43px;display: block;background: #ffb031;margin: 0 auto 40px 134px;text-align: center;line-height: 43px;font-size: 16px;color: #ffffff;border-radius: 3px;cursor: pointer;}
+.stepBtn:hover{background: #F3A82F;}
+/*下一步*/
+.withdrawalSec{display: none;}
+.withdrawalSec .chooseAccount{background: #f6f6f6;margin-bottom: 20px;}
+.withdrawalSec .withdrawalSure .group{padding-top: 0px;}
+.withdrawalSec .withdrawalSure .group .group-right{line-height: 34px;color: #333;font-size: 14px;float: left;}
+.withdrawalSec .withdrawalSure .group .group-right span{font-size: 16px;padding-right: 10px;}
+.withdrawalSec .withdrawalSure .group .group-right span.serviceCharge{font-size: 14px;padding-right: 5px;font-weight: 500;}
+.withdrawalSec .withdrawalSure .group label{line-height: 34px;}
+.withdrawalSec .withdrawalSure .serviceBox{margin:10px 40px;}
+/*身份验证*/
+.authentication .group .group-right{line-height: 34px;}
+.authentication .group label{line-height: 34px;}
+.authentication .group.sendCode{padding-top: 25px;}
+.authentication .group.sendCode label{line-height: 44px;}
+.authentication .group.sendCode input.smsCodeinput{width: 210px;display: block;float: left;border-right: none;border-radius:2px 0 0 2px ;}
+.authentication .group.sendCode input.smsCodeinput:focus{border-color: #f9ba56;}
+.authentication .group.sendCode a.smsCode{width: 135px;height: 44px;line-height: 44px;text-align: center;background: #ffb031;display: block;float: left;border-radius: 0 2px 2px 0;cursor: pointer;color: #ffffff;font-size: 14px;}
+.btnGroup{/* width: 460px; */margin: 65px auto 40px 30px;}
+.btnGroup a{width: 160px;margin: 0 10px;height: 43px;line-height: 43px;padding: 0;font-size: 16px;color: #ffffff;border: none;cursor: pointer;diaplay:block;float:left;}
+.btnGroup a.backBtn{background: #d4d2cf;margin-left:105px;}
+.btnGroup a.sureBtn{background: #ffb031;display: inline-block;}
+.btnGroup a.backBtn:hover{background: #c8c7c5;}
+.btnGroup a.sureBtn:hover{background: #f3a82f;}
+
+.accoundDiv{position: absolute;left: 0;top: 93px;width: 100%;z-index: 999;background: #FFFFFF;border-bottom: 1px solid #DEDEDE;display: none;max-height:200px;overflow:auto;}
+.accoundDiv .accoundItem{border-bottom: none;}
+.accoundDiv .chooseaccoundItem{background:#dedede;}
+
+.withdrawalFir,.topBox{display:none;}
+
+
+
+

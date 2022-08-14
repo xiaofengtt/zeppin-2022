@@ -12,11 +12,11 @@
 		<meta content="" name="description"/>
 		<meta content="" name="author"/>
 		<meta name="MobileOptimized" content="320">
-		
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link href="../views/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 		<link href="../views/css/style.css" rel="stylesheet" type="text/css"/>
 		<link href="../views/css/login.css" rel="stylesheet" type="text/css"/>
-		<script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
+		<script type="text/javascript" src="https://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
 	</head>
 	<body class="login">
 		<div class="content">
@@ -45,28 +45,28 @@
 						<input name="password" id="password" size="25" value="" class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="密码" />
 					</div>
 				</div>
-			
+
 				<div class="chknumber form-group" style="text-align:left;">
-					<input class="form-control placeholder-no-fix" style="width:49%;display:inline-block;padding:16px 0 12px 11px" name="kaptcha" type="text" maxlength="5" placeholder="验证码"> 
-					<img style="vertical-align:middle;cursor:pointer;height:50px;border-radius:5px !important;display:inline-block;" src="../rest/backadmin/operator/kaptchaImage" id="kaptchaImage">  
+					<input class="form-control placeholder-no-fix" style="width:49%;display:inline-block;padding:16px 0 12px 11px" name="kaptcha" type="text" maxlength="5" placeholder="验证码">
+					<img style="vertical-align:middle;cursor:pointer;height:50px;border-radius:5px !important;display:inline-block;" src="../rest/backadmin/operator/kaptchaImage" id="kaptchaImage">
 				</div>
 				<div >
 					<button id="loginBut" type="submit" class="btn">登录</button>
 				</div>
 			</form:form>
 			<div class="copyright">
-			 	<p>Copyright&copy;2016&nbsp;华夏财富（北京）科技有限公司&nbsp;版权所有</p>
-				<p>备案许可证号：京ICP备15016518号</p>
+			 	<p>Copyright&copy;2016&nbsp;北京知鹏汇仁科技有限公司&nbsp;版权所有</p>
+				<p>备案许可证号：京ICP备17040166号-1</p>
 			</div>
 		</div>
-		
+
 		<script src="../views/js/jquery-2.2.4.min.js" type="text/javascript"></script>
 		<script src="../views/js/bootstrap.min.js" type="text/javascript"></script>
 		<script src="../views/js/jquery.cokie.min.js" type="text/javascript"></script>
 		<script src="../views/js/app.js" type="text/javascript"></script>
-		
+
 		<script>
-			jQuery(document).ready(function() {     
+			jQuery(document).ready(function() {
 			  App.init();
 			  $("body").height($(window).height());
 			});
@@ -98,7 +98,7 @@
 			});
 			$youziku.load("body", "c6da775181ca42f7a7c023bb366de971", "PingFangSC_R");
 			$youziku.load("h1", "da21d882d8c44aba953de645cc83cdd8", "PingFangSC_L");//苹方纤黑
-			$youziku.draw(); 
+			$youziku.draw();
 		</script>
 	</body>
 </html>

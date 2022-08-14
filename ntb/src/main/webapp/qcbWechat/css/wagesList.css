@@ -1,0 +1,111 @@
+.clear{
+	clear:both;
+}
+.title{
+	margin-top:0.2rem;
+	border-bottom: 1px solid #eaeaea;
+}
+.item{
+	padding:0.3rem 0rem 0 0.3rem;
+	position: relative;
+	background:#FFFFFF url(../img/right.png) 5.9rem center no-repeat;
+	background-size:0.15rem auto;
+	display: block;
+	color:#000000;
+}
+.item:last-child .item-right{
+	border:none;
+}
+.item-left{
+	position: absolute;
+	width:0.64rem;
+	height:0.64rem;
+	display: inline-block;
+	background:url(../img/icon-wagesList.png) center no-repeat;
+	background-size:cover;
+	margin:auto;
+	bottom:0;
+	top:0;
+	color:#FF7600;
+	font-size:0.22rem;
+	text-align: center;
+	padding-top:0.23rem;
+}
+.item-left small{
+	font-size:inherit;
+}
+.item-right{
+	margin-left:0.84rem;
+	border-bottom:1px solid #eaeaea;
+	padding-bottom:0.2rem;
+}
+
+.item-right h3{
+	position: relative;
+	width:55%;
+	float:left;
+}
+.item-right i{
+	width:100%;
+	font-style: normal;
+	display: inline-block;	
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	font-size:0.28rem;
+	color:rgba(44, 44, 44, 1);
+	line-height:0.76rem;
+}
+.item-right h3 span{
+	font-size:0.28rem;
+	display: inline-block;
+	height:0.28rem;
+	line-height:0.28rem;
+	position: absolute;
+	margin:auto;
+	bottom:0;
+	top:0;
+	right:0;
+	color: #BDBDBD;
+	opacity: 1;
+}
+.item-right h3 span img{
+	width:0.2rem;
+	height:0.2rem;
+	vertical-align: middle;
+}
+.item-right div.item-right-right{
+	padding-right:0.6rem;
+	width:45%;
+	float:right;
+}
+.item-right p{
+	color:rgba(44, 44, 44, 1);
+	font-size:0.3rem;
+	width:1.8rem;
+	display:inline-block;
+	text-align:right;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.item-right span{
+	display: inline-block;
+	font-size:0.24rem;
+	color:rgba(102, 102, 102, 1);
+	width:3.6rem;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.item-right b{
+	display: inline-block;
+	font-size:0.24rem;
+	width:0.9rem;
+	text-align:right;
+	float:right;
+}
+.color-gray{
+	font-weight:normal;
+	color:rgba(102, 102, 102, 1);
+}

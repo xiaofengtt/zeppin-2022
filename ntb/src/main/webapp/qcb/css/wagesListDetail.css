@@ -1,0 +1,46 @@
+.item-num{
+	position: absolute;
+	top:44px;
+	right:40px;
+	font-size:14px;
+}
+.table tr{
+	height:60px;
+}
+.table tr td{
+	vertical-align: middle;
+	padding-top:0;
+}
+.red-ball{
+	background-image: url(../img/red-ball.png);
+	background-repeat: no-repeat;
+	background-position-x: 6px;
+	background-position-y: 25px;
+}
+.bold{
+	font-weight: bold;
+}
+.sort{
+	background-image: url(../img/big-bottom-g.png);
+	background-repeat: no-repeat;
+	background-position-x: 68px;
+	background-position-y: 26px;
+	cursor: pointer;
+}
+.sort:hover{
+	color:#FF9E10;
+}
+.asc{
+	background-image: url(../img/big-bottom-r.png);
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+.desc{
+	background-image: url(../img/big-top-r.png);
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+.box-title a{
+	font-size: 20px;
+	color: #000000;
+}

@@ -3,6 +3,7 @@
  */
 package cn.zeppin.product.ntb.backadmin.service.impl;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,12 +17,14 @@ import cn.zeppin.product.ntb.backadmin.dao.api.IBankFinancialProductOperateDAO;
 import cn.zeppin.product.ntb.backadmin.service.api.IBankFinancialProductOperateService;
 import cn.zeppin.product.ntb.backadmin.vo.BankFinancialProductOperateDailyVO;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProduct;
+import cn.zeppin.product.ntb.core.entity.BankFinancialProduct.BankFinancialProductStage;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProduct.BankFinancialProductStatus;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProductDaily;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProductOperate;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProductOperate.BankFinancialProductOperateStatus;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProductOperate.BankFinancialProductOperateType;
 import cn.zeppin.product.ntb.core.entity.base.Entity;
+import cn.zeppin.product.ntb.core.exception.TransactionException;
 import cn.zeppin.product.ntb.core.service.base.BaseService;
 import cn.zeppin.product.utility.JSONUtils;
 
@@ -90,23 +93,31 @@ public class BankFinancialProductOperateService extends BaseService implements I
 	 * 审核
 	 * @param bfpo
 	 * @return result
+	 * @throws TransactionException 
 	 */
-	public HashMap<String,Object> check(BankFinancialProductOperate bfpo) {
-		HashMap<String,Object> result = new HashMap<String,Object>();
+	public void check(BankFinancialProductOperate bfpo) throws TransactionException {
+		
 		//审核通过更新操作数据
 		if(BankFinancialProductOperateStatus.CHECKED.equals(bfpo.getStatus())){
 			if(BankFinancialProductOperateType.ADD.equals(bfpo.getType())){
 				//添加
 				BankFinancialProduct bfp = JSONUtils.json2obj(bfpo.getValue(), BankFinancialProduct.class);
 				if(bankFinancialProductDAO.isExistBankFinancialProductByName(bfp.getName(),null)){
-					result.put("result", false);
-					result.put("message", "银行理财产品名称已存在！");
-					return result;
+					throw new TransactionException("银行理财产品名称已存在！");
 				}
 				if(bankFinancialProductDAO.isExistBankFinancialProductByScode(bfp.getScode(),null)){
-					result.put("result", false);
-					result.put("message", "银行理财产品编号已存在！");
-					return result;
+					throw new TransactionException("银行理财产品编号已存在！");
+				}
+				bfp.setIsRedeem(false);
+				Timestamp ctime = new Timestamp(System.currentTimeMillis());
+				if(ctime.after(bfp.getCollectStarttime())){
+					bfp.setStage(BankFinancialProductStage.COLLECT);
+				}
+				if(ctime.after(bfp.getCollectEndtime())){
+					bfp.setStage(BankFinancialProductStage.INCOME);
+				}
+				if(ctime.after(bfp.getMaturityDate())){
+					bfp.setStage(BankFinancialProductStage.FINISHED);
 				}
 				bankFinancialProductDAO.insert(bfp);
 			}else if(BankFinancialProductOperateType.EDIT.equals(bfpo.getType())){
@@ -114,69 +125,127 @@ public class BankFinancialProductOperateService extends BaseService implements I
 				BankFinancialProduct bfp = bankFinancialProductDAO.get(bfpo.getBankFinancialProduct());
 				if(bfp != null){
 					if(!BankFinancialProductStatus.CHECKED.equals(bfp.getStatus())){
-						result.put("result", false);
-						result.put("message", "理财产品审核状态错误，无法完成操作！");
-						return result;
+						throw new TransactionException("理财产品审核状态错误，无法完成操作！");
 					}
 					BankFinancialProduct newBfpp = JSONUtils.json2obj(bfpo.getValue(), BankFinancialProduct.class);
 					if(bankFinancialProductDAO.isExistBankFinancialProductByName(newBfpp.getName(),newBfpp.getUuid())){
-						result.put("result", false);
-						result.put("message", "银行理财产品名称已存在！");
-						return result;
+						throw new TransactionException("银行理财产品名称已存在！");
 					}
 					if(bankFinancialProductDAO.isExistBankFinancialProductByScode(newBfpp.getScode(),newBfpp.getUuid())){
-						result.put("result", false);
-						result.put("message", "银行理财产品编号已存在！");
-						return result;
+						throw new TransactionException("银行理财产品编号已存在！");
 					}
-					bankFinancialProductDAO.update(newBfpp);
+					
+					bfpo.setOld(JSONUtils.obj2json(bfp));
+					
+					Timestamp ctime = new Timestamp(System.currentTimeMillis());
+					if(ctime.after(newBfpp.getCollectStarttime())){
+						newBfpp.setStage(BankFinancialProductStage.COLLECT);
+					}
+					if(ctime.after(newBfpp.getCollectEndtime())){
+						newBfpp.setStage(BankFinancialProductStage.INCOME);
+					}
+					if(ctime.after(newBfpp.getMaturityDate())){
+						newBfpp.setStage(BankFinancialProductStage.FINISHED);
+					}
+					
+					bfp.setName(newBfpp.getName());
+					bfp.setSeries(newBfpp.getSeries());
+					bfp.setScode(newBfpp.getScode());
+					bfp.setShortname(newBfpp.getShortname());
+					bfp.setType(newBfpp.getType());
+					bfp.setUrl(newBfpp.getUrl());
+					bfp.setTarget(newBfpp.getTarget());
+					bfp.setTargetAnnualizedReturnRate(newBfpp.getTargetAnnualizedReturnRate());
+					bfp.setMinInvestAmount(newBfpp.getMinInvestAmount());
+					bfp.setMinInvestAmountAdd(newBfpp.getMinInvestAmountAdd());
+					bfp.setMaxInvestAmount(newBfpp.getMaxInvestAmount());
+					bfp.setTotalAmount(newBfpp.getTotalAmount());
+					bfp.setCustodian(newBfpp.getCustodian());
+					bfp.setStyle(newBfpp.getStyle());
+					bfp.setRiskLevel(newBfpp.getRiskLevel());
+					bfp.setCreditLevel(newBfpp.getCreditLevel());
+					bfp.setCurrencyType(newBfpp.getCurrencyType());
+					bfp.setGuaranteeStatus(newBfpp.getGuaranteeStatus());
+					bfp.setFlagCloseend(newBfpp.getFlagCloseend());
+					bfp.setFlagPurchase(newBfpp.getFlagPurchase());
+					bfp.setFlagRedemption(newBfpp.getFlagRedemption());
+					bfp.setFlagFlexible(newBfpp.getFlagFlexible());
+					bfp.setMinAnnualizedReturnRate(newBfpp.getMinAnnualizedReturnRate());
+					bfp.setPaymentType(newBfpp.getPaymentType());
+					bfp.setRecordDate(newBfpp.getRecordDate());
+					bfp.setArea(newBfpp.getArea());
+						
+					bfp.setSubscribeFee(newBfpp.getSubscribeFee());
+					bfp.setPurchaseFee(newBfpp.getPurchaseFee());
+					bfp.setRedemingFee(newBfpp.getRedemingFee());
+					bfp.setManagementFee(newBfpp.getManagementFee());
+					bfp.setCustodyFee(newBfpp.getCustodyFee());
+					bfp.setNetworkFee(newBfpp.getNetworkFee());
+					bfp.setCollectStarttime(newBfpp.getCollectStarttime());
+					bfp.setCollectEndtime(newBfpp.getCollectEndtime());
+					bfp.setValueDate(newBfpp.getValueDate());
+					bfp.setMaturityDate(newBfpp.getMaturityDate());
+					bfp.setTerm(newBfpp.getTerm());
+					bfp.setInvestScope(newBfpp.getInvestScope());
+					bfp.setRevenueFeature(newBfpp.getRevenueFeature());
+					bfp.setRemark(newBfpp.getRemark());
+					bfp.setDocument(newBfpp.getDocument());
+					bfp.setStage(newBfpp.getStage());
+					
+					bankFinancialProductDAO.update(bfp);
 				}else{
-					result.put("result", false);
-					result.put("message", "理财产品不存在，无法完成操作！");
-					return result;
+					throw new TransactionException("理财产品不存在，无法完成操作！");
 				}
 			}else if(BankFinancialProductOperateType.DELETE.equals(bfpo.getType())){
 				//删除
 				BankFinancialProduct bfp = bankFinancialProductDAO.get(bfpo.getBankFinancialProduct());
 				if(bfp != null){
 					if(!BankFinancialProductStatus.CHECKED.equals(bfp.getStatus())){
-						result.put("result", false);
-						result.put("message", "理财产品审核状态错误，无法完成操作！");
-						return result;
+						throw new TransactionException("理财产品审核状态错误，无法完成操作！");
 					}
 					bfp.setStatus(BankFinancialProductStatus.DELETED);
 					bankFinancialProductDAO.update(bfp);
 				}else{
-					result.put("result", false);
-					result.put("message", "理财产品不存在，无法完成操作！");
-					return result;
+					throw new TransactionException("理财产品不存在，无法完成操作！");
 				}
 			}else if(BankFinancialProductOperateType.NETVALUE.equals(bfpo.getType())){
 				//净值录入
 				BankFinancialProduct bfp = bankFinancialProductDAO.get(bfpo.getBankFinancialProduct());
 				if(bfp != null){
 					if(!BankFinancialProductStatus.CHECKED.equals(bfp.getStatus())){
-						result.put("result", false);
-						result.put("message", "理财产品审核状态错误，无法完成操作！");
-						return result;
+						throw new TransactionException("理财产品审核状态错误，无法完成操作！");
 					}
 					List<BankFinancialProductOperateDailyVO> list = JSONUtils.json2list(bfpo.getValue(), BankFinancialProductOperateDailyVO.class);
 					for(BankFinancialProductOperateDailyVO bfpodVO : list){
 						if(BankFinancialProductOperateType.ADD.equals(bfpodVO.getType())){//添加净值
 							if(bfpodVO.getBankFinancialProductDaily() != null){
-								bankFinancialProductDailyDAO.insert(bfpodVO.getBankFinancialProductDaily());
+								Map<String, String> searchMap = new HashMap<String, String>();
+								searchMap.put("statistime", bfpodVO.getBankFinancialProductDaily().getStatistime().toString());
+								searchMap.put("bankFinancialProduct",bfpodVO.getBankFinancialProductDaily().getBankFinancialProduct());
+								
+								List<Entity> eList = this.bankFinancialProductDailyDAO.getListForPage(searchMap, 1, 10, null, BankFinancialProductDaily.class);
+								if(eList.size()>0){
+									BankFinancialProductDaily bfpd = (BankFinancialProductDaily) eList.get(0);
+									bfpd.setNetValue(bfpodVO.getBankFinancialProductDaily().getNetValue());
+									bfpd.setCreator(bfpodVO.getBankFinancialProductDaily().getCreator());
+								}else{
+									bankFinancialProductDailyDAO.insert(bfpodVO.getBankFinancialProductDaily());
+								}
 							}else{
-								result.put("result", false);
-								result.put("message", "净值信息有误，无法完成操作！");
-								return result;
+								throw new TransactionException("净值信息有误，无法完成操作！");
 							}
 						} else if (BankFinancialProductOperateType.EDIT.equals(bfpodVO.getType())) {
 							if(bfpodVO.getBankFinancialProductDaily() != null){
-								bankFinancialProductDailyDAO.update(bfpodVO.getBankFinancialProductDaily());
+								BankFinancialProductDaily bfpd = this.bankFinancialProductDailyDAO.get(bfpodVO.getBankFinancialProductDaily().getUuid());
+								if(bfpd != null){
+									bfpd.setNetValue(bfpodVO.getBankFinancialProductDaily().getNetValue());
+									bfpd.setCreator(bfpodVO.getBankFinancialProductDaily().getCreator());
+									bankFinancialProductDailyDAO.update(bfpd);
+								}else{
+									throw new TransactionException("净值信息不存在，无法完成操作！");
+								}
 							}else{
-								result.put("result", false);
-								result.put("message", "净值信息有误，无法完成操作！");
-								return result;
+								throw new TransactionException("净值信息有误，无法完成操作！");
 							}
 						} else if (BankFinancialProductOperateType.DELETE.equals(bfpodVO.getType())) {
 							if(bfpodVO.getBankFinancialProductDaily() != null){
@@ -184,38 +253,30 @@ public class BankFinancialProductOperateService extends BaseService implements I
 								if(bfpd != null){
 									bankFinancialProductDailyDAO.delete(bfpd);
 								}else{
-									result.put("result", false);
-									result.put("message", "净值信息不存在，无法完成操作！");
-									return result;
+									throw new TransactionException("净值信息不存在，无法完成操作！");
 								}
 							}else{
-								result.put("result", false);
-								result.put("message", "净值信息有误，无法完成操作！");
-								return result;
+								throw new TransactionException("净值信息有误，无法完成操作！");
 							}
 						} else {
-							result.put("result", false);
-							result.put("message", "净值信息更新类型有误，无法完成操作！");
-							return result;
+							throw new TransactionException("净值信息更新类型有误，无法完成操作！");
 						}
 					}
 				}else{
-					result.put("result", false);
-					result.put("message", "理财产品不存在，无法完成操作！");
-					return result;
+					throw new TransactionException("理财产品不存在，无法完成操作！");
 				}
 			}
 		}
 		if(BankFinancialProductOperateStatus.CHECKED.equals(bfpo.getStatus()) && (bfpo.getReason() == null || "".equals(bfpo.getReason()))){
 			bfpo.setReason("审核通过！");
+		}else if(BankFinancialProductOperateStatus.UNPASSED.equals(bfpo.getStatus()) && (bfpo.getReason() == null || "".equals(bfpo.getReason()))){
+			bfpo.setReason("审核不通过！");
 		}
 		bankFinancialProductOperateDAO.update(bfpo);
-		result.put("result", true);
-		return result;
 	}
 	
 	/**
-	 * 获取银行理财产品发布操作分状态列表
+	 * 获取银行理财产品操作分状态列表
 	 * @param resultClass
 	 * @return  List<Entity>
 	 */

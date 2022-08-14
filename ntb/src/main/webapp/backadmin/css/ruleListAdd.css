@@ -1,0 +1,75 @@
+.card_td {
+    padding: 10px;
+    height: 140px;
+}
+
+.add-card-box {
+    position: relative;
+    margin-left: 64px;
+    width: 120px;
+}
+
+.add-card {
+    width: 120px;
+    height: 30px;
+    color: #C1C1C1 !important;
+    background: #ffffff;
+    border: 1px solid #C1C1C1 !important;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    line-height: 30px;
+    text-decoration: none !important;
+}
+
+.add-card:hover {
+    color: #4D9CFF !important;
+    border: 1px solid #4D9CFF!important;
+    text-decoration: none;
+}
+
+.card-list {
+    margin: 0 0 0 0;
+    padding: 10px;
+    width: 340px;
+    max-height: 200px;
+    border: 1px solid #c1c1c1;
+    background: #ffffff;
+    position: absolute;
+    top: 34px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 0 0 5px 1px #c1c1c1;
+    -webkit-box-shadow: 0 0 5px 1px #c1c1c1;
+    z-index: 1;
+    list-style: none;
+    overflow-y: scroll;
+    display: none;
+}
+
+.card-list li {
+    font-size: 12px;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.card-list li:hover {
+    color: #4D9CFF;
+    cursor: pointer;
+}
+
+.card-list li:last-child {
+    margin-bottom: 0;
+}
+
+.box {
+    margin: 0 auto;
+    width: 90%;
+    margin-top: 20px;
+}
+
+.text_title {
+    margin-bottom: 20px;
+}

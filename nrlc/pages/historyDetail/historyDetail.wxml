@@ -1,0 +1,18 @@
+<!--pages/historyDetail/historyDetail.wxml-->
+<view class="container">
+  <view class="top-view">
+    <image src="{{data.priceflag ? '/resources/pay/income.png' : '/resources/pay/expenses.png'}}"></image>
+    <text>{{data.priceflag ? '收入' : '支出'}}金额</text>
+    <view class="{{data.priceflag ? 'income' : 'expenses'}}">{{data.price}}</view>
+  </view>
+  <view class="table-view">
+    <view class="tr">支付方式： {{data.orderTypeCN}}</view>
+    <view class="tr">交易状态： {{data.statusCN}}</view>
+    <view class="tr">本次余额： {{data.accountBalanceCN}}</view>
+    <view class="tr">类型： {{data.typeCN}}</view>
+    <view class="tr">订单号： {{data.orderNum}}</view>
+    <view class="tr">交易时间： {{data.createtimeCN}}</view>
+    <view class="tr">备注： {{data.remark}}</view>
+  </view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

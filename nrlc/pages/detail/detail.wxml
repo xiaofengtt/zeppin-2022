@@ -1,0 +1,97 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+  <view class="top-view">
+    <view class="target-view">
+      <view class="target-value">{{product.targetAnnualizedReturnRate}}<text class="per">%</text></view>
+      <view class="target-text">预期年化利率</view>
+    </view>
+    <view class="term-view">
+      <view class="term-value">{{product.term}}<text class="per"> 天</text></view>
+      <view class="term-text">产品期限</view>
+    </view>
+    <view class="min-view">
+      <view class="min-value">{{product.minInvestAmountNum}}<text class="per"> {{product.minInvestAmountCN}}</text></view>
+      <view class="min-text">起购金额</view>
+    </view>
+  </view>
+  <view class="title-view">
+    <view class="main">【{{product.custodianCN}}】{{product.name}}</view>
+    <view class="other">
+      <view class="message">{{product.scode}} | {{product.guaranteeStatusCN}} | {{product.riskLevelCN}}</view>
+    </view>
+  </view>
+  <view class="duration-view">
+    <view class="title">理财周期</view>
+    <view class="context">
+      <view class="collect-start">
+        <view class="image">
+          <!-- <view class="{{product.stage != 'unstart' ? 'line-front-light' : 'line-front'}}"></view> -->
+          <view class="{{product.stage != 'unstart' ? 'line-back-light' : 'line-back'}}"></view>
+          <view class="{{product.stage != 'unstart' ? 'point-light' : 'point'}}"></view>
+        </view>
+        <view class="name">申购起始</view>
+        <view class="time">{{product.collectStarttimeWeb}}</view>
+      </view>
+      <view class="collect-end">
+        <view class="image">
+          <view class="{{product.stage != 'unstart' && product.stage != 'collect' ? 'line-front-light' : 'line-front'}}"></view>
+          <view class="{{product.stage != 'unstart' && product.stage != 'collect' ? 'line-back-light' : 'line-back'}}"></view>
+          <view class="{{product.stage != 'unstart' && product.stage != 'collect' ? 'point-light' : 'point'}}"></view>
+        </view>
+        <view class="name">申购结束</view>
+        <view class="time">{{product.collectEndtimeWeb}}</view>
+      </view>
+      <view class="value-data">
+        <view class="image">
+          <view class="{{product.stage == 'profit' || product.stage == 'balance' || product.stage == 'finished' ? 'line-front-light' : 'line-front'}}"></view>
+          <view class="{{product.stage == 'profit' || product.stage == 'balance' || product.stage == 'finished' ? 'line-back-light' : 'line-back'}}"></view>
+          <view class="{{product.stage == 'profit' || product.stage == 'balance' || product.stage == 'finished' ? 'point-light' : 'point'}}"></view>
+        </view>
+        <view class="name">产品起息</view>
+        <view class="time">{{product.valueDateWeb}}</view>
+      </view>
+      <view class="maturity-data">
+        <view class="image">
+          <view class="{{product.stage == 'balance' || product.stage == 'finished' ? 'line-front-light' : 'line-front'}}"></view>
+          <!-- <view class="line-back"></view> -->
+          <view class="{{product.stage == 'balance' || product.stage == 'finished' ? 'point-light' : 'point'}}"></view>
+        </view>
+        <view class="name">产品到期</view>
+        <view class="time">{{product.maturityDateWeb}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="base-view">
+    <view class="tr">
+      <view class="key">收益类型</view>
+      <view class="value">{{product.typeCN}}</view>
+    </view>
+    <view class="tr">
+      <view class="key">风险等级</view>
+      <view class="value">{{product.riskLevelCN}}</view>
+    </view>
+    <view class="tr">
+      <view class="key">计划募集</view>
+      <view class="value">{{product.collectAmountCN}}元</view>
+    </view>
+    <view class="tr">
+      <view class="key">起购金额</view>
+      <view class="value">{{product.minInvestAmountNum}}{{product.minInvestAmountCN}}元</view>
+    </view>
+    <view class="tr">
+      <view class="key">递增金额</view>
+      <view class="value">{{product.minInvestAmountAddNum}}{{product.minInvestAmountAddCN}}元</view>
+    </view>
+    <view class="tr">
+      <view class="key">理财币种</view>
+      <view class="value">{{product.currencyTypeCN}}</view>
+    </view>
+    <view class="tr-space" bindtap="{{buttonAble ? 'toInstruction' : ''}}">
+      <view class="key" >产品说明书</view>
+      <image src="/resources/common/arrow.png"></image>
+    </view>
+  </view>
+
+  <view class="button-view" hidden="{{!product.flagBuy}}" bindtap="{{buttonAble ? 'toInvest' : ''}}">购买</view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

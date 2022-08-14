@@ -1,0 +1,117 @@
+.main-top{
+	background:#FF7600 url(../img/freeFinacingBg.png) center no-repeat;
+	height:2.6rem;
+	color: #FFFFFF;	
+	text-align: center;
+	padding-top:0.7rem;
+}
+.main-top p{
+	font-size: 0.28rem;
+	margin-bottom:0.2rem;
+	color:rgba(255,255,255,0.8);
+}
+.main-top h3{
+	font-size:0.68rem;
+	line-height:0.68rem;
+}
+.main-mid-top{
+	height:1.42rem;
+	text-align: center;
+	background:#FFF;
+	color:#FFFFFF;
+}
+
+.main-mid-top div{
+	float: left;
+	width:49%;
+	padding-top:0.34rem;
+}
+.main-mid-bottom > div.rightBorder,.main-mid-top div.rightBorder{
+	border-right:1px solid rgba(235,235,235,1);
+	width:0.3%;
+	height:0.4rem;
+	margin-top:0.6rem;
+	float:left;
+}
+.main-mid-bottom > div.rightBorder{
+	margin-top:0.35rem;
+}
+.main-mid-top p{
+	font-size:0.28rem;
+	line-height:0.28rem;
+	margin-bottom:0.2rem;
+	color:rgba(0,0,0,0.4);
+}
+.main-mid-top span{
+	font-size:0.36rem;
+	color:rgba(0,0,0,0.7);
+}
+
+.main-mid-bottom{
+	height:1.42rem;
+	text-align: center;
+	background:#FFFFFF;
+	margin-top:0.2rem;
+	padding:0.2rem 0;
+}
+.main-mid-bottom > a{
+	float: left;
+	display:block;
+	width:49%;
+	height:100%;
+	/* border-right:1px solid #EBEBEB; */
+	position: relative;
+	font-size:0.30rem;
+	color: #191919;
+}
+
+
+.main-mid-bottom > a div{
+	width:100%;
+	position: absolute;
+	top:50%;
+	left:50%;
+	-webkit-transform: translate(-50%,-50%);
+}
+.main-mid-bottom a img{
+	display: inline-block;
+	width:0.44rem;
+	height:0.44rem;
+	vertical-align: middle;
+	margin-right:0.16rem;
+}
+.main-mid-bottom a p{
+	display: inline-block;
+	vertical-align: middle;
+}
+.main-mid-bottom a p i{
+	color: #ECC763;
+}
+
+
+.main-mid-bottom-item{
+	padding:0.36rem 0.32rem;
+	font-size: 0.30rem;
+	color: #191919;
+	position: relative;
+	background:#FFFFFF;
+	display:block;
+	margin-top:0.2rem;
+}
+.main-mid-bottom-item h5{
+	position: absolute;
+	top:0.36rem;
+	right:0.32rem;
+}
+.main-mid-bottom-item h5 span,.main-mid-bottom-item h5 img{
+	display: inline-block;
+	vertical-align: middle;
+}
+.main-mid-bottom-item h5 span{
+	margin-right:0.04rem;
+	font-size:0.32rem;
+}
+.main-mid-bottom-item h5 img{
+	width:0.2rem;
+	height:0.32rem;
+} 

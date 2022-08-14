@@ -55,8 +55,8 @@ public class MenuController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	@ActionParam(key = "scode", type = DataType.STRING)
-	@ActionParam(key = "level", type = DataType.NUMBER)
+	@ActionParam(key = "scode", message = "菜单编码", type = DataType.STRING)
+	@ActionParam(key = "level", message = "菜单级别", type = DataType.NUMBER)
 	@ResponseBody
 	public Result list(String scode, Integer level) {
 		
@@ -113,12 +113,12 @@ public class MenuController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/menulist", method = RequestMethod.GET)
-	@ActionParam(key = "pid", type = DataType.STRING)
-	@ActionParam(key = "title", type = DataType.STRING)
-	@ActionParam(key = "scode", type = DataType.STRING)
-	@ActionParam(key = "pageNum", type = DataType.NUMBER)
-	@ActionParam(key = "pageSize", type = DataType.NUMBER)
-	@ActionParam(key = "sorts", type = DataType.STRING)
+	@ActionParam(key = "pid", message = "父级菜单编号", type = DataType.STRING)
+	@ActionParam(key = "title", message = "搜索参数", type = DataType.STRING)
+	@ActionParam(key = "scode", message = "菜单编码", type = DataType.STRING)
+	@ActionParam(key = "pageNum", message="页码", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "pageSize", message="每页数量", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "sorts", message = "排序参数", type = DataType.STRING)
 	@ResponseBody
 	public Result menulist(String pid, String title, String scode, Integer pageNum, Integer pageSize, String sorts) {
 		//
@@ -153,7 +153,7 @@ public class MenuController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/menuget", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "uuid", message = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
 	@ResponseBody
 	public Result menuget(String uuid) {
 		BkMenu menu = menuService.get(uuid);
@@ -180,14 +180,15 @@ public class MenuController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/menuadd", method = RequestMethod.POST)
-	@ActionParam(key = "name", type = DataType.STRING, required = true)
-	@ActionParam(key = "title", type = DataType.STRING, required = true)
-	@ActionParam(key = "scode", type = DataType.STRING, required = true)
-	@ActionParam(key = "pid", type = DataType.STRING)
-	@ActionParam(key = "url", type = DataType.STRING)
-	@ActionParam(key = "icon", type = DataType.STRING)
+	@ActionParam(key = "name", message = "菜单名称", type = DataType.STRING, required = true)
+	@ActionParam(key = "title", message = "菜单标题", type = DataType.STRING, required = true)
+	@ActionParam(key = "scode", message = "菜单编码", type = DataType.STRING, required = true)
+	@ActionParam(key = "pid", message = "所属菜单", type = DataType.STRING)
+	@ActionParam(key = "url", message = "菜单链接", type = DataType.STRING)
+	@ActionParam(key = "icon", message = "菜单图标", type = DataType.STRING)
+	@ActionParam(key = "sort", message = "排序序号", type = DataType.NUMBER)
 	@ResponseBody
-	public Result menuadd(String pid, String name, String title, String scode, String url, String icon) {
+	public Result menuadd(String pid, String name, String title, String scode, String url, String icon, Integer sort) {
 		
 		Map<String, String> searchMap = new HashMap<String, String>();
 		
@@ -218,6 +219,7 @@ public class MenuController extends BaseController {
 		menu.setName(name);
 		menu.setTitle(title);
 		menu.setScode(scode);
+		menu.setSort(sort);
 		if(url != null && !"".equals(url)){
 			menu.setUrl(url);
 		}else{
@@ -251,14 +253,15 @@ public class MenuController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/menuedit", method = RequestMethod.POST)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
-	@ActionParam(key = "name", type = DataType.STRING, required = true)
-	@ActionParam(key = "title", type = DataType.STRING, required = true)
-	@ActionParam(key = "scode", type = DataType.STRING, required = true)
-	@ActionParam(key = "url", type = DataType.STRING)
-	@ActionParam(key = "icon", type = DataType.STRING)
+	@ActionParam(key = "uuid", message = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "name", message = "菜单名称", type = DataType.STRING, required = true)
+	@ActionParam(key = "title", message = "菜单标题", type = DataType.STRING, required = true)
+	@ActionParam(key = "scode", message = "菜单编码", type = DataType.STRING, required = true)
+	@ActionParam(key = "url", message = "菜单链接", type = DataType.STRING)
+	@ActionParam(key = "icon", message = "菜单图标", type = DataType.STRING)
+	@ActionParam(key = "sort", message = "排序序号", type = DataType.NUMBER)
 	@ResponseBody
-	public Result menuedit(String uuid, String name, String title, String scode, String url, String icon) {
+	public Result menuedit(String uuid, String name, String title, String scode, String url, String icon, Integer sort) {
 		
 		BkMenu menu = this.menuService.get(uuid);
 		if(menu == null){
@@ -288,6 +291,7 @@ public class MenuController extends BaseController {
 		menu.setName(name);
 		menu.setTitle(title);
 		menu.setScode(scode);
+		menu.setSort(sort);
 		if(url != null && !"".equals(url)){
 			menu.setUrl(url);
 		}else{
@@ -309,7 +313,7 @@ public class MenuController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/menudelete", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
+	@ActionParam(key = "uuid", message = "uuid", type = DataType.STRING, required = true)
 	@ResponseBody
 	public Result menudelete(String uuid) {
 		

@@ -1,5 +1,12 @@
 //提交
 $('#formsubmit').submit(function() {
+	if (flagSubmit == false) {
+        return false;
+    }
+    flagSubmit = false;
+    setTimeout(function() {
+        flagSubmit = true;
+    }, 3000);
 	var uuid = (url('?uuid') != null) ? url('?uuid') : '';
 	$("#uuid").val(uuid);
 	var password=$("#password").val().replace(/(^\s*)|(\s*$)/g, "");
@@ -25,7 +32,8 @@ $('#formsubmit').submit(function() {
 		var str = $(this).serialize();
 		$.post('../rest/backadmin/operator/password',str, function(data) {
 			if (data.status == "SUCCESS") {
-				layer.confirmMsg('恭喜你!<br>密码修改成功!', "修改密码", {
+				layer.confirmMsg('密码修改成功!', "修改密码", {
+					
 					time: 2000 
 				}, function(){
 					parent.$.colorbox.close();

@@ -14,7 +14,6 @@ import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
@@ -26,8 +25,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import cn.zeppin.product.ntb.backadmin.security.CustomizedToken;
+import cn.zeppin.product.ntb.backadmin.security.LoginType;
 import cn.zeppin.product.ntb.backadmin.security.RoleSign;
-import cn.zeppin.product.ntb.backadmin.security.SecurityRealm;
+import cn.zeppin.product.ntb.backadmin.security.SecurityByNtbRealm;
 import cn.zeppin.product.ntb.backadmin.service.api.IBkOperatorRoleService;
 import cn.zeppin.product.ntb.backadmin.service.api.IBkOperatorService;
 import cn.zeppin.product.ntb.backadmin.vo.OperatorVO;
@@ -61,7 +62,6 @@ public class BkOperatorController extends BaseController{
 	@Autowired
     private Producer captchaProducer;  
     
-	 
 	/**
 	 * 用户登录
 	 * 
@@ -70,9 +70,9 @@ public class BkOperatorController extends BaseController{
 	 * @return
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	@ActionParam(key = "loginname", type = DataType.STRING, required = true)
-	@ActionParam(key = "password", type = DataType.STRING, required = true)
-	@ActionParam(key = "kaptcha", type = DataType.STRING, required = true)
+	@ActionParam(key = "loginname", message="用户名", type = DataType.STRING, required = true)
+	@ActionParam(key = "password", message="密码", type = DataType.STRING, required = true)
+	@ActionParam(key = "kaptcha", message="验证码", type = DataType.STRING, required = true)
 	@ResponseBody
 	public Result login(String loginname, String password, String kaptcha) {
 		Subject subject = SecurityUtils.getSubject();
@@ -105,10 +105,11 @@ public class BkOperatorController extends BaseController{
 	        }
 			
 			// 身份验证
-		    UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(loginname, password);
+//		    UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(loginname, password);
+	        CustomizedToken usernamePasswordToken = new CustomizedToken(loginname, password, LoginType.NTB.toString());
 			subject.login(usernamePasswordToken);
 			
-			// 验证成功
+			// 验证成功 
 			// final User authUser = userService.getByName(user.getName());
 
 		} 
@@ -151,7 +152,7 @@ public class BkOperatorController extends BaseController{
 		
 		return ResultManager.createDataResult(bkOperator);
 	}
-
+	
 	/**
 	 * 用户登出
 	 * 
@@ -176,9 +177,9 @@ public class BkOperatorController extends BaseController{
 	 * @return
 	 */
 	@RequestMapping(value = "/open", method = RequestMethod.POST)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
-	@ActionParam(key = "password", type = DataType.STRING, required = true, minLength = 6, maxLength = 22)
-	@ActionParam(key = "confirmPassword", type = DataType.STRING, required = true, minLength = 6, maxLength = 22)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "password", message="新密码", type = DataType.STRING, required = true, minLength = 6, maxLength = 22)
+	@ActionParam(key = "confirmPassword", message="确认密码", type = DataType.STRING, required = true, minLength = 6, maxLength = 22)
 	@ResponseBody
 	public Result open(String uuid, String password, String confirmPassword) {
 		//取管理员信息
@@ -200,7 +201,7 @@ public class BkOperatorController extends BaseController{
 		}
 		
 		BkOperator op = bkOperatorService.get(uuid);
-		String encryptPassword = SecurityRealm.encrypt(password, ByteSource.Util.bytes(op.getUuid()));
+		String encryptPassword = SecurityByNtbRealm.encrypt(password, ByteSource.Util.bytes(op.getUuid()));
 		op.setPassword(encryptPassword);
 		op.setStatus(BkOperatorStatus.NORMAL);
 		op = bkOperatorService.update(op);
@@ -254,7 +255,7 @@ public class BkOperatorController extends BaseController{
 	 * @return
 	 */
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
 	@ResponseBody
 	public Result get(String uuid) {
 		//获取管理员信息
@@ -282,11 +283,11 @@ public class BkOperatorController extends BaseController{
 	 * @return
 	 */
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
-	@ActionParam(key = "name", type = DataType.STRING, required = true, minLength = 6, maxLength = 22)
-	@ActionParam(key = "realname", type = DataType.STRING, required = true, minLength = 1, maxLength = 50)
-	@ActionParam(key = "mobile", type = DataType.PHONE, required = true, minLength = 1, maxLength = 50)
-	@ActionParam(key = "email", type = DataType.STRING)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "name", message="名称", type = DataType.STRING, required = true, minLength = 6, maxLength = 22)
+	@ActionParam(key = "realname", message="真实姓名", type = DataType.STRING, required = true, minLength = 1, maxLength = 50)
+	@ActionParam(key = "mobile", message="手机号", type = DataType.PHONE, required = true, minLength = 1, maxLength = 50)
+	@ActionParam(key = "email", message="邮箱", type = DataType.EMAIL)
 	@ResponseBody
 	public Result edit(String uuid, String name, String realname, String mobile, String email) {
 		Subject subject = SecurityUtils.getSubject();
@@ -325,10 +326,10 @@ public class BkOperatorController extends BaseController{
 	 * @return
 	 */
 	@RequestMapping(value = "/password", method = RequestMethod.POST)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
-	@ActionParam(key = "password", type = DataType.STRING, required = true)
-	@ActionParam(key = "passwordNew", type = DataType.STRING, required = true)
-	@ActionParam(key = "passwordNewCheck", type = DataType.STRING, required = true)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "password", message="原密码", type = DataType.STRING, required = true)
+	@ActionParam(key = "passwordNew", message="新密码", type = DataType.STRING, required = true)
+	@ActionParam(key = "passwordNewCheck", message="确认密码", type = DataType.STRING, required = true)
 	@ResponseBody
 	public Result password(String uuid,String password, String passwordNew, String passwordNewCheck) {
 		
@@ -337,14 +338,14 @@ public class BkOperatorController extends BaseController{
 		if(operator != null && uuid.equals(operator.getUuid())){
 			
 			//密码加密
-			String encryptPassword = SecurityRealm.encrypt(password, ByteSource.Util.bytes(operator.getUuid()));
+			String encryptPassword = SecurityByNtbRealm.encrypt(password, ByteSource.Util.bytes(operator.getUuid()));
 			if(!operator.getPassword().equals(encryptPassword)){
 				return ResultManager.createFailResult("原密码输入错误！");
 			}
 			if(!passwordNew.equals(passwordNewCheck)){
 				return ResultManager.createFailResult("确认密码与新密码不一致，请修改！");
 			}
-			encryptPassword = SecurityRealm.encrypt(passwordNew, ByteSource.Util.bytes(operator.getUuid()));
+			encryptPassword = SecurityByNtbRealm.encrypt(passwordNew, ByteSource.Util.bytes(operator.getUuid()));
 			operator.setPassword(encryptPassword);
 			
 			operator = bkOperatorService.update(operator);

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>版本详情</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/base-header.css" />
+		<link rel="stylesheet" href="css/base-left.css" />
+		<link rel="stylesheet" href="css/newsDetail.css" />
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/bootstrap-select.css" rel="stylesheet" />
+	</head>
+	<body>
+		<input id="uuidInput" type="hidden" value="1aa26m91-80b1-21e5-45fd-ac4a14a1424d"/>
+		<div class="main">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="content-main mt-15">
+				<p class="position"><a href="versionList.html">版本管理</a>&nbsp;>&nbsp;<b>版本详情</b></p>
+				<div class="content-detail mt-15">
+					<div class="content-box pb-30">
+				<div class="content-item">
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">应用名称：</label>
+						<div class="content-items col-md-9">
+							<input class="form-control" id="displayname" />
+						</div>
+					</div>
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">包名：</label>
+						<div class="content-items col-md-9">
+							<input class="form-control" id="bundleid" />
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">系统类型：</label>
+						<div class="content-items col-md-9">
+							<select class="form-control" id="typeSelect">
+						
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">应用商店：</label>
+						<div class="content-items col-md-9">
+							<select class="form-control" id="channelSelect">
+						
+							</select>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">版本号：</label>
+						<div class="content-items col-md-9">
+							<input class="form-control" id="name" />
+						</div>
+					</div>
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">版本编号：</label>
+						<div class="content-items col-md-9">
+							<input class="form-control" id="code" onkeyup="value=value.replace(/[^\d]/g,'')" />
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">实际应用地址：</label>
+						<div class="content-items col-md-9">
+							<input class="form-control" id="mainurl" />
+						</div>
+					</div>
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">马甲地址：</label>
+						<div class="content-items col-md-9">
+							<input class="form-control" id="tempurl" />
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">下载地址：</label>
+						<div class="content-items col-md-9">
+							<input class="form-control" id="downloadurl" />
+						</div>
+					</div>
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">主包地址：</label>
+						<div class="content-items col-md-9">
+							<input class="form-control" id="adverturl" />
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">开关：</label>
+						<div class="content-items col-md-9">
+							<select class="form-control" id="flagSelect">
+								<option value="true">开</option>
+								<option value="false">关</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">状态：</label>
+						<div class="content-items col-md-9">
+							<select class="form-control" id="status">
+								<option value="normal">正常</option>
+								<option value="disable">停用</option>
+							</select>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">是否更新：</label>
+						<div class="content-items col-md-9">
+							<select class="form-control" id="flagupdate">
+								<option value="true">开</option>
+								<option value="false">关</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">是否强制更新：</label>
+						<div class="content-items col-md-9">
+							<select class="form-control" id="flagcompel">
+								<option value="true">开</option>
+								<option value="false">关</option>
+							</select>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="btn-group">
+						<a class="sure-btn">确定</a>
+						<a class="cancel-btn goBack-btn">返回</a>
+					</div>
+					<div class="clear"></div>
+				</div>
+				</div>
+				</div>
+				<!--筛选-->
+				<table class="table-list">
+					
+				</table>
+				<!--分页-->
+				<div id="pageTool">
+
+                 </div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-select.js"></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/versionDetail.js" ></script>
+	</body>
+</html>

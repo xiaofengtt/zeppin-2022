@@ -1,0 +1,61 @@
+<!--pages/myProduct/myProduct.wxml-->
+<view class="container">
+  <view class="top-view">
+    <view class="text">购买金额(元)</view>
+    <view class="number">{{data.priceCN}}</view>
+    <image src="/resources/invest/finished.png" hidden="{{data.stage != 'finished'}}"></image>
+  </view>
+  <view class="table-view">
+    <view class="title">
+      <view class="split"></view>
+      <view class="text">产品信息</view>
+    </view>
+    <view class="tr" bindtap="{{data.flagBuy && buttonAble ? 'toDetail' : ''}}">
+      <view class="key">产品名称</view>
+      <view class="value"><text class="light">【{{data.bankName}}】{{data.productName}}({{data.productScode}})</text></view>
+    </view>
+    <view class="tr">
+      <view class="key">产品期限</view>
+      <view class="value">{{data.term}}天</view>
+    </view>
+    <view class="tr">
+      <view class="key">购买金额</view>
+      <view class="value">{{data.priceCN}}元</view>
+    </view>
+    <block wx:if="{{data.stage != 'finished'}}">
+      <view class="tr">
+        <view class="key">预期收益率</view>
+        <view class="value">{{data.targetAnnualizedReturnRate}}%</view>
+      </view>
+    </block>
+    <block wx:if="{{data.stage == 'finished'}}">
+      <view class="tr">
+        <view class="key">实际收益率</view>
+        <view class="value">{{data.realReturnRateCN}}%</view>
+      </view>
+    </block>
+    <view class="tr">
+      <view class="key">购买时间</view>
+      <view class="value">{{data.paytimeCN}}</view>
+    </view>
+  </view>
+  <view class="table-view">
+    <view class="tr">
+      <view class="key">起息日</view>
+      <view class="value">{{data.valueDate}}</view>
+    </view>
+    <view class="tr">
+      <view class="key">到期日</view>
+      <view class="value">{{data.maturityDate}}</view>
+    </view>
+    <view class="tr">
+      <view class="key">交易状态</view>
+      <view class="value">{{data.stageCN}}</view>
+    </view>
+    <view class="tr" bindtap="{{data.agreementUrl != '' && buttonAble ? 'toAgreement' : ''}}">
+      <view class="key">购买协议</view>
+      <view class="value"><text class="light">{{data.agreementName}}</text></view>
+    </view>
+  </view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

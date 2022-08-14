@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="keywords" content="个人社保代缴企业社保代缴公司社保代缴 自助社保缴费社保代缴 北京社保代缴社会保障社保公积金代缴 社会保险五险一金 医保医疗保险公积金养老生育工伤失业 住房公积金社保代理公积金代理 社保代办社保代交 社保查询 社保挂靠 五险一金代缴代上五险一金" />
+		<meta name="description" content="社保熊隶属于北京知鹏汇仁科技有限公司，是一家专注于互联网人事服务的平台，以专业的服务管理流程和优质的技术服务为依托，为个人和企业提供完善的社保和公积金代理业务。" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>【社保熊】社保公积金代缴-社保代缴服务-公司社保代缴</title>
+		<link rel="stylesheet" href="css/base.css?version=1.0" />
+		<link rel="stylesheet" href="css/bootstrap.min.css?version=1.0" />
+		<link rel="stylesheet" href="css/socialSecurityCalculator.css?version=1.0" />
+		<link rel="stylesheet" href="css/Newindex.css?version=1.0" />
+	</head>
+	<body>
+		<!--header-->
+		<div id="header">
+			<nav class="navbar navbar-default col-md-12" role="navigation">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="navbar-header col-md-2 col-lg-2">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+                                <span class="sr-only">切换导航</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+							<a class="navbar-brand col-xs-6" href="index.html"><img src="img/sbx.png" alt=""></a>
+						</div>
+						<div class="collapse navbar-collapse col-md-8 col-sm-8 col-lg-8" id="example-navbar-collapse">
+							<ul class="nav navbar-nav">
+								<li class="">
+									<a class="" href="index.html">社保服务</a>
+									<span class=""></span>
+								</li>
+								<li class="active">
+									<a href="socialSecurityCalculator.html" class="light">社保计算器</a>
+									<span class="light"></span>
+								</li>
+								<li class="">
+									<a href="residencePermit.html">工作居住证</a>
+									<span></span>
+								</li>
+								<li class="">
+									<a href="aboutUs.html">关于我们</a>
+									<span></span>
+								</li>
+							</ul>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<!--banner-->
+		<div id="banner">
+			<div class="banner-inner">
+				<img src="img/sbx-banner3.png" alt="banner" />
+				<a class="onlineBtn" onclick="consulte()" title="在线咨询"></a> 
+			</div>
+		</div>
+		<!--计算器-->
+		<div id="JSQBox">
+			<div class="jsq-inner">
+				<h2>社保计算器</h2>
+				<hr>
+				<!--计算-->
+				<div class="calculationBox">
+					<ul>
+						<li>
+							<span>城&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;市：</span>
+							<b>北京</b>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<span>户口性质：</span>
+							<select class="ldo" id="hkxz">
+								<option value="1">本市城镇职工</option>
+								<option value="2">本市农村劳动力</option>
+								<option value="1">外埠城镇职工</option>
+								<option value="2">外埠农村劳动力</option>
+							</select>
+							
+							<div class="clear"></div>
+						</li>
+						<li>
+							<span>税前工资：</span>
+							<input class="ldo" id="sqgz" name="sqgz" placeholder="请输入税前工资" type="number" onkeyup="this.value=this.value.replace(/\D/g,'')" />
+							<div class="clear"></div>
+						</li>
+						<li>
+							<span>社保基数：</span>
+							<input type="number" class="js_yc" id="js_yc2" value="" placeholder="基数范围：3387-23118" onkeyup="this.value=this.value.replace(/\D/g,'')"/>
+							<a class="jsButton zdjs" onclick="sbjs(this);">最低基数</a>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<span>公&nbsp;积&nbsp;金：</span>
+							<label  class="w185 light"><input type="radio" name="gjj" checked="checked" value="g0" onclick="sbjnx(this)">不缴纳</label>
+				            <label class=""><input type="radio" name="gjj" value="g1" onclick="sbjnx(this)">缴纳</label>
+						</li>
+						<li id="gjj_jn">
+							<span>公积金基数：</span>
+							<input type="number" class="js_yc" id="js_yc" value="" placeholder="基数范围：2273-23118" onkeyup="this.value=this.value.replace(/\D/g,'')" />
+							<a class="jsButton zdjs" onclick="sbjn(this);">最低基数</a>
+							<div class="clear"></div>
+						</li>
+					</ul>
+					<div class="btn-group">
+						<a class="reset" onclick="reset();">重置</a>
+						<a class="calculate" onclick="compute();">计算</a>						
+					</div>
+				</div>
+				<!--结果-->
+				
+				<div class="result">
+					<div class="resultBox">
+						<div class="table-head">
+							<h1>工资及社保明细</h1>
+							<span>单位/元</span>
+							<div class="clear"></div>
+						</div>
+						<ul class="table-body">
+							<li class="table-body-head">
+								<p class="shortP border-right">缴纳项目</p>
+								<p class="longP border-right">个人缴纳</p>
+								<p class="longP">公司缴纳</p>
+							</li>
+							<li>
+								<p class="shortP border-right">养老</p>
+								<p class="longP border-right"><span class="forthPoints">8%</span><span class="sixthPoints value1"></span></p>
+								<p class="longP"><span class="forthPoints">19%</span><span class="sixthPoints value2"></span></p>
+							</li>
+							<li>
+								<p class="shortP border-right">医疗</p>
+								<p class="longP border-right"><span class="forthPoints">2%</span><span class="sixthPoints value3"></span></p>
+								<p class="longP"><span class="forthPoints">9%</span><span class="sixthPoints value4"></span></p>
+							</li>
+							<li>
+								<p class="shortP border-right">大额医疗</p>
+								<p class="longP border-right"><span class="forthPoints">按月收费</span><span class="sixthPoints value5">3.00</span></p>
+								<p class="longP"><span class="forthPoints">按月收费</span><span class="sixthPoints value6"></span></p>
+							</li>
+							<li>
+								<p class="shortP border-right">失业</p>
+								<p class="longP border-right"><span class="forthPoints sypercent"></span><span class="sixthPoints value7"></span></p>
+								<p class="longP"><span class="forthPoints">0.8%</span><span class="sixthPoints value8"></span></p>
+							</li>
+							<li>
+								<p class="shortP border-right">工伤</p>
+								<p class="longP border-right"><span class="forthPoints">0%</span><span class="sixthPoints value9">0.00</span></p>
+								<p class="longP"><span class="forthPoints">0.4%</span><span class="sixthPoints value10"></span></p>
+							</li>
+							<li>
+								<p class="shortP border-right">生育</p>
+								<p class="longP border-right"><span class="forthPoints">0%</span><span class="sixthPoints value11">0.00</span></p>
+								<p class="longP"><span class="forthPoints">0.8%</span><span class="sixthPoints value12"></span></p>
+							</li>
+							<li class="gjjLi">
+								<p class="shortP border-right">公积金</p>
+								<p class="longP border-right"><span class="forthPoints">12%</span><span class="sixthPoints value13"></span></p>
+								<p class="longP"><span class="forthPoints">12%</span><span class="sixthPoints value14"></span></p>
+							</li>
+							<li>
+								<p class="shortP border-right">个人税额</p>
+								<p class="longP border-right"><span class="forthPoints">-</span><span class="sixthPoints value15"></span></p>
+								<p class="longP"><span class="forthPoints">-</span><span class="sixthPoints value16">0.00</span></p>
+							</li>
+							<div class="clear"></div>
+						</ul>
+						<div class="tabel-footer tabel-footer-pc">
+							合计：合计缴纳&nbsp;/<span class="totlePay"></span>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							个人缴纳&nbsp;/<span class="personalPay"></span>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							公司缴纳&nbsp;/<span class="companyPay"></span>
+						</div>
+						<div class="tabel-footer tabel-footer-phone">
+							合计缴纳&nbsp;/<span class="totlePay"></span>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+							个人缴纳&nbsp;/<span class="personalPay"></span>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+							公司缴纳&nbsp;/<span class="companyPay"></span>
+						</div>
+					</div>
+					
+					<div class="btn-group recalculationBox" style="padding-top: 55px;">
+						<a class="recalculation" onclick="reset()">重新计算</a>
+					</div>
+				</div>
+			</div>			
+		</div>
+		<!--footer-->
+		<div id="footer">
+			<div class="footer-inner">
+				<a href="aboutUs.html" class="item">关于社保熊</a><a href="http://www.bjrbj.gov.cn/csibiz/home/" target="_blank">北京社保查询</a>
+				<p>北京知鹏汇仁科技有限公司&nbsp;&nbsp;&nbsp;版权所有©️2017-2019</p>
+				<p>京ICP备17040166号-1</p>
+			</div>
+		</div>
+		<!--悬浮-->
+		<div class="fixedDiv">
+			<a class="goTop" onclick="goTop()"></a>
+			<a class="online" onclick="consulte();"></a>
+		</div>
+		<a id="onclineConsulte" target="_blank"></a>
+		<script type="text/javascript" src="js/jquery-1.11.1.js?version=1.0" ></script>
+		<script type="text/javascript" src="js/bootstrap.min.js?version=1.0" ></script>
+		<script type="text/javascript" src="js/base.js?version=1.0" ></script>
+		<script type="text/javascript" src="layer-v3.0.1/layer/layer.js?version=1.0" ></script>
+		<script type="text/javascript" src="js/socialSecurityCalculator.js?version=1.0" ></script>
+		<script type="text/javascript" src="js/style.js?version=1.0" ></script>
+	</body>
+</html>

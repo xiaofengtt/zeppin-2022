@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>福利信息</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/wagesList.css?version=1.5" />
+		<script type="text/template" id="queboxTpl">
+			<h4 class="title"> 
+				{{:time}}
+			</h4>
+			{{for dataList}}
+				<a href="./wagesDetail.html?uuid={{:uuid}}" class="item openId-url">
+					<div class="item-left">
+						<span>{{:payTimeMonth}}</span><small>月</small>
+					</div>
+					<div class="item-right">
+						<h3>
+							<i>{{:title}}</i>							
+							
+						</h3>
+						<div class="item-right-right">
+							<p>{{:priceCN}}</p>
+							{{if status == "success"}}
+								<b class="color-orange">未确认</b>
+							{{else}}
+								<b class="color-gray">已确认</b>
+							{{/if}}
+				
+						</div>
+						<div class="clear"></div>
+					</div>
+				</a>
+			{{/for}}
+		</script>
+	</head>
+	<body>
+		<div class="main">
+			
+			
+			
+		</div>
+		
+		
+		<p class="layer">
+			提示信息
+		</p>
+		
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jsrender.min.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/wagesList.js?version=1.5"></script>
+
+	</body>
+</html>
+

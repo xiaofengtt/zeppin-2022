@@ -1,0 +1,54 @@
+.blank_card, .msg_card {
+    width: 300px;
+    height: 160px;
+    display: inline-block;
+    -webkit-box-shadow: 0 0 5px 1px #4D9CFF;
+    -moz-box-shadow: 0 0 5px 1px #4D9CFF;
+    -ms-box-shadow: 0 0 5px 1px #4D9CFF;
+    -o-box-shadow: 0 0 5px 1px #4D9CFF;
+    box-shadow: 0 0 5px 1px #4D9CFF;
+    vertical-align: middle;
+    position: relative;
+    text-align: left;
+}
+
+.blank_card {
+    line-height: 160px;
+    padding: 0;
+}
+
+.blank_card p {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.msg_card .card_number {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    color: #c1c1c1;
+}
+
+.msg_card .card_balance {
+    position: absolute;
+    bottom: 6px;
+    right: 10px;
+    color: #c1c1c1;
+}
+
+.msg_card .card_bind {
+    position: absolute;
+    bottom: 6px;
+    left: 10px;
+    color: #c1c1c1;
+}
+
+.msg_card .card_balance i {
+    font-style: normal;
+}
+
+.msg_card .company_name {
+    margin-top: 33px;
+    display: inline-block;
+    color: #c1c1c1;
+}

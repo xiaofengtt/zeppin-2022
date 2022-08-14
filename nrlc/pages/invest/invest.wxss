@@ -1,0 +1,303 @@
+/* invest.wxss */
+page{
+  background-color: #eee;
+}
+
+.information-view{
+  width: 100%;
+  background: transparent;
+}
+
+.information-view > view{
+  position: relative;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #2B2B2B;
+  font-size: 30rpx;
+  background: #fff;
+  margin-bottom: 1px;
+}
+
+.information-view .key{
+  position: absolute;
+  left: 20rpx;
+  top: 0;
+  width: 20%;
+  text-align: left;
+}
+
+.information-view .value{
+  position: absolute;
+  right: 20rpx;
+  top: 0;
+  width: 500rpx;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.main-view{
+  width: 100%;
+  background: transparent;
+  margin-top: 20rpx;
+}
+
+.main-view .amount-row{
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+  background: #FFF;
+  border-bottom: 1px solid #eee;
+}
+
+.main-view .amount-row label{
+  display: inline-block;
+  margin: 0 30rpx 0 20rpx; 
+  line-height: 100rpx;
+  font-size: 30rpx;
+  text-align: left;
+  vertical-align: top;
+}
+
+.main-view .amount-row input{
+  display: inline-block;
+  width: 70%;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 40rpx;
+  text-align: left;
+}
+
+.main-view .amount-row image{
+  position: absolute;
+  top: 34rpx;
+  right: 30rpx;
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.main-view .infomation-row{
+  width: 100%;
+  height: 70rpx;
+  background: #FFF;
+}
+
+.main-view .infomation-row view{
+  display: inline-block;
+  height: 70rpx;
+  line-height: 70rpx;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 26rpx;
+}
+
+.main-view .infomation-row .minAdd{
+  width: 50%;
+  padding: 0 20rpx;
+  text-align: left
+}
+
+.main-view .infomation-row .balance{
+  width: 50%;
+  padding: 0 20rpx;
+  text-align: right;
+}
+
+.main-view .infomation-row .minAdd image{
+  width: 26rpx;
+  height: 24rpx;
+  margin-right: 6rpx;
+}
+
+.main-view .infomation-row .balance image{
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 6rpx;
+}
+
+.main-view .warn-row{
+  display: block;
+  width: 100%;
+  height: 20rpx;
+  line-height: 20rpx;
+  padding: 0 20rpx;
+  background: #FFF;
+}
+
+.main-view .warn-row text{
+  font-size: 24rpx;
+  color: #FF0000;
+}
+
+.main-view .button-row{
+  width: 100%;
+  height: 200rpx;
+  padding: 40rpx 0 60rpx 0;
+  line-height: 90rpx;
+  text-align: center;
+  background: #FFF;
+  
+}
+
+.main-view .button-row button{
+  width: 600rpx;
+  height: 90rpx;
+  background: #008DFB;
+  color: #FFF;
+  line-height: 90rpx;
+  font-size: 32rpx;
+}
+
+.main-view .button-row button.disabled{
+  background: #D0D0D0;
+}
+
+.main-view .split-row{
+  position: relative;
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  background: #FFF;
+}
+
+.main-view .split-row view{
+  position: absolute;
+  top: 20rpx;
+  width: 230rpx;
+  height: 1px;
+  background: #eee;
+}
+
+.main-view .split-row view.left{
+  left: 75rpx;
+}
+
+.main-view .split-row view.right{
+  right: 75rpx;
+}
+
+.main-view .split-row text{
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.4)
+}
+
+.main-view .confirm-row{
+  width: 100%;
+  height: 120rpx;
+  padding: 30rpx 0 50rpx 0;
+  line-height: 40rpx;
+  background: #FFF;
+}
+
+.main-view .confirm-row image{
+  width: 26rpx;
+  height: 26rpx;
+  margin: 0 14rpx 0 30rpx;
+}
+
+.main-view .confirm-row text{
+  font-size: 28rpx;
+}
+
+.main-view .confirm-row view{
+  display: inline-block;
+  font-size: 28rpx;
+  color: #008DFB;
+}
+
+.pay-view{
+  position: fixed;
+  top:0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.5)
+}
+
+.pay-view .frame{
+  position: relative;
+  width: 550rpx;
+  margin: 300rpx auto 0 auto;
+  background: #FFF;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.pay-view .frame .title{
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-top: 40rpx;
+  font-size: 36rpx;
+  color: #000;
+  text-align: center;
+}
+
+.pay-view .frame .message{
+  width: 100%;
+  line-height: 40rpx;
+  margin-top: 30rpx;
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.pay-view .frame .code{
+  width: 100%;
+  height: 100rpx;
+  margin-top: 20rpx;
+}
+
+.pay-view .frame .code input{
+  display: inline-block;
+  width: 200rpx;
+  height: 60rpx;
+  margin: 20rpx 30rpx 0 50rpx;
+  padding: 0 20rpx; 
+  font-size: 28rpx;
+  border: 1px solid #DDD;
+  box-sizing: border-box;
+}   
+
+.pay-view .frame .code label{
+  display: inline-block;
+  width: 220rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  text-align: center;
+  color: #008DFB;
+  background: #eee;
+  vertical-align: top
+}
+
+.pay-view .frame .code label.disabled{
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.pay-view .frame .buttons{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 30rpx;
+}
+
+.pay-view .frame .buttons view{
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  font-size: 36rpx;
+  text-align: center;
+}
+
+.pay-view .frame .buttons view.confirm{
+  background: #008DFB;
+  color: #FFF;
+}
+
+.pay-view .frame .buttons view.cancle{
+  border-top: 1px solid #eee;
+}

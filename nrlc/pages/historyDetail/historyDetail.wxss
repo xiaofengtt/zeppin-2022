@@ -1,0 +1,54 @@
+/* pages/historyDetail/historyDetail.wxss */
+page{
+  background: #eee;
+}
+
+.top-view{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 0 26rpx;
+  background: #FFF;
+}
+
+.top-view image{
+  vertical-align: top;
+  width: 46rpx;
+  height: 46rpx;
+  margin: 30rpx 20rpx 0 0;
+}
+
+.top-view text{
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.top-view view{
+  float: right;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 32rpx;
+}
+
+.top-view .income{
+  color: rgba(128, 193, 56, 0.8);
+}
+
+.top-view .expenses{
+  color: rgba(213, 65, 65, 0.8);
+}
+
+.table-view{
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.table-view .tr{
+  width: 100%;
+  line-height: 70rpx;
+  padding: 0 26rpx;
+  border-bottom: 1px solid #eee;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.6);
+  background: #FFF;
+}

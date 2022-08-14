@@ -1,0 +1,104 @@
+.table tr td a:hover{text-decoration: underline;}
+.bg {
+    position: fixed;
+    background: #eee;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 20;
+    top: 0;
+    display: none;
+}
+
+.modal {
+    width: 580px;
+    height: 476px;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+}
+
+.modal-header {
+    padding-bottom: 21px;
+    padding-top: 21px;
+    border-bottom: 1px solid #E8E4E4;
+    padding-left: 32px;
+    position: relative;
+    margin-bottom: 54px;
+    text-align: left;
+    color: #474747;
+}
+
+.modal-header a {
+    position: absolute;
+    top: 22px;
+    right: 20px;
+    cursor: pointer;
+    background:url(../img/closeIframe.png) center no-repeat;
+    background-size:60%;
+    width:20px;
+    height:20px;
+}
+
+.modal h4 {
+    font-size: 14px;
+    /* margin-bottom:48px; */
+}
+
+.modal img {
+    margin-bottom: 30px;
+}
+
+.modal>p {
+    font-size: 14px;
+}
+
+.iframeInner .groupBox .group label {
+    width: 105px;
+}
+
+input.smsCode {
+    width: 160px !important;
+    float: left;
+    margin-right: 17px;
+}
+
+.getCode {
+    width: 132px;
+    height: 42px;
+    border: 1px solid #ffb031;
+    display: block;
+    float: left;
+    border-radius: 2px;
+    line-height: 42px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.submitGrant .iframeInner {
+    width: 200px;
+    height: 80px;
+    margin-left: -100px;
+    margin-top: -40px;
+    line-height: 80px;
+    text-align: center;
+}
+
+.iframeInner .groupBox p {
+    color: #474747;
+    font-size: 14px;
+}
+
+.iframeInner .closeIframe {
+    background: url(../img/closeIframe.png) center no-repeat;
+    background-size: 60%;
+}
+
+.submitGrant .iframeInner .closeIframe {
+    right: 15px;
+    top: 15px;
+}

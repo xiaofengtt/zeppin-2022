@@ -1,0 +1,398 @@
+html {
+    height: 100%;
+    background: #f2f5f7;
+}
+
+/*头部*/
+
+#header {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #deddd9;
+}
+
+#header .heaer-inner {
+    max-width: 1200px;
+    height: 65px;
+}
+
+#header .heaer-inner .nav-left {
+    vertical-align: middle;
+    height: 65px;
+    display: inline-block;
+    float: left;
+    padding-left: 10px;
+}
+
+#header .heaer-inner .nav-logo{background: url(../img/qcb-logo.png) center no-repeat;width: 160px;height: 50px;display:inline-block;
+	margin-top: 7px;float:left;background-size:contain;}
+
+#header .heaer-inner .nav-left p {
+    float: left;
+    color: #666666;
+    font-size: 24px;
+    line-height: 73px;
+    font-weight: 300;
+}
+
+#header .heaer-inner .nav-right {
+    display: inline-block;
+    float: right;
+}
+
+#header .heaer-inner .nav-right span {
+    color: #999999;
+    font-size: 18px;
+    line-height: 65px;
+    padding-right: 10px;
+}
+
+#header .heaer-inner .nav-right span a {
+    cursor: pointer;
+    color: #FFB320;
+}
+
+#header .heaer-inner .nav-right span a:hover {
+    text-decoration: underline;
+}
+
+/*content*/
+
+#content {
+    width: 100%;
+}
+
+#content .content-inner {
+    max-width: 1180px;
+    margin-top: 39px;
+    background: #ffffff;
+    padding: 20px;
+}
+
+#content .content-inner .progressDiv {
+    border-bottom: 1px solid #eceae8;
+    text-align: center;
+}
+
+#content .content-inner .progressDiv .progressDiv-inner {
+    width: 475px;
+    padding: 27px 0 22px 0;
+}
+
+#content .content-inner .progressDiv .step, #content .content-inner .progressDiv .bar {
+    float: left;
+    margin: 0 5px;
+}
+
+#content .content-inner .progressDiv .bar {
+    width: 45px;
+    height: 2px;
+    border: 1px solid #e9e7e4;
+    margin-top: 10px;
+}
+
+#content .content-inner .progressDiv .step span {
+    display: block;
+    float: left;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #e2e0dd;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+}
+
+#content .content-inner .progressDiv .step p {
+    float: left;
+    margin-left: 5px;
+    color: #999999;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+#content .content-inner .progressDiv .step.light span {
+    background: #ffb031;
+}
+
+#content .content-inner .progressDiv .step.light p {
+    color: #ff9d00;
+}
+
+#content .content-inner .progressContent {
+    text-align: center;
+}
+
+#content .content-inner .progressContent .contentDiv {
+    padding: 50px 0;
+    width: 660px;
+    min-height: 530px;
+}
+
+#content .content-inner .progressContent .contentDiv .form-group {
+    padding-bottom: 30px;
+    position: relative;
+}
+
+#content .content-inner .progressContent .contentDiv label {
+    text-align: right;
+    width: 100px;
+    color: #666666;
+    font-size: 16px;
+    line-height: 44px;
+    margin-right: 50px;
+    float: left;
+    display: block;
+}
+
+#content .content-inner .progressContent .contentDiv input {
+    width: 400px;
+    height: 44px;
+    line-height: 44px;
+    border: 1px solid #dedede;
+    border-radius: 2px;
+    padding-left: 19px;
+    font-size: 14px;
+    outline: none;
+    color:#333;
+}
+
+#content .content-inner .progressContent .contentDiv input:focus {
+    border-color: #f9ba56;
+}
+
+#content .content-inner .progressContent .contentDiv input.light {
+    border-color: #f9ba56;
+}
+
+#content .content-inner .progressContent .contentDiv input.kaptcha, #content .content-inner .progressContent .contentDiv input.smsCodeinput {
+    width: 270px;
+    float: left;
+    border-radius: 2px 0 0 2px;
+    outline: none;
+}
+
+#content .content-inner .progressContent .contentDiv img.code, #content .content-inner .progressContent .contentDiv a.smsCode {
+    width: 130px;
+    height: 44px;
+    float: left;
+    border-radius: 0px 2px 2px 0;
+    cursor: pointer;
+}
+
+#content .content-inner .progressContent .contentDiv a.smsCode {
+    background: #FFB320;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 44px;
+}
+
+#content .content-inner .progressContent .contentDiv .form-item {
+    float: left;
+}
+
+button.firstConfirm, button.secConfirm {
+    width: 400px;
+    float: right;
+    height: 44px;
+    background: #FFB320;
+    text-align: center;
+    line-height: 44px;
+    color: #ffffff;
+    border: none;
+    font-size: 18px;
+    margin-right: 110px;
+    margin-top: 10px;
+    cursor: pointer;
+    outline: none;
+}
+
+/*button.firstConfirm:hover, button.secConfirm:hover {
+    background: #c9c7c3;
+}*/
+
+button.secConfirm.light {
+    background: #ff9d00;
+    cursor:pointer;
+}
+
+button.secConfirm.light:hover {
+    background: #ea9001;
+}
+
+a.goBack {
+    display: block;
+    float: right;
+    background: url(../img/goBack.png) left center no-repeat;
+    width: 90px;
+    height: 30px;
+    color: #999999;
+    font-size: 16px;
+    line-height: 30px;
+    margin: 25px 255px 20px auto;
+    cursor: pointer;
+}
+
+#content .content-inner .progressContent .contentDiv select {
+    width: 126px;
+    height: 44px;
+    border: 1px solid #dedede;
+    border-radius: 2px;
+    color: #999999;
+    font-size: 14px;
+    outline: none;
+}
+
+#content .content-inner .progressContent .contentDiv select.province, #content .content-inner .progressContent .contentDiv select.city {
+    margin-right: 5px;
+}
+
+.piaochecked {
+    float: left;
+    text-align: center;
+    background-image: url(../img/checkboxBg.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+    width: 16px;
+    height: 16px;
+    margin: 14px 7px 0 0;
+}
+
+.on_check {
+    background-position: 0 -21px;
+}
+
+#content .content-inner .progressContent .contentDiv select:focus {
+    border-color: #f9ba56;
+}
+
+#content .content-inner .progressContent .contentDiv select.light {
+    border-color: #f9ba56;
+}
+
+.radioclass {
+    opacity: 0;
+    cursor: pointer;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+}
+
+.agreeRegist {
+    height: 44px;
+    width: 100%;
+    color: #666666;
+    margin-left: 150px;
+    margin-top: 15px;
+}
+
+.agreeRegist a {
+    color: #ff9d00;
+}
+
+#content .content-inner .progressContent .contentDiv input#checkbox {
+    height: 20px;
+}
+
+#content .content-inner .progressContent .thirdContent p {
+    height: 54px;
+    background: url(../img/completeRegis.png) left center no-repeat;
+    line-height: 54px;
+    width: 220px;
+    color: #666666;
+    font-size: 20px;
+    padding-left: 70px;
+    margin-bottom: 35px;
+}
+
+#content .content-inner .progressContent .thirdContent a {
+    font-size: 18px;
+    color: #666666;
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border: 1px solid #dedede;
+    display: block;
+    background: -webkit-linear-gradient(#ededed, #fafafa);
+    background: -o-linear-gradient(#ededed, #fafafa);
+    background: -moz-linear-gradient(#ededed, #fafafa);
+    background: linear-gradient(#ededed, #fafafa);
+}
+
+#content .content-inner .progressContent .thirdContent a span {
+    color: #ff9d00;
+    margin-right: 6px;
+}
+
+#content .content-inner .progressContent .thirdContent, #content .content-inner .progressContent .secContent {
+    display: none;
+}
+
+.tipsBox {
+    position: absolute;
+    background: url(../img/tipsBox-bg.png) left center no-repeat;
+    padding-left: 9px;
+    left: 560px;
+    width: 150px;
+    display: none;
+    text-align: left;
+}
+
+.tipsBoxs {
+    width: 310px;
+}
+
+.tips {
+    font-size: 13px;
+    color: #666666;
+    background: #f7f7f7;
+    height: 44px;
+    line-height: 44px;
+    padding-left: 15px;
+    right: -200px;
+    border: 1px solid #dedede;
+    border-left: none;
+    border-radius: 0 3px 3px 0;
+    padding-right: 10px;
+}
+
+/*footer*/
+
+.footer {
+    font-size: 14px;
+    color: #797873;
+    line-height: 18px;
+    text-align: center;
+    padding: 18px 0;
+}
+
+.footer a {
+    color: #797873;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #999999;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #999999;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #999999;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color: #999999;
+}
+button.secConfirm{
+	background:#d4d2cf;
+	cursor:not-allowed;
+}
+.loadingBtn{background:#ffb031 url(../img/loadingBtn.gif) center no-repeat !important;/* background-size:25px !important; */}

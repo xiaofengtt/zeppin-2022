@@ -7,6 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>牛投帮-后台管理系统</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="css/fundEdit.css" />
 		<link rel="stylesheet" href="css/datepicker3.css" >
 		<link rel="stylesheet" href="css/uploadfile.css">
@@ -14,7 +15,7 @@
 	<body>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="navigation.jsp"/>
-		<input id="scode" type="hidden" value="00400044" />  
+		<input id="scode" type="hidden" value="00300033" />
 		<div class="contain">
 			<jsp:include page="contentLeft.jsp"/>
 			<div class="contain-right">
@@ -84,7 +85,7 @@
 						<p class="title">基本信息</p>
 						<div class="content-item">
 							<!-- 信息 -->
-							<div class="content-item-info">		
+							<div class="content-item-info">
 								<div class="form-group col-md-6">
 									<label>产品系列：</label>
 									<div class="content-items"><span id="seriess"></span>
@@ -102,7 +103,7 @@
 									<div class="content-items"><span id="scodes"></span>
 									</div>
 									<div class="clear"></div>
-								</div>	
+								</div>
 								<div class="form-group col-md-6">
 									<label>产品规模：</label>
 									<div class="content-items"><span id="totalAmounts"></span>亿元
@@ -150,7 +151,7 @@
 									<div class="content-items"><span id="targets"></span>
 									</div>
 									<div class="clear"></div>
-								</div>	
+								</div>
 								<div class="form-group col-md-6 noBorder">
 									<label>发行地区：</label>
 									<div class="content-items"><span id="areas"></span>
@@ -310,7 +311,7 @@
 								<div class="form-group col-md-12">
 									<label>起息/结束日：</label>
 									<div class="content-items"><span id="valueDates"></span>
-									 至 
+									 至
 									<span id="maturityDates"></span>
 									 产品期限：<span id="terms"></span>天
 									</div>
@@ -372,7 +373,7 @@
 									<label><b class="red">*</b> 认购时间：</label>
 									<div class="content-items">
 										<input class="form-control datepicker" id="collectStarttime" name="collectStarttime" data-provide="datepicker"/>
-										 至 
+										 至
 										<input class="form-control datepicker" id="collectEndtime" name="collectEndtime" data-provide="datepicker"/>
 									</div>
 									<div class="clear"></div>
@@ -388,7 +389,7 @@
 									<label><b class="red">*</b> 起息/结束日：</label>
 									<div class="content-items">
 										<input class="form-control datepicker" id="valueDate" name="valueDate" data-provide="datepicker"/>
-										 至 
+										 至
 										<input class="form-control datepicker" id="maturityDate" name="maturityDate" data-provide="datepicker"/>
 										 产品期限：<input readonly="readonly" class="form-control short" id="term" name="term"/><i>天</i>
 									</div>
@@ -399,6 +400,7 @@
 									<div class="content-items">
 										<input class="form-control" id="minInvestAmount" name="minInvestAmount"/><i>元</i>
 									</div>
+									<span id="minInvestAmount_big" style="color:green"></span>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-12">
@@ -406,6 +408,7 @@
 									<div class="content-items">
 										<input class="form-control" id="minInvestAmountAdd" name="minInvestAmountAdd"/><i>元</i>
 									</div>
+									<span id="minInvestAmountAdd_big" style="color:green"></span>
 									<div class="clear"></div>
 								</div>
 								<div class="form-group col-md-12">
@@ -413,6 +416,7 @@
 									<div class="content-items">
 										<input class="form-control" id="maxInvestAmount" name="maxInvestAmount"/><i>元</i>
 									</div>
+									<span id="maxInvestAmount_big" style="color:green"></span>
 									<div class="clear"></div>
 								</div>
 								<div class="clear"></div>
@@ -424,7 +428,7 @@
 						<div class="content-item">
 							<!-- 信息 -->
 							<div class="content-item-info">
-								
+
 								<div class="form-group col-md-6">
 									<label>认购费率：</label>
 									<div class="content-items"><span id="subscribeFees"></span>%
@@ -465,8 +469,8 @@
 							</div>
 							<!-- 编辑 -->
 							<div class="content-item-edit">
-								
-								
+
+
 								<div class="form-group col-md-6">
 									<label><b class="red">*</b> 认购费率：</label>
 									<div class="content-items">
@@ -542,7 +546,7 @@
 								<div class="form-group col-md-12 noBorder">
 									<label>产品说明书：</label>
 									<div class="content-items">
-										<a id="documentsLink" href="#"><span id="documents"></span></a>
+										<a id="documentsLink" href="javascript:void(0);"><span id="documents"></span></a>
 									</div>
 									<div class="clear"></div>
 								</div>
@@ -570,7 +574,7 @@
 									<div class="col-md-9" style="text-align:left;line-height:38px;">
 										<a id="imageShow" style="border:0;max-width:100%;max-height:150px;margin-top:15px;display: none;"></a>
 										<div id="resourceId">
-											
+
 										</div>
 									</div>
 									<div id="resourceAdd"><input type="hidden" name="document" id="document" value=""></div>
@@ -585,22 +589,24 @@
 					</div>
 					<div class="btnGroup text-center save">
 						<button class="btn sureBtn submitBtn" type="submit">提交</button>
-						<button class="btn cancleBtn" type="button" onclick="window.close();">取消</button>
+						<button class="btn cancleBtn" type="button" id="backBtn">取消</button>
 					</div>
 				</div>
 				</form:form>
 			</div>
 			<div class="clear"></div>
 		</div>
-		
-		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>	
-		<script type="text/javascript" src="js/laydate/laydate.js" ></script>
-		<script type="text/javascript" src="js/url.min.js"></script>
-		<script type="text/javascript" src="js/jquery.uploadfile.min.js"></script>
-		<script type="text/javascript" src="js/tinymce/dropzone/lib/dropzone.js"></script>
-		<script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
-		<script type="text/javascript" src="js/tinymce/tinymce_zhcn.js"></script>
-		<script type="text/javascript" src="js/tinymce/tinymce_tool.js"></script>
-		<script type="text/javascript" src="js/bankFinancialProductOperateEdit.js" ></script>
+
+		<script type="text/javascript" src="./js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="./js/laydate/laydate.js" ></script>
+		<script type="text/javascript" src="./js/url.min.js"></script>
+		<script type="text/javascript" src="./js/flagSubmit.js"></script>
+		<script type="text/javascript" src="./js/jquery.uploadfile.min.js"></script>
+		<script type="text/javascript" src="./js/tinymce/dropzone/lib/dropzone.js"></script>
+		<script type="text/javascript" src="./js/tinymce/tinymce.min.js"></script>
+		<script type="text/javascript" src="./js/tinymce/tinymce_zhcn.js"></script>
+		<script type="text/javascript" src="./js/tinymce/tinymce_tool.js"></script>
+		<script type="text/javascript" src="./js/bankFinancialProductOperateEdit.js" ></script>
+		<script type="text/javascript" src="./js/changeMoneyToChinese.js"></script>
 	</body>
 </html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.product.score.mapper.InfoTeamPlayersMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from info_team_players where 1=1 
+		<if test='team != null and team != ""'>
+            and team= #{team}
+        </if>
+        <if test='infoplayers != null and infoplayers != ""'>
+            and infoplayers= #{infoplayers}
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+        <if test='teaminterid != null and teaminterid != ""'>
+            and teaminterid= #{teaminterid}
+        </if>
+        <if test='playersinterid != null and playersinterid != ""'>
+            and playersinterid= #{playersinterid}
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.product.score.entity.InfoTeamPlayers">
+		select * from info_team_players where 1=1 
+		<if test='team != null and team != ""'>
+            and team= #{team}
+        </if>
+        <if test='infoplayers != null and infoplayers != ""'>
+            and infoplayers= #{infoplayers}
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+        <if test='teaminterid != null and teaminterid != ""'>
+            and teaminterid= #{teaminterid}
+        </if>
+        <if test='playersinterid != null and playersinterid != ""'>
+            and playersinterid= #{playersinterid}
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<delete id="deleteByTeam" parameterType="String">
+    delete from info_team_players where 1=1
+    <if test='team != null and teaminterid != ""'>
+    	and team= #{team}
+    </if>
+	</delete>
+</mapper>

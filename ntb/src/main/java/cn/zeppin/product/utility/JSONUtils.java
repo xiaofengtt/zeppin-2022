@@ -7,10 +7,18 @@
  */  
 package cn.zeppin.product.utility;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.Map.Entry;
+
+import cn.zeppin.product.ntb.core.entity.Coupon;
+import cn.zeppin.product.ntb.core.entity.Coupon.CouponStatus;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -66,4 +74,47 @@ public class JSONUtils {
         return map;  
     }  	
     
+    public static void main(String[] args) {
+    	Coupon cp = new Coupon();
+		cp.setUuid(UUID.randomUUID().toString());
+		cp.setCreator("123");
+		cp.setCreatetime(new Timestamp(System.currentTimeMillis()));
+		cp.setStatus(CouponStatus.NORMAL);
+		cp.setCouponName("优惠券");
+		cp.setCouponPrice(BigDecimal.ONE);
+		cp.setCouponType("cash");
+		cp.setMinInvestAccount(BigDecimal.ZERO);
+		cp.setExpiryDate(Timestamp.valueOf("2017-12-14 16:21:30"));
+		cp.setDeadline(30);
+		List<Coupon> list = new ArrayList<Coupon>();
+		list.add(cp);
+		Coupon cp1 = new Coupon();
+		cp1.setUuid(UUID.randomUUID().toString());
+		cp1.setCreator("123");
+		cp1.setCreatetime(new Timestamp(System.currentTimeMillis()));
+		cp1.setStatus(CouponStatus.NORMAL);
+		cp1.setCouponName("优惠券");
+		cp1.setCouponPrice(BigDecimal.ONE);
+		cp1.setCouponType("cash");
+		cp1.setMinInvestAccount(BigDecimal.ZERO);
+		cp1.setExpiryDate(Timestamp.valueOf("2017-12-14 16:21:30"));
+		cp1.setDeadline(30);
+		list.add(cp1);
+		Coupon cp2 = new Coupon();
+		cp2.setUuid(UUID.randomUUID().toString());
+		cp2.setCreator("123");
+		cp2.setCreatetime(new Timestamp(System.currentTimeMillis()));
+		cp2.setStatus(CouponStatus.NORMAL);
+		cp2.setCouponName("优惠券");
+		cp2.setCouponPrice(BigDecimal.ONE);
+		cp2.setCouponType("cash");
+		cp2.setMinInvestAccount(BigDecimal.ZERO);
+		cp2.setExpiryDate(Timestamp.valueOf("2017-12-14 16:21:30"));
+		cp2.setDeadline(30);
+		list.add(cp2);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("name", "优惠券列表");
+		map.put("couponList", list);
+		System.out.println(obj2json(map));
+	}
 }

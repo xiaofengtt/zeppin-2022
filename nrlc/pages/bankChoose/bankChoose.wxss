@@ -1,0 +1,70 @@
+/* pages/bankChoose/bankChoose.wxss */
+page{
+  background: #eee;
+}
+
+.top-view{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #FFF;
+}
+
+.top-view image{
+  width: 22rpx;
+  height: 20rpx;
+  margin-left: 20rpx;
+}
+
+.top-view text{
+  padding-left: 14rpx;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.data-table{
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.data-table .tr{
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 0 20rpx;
+  margin-bottom: 10rpx;
+  background: #FFF;
+}
+
+.data-table .tr image{
+  position: absolute;
+  left: 20rpx;
+  top: 30rpx;
+  width: 46rpx;
+  height: 46rpx;
+}
+
+.data-table .tr .name{
+  padding-left: 64rpx;
+  font-size: 30rpx;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.data-table .tr .limit{
+  font-size: 28rpx;
+  float: right;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.submit-view view{
+  width: 700rpx;
+  height: 100%;
+  margin: 68rpx auto 0 auto;
+  background: #008DFB;
+  color: #FFF;
+  line-height: 100rpx;
+  font-size: 36rpx;
+  text-align: center;
+  border-radius: 10rpx;
+}

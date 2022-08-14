@@ -1,0 +1,238 @@
+@CHARSET "UTF-8";
+.position a:hover{
+	color: #464646
+}
+.guessBox{
+	position:relative;
+}
+.guessBox-position{
+	position:absolute;
+	top:0;
+	right:0;
+}
+.guessEdit,.guessSave,.guessAdd,.guessPublish,.guessCancle{
+	margin-left:10px;
+	width:50px;
+	height:26px;
+	background:rgba(255,168,32,1);
+	border-radius:2px;
+	text-align:center;
+	line-height:26px;
+	display:inline-block;
+	color:rgba(255,255,255,1);
+	font-size:13px;
+}
+.guessEdit:hover,.guessSave:hover,.guessAdd:hover,.guessPublish:hover,.guessCancle:hover{
+	color:#fff;
+	text-decoration: none;
+}
+
+.guessSave,.guessAdd,.editBox,.guessCancle{
+	display:none;
+}
+.guessBox input[type="radio"]{
+	-webkit-appearance: radio;
+	appearance: radio;
+}
+.guessBox input[readonly]{
+	background:#fff;
+	cursor:inherit;
+}
+.guessBox .form-group,.matchInfo .form-group{
+	width:33.33%;
+	float:left;
+	padding-right:15px;
+	padding-top:15px;
+}
+.guessBox .form-group input{
+	width:auto;
+}
+form label{
+	padding:0 5px;
+}
+.content-item .form-group span{
+	line-height:34px;
+}
+.guessBox ul a{
+	display:none;
+	margin-left:10px;
+}
+.guessBox ul li div{
+	display:inline-block;
+	width:60px;
+	text-align:center;
+	border:1px solid #eee;
+}
+.guessBox ul li div label{
+	display:block;
+	color:#33322D;
+	margin:0;
+	line-height:28px;
+	height:28px;
+}
+.guessBox ul li div span,.guessBox ul li div b{
+	border-top:2px solid #eee;
+	display:block;
+	color:#777777;
+	line-height:28px;
+	height:28px;
+	font-weight:normal;
+}
+.guessWinorLose,.guessScore{
+	padding:25px;
+}
+.guessWinorLose .form-group{
+	padding-bottom:20px;
+}
+.guessWinorLose label,.guessScore label{
+	width:50px;
+	font-weight:normal;
+	float:left;
+	line-height:34px;
+}
+.guessWinorLose .spreadInput{
+	width:190px;
+	float:left;
+	margin-right:5px;
+}
+.guessWinorLose input,.guessScore input{
+	width:103px;
+	float:left;
+	margin-right:5px;
+}
+.guessWinorLose span,.guessScore span{
+	width:20px;
+	float:left;
+	line-height:34px !important;
+}
+.btn-group a:hover{
+	color:#fff;
+	text-decoration:none;
+}
+.guessMatchTitle{
+	color:#33322D;
+	font-size:14px;
+	line-height:18px;
+	padding-left:10px;
+	border-left:4px solid #FFA820;
+	margin-bottom:10px;
+	font-weight:600;
+}
+.form-group{
+	margin-bottom:0;
+}
+.form-group label{
+	color:#777777;
+	font-size:14px;
+	font-weight:normal;
+	margin-right:8px;
+}
+.form-group span{
+	color:#33322D;
+	font-size:14px;
+	line-height:18px;
+}
+.content-item{
+	border:none;
+	padding:0;
+}
+.layui-layer-title{
+	background:#FFF !important;	
+	padding-top:20px !important;
+	border-radius:8px 8px 0 0 !important;
+	height:auto !important;
+}
+.layui-layer{
+	border-radius:8px !important;
+}
+.btn-group a.cancle-btn{
+	color:#FFA820;
+	background:#fff;
+	border:1px solid rgba(255,168,32,1);
+}
+
+.guessInfo h3{
+	float:left;
+	font-size:14px;
+	font-weight:500;
+	color:rgba(119,119,119,1);
+	line-height:30px;
+	margin:0;
+}
+.guessInfo ul{
+	float:left;
+	padding-left:10px;
+}
+.guessInfo ul li{
+	line-height:30px;
+	position:relative;
+	padding-bottom:5px;
+}
+.guessInfo ul li a{
+	position:absolute;
+	left:250px;
+	top:0;
+	font-size:14px;
+	color:rgba(255,168,32,1);
+	width:56px;
+	height:30px;
+	text-align:center;
+	background:rgba(255,255,255,1);
+	border-radius:2px;
+	border:1px solid rgba(255,168,32,1);
+	line-height:30px;
+}
+.guessInfo ul li a:last-child{
+	left:330px;
+}
+.guessBox ul li div.scoreTitle{
+	display:block;
+	text-align:left;
+	border:none;
+	padding-top:10px;
+	line-height:30px;
+}
+.guessBox ul li div:first-child{
+	padding-top:0px;
+}
+.guessScoreContent{
+	float:left;
+	width:710px;
+}
+.guessScore input{
+	width:90px;
+	margin-right:20px;
+	margin-bottom:10px;
+}
+.guessScore span{
+	margin-right:2px;
+	width:auto;
+	min-width:26px;
+	margin-bottom:10px;
+}
+.guessScore .form-group{
+	padding-bottom:20px;
+}
+.content-box{
+	padding:10px 40px;
+}
+.scoreBtn{
+	cursor:pointer;
+}
+.click-notAllowed{
+	cursor:not-allowed;
+	background:#eee;
+}
+.scoreBtn.light{
+	color:#ffb822;
+	border-color:#ffb822;
+}
+.scoreBtn.light label{
+	color:#ffb822;
+}
+.isrightLight{
+	color:#FFA820 !important;
+}
+.isrightLight label,.isrightLight span{
+	color:#FFA820 !important;
+}

@@ -1,10 +1,12 @@
 package cn.zeppin.product.ntb.backadmin.vo;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.zeppin.product.ntb.core.entity.FundRate;
 import cn.zeppin.product.ntb.core.entity.base.Entity;
+import cn.zeppin.product.utility.Utlity;
 
 public class FundVO implements Entity {
 
@@ -18,6 +20,8 @@ public class FundVO implements Entity {
 	private String scode;
 	private String riskLevel;
 	private String type;
+	private BigDecimal accountBalance;
+	private String accountBalanceCN;
 	private String status;
 	private List<FundRate> fundRateList = new ArrayList<FundRate>();
 
@@ -61,6 +65,23 @@ public class FundVO implements Entity {
 		this.type = type;
 	}
 	
+	public BigDecimal getAccountBalance() {
+		return accountBalance;
+	}
+
+	public void setAccountBalance(BigDecimal accountBalance) {
+		this.accountBalance = accountBalance;
+		this.accountBalanceCN = Utlity.numFormat4UnitDetail(accountBalance);
+	}
+
+	public String getAccountBalanceCN() {
+		return accountBalanceCN;
+	}
+
+	public void setAccountBalanceCN(String accountBalanceCN) {
+		this.accountBalanceCN = accountBalanceCN;
+	}
+
 	public String getStatus() {
 		return status;
 	}

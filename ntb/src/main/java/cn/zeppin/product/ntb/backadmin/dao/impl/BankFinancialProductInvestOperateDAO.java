@@ -83,24 +83,41 @@ public class BankFinancialProductInvestOperateDAO extends BaseDAO<BankFinancialP
 	public List<Entity> getListForPage(Map<String, String> inputParams, Integer pageNum, Integer pageSize, String sorts,
 			Class<? extends Entity> resultClass) {
 		StringBuilder builder = new StringBuilder();
-		builder.append(" select bfpio.uuid,bfpio.bank_financial_product_invest as bankFinancialProductInvest,bfpio.type,bfpio.value,"
-				+ "bfpio.reason,bfpio.status,bfpio.checker,bfpio.checktime,bfpio.creator,bfpio.createtime");
-		builder.append(" from bank_financial_product_invest_operate bfpio left join bank_financial_product_invest bfpi on bfpio.bank_financial_product_invest = bfpi.uuid ");
-		builder.append(" left join bank_financial_product_publish bfpp on bfpi.bank_financial_product_publish = bfpp.uuid where 1=1 ");
+		builder.append(" select bfpio.uuid,bfpio.bank_financial_product as bankFinancialProduct,bfpio.type,bfpio.value,bfpio.reason,bfpio.status,bfpio.checker,bfpio.checktime,bfpio.creator,bfpio.createtime,bfpio.submittime");
+		builder.append(" from bank_financial_product_invest_operate bfpio left join bank_financial_product bfp on bfpio.bank_financial_product = bfp.uuid where 1=1 ");
 		//名称
 		if (inputParams.get("name") != null && !"".equals(inputParams.get("name"))) {
-			builder.append(" and bfpp.name like '%" + inputParams.get("name") + "%' ");
+			builder.append(" and bfp.name like '%" + inputParams.get("name") + "%' ");
 		}
+		
+		//外键
+		if (inputParams.get("bankFinancialProduct") != null && !"".equals(inputParams.get("bankFinancialProduct"))) {
+			builder.append(" and bfpio.bank_financial_product = '" + inputParams.get("bankFinancialProduct") + "' ");
+		}
+		
 		//状态
 		if (inputParams.get("status") != null && !"".equals(inputParams.get("status"))) {
-			builder.append(" and bfpio.status = '" + inputParams.get("status") + "' ");
+			if("all".equals(inputParams.get("status"))){//审核列表用
+				builder.append(" and bfpio.status in ('unchecked','checked','unpassed') ");
+			} else if("editor".equals(inputParams.get("status"))){
+				builder.append(" and bfpio.status in ('draft','unchecked','unpassed') ");
+			} else {
+				builder.append(" and bfpio.status = '" + inputParams.get("status") + "' ");
+			}
 		}else{
-			builder.append(" and bfpio.status in ('unchecked','checked','unpassed') ");
+			builder.append(" and bfpio.status in ('draft','unchecked','checked','unpassed') ");
 		}
+		
 		//类型
 		if (inputParams.get("type") != null && !"".equals(inputParams.get("type"))) {
 			builder.append(" and bfpio.type = '" + inputParams.get("type") + "' ");
 		}
+		
+		//创建人
+		if (inputParams.get("creator") != null && !"".equals(inputParams.get("creator"))) {
+			builder.append(" and bfpio.creator = '" + inputParams.get("creator") + "' ");
+		}
+		
 		// 排序
 		if (sorts != null && sorts.length() > 0) {
 			String[] sortArray = sorts.split("-");
@@ -121,39 +138,68 @@ public class BankFinancialProductInvestOperateDAO extends BaseDAO<BankFinancialP
 	@Override
 	public Integer getCount(Map<String, String> inputParams) {
 		StringBuilder builder = new StringBuilder();
-		builder.append(" select count(*) from bank_financial_product_invest_operate bfpio left join bank_financial_product_invest bfpi on bfpio.bank_financial_product_invest = bfpi.uuid ");
-		builder.append(" left join bank_financial_product_publish bfpp on bfpi.bank_financial_product_publish = bfpp.uuid where 1=1 ");
+		builder.append(" select count(*) from bank_financial_product_invest_operate bfpio");
+		builder.append(" left join bank_financial_product bfp on bfpio.bank_financial_product = bfp.uuid where 1=1 ");
 		//名称
 		if (inputParams.get("name") != null && !"".equals(inputParams.get("name"))) {
-			builder.append(" and bfpp.name like '%" + inputParams.get("name") + "%' ");
+			builder.append(" and bfp.name like '%" + inputParams.get("name") + "%' ");
 		}
+		
+		//外键
+		if (inputParams.get("bankFinancialProduct") != null && !"".equals(inputParams.get("bankFinancialProduct"))) {
+			builder.append(" and bfpio.bank_financial_product = '" + inputParams.get("bankFinancialProduct") + "' ");
+		}
+		
 		//状态
 		if (inputParams.get("status") != null && !"".equals(inputParams.get("status"))) {
-			builder.append(" and bfpio.status = '" + inputParams.get("status") + "' ");
+			if("all".equals(inputParams.get("status"))){//审核列表用
+				builder.append(" and bfpio.status in ('unchecked','checked','unpassed') ");
+			} else if("editor".equals(inputParams.get("status"))){
+				builder.append(" and bfpio.status in ('draft','unchecked','unpassed') ");
+			} else {
+				builder.append(" and bfpio.status = '" + inputParams.get("status") + "' ");
+			}
 		}else{
-			builder.append(" and bfpio.status in ('unchecked','checked','unpassed') ");//全部
+			builder.append(" and bfpio.status in ('draft','unchecked','checked','unpassed') ");
 		}
+		
 		//类型
 		if (inputParams.get("type") != null && !"".equals(inputParams.get("type"))) {
 			builder.append(" and bfpio.type = '" + inputParams.get("type") + "' ");
+		}
+		
+		//创建人
+		if (inputParams.get("creator") != null && !"".equals(inputParams.get("creator"))) {
+			builder.append(" and bfpio.creator = '" + inputParams.get("creator") + "' ");
 		}
 		return Integer.valueOf(super.getResultBySQL(builder.toString()).toString());
 	}
 	
 	/**
-	 * 获取银行理财产品投资操作分状态列表
+	 * 获取分状态列表
 	 * @param resultClass
 	 * @return  List<Entity>
 	 */
 	@Override
-	public List<Entity> getStatusList(Class<? extends Entity> resultClass) {
+	public List<Entity> getStatusList(Map<String, String> inputParams, Class<? extends Entity> resultClass) {
 		StringBuilder builder = new StringBuilder();
-		builder.append("select bfpio.status, count(*) as count from bank_financial_product_invest_operate bfpio group by bfpio.status");
+		builder.append("select bfpio.status, count(*) as count from bank_financial_product_invest_operate bfpio where 1=1");
+		builder.append(" and bfpio.status in ('draft','unchecked','checked','unpassed') ");//全部-去掉已删除的
+		
+		//状态
+		if (inputParams.get("status") != null && "all".equals(inputParams.get("status"))) {
+			builder.append(" and bfpio.status in ('unchecked','checked','unpassed') ");//全部-去掉已删除的(审核-去掉草稿)
+		}
+		//创建人
+		if (inputParams.get("creator") != null && !"".equals(inputParams.get("creator"))) {
+			builder.append(" and bfpio.creator = '" + inputParams.get("creator") + "' ");
+		}
+		builder.append(" group by bfpio.status");
 		return super.getBySQL(builder.toString(), resultClass);
 	}
 	
 	/**
-	 * 获取银行理财产品投资操作分类型列表
+	 * 获取分类型列表
 	 * @param inputParams
 	 * @param resultClass
 	 * @return  List<Entity>
@@ -162,12 +208,19 @@ public class BankFinancialProductInvestOperateDAO extends BaseDAO<BankFinancialP
 	public List<Entity> getTypeList(Map<String, String> inputParams, Class<? extends Entity> resultClass) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("select bfpio.type as status, count(*) as count from bank_financial_product_invest_operate bfpio where 1=1");
-		//状态
 		if (inputParams.get("status") != null && !"".equals(inputParams.get("status"))) {
-			builder.append(" and bfpio.status = '" + inputParams.get("status") + "' ");
+			if("all".equals(inputParams.get("status"))){//审核列表用
+				builder.append(" and bfpio.status in ('unchecked','checked','unpassed') ");
+			} else {
+				builder.append(" and bfpio.status = '" + inputParams.get("status") + "' ");
+			}
 		}else{
-			builder.append(" and bfpio.status in ('unchecked','checked','unpassed') ");//全部
+			builder.append(" and bfpio.status in ('draft','unchecked','checked','unpassed') ");//全部
 		}
+		//创建人
+		if (inputParams.get("creator") != null && !"".equals(inputParams.get("creator"))) {
+			builder.append(" and bfpio.creator = '" + inputParams.get("creator") + "' ");
+		}		
 		builder.append(" group by bfpio.type");
 		return super.getBySQL(builder.toString(), resultClass);
 	}

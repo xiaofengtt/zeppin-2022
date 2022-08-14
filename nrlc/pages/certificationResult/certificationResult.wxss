@@ -1,0 +1,92 @@
+/* certificationResult.wxss */
+page{
+  height: 100%;
+  background: #eee;
+}
+
+.container{
+  height: 100%;
+}
+
+.background{
+  height: 100%;
+  width: 100%;
+}
+
+.background-white{
+  height: 100%;
+  width: 100%;
+  background: #FFF;
+}
+
+.top-view{
+  width: 100%;
+  height: 480rpx;
+  text-align: center;
+}
+
+.top-view > view{
+  height: 100%;
+  width: 100%;
+}
+
+.top-view .pass{
+  background: linear-gradient(to bottom, #F9FDFF, #F0F9FF ); 
+}
+
+.top-view image{
+  width: 530rpx;
+  height: 430rpx;
+  margin: 30rpx auto
+}
+
+.table-view{
+  width: 100%;
+  margin-top: 26rpx;
+}
+
+.table-view .tr{
+  height: 80rpx;
+  padding: 0 26rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  background: #fff;
+  margin-bottom: 1px;
+}
+
+.table-view .tr:last-child{
+  margin-top: 20rpx;
+}
+
+.table-view .key{
+  display: inline-block;
+  width: 50%;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.table-view .value{
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+  color: #000;
+}
+
+.button-view{
+  width: 100%;
+  height: 90rpx;
+  margin-top: 60rpx;
+  text-align: center;
+}
+
+.button-view .button{
+  width: 360rpx;
+  height: 90rpx;
+  margin: 0 auto;
+  line-height: 90rpx;
+  font-size: 32rpx;
+  color: #008DFB;
+  border: 1px solid #008DFB;
+  border-radius: 6rpx;
+}
+

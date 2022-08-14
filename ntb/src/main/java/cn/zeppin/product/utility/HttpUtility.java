@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;  
 import java.util.Set;  
   
+
 import org.apache.http.HttpEntity;  
 import org.apache.http.HttpResponse;  
 import org.apache.http.NameValuePair;
@@ -12,6 +13,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;  
 import org.apache.http.client.methods.HttpPost;  
 import org.apache.http.client.methods.HttpUriRequest;  
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;  
 import org.apache.http.message.BasicNameValuePair;  
 import org.apache.http.protocol.HTTP;  
@@ -24,6 +26,15 @@ public class HttpUtility {
         DefaultHttpClient httpclient = new DefaultHttpClient();  
         String body;  
         HttpPost post = postForm(url, params);
+        body = invoke(httpclient, post);
+        httpclient.getConnectionManager().shutdown();
+        return body;  
+    } 
+    
+    public static String postXml(String url, String xml) {  
+        DefaultHttpClient httpclient = new DefaultHttpClient();  
+        String body;  
+        HttpPost post = postForXml(url, xml);
         body = invoke(httpclient, post);
         httpclient.getConnectionManager().shutdown();
         return body;  
@@ -48,7 +59,7 @@ public class HttpUtility {
         HttpEntity entity = response.getEntity(); 
         String body = null;  
         try {  
-            body = EntityUtils.toString(entity);
+            body = EntityUtils.toString(entity,HTTP.UTF_8);
         } catch (Exception e) {  
         	e.printStackTrace();
         }
@@ -79,4 +90,15 @@ public class HttpUtility {
         }
         return httpost;  
     }  
+    
+    private static HttpPost postForXml(String url, String xml){  
+        HttpPost httpost = new HttpPost(url);  
+        try { 
+        	StringEntity myEntity = new StringEntity(xml, "UTF-8");
+            httpost.setEntity(myEntity);  
+        } catch (Exception e) {  
+        	e.printStackTrace();
+        }
+        return httpost;  
+    } 
 } 

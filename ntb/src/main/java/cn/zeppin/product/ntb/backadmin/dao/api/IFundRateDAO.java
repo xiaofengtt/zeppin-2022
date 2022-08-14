@@ -29,7 +29,7 @@ public interface IFundRateDAO extends IBaseDAO<FundRate, String> {
 	 List<Entity> getListForPage(Map<String, String> inputParams, Integer pageNum, Integer pageSize, String sorts, Class<? extends Entity> resultClass);
 
 	 /**
-	 * 按类型删除基金费率信息
+	 * 按类型删除活期理财费率信息
 	 * @param type
 	 */
 	 void deleteByType(Fund fund, String rateType);

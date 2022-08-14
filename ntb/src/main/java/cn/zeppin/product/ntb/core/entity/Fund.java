@@ -15,7 +15,7 @@ import cn.zeppin.product.ntb.core.entity.base.BaseEntity;
 
 /**
  * 
- * @description 【数据对象】基金信息
+ * @description 【数据对象】活期理财信息
  */
 
 @Entity
@@ -61,13 +61,12 @@ public class Fund extends BaseEntity {
 	private String revenueFeature;
 	private String riskManagement;
 	private BigDecimal netWorth;
+	private BigDecimal accountBalance;
 	private String creator;
 	private Timestamp createtime;
 	
 	public class FundStatus{
-		public final static String UNCHECKED = "unchecked";
 		public final static String CHECKED = "checked";
-		public final static String UNPASSED = "unpassed";
 		public final static String DELETED = "deleted";
 	}
 	
@@ -385,6 +384,15 @@ public class Fund extends BaseEntity {
 		this.netWorth = netWorth;
 	}
 	
+	@Column(name = "account_balance", nullable = false)
+	public BigDecimal getAccountBalance() {
+		return accountBalance;
+	}
+
+	public void setAccountBalance(BigDecimal accountBalance) {
+		this.accountBalance = accountBalance;
+	}
+
 	@Column(name = "createtime", nullable = false)
 	public Timestamp getCreatetime() {
 		return createtime;

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+	<title>重置密码</title>
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/login.css" />
+	<link rel="stylesheet" href="css/pwdmanagement.css" />
+</head>
+<body onload="loading();" style="display:none;">
+	<div class="titleDiv">
+		<img class="titleBack" src="img/icon_return.png" alt="返回" />
+		<p>重置密码</p>
+	</div>
+	<div class="wrap">
+		<h1 class="item-title">设置登录密码</h1>
+		<div class="info-list">
+			<div class="info-item">
+				<span>当前账号</span>
+				<input type="tel" class="dqzh" value="" placeholder="请输入当前账号" maxlength="11"/>
+				<i class="clearInput"></i>
+				<div class="clear"></div>
+			</div>
+			<div class="info-item">
+				<span>验证码</span>
+				<input type="tel" id="mobileCode" placeholder="请输入验证码" maxlength="6" onkeyup="value=value.replace(/[^\d]/g,'')" />
+				<a class="sendCode">发送验证码</a>
+				<a class="numCode"><b>60</b>s</a>
+				<div class="clear"></div>
+			</div>
+			<div class="info-item">
+				<span>新密码</span>
+				<input type="password" class="xmm" value="" placeholder="6-20位字符" maxlength="20"/>
+				<div class="clear"></div>
+			</div>
+			<div class="info-item">
+				<span>确认密码</span>
+				<input type="password" class="qrmm" value="" placeholder="再次输入密码" maxlength="20"/>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<a class="gobtn">保存</a>
+		
+		<p class="layer">
+			提示信息
+		</p>
+		<div id="loading-box">
+			<img src="./img/icon-loading.gif" alt="" />
+		</div>
+	</div>
+	<script src="./js/burialPoint.js"></script>
+	<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+	<script src="./js/base64.js"></script>
+	<script src="./js/md5.js"></script>
+	<script type="text/javascript" src="js/picker.min.js" ></script>
+	<script type="text/javascript" src="js/url.min.js" ></script>
+	<script type="text/javascript" src="js/base.js?v=1.0" ></script>
+	<script type="text/javascript" src="js/forgotPwd.js" ></script>
+</body>
+</html>

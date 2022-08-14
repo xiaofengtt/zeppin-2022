@@ -32,6 +32,8 @@ public class BankFinancialProductOperateNetvalueVO implements Entity {
 	private Timestamp checktime;
 	private String creator;
 	private String creatorName;
+	private Timestamp submittime;
+	private String submittimeCN;
 	private Timestamp createtime;
 	private String createtimeCN;
 	private List<BankFinancialProductOperateDailyVO> dataList;
@@ -69,13 +71,15 @@ public class BankFinancialProductOperateNetvalueVO implements Entity {
 		}
 		this.checker = bfpo.getChecker();
 		this.checktime = bfpo.getChecktime();
+		this.submittime = bfpo.getSubmittime();
+		if(bfpo.getSubmittime() != null && !"".equals(bfpo.getSubmittime())){
+			this.submittimeCN = Utlity.timeSpanToString(bfpo.getSubmittime());
+		}else{
+			this.submittimeCN = "";
+		}
 		this.creator = bfpo.getCreator();
 		this.createtime = bfpo.getCreatetime();
-		if(bfpo.getCreatetime() != null && !"".equals(bfpo.getCreatetime())){
-			this.createtimeCN = Utlity.timeSpanToString(bfpo.getCreatetime());
-		}else{
-			this.createtimeCN = "";
-		}
+		this.createtimeCN = Utlity.timeSpanToString(bfpo.getCreatetime());
 	}
 
 	public String getUuid() {
@@ -221,4 +225,21 @@ public class BankFinancialProductOperateNetvalueVO implements Entity {
 	public void setDataList(List<BankFinancialProductOperateDailyVO> dataList) {
 		this.dataList = dataList;
 	}
+
+	public Timestamp getSubmittime() {
+		return submittime;
+	}
+
+	public void setSubmittime(Timestamp submittime) {
+		this.submittime = submittime;
+	}
+
+	public String getSubmittimeCN() {
+		return submittimeCN;
+	}
+
+	public void setSubmittimeCN(String submittimeCN) {
+		this.submittimeCN = submittimeCN;
+	}
+	
 }

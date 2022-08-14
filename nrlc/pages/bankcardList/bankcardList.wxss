@@ -1,0 +1,82 @@
+/* pages/bankcardList/bankcardList.wxss */
+page{
+  background: #eee;
+}
+
+.data-table{
+  width: 100%;
+  margin-top: 30rpx;
+}
+
+.data-table .tr{
+  width: 710rpx;
+  height: 190rpx;
+  margin: 0 auto 20rpx auto;
+  padding-top: 30rpx;
+  border-radius: 10rpx;
+}
+
+.data-table .tr .bank{
+  width: 500rpx;
+  height: 66rpx;
+  padding-left: 30rpx;
+  text-align: left;
+}
+
+.data-table .tr .bank image{
+  width: 66rpx;
+  height: 66rpx;
+  margin-right: 10rpx;
+}
+
+.data-table .tr .bank view{
+  display: inline-block;
+  line-height: 66rpx;
+  vertical-align: top;
+  font-size: 32rpx;
+  color: #FFF;
+}
+
+.data-table .tr .card{
+  width: 100%;
+  height: 56rpx;
+  line-height: 56rpx;
+  margin-top: 10rpx;
+  padding-right: 20rpx;
+  text-align: right;
+  color: #FFF;
+  font-size: 60rpx;
+}
+
+.data-table .tr .card text{
+  vertical-align: text-bottom;
+  padding: 0 10rpx;
+}
+
+ .data-table .tr .card text.num{
+  vertical-align: text-top;
+  padding: 0 10rpx;
+  font-size: 40rpx;
+} 
+
+.add-view{
+  width: 100%;
+  height: 120rpx;
+  margin-bottom: 30rpx;
+}
+
+.add-view view{
+  width: 710rpx;
+  height: 100%;
+  line-height: 120rpx;
+  margin: 0 auto;
+  font-size: 32rpx;
+  color: #FFF;
+  background: #D0D0D0;
+  border-radius: 10rpx;
+}
+
+.add-view view text{
+  padding: 0 12rpx 0 30rpx;
+  font-size: 38rpx;
+}

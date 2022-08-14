@@ -3,12 +3,12 @@
  */
 package cn.zeppin.product.ntb.backadmin.service.api;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import cn.zeppin.product.ntb.core.entity.BankFinancialProductOperate;
 import cn.zeppin.product.ntb.core.entity.base.Entity;
+import cn.zeppin.product.ntb.core.exception.TransactionException;
 import cn.zeppin.product.ntb.core.service.base.IBaseService;
 
 /**
@@ -38,8 +38,9 @@ public interface IBankFinancialProductOperateService extends IBaseService<BankFi
 	 * 审核
 	 * @param bankFinancialProductOperate
 	 * @return result
+	 * @throws TransactionException 
 	 */
-	public HashMap<String,Object> check(BankFinancialProductOperate bankFinancialProductOperate);
+	public void check(BankFinancialProductOperate bankFinancialProductOperate) throws TransactionException;
 	
 	/**
 	 * 获取基银行理财产品操作分状态列表

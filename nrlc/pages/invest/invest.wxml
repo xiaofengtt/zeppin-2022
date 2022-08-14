@@ -1,0 +1,67 @@
+<!--invest.wxml-->
+<view class="container">
+  <view class="information-view">
+    <view class="tr">
+      <view class="key">产品名称</view>
+      <view class="value">【{{product.custodianCN}}】{{product.name}}</view>
+    </view>
+    <view class="tr">
+      <view class="key">理财币种</view>
+      <view class="value">{{product.currencyTypeCN}}</view>
+    </view>
+    <view class="tr">
+      <view class="key">产品期限</view>
+      <view class="value">{{product.term}}天</view>
+    </view>
+  </view>
+  <form bindsubmit="formSubmit">
+    <view class="main-view">
+      <view class="amount-row">
+        <label>买入金额</label>
+        <input type="digit" value="{{amount}}" maxlength="10" placeholder="最低买入金额{{product.minInvestAmount}}元" placeholder-style="font-size:28rpx;color:rgba(0,0,0,0.4)" bindinput="editAmount"/>
+        <image src="/resources/invest/clear.png" bindtap="clearAmount"></image>
+      </view>
+      <view class="infomation-row">
+        <view class="minAdd">
+          <image src="/resources/common/warn.png"></image>
+          <text>投资递增金额：{{product.minInvestAmountAdd}}元</text>
+        </view>
+        <view class="balance">
+          <image src="/resources/common/money.png"></image>
+          <text>当前余额：{{user.accountBalance}}元</text>
+        </view>
+      </view>
+      <view class="warn-row">
+        <text>{{warnMessage}}</text>
+      </view>
+      <view class="button-row">
+        <button disabled='{{!submitAble || !buttonAble}}' class="{{submitAble? '' : 'disabled'}}" formType="submit">确认购买</button>
+      </view>
+      <view class="split-row">
+        <view class="left"></view>
+        <text>投资者确认</text>
+        <view class="right"></view>
+      </view>
+      <view class="confirm-row">
+        <image src="{{flagConfirm ? '/resources/invest/confirm_selected.png' : '/resources/invest/confirm_unselected.png'}}" bindtap="confirm"></image>
+        <text style="color: {{flagConfirm ? 'rgba(0, 0, 0, 0.6)' : 'rgba(0, 0, 0, 0.4)'}}" bindtap="confirm">我已阅读并同意 </text>
+        <view bindtap="{{agreementAble && buttonAble ? 'toAgreement' : ''}}"> 《牛投理财定向委托投资管理协议》</view>
+      </view>
+    </view>
+  </form>
+</view>
+<view class="pay-view" hidden="{{payHidden}}">
+  <view class="frame">
+    <view class="title">请输入手机验证码</view>
+    <view class="message">为了保证您的账户安全，请输入手机号{{user.phone}}的验证码，以完成支付!</view>
+    <view class="code">
+      <input type="number" value="{{code}}" maxlength="6" bindinput="editCode" />
+      <label class="{{timer <= 0 ? '' : 'disabled'}}" bindtap="{{timer <= 0 ? 'getCode' : ''}}">获取验证码{{timer <= 0 ? '' : ' ' + timer + 's'}}</label>
+    </view>
+    <view class="buttons">
+      <view class="cancle" bindtap="payCancel">取消</view>
+      <view class="confirm" bindtap="paySubmit">提交</view>
+    </view>
+  </view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

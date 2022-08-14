@@ -1,0 +1,48 @@
+.option-list{
+	background:#FFFFFF;
+	margin-top:0.2rem;
+}
+.option-list a{
+	margin:0 auto;
+	display: block;
+	width:6.4rem;
+	border-bottom:1px solid #EBEBEB;
+	color:#000000;
+	font-size:0.26rem;
+	line-height:0.28rem;
+	padding: 0.30rem;
+	position: relative;
+}
+
+.option-list a:last-child{
+	border:none;
+}
+
+
+/*伪元素*/
+.option-list a:nth-child(1) p,.option-list a:nth-child(2) p{
+	display: inline-block;
+	position: absolute;
+	right:0.73rem;
+	top:0.3rem;
+	font-size:0.28rem;
+	text-align:right;
+	color:rgba(0,0,0,1);
+}
+.option-list a{
+	background: url("../img/right.png") no-repeat;
+	background-position: 5.9rem center;
+	background-size: auto 0.23rem;
+}
+.option-list a h3{
+	opacity: 0.7;
+	width:5.8rem;
+	color:rgba(44,44,44,1);
+	font-size:0.28rem;
+}
+
+
+#logout{
+	margin-top:0.6rem;
+	background: #FF7702;
+}

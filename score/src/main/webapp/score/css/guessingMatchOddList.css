@@ -1,0 +1,138 @@
+@CHARSET "UTF-8";
+.matchOddList{
+	background:#fff;
+}
+.matchOddList .list-head,.list-item-top,.list-item-bottom{
+	width:100%;
+}
+.matchOddList div{
+	display:inline-block;
+}
+.list-item{
+	width:100%;
+}
+.list-child1{
+	width:15.4%;
+	float:left;
+}
+.list-child2{
+	width:19.6%;
+	float:left;
+}
+.list-child3{
+	width:65%;
+	float:left;
+	padding-left:10px;
+}
+.list-child1 div{
+	width:100%;
+	padding-bottom:10px;
+}
+.list-child1 span{
+	color:#33322D;
+}
+.list-child1 b{
+	color:#777777;
+	font-weight:normal;
+	margin-right:10px;
+}
+.text-center{
+	text-align:center;
+}
+.list-child6 p,.list-child7 p,.list-child8 p,.list-child9 p{
+	width:55px;
+	overflow:hidden;
+	border:1px solid #eee;
+	margin:0;
+	height:21px;
+	line-height:21px;
+	color:#777777;
+	font-weight:bold;
+}
+.list-child6 p{
+	width:60px;
+	color:#33322D;
+	font-weight:normal;
+}
+.list-child3 div{
+	width:52px;
+}
+.list-child3 div label,.list-child3 div span,.list-child3 div p{
+	display:block;
+	text-align:center;
+	border:1px solid #eee;
+	color:#777777;
+	font-weight:bold;
+}
+.list-child3 div label{
+	margin:0;
+	color:#33322D;
+}
+.list-child3 div.guessScoreInfo{
+	width:60px;
+}
+.list-child3 div.guessScoreInfo span,.list-child3 div.guessScoreInfo p{
+	color:#33322D;
+	font-weight:normal;
+}
+.matchOddList{
+	padding:10px 0px;
+	font-size:14px;
+	line-height:22px;
+	min-width:1245px;
+	overflow:auto;
+}
+.list-head,.list-item{
+	padding:7px 40px;
+	border-bottom:#EEEEEE 1px solid;
+}
+.list-item{
+	padding:15px 40px;
+}
+.list-head{
+	background: #eee;
+	font-weight:bold;
+}
+.color-red{
+	color:#B33535 !important;
+}
+.matchOddList div.oddsChangeBox{
+	position:absolute;
+	top:21px;
+	left:15px;
+	width:320px;
+	background:rgba(255,255,255,1);
+	box-shadow:0px 2px 7px 3px rgba(0,0,0,0.18);
+	border-radius:2px;
+	padding:10px;
+	display:none;
+	z-index:2;
+}
+.oddsChangeBox h6{
+	font-size:13px;
+	font-weight:500;
+	color:rgba(51,50,45,1);
+	line-height:15px;
+	text-align:left;
+}
+.oddsChangeBox li{
+	text-align:left;
+	margin:5px 0;
+}
+.oddsChangeBox li span{
+	width:66px;
+	display:inline-block;
+}
+.oddsChangeBox li span:first-child{
+	width:100px;
+}
+.oddsChangeBox li span img{
+	max-width:11px;
+	max-height:11px;
+	margin-left:3px;
+	margin-top:-2px;
+}
+.matchOddList div.controlOdds{
+	display:block;
+	position:relative;
+}

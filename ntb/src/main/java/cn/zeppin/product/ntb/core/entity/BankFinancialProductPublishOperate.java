@@ -30,6 +30,7 @@ public class BankFinancialProductPublishOperate extends BaseEntity {
 	private String bankFinancialProductPublish;
 	private String type;
 	private String value;
+	private String old;
 	private String reason;
 	private String status;
 	private String checker;
@@ -44,6 +45,9 @@ public class BankFinancialProductPublishOperate extends BaseEntity {
 		public final static String EDIT = "edit";
 		public final static String DELETE = "delete";
 		public final static String EXCEPTION = "exception";
+		
+		public final static String COLLECT = "collect";//开启认购（募集）
+		public final static String UNINVEST = "uninvest";//结束认购（投资中）
 	}
 	
 	public class BankFinancialProductPublishOperateStatus{
@@ -91,6 +95,15 @@ public class BankFinancialProductPublishOperate extends BaseEntity {
 		this.value = value;
 	}
 	
+	@Column(name = "old")
+	public String getOld() {
+		return old;
+	}
+
+	public void setOld(String old) {
+		this.old = old;
+	}
+
 	@Column(name = "reason", length = 500)
 	public String getReason() {
 		return reason;

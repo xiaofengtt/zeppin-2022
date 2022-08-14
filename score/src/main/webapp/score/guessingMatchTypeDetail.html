@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>竞猜方案</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/base-header.css" />
+		<link rel="stylesheet" href="css/base-left.css" />
+		<link rel="stylesheet" href="css/newsDetail.css" />
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/bootstrap-select.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/guessingMatchTypeDetail.css" />
+	</head>
+	<body>
+		<input id="uuidInput" type="hidden" value="1aa26d91-80b1-21e5-45fd-cc4a14a1424b"/>
+		<div class="main">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="content-main mt-15">
+				<p class="position"><a href="guessingMatchList.html">竞猜赛事管理</a>&nbsp;>&nbsp;<b>竞猜方案</b></p>
+				<div class="content-detail mt-15 matchInfo">
+					<div class="content-box" style="padding-bottom:20px;">
+						<h2 class="guessMatchTitle">比赛场次</h2>
+						<div class="form-group">
+							<label>场次:</label>
+							<span class="form-group-value matchPlayed"></span>
+						</div>
+						<div class="form-group">
+							<label>赛事:</label>
+							<span class="form-group-value matchGame"></span>
+						</div>
+						<div class="form-group">
+							<label>时间:</label>
+							<span class="form-group-value matchTime"></span>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="content-detail mt-15">
+					<div class="content-box">
+					<div class="content-item">
+					<!-- 竞猜胜负平 -->
+					<div class="guessBox winorloseBox">
+						<h2 class="guessMatchTitle">竞猜胜负平</h2>
+						<div class="guessBox-position">
+							<a class="guessAdd" onclick="layeropen('','','','')">新建</a>
+							<a class="guessPublish">发布</a>
+							<a class="guessEdit">编辑</a>
+							<a class="guessSave" onclick="winorloseSave('victory')">保存</a>
+							<a class="guessCancle">取消</a>
+						</div>
+						
+						<div class="editBox">
+							<div class="form-group">
+								<label>截止时间:</label>
+								<input class="form-control datepicker valueDate" data-provide="datepicker" readonly/>
+							</div>
+							<div class="form-group">
+								<label>最大投注倍数:</label>
+								<input class="form-control maxMoney" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/>
+							</div>
+							<div class="form-group">
+								<label>是否可以单投:</label>
+								<form action="" method="get">
+									<label><input name="radio" type="radio" value="true" checked/>&nbsp;是 </label>
+									<label><input name="radio" type="radio" value="false" />&nbsp;否</label>
+								</form>
+							</div>
+							<div class="clear"></div>
+						</div>							
+						<div class="showBox">
+							<div class="form-group">
+								<label>截止时间:</label>
+								<span class="valueDates">无</span>
+							</div>
+							<div class="form-group">
+								<label>最大投注倍数:</label>
+								<span class="maxMoneys">无</span>
+							</div>
+							<div class="form-group">
+								<label>是否可以单投:</label>
+								<span class="valueRadio">无</span>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<!-- 内容区域 -->
+						<div class="guessInfo">
+							<h3>竞猜方案:</h3>
+							<ul>
+							
+							</ul>
+							<div class="clear"></div>
+						</div>
+						
+					</div>
+					</div>
+					</div>		
+				</div>
+				<div class="content-box mt-15">
+					<div class="content-item">
+						<!-- 竞猜比分 -->
+						<div class="guessBox scoreBox">
+							<h2 class="guessMatchTitle">竞猜比分</h2>
+							<div class="guessBox-position">
+								<a class="guessAdd" onclick="layeropenScore('','','','')">新建</a>
+								<a class="guessPublish">发布</a>
+								<a class="guessSave" onclick="winorloseSave('score')">保存</a>
+								<a class="guessCancle">取消</a>
+								<a class="guessEdit">编辑</a>
+							</div>
+							<div class="editBox">
+								<div class="form-group">
+									<label>截止时间:</label>
+									<input class="form-control datepicker valueDate-score" data-provide="datepicker" readonly/>
+								</div>
+								<div class="form-group">
+									<label>最大投注限额:</label>
+									<input class="form-control maxMoney-score" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/>
+								</div>
+								<div class="form-group">
+									<label>是否可以单投:</label>
+									<form action="" method="get">
+										<label><input name="radios" type="radio" value="true" checked/>&nbsp;是 </label>
+										<label><input name="radios" type="radio" value="false" />&nbsp;否</label>
+									</form>
+								</div>
+								<div class="clear"></div>
+							</div>							
+							<div class="showBox">
+								<div class="form-group">
+									<label>截止时间:</label>
+									<span class="valueDates-score">无</span>
+								</div>
+								<div class="form-group">
+									<label>最大投注限额:</label>
+									<span class="maxMoneys-score">无</span>
+								</div>
+								<div class="form-group">
+									<label>是否可以单投:</label>
+									<span class="valueRadio-score">无</span>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="guessInfo">
+								<h3>竞猜方案:</h3>
+								<ul>
+								
+								</ul>
+								<div class="clear"></div>
+							</div>
+						</div>
+					</div>
+					<div class="btn-group">
+						<a class="goBack-btn">返回</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/laydate/laydate.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-select.js"></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/guessingMatchTypeDetail.js" ></script>
+	</body>
+</html>

@@ -1,0 +1,208 @@
+.main{
+	padding-bottom:0.64rem;
+}
+.top{
+	background: url(../img/wagesDetail.png) center no-repeat;
+	background-size:100% 100%;
+	height:3rem;
+	padding-top:0.4rem;
+	margin:0.2rem 0.3rem 0 0.3rem;
+	border-radius:0.2rem 0.2rem 0 0;
+}
+.name{
+	font-size:0.3rem;
+	margin:0 auto;
+	text-align: center;
+	color:rgba(44, 44, 44, 1);
+}
+.qcbCompanyName{
+	display:block;
+	color:rgba(102, 102, 102, 1);
+	font-size:0.26rem;
+	text-align:center;
+	margin-top:0.1rem;
+}
+.price{
+	font-size:0.58rem;
+	color:rgba(255, 119, 2, 1);
+	text-align: center;
+	margin-top:0.2rem;
+}
+.msg{
+	background:#fff;
+	margin:0 0.3rem;
+	border-radius:0 0 0.2rem 0.2rem;
+	padding-bottom:0.2rem;
+	padding-top:0.1rem;
+}
+.msg h4{
+	color:rgba(44, 44, 44, 1);
+	font-size:0.3rem;
+	text-align:center;
+	padding-bottom:0.2rem;
+}
+.msg-item{
+	padding:0.15rem 0.4rem;
+}
+.msg-item p{
+	font-size:0.28rem;
+	display: table-cell;
+	vertical-align: middle;
+	width:3rem;
+	padding-right:0.1rem;
+	word-break:break-all;
+	color:rgba(156, 156, 156, 1);
+}
+.msg-item span{
+	display: table-cell;
+	font-size:0.28rem;
+	vertical-align: middle;
+	text-align: right;
+	width:3.3rem;
+	padding-left:0.1rem;
+	word-break:break-all;
+	color:rgba(44, 44, 44, 1);
+}
+.bg-icon-1{
+	background: url("../img/")no-repeat;
+}
+.bg-icon-2{
+	background: url("../img/")no-repeat;
+}
+.bg-icon-3{
+	background: url("../img/")no-repeat;
+}
+
+#allRight,#back{
+	background:#FF7600;
+	color:#FFFFFF;
+	/*border:1px solid #E5CE90;*/
+	margin-top:0.2rem;
+	width:2rem;
+	display: inline-block;
+	margin-left:0.74rem;
+}
+#checked,#backed{
+	margin-top:0.2rem;
+	background:#c1c1c1;
+	width:2rem;
+	display: inline-block;
+	margin-left:0.74rem;
+}
+.tip{
+	width:100%;
+	margin:0 auto;
+	margin-top:0.30rem;
+	font-size:0.28rem;
+	color:rgba(156, 156, 156, 1);
+	text-align:center;
+}
+
+
+/*反馈信息提示框*/
+/*发送验证码的弹出框*/
+#back-box {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.4);
+	display: none;
+	z-index: 99;
+}
+
+#back-box .back-box-inner {
+	width: 5.4rem;
+	height: 3.6rem;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	padding-top: 0.2rem;
+	background: #FFFFFF;
+	-webkit-border-radius:5px;
+}
+
+#back-box .back-box-inner p {
+	text-align: center;
+	width: 100%;
+	color: rgba(44, 44, 44, 1);
+	font-size: 0.3rem;
+	margin-bottom: 0.3rem;
+}
+
+.back-box-inner-mid {
+	width: 4.8rem;
+	height: 1.9rem;
+	-webkit-border-radius: 5px;
+	margin: 0 auto;
+}
+
+.back-box-inner-mid textarea {
+	height: 100%;
+	width: 100%;
+	border: none;
+	font-size: 0.28rem;
+	background: rgba(0,0,0,0.05);
+	padding: 0.1rem;
+	display: inline-block;
+	color:rgba(44, 44, 44, 1);
+}
+.back-box-inner-mid textarea::-webkit-input-placeholder{
+	color:rgba(156, 156, 156, 1);
+}
+.back-box-inner-mid textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   	color:rgba(156, 156, 156, 1);
+}
+.back-box-inner-mid textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+   	color:rgba(156, 156, 156, 1);
+}
+.back-box-inner-mid textarea:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   	color:rgba(156, 156, 156, 1);
+}
+
+.back-box-inner-mid #getCode {
+	height: 100%;
+	width: 37%;
+	text-align: center;
+	display: inline-block;
+	font-size: 0.28rem;
+	color: #D09637;
+}
+
+.back-box-inner-mid #numCode {
+	display: inline-block;
+	height: 100%;
+	width: 37%;
+	text-align: center;
+	color: #767676;
+	font-size: 0.24rem;
+	display: none;
+}
+
+.back-box-inner-btnbox{
+	margin-top:0.34rem;
+	border-top:1px solid rgba(151,151,151,0.1);
+	height:0.96rem;
+	-webkit-border-radius: 0 0 5px 5px;
+	overflow: hidden;
+}
+.back-box-inner-btnbox input{
+	float:left;
+	display: inline-block;
+	height:100%;
+	width:50%;
+	border:none;
+	font-size:0.28rem;
+	background:#FFFFFF;
+	-webkit-border-radius:0 ;
+}
+.back-box-inner-btnbox input:nth-child(1){
+	color:rgba(123,123,123,0.5);
+	border-right:1px solid rgba(151,151,151,0.1);
+}
+.back-box-inner-btnbox input:nth-child(2){
+	color:#D09637;
+}

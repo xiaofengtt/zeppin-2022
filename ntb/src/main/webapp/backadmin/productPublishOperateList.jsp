@@ -7,6 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>牛投帮-后台管理系统</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="css/paging.css">
 		<link rel="stylesheet" href="css/fundList.css" />
 		<script id="queboxTpl" type="text/template">
@@ -15,40 +16,52 @@
 					<table>
 						<tr height="40px">
 							{{if type=='add'}}
-								<td class="stageTag" width="80px">
-									添加
+								<td width="60px">
+									<span class="stageTag back-green">发布</span>
 								</td>
 							{{else type=='edit'}}
-								<td class="stageTag" width="80px">
-									修改
+								<td width="60px">
+									<span class="stageTag back-grey">修改</span>
 								</td>
 							{{else type=='delete'}}
-								<td class="stageTag" width="80px">
-									删除
+								<td width="60px">
+									<span class="stageTag back-red">删除</span>
+								</td>
+							{{else type=='collect'}}
+								<td width="60px">
+									<span class="stageTag back-blue">开启认购</span>
+								</td>
+							{{else type=='uninvest'}}
+								<td width="60px">
+									<span class="stageTag back-blue">结束认购</span>
+								</td>
+							{{else type=='blance'}}
+								<td width="60px">
+									<span class="stageTag back-blue">结算还款</span>
 								</td>
 							{{else type=='exception'}}
-								<td class="stageTag" width="80px">
-									异常下线
+								<td width="60px">
+									<span class="stageTag back-red">异常下线</span>
 								</td>
 							{{/if}}
 							<td width="80%">
-								<span><a target="_blank" href="productPublishOperateDetail.jsp?uuid={{:uuid}}">【{{:custodianName}}】{{:bankFinancialProductPublishName}} ({{:scode}})</a></span>
+								<span><a href="productPublishOperateDetail.jsp?uuid={{:uuid}}">【{{:custodianName}}】{{:bankFinancialProductPublishName}} ({{:scode}})</a></span>
 							</td>
 							<td width="20%" class="text-center operate">
 								{{if status=='checked'}}
-									<a target="_blank" href="productPublishOperateDetail.jsp?uuid={{:uuid}}">查看</a>
+									<a href="productPublishOperateDetail.jsp?uuid={{:uuid}}" class="color_gray">查看</a>
 								{{else status=='unchecked'}}
 									<p>成功提交，等待审核。</p>
 								{{else status=='draft'}}
 									<a onclick="submitThis(this)" data-uuid="{{:uuid}}">提交审核</a>
 									{{if type=='add' || type=='edit'}}
-										<a target="_blank" href="productPublishOperateEdit.jsp?uuid={{:uuid}}">修改</a>
+										<a href="productPublishOperateEdit.jsp?uuid={{:uuid}}">修改</a>
 									{{/if}}
 									<a onclick="deleteThis(this)" data-uuid="{{:uuid}}">删除</a>
 								{{else status=='unpassed'}}
-									<a onclick="submitThis(this)" data-uuid="{{:uuid}}">重新审核</a>
+									<a onclick="submitThis(this)" data-uuid="{{:uuid}}">重新提交</a>
 									{{if type=='add' || type=='edit'}}
-										<a target="_blank" href="productPublishOperateEdit.jsp?uuid={{:uuid}}">修改</a>
+										<a href="productPublishOperateEdit.jsp?uuid={{:uuid}}">修改</a>
 									{{/if}}
 									<a onclick="deleteThis(this)" data-uuid="{{:uuid}}">删除</a>
 								{{/if}}
@@ -90,13 +103,20 @@
 						</tr>
 					</table>
 				</div>
-			</div>			
+				{{if status == "unchecked"}}
+		            <img src="./img/uncheck.png" class="status_img" />
+		        {{else status == "checked"}}
+		            <img src="./img/check.png" class="status_img" />
+		        {{else status == "unpassed"}}
+		            <img src="./img/failed.png" class="status_img" />
+		        {{/if}}
+			</div>
 		</script>
 	</head>
 	<body>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="navigation.jsp"/>
-		<input id="scode" type="hidden" value="00400045" />  
+		<input id="scode" type="hidden" value="00400043" />
 		<div class="contain">
 			<jsp:include page="contentLeft.jsp"/>
 			<div class="contain-right">
@@ -105,12 +125,12 @@
 					<div class="clear"></div>
 				</div>
 				<div class="main-contain pt-13 pl-14 pr-16" style="min-width:1002px;">
-					<div class="searchDiv">
-						<div class="input-group">
-							<input id="search" class="form-control" type="text" value="" placeholder="搜索" onkeypress="if(event.keyCode==13) {searchBtn();return false;}">
-							<label class="input-group-addon" onclick="searchBtn()"></label>
-						</div>
-					</div>
+<!-- 					<div class="searchDiv"> -->
+<!-- 						<div class="input-group"> -->
+<!-- 							<input id="search" class="form-control" type="text" value="" placeholder="搜索" onkeypress="if(event.keyCode==13) {searchBtn();return false;}"> -->
+<!-- 							<label class="input-group-addon" onclick="searchBtn()"></label> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 					<div class="condition">
 						<div class="statusDiv shortStatusDiv filter">
 							<label>审核状态：</label>
@@ -120,33 +140,36 @@
 								<a id="unchecked">待审核<span id="uncheckedCount">(0)</span></a>
 								<a id="checked">审核通过<span id="checkedCount">(0)</span></a>
 								<a id="unpassed">审核不通过<span id="unpassedCount">(0)</span></a>
-							</div>							
+							</div>
 						</div>
 						<div class="statusDiv filter1">
 							<label>审核类型：</label>
 							<div>
 								<a class="statusLight1" id="all">全部<span id="typeCount">(0)</span></a>
-								<a id="add">添加<span id="addCount">(0)</span></a>
+								<a id="add">发布<span id="addCount">(0)</span></a>
 								<a id="edit">修改<span id="editCount">(0)</span></a>
 								<a id="delete">删除<span id="deleteCount">(0)</span></a>
+								<a id="collect">开启认购<span id="collectCount">(0)</span></a>
+								<a id="uninvest">结束认购<span id="uninvestCount">(0)</span></a>
+								<a id="blance">结算还款<span id="blanceCount">(0)</span></a>
 								<a id="exception">异常下线<span id="exceptionCount">(0)</span></a>
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="list-content" id="queboxCnt">
-						
+
 					</div>
 					<div id="pageTool"></div>
 				</div>
 			</div>
 			<div class="clear"></div>
 		</div>
-
-		<script type="text/javascript" src="js/jquery.colorbox.js"></script>
-		<script type="text/javascript" src="js/url.min.js"></script>
-		<script type="text/javascript" src="js/jsrender.min.js"></script>
-		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
-		<script type="text/javascript" src="js/productPublishOperateList.js" ></script>
+		<script type="text/javascript" src="./js/getHtmlDocName.js"></script>
+		<script type="text/javascript" src="./js/jquery.colorbox.js"></script>
+		<script type="text/javascript" src="./js/url.min.js"></script><script type="text/javascript" src="js/flagSubmit.js"></script>
+		<script type="text/javascript" src="./js/jsrender.min.js"></script>
+		<script type="text/javascript" src="./js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="./js/productPublishOperateList.js" ></script>
 	</body>
 </html>

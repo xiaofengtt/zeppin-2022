@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>牛投财富</title>
+		<link rel="stylesheet" href="./css/registerSc.css" />
+		<script type="text/template" id="queboxTpl">
+			<div class="item">
+				<div class="item-title">
+					<p>【{{:custodianName}}】"{{:name}}"</p>
+				</div>
+				<table cellpadding="0" cellspacing="0">
+					<tr>
+						<td class="rate">{{:targetAnnualizedReturnRate}}<small>%</small></td>
+						<td>{{:term}}天</td>
+						<td>{{:collectEndtime}}</td>
+					</tr>
+					<tr>
+						<td class="rateCN">预期年化收益率</td>
+						<td>{{:minInvestAmountCN}}元起购</td>
+						<td class="timeCN">截止时间</td>
+					</tr>
+				</table>
+			</div>
+		</script>
+	</head>
+
+	<body>
+		<div class="head">
+			<h2 id="price"></h2>
+			<a href="http://a.app.qq.com/o/simple.jsp?pkgname=cn.zeppin.product.ntb&fromcase=40002">去APP领取现金</a>
+			<p>现金红包，已放入牛投理财账户中，登录APP可用</p>
+		</div>
+		<div class="body">
+			<p><img src="./img/左.png" alt="" />精选银行理财<img src="./img/右.png" /></p>
+			<div id="queboxCnt">
+
+			</div>
+		</div>
+		<div class="bg">
+			<div class="modal">
+				<p></p>
+				<a href="javascript:void(0);">OK</a>
+			</div>
+		</div>
+		<script src="./js/jquery-1.11.1.js"></script>
+		<script src="./js/url.min.js"></script>
+		<script src="./js/jquery-Tap.js"></script>
+		<script src="./js/jsrender.min.js"></script>
+		<script src="./js/registerSc.js"></script>
+	</body>
+
+</html>

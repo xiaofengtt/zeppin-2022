@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>牛投财富</title>
+		<link rel="stylesheet" href="./css/present.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<script type="text/template" id="queboxTpl">
+			<div class="block">
+				<div class="block-top">
+					<h5>新手专享</h5>
+					<p class="return-rate">{{:targetAnnualizedReturnRate}}<small>%</small>+1.2<small>%</small></p>
+					<span>预期年化收益率</span>
+				</div>
+				<div class="block-bottom">
+					<img class="bank-logo" src="" alt="" />
+				</div>
+			</div>
+		</script>
+	</head>
+
+	<body>
+		<div class="main">
+			<div id="top-1">
+				<img src="./img/红包雨背景图.png" alt="" />
+				<a href="./index.html" class="link">马上开抢</a>
+			</div>
+			<div id="top-2">
+				<h5>活动规则</h5>
+				<p>
+					1.活动时间
+				</p>
+				<span>
+					2018年1月15日－2018年1月31日
+				</span>
+				<p>
+					2.抢红包规则
+				</p>
+				<span>
+					活动期间，每位新用户可参与红包雨活动并领取一次红包，
+					抢到的红包将实时发放，用户可下载牛投理财APP登录领取。
+				</span>
+				<p>
+					3.抢红包规则
+				</p>
+				<span>
+					本活动最终解释权归牛投理财所有
+				</span>
+				<div class="img-box">
+					<img src="./img/向下.png" alt="" />
+				</div>
+			</div>
+
+			<div class="center">
+				<img src="./img/豪礼1.png">
+				<div>
+					<h2>
+						<img src="./img/左.png">
+						<span>豪礼1:</span>
+						<span>千元现金</span>
+						<span>收益任性送</span>
+						<img src="./img/右.png">
+					</h2>
+					<p>30天内，投资1万元、2万元、5万元以上</p>
+					<p>可使用200元、300元、500元现金增收券</p>
+				</div>
+			</div>
+
+			<div class="product">
+				<h2>
+					<img src="./img/左.png">
+					<span>豪礼2: 新用户专享</span>
+					<span>最高收益</span>
+					<img src="./img/右.png">
+				</h2>
+
+				<div class="block-box">
+					
+					
+				</div>
+			</div>
+
+			<div class="bottom">
+				<h2>
+					<img src="./img/左.png">
+					<span>豪礼3: </span>
+					<span>加息风暴</span>
+					<span>收益上不封顶</span>
+					<img src="./img/右.png">
+				</h2>
+				<p>
+					活动期间内完成任意一款，理财产品投资可获得加息券
+				</p>
+				<p>
+
+				</p>
+				<div class="ball">
+					<h5>加息券</h5>
+					<h4>＋0.18<small>%</small></h4>
+					<p>有效期至：2018-01-28</p>
+					<span>可使用在任意理财产品中，投资越多收益越多，上不封顶！</span>
+				</div>
+				<p>A投资：20万元利率为5.5%的银行理财产品12个月</p>
+				<p>A收益：20万*5.5%+20万*0.18=11020+360</p>
+			</div>
+		</div>
+		<div class="bg">
+			<div class="modal">
+				<p></p>
+				<a href="javascript:void(0);">OK</a>
+			</div>
+		</div>
+		<script src="./js/jquery-1.11.1.js"></script>
+		<script src="./js/jsrender.min.js"></script>
+		<script src="./js/jquery-Tap.js"></script>
+		<script src="./js/url.js"></script>
+		<script>
+			$(".bg").css({"height":$(window).height()+"px"});
+			$(".bg").find("a").tap(function(){
+				$(".bg").hide();
+			});
+			var list = [];
+			$.ajax({
+					type: "get",
+					url: urlApi + "/web/product/webList",
+					async: true
+				})
+				.done(function(r) {
+					if(r.status == "SUCCESS") {
+						if(r.totalResultCount >= 2){
+							list.push(r.data[0]);
+							list.push(r.data[1]);
+						}else{
+							list.push(r.data[0]);
+						}
+						var template = $.templates("#queboxTpl");
+						var html = template.render(list);
+						$(".block-box").html(html);
+						
+						$(".bank-logo").each	(function(index,el){
+							$(".bank-logo").eq(index).prop("src", imgUrl + list[index].iconUrl);
+						});
+					} else {
+						$(".bg").show().find("p").html(r.message);
+					}
+				})
+				.fail(function() {
+					$(".bg").show().find("p").html("服务器错误");
+				});
+		</script>
+	</body>
+
+</html>

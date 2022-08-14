@@ -34,14 +34,14 @@ public interface IBankFinancialProductPublishOperateDAO extends IBaseDAO<BankFin
 	Integer getCount(Map<String, String> inputParams);
 	
 	/**
-	 * 获取银行理财产品发布操作分状态列表
+	 * 获取募集产品操作分状态列表
 	 * @param resultClass
 	 * @return
 	 */
 	List<Entity> getStatusList(Map<String, String> inputParams, Class<? extends Entity> resultClass);
 	
 	/**
-	 * 获取银行理财产品发布操作分类型列表
+	 * 获取募集产品操作分类型列表
 	 * @param inputParams
 	 * @param resultClass
 	 * @return

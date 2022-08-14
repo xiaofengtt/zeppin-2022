@@ -96,6 +96,13 @@ function getList(){
 }
 
 $('#formsubmit').submit(function() {
+	if (flagSubmit == false) {
+        return false;
+    }
+    flagSubmit = false;
+    setTimeout(function() {
+        flagSubmit = true;
+    }, 3000);
 	var str = $(this).serialize();
 	$.post('../rest/backadmin/roleMethod/edit',str, function(data) {
 		if (data.status == "SUCCESS") {

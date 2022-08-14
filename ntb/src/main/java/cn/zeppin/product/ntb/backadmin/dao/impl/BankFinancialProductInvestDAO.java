@@ -80,22 +80,27 @@ public class BankFinancialProductInvestDAO extends BaseDAO<BankFinancialProductI
 	 * @return  List<Entity>
 	 */
 	@Override
-	public List<Entity> getListForPage(Map<String, String> inputParams, Integer pageNum, Integer pageSize, String sorts,
-			Class<? extends Entity> resultClass) {
+	public List<Entity> getList(Map<String, String> inputParams, String sorts, Class<? extends Entity> resultClass) {
 		StringBuilder builder = new StringBuilder();
 		builder.append(" select bfp.uuid, bfp.bank_financial_product as bankFinancialProduct, bfp.bank_financial_product_publish as bankFinancialProductPublish,")
-				.append(" bfp.amount,bfp.redeem_amount as redeemAmount,bfp.invest_income as investIncome,bfp.return_capital as returnCapital,")
-				.append(" bfp.return_interest as returnInterest,bfp.platfom_income as platfomIncome,bfp.status, bfp.stage, bfp.creator,bfp.createtime from bank_financial_product_invest bfp where 1=1 ");
+				.append(" bfp.company_account as companyAccount,bfp.account_balance as accountBalance,bfp.total_redeem as totalRedeem,bfp.total_amount as totalAmount,")
+				.append(" bfp.total_return as totalReturn, bfp.stage, bfp.creator,bfp.createtime from bank_financial_product_invest bfp where 1=1 ");
+		
+		//企业账户
+		if (inputParams.get("companyAccount") != null && !"".equals(inputParams.get("companyAccount"))) {
+			builder.append(" and bfp.company_account = '" + inputParams.get("companyAccount") + "' ");
+		}
+		//投资产品
+		if (inputParams.get("bankFinancialProduct") != null && !"".equals(inputParams.get("bankFinancialProduct"))) {
+			builder.append(" and bfp.bank_financial_product = '" + inputParams.get("bankFinancialProduct") + "' ");
+		}
+		//募集产品
+		if (inputParams.get("bankFinancialProductPublish") != null && !"".equals(inputParams.get("bankFinancialProductPublish"))) {
+			builder.append(" and bfp.bank_financial_product_publish = '" + inputParams.get("bankFinancialProductPublish") + "' ");
+		}
 		//阶段
 		if (inputParams.get("stage") != null && !"".equals(inputParams.get("stage"))) {
 			builder.append(" and bfp.stage = '" + inputParams.get("stage") + "' ");
-		}
-		//状态
-		if (inputParams.get("status") != null && !"".equals(inputParams.get("status"))) {
-			builder.append(" and bfp.status = '" + inputParams.get("status") + "' ");
-		}
-		else{
-			builder.append(" and bfp.status in ('unchecked','checked','deleted') ");
 		}
 		
 		// 排序
@@ -106,6 +111,52 @@ public class BankFinancialProductInvestDAO extends BaseDAO<BankFinancialProductI
 		}
 		else {
 			builder.append(" order by bfp.createtime desc ");
+		}
+		return super.getBySQL(builder.toString(), resultClass);
+	}
+	
+	/**
+	 * 根据参数查询结果列表(带分页、排序),
+	 * @param inputParams
+	 * @param pageNum
+	 * @param pageSize
+	 * @param sorts
+	 * @param resultClass
+	 * @return  List<Entity>
+	 */
+	@Override
+	public List<Entity> getListForPage(Map<String, String> inputParams, Integer pageNum, Integer pageSize, String sorts,
+			Class<? extends Entity> resultClass) {
+		StringBuilder builder = new StringBuilder();
+		builder.append(" select bfp.uuid, bfp.bank_financial_product as bankFinancialProduct, bfp.bank_financial_product_publish as bankFinancialProductPublish,")
+				.append(" bfp.company_account as companyAccount,bfp.account_balance as accountBalance,bfp.total_redeem as totalRedeem,bfp.total_amount as totalAmount,")
+				.append(" bfp.total_return as totalReturn, bfp.stage, bfp.creator,bfp.createtime from bank_financial_product_invest bfp where 1=1 ");
+		
+		//企业账户
+		if (inputParams.get("companyAccount") != null && !"".equals(inputParams.get("companyAccount"))) {
+			builder.append(" and bfp.company_account = '" + inputParams.get("companyAccount") + "' ");
+		}
+		//投资产品
+		if (inputParams.get("bankFinancialProduct") != null && !"".equals(inputParams.get("bankFinancialProduct"))) {
+			builder.append(" and bfp.bank_financial_product = '" + inputParams.get("bankFinancialProduct") + "' ");
+		}
+		//募集产品
+		if (inputParams.get("bankFinancialProductPublish") != null && !"".equals(inputParams.get("bankFinancialProductPublish"))) {
+			builder.append(" and bfp.bank_financial_product_publish = '" + inputParams.get("bankFinancialProductPublish") + "' ");
+		}
+		//阶段
+		if (inputParams.get("stage") != null && !"".equals(inputParams.get("stage"))) {
+			builder.append(" and bfp.stage = '" + inputParams.get("stage") + "' ");
+		}
+		
+		// 排序
+		if (sorts != null && sorts.length() > 0) {
+			String[] sortArray = sorts.split("-");
+			builder.append(" order by bfp.");
+			builder.append(sortArray[0] + " " + sortArray[1]);
+		}
+		else {
+			builder.append(" order by bfp.bank_financial_product_publish asc ");
 		}
 		return super.getBySQL(builder.toString(), pageNum, pageSize, resultClass);
 	}
@@ -119,31 +170,24 @@ public class BankFinancialProductInvestDAO extends BaseDAO<BankFinancialProductI
 	public Integer getCount(Map<String, String> inputParams) {
 		StringBuilder builder = new StringBuilder();
 		builder.append(" select count(*) from bank_financial_product_invest bfp where 1=1 ");
+		//企业账户
+		if (inputParams.get("companyAccount") != null && !"".equals(inputParams.get("companyAccount"))) {
+			builder.append(" and bfp.company_account = '" + inputParams.get("companyAccount") + "' ");
+		}
+		//投资产品
+		if (inputParams.get("bankFinancialProduct") != null && !"".equals(inputParams.get("bankFinancialProduct"))) {
+			builder.append(" and bfp.bank_financial_product = '" + inputParams.get("bankFinancialProduct") + "' ");
+		}
+		//募集产品
+		if (inputParams.get("bankFinancialProductPublish") != null && !"".equals(inputParams.get("bankFinancialProductPublish"))) {
+			builder.append(" and bfp.bank_financial_product_publish = '" + inputParams.get("bankFinancialProductPublish") + "' ");
+		}
 		//阶段
 		if (inputParams.get("stage") != null && !"".equals(inputParams.get("stage"))) {
 			builder.append(" and bfp.stage = '" + inputParams.get("stage") + "' ");
 		}
-		//状态
-		if (inputParams.get("status") != null && !"".equals(inputParams.get("status"))) {
-			builder.append(" and bfp.status = '" + inputParams.get("status") + "' ");
-		}else{
-			builder.append(" and bfp.status in ('unchecked','checked','deleted') ");//全部
-		}
 		return Integer.valueOf(super.getResultBySQL(builder.toString()).toString());
 	}
-	
-	/**
-	 * 获取银行理财产品投资分状态列表
-	 * @param resultClass
-	 * @return  List<Entity>
-	 */
-	@Override
-	public List<Entity> getStatusList(Class<? extends Entity> resultClass) {
-		StringBuilder builder = new StringBuilder();
-		builder.append("select bfpi.status, count(*) as count from bank_financial_product_invest bfpi group by bfpi.status");
-		return super.getBySQL(builder.toString(), resultClass);
-	}
-	
 	/**
 	 * 获取银行理财产品投资分阶段列表
 	 * @param resultClass
@@ -152,7 +196,7 @@ public class BankFinancialProductInvestDAO extends BaseDAO<BankFinancialProductI
 	@Override
 	public List<Entity> getStageList(Class<? extends Entity> resultClass) {
 		StringBuilder builder = new StringBuilder();
-		builder.append("select bfpi.stage as status, count(*) as count from bank_financial_product_invest bfpi where bfpi.status='checked' group by bfpi.stage");
+		builder.append("select bfpi.stage as status, count(*) as count from bank_financial_product_invest bfpi group by bfpi.stage");
 		return super.getBySQL(builder.toString(), resultClass);
 	}
 }

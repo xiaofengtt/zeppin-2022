@@ -53,7 +53,7 @@ public class RoleController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "uuid", message = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
 	@ResponseBody
 	public Result get(String uuid) {		
 		//获取角色信息

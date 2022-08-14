@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>充值成功</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/drawcashComplete.css?version=1.5" />
+	</head>
+	<body>
+		<div class="main">
+			<div class="top">
+				<p>充值成功！</p>
+				<span id="targetDate">恭喜你！</span>
+				<img src="./img/recharge_success.png" alt="" />
+			</div>
+			<div class="bottom">
+				<!--<p>
+					<span>储蓄卡</span>
+					<span class="value" id="name"></span>
+				</p>-->
+				<p>
+					<span>充值金额</span>
+					<span class="value" id="price"></span>
+				</p>
+			</div>
+			<input type="button" class="big-btn" id="allRight" value="返回首页"/>
+		</div>
+		
+		<div id="modal-box">
+			<div class="modal-box-inner">
+				<h3>温馨提示</h3>
+				<h4></h4>
+				<div class="modal-box-inner-btnbox clearfix">
+					<input type="button"  value="取消" id="modal-box-close"/>
+					<input type="button"  value="确认"/>
+				</div>
+			</div>
+		</div>
+		
+		<p class="layer">
+			提示信息
+		</p>
+
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/flagSubmit.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jsrender.min.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/changePrice.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script>
+			var price = url("?price");
+			$("#price").html(formatNum(price));
+			$("#allRight").tap(function(){
+				window.location.href = window.location.href = "./myMessage.html?openId="+openIdUrl;
+			});
+		</script>
+	</body>
+</html>
+

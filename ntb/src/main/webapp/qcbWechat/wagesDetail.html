@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>福利信息</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5"/>
+		<link rel="stylesheet" href="./css/wagesDetail.css?version=1.5" />
+		<script type="text/template" id="queboxTpl">	
+			{{for columnList}}
+				<div class="msg-item">
+					{{if #data != ""}}
+						<p>{{:#data}}</p>
+					{{else}}
+						<p>无</p>
+					{{/if}}
+					<span class="value"></span>
+				</div>
+			{{/for}}
+		</script>
+	</head>
+	<body>
+		<div class="main">
+			<div class="top">
+				<h3 class="name"></h3>
+				<span class="qcbCompanyName"></span>
+				<p class="price"></p>
+			</div>
+			<div class="msg">
+			</div>
+			<p class="tip">
+				*如无疑问，请确认以上信息
+			</p>
+			<input type="button" class="big-btn" id="allRight" value="确认无误"/>
+			<input type="button" class="big-btn" id="checked" value="已确认"/>
+			<input type="button" class="big-btn" id="back" value="反馈"/>
+			<input type="button" class="big-btn" id="backed" value="查看反馈"/>
+		</div>
+		
+		<div id="confirm-box">
+			<div class="confirm-box-inner">
+				<h3>温馨提示</h3>
+				<h4></h4>
+				<div class="confirm-box-inner-btnbox clearfix">
+					<input type="button"  value="取消" id="confirm-box-close"/>
+					<input type="button"  value="确认" id="confirm"/>
+				</div>
+			</div>
+		</div>
+		
+		<div id="modal-box">
+			<div class="modal-box-inner">
+				<h3>查看反馈信息</h3>
+				<h4></h4>
+				<div class="modal-box-inner-btnbox clearfix">
+					<input type="button"  value="关闭" id="modal-box-close"/>
+					<input type="button"  value="确认"/>
+				</div>
+			</div>
+		</div>
+		
+		<div id="back-box">
+			<div class="back-box-inner">
+				<p id="success-title">反馈</p>
+				<div class="back-box-inner-mid">
+					<!--<input type="text" name="" id="mobileCode" value="" placeholder="请输入反馈信息" />-->
+					<textarea id="content" name="" rows="" cols="" maxlength="80" placeholder="请输入反馈信息"></textarea>
+				</div>
+				<div class="code-box-inner-btnbox clearfix">
+					<input type="button"  value="取消" id="back-box-close"/>
+					<input type="button"  value="确认" id="submit"/>
+				</div>
+			</div>
+		</div>
+		
+		<p class="layer">
+			提示信息
+		</p>
+		
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/flagSubmit.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jsrender.min.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/wagesDetail.js?version=1.5"></script>
+
+	</body>
+</html>
+

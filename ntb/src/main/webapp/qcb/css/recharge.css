@@ -1,0 +1,81 @@
+.main-right-body{
+	padding-top:20px;
+	padding-left:0;
+	padding-right:0;
+	display:none;
+}
+.main-right-body-header{
+	padding-bottom:16px;
+	border-bottom:1px solid #E8E4E4;
+	padding-left:40px;
+	position: relative;
+}
+.main-right-body-header .with-draw-list{
+	color:#FF9E10;
+	display: inline-block;
+	font-size:14px;
+	line-height:14px;
+	padding:10px 0px 10px 30px;
+	position: absolute;
+	right:40px;
+	top:0px;
+	background-image: url(../img/rechargeLogo.png);
+	background-repeat: no-repeat;
+	background-position-x: 6px;
+	background-position-y: center;
+	cursor: pointer;
+}
+.main-right-body-tip{
+	margin:30px 0px 0 40px;
+	position: relative;
+}
+.main-right-body-tip p{
+	padding:10px 24px;
+	color:#969696;
+	background-image: url(../img/tip.png);
+	background-repeat: no-repeat;
+	background-position-x: left;
+	background-position-y: 12px;
+	font-size:14px;
+}
+.main-right-body-tip a{
+	position: absolute;
+	color:#969696;
+	font-size:14px;
+	top:10px;
+	right:40px;
+}
+.main-right-body-tip a:hover{
+	color:#FF9E10;
+}
+.main-right-body-content{
+	padding-left:40px;
+	margin-top:42px;
+}
+.main-right-body-content table{
+	width: 580px;
+	table-layout: fixed;
+	border-collapse:collapse;
+	border:1px solid #d4d2cf;
+	margin-top:34px;
+}
+.main-right-body-content table tr{
+	height:50px;
+}
+.main-right-body-content table td {
+	border:1px solid #d4d2cf;
+	padding-left:34px;
+	font-size:16px;
+}
+.main-right-body-content table .table-title{
+	color:#a4a4a4;
+	text-align: center;
+	width:120px;
+	padding-left:0;
+	font-size:13px;
+}
+.main-right-body-content-ps{
+	font-size:12px;
+	margin-top:34px;
+	
+}

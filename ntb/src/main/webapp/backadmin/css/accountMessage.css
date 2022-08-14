@@ -1,0 +1,127 @@
+.account_message .account_logo {
+    position: absolute;
+    width: 280px;
+    height: 125px;
+    color: #c1c1c1;
+    top: 7%;
+    right: 8%;
+}
+
+.account_message .account_logo img {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+.account_message #edit, .account_message #goBack {
+    width: 100px;
+    height: 35px;
+    display: inline-block;
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+    background: #FFFFFF;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+}
+
+.account_message .auditing_check {
+    width: 100px;
+    height: 35px;
+    display: inline-block;
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+    background: #FFFFFF;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.account_message .btn_group {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.account_message #edit:hover {
+    background: #4D9CFF;
+    color: #FFFFFF;
+}
+
+.account_message #goBack:hover {
+    background: #4D9CFF;
+    color: #FFFFFF;
+}
+
+.account_message .auditing_check:hover {
+    background: #4D9CFF;
+    color: #FFFFFF;
+}
+
+.account_balance {
+    width: 100%;
+    font-size: 16px;
+    position: relative;
+}
+
+.account_balance p {
+    /*font-size: 16px;*/
+    color: #737373;
+    margin: 0;
+}
+
+.account_balance span {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    color: orange;
+}
+
+.all_price {
+    width: 100%;
+}
+
+.all_price .all_price_title {
+    width: 100%;
+    font-size: 16px;
+    position: relative;
+}
+
+.all_price .all_price_title p {
+    /*font-size: 16px;*/
+    color: #737373;
+    margin: 0;
+}
+
+.all_price .all_price_title span {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    color: orange;
+}
+
+.price_journal {
+    width: 100%
+}
+
+.price_journal .price_journal_title {
+    color: #737373;
+    margin: 0;
+    font-size: 16px;
+}

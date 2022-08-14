@@ -94,7 +94,9 @@ public class BankDAO extends BaseDAO<Bank, String> implements IBankDAO {
 	public List<Entity> getListForPage(Map<String, String> inputParams, Integer pageNum, Integer pageSize, String sorts,
 			Class<? extends Entity> resultClass) {
 		StringBuilder builder = new StringBuilder();
-		builder.append(" select b.uuid, b.name, b.logo, r.url as logoUrl, b.status from bank b left join resource r on b.logo=r.uuid where 1=1 ");
+		builder.append(" select b.uuid, b.name, b.short_name as shortName, b.logo, r.url as logoUrl, b.status, b.single_limit as singleLimit, b.daily_limit as dailyLimit, b.code,"
+				+ " b.code_num as codeNum, b.flag_bank as flagBank, b.credit_inquiry_phone as creditInquiryPhone, b.credit_inquiry_command as creditInquiryCommand "
+				+ " from bank b left join resource r on b.logo=r.uuid where 1=1 ");
 		//名称
 		if (inputParams.get("name") != null && !"".equals(inputParams.get("name"))) {
 			builder.append(" and b.name like '%" + inputParams.get("name") + "%' ");
@@ -106,6 +108,24 @@ public class BankDAO extends BaseDAO<Bank, String> implements IBankDAO {
 		else{
 			builder.append(" and b.status in ('normal','disable') ");
 		}
+		
+		//名称
+		if (inputParams.get("bankName") != null && !"".equals(inputParams.get("bankName"))) {
+			builder.append(" and (b.name = '" + inputParams.get("bankName") + "' or b.short_name = '" + inputParams.get("bankName") + "') ");
+		}
+		
+		if (inputParams.get("flagBinding") != null && !"".equals(inputParams.get("flagBinding"))) {
+			builder.append(" and b.flag_binding = " + inputParams.get("flagBinding") + " ");
+		}
+		
+		if (inputParams.get("flagBank") != null && !"".equals(inputParams.get("flagBank"))) {
+			builder.append(" and b.flag_bank = " + inputParams.get("flagBank") + " ");
+		}
+		
+		if (inputParams.get("codeNum") != null && !"".equals(inputParams.get("codeNum"))) {
+			builder.append(" and b.code_num = '" + inputParams.get("codeNum") + "' ");
+		}
+		
 		// 排序
 		if (sorts != null && sorts.length() > 0) {
 			String[] sortArray = sorts.split(",");
@@ -137,6 +157,24 @@ public class BankDAO extends BaseDAO<Bank, String> implements IBankDAO {
 		}else{
 			builder.append(" and b.status in ('normal','disable') ");
 		}
+		
+		//名称
+		if (inputParams.get("bankname") != null && !"".equals(inputParams.get("bankname"))) {
+			builder.append(" and (b.name = '" + inputParams.get("bankname") + "' or b.short_name = '" + inputParams.get("bankname") + "') ");
+		}
+		
+		if (inputParams.get("flagBinding") != null && !"".equals(inputParams.get("flagBinding"))) {
+			builder.append(" and b.flag_binding = '" + inputParams.get("flagBinding") + "' ");
+		}
+		
+		if (inputParams.get("flagBank") != null && !"".equals(inputParams.get("flagBank"))) {
+			builder.append(" and b.flag_bank = " + inputParams.get("flagBank") + " ");
+		}
+		
+		if (inputParams.get("codeNum") != null && !"".equals(inputParams.get("codeNum"))) {
+			builder.append(" and b.code_num = '" + inputParams.get("codeNum") + "' ");
+		}
+		
 		return Integer.valueOf(super.getResultBySQL(builder.toString()).toString());
 	}
 
@@ -160,5 +198,58 @@ public class BankDAO extends BaseDAO<Bank, String> implements IBankDAO {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public List<Entity> getListForWebPage(Map<String, String> inputParams,
+			Integer pageNum, Integer pageSize, String sorts,
+			Class<? extends Entity> resultClass) {
+		StringBuilder builder = new StringBuilder();
+		builder.append(" select b.uuid, b.name, b.short_name as shortName, b.icon_color as iconColor, r.url as iconColorUrl, b.status, b.single_limit as singleLimit, b.daily_limit as dailyLimit"
+				+ " from bank b left join resource r on b.icon_color=r.uuid where 1=1 ");
+		//名称
+		if (inputParams.get("name") != null && !"".equals(inputParams.get("name"))) {
+			builder.append(" and b.name like '%" + inputParams.get("name") + "%' ");
+		}
+		//状态
+		if (inputParams.get("status") != null && !"".equals(inputParams.get("status"))) {
+			builder.append(" and b.status = '" + inputParams.get("status") + "' ");
+		}
+		else{
+			builder.append(" and b.status in ('normal','disable') ");
+		}
+		
+		//名称
+		if (inputParams.get("bankName") != null && !"".equals(inputParams.get("bankName"))) {
+			builder.append(" and (b.name like '%" + inputParams.get("bankName") + "%' or b.short_name like '%" + inputParams.get("bankName") + "%') ");
+		}
+		
+		if (inputParams.get("flagBinding") != null && !"".equals(inputParams.get("flagBinding"))) {
+			builder.append(" and b.flag_binding = " + inputParams.get("flagBinding") + " ");
+		}
+		
+		if (inputParams.get("flagBank") != null && !"".equals(inputParams.get("flagBank"))) {
+			builder.append(" and b.flag_bank = " + inputParams.get("flagBank") + " ");
+		}
+		
+		if (inputParams.get("codeNum") != null && !"".equals(inputParams.get("codeNum"))) {
+			builder.append(" and b.code_num = '" + inputParams.get("codeNum") + "' ");
+		}
+		
+		// 排序
+		if (sorts != null && sorts.length() > 0) {
+			String[] sortArray = sorts.split(",");
+			builder.append(" order by ");
+			String comma = "";
+			for (String sort : sortArray) {
+				builder.append(comma);
+				builder.append("b.").append(sort);
+				comma = ",";
+			}
+		}
+		else {
+			builder.append(" order by b.createtime desc ");
+		}
+		return super.getBySQL(builder.toString(), pageNum, pageSize, resultClass);
 	}
 }

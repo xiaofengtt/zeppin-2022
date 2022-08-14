@@ -1,0 +1,50 @@
+<!--search.wxml-->
+<view class="container">
+  <view class="top-view">
+    <view class="search-view">
+      <input type="text" confirm-type="search" bindconfirm="search" bindblur="search"/>
+      <image src="/resources/index/search_unselected.png"></image>
+    </view>
+    <view class="sort-view">
+      <view class="left-view" bindtap="targetSort">
+        <text class="{{sortMap.targetAsc || sortMap.targetDesc ? 'selected' : ''}}">年化收益</text>
+        <image hidden="{{!sortMap.targetAsc}}" src="/resources/index/sort_up.png"></image>
+        <image hidden="{{!sortMap.targetDesc}}" src="/resources/index/sort_down.png"></image>
+      </view>
+      <view bindtap="termSort">
+        <text class="{{sortMap.termAsc || sortMap.termDesc ? 'selected' : ''}}">产品期限</text>
+        <image hidden="{{!sortMap.termAsc}}" src="/resources/index/sort_up.png"></image>
+        <image hidden="{{!sortMap.termDesc}}" src="/resources/index/sort_down.png"></image>
+      </view>
+      <view class="right-view" bindtap="minSort">
+        <text class="{{sortMap.minAsc || sortMap.minDesc ? 'selected' : ''}}">起购金额</text>
+        <image hidden="{{!sortMap.minAsc}}" src="/resources/index/sort_up.png"></image>
+        <image hidden="{{!sortMap.minDesc}}" src="/resources/index/sort_down.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="data-table">
+    <block wx:for="{{dataList}}" wx:key="{{uuid}}">
+      <view class="{{item.flagBuy ? 'tr' : 'tr-disable'}}" bindtap="{{item.flagBuy && buttonAble ? 'toDetail' : ''}}" data-index="{{index}}">
+        <image class="table-image" src="/resources/index/table_disable.png" hidden="{{item.flagBuy}}"></image>
+        <view class="td-left">
+          <view class="td-left-rate">{{item.targetAnnualizedReturnRate}}<text class="per">%</text></view>
+          <view class="td-left-text">预期年化收益</view>
+        </view>
+        <view class="td-right">
+          <view class="td-right-title">【{{item.custodianName}}】{{item.shortname}}</view>
+          <view class="td-right-text">{{item.minInvestAmountCN}}元起购、{{item.term}}天、{{item.collectEndtime}}截止</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <block wx:if="{{dataList.length == 0}}">
+    <view class="nodata">
+      <view>
+        <image src="/resources/index/nodata.png" mode="widthFix"></image>
+      </view>
+      <text>没有符合条件的产品哦~</text>
+    </view>
+  </block> 
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

@@ -1,0 +1,208 @@
+.search-bar{
+	/*margin-top:52px;*/
+	position: relative;
+}
+.search-bar .btn-box{
+	top:0;
+	right:0;
+}
+.search-bar .search-box{
+	width:250px;
+	height:32px;
+	border:1px solid #E8E4E4;
+	border-radius:3px;
+	padding-left:10px;
+	position: relative;
+}
+.search-bar .search-box input{
+	border:none;
+	display: inline-block;
+	font-size:14px;
+	outline: none;
+	height:100%;
+	width:90%;
+	
+}
+.search-bar .search-box img{
+	position: absolute;
+	right:10px;
+	width:17px;
+	height:17px;
+	margin:auto;
+	top:0;
+	bottom:0;
+	cursor:pointer;
+}
+.table tr{
+	height:60px;
+}
+
+
+
+.bg{
+	position: fixed;
+	background:#999;
+	background-color:rgba(0,0,0,0.6);
+	background-color:none\9;
+	z-index:20;
+	top:0;
+	display:none;
+}
+.modal{
+	width:600px;
+	height:670px;
+	background-color:#FFFFFF;
+	position:absolute;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+	margin:auto;
+	text-align: center;
+}
+.modal-header{
+	padding-bottom:21px;
+	padding-top:21px;
+	border-bottom:1px solid #E8E4E4;
+	padding-left:40px;
+	position: relative;
+	margin-bottom:54px;
+	text-align: left;
+}
+.modal-header a{
+	position: absolute;
+	top:22px;
+	right:20px;
+	cursor: pointer;
+	background:url(../img/closeIframe.png) center no-repeat;
+    background-size:60%;
+    width:20px;
+    height:20px;
+}
+.modal-body{
+	width:426px;
+	margin:50px auto 0 auto;
+}
+.item{
+	width:100%;
+	margin-bottom:28px;
+}
+.item .item-title{
+	font-size:14px;
+	display: inline-block;
+	width:90px;
+	text-align: right;
+}
+.item input,.item select{
+	height:42px;
+	line-height:24px;
+	width:310px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border:1px solid #E8E4E4;
+	outline: none;
+	/* -webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none; */
+	text-indent: 10px;
+	background-color:#FFFFFF;
+	font-size:14px;
+	padding:8px 0;
+	vertical-align: middle\9;
+}
+.item input:focus,.item select:focus{
+	border-color: #f9ba56;
+}
+.item input.light,.item select.light{
+	border-color: #f9ba56;
+}
+.item select{
+	display: inline-block;
+	text-indent: 2px;
+	/* background-image: url(../img/big-bottom-g.png);
+	background-repeat: no-repeat;
+	background-position-x: 284px;
+	background-position-y: 18px; */
+	padding:8px;
+}
+.tips{
+	text-align: left;
+    padding-left: 110px;
+    font-size: 14px;
+    line-height: 28px;
+    display:none;
+}
+
+
+.sub{
+	width:310px;
+	position: relative;
+	display: inline-block;
+	padding: 9px 0;
+	font-size:16px;
+	background-color:#ffb031;
+	cursor: pointer;
+	text-align: center;
+	color:#FFFFFF;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	outline:none;
+	margin-top:16px;
+	border:none;
+	margin-left:90px;
+}
+.table tr td a.edit{margin-right:25px;}
+.download-excel{
+    display: inline-block;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 10px 0px 10px 25px;
+    position: absolute;
+    right: 0px;
+    bottom: -40px;
+    background-image: url(../img/download-small-gray.png);
+    background-repeat: no-repeat;
+    background-position-x: 6px;
+    background-position-y: center;
+    cursor: pointer;
+}
+.download-excel:hover{
+	color: #FF9E10 !important;
+	text-decoration: underline;
+	background-image: url(../img/下载-small.png);
+}
+
+.module-5 {
+    position: relative;
+    display: none;
+    margin-bottom: 30px;
+}
+
+.errorBox {
+    max-height: 155px;
+    overflow: hidden;
+    position: relative;
+}
+
+.errorBox table {
+    min-width: auto !important;
+}
+
+.lookMore {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: url(../img/packDown.png) center no-repeat;
+    background-size: cover;
+    bottom: 55px;
+    right: 50%;
+    display: none;
+    margin-left: -15px;
+}
+
+.packUp {
+    background: url(../img/packUp.png) center no-repeat;
+    background-size: cover;
+}

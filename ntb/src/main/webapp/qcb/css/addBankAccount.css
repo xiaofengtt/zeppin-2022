@@ -1,0 +1,167 @@
+.box {
+    padding: 22px 0;
+    margin-bottom: 30px;
+}
+
+.box-title {
+    color: #333333;
+    padding-left: 40px;
+}
+
+.groupBox {
+    border-top: 1px solid #ececec;
+    margin-top: 10px;
+    padding: 30px 40px;
+}
+
+.groupBox .group {
+    padding: 15px 0;
+}
+
+.groupBox label, .authentication .group label {
+    float: left;
+    color: #333333;
+    font-size: 14px;
+    line-height: 34px;
+    padding-right: 20px;
+    width: 104px;
+    text-align: right;
+}
+
+.groupBox p {
+    float: left;
+    color: #000000;
+    font-size: 16px;
+    line-height: 34px;
+}
+
+.group-right {
+    width: 400px;
+    float: left;
+    position: relative;
+    line-height: 34px;
+}
+
+.group .group-right input, .group .group-right select {
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    border-radius: 2px;
+    outline: none;
+    border: 1px solid #BFBFBF;
+    padding-left:15px;
+    font-size: 14px;
+    color: #999999;
+}
+.group .group-right select{
+	padding:4px;
+	text-indent: 10px;
+}
+.groupBox label.line-height {
+    line-height: 44px;
+}
+
+/*身份验证*/
+
+.authentication .group {
+    padding: 40px 40px 0 40px;
+}
+
+.authentication .group .group-right {
+    line-height: 34px;
+}
+
+.authentication .group label {
+    line-height: 34px;
+    float: left;
+}
+
+.authentication .group.sendCode {
+    padding-top: 25px;
+}
+
+.authentication .group.sendCode label {
+    line-height: 44px;
+}
+
+.authentication .group.sendCode input.smsCodeinput {
+    width: 170px;
+    display: block;
+    float: left;
+    border-right: none;
+    border-radius: 2px 0 0 2px;
+}
+
+.authentication .group.sendCode a.smsCode {
+    width: 175px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    background: #ffb031;
+    display: block;
+    float: left;
+    border-radius: 0 2px 2px 0;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.btnGroup {
+    width: 320px;
+    margin: 65px auto 40px 134px;
+}
+
+.btnGroup a {
+    width: 345px;
+    margin: 0 10px;
+    height: 43px;
+    line-height: 43px;
+    padding: 0;
+    font-size: 16px;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+.btnGroup a.backBtn {
+    background: #d4d2cf;
+}
+
+.btnGroup a.sureBtn {
+    background: #ffb031;
+}
+
+.btnGroup a.backBtn:hover {
+    background: #c8c7c5;
+}
+
+.btnGroup a.sureBtn:hover {
+    background: #f3a82f;
+}
+
+.groupBox p.tips, .group p.tips {
+    line-height: 44px;
+    font-size: 14px;
+    padding-left: 10px;
+    display: none;
+}
+
+.groupBox input.light, .groupBox select.light, .group .group-right input.light {
+    border-color: #f9ba56;
+}
+
+.groupBox input:focus, .groupBox select:focus, .group .group-right input:focus {
+    border-color: #f9ba56;
+}
+
+.province, .city, .county {
+    width: 125px !important;
+    margin-right: 7px;
+}
+
+.county {
+    margin-right: 0;
+}
+.select2-container{
+	width:100% !important;
+}

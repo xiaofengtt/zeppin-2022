@@ -1,65 +1,423 @@
-.title-contain{position: relative; padding: 0;background: #FFF}
-.title-contain .content-item{padding: 30px 0;}
-.title-contain .content-item label{font-size: 18px;color: #2B2B2B;line-height: 28px;margin:0 20px 0 90px;padding:0 10px;}
-.firstContent .content-item .content-item-edit label{background:none;margin:0;}
-.title-contain .content-item .title-icon{width: 30px;height: 30px;background: url(../img/fund_name.png) center center no-repeat;margin:0 20px 0 40px}
-.title-contain .content-item span{font-size: 22px;color: #2B2B2B;line-height: 30px}
-.title-contain .content-item span.editSpan{color:red;margin-left:20px;}
-.title-contain .content-item .logo {position: absolute;right: 100px;}
+.title-contain {
+    position: relative;
+    padding: 0;
+    background: #FFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
 
-.main-contain{padding: 30px 20px !important;margin-top:25px !important;}
-.main-contain .contentDiv{position: relative;margin:0 0 50px 0;border: 1px solid #e6e6e6;}
-.main-contain .contentDiv p.title{color: #2B2B2B;height: 60px;line-height: 60px;background:#EEF5FF url(../img/title-base.png) 15px center no-repeat;font-size: 18px;padding-left: 50px;margin: 0;}
-.main-contain .edit{color: #FFF;border:none;}
-.main-contain .save{display:none;}
-.content-item label{float: left; font-weight: normal;line-height: 30px;}
-.content-items b{position: absolute; font-weight: normal;line-height: 30px;}
-.content-item .editSpan{color:red;margin-left:20px;}
-.content-item p{word-wrap: break-word;word-break: break-all;margin:0 10px 0 180px;}
+.title-contain .content-item {
+    padding: 30px 20px;
+}
 
-.foot-contain{position: relative; background: #FFF;padding: 30px 20px !important;margin-top:25px !important;}
-.foot-contain .operateBar{font-size: 19px;color: #2B2B2B;line-height: 30px;padding:20px; background:#EEF5FF;}
-.foot-contain .operateCheck{line-height: 30px;padding:20px;text-align:right;display:none;}
-.foot-contain .operateCheck input{width:300px;line-height: 30px;}
-.foot-contain .operateCheck .btn{font-size:20px; margin:10px 0px}
+.title-contain .content-item label {
+    font-size: 18px;
+    color: #2B2B2B;
+    line-height: 28px;
+    /*margin: 0 0px 0 30px;*/
+    /*padding: 0 10px;*/
+}
 
-h4{max-width: 1100px;font-size: 18px;color: #4c4c4c;font-weight: normal;padding: 20px 0 10px 0;}
-.col-md-12 table{margin-top: 15px;border: 1px solid #ddd;}
-.col-md-12 table th{/* text-align: center; */ background: #F6F6F6;color: #2B2B2B;font-size: 16px;}
-.table-hover > tbody > tr.thead:hover{background: #F6F6F6;color: #2B2B2B;}
-.table-hover tbody tr.thead:hover > th{background: #F6F6F6;color: #2B2B2B;}
-.col-md-12 table td{font-size: 14px;}
-.col-md-12 table tr.odd td{background: #F7FAFF;}
-.inputGroup span{display: none;width: 16px;margin: 0 3px;}
-.main-contain .title-big{background: #EEF5FF url(../img/bankInfo.png) 20px center no-repeat;color: #424242;font-size: 22px;height:64px;line-height: 64px;padding: 0 50px;margin:0;}
-.content-item-edit{display:none;}
-.edit-list{display:none;}
-.allEdit,.allSave{width:90px;height:40px;font-size: 20px;color: #FFFFFF;text-align:center;line-height:40px;background: #4D9CFE;border-radius: 5px;}
-.red{color:red !important;}
+.firstContent .content-item .content-item-edit label {
+    background: none;
+    margin: 0;
+    text-align: left;
+}
 
-.contentDiv{position: relative;border: 1px solid #e6e6e6;margin-bottom:27px;}
-.contentDiv p.title{color: #212d3d;height: 60px;line-height: 60px;background: #e6e6e6;font-size: 18px;padding-left: 20px;margin: 0;border-radius: 1px;}
-.content-item{color: #2B2B2B;font-size: 20px !important;}
-.content-item-info{}
-.content-item-info .form-group{padding:20px 0 20px 29px;margin:0;border-bottom:1px solid #D4D4D4;}
-.content-item-info .noBorder,.content-item-edit .noBorder{border:none;}
-#formsubmit .content-item label{width :180px; text-align:right; float: left; font-weight: normal;line-height: 28px;font-size: 20px !important;margin:0;}
-.content-item span , .content-item div{font-size: 19px;color: #2B2B2B;line-height: 28px;}
-.content-item input,.content-item select,.content-item textarea{line-height: 28px;margin-bottom:0;width:100%;}
-.content-item label{float: left; font-weight: normal;line-height: 28px;font-size: 20px !important;margin:0;}
-.content-item label.label{background: #F2F8FF;border-radius: 100px;padding:4px 10px 3px 10px;;float:none;color: #2B2B2B;}
-.content-item .content-item-edit {padding:35px 0;}
-.content-item .content-item-edit label{float:none;font-size:18px !important;margin:5px 10px 5px 30px !important;}
-.content-item .content-item-edit .content-items{position: relative;display: inline;}
-.content-item .content-item-edit span{line-height:38px}
-.content-item .content-items i{font-style:normal;position:absolute;top:2px;right:6px;font-size:18px;}
-.buyRateEdit,.applyRateEdit{display:none;}
-.buyRateEdit input,.applyRateEdit input{width:30%;}
-.buyRateEdit a,.applyRateEdit a{font-size:12px;margin:5px;line-height:32px;}
+.title-contain .content-item .title-icon {
+    width: 30px;
+    height: 30px;
+    background: url(../img/fund_name.png) center center no-repeat;
+    margin: 0 20px 0 40px
+}
 
-.title-contain .list-content{margin: 0 30px;}
-.title-contain .list-content table{border:1px solid #ccc}
-.title-contain .list-content table th{background: #f2f2f2;height: 45px; line-height: 45px;font-size: 18px;color: #2B2B2B;border: 0;padding: 0 20px;font-weight: normal;}
-.title-contain .list-content table td{height: 55px; line-height: 55px;font-size: 18px;color: #2B2B2B;border:0;padding: 0 20px;}
-.title-contain .list-content table tr:nth-child(odd){background:#FFFFFF !important;}
-.title-contain .list-content table tr:nth-child(even){background:#F7FAFF !important;}
+.title-contain .content-item span {
+    font-size: 17px;
+    color: #2B2B2B;
+    line-height: 28px
+}
+
+.title-contain .content-item span.editSpan {
+    color: red;
+    margin-left: 20px;
+}
+
+.title-contain .content-item .logo {
+    width: 250px;
+    position: absolute;
+    right: 100px;
+    top: 50px;
+}
+
+.main-contain {
+    padding: 30px 20px !important;
+    margin-top: 25px !important;
+}
+
+.main-contain .contentDiv {
+    position: relative;
+    margin: 0 0 50px 0;
+    border: 1px solid #e6e6e6;
+}
+
+.main-contain .contentDiv p.title {
+    color: #2B2B2B;
+    height: 50px;
+    line-height: 50px;
+    background: #EEF5FF url(../img/title-base.png) 15px center no-repeat;
+    font-size: 18px;
+    padding-left: 50px;
+    margin: 0;
+}
+
+.main-contain .edit {
+    color: #FFF;
+    border: none;
+}
+
+.main-contain .save {
+    display: none;
+}
+
+.content-item label {
+    float: left;
+    font-weight: normal;
+    line-height: 30px;
+}
+
+.content-items b {
+    position: absolute;
+    font-weight: normal;
+    line-height: 30px;
+}
+
+.content-item .editSpan {
+    color: red;
+    margin-left: 20px;
+}
+
+.content-item p {
+    word-wrap: break-word;
+    word-break: break-all;
+    margin: 0 0px 0 0px;
+    padding: 0 20px 0 0;
+}
+
+.foot-contain {
+    position: relative;
+    background: #FFF;
+    padding: 30px 20px !important;
+    margin-top: 25px !important;
+}
+
+.foot-contain .operateBar {
+    font-size: 16px;
+    color: #2B2B2B;
+    line-height: 30px;
+    padding: 10px 20px;
+    background: #EEF5FF;
+}
+
+.foot-contain .operateCheck {
+    line-height: 30px;
+    padding: 20px;
+    text-align: right;
+    display: none;
+}
+
+.foot-contain .operateCheck input {
+    width: 300px;
+    line-height: 30px;
+}
+
+.foot-contain .operateCheck .btn {
+    font-size: 16px;
+    margin: 10px 0px
+}
+
+h4 {
+    max-width: 1100px;
+    font-size: 18px;
+    color: #4c4c4c;
+    font-weight: normal;
+    padding: 20px 0 10px 0;
+}
+
+.col-md-12 table {
+    margin-top: 15px;
+    border: 1px solid #ddd;
+}
+
+.col-md-12 table th {
+    text-align: center;
+    background: #F6F6F6;
+    color: #2B2B2B;
+    font-size: 16px;
+}
+
+.table-hover>tbody>tr.thead:hover {
+    background: #F6F6F6;
+    color: #2B2B2B;
+}
+
+.table-hover tbody tr.thead:hover>th {
+    background: #F6F6F6;
+    color: #2B2B2B;
+}
+
+.col-md-12 table td {
+    font-size: 14px;
+    text-align: center;
+}
+
+.col-md-12 table tr.odd td {
+    background: #F7FAFF;
+}
+
+.inputGroup span {
+    display: none;
+    width: 16px;
+    margin: 0 3px;
+}
+
+.main-contain .title-big {
+    background: #EEF5FF url(../img/bankInfo.png) 20px center no-repeat;
+    color: #424242;
+    font-size: 22px;
+    height: 64px;
+    line-height: 64px;
+    padding: 0 50px;
+    margin: 0;
+}
+
+.content-item-edit {
+    display: none;
+}
+
+.edit-list {
+    display: none;
+}
+
+.allEdit {
+    margin-left: 156px;
+}
+
+.allEdit:hover {
+    color: #FFFFFF;
+}
+
+.allSave {
+    margin-left: 30px;
+}
+
+.allEdit, .allSave {
+    width: 100px;
+    height: 35px;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 35px;
+    background: #4D9CFE;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    vertical-align: middle;
+    margin-top: 30px;
+}
+
+.red {
+    color: red !important;
+}
+
+.red>p {
+    margin-top: 5px;
+    width: 80%;
+    float: left;
+}
+
+.contentDiv {
+    position: relative;
+    border: 1px solid #e6e6e6;
+    margin-bottom: 27px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.contentDiv p.title {
+    color: #212d3d;
+    height: 60px;
+    line-height: 60px;
+    background: #e6e6e6;
+    font-size: 18px;
+    padding-left: 20px;
+    margin: 0;
+    border-radius: 1px;
+}
+
+.content-item {
+    color: #2B2B2B;
+    font-size: 20px !important;
+}
+
+.content-item .content-items {
+    position: relative;
+    width: 64%;
+    margin-top: 5px;
+}
+
+.content-item .text_large {
+    margin-left: 162px;
+}
+
+.content-item-info {}
+
+.content-item-info .form-group {
+    padding: 10px 0 10px 29px;
+    margin: 0;
+    border-bottom: 1px solid #D4D4D4;
+}
+
+.content-item-info .noBorder, .content-item-edit .noBorder {
+    border: none;
+}
+
+#formsubmit .content-item label {
+    width: 152px;
+    text-align: right;
+    float: left;
+    font-weight: normal;
+    line-height: 28px;
+    font-size: 16px;
+    margin: 5px 10px 0 0;
+}
+
+#formsubmit .content-item .label_large {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#formsubmit .content-item .label_left {
+    margin-left: 0;
+    text-align: right;
+    width: 152px;
+}
+
+.content-item span, .content-item div {
+    font-size: 16px;
+    color: #2B2B2B;
+    line-height: 28px;
+}
+
+.content-item a span {
+    color: #0088cc;
+}
+
+.content-item input, .content-item select, .content-item textarea {
+    line-height: 28px;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.content-item label {
+    float: left;
+    font-weight: normal;
+    line-height: 28px;
+    font-size: 16px;
+    margin: 5px;
+    width: 180px;
+    text-align: right;
+}
+
+.content-item label.label {
+    background: #FFFFFF;
+    border-radius: 100px;
+    padding: 4px 0px 3px 0px;
+    float: none;
+    color: #2B2B2B;
+}
+
+.content-item .content-item-edit {
+    padding: 35px 16px;
+}
+
+.content-item .content-item-edit label {
+    float: none;
+    font-size: 18px;
+    margin: 5px 10px 5px 30px;
+}
+
+.content-item .content-item-edit .content-items {
+    position: relative;
+    display: inline;
+}
+
+.content-item .content-item-edit span {
+    line-height: 38px
+}
+
+.content-item .content-items i {
+    font-style: normal;
+    position: absolute;
+    top: 0px;
+    right: 6px;
+    font-size: 14px;
+}
+
+.content-item .content-items .position_i {
+    position: absolute;
+    top: 6px;
+    left: 280px;
+    font-size: 14px;
+}
+
+.buyRateEdit, .applyRateEdit {
+    display: none;
+}
+
+.buyRateEdit input, .applyRateEdit input {
+    width: 30%;
+}
+
+.buyRateEdit a, .applyRateEdit a {
+    font-size: 12px;
+    margin: 5px;
+    line-height: 32px;
+}
+
+.title-contain .list-content {
+    margin: 0 30px;
+}
+
+.title-contain .list-content table {
+    border: 1px solid #ccc
+}
+
+.title-contain .list-content table th {
+    background: #f2f2f2;
+    height: 35px;
+    line-height: 35px;
+    font-size: 16px;
+    color: #2B2B2B;
+    border: 0;
+    padding: 0 20px;
+    font-weight: normal;
+}
+
+.title-contain .list-content table td {
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #2B2B2B;
+    border: 0;
+    padding: 0 20px;
+}
+
+.title-contain .list-content table tr:nth-child(odd) {
+    background: #FFFFFF !important;
+}
+
+.title-contain .list-content table tr:nth-child(even) {
+    background: #F7FAFF !important;
+}

@@ -1,0 +1,365 @@
+/*投资产品信息与赎回表头*/
+
+.product_name {
+    width: 100%;
+    padding: 15px 10px;
+    position: relative;
+}
+
+.product_name p {
+    color: #4990E2;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.product_name ul {
+    margin: 0 0 0 10px;
+}
+
+.product_name ul li {
+    display: inline-block;
+    font-size: 12px;
+    color: #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+    line-height: 10px;
+    padding: 0 10px;
+}
+
+.product_name ul li:nth-child(1) {
+    color: orange;
+    padding-left: 0;
+    border-right: 1px solid orange;
+}
+
+.product_name ul li:nth-child(1) .big {
+    font-size: 14px;
+}
+
+.product_name ul li:nth-child(2) {
+    color: orange;
+}
+
+.product_name ul li:last-child {
+    border: none;
+}
+
+.product_name .end_time {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    color: green;
+}
+
+.select_account {
+    width: 100%;
+    padding: 15px 10px;
+}
+
+.select_account select {
+    border: 1px solid #c1c1c1;
+    height: 35px;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+.select_account span {
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.product_msg {
+    width: 100%;
+    padding: 0 10px 15px 10px;
+}
+
+.invest_msg {
+    margin-top: 0;
+}
+
+.invest_msg .all_price_box {
+    width: 100%;
+    padding: 15px 10px;
+    position: relative;
+    margin-top: 30px;
+}
+
+.invest_msg .all_price_box span {
+    margin-left: 0px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.invest_msg .all_price_box input {
+    vertical-align: baseline;
+    margin: 0
+}
+
+.invest_msg .all_price_box .all_price {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: green;
+    font-size: 16px;
+}
+
+.invest_msg .price_msg {
+    width: 100%;
+    padding: 15px 10px;
+    position: relative;
+    margin-top: 30px;
+}
+
+.invest_msg .price_msg ul {
+    margin: 0;
+    width: 100%;
+}
+
+.invest_msg .price_msg ul li {
+    width: 33%;
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+}
+
+.invest_msg .price_msg ul li span {
+    color: orange;
+}
+
+.product_msg .invest_msg_ps {
+    border: 1px solid #E6E6E6;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    padding: 15px 10px;
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.product_msg .invest_msg_ps span {
+    margin-left: 12px;
+    margin-right: 10px;
+    display: inline-block;
+    width: 38px;
+    font-size: 14px;
+    text-align: right;
+}
+
+.product_msg .invest_msg_ps input {
+    vertical-align: baseline;
+    margin: 0;
+    width: 90%
+}
+
+.btn_group {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+.main-contain .btn_group input {
+    font-size: 16px;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: #C1C1C1;
+    border: 1px solid #C1C1C1;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    background: #FFFFFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.main-contain .btn_group input:nth-child(1):hover {
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+}
+
+.main-contain .btn_group input:nth-child(2) {
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+    margin-left: 30px;
+}
+
+.main-contain .btn_group input:nth-child(2):hover {
+    color: #FFFFFF;
+    background: #4D9CFF;
+}
+
+/*确认*/
+
+.invest_confirm_box {
+    width: 100%;
+    padding: 15px 10px;
+}
+
+.invest_confirm .all_price_confirm {
+    width: 100%;
+    padding: 15px 10px;
+    position: relative;
+    margin-top: 30px;
+}
+
+.invest_confirm .all_price_confirm span {
+    margin-left: 12px;
+    margin-right: 10px;
+    display: inline-block;
+    text-align: right;
+    font-size: 14px;
+}
+
+.invest_confirm .all_price_confirm i {
+    display: inline-block;
+    font-style: normal;
+    color: orange;
+    font-size: 14px;
+}
+
+.invest_confirm .all_price_confirm .all_price {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: green;
+    font-size: 16px;
+}
+
+.invest_confirm_ps {
+    margin-top: 0
+}
+
+.invest_confirm_ps span {
+    margin-left: 12px;
+    margin-right: 10px;
+    display: inline-block;
+    width: 52px;
+    font-size: 14px;
+    text-align: right;
+}
+
+.invest_confirm_ps i {
+    font-style: normal;
+}
+
+#edit {
+    width: 100px;
+    height: 35px;
+    display: inline-block;
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+    background: #FFFFFF;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+}
+
+#edit:hover {
+    background: #4D9CFF;
+    color: #FFFFFF;
+}
+
+.auditing_check:hover {
+    background: #4D9CFF;
+    color: #FFFFFF;
+}
+
+.auditing_check {
+    width: 100px;
+    height: 35px;
+    display: inline-block;
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+    background: #FFFFFF;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.buy_password span {
+    vertical-align: middle;
+    padding: 5px 10px 5px 3px;
+    font-size: 14px;
+}
+
+.buy_password i {
+    color: #E0615F;
+}
+
+.buy_password input[type="password"] {
+    display: inline-block;
+    border: 1px solid #C1C1C1;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    margin: 0;
+}
+
+.invest_confirm_box .btn_group {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+.invest_confirm_box .btn_group input {
+    font-size: 16px;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: #C1C1C1;
+    border: 1px solid #C1C1C1;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    background: #FFFFFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.invest_confirm_box .btn_group input:nth-child(1):hover {
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+}
+
+.invest_confirm_box .btn_group input:nth-child(2) {
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+    margin-left: 30px;
+}
+
+.invest_confirm_box .btn_group input:nth-child(2):hover {
+    color: #FFFFFF;
+    background: #4D9CFF;
+}

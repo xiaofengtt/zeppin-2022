@@ -1,0 +1,94 @@
+.info-top{
+	background: url(../img/bg-myHome.png) center no-repeat;
+	height: 3.2rem;
+	text-align: center;
+	background-size: cover;
+}
+.info-top img{
+	width: 1.2rem;
+	height: 1.2rem;
+	border-radius:50% ;
+	display: inline-block;
+	margin-top: 0.36rem;
+}
+.info-top p{
+	color:rgba(255,255,255,1);
+	font-size: 0.28rem;
+	margin-top: 0.16rem;
+}
+.info-bottom{
+	background:rgba(255,255,255,1);
+	border-radius: 0.08rem;
+	width: 6.86rem;
+	margin-top: -0.64rem;
+}
+.info-bottom li{
+	width: 33%;
+	float: left;
+	text-align: center;
+	padding-top: 1.44rem;
+	padding-bottom:0.18rem;
+}
+.info-bottom li p{
+	font-size: 0.32rem;
+	color:rgba(46,46,46,1);
+}
+.info-bottom li b{
+	font-size: 0.28rem;
+	font-weight: normal;
+}
+.smrz{
+	background: url(../img/icon-smrz.png) center 0.5rem no-repeat;
+	background-size:auto 33%;
+}
+.fwdd{
+	background: url(../img/icon-fwdd.png) center 0.5rem no-repeat;
+	background-size:auto 33%;
+}
+.yhk{
+	background: url(../img/icon-yhk.png) center 0.5rem no-repeat;
+	background-size:auto 33%;
+}
+.myOrder,.aboutUs,.pwdManagement{
+	font-size: 0.32rem;
+	height: 0.98rem;
+	position: relative;
+	width: 100%;
+	line-height: 0.98rem;
+	padding-left: 0.84rem;
+	background:rgba(255,255,255,1) url(../img/icon-order.png) 0.36rem center no-repeat;
+	background-size: auto 33%;
+}
+.aboutUs{
+	background:rgba(255,255,255,1) url(../img/icon-aboutUs.png) 0.36rem center no-repeat;
+	background-size: auto 33%;
+}
+.pwdManagement{
+	background:rgba(255,255,255,1) url(../img/icon-pwdManagement.png) 0.36rem center no-repeat;
+	background-size: auto 33%;
+}
+.pwdManagement b{
+	position:absolute;
+	right:0.6rem;
+	top:0.03rem;
+	font-size:0.28rem;
+	color:rgba(46,46,46,0.4);
+	display:none;
+}
+.goBtn{
+	position: absolute;
+	right: 0.3rem;
+	width: 0.16rem;
+	top: 0.4rem;
+}
+.layout{
+	margin:0.48rem 0 1.2rem 0;
+	width: 100%;
+	display: block;
+	height: 0.98rem;
+	text-align: center;
+	font-size: 0.32rem;
+	line-height: 1.06rem;
+	background: #FFFFFF;
+}
+

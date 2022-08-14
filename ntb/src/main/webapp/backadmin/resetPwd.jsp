@@ -7,6 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>修改密码</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="css/bootstrap.css" />
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/iframe.css" />
@@ -46,12 +47,12 @@
 				</div>
 			</form:form>
 		</div>
-		
+
 		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
 		<script type="text/javascript" src="js/jquery.colorbox.js"></script>
 		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.js" ></script>
-		<script type="text/javascript" src="js/url.min.js"></script>
+		<script type="text/javascript" src="js/url.min.js"></script><script type="text/javascript" src="js/flagSubmit.js"></script>
 		<script type="text/javascript" src="js/resetPwd.js" ></script>
 	</body>
 </html>

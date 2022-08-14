@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no" >
+		<title>牛投财富</title>
+		<link rel="stylesheet" href="./css/register.css" />
+	</head>
+	<body>
+		<div class="head">
+			<h2 id="price"></h2>
+			<p>现金红包(可提现)</p>
+		</div>
+		<div class="body">
+			<div class="item">
+				<input type="number" id="tel" placeholder="请输入手机号领取红包"/>
+			</div>
+			<div class="item">
+				<input type="number" id="code" placeholder="手机验证码" />
+				<a href="javascript:void(0);" id="get-code"><span>获取验证码</span></a>
+				<span id="re-get"><span id="count"></span>(s)后重新发送</span>
+			</div>
+			<div class="item">
+				<input type="button" id="submit" value="领取现金红包">
+			</div>
+		</div>
+		<div class="bg">
+			<div class="modal">
+				<p></p>
+				<a href="javascript:void(0);">OK</a>
+			</div>
+		</div>
+		<script src="./js/des.js"></script>
+		<script src="./js/url.js"></script>
+		<script src="./js/jquery-1.11.1.js"></script>
+		<script src="./js/url.min.js"></script>
+		<script src="./js/base64.js"></script>
+		<script src="./js/md5.js"></script>
+		<script src="./js/jquery-Tap.js"></script>
+		<script src="./js/register.js"></script>
+		<script>
+			var HEIGHT = $('body').height();
+			$(window).resize(function() {
+				$('html,body').height(HEIGHT);
+			});
+		</script>
+	</body>
+</html>

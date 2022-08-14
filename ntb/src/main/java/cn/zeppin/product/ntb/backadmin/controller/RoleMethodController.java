@@ -55,7 +55,7 @@ public class RoleMethodController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	@ActionParam(key = "role", type = DataType.STRING , required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "role", message = "角色", type = DataType.STRING , required = true, minLength = 36, maxLength = 36)
 	@ResponseBody
 	public Result list(String role) {
 		BkOperatorRole operatorRole = bkOperatorRoleService.get(role);
@@ -79,8 +79,8 @@ public class RoleMethodController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/edit", method = RequestMethod.POST )
-	@ActionParam(key = "role", type = DataType.STRING, required = true)
-	@ActionParam(key = "method", type = DataType.STRING_ARRAY)
+	@ActionParam(key = "role", message = "角色", type = DataType.STRING, required = true)
+	@ActionParam(key = "method", message = "方法", type = DataType.STRING_ARRAY)
 	@ResponseBody
 	public Result edit(String role, String[] method) {
 		//获取修改的角色

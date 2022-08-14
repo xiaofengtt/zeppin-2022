@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.zeppin.product.ntb.core.controller.base.ActionParam.DataType;
-import cn.zeppin.product.ntb.backadmin.security.SecurityRealm;
+import cn.zeppin.product.ntb.backadmin.security.SecurityByNtbRealm;
 import cn.zeppin.product.ntb.backadmin.service.api.IBkOperatorRoleService;
 import cn.zeppin.product.ntb.backadmin.service.api.IBkOperatorService;
 import cn.zeppin.product.ntb.backadmin.vo.OperatorVO;
@@ -54,7 +54,7 @@ public class OperateOperatorController extends BaseController{
 	 * @return
 	 */
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "uuid", message = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
 	@ResponseBody
 	public Result get(String uuid) {
 		//获取运营用户信息
@@ -95,11 +95,11 @@ public class OperateOperatorController extends BaseController{
 	 * @return
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	@ActionParam(key = "name", type = DataType.STRING)
-	@ActionParam(key = "status", type = DataType.STRING)
-	@ActionParam(key = "pageNum", type = DataType.NUMBER)
-	@ActionParam(key = "pageSize", type = DataType.NUMBER)
-	@ActionParam(key = "sorts", type = DataType.STRING)
+	@ActionParam(key = "name", message = "uuid", type = DataType.STRING)
+	@ActionParam(key = "status", message = "状态", type = DataType.STRING)
+	@ActionParam(key = "pageNum", message="页码", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "pageSize", message="每页数量", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "sorts", message = "排序参数", type = DataType.STRING)
 	@ResponseBody
 	public Result list(String name, String status, Integer pageNum, Integer pageSize, String sorts) {
 		//查询条件
@@ -118,7 +118,7 @@ public class OperateOperatorController extends BaseController{
 			if(vo.getCreator() != null){
 				BkOperator bo = this.bkOperatorService.get(vo.getCreator());
 				if(bo!=null){
-					vo.setCreatorName(bo.getName());;
+					vo.setCreatorName(bo.getRealname());
 				}else{
 					vo.setCreatorName("无");
 				}
@@ -131,11 +131,11 @@ public class OperateOperatorController extends BaseController{
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	@ActionParam(key = "role", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
-	@ActionParam(key = "name", type = DataType.STRING, required = true, minLength = 6, maxLength = 22)
-	@ActionParam(key = "realname", type = DataType.STRING, required = true, minLength = 1, maxLength = 50)
-	@ActionParam(key = "mobile", type = DataType.PHONE, required = true, minLength = 1, maxLength = 50)
-	@ActionParam(key = "email", type = DataType.STRING)
+	@ActionParam(key = "role", message = "角色", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "name", message = "用户名", type = DataType.STRING, required = true, minLength = 6, maxLength = 22)
+	@ActionParam(key = "realname", message = "真实姓名", type = DataType.STRING, required = true, minLength = 1, maxLength = 50)
+	@ActionParam(key = "mobile", message = "手机", type = DataType.PHONE, required = true, minLength = 1, maxLength = 50)
+	@ActionParam(key = "email", message = "邮箱", type = DataType.EMAIL)
 	@ResponseBody
 	public Result add(String role, String name, String realname, String mobile, String email) {
 		//验证角色
@@ -160,15 +160,31 @@ public class OperateOperatorController extends BaseController{
 		
 		//构造运营用户
 		BkOperator operator = new BkOperator();
-		operator.setUuid(UUID.randomUUID().toString());
+		//以手机号为标识，检查管理员是否之前创建过，如果创建过，更新信息重新启用
+		Map<String, String> inputParams = new HashMap<String, String>();
+		inputParams.put("status", BkOperatorStatus.DELETED);
+		inputParams.put("mobile", mobile);
+		List<Entity> list = this.bkOperatorService.getListForPage(inputParams, -1, -1, null, OperatorVO.class);
+		boolean flag = true;
+		if(list != null && !list.isEmpty()){
+			OperatorVO operat = (OperatorVO) list.get(0);
+			operator = this.bkOperatorService.get(operat.getUuid());
+			if(operator != null){
+				flag = false;
+			}
+		} else {
+			operator.setUuid(UUID.randomUUID().toString());
+		}
+		
 		operator.setRole(role);
 		operator.setCreator(currentOperator.getUuid());
 		operator.setEmail(email);
 		operator.setMobile(mobile);
 		//密码加密
 		String password = PasswordCreator.createPassword(8);
-		SendSms.sendSms(password, mobile);
-		String encryptPassword = SecurityRealm.encrypt(password, ByteSource.Util.bytes(operator.getUuid()));
+		String content = "您的管理后台的账号已开通，登录名为手机号，初始密码为" + password + "，为保障账号安全，首次登录后台请修改登录密码";
+		SendSms.sendSms(content, mobile);
+		String encryptPassword = SecurityByNtbRealm.encrypt(password, ByteSource.Util.bytes(operator.getUuid()));
 		operator.setPassword(encryptPassword);
 		operator.setStatus(BkOperatorStatus.UNOPEN);
 		
@@ -176,18 +192,25 @@ public class OperateOperatorController extends BaseController{
 		operator.setRealname(realname);
 		operator.setCreatetime(new Timestamp(System.currentTimeMillis()));
 		
-		operator = bkOperatorService.insert(operator);
-		return ResultManager.createDataResult(operator,"添加运营用户成功");
+		String message = "";
+		if(flag){
+			operator = bkOperatorService.insert(operator);
+			message = "运营人员"+realname+"创建成功，初始密码已发送至"+mobile+"的手机！";
+		} else {
+			operator = bkOperatorService.update(operator);
+			message = "运营人员"+realname+"已存在，账号重新激活成功，信息已更新，初始密码已发送至"+mobile+"的手机！";
+		}
+		return ResultManager.createDataResult(operator,message);
 	}
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
-	@ActionParam(key = "role", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
-	@ActionParam(key = "name", type = DataType.STRING, required = true, minLength = 6, maxLength = 22)
-	@ActionParam(key = "realname", type = DataType.STRING, required = true, minLength = 1, maxLength = 50)
-	@ActionParam(key = "mobile", type = DataType.PHONE, required = true, minLength = 1, maxLength = 50)
-	@ActionParam(key = "email", type = DataType.STRING)
-	@ActionParam(key = "status", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
+	@ActionParam(key = "uuid", message = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "role", message = "角色", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "name", message = "用户名", type = DataType.STRING, required = true, minLength = 6, maxLength = 22)
+	@ActionParam(key = "realname", message = "真实姓名", type = DataType.STRING, required = true, minLength = 1, maxLength = 50)
+	@ActionParam(key = "mobile", message = "手机", type = DataType.PHONE, required = true, minLength = 1, maxLength = 50)
+	@ActionParam(key = "email", message = "邮箱", type = DataType.EMAIL)
+	@ActionParam(key = "status", message = "状态", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
 	@ResponseBody
 	public Result edit(String uuid, String role, String name, String realname, String mobile, String email, String status) {
 		//验证角色
@@ -229,7 +252,7 @@ public class OperateOperatorController extends BaseController{
 	}
   
 	@RequestMapping(value = "/password", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "uuid", message = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
 	@ResponseBody
 	public Result password(String uuid) {
 		
@@ -244,7 +267,7 @@ public class OperateOperatorController extends BaseController{
 			//密码加密
 			String password = PasswordCreator.createPassword(8);
 			SendSms.sendSms(password, operator.getMobile());
-			String encryptPassword = SecurityRealm.encrypt(password, ByteSource.Util.bytes(operator.getUuid()));
+			String encryptPassword = SecurityByNtbRealm.encrypt(password, ByteSource.Util.bytes(operator.getUuid()));
 			operator.setPassword(encryptPassword);
 			operator.setStatus(BkOperatorStatus.UNOPEN);
 			
@@ -261,7 +284,7 @@ public class OperateOperatorController extends BaseController{
 	 * @return
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
+	@ActionParam(key = "uuid", message = "uuid", type = DataType.STRING, required = true)
 	@ResponseBody
 	public Result delete(String uuid) {
 		

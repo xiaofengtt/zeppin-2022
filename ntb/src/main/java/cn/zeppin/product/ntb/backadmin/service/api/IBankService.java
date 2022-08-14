@@ -37,4 +37,12 @@ public interface IBankService extends IBaseService<Bank, String> {
 	 * @return
 	 */
 	public boolean isExistBankByName(String name, String uuid);
+	
+	/**
+	 * 根据参数查询结果列表
+	 * @param inputParams
+	 * @return
+	 */
+	public List<Entity> getListForWebPage(Map<String, String> inputParams, Integer pageNum, Integer pageSize, String sorts, Class<? extends Entity> resultClass);
+
 }

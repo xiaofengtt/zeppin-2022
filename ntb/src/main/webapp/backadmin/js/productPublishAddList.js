@@ -1,7 +1,7 @@
-var pageNum = '1';
+var pageNum = 1;
 var flag=true;
 function init(){
-	pageNum = '1';
+	pageNum = 1;
 	flag=true;
 }
 

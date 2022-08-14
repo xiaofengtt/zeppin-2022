@@ -1,0 +1,133 @@
+.top{
+	width:100%;
+	background:#FFFFFF;
+	padding:0.3rem 0.1rem;
+	margin-top:0.2rem;
+}
+.top-card{
+	/*background: -webkit-linear-gradient(left, #FF5D6E , #FF6B7D);*/
+	width:100%; 
+	height:3.64rem;
+	-webkit-border-radius:15px;
+	margin:0 auto;
+	padding-top:0.56rem;
+	color:#FFFFFF;
+	position: relative;
+	overflow: hidden;
+}
+.name{
+	vertical-align: middle;
+	font-size:0.3rem;
+	display: inline;
+	
+}
+.small-logo{
+	width:0.33rem;
+	height:0.33rem;
+	vertical-align: middle;
+	display: inline-block;
+	border-radius:50%;
+	margin-left:0.58rem;
+	margin-right:0.1rem;
+}
+.type{
+	font-size:0.2rem;
+	vertical-align: middle;
+	display: inline-block;
+	margin-left:0.1rem;
+}
+.num{
+	font-size:0.4rem;
+	margin-top:0.65rem;
+	width:100%;
+	text-align:center;
+}
+.big-logo{
+	width:2.6rem;
+	height:2.6rem;
+	position: absolute;
+	right:-0.05rem;
+	bottom:-0.5rem;
+	opacity: 0.4;
+}
+.mid{
+	margin-top:0.22rem;
+	background:#FFFFFF;
+	padding-top:0.36rem;
+	padding-left:0.32rem;
+	padding-right:0.32rem;
+	padding-bottom:0.01rem;
+}
+.mid h3{
+	font-size:0.36rem;
+	opacity: 0.8;
+	text-align: center;
+	margin-bottom:0.42rem;
+}
+.item{
+	margin-bottom:0.3rem;
+	position: relative;
+}
+.item .key{
+	display: inline-block;
+}
+.item .key img{
+	width:0.44rem;
+	height:0.44rem;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right:0.2rem;
+}
+.item .key span{
+	font-size:0.32rem;
+	opacity: 0.6;
+	display: inline-block;
+	vertical-align: middle;
+}
+.item .value{
+	opacity: 0.69;
+	font-size:0.32rem;
+	display: inline-block;
+	vertical-align: middle;
+	position: absolute;
+	right:0rem;
+	top:50%;
+	-webkit-transform:translateY(-50%);
+	
+}
+.bottom{
+	margin-top:0.6rem;
+	text-align: center;
+}
+#delete{
+	background-color:#FF7702;
+	outline: none;
+	display: inline-block;
+	color:rgba(255, 255, 255, 1);
+	border:none;
+	font-size:0.3rem;
+}
+.card0{
+	background:url(../img/pic-card-big1.png) center no-repeat;
+	background-size:100% 100%;
+}
+.card1{
+	background:url(../img/pic-card-big2.png) center no-repeat;
+	background-size:100% 100%;
+}
+.card2{
+	background:url(../img/pic-card-big3.png) center no-repeat;
+	background-size:100% 100%;
+}
+.card3{
+	background:url(../img/pic-card-big4.png) center no-repeat;
+	background-size:100% 100%;
+}
+.card4{
+	background:url(../img/pic-card-bigl5.png) center no-repeat;
+	background-size:100% 100%;
+}
+.card5{
+	background:url(../img/pic-card-big6.png) center no-repeat;
+	background-size:100% 100%;
+}

@@ -1,0 +1,142 @@
+.progressDiv{
+	background: #FFFFFF;
+	padding: 0.4rem 0rem 0.3rem;
+	text-align: center;
+}
+.progressTop{
+	padding-bottom: 0.16rem;
+	padding-left: 1rem;
+}
+.progressTop label{
+	width: 1.1rem;
+	display: block;
+	float: left;
+	background: url(../img/icon_1_ing.png) center no-repeat;
+	height: 0.4rem;
+	background-size: auto 85%;
+}
+.progressTop div.border-top{
+	border-top: 1px solid rgba(46,46,46,0.3);
+	width: 1.04rem;
+	float: left;
+	margin-top: 0.18rem;
+}
+.progressTop label.stepTwo{
+	background: url(../img/icon_2_grey.png) center no-repeat;
+	background-size: auto 85%;
+}
+.progressTop label.stepTwo.light{
+	background: url(../img/icon_2_ing.png) center no-repeat;
+	background-size: auto 85%;
+}
+.progressTop label.stepThree{
+	background: url(../img/icon_3_grey.png) center no-repeat;
+	background-size: auto 85%;
+}
+.progressTop label.stepThree.light{
+	background: url(../img/icon_3_ing.png) center no-repeat;
+	background-size: auto 85%;
+}
+.progressTop label.ok,.progressTop label.stepThree.ok,.progressTop label.stepTwo.ok{
+	background: url(../img/icon_ok.png) center no-repeat;
+	background-size: auto 85%;
+}
+.progressBottom{
+	font-size: 0.24rem;
+}
+.progressBottom span{
+	width: 28%;
+	display: inline-block;
+}
+.stepInfo{
+	background: #FFFFFF;
+	padding-left: 0.3rem;
+	margin-top: 0.28rem;
+}
+.stepBtn{
+	margin-top: 0.32rem;
+}
+.totalAmount{
+	position: fixed;
+	width: 100%;
+	height: 0.98rem;
+	bottom: 1.1rem;
+	border-top: 1px solid rgba(0,0,0,0.05);
+	line-height: 0.98rem;
+	background: #FFFFFF;
+}
+.amoutLeft{
+	width: 4.3rem;
+	font-size: 0.32rem;
+	font-weight: bold;
+	float: left;
+	background:rgba(255,255,255,1);
+	padding-left: 0.3rem;
+	height: 0.98rem;
+}
+.amoutLeft span{
+	font-weight: bold;
+}
+a.surebtn{
+	background:rgba(79,172,254,0.3);
+	color: #FFFFFF;
+	display: block;
+	width: 3.2rem;
+	float: left;
+	height: 0.98rem;
+	text-align: center;
+}
+a.surebtn.light{
+	background:rgba(79,172,254,1);
+}
+.secondInfo{
+	display: none;
+}
+input.color-red::-webkit-input-placeholder{
+    color:rgba(184,0,0,0.6);
+}
+input.color-red::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color:rgba(184,0,0,0.6);
+}
+input.color-red:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color:rgba(184,0,0,0.6);
+}
+input.color-red:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+    color:rgba(184,0,0,0.6);
+}
+.stepTwoBox{
+	display: none;
+}
+.layerInner{
+	background: #FFFFFF;
+	position: fixed;
+	bottom: 1.1rem;
+	width: 100%;
+}
+.layerInner li{
+	border-top: 1px solid rgba(0,0,0,0.05);
+	background: url(../img/icon_notselect.png) 6.8rem center no-repeat;
+	line-height: 1.04rem;
+	font-size: 0.32rem;
+	background-size: auto 30%;
+}
+.layerInner li.light{
+	background: url(../img/icon_select.png) 6.8rem center no-repeat;
+	background-size: auto 30%;
+}
+.layerInner li span{
+	padding-left: 0.4rem;
+	width: 5rem;
+	display: block;
+	float: left;
+}
+.layerInner li label{
+	width: 1.3rem;
+	float: left;
+}
+.insuredBottom{
+	display: block;	
+}
+.threeInfo{
+	display: none;
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>定期理财</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/fixedFinancing.css?version=1.5" />
+		<script type="text/template" id="profitTpl">
+			<a href="./fixedFinancingDetail.html?uuid={{:uuid}}" class="main-bottom-item openId-url">
+				<div class="main-bottom-top">
+					<img src="..{{:iconColorUrl}}" alt="" />
+					<p class="">【{{:bankName}}】{{:productName}}</p>
+				</div>
+				<div class="main-bottom-content">
+					<div class="main-bottom-content-left">
+						<p>
+							<i>{{:priceCN}}</i>
+							{{if flagCashCoupon == true}}
+									<img src="./img/icon_cash.png" alt="" style=""/>
+							{{/if}}
+							{{if flagInterestsCoupon == true}}
+								<img src="./img/icon_interests.png" alt="" style=""/>
+							{{/if}}
+					</p>	
+						<span>持有金额(元)</span>
+					</div>
+					<div class="main-bottom-content-right">
+						<p>{{:maturityDate}}</p>
+						<span>到期日</span>
+					</div>
+				</div>
+			</a>
+		</script>
+		
+		<script type="text/template" id="transactionTpl">
+			<a href="./fixedFinancingDetail.html?uuid={{:uuid}}" class="main-bottom-item openId-url">
+				<div class="main-bottom-top">
+					<img src="..{{:iconColorUrl}}" alt="" />
+					<p class="">【{{:bankName}}】{{:productName}}</p>
+				</div>
+				{{if stage == "confirming"}}
+					<div class="main-bottom-content">
+						<div class="main-bottom-content-left">
+							<p>
+								<i>{{:priceCN}}</i>
+								{{if flagCashCoupon == true}}
+									<img src="./img/icon_cash.png" alt="" style=""/>
+								{{/if}}
+								{{if flagInterestsCoupon == true}}
+									<img src="./img/icon_interests.png" alt="" style=""/>
+								{{/if}}
+							</p>
+							<span>购买金额(元)</span>
+						</div>
+						<div class="main-bottom-content-right">
+							<p style="color:#71AF51;border-color:#71AF51">{{:valueDate}}</p>
+							<span>起息日</span>
+						</div>
+					</div>
+				{{else stage == "balance"}}
+					<div class="main-bottom-content">
+						<div class="main-bottom-content-left">
+							<p>
+								<i>{{:priceCN}}</i>
+								{{if flagCashCoupon == true}}
+									<img src="./img/icon_cash.png" alt="" style=""/>
+								{{/if}}
+								{{if flagInterestsCoupon == true}}
+									<img src="./img/icon_interests.png" alt="" style=""/>
+								{{/if}}
+							</p>
+							<span>持有金额(元)</span>
+						</div>
+						<div class="main-bottom-content-right">
+							<p style="color:#6EA3E1;border-color:#6EA3E1">{{:incomeDate}}</p>
+							<span>预计到账日</span>
+						</div>
+					</div>
+				{{/if}}
+				
+			</a>
+		</script>
+		
+		<script type="text/template" id="finishedTpl">
+			<a href="./fixedFinancingDetail.html?uuid={{:uuid}}" class="main-bottom-item openId-url">
+				<div class="main-bottom-top">
+					<img src="..{{:iconColorUrl}}" alt="" />
+					<p class="">【{{:bankName}}】{{:productName}}</p>
+					
+				</div>
+				<div class="main-bottom-content">
+					<div class="main-bottom-content-left">
+						<p>
+							<i>{{:priceCN}}</i>
+							{{if flagCashCoupon == true}}
+								<img src="./img/icon_cash.png" alt="" style=""/>
+							{{/if}}
+							{{if flagInterestsCoupon == true}}
+								<img src="./img/icon_interests.png" alt="" style=""/>
+							{{/if}}
+						</p>
+						<span>购买金额(元)</span>
+					</div>
+					<div class="main-bottom-content-right">
+						<p style="border:none;color:#4A4A4A">实际收益<i style="color:#E0615F;display: inline-block;width:1.4rem;">{{:totalAmount}}</i></p>
+						<span>收益率<i style="display: inline-block;width:1.4rem;">{{:targetAnnualizedReturnRate}}%</i></span>
+					</div>
+				</div>
+			</a>
+		</script>
+	</head>
+	<body>
+		<div class="nav">
+			<a href="./bankFinancing.html" class="openId-url">
+				<img src="./img/nav1-g.png" alt="" />
+				<p>银行理财</p>
+			</a>
+			<a href="./myPosition.html" class="openId-url">
+				<img src="./img/nav2-b.png" alt="" />
+				<p class="current">我的持仓</p>
+			</a>
+		</div>
+		
+		<div class="main">
+			<div class="main-top">
+				<p>理财总金额(元)</p>
+				<h3 id="totalAmount"></h3>
+			</div>
+			
+			<div class="type-bar">
+				<div>
+					<span class="status status-light" data-status="profit">持有中</span>
+					<p class="status-tap"></p>
+				</div>
+				<div>
+					<span class="status" data-status="transaction">交易中</span>
+					<p class="status-tap"></p>
+				</div>
+				<div>
+					<span class="status" data-status="finished">已完成</span>
+					<p class="status-tap"></p>
+				</div>
+			</div>
+		
+			<div class="main-bottom">
+				
+			</div>
+			
+			
+			
+		</div><!--main-->
+		
+		
+		<div id="modal-box">
+			<div class="modal-box-inner">
+				<h3>温馨提示</h3>
+				<h4></h4>
+				<div class="modal-box-inner-btnbox clearfix">
+					<!--<input type="button"  value="取消" id="modal-box-close"/>-->
+					<input type="button"  value="确认" id="modal-box-close"/>
+				</div>
+			</div>
+		</div>
+		
+		
+		<p class="layer">
+			提示信息
+		</p>
+
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/jsrender.min.js?version=1.5"></script>
+		<script src="./js/changePrice.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/fixedFinancing.js?version=1.5"></script>
+	</body>
+</html>

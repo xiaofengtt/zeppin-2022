@@ -54,7 +54,7 @@ public class RoleMenuController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	@ActionParam(key = "role", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "role", message = "角色", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
 	@ResponseBody
 	public Result list(String role) {
 		BkOperatorRole operatorRole = bkOperatorRoleService.get(role);
@@ -96,8 +96,8 @@ public class RoleMenuController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/sort", method = RequestMethod.GET)
-	@ActionParam(key = "type", type = DataType.STRING, required = true)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "type", message = "类型", type = DataType.STRING, required = true)
+	@ActionParam(key = "uuid", message = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
 	@ResponseBody
 	public Result sort(String type, String uuid) {
 		//判断类型参数是否正确
@@ -123,8 +123,8 @@ public class RoleMenuController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/edit", method = RequestMethod.POST )
-	@ActionParam(key = "role", type = DataType.STRING, required = true)
-	@ActionParam(key = "menu", type = DataType.STRING_ARRAY)
+	@ActionParam(key = "role", message = "角色", type = DataType.STRING, required = true)
+	@ActionParam(key = "menu", message = "权限", type = DataType.STRING_ARRAY)
 	@ResponseBody
 	public Result edit(String role, String[] menu) {
 		//获取修改的角色

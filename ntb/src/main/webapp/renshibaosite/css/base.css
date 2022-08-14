@@ -1,0 +1,51 @@
+*{margin: 0 auto;padding: 0;box-sizing: border-box;font-family:"Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;outline: none;}
+a{text-decoration: none;}
+ul{list-style: none;}
+.clear{clear: both;}
+body{background: #f9f9fb;min-width: 1200px;}
+/*header*/
+#header{height: auto;}
+#header .header-inner{max-width: 1200px;}
+#header .header-left{float: left;}
+#header a{display: inline-block;cursor: pointer;}
+#header .header-left img{margin-top: 17px;}
+#header .header-right{float: right;}
+#header .header-right li{float: left;margin: 0 30px;height: 75px;position: relative;}
+#header .header-right li a{padding: 5px;font-size: 18px;color: #666666;margin-top: 20px;}
+#header .header-right li a.light{color: #ffb320;}
+#header .header-right li a:hover{color: #ffb320;}
+
+#header .header-right li:before {content: ""; position: absolute; bottom: 10px; width: 0; border-bottom: 2px solid #ffb320;color: #ffb320;left: 15px;} 
+#header .header-right li:hover:before { width: 50px;}  
+#header .header-right li:before {-webkit-transition: width 0.5s ease-in-out;-moz-transition: width 0.5s ease-in-out;-ms-transition: width 0.5s ease-in-out; -o-transition: width 0.5s ease-in-out;transition: width 0.5s ease-in-out;} 
+#header .header-right li.longLi:before {left: 18px;} 
+#header .header-right li.longLi:hover:before { width: 60px;}  
+
+/*footer*/
+#footer{background: #FFFFFF;padding: 70px 0 40px 0;}
+#footer .footer-inner{max-width: 1200px;}
+#footer .footer-inner a{color: #363636;font-size: 16px;line-height: 18px;margin-left: 20px;}
+#footer .footer-inner a.item{border-right: 1px solid #363636;margin: 0 0 13px 0;padding-right: 20px;display: inline-block;}
+#footer .footer-inner p,#footer .footer-inner p a{color: #797873;font-size: 14px;line-height: 18px;margin-top: 15px;margin-left: 0;}
+#footer .footer-inner a:hover{text-decoration: underline;color: #FFB320;}
+
+.fixedDiv{position: fixed;right: 10px;top:380px;z-index: 999;}
+a.goTop{display: block;width: 51px;height: 49px;background: url(../img/sbx-base1.png) center no-repeat;cursor: pointer;}
+a.online{display: block;width: 51px;height: 43px;background: url(../img/sbx-base2.png) center no-repeat;cursor: pointer;margin-top: 7px;}
+
+@media only screen and (max-width: 768px) {
+	body{
+		min-width:100%;
+	}
+	#header .header-left{
+		margin-left:30px;
+	}
+	.navbar-brand img{
+		width:auto;
+		max-height:64px;
+		margin-left:-15px;
+	}
+	.fixedDiv{
+		top:30%;
+	}
+}

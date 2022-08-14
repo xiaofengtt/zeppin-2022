@@ -1,0 +1,152 @@
+nav {
+	width: 100%;
+	/*min-width:1320px;*/
+	height: 74px;
+	border-bottom: 1px solid #DEDDD9;
+	background-color: #FFFFFF;
+}
+
+.nav-header {
+	max-width: 1320px;
+	/*min-width:1320px;*/
+	margin: 0 auto;
+	height: 100%;
+	position: relative;
+}
+
+.nav-header-left {
+	position: absolute;
+	width: auto;
+	left: 0;
+	top: 18px;
+}
+
+.nav-header-right {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: auto;
+	height: 100%;
+}
+
+.nav-header-right ul {
+	height: 100%;
+	width: auto;
+}
+
+.nav-header-right ul li {
+	text-align: center;
+	padding: 0 16px;
+	display: inline-block;
+	float: left;
+	height: 100%;
+	min-width: 70px;
+	border-right: 1px solid #DEDDD9;
+	position: relative;
+}
+
+.nav-header-right ul li>a {
+	display: inline-block;
+	line-height: 74px;
+	height: 100%;
+	min-width: 60px;
+	font-size: 16px;
+	color: #666666;
+	vertical-align: top;
+}
+
+.nav-header-right ul li .icon {
+	position: relative;
+	top: 15px;
+}
+
+.nav-header-right ul li .bottom {
+	position: relative;
+	top: -2px;
+	cursor: pointer;
+}
+
+.company-list {
+	position: absolute;
+	width: 260px;
+	right: 0;
+	background: #FFFFFF;
+	border-top: 1px solid #DEDDD9;
+	border-left: 1px solid #DEDDD9;
+	border-right: 1px solid #DEDDD9;
+	z-index: 10;
+	top: 58px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 0px 18px 0px #E2E2E2;
+	-moz-box-shadow: 0 0px 18px 0px #E2E2E2;
+	-ms-box-shadow: 0 0px 18px 0px #E2E2E2;
+	box-shadow: 0px 0px 18px 0px #E2E2E2;
+	display: none;
+}
+
+.company-list p {
+	font-size: 13px;
+	color: #000000;
+	opacity: 0.8;
+}
+.company-list .company-name{
+	display: inline-block;
+	text-align: center;
+	padding: 8px 10px;
+	margin-right:6px;
+	width:70%;
+}
+.company-list .color-gray{
+	width:22%;
+	display: inline-block;
+	text-align: left;
+}
+.company-list a{
+	width:22%;
+	padding: 8px 0px;
+	/*height:22px;*/
+	display: inline-block;
+	/*vertical-align: middle;*/
+	text-align: left;
+	color:#FF9E10;
+}
+.change {
+	background-image: url(../img/loading-c.png);
+	background-repeat: no-repeat;
+	background-position-x: 32px;
+	background-position-y: 9px;
+}
+
+
+.mail-logo {
+	background-image: url(../img/mail-g.png);
+	background-repeat: no-repeat;
+	background-position-x: center;
+	background-position-y: center;
+	position: relative;
+}
+
+.mail-logo:hover {
+	background-image: url(../img/mail-r.png);
+}
+
+.mail-logo img {
+	position: absolute;
+	top: 22px;
+	right: 13px;
+}
+
+.back {
+	background-image: url(../img/back-g.png);
+	background-repeat: no-repeat;
+	background-position-x: center;
+	background-position-y: center;
+}
+
+.back:hover {
+	background-image: url(../img/back-r.png);
+}
+
+

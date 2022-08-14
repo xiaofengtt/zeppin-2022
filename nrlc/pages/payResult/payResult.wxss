@@ -1,0 +1,52 @@
+/* pages/payResult/payResult.wxss */
+page{
+  background: #eee;
+}
+
+.top-view{
+  width: 100%;
+  height: 430rpx;
+  text-align: center;
+  background-image: radial-gradient(50% 100%, #F9FDFF 0%, #F0F9FF 100%);
+}
+
+.top-view image{
+  width: 140rpx;
+  height: 140rpx;
+  margin: 100rpx auto 0 auto;
+}
+
+.top-view .info{
+  width: 100%;
+  height: 44rpx;
+  line-height: 44rpx;
+  margin-top: 30rpx;
+  font-size: 32rpx;
+  color: #2C2C2C;
+}
+
+.top-view .time{
+  width: 100%;
+  height: 34rpx;
+  line-height: 34rpx;
+  margin-top: 14rpx;
+  font-size: 24rpx;
+  color: rgba(45, 45, 45, 0.5);
+}
+
+.submit-view{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  margin-top: 80rpx;
+  padding: 0 26rpx;
+}
+
+.submit-view > view{
+  width: 100%;
+  height: 100%;
+  border-radius: 6rpx;
+  text-align: center;
+  color: #FFF;
+  background: #008DFB;
+}

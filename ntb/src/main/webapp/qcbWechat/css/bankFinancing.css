@@ -1,0 +1,178 @@
+.main{
+	padding-bottom:1rem;
+}
+.main-top{
+	overflow: hidden;
+	height:3rem;
+}
+
+.jd_banner{
+	width: 100%;
+	/* 100px */
+	overflow: hidden;
+	/* 为了 索引 能够定位 所以 添加 positition */
+	position: relative;
+	margin-top:-0.92rem;
+}
+
+.jd_banner .banner_images{
+	/* 10倍宽度 为了 在横向 放10张图片 */
+	width: 1000%;
+	/* 1000px */
+
+	/* 默认 移动个一个 屏幕的宽度 注意是负数 */
+	transform: translateX(-10%);
+}
+
+.jd_banner .banner_images li{
+	float: left;
+	width: 10%;
+	/* 100px */
+}
+
+.jd_banner .banner_images li a{
+	display: block;
+	width: 100%;
+}
+
+.jd_banner .banner_images li a img{
+	display: block;
+	width: 100%;
+}
+
+/* 轮播图里面的 索引标签 */
+.jd_banner .banner_index{
+	position: absolute;
+	bottom: 0.94rem;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+}
+
+.jd_banner .banner_index li{
+	float: left;
+	width: 0.28rem;
+	height: 0.08rem;
+	border-radius: 51px;
+	border: 1px solid white;
+	margin-right: 5px;
+}
+.jd_banner .banner_index li:last-child{
+	margin:0;
+}
+/* 如果 li标签 有.current class 会使用 下列样式
+	注意 .current 不能 空格
+ */
+.jd_banner .banner_index li.current{
+	background-color: #FFFFFF;
+}
+
+.title{
+	margin-top:0.2rem;
+	position: relative;
+}
+
+.title span{
+	font-size:0.26rem;
+	color:#000000;
+	opacity: 0.5;
+	margin-left:0.2rem
+}
+
+.main-mid-top{
+	display:block;
+	border-top:1px solid #EBEBEB;
+	background:#FFFFFF;
+	padding:0.3rem;
+}
+.main-mid-top div{
+	float:left;
+	width:50%;
+	height:1rem;
+	text-align: center;
+	position: relative;
+}
+.main-mid-top div .rate{
+	font-family: Helvetica;
+	font-size: 0.50rem;
+	color: #F4514F;
+}
+.main-mid-top div p{
+	font-size: 0.32rem;
+	margin-top:0.1rem;
+	margin-bottom:0.2rem;
+	color: #1E1E1E;
+}
+.main-mid-top div span{
+	opacity: 0.4;
+	width:100%;
+	position: absolute;
+	font-size: 0.28rem;
+	display: inline-block;
+	color: #000000;
+	bottom:0;
+	left:50%;
+	-webkit-transform: translateX(-50%);
+}
+.main-mid-top div:nth-child(1){
+	border-right:1px solid #EBEBEB;
+}
+
+
+
+.main-mid-item{
+	padding:0.32rem 0.3rem;
+	border-top:1px solid #EBEBEB;
+	background:#FFFFFF;
+	display: block;
+}
+.main-mid-item div{
+	float:left;
+	position: relative;
+}
+.main-mid-item-left{
+	border-right:1px solid #EBEBEB;
+	width:1.75rem;
+	height:0.9rem;
+}
+.main-mid-item-left h3{
+	font-family: Helvetica;
+	font-size: 0.5rem;
+	color: #F4524F;
+}
+.main-mid-item-left span{
+	font-size: 0.2rem;
+	color: #AEAEAE;
+	display: inline-block;
+	position: absolute;
+	bottom:0;
+}
+
+.main-mid-item-right{
+	width:4.9rem;
+	height:0.9rem;
+	padding: 0 0.2rem;
+}
+.main-mid-item-right p{
+	font-size:0.36rem;
+	width:100%;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	color:#000000;
+}
+.main-mid-item-right div{
+	position: absolute;
+	bottom:0;
+}
+.main-mid-item-right span{
+	font-size: 0.22rem;
+	color: #4E4E4E;
+	opacity: 0.5;
+	display: inline-block;
+	float:left;
+	border-right:1px solid #E1E1E1;
+	padding:0 0.1rem;
+}
+.main-mid-item-right span:last-of-type{
+	border:none;
+}

@@ -1,0 +1,348 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+}
+div,a,img {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select:none;
+}
+html,body {
+    width: 100%;
+    height: 100%;
+    background: url('../img/bg.png') no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+/* progress */
+.progressCon {
+    width: 244px;
+    height: 84px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -122px;
+    margin-top: -44px;
+}
+.progressText {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: rgb(252,199,52);
+}
+.progress {
+    width: 244px;
+    height: 14px;
+    background: url("../img/progressBg.png") repeat-x;
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -122px;
+    margin-top: -7px;
+    font-size: 0;
+}
+.progress span {
+    display: inline-block;
+    width: 10%;
+    height: 14px;
+    background: deepskyblue;
+    border-radius: 30px;
+    transition: width 0.5s;
+}
+#progressWid {
+    height: 14px;
+    background: url("../img/progressColor.png") repeat-x;
+}
+.header {
+    width: 100%;
+    height: 24px;
+    position: fixed;
+    top: 12px;
+    left: 0;
+    right: 0;
+    font-size: 12px;
+    color: rgb(250, 238, 0);
+    z-index: 100;
+}
+.header .leftBar {
+    width: 50%;
+    float: left;
+}
+.header .leftBar .topIcon1 {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url("../img/topIcon.png") no-repeat;
+    background-size: cover;
+    margin-left: 22px;
+    margin-right: 12px;
+    vertical-align: middle;
+}
+.header .rightBar {
+    width: 50%;
+    float: left;
+}
+.header .rightBar .topIcon2 {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url("../img/topIcon.png") no-repeat 0 -24px;
+    background-size: cover;
+    margin-right: 12px;
+    margin-left: 60px;
+    vertical-align: middle;
+}
+.header img {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+#box {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+/* 红包的样式*/
+.redpack {
+    position: absolute;
+    width: 50px;
+    height: 67px;
+    z-index:10;
+    background: url('../img/pkg-r.png') no-repeat 0 0;
+    background-size: cover;
+    background-position:left center;
+   
+}
+/*点击后的红包*/
+.redpacked {
+	position: absolute;
+    width: 50px;
+    height: 67px;
+    background: url("../img/pkg-y.png") no-repeat 0 0;
+    background-size: cover;
+    z-index:10;
+    background-position:left center;
+}
+.clicked{
+	position: absolute;
+    width: 60px;
+    height: 77px;
+}
+
+/* 空的红包 */
+.redPackNone {
+    display: none;
+}
+/* pop */
+#mask {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 101;
+    display: none;
+}
+#pop {
+    width: 330px;
+    height: 371px;
+    background: url('../img/红包弹框.png') no-repeat;
+    background-size: 98% 100%;
+    background-position:-4px center;
+    position: absolute;
+    top: 46%;
+    left: 0;
+    right:0;
+    margin:auto;
+    margin-top: -185.5px;
+    color: #fff;
+    display: none;
+    z-index: 102;
+}
+#pop .popFont1 {
+    width: 200px;
+    font-size: 16px;
+    position: relative;
+    top: 38px;
+    left: 0px;
+    right:0;
+    margin:auto;
+    color:#FDDB29;
+    text-align: center;
+}
+.pkg-l,.pkg-r{
+	width:44px;
+}
+#pop .popFont2 {
+    width: 90%;
+    text-align: center;
+    font-size: 24px;
+    position: relative;
+    top: 52px;
+    left: 0px;
+    right:0;
+    margin:auto;
+    text-align: center;
+}
+#pop .popFont3 .yuan {
+    font-size: 16px;
+	color:#FDDB29;
+	vertical-align: middle;
+}
+#pop .popFont3 {
+    width: 200px;
+    font-size: 12px;
+    position: relative;
+    top: 150px;
+    left: 0px;
+    right:0;
+    margin:auto;
+    text-align: center;
+    color:#FDDB29;
+    font-size:24px;
+}
+#pop .popFont3 #allAmount{
+	font-size:34px;
+	font-weight: bold;
+}
+#shareBtn {
+    width: 187px;
+    height: 44px;
+    /*background: url('../img/shareBtn.png') no-repeat;*/
+    background-size: cover;
+    position: relative;
+    top: 56%;
+    left: 0%;
+    right:0;
+    margin:auto;
+    color: #C72820;
+    font-size: 16px;
+    text-align: center;
+    line-height: 44px;
+    border-radius:50px;
+    font-size:18px;
+    background:#FDDA28;
+}
+#closeBtn {
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    position: relative;
+    top: 77%;
+    left:0;
+    right:0;
+    margin:auto; 
+    border-radius: 50%;
+}
+#closeBtn img{
+	width:100%;
+}
+#mid-box{
+	position: fixed;
+	width:100%;
+	height:140px;
+	text-align: center;
+	top:50%;
+	margin:auto;
+	margin-top:-80px;
+	color:#faee00;
+	font-size:34px;
+	font-weight: bold;
+	z-index:1;
+}
+#mid-box p{
+	display: none;
+}
+#mid-box .num{
+	font-size:150px;
+	text-align: center;
+}
+#mid-box .num img{
+	/*width:100px;*/
+	height:120px;
+}
+.bounceIn {
+	-webkit-animation-name: bounceIn;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+@keyframes bounceIn {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale(.3);
+		-ms-transform: scale(.3);
+		transform: scale(.3)
+	}
+	50% {
+		opacity: 1;
+		-webkit-transform: scale(1.05);
+		-ms-transform: scale(1.05);
+		transform: scale(1.05)
+	}
+	70% {
+		-webkit-transform: scale(.9);
+		-ms-transform: scale(.9);
+		transform: scale(.9)
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: scale(1);
+		-ms-transform: scale(1);
+		transform: scale(1)
+	}
+}
+@-webkit-keyframes bounceIn {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale(.3);
+		-ms-transform: scale(.3);
+		transform: scale(.3)
+	}
+	50% {
+		opacity: 1;
+		-webkit-transform: scale(1.05);
+		-ms-transform: scale(1.05);
+		transform: scale(1.05)
+	}
+	70% {
+		-webkit-transform: scale(.9);
+		-ms-transform: scale(.9);
+		transform: scale(.9)
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: scale(1);
+		-ms-transform: scale(1);
+		transform: scale(1)
+	}
+}
+@media only screen and (max-width:320px) {
+	.rightBar {
+		width: 50%;
+	}
+	.header .rightBar .topIcon2 {
+		margin-left: 30px;
+	}
+	#pop {
+		width: 280px;
+		height: 321px;
+	}
+	#pop .popFont2{
+		font-size:18px;
+	}
+	#pop .popFont3{
+		top:130px;
+	}
+	#shareBtn{
+		top:50%;
+	}
+}

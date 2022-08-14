@@ -1,0 +1,22 @@
+<!--pages/withdrawResult/withdrawReult.wxml-->
+<view class="container">
+  <view class="top-view">
+    <image src="/resources/pay/wait.png"></image>
+    <view class="info">提现申请已提交</view>
+    <view class="time">预计{{time}}前到账</view>
+  </view>
+  <view class="table-view">
+    <view class="tr">
+      <view class="key">储蓄卡</view>
+      <view class="value">{{bankName}} 尾号{{bankcard}}</view>
+    </view>
+    <view class="tr">
+      <view class="key">提现金额</view>
+      <view class="value">{{amount}}</view>
+    </view>
+  </view>
+  <view class="submit-view" bindtap="submit">
+    <view>确定</view>
+  </view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

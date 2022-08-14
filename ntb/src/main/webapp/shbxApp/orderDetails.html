@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>订单详情</title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/socialSecurityCalculator.css" />
+		<link rel="stylesheet" href="css/orderDetails.css" />
+	</head>
+	<body onload="loading();" style="display:none;">
+		<div class="wrap">
+			<div class="dataBox">
+				<!--参保人信息-->
+				<div class="insuredInfo unprocess">
+					<div class="insuredTop">
+						<p class="color-2E">订单号：<span></span></p>
+						<span class="insuredName color-2E"></span>
+						<label class="insureTel color-2E"></label>					
+						<a class="status">待处理</a>
+					</div>
+					<ul class="insuredBottom color-2E70">
+						<li><label>身份证号</label><span class="color-2E insuredIdnumber"></span><div class="clear"></div></li>
+						<li><label>户口所在地</label><span class="color-2E insuredHkszd"></span><div class="clear"></div></li>
+						<li><label>户口性质</label><span class="color-2E insuredHkxz"></span><div class="clear"></div></li>
+						<li><label>民族</label><span class="color-2E insuredNation"></span><div class="clear"></div></li>
+						<li><label>学历</label><span class="color-2E insuredEducation"></span><div class="clear"></div></li>
+						<li><label>参加工作时间</label><span class="color-2E insuredWorkTime"></span><div class="clear"></div></li>
+						<li><label>邮箱</label><span class="color-2E insuredEmail"></span><div class="clear"></div></li>
+					</ul>
+					<a class="takeUp">收起</a>
+					<a class="takeDown">展开</a>
+				</div>
+				<!--订单信息-->
+				<div class="orderInfo">
+					<h2 class="title color-2E">订单信息</h2>
+					<div class="info-list">
+						<div class="info-item">
+							<span>参保地区</span>
+							<input type="text" class="cbdq" disabled="disabled" placeholder="请选择" value="北京市"/>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="info-list">
+						<div class="info-item">
+							<span>参保类型</span>
+							<p class="cblx"></p>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="info-list info-gsmc">
+						<div class="info-item">
+							<span>公司名称</span>
+							<p class="insuredCompany"></p>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="info-list">
+						<div class="info-item">
+							<span>缴费开始月份</span>
+							<p class="jfyf"></p>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="info-list">
+						<div class="info-item">
+							<span>缴纳时长</span>
+							<p class="jnsc"></p>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="info-list">
+						<div class="info-item">
+							<span>社保基数(元)</span>
+							<p class="sbjs"></p>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="info-list info-gjjjs">
+						<div class="info-item">
+							<span>公积金基数(元)</span>
+							<p class="gjjjs"></p>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="info-list socialSecurityResult">
+						<div class="info-item">
+							<span>缴费金额(元)</span>
+							<p class="jfje"></p>
+							<b class="fwf"></b>
+							<label class="mingxi">明细</label>
+							<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div class="info-list">
+						<div class="info-item">
+							<span>下单时间</span>
+							<p class="xdsj"></p>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--明细-->
+			<div class="resultDiv">
+				<div class="totalResult mt-28">
+					<div class="sbfy fyBox">
+							<span>社保费用(元)：</span>
+							<label class="sbfyValue valueLable">2273</label>
+						</div>
+						<div class="gjjfy fyBox">
+							<span>公积金费用(元)：</span>
+							<label class="gjjfyValue valueLable">2273</label>
+						</div>
+						<div class="gsfy fyBox">
+							<span>个人所得税(元)：</span>
+							<label class="gsfyValue valueLable">2273</label>
+						</div>
+						<div class="zj fyBox">
+							<span>总计(元)：</span>
+							<label class="zjValue valueLable">2273</label>
+						</div>
+						<div class="clear"></div>
+				</div>
+				<div class="tableBox">
+					<table><tbody><tr><th>类别</th><th>基数</th><th>个人</th><th>单位</th><th>总计</th></tr><tr><td>养老</td><td>3082</td><td>246.56</td><td>585.58</td><td>832.14</td></tr><tr><td>医疗</td><td>4624</td><td>95.48</td><td>462.40</td><td>557.88</td></tr><tr><td>失业</td><td>3082</td><td>6.16</td><td>24.66</td><td>30.82</td></tr><tr><td>工伤</td><td>3082</td><td>0.00</td><td>9.25</td><td>9.25</td></tr><tr><td>生育</td><td>3082</td><td>0.00</td><td>36.99</td><td>36.99</td></tr><tr><td>公积金</td><td>2273</td><td>272.76</td><td>272.76</td><td>545.52</td></tr><tr class="totalTr"><td>总计</td><td>-</td><td>620.96</td><td>1391.64</td><td>2012.60</td></tr></tbody></table>
+				</div>
+			</div>
+			
+			<p class="layer">
+				提示信息
+			</p>
+			<div id="loading-box">
+				<img src="./img/icon-loading.gif" alt="" />
+			</div>
+		</div>
+		<script src="./js/burialPoint.js"></script>
+		<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+		<script src="./js/base64.js"></script>
+		<script src="./js/md5.js"></script>
+		<script type="text/javascript" src="js/picker.min.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="js/orderDetails.js" ></script>
+	</body>
+</html>

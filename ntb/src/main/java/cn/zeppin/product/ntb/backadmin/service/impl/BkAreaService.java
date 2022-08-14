@@ -3,7 +3,9 @@
  */
 package cn.zeppin.product.ntb.backadmin.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,5 +58,52 @@ public class BkAreaService extends BaseService implements IBkAreaService {
 	@Override
 	public List<Entity> getAll(Class<? extends Entity> resultClass){
 		return bkAreaDAO.getAll(resultClass);
+	}
+	
+	/**
+	 * 根据参数结果列表(带分页、排序),
+	 * @param inputParams
+	 * @param pageNum
+	 * @param pageSize
+	 * @param sorts
+	 * @param resultClass
+	 * @return  List<Entity>
+	 */
+	@Override
+	public List<Entity> getListForPage(Map<String, String> inputParams, Integer pageNum, Integer pageSize, String sorts, Class<? extends Entity> resultClass) {
+		return bkAreaDAO.getListForPage(inputParams, pageNum, pageSize, sorts, resultClass);
+	}
+
+	/**
+	 * 根据参数查询结果个数
+	 * @param inputParams
+	 * @return 
+	 */
+	@Override
+	public Integer getCount(Map<String, String> inputParams) {
+		return bkAreaDAO.getCount(inputParams);
+	}
+	
+	/**
+	 * 获取地区全称
+	 * @param inputParams
+	 * @return 
+	 */
+	@Override
+	public List<String> getFullName(String uuid) {
+		
+		ArrayList<String> nameList = new ArrayList<String>();
+		
+		BkArea area = bkAreaDAO.get(uuid);
+		if(area != null){
+			nameList.add(area.getName());
+			
+			while(area.getLevel() > 1){
+				area = bkAreaDAO.get(area.getPid());
+				nameList.add(0, area.getName());
+			}
+		}
+		
+		return nameList;
 	}
 }

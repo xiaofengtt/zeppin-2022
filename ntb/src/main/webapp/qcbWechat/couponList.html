@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>优惠券</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/couponList.css?version=1.5" />
+		<script id="queboxTpl" type="text/template">
+			{{if couponType == "cash"}}
+				<div class="list-item">
+					<div class="list-item-top">
+						{{if status == "unuse"}}
+							<h3>
+								<span>{{:couponPriceCN}}</span><i>元</i>
+							</h3>
+							<p>{{:couponTypeCN}}</p>
+						{{else}}
+							<h3>
+								<span class="color-gray">{{:couponPriceCN}}</span><i class="color-gray">元</i>
+							</h3>
+							<p class="color-gray">{{:couponTypeCN}}</p>
+							{{if status == "used"}}
+								<img src="./img/coupon_ used.png" alt="" />
+							{{else}}
+								<img src="./img/coupon_ expired.png" alt="" />
+							{{/if}}
+						{{/if}}
+						
+						<h4>单笔投资{{:minInvestAccount}}元起可用</h4>
+						
+					</div>
+					<div class="list-item-bottom">
+						<h5>有效期至：{{:expiryDateCN}}</h5>
+						<div class="circle-left"></div>
+						<div class="circle-right"></div>
+					</div>
+				</div>
+			{{else}}
+				<div class="list-item">
+					<div class="list-item-top">
+						{{if status == "unuse"}}
+							<h3>
+								<span>{{:couponPriceCN}}</span><i>%</i>
+							</h3>
+							<p>{{:couponTypeCN}}</p>
+						{{else}}
+							<h3>
+								<span class="color-gray">{{:couponPriceCN}}</span><i class="color-gray">%</i>
+							</h3>
+							<p class="color-gray">{{:couponTypeCN}}</p>
+							{{if status == "used"}}
+								<img src="./img/coupon_ used.png" alt="" />
+							{{else}}
+								<img src="./img/coupon_ expired.png" alt="" />
+							{{/if}}
+						{{/if}}
+						
+						<h4>单笔投资{{:minInvestAccount}}元起可用</h4>
+						
+					</div>
+					<div class="list-item-bottom">
+						<h5>有效期至：{{:expiryDateCN}}</h5>
+						<div class="circle-left"></div>
+						<div class="circle-right"></div>
+					</div>
+				</div>
+			{{/if}}
+			
+		</script>
+	</head>
+
+	<body>
+		<div class="nav">
+			<a href="./bankFinancing.html" class="openId-url">
+				<img src="./img/nav1-g.png" alt="" />
+				<p>银行理财</p>
+			</a>
+			<a href="./myPosition.html" class="openId-url">
+				<img src="./img/nav2-b.png" alt="" />
+				<p class="current">我的持仓</p>
+			</a>
+		</div>
+
+		<div class="main">
+			<div class="type-bar">
+				<div>
+					<span class="status status-light" data-status="use">可用券</span>
+					<p class="status-tap"></p>
+				</div>
+				<div>
+					<span class="status" data-status="history">历史券</span>
+					<p class="status-tap"></p>
+				</div>
+			</div>
+
+			<div class="list">
+
+			</div>
+
+			<div class="no-item">
+				<img src="./img/empty_coupon.png" alt="" />
+				<p>暂时没有任何优惠券</p>
+			</div>
+
+		</div>
+		<!--main-->
+
+		<div id="modal-box">
+			<div class="modal-box-inner">
+				<h3>温馨提示</h3>
+				<h4></h4>
+				<div class="modal-box-inner-btnbox clearfix">
+					<!--<input type="button"  value="取消" id="modal-box-close"/>-->
+					<input type="button" value="确认" id="modal-box-close" />
+				</div>
+			</div>
+		</div>
+
+		<div id="tip-box">
+			<div class="tip-box-inner">
+				<div class="tip-box-inner-content">
+					<p>你还未绑定银行卡！</p>
+					<img src="./img/auth_failed.png" alt="" />
+					<input type="button" value="马上绑卡" id="goBind" />
+				</div>
+				<div id="tip-close">
+
+				</div>
+			</div>
+		</div>
+		<p class="layer">
+			提示信息
+		</p>
+
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/jsrender.min.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/couponList.js?version=1.5"></script>
+	</body>
+
+</html>

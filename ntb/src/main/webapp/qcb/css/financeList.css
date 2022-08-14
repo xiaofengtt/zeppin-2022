@@ -1,0 +1,122 @@
+.termbar {
+    width: 100%;
+    padding-left: 12px;
+    background-color: #fffaf4;
+    margin-top: 22px;
+    position: relative;
+}
+
+.termbar a {
+    font-size: 14px;
+    display: inline-block;
+    text-align: center;
+    line-height: 14px;
+    padding: 23px 0;
+    margin-right: 34px;
+    color: #000000;
+    cursor: pointer;
+}
+
+.termbar a:hover {
+    color: #FF9E10;
+}
+
+.date-box {
+    position: absolute;
+    border: 1px solid #cccccc;
+    width: 210px;
+    height: 34px;
+    right: 10px;
+    padding-left: 4px;
+    top: 0px;
+    bottom: 0;
+    margin: auto;
+    color: #cccccc;
+    background-color: #FFFFFF;
+    background-image: url(../img/日历.png);
+    background-repeat: no-repeat;
+    background-position-x: 186px;
+    background-position-y: center;
+}
+
+.date-box input {
+    width: 74px;
+    margin-top: 7px;
+    font-size: 12px;
+    border: none;
+    outline: none;
+    color: #CCCCCC;
+}
+
+.type-bar {
+    width: 100%;
+    margin-top: 24px;
+    position: relative;
+}
+
+.type-bar>a {
+    color: #CCCCCC;
+    font-size: 14px;
+    line-height: 14px;
+    display: inline-block;
+    border: 1px solid #CCCCCC;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.type-bar>a:hover {
+    background: #ffb031;
+    border: 1px solid #ffb031;
+    color: #FFFFFF;
+}
+
+.type-bar .type-light {
+    background: #ffb031;
+    border: 1px solid #ffb031;
+    color: #FFFFFF;
+}
+
+.type-bar-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.type-bar-right a, .type-bar-right button {
+    display: block;
+    width: 70px;
+    height: 36px;
+    border: 1px solid #ffb845;
+    float: left;
+    outline: none;
+    background-color: #FFFFFF;
+}
+
+.type-bar-right a:hover, .type-bar-right button:hover {
+    background-color: #ffb845;
+}
+
+#down-load {
+    background-image: url(../img/下载.png);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-color:#fff;
+}
+
+#stamp {
+    background-image: url(../img/打印.png);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+}
+
+#down-load:hover {
+    background-image: url(../img/下载-f.png);
+    background-color: #ffb845;
+}
+
+#stamp:hover {
+    background-image: url(../img/打印-f.png);
+}

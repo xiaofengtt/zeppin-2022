@@ -14,9 +14,17 @@ $(document).ready(function() {
 });
 //提交
 $('#formsubmit').submit(function() {
+	if (flagSubmit == false) {
+        return false;
+    }
+    flagSubmit = false;
+    setTimeout(function() {
+        flagSubmit = true;
+    }, 3000);
 	var name=$("#name").val().replace(/(^\s*)|(\s*$)/g, "");
 	var realname=$("#realname").val().replace(/(^\s*)|(\s*$)/g, "");
 	var mobile=$("#mobile").val().replace(/(^\s*)|(\s*$)/g, "");
+	var email=$("#email").val().replace(/(^\s*)|(\s*$)/g, "");
 	if(name==""){
 		layer.msg('用户名不能为空', {
 			time: 2000 
@@ -27,6 +35,14 @@ $('#formsubmit').submit(function() {
 		});   
 	}else if(mobile==""){
 		layer.msg('手机不能为空', {
+			time: 2000 
+		});    
+	}else if(!checkPhone(mobile)){
+		layer.msg('手机号校验失败', {
+			time: 2000 
+		});    
+	}else if(!checkEmail(email)){
+		layer.msg('邮箱校验失败', {
 			time: 2000 
 		});    
 	}else{

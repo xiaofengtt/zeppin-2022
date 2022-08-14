@@ -10,6 +10,13 @@ $(document).ready(function() {
 });
 //提交
 $('#formsubmit').submit(function() {
+	if (flagSubmit == false) {
+        return false;
+    }
+    flagSubmit = false;
+    setTimeout(function() {
+        flagSubmit = true;
+    }, 3000);
 	var uuid = (url('?uuid') != null) ? url('?uuid') : '';
 	var netValue=$("#netValue").val().replace(/(^\s*)|(\s*$)/g, "");
 	var statistime=$("#statistime").val().replace(/(^\s*)|(\s*$)/g, "");

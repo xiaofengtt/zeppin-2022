@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<meta charset="UTF-8">
+		<title>企财宝</title>
+	</head>
+	<body>
+		<center style="font-size:0.34rem;padding:3rem 0.4rem;">
+			请在微信中打开
+		</center>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/flagSubmit.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jsrender.min.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script>
+			$(function(){
+				var api = "../rest/qcbWechat",	//后台接口前缀
+				appId = "wxae71d4aafb72f0aa",
+				Url = "wechat.qicaibao.cc",
+				openIdUrl = url("?openId") != null ? url("?openId") : "",
+				ua = navigator.userAgent.toLowerCase(),//获取设备苹果或安卓
+				moneyReg = /^(([1-9][0-9]*)|(([0]\.\d{1,2}|[1-9][0-9]*\.\d{1,2})))$/,//输入金额验证正则
+				integermoneyReg = /^[1-9]\d*$/,//正整数金额验证正则
+				windowHeight = $(window).height(),	//获得屏幕高度
+				layerHeight = $(".layer").height();
+				if(navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == "micromessenger"){
+					window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appId + "&redirect_uri=https://" + Url + "/qcbWechat/index.html?&response_type=code&scope=snsapi_base&state=qcb#wechat_redirect";	
+				}
+			})
+		</script>
+	</body>
+</html>

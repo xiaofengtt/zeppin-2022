@@ -1,0 +1,134 @@
+<!--instruction.wxml-->
+<view class="container">
+  <view class="title-view">
+    <view class="main">【{{product.custodianCN}}】{{product.name}}</view>
+    <view class="other">
+      <view class="message">{{product.scode}} | {{product.guaranteeStatusCN}} | {{product.riskLevelCN}}</view>
+    </view>
+  </view>
+  <view class="base-view">
+    <view class="title">
+      <view class="split"></view>
+      <view class="text">基本信息</view>
+    </view>
+    <view class="tr">
+      <view class="key">产品代码</view>
+      <view class="value">{{product.scode}}</view>
+    </view>
+    <view class="tr">
+      <view class="key">理财币种</view>
+      <view class="value">{{product.currencyTypeCN}}</view>
+    </view>
+    <view class="tr">
+      <view class="key">预期年化利率</view>
+      <view class="value">{{product.targetAnnualizedReturnRate}}%</view>
+    </view>
+    <view class="tr">
+      <view class="key">产品期限</view>
+      <view class="value">{{product.term}}天</view>
+    </view>
+    <view class="tr">
+      <view class="key">计划募集</view>
+      <view class="value">{{product.collectAmountCN}}元</view>
+    </view>
+    <view class="tr">
+      <view class="key">产品类型</view>
+      <view class="value">{{product.typeCN}}</view>
+    </view>
+    <view class="tr">
+      <view class="key">风险等级</view>
+      <view class="value">{{product.riskLevelCN}}</view>
+    </view>
+    <view class="tr">
+      <view class="key">收益支付方式</view>
+      <view class="value">{{product.paymentTypeCN}}</view>
+    </view>
+  </view>
+  <view class="base-view">
+    <view class="title">
+      <view class="split"></view>
+      <view class="text">认购信息</view>
+    </view>
+    <view class="tr">
+      <view class="key">最小投资金额</view>
+      <view class="value">{{product.minInvestAmountNum}}{{product.minInvestAmountCN}}元</view>
+    </view>
+    <view class="tr" hidden="{{product.maxInvestAmount == 0 || product.maxInvestAmount == ''}}">
+      <view class="key">最大投资金额</view>
+      <view class="value">{{product.maxInvestAmountNum}}{{product.maxInvestAmountCN}}元</view>
+    </view>
+    <view class="tr">
+      <view class="key">投资递增金额</view>
+      <view class="value">{{product.minInvestAmountAddNum}}{{product.minInvestAmountAddCN}}元</view>
+    </view>
+    <view class="tr">
+      <view class="key">产品认购起始日</view>
+      <view class="value">{{product.collectStarttimeCN}}</view>
+    </view>
+    <view class="tr">
+      <view class="key">产品认购结束日</view>
+      <view class="value">{{product.collectEndtimeCN}}</view>
+    </view>
+    <view class="tr">
+      <view class="key">产品登记日期</view>
+      <view class="value">{{product.recordDateCN}}</view>
+    </view>
+    <view class="tr">
+      <view class="key">起息日</view>
+      <view class="value">{{product.valueDateCN}}</view>
+    </view>
+    <view class="tr">
+      <view class="key">到期日</view>
+      <view class="value">{{product.maturityDateCN}}</view>
+    </view>
+  </view>
+  <view class="base-view">
+    <view class="title">
+      <view class="split"></view>
+      <view class="text">手续费率</view>
+    </view>
+    <view class="tr" hidden="{{product.subscribeFee == 0}}">
+      <view class="key">认购费率</view>
+      <view class="value">{{product.subscribeFee}}%</view>
+    </view>
+    <view class="tr" hidden="{{product.purchaseFee == 0}}">
+      <view class="key">申购费率</view>
+      <view class="value">{{product.purchaseFee}}%</view>
+    </view>
+    <view class="tr" hidden="{{product.redemingFee == 0}}">
+      <view class="key">赎回费率</view>
+      <view class="value">{{product.redemingFee}}%</view>
+    </view>
+    <view class="tr" hidden="{{product.custodyFee == 0}}">
+      <view class="key">托管费率</view>
+      <view class="value">{{product.custodyFee}}%</view>
+    </view>
+    <view class="tr" hidden="{{product.networkFee == 0}}">
+      <view class="key">销售费率</view>
+      <view class="value">{{product.networkFee}}%</view>
+    </view>
+    <view class="tr" hidden="{{product.managementFee == 0}}">
+      <view class="key">管理费率</view>
+      <view class="value">{{product.managementFee}}%</view>
+    </view>
+  </view>
+    <view class="last-view">
+    <view class="title">
+      <view class="split"></view>
+      <view class="text">详细信息</view>
+    </view>
+    <view class="content" hidden="{{product.investScopeWeb == ''}}">
+      <view class="name">投资范围</view>
+      <view class="context">{{product.investScopeWeb}}</view>
+    </view>
+    <view class="content" hidden="{{product.revenueFeatureWeb == ''}}">
+      <view class="name">收益说明</view>
+      <view class="context">{{product.revenueFeatureWeb}}</view>
+    </view>
+    <view class="content" hidden="{{product.remarkWeb == ''}}">
+      <view class="name">更多描述</view>
+      <view class="context">{{product.remarkWeb}}</view>
+    </view>
+  </view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

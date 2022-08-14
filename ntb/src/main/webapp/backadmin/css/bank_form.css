@@ -1,0 +1,163 @@
+.edit {
+    width: 100%;
+    margin-top: 20px;
+    display: none;
+}
+
+.add_account_form {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.add_account_form .cn_price {
+    width: 66%;
+    display: inline-block;
+    text-align: right;
+    color: green;
+    font-size: 16px;
+}
+
+.add_account_form .form_item {
+    margin-bottom: 15px;
+}
+
+.add_account_form .form_item i {
+    color: #E0615F;
+}
+
+.add_account_form .form_item>span {
+    font-size: 14px;
+    padding: 5px 10px 5px 3px;
+    vertical-align: top;
+    text-align: right;
+    display: inline-block;
+    width: 140px;
+}
+
+.add_account_form .form_item>input, .add_account_form .form_item>select {
+    width: 50%;
+    display: inline-block;
+    border: 1px solid #C1C1C1;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.add_account_form .form_item textarea {
+    width: 50%;
+    height: 150px;
+    resize: none;
+    display: inline-block;
+}
+
+.add_account_form .form_item small {
+    font-size: 14px;
+    display: inline-block;
+    padding: 5px 10px 5px 3px;
+    vertical-align: super;
+}
+
+.add_account_form .form_item .form_balance {
+    font-size: 14px;
+    color: #c1c1c1;
+    width: auto;
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.add_account_form .btn_group {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+.add_account_form .btn_group input {
+    font-size: 16px;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: #C1C1C1;
+    border: 1px solid #C1C1C1;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    background: #FFFFFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.add_account_form .btn_group input:nth-child(1):hover {
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+}
+
+.add_account_form .btn_group input:nth-child(2) {
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+    margin-left: 30px;
+}
+
+.add_account_form .btn_group input:nth-child(2):hover {
+    color: #FFFFFF;
+    background: #4D9CFF;
+}
+
+/*头像*/
+
+.submit_logo {
+    position: absolute;
+    width: 280px;
+    height: 125px;
+    color: #c1c1c1;
+    top: 6%;
+    right: 8%;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 2px rgb(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 2px rgb(0, 0, 0, 0.2);
+    -ms-box-shadow: 0 0 2px rgb(0, 0, 0, 0.2);
+    -o-box-shadow: 0 0 2px rgb(0, 0, 0, 0.2);
+    box-shadow: 0 0 2px rgb(0, 0, 0, 0.2);
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.submit_logo p {
+    font-size: 14px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 20px;
+}
+
+.submit_logo input[type="file"] {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 100;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.submit_logo img {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}

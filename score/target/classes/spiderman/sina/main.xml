@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<spiderman>
+    <property key="duration" value="120s" /><!-- 运行时间，可以给 {n}s {n}m {n}h {n}d -->
+    <!--<property key="scheduler.period" value="2m" />-->
+    <property key="logger.level" value="ERROR" /><!-- 日志级别 INFO DEBUG WARN ERROR OFF -->
+    <property key="worker.download.delay" value="100" />  <!--下载延迟，免得被封 -->
+    
+    <property key="worker.download.enabled" value="1" /><!-- 是否开启下载工人 -->
+    <property key="worker.extract.enabled" value="1" /><!-- 是否开启解析工人 -->
+    <property key="worker.result.enabled" value="1" /><!-- 是否开启结果处理工人 -->
+    
+    <property key="worker.download.size" value="5" /><!-- 下载线程数 -->
+    <property key="worker.extract.size" value="5" /><!-- 页面抽取线程数 -->
+    <property key="worker.result.size" value="5" /><!-- 结果处理线程数 -->
+    <property key="worker.result.limit" value="0" />
+    <property key="worker.result.handler" value="cn.zeppin.product.score.spiderman.SinaMainResultHandler" /><!-- 自定义结果回调处理类 -->
+    <property key="queue.store.path" value="store" /><!-- 存储文件的路径 -->
+    <property key="queue.zbus.enabled" value="0" /><!-- 是否使用ZBus队列，单机版暂时不使用，貌似性能还有问题 -->
+    <!--<property key="queue.zbus.broker" value="10.8.60.8:15555" /> ZBus服务地址,三种模式：1.jvm(本地模式) 2.ip:port(single模式) 3.[ip:port,ip:port](ha模式) -->
+    <!--<property key="queue.other.names" value="SPIDERMAN_JSON_RESULT" /> 注册创建其他队列备用 -->
+    <!-- <seed>URL地址</seed> --><!-- 写死种子入口的方式 -->
+    <script bindings="net.kernal.spiderman.Bootstrap$Bindings"><!-- 使用脚本动态创建方式 -->
+    <!-- var categoryList = ["g/championsleague","g/premierleague","g/bundesliga","g/laliga","g/seriea","z/CFT2012","csl"]; -->
+    <![CDATA[
+    	$seeds.clear();
+    	var categoryList = ["g/championsleague","g/premierleague","g/bundesliga","g/laliga","g/seriea","z/CFT2012","csl"];
+    	for (var i in categoryList) {
+	        $seeds.add("category-" + categoryList[i], "http://sports.sina.com.cn/" + categoryList[i]+ "/");
+	    }
+	]]>
+    </script>
+    <!-- 页面抽取规则 -->
+    <extract>
+    	<!-- 注册解析器 -->
+        <extractor name="HtmlCleaner" class="net.kernal.spiderman.worker.extract.extractor.impl.HtmlCleanerExtractor" isDefault="1" />
+        <extractor name="Text" class="net.kernal.spiderman.worker.extract.extractor.impl.TextExtractor" />
+        <!-- 注册过滤器 -->
+        <filter name="MyFilter" class="test.MyFilter" />
+        <!-- 要抽取的页面 -->
+		<page name="category" isPersisted="1">
+			<url-match-rule type="startsWith" value="http://sports.sina.com.cn/g/" />
+			<model name="import">
+				<field name="import" xpath="//div[@class='cont_m_2_box']//div[@class='slide_box']//a[@href]" attr="href" isArray="1" isDistinct="true"/>
+			</model>
+			<model name="detail">
+				<field name="detail" xpath="//div[@class='match_blk clearfix']//div[@class='match_blk_rt']//a[@href]" attr="href" isArray="1" isDistinct="true"/>
+			</model>
+		</page>
+		<page name="bundesliga" isPersisted="1">
+			<url-match-rule type="startsWith" value="http://sports.sina.com.cn/g/bundesliga" />
+			<model name="import">
+				<field name="import" xpath="//div[@data-sudaclick='rollnews']//a[@href]" attr="href" isArray="1" isDistinct="true"/>
+			</model>
+		</page>
+		<page name="cft" isPersisted="1">
+			<url-match-rule type="contains" value="CFT2012" />
+			<model name="import">
+				<field name="import" xpath="//div[@class='p_right']//div[@class='w_cont_box']//a[@href]" attr="href" isArray="1" isDistinct="true"/>
+			</model>
+		</page>
+		<page name="csl" isPersisted="1">
+			<url-match-rule type="contains" value="/csl/" />
+			<model name="import">
+				<field name="import" xpath="//div[@class='blk1 clearfix']//div[@class='right']//a[@href]" attr="href" isArray="1" isDistinct="true"/>
+			</model>
+			<model name="detail">
+				<field name="detail" xpath="//div[@class='blk2 clearfix']//div[@class='left']//div[@class='match-news']//a[@href]" attr="href" isArray="1" isDistinct="true"/>
+			</model>
+		</page>
+	</extract>
+</spiderman>

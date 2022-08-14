@@ -1,0 +1,190 @@
+.product_item {
+    width: 100%;
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    border: 1px solid #E6E6E6;
+}
+
+.product_title {
+    color: #4990E2;
+    font-size: 16px;
+    background: #F7FBFF;
+    margin: 0;
+    height: 45px;
+    line-height: 45px;
+}
+
+.product_content {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.product_content tr {
+    height: 35px;
+    padding: 0 10px;
+}
+
+.product_content tr:nth-child(2) {
+    font-size: 14px;
+}
+
+.product_content tr td {
+    text-align: center;
+}
+
+.price_msg {
+    width: 100%;
+    padding: 15px 10px;
+    position: relative;
+    margin-top: 30px;
+}
+
+.price_msg ul {
+    margin: 0;
+    width: 100%;
+}
+
+.price_msg ul li {
+    width: 33%;
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+}
+
+.price_msg ul li span {
+    color: orange;
+}
+
+.invest_confirm_ps {
+    margin-top: 0
+}
+
+.invest_confirm_ps span {
+    margin-left: 12px;
+    margin-right: 10px;
+    display: inline-block;
+    width: 52px;
+    font-size: 14px;
+    text-align: right;
+}
+
+.invest_confirm_ps i {
+    font-style: normal;
+}
+
+.buy_password span {
+    vertical-align: middle;
+    padding: 5px 10px 5px 3px;
+    font-size: 14px;
+}
+
+.confirm_item {
+    margin-top: 20px;
+}
+
+.confirm_item span {
+    font-size: 14px;
+    display: inline-block;
+    padding: 5px 10px 5px 3px;
+}
+
+.confirm_item small {
+    margin-left: 16px;
+    font-size: 13px;
+}
+
+.confirm_item .confirm_item_title {
+    width: 140px;
+    text-align: right;
+}
+
+.btn_group {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+.contain-right .btn_group input {
+    font-size: 16px;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: #C1C1C1;
+    border: 1px solid #C1C1C1;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    background: #FFFFFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.contain-right .btn_group #edit {
+    width: 100px;
+    height: 35px;
+    display: inline-block;
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+    background: #FFFFFF;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.contain-right .btn_group #edit:hover {
+    background: #4D9CFF;
+    color: #FFFFFF;
+}
+
+.btn_group input:nth-child(1):hover {
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+}
+
+.btn_group input:nth-child(2) {
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+    margin-left: 30px;
+}
+
+.btn_group input:nth-child(2):hover {
+    color: #FFFFFF;
+    background: #4D9CFF;
+}
+
+.buy_password span {
+    vertical-align: middle;
+    padding: 5px 10px 5px 3px;
+    font-size: 14px;
+}
+
+.buy_password i {
+    color: #E0615F;
+}
+
+.buy_password input[type="password"] {
+    display: inline-block;
+    border: 1px solid #C1C1C1;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    margin: 0;
+}

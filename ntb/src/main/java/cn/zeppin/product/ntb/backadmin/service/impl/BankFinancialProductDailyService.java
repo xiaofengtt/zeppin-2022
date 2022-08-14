@@ -78,7 +78,6 @@ public class BankFinancialProductDailyService extends BaseService implements IBa
 	 */
 	@Override
 	public BankFinancialProductDaily addDaily(BankFinancialProductDaily bankFinancialProductDaily) {
-		// TODO Auto-generated method stub
 		if(bankFinancialProductDaily != null){
 			bankFinancialProductDaily = this.bankFinancialProductDailyDAO.insert(bankFinancialProductDaily);
 			if(bankFinancialProductDaily.getBankFinancialProduct() != null){

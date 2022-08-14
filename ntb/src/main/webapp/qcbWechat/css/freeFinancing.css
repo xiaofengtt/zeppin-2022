@@ -1,0 +1,307 @@
+.title::before{
+	display: none;
+}
+.main{
+	padding-bottom:1.2rem;
+}
+.main-top{
+	background:#F99743 url(../img/freeFinacingBg.png) center no-repeat;
+	background-size:cover;
+	/*height:3.3rem;*/
+	color: #FFFFFF;	
+	text-align: center;
+	padding:0.8rem 0 0.5rem 0;
+	position:relative;
+}
+.main-top p{
+	font-size: 0.28rem;
+	margin-bottom:0.2rem;
+	color:rgba(255,255,255,0.8);
+}
+.main-top h3{
+	font-size:0.68rem;
+	line-height:0.68rem;
+	margin-bottom:0.3rem;
+}
+.main-top h5{
+	font-size:0.28rem;
+	color:rgba(255,255,255,0.6);
+	padding-top: 0.2rem;
+}
+.main-top span{
+	position:absolute;
+	top:0.35rem;
+	right:0.2rem;
+	color:rgba(255,255,255,0.6);
+	font-size:0.3rem;
+}
+.main-mid-top{
+	height:1.42rem;
+	text-align: center;
+	background:#FFF;
+	color:#FFFFFF;
+}
+.main-mid-top div{
+	float: left;
+	width:49%;
+	margin-top:0.34rem;
+}
+.main-mid-top div.rightBorder{
+	border-right:1px solid rgba(235,235,235,1);
+	width:0.3%;
+	height:0.4rem;
+	margin-top:0.6rem;
+}
+.main-mid-top p{
+	font-size:0.28rem;
+	line-height:0.28rem;
+	margin-bottom:0.2rem;
+	color:rgba(0,0,0,0.4);
+}
+.main-mid-top span{
+	font-size:0.36rem;
+	color:rgba(0,0,0,0.7);
+}
+
+.account-auto-transfer{
+	margin-top:0.2rem;
+	background:#FFFFFF;
+	padding:0.36rem 0.28rem;
+	color: #000000;
+	position: relative;
+}
+.account-auto-transfer h3{
+	font-size:0.32rem;
+	margin-bottom:0.12rem;
+}
+.account-auto-transfer p{
+	opacity: 0.5;
+	font-size: 0.26rem;
+}
+.account-auto-transfer input[type="button"]{
+	outline: none;
+	border:none;
+	color:#FFFFFF;
+	background-color: #FF7600;
+	font-size:0.26rem;
+	border-radius: 5px;
+	display: inline-block;
+	width:1.6rem;
+	height:0.64rem;
+	position: absolute;
+	right:0.28rem;
+	top:50%;
+	-webkit-transform: translateY(-50%);
+}
+
+.select-box{
+	/*height:0.74rem;*/
+	background:#FFFFFF;
+	margin-top:0.2rem;
+	border-bottom:1px solid #e6e6e6;
+}
+.select-box div{
+	display: inline-block;
+	width:49%;
+	text-align: center;
+	position: relative;
+	padding:0.28rem 0 0.24rem 0;
+	font-size:0.30rem;
+}
+.select-box .status-tap{
+	position: absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	z-index:3;
+}
+.select-box .status{
+	display: inline-block;
+	padding-bottom:0.06rem;
+	font-size:0.28rem;
+}
+.status-light{
+	/* border-bottom:2px solid #FF7600; */
+	color:#FF7600;
+}
+
+.charts-box{
+	height:3.6rem;
+	padding-right:0.3rem;
+	background:#FFFFFF;
+	position: relative;
+}
+#charts{
+	width:100%;
+	height:100%;
+}
+
+.charts-bg{
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:99999999;
+}
+
+.main-mid-content{
+	padding:0.4rem 0.28rem;
+	border-bottom:1px solid #EBEBEB;
+	background: #FFFFFF;
+}
+.main-mid-content div{
+	text-align: center;
+	width:33.333%;
+	position: relative;
+	float: left;
+}
+.turnOut{
+	display:none;
+}
+.turnOut .main-mid-content div{
+	width:50%;
+}
+.main-mid-content div h5{
+	font-size: 0.26rem;
+	color: #000000;
+}
+.main-mid-content > div > .border {
+	width:100%;
+	width:100%;
+	height:0.04rem;
+	position: absolute;
+	top:50%;
+	-webkit-transform:translateY(-50%);
+}
+.main-mid-content > div > .circle{
+	height:0.2rem;
+	width:0.2rem;
+	position: absolute;
+	border-radius: 50%;
+	background:#FFFFFF;
+	z-index:3;
+	top:50%;
+	left:50%;
+	-webkit-transform:translate(-50%,-50%);
+}
+.circle-g{
+	border:3px solid #EBEBEB;
+}
+.circle-o{
+	border:3px solid #FF7600;
+}
+.border-g{
+	background:#EBEBEB;	
+}
+.border-o{
+	background:#FF7600;
+}
+.main-mid-content div p{
+	opacity: 0.5;
+	font-size: 0.26rem;
+	color: #000000;
+	margin-top:0.52rem;
+}
+
+
+
+
+
+.main-bottom{
+	padding:0.26rem 0.28rem;
+	background:#FFFFFF;
+}
+
+.main-bottom-item{
+	margin-bottom:0.18rem;
+}
+.main-bottom-item:last-child{
+	margin-bottom:none;
+}
+.main-bottom-item img{
+	display: inline-block;
+	vertical-align: top;
+	width:0.28rem;
+	height:0.28rem;
+	margin-right:0.16rem;
+	margin-top: 0.04rem;
+}
+.main-bottom-item span{
+	display: inline-block;
+	vertical-align: top;
+	width:90%;
+	opacity: 0.6;
+	font-size: 0.26rem;
+	color: #000000;
+}
+
+
+.main-foot{
+	margin-top:0.2rem;
+	background:#FFFFFF;
+	padding-bottom:0.36rem;
+}
+.main-foot div{
+	padding:0.32rem 0.28rem;
+	border-top:1px solid #EBEBEB;
+	opacity: 0.8;
+	font-size: 0.26rem;
+	line-height:0.34rem;
+	color: #000000;
+}
+
+.main-foot h4{
+	opacity: 0.8;
+	font-size: 0.26rem;
+	color: #000000;
+	padding: 0 0.28rem;
+}
+.main-foot h4::before{
+	content:"";
+	display: inline-block;
+	vertical-align: middle;
+	width:0.1rem;
+	height:0.1rem;
+	background:#FF7600;
+	border-radius:50%;
+	margin-right:0.14rem;
+}
+.main-foot h5{
+	opacity: 0.5;
+	font-size: 0.26rem;
+	color: #000000;
+	padding: 0 0.52rem;
+	margin:0.14rem 0 0.18rem 0;
+}
+
+
+/*活期有余额时的底部按钮*/
+.bottom-btn-box{
+	font-size:0.36rem;
+	border:none;
+	width:100%;
+	margin:0 auto;
+	height:0.95rem;
+	color:#FFFFFF;
+	text-align: center;
+	position: fixed;
+	bottom:0;
+	border-radius:0;
+	display:none;
+}
+.bottom-btn-box input{
+	border:none;
+	width:50%;
+	float: left;
+	height:100%;
+	color:#FFFFFF;
+}
+.bottom-btn-box .free-in{
+	background:#FF7600;
+}
+
+.bottom-btn-box .free-out{
+	background:#F99743;	
+}

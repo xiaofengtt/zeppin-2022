@@ -57,6 +57,10 @@ public class BankFinancialProductPublishOperateVO implements Entity {
 			this.typeCN = "删除";
 		}else if(BankFinancialProductPublishOperateType.EXCEPTION.equals(bfppo.getType())){
 			this.typeCN = "紧急下线";
+		}else if(BankFinancialProductPublishOperateType.COLLECT.equals(bfppo.getType())){
+			this.typeCN = "开启认购";
+		}else if(BankFinancialProductPublishOperateType.UNINVEST.equals(bfppo.getType())){
+			this.typeCN = "结束认购";
 		}
 		this.value = bfppo.getValue();
 		this.reason = bfppo.getReason();

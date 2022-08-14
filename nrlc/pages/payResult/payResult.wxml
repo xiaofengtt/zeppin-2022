@@ -1,0 +1,12 @@
+<!--pages/payResult/payResult.wxml-->
+<view class="container">
+  <view class="top-view">
+    <image src="/resources/pay/result.png"></image>
+    <view class="info">支付成功，申请处理中...</view>
+    <view class="time">{{time}}</view>
+  </view>
+  <view class="submit-view" bindtap="toMy">
+    <view>查看我的持仓</view>
+  </view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

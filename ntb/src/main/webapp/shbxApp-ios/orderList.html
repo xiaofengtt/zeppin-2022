@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<title>我的订单</title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/orderList.css" />
+	</head>
+	<body onload="loading();" style="display:none;">
+		<div class="titleDiv">
+			<img class="titleBack" src="img/icon_return.png" alt="返回" />
+			<p>我的订单</p>
+		</div>
+		<div class="wrap">
+			<ul class="selectBar">
+				<li class="light" data-url="allList"><a class="color-2E">全部</a></li>
+				<li data-url="doneList"><a class="color-2E">未付款</a></li>
+				<li data-url="pengdingList"><a class="color-2E">待处理</a></li>
+				<li data-url="doingList"><a class="color-2E">在缴</a></li>
+				<div class="clear"></div>
+			</ul>
+			<div class="order-list allList">
+				
+			</div>
+			<div class="order-list doneList"></div>
+			<div class="order-list pengdingList"></div>
+			<div class="order-list doingList"></div>
+			
+			<p class="layer">
+				提示信息
+			</p>
+			<div id="loading-box">
+				<img src="./img/icon-loading.gif" alt="" />
+			</div>	
+			<div id="confirm-box" class="indexConfirm">
+				<div class="confirm-box-inner">
+					<h3>温馨提示</h3>
+					<h4></h4>
+					<div class="confirm-box-inner-btnbox clearfix">
+						<input type="button"  value="取消" id="confirm-box-close"/>
+						<input type="button"  value="立即提交" id="confirm"/>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<script src="./js/burialPoint.js"></script>
+		<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+		<script src="./js/base64.js"></script>
+		<script src="./js/md5.js"></script>
+		<script type="text/javascript" src="js/picker.min.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="js/orderList.js" ></script>
+	</body>
+</html>

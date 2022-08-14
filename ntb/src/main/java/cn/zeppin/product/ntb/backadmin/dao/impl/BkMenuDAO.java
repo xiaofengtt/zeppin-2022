@@ -106,16 +106,15 @@ public class BkMenuDAO extends BaseDAO<BkMenu, String> implements IBkMenuDAO {
 	 * @return
 	 */
 	public List<Entity> getAll(Class<? extends Entity> resultClass){
-		return super.getBySQL("select b.* from bk_menu b order by b.level", resultClass);
+		return super.getBySQL("select b.* from bk_menu b order by b.level , b.sort", resultClass);
 	}
 
 	@Override
 	public List<Entity> getListForPage(Map<String, String> inputParams,
 			Integer pageNum, Integer pageSize, String sorts,
 			Class<? extends Entity> resultClass) {
-		// TODO Auto-generated method stub
 		StringBuilder builder = new StringBuilder();
-		builder.append(" select b.uuid, b.name, b.title, b.level, b.scode, b.url, b.pid, b.icon from bk_menu b where 1=1 ");
+		builder.append(" select b.uuid, b.name, b.title, b.level, b.scode, b.url, b.pid, b.icon, b.sort from bk_menu b where 1=1 ");
 		//名称
 		if (inputParams.get("name") != null && !"".equals(inputParams.get("name"))) {
 			builder.append(" and b.name = '" + inputParams.get("name") + "' ");
@@ -153,14 +152,13 @@ public class BkMenuDAO extends BaseDAO<BkMenu, String> implements IBkMenuDAO {
 			}
 		}
 		else {
-			builder.append(" order by b.scode desc ");
+			builder.append(" order by b.sort ");
 		}
 		return super.getBySQL(builder.toString(), pageNum, pageSize, resultClass);
 	}
 
 	@Override
 	public Integer getCount(Map<String, String> inputParams) {
-		// TODO Auto-generated method stub
 		StringBuilder builder = new StringBuilder();
 		builder.append(" select count(*) from bk_menu b where 1=1 ");
 		//名称

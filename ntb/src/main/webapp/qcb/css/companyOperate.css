@@ -1,0 +1,92 @@
+.main-right-body{
+	padding-top:20px;
+	padding-left:0;
+	padding-right:0;
+}
+.main-right-body-header{
+	padding-bottom:16px;
+	border-bottom:1px solid #E8E4E4;
+	padding-left:40px;
+	position: relative;
+}
+.msg-box,.msg-boxs{padding:20px 14px;}
+.msg-box p,.msg-boxs p{font-size:14px;line-height:28px;margin-bottom:5px;color:#A2A2A2;padding-left:16px;}
+.submitBtn,.gobackBtn{display:block;float:left;height:33px;}
+.submitBtn{
+	color: #FFFFFF;
+    background: #FDA133;
+    background: -webkit-linear-gradient(left, #FDA133, #FD8521);
+    background: -moz-linear-gradient(left, #FDA133, #FD8521);
+    background: -ms-linear-gradient(left, #FDA133, #FD8521);
+    background: linear-gradient(left, #FDA133, #FD8521);
+}
+.table{
+	margin-top:10px;
+}
+.table tr{
+	height:60px;
+}
+.msg-box-edit {
+    display: block;
+}
+.box{
+	padding:20px 0 0 0;
+}
+.msg-box{
+	margin-bottom:30px;
+}
+.msg-box i,.msg-boxs i{
+	font-style: normal;
+    color: red;
+    margin:0 5px;
+}
+.msg-box .msg-item-key{
+	width:120px;
+	margin-right:25px;
+}
+.upload-left,.upload-right{
+	width:50%;
+	float:left;
+	padding:0 16px;
+}
+.upload-right label{
+	color: #A5A5A5;
+	
+}
+.upload-right p{
+	font-size: 13px;
+    color: #A5A5A5;
+    line-height:26px;
+    padding:0;
+}
+.downloadModel{
+	color: #FF9E10;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 10px 0px 10px 30px;
+    position: absolute;
+    right: 40px;
+    top: 15px;
+    background-image: url(../img/下载-small.png);
+    background-repeat: no-repeat;
+    background-position-x: 6px;
+    background-position-y: center;
+    cursor: pointer;
+}
+.reupload{
+	color: #FF9E10;
+	line-height:30px;
+}
+.ajax-file-upload{
+	margin:15px 10px 10px 0 !important;
+}
+
+.layer-anim .layui-layer-content{
+	padding:45px 20px 20px 20px !important;
+	line-height:32px !important;
+}
+.layui-layer-hui .layui-layer-content{
+	padding:12px 25px !important;
+	
+}

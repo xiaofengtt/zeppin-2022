@@ -1,0 +1,84 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>牛投帮-后台管理系统</title>
+<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="./css/base.css">
+<link rel="stylesheet" href="./css/accountControllerList.css">
+<link rel="stylesheet" href="./css/screening.css">
+<link rel="stylesheet" href="./css/msg_table.css">
+<script type="text/template" id="queboxTpl">
+    <tr {{if #index%2 == 1}}style="background:#F7FBFF;"{{/if}}>
+        <td>{{:#index + 1}}</td>
+        <td>{{:realname}}</td>
+        <td>{{:idcard}}</td>
+        <td>{{:mobile}}</td>
+		<td>
+			{{if status == 'normal'}}
+                <span class="color_green">正常</span>
+            {{else}}
+                <span class="color_red">停用</span>
+            {{/if}}
+		</td>
+        <td>
+            <a href="./shbxUserDetail.jsp?uuid={{:uuid}}">查看</a>
+        </td>
+    </tr>
+</script>
+<style>
+    .screening{
+        margin-top:0;
+    }
+</style>
+</head>
+<body>
+    <jsp:include page="header.jsp"/>
+    <jsp:include page="navigation.jsp"/>
+	<input id="scode" type="hidden" value="01000101" />
+    <div class="contain">
+        <jsp:include page="contentLeft.jsp"/>
+
+        <div class="contain-right">
+            <div class="location">
+                <div class="locationLeft"><a href="">社保熊管理</a><span>></span><a class="current">社保熊用户管理</a></div>
+                <div class="clear"></div>
+            </div>
+            <div class="main-contain pt-13 pl-14 pr-16">
+                <div class="screening">
+                    <div class="searchDiv" style="position:relative;width:260px;margin:0;right:0;top:0;">
+                        <div class="input-group">
+                            <input id="search" class="form-control" type="text" value="" placeholder="搜索">
+                            <label class="input-group-addon" id="searchButton"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <table cellspacing="0" cellpadding="0" class="msg_table">
+                    <tr class="first_tr">
+                        <th width="5%">#</th>
+                        <th>真实姓名</th>
+                        <th>身份证号</th>
+                        <th>手机号</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    <tbody id="queboxCnt"></tbody>
+                </table>
+
+                <div id="pageTool"></div>
+                <%--//--%>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="./js/getHtmlDocName.js"></script>
+<script type="text/javascript" src="./js/url.min.js"></script>
+<script type="text/javascript" src="./js/flagSubmit.js"></script>
+<script type="text/javascript" src="./js/jsrender.min.js"></script>
+<script type="text/javascript" src="./js/layer-v3.0.1/layer/layer.js"></script>
+<script src="./js/shbxUserList.js"></script>
+</body>
+</html>

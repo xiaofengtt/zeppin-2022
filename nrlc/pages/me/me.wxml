@@ -1,0 +1,46 @@
+<!--me.wxml-->
+<view class="container">
+  <view class="top-view">
+    <image src="{{user ? '/resources/me/user_login.png' : '/resources/me/user_unlogin.png'}}"></image>
+    <block wx:if="{{user}}">
+      <text>{{user.realnameAuthFlag ? user.publicName : user.phone}}</text>
+    </block>
+    <block wx:if="{{user == null}}">
+      <view class="button-view">
+        <view class="button" bindtap="{{buttonAble ? 'toLogin' : ''}}">立即登录</view>
+        <view class="button" bindtap="{{buttonAble ? 'toRegister' : ''}}">立即注册</view>
+      </view>
+    </block>
+  </view>
+  <view class="main-view">
+    <view class="split"></view>
+    <view class="content-view" bindtap="{{buttonAble ? (user ? 'toCertificationResult' : 'toLogin') : ''}}">
+      <image src="/resources/me/idcard.png"></image>
+      <view class="title">实名认证</view>
+      <view class="message"><text class="light">{{user.realnameAuthFlag ?'已认证' : '未认证'}}</text></view>
+    </view>
+    <view class="content-view" bindtap="{{buttonAble ? (user ? 'toBankcardList' : 'toLogin') : ''}}">
+      <image src="/resources/me/bankcard.png"></image>
+      <view class="title">我的银行卡</view>
+      <view class="message">
+       <block wx:if="{{!user || user.bankcardCount == 0}}"><text class="light">未绑定</text></block>
+       <block wx:if="{{user && user.bankcardCount != 0}}">已绑定<text class="light"> {{user.bankcardCount}} </text>张银行卡</block>
+      </view>
+    </view>
+  </view>
+  <view class="table-view">
+    <view class="tr" bindtap="{{buttonAble ? (user ? 'toHistory' : 'toLogin') : ''}}">
+      <view class="split"></view>
+      <view class="text">交易记录</view>
+      <image src="/resources/common/arrow.png"></image>
+    </view>
+    <view class="tr" bindtap="{{buttonAble ? 'toContact' : ''}}">
+      <view class="split"></view>
+      <view class="text">联系我们</view>
+      <image src="/resources/common/arrow.png"></image>
+    </view>
+  </view>
+  <view hidden="{{!user}}" class="logout-view" bindtap="logoutModel">退出登录</view>
+  <view class="border"></view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

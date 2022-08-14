@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>产品说明书</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/productMsg.css?version=1.5" />
+		<script id="queboxTpl" type="text/template">
+			<div class="main-top">
+				<div class="main-top-top">
+					<div class="main-top-top-logo">
+						<img src="..{{:iconColorUrl}}" alt="" />
+					</div>
+					<div class="main-top-top-name">
+						<p> {{:shortname}}</p>
+						<span>【{{:custodianCN}}】{{:scode}}</span>
+					</div>
+				</div>
+			</div>
+			<!--main-top-->
+
+			<div class="box">
+				<h3 class="title">
+					<img src="./img/icon_info.png" alt="" />
+					<span>基本信息</span>
+				</h3>
+				<ul>
+					<li>
+						<p>产品代码</p>
+						<span>{{:scode}}</span>
+					</li>
+					<li>
+						<p>理财币种</p>
+						<span>{{:currencyTypeCN}}</span>
+					</li>
+					<li>
+						<p>目标年化收益率</p>
+						<span>{{:minAnnualizedReturnRate}}%</span>
+					</li>
+					<li>
+						<p>产品期限</p>
+						<span>{{:term}}天</span>
+					</li>
+					<li>
+						<p>募集规模</p>
+						<span>{{:totalAmount}}亿元</span>
+					</li>
+					<li>
+						<p>产品类型</p>
+						<span>{{:typeCN}}</span>
+					</li>
+					<li>
+						<p>风险等级</p>
+						<span>{{:riskLevelCN}}</span>
+					</li>
+					<li>
+						<p>收益支付方式</p>
+						<span>{{:paymentTypeCN}}</span>
+					</li>
+				</ul>
+			</div>
+			<!--box-->
+
+			<div class="box">
+				<h3 class="title">
+					<img src="./img/icon_ subscription.png" alt="" />
+					<span>认购信息</span>
+				</h3>
+				<ul>
+					<li>
+						<p>最小投资金额</p>
+						<span id="minInvestAmount"></span>
+					</li>
+					<li>
+						<p>最大投资金额</p>
+						<span>{{:maxInvestAmountNum}}{{:maxInvestAmountCN}}元</span>
+					</li>
+					<li>
+						<p>投资递增金额</p>
+						<span id="minInvestAmountAdd"></span>
+					</li>
+					<li>
+						<p>产品认购起始日</p>
+						<span>{{:collectStarttimeCN}}</span>
+					</li>
+					<li>
+						<p>产品认购结束日</p>
+						<span>{{:collectEndtimeCN}}</span>
+					</li>
+					<li>
+						<p>产品登记日期</p>
+						<span>{{:recordDateCN}}</span>
+					</li>
+					<li>
+						<p>起息日</p>
+						<span>{{:valueDateCN}}</span>
+					</li>
+					<li>
+						<p>到期日</p>
+						<span>{{:maturityDateCN}}</span>
+					</li>
+				</ul>
+			</div>
+			<!--box-->
+
+			<div class="box">
+				<h3 class="title">
+					<img src="./img/icon_info_rate.png" alt="" />
+					<span>手续费率</span>
+				</h3>
+				<ul>
+					{{if subscribeFee != "0.00"}}
+						<li>
+							<p>认购费率</p>
+							<span>{{:subscribeFee}}%</span>
+						</li>
+					{{/if}}
+					
+					{{if purchaseFee != "0.00"}}
+						<li>
+							<p>申购费率</p>
+							<span>{{:purchaseFee}}%</span>
+						</li>
+					{{/if}}
+					
+					{{if redemingFee != "0.00"}}
+						<li>
+							<p>赎回费率</p>
+							<span>{{:redemingFee}}%</span>
+						</li>
+					{{/if}}
+					
+					
+					{{if custodyFee != "0.00"}}
+						<li>
+							<p>托管费率</p>
+							<span>{{:custodyFee}}%</span>
+						</li>
+					{{/if}}
+					
+					{{if networkFee != "0.00"}}
+						<li>
+							<p>销售费率</p>
+							<span>{{:networkFee}}%</span>
+						</li>
+					{{/if}}
+					
+					{{if managementFee != "0.00"}}
+						<li>
+							<p>管理费率</p>
+							<span>{{:managementFee}}%</span>
+						</li>
+					{{/if}}
+				</ul>
+			</div>
+			<!--box-->
+
+			<div class="box">
+				<h3 class="title">
+					<img src="./img/icon_info_more.png" alt="" />
+					<span>详细信息</span>
+				</h3>
+				<div class="msg-content">
+					<h5>投资范围：</h5>
+					<span>
+						{{:investScope}}
+					</span>
+					
+					<h5>收益说明：</h5>
+					<span>
+						{{:revenueFeature}}
+					</span>
+				</div>
+			</div>
+
+			<input type="button" class="bottom-btn" value="购买" />
+
+		</script>
+	</head>
+
+	<body>
+
+		<div class="main">
+
+		</div>
+		<!--main-->
+
+		<div id="modal-box">
+			<div class="modal-box-inner">
+				<h3>温馨提示</h3>
+				<h4></h4>
+				<div class="modal-box-inner-btnbox clearfix">
+					<!--<input type="button"  value="取消" id="modal-box-close"/>-->
+					<input type="button" value="确认" id="modal-box-close" />
+				</div>
+			</div>
+		</div>
+
+		<div id="tip-box">
+			<div class="tip-box-inner">
+				<div class="tip-box-inner-content">
+					<p>你还未绑定银行卡！</p>
+					<img src="./img/auth_failed.png" alt="" />
+					<input type="button" value="马上绑卡" id="goBind" />
+				</div>
+				<div id="tip-close">
+
+				</div>
+			</div>
+		</div>
+		<p class="layer">
+			提示信息
+		</p>
+
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/jsrender.min.js?version=1.5"></script>
+		<script src="./js/changePrice.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/productMsg.js?version=1.5"></script>
+	</body>
+
+</html>

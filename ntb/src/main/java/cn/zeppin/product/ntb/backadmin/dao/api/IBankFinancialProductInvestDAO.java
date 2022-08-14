@@ -16,6 +16,15 @@ import cn.zeppin.product.ntb.core.entity.base.Entity;
  */
 public interface IBankFinancialProductInvestDAO extends IBaseDAO<BankFinancialProductInvest, String> {
 	/**
+	 * 根据参数查询结果列表
+	 * @param inputParams
+	 * @param sorts
+	 * @param resultClass
+	 * @return  List<Entity>
+	 */
+	 List<Entity> getList(Map<String, String> inputParams, String sorts, Class<? extends Entity> resultClass);
+	 
+	/**
 	 * 根据参数查询结果列表(带分页、排序)
 	 * @param inputParams
 	 * @param pageNum
@@ -32,13 +41,6 @@ public interface IBankFinancialProductInvestDAO extends IBaseDAO<BankFinancialPr
 	  * @return
 	  */
 	Integer getCount(Map<String, String> inputParams);
-	
-	/**
-	 * 获取银行理财产品投资分状态列表
-	 * @param resultClass
-	 * @return
-	 */
-	List<Entity> getStatusList(Class<? extends Entity> resultClass);
 	
 	/**
 	 * 获取银行理财产品投资分阶段列表

@@ -1,0 +1,168 @@
+.recharge_confirm {
+    width: 100%;
+    display: none;
+}
+
+.recharge_confirm .confirm {
+    width: 100%;
+}
+
+.recharge_confirm .confirm #edit {
+    width: 100px;
+    height: 35px;
+    display: inline-block;
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+    background: #FFFFFF;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+}
+
+.recharge_confirm .confirm #edit:hover {
+    background: #4D9CFF;
+    color: #FFFFFF;
+}
+
+.recharge_confirm .confirm .auditing_check:hover {
+    background: #4D9CFF;
+    color: #FFFFFF;
+}
+
+.recharge_confirm .confirm .auditing_check {
+    width: 100px;
+    height: 35px;
+    display: inline-block;
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+    background: #FFFFFF;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.confirm_item {
+    margin-top: 20px;
+}
+
+.confirm_item span {
+    font-size: 14px;
+    display: inline-block;
+    padding: 5px 10px 5px 3px;
+}
+
+.confirm_item .confirm_item_title {
+    width: 130px;
+    text-align: right;
+}
+
+.confirm_item .confirm_item_price {
+    color: orange;
+}
+
+.confirm_item .confirm_item_cn {
+    color: green;
+    margin-left: 30px;
+}
+
+.recharge_confirm .auditing {
+    width: 100%;
+}
+
+.recharge_confirm .auditing span {
+    vertical-align: top;
+}
+
+.recharge_confirm .auditing .auditing_msg {
+    display: inline-block;
+}
+
+.recharge_confirm .auditing .auditing_msg p {
+    color: #c1c1c1;
+    padding: 5px 10px 5px 3px;
+}
+
+.recharge_confirm .auditing .auditing_msg p:nth-child(2) {
+    margin: 0;
+}
+
+.buy_password {
+    width: 100%;
+}
+
+.buy_password span {
+    vertical-align: bottom;
+}
+
+.buy_password i {
+    color: #E0615F;
+}
+
+.buy_password input[type="password"] {
+    display: inline-block;
+    border: 1px solid #C1C1C1;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    margin: 0;
+}
+
+.recharge_confirm .btn_group {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+.recharge_confirm .btn_group input {
+    font-size: 16px;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: #C1C1C1;
+    border: 1px solid #C1C1C1;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    background: #FFFFFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.recharge_confirm .btn_group input:nth-child(1):hover {
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+}
+
+.recharge_confirm .btn_group input:nth-child(2) {
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+    margin-left: 30px;
+}
+
+.recharge_confirm .btn_group input:nth-child(2):hover {
+    color: #FFFFFF;
+    background: #4D9CFF;
+}

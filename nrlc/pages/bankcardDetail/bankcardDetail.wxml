@@ -1,0 +1,34 @@
+<!--pages/bankcardDetail/bankcardDetail.wxml-->
+<view class="container">
+  <view class="top-view">
+    <block wx:if="{{bankcard.uuid}}">
+      <view class="bankcard" style="background: {{bankcard.color}}" >
+        <image class="back" src="{{resourceBase}}{{bankcard.icon}}"></image>
+        <view class="bank">
+          <image src="{{resourceBase}}{{bankcard.icon}}"></image>
+          <view>{{bankcard.shortName}}</view>
+        </view>
+        <view class="card">
+          <text>****</text><text>****</text><text>****</text><text class="num">{{bankcard.bankcard}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="limit-view">
+    <view class="title">银行支付限额</view>
+    <view class="tr">
+      <image src="/resources/bankcard/limit_single.png"></image>
+      <text>单笔限额</text>
+      <view>{{bankcard.singleLimit}}</view>
+    </view>
+    <view class="tr">
+      <image src="/resources/bankcard/limit_daily.png"></image>
+      <text>每日限额</text>
+      <view>{{bankcard.dailyLimit}}</view>
+    </view>
+  </view>
+  <view class="submit-view" bindtap="{{buttonAble ? 'toBankcardRemove' : ''}}">
+    解除绑定
+  </view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

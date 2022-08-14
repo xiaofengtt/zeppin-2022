@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>社保用途</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/socialUse.css" />
+</head>
+<body>
+	<div class="wrap">
+		<div class="swiper-container">
+		    <div class="swiper-wrapper">
+		        <div class="swiper-slide">
+		        	<div class="swiper-bg swiper-bg1">
+		        		<div class="swiper-inner swiper-inner1">
+		        			<h6>北京买房</h6><p>非京籍在京购房要求购房者提供连续60个月社保或个税（补缴无效）。</p>
+		        		</div>
+		        	</div>
+		        </div>
+		        <div class="swiper-slide">
+		        	<div class="swiper-bg swiper-bg2">
+		        		<div class="swiper-inner swiper-inner2">
+		        			<h6>汽车摇号</h6><p>非京籍在京买车摇号，需要提供连续缴纳60个月社保（不可断月，可断年，补缴认可）和个税。</p>
+		        		</div>
+		        	</div>
+		        </div>
+		        <div class="swiper-slide">
+		       		<div class="swiper-bg swiper-bg3">
+		       			<div class="swiper-inner swiper-inner3">
+		       				<h6>领养老金</h6><p>在京缴纳养老保险满15年，退休时即可终生享受北京养老金领取政策。</p>
+		       			</div>
+		       		</div>
+		       	</div>
+		        <div class="swiper-slide">
+		        	<div class="swiper-bg swiper-bg4">
+		        		<div class="swiper-inner swiper-inner4">
+		        			<h6>医疗保障</h6><p>在京缴纳医疗保险男满25年，女满20年，退休时即可终生享受北京医疗保险待遇。即最高2万元的门诊报销和最高10万元的住院报销以及最高20万元的大额医疗费用报销。</p>
+		        		</div>
+		        	</div>
+		        </div>
+		        <div class="swiper-slide">
+		        	<div class="swiper-bg swiper-bg2">
+		        		<div class="swiper-inner swiper-inner5">
+		        			<h6>孩子入学</h6><p>非京籍人员在京入学，各区县要求各有不同，不仅在指定区县要有房更要有社保缴纳记录。</p>
+		        		</div>
+		        	</div>
+		        </div>
+		        <div class="swiper-slide">
+		        	<div class="swiper-bg swiper-bg3">
+		        		<div class="swiper-inner swiper-inner6">
+		        			<h6>异地高考</h6><p>欲参加异地高考的考生家长需要在当地缴纳一定年限的社会保险，包括养老保险、医疗保险及纳税证明等。</p>
+		        		</div>
+		        	</div>
+		        </div>
+		        <div class="swiper-slide">
+		        	<div class="swiper-bg swiper-bg4">
+		        		<div class="swiper-inner swiper-inner7">
+		        			<h6>积分落户</h6><p>北京市率先实行积分落户政策，要求缴纳一定年限的社保和个税并达到符合条件即可落户。</p>
+		        		</div>
+		        	</div>
+		        </div>
+		        <div class="swiper-slide">
+		        	<div class="swiper-bg swiper-bg1">
+		        		<div class="swiper-inner swiper-inner8">
+		        			<h6>出国签证</h6><p>办理去香港、澳门的港澳通行证需在京缴纳一定年限的社保，办理出国护照也要求缴纳规定年限的社保。</p>
+		        		</div>
+		        	</div>
+		        </div>
+		        
+		    </div>
+			 <!-- 如果需要分页器 -->
+			 <div class="swiper-pagination"></div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+	<script src="./js/base64.js"></script>
+	<script src="./js/md5.js"></script>
+	<script type="text/javascript" src="js/picker.min.js" ></script>
+	<script src="js/swiper.min.js"></script>
+	<script type="text/javascript" src="js/base.js" ></script>
+	<script >
+		$(".swiper-bg").css({
+			"width":"100%",
+			"min-height":windowHeight
+		});
+		var mySwiper = new Swiper('.swiper-container',{
+		    pagination: '.pagination',
+		    loop:true,    
+		    grabCursor: true,
+		    paginationClickable: true,
+		    autoplayDisableOnInteraction : false,//手指滑动后继续滑动
+		    autoplay: {
+		        delay: 5000,
+		        stopOnLastSlide: false,
+		        disableOnInteraction: false,
+	        },
+	        pagination: {
+	            el: '.swiper-pagination',
+	        }
+		});
+	</script>
+</body>
+</html>

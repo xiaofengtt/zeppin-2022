@@ -86,9 +86,14 @@ public class BankFinancialProductOperateDAO extends BaseDAO<BankFinancialProduct
 		builder.append(" select bfpo.uuid,bfpo.bank_financial_product as bankFinancialProduct,bfpo.type,bfpo.value,"
 				+ "bfpo.reason,bfpo.status,bfpo.checker,bfpo.checktime,bfpo.creator,bfpo.createtime,bfpo.submittime");
 		builder.append(" from bank_financial_product_operate bfpo left join bank_financial_product bfp on bfpo.bank_financial_product = bfp.uuid where 1=1 ");
+		//理财产品
+		if (inputParams.get("bankFinancialProduct") != null && !"".equals(inputParams.get("bankFinancialProduct"))) {
+			builder.append(" and bfpo.bank_financial_product = '" + inputParams.get("bankFinancialProduct") + "' ");
+		}
 		//名称
 		if (inputParams.get("name") != null && !"".equals(inputParams.get("name"))) {
-			builder.append(" and bfp.name like '%" + inputParams.get("name") + "%' ");
+			builder.append(" and (bfp.name like '%" + inputParams.get("name") + "%' ");
+			builder.append(" or bfpo.value like '%\"name\":\"%" + inputParams.get("name") + "%\",\"networkFee\"%') ");
 		}
 		//状态
 		if (inputParams.get("status") != null && !"".equals(inputParams.get("status"))) {
@@ -131,7 +136,12 @@ public class BankFinancialProductOperateDAO extends BaseDAO<BankFinancialProduct
 		builder.append(" select count(*) from bank_financial_product_operate bfpo left join bank_financial_product bfp on bfpo.bank_financial_product = bfp.uuid where 1=1 ");
 		//名称
 		if (inputParams.get("name") != null && !"".equals(inputParams.get("name"))) {
-			builder.append(" and bfp.name like '%" + inputParams.get("name") + "%' ");
+			builder.append(" and (bfp.name like '%" + inputParams.get("name") + "%' ");
+			builder.append(" or bfpo.value like '%\"name\":\"%" + inputParams.get("name") + "%\",\"networkFee\"%') ");
+		}
+		//理财产品
+		if (inputParams.get("bankFinancialProduct") != null && !"".equals(inputParams.get("bankFinancialProduct"))) {
+			builder.append(" and bfpo.bank_financial_product = '" + inputParams.get("bankFinancialProduct") + "' ");
 		}
 		//状态
 		if (inputParams.get("status") != null && !"".equals(inputParams.get("status"))) {

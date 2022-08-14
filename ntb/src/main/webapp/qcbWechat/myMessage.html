@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>企财宝</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.6" />
+		<link rel="stylesheet" href="./css/myMessage.css?version=1.5" />
+	</head>
+	<body>
+		<div class="main" style="display:none;">
+			<div class="main-top">
+				<div class="main-top-name">
+					<a href="./option.html" class="openId-url">
+						<img src="" alt="" class="head-photo" />
+					</a>
+					<span class="name"></span>
+					<a href="./transactionRecord.html" class="right-img openId-url">交易记录</a>
+				</div>
+				<div class="all-price-box">
+					<h3>总资产(元)<img src="./img/eye-o.png" id="eye" data-flag="true"/></h3>
+					<p id="totalAmount"></p>
+				</div>
+				<div class="main-top-bottom">
+					<p>
+						<span>账户可用余额(元)<em id="accountBalance"></em></span>
+						
+					</p>
+					<!-- <div class="btn-g">
+						<input type="button" class="btn" value="提现" id="drawcashBtn"/>
+						<input type="button" class="btn" value="充值" id="rechargeBtn" />
+					</div> -->
+				</div>
+			</div>
+			<!--main-top-->
+			<!-- 提现 -->
+			<div class="rechargeDiv">
+				<input type="button" class="btn" value="提现" id="drawcashBtn"/>
+			</div>
+			<!-- 提现结束 -->
+			<!-- banner -->
+			<!-- <a href="./freeFinancing.html" class="banner openId-url"> -->
+			<a href="javascript:" class="banner">
+				<img src="img/myMessageBanner.png" alt="活期盈" />
+			</a>
+			<!-- banner over -->
+			<div class="main-mid">
+				<h4 class="title">
+					应用服务
+				</h4>
+				<div class="main-mid-content">
+					<div class="main-mid-content-item">
+						<ul class="clearfix">
+							<li>
+								<a href="./wagesList.html" class="openId-url">
+									<img src="./img/gzt.png" alt="" />
+									<p>福利金</p>
+								</a>
+							</li>
+							<!-- <li>
+								bankFinancing.html
+								<a href="./freeFinancing.html" class="openId-url">
+									<img src="./img/yhlc.png" alt="" />
+									<p>银行理财</p>
+								</a>
+							</li> -->
+							<li>
+								<a href="https://www.shebaoxiong.com/index.html" class="openId-url">
+								<!-- <a href="http://192.168.1.233:8080/NTB/renshibaosite/index.html" class="openId-url"> -->
+									<img src="./img/shb.png" alt="" />
+									<p>社保熊</p>
+								</a>
+							</li>
+							<li>
+								<a href="https://m.jd.com">
+									<img src="./img/jingdong.png" alt="" />
+									<p>京东</p>
+								</a>
+							</li>
+							<li>
+								<a href="https://m.ctrip.com/html5">
+									<img src="./img/jp.png" alt="" />
+									<p>机票</p>
+								</a>
+							</li>
+						</ul>
+					</div><!--main-mid-content-item-->
+					
+					<div class="main-mid-content-item">
+						<ul class="clearfix">
+							<li>
+								<a href="https://m.ctrip.com/html5">
+									<img src="./img/hcp.png" alt="" />
+									<p>火车票</p>
+								</a>
+							</li>
+							<li>
+								<a href="http://www.bjguahao.gov.cn">
+									<img src="./img/gh.png" alt="" />
+									<p>挂号</p>
+								</a>
+							</li>
+							<li>
+								<a href="http://i.meituan.com">
+									<img src="./img/tg.png" alt="" />
+									<p>团购</p>
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0);" class="null">
+									<img src="./img/gy.png" alt="" />
+									<p>公益</p>
+								</a>
+							</li>
+						</ul>
+					</div><!--main-mid-content-item-->
+					
+				</div><!--main-mid-content-->
+			</div><!--main-mid-->
+			
+			<div class="main-bottom">
+				<h4 class="title">
+					设置
+				</h4>
+				<a href="./bankCardList.html" class="openId-url">
+					银行卡
+					<img src="./img/right.png" alt="" />
+				</a>
+				<a href="./option.html" class="openId-url">
+					设置
+					<img src="./img/right.png" alt="" />
+				</a>
+			</div>
+			
+		</div><!--main-->
+		
+		
+		<div id="modal-box">
+			<div class="modal-box-inner">
+				<h3>温馨提示</h3>
+				<h4></h4>
+				<div class="modal-box-inner-btnbox clearfix">
+					<!--<input type="button"  value="取消" id="modal-box-close"/>-->
+					<input type="button"  value="确认" id="modal-box-close"/>
+				</div>
+			</div>
+		</div>
+		
+		<div id="tip-box">
+			<div class="tip-box-inner">
+				<div class="tip-box-inner-content">
+					<p>你还未绑定银行卡！</p>
+					<img src="./img/auth_failed.png" alt="" />
+					<input type="button" value="马上绑卡" id="goBind"/>
+				</div>
+				<div id="tip-close">
+					
+				</div>
+			</div>
+		</div>
+		<p class="layer">
+			提示信息
+		</p>
+
+		<div id="loading-box" style="display:block;">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/myMessage.js?version=1.6"></script>
+	</body>
+</html>
+

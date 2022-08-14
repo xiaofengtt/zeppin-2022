@@ -1,0 +1,17 @@
+<!--pages/bankChoose/bankChoose.wxml-->
+<view class="container">
+  <view class="top-view">
+    <image src="/resources/common/warn.png"></image>
+    <text>支持银行及限额（仅支持储蓄卡，暂不支持信用卡）</text>
+  </view>
+  <view class="data-table">
+    <block wx:for="{{dataList}}" wx:key="{{uuid}}">
+      <view class="tr" data-index="{{index}}" bindtap="select">
+        <image src="{{resourceBase}}{{item.iconColorUrl}}"></image>
+        <text class="name">{{item.name}}</text>
+        <text class="limit">单次限额{{item.singleLimit}}, 每日限额{{item.dailyLimit}}</text>
+      </view>
+    </block>
+  </view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

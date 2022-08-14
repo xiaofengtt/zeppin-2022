@@ -57,7 +57,7 @@ public class DataTypeCheck {
 			break;
 		//正数货币（含有二位小数）
 		case POSITIVE_CURRENCY:
-			if (!Utlity.isPositiveCurrency(data)) {
+			if (!Utlity.isPositiveCurrency4Web(data)) {
 				isRight = false;
 			}
 			break;
@@ -111,13 +111,13 @@ public class DataTypeCheck {
 			break;
 		//布尔值
 		case BOOLEAN:
-			if (data == null || (!"true".equals(data) && !"false".equals(data))) {
+			if ((data == null || (!"true".equals(data) && !"false".equals(data))) &&  !"".equals(data)) {
 				isRight = false;
 			}
 			break;
 		//日期
 		case DATE:
-			if (data == null || !Utlity.isDateFormat(data)) {
+			if ((data == null || !Utlity.isDateFormat(data)) && !"".equals(data)) {
 				isRight = false;
 			}
 		break;

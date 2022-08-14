@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<spiderman>
+    <property key="duration" value="120s" /><!-- 运行时间，可以给 {n}s {n}m {n}h {n}d -->
+    <!--<property key="scheduler.period" value="2m" />-->
+    <property key="logger.level" value="ERROR" /><!-- 日志级别 INFO DEBUG WARN ERROR OFF -->
+    <property key="worker.download.delay" value="100" />  <!--下载延迟，免得被封 -->
+    
+    <property key="worker.download.enabled" value="1" /><!-- 是否开启下载工人 -->
+    <property key="worker.extract.enabled" value="1" /><!-- 是否开启解析工人 -->
+    <property key="worker.result.enabled" value="1" /><!-- 是否开启结果处理工人 -->
+    
+    <property key="worker.download.size" value="5" /><!-- 下载线程数 -->
+    <property key="worker.extract.size" value="5" /><!-- 页面抽取线程数 -->
+    <property key="worker.result.size" value="5" /><!-- 结果处理线程数 -->
+    <property key="worker.result.limit" value="0" />
+    <property key="worker.result.handler" value="cn.zeppin.product.score.spiderman.TencentMainResultHandler" /><!-- 自定义结果回调处理类 -->
+    <property key="queue.store.path" value="store" /><!-- 存储文件的路径 -->
+    <property key="queue.zbus.enabled" value="0" /><!-- 是否使用ZBus队列，单机版暂时不使用，貌似性能还有问题 -->
+    <!--<property key="queue.zbus.broker" value="10.8.60.8:15555" /> ZBus服务地址,三种模式：1.jvm(本地模式) 2.ip:port(single模式) 3.[ip:port,ip:port](ha模式) -->
+    <!--<property key="queue.other.names" value="SPIDERMAN_JSON_RESULT" /> 注册创建其他队列备用 -->
+    <!-- <seed>URL地址</seed> --><!-- 写死种子入口的方式 -->
+    <script bindings="net.kernal.spiderman.Bootstrap$Bindings"><!-- 使用脚本动态创建方式 -->
+    <![CDATA[
+    	$seeds.clear();
+    	var categoryList = ["ucl","premierleague","bundesliga","laliga","seriea","csocce/cft","csocce/csl"];
+    	for (var i in categoryList) {
+	        $seeds.add("category-" + categoryList[i], "https://sports.qq.com/" + categoryList[i]+ "/");
+	    }
+	]]>
+    </script>
+    
+    <!-- 页面抽取规则 -->
+    <extract>
+    	<!-- 注册解析器 -->
+        <extractor name="HtmlCleaner" class="net.kernal.spiderman.worker.extract.extractor.impl.HtmlCleanerExtractor" isDefault="1" />
+        <extractor name="Text" class="net.kernal.spiderman.worker.extract.extractor.impl.TextExtractor" />
+        <!-- 注册过滤器 -->
+        <filter name="MyFilter" class="test.MyFilter" />
+        <!-- 要抽取的页面 -->
+		<page name="category" isPersisted="1">
+			<url-match-rule type="startsWith" value="https://sports.qq.com/" />
+			<model name="import">
+				<field name="import" xpath="//div[@class='newlist']//div[@class='newslist']//a[@href]" attr="href" isArray="1" isDistinct="true"/>
+			</model>
+			<model name="detail">
+				<field name="detail1" xpath="//div[@class='newsCont']//ul[1]//li[11>position()]//a[@href]" attr="href" isArray="1" isDistinct="true"/>
+				<field name="detail2" xpath="//div[@class='newsCont']//ul[2]//li[11>position()]//a[@href]" attr="href" isArray="1" isDistinct="true"/>
+				<field name="detail3" xpath="//div[@class='newsCont']//ul[3]//li[11>position()]//a[@href]" attr="href" isArray="1" isDistinct="true"/>
+				<field name="detail4" xpath="//div[@class='newsCont']//ul[4]//li[11>position()]//a[@href]" attr="href" isArray="1" isDistinct="true"/>
+				<field name="detail5" xpath="//div[@class='newsCont']//ul[5]//li[11>position()]//a[@href]" attr="href" isArray="1" isDistinct="true"/>
+			</model>
+		</page>
+		<page name="cls" isPersisted="1">
+			<url-match-rule type="contains" value="csocce/csl/" />
+			<model name="csl">
+				<field name="cls" xpath="//div[@class='mod_zbP layout']//div[@class='news']//a[@href]" attr="href" isArray="1" isDistinct="true"/>
+			</model>
+		</page>
+	</extract>
+</spiderman>

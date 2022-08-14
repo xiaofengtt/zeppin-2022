@@ -1,0 +1,43 @@
+body{
+	background:rgba(239,239,244,1);
+}
+.item-title{
+	color:rgba(46,46,46,1);
+}
+.info-list{
+	padding-left: 0.3rem;
+	background: #FFFFFF;
+}
+.info-item input{
+	color:rgba(79,172,254,1) !important;
+	width:4rem !important;
+	font-size: 0.36rem;
+}
+.gobtn{
+	width: 5.32rem;
+	display: block;
+	height: 0.8rem;
+	border-radius: 0.04rem;
+	background:rgba(46,46,46,0.3);
+	font-size: 0.32rem;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 0.9rem;
+	margin-top: 0.8rem;
+}
+.gobtn.light{
+	background:rgba(79,172,254,1);
+}
+.setPwd,.modifyPwd{
+	display:none;
+}
+.sendCode, .numCode{
+	bottom:0.18rem;
+}
+.clearInput{
+	bottom:0.15rem;
+	right:0.1rem;
+}
+#mobileCode{
+	font-size:0.3rem;
+}

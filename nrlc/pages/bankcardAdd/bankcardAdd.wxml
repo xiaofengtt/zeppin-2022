@@ -1,0 +1,23 @@
+<!--pages/bankcardAdd/bankcardAdd.wxml-->
+<view class="container">
+  <view class="top-view">
+    <image src="/resources/common/warn.png"></image>
+    <text>请绑定持卡人本人银行卡</text>
+  </view>
+  <form bindsubmit="formSubmit">
+    <view class="main-view">
+      <view class="tr">
+        <label>持卡人</label>
+        <input type="text" placeholder="请输入持卡人姓名" placeholder-style="color: rgba(0,0,0,0.2);font-size:24rpx;" bindinput="editName"/>
+      </view>
+      <view class="tr">
+        <label>银行卡号</label>
+        <input type="number" value="{{bankcard}}"  placeholder="请输入银行卡号" maxlength="26" placeholder-style="color: rgba(0,0,0,0.2);font-size:24rpx;" bindinput="editBankcard"/>
+      </view>
+      <view class="submit-tr">
+        <button disabled='{{!submitAble || !buttonAble}}' class="{{submitAble? '' : 'disabled'}}" formType="submit">下一步</button>
+      </view>
+    </view>
+  </form>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

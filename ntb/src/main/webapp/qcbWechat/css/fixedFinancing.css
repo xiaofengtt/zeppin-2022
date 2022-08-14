@@ -1,0 +1,127 @@
+.main{
+	padding-bottom:1rem;
+}
+.main-top{
+	background:#FFFFFF;
+	height:2.6rem;	
+	text-align: center;
+	padding-top:0.7rem;
+}
+.main-top p{
+	font-size: 0.28rem;
+	margin-bottom:0.3rem;
+	color: #000000;
+}
+.main-top h3{
+	font-size:0.68rem;
+	line-height:0.68rem;
+	color: #FF7600;
+}
+.type-bar{
+	background:#FFFFFF;
+	margin-top:0.2rem;
+	border-bottom:1px solid #EBEBEB;
+}
+.type-bar div{
+	display: inline-block;
+	width:32%;
+	text-align: center;
+	position: relative;
+	padding:0.28rem 0 0.24rem 0;
+}
+.type-bar .status-tap{
+	position: absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	z-index:3;
+}
+.type-bar .status{
+	display: inline-block;
+	padding-bottom:0.06rem;
+	font-size:0.28rem;
+}
+.status-light{
+	border-bottom:2px solid #FF7600;
+	color:#FF7600;
+}
+
+
+.main-bottom-item{
+	display:block;
+	padding:0.24rem 0.28rem;
+	background:#FFFFFF;
+}
+.main-bottom-top{
+	margin-bottom:0.24rem;
+}
+.main-bottom-top img{
+	display: inline-block;
+	width:0.44rem;
+	height:0.44rem;
+	vertical-align: middle;
+}
+.main-bottom-top p{
+	display: inline-block;
+	vertical-align: middle;
+	opacity: 0.8;
+	font-size: 0.28rem;
+	color: #000000;
+}
+
+.main-bottom-content{
+	padding:0.38rem 0.14rem;
+	background: #F5F5F5;
+}
+.main-bottom-content > div{
+	width:49%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.main-bottom-content-left p{
+	font-size: 0.34rem;
+	line-height:0.28rem;
+	color: #0E0E0E;
+	padding:0.06rem 0.08rem 0.01rem 0.0rem;
+}
+.main-bottom-content-left span{
+	font-size: 0.22rem;
+	line-height:0.22rem;
+	color: #4A4A4A;
+	display: inline-block;
+	opacity: 0.6;
+	margin-top:0.1rem;
+}
+.main-bottom-content-left p i{
+	display: inline-block;
+	vertical-align: middle;
+}
+.main-bottom-content-left p img{
+	display: inline-block;
+	width:0.7rem;
+	vertical-align: middle;
+}
+.main-bottom-content-right{
+	text-align: right;
+}
+.main-bottom-content-right p{
+	width:auto;
+	color: #4A4A4A;
+	border: 1px solid #D09637;
+	padding:0.06rem 0.08rem 0.0rem 0.08rem;
+	font-size: 0.24rem;
+	line-height:0.24rem;
+	color: #C4A46E;
+	text-align: center;
+	display: inline-block;
+	
+}
+.main-bottom-content-right span{
+	font-size: 0.24rem;
+	line-height:0.24rem;
+	color: #4A4A4A;
+	display: block;
+	margin-top:0.1rem;
+}

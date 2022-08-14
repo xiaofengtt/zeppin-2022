@@ -1,0 +1,39 @@
+<!--register.wxml-->
+<view class="container">
+  <view class="top-view">
+    <image src="/resources/login/register_logo.png"></image>
+    <text>欢迎注册牛投理财</text>
+  </view>
+  <form bindsubmit="formSubmit">
+    <view class="main-view">
+      <view class="tr">
+        <view class="data-row">
+          <image src="/resources/login/phone.png"></image>
+          <input type="number" placeholder="请输入手机号" maxlength="11" placeholder-style="font-size:28rpx;color: rgba(0,0,0,0.2)" bindinput="editPhone"/>
+        </view>
+      </view>
+      <view class="tr">
+        <view class="data-row">
+          <image src="/resources/login/message.png"></image>
+          <input type="number" placeholder="请输入验证码" maxlength="6" placeholder-style="font-size:28rpx;color: rgba(0,0,0,0.2)" bindinput="editCode"/>
+          <text class="{{timer <= 0 ? '' : 'disabled'}}" bindtap="{{timer <= 0 ? 'getCode' : ''}}">{{timer <= 0 ? '获取验证码' : timer + 's后重新获取'}}</text>
+        </view>
+      </view>
+      <view class="tr">
+        <view class="data-row">
+          <image src="/resources/login/password.png"></image>
+          <input type="text" password placeholder="请输入8-20位字母数字组合密码" maxlength="20" placeholder-style="font-size:28rpx;color: rgba(0,0,0,0.2)" bindinput="editPassword"/>
+        </view>
+      </view>
+      <view class="tr-submit">
+        <view class="submit-row">
+          <button disabled="{{!buttonAble}}" formType="submit">注册</button>
+        </view>
+      </view>
+    </view>
+  </form>
+  <view class="foot-view">
+    已有账户? <text bindtap="{{buttonAble ? 'toLogin' : ''}}">立即登录</text>
+  </view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

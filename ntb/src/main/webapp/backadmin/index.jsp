@@ -7,22 +7,23 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>牛投帮-后台管理系统</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 	</head>
 	<body>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="navigation.jsp"/>
-		<input id="scode" type="hidden" /> 
+		<input id="scode" type="hidden" />
 		<div class="contain">
 			<jsp:include page="contentLeft.jsp"/>
 			<div class="contain-right">
 				<div class="main-contain">
-					
+
 				</div>
 			</div>
 			<div class="clear"></div>
 		</div>
-		
-		
+
+
 		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
 	</body>
 </html>

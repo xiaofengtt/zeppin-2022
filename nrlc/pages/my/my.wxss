@@ -1,0 +1,292 @@
+/* my.wxss */
+.container{
+  background: #eee;  
+}
+
+.top-view{
+  position: relative;
+  width: 100%;
+  height: 300rpx;
+  background: #FFF;
+}
+
+.top-view .total{
+  margin: 50rpx 0 20rpx 0;
+  text-align: center;
+}
+
+.top-view .total .value{
+  color: #F5A623;
+  font-size: 60rpx;
+}
+
+.top-view .total .key{
+  color: #717171;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+
+.top-view .balance, 
+.top-view .invest{
+  display: inline-block;
+  width: 50%;
+  margin: 20rpx 0px;
+  text-align: center;
+}
+
+.top-view .balance .value, 
+.top-view .invest .value{
+  color: #F5A623;
+  font-size: 36rpx;
+}
+
+.top-view .balance .key,
+.top-view .invest .key{
+  color: #717171;
+  font-size: 20rpx;
+}
+
+.top-view .split{
+  position: absolute;
+  left: 50%;
+  bottom: 38rpx;
+  width: 1px;
+  height: 64rpx;
+  background: #eee;
+}
+
+.operate-view{
+  position: relative;
+  width: 100%;
+  height: 130rpx;
+  margin-top: 20rpx;
+  background: #FFF;
+}
+
+.operate-view .income{
+  margin: 20rpx 0 2rpx 24rpx;
+  line-height: 50rpx;
+  font-size: 36rpx;
+  color: #F6A623;
+}
+
+.operate-view .text{
+  margin-left: 24rpx;
+  line-height: 34rpx;
+  font-size: 24rpx;
+  color: #717171;
+}
+
+.operate-view image{
+  width: 26rpx;
+  height: 22rpx;
+  margin-left: 10rpx;
+}
+
+.operate-view .buttons{
+  position: absolute;
+  top: 44rpx;
+  right: 20rpx;
+}
+
+.operate-view .buttons view{
+  display: inline-block;
+  width: 100rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  border-radius: 8rpx;
+  text-align: center;
+}
+
+.operate-view .buttons view.recharge{
+  color: #008DFB;
+  margin-right: 28rpx;
+  border: 1px solid #008DFB;
+}
+
+.operate-view .buttons view.withdraw{
+  color: #F6A623;
+  border: 1px solid #F6A623;
+}
+
+.table-view{
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.table-view .filter-row{
+  width: 100%;
+  height: 70rpx;
+  background: #FFF;
+  border-bottom: 1px solid #eee;
+}
+
+.table-view .filter-row > view{
+  display: inline-block;
+  width: 250rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  color: #9B9B9B;
+}
+
+.table-view .filter-row text.selected {
+  color: #008DFB;
+  padding-bottom: 16rpx;
+  border-bottom: 4rpx solid #008DFB;
+}
+
+.table-view .filter-row > view.profit{
+  padding-left: 24rpx;
+  text-align: left;
+}
+
+.table-view .filter-row > view.transaction{
+  text-align: center;
+}
+
+.table-view .filter-row > view.finished{
+  padding-right: 24rpx;
+  text-align: right;
+}
+
+.table-view .data-table {
+  width: 100%;
+}
+
+.table-view .data-table .tr{
+  width: 100%;
+  height: 230rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.table-view .data-table .tr .tr-title{
+  width: 100%;
+  height: 90rpx;
+  padding-top: 20rpx;
+  padding-left: 10rpx;
+  line-height: 70rpx;
+  font-size: 32rpx;
+  color: rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.table-view .data-table .tr .tr-body{
+  position: relative;
+  width: 100%;
+  height: 140rpx;
+  text-align: center;
+}
+
+.table-view .data-table .tr .tr-body .content{
+  width: 710rpx;
+  height: 120rpx;
+  margin-left: 20rpx;
+  background: #F4F4F4;
+}
+
+.table-view .data-table .tr .tr-body .content .td-left{
+  float: left;
+  width: 220rpx;
+  height: 100%;
+  padding: 20rpx 0;
+  text-align: center;
+}
+
+.table-view .data-table .tr .tr-body .content .td-right{
+  float: right;
+  width: 220rpx;
+  height: 100%;
+  padding: 20rpx 0;
+  text-align: center;
+}
+
+.table-view .data-table .tr .tr-body .content .number{
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 40rpx;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.table-view .data-table .tr .tr-body .content .number-light{
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 40rpx;
+  color: #F6A623;
+}
+
+.table-view .data-table .tr .tr-body .content .time{
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 32rpx;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.table-view .data-table .tr .tr-body .content .income{
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 40rpx;
+  color: #F6A623;
+}
+
+.table-view .data-table .tr .tr-body .content .text{
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 26rpx;
+  color: #9E9E9E;
+}
+
+.table-view .nodata{
+  width: 100%;
+  height: 120rpx;
+  line-height: 40rpx;
+  padding-top: 80rpx;
+  font-size: 36rpx;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8);
+  background: #FFF;
+}
+
+.logout{
+  width: 100%;
+  margin-top: 20rpx;
+  padding-top: 120rpx;
+  text-align: center;
+  background: #FFF;
+}
+
+.logout .text{
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 32rpx;
+  color: #434343;
+}
+
+.logout .button{
+  width: 200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 40rpx auto;
+  font-size: 36rpx;
+  color: #FFF;
+  background: #008DFB;
+  border-radius: 10rpx;
+}
+
+.border{
+  position: fixed;
+  height: 1px;
+  width: 100%;
+  bottom: 0;
+  background-color: rgba(150, 150, 150, 0.4);
+}

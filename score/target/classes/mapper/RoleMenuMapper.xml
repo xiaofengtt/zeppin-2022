@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zeppin.product.score.mapper.RoleMenuMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from role_menu where 1=1 
+		<if test='uuid != null and uuid != ""'>
+	           and uuid= #{uuid}
+	       </if>
+		<if test='role != null and role != ""'>
+           and role= #{role}
+       </if>
+       <if test='menu != null and menu != ""'>
+           and menu= #{menu}
+       </if>
+	</select>
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.zeppin.product.score.entity.RoleMenu">
+		select * from role_menu where 1=1 
+		<if test='uuid != null and uuid != ""'>
+			and uuid= #{uuid}
+		</if>
+		<if test='role != null and role != ""'>
+			and role= #{role}
+		</if>
+		<if test='menu != null and menu != ""'>
+			and menu= #{menu}
+		</if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by uuid desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	<select id="getListForPage" parameterType="java.util.HashMap" resultType="cn.zeppin.product.score.vo.back.RoleMenuVO">
+		select rm.uuid, rm.role, rm.menu ,m.name, m.level, m.parent, m.icon from role_menu rm 
+		left join menu m on rm.menu=m.uuid where 1=1 
+		<if test='uuid != null and uuid != ""'>
+			and uuid= #{uuid}
+		</if>
+		<if test='role != null and role != ""'>
+           and rm.role= #{role}
+       </if>
+       <if test='level != null and level != ""'>
+           and m.level= #{level}
+       </if>
+       <if test='menu != null and menu != ""'>
+           and rm.menu= #{menu}
+       </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by m.level, m.sort
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	<delete id="deleteByRole" parameterType="String">
+	    delete from role_menu where 1=1
+	    <if test='role != null and role != ""'>
+	    	and role= #{role}
+	    </if>
+	</delete>
+</mapper>

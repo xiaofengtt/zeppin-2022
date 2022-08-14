@@ -1,0 +1,23 @@
+<!--pages/bankcardChoose/bankcardChoose.wxml-->
+<view class="container">
+  <view class="data-table">
+    <block wx:for="{{dataList}}" wx:key="{{uuid}}">
+      <view class="tr" data-index="{{index}}" bindtap="select">
+        <image class="icon" src="{{resourceBase}}{{item.iconColor}}"></image>
+        <view class="info">
+          <view class="name">{{item.name}}</view>
+          <view class="card">尾号{{item.bankcard}}</view>
+        </view>
+        <block wx:if="{{item.uuid == selectedId}}">
+          <image class="selected" src="/resources/common/selected.png"></image>
+        </block>
+      </view>
+    </block>
+     <view class="tr-add"  bindtap="{{buttonAble ? 'toBankcardAdd' : ''}}">
+      <image class="add" src="/resources/common/add.png"></image>
+      <text>添加银行卡</text>
+      <image class="arrow" src="/resources/common/arrow.png"></image>
+    </view> 
+  </view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

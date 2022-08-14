@@ -1,0 +1,65 @@
+<!--my.wxml-->
+<view class="container">
+  <view class="top-view">
+    <view class="total">
+      <view class="value">{{myInfo && myInfo.totalAmount? myInfo.totalAmount : '*****'}}</view>
+      <view class="key">总资产（元）</view>
+    </view>
+    <view class="balance">
+      <view class="value">{{myInfo && myInfo.accountBalance? myInfo.accountBalance : '*****'}}</view>
+      <view class="key">账户余额</view>
+    </view>
+    <view class="invest">
+      <view class="value">{{myInfo && myInfo.totalInvest? myInfo.totalInvest : '*****'}}</view>
+      <view class="key">理财金额</view>
+    </view>
+    <view class="split"></view>
+  </view>
+  <block wx:if="{{uuid != ''}}">
+    <view class="operate-view">
+      <view class="income">{{myInfo && myInfo.totalReturnBuyMonth && myInfo.totalReturnBuyYear ? (floagIncome ? myInfo.totalReturnBuyMonth : myInfo.totalReturnBuyYear) : '****'}}</view>
+      <view class="text">{{floagIncome ? '月' : '年'}}收益（元）<image src="/resources/me/switch.png" bindtap="switchIncome"></image></view>
+      <view class="buttons">
+        <view class="recharge" bindtap="{{buttonAble ? (user.bankcardCount > 0 ? 'toRecharge' : 'toBankcardAdd') : ''}}">充值</view>
+        <view class="withdraw" bindtap="{{buttonAble ? (user.bankcardCount > 0 ? 'toWithdraw' : 'toBankcardAdd') : ''}}">提现</view>
+      </view>
+    </view>
+    <view class="table-view">
+      <view class="filter-row">
+        <view class="profit" data-type="profit" bindtap="filter"><text class="{{filter == 'profit' ? 'selected' : ''}}">持有中</text></view>
+        <view class="transaction" data-type="transaction" bindtap="filter"><text class="{{filter == 'transaction' ? 'selected' : ''}}">交易中</text></view>
+        <view class="finished" data-type="finished" bindtap="filter"><text class="{{filter == 'finished' ? 'selected' : ''}}">已完成</text></view>
+      </view>
+      <view class="data-table">
+        <block wx:for="{{dataList}}" wx:key="{{uuid}}">
+          <view class="tr" bindtap="{{buttonAble ? 'toMyProduct' : ''}}" data-index="{{index}}">
+            <view class="tr-title">【{{item.bankName}}】{{item.productName}}({{item.productScode}})</view>  
+            <view class="tr-body">
+              <view class="content">
+                <view class="td-left">
+                  <view class="{{filter == 'transaction' ? 'number-light' : 'number'}}">{{item.priceCN}}</view>
+                  <view class="text">{{filter == 'finished' || item.stage == 'confirming'? '购买金额(元)' : '持有金额(元)'}}</view>
+                </view>
+                <view class="td-right">
+                  <view class="{{filter == 'finished' ? 'income' : 'time'}}">{{filter == 'transaction' ? (item.stage == 'confirming' ? item.valueDate : item.incomeDate) : (filter == 'profit' ? item.maturityDate : ('+' + item.totalReturn))}}</view>
+                  <view class="text">{{filter == 'transaction' ? (item.stage == 'confirming' ? '起息日' : '预计到账时间') : (filter == 'profit' ? '到期日' : '实际收益(元)')}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+        <block wx:if="{{dataList.length == 0}}">
+          <view class="nodata">{{filter == 'profit' ? '你不理财，财不理你' : ( filter == 'finished' ? '您还没有赎回的产品呢～' : '暂无交易中记录哦～')}}</view>
+        </block>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{uuid == ''}}">
+    <view class="logout">
+      <view class="text">你还没有登录，请登录后查看。</view>
+      <view class="button" bindtap="{{buttonAble ? 'toLogin' : ''}}">立即登录height: 220rpx;</view>
+    </view>
+  </block>
+  <view class="border"></view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

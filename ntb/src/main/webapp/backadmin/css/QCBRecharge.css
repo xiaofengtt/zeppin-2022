@@ -1,0 +1,93 @@
+.recharge_msg .company-name {
+    text-align: left !important;
+    width: 50% !important;
+}
+
+.recharge_msg .cn_price {
+    text-align: left !important;
+    font-size: 14px !important;
+    width: 28% !important;
+}
+
+.recharge_msg .recharge-account {
+    width: 50%;
+    background: #E6E6E6;
+    padding: 20px;
+    display: inline-block;
+    vertical-align: top;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.recharge_msg .recharge-account-item {
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.recharge_msg .recharge-account-item span.key {
+    width: 88px;
+    text-align: right;
+    margin-right: 10px;
+    color: #737373;
+}
+
+.recharge_msg .recharge-account-item span.value {
+    color: #000000;
+    text-align: left;
+    width: 290px;
+}
+
+/*确认*/
+
+.recharge_confirm .recharge-account {
+    width: 50%;
+    background: #E6E6E6;
+    padding: 20px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.recharge_confirm .recharge-account-item {
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.recharge_confirm .recharge-account-item span.key {
+    width: 88px;
+    text-align: right;
+    margin-right: 10px;
+    color: #737373;
+}
+
+.recharge_confirm .recharge-account-item span.value {
+    color: #000000;
+    text-align: left;
+    width: 290px;
+}
+
+.form_item span:nth-child(2) {
+    text-align: left !important;
+    width: auto !important;
+}
+
+.form_item input {
+    width: 20% !important;
+}
+
+.form_item1 input {
+    width: 1% !important;
+    margin-right: 0.5% !important;
+}
+
+.form_item1 input.flagtype {
+	margin-left: 2% !important;
+}
+
+span.noticeFloat {
+	text-align: left;
+	width: 100%;
+	display: inline;
+	color: red;
+	padding: 0;
+}

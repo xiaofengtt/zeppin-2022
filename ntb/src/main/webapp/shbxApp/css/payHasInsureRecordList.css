@@ -1,0 +1,52 @@
+.newInsured{
+	width: 100%;
+	height: 1.84rem;
+	background: url(../img/newInsure.png) center no-repeat;
+	background-size: cover;
+	display: block;
+}
+.insureRecord{
+	padding: 0 0.3rem;
+}
+.insureRecord li{
+	width: 100%;
+	height: 0.96rem;
+	position: relative;
+	background: url(../img/insure0.png) center no-repeat;
+	background-size: cover;
+	line-height: 1.06rem;
+	font-size: 0.3rem;
+	border-radius: 0.08rem;
+	margin-bottom: 0.16rem;
+}
+.insureRecord li.record1{
+	background-image: url(../img/insure1.png);
+}
+.insureRecord li.record2{
+	background-image: url(../img/insure2.png);
+}
+.insureRecord li span{
+	width: 1.5rem;
+	display: block;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	color: #2E2E2E;
+	padding-left: 0.2rem;
+	float: left;
+}
+.insureRecord li label{
+	color: #2E2E2E;
+	float: left;
+	display: block;
+	width: 3.5rem;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.insureRecord li img{
+	position: absolute;
+	right: 0.2rem;
+	top: 0.34rem;
+	width: 0.16rem;
+}

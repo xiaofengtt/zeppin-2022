@@ -1,0 +1,116 @@
+.title-top{
+	font-size:0.28rem;
+	color:#4D4D4D;
+	line-height:0.4rem;
+	padding:0.2rem 0 0.2rem 0.3rem;
+	background:#F7F7F7;
+}
+.content{
+	background:rgba(255,255,255,1);
+	padding:0.5rem 0.3rem;
+}
+.coin{
+	width:0.34rem;
+	height:0.44rem;
+	background:url(../img/icon_huobi.png) center no-repeat;
+	background-size:cover;
+	display:block;
+	float:left;
+}
+.turnAll{
+	display:block;
+	float:right;
+	color:rgba(61,142,237,1);
+	font-size:0.28rem;
+}
+#price{
+	border:none;
+	height:0.44rem;
+	line-height:0.44rem;
+	display:block;
+	float:left;
+	width:5.6rem;
+	padding-left:0.2rem;
+	font-size:0.28rem;
+}
+
+#drawcash,#completeBtn {
+	background: #FF7600;
+	margin:0 auto;
+	margin-top: 0.52rem;
+	line-height:0.95rem;
+	vertical-align: middle;
+	font-size:0.36rem;
+	border:none;
+	border-radius:5px;
+	display: block;
+	width:6rem;
+	height:0.95rem;
+	color:#FFFFFF;
+	position: relative;
+	text-align: center;
+}
+#drawcash span{
+	display: inline-block;
+	text-align: center;
+}
+#drawcash span:nth-child(2){
+	margin-top:-0.02rem;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: rgba(0,0,0,0.3);
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: rgba(0,0,0,0.3);
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: rgba(0,0,0,0.3);
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: rgba(0,0,0,0.3);
+}
+
+.completeContent{
+	display:none;
+}
+.completeTop{
+	background:#FFFFFF url(../img/icon_jiaoyichenggong.png) center 0.8rem no-repeat;
+	padding:2.4rem 0 1.6rem 0;
+	border-bottom:1px solid rgba(235,235,235,1);
+	margin-top:0.3rem;
+}
+.completeTop span{
+	font-size:0.32rem;
+	color:rgba(0,0,0,0.8);
+	line-height:0.44rem;
+	display:block;
+	padding:0.6rem 0 0.3rem 0;
+	text-align:center;
+}
+.completeTop b{
+	font-size:0.28rem;
+	color:rgba(0,0,0,0.3);
+	line-height:0.4rem;
+}
+.completeBottom{
+	background:#FFF;
+	padding:0.2rem 0.3rem 0.3rem 0.3rem;
+}
+.completeBottom p{
+	padding:0.1rem 0;
+}
+.completeBottom span{
+	display:block;
+	float:left;
+	font-size:0.28rem;
+	color:rgba(0,0,0,0.3);
+	line-height:0.4rem;
+	width:1.5rem;
+	text-align:left;
+}
+.completeBottom span.value{
+	float:right;
+	color:rgba(0,0,0,1);
+	width:5.4rem;
+	text-align:right;
+}

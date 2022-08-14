@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>缴社保</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/socialSecurityCalculator.css" />
+		<link rel="stylesheet" href="css/payHasInsuredRecord.css" />
+	</head>
+	<body onload="loading();" style="display:none;">
+		<input type="hidden" value="" id="cbdq" />
+		<input type="hidden" value="" id="cjgzsj" />
+		<input type="hidden" value="" id="hkxz" />
+		<input type="hidden" value="" id="jfyf" />
+		
+		<div class="titleDiv">
+			<img class="titleBack" src="img/icon_return.png" alt="返回" />
+			<p>缴社保</p>
+		</div>
+		<div class="wrap" style="display:none;padding-bottom:0.1rem;">
+			<div class="stepOne secondInfo">
+				<!--参保人信息-->
+				<div class="insuredInfo">
+					<div class="insuredTop">
+						<span class="insuredName color-2E"></span>
+						<label class="insureTel color-2E"></label>
+					</div>
+					<ul class="insuredBottom color-2E70">
+						<li><label>身份证号</label><span class="color-2E insuredIdnumber"></span><div class="clear"></div></li>
+						<li><label>户口所在地</label><span class="color-2E insuredHkszd"></span><div class="clear"></div></li>
+						<li><label>户口性质</label><span class="color-2E insuredHkxz"></span><div class="clear"></div></li>
+						<li><label>民族</label><span class="color-2E insuredNation"></span><div class="clear"></div></li>
+						<li><label>学历</label><span class="color-2E insuredEducation"></span><div class="clear"></div></li>
+						<li><label>参加工作时间</label><span class="color-2E insuredWorkTime"></span><div class="clear"></div></li>
+						<li><label>个人身份</label><span class="color-2E insuredDuty"></span><div class="clear"></div></li>
+						<li><label>邮箱</label><span class="color-2E insuredEmail"></span><div class="clear"></div></li>
+					</ul>
+					<a class="editBtn" href="javascript:"></a>
+					<a class="takeUp">收起</a>
+					<a class="takeDown">展开</a>
+				</div>
+				<!--订单信息-->
+				<h1 class="item-title">订单信息</h1>
+				<div class="orderInfo">
+					<div class="info-item">
+						<span>参保地区</span>
+						<input type="text" class="cbdq" disabled="disabled" placeholder="请选择" value="北京市"/>
+						<div class="clear"></div>
+					</div>
+					<div class="info-item info-cblx" data="hkszd">
+						<span>参保类型</span>				
+						<label class="light radioLabel newType" data="new" data-value="1">新参保</label>				
+						<label class="radioLabel changeinType" data="changein" data-value="2">普通转入</label>
+						<div class="clear"></div>
+					</div>
+					<div class="info-item info-gsmc" style="display:none;">
+						<span>公司名称</span>
+						<input type="text" class="gsmc" placeholder="请输入原工作单位" value=""/>
+						<div class="clear"></div>
+					</div>
+					<div class="info-item info-jfyf" data="hkxz" id="picker7">
+						<span>缴费开始月份</span>
+						<input type="text" class="jfyf" disabled="disabled" placeholder="请选择" value=""/>
+						<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+						<div class="clear"></div>
+					</div>
+					<div class="info-item">
+						<span>社保基数(元)</span>
+						<input type="number" class="sbjs form-money" id="js_yc2" placeholder="3387~25401" value="" onkeyup="value=value.replace(/[^\d\.]/g,'')" onblur="value=value.replace(/[^\d\.]/g,'')" />
+						<a class="jsButton zdjs shbbtn" onclick="sbjs(this);">最低基数</a>
+						<div class="clear"></div>
+					</div>
+					<div class="info-item info-gjj" data="gjj">
+						<span>公积金</span>				
+						<label class="radioLabel jngjj" data="缴纳" data-value="1">缴纳</label>				
+						<label class="light radioLabel bjngjj" data="不缴纳" data-value="2">不缴纳</label>
+						<div class="clear"></div>
+					</div>
+					<div class="info-item info-gjjjs noBorder" style="display:none;">
+						<span>公积金基数(元)</span>
+						<input type="number" class="gjjjs form-money" id="js_yc" placeholder="2273~25401" value="" onkeyup="value=value.replace(/[^\d\.]/g,'')" onblur="value=value.replace(/[^\d\.]/g,'')" />
+						<a class="jsButton zdjs gjjbtn" onclick="sbjn(this);;">最低基数</a>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<!--缴费信息-->
+				<h1 class="item-title">缴费信息</h1>
+				<div class="payInfo">
+					<div class="info-item info-jfje" data="hkxz">
+						<span>缴纳金额(元)</span>
+						<input type="text" class="jfje color-red" disabled="disabled" placeholder="0.00" value=""/>
+						<b class="fymx color-2E70">费用明细</b>
+						<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+						<div class="clear"></div>
+					</div>
+					<div class="info-item info-fwf" data="hkxz" id="picker6">
+						<span>服务费(元)</span>
+						<input type="text" class="fwf color-red" disabled="disabled" placeholder="请选择" value=""/>
+						<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+						<div class="clear"></div>
+					</div>
+				</div>							
+			</div>
+			<!--费用明细-->
+			<div class="stepTwo">
+				<div class="resultDiv" style="padding-bottom: 1.2rem;margin-top: 0.28rem;display: block;">
+					<div class="totalResult">
+						<div class="sbfy fyBox">
+							<span>社保费用(元)：</span>
+							<label class="sbfyValue valueLable">2273</label>
+						</div>
+						<div class="gjjfy fyBox">
+							<span>公积金费用(元)：</span>
+							<label class="gjjfyValue valueLable">2273</label>
+						</div>
+						<div class="gsfy fyBox">
+							<span>个人所得税(元)：</span>
+							<label class="gsfyValue valueLable">2273</label>
+						</div>
+						<div class="zj fyBox">
+							<span>总计(元)：</span>
+							<label class="zjValue valueLable">2273</label>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tableBox">
+						<table></table>
+					</div>
+					
+				</div>
+			</div>
+			
+			<!--合计-->
+			<div class="totalAmount">
+				<div class="amoutLeft color-2E">
+					合计金额(元)：<span class="color-red">0.00</span>
+				</div>
+				<a class="surebtn">确认支付</a>
+				<div class="clear"></div>
+			</div>
+			<!--明细的确定按钮-->
+			<div class="fixedBtn" style="position:initial;">
+				<a class="bigSure light">确定</a>
+			</div>
+
+			
+			<div class="layerDiv">
+				<div class="layerInner">
+					<p class="layer-title">请选择服务费</p>
+					<span class="cancel cancel-hook">取消</span>
+					<span class="confirm confirm-hook">确定</span>
+					<ul>
+						<li class="light" data = "400.00(12个月)" data-value="400" data-length="12"><span class="color-2E fwf-12">12个月(2018.08~2019.07)</span><label class="color-red">400元</label><div class="clear"></div></li>
+						<li data = "220.00(6个月)" data-value="220" data-length="6"><span class="color-2E fwf-6">6个月(2018.08~2019.07)</span><label class="color-red">220元</label><div class="clear"></div></li>
+						<li data = "120.00(3个月)" data-value="120" data-length="3"><span class="color-2E fwf-3">3个月(2018.08~2019.07)</span><label class="color-red">120元</label><div class="clear"></div></li>
+						<li data = "50.00(1个月)" data-value="50" data-length="1"><span class="color-2E fwf-1">1个月(2018.08~2019.07)</span><label class="color-red">50元</label><div class="clear"></div></li>
+					</ul>
+				</div>
+			</div>
+			
+			<p class="layer">
+				提示信息
+			</p>
+			<div id="loading-box">
+				<img src="./img/icon-loading.gif" alt="" />
+			</div>
+
+		</div>
+		
+		<script src="./js/burialPoint.js"></script>
+		<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+		<script src="./js/base64.js"></script>
+		<script src="./js/md5.js"></script>
+		<script type="text/javascript" src="js/picker.min.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>		
+		<link rel="stylesheet" href="css/base.css" />
+		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript" src="js/payHasInsuredRecord.js" ></script>
+		<script type="text/javascript">
+		
+			// 获取视图原始高度
+			windowHeight = $(window).height();  
+			// 为window绑定resize事件
+			window.onresize = function () {
+			  var nowHeight = $(window).height();
+		      if (nowHeight < windowHeight) {
+		        // 将底部弹起的按钮隐藏（可使用给按钮添加相应消失类）
+		    	  	$(".totalAmount").hide();
+		      } else {
+		        // 将按钮正常显示（可使用给按钮移除相应消失类）
+		    	  	$(".totalAmount").show();
+		      }
+		    }
+			
+		</script>
+	</body>
+</html>

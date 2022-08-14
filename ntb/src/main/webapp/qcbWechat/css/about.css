@@ -1,0 +1,58 @@
+.top{
+	padding:0.6rem 0.3rem 0.4rem 0.3rem;
+	background:#FFFFFF;
+	margin-top:0.2rem;
+}
+.logo{
+	width:1.6rem;
+	/*height:1.5rem;*/
+	display: block;
+	margin:0 auto;
+	margin-bottom:0.4rem;
+}
+
+.top p{
+	font-size:0.28rem;
+	line-height:0.40rem;
+	color:rgba(44, 44, 44, 1);
+	text-align: justify;
+	text-indent:0.56rem;
+}
+
+
+.bottom{
+	margin-top:0.2rem;
+	padding:0.3rem;
+	background:#FFFFFF;
+}
+.bottom h3{
+	font-size: 0.28rem;
+	color: rgba(44, 44, 44, 1);
+	margin-bottom:0.24rem;
+}
+.bottom p{
+	padding-left:0.4rem;
+	font-size:0.28rem;
+	margin-bottom:0.2rem;
+	color: rgba(44, 44, 44, 1);
+}
+.bottom p:last-of-type{
+	margin-bottom:0;
+}
+
+.bottom p:nth-of-type(1){
+	background:url("../img/tel.png")no-repeat;
+	background-size:0.28rem auto;
+	background-position: left center;
+	padding-top:0.01rem;
+}
+.bottom p:nth-of-type(2){
+	background:url("../img/email.png")no-repeat;
+	background-size:0.28rem auto;
+	background-position: left center;
+}
+.bottom p:nth-of-type(3){
+	background:url("../img/target.png")no-repeat;
+	background-size:0.28rem auto;
+	background-position: left center;
+}

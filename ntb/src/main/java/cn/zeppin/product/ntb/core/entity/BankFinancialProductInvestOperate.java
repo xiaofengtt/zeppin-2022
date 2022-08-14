@@ -27,7 +27,7 @@ public class BankFinancialProductInvestOperate extends BaseEntity {
 	private static final long serialVersionUID = -4476830891011718313L;
 	
 	private String uuid;
-	private String bankFinancialProductInvest;
+	private String bankFinancialProduct;
 	private String type;
 	private String value;
 	private String reason;
@@ -36,8 +36,12 @@ public class BankFinancialProductInvestOperate extends BaseEntity {
 	private Timestamp checktime;
 	private String creator;
 	private Timestamp createtime;
+	private Timestamp submittime;
+	
+	private String receipt;//上传凭证
 	
 	public class BankFinancialProductInvestOperateStatus{
+		public final static String DRAFT = "draft";//草稿
 		public final static String UNCHECKED = "unchecked";
 		public final static String CHECKED = "checked";
 		public final static String UNPASSED = "unpassed";
@@ -45,10 +49,7 @@ public class BankFinancialProductInvestOperate extends BaseEntity {
 	}
 	
 	public class BankFinancialProductInvestOperateType{
-		public final static String ADD = "add";
-		public final static String EDIT = "edit";
-		public final static String DELETE = "delete";
-		public final static String CHECK = "check";
+		public final static String INVEST = "invest";
 		public final static String REDEEM = "redeem";
 	}
 	
@@ -62,13 +63,13 @@ public class BankFinancialProductInvestOperate extends BaseEntity {
 		this.uuid = uuid;
 	}
 
-	@Column(name = "bank_financial_product_invest", length = 36)
-	public String getBankFinancialProductInvest() {
-		return bankFinancialProductInvest;
+	@Column(name = "bank_financial_product", length = 36)
+	public String getBankFinancialProduct() {
+		return bankFinancialProduct;
 	}
 
-	public void setBankFinancialProductInvest(String bankFinancialProductInvest) {
-		this.bankFinancialProductInvest = bankFinancialProductInvest;
+	public void setBankFinancialProduct(String bankFinancialProduct) {
+		this.bankFinancialProduct = bankFinancialProduct;
 	}
 	
 	@Column(name = "type", nullable = false, length = 20)
@@ -142,4 +143,22 @@ public class BankFinancialProductInvestOperate extends BaseEntity {
 	public void setCreator(String creator) {
 		this.creator = creator;
 	}	
+	
+	@Column(name = "submittime")
+	public Timestamp getSubmittime() {
+		return submittime;
+	}
+
+	public void setSubmittime(Timestamp submittime) {
+		this.submittime = submittime;
+	}
+
+	@Column(name = "receipt")
+	public String getReceipt() {
+		return receipt;
+	}
+
+	public void setReceipt(String receipt) {
+		this.receipt = receipt;
+	}
 }

@@ -1,0 +1,68 @@
+/*分页样式*/
+
+#pageTool {
+	margin-top: 20px;
+}
+
+.ui-paging-container .js-page-first {
+	display: none;
+}
+
+.ui-paging-container .js-page-last {
+	display: none;
+}
+
+.ui-paging-container li.ui-pager {
+	border: none;
+	padding: 3px 11px;
+}
+
+.ui-paging-container li.ui-pager:hover,
+.ui-paging-container li.focus {
+	color: #FFFFFF;
+	background: #FDA133;
+	background: -webkit-linear-gradient(left, #FDA133, #FD8521);
+	background: -moz-linear-gradient(left, #FDA133, #FD8521);
+	background: -ms-linear-gradient(left, #FDA133, #FD8521);
+	background: linear-gradient(left, #FDA133, #FD8521);
+	background-color:#ffb031;
+}
+
+.ui-paging-container li.ui-pager-disabled,
+.ui-paging-container li.ui-pager-disabled:hover {
+	background-color: #FFFFFF;
+}
+
+.ui-paging-container li {
+	color: #c2c2c2;
+	font-size: 16px;
+}
+
+.ui-paging-container ul,
+.ui-paging-container li {
+	text-align: center;
+}
+
+.ui-paging-container li.ui-paging-toolbar select {
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	height:auto;
+	font-size:14px;
+	padding:4px 14px;
+	background:#FFFFFF;
+	cursor: pointer;
+	outline: none;
+}
+.ui-paging-container li.ui-paging-toolbar a{
+	vertical-align: middle;
+	font-size:13px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding:0 10px;
+}
+.ui-paging-container li.ui-paging-toolbar a:hover{
+	background-color:#FF9E10;
+	color:#FFFFFF;
+}

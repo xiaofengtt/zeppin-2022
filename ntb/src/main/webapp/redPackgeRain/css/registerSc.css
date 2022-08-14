@@ -1,0 +1,243 @@
+* {
+	box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    /*-webkit-user-select: none;*/
+    user-select:none;
+    appearance: none;
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+    text-decoration: none;
+}	
+html{
+	width: 100%;
+	height: 100%;
+	background: url('../img/H5活动注册页面-领取成功.png') no-repeat;
+    background-size: cover;
+    overflow: scroll;
+    background-color:#DB2C23;
+}
+body {
+	width: 100%;
+	height: 100%;
+}
+
+.head{
+	position: absolute;
+	top:30%;
+	width:100%;
+	left:0;
+	right:0;
+	margin:auto;
+	text-align: center;
+}
+.head h2{
+	font-size:60px;
+	line-height:60px;
+	color:#FFFFFF;
+	position:relative;
+	font-weight: 300;
+}
+.head h2 i{
+	font-size:50px;
+	line-height:60px;
+	font-style: normal;
+	position: relative;
+	bottom:0px;
+	font-weight: 300;
+}
+.head h2 small{
+	font-size:20px;
+	line-height:20px;
+	position: relative;
+	bottom:6px;
+	font-weight: 500;
+}
+.head a{
+	display: inline-block;
+	width:180px;
+	height:44px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	background: -webkit-linear-gradient(left, #ffd033 , #ff991a); /* Safari 5.1 - 6.0 */
+	line-height:46px;
+	color:#BC261E;
+	margin-bottom:12px;
+}
+.head p{
+	font-size:14px;
+	line-height:14px;
+	color:#FDDA28;
+	opacity: 1;
+}
+.body{
+	width:90%;
+	position: absolute;
+	left:0;
+	right:0;
+	margin:auto;
+	top:56%;
+	height:262px;
+}
+.body > p{
+	text-align: center;
+	color:#FAD9B7;
+	font-size:16px;
+	line-height:16px;
+	margin-bottom:16px;
+	white-space: nowrap;
+}
+.body p img{
+	vertical-align: middle;
+}
+.body .item{
+	width:100%;
+	/*height:110px;*/
+	/*height:38%;*/
+	background:#F6BE84;
+	/*border-radius:3px;*/
+	margin-bottom:14px;
+	position: relative;
+}
+.item-title{
+	width:100%;
+	padding:4% 2%;
+	text-align: left;
+	border-bottom: 1px solid #F09364;
+}
+.item-title p{
+	font-size:16px;
+	line-height:16px;
+	color:#941E17;
+	font-weight: bold;
+}
+.item table{
+	table-layout: fixed;
+	width:100%;
+	margin-top:3%;
+	padding-bottom:3%;
+	padding-left:10px;
+}
+.item table tr td{
+	color:#6F3B2F;
+	padding-left:10px;
+}
+.item table tr .rate{
+	color:#B2241C;
+	font-size:20px;
+	line-height:20px;
+}
+.item table tr .rateCN{
+	opacity: 0.6;
+}
+.item table tr .timeCN{
+	opacity: 0.6;
+}
+.item table tr:nth-child(1) td{
+	padding-bottom:4px;
+}
+.item table tr:nth-child(1){
+	font-size:16px;
+	line-height:16px;
+}
+.item table tr:nth-child(2){
+	font-size:12px;
+	line-height:12px;
+}
+.bg{
+	position: fixed;
+	width:100%;
+	top:0;
+	background:rgba(0,0,0,0.2);
+	z-index:99999;
+	text-align: center;
+	display:none;
+}
+.bg .modal{
+	position: fixed;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	margin:auto;
+	width:50%;
+	height:90px;
+	display: inline-block;
+	background:#FFFFFF;
+	border-radius:3px;
+}
+.bg .modal p{
+	/*margin-top:10px;*/
+	padding:8% 0;
+	border-bottom:1px solid #4D9CFF;
+}
+.bg .modal a{
+	display: block;
+	padding:6% 0;
+}
+@media only screen and (max-width:320px) {
+	.head {
+		top: 28%;
+	}
+	.head a {
+		width: 148px;
+		height: 34px;
+		line-height: 34px;
+		font-size: 14px;
+	}
+	.head h2 {
+		font-size: 40px;
+	}
+	.head h2 i {
+		font-size: 40px;
+	}
+	.head h2 small {
+		font-size: 20px;
+		/*vertical-align: middle;*/
+		line-height: 0px;
+		position: relative;
+		top: -1px;
+		font-weight: bold;
+	}
+	.head p {
+		font-size: 12px;
+	}
+	.body {
+		top: 58%;
+	}
+	.body .item {
+		margin-bottom: 10px;
+	}
+	.body .item .item-title {
+		padding: 3% 1%;
+	}
+	.body .item .item-title p {
+		font-size: 13px;
+	}
+	.body>p {
+		text-align: left;
+		width: 100%;
+	}
+	.body>p img {
+		width: 34%;
+	}
+	.item table tr td {
+		padding-left: 4px;
+	}
+	.item table tr:nth-child(1) td {
+		padding-bottom: 4px;
+	}
+	.item table tr:nth-child(1) {
+		font-size: 14px;
+		line-height: 14px;
+	}
+	.item table tr:nth-child(2) {
+		font-size: 11px;
+		line-height: 11px;
+	}
+	.item table {
+		margin-top: 2%;
+		padding-bottom: 2%;
+	}
+}

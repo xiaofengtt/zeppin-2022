@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>费用明细</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/socialSecurityCalculator.css" />
+	</head>
+	<body onload="loading();" style="display:none;">
+		<div class="titleDiv">
+			<img class="titleBack" src="img/icon_return.png" alt="返回" />
+			<p>费用明细</p>
+		</div>
+		<div class="wrap">
+			<div class="resultDiv" style="padding-bottom: 1.2rem;margin-top: 0.28rem;display: block;">
+				<div class="totalResult">
+					<div class="sbfy fyBox">
+							<span>社保费用(元)：</span>
+							<label class="sbfyValue valueLable"></label>
+						</div>
+						<div class="gjjfy fyBox">
+							<span>公积金费用(元)：</span>
+							<label class="gjjfyValue valueLable"></label>
+						</div>
+						<div class="gsfy fyBox">
+							<span>个人所得税(元)：</span>
+							<label class="gsfyValue valueLable"></label>
+						</div>
+						<div class="zj fyBox">
+							<span>总计(元)：</span>
+							<label class="zjValue valueLable"></label>
+						</div>
+						<div class="clear"></div>
+				</div>
+				<div class="tableBox">
+					<table></table>
+				</div>
+				
+			</div>
+			
+		</div>
+		<script src="./js/burialPoint.js"></script>
+		<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+		<script src="./js/base64.js"></script>
+		<script src="./js/md5.js"></script>
+		<script type="text/javascript" src="js/picker.min.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>	
+		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript" src="js/socialSecurityCalculator.js" ></script>
+		<script>
+			var cardinalNumber = url("?cardinalNumber") != null ? url("?cardinalNumber") : "";
+			var housingFund = url("?housingFund") != null ? url("?housingFund") : "";
+			socialSecurityResult(Number(cardinalNumber),Number(housingFund));
+		</script>
+	</body>
+</html>

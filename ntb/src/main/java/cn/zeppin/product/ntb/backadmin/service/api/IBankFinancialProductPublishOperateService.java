@@ -3,12 +3,12 @@
  */
 package cn.zeppin.product.ntb.backadmin.service.api;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import cn.zeppin.product.ntb.core.entity.BankFinancialProductPublishOperate;
 import cn.zeppin.product.ntb.core.entity.base.Entity;
+import cn.zeppin.product.ntb.core.exception.TransactionException;
 import cn.zeppin.product.ntb.core.service.base.IBaseService;
 
 /**
@@ -38,18 +38,19 @@ public interface IBankFinancialProductPublishOperateService extends IBaseService
 	 * 审核
 	 * @param bankFinancialProductPublishOperate
 	 * @return result
+	 * @throws TransactionException 
 	 */
-	public HashMap<String,Object> check(BankFinancialProductPublishOperate bankFinancialProductPublishOperate);
+	public void check(BankFinancialProductPublishOperate bankFinancialProductPublishOperate) throws TransactionException;
 	
 	/**
-	 * 获取基银行理财产品发布操作分状态列表
+	 * 获取募集产品操作分状态列表
 	 * @param resultClass
 	 * @return
 	 */
 	public List<Entity> getStatusList(Map<String, String> inputParams, Class<? extends Entity> resultClass);
 	
 	/**
-	 * 获取基银行理财产品发布操作分类型列表
+	 * 获取募集产品操作分类型列表
 	 * @param inputParams
 	 * @param resultClass
 	 * @return

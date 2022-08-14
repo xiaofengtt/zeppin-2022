@@ -25,6 +25,13 @@ $(document).ready(function() {
 
 //提交
 $('#formsubmit').submit(function() {
+	if (flagSubmit == false) {
+        return false;
+    }
+    flagSubmit = false;
+    setTimeout(function() {
+        flagSubmit = true;
+    }, 3000);
 	var name=$("#name").val().replace(/(^\s*)|(\s*$)/g, "");
 	if(name==""){
 		layer.msg('方法名称不能为空', {

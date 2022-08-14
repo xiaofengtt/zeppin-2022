@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+.table-list tr:nth-child(odd) td,.table-list tr:hover td{
+	background:#fff;
+}
+.table-list th:last-child, .table-list td:last-child{
+	padding-right:7px !important;
+}
+.table-list th:first-child, .table-list td:first-child{
+	padding-left:7px !important;
+}
+.form-group span{
+	font-size:13px;
+}
+.publish-succcess{
+	background:rgba(43,158,247,1) !important;
+}
+.publish-refuse{
+	background:rgba(255,103,103,1) !important;
+}
+.table-list th,.table-list td{
+	background:#fff;
+	border-bottom:1px solid #EEEEEE;
+}
+.table-list{
+	width:auto;
+	border:1px solid rgba(212,212,212,1);
+	margin-top:10px;
+}
+.table-list tr:last-child td{
+	border-bottom:1px solid rgba(212,212,212,1);
+}

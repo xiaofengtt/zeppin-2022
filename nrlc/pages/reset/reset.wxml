@@ -1,0 +1,25 @@
+<!--reset.wxml-->
+<view class="container">
+  <form bindsubmit="formSubmit">
+    <view class="main-view">
+      <view class="tr">
+        <view class="data-row">
+          <image src="/resources/login/password.png"></image>
+          <input type="text" password placeholder="请输入8-20位字母数字组合密码" maxlength="20" placeholder-style="font-size:28rpx;color: rgba(0,0,0,0.2)" bindinput="editPassword"/>
+        </view>
+      </view>
+      <view class="tr">
+        <view class="data-row">
+          <image src="/resources/login/password.png"></image>
+          <input type="text" password placeholder="请再次输入新密码" maxlength="20" placeholder-style="font-size:28rpx;color: rgba(0,0,0,0.2)" bindinput="editConfirm"/>
+        </view>
+      </view>
+      <view class="tr-submit">
+        <view class="submit-row">
+          <button disabled="{{!buttonAble}}" formType="submit">确认</button>
+        </view>
+      </view>
+    </view>
+  </form>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

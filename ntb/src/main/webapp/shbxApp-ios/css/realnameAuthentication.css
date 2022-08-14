@@ -1,0 +1,79 @@
+.order-top{
+	background: #FFFFFF;
+	padding: 0.48rem 0;
+	text-align: center;
+	
+}
+.orderXt{
+	display: block;
+	width: 2.8rem;
+}
+.order-top p{
+	font-size: 0.32rem;
+	margin-top: 0.48rem;
+}
+.order-bottom{
+	background: #FFFFFF;
+	padding-left: 0.3rem;
+}
+.info-list{
+	padding: 0.28rem 0;
+	font-size: 0.28rem;
+}
+.info-list label{
+	width: 1.5rem;
+	float: left;
+}
+.info-list span{
+	width: 5rem;
+	float: right;
+	text-align: right;
+	padding-right: 0.3rem;
+}
+.border{
+	border-top:1px solid rgba(0,0,0,0.1);
+}
+.info-box{
+	background: #FFFFFF;
+	padding-left: 0.3rem;
+}
+.info-item span{
+	width: 1.4rem;
+}
+.saveBtn,.gobackBtn,.reAuthBtn{
+	width: 5.32rem;
+	display: block;
+	height: 0.8rem;
+	border-radius: 0.04rem;
+	background:rgba(46,46,46,0.3);
+	font-size: 0.28rem;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 0.9rem;
+	margin-top: 0.8rem;
+}
+.saveBtn.light,.gobackBtn.light,.reAuthBtn.light{
+	background:rgba(79,172,254,1);
+}
+.authSuccess-top,.authFail-top{
+	padding-top: 2.6rem;
+	background: #FFFFFF url(../img/icon-authSuccess.png) center 0.6rem no-repeat;
+	background-size: auto 32%;
+	text-align: center;
+	height: 4.4rem;
+}
+.authSuccess-top p,.authFail-top p{
+	font-size: 0.32rem;
+	padding-bottom: 0.28rem;
+}
+.authSuccess-top span,.authFail-top span{
+	font-size: 0.28rem;
+}
+.authFail-top{
+	background: #FFFFFF url(../img/icon-authFail.png) center 0.6rem no-repeat;
+	background-size: auto 32%;
+}
+
+.orderRealname,.authSuccess,.authFail{
+	display:none;
+}

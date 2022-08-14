@@ -7,6 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>牛投帮-后台管理系统</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="css/fundReport.css" />
 		<script id="queboxTpl" type="text/template">
 			<tr>
@@ -22,12 +23,12 @@
 	<body>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="navigation.jsp"/>
-		<input id="scode" type="hidden" value="00000002" />  
+		<input id="scode" type="hidden" value="00000002" />
 		<div class="contain">
 			<jsp:include page="contentLeft.jsp"/>
 			<div class="contain-right">
 				<div class="location">
-					<div class="locationLeft"><a href="fundList.jsp">基金信息管理</a><span>></span><a class="current">每日净值</a></div>
+					<div class="locationLeft"><a href="fundList.jsp">活期理财信息管理</a><span>></span><a class="current">每日净值</a></div>
 				</div>
 				<div class="clear"></div>
 				<div class="main-contain">
@@ -53,16 +54,16 @@
 						</table>
 						<div id="pageTool"></div>
 					</div>
-					
+
 				</div>
 			</div>
 			<div class="clear"></div>
 		</div>
-		
+
 		<script type="text/javascript" src="js/highcharts.js" ></script>
 		<script type="text/javascript" src="js/jquery.colorbox.js"></script>
 		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
-		<script type="text/javascript" src="js/url.min.js"></script>
+		<script type="text/javascript" src="js/url.min.js"></script><script type="text/javascript" src="js/flagSubmit.js"></script>
 		<script type="text/javascript" src="js/jsrender.min.js"></script>
 		<script type="text/javascript" src="js/fundReport.js" ></script>
 	</body>

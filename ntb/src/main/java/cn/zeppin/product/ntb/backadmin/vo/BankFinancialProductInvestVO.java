@@ -15,20 +15,25 @@ public class BankFinancialProductInvestVO implements Entity {
 	 */
 	private static final long serialVersionUID = 4491225193452390207L;
 	
-	private String uuid;//id
-	private String bankFinancialProduct;//银行理财产品ID
-	private String bankFinancialProductPublish;//银行理财发布ID
-	private String bankFinancialProductPublishName;//银行理财发布名称
-	private BigDecimal amount;//投资额
-	private BigDecimal redeemAmount;
-	private BigDecimal investIncome;
-	private BigDecimal returnCapital;
-	private BigDecimal returnInterest;
-	private BigDecimal platfomIncome;
-	private String targetAnnualizedReturnRate;//目标年化收益
-	private String valueDate;//起息日
-	private String maturityDate;//到期日
-	private String status;//产品状态
+	private String uuid;
+	private String product;
+	private String productName;
+	private String productPublish;
+	private String productPublishName;
+	private String productPublishTargetReturn;
+	private String productPublishMaturityDate;
+	private String productTargetReturn;
+	private String productMaturityDate;
+	private String companyAccount;
+	private String companyAccountName;
+	private BigDecimal accountBalance;
+	private BigDecimal totalRedeem;
+	private BigDecimal totalAmount;
+	private BigDecimal totalReturn;
+	private String accountBalanceCN;
+	private String totalRedeemCN;
+	private String totalAmountCN;
+	private String totalReturnCN;
 	private String stage;//产品阶段
 	private String stageCN;
 	private String creator;
@@ -42,23 +47,23 @@ public class BankFinancialProductInvestVO implements Entity {
 	
 	public BankFinancialProductInvestVO(BankFinancialProductInvest bfpi) {
 		this.uuid = bfpi.getUuid();
-		this.bankFinancialProduct = bfpi.getBankFinancialProduct();
-		this.bankFinancialProductPublish = bfpi.getBankFinancialProductPublish();
-		this.amount = bfpi.getAmount();
-		this.status = bfpi.getStatus();
+		this.product = bfpi.getBankFinancialProduct();
+		this.productPublish = bfpi.getBankFinancialProductPublish();
 		this.stage = bfpi.getStage();
-		this.redeemAmount = bfpi.getRedeemAmount();
-		this.investIncome = bfpi.getInvestIncome();
-		this.returnCapital = bfpi.getReturnCapital();
-		this.returnInterest = bfpi.getReturnInterest();
-		this.platfomIncome = bfpi.getPlatfomIncome();
-		if(BankFinancialProductInvestStage.UNSTART.equals(bfpi.getStage())){
-			this.stageCN = "待投资";
-		} else if (BankFinancialProductInvestStage.INCOME.equals(bfpi.getStage())) {
+		if (BankFinancialProductInvestStage.NORMAL.equals(bfpi.getStage())) {
 			this.stageCN = "收益中";
 		} else if (BankFinancialProductInvestStage.FINISHED.equals(bfpi.getStage())) {
 			this.stageCN = "已完成";
 		}
+		this.accountBalance = bfpi.getAccountBalance();
+		this.totalAmount = bfpi.getTotalAmount();
+		this.totalRedeem = bfpi.getTotalRedeem();
+		this.totalReturn = bfpi.getTotalReturn();
+		this.accountBalanceCN = Utlity.numFormat4UnitDetail(bfpi.getAccountBalance());
+		this.totalAmountCN = Utlity.numFormat4UnitDetail(bfpi.getTotalAmount());
+		this.totalRedeemCN = Utlity.numFormat4UnitDetail(bfpi.getTotalRedeem());
+		this.totalReturnCN = Utlity.numFormat4UnitDetail(bfpi.getTotalReturn());
+		
 		this.creator = bfpi.getCreator();
 		this.createtime = bfpi.getCreatetime();
 		if(bfpi.getCreatetime() != null && !"".equals(bfpi.getCreatetime())){
@@ -76,94 +81,134 @@ public class BankFinancialProductInvestVO implements Entity {
 		this.uuid = uuid;
 	}
 
-	public String getBankFinancialProduct() {
-		return bankFinancialProduct;
+	public String getProduct() {
+		return product;
 	}
 
-	public void setBankFinancialProduct(String bankFinancialProduct) {
-		this.bankFinancialProduct = bankFinancialProduct;
+	public void setProduct(String product) {
+		this.product = product;
 	}
 	
-	public String getBankFinancialProductPublish() {
-		return bankFinancialProductPublish;
+	public String getProductPublish() {
+		return productPublish;
 	}
 
-	public void setBankFinancialProductPublish(String bankFinancialProductPublish) {
-		this.bankFinancialProductPublish = bankFinancialProductPublish;
-	}
-	
-	public String getBankFinancialProductPublishName() {
-		return bankFinancialProductPublishName;
+	public void setProductPublish(String productPublish) {
+		this.productPublish = productPublish;
 	}
 
-	public void setBankFinancialProductPublishName(String bankFinancialProductPublishName) {
-		this.bankFinancialProductPublishName = bankFinancialProductPublishName;
-	}
-	
-	public BigDecimal getAmount() {
-		return amount;
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
-	}
-	
-	public BigDecimal getRedeemAmount() {
-		return redeemAmount;
-	}
-	
-	public void setRedeemAmount(BigDecimal redeemAmount) {
-		this.redeemAmount = redeemAmount;
-	}
-	
-	public BigDecimal getInvestIncome() {
-		return investIncome;
-	}
-	
-	public void setInvestIncome(BigDecimal investIncome) {
-		this.investIncome = investIncome;
-	}
-	
-	public BigDecimal getReturnCapital() {
-		return returnCapital;
-	}
-	
-	public void setReturnCapital(BigDecimal returnCapital) {
-		this.returnCapital = returnCapital;
-	}
-	
-	public BigDecimal getReturnInterest() {
-		return returnInterest;
-	}
-	
-	public void setReturnInterest(BigDecimal returnInterest) {
-		this.returnInterest = returnInterest;
-	}
-	
-	public BigDecimal getPlatfomIncome() {
-		return platfomIncome;
-	}
-	
-	public void setPlatfomIncome(BigDecimal platfomIncome) {
-		this.platfomIncome = platfomIncome;
-	}
-	
-	public String getValueDate() {
-		return valueDate;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
-	public void setValueDate(String valueDate) {
-		this.valueDate = valueDate;
+	public String getProductPublishName() {
+		return productPublishName;
 	}
 
-	public String getMaturityDate() {
-		return maturityDate;
-	}
-
-	public void setMaturityDate(String maturityDate) {
-		this.maturityDate = maturityDate;
+	public void setProductPublishName(String productPublishName) {
+		this.productPublishName = productPublishName;
 	}
 	
+	public String getProductPublishTargetReturn() {
+		return productPublishTargetReturn;
+	}
+
+	public void setProductPublishTargetReturn(String productPublishTargetReturn) {
+		this.productPublishTargetReturn = productPublishTargetReturn;
+	}
+
+	public String getProductPublishMaturityDate() {
+		return productPublishMaturityDate;
+	}
+
+	public void setProductPublishMaturityDate(String productPublishMaturityDate) {
+		this.productPublishMaturityDate = productPublishMaturityDate;
+	}
+
+	public String getCompanyAccount() {
+		return companyAccount;
+	}
+
+	public void setCompanyAccount(String companyAccount) {
+		this.companyAccount = companyAccount;
+	}
+	
+	public String getCompanyAccountName() {
+		return companyAccountName;
+	}
+
+	public void setCompanyAccountName(String companyAccountName) {
+		this.companyAccountName = companyAccountName;
+	}
+
+	public BigDecimal getTotalRedeem() {
+		return totalRedeem;
+	}
+
+	public void setTotalRedeem(BigDecimal totalRedeem) {
+		this.totalRedeem = totalRedeem;
+	}
+
+	public BigDecimal getTotalAmount() {
+		return totalAmount;
+	}
+
+	public void setTotalAmount(BigDecimal totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+
+	public BigDecimal getTotalReturn() {
+		return totalReturn;
+	}
+
+	public void setTotalReturn(BigDecimal totalReturn) {
+		this.totalReturn = totalReturn;
+	}
+
+	public BigDecimal getAccountBalance() {
+		return accountBalance;
+	}
+
+	public void setAccountBalance(BigDecimal accountBalance) {
+		this.accountBalance = accountBalance;
+	}
+
+	public String getAccountBalanceCN() {
+		return accountBalanceCN;
+	}
+
+	public void setAccountBalanceCN(String accountBalanceCN) {
+		this.accountBalanceCN = accountBalanceCN;
+	}
+
+	public String getTotalRedeemCN() {
+		return totalRedeemCN;
+	}
+
+	public void setTotalRedeemCN(String totalRedeemCN) {
+		this.totalRedeemCN = totalRedeemCN;
+	}
+
+	public String getTotalAmountCN() {
+		return totalAmountCN;
+	}
+
+	public void setTotalAmountCN(String totalAmountCN) {
+		this.totalAmountCN = totalAmountCN;
+	}
+
+	public String getTotalReturnCN() {
+		return totalReturnCN;
+	}
+
+	public void setTotalReturnCN(String totalReturnCN) {
+		this.totalReturnCN = totalReturnCN;
+	}
+
 	public String getStage() {
 		return stage;
 	}
@@ -171,29 +216,13 @@ public class BankFinancialProductInvestVO implements Entity {
 	public void setStage(String stage) {
 		this.stage = stage;
 	}
-	
+
 	public String getStageCN() {
 		return stageCN;
 	}
 
 	public void setStageCN(String stageCN) {
 		this.stageCN = stageCN;
-	}
-	
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public String getTargetAnnualizedReturnRate() {
-		return targetAnnualizedReturnRate;
-	}
-
-	public void setTargetAnnualizedReturnRate(String targetAnnualizedReturnRate) {
-		this.targetAnnualizedReturnRate = targetAnnualizedReturnRate;
 	}
 
 	public String getCreator() {
@@ -227,4 +256,21 @@ public class BankFinancialProductInvestVO implements Entity {
 	public void setCreatetimeCN(String createtimeCN) {
 		this.createtimeCN = createtimeCN;
 	}
+
+	public String getProductTargetReturn() {
+		return productTargetReturn;
+	}
+
+	public void setProductTargetReturn(String productTargetReturn) {
+		this.productTargetReturn = productTargetReturn;
+	}
+
+	public String getProductMaturityDate() {
+		return productMaturityDate;
+	}
+
+	public void setProductMaturityDate(String productMaturityDate) {
+		this.productMaturityDate = productMaturityDate;
+	}
+	
 }

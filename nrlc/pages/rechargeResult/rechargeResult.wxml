@@ -1,0 +1,9 @@
+<!--pages/rechargeResult/rechargeResult.wxml-->
+<view class="container">
+  <view class="main-view">
+    <image src="/resources/pay/recharge_result.png"></image>
+    <text>充值成功！</text>
+    <view bindtap="finish">完成</view>
+  </view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

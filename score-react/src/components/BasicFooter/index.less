@@ -1,0 +1,344 @@
+.basic-footer {
+	position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1001;
+    text-align: center;
+    background:rgba(255,255,255,0.8);
+    box-shadow:0px -2px 6px 0px rgba(222,222,222,0.5);
+    :global{
+        .am-tab-bar-tab{
+            width: 20%;
+            display: inline-block;
+            padding: 6px 0 4px 0;
+            p{
+                font-size: 20px;
+                line-height: 1.5;
+                color:#8E8E93;
+                padding:0 0 4px 0;
+            }
+        }
+    }
+}
+/* 适配iphonex */
+@media only screen and (device-width: 375px) and (device-height: 812px) and 
+(-webkit-device-pixel-ratio: 3) {
+    :global{  
+	body{
+		padding-top: constant(safe-area-inset-top);
+        padding-left: constant(safe-area-inset-left);
+        padding-right: constant(safe-area-inset-right);
+        padding-bottom: constant(safe-area-inset-bottom);
+    }
+    .am-navbar{
+        height: 176px;
+        padding-top: 88px;
+    }
+    .am-navbar-title{
+        top: 88px !important;
+    }
+    #root > div{
+        padding-top: 174px !important;
+    }
+    .th-fixed{
+        top: 251px !important;
+    }
+    #root > div.paddingTopNone{
+        padding-top: 0 !important;
+    }
+    .avater-banner{
+        padding-top: 143px !important;
+        height:408px !important;
+    }
+    .collect-category{
+        top: 88px !important;
+    }
+    .match-info,.match-info-head{
+        padding-top: 88px;
+    }
+    .match-goback{
+        top: 102px !important;
+    }
+    #root > div#loginPaddingNone{
+        padding-top: 88px !important;
+    }
+    .shell-screen{
+        a{
+            top: 214px !important;
+        }
+    }
+}
+
+}
+/* 适配iphonexr */
+@media only screen and (device-width: 414px) and (device-height: 896px) and 
+(-webkit-device-pixel-ratio: 2) {
+    :global{  
+	body{
+		padding-top: constant(safe-area-inset-top);
+        padding-left: constant(safe-area-inset-left);
+        padding-right: constant(safe-area-inset-right);
+        padding-bottom: constant(safe-area-inset-bottom);
+    }
+    .am-navbar{
+        height: 176px;
+        padding-top: 88px;
+    }
+    .am-navbar-title{
+        top: 88px !important;
+    }
+    #root > div{
+        padding-top: 174px !important;
+    }
+    .th-fixed{
+        top: 251px !important;
+    }
+    #root > div.paddingTopNone{
+        padding-top: 0 !important;
+    }
+    .avater-banner{
+        padding-top: 143px !important;
+        height:408px !important;
+    }
+    .collect-category{
+        top: 88px !important;
+    }
+    .match-info,.match-info-head{
+        padding-top: 88px;
+    }
+    .match-goback{
+        top: 102px !important;
+    }
+    #root > div#loginPaddingNone{
+        padding-top: 88px !important;
+    }
+    .shell-screen{
+        a{
+            top: 214px !important;
+        }
+    }
+}
+ 
+}
+/* 适配iphonexsmax */
+@media only screen and (device-width: 414px) and (device-height: 896px) and 
+(-webkit-device-pixel-ratio: 3) {
+    :global{  
+	body{
+		padding-top: constant(safe-area-inset-top);
+        padding-left: constant(safe-area-inset-left);
+        padding-right: constant(safe-area-inset-right);
+        padding-bottom: constant(safe-area-inset-bottom);
+    }
+    .am-navbar{
+        height: 176px;
+        padding-top: 88px;
+    }
+    .am-navbar-title{
+        top: 88px !important;
+    }
+    #root > div{
+        padding-top: 174px !important;
+    }
+    .th-fixed{
+        top: 251px !important;
+    }
+    #root > div.paddingTopNone{
+        padding-top: 0 !important;
+    }
+    .avater-banner{
+        padding-top: 143px !important;
+        height:364px !important;
+    }
+    .collect-category{
+        top: 88px !important;
+    }
+    .match-info,.match-info-head{
+        padding-top: 88px;
+    }
+    .match-goback{
+        top: 102px !important;
+    }
+    #root > div#loginPaddingNone{
+        padding-top: 88px !important;
+    }
+    .shell-screen{
+        a{
+            top: 214px !important;
+        }
+    }
+    }
+  
+}
+/* 适配iphone4 */
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){
+    :global{  
+    .am-navbar{
+        height: 132px;
+        padding-top: 40px;
+    }
+    .am-navbar-title{
+        top: 40px !important;
+    }
+    #root > div{
+        padding-top: 132px !important;
+    }
+    .th-fixed{
+        top: 208px !important;
+    }
+    #root > div.paddingTopNone{
+        padding-top: 0 !important;
+    }
+    .avater-banner{
+        padding-top: 99px !important;
+        height:408px !important;
+    }
+    .collect-category{
+        top: 48px !important;
+    }
+    .match-info,.match-info-head{
+        padding-top: 44px;
+    }
+    .match-goback{
+        top: 62px !important;
+    }
+    #root > div#loginPaddingNone{
+        padding-top: 40px !important;
+    }
+    .shell-screen{
+        a{
+            top: 124px !important;
+        }
+    }
+    }
+} 
+/* 适配iphone5 */
+@media (device-height:568px) and (-webkit-min-device-pixel-ratio:2){
+    :global{  
+        .am-navbar{
+            height: 132px;
+            padding-top: 40px;
+        }
+        .am-navbar-title{
+            top: 40px !important;
+        }
+        #root > div{
+            padding-top: 132px !important;
+        }
+        .th-fixed{
+            top: 208px !important;
+        }
+        #root > div.paddingTopNone{
+            padding-top: 0 !important;
+        }
+        .avater-banner{
+            padding-top: 99px !important;
+            height:408px !important;
+        }
+        .collect-category{
+            top: 48px !important;
+        }
+        .match-info,.match-info-head{
+            padding-top: 44px;
+        }
+        .match-goback{
+            top: 62px !important;
+        }
+        #root > div#loginPaddingNone{
+            padding-top: 40px !important;
+        }
+        .shell-screen{
+            a{
+                top: 124px !important;
+            }
+        }
+        }
+} 
+
+/* 适配iphone6.7.8 */
+@media (device-height:667px) and (-webkit-min-device-pixel-ratio:2){
+    :global{  
+        .am-navbar{
+            height: 132px;
+            padding-top: 40px;
+        }
+        .am-navbar-title{
+            top: 40px !important;
+        }
+        #root > div{
+            padding-top: 132px !important;
+        }
+        .th-fixed{
+            top: 208px !important;
+        }
+        #root > div.paddingTopNone{
+            padding-top: 0 !important;
+        }
+        .avater-banner{
+            padding-top: 99px !important;
+            height:408px !important;
+        }
+        .collect-category{
+            top: 48px !important;
+        }
+        .match-info,.match-info-head{
+            padding-top: 44px;
+        }
+        .match-goback{
+            top: 62px !important;
+        }
+        #root > div#loginPaddingNone{
+            padding-top: 40px !important;
+        }
+        .shell-screen{
+            a{
+                top: 124px !important;
+            }
+        }
+        }
+}
+
+
+/* 适配iphone6.7.8plus */
+@media (device-height:736px) and (-webkit-min-device-pixel-ratio:2){
+	:global{  
+        .am-navbar{
+            height: 132px;
+            padding-top: 40px;
+        }
+        .am-navbar-title{
+            top: 40px !important;
+        }
+        #root > div{
+            padding-top: 132px !important;
+        }
+        .th-fixed{
+            top: 208px !important;
+        }
+        #root > div.paddingTopNone{
+            padding-top: 0 !important;
+        }
+        .avater-banner{
+            padding-top: 99px !important;
+            height:408px !important;
+        }
+        .collect-category{
+            top: 48px !important;
+        }
+        .match-info,.match-info-head{
+            padding-top: 44px;
+        }
+        .match-goback{
+            top: 62px !important;
+        }
+        #root > div#loginPaddingNone{
+            padding-top: 40px !important;
+        }
+        .shell-screen{
+            a{
+                top: 124px !important;
+            }
+        }
+        }
+} 

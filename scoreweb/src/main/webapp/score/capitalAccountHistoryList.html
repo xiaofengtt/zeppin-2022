@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>企业交易流水</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/base-header.css" />
+		<link rel="stylesheet" href="css/base-left.css" />
+	</head>
+	<body>
+		<input id="uuidInput" type="hidden" value="0ae36f97-90b4-11e8-95fb-fcaa143144fd"/>
+		<div class="main">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="content-main mt-15">
+				<div class="screen-box">
+					<div class="screen-div form-group col-md-3 " style="padding: 20px 40px 5px 40px">
+						<select class="form-control" id="capitalPlatformSelect" onchange="changePlatfrom()">
+							<option value="">全部</option>
+						</select>
+					</div>
+						<div class="clear"></div>
+				</div>
+				<!--筛选-->
+				<div class="screen-box">
+					<ul class="screen-ul" style="margin-bottom: 0;">
+						<li class="light" data-status=""><a href="javascript:">全部<span id="allTypes">(0)</span></a></li>
+						<li data-status="user_recharge"><a href="javascript:">用户充值<span id="user_rechargeTypes">(0)</span></a></li>
+						<li data-status="user_withdraw"><a href="javascript:">用户提现<span id="user_withdrawTypes">(0)</span></a></li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<table class="table-list mt-15">
+					
+				</table>
+				<!--分页-->
+				<div id="pageTool">
+
+                 </div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/capitalAccountHistoryList.js" ></script>
+	</body>
+</html>

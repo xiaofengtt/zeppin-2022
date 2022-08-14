@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>参保人信息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/insuredInfoEdit.css" />
+	</head>
+	<body onload="loading();" style="display:none;">
+		<input type="hidden" value="" id="cbdq" />
+		<input type="hidden" value="" id="cjgzsj" />
+		<input type="hidden" value="" id="hkxz" />
+		<input type="hidden" value="" id="jfyf" />
+		<input type="hidden" value="" id="hkszd" />
+		<div class="titleDiv">
+			<img class="titleBack" src="img/icon_return.png" alt="返回" />
+			<p>参保人信息</p>
+		</div>
+		<div class="wrap">
+			<div class="content">
+				<div class="info-item">
+					<span>参保人姓名</span>
+					<input type="text" class="cbrxm" placeholder="请填写参保人姓名" value="" disabled="disabled"/>
+					<div class="clear"></div>
+				</div>
+				<div class="info-item">
+					<span>手机号</span>
+					<input type="tel" class="sjh" placeholder="请填写参保人手机号" value=""/>
+					<div class="clear"></div>
+				</div>
+				<!-- <div class="info-item">
+					<span>身份证号</span>
+					<input type="tel" class="sfzh" placeholder="请输入参保人身份证号" value="" disabled="disabled"/>
+					<div class="clear"></div>
+				</div> -->
+				<div class="info-item info-jfyf" data="hkxz" id="picker1">
+					<span>户口所在地</span>
+					<input type="text" class="hkszd" disabled="disabled" placeholder="请选择" value=""/>
+					<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+					<div class="clear"></div>
+				</div>
+				<div class="info-item info-jfyf" data="hkxz" id="picker2">
+					<span>户口性质</span>
+					<input type="text" class="hkxz" disabled="disabled" placeholder="请选择" value=""/>
+					<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+					<div class="clear"></div>
+				</div>
+				<div class="info-item info-jfyf" data="hkxz" id="picker3">
+					<span>民族</span>
+					<input type="text" class="mz" disabled="disabled" placeholder="请选择" value=""/>
+					<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+					<div class="clear"></div>
+				</div>
+				<div class="info-item info-jfyf" data="hkxz" id="picker4">
+					<span>学历</span>
+					<input type="text" class="xl" disabled="disabled" placeholder="请选择" value=""/>
+					<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+					<div class="clear"></div>
+				</div>
+				<div class="info-item info-jfyf" data="hkxz" id="picker5">
+					<span>参加工作时间</span>
+					<input type="text" class="cjgzsj" disabled="disabled" placeholder="请选择" value=""/>
+					<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+					<div class="clear"></div>
+				</div>
+				<div class="info-item" data="hkxz" id="picker8">
+					<span>个人身份</span>
+					<input type="text" class="grsf" disabled="disabled" placeholder="请选择" value=""/>
+					<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+					<div class="clear"></div>
+				</div>
+				<div class="info-item">
+					<span>邮箱</span>
+					<input type="email" class="yx" placeholder="请填写参保人邮箱" value=""/>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="fixedBtn" style="position: initial;">
+				<a class="surebtn bigSure light">保存</a>
+			</div>
+			<p class="layer">
+				提示信息
+			</p>
+			<div id="loading-box">
+				<img src="./img/icon-loading.gif" alt="" />
+			</div>
+			
+		</div>
+		<script src="./js/burialPoint.js"></script>
+		<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+		<script src="./js/base64.js"></script>
+		<script src="./js/md5.js"></script>
+		<script type="text/javascript" src="js/picker.min.js" ></script>	
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<link rel="stylesheet" href="css/base.css" />
+		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript" src="js/insuredInfoEdit.js" ></script>
+	</body>
+</html>

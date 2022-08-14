@@ -37,9 +37,12 @@ public class Resource extends BaseEntity {
 		public final static String DISABLE = "disable";
 	}
 	
+	public class ResourceUrl{
+		public final static String ALIPAY = "alipay";
+		public final static String WECHART = "wechart";
+	}
+	
 	@Id
-//	@GeneratedValue(generator = "system-uuid")
-//	@GenericGenerator(name = "system-uuid", strategy = "org.hibernate.id.UUIDGenerator") 
 	@Column(name = "uuid", unique = true, nullable = false, length = 36)
 	public String getUuid() {
 		return uuid;

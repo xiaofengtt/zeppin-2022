@@ -58,12 +58,12 @@ public class BranchBankController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	@ActionParam(key = "bank", type = DataType.STRING)
-	@ActionParam(key = "name", type = DataType.STRING)
-	@ActionParam(key = "status", type = DataType.STRING)
-	@ActionParam(key = "pageNum", type = DataType.NUMBER)
-	@ActionParam(key = "pageSize", type = DataType.NUMBER)
-	@ActionParam(key = "sorts", type = DataType.STRING)
+	@ActionParam(key = "bank", message="所属银行", type = DataType.STRING)
+	@ActionParam(key = "name", message="搜索参数", type = DataType.STRING)
+	@ActionParam(key = "status", message="状态", type = DataType.STRING)
+	@ActionParam(key = "pageNum", message="页码", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "pageSize", message="每页数量", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "sorts", message="排序参数", type = DataType.STRING)
 	@ResponseBody
 	public Result list(String bank, String name, String status, Integer pageNum, Integer pageSize, String sorts) {
 		//查询条件
@@ -86,7 +86,7 @@ public class BranchBankController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
 	@ResponseBody
 	public Result get(String uuid) {		
 		//获取支行信息
@@ -116,10 +116,10 @@ public class BranchBankController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	@ActionParam(key = "bank", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
-	@ActionParam(key = "name", type = DataType.STRING, required = true, minLength = 1, maxLength = 200)
-	@ActionParam(key = "address", type = DataType.STRING, required = true, minLength = 1, maxLength = 200)
-	@ActionParam(key = "status", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
+	@ActionParam(key = "bank", message="所属银行", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "name", message="名称", type = DataType.STRING, required = true, minLength = 1, maxLength = 200)
+	@ActionParam(key = "address", message="地址", type = DataType.STRING, required = true, minLength = 1, maxLength = 200)
+	@ActionParam(key = "status", message="状态", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
 	@ResponseBody
 	public Result add(String bank, String name, String address, String status) {
 		
@@ -156,10 +156,10 @@ public class BranchBankController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
-	@ActionParam(key = "name", type = DataType.STRING, required = true, minLength = 1, maxLength = 200)
-	@ActionParam(key = "address", type = DataType.STRING, required = true, minLength = 1, maxLength = 200)
-	@ActionParam(key = "status", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "name", message="名称", type = DataType.STRING, required = true, minLength = 1, maxLength = 200)
+	@ActionParam(key = "address", message="地址", type = DataType.STRING, required = true, minLength = 1, maxLength = 200)
+	@ActionParam(key = "status", message="状态", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
 	@ResponseBody
 	public Result edit(String uuid, String name, String address, String logo, String status) {
 		
@@ -190,7 +190,7 @@ public class BranchBankController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true)
 	@ResponseBody
 	public Result delete(String uuid) {
 		

@@ -1,0 +1,63 @@
+#title {
+    font-size: 18px;
+    margin-top: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.text_box p {
+    font-size: 16px;
+}
+
+.text_box img {
+    height: 400px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.text_box a {
+    display: block;
+    margin-bottom: 16px;
+}
+
+#id-card-face, #id-card-back {
+    width: 320px;
+    height: 240px;
+}
+
+.text_box .btn_group {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+.text_box .btn_group a {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: #4D9CFF;
+    border: 1px solid #4D9CFF;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    background: #FFFFFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.text_box .btn_group a:nth-child(2), .text_box .btn_group a:nth-child(3) {
+    margin-left: 30px;
+}
+
+.text_box .btn_group a:hover {
+    color: #FFFFFF;
+    background: #4D9CFF;
+}

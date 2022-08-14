@@ -30,17 +30,23 @@ public class BankFinancialProductPublishDetailsVO implements Entity {
 	private String targetCN;
 	private String targetAnnualizedReturnRate;//目标年化收益率
 	private BigDecimal totalAmount;//产品规模
+	private BigDecimal collectAmount;//募集规模
+	private String collectAmountCN;//募集规模
 	private Timestamp collectStarttime;//认购起始日
 	private String collectStarttimeCN;
+	private String collectStarttimeWeb;
 	private Timestamp collectEndtime;//认购截止日
 	private String collectEndtimeCN;
+	private String collectEndtimeWeb;
 	private Integer term;//产品期限
 	private Timestamp recordDate;//登记日
 	private String recordDateCN;
 	private Timestamp valueDate;//起息日
 	private String valueDateCN;
+	private String valueDateWeb;
 	private Timestamp maturityDate;//到期日
 	private String maturityDateCN;
+	private String maturityDateWeb;
 	private Boolean flagPurchase;//申购状态
 	private Boolean flagRedemption;//赎回状态
 	private Boolean flagFlexible;//灵活期限
@@ -92,6 +98,20 @@ public class BankFinancialProductPublishDetailsVO implements Entity {
 	private String paymentType;//收益支付方式
 	private String paymentTypeCN;
 	
+	private BigDecimal accountBalance;
+	private BigDecimal investment;
+	private BigDecimal totalRedeem;
+	private BigDecimal totalReturn;
+	private BigDecimal realReturnRate;
+	private BigDecimal realCollect;
+	private BigDecimal realReturn;
+	private String accountBalanceCN;
+	private String investmentCN;
+	private String totalRedeemCN;
+	private String totalReturnCN;
+	private String realReturnRateCN;
+	private String realCollectCN;
+	private String realReturnCN;
 	
 	public BankFinancialProductPublishDetailsVO() {
 		super();
@@ -120,10 +140,16 @@ public class BankFinancialProductPublishDetailsVO implements Entity {
 		} else if (BankFinancialProductPublishStage.COLLECT.equals(bfp.getStage())) {
 			this.stageCN = "募集中";
 		} else if (BankFinancialProductPublishStage.UNINVEST.equals(bfp.getStage())) {
-			this.stageCN = "待投资";
+			this.stageCN = "投资中";
+		} else if (BankFinancialProductPublishStage.INVESTED.equals(bfp.getStage())) {
+			this.stageCN = "投资完成";
+		} else if (BankFinancialProductPublishStage.PROFIT.equals(bfp.getStage())) {
+			this.stageCN = "收益中";
+		} else if (BankFinancialProductPublishStage.BALANCE.equals(bfp.getStage())) {
+			this.stageCN = "结算中";
 		} else if (BankFinancialProductPublishStage.FINISHED.equals(bfp.getStage())) {
 			this.stageCN = "已完成";
-		}	else if (BankFinancialProductPublishStage.EXCEPTION.equals(bfp.getStage())) {
+		} else if (BankFinancialProductPublishStage.EXCEPTION.equals(bfp.getStage())) {
 			this.stageCN = "异常下线";
 		}
 		this.target = bfp.getTarget();
@@ -143,13 +169,24 @@ public class BankFinancialProductPublishDetailsVO implements Entity {
 		if(bfp.getTotalAmount() != null){
 			this.totalAmount = bfp.getTotalAmount().divide(BigDecimal.valueOf(100000000));
 		}
+		this.collectAmount = bfp.getCollectAmount();
+		if(bfp.getCollectAmount() != null){
+			if(collectAmount.divide(BigDecimal.valueOf(100000000)).compareTo(BigDecimal.ONE) < 0){
+				this.collectAmountCN = bfp.getCollectAmount().divide(BigDecimal.valueOf(10000)) + "万";
+			}else{
+				this.collectAmountCN = bfp.getCollectAmount().divide(BigDecimal.valueOf(100000000)) + "亿";
+			}
+			this.collectAmount = bfp.getCollectAmount().divide(BigDecimal.valueOf(10000));
+		}
 		if(bfp.getCollectStarttime() != null && !"".equals(bfp.getCollectStarttime())){
 			this.collectStarttime = bfp.getCollectStarttime();
 			this.collectStarttimeCN = Utlity.timeSpanToString(bfp.getCollectStarttime());
+			this.collectStarttimeWeb = Utlity.timeSpanToPointDateString(bfp.getCollectStarttime());
 		}
 		if(bfp.getCollectEndtime() != null && !"".equals(bfp.getCollectEndtime())){
 			this.collectEndtime = bfp.getCollectStarttime();
 			this.collectEndtimeCN = Utlity.timeSpanToString(bfp.getCollectEndtime());
+			this.collectEndtimeWeb = Utlity.timeSpanToPointDateString(bfp.getCollectEndtime());
 		}		
 		this.term = bfp.getTerm() == null ? 0 : bfp.getTerm();
 		if(bfp.getRecordDate() != null && !"".equals(bfp.getRecordDate())){
@@ -159,10 +196,12 @@ public class BankFinancialProductPublishDetailsVO implements Entity {
 		if(bfp.getValueDate() != null && !"".equals(bfp.getValueDate())){
 			this.valueDate = bfp.getValueDate();
 			this.valueDateCN = Utlity.timeSpanToDateString(bfp.getValueDate());
+			this.valueDateWeb = Utlity.timeSpanToPointDateString(bfp.getValueDate());
 		}
 		if(bfp.getMaturityDate() != null && !"".equals(bfp.getMaturityDate())){
 			this.maturityDate = bfp.getMaturityDate();
 			this.maturityDateCN = Utlity.timeSpanToDateString(bfp.getMaturityDate());
+			this.maturityDateWeb = Utlity.timeSpanToPointDateString(bfp.getMaturityDate());
 		}
 		
 		this.flagPurchase = bfp.getFlagPurchase() == null ? false : bfp.getFlagPurchase();		
@@ -237,34 +276,34 @@ public class BankFinancialProductPublishDetailsVO implements Entity {
 		}
 		
 		if(bfp.getSubscribeFee() != null){
-			this.subscribeFee = bfp.getSubscribeFee().setScale(2, BigDecimal.ROUND_HALF_UP).toString();
+			this.subscribeFee = bfp.getSubscribeFee().setScale(4, BigDecimal.ROUND_HALF_UP).toString();
 		}else{
-			this.subscribeFee = "0.00";
+			this.subscribeFee = "0.0000";
 		}
 		if(bfp.getPurchaseFee() != null){
-			this.purchaseFee = bfp.getPurchaseFee().setScale(2, BigDecimal.ROUND_HALF_UP).toString();
+			this.purchaseFee = bfp.getPurchaseFee().setScale(4, BigDecimal.ROUND_HALF_UP).toString();
 		}else{
-			this.purchaseFee = "0.00";
+			this.purchaseFee = "0.0000";
 		}
 		if(bfp.getRedemingFee() != null){
-			this.redemingFee = bfp.getRedemingFee().setScale(2, BigDecimal.ROUND_HALF_UP).toString();
+			this.redemingFee = bfp.getRedemingFee().setScale(4, BigDecimal.ROUND_HALF_UP).toString();
 		}else{
-			this.redemingFee = "0.00";
+			this.redemingFee = "0.0000";
 		}
 		if(bfp.getManagementFee() != null){
-			this.managementFee = bfp.getManagementFee().setScale(2, BigDecimal.ROUND_HALF_UP).toString();
+			this.managementFee = bfp.getManagementFee().setScale(4, BigDecimal.ROUND_HALF_UP).toString();
 		}else{
-			this.managementFee = "0.00";
+			this.managementFee = "0.0000";
 		}
 		if(bfp.getCustodyFee() != null){
-			this.custodyFee = bfp.getCustodyFee().setScale(2, BigDecimal.ROUND_HALF_UP).toString();
+			this.custodyFee = bfp.getCustodyFee().setScale(4, BigDecimal.ROUND_HALF_UP).toString();
 		}else{
-			this.custodyFee = "0.00";
+			this.custodyFee = "0.0000";
 		}
 		if(bfp.getNetworkFee() != null){
-			this.networkFee = bfp.getNetworkFee().setScale(2, BigDecimal.ROUND_HALF_UP).toString();
+			this.networkFee = bfp.getNetworkFee().setScale(4, BigDecimal.ROUND_HALF_UP).toString();
 		}else{
-			this.networkFee = "0.00";
+			this.networkFee = "0.0000";
 		}
 		this.investScope = bfp.getInvestScope() == null ? "" : bfp.getInvestScope();
 		this.style = bfp.getStyle() == null ? "" : bfp.getStyle();
@@ -328,6 +367,20 @@ public class BankFinancialProductPublishDetailsVO implements Entity {
 			this.paymentTypeCN = "未选择";
 		}
 		
+		this.accountBalance = bfp.getAccountBalance();
+		this.investment = bfp.getInvestment();
+		this.totalRedeem = bfp.getTotalRedeem();
+		this.totalReturn = bfp.getTotalReturn();
+		this.realReturnRate = bfp.getRealReturnRate();
+		this.realCollect = bfp.getRealCollect();
+		this.realReturn = bfp.getRealReturn();
+		this.realReturnRateCN = bfp.getRealReturnRate().setScale(2).toString();
+		this.accountBalanceCN = Utlity.numFormat4UnitDetail(bfp.getAccountBalance());
+		this.investmentCN = Utlity.numFormat4UnitDetail(bfp.getInvestment());
+		this.totalRedeemCN = Utlity.numFormat4UnitDetail(bfp.getTotalRedeem());
+		this.totalReturnCN = Utlity.numFormat4UnitDetail(bfp.getTotalReturn());
+		this.realCollectCN = Utlity.numFormat4UnitDetail(bfp.getRealCollect());
+		this.realReturnCN = Utlity.numFormat4UnitDetail(bfp.getRealReturn());
 	}
 
 	public String getUuid() {
@@ -442,6 +495,14 @@ public class BankFinancialProductPublishDetailsVO implements Entity {
 		this.collectStarttimeCN = collectStarttimeCN;
 	}
 	
+	public String getCollectStarttimeWeb() {
+		return collectStarttimeWeb;
+	}
+
+	public void setCollectStarttimeWeb(String collectStarttimeWeb) {
+		this.collectStarttimeWeb = collectStarttimeWeb;
+	}
+	
 	public Timestamp getCollectEndtime() {
 		return collectEndtime;
 	}
@@ -456,6 +517,14 @@ public class BankFinancialProductPublishDetailsVO implements Entity {
 
 	public void setCollectEndtimeCN(String collectEndtimeCN) {
 		this.collectEndtimeCN = collectEndtimeCN;
+	}
+
+	public String getCollectEndtimeWeb() {
+		return collectEndtimeWeb;
+	}
+
+	public void setCollectEndtimeWeb(String collectEndtimeWeb) {
+		this.collectEndtimeWeb = collectEndtimeWeb;
 	}
 	
 	public Integer getTerm() {
@@ -494,8 +563,16 @@ public class BankFinancialProductPublishDetailsVO implements Entity {
 		return valueDateCN;
 	}
 
-	public void setValueDate(String valueDateCN) {
+	public void setValueDateCN(String valueDateCN) {
 		this.valueDateCN = valueDateCN;
+	}
+
+	public String getValueDateWeb() {
+		return valueDateWeb;
+	}
+
+	public void setValueDateWeb(String valueDateWeb) {
+		this.valueDateWeb = valueDateWeb;
 	}
 	
 	public Timestamp getMaturityDate() {
@@ -512,6 +589,14 @@ public class BankFinancialProductPublishDetailsVO implements Entity {
 
 	public void setMaturityDateCN(String maturityDateCN) {
 		this.maturityDateCN = maturityDateCN;
+	}
+	
+	public String getMaturityDateWeb() {
+		return maturityDateWeb;
+	}
+
+	public void setMaturityDateWeb(String maturityDateWeb) {
+		this.maturityDateWeb = maturityDateWeb;
 	}
 	
 	public Boolean getFlagPurchase() {
@@ -888,6 +973,134 @@ public class BankFinancialProductPublishDetailsVO implements Entity {
 
 	public void setPaymentTypeCN(String paymentTypeCN) {
 		this.paymentTypeCN = paymentTypeCN;
+	}
+
+	public BigDecimal getAccountBalance() {
+		return accountBalance;
+	}
+
+	public void setAccountBalance(BigDecimal accountBalance) {
+		this.accountBalance = accountBalance;
+	}
+
+	public BigDecimal getInvestment() {
+		return investment;
+	}
+
+	public void setInvestment(BigDecimal investment) {
+		this.investment = investment;
+	}
+
+	public BigDecimal getTotalRedeem() {
+		return totalRedeem;
+	}
+
+	public void setTotalRedeem(BigDecimal totalRedeem) {
+		this.totalRedeem = totalRedeem;
+	}
+
+	public BigDecimal getTotalReturn() {
+		return totalReturn;
+	}
+
+	public void setTotalReturn(BigDecimal totalReturn) {
+		this.totalReturn = totalReturn;
+	}
+
+	public String getAccountBalanceCN() {
+		return accountBalanceCN;
+	}
+
+	public void setAccountBalanceCN(String accountBalanceCN) {
+		this.accountBalanceCN = accountBalanceCN;
+	}
+
+	public String getInvestmentCN() {
+		return investmentCN;
+	}
+
+	public void setInvestmentCN(String investmentCN) {
+		this.investmentCN = investmentCN;
+	}
+
+	public String getTotalRedeemCN() {
+		return totalRedeemCN;
+	}
+
+	public void setTotalRedeemCN(String totalRedeemCN) {
+		this.totalRedeemCN = totalRedeemCN;
+	}
+
+	public String getTotalReturnCN() {
+		return totalReturnCN;
+	}
+
+	public void setTotalReturnCN(String totalReturnCN) {
+		this.totalReturnCN = totalReturnCN;
+	}
+
+	public BigDecimal getRealReturnRate() {
+		return realReturnRate;
+	}
+	
+	public void setRealReturnRate(BigDecimal realReturnRate) {
+		this.realReturnRate = realReturnRate;
+	}
+
+	public String getRealReturnRateCN() {
+		return realReturnRateCN;
+	}
+
+	public void setRealReturnRateCN(String realReturnRateCN) {
+		this.realReturnRateCN = realReturnRateCN;
+	}
+
+	public BigDecimal getRealCollect() {
+		return realCollect;
+	}
+
+	public void setRealCollect(BigDecimal realCollect) {
+		this.realCollect = realCollect;
+	}
+
+	public String getRealCollectCN() {
+		return realCollectCN;
+	}
+
+	public void setRealCollectCN(String realCollectCN) {
+		this.realCollectCN = realCollectCN;
+	}
+
+	public BigDecimal getCollectAmount() {
+		return collectAmount;
+	}
+
+	public void setCollectAmount(BigDecimal collectAmount) {
+		this.collectAmount = collectAmount;
+	}
+
+	public String getCollectAmountCN() {
+		return collectAmountCN;
+	}
+
+	public void setCollectAmountCN(String collectAmountCN) {
+		this.collectAmountCN = collectAmountCN;
+	}
+
+	public BigDecimal getRealReturn() {
+		return realReturn;
+	}
+
+	public void setRealReturn(BigDecimal realReturn) {
+		this.realReturn = realReturn;
+	}
+
+	public String getRealReturnCN() {
+		return realReturnCN;
+	}
+
+	public void setRealReturnCN(String realReturnCN) {
+		this.realReturnCN = realReturnCN;
 	}
 	
 }

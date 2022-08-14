@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import cn.zeppin.product.ntb.backadmin.dao.api.IBankFinancialProductInvestDAO;
 import cn.zeppin.product.ntb.backadmin.service.api.IBankFinancialProductInvestService;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProductInvest;
-import cn.zeppin.product.ntb.core.entity.BankFinancialProductInvest.BankFinancialProductInvestStatus;
 import cn.zeppin.product.ntb.core.entity.base.Entity;
 import cn.zeppin.product.ntb.core.service.base.BaseService;
 
@@ -33,8 +32,7 @@ public class BankFinancialProductInvestService extends BaseService implements IB
 
 	@Override
 	public BankFinancialProductInvest delete(BankFinancialProductInvest bankFinancialProductInvest) {
-		bankFinancialProductInvest.setStatus(BankFinancialProductInvestStatus.DELETED);
-		return bankFinancialProductInvestDAO.update(bankFinancialProductInvest);
+		return bankFinancialProductInvestDAO.delete(bankFinancialProductInvest);
 	}
 
 	@Override
@@ -70,24 +68,24 @@ public class BankFinancialProductInvestService extends BaseService implements IB
 	public Integer getCount(Map<String, String> inputParams) {
 		return bankFinancialProductInvestDAO.getCount(inputParams);
 	}
-	
-	/**
-	 * 获取银行理财产品投资分状态列表
-	 * @param resultClass
-	 * @return  List<Entity>
-	 */
-	@Override
-	public List<Entity> getStatusList(Class<? extends Entity> resultClass) {
-		return bankFinancialProductInvestDAO.getStatusList(resultClass);
-	}
-	
-	/**
-	 * 获取银行理财产品投资分阶段列表
-	 * @param resultClass
-	 * @return  List<Entity>
-	 */
-	@Override
-	public List<Entity> getStageList(Class<? extends Entity> resultClass) {
-		return bankFinancialProductInvestDAO.getStageList(resultClass);
-	}
+//	
+//	/**
+//	 * 获取银行理财产品投资分状态列表
+//	 * @param resultClass
+//	 * @return  List<Entity>
+//	 */
+//	@Override
+//	public List<Entity> getStatusList(Class<? extends Entity> resultClass) {
+//		return bankFinancialProductInvestDAO.getStatusList(resultClass);
+//	}
+//	
+//	/**
+//	 * 获取银行理财产品投资分阶段列表
+//	 * @param resultClass
+//	 * @return  List<Entity>
+//	 */
+//	@Override
+//	public List<Entity> getStageList(Class<? extends Entity> resultClass) {
+//		return bankFinancialProductInvestDAO.getStageList(resultClass);
+//	}
 }

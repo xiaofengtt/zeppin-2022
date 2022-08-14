@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<spiderman>
+    <property key="duration" value="120s" /><!-- 运行时间，可以给 {n}s {n}m {n}h {n}d -->
+    <!--<property key="scheduler.period" value="2m" />-->
+    <property key="logger.level" value="ERROR" /><!-- 日志级别 INFO DEBUG WARN ERROR OFF -->
+    <property key="worker.download.delay" value="100" />  <!--下载延迟，免得被封 -->
+    
+    <property key="worker.download.enabled" value="1" /><!-- 是否开启下载工人 -->
+    <property key="worker.extract.enabled" value="1" /><!-- 是否开启解析工人 -->
+    <property key="worker.result.enabled" value="1" /><!-- 是否开启结果处理工人 -->
+    
+    <property key="worker.download.size" value="5" /><!-- 下载线程数 -->
+    <property key="worker.extract.size" value="5" /><!-- 页面抽取线程数 -->
+    <property key="worker.result.size" value="5" /><!-- 结果处理线程数 -->
+    <property key="worker.result.limit" value="0" />
+    <property key="worker.result.handler" value="cn.zeppin.product.score.spiderman.SinaDetailResultHandler" /><!-- 自定义结果回调处理类 -->
+    <property key="queue.store.path" value="store" /><!-- 存储文件的路径 -->
+    <property key="queue.zbus.enabled" value="0" /><!-- 是否使用ZBus队列，单机版暂时不使用，貌似性能还有问题 -->
+    <!--<property key="queue.zbus.broker" value="10.8.60.8:15555" /> ZBus服务地址,三种模式：1.jvm(本地模式) 2.ip:port(single模式) 3.[ip:port,ip:port](ha模式) -->
+    <!--<property key="queue.other.names" value="SPIDERMAN_JSON_RESULT" /> 注册创建其他队列备用 -->
+    <!-- <seed>URL地址</seed> --><!-- 写死种子入口的方式 -->
+    <script bindings="net.kernal.spiderman.Bootstrap$Bindings"><!-- 使用脚本动态创建方式 -->
+    <![CDATA[
+    	$seeds.clear();
+    	var K = Java.type("net.kernal.spiderman.kit.K");
+    	var kws = K.readLine("spiderman/sina/urls.txt");
+    	for (var i = 0; i < kws.length; i++) {
+    		var kw = kws[i].trim();
+    	    var w = kw.split("@_@");
+    	    if(w[0] && w[1]){
+    	    	$seeds.add(w[0], w[1]);
+    	    }
+	    }
+	]]>
+    </script>
+    
+    <!-- 页面抽取规则 -->
+    <extract>
+    	<!-- 注册解析器 -->
+        <extractor name="HtmlCleaner" class="net.kernal.spiderman.worker.extract.extractor.impl.HtmlCleanerExtractor" isDefault="1" />
+        <extractor name="Text" class="net.kernal.spiderman.worker.extract.extractor.impl.TextExtractor" />
+        <!-- 注册过滤器 -->
+        <filter name="MyFilter" class="test.MyFilter" />
+        <!-- 要抽取的页面 -->
+		<page name="import" isPersisted="1">
+			<url-match-rule type="contains" value="sports.sina.com.cn/" />
+			<model name="import">
+				<field name="title" xpath="//h1[@class='main-title']/text()"/>
+				<field name="content" xpath="//div[@class='article-content-left']//div[@class='article']//p/text()" isArray="1"/>
+				<field name="imageurl" xpath="//div[@class='article-content-left']//div[@class='article']//img[@src]" attr="src" isDistinct="true" isArray="1"/>
+				<field name="author" xpath="//div[@class='top-bar-wrap']//div[@class='date-source']//a[@class='source ent-source']/text()"/>
+				<field name="newstime" xpath="//div[@class='top-bar-wrap']//div[@class='date-source']//span[@class='date']/text()"/>
+			</model>
+		</page>
+	</extract>
+</spiderman>

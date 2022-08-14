@@ -1,0 +1,256 @@
+.main{
+	padding-bottom:1.4rem;
+}
+.title::before{
+	display:none;
+}
+.title p {
+	position: absolute;
+	right:0.28rem;
+	top:50%;
+	-webkit-transform:translateY(-50%);
+	color:
+}
+.title p i{
+	display: inline-block;
+	vertical-align: middle;
+	width:0.28rem;
+	height:0.28rem;
+	opacity: 0.6;
+	background: #939393;
+	border-radius:50%;
+	position: relative;
+}
+.title p img{
+	width:0.14rem;
+	height:0.22rem;
+	position: absolute;
+	top:50%;
+	left:50%;
+	-webkit-transform: translate(-50%,-50%);
+}
+.title p span{
+	display: inline-block;
+	vertical-align: middle;
+	opacity: 0.4;
+	font-size: 0.26rem;
+	color: #000000;
+}
+.main-top{
+	background:#FFFFFF;
+}
+.main-top-top{
+	padding:0.28rem 0.28rem;
+	border-bottom:1px solid #EBEBEB;
+}
+.main-top-top-logo{
+	background: #F4F4F4;
+	border-radius: 5px;
+	width:0.9rem;
+	height:0.9rem;
+	display: inline-block;
+	vertical-align: middle;
+	padding:0.16rem;
+	margin-right:0.2rem;
+}
+.main-top-top-logo img{
+	width:100%;
+	height:100%;
+}
+
+.main-top-top-name{
+	display: inline-block;
+	vertical-align: middle;
+	width:82%;
+	min-height:0.9rem;
+	padding:0.08rem 0;
+}
+.main-top-top-name p{
+	opacity: 0.9;
+	font-size: 0.3rem;
+	color: #000000;
+}
+.main-top-top-name span{
+	margin-top:0.1rem;
+	display: inline-block;
+	opacity: 0.76;
+	font-size: 0.26rem;
+	color: #3F3F3F;
+}
+.main-top-mid{
+	padding-top:0.3rem;
+	padding-bottom:0.1rem;
+}
+
+.main-top-mid div{
+	float: left;
+	width:50%;
+	text-align: center;
+}
+
+.main-top-mid div:nth-child(1) p,.main-top-mid div:nth-child(1) i{
+	color: #E6413F;
+}
+
+.main-top-mid div p{
+	font-size: 0.56rem;
+	color: #2D2D2D;
+	line-height:0.56rem;
+}
+.main-top-mid div p i{
+	font-size:0.24rem;
+	line-height:0.24rem;
+	position: relative;
+	bottom:0.05rem;
+}
+.main-top-mid div span{
+	display: inline-block;
+	margin-top:0.08rem;
+	font-size: 0.24rem;
+	color: #7D7D7D;
+}
+.main-top-bottom{
+	padding : 0.14rem 0.36rem 0.3rem;
+	font-size: 0.26rem;
+	color: #646464;
+	text-align: center;
+}
+.progress{
+	width:100%;
+	height:0.04rem;
+	background:#EBEBEB;
+	margin-top:0.12rem;
+}
+.progress-bar{
+	height:100%;
+	width:60%;
+	background:#FF7600;
+}
+
+.main-top-bottom .clearfix{
+	margin-top:0.24rem;
+	
+}
+.main-top-bottom .clearfix div{
+	float: left;
+	width:33.33%;
+	text-align: center;
+}
+.main-top-bottom .clearfix div img{
+	display: inline-block;
+	vertical-align: middle;
+	width:0.26rem;
+	height:0.26rem;
+}
+.main-top-bottom .clearfix div span{
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 0.24rem;
+	color: #565656;
+}
+
+.main-mid {
+	background:#FFFFFF;
+	margin-top:0.2rem;
+}
+
+.main-mid-content{
+	padding:0.4rem 0.28rem;
+	border-top:1px solid #EBEBEB;
+}
+.main-mid-content div{
+	text-align: center;
+	width:25%;
+	position: relative;
+	float: left;
+}
+.main-mid-content div h5{
+	font-size: 0.26rem;
+	color: #000000;
+}
+.main-mid-content > div > .border {
+	width:100%;
+	width:100%;
+	height:0.04rem;
+	position: absolute;
+	top:50%;
+	-webkit-transform:translateY(-50%);
+}
+.main-mid-content > div > .circle{
+	height:0.2rem;
+	width:0.2rem;
+	position: absolute;
+	border-radius: 50%;
+	background:#FFFFFF;
+	z-index:3;
+	top:50%;
+	left:50%;
+	-webkit-transform:translate(-50%,-50%);
+}
+.circle-g{
+	border:3px solid #EBEBEB;
+}
+.circle-o{
+	border:3px solid #FF7600;
+}
+.border-g{
+	background:#EBEBEB;	
+}
+.border-o{
+	background:#FF7600;
+}
+.main-mid-content div p{
+	opacity: 0.5;
+	font-size: 0.26rem;
+	color: #000000;
+	margin-top:0.52rem;
+}
+
+
+.main-bottom{
+	margin-top:0.2rem;
+	background:#FFFFFF;
+}
+.main-bottom-content{
+	padding:0.32rem 0.28rem;
+	border-top:1px solid #EBEBEB;
+}
+.main-bottom-content p{
+	font-size: 0.26rem;
+	color: rgba(0,0,0,0.5);
+	margin-bottom:0.16rem;
+	position: relative;
+}
+.main-bottom-content p:last-child{
+	margin-bottom:0;
+}
+.main-bottom-content p::before{
+	/*position: absolute;*/
+	vertical-align: middle;
+	display: inline-block;
+	content:"";
+	width:0.1rem;
+	height:0.1rem;
+	background:#FF7600;
+	border-radius:50%;
+	-webkit-border-radius:50%;
+	margin-right:0.14rem;
+	/*top:50%;*/
+	/*-webkit-transform:translateY(-50%);*/
+}
+.product-msg{
+	display: block;
+	font-size:0.28rem;
+	padding:0.26rem 0.28rem;
+	background:#FFFFFF;
+	position: relative;
+	margin-top:0.2rem;
+	color:#000000;
+}
+.product-msg img{
+	position: absolute;
+	width:0.2rem;
+	height:0.32rem;
+	top:0.28rem;
+	right:0.28rem;
+}

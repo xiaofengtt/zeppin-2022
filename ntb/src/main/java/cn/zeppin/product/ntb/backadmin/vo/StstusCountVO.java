@@ -14,6 +14,15 @@ public class StstusCountVO implements Entity {
 	private String status;
 	private BigInteger count;
 	
+	public StstusCountVO(){
+		
+	}
+	
+	public StstusCountVO(String status, BigInteger count){
+		this.status = status;
+		this.count = count;
+	}
+	
 	public String getStatus() {
 		return status;
 	}

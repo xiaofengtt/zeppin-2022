@@ -17,4 +17,6 @@ public interface IBaseDAO<T, PK extends Serializable> {
 	public T update(T t);
 	
 	public T get(String uuid);
+	
+//	public void insert(final String sql, final List<Object[]> paras);
 }

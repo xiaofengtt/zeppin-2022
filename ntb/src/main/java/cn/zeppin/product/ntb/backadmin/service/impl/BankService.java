@@ -104,4 +104,9 @@ public class BankService extends BaseService implements IBankService {
 	public boolean isExistBankByName(String name, String uuid) {
 		return bankDAO.isExistBankByName(name, uuid);
 	}
+
+	@Override
+	public List<Entity> getListForWebPage(Map<String, String> inputParams, Integer pageNum, Integer pageSize, String sorts, Class<? extends Entity> resultClass) {
+		return bankDAO.getListForWebPage(inputParams, pageNum, pageSize, sorts, resultClass);
+	}
 }

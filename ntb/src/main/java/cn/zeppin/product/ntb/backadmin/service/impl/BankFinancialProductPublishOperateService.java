@@ -3,6 +3,7 @@
  */
 package cn.zeppin.product.ntb.backadmin.service.impl;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,14 +14,15 @@ import org.springframework.stereotype.Service;
 import cn.zeppin.product.ntb.backadmin.dao.api.IBankFinancialProductPublishDAO;
 import cn.zeppin.product.ntb.backadmin.dao.api.IBankFinancialProductPublishOperateDAO;
 import cn.zeppin.product.ntb.backadmin.service.api.IBankFinancialProductPublishOperateService;
-import cn.zeppin.product.ntb.core.entity.BankFinancialProductPublish;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProduct.BankFinancialProductStatus;
+import cn.zeppin.product.ntb.core.entity.BankFinancialProductPublish;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProductPublish.BankFinancialProductPublishStage;
-import cn.zeppin.product.ntb.core.entity.BankFinancialProductPublishOperate;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProductPublish.BankFinancialProductPublishStatus;
+import cn.zeppin.product.ntb.core.entity.BankFinancialProductPublishOperate;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProductPublishOperate.BankFinancialProductPublishOperateStatus;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProductPublishOperate.BankFinancialProductPublishOperateType;
 import cn.zeppin.product.ntb.core.entity.base.Entity;
+import cn.zeppin.product.ntb.core.exception.TransactionException;
 import cn.zeppin.product.ntb.core.service.base.BaseService;
 import cn.zeppin.product.utility.JSONUtils;
 
@@ -86,9 +88,10 @@ public class BankFinancialProductPublishOperateService extends BaseService imple
 	 * 审核
 	 * @param bfppo
 	 * @return result
+	 * @throws TransactionException 
 	 */
-	public HashMap<String,Object> check(BankFinancialProductPublishOperate bfppo) {
-		HashMap<String,Object> result = new HashMap<String,Object>();
+	public void check(BankFinancialProductPublishOperate bfppo) throws TransactionException {
+		
 		//审核通过更新操作数据
 		if(BankFinancialProductPublishOperateStatus.CHECKED.equals(bfppo.getStatus())){
 			if(BankFinancialProductPublishOperateType.ADD.equals(bfppo.getType())){
@@ -99,19 +102,31 @@ public class BankFinancialProductPublishOperateService extends BaseService imple
 				search.put("status", BankFinancialProductStatus.CHECKED);
 				Integer count = bankFinancialProductPublishDAO.getCount(search);
 				if(count != null && count > 0){
-					result.put("result", false);
-					result.put("message", "该银行理财产品已存在发布信息！");
-					return result;
+					throw new TransactionException("该银行理财产品已存在发布信息！");
 				}
 				if(bankFinancialProductPublishDAO.isExistBankFinancialProductPublishByName(bfpp.getName(),null)){
-					result.put("result", false);
-					result.put("message", "银行理财产品发布名称已存在！");
-					return result;
+					throw new TransactionException("募集产品名称已存在！");
 				}
 				if(bankFinancialProductPublishDAO.isExistBankFinancialProductPublishByScode(bfpp.getScode(),null)){
-					result.put("result", false);
-					result.put("message", "银行理财产品发布编号已存在！");
-					return result;
+					throw new TransactionException("募集产品编号已存在！");
+				}
+				bfpp.setFlagBuy(false);
+				Timestamp ctime = new Timestamp(System.currentTimeMillis());
+				if(ctime.after(bfpp.getCollectStarttime())){
+					bfpp.setStage(BankFinancialProductPublishStage.COLLECT);
+					bfpp.setFlagBuy(true);
+				}
+				if(ctime.after(bfpp.getCollectEndtime())){
+					bfpp.setStage(BankFinancialProductPublishStage.INVESTED);
+					bfpp.setFlagBuy(false);
+				}
+				if(ctime.after(bfpp.getValueDate())){
+					bfpp.setStage(BankFinancialProductPublishStage.PROFIT);
+					bfpp.setFlagBuy(false);
+				}
+				if(ctime.after(bfpp.getMaturityDate())){
+					bfpp.setStage(BankFinancialProductPublishStage.FINISHED);
+					bfpp.setFlagBuy(false);
 				}
 				bankFinancialProductPublishDAO.insert(bfpp);
 			}else if(BankFinancialProductPublishOperateType.EDIT.equals(bfppo.getType())){
@@ -119,76 +134,147 @@ public class BankFinancialProductPublishOperateService extends BaseService imple
 				BankFinancialProductPublish bfpp = bankFinancialProductPublishDAO.get(bfppo.getBankFinancialProductPublish());
 				if(bfpp != null){
 					if(!BankFinancialProductPublishStatus.CHECKED.equals(bfpp.getStatus())){
-						result.put("result", false);
-						result.put("message", "理财产品发布信息审核状态错误，无法完成操作！");
-						return result;
+						throw new TransactionException("理财产品发布信息审核状态错误，无法完成操作！");
 					}
 					BankFinancialProductPublish newBfpp = JSONUtils.json2obj(bfppo.getValue(), BankFinancialProductPublish.class);
 					if(bankFinancialProductPublishDAO.isExistBankFinancialProductPublishByName(newBfpp.getName(),newBfpp.getUuid())){
-						result.put("result", false);
-						result.put("message", "银行理财产品发布名称已存在！");
-						return result;
+						throw new TransactionException("募集产品名称已存在！");
 					}
 					if(bankFinancialProductPublishDAO.isExistBankFinancialProductPublishByScode(newBfpp.getScode(),newBfpp.getUuid())){
-						result.put("result", false);
-						result.put("message", "银行理财产品发布编号已存在！");
-						return result;
+						throw new TransactionException("募集产品编号已存在！");
 					}
-					bankFinancialProductPublishDAO.update(newBfpp);
+					
+					bfppo.setOld(JSONUtils.obj2json(bfpp));
+					
+					newBfpp.setFlagBuy(false);
+					Timestamp ctime = new Timestamp(System.currentTimeMillis());
+					if(ctime.after(newBfpp.getCollectStarttime())){
+						newBfpp.setStage(BankFinancialProductPublishStage.COLLECT);
+						newBfpp.setFlagBuy(true);
+					}
+					if(ctime.after(newBfpp.getCollectEndtime())){
+						newBfpp.setStage(BankFinancialProductPublishStage.INVESTED);
+						newBfpp.setFlagBuy(false);
+					}
+					if(ctime.after(newBfpp.getValueDate())){
+						newBfpp.setStage(BankFinancialProductPublishStage.PROFIT);
+						newBfpp.setFlagBuy(false);
+					}
+					if(ctime.after(newBfpp.getMaturityDate())){
+						newBfpp.setStage(BankFinancialProductPublishStage.FINISHED);
+						newBfpp.setFlagBuy(false);
+					}
+					
+					bfpp.setName(newBfpp.getName());
+					bfpp.setSeries(newBfpp.getSeries());
+					bfpp.setScode(newBfpp.getScode());
+					bfpp.setShortname(newBfpp.getShortname());
+					bfpp.setType(newBfpp.getType());
+					bfpp.setUrl(newBfpp.getUrl());
+					bfpp.setTarget(newBfpp.getTarget());
+					bfpp.setTargetAnnualizedReturnRate(newBfpp.getTargetAnnualizedReturnRate());
+					bfpp.setMinInvestAmount(newBfpp.getMinInvestAmount());
+					bfpp.setMinInvestAmountAdd(newBfpp.getMinInvestAmountAdd());
+					bfpp.setMaxInvestAmount(newBfpp.getMaxInvestAmount());
+					bfpp.setTotalAmount(newBfpp.getTotalAmount());
+					bfpp.setCollectAmount(newBfpp.getCollectAmount());
+					bfpp.setCustodian(newBfpp.getCustodian());
+					bfpp.setStyle(newBfpp.getStyle());
+					bfpp.setRiskLevel(newBfpp.getRiskLevel());
+					bfpp.setCreditLevel(newBfpp.getCreditLevel());
+					bfpp.setCurrencyType(newBfpp.getCurrencyType());
+					bfpp.setGuaranteeStatus(newBfpp.getGuaranteeStatus());
+					bfpp.setFlagCloseend(newBfpp.getFlagCloseend());
+					bfpp.setFlagPurchase(newBfpp.getFlagPurchase());
+					bfpp.setFlagRedemption(newBfpp.getFlagRedemption());
+					bfpp.setFlagFlexible(newBfpp.getFlagFlexible());
+					bfpp.setMinAnnualizedReturnRate(newBfpp.getMinAnnualizedReturnRate());
+					bfpp.setPaymentType(newBfpp.getPaymentType());
+					bfpp.setRecordDate(newBfpp.getRecordDate());
+					bfpp.setArea(newBfpp.getArea());
+					bfpp.setSubscribeFee(newBfpp.getSubscribeFee());
+					bfpp.setPurchaseFee(newBfpp.getPurchaseFee());
+					bfpp.setRedemingFee(newBfpp.getRedemingFee());
+					bfpp.setManagementFee(newBfpp.getManagementFee());
+					bfpp.setCustodyFee(newBfpp.getCustodyFee());
+					bfpp.setNetworkFee(newBfpp.getNetworkFee());
+					bfpp.setCollectStarttime(newBfpp.getCollectStarttime());
+					bfpp.setCollectEndtime(newBfpp.getCollectEndtime());
+					bfpp.setValueDate(newBfpp.getValueDate());
+					bfpp.setMaturityDate(newBfpp.getMaturityDate());
+					bfpp.setTerm(newBfpp.getTerm());
+					bfpp.setInvestScope(newBfpp.getInvestScope());
+					bfpp.setRevenueFeature(newBfpp.getRevenueFeature());
+					bfpp.setRemark(newBfpp.getRemark());
+					bfpp.setDocument(newBfpp.getDocument());
+					bfpp.setStage(newBfpp.getStage());
+					bfpp.setFlagBuy(newBfpp.getFlagBuy());
+					
+					bankFinancialProductPublishDAO.update(bfpp);
 				}else{
-					result.put("result", false);
-					result.put("message", "理财产品发布信息不存在");
-					return result;
+					throw new TransactionException("理财产品发布信息不存在");
 				}
 			}else if(BankFinancialProductPublishOperateType.DELETE.equals(bfppo.getType())){
 				//删除
 				BankFinancialProductPublish bfpp = bankFinancialProductPublishDAO.get(bfppo.getBankFinancialProductPublish());
 				if(bfpp != null){
 					if(!BankFinancialProductPublishStatus.CHECKED.equals(bfpp.getStatus())){
-						result.put("result", false);
-						result.put("message", "理财产品发布信息审核状态错误，无法完成操作！");
-						return result;
+						throw new TransactionException("理财产品发布信息审核状态错误，无法完成操作！");
 					}
+					bfpp.setFlagBuy(false);
 					bfpp.setStatus(BankFinancialProductPublishStatus.DELETED);
 					bankFinancialProductPublishDAO.update(bfpp);
 				}else{
-					result.put("result", false);
-					result.put("message", "理财产品发布信息不存在");
-					return result;
+					throw new TransactionException("理财产品发布信息不存在");
 				}
 			}else if(BankFinancialProductPublishOperateType.EXCEPTION.equals(bfppo.getType())){
 				//异常下线
 				BankFinancialProductPublish bfpp = bankFinancialProductPublishDAO.get(bfppo.getBankFinancialProductPublish());
 				if(bfpp != null){
-					if(!BankFinancialProductPublishStatus.CHECKED.equals(bfpp.getStatus())){
-						result.put("result", false);
-						result.put("message", "理财产品发布信息审核状态错误，无法完成操作！");
-						return result;
-					}
-					if(!BankFinancialProductPublishStage.UNSTART.equals(bfpp.getStage()) && !BankFinancialProductPublishStage.COLLECT.equals(bfpp.getStage())){
-						result.put("result", false);
-						result.put("message", "理财产品发布信息审核状态错误，无法完成操作！");
-						return result;
-					}
+					bfpp.setFlagBuy(false);
 					bfpp.setStage(BankFinancialProductPublishStage.EXCEPTION);
 					bankFinancialProductPublishDAO.update(bfpp);
 				}else{
-					result.put("result", false);
-					result.put("message", "理财产品发布信息不存在");
-					return result;
+					throw new TransactionException("理财产品发布信息不存在");
+				}
+			}else if(BankFinancialProductPublishOperateType.COLLECT.equals(bfppo.getType())){
+				//开启认购
+				BankFinancialProductPublish bfpp = bankFinancialProductPublishDAO.get(bfppo.getBankFinancialProductPublish());
+				if(bfpp != null){
+					if(!BankFinancialProductPublishStage.UNSTART.equals(bfpp.getStage())){
+						throw new TransactionException("");
+					}
+					bfpp.setFlagBuy(true);
+					bfpp.setStage(BankFinancialProductPublishStage.COLLECT);
+					bankFinancialProductPublishDAO.update(bfpp);
+				}else{
+					throw new TransactionException("理财产品发布信息不存在");
+				}
+			}else if(BankFinancialProductPublishOperateType.UNINVEST.equals(bfppo.getType())){
+				//结束认购
+				BankFinancialProductPublish bfpp = bankFinancialProductPublishDAO.get(bfppo.getBankFinancialProductPublish());
+				if(bfpp != null){
+					if(!BankFinancialProductPublishStage.COLLECT.equals(bfpp.getStage())){
+						throw new TransactionException("");
+					}
+					bfpp.setFlagBuy(false);
+					bfpp.setStage(BankFinancialProductPublishStage.UNINVEST);
+					bankFinancialProductPublishDAO.update(bfpp);
+				}else{
+					throw new TransactionException("理财产品发布信息不存在");
 				}
 			}
 		}
 		if(BankFinancialProductPublishOperateStatus.CHECKED.equals(bfppo.getStatus()) && (bfppo.getReason() == null || "".equals(bfppo.getReason()))){
 			bfppo.setReason("审核通过！");
+		}else if(BankFinancialProductPublishOperateStatus.UNPASSED.equals(bfppo.getStatus()) && (bfppo.getReason() == null || "".equals(bfppo.getReason()))){
+			bfppo.setReason("审核不通过！");
 		}
 		bankFinancialProductPublishOperateDAO.update(bfppo);
-		result.put("result", true);
-		return result;
 	}
 	
 	/**
-	 * 获取银行理财产品发布操作分状态列表
+	 * 获取募集产品操作分状态列表
 	 * @param resultClass
 	 * @return  List<Entity>
 	 */
@@ -198,7 +284,7 @@ public class BankFinancialProductPublishOperateService extends BaseService imple
 	}
 	
 	/**
-	 * 获取银行理财产品发布操作分状态列表
+	 * 获取募集产品操作分状态列表
 	 * @param inputParams
 	 * @param resultClass
 	 * @return  List<Entity>

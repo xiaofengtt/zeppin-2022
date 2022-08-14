@@ -7,11 +7,12 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>修改主理人</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="css/bootstrap.css" />
 		<link rel="stylesheet" href="css/bootstrap2.css" />
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/uploadfile.css">
-		
+
 		<script id="DataTpl" type="text/template">
 			<input type="hidden" id="uuid" name="uuid" value="{{:uuid}}"/>
 			<div class="form-group form-group-double col-xs-6">
@@ -57,7 +58,7 @@
 					<select name="status">
 						<option value="normal" {{if status=='normal'}}selected{{/if}}>正常</option>
 						<option value="disable" {{if status=='disable'}}selected{{/if}}>停用</option>
-					</select>				
+					</select>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -68,7 +69,7 @@
 					<div class="uploadLogo" style="text-align:center;">
 						<img id="imageShow" src="{{if photo != ''}}..{{:photoUrl}}{{else}}img/fundManagement.jpg{{/if}}" style="border:0;max-width:100%;height:150px;margin-top:15px;">
 						<div id="resourceId">
-				
+
 						</div>
 					</div>
 					<div id="resourceAdd"><input type="hidden" name="photo" id="photo" value="{{:photo}}"></div>
@@ -111,7 +112,7 @@
 	<body>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="navigation.jsp"/>
-		<input id="scode" type="hidden" value="00100014" />  
+		<input id="scode" type="hidden" value="00100014" />
 		<div class="contain">
 			<jsp:include page="contentLeft.jsp"/>
 			<div class="contain-right">
@@ -126,7 +127,7 @@
 							<div class="clear"></div>
 							<div class="btnGroup">
 								<button class="btn sureBtn" type="submit">确定</button>
-								<button class="btn cancleBtn" type="button" onclick="window.location.href=history.go(-1);">取消</button>
+								<button class="btn cancleBtn" type="button" onclick="window.location.href = document.referrer;">取消</button>
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -140,11 +141,13 @@
 		<script type="text/javascript" charset="utf-8" src="js/utf8-jsp/lang/zh-cn/zh-cn.js"></script>
 		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
 		<script type="text/javascript" src="js/jquery.colorbox.js"></script>
-		<script type="text/javascript" src="js/url.min.js"></script>
+		<script type="text/javascript" src="js/url.min.js"></script><script type="text/javascript" src="js/flagSubmit.js"></script>
 		<script type="text/javascript" src="js/jsrender.min.js"></script>
 		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.js" ></script>
 		<script type="text/javascript" src="js/jquery.uploadfile.min.js"></script>
+		<script type="text/javascript" src="js/paramCheck.js" ></script>
 		<script type="text/javascript" src="js/managerEdit.js" ></script>
+		<script type="text/javascript" src="js/flagSubmit.js"></script>
 	</body>
 </html>

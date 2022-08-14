@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>实名认证</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/idConfirm.css?version=1.5" />
+	</head>
+	<body>
+		<div class="main">
+			<div class="top">
+				<p class="top-title">你已通过实名认证！</p>
+				<span>恭喜你！</span>
+				<img src="./img/idconfirm.png" alt="" />
+			</div>
+			<div class="bottom">
+				<p>
+					<span class="key">姓名</span>
+					<span class="value"></span>
+				</p>
+				<p>
+					<span class="key">身份证</span>
+					<span class="value"></span>
+				</p>
+			</div>
+		</div>
+		<p class="layer">
+			提示信息
+		</p>
+		
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		
+
+		
+		<script>
+			$(document).ready(function(){
+				$(".value").eq(1).html(url("?idcard"));
+				get();
+				//获取账户信息
+				function get(){
+					$.ajax({
+						type:"get",
+						url:api+"/employee/get",
+						async:false,
+						data:{
+							"token":token()
+						},
+						beforeSend:function(){
+							loadingIn();
+						}
+					})
+					.done(function(r){
+						if(r.status == "SUCCESS"){
+							$(".value").eq(0).html(r.data.name);
+						}else{
+							layerIn(r.message);
+						}
+						loadingOut();
+					})
+					.fail(function(){
+						loadingOut();
+						layerIn("服务器错误");
+					});
+				}
+			});
+		</script>
+	</body>
+</html>
+

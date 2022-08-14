@@ -35,10 +35,11 @@ public interface IBankFinancialProductInvestOperateDAO extends IBaseDAO<BankFina
 	
 	/**
 	 * 获取银行理财产品投资操作分状态列表
+	 * @param inputParams
 	 * @param resultClass
 	 * @return
 	 */
-	List<Entity> getStatusList(Class<? extends Entity> resultClass);
+	List<Entity> getStatusList(Map<String, String> inputParams, Class<? extends Entity> resultClass);
 	
 	/**
 	 * 获取银行理财产品投资操作分类型列表

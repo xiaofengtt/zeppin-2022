@@ -10,10 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.zeppin.product.ntb.backadmin.dao.api.IFundDAO;
+import cn.zeppin.product.ntb.backadmin.dao.api.IFundPublishDailyDAO;
 import cn.zeppin.product.ntb.backadmin.dao.api.IFundRateDAO;
 import cn.zeppin.product.ntb.backadmin.service.api.IFundService;
+import cn.zeppin.product.ntb.backadmin.service.api.IMobileCodeService;
 import cn.zeppin.product.ntb.core.entity.Fund;
-import cn.zeppin.product.ntb.core.entity.FundRate;
 import cn.zeppin.product.ntb.core.entity.Fund.FundStatus;
 import cn.zeppin.product.ntb.core.entity.base.Entity;
 import cn.zeppin.product.ntb.core.service.base.BaseService;
@@ -31,6 +32,11 @@ public class FundService extends BaseService implements IFundService {
 	@Autowired
 	private IFundRateDAO fundRateDAO;
 	
+	@Autowired
+	private IFundPublishDailyDAO fundPublishDailyDAO;
+	
+	@Autowired
+	private IMobileCodeService mobileCodeService;
 	@Override
 	public Fund insert(Fund fund) {
 		return fundDAO.insert(fund);
@@ -77,40 +83,24 @@ public class FundService extends BaseService implements IFundService {
 	}
 	
 	/**
-	 * 获取基金分状态列表
-	 * @param resultClass
-	 * @return  List<Entity>
+	 * 验证同名的活期理财是否已经存在
+	 * @param name
+	 * @param uuid
+	 * @return
 	 */
 	@Override
-	public List<Entity> getStatusList(Class<? extends Entity> resultClass) {
-		return fundDAO.getStatusList(resultClass);
+	public boolean isExistFundByName(String name, String uuid) {
+		return fundDAO.isExistFundByName(name, uuid);
 	}
 	
 	/**
-	 * 新增基金
-	 * @param fund
-	 * @param fundRateList
+	 * 验证同编号的活期理财是否已经存在
+	 * @param scode
+	 * @param uuid
+	 * @return
 	 */
-	public void add(Fund fund, List<FundRate> fundRateList){
-		if(fundRateList != null && fundRateList.size()>0){
-			for(FundRate fundRate : fundRateList){
-				fundRateDAO.insert(fundRate);
-			}
-		}
-	}
-	
-	/**
-	 * 编辑基金费率
-	 * @param fund
-	 * @param fundType
-	 * @param fundRateList
-	 */
-	public void updateFundRate(Fund fund, String fundType, List<FundRate> fundRateList){
-		fundRateDAO.deleteByType(fund, fundType);
-		if(fundRateList != null && fundRateList.size()>0){
-			for(FundRate fundRate : fundRateList){
-				fundRateDAO.insert(fundRate);
-			}
-		}
+	@Override
+	public boolean isExistFundByScode(String scode, String uuid) {
+		return fundDAO.isExistFundByScode(scode, uuid);
 	}
 }

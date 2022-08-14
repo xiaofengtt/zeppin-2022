@@ -1,4 +1,4 @@
-var pageNum = '1';
+var pageNum = 1;
 var pagesize;
 var count;
 var flag=true;
@@ -7,6 +7,13 @@ var tArraytime=[];
 
 function deleteThis(t) {
 	layer.confirm('确定要删除该条记录吗?', function(index){
+		if (flagSubmit == false) {
+	        return false;
+	    }
+	    flagSubmit = false;
+	    setTimeout(function() {
+	        flagSubmit = true;
+	    }, 3000);
 		var obj = $(t);
 		var uuid = obj.attr('data-uuid');
 		$.get('../rest/backadmin/fund/netvalueDelete?uuid='+uuid, function(r) {

@@ -1,0 +1,159 @@
+@CHARSET "UTF-8";
+*{margin: 0 auto;padding: 0; letter-spacing: 0.0rem;-webkit-tap-highlight-color: transparent;-webkit-appearance: none;
+font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif; }
+*, *::before, *::after {box-sizing: border-box;}
+html, body, form, p, div, h1, h2, h3, h4, h5, h6{-webkit-text-size-adjust:none;-moz-text-size-adjust:none;-o-text-size-adjust:none;}
+body{margin:0;padding:0;width:100%;font-size:18px; font-family:"微软雅黑";}
+ul,li,h1,h2,h3,h4,h5,h6,p{padding:0;margin:0; list-style:none;}
+a{color:#fff; text-decoration:none;outline:none;}
+.clear{clear:both;height:0px;}
+.fl{float:left;}
+.fr{float:right;}
+a img,img{border:0;}
+i{font-style: normal;}
+input,textarea,button{outline: none;border: none;caret-color:rgba(79,172,254,1);}
+.wrap{background:#fff;min-width:1000px;overflow-x:auto;overflow-y:hidden;}
+.banner{
+	width:100%;
+	position:relative;
+	background:url(../img/pic-banner.png) center no-repeat;
+	background-size:cover;
+	height:580px;
+}
+.logo{
+	width:135px;
+	position:absolute;
+	left:57px;
+	top:33px;
+}
+.banner-right{
+	position:absolute;
+	right:60px;
+	top:38px;
+	color:#FFFFFF;
+	font-size:14px;
+}
+.banner-content{
+	width:60%;
+	min-width:1000px;
+	height:422px;
+	position:absolute;
+	bottom:0;
+	left:0;
+	right:0;
+	padding-left:200px;
+}
+.phone{
+	width:291px;
+	margin-right:60px;
+	display:block;
+	float:left;
+}
+.text{
+	width:200px;
+}
+.download-right{
+	float:left;
+	padding-top:110px;
+}
+.download-box{
+	background:rgba(255,255,255,1);
+	border-radius:18px;
+	width:132px;
+	padding:8px 0;
+	margin-top:41px;
+	margin-left:0;
+	overflow:hidden;
+}
+.download-top{
+	background:url(../img/icon-download.png) 18px center no-repeat;
+	background-size:auto 100%;
+	padding-left:42px;
+	padding-right:18px;
+	font-weight:400;
+	color:rgba(52,51,46,1);
+	line-height:18px;
+	font-size:18px;
+}
+.download-bottom{
+	width:100%;
+	margin-top:8px;
+	display:none;
+}
+.download-bottom img{
+	width:100%;
+}
+.download-bottom span{
+	padding:20px 0;
+	text-align:center;
+	color:rgba(52,51,46,1);
+	font-size:20px;
+	display:block;
+}
+.contentTop,.contentCenter,.contentBottom{
+	width:100%;
+	background:url(../img/bg-content1.png) center no-repeat;
+	background-size:cover;
+	height:800px;
+	position:relative;
+}
+.contentCenter{
+	background:url(../img/bg-content2.png) center no-repeat;
+	background-size:cover;
+}
+.contentBottom{
+	background:url(../img/bg-content3.png) center no-repeat;
+	background-size:cover;
+}
+.content-inner{
+	width:60%;
+	height:800px;
+	min-width:1000px;
+	padding-top:93px;
+	text-align:center;
+}
+.content-inner img{
+	max-width:100%;
+	max-height:100%;
+}
+.content-fixed{
+	height:249px;
+	width:100%;
+	background:url(../img/pic-fiexed.png) center no-repeat;
+	background-size:100% 100%;
+	bottom:0;
+	left:0;
+	position:absolute;
+}
+.footer{
+	width:100%;
+	background:url(../img/bg-content4.png) center no-repeat;
+	background-size:cover;
+}
+.footer-inner{
+	width:60%;
+	height:350px;
+	min-width:1000px;
+	text-align:center;
+	padding:50px 0 46px 0;
+}
+.footer-inner img{
+	width:160px;
+	display:block;
+}
+.footer-inner a{
+	width:240px;
+	height:50px;
+	background:rgba(255,205,6,1);
+	border-radius:36px;
+	margin-top:40px;
+	display:block;
+	font-size:24px;
+	font-family:PingFang-SC-Medium;
+	font-weight:500;
+	color:rgba(52,51,46,1);
+	line-height:50px;
+}
+.footer-inner a:hover{
+	background:rgba(255,190,10,1);
+}

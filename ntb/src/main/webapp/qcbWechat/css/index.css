@@ -1,0 +1,122 @@
+body{
+	background:#FFFFFF;
+}
+.logo{
+	width:1.6rem;
+	display: block;
+	margin:0.2rem 0 0.7rem 0rem;
+}
+
+.form{
+	margin:0.4rem;
+}
+
+.form h1{
+	color:rgba(44, 44, 44, 1);
+	font-size:0.5rem;
+}
+.form p{
+	color:rgba(156, 156, 156, 1);
+	font-size:0.26rem;
+	margin-top:0.2rem;
+}
+.form-item{
+	width:100%;
+	border-bottom:1px solid #eaeaea;
+	padding-bottom:0.1rem;	
+	position: relative;
+	min-height:1.62rem;
+}
+
+.form-item input{
+	font-size:0.38rem;
+	border:none;
+	color:rgba(44, 44, 44, 1);
+}
+#mobile,#mobileCodeInput{
+	margin-top:1.4rem;
+}
+#mobileCode{
+	margin-top:-10.2rem;
+	color:transparent;
+	height:0;
+	z-index:-1;
+}
+#login{
+	background:#FF7600;
+	margin-top:1.2rem;
+}
+
+#getCode{
+	width:5.6rem;
+	height:0.8rem;
+	background:rgba(255,119,2,0.15);
+	margin-top:0.84rem;
+}
+#numCode,#regetCode{
+	width:100%;
+	height:0.6rem;
+	color:rgba(156, 156, 156, 1);
+	font-size:0.28rem;
+	text-align: right;
+	line-height:0.6rem;
+	margin-top:0.4rem;
+	display:block;
+}
+#regetCode{
+	color:rgba(255, 119, 2, 1);
+	display:none;
+}
+.codeDiv{
+	display:none;
+}
+input::-webkit-input-placeholder{
+	color:rgba(217, 217, 217, 1);
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   	color:rgba(217, 217, 217, 1);
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+   	color:rgba(217, 217, 217, 1);
+}
+input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   	color:rgba(217, 217, 217, 1);
+}
+#icon-delete{
+	width:0.5rem;
+	height:0.5rem;
+	position:absolute;
+	top:1.45rem;
+	right:0.2rem;
+	padding:0.1rem;
+	display:none;
+}
+.code-box{
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height:1.62rem;
+    position:absolute;
+    background:#fff;
+    top:0rem;
+    left:0;
+    width:100%;
+    padding-top:0.82rem;
+	z-index:2;
+}
+.code-item{
+	width:15%;
+	padding:0.2rem;
+	border-bottom:2px solid #eaeaea;
+	display:inline-block;
+	color:rgba(44, 44, 44, 1);
+	font-size:0.38rem;
+}
+.nomargin{
+	margin-right:0;
+}
+.code-item.available{
+	border-color:rgba(255, 119, 2, 1);
+}
+
+

@@ -1,0 +1,42 @@
+#banner{height: 462px;background: url(../img/sbx-banner1.jpg) center no-repeat;}
+#aboutUs{margin: 55px 0 35px 0;}
+#aboutUs .about-inner{padding: 0 90px 45px 30px;background: #ffffff;max-width: 1200px;}
+#aboutUs .about-inner h1{color: #161616;font-weight: normal;font-size: 26px;padding-left: 40px;padding-top: 93px;}
+#aboutUs .about-inner h1.aboutUs-title{background: url(../img/sbx-aboutUs1.png) left 97px no-repeat;}
+#aboutUs .about-inner h1.contactUs-title{background: url(../img/sbx-aboutUs2.png) left 97px no-repeat;}
+#aboutUs .about-inner p{font-size: 18px;margin: 34px 0;line-height: 28px;padding-left: 40px;color: #161616;text-align: justify;}
+
+
+@media only screen and (max-width: 768px) {
+	#banner{
+		height: 231px;
+		background-size: cover;
+	}
+	#aboutUs{
+		margin: 0rem 0 0.2rem 0;
+	}
+	#aboutUs .about-inner{
+		padding:0.45rem 0.9rem;
+	}
+	#aboutUs .about-inner h1{
+		padding-left: 1.5rem;
+		margin-top: 1.2rem;
+		font-size: 20px;
+		padding-top: 0;
+	}
+	#aboutUs .about-inner h1.aboutUs-title{
+		background: url(../img/sbx-aboutUs1.png) left center no-repeat;
+		background-size: auto 90%;
+	}
+	#aboutUs .about-inner p{
+		margin:0.3rem 0;
+		padding-left: 0rem;
+		font-size: 16px;
+		line-height: 1.5;
+	}
+	#aboutUs .about-inner h1.contactUs-title{
+		background: url(../img/sbx-aboutUs2.png) left center no-repeat;
+		background-size: auto 90%;
+	}
+	
+}

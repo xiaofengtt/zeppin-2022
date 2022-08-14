@@ -1,0 +1,25 @@
+.box {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+.box input.checkbox {
+    width: auto;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.box input.m_time {
+    width: 50px;
+    margin: 0;
+}
+
+.box input.end_time {
+    width: 395px;
+    margin: 0;
+}
+
+.box p.text_title {
+    margin-bottom: 20px;
+}

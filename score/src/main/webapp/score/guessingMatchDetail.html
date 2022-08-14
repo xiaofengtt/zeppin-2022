@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>开设竞猜</title>
+		<link rel="stylesheet" href="css/paging.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/base-header.css" />
+		<link rel="stylesheet" href="css/base-left.css" />
+		<link rel="stylesheet" href="css/newsDetail.css" />
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/bootstrap-select.css" rel="stylesheet" />
+	</head>
+	<body>
+		<input id="uuidInput" type="hidden" value="1aa26d91-80b1-21e5-45fd-cc4a14a1424b"/>
+		<div class="main">
+			<!--left-->
+			<script type="text/javascript" src="js/base-header.js"></script>
+			<!--header-->
+			<!--content-->
+			<div class="content-main mt-15">
+				<p class="position"><a href="guessingMatchList.html">精彩赛事管理</a>&nbsp;>&nbsp;<b>开设竞猜</b></p>
+				<div class="content-detail mt-15">
+					<div class="content-box pb-30">
+				<div class="content-item">
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">所属赛事：</label>
+						<div class="content-items col-md-9">
+							<select class="form-control selectpicker" data-live-search="true" id="categorySelect" onchange="getTeamList()">
+						
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">主队：</label>
+						<div class="content-items col-md-9">
+							<select class="form-control selectpicker" data-live-search="true" id="hometeamSelect">
+						
+							</select>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="form-group col-md-6 ">
+						<label class="col-md-3">客队：</label>
+						<div class="content-items col-md-9">
+							<select class="form-control selectpicker" data-live-search="true" id="awayteamSelect">
+						
+							</select>
+						</div>
+					</div>
+					<div class="btn-group">
+						<a class="sure-btn search-btn">搜索</a>
+					</div>
+					<div class="clear"></div>
+				</div>
+				</div>
+				</div>
+				<!--筛选-->
+				<table class="table-list">
+					
+				</table>
+				<!--分页-->
+				<div id="pageTool">
+
+                 </div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="js/query.js" ></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-select.js"></script>
+		<script type="text/javascript" src="js/paging.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="js/base-left.js" ></script>
+		<script type="text/javascript" src="js/guessingMatchDetail.js" ></script>
+	</body>
+</html>

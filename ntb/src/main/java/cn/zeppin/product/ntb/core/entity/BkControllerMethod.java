@@ -38,6 +38,7 @@ public class BkControllerMethod extends BaseEntity {
 	private String controller;
 	private String name;
 	private String description;
+	private Integer	sort;
 	
 	
 	@Id
@@ -77,6 +78,12 @@ public class BkControllerMethod extends BaseEntity {
 		this.description = description;
 	}
 
+	@Column(name = "sort", length = 11)
+	public Integer getSort() {
+		return sort;
+	}
 
-
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
 }

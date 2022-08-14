@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zeppin.product.score.mapper.GuessingMatchOddsMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from guessing_match_odds where 1=1 
+		<if test='guessingMatch != null and guessingMatch != ""'>
+            and guessing_match= #{guessingMatch}
+        </if>
+        <if test='guessingMatchType != null and guessingMatchType != ""'>
+            and guessing_match_type= #{guessingMatchType}
+        </if>
+        <if test='spread != null and spread != ""'>
+            and spread= #{spread}
+        </if>
+        <if test='result != null and result != ""'>
+            and result= #{result}
+        </if>
+		<choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','disable')
+	        </otherwise>
+        </choose>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.zeppin.product.score.entity.GuessingMatchOdds">
+		select * from guessing_match_odds where 1=1 
+		<if test='guessingMatch != null and guessingMatch != ""'>
+            and guessing_match= #{guessingMatch}
+        </if>
+        <if test='guessingMatchType != null and guessingMatchType != ""'>
+            and guessing_match_type= #{guessingMatchType}
+        </if>
+        <if test='spread != null and spread != ""'>
+            and spread= #{spread}
+        </if>
+        <if test='result != null and result != ""'>
+            and result= #{result}
+        </if>
+		<choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('normal','disable')
+	        </otherwise>
+        </choose>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<update id="deleteByGuessingMatchType" parameterType="String">
+	    update guessing_match_odds set status='delete' where guessing_match_type= #{guessingMatchType}
+	</update>
+	
+</mapper>

@@ -1,0 +1,47 @@
+*{box-sizing: border-box;}
+.noticeBox{padding: 22px 40px;position: relative;}
+.noticeBox p{background: url(../img/notice.png) left center no-repeat;padding-left: 28px;max-width: 95%;font-size: 14px;line-height: 20px;}
+.closeNotice{width: 20px;height: 20px;background: url(../img/close-notice.png) center no-repeat;display: block;position: absolute;right: 40px;top: 22px;cursor: pointer;}
+.companyProfileBox,.accountInformationBox{width: 50%;float: left;padding-right: 15px;}
+.accountInformationBox{padding: 0 0 0 15px;}
+.companyProfile,.accountInformation{/* margin-top: 30px; */padding: 22px 0px;width: 100%;height:290px;}
+.accountInformation{}
+.box-title{color: #333333;float: left;margin-right: 10px;margin-left: 40px;}
+.box-subtitle{color: #adadad;font-size: 12px;float: left;line-height: 32px;}
+a.edit{float: right;cursor: pointer;color: #9f9f9e;font-size: 14px;margin-right: 40px;}
+.edit-infomation{background: url(../img/edit-grey.png) left center no-repeat;padding-left: 23px;}
+.edit-infomation:hover{background: url(../img/edit-orange.png) left center no-repeat;color: #FF9E10;}
+.edit-account{background: url(../img/account-icon-grey.png) left center no-repeat;padding-left: 23px;}
+.edit-account:hover{background: url(../img/account-icon-orange.png) left center no-repeat;color: #FF9E10;}
+.companyInfomation{border-top: 1px solid #ececec;margin-top: 15px;padding: 42px 40px 0 40px;}
+.companyInfomation .group{padding-bottom: 25px;position: relative;}
+.companyInfomation label{float: left;width:95px;color: #333333;font-size: 14px;line-height: 26px;}
+.companyInfomation p{float: left;color: #000000;font-size: 16px;line-height: 24px;}
+.companyInfomation p span.color-green{color: #419724;}
+.accountInformationBox .companyInfomation p{font-size: 18px;}
+.btnBox{position: absolute;right: 0;top: -5px;cursor: pointer;}
+.btnBox a{color: #fd8a2c;display: inline-block;margin-left: 14px;background: #fffaf4;font-size: 14px;width: 66px;height: 32px;text-align: center;line-height: 30px;border-radius: 2px;border:1px solid #ffb172;}
+.btnBox a:hover{
+	color:#FFFFFF;
+	background: #FDA133;
+	background: -webkit-linear-gradient(left, #FDA133 , #FD8521);
+	background: -moz-linear-gradient(left, #FDA133 , #FD8521);
+	background: -ms-linear-gradient(left, #FDA133 , #FD8521);
+	background: linear-gradient(left, #FDA133 , #FD8521);
+}
+.btnBox a.recharge{
+	color:#FFFFFF;
+	background: #FDA133;
+	background: -webkit-linear-gradient(left, #FDA133 , #FD8521);
+	background: -moz-linear-gradient(left, #FDA133 , #FD8521);
+	background: -ms-linear-gradient(left, #FDA133 , #FD8521);
+	background: linear-gradient(left, #FDA133 , #FD8521);
+	border:none;
+	height:32px;
+	line-height:32px;
+}
+.lineBox{margin-top: 20px;}
+#containerline{margin-top: 80px;}
+.unauth:hover{
+	text-decoration: underline;
+}

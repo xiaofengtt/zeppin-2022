@@ -1,0 +1,67 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/search/search",
+    "pages/detail/detail",
+    "pages/instruction/instruction",
+    "pages/me/me",
+    "pages/my/my",
+    "pages/reset/reset",
+    "pages/register/register",
+    "pages/resetCode/resetCode",
+    "pages/certification/certification",
+    "pages/certificationResult/certificationResult",
+    "pages/certificationPhoto/certificationPhoto",
+    "pages/invest/invest",
+    "pages/pay/pay",
+    "pages/recharge/recharge",
+    "pages/withdraw/withdraw",
+    "pages/bankcardAdd/bankcardAdd",
+    "pages/bankcardList/bankcardList",
+    "pages/bankcardConfirm/bankcardConfirm",
+    "pages/bankChoose/bankChoose",
+    "pages/bankcardChoose/bankcardChoose",
+    "pages/bankcardDetail/bankcardDetail",
+    "pages/bankcardRemove/bankcardRemove",
+    "pages/contact/contact",
+    "pages/withdrawResult/withdrawResult",
+    "pages/history/history",
+    "pages/historyDetail/historyDetail",
+    "pages/rechargeResult/rechargeResult",
+    "pages/myProduct/myProduct",
+    "pages/payResult/payResult"
+  ],
+  "tabBar": {
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "color": "#999999",
+    "selectedColor": "#008DFB",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "银行理财",
+        "iconPath": "resources/tabBar/index_unselected.png",
+        "selectedIconPath": "resources/tabBar/index_selected.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的持仓",
+        "iconPath": "resources/tabBar/my_unselected.png",
+        "selectedIconPath": "resources/tabBar/my_selected.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "个人中心",
+        "iconPath": "resources/tabBar/me_unselected.png",
+        "selectedIconPath": "resources/tabBar/me_selected.png"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#2061BB",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "牛投理财"
+  }
+}

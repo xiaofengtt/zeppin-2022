@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>活期盈</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/freeFinancing.css?version=1.5" />
+	</head>
+	<body>
+		
+		<div class="main">
+			<div class="main-top">
+				<p>理财总金额(元)</p>
+				<h3 id="totalAmount">暂无收益</h3>
+				<!-- <h5>持有金额 10,000.00 元</h5> -->
+				<span>交易记录</span>
+			</div>
+			
+			<div class="main-mid-top clearfix">
+				<div>
+					<p>昨日收益(元)</p>
+					<span id="totalReturn"></span>
+				</div>
+				<div class="rightBorder"></div>
+				<div>
+					<p>当前净值</p>
+					<span id="netWorth"></span>
+				</div>
+			</div>
+			
+			<!-- <div class="account-auto-transfer">
+				<h3>账户余额自动转入</h3>
+				<p>让你的辛勤所得不错过每一分收益</p>
+				<input type="button" value="立即开启"/>
+			</div> -->
+			
+			<!-- <div class="select-box">
+				<div>
+					<span class="status status-light">七日年化</span>
+					<p class="status-tap"></p>
+				</div>
+				<div>
+					<span class="status">万份收益</span>
+					<p class="status-tap"></p>
+				</div>
+			</div>
+			
+			<div class="charts-box">
+				<div id="charts">
+				
+				</div>
+				<div class="charts-bg">
+					
+				</div>
+			</div> -->
+			
+			<div class="select-box">
+				<div>
+					<span class="status status-light" data-status="turnIn">转入</span>
+					<p class="status-tap"></p>
+				</div>
+				<div>
+					<span class="status" data-status="turnOut">转出</span>
+					<p class="status-tap"></p>
+				</div>
+			</div>
+			<div class="item-box turnIn">
+				<div class="main-mid-content clearfix">
+					<div>
+						<h5>转入提交</h5>
+						<div class="border border-o"></div>
+						<div class="circle circle-o"></div>
+						<p>T日</p>
+					</div>
+				
+				
+					<div>
+						<h5>开始计息</h5>
+						<div class="border border-g"></div>
+						<div class="circle circle-g"></div>
+						<p>T日</p>
+					</div>
+				
+				
+					<div>
+						<h5>查看收益</h5>
+						<div class="border border-g"></div>
+						<div class="circle circle-g"></div>
+						<p>T+1日</p>
+					</div>
+				</div>
+				
+				<div class="main-bottom">
+					<div class="main-bottom-item">
+						<img src="./img/warn.png" alt="" />
+						<span>1元起投，1元递增</span>
+					</div>
+					<div class="main-bottom-item">
+						<img src="./img/warn.png" alt="" />
+						<span>T日24:00前转入，T日开始计息，计息后下一个自然日可查看收益（T为交易日）</span>
+					</div>
+					<div class="main-bottom-item">
+						<img src="./img/warn.png" alt="" />
+						<span>周末及节假日通常在12:00前更新收益</span>
+					</div>
+				</div>
+			</div>
+			<div class="item-box turnOut">
+				<div class="main-mid-content clearfix">
+					<div>
+						<h5>转出提交</h5>
+						<div class="border border-o"></div>
+						<div class="circle circle-o"></div>
+						<p>T日24:00前</p>
+					</div>
+				
+				
+					<div>
+						<h5>资金到账</h5>
+						<div class="border border-g"></div>
+						<div class="circle circle-g"></div>
+						<p>T+1日</p>
+					</div>
+				
+				</div>
+				
+				<div class="main-bottom">
+					<div class="main-bottom-item">
+						<img src="./img/warn.png" alt="" />
+						<span>产品起息后可随时转出，转出无限额，转出资金至账户余额，不支持资金转出到银行卡</span>
+					</div>
+					<div class="main-bottom-item">
+						<img src="./img/warn.png" alt="" />
+						<span>T日24:00前转出，资金预计T+1日24:00前到账，转出申请当日有收益（T为交易日）</span>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="main-foot">
+				<p class="title">产品介绍</p>
+				<div>
+					活期盈是企财宝平台专为个人用户打造的资产增值服务，转入企
+					财宝活期盈即为向基金公司购买货币基金理财产品。
+				</div>
+				<h4>产品类型：</h4>
+				<h5>开放式现金管理类产品</h5>
+				
+				<h4>风险说明：</h4>
+				<h5>中低风险，适合稳健型及以上用户投资</h5>
+				
+				<h4>投资范围：</h4>
+				<h5>存款、债券、债券基金、货币市场基金等流动性资产</h5>
+			</div>
+			
+			<input type="button" class="bottom-btn free-in" value="立即转入" />
+			<div class="bottom-btn-box clearfix">
+				<input type="button" class="free-out" value="转出" />
+				<input type="button" class="free-in" value="转入" />
+			</div>
+		</div><!--main-->
+		
+		
+		<div id="modal-box">
+			<div class="modal-box-inner">
+				<h3>温馨提示</h3>
+				<h4></h4>
+				<div class="modal-box-inner-btnbox clearfix">
+					<!--<input type="button"  value="取消" id="modal-box-close"/>-->
+					<input type="button"  value="确认" id="modal-box-close"/>
+				</div>
+			</div>
+		</div>
+		
+		<div id="tip-box">
+			<div class="tip-box-inner">
+				<div class="tip-box-inner-content">
+					<p>你还未绑定银行卡！</p>
+					<img src="./img/auth_failed.png" alt="" />
+					<input type="button" value="马上绑卡" id="goBind"/>
+				</div>
+				<div id="tip-close">
+					
+				</div>
+			</div>
+		</div>
+		<p class="layer">
+			提示信息
+		</p>
+
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<!-- <script src="./js/highcharts.js?version=1.5"></script>
+		<script src="./js/highcharts-zh_CN.js?version=1.5"></script> -->
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/changePrice.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/myPosition.js?version=1.5"></script>
+		<script src="./js/freeFinancing.js?version=1.5"></script>
+	</body>
+</html>

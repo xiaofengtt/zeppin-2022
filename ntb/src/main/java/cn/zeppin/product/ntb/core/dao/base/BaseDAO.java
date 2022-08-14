@@ -10,6 +10,9 @@ import static org.hibernate.criterion.Example.create;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -19,6 +22,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.jdbc.Work;
 import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -486,6 +490,25 @@ public abstract class BaseDAO <T, PK extends Serializable> {
 		return results;
 	}
 
+	/**
+	 * 通过SQL语句查询符合条件的数据记录（分页，SQL传参）
+	 * @param sql
+	 * @param offset
+	 * @param length
+	 * @param objParas
+	 * @return List<Object>
+	 */
+	@SuppressWarnings("unchecked")
+	protected List<Object> getObjectBySQL(String sql, final int pageNum, final int pageSize, Object[] objParas) {
+		Query query = getSession().createSQLQuery(sql);
+		this.setParamValueTypes(query, objParas);
+		int offset = (pageNum - 1) * pageSize;
+		if (offset >= 0 && pageSize > 0){
+			query.setFirstResult(offset);
+			query.setMaxResults(pageSize);
+		}
+		return query.list();		
+	}
 	
 	/**
 	 * 通过SQL语句查询符合条件的数据记录（分页，SQL传参）
@@ -885,5 +908,37 @@ public abstract class BaseDAO <T, PK extends Serializable> {
 		}
 		
 		return orderBy;
+	}
+	
+	/**
+	 * 批处理操作
+	 * @param sql
+	 * @param paras
+	 */
+	protected void insert(final String sql, final List<Object[]> paras){
+		getSession().doWork(new Work() {
+			
+			@Override
+			public void execute(Connection conn) throws SQLException {
+				// TODO Auto-generated method stub
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				conn.setAutoCommit(false);
+				for(int i = 0; i< paras.size(); i++){
+					Object[] obj = paras.get(i);
+					for (int j = 0; j < obj.length; j++) {
+						stmt.setObject(j+1, obj[j]);
+					}
+					stmt.addBatch();
+					if (i % 100 == 0) {
+				        stmt.executeBatch();
+				        conn.commit();
+				    }
+				}
+				stmt.executeBatch();
+				conn.commit();
+				
+//				getSession().close();
+			}
+		});
 	}
 }

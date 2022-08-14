@@ -1,0 +1,177 @@
+.content{
+	padding-bottom: 2.26rem;
+}
+
+.infoDiv{
+	padding-left: 0.3rem;
+	background: #FFFFFF;
+}
+
+.footerBtn{
+	width: 100%;	
+	position: fixed;
+	bottom: 1.1rem;
+	text-align: center;
+	border-top:1px solid rgba(0,0,0,0.05);
+}
+.footerBtn a{
+	width: 50%;
+	display: inline-block;
+	font-size: 0.36rem;
+	line-height: 0.5rem;
+	padding: 0.26rem 0 0.22rem;
+	float: left;
+}
+.clearBtn{
+	background: #FFFFFF;
+	color:rgba(79,172,254,0.3);
+
+}
+.clearBtn.light{
+	color:rgba(79,172,254,1);
+}
+.calculationBtn{
+	background:#BEDAF6;
+	color:rgba(255,255,255,1);
+}
+.calculationBtn.light{
+	background:rgba(79,172,254,1);
+}
+.resultDiv{
+	display: none;
+}
+.totalResult{
+	background: #FFFFFF;
+	padding: 0.28rem 0 0.2rem 0;
+}
+.totalResult div.fyBox{
+	float: left;
+	padding:0 0.05rem;
+	font-size:0.28rem;
+	line-height:0.4rem;
+	text-align: center;
+}
+.totalResult div span{
+	color:rgba(46,46,46,1);
+	display: inline-block;
+	width:2.2rem;
+	text-align:left;
+}
+.totalResult div label{
+	color:rgba(184,0,0,1);
+	display: inline-block;
+	margin-top: 0.16rem;
+	text-align:left;
+	width:1rem;
+}
+.sbfy,.zj,.gjjfy,.gsfy{
+	width: 50%;
+}
+
+.borderRight{
+	width: 1%;
+	height: 0.8rem;
+	border-right: 1px solid rgba(0,0,0,0.1);
+	float: left;
+	margin-top: 0.08rem;
+}
+.tableBox{
+	padding-left: 0.3rem;
+	background: #FFFFFF;
+}
+table{
+	table-layout: fixed;
+	width: 100%;
+	margin-top: 0.28rem;
+	font-size: 0.3rem;
+	color:rgba(46,46,46,0.6);
+	text-align: left;
+	border-collapse: collapse;
+}
+table th{
+	color:rgba(46,46,46,1);
+	padding: 0.35rem 0 0.2rem 0;
+	width: 20%;
+	font-weight:normal;
+}
+table td{
+	border-bottom:1px solid rgba(0,0,0,0.05);
+	padding: 0.2rem 0;
+}
+.totalTr td{
+	color:rgba(46,46,46,1);
+	border: none;
+	padding: 0.25rem 0;
+}
+.layerInner{
+	background: #EFEFF4;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+.selectBar{
+	background: #FFFFFF;
+	padding: 0.26rem 0 0.28rem 0;
+	margin-bottom: 0.28rem;
+}
+.selectBar div.select-item{
+	float: left;
+	width: 49%;
+	text-align: center;
+}
+.selectBar div.select-item span{
+	color:rgba(46,46,46,0.7);
+	font-size:0.28rem;
+	display: block;
+	line-height: 0.34rem;
+	padding-bottom: 0.16rem;
+}
+.selectBar div.select-item label{
+	font-size:0.3rem;
+	color:rgba(46,46,46,1);
+	line-height:0.4rem;
+}
+.selectBar div.select-item.light label{
+	color:rgba(79,172,254,1);
+}
+.contentBar{
+	width: 100%;
+	height: 5.5rem;
+	background: #FFFFFF;
+}
+.content-top{
+	text-align: center;
+	height: 1rem;
+	color:rgba(46,46,46,0.7);
+	font-size: 0.3rem;
+	line-height: 1.1rem;
+	position: relative;
+	border-bottom:1px solid rgba(0,0,0,0.1);
+}
+
+.hkxz-item{
+	display: none;
+}
+/* 适配iphonex */
+@media only screen and (device-width: 375px) and (device-height: 812px) and 
+(-webkit-device-pixel-ratio: 3) {
+	.content{
+		padding-bottom:2.92rem;
+	}
+}
+
+/* 适配iphonexr */
+@media only screen and (device-width: 414px) and (device-height: 896px) and 
+(-webkit-device-pixel-ratio: 2) {
+	.content{
+		padding-bottom:2.92rem;
+	}
+}
+
+/* 适配iphonexsmax */
+@media only screen and (device-width: 414px) and (device-height: 896px) and 
+(-webkit-device-pixel-ratio: 3) {
+	.content{
+		padding-bottom:2.92rem;
+	}
+}

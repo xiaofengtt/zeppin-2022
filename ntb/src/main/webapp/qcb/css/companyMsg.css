@@ -1,0 +1,191 @@
+.main-right-body {
+    padding-top: 20px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom:30px;
+    padding-bottom:20px;
+}
+
+.main-right-body-header {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #E8E4E4;
+    padding-left: 40px;
+    position: relative;
+}
+
+.main-right-body-header .edit {
+    color: #FF9E10;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 14px;
+    padding: 10px 0px 10px 30px;
+    position: absolute;
+    right: 40px;
+    top: 0px;
+    background-image: url(../img/edit.png);
+    background-repeat: no-repeat;
+    background-position-x: 6px;
+    background-position-y: center;
+    cursor: pointer;
+}
+
+.main-right-body-top {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.main-right-body-top img {
+    margin-bottom: 24px;
+}
+
+.main-right-body-top p {
+    font-size: 18px;
+    margin-bottom: 24px;
+}
+
+.main-right-body-top .btn-g {
+    margin-top: 0;
+    margin-bottom: 34px;
+}
+
+.main-right-body-top .btn-g .btn {
+    margin: 0;
+}
+
+.select-bar {
+    width: 368px;
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+.select-bar a {
+    display: inline-block;
+    margin: 0px 26px;
+    text-align: center;
+    color: #A2A2A2;
+    padding: 4px 0;
+}
+
+.select-bar .select {
+    border-bottom: 2px solid #ffb031;
+    color: #ffb031;
+}
+
+.msg-box {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding: 0 40px;
+}
+
+.msg-box .msg-item {
+    font-size: 16px;
+    margin-bottom: 30px;
+    color:#333;
+}
+
+.msg-box .msg-item-key {
+    color: #A2A2A2;
+    width: 115px;
+    display: inline-block;
+    text-align: right;
+    margin-right:25px;
+    font-size:14px;
+}
+
+/*编辑*/
+
+.msg-box-edit {
+    display: none;
+}
+
+.msg-box input, .msg-box select {
+    width: 465px;
+    height: 42px;
+    line-height: 42px;
+    border: 1px solid #dedede;
+    outline: none;
+    border-radius: 2px;
+    padding: 0 15px;
+}
+.msg-box select{
+	padding:4px;
+	text-indent: 10px;
+}
+
+.msg-box input.light, .msg-box select.light {
+    border-color: #f9ba56;
+}
+.msg-box input:focus, .msg-box select:focus {
+    border-color: #f9ba56;
+}
+
+.editCompanyBox img {
+    display: block;
+    margin: 0 auto;
+}
+
+.editCompanyBox .fileDiv {
+    display: block;
+    margin: 24px auto 40px auto;
+    padding: 0;
+    width: 90px;
+    height: 33px;
+    position: relative;
+}
+
+.editCompanyBox .fileDiv:hover {
+	background: #FDA133;
+    background: -webkit-linear-gradient(left, #FDA133, #FD8521);
+    background: -moz-linear-gradient(left, #FDA133, #FD8521);
+    background: -ms-linear-gradient(left, #FDA133, #FD8521);
+    background: linear-gradient(left, #FDA133, #FD8521);
+}
+
+/*.editCompanyBox .fileDiv:hover .btn {
+    /*color: #FFFFFF;*/
+
+/*color: #FFB172;*/
+
+}
+
+*/ .editCompanyBox .fileDiv label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+}
+
+.editCompanyBox .fileDiv input {
+    width: 90px;
+    height: 33px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.msg-box-edit span.tips {
+    font-size: 14px;
+    line-height: 42px;
+    margin-left: 15px;
+    display: none;
+}
+
+.province, .city, .county {
+    width: 100px !important;
+}
+
+.companyAddressEdit {
+    width: 150px !important;
+}
+
+#imageShow, #imageShows {
+    width: 100px;
+    height: 100px;
+    background: url(../img/corporateHead.png) center no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    margin: 10px auto;
+}
+.colorGrey{
+	color:#A5A5A5 !important;
+	font-size:15px;
+}

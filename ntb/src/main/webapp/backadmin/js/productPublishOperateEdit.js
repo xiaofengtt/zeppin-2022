@@ -31,14 +31,26 @@ $(function(){
             format: 'YYYY-MM-DD'
         });
 	});
-	$("#collectStarttime,#collectEndtime").click(function(){
-		laydate({
-            start: laydate.now(0, "YYYY/MM/DD hh:mm:ss"),
+	 $("#collectStarttime").click(function() {
+    	var start = laydate.now(0, "YYYY/MM/DD"),
+    	start = start + " 09:00:00"; 
+        laydate({
+            start: start,
             istime: true,
             istoday: false,
             format: 'YYYY-MM-DD hh:mm:ss'
         });
-	});
+    });
+    $("#collectEndtime").click(function() {
+    	var start = laydate.now(0, "YYYY/MM/DD"),
+    	start = start + " 21:00:00"; 
+        laydate({
+            start: start,
+            istime: true,
+            istoday: false,
+            format: 'YYYY-MM-DD hh:mm:ss'
+        });
+    });
 	
 	$("#resourceId").uploadFile({
 		id:"1",
@@ -60,6 +72,7 @@ $(function(){
 		onSuccess:function(files,data,xhr){
 			$('input[name="document"]').val(data.data.uuid);
 			$('#imageShow').attr('href','..'+data.data.url).html(data.data.filename+'.'+data.data.filetype).show();
+			 $('#imageShow').prop("target","_blank");
 			$(".ajax-upload-dragdrop").css("display","none");
 		}
 	});
@@ -67,44 +80,80 @@ $(function(){
 		$(".info-list").css("display","none");
 		$(".edit-list").css("display","block");
 		$(".content-items b").css("right","30px");
-		$(this).css("display","none");
+		$(this).parent().css("display","none");
 		$(".save").css("display","block");
+	});
+	$(".cancleBtn").click(function(){
+		$(".info-list").css("display","block");
+		$(".edit-list").css("display","none");
+		$(this).css("display","none");
+		$(".edit").parent().css("display","block");
 	});
 	
 	$("#subscribeFee").blur(function(){
 		var subscribeFee = $("#subscribeFee").val().replace(/(^\s*)|(\s*$)/g, "");
 		if(subscribeFee != ""){
-			$("#subscribeFee").val(FormatAfterDotNumber(subscribeFee,2));
+			$("#subscribeFee").val(FormatAfterDotNumber(subscribeFee,4));
+		} else {
+			$("#subscribeFee").val("0.00");
 		}
 	})
 	$("#purchaseFee").blur(function(){
 		var purchaseFee = $("#purchaseFee").val().replace(/(^\s*)|(\s*$)/g, "");
 		if(purchaseFee != ""){
-			$("#purchaseFee").val(FormatAfterDotNumber(purchaseFee,2));
+			$("#purchaseFee").val(FormatAfterDotNumber(purchaseFee,4));
+		} else {
+			$("#purchaseFee").val("0.00");
 		}
 	})
 	$("#redemingFee").blur(function(){
 		var redemingFee = $("#redemingFee").val().replace(/(^\s*)|(\s*$)/g, "");
 		if(redemingFee != ""){
-			$("#redemingFee").val(FormatAfterDotNumber(redemingFee,2));
+			$("#redemingFee").val(FormatAfterDotNumber(redemingFee,4));
+		} else {
+			$("#redemingFee").val("0.00");
 		}
 	})
 	$("#custodyFee").blur(function(){
 		var custodyFee = $("#custodyFee").val().replace(/(^\s*)|(\s*$)/g, "");
 		if(custodyFee != ""){
-			$("#custodyFee").val(FormatAfterDotNumber(custodyFee,2));
+			$("#custodyFee").val(FormatAfterDotNumber(custodyFee,4));
+		} else {
+			$("#custodyFee").val("0.00");
 		}
 	})
 	$("#networkFee").blur(function(){
 		var networkFee = $("#networkFee").val().replace(/(^\s*)|(\s*$)/g, "");
 		if(networkFee != ""){
-			$("#networkFee").val(FormatAfterDotNumber(networkFee,2));
+			$("#networkFee").val(FormatAfterDotNumber(networkFee,4));
+		} else {
+			$("#networkFee").val("0.00");
 		}
 	})
 	$("#managementFee").blur(function(){
 		var managementFee = $("#managementFee").val().replace(/(^\s*)|(\s*$)/g, "");
 		if(managementFee != ""){
-			$("#managementFee").val(FormatAfterDotNumber(managementFee,2));
+			$("#managementFee").val(FormatAfterDotNumber(managementFee,4));
+		} else {
+			$("#managementFee").val("0.00");
+		}
+	})
+		
+	$("#targetAnnualizedReturnRate").blur(function(){
+		var subscribeFee = $("#targetAnnualizedReturnRate").val().replace(/(^\s*)|(\s*$)/g, "");
+		if(subscribeFee != ""){
+			$("#targetAnnualizedReturnRate").val(FormatAfterDotNumber(subscribeFee,4));
+		} else {
+			$("#targetAnnualizedReturnRate").val("0.00");
+		}
+	})	
+	
+	$("#minAnnualizedReturnRate").blur(function(){
+		var subscribeFee = $("#minAnnualizedReturnRate").val().replace(/(^\s*)|(\s*$)/g, "");
+		if(subscribeFee != ""){
+			$("#minAnnualizedReturnRate").val(FormatAfterDotNumber(subscribeFee,4));
+		} else {
+			$("#minAnnualizedReturnRate").val("0.00");
 		}
 	})
 });
@@ -164,6 +213,8 @@ function getDate(){
 			$('#currencyType').val(r.data.newData.currencyType);
 			$('#totalAmounts').html(r.data.newData.totalAmount);
 			$('#totalAmount').val(r.data.newData.totalAmount);
+			$('#collectAmounts').html(r.data.newData.collectAmount);
+			$('#collectAmount').val(r.data.newData.collectAmount);
 			$('#targetAnnualizedReturnRates').html(r.data.newData.targetAnnualizedReturnRate);
 			$('#targetAnnualizedReturnRate').val(r.data.newData.targetAnnualizedReturnRate);
 			$('#minAnnualizedReturnRates').html(r.data.newData.minAnnualizedReturnRate);
@@ -230,12 +281,14 @@ function getDate(){
 			tinymecTool.load('remark',r.data.newData.remark);
 			if(r.data.newData.document == null){
 				$("#documents").html(r.data.newData.documentCN);
-				$("#imageShow").attr('href','#').html(r.data.newData.documentCN).show();
+				$("#imageShow").attr('href','javascript:void(0)').html(r.data.newData.documentCN).show();
 			}else{
 				$('input[name="document"]').val(r.data.newData.document);
 				$("#documents").html(r.data.newData.documentCN);
 				$("#documentsLink").attr('href','..'+r.data.newData.documentURL);
+				$("#documentsLink").prop("target", "_blank");
 				$("#imageShow").attr('href','..'+r.data.newData.documentURL).html(r.data.newData.documentCN+'.'+r.data.newData.documentType).show();
+				 $('#imageShow').prop("target","_blank");
 				$(".ajax-upload-dragdrop").css("display","block");
 			}
 		} else {
@@ -246,11 +299,18 @@ function getDate(){
 	});
 }
 $("#formsubmit").submit(function(){
+	if (flagSubmit == false) {
+        return false;
+    }
+    flagSubmit = false;
+    setTimeout(function() {
+        flagSubmit = true;
+    }, 3000);
 	$('input[name=investScope]').val(string2json2(tinyMCE.get('investScope').getContent()));
 	$('input[name=revenueFeature]').val(string2json2(tinyMCE.get('revenueFeature').getContent()));
 	$('input[name=remark]').val(string2json2(tinyMCE.get('remark').getContent()));
 	var str = $(this).serialize();
-	$.post('../rest/backadmin/bankFinancialProductPublish/operateEdit?'+str, function(r) {
+	$.post('../rest/backadmin/bankFinancialProductPublish/operateEdit', str, function(r) {
 		if (r.status == "SUCCESS") {
 			layer.msg('保存成功', {
 				time: 1000 

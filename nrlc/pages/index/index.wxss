@@ -1,0 +1,313 @@
+/**index.wxss**/
+
+.top-view{
+  width: 100%;
+}
+
+.top-bar{
+  width: 100%;
+  height: 220rpx;
+  text-align: center;
+}
+
+.top-bar swiper{
+  width: 100%;
+  height: 100%;
+}
+
+.top-bar swiper image{
+  width: 100%;
+  height: 100%;
+}
+
+.sort-bar{
+  width: 100%;
+  padding: 0;
+  height: 80rpx; 
+  background: #fff;
+}
+
+.sort-bar > view{
+  display: inline-block;
+  position: relative;
+  height: 100%; 
+  text-align: center;
+  vertical-align: top;
+  font-size: 28rpx;
+  color: rgb(86,86,86);
+}
+
+.sort-bar view.sort-view{
+  width: 200rpx;
+}
+
+.sort-bar view.sort-view-selected{
+  width: 200rpx;
+}
+
+.sort-bar view.filter-view{
+  width: 75rpx;
+}
+
+.sort-bar view.search-view{
+  width: 75rpx;
+}
+
+.sort-bar .sort-name{
+  margin-top: 20rpx;
+}
+
+.sort-bar view .border{
+  position: absolute; 
+  left: 0;
+  bottom: 0;
+  height: 4rpx;
+  width: 100%;
+  background: #F4F4F4;
+}
+
+.sort-bar view.sort-view-selected image{
+  position: absolute; 
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.sort-bar view .split{
+  position: absolute; 
+  right: 0;
+  top: 24rpx;
+  height: 36rpx;
+  width: 1px;
+  background: #EEE;
+}
+
+.sort-bar view text.selected{
+  color: rgb(0,105,229);
+}
+
+.sort-bar view.filter-view image{
+  margin-top: 20rpx;
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.sort-bar view.search-view image{
+  margin-top: 18rpx;
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.data-table {
+  width: 100%;
+}
+
+.data-table .tr, 
+.data-table .tr-disable {
+  position: relative;
+  display: flex;
+  height: 160rpx;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #eee ;
+}
+ 
+.data-table image.table-image{
+  position: absolute;
+  right: 0;
+  top: -2rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.data-table .td-left{
+  width: 160rpx;
+  min-width: 160rpx;
+}
+
+.data-table .td-left-rate{
+  width: 100%;
+  margin: 30rpx 10rpx 0 24rpx;
+  line-height: 60rpx;
+  text-align: left;
+  color: rgb(249,20,73);
+  font-size: 46rpx;
+}
+
+.data-table .td-left-rate text.per{
+  line-height: 24rpx;
+  font-size: 24rpx;
+}
+
+.data-table .td-left-text{
+  width: 100%;
+  margin: 4rpx 0 0 24rpx;
+  line-height: 30rpx;
+  text-align: left;
+  color: rgb(249,20,73);
+  font-size: 22rpx;
+}
+
+.data-table .td-right{
+  padding-right: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.data-table .td-right-title{
+  width: 100%;
+  margin: 30rpx 10rpx 0 0;
+  line-height: 60rpx;
+  text-align: left;
+  font-size: 32rpx;
+  color: rgb(56,56,56);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.data-table .td-right-text{
+  width: 100%;
+  margin: 0 10rpx 0 16rpx;
+  line-height: 38rpx;
+  text-align: left;
+  color: rgb(146,146,146);
+  font-size: 26rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.data-table .tr-disable .td-left-rate, 
+.data-table .tr-disable .td-left-text, 
+.data-table .tr-disable .td-right-title, 
+.data-table .tr-disable .td-right-text{
+  color: #BEBEBE !important;
+}
+
+.nodata{
+  height: 100%;
+  background: #fff;
+  width: 100%;
+  text-align: center;
+}
+
+.nodata image{
+  width: 25%;
+  margin: 20% auto 20rpx auto;
+}
+
+.nodata text{
+  font-size: 28rpx;
+  color: #979797;
+}
+
+.filter{
+  width: 100%;
+  padding-bottom: 120rpx;
+  background: #fff;
+}
+
+.filter .filter-block{
+  display: block;
+  padding: 0 20rpx 0 20rpx;
+}
+
+.filter .filter-title{
+  width: 100%;
+  margin-top: 40rpx;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  color: #888;
+}
+
+.filter .filter-table{
+  width: 100%;
+  text-align: left;
+  line-height: 90rpx;
+}
+
+.filter .filter-table .td, 
+.filter .button-block .td{
+  display: inline-block;
+  width: 25%;
+}
+
+.filter .filter-table .td{
+  position: relative; 
+}
+
+.filter .filter-table .td label{
+  display: inline-block;
+  width: 90%;
+  line-height: 60rpx;
+  text-align: center;
+  vertical-align: middle;
+  background: #F5F5F5;
+  color: #333;
+  font-size: 26rpx;
+  border-radius: 6rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.filter .filter-table .td image{
+  position: absolute;
+  display: none;
+  right: 10%;
+  bottom: 15%;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.filter .filter-table .td label.checked{
+  color: #008DFB;
+  background: #E6F4FF;
+}
+
+.filter .filter-table .td image.checked{
+  display: block;
+}
+
+.filter .button-block{
+  position: fixed;
+  width: 100%;
+  height: 80rpx;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.filter .button-block .submitButton{
+  position: absolute;
+  width: 50%;
+  top: 0;
+  right: 0;
+  background: #008DFB;
+  color: #fff;
+  text-align: center;
+  font-size: 32rpx;
+}
+
+.filter .button-block .cancleButton{
+  position: absolute;
+  width: 50%;
+  top: 0;
+  left: 0;
+  background: #fff;
+  color: #333;
+  text-align: center;
+  font-size: 32rpx;
+  border-top: 1px solid #eee;
+}
+
+.border{
+  position: fixed;
+  height: 1px;
+  width: 100%;
+  bottom: 0;
+  background-color: rgba(150, 150, 150, 0.4);
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>提现申请</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/drawcashComplete.css?version=1.5" />
+		<style type="text/css">
+			.main .top p{
+				font-size:0.36rem;
+				
+			}
+			.top{
+				padding-top: 0.56rem;
+			}
+			.main .top img{
+				margin-bottom:0.46rem;
+				width:2.3rem;
+				height:2.3rem;
+			}
+			.main .bottom p{
+				border-bottom:1px solid #EBEBEB;
+			}
+		</style>
+		<script type="text/template" id="companyTpl">
+			<div class="top">
+				{{if status == "SUCCESS"}}
+					<img src="./img/check.png" alt="" />
+					<p>审核通过</p>
+				{{else status == "TRANSACTING"}}
+					<img src="./img/uncheck.png" alt="" />
+					<p>等待管理员审核</p>
+				{{else status == "FAIL"}}
+					<img src="./img/fail.png" alt="" />
+					<p>交易失败</p>
+				{{else status == "CLOSED"}}
+					<img src="./img/fail.png" alt="" />
+					<p>交易已关闭</p>
+				{{/if}}
+				
+			</div>
+			<div class="bottom">
+				<p>
+					<span>提现单号</span>
+					<span class="value">{{:orderNum}}</span>
+				</p>
+				<p>
+					<span>申请用户</span>
+					<span class="value">{{:qcbCompanyAccountName}}</span>
+				</p>
+				<p>
+					<span>提现金额</span>
+					<span class="value" id="price">{{:price}} 元</span>
+				</p>
+				<p>
+					<span>提现时间</span>
+					<span class="value">{{:createtimeCN}}</span>
+				</p>
+			</div>
+		</script>
+		
+		<script type="text/template" id="employeeTpl">
+			<div class="top">
+				{{if status == "SUCCESS"}}
+					<img src="./img/check.png" alt="" />
+					<p>交易成功</p>
+				{{else status == "TRANSACTING"}}
+					<img src="./img/uncheck.png" alt="" />
+					<p>等待管理员审核</p>
+				{{else status == "FAIL"}}
+					<img src="./img/fail.png" alt="" />
+					<p>交易失败</p>
+				{{else status == "CLOSED"}}
+					<img src="./img/fail.png" alt="" />
+					<p>交易已关闭</p>
+				{{/if}}
+				
+			</div>
+			<div class="bottom">
+				<p>
+					<span>提现单号</span>
+					<span class="value">{{:orderNum}}</span>
+				</p>
+				<p>
+					<span>申请用户</span>
+					<span class="value">{{:qcbEmployeeName}}</span>
+				</p>
+				<p>
+					<span>提现金额</span>
+					<span class="value">{{:price}} 元</span>
+				</p>
+				<p>
+					<span>提现时间</span>
+					<span class="value">{{:createtimeCN}}</span>
+				</p>
+			</div>
+		</script>
+		
+	</head>
+	<body>
+		<div class="main">
+			
+		</div>
+		
+		<div id="modal-box">
+			<div class="modal-box-inner">
+				<h3>温馨提示</h3>
+				<h4></h4>
+				<div class="modal-box-inner-btnbox clearfix">
+					<input type="button"  value="取消" id="modal-box-close"/>
+					<input type="button"  value="确认"/>
+				</div>
+			</div>
+		</div>
+		
+		<p class="layer">
+			提示信息
+		</p>
+
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/flagSubmit.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jsrender.min.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/changePrice.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/drawcashStatus.js?version=1.6"></script>
+	</body>
+</html>
+

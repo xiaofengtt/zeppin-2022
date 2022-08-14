@@ -1,0 +1,19 @@
+.box{padding: 7px 0 0 0;}
+.box-title{color: #333333;float: left;line-height: 60px;height: 60px;padding-left: 40px;}
+.tel{float: right;display: block;margin-right: 40px;line-height: 60px;background: url(../img/tel.png) left center no-repeat;padding-left: 27px;color: #8e8d8c;font-size: 14px;}
+.fiscalBottom{border-top: 1px solid #ececec;padding: 36px 40px 40px 40px;}
+.know{background: #fef8ed;padding: 25px 30px;}
+.know h2{font-weight: normal;color: #3d3d3d;font-size: 16px;background: url(../img/notice-g.png) left center no-repeat;padding-left: 26px;margin-bottom: 15px;}
+.know p{color:#999;color: rgba(61,61,61,0.8);font-size: 14px;line-height: 20px;}
+.fiscalBox{width: 45%;margin: 85px 2.5% 65px 2.5%;float: left;text-align: center;border: 1px solid #e5e5e5;border-radius: 3px;}
+.fiscalBox img{width: 100%;}
+.fiscalBox h1{font-size: 22px;padding: 40px 0 10px 0;font-weight: bolder;}
+.fiscalBox p{font-size: 14px;padding-bottom: 40px;}
+.fiscalBox p.btnP{border-top: 1px solid #eaeaea;padding: 20px 5px;line-height: 20px;color:#666;color: rgba(51,51,51,0.6);}
+.sureBtn{width: 320px;height: 50px;margin: 0 auto;display: block;background: #ffb031;text-align: center;line-height: 50px;font-size: 18px;
+color: #ffffff;border: none;cursor: pointer;border-radius: 3px;font-weight: 300;padding: 0;margin:0 auto!important;}
+.sureBtn:hover{background: #f3a82f;}
+
+.iframeInner .groupBox .group input:focus,.iframeInner .groupBox .group input.light{ border-color: #f9ba56;}
+.iframeInner .groupBox p.tips{padding:20px 70px 15px 60px;text-align:left;}
+

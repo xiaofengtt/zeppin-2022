@@ -7,11 +7,13 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>牛投帮-后台管理系统</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<script id="queboxTpl" type="text/template">
 			<tr>
 				<td class="nameTd"><span>{{:name}}</span></td>
 				<td><span>{{:controllerName}}</span></td>
 				<td><span>{{:description}}</span></td>
+				<td><span>{{:sort}}</span></td>
 				<td class="operation">
 					<a class="deleteBtn btn-remove" onclick="deleteThis(this)" data-url="../rest/backadmin/controllerMethod/methoddelete?uuid={{:uuid}}">删除</a>
 					<a class="operaBranch editBtn btn-edit" href="methodInfoEdit.jsp?uuid={{:uuid}}">修改</a>
@@ -33,17 +35,18 @@
 					<a class="btn-add add addNew" id="addButton" href="" style="margin-top:0px;">+&ensp;添加方法</a>
 					<div class="clear"></div>
 					</div>
-				
+
 				<div class="main-contain">
 <!-- 					 -->
 <!-- 					<table class="table table-hover text-center table-striped"> -->
 					<table class="table table-hover text-center table-striped tableList">
 						<thead>
 							<tr>
-								<th class="nameTh" width="25.28%">方法名称</th>
-								<th class="text-center" width="20.28%">所属功能</th>
-								<th class="text-center" width="30.28%">方法描述</th> 
-								<th class="text-center" width="13.06%">操作</th>
+								<th class="nameTh" width="10%">方法名称</th>
+								<th class="text-center" width="15%">所属功能</th>
+								<th class="text-center" width="15%">方法描述</th>
+								<th class="text-center" width="5%">默认排序</th>
+								<th class="text-center" width="15%">操作</th>
 							</tr>
 						</thead>
 						<tbody id="queboxCnt"></tbody>
@@ -54,10 +57,11 @@
 			</div>
 			<div class="clear"></div>
 		</div>
-		<script type="text/javascript" src="js/jquery.colorbox.js"></script>
-		<script type="text/javascript" src="js/url.min.js"></script>
-		<script type="text/javascript" src="js/jsrender.min.js"></script>
-		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
-		<script type="text/javascript" src="js/methodInfoList.js" ></script>
+		<script type="text/javascript" src="./js/getHtmlDocName.js"></script>
+		<script type="text/javascript" src="./js/jquery.colorbox.js"></script>
+		<script type="text/javascript" src="./js/url.min.js"></script><script type="text/javascript" src="js/flagSubmit.js"></script>
+		<script type="text/javascript" src="./js/jsrender.min.js"></script>
+		<script type="text/javascript" src="./js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="./js/methodInfoList.js" ></script>
 	</body>
 </html>

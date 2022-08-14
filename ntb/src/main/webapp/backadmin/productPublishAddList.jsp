@@ -7,6 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>发布银行理财产品</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="css/bootstrap.css" />
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/paging.css">
@@ -14,31 +15,31 @@
 		<script id="queboxTpl" type="text/template">
 			<div class="list-item">
 				<div class="list-item-bd">
-					<table class="text-center">
+					<table class="text-center" {{if #index % 2 == 1}}style="background:#FAFAFA"{{/if}}>
 						<tr>
 							<td rowspan="2">
-								<p class="longP">目标年化收益率</p>
 								<i class="red">{{:targetAnnualizedReturnRate}}%</i>
+								<p class="longP">目标年化收益率</p>
 							</td>
 							<td colspan="4" class="left">
 								<a class="fundName" target="_blank" href="bankFinancialProductEdit.jsp?uuid={{:uuid}}">
 									<span>【{{:custodianName}}】{{:name}}({{:scode}})</span>
 								</a>
 							</td>
-							<td rowspan="2" class="middle"><a class="btn-add" onclick="publishAdd(this);" data-url="productPublishAdd.jsp?uuid={{:uuid}}"><i>发布</i></a></td>
+							<td rowspan="2" class="middle"><a class="btn-add" onclick="publishAdd(this);" data-url="productPublishAdd.jsp?uuid={{:uuid}}"><i id="publish">发布</i></a></td>
 						</tr>
 						<tr>
-							<td><p class="break">认购起始日<span>{{:collectStarttime}}</span></p></td>
-							<td><p class="break">认购结束日<span>{{:collectEndtime}}</span></p></td>
-							<td><p class="break">产品期限<span>{{:term}}</span></p></td>
-							<td><p class="break">起始认购<span>{{:minInvestAmount}}元</span></p></td>
+							<td class="text-left"><p class="break">认购起始日<span>{{:collectStarttime}}</span></p></td>
+							<td class="text-left"><p class="break">认购结束日<span>{{:collectEndtime}}</span></p></td>
+							<td class="text-left"><p class="break">产品期限<span>{{:term}}天</span></p></td>
+							<td class="text-left"><p class="break">起始认购<span>{{:minInvestAmount}}元</span></p></td>
 						</tr>
-					</table>					
+					</table>
 				</div>
 			</div>
 		</script>
 	</head>
-	<body>
+	<body style="min-width:0;">
 		<div class="layerOpen">
 			<p class="titles">选择要发布的银行理财产品</p>
 			<div class="contents">
@@ -49,22 +50,22 @@
 							<label class="input-group-addon" onclick="searchBtn()"></label>
 						</div>
 					</div>
-					
+					<div id="pageTool" style="position:absolute;top:82px;right:30px"></div>
+
 					<div class="list-content" id="queboxCnt">
 						<table><tr></tr></table>
 					</div>
-					<div id="pageTool"></div>
 				</div>
 			</div>
 			<div class="clear"></div>
 		</div>
-		
+
 		<script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.js" ></script>
 		<script type="text/javascript" src="js/jquery.colorbox.js"></script>
 		<script type="text/javascript" src="js/query.js"></script>
 		<script type="text/javascript" src="js/paging.js"></script>
-		<script type="text/javascript" src="js/url.min.js"></script>
+		<script type="text/javascript" src="js/url.min.js"></script><script type="text/javascript" src="js/flagSubmit.js"></script>
 		<script type="text/javascript" src="js/jsrender.min.js"></script>
 		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
 		<script type="text/javascript" src="js/highcharts.js" ></script>

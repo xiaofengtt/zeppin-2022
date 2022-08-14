@@ -27,6 +27,8 @@ public class BankFinancialProductPublishOperateDetailVO implements Entity {
 	private Timestamp checktime;
 	private String creator;
 	private String creatorName;
+	private Timestamp submittime;
+	private String submittimeCN;
 	private Timestamp createtime;
 	private String createtimeCN;
 	private BankFinancialProductPublishDetailsVO oldData;
@@ -48,6 +50,10 @@ public class BankFinancialProductPublishOperateDetailVO implements Entity {
 			this.typeCN = "删除";
 		}else if(BankFinancialProductPublishOperateType.EXCEPTION.equals(bfppo.getType())){
 			this.typeCN = "异常下线";
+		}else if(BankFinancialProductPublishOperateType.COLLECT.equals(bfppo.getType())){
+			this.typeCN = "开启认购";
+		}else if(BankFinancialProductPublishOperateType.UNINVEST.equals(bfppo.getType())){
+			this.typeCN = "结束认购";
 		}
 
 		this.value = bfppo.getValue();
@@ -64,13 +70,15 @@ public class BankFinancialProductPublishOperateDetailVO implements Entity {
 		}
 		this.checker = bfppo.getChecker();
 		this.checktime = bfppo.getChecktime();
+		this.submittime = bfppo.getSubmittime();
+		if(bfppo.getSubmittime() != null && !"".equals(bfppo.getSubmittime())){
+			this.submittimeCN = Utlity.timeSpanToString(bfppo.getSubmittime());
+		}else{
+			this.submittimeCN = "";
+		}
 		this.creator = bfppo.getCreator();
 		this.createtime = bfppo.getCreatetime();
-		if(bfppo.getCreatetime() != null && !"".equals(bfppo.getCreatetime())){
-			this.createtimeCN = Utlity.timeSpanToString(bfppo.getCreatetime());
-		}else{
-			this.createtimeCN = "";
-		}
+		this.createtimeCN = Utlity.timeSpanToString(bfppo.getCreatetime());
 	}
 
 	public String getUuid() {
@@ -200,4 +208,21 @@ public class BankFinancialProductPublishOperateDetailVO implements Entity {
 	public void setNewData(BankFinancialProductPublishDetailsVO newData) {
 		this.newData = newData;
 	}
+
+	public Timestamp getSubmittime() {
+		return submittime;
+	}
+
+	public void setSubmittime(Timestamp submittime) {
+		this.submittime = submittime;
+	}
+
+	public String getSubmittimeCN() {
+		return submittimeCN;
+	}
+
+	public void setSubmittimeCN(String submittimeCN) {
+		this.submittimeCN = submittimeCN;
+	}
+	
 }

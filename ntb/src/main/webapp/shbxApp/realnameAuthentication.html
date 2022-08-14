@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>实名认证</title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/realnameAuthentication.css" />
+	</head>
+	<body onload="loading();" style="display:none;">
+		<div class="wrap">
+			<!--已认证-->
+			<div class="orderRealname mt-28">
+				<div class="order-top">
+					<img src="img/authpass.png" class="orderXt" />
+					<p class="color-2E">您已通过实名认证！</p>
+				</div>
+				<div class="order-bottom mt-28">
+					<div class="info-list"><label class="color-2E">姓名</label><span class="color-2E30 realname"></span><div class="clear"></div></div>
+					<div class="border"></div>
+					<div class="info-list"><label class="color-2E">身份证号</label><span class="color-2E30 idCard"></span><div class="clear"></div></div>
+				</div>
+			</div>
+			<!--实名认证-->
+			<div class="authentication mt-28">
+				<div class="info-box">
+					<div class="info-item">
+						<span>姓名</span>
+						<input type="text" class="xm" placeholder="请输入您的真实姓名" value=""/>
+						<div class="clear"></div>
+					</div>
+					<div class="info-item">
+						<span>身份证号</span>
+						<input type="text" class="sfzh" placeholder="请输入18位数字身份证号码" value="" maxlength="18"/>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<a class="saveBtn">保存</a>
+			</div>
+			<!--认证成功-->
+			<div class="authSuccess mt-28">
+				<div class="authSuccess-top">
+					<p class="color-blue">认证成功！</p>
+					<span class="color-2E70 mt-28">恭喜，您已通过实名认证</span>
+				</div>
+				<div class="order-bottom mt-28">
+					<div class="info-list"><label class="color-2E">姓名</label><span class="color-2E30 realname"></span><div class="clear"></div></div>
+					<div class="border"></div>
+					<div class="info-list"><label class="color-2E">身份证号</label><span class="color-2E30 idCard"></span><div class="clear"></div></div>
+				</div>
+				<a class="gobackBtn light">返回</a>
+			</div>
+			<!--认证失败-->
+			<div class="authFail mt-28">
+				<div class="authFail-top">
+					<p class="color-red">认证失败！</p>
+					<span class="color-2E70 mt-28">您输入的身份认证信息有误，请重新认证</span>
+				</div>
+				<a class="reAuthBtn light">重新认证</a>
+			</div>
+			<p class="layer">
+				提示信息
+			</p>
+			<div id="loading-box">
+				<img src="./img/icon-loading.gif" alt="" />
+			</div>
+		</div>
+		<script src="./js/burialPoint.js"></script>
+		<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+		<script src="./js/base64.js"></script>
+		<script src="./js/md5.js"></script>
+		<script type="text/javascript" src="js/picker.min.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>
+		<script type="text/javascript" src="js/base64.js" ></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="js/realnameAuthentication.js" ></script>
+	</body>
+</html>

@@ -1,12 +1,14 @@
 package cn.zeppin.product.ntb.backadmin.vo;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Map;
 
-import cn.zeppin.product.ntb.core.entity.BankFinancialProductInvest;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProductInvestOperate;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProductInvestOperate.BankFinancialProductInvestOperateStatus;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProductInvestOperate.BankFinancialProductInvestOperateType;
 import cn.zeppin.product.ntb.core.entity.base.Entity;
+import cn.zeppin.product.utility.JSONUtils;
 import cn.zeppin.product.utility.Utlity;
 
 public class BankFinancialProductInvestOperateVO implements Entity {
@@ -17,8 +19,8 @@ public class BankFinancialProductInvestOperateVO implements Entity {
 	private static final long serialVersionUID = -7063644119578448205L;
 	
 	private String uuid;
-	private String bankFinancialProductInvest;
-	private String bankFinancialProductInvestName;
+	private String bankFinancialProduct;
+	private String bankFinancialProductName;
 	private String type;
 	private String typeCN;
 	private String value;
@@ -33,54 +35,64 @@ public class BankFinancialProductInvestOperateVO implements Entity {
 	private String creatorName;
 	private Timestamp createtime;
 	private String createtimeCN;
-	private BankFinancialProductInvest oldData;
-	private BankFinancialProductInvest newData;
+	private Timestamp submittime;//提交时间
+	private String submittimeCN;
+	private String remark;
+	private BigDecimal totalAmount;
+	private BigDecimal totalReturn;
+	private BigDecimal poundage;
+	private String totalAmountCN;
+	private String totalReturnCN;
+	private String poundageCN;
 	
 	public BankFinancialProductInvestOperateVO(){
 		
 	}
 	
-	public BankFinancialProductInvestOperateVO(BankFinancialProductInvestOperate bfppo){
-		this.uuid = bfppo.getUuid();
-		this.bankFinancialProductInvest = bfppo.getBankFinancialProductInvest();
-		this.type = bfppo.getType();
-		if(BankFinancialProductInvestOperateType.ADD.equals(bfppo.getType())){
-			this.typeCN = "添加";
-		}else if(BankFinancialProductInvestOperateType.EDIT.equals(bfppo.getType())){
-			this.typeCN = "修改";
-		}else if(BankFinancialProductInvestOperateType.DELETE.equals(bfppo.getType())){
-			this.typeCN = "删除";
-		}else if(BankFinancialProductInvestOperateType.CHECK.equals(bfppo.getType())){
-			this.typeCN = "审核";
-		}else if(BankFinancialProductInvestOperateType.REDEEM.equals(bfppo.getType())){
+	public BankFinancialProductInvestOperateVO(BankFinancialProductInvestOperate bfpio){
+		this.uuid = bfpio.getUuid();
+		this.bankFinancialProduct = bfpio.getBankFinancialProduct();
+		this.type = bfpio.getType();
+		if(BankFinancialProductInvestOperateType.INVEST.equals(bfpio.getType())){
+			this.typeCN = "投资";
+		}else if(BankFinancialProductInvestOperateType.REDEEM.equals(bfpio.getType())){
 			this.typeCN = "赎回";
 		}
-		this.value = bfppo.getValue();
-		
-		this.reason = bfppo.getReason();
-		this.status = bfppo.getStatus();
-		if(BankFinancialProductInvestOperateStatus.UNCHECKED.equals(bfppo.getStatus())){
+		this.value = bfpio.getValue();
+		Map<String, Object> valueMap = JSONUtils.json2map(value);
+		this.remark = valueMap.get("remark") == null ? "" : valueMap.get("remark").toString();
+		this.reason = bfpio.getReason();
+		this.status = bfpio.getStatus();
+		if(BankFinancialProductInvestOperateStatus.UNCHECKED.equals(bfpio.getStatus())){
 			this.statusCN = "待审核";
-		}else if(BankFinancialProductInvestOperateStatus.CHECKED.equals(bfppo.getStatus())){
+		}else if(BankFinancialProductInvestOperateStatus.CHECKED.equals(bfpio.getStatus())){
 			this.statusCN = "审核通过";
-		}else if(BankFinancialProductInvestOperateStatus.UNPASSED.equals(bfppo.getStatus())){
+		}else if(BankFinancialProductInvestOperateStatus.UNPASSED.equals(bfpio.getStatus())){
 			this.statusCN = "审核不通过";
-		}else if(BankFinancialProductInvestOperateStatus.DELETED.equals(bfppo.getStatus())){
+		}else if(BankFinancialProductInvestOperateStatus.DELETED.equals(bfpio.getStatus())){
 			this.statusCN = "已删除";
+		}else if(BankFinancialProductInvestOperateStatus.DRAFT.equals(bfpio.getStatus())){
+			this.statusCN = "草稿";
 		}
-		this.checker = bfppo.getChecker();
-		this.checktime = bfppo.getChecktime();
-		if(bfppo.getChecktime() != null && !"".equals(bfppo.getChecktime())){
-			this.checktimeCN = Utlity.timeSpanToString(bfppo.getChecktime());
+		this.checker = bfpio.getChecker();
+		this.checktime = bfpio.getChecktime();
+		if(bfpio.getChecktime() != null && !"".equals(bfpio.getChecktime())){
+			this.checktimeCN = Utlity.timeSpanToString(bfpio.getChecktime());
 		}else{
 			this.checktimeCN = "";
 		}
-		this.creator = bfppo.getCreator();
-		this.createtime = bfppo.getCreatetime();
-		if(bfppo.getCreatetime() != null && !"".equals(bfppo.getCreatetime())){
-			this.createtimeCN = Utlity.timeSpanToString(bfppo.getCreatetime());
+		this.creator = bfpio.getCreator();
+		this.createtime = bfpio.getCreatetime();
+		if(bfpio.getCreatetime() != null && !"".equals(bfpio.getCreatetime())){
+			this.createtimeCN = Utlity.timeSpanToString(bfpio.getCreatetime());
 		}else{
 			this.createtimeCN = "";
+		}
+		this.submittime = bfpio.getSubmittime();
+		if(bfpio.getSubmittime() != null && !"".equals(bfpio.getSubmittime())){
+			this.submittimeCN = Utlity.timeSpanToString(bfpio.getSubmittime());
+		}else{
+			this.submittimeCN = "";
 		}
 	}
 
@@ -92,22 +104,22 @@ public class BankFinancialProductInvestOperateVO implements Entity {
 		this.uuid = uuid;
 	}
 	
-	public String getBankFinancialProductInvest() {
-		return bankFinancialProductInvest;
+	public String getBankFinancialProduct() {
+		return bankFinancialProduct;
 	}
 
-	public void setBankFinancialProductInvest(String bankFinancialProductInvest) {
-		this.bankFinancialProductInvest = bankFinancialProductInvest;
+	public void setBankFinancialProduct(String bankFinancialProduct) {
+		this.bankFinancialProduct = bankFinancialProduct;
 	}
 
-	public String getBankFinancialProductInvestName() {
-		return bankFinancialProductInvestName;
+	public String getBankFinancialProductName() {
+		return bankFinancialProductName;
 	}
-	
-	public void setBankFinancialProductInvestName(String bankFinancialProductInvestName) {
-		this.bankFinancialProductInvestName = bankFinancialProductInvestName;
+
+	public void setBankFinancialProductName(String bankFinancialProductName) {
+		this.bankFinancialProductName = bankFinancialProductName;
 	}
-	
+
 	public String getType() {
 		return type;
 	}
@@ -219,20 +231,83 @@ public class BankFinancialProductInvestOperateVO implements Entity {
 	public void setCreatetimeCN(String createtimeCN) {
 		this.createtimeCN = createtimeCN;
 	}
-	
-	public BankFinancialProductInvest getOldData() {
-		return oldData;
-	}
-	
-	public void setOldData(BankFinancialProductInvest oldData) {
-		this.oldData = oldData;
+
+	public Timestamp getSubmittime() {
+		return submittime;
 	}
 
-	public BankFinancialProductInvest getNewData() {
-		return newData;
+	public void setSubmittime(Timestamp submittime) {
+		this.submittime = submittime;
+	}
+
+	public String getSubmittimeCN() {
+		return submittimeCN;
+	}
+
+	public void setSubmittimeCN(String submittimeCN) {
+		this.submittimeCN = submittimeCN;
+	}
+
+	
+	public String getRemark() {
+		return remark;
 	}
 	
-	public void setNewData(BankFinancialProductInvest newData) {
-		this.newData = newData;
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
+
+	public BigDecimal getTotalAmount() {
+		return totalAmount;
+		
+	}
+
+	public void setTotalAmount(BigDecimal totalAmount) {
+		this.totalAmount = totalAmount;
+		this.totalAmountCN = Utlity.numFormat4UnitDetailLess(totalAmount);
+	}
+
+	public BigDecimal getTotalReturn() {
+		return totalReturn;
+	}
+
+	public void setTotalReturn(BigDecimal totalReturn) {
+		this.totalReturn = totalReturn;
+		this.totalReturnCN = Utlity.numFormat4UnitDetail(totalReturn);
+	}
+
+	public BigDecimal getPoundage() {
+		return poundage;
+	}
+
+	public void setPoundage(BigDecimal poundage) {
+		this.poundage = poundage;
+		this.poundageCN = Utlity.numFormat4UnitDetail(poundage);
+	}
+
+	public String getTotalAmountCN() {
+		return totalAmountCN;
+	}
+
+	public void setTotalAmountCN(String totalAmountCN) {
+		this.totalAmountCN = totalAmountCN;
+	}
+
+	public String getTotalReturnCN() {
+		return totalReturnCN;
+	}
+
+	public void setTotalReturnCN(String totalReturnCN) {
+		this.totalReturnCN = totalReturnCN;
+	}
+
+	public String getPoundageCN() {
+		return poundageCN;
+	}
+
+	public void setPoundageCN(String poundageCN) {
+		this.poundageCN = poundageCN;
+	}
+	
 }

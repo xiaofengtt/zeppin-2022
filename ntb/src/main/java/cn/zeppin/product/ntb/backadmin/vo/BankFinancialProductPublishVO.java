@@ -1,6 +1,7 @@
 package cn.zeppin.product.ntb.backadmin.vo;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 import cn.zeppin.product.ntb.core.entity.BankFinancialProductPublish;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProductPublish.BankFinancialProductPublishStage;
@@ -33,8 +34,13 @@ public class BankFinancialProductPublishVO implements Entity {
 	private String currencyTypeCN;
 	private String targetAnnualizedReturnRate;//目标年化收益率
 	private BigDecimal totalAmount;//产品规模
+	private String totalAmountCN;//产品规模
+	private String totalAmountNum;//产品规模
+	private BigDecimal collectAmount;//募集规模
+	private String collectAmountCN;//募集规模
 	private String collectStarttime;//认购起始日
 	private String collectEndtime;//认购截止日
+	private String collectEndtimeCN;//认购截止日
 	private Integer term;//产品期限
 	private String recordDate;//登记日
 	private String valueDate;//起息日
@@ -44,6 +50,24 @@ public class BankFinancialProductPublishVO implements Entity {
 	private Boolean flagFlexible;//灵活期限
 	private String riskLevel;//风险等级
 	private String netWorth;//当前净值
+	private String netWorthTime;
+	private BigDecimal accountBalance;
+	private BigDecimal investment;
+	private BigDecimal totalRedeem;
+	private BigDecimal totalReturn;
+	private BigDecimal realReturnRateCN;
+	private BigDecimal realCollect;
+	private BigDecimal realReturn;
+	private BigDecimal totalCollectRate;
+	private BigDecimal realReturnRate;
+	
+	private String accountBalanceCN;
+	private String investmentCN;
+	private String totalRedeemCN;
+	private String totalReturnCN;
+	private String realCollectCN;
+	private String realReturnCN;
+	
 	private String creator;//信息录入人
 	private String createtime;//录入时间
 	private String guaranteeStatus;//保本保息状态
@@ -53,6 +77,14 @@ public class BankFinancialProductPublishVO implements Entity {
 	private BigDecimal minInvestAmount;//最小投资金额
 	private BigDecimal minInvestAmountAdd;//最小投资递增金额
 	private BigDecimal maxInvestAmount;//最大投资金额
+	
+	private String minInvestAmountCN;//最小投资金额
+	private String minInvestAmountAddCN;//最小投资递增金额
+	private String maxInvestAmountCN;//最大投资金额
+	
+	private String minInvestAmountNum;//最小投资金额
+	private String minInvestAmountAddNum;//最小投资递增金额
+	private String maxInvestAmountNum;//最大投资金额
 	
 	private String riskLevelCN;
 	
@@ -85,7 +117,13 @@ public class BankFinancialProductPublishVO implements Entity {
 		} else if (BankFinancialProductPublishStage.COLLECT.equals(bfp.getStage())) {
 			this.stageCN = "募集中";
 		} else if (BankFinancialProductPublishStage.UNINVEST.equals(bfp.getStage())) {
-			this.stageCN = "待投资";
+			this.stageCN = "投资中";
+		} else if (BankFinancialProductPublishStage.INVESTED.equals(bfp.getStage())) {
+			this.stageCN = "投资完成";
+		} else if (BankFinancialProductPublishStage.PROFIT.equals(bfp.getStage())) {
+			this.stageCN = "收益中";
+		} else if (BankFinancialProductPublishStage.BALANCE.equals(bfp.getStage())) {
+			this.stageCN = "结算中";
 		} else if (BankFinancialProductPublishStage.FINISHED.equals(bfp.getStage())) {
 			this.stageCN = "已完成";
 		} else if (BankFinancialProductPublishStage.EXCEPTION.equals(bfp.getStage())) {
@@ -109,6 +147,15 @@ public class BankFinancialProductPublishVO implements Entity {
 		if(bfp.getTotalAmount() != null){
 			this.totalAmount = bfp.getTotalAmount().divide(BigDecimal.valueOf(100000000));
 		}
+		this.collectAmount = bfp.getCollectAmount();
+		if(bfp.getCollectAmount() != null){
+			if(collectAmount.divide(BigDecimal.valueOf(100000000)).compareTo(BigDecimal.ONE) < 0){
+				this.collectAmountCN = bfp.getCollectAmount().divide(BigDecimal.valueOf(10000)) + "万";
+			}else{
+				this.collectAmountCN = bfp.getCollectAmount().divide(BigDecimal.valueOf(100000000)) + "亿";
+			}
+			this.collectAmount = bfp.getCollectAmount().divide(BigDecimal.valueOf(10000));
+		}
 		if(bfp.getCollectStarttime() != null && !"".equals(bfp.getCollectStarttime())){
 			this.collectStarttime = Utlity.timeSpanToDateString(bfp.getCollectStarttime());
 		}else{
@@ -116,8 +163,10 @@ public class BankFinancialProductPublishVO implements Entity {
 		}
 		if(bfp.getCollectEndtime() != null && !"".equals(bfp.getCollectEndtime())){
 			this.collectEndtime = Utlity.timeSpanToDateString(bfp.getCollectEndtime());
+			this.collectEndtimeCN = Utlity.timeSpanToPointDateString(bfp.getCollectEndtime());
 		}else{
 			this.collectEndtime = "";
+			this.collectEndtime = "无限期";
 		}
 		this.term = bfp.getTerm();
 		if(bfp.getRecordDate() != null && !"".equals(bfp.getRecordDate())){
@@ -175,11 +224,6 @@ public class BankFinancialProductPublishVO implements Entity {
 		} else {
 			this.currencyTypeCN = "未选择";
 		}
-		if(bfp.getNetWorth() != null){
-			this.netWorth = bfp.getNetWorth().setScale(4, BigDecimal.ROUND_HALF_UP).toString();
-		}else{
-			this.netWorth = "0.0000";
-		}
 		this.guaranteeStatus = bfp.getGuaranteeStatus() == null ? "" : bfp.getGuaranteeStatus();
 		if(bfp.getGuaranteeStatus() != null){
 			if("1".equals(bfp.getGuaranteeStatus())){
@@ -199,6 +243,44 @@ public class BankFinancialProductPublishVO implements Entity {
 		this.minInvestAmount = bfp.getMinInvestAmount();
 		this.minInvestAmountAdd = bfp.getMinInvestAmountAdd();
 		this.maxInvestAmount = bfp.getMaxInvestAmount();
+		
+		Map<String, String> totalAmountMap = Utlity.numFormat4UnitMap(bfp.getTotalAmount());
+		this.totalAmountNum = totalAmountMap.get("numStr");
+		this.totalAmountCN = totalAmountMap.get("unitStr");
+		
+		Map<String, String> minInvestAmountMap = Utlity.numFormat4UnitMap(bfp.getMinInvestAmount());
+		this.minInvestAmountNum = minInvestAmountMap.get("numStr");
+		this.minInvestAmountCN = minInvestAmountMap.get("unitStr");
+		
+		Map<String, String> minInvestAmountAddMap = Utlity.numFormat4UnitMap(bfp.getMinInvestAmountAdd());
+		this.minInvestAmountAddNum = minInvestAmountAddMap.get("numStr");
+		this.minInvestAmountAddCN = minInvestAmountAddMap.get("unitStr");
+		
+		Map<String, String> maxInvestAmountMap = Utlity.numFormat4UnitMap(bfp.getMaxInvestAmount());
+		this.maxInvestAmountNum = maxInvestAmountMap.get("numStr");
+		this.maxInvestAmountCN = maxInvestAmountMap.get("unitStr");
+		
+		this.accountBalance = bfp.getAccountBalance();
+		this.investment = bfp.getInvestment();
+		this.totalRedeem = bfp.getTotalRedeem();
+		this.totalReturn = bfp.getTotalReturn();
+		this.realReturnRate = bfp.getRealReturnRate();
+		this.realCollect = bfp.getRealCollect();
+		this.realReturn = bfp.getRealReturn();
+		
+		this.realReturnRateCN = bfp.getRealReturnRate().setScale(2);
+		this.accountBalanceCN = Utlity.numFormat4UnitDetail(bfp.getAccountBalance());
+		this.investmentCN = Utlity.numFormat4UnitDetail(bfp.getInvestment());
+		this.totalRedeemCN = Utlity.numFormat4UnitDetail(bfp.getTotalRedeem());
+		this.totalReturnCN = Utlity.numFormat4UnitDetail(bfp.getTotalReturn());
+		this.realCollectCN = Utlity.numFormat4UnitDetail(bfp.getRealCollect());
+		this.realReturnCN = Utlity.numFormat4UnitDetail(bfp.getRealReturn());
+		
+		if(bfp.getCollectAmount().compareTo(BigDecimal.ZERO) > 0){
+			this.totalCollectRate = bfp.getRealCollect().divide(bfp.getCollectAmount(),2,BigDecimal.ROUND_HALF_UP).multiply(BigDecimal.valueOf(100)).setScale(2,BigDecimal.ROUND_HALF_UP);
+		}else{
+			this.totalCollectRate = BigDecimal.ZERO;
+		}
 	}
 
 	public String getUuid() {
@@ -361,6 +443,14 @@ public class BankFinancialProductPublishVO implements Entity {
 		this.collectEndtime = collectEndtime;
 	}
 
+	public String getCollectEndtimeCN() {
+		return collectEndtimeCN;
+	}
+
+	public void setCollectEndtimeCN(String collectEndtimeCN) {
+		this.collectEndtimeCN = collectEndtimeCN;
+	}
+
 	public Integer getTerm() {
 		return term;
 	}
@@ -431,6 +521,46 @@ public class BankFinancialProductPublishVO implements Entity {
 
 	public void setNetWorth(String netWorth) {
 		this.netWorth = netWorth;
+	}
+
+	public String getNetWorthTime() {
+		return netWorthTime;
+	}
+
+	public void setNetWorthTime(String netWorthTime) {
+		this.netWorthTime = netWorthTime;
+	}
+	
+	public BigDecimal getAccountBalance() {
+		return accountBalance;
+	}
+
+	public void setAccountBalance(BigDecimal accountBalance) {
+		this.accountBalance = accountBalance;
+	}
+
+	public BigDecimal getInvestment() {
+		return investment;
+	}
+
+	public void setInvestment(BigDecimal investment) {
+		this.investment = investment;
+	}
+
+	public BigDecimal getTotalRedeem() {
+		return totalRedeem;
+	}
+
+	public void setTotalRedeem(BigDecimal totalRedeem) {
+		this.totalRedeem = totalRedeem;
+	}
+
+	public BigDecimal getTotalReturn() {
+		return totalReturn;
+	}
+
+	public void setTotalReturn(BigDecimal totalReturn) {
+		this.totalReturn = totalReturn;
 	}
 
 	public String getCreator() {
@@ -504,4 +634,173 @@ public class BankFinancialProductPublishVO implements Entity {
 	public void setGuaranteeStatusCN(String guaranteeStatusCN) {
 		this.guaranteeStatusCN = guaranteeStatusCN;
 	}
+	
+	public String getTotalAmountCN() {
+		return totalAmountCN;
+	}
+	
+	public void setTotalAmountCN(String totalAmountCN) {
+		this.totalAmountCN = totalAmountCN;
+	}
+	
+	public String getTotalAmountNum() {
+		return totalAmountNum;
+	}
+	
+	public void setTotalAmountNum(String totalAmountNum) {
+		this.totalAmountNum = totalAmountNum;
+	}
+	
+	public String getMinInvestAmountCN() {
+		return minInvestAmountCN;
+	}
+	
+	public void setMinInvestAmountCN(String minInvestAmountCN) {
+		this.minInvestAmountCN = minInvestAmountCN;
+	}
+	
+	public String getMinInvestAmountAddCN() {
+		return minInvestAmountAddCN;
+	}
+	
+	public void setMinInvestAmountAddCN(String minInvestAmountAddCN) {
+		this.minInvestAmountAddCN = minInvestAmountAddCN;
+	}
+	
+	public String getMaxInvestAmountCN() {
+		return maxInvestAmountCN;
+	}
+	
+	public void setMaxInvestAmountCN(String maxInvestAmountCN) {
+		this.maxInvestAmountCN = maxInvestAmountCN;
+	}
+	
+	public String getMinInvestAmountNum() {
+		return minInvestAmountNum;
+	}
+	
+	public void setMinInvestAmountNum(String minInvestAmountNum) {
+		this.minInvestAmountNum = minInvestAmountNum;
+	}
+	
+	public String getMinInvestAmountAddNum() {
+		return minInvestAmountAddNum;
+	}
+	
+	public void setMinInvestAmountAddNum(String minInvestAmountAddNum) {
+		this.minInvestAmountAddNum = minInvestAmountAddNum;
+	}
+	
+	public String getMaxInvestAmountNum() {
+		return maxInvestAmountNum;
+	}
+	
+	public void setMaxInvestAmountNum(String maxInvestAmountNum) {
+		this.maxInvestAmountNum = maxInvestAmountNum;
+	}
+
+	public String getAccountBalanceCN() {
+		return accountBalanceCN;
+	}
+
+	public void setAccountBalanceCN(String accountBalanceCN) {
+		this.accountBalanceCN = accountBalanceCN;
+	}
+
+	public String getInvestmentCN() {
+		return investmentCN;
+	}
+
+	public void setInvestmentCN(String investmentCN) {
+		this.investmentCN = investmentCN;
+	}
+
+	public String getTotalRedeemCN() {
+		return totalRedeemCN;
+	}
+
+	public void setTotalRedeemCN(String totalRedeemCN) {
+		this.totalRedeemCN = totalRedeemCN;
+	}
+
+	public String getTotalReturnCN() {
+		return totalReturnCN;
+	}
+
+	public void setTotalReturnCN(String totalReturnCN) {
+		this.totalReturnCN = totalReturnCN;
+	}
+
+	public BigDecimal getRealReturnRate() {
+		return realReturnRate;
+	}
+
+	public void setRealReturnRate(BigDecimal realReturnRate) {
+		this.realReturnRate = realReturnRate;
+	}
+
+	public BigDecimal getRealReturnRateCN() {
+		return realReturnRateCN;
+	}
+
+	public void setRealReturnRateCN(BigDecimal realReturnRateCN) {
+		this.realReturnRateCN = realReturnRateCN;
+	}
+
+	public BigDecimal getRealCollect() {
+		return realCollect;
+	}
+
+	public void setRealCollect(BigDecimal realCollect) {
+		this.realCollect = realCollect;
+	}
+
+	public String getRealCollectCN() {
+		return realCollectCN;
+	}
+
+	public void setRealCollectCN(String realCollectCN) {
+		this.realCollectCN = realCollectCN;
+	}
+
+	public BigDecimal getTotalCollectRate() {
+		return totalCollectRate;
+	}
+
+	public void setTotalCollectRate(BigDecimal totalCollectRate) {
+		this.totalCollectRate = totalCollectRate;
+	}
+
+	public BigDecimal getCollectAmount() {
+		return collectAmount;
+	}
+
+	public void setCollectAmount(BigDecimal collectAmount) {
+		this.collectAmount = collectAmount;
+	}
+
+	public String getCollectAmountCN() {
+		return collectAmountCN;
+	}
+
+	public void setCollectAmountCN(String collectAmountCN) {
+		this.collectAmountCN = collectAmountCN;
+	}
+
+	public BigDecimal getRealReturn() {
+		return realReturn;
+	}
+
+	public void setRealReturn(BigDecimal realReturn) {
+		this.realReturn = realReturn;
+	}
+
+	public String getRealReturnCN() {
+		return realReturnCN;
+	}
+
+	public void setRealReturnCN(String realReturnCN) {
+		this.realReturnCN = realReturnCN;
+	}
+	
 }

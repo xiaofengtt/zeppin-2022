@@ -7,6 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>牛投帮-后台管理系统</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="css/adminList.css" />
 		<script id="queboxTpl" type="text/template">
 			<div class="list-item">
@@ -58,7 +59,7 @@
 	<body>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="navigation.jsp"/>
-		<input id="scode" type="hidden" value="00100013" />  
+		<input id="scode" type="hidden" value="00100013" />
 		<div class="contain">
 			<jsp:include page="contentLeft.jsp"/>
 			<div class="contain-right">
@@ -85,12 +86,12 @@
 			</div>
 			<div class="clear"></div>
 		</div>
-		
-		<script type="text/javascript" src="js/jquery.colorbox.js"></script>
-		<script type="text/javascript" src="js/url.min.js"></script>
-		<script type="text/javascript" src="js/jsrender.min.js"></script>
-		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
-		<script type="text/javascript" src="js/financeOperatorList.js" ></script>
-		
+		<script type="text/javascript" src="./js/getHtmlDocName.js"></script>
+		<script type="text/javascript" src="./js/jquery.colorbox.js"></script>
+		<script type="text/javascript" src="./js/url.min.js"></script><script type="text/javascript" src="js/flagSubmit.js"></script>
+		<script type="text/javascript" src="./js/jsrender.min.js"></script>
+		<script type="text/javascript" src="./js/layer-v3.0.1/layer/layer.js" ></script>
+		<script type="text/javascript" src="./js/financeOperatorList.js" ></script>
+
 	</body>
 </html>

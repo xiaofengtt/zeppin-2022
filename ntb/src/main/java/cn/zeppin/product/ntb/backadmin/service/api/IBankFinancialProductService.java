@@ -50,7 +50,7 @@ public interface IBankFinancialProductService extends IBaseService<BankFinancial
 	public Integer getPublishCount(Map<String, String> inputParams);
 	
 	/**
-	 * 获取银行理财产品发布分状态列表
+	 * 获取银行理财产品分状态列表
 	 * @param resultClass
 	 * @return
 	 */
@@ -58,10 +58,11 @@ public interface IBankFinancialProductService extends IBaseService<BankFinancial
 	
 	/**
 	 * 获取银行理财产品分阶段列表
+	 * @param inputParams
 	 * @param resultClass
 	 * @return
 	 */
-	public List<Entity> getStageList(Class<? extends Entity> resultClass);
+	public List<Entity> getStageList(Map<String, String> inputParams, Class<? extends Entity> resultClass);
 	
 	/**
 	 * 根据时间修改阶段

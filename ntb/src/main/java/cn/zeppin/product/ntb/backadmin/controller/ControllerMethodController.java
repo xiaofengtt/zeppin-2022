@@ -86,11 +86,11 @@ public class ControllerMethodController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/controllerlist", method = RequestMethod.GET)
-	@ActionParam(key = "name", type = DataType.STRING)
-	@ActionParam(key = "description", type = DataType.STRING)
-	@ActionParam(key = "pageNum", type = DataType.NUMBER)
-	@ActionParam(key = "pageSize", type = DataType.NUMBER)
-	@ActionParam(key = "sorts", type = DataType.STRING)
+	@ActionParam(key = "name", message="名称", type = DataType.STRING)
+	@ActionParam(key = "description", message="详细描述", type = DataType.STRING)
+	@ActionParam(key = "pageNum", message="页码", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "pageSize", message="每页数量", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "sorts", message="排序参数", type = DataType.STRING)
 	@ResponseBody
 	public Result controllerlist(String name, String description, Integer pageNum, Integer pageSize, String sorts) {
 		Map<String, String> searchMap = new HashMap<String, String>();
@@ -120,7 +120,7 @@ public class ControllerMethodController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/controllerget", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
 	@ResponseBody
 	public Result controllerget(String uuid) {		
 		BkController controller = controllerService.get(uuid);
@@ -135,13 +135,15 @@ public class ControllerMethodController extends BaseController {
 	 * 添加
 	 * @param name
 	 * @param description
+	 * @param sort
 	 * @return
 	 */
 	@RequestMapping(value = "/controlleradd", method = RequestMethod.POST)
-	@ActionParam(key = "name", type = DataType.STRING, required = true)
-	@ActionParam(key = "description", type = DataType.STRING)
+	@ActionParam(key = "name", message="名称", type = DataType.STRING, required = true)
+	@ActionParam(key = "description", message="详细描述", type = DataType.STRING)
+	@ActionParam(key = "sort", message="默认排序", type = DataType.NUMBER)
 	@ResponseBody
-	public Result controlleradd(String name, String description) {
+	public Result controlleradd(String name, String description, Integer sort) {
 		Map<String, String> searchMap = new HashMap<String, String>();
 		if(name != null && !"".equals(name)){
 			searchMap.put("name", name);
@@ -154,6 +156,7 @@ public class ControllerMethodController extends BaseController {
 		BkController controller = new BkController();
 		controller.setUuid(UUID.randomUUID().toString());
 		controller.setName(name);
+		controller.setSort(sort);
 		if(description != null && !"".equals(description)){
 			controller.setDescription(description);
 		}else{
@@ -171,19 +174,20 @@ public class ControllerMethodController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/controlleredit", method = RequestMethod.POST)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
-	@ActionParam(key = "name", type = DataType.STRING, required = true)
-	@ActionParam(key = "description", type = DataType.STRING)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "name", message="名称", type = DataType.STRING, required = true)
+	@ActionParam(key = "description", message="详细描述", type = DataType.STRING)
+	@ActionParam(key = "sort", message="默认排序", type = DataType.NUMBER)
 	@ResponseBody
-	public Result controlleredit(String uuid,String name,String description) {
+	public Result controlleredit(String uuid,String name,String description, Integer sort) {
 		
-		BkController conroller = this.controllerService.get(uuid);
-		if(conroller == null){
+		BkController controller = this.controllerService.get(uuid);
+		if(controller == null){
 			return ResultManager.createFailResult("controller不存在");
 		}
 		
 		Map<String, String> searchMap = new HashMap<String, String>();
-		if(name != null && !"".equals(name) && !conroller.getName().equals(name)){
+		if(name != null && !"".equals(name) && !controller.getName().equals(name)){
 			searchMap.put("name", name);
 			//查询符合条件的信息总数
 			Integer totalResultCount = controllerService.getCount(searchMap);
@@ -193,13 +197,14 @@ public class ControllerMethodController extends BaseController {
 		}
 		
 		if(description != null && !"".equals(description)){
-			conroller.setDescription(description);
+			controller.setDescription(description);
 		}else{
-			conroller.setDescription("");
+			controller.setDescription("");
 		}
 
-		conroller.setName(name);
-		conroller = this.controllerService.update(conroller);
+		controller.setName(name);
+		controller.setSort(sort);
+		controller = this.controllerService.update(controller);
 		return ResultManager.createSuccessResult("保存成功！");
 	}
 	
@@ -209,7 +214,7 @@ public class ControllerMethodController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/controllerdelete", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
 	@ResponseBody
 	public Result controllerdelete(String uuid) {
 		
@@ -244,12 +249,12 @@ public class ControllerMethodController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/methodlist", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
-	@ActionParam(key = "name", type = DataType.STRING)
-	@ActionParam(key = "description", type = DataType.STRING)
-	@ActionParam(key = "pageNum", type = DataType.NUMBER)
-	@ActionParam(key = "pageSize", type = DataType.NUMBER)
-	@ActionParam(key = "sorts", type = DataType.STRING)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "name", message="名称", type = DataType.STRING)
+	@ActionParam(key = "description", message="详细描述", type = DataType.STRING)
+	@ActionParam(key = "pageNum", message="页码", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "pageSize", message="每页数量", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "sorts", message="排序参数", type = DataType.STRING)
 	@ResponseBody
 	public Result methodlist(String uuid, String name, String description, Integer pageNum, Integer pageSize, String sorts) {
 		//
@@ -294,7 +299,7 @@ public class ControllerMethodController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/methodget", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
 	@ResponseBody
 	public Result methodget(String uuid) {
 		BkControllerMethod method = controllerMethodService.get(uuid);
@@ -315,14 +320,16 @@ public class ControllerMethodController extends BaseController {
 	 * @param uuid
 	 * @param name
 	 * @param description
+	 * @param sort
 	 * @return
 	 */
 	@RequestMapping(value = "/methodadd", method = RequestMethod.POST)
-	@ActionParam(key = "cuuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
-	@ActionParam(key = "name", type = DataType.STRING, required = true)
-	@ActionParam(key = "description", type = DataType.STRING)
+	@ActionParam(key = "cuuid", message="所属功能", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "name", message="名称", type = DataType.STRING, required = true)
+	@ActionParam(key = "description", message="详细描述", type = DataType.STRING)
+	@ActionParam(key = "sort", message="默认排序", type = DataType.NUMBER)
 	@ResponseBody
-	public Result methodadd(String cuuid, String name, String description) {
+	public Result methodadd(String cuuid, String name, String description, Integer sort) {
 		
 		Map<String, String> searchMap = new HashMap<String, String>();
 		if(cuuid != null && !"".equals(cuuid)){
@@ -344,6 +351,7 @@ public class ControllerMethodController extends BaseController {
 		method.setUuid(UUID.randomUUID().toString());
 		method.setController(cuuid);
 		method.setName(name);
+		method.setSort(sort);
 		if(description != null && !"".equals(description)){
 			method.setDescription(description);
 		}else{
@@ -358,14 +366,16 @@ public class ControllerMethodController extends BaseController {
 	 * @param uuid
 	 * @param name
 	 * @param description
+	 * @param sort
 	 * @return
 	 */
 	@RequestMapping(value = "/methodedit", method = RequestMethod.POST)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
-	@ActionParam(key = "name", type = DataType.STRING, required = true)
-	@ActionParam(key = "description", type = DataType.STRING)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, minLength = 36, maxLength = 36)
+	@ActionParam(key = "name", message="名称", type = DataType.STRING, required = true)
+	@ActionParam(key = "description", message="详细描述", type = DataType.STRING)
+	@ActionParam(key = "sort", message="默认排序", type = DataType.NUMBER)
 	@ResponseBody
-	public Result methodedit(String uuid, String name, String description) {
+	public Result methodedit(String uuid, String name, String description, Integer sort) {
 		
 		BkControllerMethod method = this.controllerMethodService.get(uuid);
 		if(method == null){
@@ -391,6 +401,7 @@ public class ControllerMethodController extends BaseController {
 		}
 		
 		method.setName(name);
+		method.setSort(sort);
 		method = this.controllerMethodService.update(method);
 		return ResultManager.createSuccessResult("保存成功！");
 		
@@ -402,7 +413,7 @@ public class ControllerMethodController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/methoddelete", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true)
 	@ResponseBody
 	public Result methoddelete(String uuid) {
 		

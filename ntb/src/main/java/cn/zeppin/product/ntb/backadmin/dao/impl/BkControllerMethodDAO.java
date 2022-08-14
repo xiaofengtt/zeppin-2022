@@ -67,16 +67,15 @@ public class BkControllerMethodDAO extends BaseDAO<BkControllerMethod, String> i
 	 */
 	@Override
 	public List<Entity> getAll(Class<? extends Entity> resultClass){
-		return super.getBySQL("select * from bk_controller_method", resultClass);
+		return super.getBySQL("select * from bk_controller_method order by sort", resultClass);
 	}
 	
 	@Override
 	public List<Entity> getListForPage(Map<String, String> inputParams,
 			Integer pageNum, Integer pageSize, String sorts,
 			Class<? extends Entity> resultClass) {
-		// TODO Auto-generated method stub
 		StringBuilder builder = new StringBuilder();
-		builder.append(" select b.uuid, b.name, b.controller, b.description from bk_controller_method b where 1=1 ");
+		builder.append(" select b.uuid, b.name, b.controller, b.description, b.sort from bk_controller_method b where 1=1 ");
 		//名称
 		if (inputParams.get("controller") != null && !"".equals(inputParams.get("controller"))) {
 			builder.append(" and b.controller = '" + inputParams.get("controller") + "' ");
@@ -101,14 +100,13 @@ public class BkControllerMethodDAO extends BaseDAO<BkControllerMethod, String> i
 			}
 		}
 		else {
-			builder.append(" order by b.name desc ");
+			builder.append(" order by b.sort ");
 		}
 		return super.getBySQL(builder.toString(), pageNum, pageSize, resultClass);
 	}
 
 	@Override
 	public Integer getCount(Map<String, String> inputParams) {
-		// TODO Auto-generated method stub
 		StringBuilder builder = new StringBuilder();
 		builder.append(" select count(*) from bk_controller_method b where 1=1 ");
 		//名称

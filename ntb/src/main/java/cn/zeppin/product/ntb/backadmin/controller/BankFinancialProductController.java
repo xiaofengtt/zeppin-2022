@@ -4,6 +4,7 @@
 package cn.zeppin.product.ntb.backadmin.controller;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -56,6 +57,7 @@ import cn.zeppin.product.ntb.core.entity.BkArea;
 import cn.zeppin.product.ntb.core.entity.BkOperator;
 import cn.zeppin.product.ntb.core.entity.Resource;
 import cn.zeppin.product.ntb.core.entity.base.Entity;
+import cn.zeppin.product.ntb.core.exception.TransactionException;
 import cn.zeppin.product.utility.HtmlHelper;
 import cn.zeppin.product.utility.JSONUtils;
 import cn.zeppin.product.utility.Utlity;
@@ -108,24 +110,27 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	@ActionParam(key = "name", type = DataType.STRING)
-	@ActionParam(key = "status", type = DataType.STRING)//状态
-	@ActionParam(key = "stage", type = DataType.STRING)//阶段
-	@ActionParam(key = "income", type = DataType.STRING)//期限
-	@ActionParam(key = "term", type = DataType.STRING)//期限
-	@ActionParam(key = "type", type = DataType.STRING)//类型
-	@ActionParam(key = "custodian", type = DataType.STRING)//管理银行
-	@ActionParam(key = "riskLevel", type = DataType.STRING)//风险等级
-	@ActionParam(key = "redeem", type = DataType.STRING)//赎回状态
-	@ActionParam(key = "pageNum", type = DataType.NUMBER)
-	@ActionParam(key = "pageSize", type = DataType.NUMBER)
-	@ActionParam(key = "sorts", type = DataType.STRING)
+	@ActionParam(key = "name", message="搜索参数", type = DataType.STRING)
+	@ActionParam(key = "status", message="状态", type = DataType.STRING)//状态
+	@ActionParam(key = "stage", message="阶段", type = DataType.STRING)//阶段
+	@ActionParam(key = "income", message="预期收益", type = DataType.STRING)//期限
+	@ActionParam(key = "term", message="期限", type = DataType.STRING)//期限
+	@ActionParam(key = "type", message="类型", type = DataType.STRING)//类型
+	@ActionParam(key = "custodian", message="管理银行", type = DataType.STRING)//管理银行
+	@ActionParam(key = "riskLevel", message="风险等级", type = DataType.STRING)//风险等级
+	@ActionParam(key = "isRedeem", message="是否已赎回", type = DataType.STRING)//是否已赎回
+	@ActionParam(key = "redeem", message="赎回状态", type = DataType.STRING)//赎回状态
+	@ActionParam(key = "invested", message="投资状态", type = DataType.STRING)//已投资
+	@ActionParam(key = "pageNum", message="页码", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "pageSize", message="每页数量", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "sorts", message="分页参数", type = DataType.STRING)
 	@ResponseBody
 	public Result list(String name, String status,String stage, String income, String term, String type, String riskLevel, 
-			String custodian, String redeem, Integer pageNum, Integer pageSize, String sorts) {
+			String custodian, String redeem, String invested, String isRedeem, Integer pageNum, Integer pageSize, String sorts) {
 		//查询条件
 		Map<String, String> searchMap = new HashMap<String, String>();
 		searchMap.put("name", name);
+		searchMap.put("invested", invested);
 		if(!"all".equals(status)){
 			searchMap.put("status", status);
 		}
@@ -150,7 +155,9 @@ public class BankFinancialProductController extends BaseController {
 		if(!"all".equals(redeem)){
 			searchMap.put("redeem", redeem);
 		}
-		
+		if(!"all".equals(isRedeem)){
+			searchMap.put("isRedeem", isRedeem);
+		}
 		//查询符合条件的银行理财产品信息的总数
 		Integer totalResultCount = bankFinancialProductService.getCount(searchMap);
 		//查询符合条件的银行理财产品信息列表
@@ -221,10 +228,10 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/publishList", method = RequestMethod.GET)
-	@ActionParam(key = "name", type = DataType.STRING)
-	@ActionParam(key = "pageNum", type = DataType.NUMBER)
-	@ActionParam(key = "pageSize", type = DataType.NUMBER)
-	@ActionParam(key = "sorts", type = DataType.STRING)
+	@ActionParam(key = "name", message="搜索参数", type = DataType.STRING)
+	@ActionParam(key = "pageNum", message="页码", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "pageSize", message="每页数量", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "sorts", message="分页参数", type = DataType.STRING)
 	@ResponseBody
 	public Result publishList(String name, Integer pageNum, Integer pageSize, String sorts) {
 		//查询条件
@@ -307,9 +314,38 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/stageList", method = RequestMethod.GET)
+	@ActionParam(key = "invested", message="投资状态", type = DataType.STRING)//已投资
 	@ResponseBody
-	public Result stageList(String stage) {
-		List<Entity> list = bankFinancialProductService.getStageList(StstusCountVO.class);
+	public Result stageList(String invested) {
+		Map<String, String> searchMap = new HashMap<String, String>();
+		searchMap.put("invested", invested);
+		List<Entity> list = bankFinancialProductService.getStageList(searchMap,StstusCountVO.class);
+		return ResultManager.createDataResult(list,list.size());
+	}
+	
+	/**
+	 * 获取银行理财产品分投资状态列表
+	 * @return
+	 */
+	@RequestMapping(value = "/investList", method = RequestMethod.GET)
+	@ResponseBody
+	public Result investList() {
+		List<Entity> list = bankFinancialProductService.getStageList(new HashMap<String, String>(), StstusCountVO.class);
+		List<StstusCountVO> dataList = new ArrayList<StstusCountVO>();
+		
+		BigInteger collectCount = BigInteger.ZERO;
+		for(Entity e : list){
+			StstusCountVO scvo = (StstusCountVO) e;
+			if(BankFinancialProductStage.FINISHED.equals(scvo.getStatus()) || BankFinancialProductStage.INCOME.equals(scvo.getStatus())){
+				dataList.add(scvo);
+			}else if(BankFinancialProductStage.COLLECT.equals(scvo.getStatus()) || BankFinancialProductStage.UNSTART.equals(scvo.getStatus())){
+				collectCount = collectCount.add(scvo.getCount());
+			}
+		}
+		
+		StstusCountVO collectVO = new StstusCountVO(BankFinancialProductStage.COLLECT ,collectCount);
+		dataList.add(collectVO);
+		
 		return ResultManager.createDataResult(list,list.size());
 	}
 	
@@ -319,7 +355,7 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, maxLength = 36)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, maxLength = 36)
 	@ResponseBody
 	public Result get(String uuid) {
 		//获取银行理财产品信息
@@ -379,7 +415,7 @@ public class BankFinancialProductController extends BaseController {
 		if(bankFinancialProduct.getCreator() != null && !"".equals(bankFinancialProduct.getCreator())){
 			BkOperator operator = this.bkOperatorService.get(bankFinancialProduct.getCreator());
 			if(operator != null){
-				bfpvo.setCreatorName(operator.getName());
+				bfpvo.setCreatorName(operator.getRealname());
 			} else {
 				bfpvo.setCreatorName("无");
 			}
@@ -433,43 +469,43 @@ public class BankFinancialProductController extends BaseController {
 	 * @throws ParserException 
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	@ActionParam(key = "custodian", type = DataType.STRING, required = true)
-	@ActionParam(key = "name", type = DataType.STRING, required = true, maxLength = 200)
-	@ActionParam(key = "url", type = DataType.STRING, maxLength = 200)
-	@ActionParam(key = "series", type = DataType.STRING, required = true, maxLength = 20)
-	@ActionParam(key = "shortname", type = DataType.STRING, maxLength = 50)
-	@ActionParam(key = "scode", type = DataType.STRING, required = true, maxLength = 100)
-	@ActionParam(key = "type", type = DataType.STRING, required = true, maxLength = 20)
-	@ActionParam(key = "target", type = DataType.STRING, required = true, maxLength = 10)
-	@ActionParam(key = "targetAnnualizedReturnRate", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "totalAmount", type = DataType.NUMBER)
-	@ActionParam(key = "paymentType", type = DataType.STRING, required = true)
-	@ActionParam(key = "currencyType", type = DataType.STRING, required = true)
-	@ActionParam(key = "riskLevel", type = DataType.STRING, required = true)
-	@ActionParam(key = "minAnnualizedReturnRate", type = DataType.NUMBER)
-	@ActionParam(key = "area", type = DataType.STRING, required = true)
-	@ActionParam(key = "flagFlexible", type = DataType.BOOLEAN, required = true)
-	@ActionParam(key = "flagPurchase", type = DataType.BOOLEAN, required = true)
-	@ActionParam(key = "flagRedemption", type = DataType.BOOLEAN, required = true)
-	@ActionParam(key = "collectStarttime", type = DataType.STRING, required = true)
-	@ActionParam(key = "collectEndtime", type = DataType.STRING, required = true)
-	@ActionParam(key = "recordDate", type = DataType.DATE, required = true)
-	@ActionParam(key = "valueDate", type = DataType.DATE, required = true)
-	@ActionParam(key = "maturityDate", type = DataType.DATE, required = true)
-	@ActionParam(key = "term", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "minInvestAmount", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "minInvestAmountAdd", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "maxInvestAmount", type = DataType.NUMBER)
-	@ActionParam(key = "subscribeFee", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "purchaseFee", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "redemingFee", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "managementFee", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "custodyFee", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "networkFee", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "investScope", type = DataType.STRING, required = true, maxLength = 5000)
-	@ActionParam(key = "revenueFeature", type = DataType.STRING, required = true,maxLength = 5000)
-	@ActionParam(key = "remark", type = DataType.STRING, maxLength = 5000)
-	@ActionParam(key = "document", type = DataType.STRING)
+	@ActionParam(key = "custodian", message="管理银行", type = DataType.STRING, required = true)
+	@ActionParam(key = "name", message="产品名称", type = DataType.STRING, required = true, maxLength = 200)
+	@ActionParam(key = "url", message="url", type = DataType.STRING, maxLength = 200)
+	@ActionParam(key = "series", message="产品系列", type = DataType.STRING, required = true, maxLength = 20)
+	@ActionParam(key = "shortname", message="产品简称", type = DataType.STRING, maxLength = 50)
+	@ActionParam(key = "scode", message="产品编号", type = DataType.STRING, required = true, maxLength = 100)
+	@ActionParam(key = "type", message="投资类型", type = DataType.STRING, required = true, maxLength = 20)
+	@ActionParam(key = "target", message="投资目标", type = DataType.STRING, required = true, maxLength = 10)
+	@ActionParam(key = "targetAnnualizedReturnRate", message="目标年化收益率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "totalAmount", message="募集总额", type = DataType.NUMBER)
+	@ActionParam(key = "paymentType", message="收益支付方式", type = DataType.STRING, required = true)
+	@ActionParam(key = "currencyType", message="理财币种", type = DataType.STRING, required = true)
+	@ActionParam(key = "riskLevel", message="风险等级", type = DataType.STRING, required = true)
+	@ActionParam(key = "minAnnualizedReturnRate", message="最小投资收益", type = DataType.NUMBER)
+	@ActionParam(key = "area", message="地区", type = DataType.STRING, required = true)
+	@ActionParam(key = "flagFlexible", message="灵活期限", type = DataType.BOOLEAN, required = true)
+	@ActionParam(key = "flagPurchase", message="申购状态", type = DataType.BOOLEAN, required = true)
+	@ActionParam(key = "flagRedemption", message="赎回状态", type = DataType.BOOLEAN, required = true)
+	@ActionParam(key = "collectStarttime", message="认购起始时间", type = DataType.STRING, required = true)
+	@ActionParam(key = "collectEndtime", message="认购截止时间", type = DataType.STRING, required = true)
+	@ActionParam(key = "recordDate", message="登记日", type = DataType.DATE, required = true)
+	@ActionParam(key = "valueDate", message="起息日", type = DataType.DATE, required = true)
+	@ActionParam(key = "maturityDate", message="到期日", type = DataType.DATE, required = true)
+	@ActionParam(key = "term", message="灵活期限", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "minInvestAmount", message="最小投资金额", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "minInvestAmountAdd", message="最下投资递增", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "maxInvestAmount", message="最大投资金额", type = DataType.NUMBER)
+	@ActionParam(key = "subscribeFee", message="认购费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "purchaseFee", message="申购费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "redemingFee", message="赎回费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "managementFee", message="管理费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "custodyFee", message="托管费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "networkFee", message="销售费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "investScope", message="投资范围", type = DataType.STRING, required = true, maxLength = 5000)
+	@ActionParam(key = "revenueFeature", message="收益说明", type = DataType.STRING, required = true,maxLength = 5000)
+	@ActionParam(key = "remark", message="更多描述", type = DataType.STRING, maxLength = 5000)
+	@ActionParam(key = "document", message="产品说明书", type = DataType.STRING)
 	@ResponseBody
 	public Result add(String name, String series, String scode, String shortname, String type, String url, String target, BigDecimal targetAnnualizedReturnRate, 
 			BigDecimal minInvestAmount, BigDecimal minInvestAmountAdd, BigDecimal maxInvestAmount, BigDecimal totalAmount,String paymentType, String style, 
@@ -548,9 +584,14 @@ public class BankFinancialProductController extends BaseController {
 		bfp.setInvestScope(HtmlHelper.parseHtmlMark(HtmlHelper.parseString2Html(investScope)));
 		bfp.setRevenueFeature(HtmlHelper.parseHtmlMark(HtmlHelper.parseString2Html(revenueFeature)));
 		bfp.setRemark(HtmlHelper.parseHtmlMark(HtmlHelper.parseString2Html(remark)));
+		
+		bfp.setAccountBalance(BigDecimal.ZERO);
+		bfp.setTotalRedeem(BigDecimal.ZERO);
+		bfp.setTotalReturn(BigDecimal.ZERO);
+		bfp.setInvestment(BigDecimal.ZERO);
 		Resource resource = resourceService.get(document);
 		if(resource != null){
-			resource.setFilename(bfp.getName()+"("+bfp.getScode()+")");
+			resource.setFilename("【"+bank.getName()+"】"+bfp.getName()+"("+bfp.getScode()+")");
 			resource = resourceService.updateName(resource);
 			if(resource == null){
 				return ResultManager.createFailResult("产品说明书替换失败！");
@@ -614,44 +655,44 @@ public class BankFinancialProductController extends BaseController {
 	 * @throws ParserException 
 	 */
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, maxLength = 36)
-	@ActionParam(key = "custodian", type = DataType.STRING, required = true)
-	@ActionParam(key = "name", type = DataType.STRING, required = true, maxLength = 200)
-	@ActionParam(key = "url", type = DataType.STRING, maxLength = 200)
-	@ActionParam(key = "series", type = DataType.STRING, required = true, maxLength = 20)
-	@ActionParam(key = "shortname", type = DataType.STRING, maxLength = 50)
-	@ActionParam(key = "scode", type = DataType.STRING, required = true, maxLength = 100)
-	@ActionParam(key = "type", type = DataType.STRING, required = true, maxLength = 20)
-	@ActionParam(key = "target", type = DataType.STRING, required = true, maxLength = 10)
-	@ActionParam(key = "targetAnnualizedReturnRate", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "totalAmount", type = DataType.NUMBER)
-	@ActionParam(key = "paymentType", type = DataType.STRING, required = true)
-	@ActionParam(key = "currencyType", type = DataType.STRING, required = true)
-	@ActionParam(key = "riskLevel", type = DataType.STRING, required = true)
-	@ActionParam(key = "minAnnualizedReturnRate", type = DataType.NUMBER)
-	@ActionParam(key = "area", type = DataType.STRING, required = true)
-	@ActionParam(key = "flagFlexible", type = DataType.BOOLEAN, required = true)
-	@ActionParam(key = "flagPurchase", type = DataType.BOOLEAN, required = true)
-	@ActionParam(key = "flagRedemption", type = DataType.BOOLEAN, required = true)
-	@ActionParam(key = "collectStarttime", type = DataType.STRING, required = true)
-	@ActionParam(key = "collectEndtime", type = DataType.STRING, required = true)
-	@ActionParam(key = "recordDate", type = DataType.DATE, required = true)
-	@ActionParam(key = "valueDate", type = DataType.DATE, required = true)
-	@ActionParam(key = "maturityDate", type = DataType.DATE, required = true)
-	@ActionParam(key = "term", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "minInvestAmount", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "minInvestAmountAdd", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "maxInvestAmount", type = DataType.NUMBER)
-	@ActionParam(key = "subscribeFee", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "purchaseFee", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "redemingFee", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "managementFee", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "custodyFee", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "networkFee", type = DataType.NUMBER, required = true)
-	@ActionParam(key = "investScope", type = DataType.STRING, required = true, maxLength = 5000)
-	@ActionParam(key = "revenueFeature", type = DataType.STRING, required = true,maxLength = 5000)
-	@ActionParam(key = "remark", type = DataType.STRING, maxLength = 5000)
-	@ActionParam(key = "document", type = DataType.STRING)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, maxLength = 36)
+	@ActionParam(key = "custodian", message="管理银行", type = DataType.STRING, required = true)
+	@ActionParam(key = "name", message="产品名称", type = DataType.STRING, required = true, maxLength = 200)
+	@ActionParam(key = "url", message="url", type = DataType.STRING, maxLength = 200)
+	@ActionParam(key = "series", message="产品系列", type = DataType.STRING, required = true, maxLength = 20)
+	@ActionParam(key = "shortname", message="产品简称", type = DataType.STRING, maxLength = 50)
+	@ActionParam(key = "scode", message="产品编号", type = DataType.STRING, required = true, maxLength = 100)
+	@ActionParam(key = "type", message="投资类型", type = DataType.STRING, required = true, maxLength = 20)
+	@ActionParam(key = "target", message="投资目标", type = DataType.STRING, required = true, maxLength = 10)
+	@ActionParam(key = "targetAnnualizedReturnRate", message="目标年化收益率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "totalAmount", message="募集总额", type = DataType.NUMBER)
+	@ActionParam(key = "paymentType", message="收益支付方式", type = DataType.STRING, required = true)
+	@ActionParam(key = "currencyType", message="理财币种", type = DataType.STRING, required = true)
+	@ActionParam(key = "riskLevel", message="风险等级", type = DataType.STRING, required = true)
+	@ActionParam(key = "minAnnualizedReturnRate", message="最小投资收益", type = DataType.NUMBER)
+	@ActionParam(key = "area", message="地区", type = DataType.STRING, required = true)
+	@ActionParam(key = "flagFlexible", message="灵活期限", type = DataType.BOOLEAN, required = true)
+	@ActionParam(key = "flagPurchase", message="申购状态", type = DataType.BOOLEAN, required = true)
+	@ActionParam(key = "flagRedemption", message="赎回状态", type = DataType.BOOLEAN, required = true)
+	@ActionParam(key = "collectStarttime", message="认购起始时间", type = DataType.STRING, required = true)
+	@ActionParam(key = "collectEndtime", message="认购截止时间", type = DataType.STRING, required = true)
+	@ActionParam(key = "recordDate", message="登记日", type = DataType.DATE, required = true)
+	@ActionParam(key = "valueDate", message="起息日", type = DataType.DATE, required = true)
+	@ActionParam(key = "maturityDate", message="到期日", type = DataType.DATE, required = true)
+	@ActionParam(key = "term", message="灵活期限", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "minInvestAmount", message="最小投资金额", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "minInvestAmountAdd", message="最下投资递增", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "maxInvestAmount", message="最大投资金额", type = DataType.NUMBER)
+	@ActionParam(key = "subscribeFee", message="认购费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "purchaseFee", message="申购费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "redemingFee", message="赎回费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "managementFee", message="管理费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "custodyFee", message="托管费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "networkFee", message="销售费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "investScope", message="投资范围", type = DataType.STRING, required = true, maxLength = 5000)
+	@ActionParam(key = "revenueFeature", message="收益说明", type = DataType.STRING, required = true,maxLength = 5000)
+	@ActionParam(key = "remark", message="更多描述", type = DataType.STRING, maxLength = 5000)
+	@ActionParam(key = "document", message="产品说明书", type = DataType.STRING)
 	@ResponseBody
 	public Result edit(String uuid, String name, String series, String scode, String shortname, String type, String url, String target, BigDecimal targetAnnualizedReturnRate, 
 			BigDecimal minInvestAmount, BigDecimal minInvestAmountAdd, BigDecimal maxInvestAmount, BigDecimal totalAmount,String paymentType, String style, 
@@ -726,7 +767,7 @@ public class BankFinancialProductController extends BaseController {
 			bfp.setRemark(HtmlHelper.parseHtmlMark(HtmlHelper.parseString2Html(remark)));
 			Resource resource = resourceService.get(document);
 			if(resource != null){
-				resource.setFilename(bfp.getName()+"("+bfp.getScode()+")");
+				resource.setFilename("【"+bank.getName()+"】"+bfp.getName()+"("+bfp.getScode()+")");
 				resource = resourceService.updateName(resource);
 				if(resource == null){
 					return ResultManager.createFailResult("产品说明书替换失败！");
@@ -755,7 +796,7 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true)
 	@ResponseBody
 	public Result delete(String uuid) {
 		//获取银行理财产品投资信息
@@ -772,8 +813,9 @@ public class BankFinancialProductController extends BaseController {
 			bfpo.setBankFinancialProduct(bfp.getUuid());
 			bfpo.setType(BankFinancialProductOperateType.DELETE);
 			bfpo.setValue("");
-			bfpo.setStatus(BankFinancialProductOperateStatus.DRAFT);
+			bfpo.setStatus(BankFinancialProductOperateStatus.UNCHECKED);
 			bfpo.setCreator(currentOperator.getUuid());
+			bfpo.setSubmittime(new Timestamp(System.currentTimeMillis()));
 			bfpo.setCreatetime(new Timestamp(System.currentTimeMillis()));
 			bankFinancialProductOperateService.insert(bfpo);
 			return ResultManager.createSuccessResult("添加待审记录成功！");
@@ -791,12 +833,12 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/netvaluelist", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
-	@ActionParam(key = "starttime", type = DataType.DATE)
-	@ActionParam(key = "endtime", type = DataType.DATE)
-	@ActionParam(key = "deadline", type = DataType.STRING, required = true)
-	@ActionParam(key = "pageNum", type = DataType.NUMBER)
-	@ActionParam(key = "pageSize", type = DataType.NUMBER)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true)
+	@ActionParam(key = "starttime", message="起始时间", type = DataType.DATE)
+	@ActionParam(key = "endtime", message="结束时间", type = DataType.DATE)
+	@ActionParam(key = "deadline", message="最终期限", type = DataType.STRING, required = true)
+	@ActionParam(key = "pageNum", message="页码", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "pageSize", message="每页数量", type = DataType.NUMBER, required = true)
 	@ResponseBody
 	public Result netvaluelist(String uuid, String starttime, String endtime, String deadline, Integer pageNum, Integer pageSize) {
 		
@@ -877,12 +919,18 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/netvalueGet", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true)
 	@ResponseBody
 	public Result netvalueGet(String uuid) {
 		BankFinancialProductDaily bankFinancialProductDaily = bankFinancialProductDailyService.get(uuid);
 		if(bankFinancialProductDaily != null && uuid.equals(bankFinancialProductDaily.getUuid())){
 			BankFinancialProductDailyVO vo = new BankFinancialProductDailyVO(bankFinancialProductDaily);
+			if(bankFinancialProductDaily.getCreator() != null){
+				BkOperator creator = bkOperatorService.get(bankFinancialProductDaily.getCreator());
+				if(creator != null){
+					vo.setCreatorName(creator.getRealname());
+				}
+			}
 			return ResultManager.createDataResult(vo);
 		} else {
 			return ResultManager.createFailResult("理财产品净值信息不存在！");
@@ -896,9 +944,9 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/netvalueadd", method = RequestMethod.POST)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
-	@ActionParam(key = "statistime", type = DataType.DATE, required = true)
-	@ActionParam(key = "netValue", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true)
+	@ActionParam(key = "statistime", message="日期", type = DataType.DATE, required = true)
+	@ActionParam(key = "netValue", message="净值", type = DataType.NUMBER, required = true)
 	@ResponseBody
 	public Result netvalueadd(String uuid, String statistime, BigDecimal netValue) {
 		
@@ -941,6 +989,7 @@ public class BankFinancialProductController extends BaseController {
 			bfpo.setValue(JSONUtils.obj2json(bankFinancialProductDaily));
 			bfpo.setStatus(BankFinancialProductOperateStatus.UNCHECKED);
 			bfpo.setCreator(currentOperator.getUuid());
+			bfpo.setSubmittime(new Timestamp(System.currentTimeMillis()));
 			bfpo.setCreatetime(new Timestamp(System.currentTimeMillis()));
 			bankFinancialProductOperateService.insert(bfpo);
 			return ResultManager.createSuccessResult("保存成功！");
@@ -957,8 +1006,8 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/netvalueEdit", method = RequestMethod.POST)
-	@ActionParam(key = "data", type = DataType.STRING_ARRAY, required = true)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
+	@ActionParam(key = "data", message="数据", type = DataType.STRING_ARRAY, required = true)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true)
 	@ResponseBody
 	public Result netvalueEdit(String[] data, String uuid) {
 
@@ -997,6 +1046,7 @@ public class BankFinancialProductController extends BaseController {
 						BigDecimal oldValue = bankFinancialProductDaily.getNetValue();
 						bankFinancialProductDaily.setNetValue(BigDecimal.valueOf(Double.valueOf(netValueStr)));
 						bankFinancialProductDaily.setStatistime(Timestamp.valueOf(Utlity.getFullTime(statistime)));
+						bankFinancialProductDaily.setCreator(currentOperator.getUuid());
 						BankFinancialProductOperateDailyVO bfpod = new BankFinancialProductOperateDailyVO(bankFinancialProductDaily, BankFinancialProductOperateType.EDIT);
 						bfpod.setOldValue(oldValue);
 						list.add(bfpod);
@@ -1039,7 +1089,7 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/operateNetvalueGet", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true)
 	@ResponseBody
 	public Result operateNetvalueGet(String uuid) {
 		BankFinancialProductOperate bfpo = bankFinancialProductOperateService.get(uuid);
@@ -1073,7 +1123,7 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/operateGet", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, maxLength = 36)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, maxLength = 36)
 	@ResponseBody
 	public Result operateGet(String uuid) {		
 		//获取银行理财产品信息
@@ -1092,68 +1142,135 @@ public class BankFinancialProductController extends BaseController {
 		}
 		
 		if(!BankFinancialProductOperateType.ADD.equals(bfpo.getType())){
-			BankFinancialProduct bfp = bankFinancialProductService.get(bfpo.getBankFinancialProduct());
-			BankFinancialProductDetailsVO bfpvo = new BankFinancialProductDetailsVO(bfp);
-			if(bfp.getDocument() != null && !"".equals(bfp.getDocument())){
-				Resource res = this.resourceService.get(bfp.getDocument());
-				if(res != null){
-					bfpvo.setDocumentCN(res.getFilename());
-					bfpvo.setDocumentType(res.getFiletype());
-					bfpvo.setDocumentURL(res.getUrl());
+			if(BankFinancialProductOperateType.EDIT.equals(bfpo.getType()) && BankFinancialProductOperateStatus.CHECKED.equals(bfpo.getStatus()) 
+					&& bfpo.getOld() != null && !"".equals(bfpo.getOld())){
+				BankFinancialProduct bfp = JSONUtils.json2obj(bfpo.getOld(), BankFinancialProduct.class);	
+				BankFinancialProductDetailsVO bfpvo = new BankFinancialProductDetailsVO(bfp);
+				
+				if(bfp.getDocument() != null && !"".equals(bfp.getDocument())){
+					Resource res = this.resourceService.get(bfp.getDocument());
+					if(res != null){
+						bfpvo.setDocumentCN(res.getFilename());
+						bfpvo.setDocumentType(res.getFiletype());
+						bfpvo.setDocumentURL(res.getUrl());
+					}
+				}else{
+					bfpvo.setDocumentCN("未上传");
+					bfpvo.setDocumentType("");
+					bfpvo.setDocumentURL("");
 				}
-			}else{
-				bfpvo.setDocumentCN("未上传");
-				bfpvo.setDocumentType("");
-				bfpvo.setDocumentURL("");
-			}
-			
-			if(bfp.getCustodian() != null && !"".equals(bfp.getCustodian())){
-				Bank bank = this.bankService.get(bfp.getCustodian());
-				if(bank != null){
-					bfpvo.setCustodianCN(bank.getName());
-					if(bank.getLogo() != null && !"".equals(bank.getLogo())){
-						Resource resource = resourceService.get(bank.getLogo());
-						if (resource != null) {
-							bfpvo.setCustodianLogo(resource.getUrl());
+				
+				if(bfp.getCustodian() != null && !"".equals(bfp.getCustodian())){
+					Bank bank = this.bankService.get(bfp.getCustodian());
+					if(bank != null){
+						bfpvo.setCustodianCN(bank.getName());
+						if(bank.getLogo() != null && !"".equals(bank.getLogo())){
+							Resource resource = resourceService.get(bank.getLogo());
+							if (resource != null) {
+								bfpvo.setCustodianLogo(resource.getUrl());
+							}else{
+								bfpvo.setCustodianLogo("");
+							}
 						}else{
 							bfpvo.setCustodianLogo("");
 						}
-					}else{
+					} else {
+						bfpvo.setCustodianCN("未选择");
 						bfpvo.setCustodianLogo("");
 					}
-				} else {
+					
+				}else{
 					bfpvo.setCustodianCN("未选择");
 					bfpvo.setCustodianLogo("");
 				}
 				
-			}else{
-				bfpvo.setCustodianCN("未选择");
-				bfpvo.setCustodianLogo("");
-			}
-			
-			if(bfp.getArea() != null && !"".equals(bfp.getArea())){
-				BkArea area = this.areaService.get(bfp.getArea());
-				if(area != null){
-					bfpvo.setAreaCN(area.getName());
-				} else {
+				if(bfp.getArea() != null && !"".equals(bfp.getArea())){
+					BkArea area = this.areaService.get(bfp.getArea());
+					if(area != null){
+						bfpvo.setAreaCN(area.getName());
+					} else {
+						bfpvo.setAreaCN("未选择");
+					}
+				}else{
 					bfpvo.setAreaCN("未选择");
 				}
-			}else{
-				bfpvo.setAreaCN("未选择");
-			}
-			
-			if(bfp.getCreator() != null && !"".equals(bfp.getCreator())){
-				BkOperator operator = this.bkOperatorService.get(bfp.getCreator());
-				if(operator != null){
-					bfpvo.setCreatorName(operator.getName());
-				} else {
+				
+				if(bfp.getCreator() != null && !"".equals(bfp.getCreator())){
+					BkOperator operator = this.bkOperatorService.get(bfp.getCreator());
+					if(operator != null){
+						bfpvo.setCreatorName(operator.getRealname());
+					} else {
+						bfpvo.setCreatorName("无");
+					}
+					
+				}else{
 					bfpvo.setCreatorName("无");
 				}
-				
+				bfpodVO.setOldData(bfpvo);
 			}else{
-				bfpvo.setCreatorName("无");
+				BankFinancialProduct bfp = bankFinancialProductService.get(bfpo.getBankFinancialProduct());
+				BankFinancialProductDetailsVO bfpvo = new BankFinancialProductDetailsVO(bfp);
+				if(bfp.getDocument() != null && !"".equals(bfp.getDocument())){
+					Resource res = this.resourceService.get(bfp.getDocument());
+					if(res != null){
+						bfpvo.setDocumentCN(res.getFilename());
+						bfpvo.setDocumentType(res.getFiletype());
+						bfpvo.setDocumentURL(res.getUrl());
+					}
+				}else{
+					bfpvo.setDocumentCN("未上传");
+					bfpvo.setDocumentType("");
+					bfpvo.setDocumentURL("");
+				}
+				
+				if(bfp.getCustodian() != null && !"".equals(bfp.getCustodian())){
+					Bank bank = this.bankService.get(bfp.getCustodian());
+					if(bank != null){
+						bfpvo.setCustodianCN(bank.getName());
+						if(bank.getLogo() != null && !"".equals(bank.getLogo())){
+							Resource resource = resourceService.get(bank.getLogo());
+							if (resource != null) {
+								bfpvo.setCustodianLogo(resource.getUrl());
+							}else{
+								bfpvo.setCustodianLogo("");
+							}
+						}else{
+							bfpvo.setCustodianLogo("");
+						}
+					} else {
+						bfpvo.setCustodianCN("未选择");
+						bfpvo.setCustodianLogo("");
+					}
+					
+				}else{
+					bfpvo.setCustodianCN("未选择");
+					bfpvo.setCustodianLogo("");
+				}
+				
+				if(bfp.getArea() != null && !"".equals(bfp.getArea())){
+					BkArea area = this.areaService.get(bfp.getArea());
+					if(area != null){
+						bfpvo.setAreaCN(area.getName());
+					} else {
+						bfpvo.setAreaCN("未选择");
+					}
+				}else{
+					bfpvo.setAreaCN("未选择");
+				}
+				
+				if(bfp.getCreator() != null && !"".equals(bfp.getCreator())){
+					BkOperator operator = this.bkOperatorService.get(bfp.getCreator());
+					if(operator != null){
+						bfpvo.setCreatorName(operator.getRealname());
+					} else {
+						bfpvo.setCreatorName("无");
+					}
+					
+				}else{
+					bfpvo.setCreatorName("无");
+				}
+				bfpodVO.setOldData(bfpvo);
 			}
-			bfpodVO.setOldData(bfpvo);
 		}
 		if(BankFinancialProductOperateType.ADD.equals(bfpo.getType()) || BankFinancialProductOperateType.EDIT.equals(bfpo.getType())){
 			BankFinancialProduct bfp = JSONUtils.json2obj(bfpo.getValue(), BankFinancialProduct.class);	
@@ -1209,7 +1326,7 @@ public class BankFinancialProductController extends BaseController {
 			if(bfp.getCreator() != null && !"".equals(bfp.getCreator())){
 				BkOperator operator = this.bkOperatorService.get(bfp.getCreator());
 				if(operator != null){
-					bfpvo.setCreatorName(operator.getName());
+					bfpvo.setCreatorName(operator.getRealname());
 				} else {
 					bfpvo.setCreatorName("无");
 				}
@@ -1228,12 +1345,12 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/operateList", method = RequestMethod.GET)
-	@ActionParam(key = "status", type = DataType.STRING)
-	@ActionParam(key = "type", type = DataType.STRING)
-	@ActionParam(key = "name", type = DataType.STRING)
-	@ActionParam(key = "pageNum", type = DataType.NUMBER)
-	@ActionParam(key = "pageSize", type = DataType.NUMBER)
-	@ActionParam(key = "sorts", type = DataType.STRING)
+	@ActionParam(key = "status", message="状态", type = DataType.STRING)
+	@ActionParam(key = "type", message="类型", type = DataType.STRING)
+	@ActionParam(key = "name", message="搜索参数", type = DataType.STRING)
+	@ActionParam(key = "pageNum", message="页码", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "pageSize", message="每页数量", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "sorts", message="排序参数", type = DataType.STRING)
 	@ResponseBody
 	public Result operateList(String status, String type, String name, Integer pageNum, Integer pageSize, String sorts) {
 		//查询条件
@@ -1319,12 +1436,12 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/operateCheckList", method = RequestMethod.GET)
-	@ActionParam(key = "status", type = DataType.STRING)
-	@ActionParam(key = "type", type = DataType.STRING)
-	@ActionParam(key = "name", type = DataType.STRING)
-	@ActionParam(key = "pageNum", type = DataType.NUMBER)
-	@ActionParam(key = "pageSize", type = DataType.NUMBER)
-	@ActionParam(key = "sorts", type = DataType.STRING)
+	@ActionParam(key = "status", message="状态", type = DataType.STRING)
+	@ActionParam(key = "type", message="类型", type = DataType.STRING)
+	@ActionParam(key = "name", message="搜索参数", type = DataType.STRING)
+	@ActionParam(key = "pageNum", message="页码", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "pageSize", message="每页数量", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "sorts", message="排序参数", type = DataType.STRING)
 	@ResponseBody
 	public Result operateCheckList(String status, String type, String name, Integer pageNum, Integer pageSize, String sorts) {
 		//查询条件
@@ -1337,6 +1454,10 @@ public class BankFinancialProductController extends BaseController {
 		
 		if(!"all".equals(type)){
 			searchMap.put("type", type);
+		}
+		
+		if(Utlity.checkStringNull(sorts)){
+			sorts = "submittime-desc";
 		}
 		
 		//查询符合条件的银行理财产品信息的总数
@@ -1417,9 +1538,6 @@ public class BankFinancialProductController extends BaseController {
 	 * @param maxInvestAmount
 	 * @param status
 	 * @param totalAmount
-	 * @param style
-	 * @param creditLevel
-	 * @param flagCloseend
 	 * @param currencyType
 	 * @param term
 	 * @param custodian
@@ -1429,7 +1547,6 @@ public class BankFinancialProductController extends BaseController {
 	 * @param flagFlexible
 	 * @param minAnnualizedReturnRate
 	 * @param recordDate
-	 * @param guaranteeStatus
 	 * @param area
 	 * @param subscribeFee
 	 * @param purchaseFee
@@ -1449,55 +1566,51 @@ public class BankFinancialProductController extends BaseController {
 	 * @throws ParserException 
 	 */
 	@RequestMapping(value = "/operateEdit", method = RequestMethod.POST)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true, maxLength = 36)
-	@ActionParam(key = "name", type = DataType.STRING, required = true, minLength = 1, maxLength = 200)
-	@ActionParam(key = "series", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
-	@ActionParam(key = "scode", type = DataType.STRING, required = true, minLength = 1, maxLength = 100)
-	@ActionParam(key = "shortname", type = DataType.STRING, required = true, minLength = 1, maxLength = 50)
-	@ActionParam(key = "type", type = DataType.STRING, required = true, minLength = 1, maxLength = 20)
-	@ActionParam(key = "url", type = DataType.STRING, maxLength = 200)
-	@ActionParam(key = "target", type = DataType.STRING, required = true, maxLength = 10)
-	@ActionParam(key = "targetAnnualizedReturnRate", required = true, type = DataType.NUMBER)
-	@ActionParam(key = "minInvestAmount", required = true, type = DataType.NUMBER)
-	@ActionParam(key = "minInvestAmountAdd", required = true, type = DataType.NUMBER)
-	@ActionParam(key = "maxInvestAmount", required = true, type = DataType.NUMBER)
-	@ActionParam(key = "totalAmount", required = true, type = DataType.NUMBER)//p1
-	@ActionParam(key = "paymentType", type = DataType.STRING)
-	@ActionParam(key = "style", type = DataType.STRING)
-	@ActionParam(key = "creditLevel", type = DataType.STRING)
-	@ActionParam(key = "flagCloseend", type = DataType.BOOLEAN)
-	@ActionParam(key = "currencyType", type = DataType.STRING)
-	@ActionParam(key = "term", type = DataType.NUMBER)//custodian
-	@ActionParam(key = "custodian", type = DataType.STRING, required = true)
-	@ActionParam(key = "riskLevel", type = DataType.STRING)
-	@ActionParam(key = "flagPurchase", type = DataType.BOOLEAN)
-	@ActionParam(key = "flagRedemption", type = DataType.BOOLEAN)
-	@ActionParam(key = "flagFlexible", type = DataType.BOOLEAN)
-	@ActionParam(key = "minAnnualizedReturnRate", type = DataType.NUMBER)
-	@ActionParam(key = "recordDate", type = DataType.DATE)
-	@ActionParam(key = "guaranteeStatus", type = DataType.STRING)
-	@ActionParam(key = "area", type = DataType.STRING)
-	@ActionParam(key = "subscribeFee", type = DataType.NUMBER)
-	@ActionParam(key = "purchaseFee", type = DataType.NUMBER)
-	@ActionParam(key = "redemingFee", type = DataType.NUMBER)
-	@ActionParam(key = "managementFee", type = DataType.NUMBER)
-	@ActionParam(key = "custodyFee", type = DataType.NUMBER)
-	@ActionParam(key = "networkFee", type = DataType.NUMBER)
-	@ActionParam(key = "collectStarttime", type = DataType.STRING)
-	@ActionParam(key = "collectEndtime", type = DataType.STRING)
-	@ActionParam(key = "valueDate", type = DataType.DATE)
-	@ActionParam(key = "maturityDate", type = DataType.DATE)
-	@ActionParam(key = "investScope", type = DataType.STRING, maxLength = 1000)//
-	@ActionParam(key = "revenueFeature", type = DataType.STRING, maxLength = 2000)
-	@ActionParam(key = "remark", type = DataType.STRING, maxLength = 5000)
-	@ActionParam(key = "document", type = DataType.STRING)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true, maxLength = 36)
+	@ActionParam(key = "custodian", message="管理银行", type = DataType.STRING, required = true)
+	@ActionParam(key = "name", message="产品名称", type = DataType.STRING, required = true, maxLength = 200)
+	@ActionParam(key = "url", message="url", type = DataType.STRING, maxLength = 200)
+	@ActionParam(key = "series", message="产品系列", type = DataType.STRING, required = true, maxLength = 20)
+	@ActionParam(key = "shortname", message="产品简称", type = DataType.STRING, maxLength = 50)
+	@ActionParam(key = "scode", message="产品编号", type = DataType.STRING, required = true, maxLength = 100)
+	@ActionParam(key = "type", message="投资类型", type = DataType.STRING, required = true, maxLength = 20)
+	@ActionParam(key = "target", message="投资目标", type = DataType.STRING, required = true, maxLength = 10)
+	@ActionParam(key = "targetAnnualizedReturnRate", message="目标年化收益率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "totalAmount", message="募集总额", type = DataType.NUMBER)
+	@ActionParam(key = "paymentType", message="收益支付方式", type = DataType.STRING, required = true)
+	@ActionParam(key = "currencyType", message="理财币种", type = DataType.STRING, required = true)
+	@ActionParam(key = "riskLevel", message="风险等级", type = DataType.STRING, required = true)
+	@ActionParam(key = "minAnnualizedReturnRate", message="最小投资收益", type = DataType.NUMBER)
+	@ActionParam(key = "area", message="地区", type = DataType.STRING, required = true)
+	@ActionParam(key = "flagFlexible", message="灵活期限", type = DataType.BOOLEAN, required = true)
+	@ActionParam(key = "flagPurchase", message="申购状态", type = DataType.BOOLEAN, required = true)
+	@ActionParam(key = "flagRedemption", message="赎回状态", type = DataType.BOOLEAN, required = true)
+	@ActionParam(key = "collectStarttime", message="认购起始时间", type = DataType.STRING, required = true)
+	@ActionParam(key = "collectEndtime", message="认购截止时间", type = DataType.STRING, required = true)
+	@ActionParam(key = "recordDate", message="登记日", type = DataType.DATE, required = true)
+	@ActionParam(key = "valueDate", message="起息日", type = DataType.DATE, required = true)
+	@ActionParam(key = "maturityDate", message="到期日", type = DataType.DATE, required = true)
+	@ActionParam(key = "term", message="灵活期限", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "minInvestAmount", message="最小投资金额", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "minInvestAmountAdd", message="最下投资递增", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "maxInvestAmount", message="最大投资金额", type = DataType.NUMBER)
+	@ActionParam(key = "subscribeFee", message="认购费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "purchaseFee", message="申购费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "redemingFee", message="赎回费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "managementFee", message="管理费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "custodyFee", message="托管费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "networkFee", message="销售费率", type = DataType.NUMBER, required = true)
+	@ActionParam(key = "investScope", message="投资范围", type = DataType.STRING, required = true, maxLength = 5000)
+	@ActionParam(key = "revenueFeature", message="收益说明", type = DataType.STRING, required = true,maxLength = 5000)
+	@ActionParam(key = "remark", message="更多描述", type = DataType.STRING, maxLength = 5000)
+	@ActionParam(key = "document", message="产品说明书", type = DataType.STRING)
 	@ResponseBody
 	public Result operateEdit(String uuid, String name, String series, String scode, String shortname, String type, String target, BigDecimal targetAnnualizedReturnRate, 
-			BigDecimal minInvestAmount, BigDecimal minInvestAmountAdd, BigDecimal maxInvestAmount, BigDecimal totalAmount,String paymentType, String style, String url, 
-			String creditLevel, String flagCloseend, String currencyType, Integer term, String custodian, String riskLevel, String flagPurchase, 
-			String flagRedemption, String flagFlexible, BigDecimal minAnnualizedReturnRate, String recordDate, String guaranteeStatus, String area, BigDecimal subscribeFee, 
-			BigDecimal purchaseFee, BigDecimal redemingFee, BigDecimal managementFee, BigDecimal custodyFee, BigDecimal networkFee, String collectStarttime, String collectEndtime, 
-			String valueDate, String maturityDate, String investScope, String revenueFeature, String remark, String document) throws ParserException {
+			BigDecimal minInvestAmount, BigDecimal minInvestAmountAdd, BigDecimal maxInvestAmount, BigDecimal totalAmount,String paymentType, String url, 
+			String currencyType, Integer term, String custodian, String riskLevel, String flagPurchase, String flagRedemption, String flagFlexible, 
+			BigDecimal minAnnualizedReturnRate, String recordDate, String area, BigDecimal subscribeFee, BigDecimal purchaseFee, BigDecimal redemingFee, 
+			BigDecimal managementFee, BigDecimal custodyFee, BigDecimal networkFee, String collectStarttime, String collectEndtime, String valueDate,
+			String maturityDate, String investScope, String revenueFeature, String remark, String document) throws ParserException {
 		
 		BankFinancialProductOperate bfpo = bankFinancialProductOperateService.get(uuid);
 		if (bfpo != null) {
@@ -1527,12 +1640,8 @@ public class BankFinancialProductController extends BaseController {
 			}else{
 				return ResultManager.createFailResult("资金托管方选择错误！");
 			}
-			bfp.setStyle(style);
 			bfp.setRiskLevel(riskLevel);
-			bfp.setCreditLevel(creditLevel);
 			bfp.setCurrencyType(currencyType);
-			bfp.setGuaranteeStatus(guaranteeStatus);
-			bfp.setFlagCloseend(Boolean.valueOf(flagCloseend));
 			bfp.setFlagPurchase(Boolean.valueOf(flagPurchase));
 			bfp.setFlagRedemption(Boolean.valueOf(flagRedemption));
 			bfp.setFlagFlexible(Boolean.valueOf(flagFlexible));
@@ -1563,7 +1672,7 @@ public class BankFinancialProductController extends BaseController {
 			bfp.setRemark(HtmlHelper.parseHtmlMark(HtmlHelper.parseString2Html(remark)));
 			Resource resource = resourceService.get(document);
 			if(resource != null){
-				resource.setFilename(bfp.getName()+"("+bfp.getScode()+")");
+				resource.setFilename("【"+bank.getName()+"】"+bfp.getName()+"("+bfp.getScode()+")");
 				resource = resourceService.updateName(resource);
 				if(resource == null){
 					return ResultManager.createFailResult("产品说明书替换失败！");
@@ -1572,7 +1681,6 @@ public class BankFinancialProductController extends BaseController {
 			}
 			//修改待审核记录
 			bfpo.setValue(JSONUtils.obj2json(bfp));
-//			bfpo.setStatus(BankFinancialProductOperateStatus.UNCHECKED);
 			bfpo.setCreatetime(new Timestamp(System.currentTimeMillis()));
 			bankFinancialProductOperateService.update(bfpo);
 			return ResultManager.createDataResult("修改待审核记录成功！");
@@ -1587,7 +1695,7 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/operateDelete", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true)
 	@ResponseBody
 	public Result operateDelete(String uuid) {
 		//获取银行理财产品操作信息
@@ -1610,7 +1718,7 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/operateSubmitCheck", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true)
 	@ResponseBody
 	public Result operateSubmitCheck(String uuid) {
 		//获取银行理财产品操作信息
@@ -1619,6 +1727,19 @@ public class BankFinancialProductController extends BaseController {
 			if(BankFinancialProductOperateStatus.CHECKED.equals(bfpo.getStatus())){
 				return ResultManager.createFailResult("该记录已审核完毕");
 			}
+			
+			if(BankFinancialProductOperateType.EDIT.equals(bfpo.getType()) || BankFinancialProductOperateType.NETVALUE.equals(bfpo.getType())){
+				Map<String, String> searchMap = new HashMap<String, String>();
+				searchMap.put("bankFinancialProduct", bfpo.getBankFinancialProduct());
+				searchMap.put("type", bfpo.getType());
+				searchMap.put("status", BankFinancialProductOperateStatus.UNCHECKED);
+				
+				Integer count = this.bankFinancialProductOperateService.getCount(searchMap);
+				if(count > 0 ){
+					return ResultManager.createFailResult("该条数据有其他修改操作正在等待审核！");
+				}
+			}
+			
 			bfpo.setSubmittime(new Timestamp(System.currentTimeMillis()));
 			bfpo.setStatus(BankFinancialProductOperateStatus.UNCHECKED);
 			bankFinancialProductOperateService.update(bfpo);
@@ -1637,9 +1758,9 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/operateCheck", method = RequestMethod.GET)
-	@ActionParam(key = "uuid", type = DataType.STRING, required = true)
-	@ActionParam(key = "status", type = DataType.STRING, required = true, maxLength = 20)
-	@ActionParam(key = "reason", type = DataType.STRING, maxLength = 500)
+	@ActionParam(key = "uuid", message="uuid", type = DataType.STRING, required = true)
+	@ActionParam(key = "status", message="审核状态", type = DataType.STRING, required = true, maxLength = 20)
+	@ActionParam(key = "reason", message="审核原因", type = DataType.STRING, maxLength = 500)
 	@ResponseBody
 	public Result operateCheck(String uuid, String status, String reason) {
 		if(!BankFinancialProductOperateStatus.CHECKED.equals(status) && !BankFinancialProductOperateStatus.UNPASSED.equals(status)){
@@ -1650,23 +1771,32 @@ public class BankFinancialProductController extends BaseController {
 		BankFinancialProductOperate bfpo = bankFinancialProductOperateService.get(uuid);
 		if(bfpo != null){
 			if(!BankFinancialProductOperateStatus.UNCHECKED.equals(bfpo.getStatus())){
-				return ResultManager.createFailResult("该记录已审核完毕");
+				return ResultManager.createFailResult("该记录审核状态错误");
 			}
 			//取管理员信息
 			Subject subject = SecurityUtils.getSubject();
 			Session session = subject.getSession();
 			BkOperator currentOperator = (BkOperator) session.getAttribute("currentOperator");
 			
+			if(bfpo.getCreator().equals(currentOperator.getUuid())){
+				return ResultManager.createFailResult("无法审核自己提交的操作记录");
+			}
+			
 			bfpo.setChecker(currentOperator.getUuid());
 			bfpo.setChecktime(new Timestamp(System.currentTimeMillis()));
 			bfpo.setStatus(status);
 			bfpo.setReason(reason);
-			HashMap<String, Object> resultMap = bankFinancialProductOperateService.check(bfpo);
-			if((Boolean)resultMap.get("result")){
-				return ResultManager.createSuccessResult("审核记录成功！");
-			}else{
-				return ResultManager.createFailResult(resultMap.get("message") == null ? "" : resultMap.get("result").toString());
+			try {
+				bankFinancialProductOperateService.check(bfpo);
+			} catch (TransactionException e) {
+				super.flushAll();
+				return ResultManager.createFailResult(e.getMessage());
+			} catch (Exception e) {
+				e.printStackTrace();
+				super.flushAll();
+				return ResultManager.createFailResult("数据操作出错！");
 			}
+			return ResultManager.createSuccessResult("审核记录成功！");
 		}
 		else{
 			return ResultManager.createFailResult("该条数据不存在！");
@@ -1712,7 +1842,7 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/operateTypeList", method = RequestMethod.GET)
-	@ActionParam(key = "status", type = DataType.STRING, required = true, maxLength = 20)
+	@ActionParam(key = "status", message="审核状态", type = DataType.STRING, required = true, maxLength = 20)
 	@ResponseBody
 	public Result operateTypeList(String status) {
 		//查询条件
@@ -1736,7 +1866,7 @@ public class BankFinancialProductController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/operateCheckTypeList", method = RequestMethod.GET)
-	@ActionParam(key = "status", type = DataType.STRING, required = true, maxLength = 20)
+	@ActionParam(key = "status", message="审核状态", type = DataType.STRING, required = true, maxLength = 20)
 	@ResponseBody
 	public Result operateCheckTypeList(String status) {
 		//查询条件

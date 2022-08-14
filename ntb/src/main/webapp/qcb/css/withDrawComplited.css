@@ -1,0 +1,89 @@
+.main-right-body{
+	padding-top:20px;
+	padding-left:0;
+	padding-right:0;
+	padding-bottom:60px;
+}
+.main-right-body-header{
+	padding-bottom:16px;
+	border-bottom:1px solid #E8E4E4;
+	padding-left:40px;
+	position: relative;
+}
+.main-right-body-header .with-draw-list{
+	color:#FF9E10;
+	display: inline-block;
+	font-size:14px;
+	line-height:14px;
+	padding:10px 0px 10px 30px;
+	position: absolute;
+	right:40px;
+	top:0px;
+	background-image: url(../img/withdraw.png);
+	background-repeat: no-repeat;
+	background-position-x: 6px;
+	background-position-y: center;
+	cursor: pointer;
+}
+.main-right-body-title{
+	/*height:150px;*/
+	padding-top:40px;
+	text-align: center;
+}
+
+.main-right-body-title h2{
+	font-size:20px;
+	color:#FF9E10;
+	margin-bottom:2px;
+}
+.main-right-body-title p{
+	font-size:12px;
+	color:#9d9d9d;
+}
+
+table{
+	margin:0 auto;
+	width:730px;
+	table-layout: fixed;
+	border-collapse: collapse;
+	border:1px solid #d4d2cf;
+	margin-top:40px;
+}
+table tr td{
+	border:1px solid #d4d2cf;
+	padding-left:34px;
+	font-size:14px;
+}
+table tr{
+	height:64px;
+}
+table .table-title{
+	width:94px;
+	text-align: center;
+	color:#696969;
+	background-color:#f8f8f8;
+	padding-left:0;
+}
+table tr td h4{
+	font-size:15px;
+	margin-bottom:8px;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+table tr td h5{
+	font-size:14px;
+	display: inline-block;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+table tr td p{
+	font-size:14px;
+	margin-bottom:4px;
+	margin-top:10px;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+table tr td .color-orange{
+	font-size:16px;
+}
+.main-right-body{display:none;}

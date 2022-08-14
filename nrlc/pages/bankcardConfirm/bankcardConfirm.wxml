@@ -1,0 +1,34 @@
+<!--pages/bankcardConfirm/bankcardConfirm.wxml-->
+<view class="container">
+  <view class="top-view">
+    <image src="/resources/common/warn.png"></image>
+    <text>绑定银行卡需要短信确认</text>
+  </view>
+  <form bindsubmit="formSubmit">
+    <view class="main-view">
+      <view class="tr" bindtap="toBankChoose">
+        <label>选择银行</label>
+        <view class="bank">
+          <block wx:if="{{bankIcon != ''}}">
+            <image class="icon" src="{{resourceBase}}{{bankIcon}}"></image>
+          </block>
+          {{bankName}}
+        </view>
+        <image class="arrow" src="/resources/common/arrow.png"></image>
+      </view>
+      <view class="tr">
+        <label>手机号</label>
+        <input type="number" placeholder="请输入银行预留手机号" maxlength="11" placeholder-style="color: rgba(0,0,0,0.2);font-size:24rpx;" bindinput="editPhone"/>
+      </view>
+      <view class="tr">
+        <label>验证码</label>
+        <input type="number" placeholder="请输入验证码" maxlength="8" placeholder-style="color: rgba(0,0,0,0.2);font-size:24rpx;" bindinput="editCode" />
+        <text class="{{timer <= 0 ? '' : 'disabled'}}" bindtap="{{timer <= 0 ? 'getCode' : ''}}">{{timer <= 0 ? '获取验证码' : timer + 's后重新获取'}}</text>
+      </view>
+      <view class="submit-tr">
+        <button disabled='{{!submitAble || !buttonAble}}' class="{{submitAble? '' : 'disabled'}}" formType="submit">确定</button>
+      </view>
+    </view>
+  </form>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

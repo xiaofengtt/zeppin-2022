@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>产品详情</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/productDetail.css?version=1.5" />
+	</head>
+	<script id="queboxTpl" type="text/template">
+		<div class="main-top">
+				<div class="main-top-top">
+					<div class="main-top-top-logo">
+						<img src="..{{:iconColorUrl}}" alt="" />
+					</div>
+					<div class="main-top-top-name">
+						<p> {{:shortname}}</p>
+						<span>【{{:custodianCN}}】{{:scode}}</span>
+					</div>
+				</div>
+				
+				<div class="main-top-mid clearfix">
+					<div>
+						<p class="rate">{{:minAnnualizedReturnRate}}<i>%</i></p>
+						<span>预期年化收益率</span>
+					</div>
+					<div>
+						<p>{{:term}}<i>天</i></p>
+						<span>产品期限</span>
+					</div>
+				</div>
+				
+				<div class="main-top-bottom">
+					<h5>还剩<span id="totalRaise"></span>元</h5>
+					<div class="progress">
+						<div class="progress-bar">
+							
+						</div>
+					</div>
+					<div class="clearfix">
+						<div>
+							<img src="./img/icon_guaranteeStatus.png" alt="" />
+							<span>{{:riskLevelCN}}</span>
+						</div>
+						<div>
+							<img src="./img/icon_riskLevel.png" alt="" />
+							<span>{{:guaranteeStatusCN}}</span>
+						</div>
+						<div>
+							<span>{{:minInvestAmount}}元起购</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--main-top-->
+			
+			<div class="main-mid">
+				<h3 class="title">理财周期</h3>
+				
+				<div class="main-mid-content clearfix">
+					<!--申购起始-->
+					{{if stage != "unstart"}}
+						<div>
+							<h5>申购起始</h5>
+							<div class="border border-o"></div>
+							<div class="circle circle-o"></div>
+							<p>{{:collectStarttimeWeb}}</p>
+						</div>
+					{{else}}
+						<div>
+							<h5>申购起始</h5>
+							<div class="border border-g"></div>
+							<div class="circle circle-g"></div>
+							<p>{{:collectStarttimeWeb}}</p>
+						</div>
+					{{/if}}
+					
+					<!--申购结束-->
+					{{if stage != "unstart" && stage != "collect"}}
+						<div>
+							<h5>申购结束</h5>
+							<div class="border border-o"></div>
+							<div class="circle circle-o"></div>
+							<p>{{:collectEndtimeWeb}}</p>
+						</div>
+					{{else}}
+						<div>
+							<h5>申购结束</h5>
+							<div class="border border-g"></div>
+							<div class="circle circle-g"></div>
+							<p>{{:collectEndtimeWeb}}</p>
+						</div>
+					{{/if}}
+					
+					<!--产品起息-->
+					{{if stage == "profit" || stage == "balance" || stage == "finished"}}
+						<div>
+							<h5>产品起息</h5>
+							<div class="border border-o"></div>
+							<div class="circle circle-o"></div>
+							<p>{{:valueDateWeb}}</p>
+						</div>
+					{{else}}
+						<div>
+							<h5>产品起息</h5>
+							<div class="border border-g"></div>
+							<div class="circle circle-g"></div>
+							<p>{{:valueDateWeb}}</p>
+						</div>
+					{{/if}}
+					
+					<!--产品到期-->
+					{{if stage == "balance" || stage == "finished"}}
+						<div>
+							<h5>产品到期</h5>
+							<div class="border border-o"></div>
+							<div class="circle circle-o"></div>
+							<p>{{:maturityDateWeb}}</p>
+						</div>
+					{{else}}
+						<div>
+							<h5>产品到期</h5>
+							<div class="border border-g"></div>
+							<div class="circle circle-g"></div>
+							<p>{{:maturityDateWeb}}</p>
+						</div>
+					{{/if}}
+					
+					
+					
+				</div>
+			</div><!--main-mid-->
+			
+			<div class="main-bottom">
+				<h3 class="title">
+					基本信息
+					<p>
+						<i>
+							<img src="./img/icon_rmb.png" alt="" />
+						</i>	
+						<span>{{:currencyTypeCN}}</span>
+					</p>
+				</h3>
+				<div class='main-bottom-content'>
+					<p>收益类型：{{:typeCN}}</p>
+					<p>风险等级：{{:riskLevelCN}}</p>
+					<p>募集规模：{{:totalAmount}}亿元</p>
+					<p>起购金额：{{:minInvestAmount}}元</p>
+					<p>递增金额：{{:minInvestAmountAdd}}元</p>
+				</div>
+			</div>
+			
+			<a href="./productMsg.html?uuid={{:uuid}}" class="product-msg openId-url">
+				产品说明书
+				<img src="./img/right.png" alt="" />
+			</a>
+			
+			<input type="button" class="bottom-btn" value="购买" />
+	</script>
+	<body>
+
+		
+		<div class="main">
+			
+		</div><!--main-->
+		
+		
+		<div id="modal-box">
+			<div class="modal-box-inner">
+				<h3>温馨提示</h3>
+				<h4></h4>
+				<div class="modal-box-inner-btnbox clearfix">
+					<!--<input type="button"  value="取消" id="modal-box-close"/>-->
+					<input type="button"  value="确认" id="modal-box-close"/>
+				</div>
+			</div>
+		</div>
+		
+		<div id="tip-box">
+			<div class="tip-box-inner">
+				<div class="tip-box-inner-content">
+					<p>你还未绑定银行卡！</p>
+					<img src="./img/auth_failed.png" alt="" />
+					<input type="button" value="马上绑卡" id="goBind"/>
+				</div>
+				<div id="tip-close">
+					
+				</div>
+			</div>
+		</div>
+		<p class="layer">
+			提示信息
+		</p>
+
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/jsrender.min.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/changePrice.js?version=1.5"></script>
+		<script src="./js/productDetail.js?version=1.5"></script>
+	</body>
+</html>

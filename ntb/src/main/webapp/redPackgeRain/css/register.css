@@ -1,0 +1,205 @@
+* {
+	box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    /*-webkit-user-select: none;*/
+    user-select:none;
+    appearance: none;
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+    text-decoration: none;
+}	
+html{
+	width:100%;
+	height:100%;
+}
+body {
+	width: 100%;
+	height: 100%;
+	background: url('../img/H5活动注册页面.png') no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;  
+    position: relative;
+}
+
+.head{
+	position: relative;
+	top:34%;
+	width:300px;
+	left:0;
+	right:0;
+	margin:auto;
+	text-align: center;
+}
+.head h2{
+	font-size:60px;
+	line-height:60px;
+	color:#FFFFFF;
+	position:relative;
+	font-weight: 300;
+}
+.head h2 i{
+	font-size:50px;
+	line-height:60px;
+	font-style: normal;
+	position: relative;
+	bottom:0px;
+}
+.head h2 small{
+	font-size:20px;
+	line-height:20px;
+	position: relative;
+	bottom:6px;
+	font-weight: 500;
+}
+.head p{
+	font-size:16px;
+	line-height:16px;
+	color:#FDDA28;
+	opacity: 1;
+}
+.body{
+	width:84%;
+	position: absolute;
+	left:0;
+	right:0;
+	margin:auto;
+	top:58%;
+	/*bottom:10%;*/
+}
+.body>div{
+	width:100%;
+	height:60px;
+	background:#FFFFFF;
+	border-radius:3px;
+	margin-bottom:16px;
+	position: relative;
+}
+.body > div:last-child{
+	margin-bottom:0;
+	margin-top:24px;
+}
+.body .item input{
+	width:100%;
+	height:40px;
+	position: absolute;
+	top:0;
+	bottom:0;
+	margin:auto;
+	font-size:20px;
+	border:none;
+	padding-left:10px;
+}
+.item:nth-child(2) input{
+	width:65%
+}
+.item #get-code{
+	background: -webkit-linear-gradient(left, #ffd033 , #ff991a); /* Safari 5.1 - 6.0 */
+	display: inline-block;
+	width:35%;
+	height:100%;
+	line-height:60px;
+	position: absolute;
+	right:0;
+	color:#FFFFFF;
+	text-align: center;
+	font-size:18px;
+}
+.item #re-get{
+	background: #CFCFCF; /* Safari 5.1 - 6.0 */
+	display: none;
+	width:35%;
+	height:100%;
+	line-height:60px;
+	position: absolute;
+	right:0;
+	color:#FFFFFF;
+	text-align: center;
+	font-size:14px;
+}
+.item:nth-child(3){
+	background: -webkit-linear-gradient(left, #ffd033 , #ff991a); /* Safari 5.1 - 6.0 */
+}
+#submit{
+	display: inline-block;
+	height:100%;
+	width:100%;
+	text-align: center;
+	line-height:60px;
+	color:#FFFFFF;
+	font-size:22px;
+	background:transparent;
+}
+.bg{
+	position: fixed;
+	width:100%;
+	top:0;
+	background:rgba(0,0,0,0.2);
+	z-index:99999;
+	text-align: center;
+	display:none;
+}
+.bg .modal{
+	position: fixed;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	margin:auto;
+	width:50%;
+	height:90px;
+	display: inline-block;
+	background:#FFFFFF;
+	border-radius:3px;
+}
+.bg .modal p{
+	/*margin-top:10px;*/
+	padding:8% 0;
+	border-bottom:1px solid #4D9CFF;
+}
+.bg .modal a{
+	display: block;
+	padding:6% 0;
+}
+@media only screen and (max-width:320px ) {
+	.head{
+		top:32%;
+	}
+	.head h2{
+		font-size:40px;
+	}
+	.head h2 i{
+		font-size:40px;
+	}
+	.head h2 small{
+		font-size:20px;
+		/*vertical-align: middle;*/
+		line-height: 0px;
+		position: relative;
+		top:-1px;
+		
+	}
+	.head p{
+		z-index:100;
+	}
+	.body>div{
+		margin-bottom:10px;
+		height:50px;
+		line-height:50px;
+	}
+	.body .item input{
+		font-size:16px;
+	}
+	.item #get-code{
+		line-height:50px;
+		font-size:16px;
+	}
+	.item #re-get{
+		font-size:12px;
+	}
+	#submit{
+		line-height:50px;
+		font-size:16px;
+	}
+}

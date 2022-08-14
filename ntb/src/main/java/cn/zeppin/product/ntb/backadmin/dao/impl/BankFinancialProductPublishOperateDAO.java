@@ -87,7 +87,12 @@ public class BankFinancialProductPublishOperateDAO extends BaseDAO<BankFinancial
 		builder.append(" from bank_financial_product_publish_operate bfppo left join bank_financial_product_publish bfpp on bfppo.bank_financial_product_publish = bfpp.uuid where 1=1 ");
 		//名称
 		if (inputParams.get("name") != null && !"".equals(inputParams.get("name"))) {
-			builder.append(" and bfpp.name like '%" + inputParams.get("name") + "%' ");
+			builder.append(" and (bfpp.name like '%" + inputParams.get("name") + "%' ");
+			builder.append(" or bfppo.value like '%\"name\":\"%" + inputParams.get("name") + "%\",\"networkFee\"%') ");
+		}
+		//募集产品
+		if (inputParams.get("bankFinancialProductPublish") != null && !"".equals(inputParams.get("bankFinancialProductPublish"))) {
+			builder.append(" and bfppo.bank_financial_product_publish = '" + inputParams.get("bankFinancialProductPublish") + "' ");
 		}
 		//状态
 		if (inputParams.get("status") != null && !"".equals(inputParams.get("status"))) {
@@ -123,7 +128,7 @@ public class BankFinancialProductPublishOperateDAO extends BaseDAO<BankFinancial
 	}
 
 	/**
-	 * 获取银行理财产品发布操作总数
+	 * 获取募集产品操作总数
 	 * @param inputParams
 	 * @return Integer
 	 */
@@ -133,7 +138,12 @@ public class BankFinancialProductPublishOperateDAO extends BaseDAO<BankFinancial
 		builder.append(" select count(*) from bank_financial_product_publish_operate bfppo left join bank_financial_product_publish bfpp on bfppo.bank_financial_product_publish = bfpp.uuid where 1=1 ");
 		//名称
 		if (inputParams.get("name") != null && !"".equals(inputParams.get("name"))) {
-			builder.append(" and bfpp.name like '%" + inputParams.get("name") + "%' ");
+			builder.append(" and (bfpp.name like '%" + inputParams.get("name") + "%' ");
+			builder.append(" or bfppo.value like '%\"name\":\"%" + inputParams.get("name") + "%\",\"networkFee\"%') ");
+		}
+		//募集产品
+		if (inputParams.get("bankFinancialProductPublish") != null && !"".equals(inputParams.get("bankFinancialProductPublish"))) {
+			builder.append(" and bfppo.bank_financial_product_publish = '" + inputParams.get("bankFinancialProductPublish") + "' ");
 		}
 		//状态
 		if (inputParams.get("status") != null && !"".equals(inputParams.get("status"))) {
@@ -160,7 +170,7 @@ public class BankFinancialProductPublishOperateDAO extends BaseDAO<BankFinancial
 	}
 	
 	/**
-	 * 获取银行理财产品发布操作分状态列表
+	 * 获取募集产品操作分状态列表
 	 * @param resultClass
 	 * @return  List<Entity>
 	 */
@@ -168,7 +178,7 @@ public class BankFinancialProductPublishOperateDAO extends BaseDAO<BankFinancial
 	public List<Entity> getStatusList(Map<String, String> inputParams, Class<? extends Entity> resultClass) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("select bfppo.status, count(*) as count from bank_financial_product_publish_operate bfppo where 1=1");
-		builder.append(" and bfppo.status in ('draft','unchecked','checked','unpassed') ");//全部-去掉已删除的
+//		builder.append(" and bfppo.status in ('draft','unchecked','checked','unpassed') ");//全部-去掉已删除的
 		if (inputParams.get("status") != null && "all".equals(inputParams.get("status"))) {
 			builder.append(" and bfppo.status in ('unchecked','checked','unpassed') ");//全部-去掉已删除的(审核-去掉草稿)
 		} else {
@@ -183,7 +193,7 @@ public class BankFinancialProductPublishOperateDAO extends BaseDAO<BankFinancial
 	}
 	
 	/**
-	 * 获取银行理财产品发布操作分类型列表
+	 * 获取募集产品操作分类型列表
 	 * @param inputParams
 	 * @param resultClass
 	 * @return  List<Entity>

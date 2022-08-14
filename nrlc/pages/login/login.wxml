@@ -1,0 +1,39 @@
+<!--login.wxml-->
+<view class="container">
+  <view class="top-view">
+    <view class="logo">
+      <image src="/resources/login/header_logo.png"/>
+      <text>欢迎登录</text>
+    </view>
+  </view>
+  <form bindsubmit="formSubmit">
+    <view class="main-view">
+      <view class="tr">
+        <view class="data-row">
+          <image src="/resources/login/phone.png"></image>
+          <input type="number" placeholder="请输入手机号" maxlength="11" placeholder-style="font-size:28rpx;color: rgba(0,0,0,0.2)" bindinput="editPhone"/>
+        </view>
+      </view>
+      <view class="tr">
+        <view class="data-row">
+          <image src="/resources/login/password.png"></image>
+          <input type="text" password placeholder="请输入密码" maxlength="20" placeholder-style="font-size:28rpx;color: rgba(0,0,0,0.2)" bindinput="editPassword"/>
+        </view>
+      </view>
+      <view class="tr">
+        <view class="forget-row">
+          <text bindtap="{{buttonAble ? 'toResetCode' : ''}}">忘记密码?</text>
+        </view>
+      </view>
+      <view class="tr">
+        <view class="submit-row">
+          <button disabled="{{!buttonAble}}" formType="submit">登录</button>
+        </view>
+      </view>
+    </view>
+  </form>
+  <view class="foot-view">
+    没有账户? <text bindtap="{{buttonAble ? 'toRegister' : ''}}">立即注册</text>
+  </view>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

@@ -1,0 +1,86 @@
+:global{
+  .collect-category{
+    width: 150px;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 88px;
+    background:rgba(248,246,242,1);
+    text-align: center;
+    color: #34332E;
+    font-size: 32px;
+    z-index: 98;
+    li{
+      height: 96px;
+      line-height: 96px;
+      border-left: 8px solid #F8F6F2;
+    }
+    li.active{
+      border-left-color: #FFBE0A;
+      background: #FFFFFF;
+      color: #FFBE0A;
+    }
+  }
+  .collect-team-list{
+    background: #FFFFFF;
+    width: 100%;
+    padding-left: 150px;
+    min-height: 100%;
+    li{
+      width: 178px;
+      height: 178px;
+      margin-left: 14px;
+      margin-top: 24px;
+      border-radius:20px;
+      border:2px solid rgba(246,246,246,1);
+      display: inline-block;
+      text-align: center;
+      overflow: hidden;
+      padding: 0 10px;
+      b{
+        width: 70px;
+        height: 70px;
+        text-align: center;
+        line-height: 70px;
+        display: block;
+        margin: 30px auto 16px auto;
+      }
+      img{
+        max-width: 70px;
+        max-height: 70px;
+      }
+      p{
+        color: #34332E;
+        font-size: 24px;
+        line-height: 32px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+    li.active{
+      background:rgba(255,190,10,0.2);
+      border:2px solid rgba(255,190,10,1);
+    }
+  }
+  .collect-nodata{
+    text-align: center;
+    padding-bottom: 140px;
+    padding-left: 150px;
+    padding-top: 150px;
+    background: #ffffff;
+    min-height: 100%;
+    img{
+        width: 240px;
+        padding: 40px 0;
+    }
+    p{
+        color: #6D6C68;
+        font-size: 24px;
+    }
+}
+.display_flex{
+  display: flex;
+}
+}

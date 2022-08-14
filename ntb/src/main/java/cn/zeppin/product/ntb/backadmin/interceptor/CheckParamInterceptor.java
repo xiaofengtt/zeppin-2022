@@ -15,6 +15,7 @@ import com.alibaba.fastjson.JSON;
 import cn.zeppin.product.ntb.core.controller.base.ActionParam;
 import cn.zeppin.product.ntb.core.controller.base.ActionParams;
 import cn.zeppin.product.ntb.core.controller.base.ErrorResult;
+import cn.zeppin.product.ntb.core.controller.base.ActionParam.DataType;
 import cn.zeppin.product.utility.DataTypeCheck;
 import cn.zeppin.product.utility.Utlity;
 import cn.zeppin.product.utility.WebUtil;
@@ -63,7 +64,7 @@ public class CheckParamInterceptor extends HandlerInterceptorAdapter {
 		if (!request.getParameterMap().containsKey(param.key())) {
 			if (param.required()) {
 				result.setErrorCode("090");
-				result.setMessage("缺少参数：" + param.key() + "!");
+				result.setMessage("缺少参数：" + param.message() + "!");
 				return false;
 			}
 			//【重要】如果实际请求没有传此参数，而此参数又不是required，则返回true通过验证。
@@ -75,40 +76,40 @@ public class CheckParamInterceptor extends HandlerInterceptorAdapter {
 		else {
 			if (param.required() && Utlity.checkStringNull(paramValue)) {
 				result.setErrorCode("091");
-				result.setMessage("参数值：" + param.key() + "不能为空！");
+				result.setMessage("参数值：" + param.message() + "不能为空！");
 				return false;
 			}
 			//最小长度验证
 			if (paramValue.length() < param.minLength()){
 				result.setErrorCode("099");
-				result.setMessage("参数长度：" + param.key() + "小于长度下限值（" + param.minLength() + "）!");
+				result.setMessage("参数长度：" + param.message() + "小于长度下限值（" + param.minLength() + "）!");
 				return false;
 			}
 			//最大长度验证
 			if  (paramValue.length() > param.maxLength()){
 				result.setErrorCode("100");
-				result.setMessage("参数长度：" + param.key() + "大于长度上限值（" + param.maxLength() + "）!");
+				result.setMessage("参数长度：" + param.message() + "大于长度上限值（" + param.maxLength() + "）!");
 				return false;
 			}
 			//参数值类型验证（正则表达式）
 			if (!DataTypeCheck.checkDataType(paramValue, param.type())) {
 				result.setErrorCode("101");
-				result.setMessage("参数类型" + param.key() + "校验错误，需要" + param.type() + "类型的值！");
+				result.setMessage("参数类型" + param.message() + "校验错误，需要" + param.type() + "类型的值！");
 				return false;
 			}
 			//数值型的参数取值范围验证
-			if (Utlity.isNumeric(paramValue)) {
+			if (Utlity.isNumeric(paramValue) && !DataType.STRING.equals(param.type())) {
 				if ((new BigDecimal(paramValue)).compareTo(BigDecimal.valueOf(param.maxValue())) > 0) {
 					//参数值超过上限
 					result.setErrorCode("102");
-					result.setMessage("参数值：" + param.key() + "大于设定的上限值（" + param.maxValue() + "）!");
+					result.setMessage("参数值：" + param.message() + "数值过大!");
 					return false;
 				}
 				
 				if ((new BigDecimal(paramValue)).compareTo(BigDecimal.valueOf(param.minValue())) < 0) {
 					//参数值超过上限
 					result.setErrorCode("103");
-					result.setMessage("参数值：" + param.key() + "小于设定的下限值（" + param.minValue() + "）!");
+					result.setMessage("参数值：" + param.message() + "数值过小!");
 					return false;
 				}
 			}

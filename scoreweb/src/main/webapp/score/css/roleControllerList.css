@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+.contain-body-last {
+	width: 32%;
+	float: right;
+	background: rgba(63, 63, 63, 1);
+	border-radius: 4px;
+	margin-right:0%;
+}
+.contain-body .contain-body-right span{
+	opacity: 0.9;
+    font-size: 16px;
+    color: #fff;
+    margin-left: 10px;
+}
+#contain-all{
+	margin-top:20px;
+}

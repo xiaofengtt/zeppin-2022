@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>算社保</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/socialSecurityCalculator.css" />
+	</head>
+	<body onload="loading()" style="display:none;background:#F8F9FA;">
+		<input type="hidden" value="" id="hkxz" />
+		<div class="wrap" style="padding-top:0;">
+			<section class="main-content">
+			<div class="content" style="padding-bottom:1.16rem;">
+				<h1 class="item-title">参保人信息</h1>
+				<div class="infoDiv">
+					<div class="info-item">
+						<span>缴费城市</span>
+						<input type="text" class="jfcs" disabled="disabled" placeholder="请选择" value="北京"/>
+						<div class="clear"></div>
+					</div>
+					<div class="info-item info-hkszd" data="hkszd" id="picker1">
+						<span>户口所在地</span>
+						<input type="text" class="hkszd" disabled="disabled" placeholder="请选择" value=""/>
+						<img src="img/icon_more.png" alt="选择" class="chooseImg" />
+						<div class="clear"></div>
+					</div>
+					<div class="info-item info-hkxz" data="hkxz" id="picker2">
+						<span>户口性质</span>
+						<input type="text" class="hkxz" disabled="disabled" placeholder="请选择" value=""/>
+						<img src="img/icon_more.png" alt="选择" class="chooseImg" />	
+						<div class="clear"></div>
+					</div>
+					<div class="info-item">
+						<span>社保基数(元)</span>
+						<input type="number" class="sbjs form-money" id="js_yc2" placeholder="3387~25401" value="" onkeyup="value=value.replace(/[^\d\.]/g,'')" onblur="value=value.replace(/[^\d\.]/g,'')" />
+						<a class="jsButton zdjs" onclick="sbjs(this);">最低基数</a>
+						<div class="clear"></div>
+					</div>
+					<div class="info-item info-gjj" data="gjj">
+						<span>公积金</span>				
+						<label class="radioLabel" data="缴纳" data-value="1">缴纳</label>				
+						<label class="light radioLabel" data="不缴纳" data-value="2" style="margin-right:0;">不缴纳</label>
+						<div class="clear"></div>
+					</div>
+					<div class="info-item info-gjjjs noBorder" style="display:none;">
+						<span>公积金基数(元)</span>
+						<input type="number" class="gjjjs form-money" id="js_yc" placeholder="2273~25401" value="" onkeyup="value=value.replace(/[^\d\.]/g,'')" onblur="value=value.replace(/[^\d\.]/g,'')" />
+						<a class="jsButton zdjs" onclick="sbjn(this);;">最低基数</a>
+						<div class="clear"></div>
+					</div>
+					
+				</div>
+				<div class="resultDiv">
+					<h1 class="item-title">计算结果</h1>
+					<div class="totalResult">
+						<div class="sbfy fyBox">
+							<span>社保费用(元)：</span>
+							<label class="sbfyValue valueLable">2273</label>
+						</div>
+						<div class="gjjfy fyBox">
+							<span>公积金费用(元)：</span>
+							<label class="gjjfyValue valueLable">2273</label>
+						</div>
+						<div class="gsfy fyBox">
+							<span>个人所得税(元)：</span>
+							<label class="gsfyValue valueLable">2273</label>
+						</div>
+						<div class="zj fyBox">
+							<span>总计(元)：</span>
+							<label class="zjValue valueLable">2273</label>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tableBox">
+						<table>							
+							
+						</table>
+					</div>
+					
+				</div>
+				
+			</div>
+			<div class="footerBtn" style="bottom:0;">
+				<a class="clearBtn">清除信息</a>
+				<a class="calculationBtn">计算</a>
+				<div class="clear"></div>
+			</div>
+			<!--footer-->
+			
+		</section>
+		
+			<p class="layer">
+				提示信息
+			</p>
+			<div id="loading-box">
+				<img src="./img/icon-loading.gif" alt="" />
+			</div>
+			<div id="confirm-box" class="indexConfirm">
+				<div class="confirm-box-inner">
+					<h3>温馨提示</h3>
+					<h4></h4>
+					<div class="confirm-box-inner-btnbox clearfix">
+						<input type="button"  value="取消" id="confirm-box-close"/>
+						<input type="button"  value="立即提交" id="confirm"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="./js/burialPoint.js"></script>
+		<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+		<script src="./js/base64.js"></script>
+		<script src="./js/md5.js"></script>
+		<script type="text/javascript" src="js/picker.min.js" ></script>		
+		<link rel="stylesheet" href="css/base.css" />
+		<script type="text/javascript" src="js/base.js?v=1.0"></script>
+		<script type="text/javascript" src="js/socialSecurityCalculator.js" ></script>
+		<script type="text/javascript">
+		// 获取视图原始高度
+		windowHeight = $(window).height();  
+		// 为window绑定resize事件
+		window.onresize = function () {
+			  var nowHeight = $(window).height();
+		      if (nowHeight < windowHeight) {
+		        // 将底部弹起的按钮隐藏（可使用给按钮添加相应消失类）
+		    	  	$(".footerBtn").hide();
+					$("footer").hide();
+		      } else {
+		        // 将按钮正常显示（可使用给按钮移除相应消失类）
+		    	  	$(".footerBtn").show();
+					$("footer").show();
+		      }
+		    }
+		/* windowHeight = $(window).height();
+		var resizeFlag = false;
+			$("input.form-money").focus(function(){
+				$(".footerBtn").hide();
+				$("footer").hide();
+			});
+			function loaded(){
+				$(window).resize(function(){
+					if($(window).height() ==windowHeight){
+						$(".footerBtn").show();
+						$("footer").show();
+					}else{
+						$(".footerBtn").hide();
+						$("footer").hide();
+					}
+					resizeFlag=true;
+				});
+			} */
+			
+			/* $("input").blur(function(){
+				if($(window).height() ==windowHeight){
+					$(".footerBtn").show();
+					$("footer").show();
+				}else{
+					$(".footerBtn").hide();
+					$("footer").hide();
+				}
+				
+				
+			});  */
+			/* $(document).scroll(function(){
+				//如果窗体发生变化 当前窗体高度小于手机 弹出键盘 footer隐藏
+				//窗体高度等于手机 收起键盘 footer显示
+				//窗体未发生变化 页面滚动 人为滑动页面 收起键盘 footer显示
+				if(resizeFlag){
+					if($(window).height() < windowHeight){
+						$(".footerBtn").hide();
+						$("footer").hide();
+					}else{
+						$(".footerBtn").show();
+						$("footer").show();
+					}					
+					resizeFlag = false;
+				}else{
+					$("input").blur();
+					$(".footerBtn").show();
+					$("footer").show();
+					
+				}
+				
+			});  */
+		</script>
+	</body>
+</html>

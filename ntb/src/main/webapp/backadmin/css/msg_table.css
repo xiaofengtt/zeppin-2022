@@ -1,0 +1,33 @@
+.msg_table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.msg_table tr {
+    height: 45px;
+    border: 1px solid #eee;
+}
+
+.msg_table .first_tr {
+    background: #F7FBFF;
+}
+
+.msg_table .odd {
+    background: #F7FBFF;
+}
+
+.msg_table tr th {
+    font-size: 14px;
+    text-align: center;
+}
+
+.msg_table tr td {
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    text-align: center;
+}

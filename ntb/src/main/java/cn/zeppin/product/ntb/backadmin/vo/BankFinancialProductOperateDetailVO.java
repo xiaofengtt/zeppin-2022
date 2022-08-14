@@ -29,6 +29,8 @@ public class BankFinancialProductOperateDetailVO implements Entity {
 	private String creatorName;
 	private Timestamp createtime;
 	private String createtimeCN;
+	private Timestamp submittime;
+	private String submittimeCN;
 	private BankFinancialProductDetailsVO oldData;
 	private BankFinancialProductDetailsVO newData;
 	
@@ -64,13 +66,15 @@ public class BankFinancialProductOperateDetailVO implements Entity {
 		}
 		this.checker = bfpo.getChecker();
 		this.checktime = bfpo.getChecktime();
+		this.submittime = bfpo.getSubmittime();
+		if(bfpo.getSubmittime() != null && !"".equals(bfpo.getSubmittime())){
+			this.submittimeCN = Utlity.timeSpanToString(bfpo.getSubmittime());
+		}else{
+			this.submittimeCN = "";
+		}
 		this.creator = bfpo.getCreator();
 		this.createtime = bfpo.getCreatetime();
-		if(bfpo.getCreatetime() != null && !"".equals(bfpo.getCreatetime())){
-			this.createtimeCN = Utlity.timeSpanToString(bfpo.getCreatetime());
-		}else{
-			this.createtimeCN = "";
-		}
+		this.createtimeCN = Utlity.timeSpanToString(bfpo.getCreatetime());
 	}
 
 	public String getUuid() {
@@ -200,4 +204,21 @@ public class BankFinancialProductOperateDetailVO implements Entity {
 	public void setNewData(BankFinancialProductDetailsVO newData) {
 		this.newData = newData;
 	}
+
+	public Timestamp getSubmittime() {
+		return submittime;
+	}
+
+	public void setSubmittime(Timestamp submittime) {
+		this.submittime = submittime;
+	}
+
+	public String getSubmittimeCN() {
+		return submittimeCN;
+	}
+
+	public void setSubmittimeCN(String submittimeCN) {
+		this.submittimeCN = submittimeCN;
+	}
+	
 }

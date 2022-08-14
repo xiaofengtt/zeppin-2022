@@ -28,6 +28,19 @@ public class ResultManager {
 	}
 	
 	/**
+	 * 创建接口请求警告返回对象
+	 * @param data
+	 * @param error
+	 * @return
+	 */
+	public static <T> WarningResult<T> createWarningResult(T data, T error) {
+		WarningResult<T> result = new WarningResult<T>();
+		result.setData(data);
+		result.setError(error);
+		return result;
+	}
+	
+	/**
 	 * 创建接口数据返回对象,包括数据、消息、分页信息
 	 * @param data
 	 * @param message
@@ -64,7 +77,7 @@ public class ResultManager {
 		result.setData(data);
 		result.setPageNum(pageNum);
 		result.setPageSize(pageSize);
-		result.setTotalPageCount((int) Math.ceil(totalResultCount / pageSize));
+		result.setTotalPageCount((int) Math.ceil((double)totalResultCount / pageSize));
 		result.setTotalResultCount(totalResultCount);
 		return result;
 	}
@@ -130,6 +143,5 @@ public class ResultManager {
 		result.setMessage(message);
 		return result;
 	}
-
 
 }

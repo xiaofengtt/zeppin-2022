@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>银行理财</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/bankFinancing.css?version=1.5" />
+		<script id="queboxTpl" type="text/template">
+			<a href="./productDetail.html?uuid={{:uuid}}" class="main-mid-item clearfix openId-url">
+				<div class="main-mid-item-left">
+					<h3 class="rate">{{:targetAnnualizedReturnRate}}%</h3>
+					<span>预期年化收益率</span>
+				</div>
+				<div class="main-mid-item-right">
+					<p>{{:name}}</p>
+					<div class="clearfix">
+						<span>{{:minInvestAmount}}元起购</span>
+						<span>{{:term}}天</span>
+						<span>{{:collectEndtime}}截止</span>
+					</div>
+				</div>
+			</a>
+		</script>
+	</head>
+	<body>
+		<div class="nav">
+			<a href="javascript:void(0)">
+				<img src="./img/nav1-b.png" alt="" />
+				<p class="current">银行理财</p>
+			</a>
+			<a href="./myPosition.html" class="openId-url">
+				<img src="./img/nav2-g.png" alt="" />
+				<p>我的持仓</p>
+			</a>
+		</div>
+		
+		<div class="main">
+			<div class="main-top">
+				<div class="jd_banner">
+				<ul class="banner_images clearfix">
+					<li><a href="#"><img src="./img/product_head_bg.png" alt=""></a></li>
+					<li><a href="#"><img src="./img/product_head_bg.png" alt=""></a></li>
+					<li><a href="#"><img src="./img/product_head_bg.png" alt=""></a></li>
+					<li><a href="#"><img src="./img/product_head_bg.png" alt=""></a></li>
+					<li><a href="#"><img src="./img/product_head_bg.png" alt=""></a></li>
+				</ul>
+				<ul class="banner_index clearfix">
+					<li class='current'></li>
+					<li></li>
+					<li></li>
+				</ul>
+		</div>
+			</div>
+			<!--main-top-->
+			
+			<div class="main-mid">
+				<h4 class="title">
+					活期理财 <span>灵活取用</span>
+				</h4>
+				<a href="./freeFinancing.html" class="main-mid-top clearfix openId-url">
+					<div>
+						<h3 class="rate">9.8%</h3>
+						<span>预期年化收益率</span>
+					</div>
+					<div>
+						<p>随存随取</p>
+						<span>1元起</span>
+					</div>
+				</a>
+				
+				<h4 class="title">
+					定期理财 <span>稳健回报</span>
+				</h4>
+				
+				<div id="queboxCnt">
+					
+				</div> 
+				
+			</div><!--main-mid-->
+			
+		
+			
+		</div><!--main-->
+		
+		
+		<div id="modal-box">
+			<div class="modal-box-inner">
+				<h3>温馨提示</h3>
+				<h4></h4>
+				<div class="modal-box-inner-btnbox clearfix">
+					<!--<input type="button"  value="取消" id="modal-box-close"/>-->
+					<input type="button"  value="确认" id="modal-box-close"/>
+				</div>
+			</div>
+		</div>
+		
+		<div id="tip-box">
+			<div class="tip-box-inner">
+				<div class="tip-box-inner-content">
+					<p>你还未绑定银行卡！</p>
+					<img src="./img/auth_failed.png" alt="" />
+					<input type="button" value="马上绑卡" id="goBind"/>
+				</div>
+				<div id="tip-close">
+					
+				</div>
+			</div>
+		</div>
+		<p class="layer">
+			提示信息
+		</p>
+
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jsrender.min.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/bankFinancing.js?version=1.5"></script>
+	</body>
+</html>

@@ -1,0 +1,207 @@
+#banner{height: 462px;background: url(../img/sbx-banner2.jpg) center no-repeat;}
+#banner .banner-inner{max-width: 1200px;padding-top: 138px;}
+.onlineBtn{display: block;width: 170px;height: 60px;background: url(../img/sbx-banner4.png) center no-repeat;margin: 60px 0 0 0;cursor: pointer;border-radius: 30px;}
+.onlineBtn:hover{box-shadow: 0 0 5px #FFB320;}
+#JSQBox{padding: 55px 0 35px 0;}
+#JSQBox .jsq-inner{max-width: 1200px;background: #FFFFFF;}
+#JSQBox .jsq-inner h2{padding-left: 68px;height: 105px;line-height: 105px;font-weight: normal;background: url(../img/sbx-jsq.png) 30px center no-repeat;}
+.calculationBox{padding: 70px 0;width: 590px;line-height: 50px;font-size: 20px;color: #161616;}
+.calculationBox li{padding-bottom: 40px;}
+.calculationBox span{margin-right: 40px;width: 130px;text-align: right;display: block;float: left;}
+.calculationBox input[type="number"],.calculationBox select{height: 50px;border: 1px solid #aeaeae;border-radius: 5px;padding-left: 18px;font-size: 16px;color: #313131;width: 265px;float: left;margin-right: 10px;}
+.calculationBox input[type="number"].ldo,.calculationBox select {width: 388px;background: #fff;}
+.jsButton{width: 110px;height: 50px;border: 1px solid #aeaeae;border-radius: 5px;display: block;float: left;text-align: center;cursor: pointer;color: #313131;font-size: 16px;}
+.jsButton.light{background: url(../img/sbx-jsButton-light.png) 71px 20px no-repeat;}
+.calculationBox label{width: 170px;display: inline-block;cursor:pointer;background:url(../img/radioBg-gray.png) left center no-repeat;padding-left: 15px;font-weight: normal;}
+.calculationBox label.light{background:url(../img/radioBg.png) left center no-repeat;}
+input[type="radio"]{opacity: 0;}
+#gjj_js{display: none;}
+.btn-group{text-align: center;padding-top: 35px;width: 100%;}
+.btn-group a{width: 180px;height: 65px;background: #ff9801;display: inline-block;color: #ffffff;font-size: 24px;text-align: center;line-height: 65px;border-radius: 32px;cursor: pointer;}
+.btn-group a:hover{background: #FF9D00;color: #ffffff;}
+a.reset{margin-right: 43px;}
+.calculationBox b{font-weight: normal;}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #acacac;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #acacac;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #acacac;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color: #acacac;
+}
+.resultBox{max-width: 1066px;border: 1px solid #d8d8d8;}
+.table-head{height: 76px;background: #f5f5f5;line-height: 76px;}
+.resultBox h1{font-weight: normal;color: #161616;font-size:22px;padding-left: 30px;float: left;}
+.table-head span{float: right;padding-right: 50px;line-height: 80px;}
+.table-body{}
+.table-body li{float: left;width: 100%;border-bottom: 1px solid #dfdfdf;}
+.table-body li.table-body-head p{padding: 22px 30px;}
+.table-body li p{float: left;line-height: 30px;font-size: 18px;color: #161616;padding: 14px 30px;}
+.shortP{width:22%;}
+.longP{width:39%;}
+.table-body li span{display:inline-block;}
+.forthPoints{width: 45%;}
+.sixthPoints{width: 55%;}
+.border-right{border-right: 1px solid #dfdfdf;}
+.tabel-footer{padding: 40px 30px;background: #f5f5f5;line-height: 40px;font-size: 20px;}
+.tabel-footer span{font-size: 22px;color: #ff9801;padding: 0 18px;}
+.result{padding-bottom: 110px;display: none;margin-top: 90px;}
+#gjj_jn{display: none;}
+.tabel-footer-phone{
+	display: none;
+}
+a:hover, a:focus{
+	color: inherit;
+	text-decoration: none;
+}
+
+@media only screen and (max-width: 768px) {
+	#banner{
+		height: 231px;
+		background: url(../img/sbx-banner2.jpg) left center no-repeat;
+		background-size: cover;
+	}
+	#banner .banner-inner{
+		padding-top:3rem;
+		padding-left: 0.9rem;
+	}
+	#banner .banner-inner img{
+		width: 12.5rem;
+	}
+	.onlineBtn{
+		width: 7rem;
+		height: 3rem;
+		margin:1.5rem 0 0 0;
+		border-radius: 0.6rem;
+		background-size:contain ;
+	}
+	.onlineBtn:active,.onlineBtn:focus{
+		outline: 0;
+	}
+	#JSQBox{
+		padding: 0.45rem 0;
+	}
+	#JSQBox .jsq-inner h2{
+		padding-left: 2.2rem;
+		height: auto;
+		line-height: 1.5;
+		font-weight: normal;
+		background: url(../img/sbx-jsq.png) 0.9rem center no-repeat;
+		background-size: auto 60%;
+		font-size: 20px;
+	}
+	.calculationBox{
+		width: 100%;
+		padding:0;
+		font-size: 18px;
+	}
+	.calculationBox li{
+		padding: 0 0.9rem 0.3rem 0.9rem;
+	}
+	.calculationBox span{
+		width: 35%;
+		margin-right: 0;
+		text-align: left;
+	}
+	.calculationBox input[type="number"], .calculationBox select{
+		width: 100%;
+		background: #FFF;
+	}
+	.calculationBox input[type="number"].ldo, .calculationBox select{
+		width: 100%;
+		height: 40px;
+		line-height: 40px;
+	}
+	.calculationBox input[type="number"].js_yc{
+		width: 70%;
+		height: 40px;
+		line-height: 40px;
+	}
+	.jsButton{
+		width: 25%;
+		height: 40px;
+		line-height: 40px;
+	}
+	input::-webkit-input-placeholder{
+		line-height: 40px;
+	}
+	input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	   	line-height: 40px;
+	}
+	input::-moz-placeholder { /* Mozilla Firefox 19+ */
+	   	line-height: 40px;
+	}
+	input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	   	line-height: 40px;
+	}
+	.jsButton.light{
+		background: url(../img/sbx-jsButton-light.png) bottom right no-repeat;
+	}
+	.calculationBox label{
+		width: 30%;		
+	}
+	.btn-group{
+		padding-top: 0.2rem;
+		padding-bottom: 0.9rem;
+		width: 100%;
+	}
+	.btn-group a{
+		width: 7rem;
+		height: 2.4rem;
+		line-height: 2.4rem;
+		font-size: 20px;
+	}
+	.result{
+		margin: 0.2rem 0.9rem 0.9rem 0.9rem;
+		padding-bottom: 0;
+	}
+	.table-head{
+		height: auto;
+		line-height: auto;
+	}
+	.table-body li.table-body-head p{
+		padding: 0.2rem;
+		margin: 0;
+	}
+	.table-body li p{
+		padding: 0.1rem;
+		margin: 0;
+		font-size: 14px;
+	}
+	.resultBox h1{
+		font-size: 18px;
+		padding-left: 0.3rem;
+	}
+	.table-head span{
+		line-height: 60px;
+	}
+	.tabel-footer{
+		padding: 0.9rem 0.6rem;
+		font-size: 16px;
+	}
+	.tabel-footer span{
+		font-size: 16px;
+	}
+	.tabel-footer-phone{
+		display: block;
+		line-height: 1.8;
+	}
+	.tabel-footer-pc{
+		display: none;
+	}
+	.recalculationBox{
+		padding-top: 0.9rem !important;
+		padding-bottom: 0;
+	}
+	#gjj_jn span{
+		width:100%;
+	}
+	
+}

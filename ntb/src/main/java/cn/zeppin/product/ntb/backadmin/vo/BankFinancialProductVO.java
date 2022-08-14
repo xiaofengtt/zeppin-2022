@@ -1,6 +1,7 @@
 package cn.zeppin.product.ntb.backadmin.vo;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 
 import cn.zeppin.product.ntb.core.entity.BankFinancialProduct;
 import cn.zeppin.product.ntb.core.entity.BankFinancialProduct.BankFinancialProductStage;
@@ -33,30 +34,46 @@ public class BankFinancialProductVO implements Entity {
 	private String targetAnnualizedReturnRate;//目标年化收益率
 	private BigDecimal totalAmount;//产品规模
 	private String collectStarttime;//认购起始日
+	private Timestamp collectStarttimestamp;
 	private String collectEndtime;//认购截止日
+	private Timestamp collectEndtimestamp;
 	private Integer term;//产品期限
 	private String recordDate;//登记日
 	private String valueDate;//起息日
+	private Timestamp valueDatestamp;
 	private String maturityDate;//到期日
+	private Timestamp maturityDatestamp;
 	private Boolean flagPurchase;//申购状态
 	private Boolean flagRedemption;//赎回状态
 	private Boolean flagFlexible;//灵活期限
 	private String riskLevel;//风险等级
 	private String netWorth;//当前净值
 	private String netWorthTime;
+	private BigDecimal accountBalance;
+	private BigDecimal investment;
+	private BigDecimal totalRedeem;
+	private BigDecimal totalReturn;
+	private String accountBalanceCN;
+	private String investmentCN;
+	private String totalRedeemCN;
+	private String totalReturnCN;
 	private String creator;//信息录入人
-	private String createtime;//录入时间
+	private String createtime;
+	private Timestamp createtimestamp;//录入时间
 	private Boolean	isPublish;
 	private String guaranteeStatus;//保本保息状态
 	private String guaranteeStatusCN;
 	
 	private String area;//发行地区
 	private BigDecimal minInvestAmount;//最小投资金额
+	private String minInvestAmountCN;//最小投资金额
 	private BigDecimal minInvestAmountAdd;//最小投资递增金额
+	private String minInvestAmountAddCN;//最小投资金额
 	private BigDecimal maxInvestAmount;//最大投资金额
 	
 	private String riskLevelCN;
-	
+	private Boolean isRedeem;
+	private String isRedeemCN;
 	
 	public BankFinancialProductVO() {
 		super();
@@ -107,6 +124,8 @@ public class BankFinancialProductVO implements Entity {
 		if(bfp.getTotalAmount() != null){
 			this.totalAmount = bfp.getTotalAmount().divide(BigDecimal.valueOf(100000000));
 		}
+		this.collectStarttimestamp = bfp.getCollectStarttime();
+		this.collectEndtimestamp = bfp.getCollectEndtime();
 		if(bfp.getCollectStarttime() != null && !"".equals(bfp.getCollectStarttime())){
 			this.collectStarttime = Utlity.timeSpanToDateString(bfp.getCollectStarttime());
 		}else{
@@ -123,6 +142,8 @@ public class BankFinancialProductVO implements Entity {
 		}else{
 			this.recordDate =  "";
 		}
+		this.valueDatestamp = bfp.getValueDate();
+		this.maturityDatestamp = bfp.getMaturityDate();
 		if(bfp.getValueDate() != null && !"".equals(bfp.getValueDate())){
 			this.valueDate =  Utlity.timeSpanToDateString(bfp.getValueDate());
 		}else{
@@ -188,10 +209,45 @@ public class BankFinancialProductVO implements Entity {
 			this.guaranteeStatusCN = "未选择";
 		}
 		this.creator = bfp.getCreator();
+		this.createtimestamp = bfp.getCreatetime();
 		this.createtime =  Utlity.timeSpanToDateString(bfp.getCreatetime());
 		this.minInvestAmount = bfp.getMinInvestAmount();
 		this.minInvestAmountAdd = bfp.getMinInvestAmountAdd();
 		this.maxInvestAmount = bfp.getMaxInvestAmount();
+		this.minInvestAmountCN = Utlity.numFormat4Unit(bfp.getMinInvestAmount());
+		this.minInvestAmountAddCN = Utlity.numFormat4Unit(bfp.getMinInvestAmountAdd());
+		
+		this.accountBalance = bfp.getAccountBalance();
+		this.investment = bfp.getInvestment();
+		this.totalRedeem = bfp.getTotalRedeem();
+		this.totalReturn = bfp.getTotalReturn();
+		if(bfp.getAccountBalance() != null){
+			this.accountBalanceCN = Utlity.numFormat4UnitDetailLess(bfp.getAccountBalance());
+		}else{
+			this.accountBalanceCN = "0.00";
+		}
+		if(bfp.getInvestment() != null){
+			this.investmentCN = Utlity.numFormat4UnitDetailLess(bfp.getInvestment());
+		}else{
+			this.investmentCN = "0.00";
+		}
+		if(bfp.getTotalRedeem() != null){
+			this.totalRedeemCN = Utlity.numFormat4UnitDetailLess(bfp.getTotalRedeem());
+		}else{
+			this.totalRedeemCN = "0.00";
+		}
+		if(bfp.getTotalReturn() != null){
+			this.totalReturnCN = Utlity.numFormat4UnitDetail(bfp.getTotalReturn());
+		}else{
+			this.totalReturnCN = "0.00";
+		}
+		
+		this.isRedeem = bfp.getIsRedeem();
+		if(bfp.getIsRedeem() != null && bfp.getIsRedeem()){
+			this.isRedeemCN = "已赎回";
+		}else{
+			this.isRedeemCN = "未赎回";
+		}
 	}
 
 	public String getUuid() {
@@ -434,6 +490,38 @@ public class BankFinancialProductVO implements Entity {
 		this.netWorthTime = netWorthTime;
 	}
 	
+	public BigDecimal getAccountBalance() {
+		return accountBalance;
+	}
+
+	public void setAccountBalance(BigDecimal accountBalance) {
+		this.accountBalance = accountBalance;
+	}
+
+	public BigDecimal getInvestment() {
+		return investment;
+	}
+
+	public void setInvestment(BigDecimal investment) {
+		this.investment = investment;
+	}
+
+	public BigDecimal getTotalRedeem() {
+		return totalRedeem;
+	}
+
+	public void setTotalRedeem(BigDecimal totalRedeem) {
+		this.totalRedeem = totalRedeem;
+	}
+
+	public BigDecimal getTotalReturn() {
+		return totalReturn;
+	}
+
+	public void setTotalReturn(BigDecimal totalReturn) {
+		this.totalReturn = totalReturn;
+	}
+
 	public String getCreator() {
 		return creator;
 	}
@@ -505,4 +593,109 @@ public class BankFinancialProductVO implements Entity {
 	public void setGuaranteeStatusCN(String guaranteeStatusCN) {
 		this.guaranteeStatusCN = guaranteeStatusCN;
 	}
+
+	public String getMinInvestAmountCN() {
+		return minInvestAmountCN;
+	}
+
+	public void setMinInvestAmountCN(String minInvestAmountCN) {
+		this.minInvestAmountCN = minInvestAmountCN;
+	}
+
+	public String getMinInvestAmountAddCN() {
+		return minInvestAmountAddCN;
+	}
+
+	public void setMinInvestAmountAddCN(String minInvestAmountAddCN) {
+		this.minInvestAmountAddCN = minInvestAmountAddCN;
+	}
+
+	public String getAccountBalanceCN() {
+		return accountBalanceCN;
+	}
+
+	public void setAccountBalanceCN(String accountBalanceCN) {
+		this.accountBalanceCN = accountBalanceCN;
+	}
+
+	public String getInvestmentCN() {
+		return investmentCN;
+	}
+
+	public void setInvestmentCN(String investmentCN) {
+		this.investmentCN = investmentCN;
+	}
+
+	public String getTotalRedeemCN() {
+		return totalRedeemCN;
+	}
+
+	public void setTotalRedeemCN(String totalRedeemCN) {
+		this.totalRedeemCN = totalRedeemCN;
+	}
+
+	public String getTotalReturnCN() {
+		return totalReturnCN;
+	}
+
+	public void setTotalReturnCN(String totalReturnCN) {
+		this.totalReturnCN = totalReturnCN;
+	}
+
+	public Boolean getIsRedeem() {
+		return isRedeem;
+	}
+
+	public void setIsRedeem(Boolean isRedeem) {
+		this.isRedeem = isRedeem;
+	}
+
+	public String getIsRedeemCN() {
+		return isRedeemCN;
+	}
+
+	public void setIsRedeemCN(String isRedeemCN) {
+		this.isRedeemCN = isRedeemCN;
+	}
+
+	public Timestamp getCreatetimestamp() {
+		return createtimestamp;
+	}
+
+	public void setCreatetimestamp(Timestamp createtimestamp) {
+		this.createtimestamp = createtimestamp;
+	}
+
+	public Timestamp getCollectStarttimestamp() {
+		return collectStarttimestamp;
+	}
+
+	public void setCollectStarttimestamp(Timestamp collectStarttimestamp) {
+		this.collectStarttimestamp = collectStarttimestamp;
+	}
+
+	public Timestamp getCollectEndtimestamp() {
+		return collectEndtimestamp;
+	}
+
+	public void setCollectEndtimestamp(Timestamp collectEndtimestamp) {
+		this.collectEndtimestamp = collectEndtimestamp;
+	}
+
+	public Timestamp getValueDatestamp() {
+		return valueDatestamp;
+	}
+
+	public void setValueDatestamp(Timestamp valueDatestamp) {
+		this.valueDatestamp = valueDatestamp;
+	}
+
+	public Timestamp getMaturityDatestamp() {
+		return maturityDatestamp;
+	}
+
+	public void setMaturityDatestamp(Timestamp maturityDatestamp) {
+		this.maturityDatestamp = maturityDatestamp;
+	}
+	
 }

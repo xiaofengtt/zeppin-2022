@@ -1,0 +1,7 @@
+{
+  "navigationBarBackgroundColor": "#008DFB",
+  "navigationBarTitleText": "搜索",
+  "navigationBarTextStyle": "white",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true
+}

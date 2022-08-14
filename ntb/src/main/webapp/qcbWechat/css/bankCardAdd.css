@@ -1,0 +1,132 @@
+.tip{
+	padding: 0.2rem 0.3rem;
+	font-size:0.26rem;
+	line-height:0.28rem;
+	color:rgba(102, 102, 102, 1);
+	
+}
+
+.content{
+	background:#FFFFFF;
+}
+.bottom{
+	background:#FFFFFF;
+}
+.content p,.content a,.bottom p{
+	width:100%;
+	margin:0 auto;
+	display: block;
+	border-bottom:1px solid #EBEBEB;
+	color:#000000;
+	font-size:0.28rem;
+	line-height:0.28rem;
+	padding: 0.3rem;
+	position: relative;
+	opacity: 0.8;
+}
+.bottom p:nth-child(2){
+	border:none;
+}
+.content a{
+	border:none;
+	position: relative;
+}
+.content p span,.bottom p span{
+	display: inline-block;
+	width:1.12rem;
+	vertical-align: middle;
+	color:rgba(44, 44, 44, 1);
+}
+.content a .value{
+	position: absolute;
+	right:0.2rem;
+	top:0.34rem;	
+	vertical-align: middle;
+	margin-left:0.56rem;
+}
+.content a .bank-msg{
+	vertical-align: middle;
+	margin-left:0.56rem;
+	position: absolute;
+	display:none;
+	right:0.3rem;
+	top:0.32rem;
+	font-size:0.28rem;
+	color:rgba(44, 44, 44, 1);
+}
+.content a .bank-msg img{
+	width:0.34rem;
+	height:0.34rem;
+	margin-top:-0.04rem;
+	vertical-align: middle;
+	display:block;
+	float:left;
+	margin-right:0.08rem;
+}
+.bottom p #getCode,.bottom p #numCode{
+	position: absolute;
+	right:0.3rem;
+	/*top:0.34rem;*/	
+	top:0;
+	bottom:0;
+	height:0.28rem;
+	margin:auto;
+	width:auto;
+	font-size: 0.28rem;
+	/*line-height:0.38rem;*/
+	color: rgba(255, 119, 2, 1);
+}
+.bottom p #numCode{
+	display: none;
+}
+.content a .value img{
+	width:0.2rem;
+	height:0.32rem;
+	display: inline-block;
+	vertical-align: middle;
+}
+.content input,.bottom input{
+	margin-left:0.56rem;
+	color:rgba(44, 44, 44, 1);
+	font-size:0.28rem;
+	border:none;
+	vertical-align: middle;
+}
+.content #bankcard,.bottom #mobile{
+	font-size:0.28rem;
+	width:3.5rem;
+}
+.mid{
+	color:rgba(102, 102, 102, 1);
+	padding:0.2rem 0.3rem;
+}
+.mid p{
+	font-size:0.26rem;
+}
+
+#icon-delete{
+	width:0.4rem;
+	height:0.4rem;
+	vertical-align: middle;
+	display: none;
+	position: absolute;
+	top:0.32rem;
+	right:0.16rem;
+}
+
+#allRight{
+	background:#FF7600;
+	margin-top:0.74rem;
+}
+input::-webkit-input-placeholder{
+	color:rgba(156, 156, 156, 1);
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   	color:rgba(156, 156, 156, 1);
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+   	color:rgba(156, 156, 156, 1);
+}
+input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   	color:rgba(156, 156, 156, 1);
+}

@@ -91,6 +91,17 @@ public class BankFinancialProductDetailsVO implements Entity {
 	private String paymentType;//收益支付方式
 	private String paymentTypeCN;
 	
+	private BigDecimal accountBalance;
+	private BigDecimal investment;
+	private BigDecimal totalRedeem;
+	private BigDecimal totalReturn;
+	private String accountBalanceCN;
+	private String investmentCN;
+	private String totalRedeemCN;
+	private String totalReturnCN;
+	
+	private Boolean isRedeem;
+	private String isRedeemCN;
 	
 	public BankFinancialProductDetailsVO() {
 		super();
@@ -234,34 +245,34 @@ public class BankFinancialProductDetailsVO implements Entity {
 		}
 		
 		if(bfp.getSubscribeFee() != null){
-			this.subscribeFee = bfp.getSubscribeFee().setScale(2, BigDecimal.ROUND_HALF_UP).toString();
+			this.subscribeFee = bfp.getSubscribeFee().setScale(4, BigDecimal.ROUND_HALF_UP).toString();
 		}else{
-			this.subscribeFee = "0.00";
+			this.subscribeFee = "0.0000";
 		}
 		if(bfp.getPurchaseFee() != null){
-			this.purchaseFee = bfp.getPurchaseFee().setScale(2, BigDecimal.ROUND_HALF_UP).toString();
+			this.purchaseFee = bfp.getPurchaseFee().setScale(4, BigDecimal.ROUND_HALF_UP).toString();
 		}else{
-			this.purchaseFee = "0.00";
+			this.purchaseFee = "0.0000";
 		}
 		if(bfp.getRedemingFee() != null){
-			this.redemingFee = bfp.getRedemingFee().setScale(2, BigDecimal.ROUND_HALF_UP).toString();
+			this.redemingFee = bfp.getRedemingFee().setScale(4, BigDecimal.ROUND_HALF_UP).toString();
 		}else{
-			this.redemingFee = "0.00";
+			this.redemingFee = "0.0000";
 		}
 		if(bfp.getManagementFee() != null){
-			this.managementFee = bfp.getManagementFee().setScale(2, BigDecimal.ROUND_HALF_UP).toString();
+			this.managementFee = bfp.getManagementFee().setScale(4, BigDecimal.ROUND_HALF_UP).toString();
 		}else{
-			this.managementFee = "0.00";
+			this.managementFee = "0.0000";
 		}
 		if(bfp.getCustodyFee() != null){
-			this.custodyFee = bfp.getCustodyFee().setScale(2, BigDecimal.ROUND_HALF_UP).toString();
+			this.custodyFee = bfp.getCustodyFee().setScale(4, BigDecimal.ROUND_HALF_UP).toString();
 		}else{
-			this.custodyFee = "0.00";
+			this.custodyFee = "0.0000";
 		}
 		if(bfp.getNetworkFee() != null){
-			this.networkFee = bfp.getNetworkFee().setScale(2, BigDecimal.ROUND_HALF_UP).toString();
+			this.networkFee = bfp.getNetworkFee().setScale(4, BigDecimal.ROUND_HALF_UP).toString();
 		}else{
-			this.networkFee = "0.00";
+			this.networkFee = "0.0000";
 		}
 		this.investScope = bfp.getInvestScope() == null ? "" : bfp.getInvestScope();
 		this.style = bfp.getStyle() == null ? "" : bfp.getStyle();
@@ -324,6 +335,21 @@ public class BankFinancialProductDetailsVO implements Entity {
 			this.paymentTypeCN = "未选择";
 		}
 		
+		this.accountBalance = bfp.getAccountBalance();
+		this.investment = bfp.getInvestment();
+		this.totalRedeem = bfp.getTotalRedeem();
+		this.totalReturn = bfp.getTotalReturn();
+		this.accountBalanceCN = Utlity.numFormat4UnitDetail(bfp.getAccountBalance());
+		this.investmentCN = Utlity.numFormat4UnitDetail(bfp.getInvestment());
+		this.totalRedeemCN = Utlity.numFormat4UnitDetail(bfp.getTotalRedeem());
+		this.totalReturnCN = Utlity.numFormat4UnitDetail(bfp.getTotalReturn());
+		
+		this.isRedeem = bfp.getIsRedeem();
+		if(bfp.getIsRedeem() != null && bfp.getIsRedeem()){
+			this.isRedeemCN = "已赎回";
+		}else{
+			this.isRedeemCN = "未赎回";
+		}
 	}
 
 	public String getUuid() {
@@ -877,4 +903,89 @@ public class BankFinancialProductDetailsVO implements Entity {
 	public void setPaymentTypeCN(String paymentTypeCN) {
 		this.paymentTypeCN = paymentTypeCN;
 	}
+
+	public BigDecimal getAccountBalance() {
+		return accountBalance;
+	}
+
+	public void setAccountBalance(BigDecimal accountBalance) {
+		this.accountBalance = accountBalance;
+	}
+
+	public BigDecimal getInvestment() {
+		return investment;
+	}
+
+	public void setInvestment(BigDecimal investment) {
+		this.investment = investment;
+	}
+
+	public BigDecimal getTotalRedeem() {
+		return totalRedeem;
+	}
+
+	public void setTotalRedeem(BigDecimal totalRedeem) {
+		this.totalRedeem = totalRedeem;
+	}
+
+	public BigDecimal getTotalReturn() {
+		return totalReturn;
+	}
+
+	public void setTotalReturn(BigDecimal totalReturn) {
+		this.totalReturn = totalReturn;
+	}
+
+	public void setValueDateCN(String valueDateCN) {
+		this.valueDateCN = valueDateCN;
+	}
+
+	public String getAccountBalanceCN() {
+		return accountBalanceCN;
+	}
+
+	public void setAccountBalanceCN(String accountBalanceCN) {
+		this.accountBalanceCN = accountBalanceCN;
+	}
+
+	public String getInvestmentCN() {
+		return investmentCN;
+	}
+
+	public void setInvestmentCN(String investmentCN) {
+		this.investmentCN = investmentCN;
+	}
+
+	public String getTotalRedeemCN() {
+		return totalRedeemCN;
+	}
+
+	public void setTotalRedeemCN(String totalRedeemCN) {
+		this.totalRedeemCN = totalRedeemCN;
+	}
+
+	public String getTotalReturnCN() {
+		return totalReturnCN;
+	}
+
+	public void setTotalReturnCN(String totalReturnCN) {
+		this.totalReturnCN = totalReturnCN;
+	}
+
+	public Boolean getIsRedeem() {
+		return isRedeem;
+	}
+
+	public void setIsRedeem(Boolean isRedeem) {
+		this.isRedeem = isRedeem;
+	}
+
+	public String getIsRedeemCN() {
+		return isRedeemCN;
+	}
+
+	public void setIsRedeemCN(String isRedeemCN) {
+		this.isRedeemCN = isRedeemCN;
+	}
+	
 }

@@ -1,0 +1,175 @@
+/* search.wxss */
+.top-view{
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  height: 180rpx;
+  top: 0;
+  left: 0;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.top-view .search-view{
+  padding: 30rpx 30rpx 0 30rpx;
+} 
+
+.top-view .search-view input{
+  padding: 0 60rpx;
+  background: #F2F2F2;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  border-radius: 50rpx;
+}
+
+.top-view .search-view image{
+  position: absolute;
+  width: 28rpx;
+  height: 28rpx;
+  top: 44rpx;
+  left: 50rpx;
+}
+
+.top-view .sort-view{
+  position: relative;
+  text-align: center;
+}
+
+.top-view .sort-view > view{
+  display: inline-block;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.top-view .sort-view .left-view{
+  position: absolute;
+  left: 40rpx;
+  text-align: left;
+}
+
+.top-view .sort-view .right-view{
+  position: absolute;
+  right: 40rpx;
+  text-align: right;
+}
+
+.top-view .sort-view text.selected{
+  color: rgb(0,105,229);
+}
+
+.top-view .sort-view image{
+  vertical-align: text-bottom;
+  margin-left: 4rpx; 
+  width: 20rpx;
+  height: 32rpx;
+}
+
+.data-table {
+  margin-top: 180rpx;
+  width: 100%;
+  background: #eee;
+}
+
+.data-table .tr, 
+.data-table .tr-disable {
+  position: relative;
+  display: flex;
+  height: 160rpx;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #eee ;
+}
+ 
+.data-table image.table-image{
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.data-table .td-left{
+  width: 160rpx;
+  min-width: 160rpx;
+}
+
+.data-table .td-left-rate{
+  width: 100%;
+  margin: 30rpx 10rpx 0 24rpx;
+  line-height: 60rpx;
+  text-align: left;
+  color: rgb(249,20,73);
+  font-size: 46rpx;
+}
+
+.data-table .td-left-rate text.per{
+  line-height: 24rpx;
+  font-size: 24rpx;
+}
+
+.data-table .td-left-text{
+  width: 100%;
+  margin: 4rpx 0 0 24rpx;
+  line-height: 30rpx;
+  text-align: left;
+  color: rgb(249,20,73);
+  font-size: 22rpx;
+}
+
+.data-table .td-right{
+  padding-right: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.data-table .td-right-title{
+  width: 100%;
+  margin: 30rpx 10rpx 0 0;
+  line-height: 60rpx;
+  text-align: left;
+  font-size: 32rpx;
+  color: rgb(56,56,56);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.data-table .td-right-text{
+  width: 100%;
+  margin: 0 10rpx 0 16rpx;
+  line-height: 38rpx;
+  text-align: left;
+  color: rgb(146,146,146);
+  font-size: 26rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.data-table .tr-disable .td-left-rate, 
+.data-table .tr-disable .td-left-text, 
+.data-table .tr-disable .td-right-title, 
+.data-table .tr-disable .td-right-text{
+  color: #BEBEBE !important;
+}
+
+.nodata{
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.nodata image{
+  width: 25%;
+  margin: 20% auto 20rpx auto;
+}
+
+.nodata text{
+  font-size: 28rpx;
+  color: #979797;
+}

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zeppin.product.score.mapper.NewsPublishMapper">
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from news_publish where 1=1 
+		<if test='news != null and news != ""'>
+            and news = #{"news"}
+        </if>
+		<if test='category != null and category != ""'>
+            and category like '%${category}%'
+        </if>
+        <if test='team != null and team != ""'>
+            and team like '%${team}%'
+        </if>
+        <if test='title != null and title != ""'>
+            and title like '%${title}%'
+        </if>
+        <if test='content != null and content != ""'>
+            and content like '%${content}%'
+        </if>
+        <if test='source != null and source != ""'>
+            and source = #{source}
+        </if>
+        <if test='except != null and except != ""'>
+            and uuid &lt;> #{except}
+        </if>
+        <if test='checker != null and checker != ""'>
+            and checker= #{checker}
+        </if>
+		<if test='creator != null and creator != ""'>
+            and creator= #{creator}
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('uncheck','nopass','disable','publish')
+	        </otherwise>
+        </choose>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.zeppin.product.score.entity.NewsPublish">
+		select * from news_publish where 1=1 
+		<if test='news != null and news != ""'>
+            and news = #{"news"}
+        </if>
+		<if test='category != null and category != ""'>
+            and category like '%${category}%'
+        </if>
+        <if test='team != null and team != ""'>
+            and team like '%${team}%'
+        </if>
+        <if test='title != null and title != ""'>
+            and title like '%${title}%'
+        </if>
+        <if test='content != null and content != ""'>
+            and content like '%${content}%'
+        </if>
+        <if test='source != null and source != ""'>
+            and source = #{source}
+        </if>
+        <if test='except != null and except != ""'>
+            and uuid &lt;> #{except}
+        </if>
+        <if test='checker != null and checker != ""'>
+            and checker= #{checker}
+        </if>
+		<if test='creator != null and creator != ""'>
+            and creator= #{creator}
+        </if>
+        <choose>
+	        <when test='status != null and status != ""'>
+	        	and status = #{status}
+	        </when>
+	        <otherwise>
+	        	and status in ('uncheck','nopass','disable','publish')
+	        </otherwise>
+        </choose>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getStatusList" parameterType="java.util.HashMap" resultType="cn.zeppin.product.score.vo.back.StatusCountVO">
+		select status, count(*) as count from news_publish where 1=1 and status != 'delete'
+		<if test='creator != null and creator != ""'>
+            and creator = #{creator}
+        </if>
+        group by status
+	</select>
+	
+	<update id="updateStatus" parameterType="java.util.HashMap">
+		update news_publish 
+		<set>
+			status = #{status},
+			<if test='checker != null and checker != ""'>
+	            checker = #{checker},
+	        </if>
+	        <if test='checktime != null'>
+	            checktime = #{checktime},
+	        </if>
+		</set>
+		where uuid in
+		<foreach collection="uuid" item="uuid" index="index" open="(" close=")" separator=",">
+			#{uuid}
+		</foreach>
+	</update>
+</mapper>

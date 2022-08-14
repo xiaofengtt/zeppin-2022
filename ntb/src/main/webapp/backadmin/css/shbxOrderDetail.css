@@ -1,0 +1,90 @@
+.title-contain .content-item span{
+	font-size:14px;
+}
+.content-item .content-items {
+    width: 100%;
+}
+.title-contain .content-item span.normal b{
+	color:green;
+	font-weight:normal;
+	font-size:14px;
+	line-height:28px;
+}
+.title-contain .content-item span.unprocess b{
+	color:orange;
+	font-weight:normal;
+	font-size:14px;
+	line-height:28px;
+}
+.content-item label{
+	font-size:14px;
+	width:100px;
+	text-align:left;
+}
+.content-item span, .content-item div{
+	font-size:14px;
+}
+.content-item-info .form-group{	
+	padding:0 ;
+	margin-top: 20px;
+	min-height:39px;
+}
+
+.main-mid-content{
+	padding:0.4rem 0.28rem;
+	background: #FFFFFF;
+}
+.main-mid-content div{
+	text-align: center;
+	width:33.333%;
+	position: relative;
+	float: left;
+}
+.turnOut{
+	display:none;
+}
+.turnOut .main-mid-content div{
+	width:50%;
+}
+.main-mid-content div h5{
+	font-size: 14px;
+	color: #000000;
+}
+.main-mid-content > div > .border {
+	width:100%;
+	width:100%;
+	height:2px;
+	position: absolute;
+	top:50%;
+	-webkit-transform:translateY(-50%);
+}
+.main-mid-content > div > .circle{
+	height:10px;
+	width:10px;
+	position: absolute;
+	border-radius: 50%;
+	background:#FFFFFF;
+	z-index:3;
+	top:50%;
+	left:50%;
+	-webkit-transform:translate(-50%,-50%);
+}
+.circle-g{
+	border:3px solid #EBEBEB;
+}
+.circle-o{
+	border:3px solid #FF7600;
+}
+.border-g{
+	background:#EBEBEB;	
+}
+.border-o{
+	background:#FF7600;
+}
+.main-mid-content div p{
+	opacity: 0.5;
+	font-size: 14px;
+	color: #000000;
+	margin-top:30px;
+	padding:0;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>支付</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/socialSecurityCalculator.css" />
+		<link rel="stylesheet" href="css/payHasInsuredRecord.css" />
+		<link rel="stylesheet" href="css/realnameAuthentication.css" />
+	</head>
+	<body onload="loading();" style="display:none;">
+		<input type="hidden" value="" id="cbdq" />
+		<input type="hidden" value="" id="cjgzsj" />
+		<input type="hidden" value="" id="hkxz" />
+		<div class="titleDiv">
+			<img class="titleBack" src="img/icon_return.png" alt="返回" />
+			<p>支付</p>
+		</div>
+		<div class="wrap">
+			
+			<!-- 支付 -->
+			<div class="stepThree">
+				<div class="payBox">
+					<div class="payTop">
+						<p class="title">订单金额</p>
+						<span class="orderamount"></span>
+					</div>
+					<div class="payBottom">
+						<h6>选择支付方式</h6>
+						<ul>
+							
+						</ul>
+						<a class="sureBigBtn">确认支付</a>
+						
+					</div>
+					<a class="addBank" href="javascript:">添加银行卡</a>
+				</div>
+				
+			</div>
+			<!-- 支付成功 -->
+			<div class="authSuccess mt-28">
+				<div class="authSuccess-top" style="height:auto;">
+					<p class="color-blue">支付成功！</p>
+					<span class="color-2E orderamount" style="font-size:0.6rem;"></span>
+					<b class="color-2E70" style="font-size:0.30rem;padding:0.3rem 0.1rem 0.6rem 0.1rem;display:inline-block;">您的订单已支付成功，实际以商户到账时间为准。</b>
+				</div>
+				<div style="text-align:center;">
+					<a class="gobackBtn light" style="display:inline-block;" href="javascript:">返回首页</a>
+				</div>
+				
+			</div>
+
+			
+			<p class="layer">
+				提示信息
+			</p>
+			<div id="loading-box">
+				<img src="./img/icon-loading.gif" alt="" />
+			</div>
+			<div id="code-box">
+				<div class="code-box-inner">
+					<!--<p>验证码已发送至186****00588的手机</p>-->
+					<p id="success-title">请输入验证码</p>
+					<div class="code-box-inner-mid">
+						<input type="tel" name="" id="mobileCode" value="" placeholder="请输入验证码">
+						<span id="getCode">获取验证码</span>
+						<span id="numCode">重新获取(<i id="count">10</i>s)</span>
+					</div>
+					<div class="code-box-inner-btnbox clearfix">
+						<input type="button" value="取消" id="code-box-close">
+						<input type="button" value="确认" id="submit">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--发送验证码成功后的订单号-->
+		<input type="hidden" id="orderNum" />
+		
+		<!--发送验证码成功后的银行id，防止切换银行-->
+		<input type="hidden" id="this_bank_id" />
+		<script src="./js/burialPoint.js"></script>
+		<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+		<script src="./js/base64.js"></script>
+		<script src="./js/md5.js"></script>
+		<script type="text/javascript" src="js/picker.min.js" ></script>
+		<script type="text/javascript" src="js/url.min.js" ></script>	
+		<script src="./js/changePrice.js"></script>	
+		<script src="./js/operation.js"></script>
+		<link rel="stylesheet" href="css/base.css" />
+		<script src="./js/base64.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript" src="js/paySuccess.js"></script>
+	</body>
+</html>

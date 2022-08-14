@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+		<title>添加银行卡</title>
+		<link rel="stylesheet" href="./css/base.css?version=1.5" />
+		<link rel="stylesheet" href="./css/bankCardAdd.css?version=1.5" />
+	</head>
+	<body>
+		<div class="main">
+			<div class="tip">
+				请绑定持卡人本人银行卡
+			</div>
+			<div class="content">
+				<p>
+					<span>持卡人</span>
+					<input type="text" placeholder="请输入持卡人姓名" id="name" readonly/>
+				</p>
+				<p>
+					<span>银行卡号</span>
+					<input type="tel" id="bankcard" placeholder="请输入持卡人银行卡号"/>
+					<img src="./img/icon_delete.png" alt="" id="icon-delete" />
+				</p>
+				<a id="bankList">
+					<span style="color:rgba(44, 44, 44, 1);">选择银行</span>
+					<span class="value">
+						<img src="./img/right.png" alt="" />
+					</span>
+					<span class="bank-msg">
+						<input type="hidden" id="bankuuid" value="" />
+						<img src="" alt="" />
+						<span></span>
+					</span>
+				</a>
+			</div>
+			<div class="mid">
+				<p>
+					请输入该银行卡预留手机号
+				</p>
+			</div>
+			<div class="bottom">
+				<p>
+					<span>手机号</span>
+					<input type="tel" id="mobile" placeholder="请输入手机号"/>
+				</p>
+				<p>
+					<span>验证码</span>
+					<input type="tel" id="mobileCode" placeholder="请输入验证码" maxlength="6" />
+					<span id="getCode">
+						获取验证码
+					</span>
+					<span id="numCode">
+						(<i id="count"></i>)秒后重新发送
+					</span>
+				</p>
+			</div>
+			<input type="button" class="big-btn" id="allRight" value="提交"/>
+		</div>
+		
+		<div id="tip-box">
+			<div class="tip-box-inner">
+				<div class="tip-box-inner-content">
+					<p>绑卡成功</p>
+					<img src="./img/drawcash-c.png" alt="" />
+					<input type="button" value="确定"/>
+				</div>
+				<div id="tip-close">
+					
+				</div>
+			</div>
+		</div>
+		
+		<div id="modal-box">
+			<div class="modal-box-inner">
+				<h3>温馨提示</h3>
+				<h4></h4>
+				<div class="modal-box-inner-btnbox clearfix">
+					<input type="button"  value="取消" id="modal-box-close"/>
+					<input type="button"  value="确认"/>
+				</div>
+			</div>
+		</div>
+		<p class="layer">
+			提示信息
+		</p>
+		
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+		<a id="goIndex"></a>
+		<script src="./js/auto.js?version=1.5"></script>
+		<script src="./js/flagSubmit.js?version=1.5"></script>
+		<script src="./js/cookie.js?version=1.5"></script>
+		<script src="./js/url.js?version=1.5"></script>
+		<script src="./js/url.min.js?version=1.5"></script>
+		<script src="./js/base64.js?version=1.5"></script>
+		<script src="./js/md5.js?version=1.5"></script>
+		<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+		<script src="./js/jquery-Tap.js?version=1.5"></script>
+		<script src="./js/global.js?version=1.5"></script>
+		<script src="./js/modal-In.js?version=1.5"></script>
+		<script src="./js/bankCardAdd.js?version=1.5"></script>
+	</body>
+</html>
+

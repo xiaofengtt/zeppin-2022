@@ -1,0 +1,117 @@
+/* instruction.wxss */
+page{
+  background: #eee;
+}
+
+.title-view{
+  width: 100%;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.title-view .main{
+  margin-top: 40rpx;
+  padding: 0 20rpx;
+  font-size: 32rpx;
+}
+
+.title-view .other{
+  position: relative;
+  margin: 20rpx 0;
+  padding: 0 30rpx;
+  font-size: 24rpx;
+}
+
+.title-view .other .message{
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.base-view{
+  width: 100%;
+  background: transparent;
+  margin-bottom: 20rpx;
+}
+
+.last-view{
+  width: 100%;
+  background: transparent;
+  margin-bottom: 20rpx;
+}
+
+.base-view .title,
+.last-view .title{
+  position: relative;
+  height: 70rpx;
+  line-height: 70rpx;
+  padding: 0 20rpx;
+  background: #fff;
+}
+
+.base-view .title view, 
+.last-view .title view{
+  display: inline-block;
+}
+
+.base-view .title .split, 
+.last-view .title .split{
+  width: 6rpx;
+  height: 28rpx;
+  background: #008DFB;
+}
+
+.base-view .title .text, 
+.last-view .title .text{
+  position: absolute;
+  width: 200rpx;
+  margin-left: 10rpx;
+  color: #000;
+  font-size: 28rpx;
+}
+
+.base-view .tr{
+  height: 70rpx;
+  padding: 0 20rpx;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  background: #fff;
+  margin-bottom: 1px;
+}
+
+.base-view .key{
+  display: inline-block;
+  width: 50%;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.base-view .value{
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.last-view .content{
+  padding: 0 20rpx;
+  margin-bottom: 1px;
+  background: #fff;
+}
+
+.last-view .content .name{
+  padding: 20rpx 0 10rpx 0; 
+  background: #fff;
+  text-align: left;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.last-view .content .context{
+  padding-bottom: 20rpx;
+  background: #fff;
+  text-align: justify;
+  font-size: 24rpx;
+  line-height: 32rpx;
+  color: rgba(0, 0, 0, 0.6);
+  word-break: break-all;
+}

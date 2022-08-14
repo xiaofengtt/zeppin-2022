@@ -2,11 +2,8 @@ package cn.zeppin.product.ntb.backadmin.vo;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 
 import cn.zeppin.product.ntb.core.entity.Fund;
-import cn.zeppin.product.ntb.core.entity.FundRate;
 import cn.zeppin.product.ntb.core.entity.base.Entity;
 import cn.zeppin.product.utility.Utlity;
 
@@ -23,6 +20,7 @@ public class FundDetailsVO implements Entity {
 	
 	private String shortname;
 	private String gp;
+	private String gpName;
 	private String custodian;
 	private Boolean flagStructured;
 	private String flagStructuredCN;
@@ -60,8 +58,10 @@ public class FundDetailsVO implements Entity {
 	private String revenueFeature;
 	private String riskManagement;
 	private BigDecimal netWorth;
-	
-	private List<FundRate> fundRateList = new ArrayList<FundRate>();
+	private Timestamp createtime;
+	private String createtimeCN;
+	private String creator;
+	private String creatorName;
 	
 	public FundDetailsVO(Fund fund){
 		this.uuid = fund.getUuid();
@@ -188,7 +188,9 @@ public class FundDetailsVO implements Entity {
 		this.revenueFeature = fund.getRevenueFeature() == null ? "" : fund.getRevenueFeature();
 		this.riskManagement = fund.getRiskManagement() == null ? "" : fund.getRiskManagement();
 		this.netWorth = fund.getNetWorth();
-		
+		this.createtime = fund.getCreatetime();
+		this.createtimeCN = Utlity.timeSpanToDateString(fund.getCreatetime());
+		this.creator = fund.getCreator();
 	}
 
 	public String getUuid() {
@@ -238,14 +240,6 @@ public class FundDetailsVO implements Entity {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	public List<FundRate> getFundRateList() {
-		return fundRateList;
-	}
-	
-	public void setFundRateList(List<FundRate> fundRateList) {
-		this.fundRateList = fundRateList;
-	}
 
 	public String getShortname() {
 		return shortname;
@@ -261,6 +255,14 @@ public class FundDetailsVO implements Entity {
 
 	public void setGp(String gp) {
 		this.gp = gp;
+	}
+
+	public String getGpName() {
+		return gpName;
+	}
+
+	public void setGpName(String gpName) {
+		this.gpName = gpName;
 	}
 
 	public String getCustodian() {
@@ -566,4 +568,37 @@ public class FundDetailsVO implements Entity {
 	public void setPurchaseEndtimeCN(String purchaseEndtimeCN) {
 		this.purchaseEndtimeCN = purchaseEndtimeCN;
 	}
+
+	public Timestamp getCreatetime() {
+		return createtime;
+	}
+
+	public void setCreatetime(Timestamp createtime) {
+		this.createtime = createtime;
+	}
+
+	public String getCreatetimeCN() {
+		return createtimeCN;
+	}
+
+	public void setCreatetimeCN(String createtimeCN) {
+		this.createtimeCN = createtimeCN;
+	}
+
+	public String getCreator() {
+		return creator;
+	}
+
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
+
+	public String getCreatorName() {
+		return creatorName;
+	}
+
+	public void setCreatorName(String creatorName) {
+		this.creatorName = creatorName;
+	}
+	
 }

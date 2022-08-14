@@ -1,0 +1,264 @@
+.content-detail{
+	background: #FFF;
+}
+.content-box{
+	background: #FFF;
+	padding: 20px 40px;
+}
+.content-box p.title{
+	background: rgba(255,184,34,0.65) url(../img/title-base.png) 10px center no-repeat;
+	padding: 10px 45px;
+	color: #606060;	
+	font-size: 13px;
+}
+.content-item{
+	border: 1px solid #dfdfdf;
+	padding: 20px 10px;
+}
+.content-item .form-group{
+	
+}
+.content-item .form-group label{
+	float: left;
+	/* width: 120px; */
+	text-align: right;
+	line-height: 34px;
+	/* margin-right: 10px; */
+	font-weight: normal;
+	font-size: 13px;
+}
+.content-item .form-group .content-items{
+	float: left;
+	/* width: 100%; */
+}
+.content-item .form-group .content-items span{
+	line-height:34px;
+} 
+.content-item .form-group img{
+	/* height: 50px; */
+	/* float: right; */
+	/* padding-right:10%; */
+} 
+.content-item div {
+    font-size: 13px;
+    color: #2B2B2B;
+    line-height: 28px;
+}
+div.mce-edit-area{
+	min-height: 200px;
+}
+.form-control[readonly]{
+	cursor:default;
+	background-color:#fff;
+}
+select.form-control{
+	-webkit-appearance: menulist-button;
+	appearance: menulist-button;
+	text-indent: 6px;
+}
+#categoryResult,#team{
+	border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0 30px 0 12px;
+    min-height:36px;	
+}
+#categoryResult div,#team div{
+	position:relative;
+	display:inline-block;
+	margin-right:10px;
+}
+#categoryResult span,#team span{
+	/* background:#ffb822; */
+	padding:3px 6px 3px 0;
+	font-size:13px;
+	border-radius:3px;
+	color:rgba(52, 51, 46, 1);
+}
+#categoryResult a,#team a{
+	position:absolute;
+	width:16px;
+	height:16px;
+	display:inline-block;
+	background:url(../img/icon_delete_click.png) center no-repeat;
+	background-size:cover;
+	right:-8px;
+	top:1px;
+}
+#categoryResult a:hover,#team a:hover{
+	background:url(../img/icon_delete.png) center no-repeat;
+	background-size:cover;
+}
+#category{
+	padding-top:15px;
+	position:relative;
+	max-height:200px;
+	overflow:auto;
+}
+#thirdUl{
+	position:absolute;
+	top:15px;
+	right:0;
+	overflow: auto;
+}
+#category ul.secondUl{
+	display:none;
+}
+#category ul.thirdUl{
+	display:none;
+}
+
+#category li a{
+	display:inline-block;
+	color:#fff;
+	padding:0 28px 0 20px;
+	font-size:13px;
+	width:100%;
+	line-height: 30px;
+	margin:8px 0;
+}
+#category li a.light{
+	color:#ffb822;
+}
+#category li a:hover{
+	text-decoration:none;
+	background-color:rgba(151, 151, 151, 1);
+}
+#category li a.hasChild{
+	background-image:url(../img/right_white.png);
+	background-position:right center;
+	background-repeat:no-repeat;
+	background-size:auto 18px;
+}
+.mce-dropzone-container .mce-btn-group .mce-btn{
+	display:none;
+}
+.teamList,#category{
+	padding-top:20px;
+	max-height:200px;
+	overflow:auto;
+	display:none;
+	padding-left:0px;
+	border:1px solid #ccc;
+	border-radius:4px;
+	margin-top:15px;
+}
+.teamList p{
+	float:left;
+	padding-top:124px;
+	color:#34332E;
+	font-size:13px;
+	background:url(../img/team-bg.png) right 138px no-repeat;
+	background-size:21px 1px;
+	padding-right:31px;
+}
+.treeNode{
+	/* padding-left:50px; */
+}
+.treeHead,.firstUl{
+	/* background:url(../img/team-bg.png) left 15px no-repeat; */
+}
+.treeHead li,.firstUl li{
+	position:relative;
+	/* padding-left:12px; */
+	/* background:url(../img/team-bg.png) left 22px no-repeat;
+	background-size:50px 1px; */
+	/* padding-top:5px; */
+}
+.treeHead li:first-child,.firstUl li:first-child{
+	padding-top:0px;
+	margin-top:-15px;
+	/* background:url(../img/team-bg.png) left 14px no-repeat;
+	background-size:50px 1px; */
+}
+.treeHead li.lastNode,.firstUl li.lastCategoryNode{
+	background-size:15px 1px;
+}
+.treeHead li.lastNode span,.firstUl li.lastCategoryNode span{
+	margin:0 15px !important;
+}
+.treeHead b,.firstUl b{
+	display:block;
+	width:15px;
+	height:30px;
+	padding:5px 0px 5px 9px;
+	background:#fff url(../img/icon-select-right.png) left center no-repeat;
+	background-size:10px 10px;
+	position:absolute;
+	left:12px;
+	top:0px;
+	cursor:pointer;
+}
+.treeHead li:first-child b,.firstUl li.firstNode:first-child b:first-child{
+	top:0px;
+}
+.treeHead b.takeDown,.firstUl b.takeDown{
+	background:#fff url(../img/icon-select-up.png) left center no-repeat;
+	background-size:10px 10px;
+}
+.content-item .form-group .content-items .treeHead span,.content-item .form-group .content-items .firstUl span{
+	color:#34332E;
+	font-size:13px;
+	/* border:1px solid rgba(151,151,151,1); */
+	background:#fff;
+	padding:0 5px;
+	line-height:24px;
+	height:24px;
+	margin:0px 22px;
+	display:inline-block;
+	cursor:pointer;
+	border-radius:4px;
+}
+.content-item .form-group .content-items .treeHead span.light,.content-item .form-group .content-items .firstUl span.light{
+	/* background:#ffb822; */
+	border-color:#ffb822; 
+	color:#ffb822;
+}
+.treeHead ul,.firstUl ul{
+	border-left:1px solid #dedede; 
+	padding-top:18px;	
+	margin-left:40px;
+}
+.treeHead ul li,.firstUl ul li{
+	background:url(../img/team-bg.png) left 12px no-repeat;
+	background-size:30px 1px; 
+}
+.chooseBtn,.chooseCategoryBtn{
+	position:absolute;
+	right:17px;
+	top:12px;
+	color:#34332E;
+	background:url(../img/icon-select-down.png) center no-repeat;
+	background-size:cover;
+	width:12px;
+	height:12px;
+}
+.chooseBtn.selectUp,.chooseCategoryBtn.selectUp{
+	background:url(../img/icon-select-up.png) center no-repeat;
+	background-size:cover;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12{
+	padding-left:5px;
+	padding-right:5px;
+}
+#imageShow{
+	/* max-height:160px; */
+	/* float:left; */
+	/* padding-left:7px; */
+}
+.coverBox{
+	width:224px;
+	height:160px;
+}
+.coverTips{
+	position:absolute;
+	top:95px;
+	width:100%;
+	text-align:center;
+	
+}
+.imagesBox img{
+	display:block;
+	max-width:100%;
+	max-height:300px;
+	margin:5px 0;
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.zeppin.product.score.mapper.CapitalAccountHistoryMapper">
+	
+	<select id="getCountByParams" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from capital_account_history where 1=1 
+        <if test='capitalAccount != null and capitalAccount != ""'>
+            and capital_account= #{capitalAccount}
+        </if>
+        <if test='capitalPlatform != null and capitalPlatform != ""'>
+            and capital_platform= #{capitalPlatform}
+        </if>
+        <if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='frontUserHistory != null and frontUserHistory != ""'>
+            and front_user_history= #{frontUserHistory}
+        </if>
+        <if test='operator != null and operator != ""'>
+            and operator= #{operator}
+        </if>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+	</select>
+	
+	<select id="getListByParams" parameterType="java.util.HashMap" resultType="cn.zeppin.product.score.entity.CapitalAccountHistory">
+		select * from capital_account_history where 1=1 
+		<if test='capitalAccount != null and capitalAccount != ""'>
+            and capital_account= #{capitalAccount}
+        </if>
+        <if test='capitalPlatform != null and capitalPlatform != ""'>
+            and capital_platform= #{capitalPlatform}
+        </if>
+        <if test='frontUser != null and frontUser != ""'>
+            and front_user= #{frontUser}
+        </if>
+        <if test='frontUserHistory != null and frontUserHistory != ""'>
+            and front_user_history= #{frontUserHistory}
+        </if>
+        <if test='operator != null and operator != ""'>
+            and operator= #{operator}
+        </if>
+        <if test='type != null and type != ""'>
+            and type= #{type}
+        </if>
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+        <choose>
+	        <when test='sort != null and sort != ""'>
+	        	order by ${sort}
+	        </when>
+	        <otherwise>
+	        	order by createtime desc
+	        </otherwise>
+        </choose>
+        <if test="offSet != null and offSet != -1 and pageSize != null and pageSize != -1">
+        	limit #{offSet},#{pageSize};
+        </if>
+	</select>
+	
+	<select id="getTypeList" resultType="cn.zeppin.product.score.vo.back.StatusCountVO">
+		select type as 'status', count(*) as count from capital_account_history where 1=1 
+		<if test='status != null and status != ""'>
+            and status= #{status}
+        </if>
+		group by type
+	</select>
+</mapper>

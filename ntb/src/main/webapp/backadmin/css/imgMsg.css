@@ -1,0 +1,40 @@
+.upload_box {
+  margin-left: 145px;
+}
+
+.upload_box form {
+  display: inline-block;
+  position: relative;
+  /*cursor: pointer;*/
+}
+
+.upload_box form input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  display: inline-block;
+  /*cursor: pointer;*/
+}
+
+.upload_box form a {
+  width: 80px;
+  height: 25px;
+  border-radius: 5px;
+  color: #0088cc;
+  background: #FFFFFF;
+  border: 1px solid #0088cc;
+  display: inline-block;
+  text-align: center;
+  line-height: 25px;
+  font-size: 14px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+
+.upload_box form:hover a {
+  color: #FFFFFF;
+  background: #0088cc;
+}

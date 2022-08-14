@@ -40,4 +40,46 @@ public interface IInvestorDAO extends IBaseDAO<Investor, String> {
 	 * @return
 	 */
 	List<Entity> getStatusList(Class<? extends Entity> resultClass);
+	
+	public Investor getByOpenID(String openID, Class<? extends Entity> resultClass);
+	
+	/**
+	 * 根据username获取信息
+	 * @param openID
+	 * @return
+	 */
+	public Investor getByMobile(String mobile, Class<? extends Entity> resultClass);
+	
+	/**
+	 * 根据支付宝账号获取用户信息
+	 * @param openID
+	 * @param resultClass
+	 * @return
+	 */
+	public Investor getByAliUserid(String userid, Class<? extends Entity> resultClass);
+	
+	/**
+	 * 验证同手机号的用户是否已经存在
+	 * @param mobile
+	 * @param uuid
+	 * @return
+	 */
+	public boolean isExistInvestorByMobile(String mobile, String uuid);
+	
+	/**
+	 * 获取状态列表
+	 * @param resultClass
+	 * @return
+	 */
+	public List<Entity> getNotuploadCount(Class<? extends Entity> resultClass);
+	
+	/**
+	 * 更新昨日余额
+	 */
+	public void updateYesterdayAccount();
+	
+	/**
+	 * 获取活期募集总额
+	 */
+	public Double getTotalCurrentAccount();
 }

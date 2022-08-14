@@ -1,0 +1,61 @@
+.bank-list{
+	padding: 0 0.3rem;
+}
+.bank-item{
+	height: 2.28rem;
+	border-radius: 0.08rem;
+	position:relative;
+}
+
+
+.item-left{
+	float: left;
+	margin: 0.26rem;
+}
+.item-top img{
+	width: 0.6rem;
+	height: 0.6rem;
+	border-radius: 50%;
+}
+.item-right p{
+	color:rgba(255,255,255,1);
+	font-size: 0.32rem;
+	padding-top: 0.2rem;
+}
+.item-right span{
+	color:rgba(255,255,255,0.6);
+	font-size: 0.24rem;
+}
+.bank-item b{
+	display: block;
+	color:rgba(255,255,255,1);
+	text-align: center;
+	padding-top: 0.34rem;
+	font-size: 0.4rem;
+	font-weight: normal;
+}
+.addBtn{
+	width: 5.32rem;
+	height: 0.8rem;
+	display: block;
+	border-radius: 0.04rem;
+	background:rgba(79,172,254,1) url(../img/icon-add.png) 1.6rem center no-repeat ;
+	background-size: auto 35%;
+	color:rgba(255,255,255,1);
+	font-size: 0.32rem;
+	margin: 0.8rem auto;
+	line-height: 0.8rem;
+	padding-left: 2.14rem;
+	line-height: 0.86rem;
+}
+.bankBg{
+	width:3rem;
+	position:absolute;
+	top:0;
+	right:0;
+	opacity:0.1;
+}
+
+
+
+

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0 ,maximum-scale=1.0, user-scalable=no">
+<title>转入</title>
+<link rel="stylesheet" href="./css/base.css?version=1.5" />
+<link rel="stylesheet" href="./css/moneyTurnin.css?version=1.5" />
+</head>
+<body>
+	<div class="main">
+		<div class="fillContent">
+			<div class="productInfo">
+				<i></i>
+				<p class="productName">活期盈</p>
+				<!-- <span>七日年化收益率<b>4.00%</b></span> -->
+				<div class="clear"></div>
+			</div>
+			<div class="content">
+				<p>
+					<span class="coin"></span>
+					<input type="number" id="price" placeholder="1元起购，1元递增" />
+					<div class="clear"></div>
+				</p>
+			</div>
+			<p class="rateTime">
+				开始计息时间<span></span>
+			</p>
+			<p class="accountBalance">
+				账户余额：<span></span>元
+				<a href="javascript:0" id="rechargeBtn">充值</a>
+			</p>
+			<div id="drawcash">
+				<span>确认转入</span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		<div class="completeContent">
+			<div class="completeTop">
+				<span>转入成功</span>
+				<b></b>
+			</div>
+			<div class="completeBottom">
+				<p><span>产品名称：</span><span class="value" id="productName">活期盈</span><div class="clear"></div></p>
+				<p><span>支付方式：</span><span class="value" id="turnTo">账户余额</span><div class="clear"></div></p>
+				<p><span>转入金额：</span><span class="value" id="amountMoney"></span><div class="clear"></div></p>
+			</div>
+			<div id="completeBtn">
+				<span>完成</span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		
+		<div id="tip-boxs">
+			<div class="tip-box-inner">
+				<div class="tip-box-inner-content">
+					<p>你还未绑定银行卡！</p>
+					<img src="./img/auth_failed.png" alt="" />
+					<input type="button" value="马上绑卡" id="goBinds"/>
+				</div>
+				<div id="tip-closes">
+					
+				</div>
+			</div>
+		</div>
+		<div id="code-box">
+			<div class="code-box-inner">
+				<!--<p>验证码已发送至186****00588的手机</p>-->
+				<p id="success-title">请输入验证码</p>
+				<div class="code-box-inner-mid">
+					<input type="tel" name="" id="mobileCode" value="" placeholder="请输入验证码" maxlength="6" />
+					<span id="getCode">获取验证码</span>
+					<span id="numCode">重新获取(<i id="count">60</i>s)</span>
+				</div>
+				<div class="code-box-inner-btnbox clearfix">
+					<input type="button"  value="取消" id="code-box-close"/>
+					<input type="button"  value="确认" id="submit"/>
+				</div>
+			</div>
+		</div>
+		
+		<div id="tip-box">
+			<div class="tip-box-inner">
+				<div class="tip-box-inner-content">
+					<p>余额不足，请充值！</p>
+					<img src="./img/recharge_success.png" alt="" />
+					<input type="button" value="前往充值" id="goBind"/>
+				</div>
+				<div id="tip-close">
+					
+				</div>
+			</div>
+		</div>
+		<p class="layer">
+			提示信息
+		</p>
+
+		<div id="loading-box">
+			<div class="loading-box-inner">
+				<div id="img">
+					<img src="./img/loading-new.gif" alt="" />
+				</div>
+				<!-- <p>加载中...</p> -->
+			</div>
+		</div>
+	</div>
+	<a id="goIndex"></a>
+
+	<script src="./js/auto.js?version=1.5"></script>
+	<script src="./js/url.js?version=1.5"></script>
+	<script src="./js/cookie.js?version=1.5"></script>
+	<script src="./js/url.min.js?version=1.5"></script>
+	<script src="./js/base64.js?version=1.5"></script>
+	<script src="./js/md5.js?version=1.5"></script>
+	<script src="./js/jquery-1.11.1.js?version=1.5"></script>
+	<script src="./js/jquery-Tap.js?version=1.5"></script>
+	<script src="./js/changePrice.js?version=1.5"></script>
+	<script src="./js/flagSubmit.js?version=1.5"></script>
+	<script src="./js/global.js?version=1.5"></script>
+	<script src="./js/modal-In.js?version=1.5"></script>
+	<script src="./js/operation.js?version=1.5"></script>
+	<script src="./js/moneyTurnin.js?version=1.5"></script>
+</body>
+</html>

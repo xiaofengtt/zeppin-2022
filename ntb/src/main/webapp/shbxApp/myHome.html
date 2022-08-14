@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>我的</title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/myHome.css" />
+	</head>
+	<body onload="loading();" style="display:none;">
+		<div class="wrap noBorder">
+			<div class="info-top">
+				<img src="img/icon-myHome-tx.png" />
+				<p></p>
+			</div>
+			<div class="info-bottom">
+				<ul>
+					<a href="javascript:"><li class="smrz"><p>实名认证</p><b class="color-blue"></b></li></a>
+					<a href="javascript:"><li class="fwdd"><p>服务订单</p><b class="color-blue"></b></li></a>
+					<a href="javascript:"><li class="yhk"><p>银行卡</p><b class="color-blue"></b></li></a>
+					<div class="clear"></div>
+				</ul>
+			</div>
+			<!--我的订单-->
+			<a href="javascript:"><div class="myOrder mt-28"><span class="color-2E">我的订单</span><img class="goBtn" src="img/icon_more.png" /></div></a>
+			<!--关于我们-->
+			<a href="aboutUs.html"><div class="aboutUs mt-28"><span class="color-2E">联系我们</span><img class="goBtn" src="img/icon_more.png" /></div></a>
+			<!--密码管理-->
+			<a href="javascript:"><div class="pwdManagement mt-28"><span class="color-2E">密码管理</span><img class="goBtn" src="img/icon_more.png" />
+			<b>未设置</b>
+			</div></a>
+			<!--退出登录-->
+			<a class="color-blue layout">退出登录</a>
+			
+			<!--footer-->
+			<footer>
+				<ul>
+					<a href="javascript:"><li class="index indexBar">首页</li></a>
+					<a href="javascript:" class=""><li class="jshb paySocial">缴社保</li></a>
+					<a href="javascript:"><li class="sshb sshbBar">算社保</li></a>
+					<a href="javascript:"><li class="consultList consultListBar">资讯</li></a>
+					<a href="javascript:"><li class="myhome light">我的</li></a>
+				</ul>
+			</footer>
+			<p class="layer">
+				提示信息
+			</p>
+			<div id="loading-box">
+				<img src="./img/icon-loading.gif" alt="" />
+			</div>
+			<!-- 退出登录 -->
+			<div id="confirm-box-logout" class="">
+				<div class="confirm-box-inner">
+					<h3>温馨提示</h3>
+					<h4>确定要安全退出吗？</h4>
+					<div class="confirm-box-inner-btnbox clearfix">
+						<input type="button"  value="取消" id="confirm-box-close-logout"/>
+						<input type="button"  value="确定" id="confirm-logout"/>
+					</div>
+				</div>
+			</div>
+			<div id="confirm-box" class="indexConfirm">
+				<div class="confirm-box-inner">
+					<h3>温馨提示</h3>
+					<h4></h4>
+					<div class="confirm-box-inner-btnbox clearfix">
+						<input type="button"  value="取消" id="confirm-box-close"/>
+						<input type="button"  value="立即提交" id="confirm"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="./js/burialPoint.js"></script>
+		<script type="text/javascript" src="js/jquery-2.2.4.min.js" ></script>
+		<script src="./js/base64.js"></script>
+		<script src="./js/md5.js"></script>
+		<script type="text/javascript" src="js/picker.min.js" ></script>
+		<script type="text/javascript" src="js/base.js?v=1.0" ></script>
+		<script type="text/javascript" src="js/myHome.js" ></script>
+	</body>
+</html>

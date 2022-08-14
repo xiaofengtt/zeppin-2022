@@ -41,4 +41,16 @@ public interface IBankDAO extends IBaseDAO<Bank, String> {
 	 * @return
 	 */
 	boolean isExistBankByName(String name, String uuid);
+	
+	/**
+	 * 根据参数查询结果列表(带分页、排序)
+	 * @param inputParams
+	 * @param pageNum
+	 * @param pageSize
+	 * @param sorts
+	 * @param resultClass
+	 * @return  List<Entity>
+	 */
+	 List<Entity> getListForWebPage(Map<String, String> inputParams, Integer pageNum, Integer pageSize, String sorts, Class<? extends Entity> resultClass);
+
 }

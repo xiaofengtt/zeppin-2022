@@ -3,6 +3,7 @@
  */
 package cn.zeppin.product.ntb.backadmin.service.impl;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -81,8 +82,8 @@ public class BankFinancialProductPublishService extends BaseService implements I
 	 * @return  List<Entity>
 	 */
 	@Override
-	public List<Entity> getWebListForPage(Map<String, String> inputParams, Integer pageNum, Integer pageSize, String sorts, Class<? extends Entity> resultClass) {
-		return bankFinancialProductPublishDAO.getWebListForPage(inputParams, pageNum, pageSize, sorts, resultClass);
+	public List<Entity> getWebListForPage(Map<String, String> inputParams, Integer pageNum, Integer pageSize, LinkedList<String> sortList, Class<? extends Entity> resultClass) {
+		return bankFinancialProductPublishDAO.getWebListForPage(inputParams, pageNum, pageSize, sortList, resultClass);
 	}
 
 	/**
@@ -96,7 +97,7 @@ public class BankFinancialProductPublishService extends BaseService implements I
 	}
 	
 	/**
-	 * 获取银行理财产品发布分状态列表
+	 * 获取募集产品分状态列表
 	 * @param resultClass
 	 * @return  List<Entity>
 	 */
@@ -106,13 +107,13 @@ public class BankFinancialProductPublishService extends BaseService implements I
 	}
 	
 	/**
-	 * 获取银行理财产品发布分阶段列表
+	 * 获取募集产品分阶段列表
 	 * @param resultClass
 	 * @return  List<Entity>
 	 */
 	@Override
-	public List<Entity> getStageList(Class<? extends Entity> resultClass) {
-		return bankFinancialProductPublishDAO.getStageList(resultClass);
+	public List<Entity> getStageList(Map<String, String> inputParams, Class<? extends Entity> resultClass) {
+		return bankFinancialProductPublishDAO.getStageList(inputParams, resultClass);
 	}
 	
 	/**
@@ -120,11 +121,16 @@ public class BankFinancialProductPublishService extends BaseService implements I
 	 */
 	public void updateStage(){
 		bankFinancialProductPublishDAO.updateStageCollect();
-		bankFinancialProductPublishDAO.updateStageFinished();
+		bankFinancialProductPublishDAO.updateStageUninvestByCollect();
+		bankFinancialProductPublishDAO.updateStageUninvest();
+		bankFinancialProductPublishDAO.updateStageInvested();
+		bankFinancialProductPublishDAO.updateStageProfit();
+		bankFinancialProductPublishDAO.updateStageBalance();
+		bankFinancialProductPublishDAO.updateStageBalance4Finish();
 	}
 	
 	/**
-	 * 验证同名的银行理财产品发布信息是否已经存在
+	 * 验证同名的募集产品信息是否已经存在
 	 * @param name
 	 * @param uuid
 	 * @return
@@ -135,7 +141,7 @@ public class BankFinancialProductPublishService extends BaseService implements I
 	}
 	
 	/**
-	 * 验证同编号的银行理财产品发布信息是否已经存在
+	 * 验证同编号的募集产品信息是否已经存在
 	 * @param scode
 	 * @param uuid
 	 * @return
@@ -143,5 +149,20 @@ public class BankFinancialProductPublishService extends BaseService implements I
 	@Override
 	public boolean isExistBankFinancialProductPublishByScode(String scode, String uuid) {
 		return bankFinancialProductPublishDAO.isExistBankFinancialProductPublishByScode(scode, uuid);
+	}
+
+	@Override
+	public void updateBatch(List<BankFinancialProductPublish> listUpdate) {
+		// TODO Auto-generated method stub
+		for(BankFinancialProductPublish bfpp : listUpdate) {
+			this.bankFinancialProductPublishDAO.update(bfpp);
+		}
+	}
+
+	@Override
+	public List<Entity> getBankList(Map<String, String> inputParams, Integer pageNum, Integer pageSize, String sorts,
+			Class<? extends Entity> resultClass) {
+		// TODO Auto-generated method stub
+		return this.bankFinancialProductPublishDAO.getBankList(inputParams, pageNum, pageSize, sorts, resultClass);
 	}
 }

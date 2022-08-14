@@ -1,0 +1,25 @@
+.safeItem{width: 30%;text-align: center;float: left;padding: 0;margin-right: 3%;}
+.safeTop{padding-top: 60px;height: 317px;}
+.safeTop img{max-width: 28.57%;}
+.safeTop h3{font-size: 22px;color: #333333;padding: 40px 0 10px 0;}
+.safeTop p{color: #6e6e6e;font-size: 16px;padding-top: 10px;}
+.safeTop .starDiv{width: 90px;height: 13px;margin: 3px auto;}
+.safeTop .starDiv .starIndex{background: url(../img/star-light.png) center left;height: 13px;margin: 0 auto;width:0;}
+.safeBottom{border-top: 1px solid #e6e6e6;height: 84px;line-height: 84px;cursor: pointer;}
+
+
+input.smsCode{width: 160px !important;float: left;margin-right: 17px;}
+.getCode{width: 132px;height: 42px;border: 1px solid #ffb031;display: block;float: left;border-radius: 2px;line-height: 42px;text-align: center;font-size: 14px;cursor: pointer;}
+.bindWeChatIframe .iframeInner{width: 200px;height: 80px;margin-left: -100px; margin-top:-40px;line-height:80px;text-align:center;}
+.iframeInner .groupBox p{color: #474747;font-size: 14px;}
+.bindWeChatIframe .iframeInner .groupBox{text-align: center;}
+.bindWeChatIframe .iframeInner .groupBox img{margin: 40px auto 25px auto;}
+.iframeInner .groupBox p.bindings{color: #b7b7b7;}
+
+iframe{width:350px;height:440px;border:none;}
+.bindWeChatIframe .iframeInner .btn{display:none;margin:0 auto;}
+.iframeInner .closeIframe{background:url(../img/closeIframe.png) center no-repeat;background-size:60%;}
+.bindWeChatIframe .iframeInner .closeIframe{right:15px;top:15px;}
+
+.tipsDiv{background:url(../img/tipsTop.png) center top no-repeat;position:absolute;width:80%;padding-top:11px;left:10%;top:70px;display:none;}
+.tipsDiv p{background:#dfdfdf;padding:10px;font-size:13px;border-radius:3px;}

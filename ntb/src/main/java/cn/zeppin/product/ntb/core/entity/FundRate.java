@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import cn.zeppin.product.ntb.core.entity.base.BaseEntity;
 
 /**
- * @description 【数据对象】基金费率信息
+ * @description 【数据对象】活期理财费率信息
  */
 
 @Entity

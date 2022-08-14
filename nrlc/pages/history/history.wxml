@@ -1,0 +1,32 @@
+<!--pages/history/history.wxml-->
+<view class="container">
+  <block wx:for="{{dataList}}" wx:key="{{time}}" wx:for-index="i">
+    <view class="month-view">
+      <view class="month">
+        <text>{{item.time}}</text>
+      </view>
+      <block wx:for="{{item.dataList}}" wx:key="{{uuid}}" wx:for-item="data">
+        <view class="data" bindtap="{{buttonAble ? 'toHistoryDetail' : ''}}" data-month="{{i}}" data-index="{{index}}">
+          <image src="{{data.priceflag ? '/resources/pay/income.png' : '/resources/pay/expenses.png'}}"></image>
+          <view class="info">
+            <view class="title">{{data.remark}}</view>
+            <view class="time">{{data.createtimeLessCN}}</view>
+          </view>
+          <view class="money">
+            <view class="{{data.priceflag ? 'income' : 'expenses'}}">{{data.priceflag ? '+' : '-'}}{{data.price}}</view>
+            <view class="status">{{data.statusCN}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </block>
+  <block wx:if="{{dataList.length == 0}}">
+    <view class="nodata" >
+      <view>
+        <image src="/resources/index/nodata.png" mode="widthFix"></image>
+      </view>
+      <text>没有交易记录哦~</text>
+    </view>
+  </block>
+</view>
+<view hidden="{{messageHidden}}" class="message-view"><view>{{message}}</view></view>

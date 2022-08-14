@@ -1,12 +1,9 @@
 package cn.zeppin.product.ntb.backadmin.interceptor;
 
 
-import java.net.URLEncoder;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import cn.zeppin.product.ntb.backadmin.security.CSRFTokenManager;
@@ -34,24 +31,31 @@ public class CSRFInterceptor extends HandlerInterceptorAdapter {
 //		if(!referer.startsWith("")){
 //			return false;
 //		}
-		
 		if ("POST".equalsIgnoreCase(request.getMethod()) && request.getParameterMap().size() != 0) {
 			String CSRFToken = CSRFTokenManager.getTokenFromRequest(request);
+			if(request.getSession().getAttribute(CSRFTokenManager.CSRF_TOKEN_FOR_SESSION_ATTR_NAME) == null){
+				response.setContentType("application/json");
+            	response.setCharacterEncoding("UTF-8");
+    			response.setHeader("Cache-Control", "no-cache");
+            	response.getWriter().print("{\"status\":\"FAIL\",\"message\":\"页面载入超时，请刷新页面！\"}");
+                return false;
+			}
+			if("".equals((String)request.getSession().getAttribute(CSRFTokenManager.CSRF_TOKEN_FOR_SESSION_ATTR_NAME))){
+				response.setContentType("application/json");
+            	response.setCharacterEncoding("UTF-8");
+    			response.setHeader("Cache-Control", "no-cache");
+            	response.getWriter().print("{\"status\":\"FAIL\",\"message\":\"页面载入超时，请刷新页面！\"}");
+                return false;
+			}
             if (CSRFToken == null || !CSRFToken.equals(request.getSession().getAttribute(CSRFTokenManager.CSRF_TOKEN_FOR_SESSION_ATTR_NAME))) {
-                String reLoginUrl = "../views/login.jsp?backurl=" + URLEncoder.encode(getCurrentUrl(request), "utf-8");
-                response.sendRedirect(reLoginUrl);
+            	response.setContentType("application/json");
+            	response.setCharacterEncoding("UTF-8");
+    			response.setHeader("Cache-Control", "no-cache");
+            	response.getWriter().print("{\"status\":\"FAIL\",\"message\":\"access barred!\"}");
                 return false;
             }
 		 }
 		return true;
 	}
 	
-	private String getCurrentUrl(HttpServletRequest request) {
-		String currentUrl = request.getRequestURL().toString();
-		if (!StringUtils.isEmpty(request.getQueryString())) {
-			currentUrl += "?" + request.getQueryString();
-		}
-
-		return currentUrl;
-	}
 }

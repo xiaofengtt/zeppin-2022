@@ -1,0 +1,184 @@
+body{background: #f9f9fb;}
+#banner{height: 462px;background: url(../img/sbx-jzz1.jpg) center no-repeat;}
+.banner-inner{max-width: 1200px;padding-top: 100px;}
+.titleImg{display: block;margin: 0 0 45px 0;}
+.onlineBtn{display: block;width: 170px;height: 60px;background: url(../img/sbx-jzz4.png) center no-repeat;margin: 60px 0 0 0;cursor: pointer;border-radius: 30px;float: left;}
+.handleBtn{display: block;width: 170px;height: 60px;background: url(../img/sbx-jzz5.png) center no-repeat;margin: 60px 30px 0 0;cursor: pointer;border-radius: 30px;float: left;}
+.onlineBtn:hover{box-shadow: 0 0 5px #FFB320;}
+.benefitBox-inner,.require-inner,.service-inner,.model-3-inner{max-width: 1200px;}
+.title-big{font-size: 28px;color: #161616;line-height: 150px;font-weight: normal;float: left;}
+.title-small{font-size: 22px;color: #7a7a7a;font-weight: normal;line-height: 150px;float: right;}
+.benefitBox{background: #FFFFFF;}
+.benefitBox-content{}
+.benefitBox-pc,.benefitBox-phone{
+	width: 100%;
+	padding-bottom: 20px;
+}
+.benefitBox-phone{
+	display: none;
+}
+.benefitBox-content ul{border-top: #e9e9e9 solid 1px;}
+.benefitBox-content li{padding: 14px 23px;border-bottom: #e9e9e9 solid 1px;}
+.benefitBox-content li img{float: left;display: block;width: 100px;}
+.benefitBox-content li div.item-div{float: left;padding-left: 34px;}
+.benefitBox-content li div p{color: #313131;font-size: 22px;line-height: 30px;padding-top: 15px;}
+.benefitBox-content li div span{color: #313131;font-size: 16px;line-height: 26px;}
+.requireBox li{width:49%;max-width: 590px;margin-bottom: 20px;background: #FFFFFF;float: left;height: 100%;min-height: 320px;}
+.requireBox li:hover{box-shadow: 0px 0px 5px #a9a8a8;-moz-box-shadow:  0px 0px 5px #a9a8a8;-webkit-box-shadow: 0px 0px 5px #a9a8a8;-o-box-shadow:  0px 0px 5px #a9a8a8;-ms-box-shadow:  0px 0px 5px #a9a8a8;}
+.requireBox li img{display: block;margin: 40px auto;}
+.requireBox li span{color: #161616;font-size: 16px;line-height: 30px;padding: 0 50px;display: block;}
+
+.model2-list{height: 604px;padding-top: 30px;}
+.flex-box{height: 300px;background: #fff;}
+.flex-phone{display: none;}
+.model2-list .model2-item{display: inline-block;width: 25%;height: 300px;text-align: center;vertical-align: middle; display: table-cell; vertical-align:middle; }
+.model2-list .model2-item p{color: #313131;font-size: 24px;line-height: 36px;padding-top: 10px;}
+.model2-list .model2-item span{color: #818182;font-size: 18px;line-height: 30px;font-weight: lighter;}
+.service-bg{
+	width: 100%;
+}
+
+.model-3{width: 100%;text-align: center;}
+.model3-list{max-width: 1200px;padding-bottom: 100px;background: #FFFFFF;margin-bottom: 35px;display: flex;}
+.model3-list div.model3-item,.model3-row{display: inline-block;padding-top: 80px;}
+.model3-list .model3-row{width: 110px;background: url(../img/pt-icon17.png) center 150px no-repeat;height: 300px;}
+.model3-list .model3-item{width: 170px;text-align: center;}
+.model3-list .model3-item p{color: #171717;font-size: 24px;line-height: 36px;padding: 35px 0 15px 0;}
+.model3-list .model3-item span{display: block;color: #535353;font-size: 18px;line-height: 34px;}
+.model3-list div.model3-item img{transition:transform 2s;-moz-transition:transform 2s;-webkit-transition:transform 2s;-o-transition:transform 2s;}
+.model3-list div.model3-item:hover img{transform: rotateY(360deg);}
+@media only screen and (max-width: 768px) {
+	#banner{
+		height: 231px;
+		background: url(../img/sbx-jzz1.jpg) left center no-repeat;
+		background-size: cover;
+	}
+	#banner .banner-inner{
+		padding-top:1rem;
+		padding-left: 0.9rem;
+	}
+	#banner .banner-inner img{
+		width: 90%;
+	}
+	#banner .banner-inner img.titleImg{
+		width: 10rem;
+		margin: 0 0 1rem 0 ;
+	}
+	.onlineBtn,.handleBtn{
+		width: 6rem;
+		height: 3rem;
+		margin:1.5rem 1rem 0 0;
+		border-radius: 0.6rem;
+		background-size:contain ;
+	}
+	.onlineBtn:active,.onlineBtn:focus,.handleBtn:active,.handleBtn:focus{
+		outline: 0;
+	}
+	.title-small{
+		display: none;
+	}
+	.title-big{
+		font-size: 20px;
+		line-height: 1.5;
+		padding: 0.5rem 0.9rem;
+	}
+	.benefitBox-inner, .require-inner, .service-inner, .model-3-inner{
+		/*padding: 0 0.9rem;*/
+	}
+	.benefitBox-pc{
+		display: none;
+	}
+	.benefitBox-phone{
+		display: block;
+		padding:0 0.9rem 0.5rem 0.9rem;
+	}
+	.requireBox li{
+		width: 100%;
+		vertical-align: top;
+		min-height: auto;
+		text-align: left;
+		align-items: center;
+		display: flex;
+	}
+	.requireBox li span{
+		padding: 0;
+		display: inline-block;
+		width: 85%;
+		padding-left: 0.5rem;
+		line-height: 1.5;
+		flex: 1;
+    		display: flex;
+	}
+	.requireBox li img{
+		display: inline-block;
+		width: 15%;
+		margin: 0;
+		float: left;
+	}
+	.requireBox li.lastLi{
+		text-align: left !important;
+	}
+	.model3-list .model3-item{
+		width: 15%;
+		float: left;
+		padding-top: 0.3rem !important;
+	}
+	.model3-list .model3-row{
+		width: 10%;
+		float: left;
+		background: url(../img/pt-icon17.png) center 1.2rem no-repeat;
+		background-size:contain ;
+		height:auto;
+	}
+	.model3-list div.model3-item img{
+		width: 100%;
+	}
+	.model3-list .model3-item p{
+		font-size: 18px;
+		line-height: 1.5;
+		padding: 0.5rem 0 0.15rem 0;
+	}
+	.model3-list .model3-item span{
+		font-size: 16px;
+		line-height: 1.5;
+		display:none;
+	}
+	.model3-list{
+		padding-bottom: 0;
+		padding: 0 0.9rem;
+	}
+	.flex-pc{
+		display: none;
+	}
+	.flex-phone{
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+	.model2-list .model2-item{
+		width: 50%;
+		height: auto;
+	}
+	.model2-list{
+		height: auto;
+		padding-top: 0;
+		padding: 0 0.9rem;
+	}
+	.model2-list .model2-item p{
+		font-size: 18px;
+		margin: 0;
+		line-height: 1;
+	}
+	.model2-list .model2-item span{
+		font-size: 14px;
+		font-weight: normal;
+	}
+	.service-icon{
+		width: 25%;
+	}
+	.require-inner ul{
+		padding: 0.5rem 0.9rem;
+		background: #fff;
+	}
+}
+

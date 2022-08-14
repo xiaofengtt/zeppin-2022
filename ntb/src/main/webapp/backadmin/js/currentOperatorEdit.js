@@ -14,6 +14,13 @@ $(document).ready(function() {
 });
 //提交
 $('#formsubmit').submit(function() {
+	if (flagSubmit == false) {
+        return false;
+    }
+    flagSubmit = false;
+    setTimeout(function() {
+        flagSubmit = true;
+    }, 3000);
 	var name=$("#name").val().replace(/(^\s*)|(\s*$)/g, "");
 	var realname=$("#realname").val().replace(/(^\s*)|(\s*$)/g, "");
 	var mobile=$("#mobile").val().replace(/(^\s*)|(\s*$)/g, "");

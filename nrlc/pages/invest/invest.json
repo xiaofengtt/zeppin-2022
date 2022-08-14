@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#008DFB",
+  "navigationBarTitleText": "购买理财",
+  "navigationBarTextStyle": "white",
+  "backgroundTextStyle": "dark",
+  "backgroundColor": "#eee",
+  "enablePullDownRefresh": true
+}

@@ -32,18 +32,18 @@ public interface IBankFinancialProductInvestService extends IBaseService<BankFin
 	 * @return
 	 */
 	public Integer getCount(Map<String, String> inputParams);
-	
-	/**
-	 * 获取银行理财产品投资分状态列表
-	 * @param resultClass
-	 * @return
-	 */
-	public List<Entity> getStatusList(Class<? extends Entity> resultClass);
-	
-	/**
-	 * 获取银行理财产品投资分阶段列表
-	 * @param resultClass
-	 * @return
-	 */
-	public List<Entity> getStageList(Class<? extends Entity> resultClass);
+//	
+//	/**
+//	 * 获取银行理财产品投资分状态列表
+//	 * @param resultClass
+//	 * @return
+//	 */
+//	public List<Entity> getStatusList(Class<? extends Entity> resultClass);
+//	
+//	/**
+//	 * 获取银行理财产品投资分阶段列表
+//	 * @param resultClass
+//	 * @return
+//	 */
+//	public List<Entity> getStageList(Class<? extends Entity> resultClass);
 }

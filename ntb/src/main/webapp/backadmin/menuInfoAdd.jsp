@@ -7,6 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html">
 		<title>添加页面菜单</title>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="css/bootstrap.css" />
 		<link rel="stylesheet" href="css/bootstrap2.css" />
 		<link rel="stylesheet" href="css/style.css" />
@@ -15,7 +16,7 @@
 	<body>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="navigation.jsp"/>
-		<input id="scode" type="hidden" value="00200021" />  
+		<input id="scode" type="hidden" value="00200021" />
 		<div class="contain">
 			<jsp:include page="contentLeft.jsp"/>
 			<div class="contain-right">
@@ -34,7 +35,6 @@
 								</div>
 								<div class="clear"></div>
 							</div>
-							<div class="clear"></div>
 							<div class="form-group form-group-double col-xs-6">
 								<label class="col-xs-12">菜单名称：</label>
 								<div class="col-xs-12">
@@ -49,7 +49,6 @@
 								</div>
 								<div class="clear"></div>
 							</div>
-							<div class="clear"></div>
 							<div class="form-group form-group-double col-xs-6">
 								<label class="col-xs-12">菜单编码：</label>
 								<div class="col-xs-12">
@@ -64,7 +63,6 @@
 								</div>
 								<div class="clear"></div>
 							</div>
-							<div class="clear"></div>
 							<div class="form-group form-group-double col-xs-6">
 								<label class="col-xs-12">菜单图标：</label>
 								<div class="col-xs-12">
@@ -72,10 +70,17 @@
 								</div>
 								<div class="clear"></div>
 							</div>
+							<div class="form-group col-xs-6">
+								<label class="col-xs-12">默认排序：</label>
+								<div class="col-xs-12">
+									<input type="text" name="sort" id="sort" class="form-control"/>
+								</div>
+								<div class="clear"></div>
+							</div>
 							<div class="clear"></div>
 							<div class="btnGroup" style="margin-top:45px;">
 								<button class="btn sureBtn" type="submit">确定</button>
-								<button class="btn cancleBtn" type="button" onclick="window.location.href=history.go(-1);">取消</button>
+								<button class="btn cancleBtn" type="button" onclick="window.location.href = document.referrer;">取消</button>
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -89,7 +94,8 @@
 		<script type="text/javascript" src="js/layer-v3.0.1/layer/layer.js" ></script>
 		<script type="text/javascript" src="js/bootstrap.js" ></script>
 		<script type="text/javascript" src="js/jquery.uploadfile.min.js"></script>
-		<script type="text/javascript" src="js/url.min.js"></script>
+		<script type="text/javascript" src="js/url.min.js"></script><script type="text/javascript" src="js/flagSubmit.js"></script>
 		<script type="text/javascript" src="js/menuInfoAdd.js" ></script>
+		<script type="text/javascript" src="js/flagSubmit.js"></script>
 	</body>
 </html>

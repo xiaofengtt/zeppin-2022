@@ -1,5 +1,13 @@
+var flagSubmit = true;
 //提交
 $('#formsubmit').submit(function() {
+	if (flagSubmit == false) {
+        return false;
+    }
+    flagSubmit = false;
+    setTimeout(function() {
+        flagSubmit = true;
+    }, 3000);
 	var password=$("#password").val();
 	var confirmPassword=$("#confirmPassword").val();
 	
@@ -22,7 +30,7 @@ $('#formsubmit').submit(function() {
 				layer.msg('密码修改成功', {
 					time: 1000 
 				}, function(){
-					window.location.href="../backadmin/index.jsp"
+					window.location.href="index.jsp"
 				}); 
 			} else {
 				layer.msg(data.message, {
