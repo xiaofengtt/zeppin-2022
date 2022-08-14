@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 点击时效果 -->
+    <item android:color="@color/nav_selected" android:state_checked="true"></item>
+    <!--按钮可用状态-->
+    <item android:color="@color/nav_normal" android:state_enabled="true"></item>
+
+</selector>

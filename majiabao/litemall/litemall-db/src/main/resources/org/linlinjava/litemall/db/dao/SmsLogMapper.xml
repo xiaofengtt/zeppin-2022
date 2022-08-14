@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.linlinjava.litemall.db.dao.SmsLogMapper">
+    <insert id="add">
+        INSERT INTO sms_log(
+            phone,
+            ip,
+            create_time
+        )VALUES (
+            #{phone},
+            #{ip},
+            now()
+        )
+    </insert>
+    <select id="findList" resultType="java.lang.Integer">
+        SELECT count(1) FROM sms_log
+        <where>
+            <if test="phone !=null ">
+                and phone =#{phone}
+            </if>
+            <if test="ip !=null ">
+                and ip =#{ip}
+            </if>
+            <if test="createTime !=null ">
+                and create_time >= #{createTime}
+            </if>
+        </where>
+    </select>
+</mapper>

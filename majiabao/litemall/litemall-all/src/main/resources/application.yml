@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: db, core, admin, wx
+  messages:
+    encoding: UTF-8
+
+
+server:
+  port: 18081
+
+logging:
+  config: classpath:logback-spring.xml

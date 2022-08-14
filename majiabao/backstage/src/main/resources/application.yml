@@ -1,0 +1,84 @@
+server:
+  port: 80
+#  port: 18080
+  max-threads: 1000
+  max-connections: 20000
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  #typeAliasesPackage: com.game.common.entity,com.game.entity
+  global-config:
+    id-type: 0  #0:数据库ID自增   1:用户输入id  2:全局唯一id(IdWorker)  3:全局唯一ID(uuid)
+    db-column-underline: false
+    refresh-mapper: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true #配置的缓存的全局开关
+    lazyLoadingEnabled: true #延时加载的开关
+    multipleResultSetsEnabled: true #开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql语句,调试用
+
+###################  spring配置  ###################
+
+spring:
+  profiles:
+#    active: dev
+    active: prod
+
+  mvc:
+    static-path-pattern: /static/**
+
+  thymeleaf:
+      cash: false
+      prefix: classpath:/templates/
+      suffix: .html
+      mode: HTML5
+      encoding: utf-8
+
+  cache:
+    type: caffeine
+    ehcache:
+      config: classpath:/properties/ehcache.xml
+
+  http:
+    converters:
+      preferred-json-mapper: fastjson
+  servlet:
+    multipart:
+      max-file-size: 100MB #最大请求大小
+      max-request-size: 100MB #最大文件大小
+  devtools:
+    restart:
+      enabled: true #是否开启开发者工具（true/false）
+      #additional-paths: src/main/java
+      #exclude: static/**,WEB-INF/view/**
+  jackson:
+    #日期格式化AsyncTaskConfig
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  serialization:
+      #格式化输出
+    indent_output: true
+      #忽略无法转换的对象
+    fail_on_empty_beans: false
+    #设置空如何序列化
+    defaultPropertyInclusion: NON_NULL
+  deserialization:
+      #允许对象忽略json中不存在的属性
+    fail_on_unknown_properties: false
+  parser:
+      #允许出现特殊字符和转义符
+    allow_unquoted_control_chars: true
+      #允许出现单引号
+    allow_single_quotes: true
+debug: false
+
+ipdata.filePath: /java/backstage
+#ipdata.filePath: E:\\svntest3\\treasuremall\\treasuremallcore\\src\\main\\resources\\ipdata
+###################  58qipai配置  ###################
+#img.prefix: https://www.fdppkk88900.xyz/img/58qipai
+
+#
+#url:
+#  prefix: http://47.89.36.37:8088/images/
+#  directory:  c:\\test\\

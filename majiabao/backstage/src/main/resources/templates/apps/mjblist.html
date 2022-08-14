@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../static/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/layui/css/style.css">
+    <script src="../../static/layui/layui.js"></script>
+    <script src="../../static/jq/jqery.js"></script>
+
+    <style>
+        .layui-card:last-child{
+            margin-bottom:0;
+            height:100%;
+            margin-right: 10%;
+            left: 5%;
+			position:relative;
+        }
+
+        .layui-col-md6{
+            width:23%;
+            height:230px;
+        }
+        .layui-delete{
+        	position:absolute;
+        	z-index:1;
+        	right:8px;
+        	top:8px;
+        	border-radius: 3px;
+        }
+        .layui-delete:hover{
+        	color: white !important;
+    		background-color: #FF5722 !important;
+        }
+    </style>
+</head>
+<body>
+<!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">-->
+    <!--<legend>马甲列表</legend>-->
+<!--</fieldset>-->
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;">
+    <legend>
+        <button class="layui-btn"  onclick="addmjb()"  style="background-color: #1e9fff"  >添加</button>
+    </legend>
+</fieldset>
+<div style="padding: 20px; background-color: #F2F2F2; padding-left: 7%">
+    <div  th:each="info,infoStat : ${mjbs}">
+
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md6"  th:if="${info[mjbinfo1].appname!=''}" >
+                <div class="layui-card">
+	            	<a class="layui-delete" th:onclick="'javascript:delmjb(\''+${info[mjbinfo1].id}+'\');'">
+	            		<i class="layui-icon" style="font-size:24px; color: black;">&#x1006;</i>
+	            	</a>
+	            	<div th:onclick="'javascript:mjbinfo(\''+${info[mjbinfo1].appname}+'\',\''+${info[mjbinfo1].id}+'mjb\',\'/app/appversion/mjbinfo?id='+${info[mjbinfo1].id}+'\');'" >
+	            	   <div class="layui-card-header" style="background-color: #1e9fff"   th:text="${info[mjbinfo1].appname}" ></div>
+	                   <div class="layui-card-body"    th:text="${info[mjbinfo1].info}">
+					                        简<br>
+					                        介
+	                   </div>
+	            	</div>
+                    <!--<div   style="padding-left:84%; padding-top:30%;"><button class="layui-btn layui-btn-sm"   th:onclick="'javascript:delmjb(\''+${info[mjbinfo1].id}+'\');'"   style="background-color: #1e9fff"  >删除</button></div>-->
+                </div>
+
+            </div>
+            <div class="layui-col-md6"  th:if="${info[mjbinfo2].appname!=''}">	
+                <div class="layui-card">
+	                <a class="layui-delete" th:onclick="'javascript:delmjb(\''+${info[mjbinfo2].id}+'\');'">
+	            		<i class="layui-icon" style="font-size:24px; color: black;">&#x1006;</i>
+	            	</a>
+	            	<div  th:onclick="'javascript:mjbinfo(\''+${info[mjbinfo2].appname}+'\',\''+${info[mjbinfo2].id}+'mjb\',\'/app/appversion/mjbinfo?id='+${info[mjbinfo2].id}+'\');'">
+	            		<div class="layui-card-header" style="background-color: #1e9fff"  th:text="${info[mjbinfo2].appname}"></div>
+	                    <div class="layui-card-body"    th:text="${info[mjbinfo2].info}">
+						                        简<br>
+						                        介
+	                    </div>
+	            	</div>
+                </div>
+            </div>
+
+            <div class="layui-col-md6"  th:if="${info[mjbinfo3].appname!=''}">
+                <div class="layui-card">
+	                <a class="layui-delete" th:onclick="'javascript:delmjb(\''+${info[mjbinfo3].id}+'\');'">
+	            		<i class="layui-icon" style="font-size:24px; color: black;">&#x1006;</i>
+	            	</a>
+	            	<div th:onclick="'javascript:mjbinfo(\''+${info[mjbinfo3].appname}+'\',\''+${info[mjbinfo3].id}+'mjb\',\'/app/appversion/mjbinfo?id='+${info[mjbinfo3].id}+'\');'">
+	            		<div class="layui-card-header" style="background-color: #1e9fff"  th:text="${info[mjbinfo3].appname}"></div>
+	                    <div class="layui-card-body"    th:text="${info[mjbinfo3].info}">
+					                        简<br>
+					                        介
+	                    </div>
+	            	</div>
+                    
+                </div>
+            </div>
+
+            <div class="layui-col-md6"  th:if="${info[mjbinfo4].appname!=''}">
+                <div class="layui-card">    
+                	<a class="layui-delete" th:onclick="'javascript:delmjb(\''+${info[mjbinfo4].id}+'\');'">
+	            		<i class="layui-icon" style="font-size:24px; color: black;">&#x1006;</i>
+	            	</a>
+	            	<div th:onclick="'javascript:mjbinfo(\''+${info[mjbinfo4].appname}+'\',\''+${info[mjbinfo4].id}+'mjb\',\'/app/appversion/mjbinfo?id='+${info[mjbinfo4].id}+'\');'">
+	            		<div class="layui-card-header" style="background-color: #1e9fff"  th:text="${info[mjbinfo4].appname}"></div>
+	                    <div class="layui-card-body"    th:text="${info[mjbinfo4].info}">
+					                        简<br>
+					                        介
+	                    </div>
+	            	</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+
+<script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+
+
+    layui.use('layer', function(){
+        var layer = layui.layer;
+
+    });
+
+
+    function mjbinfo(qd,id,url){
+        window.parent.frames.addtab(qd,id,url);
+
+        var element = layui.element;
+
+        var $ = layui.jquery
+
+        var exist=$("li[lay-id='"+id+"']").length;
+        if(exist<1) {
+            element.tabAdd('demo', {
+                title: qd
+                ,content: '<iframe data-frameid="'+id+'" scrolling="auto"  frameborder="0" src="'+url+'" style="width:100%;height:500px;"></iframe>'//支持传入html
+                ,id: id
+            });
+
+            element.tabChange('demo', id); //根据传入的id传入到指定的tab项
+        }else{
+            element.tabChange('demo', id);
+        }
+        return false;
+    }
+
+
+
+    function addmjb(){
+        layer.open({
+            type: 2,
+            title: '添加',
+            area: ['32%', '32%'],
+            skin: 'layui-layer-rim', //加上边框
+            // content: ['/app/appversion/edit-mjbinfo?id='+id+"&appname="+$("#appname").val(), 'no']
+            content: ['/app/apps/addmjb', 'no']
+        });
+    }
+
+    function delmjb(id){
+    	layer.confirm('真的删除此马甲包么？', function(index){
+    		
+         $.ajax({
+	         url:'/app/apps/delmjb',
+	         data:{
+	             id:id,
+	         },
+	         dataType:'json',
+	         type:'post',
+	         success:function (data1) {
+	             var last=JSON.stringify(data1);
+	             if (data1 == '1'){
+	                 layer.msg('删除成功');
+	                 window.location.reload();
+	             }else{
+	                 layer.msg('删除失败');
+	             }
+	         }
+	     })
+    	})
+    	return false;
+
+}
+
+</script>
+</html>

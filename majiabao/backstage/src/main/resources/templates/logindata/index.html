@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/layui/css/style.css">
+    <script src="../../static/layui/layui.js"></script>
+    <script src="../../static/jq/jqery.js"></script>
+
+
+</head>
+
+<body >
+    <div class="layui-field-box">
+
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="app-content-workorder">
+            <div class="demoTable">
+                <div class="layui-inline">
+                    <label class="layui-form-label">渠道</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="channel" id="channel" placeholder="请输入"   th:value="${channel}"  autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">平台</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="platformtype" id="platformtype" placeholder="请输入"  th:value="${platformtype}"  autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <!--<div class="layui-inline">-->
+
+                    <!--<label class="layui-form-label">账户</label>-->
+                    <!--<select name="isauditor" id="isauditor" >-->
+                        <!--<option value="">请选择</option>-->
+                        <!--<option value="" selected="">全部</option>-->
+                        <!--<option value="1">审核</option>-->
+                        <!--<option value="0">普通</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+
+                <div class="layui-inline" >
+                    <label class="layui-form-label">时间</label>
+                    <div class="layui-input-inline">
+                        <input type="text"  name="createtime" id="createtime" class="layui-input"  placeholder="yyyy-MM-dd">
+                    </div>
+                </div>
+
+                <button class="layui-btn"  id="do_search" name="do_search" data-type="reload">搜索</button>
+
+            </div>
+        </div>
+
+
+
+    <table class="layui-table" lay-size="sm" id="test" lay-filter="tableOne" >
+
+
+    </table>
+
+
+    </div>
+
+</body>
+
+
+<script th:inline="none">
+
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#createtime' //指定元素
+        });
+    });
+
+    layui.use('table', function(){
+        var table = layui.table;
+
+        table.render({
+            elem: '#test'
+
+            ,url:'/logindata/index/data'
+            , id: 'tableOne'
+            ,cols: [[
+                {field:'channel', width:250, title: '渠道名称', sort: true}
+                ,{field:'platformtype', width:250, title: '包名', sort: true}
+                ,{field:'text',  title: 'text', sort: true}
+                ,{field:'ip', width:250, title: 'ip', sort: true}
+                ,{field:'remaker', width:250, title: '账户类型', sort: true}
+                ,{field:'createtime',width:250, title: '时间', sort: true}
+
+
+            ]]
+            ,page: true
+
+        });
+
+        // 执行搜索，表格重载
+        $('#do_search').on('click', function () {
+            // 搜索条件
+
+            var channel= $("#channel").val();
+            var platformtype= $("#platformtype").val();
+            var createtime= $("#createtime").val();
+            // var isauditor= $("#isauditor").val();
+            table.reload('tableOne', {
+                method: 'post'
+                , where: {
+                    'channel': channel,
+                    'platformtype': platformtype,
+                    'createtime': createtime,
+                    // 'isauditor': isauditor,
+                }
+                , page: {
+                    curr: 1
+                }
+            });
+
+         });
+
+    });
+
+
+
+
+
+
+
+
+</script>
+
+</html>

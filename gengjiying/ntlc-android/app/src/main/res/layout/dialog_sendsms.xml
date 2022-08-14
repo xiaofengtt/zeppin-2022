@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/alpha_40_black"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:paddingLeft="@dimen/x140"
+              android:paddingRight="@dimen/x140">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_bg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/y65"
+            android:layout_marginTop="@dimen/y98"
+            android:text="验证码已发送至xxx手机号"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/color_575757"
+            android:textSize="@dimen/text_14"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x40"
+            android:layout_marginRight="@dimen/x40"
+            android:background="@drawable/send_sms_bg"
+            android:paddingBottom="@dimen/x15"
+            android:paddingLeft="@dimen/x30"
+            android:paddingTop="@dimen/x15">
+
+
+            <cn.zeppin.product.ntb.widget.ClearEditText
+                android:id="@+id/et_code"
+                style="@style/login_editText_style"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:hint="请输入验证码"
+                android:inputType="number"
+                android:maxLength="6"
+                android:textSize="@dimen/text_16"/>
+
+            <TextView
+                android:id="@+id/tv_getCode"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/x30"
+                android:text="获取验证码"
+                android:fontFamily="sans-serif"
+                android:textColor="@color/txt_code"
+                android:textSize="@dimen/text_14"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y135"
+            android:layout_marginTop="@dimen/y45"
+            android:background="@drawable/shape_border_top"
+            android:paddingTop="@dimen/y3">
+
+            <Button
+                android:id="@+id/btn_cancel"
+                style="@style/FilterButtonStyle"
+                android:background="@color/transparent"
+                android:text="取消"
+                android:textColor="@color/alpha_25_black"
+                android:textSize="@dimen/text_16"/>
+
+            <View
+                android:layout_width="@dimen/y3"
+                android:layout_height="match_parent"
+                android:background="@color/line_20_979797"/>
+
+            <Button
+                android:id="@+id/btn_confirm"
+                style="@style/FilterButtonStyle"
+                android:background="@color/transparent"
+                android:text="确认"
+                android:textColor="@color/color_D09637"
+                android:textSize="@dimen/text_16"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

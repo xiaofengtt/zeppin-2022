@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/main_tab"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_alignParentBottom="true"
+              android:visibility="gone"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+    <View
+        android:id="@+id/main_foot_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:background="@color/color_EEEEEE"/>
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/main_radiogroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/y15"
+                android:paddingTop="@dimen/y25">
+
+        <RadioButton
+            android:id="@+id/rb_bank"
+            style="@style/home_nav"
+            android:drawableTop="@drawable/selector_nav_bank"
+            android:tag="1"
+            android:text="@string/title_bank"/>
+
+        <RadioButton
+            android:id="@+id/rb_finance"
+            style="@style/home_nav"
+            android:drawableTop="@drawable/selector_nav_positions"
+            android:tag="2"
+            android:text="@string/title_positions"/>
+
+        <RadioButton
+            android:id="@+id/rb_user"
+            style="@style/home_nav"
+            android:drawableTop="@drawable/selector_nav_user"
+            android:tag="3"
+            android:text="@string/title_user"/>
+
+    </RadioGroup>
+</LinearLayout>

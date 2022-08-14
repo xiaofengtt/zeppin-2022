@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title></title>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/layui/css/style.css">
+    <script src="../../static/layui/layui.js"></script>
+    <script src="../../static/jq/jqery.js"></script>
+
+
+    <style>
+        .layui-form-item .layui-input-inline{
+            width:65%;
+        }
+    </style>
+
+</head>
+
+<body>
+<fieldset class="layui-elem-field">
+    <!--<legend   th:text="${appname}"  ></legend>-->
+    <div class="layui-field-box">
+
+<form class="layui-form" action="">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">APP-ID</label>
+
+        <input type="hidden" id="id"  th:value="${appid}" >
+        <input type="hidden" id="mjbid"  th:value="${app.id}" >
+        <input type="hidden" id="onoff"  th:value="${app.onoff}" >
+        <input type="hidden" id="qzonoff"  th:value="${app.qzonoff}" >
+        <input type="hidden" id="state"  th:value="${app.state}" >
+        <div class="layui-input-inline">
+            <input type="test" name="appid" id="appid" required lay-verify="required"   th:value="${app.appid}"   autocomplete="off" class="layui-input"/>
+            <!--placeholder="请输入密码"-->
+        </div>
+        <!--<div class="layui-form-mid layui-word-aux">辅助文字</div>-->
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">渠道名称</label>
+        <div class="layui-input-inline">
+            <input type="test" name="qd" id="qd" required lay-verify="required"   th:value="${app.qd}"   autocomplete="off" class="layui-input"/>
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">版本</label>
+        <div class="layui-input-inline">
+            <input type="test" name="version" id="version" required lay-verify="required"   th:value="${app.version}"   autocomplete="off" class="layui-input"/>
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">地址</label>
+        <div class="layui-input-inline">
+            <input type="test" name="version" id="url" required lay-verify="required"   th:value="${app.url}"   autocomplete="off" class="layui-input"/>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">下载地址</label>
+        <div class="layui-input-inline">
+            <input type="test" name="version" id="downurl" required lay-verify="required"   th:value="${app.downurl}"   autocomplete="off" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">主包地址</label>
+        <div class="layui-input-inline">
+            <input type="test" name="version" id="zburl" required lay-verify="required"   th:value="${app.zburl}"   autocomplete="off" class="layui-input"/>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">马甲包地址</label>
+        <div class="layui-input-inline">
+            <input type="test" name="version" id="mjurl" required lay-verify="required"   th:value="${app.mjurl}"   autocomplete="off" class="layui-input"/>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">自定义</label>
+        <div class="layui-input-inline">
+            <textarea  name="text" id="text"  th:text="${app.text}" required lay-verify="required" placeholder="请输入" class="layui-textarea"></textarea>
+
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo" style="background-color: #1e9fff" >确定</button>
+
+        </div>
+    </div>
+</form>
+
+    </div>
+</fieldset>
+</body>
+
+
+<script>
+
+
+    var layer  = layui.layer;
+
+    //Demo
+    layui.use(['form','layer','jquery'], function () {
+        var form = layui.form;
+
+        var $ = layui.jquery;
+
+        form.on('submit(formDemo)',function (data) {
+            $.ajax({
+                url:'/app/appversion/save',
+                data:{
+                    parentid:$('#id').val(),
+                    appid:$('#appid').val(),
+                    qd:$('#qd').val(),
+                    version:$('#version').val(),
+                    url:$('#url').val(),
+                    id:$('#mjbid').val(),
+                    text:$('#text').val(),
+                    downurl:$('#downurl').val(),
+                    zburl:$('#zburl').val(),
+                    mjurl:$('#mjurl').val(),
+                    onoff:$('#onoff').val(),
+                    qzonoff:$('#qzonoff').val(),
+                    isshow:$('#isshow').val(),
+                    state:$('#state').val()
+             },
+                dataType:'json',
+                type:'post',
+                success:function (data1) {
+                    var last=JSON.stringify(data1);
+                     // alert(last);
+                    if (data1 == '1'){
+                        // layer.msg('修改成功');
+                        layer.close(layer.index);
+                        window.parent.location.reload();
+
+                    }else if(data1=="2"){
+                        layer.msg('版本重复，请更改');
+                    }else{
+                        layer.msg('保存失败');
+                    }
+                }
+            })
+            return false;
+        })
+
+        $("input[name='state'][value='"+data.state+"']").prop("checked", "checked");
+        form.render();
+
+    });
+
+</script>
+
+</html>

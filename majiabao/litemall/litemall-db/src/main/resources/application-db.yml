@@ -1,0 +1,38 @@
+pagehelper:
+  helperDialect:  mysql
+  reasonable: true
+  supportMethodsArguments:  true
+  params: count=countSql
+
+spring:
+  datasource:
+    druid:
+      driver-class-name:  com.mysql.jdbc.Driver
+#      url:  jdbc:mysql://192.168.1.120:3306/litemall?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false
+      url: jdbc:mysql://rm-wz9m85c9959w8ufxxio.mysql.rds.aliyuncs.com:3306/litemall?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT
+#      username:  root
+#      password:  
+      username:  root
+      password:  Pdd2019__
+#      username:  litemall
+#      password:  jf5FRnNTYb3XiPXk
+      initial-size:  10
+      max-active:  50
+      min-idle:  10
+      max-wait:  60000
+      pool-prepared-statements:  true
+      max-pool-prepared-statement-per-connection-size:  20
+      validation-query:  SELECT 1 FROM DUAL
+      test-on-borrow:  false
+      test-on-return:  false
+      test-while-idle:  true
+      time-between-eviction-runs-millis:  60000
+      filters:  stat,wall
+  redis:
+    host: 120.78.225.33
+#    host: 127.0.0.1
+    port: 6379
+#    password:
+#    requirePass: Pad@163#pad!
+    keyPrefix: litemallServer
+

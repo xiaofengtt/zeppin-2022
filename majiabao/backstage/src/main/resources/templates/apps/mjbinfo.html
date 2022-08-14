@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/layui/css/style.css">
+    <script src="../../static/layui/layui.js"></script>
+    <script src="../../static/jq/jqery.js"></script>
+
+    <script type="text/javascript" src="../../static/jqueryRadioCheckbox/js/cr.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/jqueryRadioCheckbox/css/index.css" />
+	<style>
+		.layui-float{
+			float: right;
+		}
+		.layui-input-oth{
+			display: inline-block;
+ 		    width: 70%;
+		    padding-left: 10px;
+		}
+	</style>
+</head>
+
+<body >
+<fieldset class="layui-elem-field">
+    <!--<legend   th:text="${appname}"  ></legend>-->
+    <input type="hidden" id="id" name="id"  th:value="${appid}">
+    <input type="hidden" id="appname" name="appname"  th:value="${appname}">
+    <div class="layui-field-box">
+
+    <!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;">-->
+        <!--<legend>-->
+                <!--<button class="layui-btn"  onclick="addmjbinfo()"  style="background-color: #1e9fff"  >添加</button>-->
+        <!--</legend>-->
+    <!--</fieldset>-->
+
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto" lay-filter="app-content-workorder">
+            <div class="layui-form-item">
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">APP-ID</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="qappid"  id="qappid"   th:value="${apid}"  placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">渠道</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="qqd" id="qqd" placeholder="请输入"   th:value="${qd}"  autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">版本</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="qversion" id="qversion" placeholder="请输入"  th:value="${version}"  autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <div class="layui-btn-group">
+                        <button type="button"  style="background-color: #1e9fff"  onclick="findversion()" class="layui-btn">查询</button>
+                        <button type="button"  style="background-color: #1e9fff"  onclick="clearlq()" class="layui-btn">重置</button>
+                        <button type="button"   onclick="addmjbinfo()"  style="background-color: #1e9fff" class="layui-btn">添加</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    <table class="layui-table" lay-size="sm">
+        <colgroup>
+            <col width="10%">
+            <col width="10%">
+            <col width="10%">
+            <col width="32%">
+            <col width="8%">
+            <col width="8%">
+            <col width="6%">
+            <col width="6%">
+            <col width="10%">
+        </colgroup>
+        <thead>
+        <tr>
+            <th>APP-ID</th>
+            <th>渠道名称</th>
+            <th>版本</th>
+            <th>主包地址 
+	            <div class="layui-inline layui-float">
+	            	<input class="layui-input-oth layui-input" maxlength="20" type="text" name="cacheClear" placeholder="请输入缓存更新参数" />
+	            	<button  class="layui-btn layui-btn-sm" type="button" onclick="editcache()"  style="background-color: #1e9fff">保存</button>
+	            </div>
+	        </th>
+            <th>下载地址</th>
+            <th>马甲开关</th>
+            <th>更新</th>
+            <th>强制更新</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody  th:each="info,infoStat : ${app}">
+
+
+        <tr>
+            <input type="hidden"  id="infoid"  name="infoid" th:value="${info.id}"/>
+            <input type="hidden"   th:id="${info.id+'appid'}"  th:value="${info.appid}" >
+            <input type="hidden"   th:id="${info.id+'version'}"  th:value="${info.version}" >
+            <td th:text="${info.appid}"   >
+
+            </td>
+            <td th:text="${info.qd}"  >
+            </td>
+            <td  th:text="${info.version}" >
+                <input type="hidden"   th:name="${info.id+version}"  th:value="${info.version}" >
+            </td>
+
+            <td  th:text="${info.zburl}">
+
+            </td>
+            <td  >
+                <!--<a target="_blank"   th:href="${info.downurl}"  >下载</a>-->
+                <a target="_blank"   th:href="${info.downurl}" style="background-color: #1e9fff"    class="layui-btn layui-btn-sm" >下载</a>
+            </td>
+
+            <td >
+
+
+                <span  th:if=" ${info.state==1}">
+                    <input type="radio"   th:name="${info.id+'radio'}" th:id="${info.id+'radio'}"    th:onchange="'javascript:changeonoff(\''+${info.id}+'\',\''+${info.appid}+'\',\''+${info.version}+'\',this);'"  value="1" title="主包" checked >
+                    <label class="chkbox">
+                       主包
+                    </label>
+                     <br/>
+                    <input type="radio" th:name="${info.id+'radio'}" th:id="${info.id+'radio'}"  th:onchange="'javascript:changeonoff(\''+${info.id}+'\',\''+${info.appid}+'\',\''+${info.version}+'\',this);'"   value="2" title="马甲包" >
+                    <label class="chkbox">
+                        马甲包
+                    </label>
+                    <br/>
+                    <input type="radio" th:name="${info.id+'radio'}" th:id="${info.id+'radio'}"    th:onchange="'javascript:changeonoff(\''+${info.id}+'\',\''+${info.appid}+'\',\''+${info.version}+'\',this);'"   value="3" title="本地包" >
+                    <label class="chkbox">
+                        本地包
+                    </label>
+                </span>
+
+                <span  th:if=" ${info.state==2}">
+                    <input type="radio"   th:name="${info.id+'radio'}" th:id="${info.id+'radio'}"   th:onchange="'javascript:changeonoff(\''+${info.id}+'\',\''+${info.appid}+'\',\''+${info.version}+'\',this);'"  value="1" title="主包"  >
+                    <label class="chkbox">
+                       主包
+                    </label>
+                     <br/>
+                    <input type="radio" th:name="${info.id+'radio'}" th:id="${info.id+'radio'}"  th:onchange="'javascript:changeonoff(\''+${info.id}+'\',\''+${info.appid}+'\',\''+${info.version}+'\',this);'"   value="2" title="马甲包" checked >
+                    <label class="chkbox">
+                        马甲包
+                    </label>
+                    <br/>
+                    <input type="radio" th:name="${info.id+'radio'}" th:id="${info.id+'radio'}"   th:onchange="'javascript:changeonoff(\''+${info.id}+'\',\''+${info.appid}+'\',\''+${info.version}+'\',this);'"  value="3" title="本地包" >
+                    <label class="chkbox">
+                        本地包
+                    </label>
+                </span>
+
+                <span  th:if=" ${info.state==3}">
+                    <input type="radio"   th:name="${info.id+'radio'}" th:id="${info.id+'radio'}"    th:onchange="'javascript:changeonoff(\''+${info.id}+'\',\''+${info.appid}+'\',\''+${info.version}+'\',this);'"  value="1" title="主包"  >
+                    <label class="chkbox">
+                       主包
+                    </label>
+                     <br/>
+                    <input type="radio" th:name="${info.id+'radio'}" th:id="${info.id+'radio'}"  th:onchange="'javascript:changeonoff(\''+${info.id}+'\',\''+${info.appid}+'\',\''+${info.version}+'\',this);'"  value="2" title="马甲包" >
+                    <label class="chkbox">
+                        马甲包
+                    </label>
+                    <br/>
+                    <input type="radio" th:name="${info.id+'radio'}" th:id="${info.id+'radio'}"   th:onchange="'javascript:changeonoff(\''+${info.id}+'\',\''+${info.appid}+'\',\''+${info.version}+'\',this);'"   value="3" title="本地包" checked >
+                    <label class="chkbox">
+                        本地包
+                    </label>
+                </span>
+
+            </td>
+
+            <td  th:if=" ${info.onoff==1}">
+                <form class="layui-form" action="">
+                    <input type="checkbox"   lay-filter="switchTest" th:value="${info.id}"  checked   lay-skin="switch" lay-text="开启|关闭">
+                </form>
+            </td>
+            <td  th:if=" ${info.onoff==0}">
+                <form class="layui-form" action="">
+                    <input type="checkbox"   lay-filter="switchTest" th:value="${info.id}"     lay-skin="switch" lay-text="开启|关闭">
+                </form>
+            </td>
+            <td  th:if=" ${info.qzonoff==1}">
+                <form class="layui-form" action="">
+                    <input type="checkbox"   lay-filter="switchTest1" th:value="${info.id}"  checked   lay-skin="switch" lay-text="开启|关闭">
+                </form>
+            </td>
+            <td  th:if=" ${info.qzonoff==0}">
+                <form class="layui-form" action="">
+                    <input type="checkbox"   lay-filter="switchTest1" th:value="${info.id}"     lay-skin="switch" lay-text="开启|关闭">
+                </form>
+            </td>
+
+            <td>
+                    <button class="layui-btn layui-btn-sm"      th:onclick="'javascript:editmjbinfo(\''+${info.id}+'\');'"  style="background-color: #1e9fff"    >修改</button>
+                    <button class="layui-btn layui-btn-sm"      th:onclick="'javascript:delmjbinfo(\''+${info.id}+'\');'"  style="background-color: #1e9fff"   >删除</button>
+
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+    </div>
+</fieldset>
+</body>
+
+
+<script>
+
+
+    //Demo
+    layui.use(['form','layer','jquery'], function () {
+        var form = layui.form;
+        var $ = layui.jquery;
+        //监听提交
+        form.on('switch(switchTest)', function (data) {
+            // console.log(data.elem); //得到checkbox原始DOM对象
+            // console.log(data.elem.checked); //开关是否开启，true或者false
+            // console.log(data.value); //开关value值，也可以通过data.elem.value得到
+            // console.log(data.othis); //得到美化后的DOM对象
+            var x=data.elem.checked;
+
+
+            var appid= $("#"+data.value+"appid").val();
+            var version= $("#"+data.value+"version").val();
+
+            var content;
+            if(x){
+                content='确认开启';
+            }else{
+                content='确认关闭';
+            }
+
+            layer.open({
+                content: content
+                ,btn: ['确定', '取消']
+                ,yes: function(index, layero){
+                    // alert(data.elem.checked);
+                    $.ajax({
+                        url:'/app/appversion/onoff',
+                        data:{
+                            istrue:data.elem.checked,
+                            id:data.value,
+                            appid:appid,
+                            version:version,
+                        },
+                        dataType:'json',
+                        type:'post',
+                        success:function (data1) {
+                            var last=JSON.stringify(data1);
+                            // alert(last);
+                            if (data1 == '1'){
+                                // layer.msg('修改成功');
+                                // layer.close(layer.index);
+                                // window.parent.location.reload();
+
+                            }else{
+                                layer.msg('修改失败');
+                                location.href = "/app/apps/addmjb";
+                            }
+                        }
+                    })
+
+                    data.elem.checked=x;
+                    form.render();
+                    layer.close(index);
+                    //按钮【按钮一】的回调
+                }
+                ,btn2: function(index, layero){
+                    //按钮【按钮二】的回调
+                    data.elem.checked=!x;
+                    form.render();
+                    layer.close(index);
+                    //return false 开启该代码可禁止点击该按钮关闭
+                }
+                ,cancel: function(){
+                    //右上角关闭回调
+                    data.elem.checked=!x;
+                    form.render();
+                    //return false 开启该代码可禁止点击该按钮关闭
+                }
+            });
+            return false;
+        });
+
+
+
+        //监听提交
+        form.on('switch(switchTest1)', function (data) {
+            // console.log(data.elem); //得到checkbox原始DOM对象
+            // console.log(data.elem.checked); //开关是否开启，true或者false
+            // console.log(data.value); //开关value值，也可以通过data.elem.value得到
+            // console.log(data.othis); //得到美化后的DOM对象
+            var x=data.elem.checked;
+
+            var appid= $("#"+data.value+"appid").val();
+            var version= $("#"+data.value+"version").val();
+
+            var content;
+            if(x){
+                content='确认开启';
+            }else{
+                content='确认关闭';
+            }
+
+            layer.open({
+                content: content
+                ,btn: ['确定', '取消']
+                ,yes: function(index, layero){
+                    // alert(data.elem.checked);
+                    $.ajax({
+                        url:'/app/appversion/qzonoff',
+                        data:{
+                            istrue:data.elem.checked,
+                            id:data.value,
+                            appid:appid,
+                            version:version,
+                        },
+                        dataType:'json',
+                        type:'post',
+                        success:function (data1) {
+                            var last=JSON.stringify(data1);
+                            // alert(last);
+                            if (data1 == '1'){
+                                // layer.msg('修改成功');
+                                // layer.close(layer.index);
+                                // window.parent.location.reload();
+
+                            }else{
+                                layer.msg('修改失败');
+                                location.href = "/app/apps/addmjb";
+                            }
+                        }
+                    })
+
+                    data.elem.checked=x;
+                    form.render();
+                    layer.close(index);
+                    //按钮【按钮一】的回调
+                }
+                ,btn2: function(index, layero){
+                    //按钮【按钮二】的回调
+                    data.elem.checked=!x;
+                    form.render();
+                    layer.close(index);
+                    //return false 开启该代码可禁止点击该按钮关闭
+                }
+                ,cancel: function(){
+                    //右上角关闭回调
+                    data.elem.checked=!x;
+                    form.render();
+                    //return false 开启该代码可禁止点击该按钮关闭
+                }
+            });
+            return false;
+        });
+
+
+    });
+
+
+    function addmjbinfo(){
+        var id= $("#id").val();
+        // var id= $("#appname").val();
+
+        // layer.open({
+        //     type: 2,
+        //     title: $("#appname").val(),
+        //     area: ['34%', '70%'],
+        //     skin: 'layui-layer-rim', //加上边框
+        //     content: ['/app/appversion/edit-mjbinfo?appname='+$("#appname").val(), 'no']
+        // });
+
+        layer.open({
+            type: 2,
+            area:['34%', '70%'],
+            fixed: false, //不固定
+            maxmin: true,
+            content:['/app/appversion/edit-mjbinfo?appname='+$("#appname").val(), 'no']
+        });
+    }
+
+    function editmjbinfo(mjbinfoid){
+        var appname= $("#appname").val();
+
+        // layer.open({
+        //     type: 2,
+        //     title: appname,
+        //     area: ['34%', '70%'],
+        //     skin: 'layui-layer-rim', //加上边框
+        //     content: ['/app/appversion/edit-mjbinfo?appname='+appname+'&id='+mjbinfoid, 'no']
+        // });
+
+        layer.open({
+            type: 2,
+            area:['34%', '70%'],
+            fixed: false, //不固定
+            maxmin: true,
+            content: ['/app/appversion/edit-mjbinfo?appname='+appname+'&id='+mjbinfoid, 'no']
+        });
+    }
+
+    function delmjbinfo(mjbinfoid){
+
+        layer.confirm('确认删除？', {
+            btn: ['是','否'] //按钮
+        }, function(){
+
+            $.ajax({
+                url:'/app/appversion/delmjbinfo',
+                data:{
+                    id:mjbinfoid,
+                },
+                dataType:'json',
+                type:'post',
+                success:function (data1) {
+                    var last=JSON.stringify(data1);
+                    // alert(last);
+                    if (data1 == '1'){
+                        layer.msg('删除成功');
+                        window.location.reload();
+                    }else{
+                        layer.msg('删除失败');
+                        // location.href = "/app-huawei";
+                    }
+                }
+            })
+
+        }, function(){
+
+        });
+
+
+
+    }
+
+
+    function findversion(){
+
+       var id= $("#id").val();
+       var apid= $("#qappid").val();
+       var qd= $("#qqd").val();
+       var version= $("#qversion").val();
+
+        location.replace("/app/appversion/mjbinfo?id="+id+"&apid="+apid+"&qd="+qd+"&version="+version);
+
+    }
+
+    function clearlq(){
+       $("#qappid").val("");
+       $("#qqd").val("");
+       $("#qversion").val("");
+
+    }
+
+
+
+
+    function changeonoff(id,appid,version,dod) {
+
+        $.ajax({
+            url:'/app/appversion/changeonoff',
+            data:{
+                id:id,
+                state:dod.value,
+                appid:appid,
+                version:version,
+            },
+            dataType:'json',
+            type:'post',
+            success:function (data1) {
+                var last=JSON.stringify(data1);
+                if (data1 == '1'){
+                    layer.msg('修改成功');
+                }else{
+                    layer.msg('修改失败');
+                    window.location.reload();
+                    // location.href = "/app-huawei";
+                }
+            }
+        })
+
+
+    }
+
+
+    function editcache(){
+    	
+    	if($("input[name='cacheClear']").val().replace(/(^\s*)|(\s*$)/g, "")==""){
+			layer.msg("请输入缓存更新参数");
+			return false;
+		}
+    	
+    	layer.confirm('确定更新缓存么？', function(index){
+    		var cacheStr = $("input[name='cacheClear']").val();
+    		var id = $("input[name='id']").val();
+	        $.ajax({
+		        url:'/app/appversion/editcache',
+		        data:{
+		            id:id,
+		            cacheStr:cacheStr
+		        },
+		        dataType:'json',
+		        type:'post',
+		        success:function (data1) {
+		            var last=JSON.stringify(data1);
+		            if (data1 == '1'){
+		                layer.msg('操作成功');
+		                window.location.reload();
+		            }else{
+		                layer.msg('操作失败');
+		            }
+		        }
+		    })
+    	})
+    	return false;
+
+}
+
+
+</script>
+
+</html>

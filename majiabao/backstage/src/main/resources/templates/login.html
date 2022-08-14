@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>登录页</title>
+    <link rel="stylesheet" href="../static/layui/css/layui.css">
+    <link rel="stylesheet" href="../static/layui/css/style.css">
+    <script src="../../static/jq/jqery.js"></script>
+
+
+</head>
+<body>
+
+<div class="login-main">
+    <header class="layui-elip">登录</header>
+    <form class="layui-form">
+        <div class="layui-input-inline">
+            <input type="text" name="user" id="user" required lay-verify="required" placeholder="用户名" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-input-inline">
+            <input type="pwd" name="pwd" id="pwd" required lay-verify="required" placeholder="密码" autocomplete="off"
+                   class="layui-input">
+            <!--<input type="password" name="pwd" id="pwd" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">-->
+        </div>
+
+        <div class="layui-input-inline">
+            <input type="pwd" name="yzm" id="yzm" required lay-verify="required" placeholder="验证码" autocomplete="off"
+                   class="layui-input">
+
+            <div class="row">
+                <!--<div class="col-xs-6 pull_left">-->
+                    <!--<div class="form-group">-->
+                        <!--<input class="form-control" type="tel" id="verify_input" placeholder="请输入验证码" maxlength="4">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div  class="col-xs-6 pull_left">
+                    <a href="javascript:void(0);" rel="external nofollow" title="点击更换验证码">
+                        <img id="imgVerify" src="" alt="更换验证码" height="36" width="100%" onclick="getVerify(this);">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="layui-input-inline login-btn">
+            <button lay-submit lay-filter="login" class="layui-btn">登录</button>
+        </div>
+        <hr/>
+        <!--<div class="layui-input-inline">
+            <button type="button" class="layui-btn layui-btn-primary">QQ登录</button>
+        </div>
+        <div class="layui-input-inline">
+            <button type="button" class="layui-btn layui-btn-normal">微信登录</button>
+        </div>-->
+        <!--<p><a href="register" class="fl">立即注册</a>-->
+            <!--&lt;!&ndash;<a href="javascript:;" class="fr">忘记密码？</a>&ndash;&gt;-->
+        <!--</p>-->
+    </form>
+</div>
+
+
+<script src="../static/layui/layui.js"></script>
+<script type="text/javascript">
+    getVerify();
+
+    layui.use(['form','layer','jquery'], function () {
+
+        // 操作对象
+        var form = layui.form;
+        var $ = layui.jquery;
+        form.on('submit(login)',function (data) {
+            // console.log(data.field);
+            $.ajax({
+                url:'/user/login',
+                data:{
+                    user:$('#user').val(),
+                    pwd:$('#pwd').val(),
+                    yzm:$('#yzm').val(),
+                },
+                dataType:'json',
+                type:'post',
+                success:function (data1) {
+                    var last=JSON.stringify(data1);
+                    if (data1 == '1'){
+                        location.href = "/menu";
+                    }else if(data1 == '0'){
+                        layer.msg('登录名或密码错误');
+                    }else{
+                        layer.msg('验证码错误');
+                    }
+                }
+            })
+            return false;
+        })
+
+    });
+
+
+
+
+    //获取验证码
+    function getVerify() {
+        // $("#imgCode").on("click", function() {
+        $("#imgVerify").attr("src", '/getVerify?' + Math.random());//jquery方式
+        // });
+    }
+
+    function aVerify(){
+        var value =$("#verify_input").val();
+        // alert(value);
+        $.ajax({
+            async: false,
+            type: 'post',
+            url: 'login/checkVerify',
+            dataType: "json",
+            data: {
+                verifyInput: value
+            },
+            success: function (result) {
+                if (result) {
+                    alert("success!");
+                } else {
+                    alert("failed!");
+                }
+                // window.location.reload();
+                getVerify();
+            }
+        });
+    }
+
+
+</script>
+</body>
+</html>

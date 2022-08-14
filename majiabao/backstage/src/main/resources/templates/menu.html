@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>马甲开关后台</title>
+    <link rel="stylesheet" href="../static/layui/css/layui.css">
+    <!--<script type="text/javascript" src="https://cdn.bootcss.com/jquery-layout/1.4.3/jquery.layout.min.js"></script>-->
+
+
+</head>
+
+
+<style>
+.layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover{
+    background-color:#1e9fff;
+}
+
+.layui-layout-admin .layui-logo{
+    color:#1e9fff;
+    font-size:18px;
+    font-weight: bold;
+}
+
+
+
+</style>
+
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo" >马甲包开关后台</div>
+
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <!--<ul class="layui-nav layui-layout-left">-->
+            <!--<li class="layui-nav-item"><a href="">控制台</a></li>-->
+            <!--<li class="layui-nav-item"><a href="">商品管理</a></li>-->
+            <!--<li class="layui-nav-item"><a href="">用户</a></li>-->
+            <!--<li class="layui-nav-item">-->
+                <!--<a href="javascript:;">其它系统</a>-->
+                <!--<dl class="layui-nav-child">-->
+                    <!--<dd><a href="">邮件管理</a></dd>-->
+                    <!--<dd><a href="">消息管理</a></dd>-->
+                    <!--<dd><a href="">授权管理</a></dd>-->
+                <!--</dl>-->
+            <!--</li>-->
+        <!--</ul>-->
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                欢迎你：
+            </li>
+            <li class="layui-nav-item">
+                    <div th:text="${session.USER.user}"></div>
+            </li>
+
+            <li class="layui-nav-item"><a  onclick="clear1()">退出</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;"  onclick="addtab('马甲包管理','mjb','/app/appversion/mjblist')">马甲包管理</a>
+                        <!--<dl class="layui-nav-child"   th:each="info,infoStat : ${apps}">-->
+                            <!--<dd><a href="javascript:;"-->
+                                   <!--th:onclick="'javascript:addtab(\''+${info.qd}+'\',\''+${info.id}+'\',\''+${info.html}+'\');'"-->
+                                   <!--th:text="${info.qd}" ></a></dd>-->
+                        <!--</dl>-->
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"  onclick="addtab('审核数据','logindata','/logindata/index')">审核数据</a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"  onclick="addtab('审核人员','auditor','/auditor/index')">审核人员</a>
+                </li>
+
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;"  onclick="addtab('接口api','mjbinteface','/swagger-ui.html')">接口api</a>
+                </li>
+
+                <!--<li class="layui-nav-item layui-nav-itemed">-->
+                    <!--<a class="" href="javascript:;"  onclick="addtab('文件上传','addfile','/addfile')">文件上传</a>-->
+                <!--</li>-->
+
+
+
+                <!--<li class="layui-nav-item">-->
+                    <!--<a href="javascript:;">解决方案</a>-->
+                    <!--<dl class="layui-nav-child">-->
+                        <!--<dd><a href="javascript:;">列表一</a></dd>-->
+                        <!--<dd><a href="javascript:;">列表二</a></dd>-->
+                        <!--<dd><a href="">超链接</a></dd>-->
+                    <!--</dl>-->
+                <!--</li>-->
+                <!--<li class="layui-nav-item"><a href="">云市场</a></li>-->
+                <!--<li class="layui-nav-item"><a href="">发布商品</a></li>-->
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <!--<div style="padding: 15px;">内容主体区域</div>-->
+
+        <div class="layui-tab" style="margin-top:3px;height: 100%" lay-filter="demo" lay-allowclose="true">
+            <ul class="layui-tab-title">
+                <!--<li class="layui-this" lay-id="11">网站设置</li>-->
+            </ul>
+            <div class="layui-tab-content" style="height: 100%">
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="layui-footer">
+        开关总访问人数：
+        <span  th:text="${onlineAmount}"></span>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        今日开关问人数：
+        <span  th:text="${onlineToday}"></span>
+    </div>
+</div>
+</body>
+
+<script src="../static/layui/layui.js"></script>
+<script src="../static/jq/jqery.js"></script>
+
+<script>
+
+    // var json="{\n" +
+    //     "  \"code\": \"200\",\n" +
+    //     "  \"msg\": \"成功\",\n" +
+    //     "  \"data\": {\n" +
+    //     "    \"appid\": \"11111\",\n" +
+    //     "    \"version\": \"6\",\n" +
+    //     "    \"onoff\": 1,\n" +
+    //     "    \"qzonoff\": 0,\n" +
+    //     "    \"url\": \"6\",\n" +
+    //     "    \"qd\": \"6\",\n" +
+    //     "    \"text\": \"[{\\\"CityId\\\":18,\\\"CityName\\\":\\\"西安\\\",\\\"ProvinceId\\\":27,\\\"CityOrder\\\":1},{\\\"CityId\\\":53,\\\"CityName\\\":\\\"广州\\\",\\\"ProvinceId\\\":27,\\\"CityOrder\\\":1}]\"\n" +
+    //     "  }\n" +
+    //     "}"
+    //
+    // // var last11=JSON.stringify(json);
+    // var adda= eval('(' + json + ')');
+    // alert(adda.data.text);
+    // var adda1= eval('(' + adda.data.text + ')');
+    // alert(adda1[0].CityName);
+
+
+
+
+
+    function clear1(){
+        // sessionStorage.removeItem("USER");
+        // localStorage.removeItem("USER");
+
+
+        $.ajax({
+            url:'/clear',
+
+            dataType:'json',
+            type:'post',
+            success:function (data1) {
+                var last=JSON.stringify(data1);
+                // alert(last);
+                if (data1 == '1'){
+                    layer.msg('清除session成功');
+                }else{
+                    // layer.msg('修改失败');
+                    // location.href = "/app-oppo";
+                }
+            }
+        })
+
+        location.href="/";
+
+    }
+
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+
+
+    function addtab(qd,id,url){
+        var element = layui.element;
+        var $ = layui.jquery
+
+        var exist=$("li[lay-id='"+id+"']").length;
+
+        if(exist<1) {
+            element.tabAdd('demo', {
+                title: qd
+                ,content: '<div class="parentdiv"><iframe data-frameid="'+id+'"   scrolling="auto" frameborder="0" src="'+url+'" style="width:100%;height:600px;"></iframe></div>'//支持传入html
+                ,id: id
+            });
+
+            element.tabChange('demo', id); //根据传入的id传入到指定的tab项
+        }else{
+            element.tabChange('demo', id);
+        }
+    }
+
+
+    function addtab(qd,id,url){
+
+        var element = layui.element;
+        var $ = layui.jquery
+
+        var exist=$("li[lay-id='"+id+"']").length;
+
+        if(exist<1) {
+            element.tabAdd('demo', {
+                title: qd
+                ,content: '<iframe data-frameid="'+id+'" scrolling="auto" frameborder="0" src="'+url+'" style="width:100%;height:850px;"></iframe>'//支持传入html
+                ,id: id
+            });
+
+            element.tabChange('demo', id); //根据传入的id传入到指定的tab项
+        }else{
+            element.tabChange('demo', id);
+        }
+    }
+
+
+    layui.use('element', function(){
+        var $ = layui.jquery
+            ,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+        //触发事件
+        var active = {
+            tabAdd: function(){
+                //新增一个Tab项
+                element.tabAdd('demo', {
+                    title: '新选项'+ (Math.random()*1000|0) //用于演示
+                    ,content: '内容'+ (Math.random()*1000|0)
+                    ,id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
+                })
+            }
+            ,tabDelete: function(othis){
+                //删除指定Tab项
+                element.tabDelete('demo', '44'); //删除：“商品管理”
+
+
+                othis.addClass('layui-btn-disabled');
+            }
+            ,tabChange: function(){
+                //切换到指定Tab项
+                element.tabChange('demo', '22'); //切换到：用户管理
+            }
+        };
+
+        $('.site-demo-active').on('click', function(){
+            var othis = $(this), type = othis.data('type');
+            active[type] ? active[type].call(this, othis) : '';
+        });
+
+        //Hash地址的定位
+        var layid = location.hash.replace(/^#test=/, '');
+        element.tabChange('test', layid);
+
+        element.on('tab(test)', function(elem){
+            location.hash = 'test='+ $(this).attr('lay-id');
+        });
+
+    });
+
+    // function demo(){
+    //     alert(1231);
+    // }
+</script>
+</html>

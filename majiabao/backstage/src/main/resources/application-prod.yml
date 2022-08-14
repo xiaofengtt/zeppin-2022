@@ -1,0 +1,28 @@
+
+##########################################################
+###################  开发环境的profile  ###################
+##########################################################
+spring:
+  profiles: prod
+  datasource:
+#    url: jdbc:mysql://rm-wz9m85c9959w8ufxxio.mysql.rds.aliyuncs.com:3306/backstage?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT
+#    username: root
+#    password: Pdd2019__
+#    url: jdbc:mysql://192.168.1.120:3306/backstage?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT
+#    username: root
+#    password: 
+    url: jdbc:mysql://jdd-mysql-hk-b1.mysql.rds.aliyuncs.com:3306/backstage?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT
+    username: treasure
+    password: Treasure@2020
+    filters: log4j,wall,mergeStat
+  redis:
+#    host: 127.0.0.1
+    host: r-j6cb5n5keb9f7tnd4m.redis.rds.aliyuncs.com
+    port: 6379
+    password:
+#    keyPrefix: kingkongServer
+
+
+
+
+

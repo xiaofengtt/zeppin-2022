@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">牛投理财</string>
+    <string name="title_bank">银行理财</string>
+    <string name="title_positions">我的持仓</string>
+    <string name="title_user">个人中心</string>
+
+
+    <string name="permission_check_fail">权限被拒绝，请至设置中打开</string>
+
+    <string name="to_certification_toast">"请先实名认证"</string>
+    <string name="to_recharge_toast">"账户余额不足，请先充值"</string>
+    <string name="to_certification_unpassed">"还未通过证件审核"</string>
+
+    <string name="zeppin_name">北京知鹏汇仁科技有限公司</string>
+
+    <string name="recharge_dialog_warn">
+         付款完成前请不要关闭此窗口，完成付款后请根据您的情况点击下面按钮。
+    </string>
+    <string name="current_last_version">当前已是最新版本</string>
+
+    <!-- Gesture login activity -->
+    <string name="gesture_forget_gesture">忘记手势密码</string>
+    <string name="gesture_other_account">切换其他账号</string>
+    <string name="gesture_default">请输入手势密码</string>
+    <string name="gesture_error">密码错误</string>
+    <string name="gesture_correct">输入正确</string>
+    <string name="gesture_check">请输入原手势密码</string>
+
+    <!-- Create gesture activity -->
+    <string name="create_gesture_default">请绘制解锁图案</string>
+    <string name="create_gesture_correct">再次绘制解锁图案</string>
+    <string name="create_gesture_less_error">至少连接4个点，请重新绘制</string>
+    <string name="create_gesture_confirm_error">两次图案不同，请重新绘制</string>
+    <string name="create_gesture_confirm_correct">手势密码设置成功</string>
+    <string name="create_gesture_reset">重新绘制图案</string>
+    <string name="create_gesture_skip">跳过</string>
+</resources>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/y25"
+    android:layout_marginLeft="@dimen/x15"
+    android:layout_marginRight="@dimen/x15"
+    android:layout_marginTop="0dp"
+    android:background="@drawable/bg_empty_layout"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/x40"
+    android:paddingLeft="@dimen/x25"
+    android:paddingRight="@dimen/x25"
+    android:paddingTop="@dimen/x40"
+    tools:context="cn.zeppin.product.ntb.ui.user.activity.TradingRecordActivity">
+
+    <TextView
+        android:id="@+id/tv_tradingType"
+        android:layout_width="@dimen/x70"
+        android:layout_height="@dimen/x70"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/record_income"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="收"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_12"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_tradingName"
+            style="@style/TextLimitsStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:textColor="@color/alpha_80_black"
+            android:textSize="@dimen/text_16"/>
+
+
+        <TextView
+            android:id="@+id/tv_tradingTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y10"
+            android:fontFamily="sans-serif"
+            android:text="--"
+            android:textColor="@color/alpha_50_black"
+            android:textSize="@dimen/text_12"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_tradingValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:gravity="right"
+            android:text="+0.00"
+            android:textColor="@color/trading_record_income"
+            android:textSize="@dimen/text_16"/>
+
+        <TextView
+            android:id="@+id/tv_tradingResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y10"
+            android:gravity="right"
+            android:text="--"
+            android:textColor="@color/alpha_50_black"
+            android:textSize="@dimen/text_12"/>
+    </LinearLayout>
+</LinearLayout>

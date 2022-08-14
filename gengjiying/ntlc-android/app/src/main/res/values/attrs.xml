@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--圆形头像-->
+    <declare-styleable name="SelectableRoundedImageView">
+        <attr name="sriv_left_top_corner_radius" format="dimension"/>
+        <attr name="sriv_right_top_corner_radius" format="dimension"/>
+        <attr name="sriv_left_bottom_corner_radius" format="dimension"/>
+        <attr name="sriv_right_bottom_corner_radius" format="dimension"/>
+        <attr name="sriv_border_width" format="dimension"/>
+        <attr name="sriv_border_color" format="color"/>
+        <attr name="sriv_oval" format="boolean"/>
+        <attr name="android:scaleType"/>
+    </declare-styleable>
+
+    <!--带边框的TextView-->
+    <declare-styleable name="TextViewBorder">
+        <attr name="borderColor" format="color"/>
+        <attr name="borderRadius" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="GestureSwitchButton" tools:ignore="ResourceName">
+        <attr name="kswThumbDrawable" format="reference"/>
+        <attr name="kswThumbColor" format="color|reference"/>
+        <attr name="kswThumbMargin" format="dimension|reference"/>
+        <attr name="kswThumbMarginTop" format="dimension|reference"/>
+        <attr name="kswThumbMarginBottom" format="dimension|reference"/>
+        <attr name="kswThumbMarginLeft" format="dimension|reference"/>
+        <attr name="kswThumbMarginRight" format="dimension|reference"/>
+        <attr name="kswThumbWidth" format="dimension|reference"/>
+        <attr name="kswThumbHeight" format="dimension|reference"/>
+        <attr name="kswThumbRadius" format="dimension|reference"/>
+        <attr name="kswBackRadius" format="dimension|reference"/>
+        <attr name="kswBackDrawable" format="reference"/>
+        <attr name="kswBackColor" format="color|reference"/>
+        <attr name="kswFadeBack" format="boolean"/>
+        <attr name="kswThumbRangeRatio" format="float"/>
+        <attr name="kswAnimationDuration" format="integer"/>
+        <attr name="kswTintColor" format="color|reference"/>
+        <attr name="kswTextOn" format="string"/>
+        <attr name="kswTextOff" format="string"/>
+        <attr name="kswTextThumbInset" format="dimension"/>
+        <attr name="kswTextExtra" format="dimension"/>
+        <attr name="kswTextAdjust" format="dimension"/>
+    </declare-styleable>
+</resources>

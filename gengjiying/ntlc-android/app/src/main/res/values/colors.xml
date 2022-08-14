@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0069E5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="list_bg">#efefef</color>
+    <color name="line_B2B2B2">#33B2B2B2</color>
+    <color name="line_C2C2C2">#33C2C2C2</color>
+    <color name="line_50_C2C2C2">#80C2C2C2</color>
+    <color name="line_20_979797">#33979797</color>
+    <color name="line_30_979797">#4D979797</color>
+    <color name="line_10_979797">#1A979797</color>
+    <color name="line_20_B0B0B0">#33B0B0B0</color>
+    <color name="line_30_B0B0B0">#4DB0B0B0</color>
+
+    <color name="color_7D7D7D">#7D7D7D</color>
+    <color name="color_EEEEEE">#eeeeee</color>
+    <color name="color_f5f5f5">#F5F5F5</color>
+    <color name="color_999999">#999999</color>
+    <color name="color_0069E5">#0069E5</color>
+    <!--<color name="color_008DFB">#008DFB</color>-->
+    <color name="color_EBEBEB">#ebebeb</color>
+    <color name="color_ECECEC">#ECECEC</color>
+    <color name="color_F4F4F4">#F4F4F4</color>
+    <color name="color_232323">#232323</color>
+    <color name="color_0A0A0A">#0A0A0A</color>
+    <color name="color_4A4A4A">#4A4A4A</color>
+    <color name="color_6EA3E1">#6EA3E1</color>
+    <color name="color_71AF51">#71AF51</color>
+    <color name="color_717171">#717171</color>
+    <color name="color_ED403D">#ED403D</color>
+    <color name="color_0E71E7">#0E71E7</color>
+    <color name="color_C4A46E">#C4A46E</color>
+    <color name="color_1D1D1D">#1D1D1D</color>
+    <color name="color_F4333C">#F4333C</color>
+    <color name="color_909090">#909090</color>
+    <color name="color_F6A623">#F6A623</color>
+    <color name="color_E6413F">#E6413F</color>
+    <color name="color_646464">#646464</color>
+    <color name="color_565656">#565656</color>
+    <color name="color_0159c1">#0159c1</color>
+    <color name="color_4990E2">#4990E2</color>
+    <color name="color_2F537E">#2F537E</color>
+    <color name="color_B5B5B5">#B5B5B5</color>
+    <color name="color_E74845">#E74845</color>
+    <color name="color_D09637">#D09637</color>
+    <color name="color_E1C08B">#E1C08B</color>
+    <color name="color_5A5A5A">#5A5A5A</color>
+    <color name="color_575757">#575757</color>
+    <color name="color_80_2F6EB7">#CC2F6EB7</color>
+    <color name="color_9D9D9D">#9D9D9D</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_75A540">#75A540</color>
+    <color name="color_70_767676">#B3767676</color>
+    <color name="color_70_EFEFEF">#B3EFEFEF</color>
+    <color name="color_70_212121">#B3212121</color>
+    <color name="color_50_212121">#80212121</color>
+    <color name="color_50_333333">#80333333</color>
+    <color name="color_50_7B7B7B">#807B7B7B</color>
+    <color name="color_50_232323">#80232323</color>
+    <color name="color_548BCC">#548BCC</color>
+    <color name="color_8A8A8A">#8A8A8A</color>
+    <color name="color_C3C3C3">#C3C3C3</color>
+    <color name="color_B1B1B1">#B1B1B1</color>
+    <color name="color_74B230">#74B230</color>
+    <color name="color_90_2B2B2B">#E62B2B2B</color>
+    <color name="color_90_080808">#E6080808</color>
+    <color name="color_5BA241">#5BA241</color>
+    <color name="color_EFEFEF">#EFEFEF</color>
+    <color name="color_D0D0D0">#D0D0D0</color>
+    <color name="color_494949">#494949</color>
+    <color name="color_797979">#797979</color>
+    <color name="color_E05B59">#E05B59</color>
+    <color name="color_5392DD">#5392DD</color>
+    <color name="color_fa4b37">#fa4b37</color>
+    <color name="color_fff5e0">#fff5e0</color>
+    <color name="color_60_353535">#99353535</color>
+    <color name="color_f53529">#f53529</color>
+    <color name="color_DF443B">#DF443B</color>
+
+    <color name="nav_selected">#0069E5</color>
+    <color name="nav_normal">#999999</color>
+    <color name="tag_selected">#CC0069E5</color>
+
+
+    <color name="trading_record_income">#E16F6E</color>
+    <color name="trading_record_pay">#6CAC4B</color>
+
+    <!--功能不可用时的色值-->
+    <color name="color_invalid">#B9B9B9</color>
+    <color name="error_txt">#E05B59</color>
+
+
+
+
+</resources>

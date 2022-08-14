@@ -1,0 +1,26 @@
+server:
+  port: 18012
+  #是否关闭敏感信息校验
+  management:
+    security:
+      enabled: false
+  endpoints:
+  #是否关闭某个端点,例如/configprops端点
+    configprops:
+      enabled: false
+spring:
+  profiles:
+#    active: prod
+    active: dev
+  ##配置页面模板
+  mvc:
+    static-path-pattern: /static/**
+  thymeleaf:
+      cash: false
+      prefix: classpath:/templates/
+      suffix: .html
+      mode: HTML5
+      encoding: utf-8
+
+
+
