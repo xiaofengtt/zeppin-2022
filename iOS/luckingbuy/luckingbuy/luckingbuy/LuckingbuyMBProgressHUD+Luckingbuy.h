@@ -1,0 +1,53 @@
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <CoreGraphics/CoreGraphics.h>
+#import "LuckingbuyMBProgressHUD.h"
+#import <tgmath.h>
+
+@interface LuckingbuyMBProgressHUD (Luckingbuy)
++ (BOOL)showHUDAddedToAnimatedLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)hideHUDForViewAnimatedLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)HUDForViewLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)commonInitLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)initWithFrameLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)initWithCoderLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)initWithViewLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)deallocLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)showAnimatedLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)hideAnimatedLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)hideAnimatedAfterdelayLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)handleGraceTimerLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)handleMinShowTimerLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)handleHideTimerLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)didMoveToSuperviewLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)showUsingAnimationLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)hideUsingAnimationLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)animateInWithtypeCompletionLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)doneLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)setupViewsLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)updateIndicatorsLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)updateViewsForColorLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)updateBezelMotionEffectsLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)updateConstraintsLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)layoutSubviewsLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)updatePaddingConstraintsLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)applyPriorityToconstraintsLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)setModeLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)setCustomViewLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)setOffsetLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)setMarginLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)setMinSizeLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)setSquareLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)setProgressObjectDisplayLinkLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)setProgressObjectLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)setProgressLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)setContentColorLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)setDefaultMotionEffectsEnabledLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)setNSProgressDisplayLinkEnabledLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)updateProgressFromProgressObjectLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)registerForNotificationsLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)unregisterFromNotificationsLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)statusBarOrientationDidChangeLuckingbuy:(NSInteger)LuckingBuy;
++ (BOOL)updateForCurrentOrientationAnimatedLuckingbuy:(NSInteger)LuckingBuy;
+
+@end

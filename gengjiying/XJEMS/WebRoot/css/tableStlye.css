@@ -1,0 +1,82 @@
+.scroll-warp{
+	width:100%;
+	}
+.scroll-inner{
+	overflow-x:auto;
+}
+.teachers_info {
+/*     min-width: 1066px; */
+    /*
+    position: absolute;
+    top: 109px;
+    left: 48px;
+*/
+    border: 1px solid #E0E0E0;
+    text-align: center;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 14px;
+    margin-bottom:10px;
+    border-radius: 10px;
+	max-width:100%;
+}
+
+
+.teachers_info tr {
+    height: 40px;
+    width: 100%;
+    border-bottom: 1px solid #D1D1D1;
+    display: table-row;
+}
+
+.teachers_info .first_tr {
+    background: #FFF4F4;
+    height:50px;
+    border-radius:5px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    -ms-border-radius:5px;
+    font-size:12px
+}
+.teachers_info tr{
+	font-size:12px;
+}
+.sort_th{
+	cursor: pointer;
+	position: relative;
+}
+.teachers_info .odd {
+    background: #FAFAFA;
+}
+
+.teachers_info tr i{
+	position:absolute;
+    display: inline-block;
+    width:10px;
+    height:16px;
+    top:13px;
+}
+
+.teachers_info tr i img{
+    position: absolute;
+    top:4px;
+    left:-2px;
+}
+.teachers_info tr .color_a {
+    color: #E0615F;
+}
+
+.teachers_info .first_tr th.light{
+	color:#E0615F;
+}
+.teachers_info{
+	table-layout:fixed;
+}
+.teachers_info tr td{
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	word-break:break-all;
+	overflow: hidden;
+	/*padding:0 10px 0 10px;*/
+	
+}

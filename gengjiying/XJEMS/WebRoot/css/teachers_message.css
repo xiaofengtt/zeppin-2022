@@ -1,0 +1,139 @@
+@charset "UTF-8";
+.teacher_msg {
+    width: 100%;
+    border: 1px solid #E0E0E0;
+    margin-top: 10px;
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 0 2px rgba(0,0,0,0.2);
+    box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
+.msg_header {
+    width: 100%;
+    position: relative;
+    background: #FFF4F4;
+    height: 50px;
+}
+
+.teacher_msg .msg_header img {
+    width: 35px;
+    height: 35px;
+    margin-top: 8px;
+    margin-left: 20px;
+    border-radius:50%;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    -ms-border-radius:50%;
+}
+
+.msg_header span {
+    font-size: 16px;
+    color: #000000;
+    margin-right: 10px;
+
+}
+
+.msg_text {
+    width: auto;
+    position: absolute;
+    left: 85px;
+    top: 12px;
+    height: 22px;
+    line-height: 22px;
+}
+#hover_change a{
+	color:#E0615F;
+}
+/*#hover_change a:hover {
+	text-decoration:underline !important;
+}*/
+
+.msg_header .msg_text .num {
+    color: #FFAC19;
+    margin-right: 0;
+}
+
+.msg_header .msg_text .f {
+    font-size: 16px;
+    color: #FFAC19;
+    line-height: 30px;
+}
+
+.msg_header .msg_text i {
+    display: inline-block;
+    height: 12px;
+    width: 2px;
+    background: #000000;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.msg_header_button {
+    position: absolute;
+    right: 27px;
+    top: 9px;
+}
+
+.msg_header_button a {
+    padding: 4px 10px 4px 10px;
+    display: inline-block;
+    font-size:14px;
+    /*background: #FFFFFF;*/
+/*    border: 1px solid #E0615F;*/
+    color: #E0615F;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    margin-left: 10px;
+}
+
+.msg_body {
+    width: 100%;
+    display: inline-block;
+    position:relative;
+}
+
+.msg_body .msg_content {
+    width: 24.8%;
+    display: inline-block;
+    padding-top: 12px;
+    box-sizing: border-box;
+    float:left;
+    height:187px;
+
+}
+
+.b_l{
+    border-left:1px solid #E0E0E0;
+}
+.b_r{
+    border-right:1px solid #E0E0E0;
+}
+.b_t{
+    border-top: 1px solid #E0E0E0;
+}
+.b_b{
+    border-bottom: 1px solid #E0E0E0;
+}
+.msg_body .msg_content p {
+    font-size: 14px;
+    color: #000000;
+    opacity:0.6;
+    filter:alpha(opacity=60);
+    margin-bottom:15px;
+    margin-left:20px;
+    	white-space: nowrap;
+	text-overflow: ellipsis;
+	word-break:break-all;
+	overflow: hidden;
+}
+
+.msg_body .msg_content .click_card{
+	color:#E0615F;
+	text-decoration: underline !important;
+}
+
+.card_img{
+	max-width:90%;
+}

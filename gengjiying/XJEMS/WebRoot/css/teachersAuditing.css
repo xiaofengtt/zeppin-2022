@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+.msg_text {
+	top: 16px;
+}
+
+.mark {
+	position: absolute;
+	top: 16px;
+	right: 30px;
+}
+
+.search_body {
+	display: inline-block;
+	width: 200px;
+	height: 30px;
+	top: 43px;
+	right: 61px;
+	position: absolute;
+	border: 1px solid #A6A6A6;
+	-webkit-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.search {
+	width: 148px;
+	height: 25px;
+	margin: 4px 0 0 12px;
+	font-family: PingFangSC-Light;
+	font-size: 12px;
+	color: #C1C1C1;
+	display: inline-block;
+	border: none;
+	line-height: normal;
+	line-height: 22px\9;
+}
+
+.search:focus {
+	outline: none;
+}
+
+.search_body i {
+	position: absolute;
+	color: #B9B9B9;
+	right: 15px;
+	top: 5px;
+	cursor: pointer;
+}
+#modal,#modal_{
+	position: fixed;
+	width:400px;
+	height:300px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	top:50%;
+	left:50%;
+	margin-left:-200px;
+	margin-top:-150px;
+	-webkit-box-shadow: 0 0 10px 0px rgba(56,81,76,0.6);
+	-moz-box-shadow: 0 0 10px 0px rgba(56,81,76,0.6);
+	box-shadow: 0 0 10px 0px rgba(56,81,76,0.6);
+	background:#FFFFFF;
+	text-align: center;
+	display: none;
+}
+#modal p,#modal_ p{
+	font-size:18px;
+	margin-top:20px;
+	
+}
+#modal textarea,#modal_ textarea{
+	outline: none;
+	resize:none;
+	width:300px;
+	height:100px;
+	margin-top:20px;
+	border:1px solid #EEEEEE;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding:6px;
+	font-size:14px;
+}
+#modal .button_g,#modal_ .button_g{
+	margin-top:20px;
+	text-align: center;
+}
+#modal #close,#modal_ #close_{
+    display: inline-block;
+    width: 70px;
+    height: 32px;
+    line-height:32px;
+    background: #C8C8C8;
+    border-radius: 5px;
+    border: 1px solid #C8C8C8;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-left: 10px;
+    cursor: pointer;
+}
+#modal #submit,#modal_ #submit_{
+	display: inline-block;
+    width: 70px;
+    height: 32px;
+    line-height:32px;
+    background: #E0615F;
+    border: 1px solid #E0615F;
+    border-radius: 5px;
+    border: none;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-left: -10px;
+    cursor: pointer;
+}
+
+
+.auditing_value{
+	width:100%;
+	border-top:1px solid #E0E0E0;
+	font-size:14px;
+	padding:6px 0;
+}
+.auditing_value p{
+	width:100%;
+
+	opacity: 0.6;
+	text-indent:20px;
+	word-break: break-all;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}

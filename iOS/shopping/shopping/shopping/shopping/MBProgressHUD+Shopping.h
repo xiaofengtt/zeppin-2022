@@ -1,0 +1,53 @@
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <CoreGraphics/CoreGraphics.h>
+#import "MBProgressHUD.h"
+#import <tgmath.h>
+
+@interface MBProgressHUD (Shopping)
++ (BOOL)showHUDAddedToAnimatedShopping:(NSInteger)Shopping;
++ (BOOL)hideHUDForViewAnimatedShopping:(NSInteger)Shopping;
++ (BOOL)HUDForViewShopping:(NSInteger)Shopping;
++ (BOOL)commonInitShopping:(NSInteger)Shopping;
++ (BOOL)initWithFrameShopping:(NSInteger)Shopping;
++ (BOOL)initWithCoderShopping:(NSInteger)Shopping;
++ (BOOL)initWithViewShopping:(NSInteger)Shopping;
++ (BOOL)deallocShopping:(NSInteger)Shopping;
++ (BOOL)showAnimatedShopping:(NSInteger)Shopping;
++ (BOOL)hideAnimatedShopping:(NSInteger)Shopping;
++ (BOOL)hideAnimatedAfterdelayShopping:(NSInteger)Shopping;
++ (BOOL)handleGraceTimerShopping:(NSInteger)Shopping;
++ (BOOL)handleMinShowTimerShopping:(NSInteger)Shopping;
++ (BOOL)handleHideTimerShopping:(NSInteger)Shopping;
++ (BOOL)didMoveToSuperviewShopping:(NSInteger)Shopping;
++ (BOOL)showUsingAnimationShopping:(NSInteger)Shopping;
++ (BOOL)hideUsingAnimationShopping:(NSInteger)Shopping;
++ (BOOL)animateInWithtypeCompletionShopping:(NSInteger)Shopping;
++ (BOOL)doneShopping:(NSInteger)Shopping;
++ (BOOL)setupViewsShopping:(NSInteger)Shopping;
++ (BOOL)updateIndicatorsShopping:(NSInteger)Shopping;
++ (BOOL)updateViewsForColorShopping:(NSInteger)Shopping;
++ (BOOL)updateBezelMotionEffectsShopping:(NSInteger)Shopping;
++ (BOOL)updateConstraintsShopping:(NSInteger)Shopping;
++ (BOOL)layoutSubviewsShopping:(NSInteger)Shopping;
++ (BOOL)updatePaddingConstraintsShopping:(NSInteger)Shopping;
++ (BOOL)applyPriorityToconstraintsShopping:(NSInteger)Shopping;
++ (BOOL)setModeShopping:(NSInteger)Shopping;
++ (BOOL)setCustomViewShopping:(NSInteger)Shopping;
++ (BOOL)setOffsetShopping:(NSInteger)Shopping;
++ (BOOL)setMarginShopping:(NSInteger)Shopping;
++ (BOOL)setMinSizeShopping:(NSInteger)Shopping;
++ (BOOL)setSquareShopping:(NSInteger)Shopping;
++ (BOOL)setProgressObjectDisplayLinkShopping:(NSInteger)Shopping;
++ (BOOL)setProgressObjectShopping:(NSInteger)Shopping;
++ (BOOL)setProgressShopping:(NSInteger)Shopping;
++ (BOOL)setContentColorShopping:(NSInteger)Shopping;
++ (BOOL)setDefaultMotionEffectsEnabledShopping:(NSInteger)Shopping;
++ (BOOL)setNSProgressDisplayLinkEnabledShopping:(NSInteger)Shopping;
++ (BOOL)updateProgressFromProgressObjectShopping:(NSInteger)Shopping;
++ (BOOL)registerForNotificationsShopping:(NSInteger)Shopping;
++ (BOOL)unregisterFromNotificationsShopping:(NSInteger)Shopping;
++ (BOOL)statusBarOrientationDidChangeShopping:(NSInteger)Shopping;
++ (BOOL)updateForCurrentOrientationAnimatedShopping:(NSInteger)Shopping;
+
+@end

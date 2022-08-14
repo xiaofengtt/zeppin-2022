@@ -1,0 +1,6 @@
+framework module cmcclive {
+  umbrella header "cmcclive.h"
+
+  export *
+  module * { export * }
+}

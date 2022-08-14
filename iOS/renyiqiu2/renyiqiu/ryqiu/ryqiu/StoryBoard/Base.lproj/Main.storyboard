@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bpS-Cn-Aha">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sports Base Navigation Controller-->
+        <scene sceneID="mMB-PA-YfJ">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="bpS-Cn-Aha" customClass="SportsBaseNavigationController" customModule="ryqiu" customModuleProvider="target" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CWF-cX-nYU">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="k7s-iW-gYX" kind="relationship" relationship="rootViewController" id="CWb-jc-req"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kdT-Zk-wB2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2514" y="581"/>
+        </scene>
+        <!--比赛-->
+        <scene sceneID="Ddo-CF-tCA">
+            <objects>
+                <viewController storyboardIdentifier="SportsScheduleViewController" id="o7d-at-KXd" customClass="SportsScheduleViewController" customModule="ryqiu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="djb-Fu-sc1"/>
+                        <viewControllerLayoutGuide type="bottom" id="uBa-6B-ri6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pbk-Qc-TFB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="比赛" image="image_tab_schedule" selectedImage="image_tab_schedule_selected" id="QOZ-So-AhU"/>
+                    <connections>
+                        <segue destination="u0t-ps-vBE" kind="show" identifier="toMatchViewController" id="FoQ-un-tap"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G46-gC-alp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-497" y="-878"/>
+        </scene>
+        <!--Sports Match View Controller-->
+        <scene sceneID="Flt-rM-i3N">
+            <objects>
+                <viewController storyboardIdentifier="SportsMatchViewController" id="u0t-ps-vBE" customClass="SportsMatchViewController" customModule="ryqiu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xju-NJ-jWT"/>
+                        <viewControllerLayoutGuide type="bottom" id="Yuj-yd-MER"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jSM-E2-GDf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <segue destination="Bbh-2k-tTq" kind="show" identifier="toTeamViewController" id="XQ9-jK-jQ1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hkc-vu-VTe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="502.89855072463774" y="-879.24107142857144"/>
+        </scene>
+        <!--Sports Team View Controller-->
+        <scene sceneID="epu-CB-Ln1">
+            <objects>
+                <viewController storyboardIdentifier="SportsTeamViewController" id="Bbh-2k-tTq" customClass="SportsTeamViewController" customModule="ryqiu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GoV-fr-7cO"/>
+                        <viewControllerLayoutGuide type="bottom" id="8ZS-kZ-5PO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PQy-yg-Tah">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jc2-Hb-Oav"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0W0-xn-mTm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1441" y="-879"/>
+        </scene>
+        <!--首页-->
+        <scene sceneID="OPA-Hx-kxk">
+            <objects>
+                <viewController storyboardIdentifier="SportsMainViewController" id="9NT-jI-zfC" customClass="SportsMainViewController" customModule="ryqiu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7T6-ax-fIR"/>
+                        <viewControllerLayoutGuide type="bottom" id="tre-JG-EJw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kCD-am-MHq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="首页" image="image_tab_main" selectedImage="image_tab_main_selected" id="jqO-9L-DMc"/>
+                    <connections>
+                        <segue destination="d1e-tb-f2u" kind="show" identifier="toNewsViewController" id="XZI-ox-UqK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C4C-IA-dcv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-497" y="-1586"/>
+        </scene>
+        <!--Sports Base Tab Bar Controller-->
+        <scene sceneID="p4u-hO-daJ">
+            <objects>
+                <tabBarController id="k7s-iW-gYX" customClass="SportsBaseTabBarController" customModule="ryqiu" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="WWw-OJ-GHR"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7b2-V4-YbE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="9NT-jI-zfC" kind="relationship" relationship="viewControllers" id="sby-LO-VGs"/>
+                        <segue destination="o7d-at-KXd" kind="relationship" relationship="viewControllers" id="7tf-yc-HsJ"/>
+                        <segue destination="Erd-lb-sJO" kind="relationship" relationship="viewControllers" id="dLT-K5-HQa"/>
+                        <segue destination="OJK-hb-qtV" kind="relationship" relationship="viewControllers" id="IiQ-rf-dO9"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j4p-ga-wL4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1484" y="582"/>
+        </scene>
+        <!--数据-->
+        <scene sceneID="8UR-QT-iBj">
+            <objects>
+                <viewController storyboardIdentifier="SportsStandingViewController" id="Erd-lb-sJO" customClass="SportsStandingViewController" customModule="ryqiu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CI5-zg-Wie"/>
+                        <viewControllerLayoutGuide type="bottom" id="uwn-2D-Eyq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bE5-xG-YFR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="数据" image="image_tab_standing" selectedImage="image_tab_standing_selected" id="Bpk-ce-HOb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ob-wC-C9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-497" y="582"/>
+        </scene>
+        <!--我的-->
+        <scene sceneID="SVF-mB-E0j">
+            <objects>
+                <viewController storyboardIdentifier="SportsMyViewController" id="OJK-hb-qtV" customClass="SportsMyViewController" customModule="ryqiu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k9L-Xi-xrh"/>
+                        <viewControllerLayoutGuide type="bottom" id="yOS-7Y-VXS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bkY-YS-Qwf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="我的" image="image_tab_my" selectedImage="image_tab_my_selected" id="yh2-Ot-a9U"/>
+                    <connections>
+                        <segue destination="0H9-1O-sEh" kind="show" identifier="toLoginViewController" id="MKf-5u-Ujh"/>
+                        <segue destination="9R1-i3-rY1" kind="show" identifier="toAboutViewController" id="xN5-uc-QUe"/>
+                        <segue destination="iEi-Hj-oTs" kind="show" identifier="toConcrenViewController" id="de2-tD-uM6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZE6-eE-ixU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-497" y="2712"/>
+        </scene>
+        <!--Sports About View Controller-->
+        <scene sceneID="SJH-3x-jkg">
+            <objects>
+                <viewController storyboardIdentifier="SportsAboutViewController" id="9R1-i3-rY1" customClass="SportsAboutViewController" customModule="ryqiu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EWw-BW-sf3"/>
+                        <viewControllerLayoutGuide type="bottom" id="6kB-IS-BAp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V2W-Ta-o9T">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eau-M6-UCr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="503" y="2711"/>
+        </scene>
+        <!--Sports Concren View Controller-->
+        <scene sceneID="0M2-j5-RYP">
+            <objects>
+                <viewController storyboardIdentifier="SportsConcrenViewController" id="iEi-Hj-oTs" customClass="SportsConcrenViewController" customModule="ryqiu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3kU-E4-HNO"/>
+                        <viewControllerLayoutGuide type="bottom" id="C22-JP-Dx1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oE4-Vo-3bp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="s7c-BP-Twy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="goL-XP-rjW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="503" y="3438"/>
+        </scene>
+        <!--Sports Login View Controller-->
+        <scene sceneID="fNM-fe-f2k">
+            <objects>
+                <viewController storyboardIdentifier="SportsLoginViewController" id="0H9-1O-sEh" customClass="SportsLoginViewController" customModule="ryqiu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EcP-Kj-15T"/>
+                        <viewControllerLayoutGuide type="bottom" id="uJk-vz-r7k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8od-HD-tyZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uhw-K6-cwZ"/>
+                    <connections>
+                        <segue destination="oFI-rq-ruT" kind="show" identifier="toDocumentViewController" id="2nh-3J-ZJb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HFQ-kQ-keC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="504" y="2010"/>
+        </scene>
+        <!--Sports Document View Controller-->
+        <scene sceneID="Xae-bd-bSO">
+            <objects>
+                <viewController storyboardIdentifier="SportsDocumentViewController" id="oFI-rq-ruT" customClass="SportsDocumentViewController" customModule="ryqiu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="syH-X4-VER"/>
+                        <viewControllerLayoutGuide type="bottom" id="1o9-PZ-Jvr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X4E-nR-m3f">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bdK-0J-ERk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1441" y="2010"/>
+        </scene>
+        <!--Sports News View Controller-->
+        <scene sceneID="U0B-5I-dQc">
+            <objects>
+                <viewController storyboardIdentifier="SportsNewsViewController" id="d1e-tb-f2u" customClass="SportsNewsViewController" customModule="ryqiu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tkn-K2-S7V"/>
+                        <viewControllerLayoutGuide type="bottom" id="c3b-Iq-qd8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mfm-d3-0rM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cKs-s2-hUp"/>
+                    <connections>
+                        <segue destination="yVh-nB-5Cb" kind="show" identifier="toCommentViewController" id="f5y-Z6-gCI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uAe-aI-fFI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="503" y="-1586"/>
+        </scene>
+        <!--Sports Comment View Controller-->
+        <scene sceneID="O7R-Zt-yOs">
+            <objects>
+                <viewController storyboardIdentifier="SportsCommentViewController" id="yVh-nB-5Cb" customClass="SportsCommentViewController" customModule="ryqiu" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z4J-6f-uMe"/>
+                        <viewControllerLayoutGuide type="bottom" id="wDK-4u-Vuo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eFI-OW-BlC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fIk-wa-irt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hmr-ar-QLp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1441" y="-1586"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="image_tab_main" width="24" height="24"/>
+        <image name="image_tab_main_selected" width="24" height="24"/>
+        <image name="image_tab_my" width="24" height="24"/>
+        <image name="image_tab_my_selected" width="24" height="24"/>
+        <image name="image_tab_schedule" width="24" height="24"/>
+        <image name="image_tab_schedule_selected" width="24" height="24"/>
+        <image name="image_tab_standing" width="24" height="24"/>
+        <image name="image_tab_standing_selected" width="24" height="24"/>
+    </resources>
+</document>

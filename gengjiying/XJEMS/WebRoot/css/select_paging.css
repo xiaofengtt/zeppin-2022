@@ -1,0 +1,12 @@
+/*分页*/
+.ui-paging-container{
+	font-size:12px;
+}
+.ui-paging-container li.ui-pager:hover, .ui-paging-container li.focus{
+	background-color:#E0615F;
+}
+#select_page{
+	position: absolute;
+	bottom:0px;
+	right:0px;
+}

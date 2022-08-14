@@ -1,0 +1,1 @@
+alter table invigilation_teacher add column STUDY_LENGTH tinyint(4) default '0'

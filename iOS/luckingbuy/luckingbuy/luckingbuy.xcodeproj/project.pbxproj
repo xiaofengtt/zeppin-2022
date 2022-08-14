@@ -1,0 +1,669 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B83A963623CEB8F500E83A65 /* LuckingbuyLocalDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83A963523CEB8F500E83A65 /* LuckingbuyLocalDataController.swift */; };
+		B83F835C23C5E5D000A69977 /* LuckingbuyFixtureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83F835B23C5E5D000A69977 /* LuckingbuyFixtureViewController.swift */; };
+		B84D5F2D23E91A8E00DF27F5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84D5F2C23E91A8E00DF27F5 /* CFNetwork.framework */; };
+		B84D5F2F23E91A9700DF27F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84D5F2E23E91A9700DF27F5 /* CoreGraphics.framework */; };
+		B84D5F3123E91AA100DF27F5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84D5F3023E91AA100DF27F5 /* CoreMotion.framework */; };
+		B84D5F3323E91AA900DF27F5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84D5F3223E91AA900DF27F5 /* CoreTelephony.framework */; };
+		B84D5F3523E91AAF00DF27F5 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84D5F3423E91AAF00DF27F5 /* CoreText.framework */; };
+		B84D5F3723E91AB800DF27F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84D5F3623E91AB800DF27F5 /* Foundation.framework */; };
+		B84D5F3923E91AC200DF27F5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84D5F3823E91AC200DF27F5 /* QuartzCore.framework */; };
+		B84D5F3B23E91AD300DF27F5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84D5F3A23E91AD300DF27F5 /* SystemConfiguration.framework */; };
+		B84D5F3D23E91ADA00DF27F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84D5F3C23E91ADA00DF27F5 /* UIKit.framework */; };
+		B84D5F4023E9235F00DF27F5 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B84D5F3E23E9235F00DF27F5 /* AlipaySDK.bundle */; };
+		B84D5F4123E9235F00DF27F5 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B84D5F3F23E9235F00DF27F5 /* AlipaySDK.framework */; };
+		B85F03C423C81B580033D490 /* LuckingbuyLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85F03C323C81B580033D490 /* LuckingbuyLoginViewController.swift */; };
+		B85F03CC23C868980033D490 /* LuckingbuySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85F03CB23C868980033D490 /* LuckingbuySearchViewController.swift */; };
+		B872E00723C5859E0051115A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E00623C5859E0051115A /* AppDelegate.swift */; };
+		B872E00923C5859E0051115A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E00823C5859E0051115A /* SceneDelegate.swift */; };
+		B872E00B23C5859E0051115A /* LuckingbuyHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E00A23C5859E0051115A /* LuckingbuyHomeViewController.swift */; };
+		B872E00E23C5859E0051115A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B872E00C23C5859E0051115A /* Main.storyboard */; };
+		B872E01023C5859F0051115A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B872E00F23C5859F0051115A /* Assets.xcassets */; };
+		B872E01323C5859F0051115A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B872E01123C5859F0051115A /* LaunchScreen.storyboard */; };
+		B872E02323C589520051115A /* LuckingbuyBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = B872E01E23C589520051115A /* LuckingbuyBase64.m */; };
+		B872E02423C589520051115A /* LuckingbuyDESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B872E02123C589520051115A /* LuckingbuyDESUtils.m */; };
+		B872E02523C589520051115A /* LuckingbuyEncodingUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E02223C589520051115A /* LuckingbuyEncodingUtil.swift */; };
+		B872E03023C58B7E0051115A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B872E02723C58AB00051115A /* libc++.tbd */; };
+		B872E03123C58B880051115A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B872E02C23C58B470051115A /* libz.tbd */; };
+		B872E03223C58B900051115A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B872E02D23C58B5D0051115A /* libsqlite3.tbd */; };
+		B872E10D23C58CBF0051115A /* LuckingbuyBool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E10C23C58CBF0051115A /* LuckingbuyBool.swift */; };
+		B872E10F23C58CDD0051115A /* LuckingbuyDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E10E23C58CDD0051115A /* LuckingbuyDouble.swift */; };
+		B872E11123C58CEC0051115A /* LuckingbuyInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E11023C58CEB0051115A /* LuckingbuyInt.swift */; };
+		B872E11323C58CFB0051115A /* LuckingbuyDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E11223C58CFB0051115A /* LuckingbuyDate.swift */; };
+		B872E11523C58D030051115A /* LuckingbuyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E11423C58D030051115A /* LuckingbuyObject.swift */; };
+		B872E11723C58D1F0051115A /* LuckingbuyString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E11623C58D1E0051115A /* LuckingbuyString.swift */; };
+		B872E11923C58FEE0051115A /* LuckingbuyUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E11823C58FEE0051115A /* LuckingbuyUIColor.swift */; };
+		B872E11B23C5900D0051115A /* LuckingbuyUIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E11A23C5900D0051115A /* LuckingbuyUIFont.swift */; };
+		B872E11F23C5C8AE0051115A /* LuckingbuyBaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E11D23C5C8AE0051115A /* LuckingbuyBaseTabBarController.swift */; };
+		B872E12023C5C8AE0051115A /* LuckingbuyBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E11E23C5C8AE0051115A /* LuckingbuyBaseNavigationController.swift */; };
+		B872E12223C5C8ED0051115A /* LuckingbuyUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B872E12123C5C8ED0051115A /* LuckingbuyUIImage.swift */; };
+		B878E4E123EBB22A00A1ECD4 /* LuckingbuyNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B878E4E023EBB22A00A1ECD4 /* LuckingbuyNotification.swift */; };
+		B878E4E723EBBD5200A1ECD4 /* dist in Resources */ = {isa = PBXBuildFile; fileRef = B878E4E623EBBD5200A1ECD4 /* dist */; };
+		B87CDD5223C6C412005657C1 /* LuckingbuyAppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87CDD5123C6C412005657C1 /* LuckingbuyAppData.swift */; };
+		B87CDD5623C6D9DB005657C1 /* LuckingbuyLotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87CDD5523C6D9DB005657C1 /* LuckingbuyLotteryViewController.swift */; };
+		B895F46E23CEB9F200AD30A3 /* DataBase.plist in Resources */ = {isa = PBXBuildFile; fileRef = B895F46D23CEB9F200AD30A3 /* DataBase.plist */; };
+		B8E638D523C6DFFE002C7964 /* LuckingbuyNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E638D423C6DFFE002C7964 /* LuckingbuyNavigationView.swift */; };
+		B8E638D923C70103002C7964 /* LuckingbuyHttpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E638D823C70103002C7964 /* LuckingbuyHttpController.swift */; };
+		B8E638E323C70385002C7964 /* LuckingbuyMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E638E223C70385002C7964 /* LuckingbuyMBProgressHUD.m */; };
+		B8E638E923C70410002C7964 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8E638E823C7040F002C7964 /* Security.framework */; };
+		B8E638EA23C7043B002C7964 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8E638E423C7038D002C7964 /* AFNetworking.framework */; };
+		B8E638EB23C7043B002C7964 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B8E638E423C7038D002C7964 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B8E638ED23C70440002C7964 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8E638E523C7038E002C7964 /* SDWebImage.framework */; };
+		B8E638EE23C70440002C7964 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B8E638E523C7038E002C7964 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B8E638F223C7061A002C7964 /* LuckingbuyCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E638F123C7061A002C7964 /* LuckingbuyCartViewController.swift */; };
+		B8E638FA23C70C3A002C7964 /* LuckingbuyMyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E638F923C70C3A002C7964 /* LuckingbuyMyViewController.swift */; };
+		B8E638FE23C716DC002C7964 /* LuckingbuySingleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E638FD23C716DC002C7964 /* LuckingbuySingleViewController.swift */; };
+		B8EB720123EAB3E800E2E7B7 /* LuckingBuyLuckingbuyMBProgressHUDz.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EB71F523EAB3E800E2E7B7 /* LuckingBuyLuckingbuyMBProgressHUDz.m */; };
+		B8EB720223EAB3E800E2E7B7 /* LuckingBuyMBBackgroundViewd.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EB71F723EAB3E800E2E7B7 /* LuckingBuyMBBackgroundViewd.m */; };
+		B8EB720323EAB3E800E2E7B7 /* LuckingBuyMBRoundProgressViewI.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EB71F923EAB3E800E2E7B7 /* LuckingBuyMBRoundProgressViewI.m */; };
+		B8EB720423EAB3E800E2E7B7 /* LuckingBuyLuckingbuyBase64Q.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EB71FC23EAB3E800E2E7B7 /* LuckingBuyLuckingbuyBase64Q.m */; };
+		B8EB720523EAB3E800E2E7B7 /* LuckingBuyLuckingbuyDESUtilsH.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EB71FD23EAB3E800E2E7B7 /* LuckingBuyLuckingbuyDESUtilsH.m */; };
+		B8EB720623EAB3E800E2E7B7 /* LuckingBuyMBBarProgressViewP.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EB71FE23EAB3E800E2E7B7 /* LuckingBuyMBBarProgressViewP.m */; };
+		B8FA7DDC23ED0697000064CD /* LuckingbuyAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA7DDB23ED0697000064CD /* LuckingbuyAdViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B8E638EC23C7043B002C7964 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B8E638EE23C70440002C7964 /* SDWebImage.framework in Embed Frameworks */,
+				B8E638EB23C7043B002C7964 /* AFNetworking.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B83A963523CEB8F500E83A65 /* LuckingbuyLocalDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckingbuyLocalDataController.swift; sourceTree = "<group>"; };
+		B83F835B23C5E5D000A69977 /* LuckingbuyFixtureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckingbuyFixtureViewController.swift; sourceTree = "<group>"; };
+		B84D5F2C23E91A8E00DF27F5 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B84D5F2E23E91A9700DF27F5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B84D5F3023E91AA100DF27F5 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		B84D5F3223E91AA900DF27F5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		B84D5F3423E91AAF00DF27F5 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		B84D5F3623E91AB800DF27F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B84D5F3823E91AC200DF27F5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B84D5F3A23E91AD300DF27F5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B84D5F3C23E91ADA00DF27F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B84D5F3E23E9235F00DF27F5 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		B84D5F3F23E9235F00DF27F5 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		B85F03C323C81B580033D490 /* LuckingbuyLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckingbuyLoginViewController.swift; sourceTree = "<group>"; };
+		B85F03CB23C868980033D490 /* LuckingbuySearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckingbuySearchViewController.swift; sourceTree = "<group>"; };
+		B872E00323C5859E0051115A /* 疯狂闪购.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "疯狂闪购.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B872E00623C5859E0051115A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B872E00823C5859E0051115A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B872E00A23C5859E0051115A /* LuckingbuyHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckingbuyHomeViewController.swift; sourceTree = "<group>"; };
+		B872E00D23C5859E0051115A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B872E00F23C5859F0051115A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B872E01223C5859F0051115A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B872E01423C5859F0051115A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B872E01A23C588F70051115A /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		B872E01E23C589520051115A /* LuckingbuyBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckingbuyBase64.m; sourceTree = "<group>"; };
+		B872E01F23C589520051115A /* LuckingbuyDESUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckingbuyDESUtils.h; sourceTree = "<group>"; };
+		B872E02023C589520051115A /* LuckingbuyBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckingbuyBase64.h; sourceTree = "<group>"; };
+		B872E02123C589520051115A /* LuckingbuyDESUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckingbuyDESUtils.m; sourceTree = "<group>"; };
+		B872E02223C589520051115A /* LuckingbuyEncodingUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckingbuyEncodingUtil.swift; sourceTree = "<group>"; };
+		B872E02723C58AB00051115A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		B872E02C23C58B470051115A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		B872E02D23C58B5D0051115A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		B872E10C23C58CBF0051115A /* LuckingbuyBool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckingbuyBool.swift; sourceTree = "<group>"; };
+		B872E10E23C58CDD0051115A /* LuckingbuyDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckingbuyDouble.swift; sourceTree = "<group>"; };
+		B872E11023C58CEB0051115A /* LuckingbuyInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckingbuyInt.swift; sourceTree = "<group>"; };
+		B872E11223C58CFB0051115A /* LuckingbuyDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckingbuyDate.swift; sourceTree = "<group>"; };
+		B872E11423C58D030051115A /* LuckingbuyObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckingbuyObject.swift; sourceTree = "<group>"; };
+		B872E11623C58D1E0051115A /* LuckingbuyString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckingbuyString.swift; sourceTree = "<group>"; };
+		B872E11823C58FEE0051115A /* LuckingbuyUIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckingbuyUIColor.swift; sourceTree = "<group>"; };
+		B872E11A23C5900D0051115A /* LuckingbuyUIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckingbuyUIFont.swift; sourceTree = "<group>"; };
+		B872E11D23C5C8AE0051115A /* LuckingbuyBaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckingbuyBaseTabBarController.swift; sourceTree = "<group>"; };
+		B872E11E23C5C8AE0051115A /* LuckingbuyBaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckingbuyBaseNavigationController.swift; sourceTree = "<group>"; };
+		B872E12123C5C8ED0051115A /* LuckingbuyUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LuckingbuyUIImage.swift; sourceTree = "<group>"; };
+		B878E4E023EBB22A00A1ECD4 /* LuckingbuyNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckingbuyNotification.swift; sourceTree = "<group>"; };
+		B878E4E623EBBD5200A1ECD4 /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dist; sourceTree = "<group>"; };
+		B87CDD5123C6C412005657C1 /* LuckingbuyAppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckingbuyAppData.swift; sourceTree = "<group>"; };
+		B87CDD5523C6D9DB005657C1 /* LuckingbuyLotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckingbuyLotteryViewController.swift; sourceTree = "<group>"; };
+		B895F46D23CEB9F200AD30A3 /* DataBase.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DataBase.plist; sourceTree = "<group>"; };
+		B8E638D423C6DFFE002C7964 /* LuckingbuyNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckingbuyNavigationView.swift; sourceTree = "<group>"; };
+		B8E638D823C70103002C7964 /* LuckingbuyHttpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckingbuyHttpController.swift; sourceTree = "<group>"; };
+		B8E638E123C70385002C7964 /* LuckingbuyMBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckingbuyMBProgressHUD.h; sourceTree = "<group>"; };
+		B8E638E223C70385002C7964 /* LuckingbuyMBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckingbuyMBProgressHUD.m; sourceTree = "<group>"; };
+		B8E638E423C7038D002C7964 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
+		B8E638E523C7038E002C7964 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		B8E638E823C7040F002C7964 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B8E638F123C7061A002C7964 /* LuckingbuyCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckingbuyCartViewController.swift; sourceTree = "<group>"; };
+		B8E638F923C70C3A002C7964 /* LuckingbuyMyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckingbuyMyViewController.swift; sourceTree = "<group>"; };
+		B8E638FD23C716DC002C7964 /* LuckingbuySingleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckingbuySingleViewController.swift; sourceTree = "<group>"; };
+		B8EB71F423EAB3E800E2E7B7 /* LuckingBuyLuckingbuyBase64Q.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckingBuyLuckingbuyBase64Q.h; sourceTree = "<group>"; };
+		B8EB71F523EAB3E800E2E7B7 /* LuckingBuyLuckingbuyMBProgressHUDz.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckingBuyLuckingbuyMBProgressHUDz.m; sourceTree = "<group>"; };
+		B8EB71F623EAB3E800E2E7B7 /* LuckingBuyLuckingbuyDESUtilsH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckingBuyLuckingbuyDESUtilsH.h; sourceTree = "<group>"; };
+		B8EB71F723EAB3E800E2E7B7 /* LuckingBuyMBBackgroundViewd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckingBuyMBBackgroundViewd.m; sourceTree = "<group>"; };
+		B8EB71F823EAB3E800E2E7B7 /* LuckingBuyMBBarProgressViewP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckingBuyMBBarProgressViewP.h; sourceTree = "<group>"; };
+		B8EB71F923EAB3E800E2E7B7 /* LuckingBuyMBRoundProgressViewI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckingBuyMBRoundProgressViewI.m; sourceTree = "<group>"; };
+		B8EB71FA23EAB3E800E2E7B7 /* NewClassCallHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewClassCallHeader.h; sourceTree = "<group>"; };
+		B8EB71FB23EAB3E800E2E7B7 /* LuckingBuyLuckingbuyMBProgressHUDz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckingBuyLuckingbuyMBProgressHUDz.h; sourceTree = "<group>"; };
+		B8EB71FC23EAB3E800E2E7B7 /* LuckingBuyLuckingbuyBase64Q.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckingBuyLuckingbuyBase64Q.m; sourceTree = "<group>"; };
+		B8EB71FD23EAB3E800E2E7B7 /* LuckingBuyLuckingbuyDESUtilsH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckingBuyLuckingbuyDESUtilsH.m; sourceTree = "<group>"; };
+		B8EB71FE23EAB3E800E2E7B7 /* LuckingBuyMBBarProgressViewP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuckingBuyMBBarProgressViewP.m; sourceTree = "<group>"; };
+		B8EB71FF23EAB3E800E2E7B7 /* LuckingBuyMBBackgroundViewd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckingBuyMBBackgroundViewd.h; sourceTree = "<group>"; };
+		B8EB720023EAB3E800E2E7B7 /* LuckingBuyMBRoundProgressViewI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuckingBuyMBRoundProgressViewI.h; sourceTree = "<group>"; };
+		B8FA7DDB23ED0697000064CD /* LuckingbuyAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuckingbuyAdViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B872E00023C5859E0051115A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B84D5F3D23E91ADA00DF27F5 /* UIKit.framework in Frameworks */,
+				B84D5F4123E9235F00DF27F5 /* AlipaySDK.framework in Frameworks */,
+				B84D5F3B23E91AD300DF27F5 /* SystemConfiguration.framework in Frameworks */,
+				B8E638EA23C7043B002C7964 /* AFNetworking.framework in Frameworks */,
+				B84D5F3923E91AC200DF27F5 /* QuartzCore.framework in Frameworks */,
+				B84D5F2D23E91A8E00DF27F5 /* CFNetwork.framework in Frameworks */,
+				B84D5F3323E91AA900DF27F5 /* CoreTelephony.framework in Frameworks */,
+				B84D5F3123E91AA100DF27F5 /* CoreMotion.framework in Frameworks */,
+				B84D5F2F23E91A9700DF27F5 /* CoreGraphics.framework in Frameworks */,
+				B872E03223C58B900051115A /* libsqlite3.tbd in Frameworks */,
+				B872E03023C58B7E0051115A /* libc++.tbd in Frameworks */,
+				B84D5F3723E91AB800DF27F5 /* Foundation.framework in Frameworks */,
+				B84D5F3523E91AAF00DF27F5 /* CoreText.framework in Frameworks */,
+				B8E638E923C70410002C7964 /* Security.framework in Frameworks */,
+				B8E638ED23C70440002C7964 /* SDWebImage.framework in Frameworks */,
+				B872E03123C58B880051115A /* libz.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B83F835A23C5E58600A69977 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B872E00A23C5859E0051115A /* LuckingbuyHomeViewController.swift */,
+				B87CDD5523C6D9DB005657C1 /* LuckingbuyLotteryViewController.swift */,
+				B8E638F123C7061A002C7964 /* LuckingbuyCartViewController.swift */,
+				B8E638F923C70C3A002C7964 /* LuckingbuyMyViewController.swift */,
+				B83F835B23C5E5D000A69977 /* LuckingbuyFixtureViewController.swift */,
+				B8E638FD23C716DC002C7964 /* LuckingbuySingleViewController.swift */,
+				B85F03C323C81B580033D490 /* LuckingbuyLoginViewController.swift */,
+				B85F03CB23C868980033D490 /* LuckingbuySearchViewController.swift */,
+				B8FA7DDB23ED0697000064CD /* LuckingbuyAdViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		B872DFFA23C5859E0051115A = {
+			isa = PBXGroup;
+			children = (
+				B872E00523C5859E0051115A /* luckingbuy */,
+				B872E00423C5859E0051115A /* Products */,
+				B872E02623C58AB00051115A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B872E00423C5859E0051115A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B872E00323C5859E0051115A /* 疯狂闪购.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B872E00523C5859E0051115A /* luckingbuy */ = {
+			isa = PBXGroup;
+			children = (
+				B878E4E623EBBD5200A1ECD4 /* dist */,
+				B8EB71F323EAB3E800E2E7B7 /* BaseClass */,
+				B8E638D323C6DF94002C7964 /* BaseView */,
+				B872E11C23C5C8AE0051115A /* BaseViewController */,
+				B872E10B23C58C6A0051115A /* Extension */,
+				B872E01D23C589520051115A /* Encoding */,
+				B83F835A23C5E58600A69977 /* ViewController */,
+				B872E00623C5859E0051115A /* AppDelegate.swift */,
+				B87CDD5123C6C412005657C1 /* LuckingbuyAppData.swift */,
+				B872E00823C5859E0051115A /* SceneDelegate.swift */,
+				B8E638D823C70103002C7964 /* LuckingbuyHttpController.swift */,
+				B83A963523CEB8F500E83A65 /* LuckingbuyLocalDataController.swift */,
+				B872E00C23C5859E0051115A /* Main.storyboard */,
+				B872E00F23C5859F0051115A /* Assets.xcassets */,
+				B872E01123C5859F0051115A /* LaunchScreen.storyboard */,
+				B895F46D23CEB9F200AD30A3 /* DataBase.plist */,
+				B872E01423C5859F0051115A /* Info.plist */,
+				B872E01A23C588F70051115A /* Bridging-Header.h */,
+			);
+			path = luckingbuy;
+			sourceTree = "<group>";
+		};
+		B872E01D23C589520051115A /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				B872E01E23C589520051115A /* LuckingbuyBase64.m */,
+				B872E01F23C589520051115A /* LuckingbuyDESUtils.h */,
+				B872E02023C589520051115A /* LuckingbuyBase64.h */,
+				B872E02123C589520051115A /* LuckingbuyDESUtils.m */,
+				B872E02223C589520051115A /* LuckingbuyEncodingUtil.swift */,
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
+		B872E02623C58AB00051115A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B84D5F3E23E9235F00DF27F5 /* AlipaySDK.bundle */,
+				B84D5F3F23E9235F00DF27F5 /* AlipaySDK.framework */,
+				B84D5F3C23E91ADA00DF27F5 /* UIKit.framework */,
+				B84D5F3A23E91AD300DF27F5 /* SystemConfiguration.framework */,
+				B84D5F3823E91AC200DF27F5 /* QuartzCore.framework */,
+				B84D5F3623E91AB800DF27F5 /* Foundation.framework */,
+				B84D5F3423E91AAF00DF27F5 /* CoreText.framework */,
+				B84D5F3223E91AA900DF27F5 /* CoreTelephony.framework */,
+				B84D5F3023E91AA100DF27F5 /* CoreMotion.framework */,
+				B84D5F2E23E91A9700DF27F5 /* CoreGraphics.framework */,
+				B84D5F2C23E91A8E00DF27F5 /* CFNetwork.framework */,
+				B8E638E823C7040F002C7964 /* Security.framework */,
+				B8E638E423C7038D002C7964 /* AFNetworking.framework */,
+				B8E638E523C7038E002C7964 /* SDWebImage.framework */,
+				B8E638E123C70385002C7964 /* LuckingbuyMBProgressHUD.h */,
+				B8E638E223C70385002C7964 /* LuckingbuyMBProgressHUD.m */,
+				B872E02D23C58B5D0051115A /* libsqlite3.tbd */,
+				B872E02C23C58B470051115A /* libz.tbd */,
+				B872E02723C58AB00051115A /* libc++.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B872E10B23C58C6A0051115A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B872E11A23C5900D0051115A /* LuckingbuyUIFont.swift */,
+				B872E12123C5C8ED0051115A /* LuckingbuyUIImage.swift */,
+				B872E11023C58CEB0051115A /* LuckingbuyInt.swift */,
+				B872E10E23C58CDD0051115A /* LuckingbuyDouble.swift */,
+				B872E10C23C58CBF0051115A /* LuckingbuyBool.swift */,
+				B872E11423C58D030051115A /* LuckingbuyObject.swift */,
+				B872E11223C58CFB0051115A /* LuckingbuyDate.swift */,
+				B872E11623C58D1E0051115A /* LuckingbuyString.swift */,
+				B872E11823C58FEE0051115A /* LuckingbuyUIColor.swift */,
+				B878E4E023EBB22A00A1ECD4 /* LuckingbuyNotification.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		B872E11C23C5C8AE0051115A /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B872E11D23C5C8AE0051115A /* LuckingbuyBaseTabBarController.swift */,
+				B872E11E23C5C8AE0051115A /* LuckingbuyBaseNavigationController.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		B8E638D323C6DF94002C7964 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				B8E638D423C6DFFE002C7964 /* LuckingbuyNavigationView.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		B8EB71F323EAB3E800E2E7B7 /* BaseClass */ = {
+			isa = PBXGroup;
+			children = (
+				B8EB71F423EAB3E800E2E7B7 /* LuckingBuyLuckingbuyBase64Q.h */,
+				B8EB71F523EAB3E800E2E7B7 /* LuckingBuyLuckingbuyMBProgressHUDz.m */,
+				B8EB71F623EAB3E800E2E7B7 /* LuckingBuyLuckingbuyDESUtilsH.h */,
+				B8EB71F723EAB3E800E2E7B7 /* LuckingBuyMBBackgroundViewd.m */,
+				B8EB71F823EAB3E800E2E7B7 /* LuckingBuyMBBarProgressViewP.h */,
+				B8EB71F923EAB3E800E2E7B7 /* LuckingBuyMBRoundProgressViewI.m */,
+				B8EB71FA23EAB3E800E2E7B7 /* NewClassCallHeader.h */,
+				B8EB71FB23EAB3E800E2E7B7 /* LuckingBuyLuckingbuyMBProgressHUDz.h */,
+				B8EB71FC23EAB3E800E2E7B7 /* LuckingBuyLuckingbuyBase64Q.m */,
+				B8EB71FD23EAB3E800E2E7B7 /* LuckingBuyLuckingbuyDESUtilsH.m */,
+				B8EB71FE23EAB3E800E2E7B7 /* LuckingBuyMBBarProgressViewP.m */,
+				B8EB71FF23EAB3E800E2E7B7 /* LuckingBuyMBBackgroundViewd.h */,
+				B8EB720023EAB3E800E2E7B7 /* LuckingBuyMBRoundProgressViewI.h */,
+			);
+			path = BaseClass;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B872E00223C5859E0051115A /* luckingbuy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B872E01723C5859F0051115A /* Build configuration list for PBXNativeTarget "luckingbuy" */;
+			buildPhases = (
+				B872DFFF23C5859E0051115A /* Sources */,
+				B872E00023C5859E0051115A /* Frameworks */,
+				B872E00123C5859E0051115A /* Resources */,
+				B8E638EC23C7043B002C7964 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = luckingbuy;
+			productName = shopping;
+			productReference = B872E00323C5859E0051115A /* 疯狂闪购.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B872DFFB23C5859E0051115A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = shopping;
+				TargetAttributes = {
+					B872E00223C5859E0051115A = {
+						CreatedOnToolsVersion = 11.3;
+					};
+				};
+			};
+			buildConfigurationList = B872DFFE23C5859E0051115A /* Build configuration list for PBXProject "luckingbuy" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B872DFFA23C5859E0051115A;
+			productRefGroup = B872E00423C5859E0051115A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B872E00223C5859E0051115A /* luckingbuy */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B872E00123C5859E0051115A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B878E4E723EBBD5200A1ECD4 /* dist in Resources */,
+				B84D5F4023E9235F00DF27F5 /* AlipaySDK.bundle in Resources */,
+				B895F46E23CEB9F200AD30A3 /* DataBase.plist in Resources */,
+				B872E01323C5859F0051115A /* LaunchScreen.storyboard in Resources */,
+				B872E01023C5859F0051115A /* Assets.xcassets in Resources */,
+				B872E00E23C5859E0051115A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B872DFFF23C5859E0051115A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B85F03C423C81B580033D490 /* LuckingbuyLoginViewController.swift in Sources */,
+				B8EB720223EAB3E800E2E7B7 /* LuckingBuyMBBackgroundViewd.m in Sources */,
+				B83A963623CEB8F500E83A65 /* LuckingbuyLocalDataController.swift in Sources */,
+				B878E4E123EBB22A00A1ECD4 /* LuckingbuyNotification.swift in Sources */,
+				B8E638FA23C70C3A002C7964 /* LuckingbuyMyViewController.swift in Sources */,
+				B872E11323C58CFB0051115A /* LuckingbuyDate.swift in Sources */,
+				B872E11123C58CEC0051115A /* LuckingbuyInt.swift in Sources */,
+				B872E11F23C5C8AE0051115A /* LuckingbuyBaseTabBarController.swift in Sources */,
+				B872E00B23C5859E0051115A /* LuckingbuyHomeViewController.swift in Sources */,
+				B8EB720623EAB3E800E2E7B7 /* LuckingBuyMBBarProgressViewP.m in Sources */,
+				B872E02523C589520051115A /* LuckingbuyEncodingUtil.swift in Sources */,
+				B872E10F23C58CDD0051115A /* LuckingbuyDouble.swift in Sources */,
+				B872E12223C5C8ED0051115A /* LuckingbuyUIImage.swift in Sources */,
+				B8EB720123EAB3E800E2E7B7 /* LuckingBuyLuckingbuyMBProgressHUDz.m in Sources */,
+				B8E638F223C7061A002C7964 /* LuckingbuyCartViewController.swift in Sources */,
+				B8E638E323C70385002C7964 /* LuckingbuyMBProgressHUD.m in Sources */,
+				B8FA7DDC23ED0697000064CD /* LuckingbuyAdViewController.swift in Sources */,
+				B872E11B23C5900D0051115A /* LuckingbuyUIFont.swift in Sources */,
+				B872E10D23C58CBF0051115A /* LuckingbuyBool.swift in Sources */,
+				B8EB720323EAB3E800E2E7B7 /* LuckingBuyMBRoundProgressViewI.m in Sources */,
+				B8EB720523EAB3E800E2E7B7 /* LuckingBuyLuckingbuyDESUtilsH.m in Sources */,
+				B872E02323C589520051115A /* LuckingbuyBase64.m in Sources */,
+				B872E11523C58D030051115A /* LuckingbuyObject.swift in Sources */,
+				B8EB720423EAB3E800E2E7B7 /* LuckingBuyLuckingbuyBase64Q.m in Sources */,
+				B8E638D923C70103002C7964 /* LuckingbuyHttpController.swift in Sources */,
+				B872E02423C589520051115A /* LuckingbuyDESUtils.m in Sources */,
+				B872E00723C5859E0051115A /* AppDelegate.swift in Sources */,
+				B87CDD5623C6D9DB005657C1 /* LuckingbuyLotteryViewController.swift in Sources */,
+				B872E00923C5859E0051115A /* SceneDelegate.swift in Sources */,
+				B8E638D523C6DFFE002C7964 /* LuckingbuyNavigationView.swift in Sources */,
+				B8E638FE23C716DC002C7964 /* LuckingbuySingleViewController.swift in Sources */,
+				B83F835C23C5E5D000A69977 /* LuckingbuyFixtureViewController.swift in Sources */,
+				B872E11923C58FEE0051115A /* LuckingbuyUIColor.swift in Sources */,
+				B872E12023C5C8AE0051115A /* LuckingbuyBaseNavigationController.swift in Sources */,
+				B872E11723C58D1F0051115A /* LuckingbuyString.swift in Sources */,
+				B87CDD5223C6C412005657C1 /* LuckingbuyAppData.swift in Sources */,
+				B85F03CC23C868980033D490 /* LuckingbuySearchViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B872E00C23C5859E0051115A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B872E00D23C5859E0051115A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B872E01123C5859F0051115A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B872E01223C5859F0051115A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B872E01523C5859F0051115A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B872E01623C5859F0051115A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B872E01823C5859F0051115A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TH4QFN396M;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/luckingbuy.xcodeproj",
+					"$(PROJECT_DIR)/luckingbuy",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = luckingbuy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 5.1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.tianchuangyueteng.score;
+				PRODUCT_NAME = "疯狂闪购";
+				SWIFT_OBJC_BRIDGING_HEADER = "luckingbuy/Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B872E01923C5859F0051115A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TH4QFN396M;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/luckingbuy.xcodeproj",
+					"$(PROJECT_DIR)/luckingbuy",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = luckingbuy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 5.1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.tianchuangyueteng.score;
+				PRODUCT_NAME = "疯狂闪购";
+				SWIFT_OBJC_BRIDGING_HEADER = "luckingbuy/Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B872DFFE23C5859E0051115A /* Build configuration list for PBXProject "luckingbuy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B872E01523C5859F0051115A /* Debug */,
+				B872E01623C5859F0051115A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B872E01723C5859F0051115A /* Build configuration list for PBXNativeTarget "luckingbuy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B872E01823C5859F0051115A /* Debug */,
+				B872E01923C5859F0051115A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B872DFFB23C5859E0051115A /* Project object */;
+}

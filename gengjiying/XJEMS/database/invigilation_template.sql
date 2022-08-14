@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS `invigilation_template`;
+CREATE TABLE `invigilation_template` (
+  `ID` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `TITLE` varchar(20) DEFAULT '' COMMENT '标题',
+  `CONTENT` text NOT NULL COMMENT '内容',
+  `CREATETIME` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+  `CREATOR` int(11) NOT NULL COMMENT '创建人ID',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;

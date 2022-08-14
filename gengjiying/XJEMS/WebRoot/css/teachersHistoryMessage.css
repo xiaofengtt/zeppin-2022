@@ -1,0 +1,107 @@
+@charset "UTF-8";
+.main .title {
+    font-size: 18px;
+    color: #000000;
+}
+
+.main .set {
+    padding: 4px 10px 4px 10px;
+    display: inline-block;
+    background: #FFFFFF;
+    border: 1px solid #E0615F;
+    color: #E0615F;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    position: absolute;
+    top: 24px;
+    right: 62px;
+    font-size:14px;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+.main .set:hover{
+	background: #E0615F;
+	color:#FFFFFF;
+}
+.main .teachers_msg {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border: 1px solid #E0E0E0;
+}
+
+.main .teachers_msg tr {
+    height: 50px;
+}
+.main .teachers_msg .idCard_tr{
+	height:200px;
+}
+.main .teachers_msg .idCard_tr img{
+	width:500px;
+	/*height:200px;*/
+	cursor: pointer;
+}
+.main .teachers_msg tr:nth-child(1) td:nth-child(even),
+.main .teachers_msg tr:nth-child(2) td:nth-child(even),
+.main .teachers_msg tr:nth-child(3) td:nth-child(even),
+.main .teachers_msg tr:nth-child(4) td:nth-child(even),
+.main .teachers_msg tr:nth-child(5) td:nth-child(even),
+.main .teachers_msg tr:nth-child(6) td:nth-child(even),
+.main .teachers_msg tr:nth-child(7) td:nth-child(even),
+.main .teachers_msg tr:nth-child(8) td:nth-child(even),
+.main .teachers_msg tr:nth-child(9) td:nth-child(even),
+.main .teachers_msg tr:nth-child(10) td:nth-child(even),
+.main .teachers_msg tr:nth-child(11) td:nth-child(even),
+.main .teachers_msg tr:nth-child(12) td:nth-child(even),
+.main .teachers_msg tr:nth-child(13) td:nth-child(even),
+.main .teachers_msg tr:nth-child(14) td:nth-child(even){
+    background: #FFFFFF;
+}
+.main .teachers_msg{
+	table-layout:fixed;
+	font-size:14px;
+}
+.main .teachers_msg tr td{
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	word-break:break-all;
+	overflow: hidden;
+	padding:0 10px 0 10px;
+	text-align: center;
+    border: 1px solid #E0E0E0;
+    background: #FFF4F4;
+}
+.main .teachers_msg tr .head{
+    width:170px;
+}
+.main .history_title {
+    margin-top: 36px;
+    position: relative;
+}
+
+/*身份证照片大图*/
+.card_img{
+	max-width:90%;
+}
+
+
+/*分页样式*/
+.ui-paging-container{
+	color:#888;
+	font-size:12px;
+}
+#select_page{
+	position: absolute;
+	bottom:0px;
+	right:3px;
+}
+
+.ui-paging-container li.ui-pager:hover, .ui-paging-container li.focus{
+	background-color:#E0615F;
+	color:#FFFFFF;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>登录</title>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="../js/jquery-1.11.1.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/url.min.js"></script>
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/login.css" />
+<!--link rel="stylesheet" href="css/animate.css"-->
+<style>
+</style>
+</head>
+
+<body>
+	<header>
+		<p class="title">Welcome</p>
+	</header>
+	<main>
+	<div class="login">
+		<form id="login-form" method="post">
+			<div>
+				<input type="text" placeholder="请输入手机号码" id="mobile" name="mobile"/>
+			</div>
+
+			<div>
+				<input type="text" placeholder="请输入验证码" id="code" name="smsCode" /> <span
+					id="test">发送验证码</span> <span id="reaction">60秒后重新发送</span>
+			</div>
+
+			<input type="button" id="login" value="登录"></button>
+		</form>
+
+		<p class="bottom">
+			<span>没有账号？</span> <a id="register">立即注册</a>
+		</p>
+	</div>
+	</main>
+</body>
+
+</html>
+
+<script>
+	$(function() {
+		
+		var pagehtml = url('?pagename') == null ? 'myMessage'
+				: url('?pagename');
+		var openid = url('?openid') == null ? '' : url('?openid');
+		$("#register").attr("href","../XJ_wechat/addTeacher.html?openid="+openid);
+		//var params = url('?params') == null ? '' : url('?params');
+		$("#login").click(function(){
+			$.ajax({
+				type:"post",
+				url:"../weixin/weixinLogin",
+				async:true,
+				data:{
+					"openid":openid,
+					"pagename":pagehtml,
+					"mobile":$("#mobile").val(),
+					"smsCode":$("#code").val()
+				},
+				success:function(r){
+	
+					if(r.Status == "success"){
+						window.location.href = r.Records;
+//						$("#login").attr("disabled",false);
+					}else{
+						alert(r.Message);
+						$("#login").attr("disabled",false);
+					}
+				},
+				fail:function(r){
+					alert(r.Message);
+				},
+				beforeSend:function(){
+					$("#login").attr("disabled",true);
+				}
+			});
+		})
+
+		$("#test").click(function() {
+			var t;
+			var i = 60;
+			$("#test").hide();
+			$("#reaction").show();
+			t = setInterval(function() {
+				i--;
+				$("#reaction").html(i + "秒后重新发送");
+				if (i == -1) {
+					clearInterval(t);
+					$("#reaction").hide();
+					$("#reaction").html("60秒后重新发送");
+					$("#test").show();
+				}
+			}, 1000);
+			var mobile = $("#mobile").val();
+			$.ajax({
+				type : "post",
+				url : "../weixin/smsSendSms",
+				async : true,
+				data : {
+					"mobile" : mobile, //手机号
+					"check" : 0
+				//是否验证
+				},
+				success : function(data) {
+					if (data.Status == 'success') {
+
+						
+					} else {
+						alert(data.Message);
+					}
+				},
+				fail : function() {
+					alert('失败' + message);
+				}
+			});
+		});
+	})
+	
+</script>

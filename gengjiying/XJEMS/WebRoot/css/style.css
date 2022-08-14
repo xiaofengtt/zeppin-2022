@@ -1,0 +1,346 @@
+@CHARSET "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    margin: 0;
+    padding: 0;
+    /*     font-family: PingFangSC-Regular; */
+}
+input:-webkit-autofill {  
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;  
+}  
+
+input[type="text"],
+textarea,select {
+    -webkit-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+}
+.back_top{
+	text-align: right;
+	margin-top:20px;
+}
+.back_top a{
+	color:#E0615F;
+	font-size:16px;
+}
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.clear {
+    clear: both;
+}
+
+.clearfix::before,
+.clearfix::after {
+    content: '';
+    display: block;
+    line-height: 0;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+label {
+    font-weight: normal;
+}
+
+body {
+    background: #f6f6f6;
+}
+
+p {
+    margin: 0;
+}
+
+.input-icon {
+    position: relative;
+}
+
+.input-icon input {
+    padding-left: 33px !important;
+}
+
+.input-icon i {
+    color: #ccc;
+    display: block;
+    position: absolute;
+    margin: 11px 2px 4px 10px;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    text-align: center;
+}
+
+#header {
+    height: 70px;
+    background: #373737 url(../img/headerBg.png) left bottom no-repeat;
+    background-size: 100% auto;
+    min-width: 1202px;
+}
+
+#header p.headerTopLeft {
+    font-size: 18px;
+    color: #FFFFFF;
+    line-height: 70px;
+    padding-left: 31px;
+    margin: 0;
+    float: left;
+}
+
+#header div.headerTopCenter {
+    float: right;
+}
+
+#header div.headerTopCenter a {
+    display: inline-block;
+    color: #FFFFFF;
+    /*opacity: 0.69;*/
+    filter: alpha(opacity=69);
+    font-size: 16px;
+    line-height: 70px;
+    margin-right: 38px;
+    padding-left: 31px;
+    background-size: 26px;
+    cursor: pointer;
+}
+
+#header div.headerTopCenter a.WeChat {
+    background: url(../img/WeChat.png) center left no-repeat;
+    position: relative;
+
+}
+#header div.headerTopCenter a.WeChat:hover img{
+	display: block;
+}
+#header div.headerTopCenter a.WeChat img {
+	width:400px;
+	height:400px;
+	position: absolute;
+	top:70px;
+	left:-130px;
+	z-index:1000;
+	display:none;
+}
+#header div.headerTopCenter a.helpCenter {
+    background: url(../img/helpCenter.png) center left no-repeat;
+}
+
+#header div.headerTopCenter a:hover {
+    text-decoration: none;
+}
+
+#header div.headerTopRight {
+    float: right;
+    padding: 24px 46px 21px 46px;
+    background: #272727;
+    cursor: pointer;
+    position: relative;
+}
+
+#header div.headerTopRight img.headPortrait {
+    width: 25px;
+    display: inline-block;
+    float: left;
+}
+
+#header div.headerTopRight p.teacherName {
+    font-size: 16px;
+    color: #FFFFFF;
+    line-height: 25px;
+    float: left;
+    padding: 0 7px;
+}
+
+#header div.headerTopRight img.triangle {
+    width: 15px;
+    margin-top: 5px;
+}
+
+#header div.headerTopRight ul {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    background: #272727;
+    border-left: 1px solid #8f8f8f;
+    border-bottom: 1px solid #8f8f8f;
+    display: none;
+    z-index: 1;
+}
+
+#header div.headerTopRight ul li {
+    height: 55px;
+    border-top: 1px solid #8f8f8f;
+    line-height: 55px;
+    font-size: 16px;
+    color: #FFFFFF;
+    /*opacity: 0.3;*/
+}
+
+
+/* #header div.headerTopRight ul li.modifyPassword,.logOut{background:url(../img/modifyPassword.png) 43px center no-repeat;background-size:18px;} */
+
+
+/* #header div.headerTopRight ul li.modifyPasswordLight{background:url(../img/modifyPasswordLight.png) 43px center no-repeat;background-size:18px;} */
+
+#header div.headerTopRight ul li.logOut {
+    background: url(../img/logout.png) 43px center no-repeat;
+    background-size: 18px;
+    /*opacity: 0.3;*/
+}
+
+#header div.headerTopRight ul li.modifyPassword {
+    background: url(../img/editpwd.png) 43px center no-repeat;
+    background-size: 18px;
+    /*opacity: 0.3;*/
+}
+
+#header div.headerTopRight ul li.logOut:hover {
+    background: url(../img/logoutLight.png) 43px center no-repeat;
+    background-size: 18px;
+    color: #FF7676;
+    /*opacity: 0.69;*/
+}
+
+#header div.headerTopRight ul li.modifyPassword:hover {
+    background: url(../img/editpwdLight.png) 43px center no-repeat;
+    background-size: 18px;
+    color: #FF7676;
+    opacity: 0.69;
+}
+
+#mainLeft {
+    width: 175px;
+    height:350px;
+    background: #FFFFFF;
+    float: left;
+    margin-top: 14px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+}
+
+#mainLeft ul.mainLeftUl {
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+#mainLeft ul.mainLeftUl li a {
+    background: #F0F0F0;
+    height: 50px;
+    display: inline-block;
+    width: 100%;
+    line-height: 50px;
+    padding-left: 46px;
+    font-size: 16px;
+    color: #5B5B5B;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+#mainLeft ul.mainLeftUl li {
+    width: 100%
+}
+
+#mainLeft ul.mainLeftUl li:nth-child(1) a:nth-child(1) {
+    -webkit-border-top-left-radius: 10px;
+    border-top-left-radius: 10px;
+    -moz-border-top-left-radius: 10px;
+    -ms-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-top-right-radius: 10px;
+    -ms-border-top-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#mainLeft ul.mainLeftUl li:nth-child(3) ul:nth-of-type(1) li:nth-child(1) a:nth-child(1) {
+    border-bottom-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-bottom-left-radius: 10px;
+    -ms-border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    -ms-border-bottom-right-radius: 10px;
+    -moz-border-bottom-right-radius: 10px;
+}
+
+
+/*
+#mainLeft ul.mainLeftUl a:last-of-type{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+*/
+
+
+/* #mainLeft ul.mainLeftUl li.light a{background: #E0615F;color: #FFFFFF;} */
+
+#mainLeft ul.mainLeftUl li ul a {
+    background: #fff;
+    font-size: 14px;
+    color: #5B5B5B;
+}
+
+#mainLeft ul.mainLeftUl li ul li.light a {
+    /*color: #E0615F;*/
+    background: #fff;
+}
+
+
+/* #mainLeft ul.mainLeftUl li a.examManage{background: #F0F0F0 url(../img/teacherManage.png) 32px center no-repeat;background-size:25px auto;color: #FFFFFF;} */
+
+
+/* #mainLeft ul.mainLeftUl li a.teacherManage{background: #F0F0F0 url(../img/teacherManage.png) 32px center no-repeat;background-size:18px auto;} */
+
+
+/* #mainLeft ul.mainLeftUl li a.examHistoryManage{background: #F0F0F0 url(../img/examHistoryManage.png) 32px center no-repeat;background-size:23px auto;} */
+
+#footer {
+    background: #373737;
+    height: 70px;
+    text-align: center;
+    min-width: 1202px;
+}
+
+#footer p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 70px;
+}
+
+.input-icon.right input {
+    padding-left: 12px !important;
+    padding-right: 33px !important;
+}
+
+.input-icon.right i {
+    right: 8px;
+    float: right;
+}
+
+.has-success .input-icon>i {
+    color: #468847;
+}
+
+.has-warning .input-icon>i {
+    color: #c09853;
+}
+
+.has-error .input-icon>i {
+    color: #b94a48;
+}

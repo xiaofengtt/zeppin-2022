@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>历史监考</title>
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/history.css" />
+
+<script id="tpl" type="text/template">
+			<div class="main_content">
+				<span class="logo">{{:#index+1}}</span>
+				<div class="content_left">
+					<p class="title">{{:examName}}</p>
+					<p>监考地点：<span>{{:roomIndex}}-{{:roomAdd}}</span></p>
+					<p>申请时间：<span>{{:applytime}}</span></p>
+				</div>
+				<div class="content_right">
+					<p>{{:score}}</p>
+					<p>积分</p>
+				</div>
+			</div>
+		</script>
+</head>
+<body>
+	<main>
+		<div id="show"></div>
+	</main>
+
+	<script src="../js/jquery-1.11.1.js"></script>
+	<script src="../js/url.min.js"></script>
+	<script src="../js/jsrender.js"></script>
+	<script src="js/history.js"></script>
+</body>
+</html>

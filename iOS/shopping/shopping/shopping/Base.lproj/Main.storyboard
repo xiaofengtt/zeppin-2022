@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rCb-Rb-VnB">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Shopping Base Navigation Controller-->
+        <scene sceneID="XZl-RS-4or">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="rCb-Rb-VnB" customClass="ShoppingBaseNavigationController" customModule="一元秒杀" customModuleProvider="target" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Myp-hQ-K4j">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cLM-bX-tub" kind="relationship" relationship="rootViewController" id="T8N-pH-Eac"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qu9-L4-fhQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-951" y="801"/>
+        </scene>
+        <!--红包超市-->
+        <scene sceneID="Ezh-lb-ymO">
+            <objects>
+                <viewController id="TB2-vz-JQB" customClass="ShoppingMarketViewController" customModule="一元秒杀" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vhq-Fw-UN1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="vhu-Jo-nJY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="红包超市" image="shopping_nav_market_unselected" selectedImage="shopping_nav_market_selected" id="eNy-xS-0cm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="onS-wU-NoC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="68"/>
+        </scene>
+        <!--首页-->
+        <scene sceneID="uxO-kr-J25">
+            <objects>
+                <viewController id="V10-Hp-ybI" customClass="ShoppingHomeViewController" customModule="一元秒杀" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1O0-pM-A13">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="juR-x4-qa8"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="首页" image="shopping_nav_home_unselected" selectedImage="shopping_nav_home_selected" id="ew3-Tl-nGy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CX6-Uu-LYb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="-672"/>
+        </scene>
+        <!--Shopping Base Tab Bar Controller-->
+        <scene sceneID="ieo-WG-izA">
+            <objects>
+                <tabBarController id="cLM-bX-tub" customClass="ShoppingBaseTabBarController" customModule="一元秒杀" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ET3-Ge-xct"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ISG-65-dGt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="V10-Hp-ybI" kind="relationship" relationship="viewControllers" id="doI-BT-HPZ"/>
+                        <segue destination="TB2-vz-JQB" kind="relationship" relationship="viewControllers" id="DNH-gR-hMH"/>
+                        <segue destination="jLU-tS-vSh" kind="relationship" relationship="viewControllers" id="k1a-Zk-vPH"/>
+                        <segue destination="rFg-UD-p20" kind="relationship" relationship="viewControllers" id="kQF-uS-OOa"/>
+                        <segue destination="o53-ay-aLp" kind="relationship" relationship="viewControllers" id="egb-1I-z5K"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="75Z-bV-90i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-89" y="801"/>
+        </scene>
+        <!--一元秒杀-->
+        <scene sceneID="qnJ-oZ-k7D">
+            <objects>
+                <viewController id="jLU-tS-vSh" customClass="ShoppingDiscountViewController" customModule="一元秒杀" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xhU-hg-aDI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="YBX-YJ-8aw"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="一元秒杀" image="shopping_nav_discount_unselected" selectedImage="shopping_nav_discount_selected" id="XYN-Nr-BOa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5AB-A5-zTG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="801"/>
+        </scene>
+        <!--购物车-->
+        <scene sceneID="UYG-dD-sgj">
+            <objects>
+                <viewController id="rFg-UD-p20" customClass="ShoppingCartViewController" customModule="一元秒杀" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VK4-ar-rHb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="hP6-5E-3oF"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="购物车" image="shopping_nav_cart_unselected" selectedImage="shopping_nav_cart_selected" id="ojm-aV-WFI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ful-X4-JFg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="1528"/>
+        </scene>
+        <!--我的-->
+        <scene sceneID="X83-gQ-c33">
+            <objects>
+                <viewController id="o53-ay-aLp" customClass="ShoppingMyViewController" customModule="一元秒杀" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MPs-N8-iDx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="5Mq-qI-MFR"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="我的" image="shopping_nav_my_unselected" selectedImage="shopping_nav_my_selected" id="1Lc-9V-38c"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bn0-Od-tgy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="2244"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="shopping_nav_cart_selected" width="16" height="16"/>
+        <image name="shopping_nav_cart_unselected" width="16" height="16"/>
+        <image name="shopping_nav_discount_selected" width="22.5" height="17"/>
+        <image name="shopping_nav_discount_unselected" width="22.5" height="17"/>
+        <image name="shopping_nav_home_selected" width="15.5" height="16"/>
+        <image name="shopping_nav_home_unselected" width="15.5" height="16"/>
+        <image name="shopping_nav_market_selected" width="16.5" height="16.5"/>
+        <image name="shopping_nav_market_unselected" width="16.5" height="16.5"/>
+        <image name="shopping_nav_my_selected" width="14.5" height="16"/>
+        <image name="shopping_nav_my_unselected" width="14.5" height="16"/>
+    </resources>
+</document>

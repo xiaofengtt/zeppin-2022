@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bpS-Cn-Aha">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sports Base Navigation Controller-->
+        <scene sceneID="mMB-PA-YfJ">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="bpS-Cn-Aha" customClass="SportsBaseNavigationController" customModule="banana" customModuleProvider="target" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CWF-cX-nYU">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="k7s-iW-gYX" kind="relationship" relationship="rootViewController" id="CWb-jc-req"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kdT-Zk-wB2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2428" y="203"/>
+        </scene>
+        <!--赛事-->
+        <scene sceneID="Ddo-CF-tCA">
+            <objects>
+                <viewController id="o7d-at-KXd" customClass="SportsScheduleViewController" customModule="banana" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="djb-Fu-sc1"/>
+                        <viewControllerLayoutGuide type="bottom" id="uBa-6B-ri6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pbk-Qc-TFB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="赛事" image="image_tab_schedule" selectedImage="image_tab_schedule_selected" id="QOZ-So-AhU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G46-gC-alp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-497" y="-131"/>
+        </scene>
+        <!--专题-->
+        <scene sceneID="OPA-Hx-kxk">
+            <objects>
+                <viewController id="9NT-jI-zfC" customClass="SportsSpecialListViewController" customModule="banana" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7T6-ax-fIR"/>
+                        <viewControllerLayoutGuide type="bottom" id="tre-JG-EJw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kCD-am-MHq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="专题" image="image_tab_special" selectedImage="image_tab_special_selected" id="jqO-9L-DMc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C4C-IA-dcv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-497" y="-853"/>
+        </scene>
+        <!--Sports Base Tab Bar Controller-->
+        <scene sceneID="p4u-hO-daJ">
+            <objects>
+                <tabBarController id="k7s-iW-gYX" customClass="SportsBaseTabBarController" customModule="banana" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="WWw-OJ-GHR"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7b2-V4-YbE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Erd-lb-sJO" kind="relationship" relationship="viewControllers" id="dLT-K5-HQa"/>
+                        <segue destination="o7d-at-KXd" kind="relationship" relationship="viewControllers" id="7tf-yc-HsJ"/>
+                        <segue destination="9NT-jI-zfC" kind="relationship" relationship="viewControllers" id="sby-LO-VGs"/>
+                        <segue destination="OJK-hb-qtV" kind="relationship" relationship="viewControllers" id="IiQ-rf-dO9"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j4p-ga-wL4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1478" y="203"/>
+        </scene>
+        <!--首页-->
+        <scene sceneID="8UR-QT-iBj">
+            <objects>
+                <viewController id="Erd-lb-sJO" customClass="SportsMainViewController" customModule="banana" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CI5-zg-Wie"/>
+                        <viewControllerLayoutGuide type="bottom" id="uwn-2D-Eyq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bE5-xG-YFR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="首页" image="image_tab_main" selectedImage="image_tab_main_selected" id="Bpk-ce-HOb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ob-wC-C9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-497" y="582"/>
+        </scene>
+        <!--我的-->
+        <scene sceneID="SVF-mB-E0j">
+            <objects>
+                <viewController id="OJK-hb-qtV" customClass="SportsMyViewController" customModule="banana" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k9L-Xi-xrh"/>
+                        <viewControllerLayoutGuide type="bottom" id="yOS-7Y-VXS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bkY-YS-Qwf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="我的" image="image_tab_my" selectedImage="image_tab_my_selected" id="yh2-Ot-a9U"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZE6-eE-ixU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-497" y="1310"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="image_tab_main" width="22" height="22"/>
+        <image name="image_tab_main_selected" width="22" height="22"/>
+        <image name="image_tab_my" width="22" height="22"/>
+        <image name="image_tab_my_selected" width="22" height="22"/>
+        <image name="image_tab_schedule" width="22" height="22"/>
+        <image name="image_tab_schedule_selected" width="22" height="22"/>
+        <image name="image_tab_special" width="22" height="22"/>
+        <image name="image_tab_special_selected" width="22" height="22"/>
+    </resources>
+</document>

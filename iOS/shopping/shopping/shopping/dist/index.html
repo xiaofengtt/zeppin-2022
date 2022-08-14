@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta name=flexible content="initial-dpr=1"><link rel="shortcut icon" href=./favicon.png><script src=http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js></script><script src=https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js></script><title>幸运拍</title><script src=https://cdn.bootcss.com/eruda/1.5.2/eruda.min.js></script><script>eruda.init();</script><style>.tradingview-widget-container {
+            display: none;
+            position: absolute;
+            top: 0;
+            padding-top: 30px;
+            padding-bottom: 40px;
+            box-sizing: border-box;
+        }</style><script>if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function () {
+                FastClick.attach(document.body);
+                FastClick.prototype.focus = (ele) => {
+                    'use strict';
+                    ele.focus();
+                }; //修改focus()方法
+            }, false);
+        }</script><link href=css/chunk-070ef12b.92c67cb4.css rel=prefetch><link href=css/chunk-170d76ae.d0f54e15.css rel=prefetch><link href=css/chunk-1e74a2e8.2f6f27d9.css rel=prefetch><link href=css/chunk-2de9a154.83061441.css rel=prefetch><link href=css/chunk-3d97c21f.de671f09.css rel=prefetch><link href=css/chunk-3f9bf25f.471168db.css rel=prefetch><link href=css/chunk-47d7b318.e07dd943.css rel=prefetch><link href=css/chunk-4836142f.60916cc7.css rel=prefetch><link href=css/chunk-48e34213.2c1038ac.css rel=prefetch><link href=css/chunk-4d922c5f.63fc396a.css rel=prefetch><link href=css/chunk-50549e5e.69aa0df1.css rel=prefetch><link href=css/chunk-60163724.75e56387.css rel=prefetch><link href=css/chunk-64adb1d4.991fd63a.css rel=prefetch><link href=css/chunk-68c7a114.5b3f4a4e.css rel=prefetch><link href=css/chunk-6f8e2abd.8e76e473.css rel=prefetch><link href=css/chunk-7348e69a.15456e8f.css rel=prefetch><link href=css/chunk-93dc85ea.e01f225a.css rel=prefetch><link href=css/chunk-a2950d70.60331e00.css rel=prefetch><link href=css/chunk-b34bd7f2.47557a0b.css rel=prefetch><link href=css/chunk-ea5185d2.74be0dbc.css rel=prefetch><link href=js/chunk-070ef12b.f781c71c.js rel=prefetch><link href=js/chunk-08649a9d.8e6f074f.js rel=prefetch><link href=js/chunk-170d76ae.214e1e03.js rel=prefetch><link href=js/chunk-1e74a2e8.568a51fa.js rel=prefetch><link href=js/chunk-2de9a154.000aeeb1.js rel=prefetch><link href=js/chunk-3d97c21f.11fe075f.js rel=prefetch><link href=js/chunk-3f9bf25f.7cf2aee6.js rel=prefetch><link href=js/chunk-47d7b318.1584587e.js rel=prefetch><link href=js/chunk-4836142f.ea8112af.js rel=prefetch><link href=js/chunk-48e34213.20765bf5.js rel=prefetch><link href=js/chunk-4d922c5f.a5140f99.js rel=prefetch><link href=js/chunk-50549e5e.b6c93ec5.js rel=prefetch><link href=js/chunk-60163724.88e565fa.js rel=prefetch><link href=js/chunk-64adb1d4.a2e43d62.js rel=prefetch><link href=js/chunk-68c7a114.3bf054df.js rel=prefetch><link href=js/chunk-6f8e2abd.f2cd2d4b.js rel=prefetch><link href=js/chunk-7348e69a.19b888c3.js rel=prefetch><link href=js/chunk-93dc85ea.13a9202c.js rel=prefetch><link href=js/chunk-a2950d70.bf8367d1.js rel=prefetch><link href=js/chunk-b34bd7f2.406a1fa3.js rel=prefetch><link href=js/chunk-ea5185d2.bdb9fb3c.js rel=prefetch><link href=css/app.4c336521.css rel=preload as=style><link href=css/chunk-vendors.e928996e.css rel=preload as=style><link href=js/app.5990530e.js rel=preload as=script><link href=js/chunk-vendors.e70166c9.js rel=preload as=script><link href=css/chunk-vendors.e928996e.css rel=stylesheet><link href=css/app.4c336521.css rel=stylesheet><link rel=icon type=image/png sizes=32x32 href=img/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=img/icons/favicon-16x16.png><link rel=manifest href=manifest.json><meta name=theme-color content=#4DBA87><meta name=apple-mobile-web-app-capable content=no><meta name=apple-mobile-web-app-status-bar-style content=default><meta name=apple-mobile-web-app-title content=futures-headline><link rel=apple-touch-icon href=img/icons/apple-touch-icon-152x152.png><link rel=mask-icon href=img/icons/safari-pinned-tab.svg color=#4DBA87><meta name=msapplication-TileImage content=img/icons/msapplication-icon-144x144.png><meta name=msapplication-TileColor content=#000000></head><body><noscript><strong>We're sorry but doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script>var u = navigator.userAgent
+        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+        document.body.addEventListener('focusout', function () {
+            if (isIOS) {
+                blurAdjust()
+            }
+        })
+        // 解决苹果不回弹页面
+        function blurAdjust() {
+            var result = 'pc';
+            setTimeout(() => {
+                if (document.activeElement.tagName == 'INPUT' || document.activeElement.tagName == 'TEXTAREA') {
+                    return
+                }
+                if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) { //判断iPhone|iPad|iPod|iOS
+                    result = 'ios'
+                } else if (/(Android)/i.test(navigator.userAgent)) { //判断Android
+                    result = 'android'
+                }
+                if (result = 'ios') {
+                    document.activeElement.scrollIntoViewIfNeeded(true);
+                }
+            }, 100)
+        }</script><script src=js/chunk-vendors.e70166c9.js></script><script src=js/app.5990530e.js></script></body></html>

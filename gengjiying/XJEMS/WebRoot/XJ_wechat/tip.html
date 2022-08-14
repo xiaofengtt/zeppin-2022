@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>监考申报</title>
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="./css/base.css">
+<link rel="stylesheet" href="./css/tip.css">
+
+<script id="queboxTpl" type="text/template">
+	<header>
+		<p>{{:name}}</p>
+	</header>
+    <main>
+       <div id="information">
+       		<p class="title">考试信息:</p>
+			{{:information}}
+       </div>
+       
+       <hr />
+       
+       <div id="invigilationContract">
+       		<p class="title">监考责任书：</p>
+       		{{:invigilationContract}}
+       </div>
+       
+       <hr />
+       
+       <div id="invigilationNotice">
+       		<p class="title">申报注意事项:</p>
+       		{{:applyNotice}}
+       </div>
+    </main> 
+	<footer>
+		{{if isApply=='1'}}
+			<input type="button" id="cancelApply"  value="已成功申请，等待结果通知" style="background:#C1C1C1">
+			<a id="cancel" href="javascript:;" onclick="cancelApply({{:recordsId}})">取消申请</a>
+        {{/if}}
+        {{if isApply=='0'}}
+			<p id="item">同意以上条款</p>
+			<input type="button" id="apply" data-id="{{:id}}" data-tid="{{:tid}}" value="申请监考" />
+        {{/if}}
+			<p class="error" id="errorMsg"></p>
+	</footer>
+
+	
+    <div class="tel">
+    </div>
+</script>
+</head>
+
+<body>
+	<div id="queboxCnt"></div>
+
+	<script src="../js/jquery-1.11.1.js"></script>
+	<script src="../js/url.min.js"></script>
+	<script src="../js/jsrender.js"></script>
+	<script src="js/tip.js"></script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+	<!-- 基本Service -->
+	<bean id="resourceService" class="cn.zeppin.service.imp.ResourceService">
+		<property name="iResourceDAO" ref="resourceDAO"></property>
+	</bean>
+
+	<bean id="roleFuncationService" class="cn.zeppin.service.imp.RoleFunctionService">
+		<property name="roleFunctionDAO" ref="roleFuncationDAO"></property>
+	</bean>
+
+	<bean id="sysUserService" class="cn.zeppin.service.imp.SysUserService">
+		<property name="sysUserDAO" ref="sysUserDAO" />
+	</bean>
+
+	<bean id="examInformationService" class="cn.zeppin.service.imp.ExamInformationService">
+		<property name="iExamInformationDAO" ref="examInformationDAO"></property>
+	</bean>
+
+	<bean id="examRoomService" class="cn.zeppin.service.imp.ExamRoomService">
+		<property name="iExamRoomDAO" ref="examRoomDAO"></property>
+	</bean>
+
+	<bean id="examTeacherRoomService" class="cn.zeppin.service.imp.ExamTeacherRoomService">
+		<property name="iExamTeacherRoomDAO" ref="examTeacherRoomDAO"></property>
+	</bean>
+
+	<bean id="invigilationTeacherService" class="cn.zeppin.service.imp.InvigilationTeacherService">
+		<property name="iInvigilationTeacherDAO" ref="invigilationTeacherDAO"></property>
+		<property name="iInvigilationTeacherOldDAO" ref="iInvigilationTeacherOldDAO"></property>
+		<property name="iExamTeacherRoomDAO" ref="examTeacherRoomDAO"></property>
+		<property name="teacherDisableRecordsDao" ref="teacherDisableRecordsDao"></property>
+	</bean>
+
+	<bean id="ethnicService" class="cn.zeppin.service.imp.EthnicService">
+		<property name="ethnicDao" ref="ethnicDaoImpl"></property>
+	</bean>
+
+	<!-- 前端 -->
+	<bean id="ssoUserService" class="cn.zeppin.service.imp.SsoUserService">
+		<property name="ssoUserDAO" ref="ssoUserDAO" />
+	</bean>
+
+	<bean id="taskService" class="cn.zeppin.service.imp.TaskService">
+		<property name="taskDAO" ref="taskDAO"></property>
+	</bean>
+	<!-- 监考责任书 模板 -->
+	<bean id="invigilationTemplateService" class="cn.zeppin.service.imp.InvigilationTemplateService">
+		<property name="invigilationTemplateDAO" ref="invigilationTemplateDAO"></property>
+	</bean>
+	<!-- 短信接口 -->
+	<bean id="mobileCodeService" class="cn.zeppin.service.imp.MobileCodeService">
+		<property name="mobileCodeDAO" ref="mobileCodeDAO"></property>
+	</bean>
+</beans>

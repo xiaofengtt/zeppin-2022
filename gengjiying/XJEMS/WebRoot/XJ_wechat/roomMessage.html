@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" href="./css/base.css">
+		<link rel="stylesheet" href="./css/roomMessage.css">
+		<title>二次确认</title>
+		<script id="queboxTpl" type="text/template">
+			<header>
+				<p>已经申请成功</p>
+				<p>参加{{:exam}}考试监考</p>
+			</header>
+			<main> <a>监考考场：{{:roomIndex}}</a>
+
+				<ul>
+					{{for examnation}}
+						<li>{{:examnationTime}}-{{:examnationInformation}}</li>
+					{{/for}}
+				</ul>
+				{{if isconfirm=='1'}}
+
+				{{/if}}
+			</main>
+			<footer>
+				{{if isconfirm=='1'}}
+				<a href="pdfshow.jsp?id={{:id}}" id="console">点击打印执考通知单(.pdf文件)</a>
+				<a href="#">已确认参加</a>
+
+                {{else}}
+				<p class="bottom_p">请点击下方按钮，再次确认参加本次考试监考工作</p>
+
+				<a href="#" onclick="confirm({{:id}})">点击确认参加</a> {{/if}}
+			</footer>
+			<p id="timing">*所有通知时间均为北京时间</p>
+		</script>
+	</head>
+
+	<body>
+		<!-- 	<header>
+		<p>已经申请成功</p>
+		<p>参加2017年5月20日-21日考试监考</p>
+	</header>
+	<main> <a href="">监考考场：071（主考）</a>
+
+	<ul>
+		<li>2017年6月30日 9:00-12:00《马克西主义历史研究》</li>
+		<li>2017年6月30日 9:00-12:00《马克西主义历史研究》</li>
+		<li>2017年6月30日 9:00-12:00《马克西主义历史研究》</li>
+	</ul>
+	</main>
+	<p class="bottom_p">请点击下方按钮，再次确认参加本次考试监考工作</p>
+	<footer>
+		<a href="#">点击确认参加</a>
+	</footer> -->
+		<div id="queboxCnt"></div>
+		<script src="../js/jquery-1.11.1.js"></script>
+		<script src="../js/jquery.cookie.js"></script>
+		<script src="../js/jquery-ui.js"></script>
+		<script src="../js/url.min.js"></script>
+		<script src="../js/jquery.colorbox.js"></script>
+		<script type="text/javascript" src="../js/jsrender.min.js"></script>
+		<script type="text/javascript" src="../js/query.js"></script>
+		<script src="../js/paging.js"></script>
+		<script type="text/javascript" src="../XJ_wechat/js/roomMessage.js"></script>
+	</body>
+
+</html>

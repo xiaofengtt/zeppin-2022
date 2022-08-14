@@ -1,0 +1,124 @@
+header {
+    width: 100%;
+    background: url(../img/ic_success.png)no-repeat;
+    background-size: 100% 205px;
+    height: 205px;
+    padding-top: 125px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+header p {
+    text-align: center;
+    color: #FFFFFF;
+    letter-spacing:2px
+}
+
+header p:nth-child(1) {
+    font-size: 18px;
+}
+
+header p:nth-child(2) {
+    font-weight:lighter;
+}
+
+
+main {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+main a {
+    width: 65%;
+    height: 45px;
+    display: inline-block;
+    color: #00C363;
+    font-size: 18px;
+    border: 1px solid #00C363;
+    line-height: 45px;
+    text-align: center;
+    -webkit-border-radius: 25px;
+}
+
+main ul {
+    margin-top: 20px;
+}
+
+main ul li {
+    margin: 0 auto;
+    margin-bottom: 15px;
+    width: 90%;
+    color:#585858;
+}
+
+main ul li::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    margin-right: 8px;
+    line-height: 5px;
+    -webkit-border-radius: 50%;
+    background: #00C363;
+    display: inline-block;
+    margin-bottom:2px;
+}
+.bottom_p{
+    width:100%;
+    text-align: center;
+    color:#7F7F7F;
+    position: absolute;
+    bottom:60px;
+}
+footer{
+    width:100%;
+    height:40px;
+    background:#00C569;
+    position: absolute;
+    bottom:0;
+    text-align: center;
+    padding-top:5px;
+}
+#console{
+	color:#7687B6;
+	border:none;
+	text-align:center;
+	position:absolute;
+	bottom:60px;
+	width:auto;
+	height:auto;
+	display:inline-block;
+	font-size:14px;
+	line-height:auto;
+	border:none;
+	left:0;
+	right:0;
+	font-weight: normal;
+	
+}
+
+footer a{
+    -webkit-border-radius:25px;
+    border:1px solid #FFFFFF;
+    color:#FFFFFF;
+    text-align: center;
+    display: inline-block;
+    width:100px;
+    height:30px;
+    line-height:30px;
+    font-size:12px;
+    font-weight:lighter;
+    letter-spacing:2px;
+}
+
+#timing{
+	font-size:12px;
+	position: absolute;
+	width:auto;
+	height:auto;
+	left:0;
+	right:0;
+	bottom:46px;
+	color:#E0615F;
+	text-align: center;
+}

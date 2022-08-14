@@ -1,0 +1,70 @@
+@charset "UTF-8";
+.select_bar {
+    min-width: 919px;
+    background: #FAF9F9;
+    margin-top: 12px;
+    position: relative;
+}
+
+.select_bar .select_bar_left {
+    margin-left: 8px;
+    height: 38px;
+    padding-top: 8px;
+    width:570px;
+}
+
+.select_bar .select_bar_left li {
+    float: left;
+    width: 110px;
+    padding: 0px 0 3px 0;
+    opacity: 0.5;
+    font-size: 14px;
+    background: #FFFFFF;
+    border: 1px solid #979797;
+    text-align: center;
+}
+.select_bar .select_bar_left li:nth-child(1){
+    -webkit-border-top-left-radius:5px;
+    -webkit-border-bottom-left-radius:5px;
+}
+.select_bar .select_bar_left li:last-child{
+    -webkit-border-top-right-radius:5px;
+    -webkit-border-bottom-right-radius:5px;
+}
+.select_bar .select_bar_left li i{
+    display: inline-block;
+    width:10px;
+    height: 20px;
+    position: relative;
+}
+.select_bar .select_bar_left li i img{
+    position: absolute;
+    top:8px;
+    left:0px;
+}
+.select_bar .select_bar_left li a {
+    color: #000000;
+}
+.select_bar .select_bar_left li a.light{
+	color:#E0615F;
+}
+.select_bar .select_bar_left li .iconfont {
+    font-size: 20px;
+}
+
+/*分页*/
+
+.ui-paging-container li.ui-pager:hover,
+.ui-paging-container li.focus {
+	background-color: #E0615F;
+}
+
+#select_page {
+	position: absolute;
+	top: 9px;
+	right: 5px;
+}
+.ui-paging-container{
+	color:#888;
+	font-size:12px;
+}
