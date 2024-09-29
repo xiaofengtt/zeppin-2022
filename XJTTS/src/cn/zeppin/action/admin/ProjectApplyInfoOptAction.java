@@ -1354,6 +1354,7 @@ public class ProjectApplyInfoOptAction extends ActionSupport {
 
 				paramsw.put("projectType", p.getProjectType().getId());
 				paramsw.put("project", p.getId());
+				paramsw.put("projectCycle", p.getProjectCycle().getId());
 			}
 		}
 		if (year != null && !"".equals(year)) {
